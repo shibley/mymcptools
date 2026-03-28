@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { CopyButton } from "@/components/CopyButton";
 import { ServerCardCompact } from "@/components/ServerCard";
 import { servers, getServerBySlug, getRelatedServers, categories, integrations } from "@/data/servers";
+import { getBlogPostsForServer } from "@/data/blog";
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -45,6 +46,7 @@ export default async function ServerPage({ params }: Props) {
   const relatedServers = getRelatedServers(server, 5);
   const serverCategories = categories.filter(c => server.categories.includes(c.slug));
   const serverIntegrations = integrations.filter(i => server.integrations.includes(i.slug));
+  const relatedBlogPosts = getBlogPostsForServer(server.slug);
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -61,11 +63,50 @@ export default async function ServerPage({ params }: Props) {
     "downloadUrl": server.github_url,
   };
 
+  const faqJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": `What is the ${server.name} MCP server?`,
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": server.description,
+        },
+      },
+      {
+        "@type": "Question",
+        "name": `How do I install ${server.name}?`,
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": server.install_command
+            ? `Install via ${server.install_type}: ${server.install_command}`
+            : `Visit the GitHub repository at ${server.github_url} for installation instructions.`,
+        },
+      },
+      {
+        "@type": "Question",
+        "name": `What AI clients work with ${server.name}?`,
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": serverIntegrations.length > 0
+            ? `${server.name} works with ${serverIntegrations.map(i => i.name).join(', ')}.`
+            : `${server.name} is compatible with MCP-enabled AI clients including Claude Desktop, Cursor, and VS Code.`,
+        },
+      },
+    ],
+  };
+
   return (
     <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
       />
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
@@ -163,6 +204,65 @@ export default async function ServerPage({ params }: Props) {
                 ))}
               </div>
             </div>
+
+            {/* FAQ Section */}
+            <div className="mb-8">
+              <h2 className="text-xl font-semibold text-white mb-4">Frequently Asked Questions</h2>
+              <div className="space-y-4">
+                <details className="bg-gray-900 border border-gray-800 rounded-xl overflow-hidden group" open>
+                  <summary className="px-6 py-4 cursor-pointer text-white font-medium hover:bg-gray-800/50 transition">
+                    What is the {server.name} MCP server?
+                  </summary>
+                  <div className="px-6 pb-4 text-gray-400">{server.description}</div>
+                </details>
+                <details className="bg-gray-900 border border-gray-800 rounded-xl overflow-hidden group">
+                  <summary className="px-6 py-4 cursor-pointer text-white font-medium hover:bg-gray-800/50 transition">
+                    How do I install {server.name}?
+                  </summary>
+                  <div className="px-6 pb-4 text-gray-400">
+                    {server.install_command
+                      ? <>Install via {server.install_type}: <code className="text-green-400 bg-gray-800 px-2 py-0.5 rounded">{server.install_command}</code></>
+                      : <>Visit the <a href={server.github_url} target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:text-blue-300">GitHub repository</a> for installation instructions.</>
+                    }
+                  </div>
+                </details>
+                <details className="bg-gray-900 border border-gray-800 rounded-xl overflow-hidden group">
+                  <summary className="px-6 py-4 cursor-pointer text-white font-medium hover:bg-gray-800/50 transition">
+                    What AI clients work with {server.name}?
+                  </summary>
+                  <div className="px-6 pb-4 text-gray-400">
+                    {serverIntegrations.length > 0
+                      ? <>{server.name} works with {serverIntegrations.map((int, i) => (
+                          <span key={int.slug}>
+                            <Link href={`/integration/${int.slug}`} className="text-blue-400 hover:text-blue-300">{int.name}</Link>
+                            {i < serverIntegrations.length - 1 ? ', ' : ''}
+                          </span>
+                        ))}.</>
+                      : <>{server.name} is compatible with MCP-enabled AI clients including Claude Desktop, Cursor, and VS Code.</>
+                    }
+                  </div>
+                </details>
+              </div>
+            </div>
+
+            {/* Related Blog Posts */}
+            {relatedBlogPosts.length > 0 && (
+              <div className="mb-8">
+                <h2 className="text-xl font-semibold text-white mb-4">Related Guides</h2>
+                <div className="space-y-3">
+                  {relatedBlogPosts.map(post => (
+                    <Link
+                      key={post.slug}
+                      href={`/blog/${post.slug}`}
+                      className="block bg-gray-900 border border-gray-800 rounded-xl p-4 hover:border-blue-500/50 transition"
+                    >
+                      <h3 className="text-white font-medium mb-1">{post.title}</h3>
+                      <p className="text-gray-500 text-sm">{post.readingTime} • {post.category}</p>
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            )}
 
             {/* Links */}
             <div className="flex flex-wrap gap-4">

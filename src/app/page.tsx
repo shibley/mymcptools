@@ -8,8 +8,26 @@ export default function Home() {
   const integrationsWithCounts = getIntegrationsWithCounts();
   const featuredServers = getFeaturedServers().slice(0, 8);
   const officialServers = getOfficialServers().slice(0, 8);
+
+  const websiteJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "MyMCPTools",
+    "url": "https://mymcptools.com",
+    "description": `Browse ${servers.length}+ Model Context Protocol (MCP) servers for Claude, Cursor, VS Code, and more. The open directory for AI tool integrations.`,
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://mymcptools.com/search?q={search_term_string}",
+      "query-input": "required name=search_term_string",
+    },
+  };
   
   return (
+    <>
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }}
+    />
     <div>
       {/* Hero */}
       <section className="relative overflow-hidden">
@@ -251,5 +269,6 @@ export default function Home() {
         </div>
       </section>
     </div>
+    </>
   );
 }

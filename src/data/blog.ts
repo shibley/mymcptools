@@ -550,3 +550,7 @@ export function getBlogPostBySlug(slug: string): BlogPost | undefined {
 export function getAllBlogPosts(): BlogPost[] {
   return [...blogPosts].sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 }
+
+export function getBlogPostsForServer(serverSlug: string): BlogPost[] {
+  return blogPosts.filter((post) => post.relatedServerSlugs.includes(serverSlug));
+}

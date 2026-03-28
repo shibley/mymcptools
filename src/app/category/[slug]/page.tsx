@@ -42,7 +42,27 @@ export default async function CategoryPage({ params }: Props) {
 
   const categoryServers = getServersByCategory(slug);
 
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "name": `${category.name} MCP Servers`,
+    "description": `Discover ${category.name.toLowerCase()} MCP servers. ${category.description}.`,
+    "url": `https://mymcptools.com/category/${slug}`,
+    "numberOfItems": categoryServers.length,
+    "hasPart": categoryServers.slice(0, 10).map(server => ({
+      "@type": "SoftwareApplication",
+      "name": server.name,
+      "description": server.description,
+      "url": `https://mymcptools.com/servers/${server.slug}`,
+    })),
+  };
+
   return (
+    <>
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+    />
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
       {/* Breadcrumb */}
       <nav className="mb-8">
@@ -93,5 +113,6 @@ export default async function CategoryPage({ params }: Props) {
         </div>
       </div>
     </div>
+    </>
   );
 }
