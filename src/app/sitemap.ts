@@ -1,5 +1,6 @@
 import { MetadataRoute } from 'next';
 import { servers, categories, integrations, generateComparisons } from '@/data/servers';
+import { blogPosts } from '@/data/blog';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://mymcptools.com';
@@ -100,6 +101,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.6,
   }));
 
+  // Blog post pages
+  const blogPages: MetadataRoute.Sitemap = blogPosts.map((post) => ({
+    url: `${baseUrl}/blog/${post.slug}`,
+    lastModified: new Date(post.date),
+    changeFrequency: 'monthly' as const,
+    priority: 0.8,
+  }));
+
   return [
     ...staticPages,
     ...serverPages,
@@ -108,5 +117,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...categoryPages,
     ...integrationPages,
     ...comparisonPages,
+    ...blogPages,
   ];
 }
