@@ -47,11 +47,11 @@ export default async function IntegrationPage({ params }: Props) {
       {/* Breadcrumb */}
       <nav className="mb-8">
         <ol className="flex items-center space-x-2 text-sm text-gray-400">
-          <li><Link href="/" className="hover:text-white">Home</Link></li>
+          <li><Link href="/" className="hover:text-gray-900">Home</Link></li>
           <li>/</li>
-          <li><Link href="/integration" className="hover:text-white">Integrations</Link></li>
+          <li><Link href="/integration" className="hover:text-gray-900">Integrations</Link></li>
           <li>/</li>
-          <li className="text-white">{integration.name}</li>
+          <li className="text-gray-900">{integration.name}</li>
         </ol>
       </nav>
 
@@ -60,7 +60,7 @@ export default async function IntegrationPage({ params }: Props) {
         <div className="flex items-center space-x-4 mb-4">
           <span className="text-5xl">{integration.icon}</span>
           <div>
-            <h1 className="text-3xl font-bold text-white">MCP Servers for {integration.name}</h1>
+            <h1 className="text-3xl font-bold text-gray-900">MCP Servers for {integration.name}</h1>
             <p className="text-gray-400">{integrationServers.length} compatible servers</p>
           </div>
         </div>
@@ -76,7 +76,7 @@ export default async function IntegrationPage({ params }: Props) {
 
       {/* Other Integrations */}
       <div className="mt-16">
-        <h2 className="text-xl font-semibold text-white mb-6">Other Integrations</h2>
+        <h2 className="text-xl font-semibold text-gray-900 mb-6">Other Integrations</h2>
         <div className="flex flex-wrap gap-3">
           {integrations
             .filter(i => i.slug !== slug)
@@ -84,10 +84,10 @@ export default async function IntegrationPage({ params }: Props) {
               <Link
                 key={int.slug}
                 href={`/integration/${int.slug}`}
-                className="inline-flex items-center space-x-2 px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg hover:border-purple-500/50 transition-all"
+                className="inline-flex items-center space-x-2 px-4 py-2 bg-gray-50 border border-gray-200 rounded-lg hover:border-blue-300 transition-all"
               >
                 <span>{int.icon}</span>
-                <span className="text-white">{int.name}</span>
+                <span className="text-gray-900">{int.name}</span>
               </Link>
             ))}
         </div>

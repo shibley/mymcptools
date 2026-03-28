@@ -11,18 +11,18 @@ export default function SubmitPage() {
     <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
       {/* Header */}
       <div className="text-center mb-12">
-        <h1 className="text-3xl font-bold text-white mb-4">Submit Your MCP Server</h1>
+        <h1 className="text-3xl font-bold text-gray-900 mb-4">Submit Your MCP Server</h1>
         <p className="text-gray-400">
           Get your server listed in the directory and reach thousands of developers.
         </p>
       </div>
 
       {/* Submission Form */}
-      <div className="bg-gray-900 border border-gray-800 rounded-xl p-8">
+      <div className="bg-white border border-gray-200 rounded-xl p-8">
         <form className="space-y-6">
           {/* Server Name */}
           <div>
-            <label htmlFor="name" className="block text-sm font-medium text-white mb-2">
+            <label htmlFor="name" className="block text-sm font-medium text-gray-900 mb-2">
               Server Name *
             </label>
             <input
@@ -31,13 +31,13 @@ export default function SubmitPage() {
               name="name"
               required
               placeholder="e.g., My Awesome MCP Server"
-              className="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+              className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
             />
           </div>
 
           {/* Description */}
           <div>
-            <label htmlFor="description" className="block text-sm font-medium text-white mb-2">
+            <label htmlFor="description" className="block text-sm font-medium text-gray-900 mb-2">
               Description *
             </label>
             <textarea
@@ -46,13 +46,13 @@ export default function SubmitPage() {
               required
               rows={3}
               placeholder="What does your server do? Keep it concise but informative."
-              className="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+              className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
             />
           </div>
 
           {/* GitHub URL */}
           <div>
-            <label htmlFor="github" className="block text-sm font-medium text-white mb-2">
+            <label htmlFor="github" className="block text-sm font-medium text-gray-900 mb-2">
               GitHub Repository URL *
             </label>
             <input
@@ -61,13 +61,13 @@ export default function SubmitPage() {
               name="github"
               required
               placeholder="https://github.com/username/repo"
-              className="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+              className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
             />
           </div>
 
           {/* Website URL */}
           <div>
-            <label htmlFor="website" className="block text-sm font-medium text-white mb-2">
+            <label htmlFor="website" className="block text-sm font-medium text-gray-900 mb-2">
               Website URL (optional)
             </label>
             <input
@@ -75,20 +75,20 @@ export default function SubmitPage() {
               id="website"
               name="website"
               placeholder="https://yourwebsite.com"
-              className="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+              className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
             />
           </div>
 
           {/* Category */}
           <div>
-            <label htmlFor="category" className="block text-sm font-medium text-white mb-2">
+            <label htmlFor="category" className="block text-sm font-medium text-gray-900 mb-2">
               Primary Category *
             </label>
             <select
               id="category"
               name="category"
               required
-              className="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+              className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
             >
               <option value="">Select a category</option>
               <option value="filesystem">📁 Filesystem</option>
@@ -112,14 +112,14 @@ export default function SubmitPage() {
 
           {/* Install Type */}
           <div>
-            <label htmlFor="install" className="block text-sm font-medium text-white mb-2">
+            <label htmlFor="install" className="block text-sm font-medium text-gray-900 mb-2">
               Install Type *
             </label>
             <select
               id="install"
               name="install"
               required
-              className="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+              className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
             >
               <option value="">Select install type</option>
               <option value="npm">npm / npx</option>
@@ -132,7 +132,7 @@ export default function SubmitPage() {
 
           {/* Your Email */}
           <div>
-            <label htmlFor="email" className="block text-sm font-medium text-white mb-2">
+            <label htmlFor="email" className="block text-sm font-medium text-gray-900 mb-2">
               Your Email *
             </label>
             <input
@@ -141,15 +141,15 @@ export default function SubmitPage() {
               name="email"
               required
               placeholder="you@example.com"
-              className="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+              className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
             />
-            <p className="mt-1 text-xs text-gray-500">We&apos;ll notify you when your server is listed.</p>
+            <p className="mt-1 text-xs text-gray-400">We&apos;ll notify you when your server is listed.</p>
           </div>
 
           {/* Submit Button */}
           <button
             type="submit"
-            className="w-full px-6 py-3 bg-gradient-to-r from-purple-600 to-pink-600 text-white font-medium rounded-lg hover:from-purple-700 hover:to-pink-700 transition-all"
+            className="w-full px-6 py-3 bg-gradient-to-r from-blue-600 to-blue-700 text-gray-900 font-medium rounded-lg hover:from-blue-700 hover:to-blue-800 transition-all"
           >
             Submit Server
           </button>
@@ -158,7 +158,7 @@ export default function SubmitPage() {
 
       {/* Guidelines */}
       <div className="mt-12">
-        <h2 className="text-xl font-semibold text-white mb-4">Submission Guidelines</h2>
+        <h2 className="text-xl font-semibold text-gray-900 mb-4">Submission Guidelines</h2>
         <ul className="space-y-3 text-gray-400">
           <li className="flex items-start">
             <span className="text-green-400 mr-2">✓</span>
@@ -181,7 +181,7 @@ export default function SubmitPage() {
 
       {/* Back Link */}
       <div className="mt-8 text-center">
-        <Link href="/" className="text-purple-400 hover:text-purple-300">
+        <Link href="/" className="text-blue-600 hover:text-blue-500">
           ← Back to directory
         </Link>
       </div>

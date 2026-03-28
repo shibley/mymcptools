@@ -47,11 +47,11 @@ export default async function CategoryPage({ params }: Props) {
       {/* Breadcrumb */}
       <nav className="mb-8">
         <ol className="flex items-center space-x-2 text-sm text-gray-400">
-          <li><Link href="/" className="hover:text-white">Home</Link></li>
+          <li><Link href="/" className="hover:text-gray-900">Home</Link></li>
           <li>/</li>
-          <li><Link href="/category" className="hover:text-white">Categories</Link></li>
+          <li><Link href="/category" className="hover:text-gray-900">Categories</Link></li>
           <li>/</li>
-          <li className="text-white">{category.name}</li>
+          <li className="text-gray-900">{category.name}</li>
         </ol>
       </nav>
 
@@ -60,7 +60,7 @@ export default async function CategoryPage({ params }: Props) {
         <div className="flex items-center space-x-4 mb-4">
           <span className="text-5xl">{category.emoji}</span>
           <div>
-            <h1 className="text-3xl font-bold text-white">{category.name} MCP Servers</h1>
+            <h1 className="text-3xl font-bold text-gray-900">{category.name} MCP Servers</h1>
             <p className="text-gray-400">{categoryServers.length} servers available</p>
           </div>
         </div>
@@ -76,7 +76,7 @@ export default async function CategoryPage({ params }: Props) {
 
       {/* Other Categories */}
       <div className="mt-16">
-        <h2 className="text-xl font-semibold text-white mb-6">Other Categories</h2>
+        <h2 className="text-xl font-semibold text-gray-900 mb-6">Other Categories</h2>
         <div className="flex flex-wrap gap-3">
           {categories
             .filter(c => c.slug !== slug)
@@ -84,10 +84,10 @@ export default async function CategoryPage({ params }: Props) {
               <Link
                 key={cat.slug}
                 href={`/category/${cat.slug}`}
-                className="inline-flex items-center space-x-2 px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg hover:border-purple-500/50 transition-all"
+                className="inline-flex items-center space-x-2 px-4 py-2 bg-gray-50 border border-gray-200 rounded-lg hover:border-blue-300 transition-all"
               >
                 <span>{cat.emoji}</span>
-                <span className="text-white">{cat.name}</span>
+                <span className="text-gray-900">{cat.name}</span>
               </Link>
             ))}
         </div>

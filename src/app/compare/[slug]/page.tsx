@@ -59,18 +59,18 @@ export default async function ComparisonPage({ params }: Props) {
       {/* Breadcrumb */}
       <nav className="mb-8">
         <ol className="flex items-center space-x-2 text-sm text-gray-400">
-          <li><Link href="/" className="hover:text-white">Home</Link></li>
+          <li><Link href="/" className="hover:text-gray-900">Home</Link></li>
           <li>/</li>
-          <li><Link href="/compare" className="hover:text-white">Compare</Link></li>
+          <li><Link href="/compare" className="hover:text-gray-900">Compare</Link></li>
           <li>/</li>
-          <li className="text-white">{serverA.name} vs {serverB.name}</li>
+          <li className="text-gray-900">{serverA.name} vs {serverB.name}</li>
         </ol>
       </nav>
 
       {/* Header */}
       <div className="text-center mb-12">
-        <h1 className="text-3xl font-bold text-white mb-4">
-          {serverA.name} <span className="text-gray-500">vs</span> {serverB.name}
+        <h1 className="text-3xl font-bold text-gray-900 mb-4">
+          {serverA.name} <span className="text-gray-400">vs</span> {serverB.name}
         </h1>
         <p className="text-gray-400">
           Compare these two MCP servers to find which one fits your needs best.
@@ -78,27 +78,27 @@ export default async function ComparisonPage({ params }: Props) {
       </div>
 
       {/* Comparison Table */}
-      <div className="bg-gray-900 border border-gray-800 rounded-xl overflow-hidden">
-        <div className="grid grid-cols-3 border-b border-gray-800">
-          <div className="p-4 bg-gray-800"></div>
-          <div className="p-6 text-center border-l border-gray-800">
-            <Link href={`/servers/${serverA.slug}`} className="text-xl font-semibold text-white hover:text-purple-400">
+      <div className="bg-white border border-gray-200 rounded-xl overflow-hidden">
+        <div className="grid grid-cols-3 border-b border-gray-200">
+          <div className="p-4 bg-gray-50"></div>
+          <div className="p-6 text-center border-l border-gray-200">
+            <Link href={`/servers/${serverA.slug}`} className="text-xl font-semibold text-gray-900 hover:text-blue-600">
               {serverA.name}
             </Link>
             <p className="text-sm text-gray-400 mt-1">by {serverA.author}</p>
             {serverA.official && (
-              <span className="inline-block mt-2 px-2 py-0.5 bg-blue-500/20 text-blue-400 text-xs rounded-full">
+              <span className="inline-block mt-2 px-2 py-0.5 bg-blue-50 text-blue-600 text-xs rounded-full">
                 ✓ Official
               </span>
             )}
           </div>
-          <div className="p-6 text-center border-l border-gray-800">
-            <Link href={`/servers/${serverB.slug}`} className="text-xl font-semibold text-white hover:text-purple-400">
+          <div className="p-6 text-center border-l border-gray-200">
+            <Link href={`/servers/${serverB.slug}`} className="text-xl font-semibold text-gray-900 hover:text-blue-600">
               {serverB.name}
             </Link>
             <p className="text-sm text-gray-400 mt-1">by {serverB.author}</p>
             {serverB.official && (
-              <span className="inline-block mt-2 px-2 py-0.5 bg-blue-500/20 text-blue-400 text-xs rounded-full">
+              <span className="inline-block mt-2 px-2 py-0.5 bg-blue-50 text-blue-600 text-xs rounded-full">
                 ✓ Official
               </span>
             )}
@@ -106,35 +106,35 @@ export default async function ComparisonPage({ params }: Props) {
         </div>
 
         {/* Description */}
-        <div className="grid grid-cols-3 border-b border-gray-800">
-          <div className="p-4 bg-gray-800 text-sm font-medium text-gray-300">Description</div>
-          <div className="p-4 text-sm text-gray-300 border-l border-gray-800">{serverA.description}</div>
-          <div className="p-4 text-sm text-gray-300 border-l border-gray-800">{serverB.description}</div>
+        <div className="grid grid-cols-3 border-b border-gray-200">
+          <div className="p-4 bg-gray-50 text-sm font-medium text-gray-600">Description</div>
+          <div className="p-4 text-sm text-gray-600 border-l border-gray-200">{serverA.description}</div>
+          <div className="p-4 text-sm text-gray-600 border-l border-gray-200">{serverB.description}</div>
         </div>
 
         {/* Install Type */}
-        <div className="grid grid-cols-3 border-b border-gray-800">
-          <div className="p-4 bg-gray-800 text-sm font-medium text-gray-300">Install Type</div>
-          <div className="p-4 text-sm text-gray-300 border-l border-gray-800 capitalize">{serverA.install_type}</div>
-          <div className="p-4 text-sm text-gray-300 border-l border-gray-800 capitalize">{serverB.install_type}</div>
+        <div className="grid grid-cols-3 border-b border-gray-200">
+          <div className="p-4 bg-gray-50 text-sm font-medium text-gray-600">Install Type</div>
+          <div className="p-4 text-sm text-gray-600 border-l border-gray-200 capitalize">{serverA.install_type}</div>
+          <div className="p-4 text-sm text-gray-600 border-l border-gray-200 capitalize">{serverB.install_type}</div>
         </div>
 
         {/* Categories */}
-        <div className="grid grid-cols-3 border-b border-gray-800">
-          <div className="p-4 bg-gray-800 text-sm font-medium text-gray-300">Categories</div>
-          <div className="p-4 border-l border-gray-800">
+        <div className="grid grid-cols-3 border-b border-gray-200">
+          <div className="p-4 bg-gray-50 text-sm font-medium text-gray-600">Categories</div>
+          <div className="p-4 border-l border-gray-200">
             <div className="flex flex-wrap gap-2">
               {serverA.categories.map(cat => (
-                <span key={cat} className="inline-flex items-center text-xs bg-gray-800 text-gray-300 px-2 py-1 rounded">
+                <span key={cat} className="inline-flex items-center text-xs bg-gray-50 text-gray-600 px-2 py-1 rounded">
                   {getCategoryEmoji(cat)} {cat}
                 </span>
               ))}
             </div>
           </div>
-          <div className="p-4 border-l border-gray-800">
+          <div className="p-4 border-l border-gray-200">
             <div className="flex flex-wrap gap-2">
               {serverB.categories.map(cat => (
-                <span key={cat} className="inline-flex items-center text-xs bg-gray-800 text-gray-300 px-2 py-1 rounded">
+                <span key={cat} className="inline-flex items-center text-xs bg-gray-50 text-gray-600 px-2 py-1 rounded">
                   {getCategoryEmoji(cat)} {cat}
                 </span>
               ))}
@@ -143,21 +143,21 @@ export default async function ComparisonPage({ params }: Props) {
         </div>
 
         {/* Integrations */}
-        <div className="grid grid-cols-3 border-b border-gray-800">
-          <div className="p-4 bg-gray-800 text-sm font-medium text-gray-300">Integrations</div>
-          <div className="p-4 border-l border-gray-800">
+        <div className="grid grid-cols-3 border-b border-gray-200">
+          <div className="p-4 bg-gray-50 text-sm font-medium text-gray-600">Integrations</div>
+          <div className="p-4 border-l border-gray-200">
             <div className="flex flex-wrap gap-2">
               {serverA.integrations.map(int => (
-                <span key={int} className="inline-flex items-center text-xs bg-gray-800 text-gray-300 px-2 py-1 rounded">
+                <span key={int} className="inline-flex items-center text-xs bg-gray-50 text-gray-600 px-2 py-1 rounded">
                   {getIntegrationIcon(int)} {int}
                 </span>
               ))}
             </div>
           </div>
-          <div className="p-4 border-l border-gray-800">
+          <div className="p-4 border-l border-gray-200">
             <div className="flex flex-wrap gap-2">
               {serverB.integrations.map(int => (
-                <span key={int} className="inline-flex items-center text-xs bg-gray-800 text-gray-300 px-2 py-1 rounded">
+                <span key={int} className="inline-flex items-center text-xs bg-gray-50 text-gray-600 px-2 py-1 rounded">
                   {getIntegrationIcon(int)} {int}
                 </span>
               ))}
@@ -167,14 +167,14 @@ export default async function ComparisonPage({ params }: Props) {
 
         {/* Links */}
         <div className="grid grid-cols-3">
-          <div className="p-4 bg-gray-800 text-sm font-medium text-gray-300">Links</div>
-          <div className="p-4 border-l border-gray-800">
-            <a href={serverA.github_url} target="_blank" rel="noopener noreferrer" className="text-purple-400 hover:text-purple-300 text-sm">
+          <div className="p-4 bg-gray-50 text-sm font-medium text-gray-600">Links</div>
+          <div className="p-4 border-l border-gray-200">
+            <a href={serverA.github_url} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-500 text-sm">
               View on GitHub →
             </a>
           </div>
-          <div className="p-4 border-l border-gray-800">
-            <a href={serverB.github_url} target="_blank" rel="noopener noreferrer" className="text-purple-400 hover:text-purple-300 text-sm">
+          <div className="p-4 border-l border-gray-200">
+            <a href={serverB.github_url} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-500 text-sm">
               View on GitHub →
             </a>
           </div>
@@ -185,7 +185,7 @@ export default async function ComparisonPage({ params }: Props) {
       <div className="mt-12 text-center">
         <Link
           href="/compare"
-          className="text-purple-400 hover:text-purple-300"
+          className="text-blue-600 hover:text-blue-500"
         >
           ← Compare other servers
         </Link>

@@ -14,7 +14,7 @@ export default function IntegrationsPage() {
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
       {/* Header */}
       <div className="mb-12">
-        <h1 className="text-3xl font-bold text-white mb-4">MCP Integrations</h1>
+        <h1 className="text-3xl font-bold text-gray-900 mb-4">MCP Integrations</h1>
         <p className="text-gray-400 max-w-2xl">
           Find MCP servers that work with your favorite AI tools and IDEs.
           Most servers support multiple platforms through the standardized Model Context Protocol.
@@ -27,15 +27,15 @@ export default function IntegrationsPage() {
           <Link
             key={integration.slug}
             href={`/integration/${integration.slug}`}
-            className="group bg-gray-900 border border-gray-800 rounded-xl p-6 hover:border-purple-500/50 hover:bg-gray-800/50 transition-all"
+            className="group bg-white border border-gray-200 rounded-xl p-6 hover:border-blue-300 hover:bg-gray-50 transition-all"
           >
             <div className="flex items-center space-x-4 mb-4">
               <span className="text-5xl">{integration.icon}</span>
               <div>
-                <h2 className="text-xl font-semibold text-white group-hover:text-purple-400 transition-colors">
+                <h2 className="text-xl font-semibold text-gray-900 group-hover:text-blue-600 transition-colors">
                   {integration.name}
                 </h2>
-                <p className="text-sm text-gray-500">{integration.count} servers</p>
+                <p className="text-sm text-gray-400">{integration.count} servers</p>
               </div>
             </div>
             <p className="text-gray-400 text-sm">{integration.description}</p>
@@ -44,8 +44,8 @@ export default function IntegrationsPage() {
       </div>
 
       {/* Info Section */}
-      <div className="mt-16 bg-gray-900 border border-gray-800 rounded-xl p-8">
-        <h2 className="text-xl font-semibold text-white mb-4">What is MCP?</h2>
+      <div className="mt-16 bg-white border border-gray-200 rounded-xl p-8">
+        <h2 className="text-xl font-semibold text-gray-900 mb-4">What is MCP?</h2>
         <p className="text-gray-400 mb-4">
           The Model Context Protocol (MCP) is an open standard developed by Anthropic that enables
           AI assistants to securely connect to external data sources and tools. It provides a
@@ -55,7 +55,7 @@ export default function IntegrationsPage() {
           href="https://modelcontextprotocol.io"
           target="_blank"
           rel="noopener noreferrer"
-          className="text-purple-400 hover:text-purple-300"
+          className="text-blue-600 hover:text-blue-500"
         >
           Learn more about MCP →
         </a>
