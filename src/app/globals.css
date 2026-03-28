@@ -1,16 +1,16 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
-body {
-  color: #1a1a2e;
-  background: #ffffff;
+@theme inline {
+  --color-background: #030712;
+  --color-foreground: #f3f4f6;
+  --font-sans: var(--font-inter);
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+html, body {
+  background: var(--color-background);
+  color: var(--color-foreground);
+  overflow-x: hidden;
+  max-width: 100vw;
 }
 
 /* Copy button animation */
