@@ -37,6 +37,9 @@ export function Header() {
             <Link href="/compare" className="text-gray-400 hover:text-white transition text-sm">
               Compare
             </Link>
+            <Link href="/pricing" className="text-gray-400 hover:text-white transition text-sm">
+              Pricing
+            </Link>
             <Link href="/blog" className="text-gray-400 hover:text-white transition text-sm">
               Blog
             </Link>
@@ -94,6 +97,7 @@ export function Header() {
               <Link href="/category" className="text-gray-400 hover:text-white transition py-2" onClick={() => setMobileMenuOpen(false)}>Categories</Link>
               <Link href="/integration" className="text-gray-400 hover:text-white transition py-2" onClick={() => setMobileMenuOpen(false)}>Integrations</Link>
               <Link href="/compare" className="text-gray-400 hover:text-white transition py-2" onClick={() => setMobileMenuOpen(false)}>Compare</Link>
+              <Link href="/pricing" className="text-gray-400 hover:text-white transition py-2" onClick={() => setMobileMenuOpen(false)}>Pricing</Link>
               <Link href="/blog" className="text-gray-400 hover:text-white transition py-2" onClick={() => setMobileMenuOpen(false)}>Blog</Link>
               <Link href="/submit" className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition text-center" onClick={() => setMobileMenuOpen(false)}>Submit Server</Link>
             </nav>

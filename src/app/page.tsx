@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { ServerCard } from "@/components/ServerCard";
 import { servers, getCategoriesWithCounts, getIntegrationsWithCounts, getFeaturedServers, getOfficialServers } from "@/data/servers";
+import { getServerPricing, getPricingBadge } from "@/data/pricing";
 
 export default function Home() {
   const categoriesWithCounts = getCategoriesWithCounts();
@@ -188,6 +189,38 @@ export default function Home() {
           {officialServers.map(server => (
             <ServerCard key={server.slug} server={server} />
           ))}
+        </div>
+      </section>
+
+      {/* Popular Pricing */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <div className="flex items-center justify-between mb-8">
+          <div>
+            <h2 className="text-3xl font-bold text-white">💰 Popular Server Pricing</h2>
+            <p className="text-gray-400 mt-2">Check pricing for the most popular MCP servers.</p>
+          </div>
+          <Link href="/pricing" className="text-blue-400 hover:text-blue-300 text-sm">
+            View all pricing →
+          </Link>
+        </div>
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4">
+          {featuredServers.slice(0, 8).map(server => {
+            const pricing = getServerPricing(server.slug);
+            const priceBadge = getPricingBadge(pricing.pricing_model);
+            return (
+              <Link
+                key={server.slug}
+                href={`/pricing/${server.slug}`}
+                className="bg-gray-900 border border-gray-800 rounded-xl p-4 hover:border-blue-500/50 transition group"
+              >
+                <h3 className="font-semibold text-white group-hover:text-blue-400 transition text-sm mb-1">{server.name}</h3>
+                <span className={`inline-block ${priceBadge.bgColor} ${priceBadge.color} px-2 py-0.5 rounded-full text-xs font-medium`}>
+                  {priceBadge.label}
+                </span>
+                <p className="text-gray-500 text-xs mt-2 line-clamp-2">{pricing.pricing_details.slice(0, 80)}…</p>
+              </Link>
+            );
+          })}
         </div>
       </section>
 

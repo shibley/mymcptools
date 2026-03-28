@@ -32,6 +32,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.8,
     },
     {
+      url: `${baseUrl}/pricing`,
+      lastModified: now,
+      changeFrequency: 'weekly',
+      priority: 0.9,
+    },
+    {
       url: `${baseUrl}/submit`,
       lastModified: now,
       changeFrequency: 'monthly',
@@ -51,6 +57,22 @@ export default function sitemap(): MetadataRoute.Sitemap {
     lastModified: now,
     changeFrequency: 'weekly' as const,
     priority: 0.8,
+  }));
+
+  // Pricing pages
+  const pricingPages: MetadataRoute.Sitemap = servers.map((server) => ({
+    url: `${baseUrl}/pricing/${server.slug}`,
+    lastModified: now,
+    changeFrequency: 'monthly' as const,
+    priority: 0.7,
+  }));
+
+  // Alternatives pages
+  const alternativesPages: MetadataRoute.Sitemap = servers.map((server) => ({
+    url: `${baseUrl}/alternatives/${server.slug}`,
+    lastModified: now,
+    changeFrequency: 'monthly' as const,
+    priority: 0.7,
   }));
 
   // Category pages
@@ -81,6 +103,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
   return [
     ...staticPages,
     ...serverPages,
+    ...pricingPages,
+    ...alternativesPages,
     ...categoryPages,
     ...integrationPages,
     ...comparisonPages,

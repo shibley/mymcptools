@@ -3299,18 +3299,39 @@ export function getIntegrationsWithCounts(): Integration[] {
 }
 
 export function generateComparisons(): Array<{ serverA: MCPServer; serverB: MCPServer; slug: string }> {
+  const seen = new Set<string>();
   const comparisons: Array<{ serverA: MCPServer; serverB: MCPServer; slug: string }> = [];
+
+  function addPair(a: MCPServer, b: MCPServer) {
+    const slugParts = [a.slug, b.slug].sort();
+    const slug = `${slugParts[0]}-vs-${slugParts[1]}`;
+    if (seen.has(slug)) return;
+    seen.add(slug);
+    const serverA = a.slug === slugParts[0] ? a : b;
+    const serverB = a.slug === slugParts[0] ? b : a;
+    comparisons.push({ serverA, serverB, slug });
+  }
+
+  // 1. Top 30 featured/popular servers — all pairs (up to 435)
   const featured = getFeaturedServers();
+  const official = getOfficialServers();
+  const topServers = [...new Map([...featured, ...official].map(s => [s.slug, s])).values()].slice(0, 30);
   
-  for (let i = 0; i < Math.min(featured.length, 10); i++) {
-    for (let j = i + 1; j < Math.min(featured.length, 10); j++) {
-      comparisons.push({
-        serverA: featured[i],
-        serverB: featured[j],
-        slug: `${featured[i].slug}-vs-${featured[j].slug}`
-      });
+  for (let i = 0; i < topServers.length; i++) {
+    for (let j = i + 1; j < topServers.length; j++) {
+      addPair(topServers[i], topServers[j]);
     }
   }
-  
-  return comparisons.slice(0, 50);
+
+  // 2. Category-specific comparisons — top servers within each category
+  for (const cat of categories) {
+    const catServers = getServersByCategory(cat.slug).slice(0, 8);
+    for (let i = 0; i < catServers.length; i++) {
+      for (let j = i + 1; j < catServers.length; j++) {
+        addPair(catServers[i], catServers[j]);
+      }
+    }
+  }
+
+  return comparisons;
 }
