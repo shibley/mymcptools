@@ -1,0 +1,33 @@
+# MyMCPTools
+
+> The most comprehensive directory of MCP (Model Context Protocol) servers. Discover 300+ servers for Claude, Cursor, VS Code, and more.
+
+## About
+MyMCPTools (mymcptools.com) is the largest directory of Model Context Protocol (MCP) servers, helping developers and AI users find the right MCP integrations for their workflows. We index 300+ servers with detailed profiles, comparisons, pricing guides, alternatives, and integration tutorials. Whether you use Claude, Cursor, VS Code, or other AI assistants, MyMCPTools helps you find and compare MCP servers. Operated by Bity LLC.
+
+## Key Pages
+- [/](https://mymcptools.com): Homepage — browse all MCP servers by popularity
+- [/search](https://mymcptools.com/search): Search the full MCP server directory
+- [/category](https://mymcptools.com/category): Browse MCP servers by category
+- [/compare](https://mymcptools.com/compare): Head-to-head MCP server comparisons
+- [/integration](https://mymcptools.com/integration): Platform integration guides (Claude, Cursor, VS Code, etc.)
+- [/pricing](https://mymcptools.com/pricing): MCP server pricing breakdowns
+- [/blog](https://mymcptools.com/blog): Guides and tutorials on MCP
+- [/submit](https://mymcptools.com/submit): Submit an MCP server for inclusion
+- [/servers/{slug}](https://mymcptools.com/servers/{slug}): Individual MCP server profiles with features, setup instructions, and alternatives
+- [/alternatives/{slug}](https://mymcptools.com/alternatives/{slug}): Alternative MCP servers for each tool
+- [/category/{slug}](https://mymcptools.com/category/{slug}): Category-specific MCP server listings
+
+## Blog & Guides
+- [/blog/best-mcp-servers-for-developers](https://mymcptools.com/blog/best-mcp-servers-for-developers): Best MCP servers for developers
+- [/blog/best-mcp-servers-for-data-engineering](https://mymcptools.com/blog/best-mcp-servers-for-data-engineering): Best MCP servers for data engineering
+- [/blog/getting-started-with-mcp](https://mymcptools.com/blog/getting-started-with-mcp): Getting started with Model Context Protocol
+- [/blog/mcp-vs-api-integrations](https://mymcptools.com/blog/mcp-vs-api-integrations): MCP vs traditional API integrations
+- [/blog/best-mcp-servers-for-devops](https://mymcptools.com/blog/best-mcp-servers-for-devops): Best MCP servers for DevOps
+
+## Data Coverage
+300+ MCP servers indexed across all major categories. Each server profile includes features, installation steps, pricing, supported platforms, and alternatives. Directory updated regularly as new MCP servers launch.
+
+## Contact
+- Website: https://mymcptools.com
+- Operated by: Bity LLC
