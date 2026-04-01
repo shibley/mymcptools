@@ -54,8 +54,111 @@ export default async function ComparisonPage({ params }: Props) {
     return int?.icon || "🔌";
   };
 
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: "https://mymcptools.com",
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Compare",
+        item: "https://mymcptools.com/compare",
+      },
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: `${serverA.name} vs ${serverB.name}`,
+        item: `https://mymcptools.com/compare/${slug}`,
+      },
+    ],
+  };
+
+  const faqJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: [
+      {
+        "@type": "Question",
+        "name": `What is the difference between ${serverA.name} and ${serverB.name}?`,
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": `${serverA.name} and ${serverB.name} are both MCP servers but differ in their categories and capabilities. ${serverA.name} (${serverA.categories.join(', ')}) is ${serverA.description} while ${serverB.name} (${serverB.categories.join(', ')}) is ${serverB.description}`,
+        },
+      },
+      {
+        "@type": "Question",
+        "name": `Which MCP server should I choose: ${serverA.name} or ${serverB.name}?`,
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": `Choose ${serverA.name} if you need ${serverA.categories[0]} capabilities and prefer ${serverA.install_type} installation. Choose ${serverB.name} if you need ${serverB.categories[0]} capabilities and prefer ${serverB.install_type} installation. Consider your specific use case and integration requirements.`,
+        },
+      },
+      {
+        "@type": "Question",
+        "name": `Can I use both ${serverA.name} and ${serverB.name} together?`,
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": `Yes, you can use multiple MCP servers together in Claude Desktop, Cursor, VS Code, and other MCP-compatible clients. ${serverA.name} and ${serverB.name} can complement each other if their capabilities don't overlap.`,
+        },
+      },
+    ],
+  };
+
+  const softwareAJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": serverA.name,
+    "description": serverA.description,
+    "applicationCategory": "DeveloperApplication",
+    "operatingSystem": "Any",
+    "author": {
+      "@type": "Organization",
+      "name": serverA.author
+    },
+    "url": serverA.website_url || serverA.github_url,
+    "downloadUrl": serverA.github_url,
+  };
+
+  const softwareBJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": serverB.name,
+    "description": serverB.description,
+    "applicationCategory": "DeveloperApplication",
+    "operatingSystem": "Any",
+    "author": {
+      "@type": "Organization",
+      "name": serverB.author
+    },
+    "url": serverB.website_url || serverB.github_url,
+    "downloadUrl": serverB.github_url,
+  };
+
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(softwareAJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(softwareBJsonLd) }}
+      />
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
       {/* Breadcrumb */}
       <nav className="mb-8">
         <ol className="flex items-center space-x-2 text-sm text-gray-500">
@@ -181,6 +284,41 @@ export default async function ComparisonPage({ params }: Props) {
         </div>
       </div>
 
+      {/* FAQ Section */}
+      <div className="mt-12 bg-gray-900 border border-gray-800 rounded-xl p-8">
+        <h2 className="text-2xl font-semibold text-white mb-6">Frequently Asked Questions</h2>
+        <div className="space-y-4">
+          <details className="bg-gray-800/50 border border-gray-700 rounded-lg overflow-hidden group" open>
+            <summary className="px-6 py-4 cursor-pointer text-white font-medium hover:bg-gray-700/50 transition">
+              What is the difference between {serverA.name} and {serverB.name}?
+            </summary>
+            <div className="px-6 pb-4 text-gray-400">
+              {serverA.name} and {serverB.name} are both MCP servers but differ in their categories and capabilities.{' '}
+              {serverA.name} ({serverA.categories.join(', ')}) is {serverA.description} while {serverB.name} ({serverB.categories.join(', ')}) is {serverB.description}.
+            </div>
+          </details>
+          <details className="bg-gray-800/50 border border-gray-700 rounded-lg overflow-hidden group">
+            <summary className="px-6 py-4 cursor-pointer text-white font-medium hover:bg-gray-700/50 transition">
+              Which MCP server should I choose: {serverA.name} or {serverB.name}?
+            </summary>
+            <div className="px-6 pb-4 text-gray-400">
+              Choose {serverA.name} if you need {serverA.categories[0]} capabilities and prefer {serverA.install_type} installation.
+              Choose {serverB.name} if you need {serverB.categories[0]} capabilities and prefer {serverB.install_type} installation.
+              Consider your specific use case and integration requirements.
+            </div>
+          </details>
+          <details className="bg-gray-800/50 border border-gray-700 rounded-lg overflow-hidden group">
+            <summary className="px-6 py-4 cursor-pointer text-white font-medium hover:bg-gray-700/50 transition">
+              Can I use both {serverA.name} and {serverB.name} together?
+            </summary>
+            <div className="px-6 pb-4 text-gray-400">
+              Yes, you can use multiple MCP servers together in Claude Desktop, Cursor, VS Code, and other MCP-compatible clients.
+              {serverA.name} and {serverB.name} can complement each other if their capabilities don&apos;t overlap.
+            </div>
+          </details>
+        </div>
+      </div>
+
       {/* CTA */}
       <div className="mt-12 text-center">
         <Link
@@ -191,5 +329,6 @@ export default async function ComparisonPage({ params }: Props) {
         </Link>
       </div>
     </div>
+    </>
   );
 }
