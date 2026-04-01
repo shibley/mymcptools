@@ -1141,6 +1141,8 @@ export const blogPosts: BlogPost[] = [
 <p>For platform-specific setup guides, check out our integration pages for <a href="/integration/claude-desktop">Claude Desktop</a>, <a href="/integration/cursor">Cursor</a>, <a href="/integration/vs-code">VS Code</a>, and <a href="/integration/zed">Zed</a>.</p>
     `.trim(),
   },
+];
+
   {
     slug: "best-mcp-servers-for-content-creation",
     title: "Best MCP Servers for Content Creation & Writing in 2026",
