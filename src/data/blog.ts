@@ -541,6 +541,259 @@ export const blogPosts: BlogPost[] = [
 <p>Browse all <a href="/category/devops">DevOps MCP servers</a> and <a href="/category/cloud">Cloud MCP servers</a> in our directory.</p>
     `.trim(),
   },
+  {
+    slug: "best-mcp-servers-for-vs-code",
+    title: "Best MCP Servers for VS Code & Continue in 2026: Complete Setup Guide",
+    description: "The essential MCP servers for VS Code users. Set up Continue with filesystem, database, and tool access for AI-powered coding. Includes step-by-step configuration.",
+    date: "2026-03-31",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "9 min read",
+    keywords: ["mcp servers for vs code", "continue mcp", "best mcp servers vs code", "vs code ai assistant", "continue extension mcp", "mcp vs code setup"],
+    relatedServerSlugs: ["filesystem", "github", "postgres", "sqlite", "brave-search", "git"],
+    content: `
+<p>VS Code is the most popular code editor in the world, and with the Continue extension, it becomes one of the most powerful MCP-enabled AI coding environments. This guide shows you exactly which MCP servers to install and how to configure them for maximum productivity.</p>
+
+<h2>Why MCP + VS Code + Continue?</h2>
+
+<p>Continue is a free, open-source VS Code extension that brings AI assistance directly into your editor. Unlike cloud-based AI tools, Continue runs locally and integrates with MCP servers to give your AI deep access to your development environment.</p>
+
+<p>The result: AI that understands your codebase, can query your databases, search your project history, and interact with external tools — all without leaving VS Code.</p>
+
+<h2>Essential MCP Servers for VS Code</h2>
+
+<h3>1. Filesystem MCP Server — The Foundation</h3>
+
+<p>The filesystem server is non-negotiable. It gives your AI the ability to read and write files in your workspace, making it possible to edit code, create new files, and navigate your project structure conversationally.</p>
+
+<p><strong>Configuration for Continue:</strong></p>
+<pre><code>{
+  "mcpServers": {
+    "filesystem": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-filesystem",
+        "\${workspaceFolder}"
+      ]
+    }
+  }
+}</code></pre>
+
+<p><strong>What you can do:</strong></p>
+<ul>
+<li>"Refactor this component to use React hooks" → AI reads the file, rewrites it, and saves changes</li>
+<li>"Create a new API endpoint for user profiles" → AI generates the file in the correct location</li>
+<li>"Find all files that import this deprecated function" → AI searches and reports back</li>
+</ul>
+
+<h3>2. Git MCP Server — Version Control Integration</h3>
+
+<p>The Git MCP server understands your repository history, branches, and commits. This is invaluable for code review, understanding changes, and generating contextual commit messages.</p>
+
+<p><strong>Configuration:</strong></p>
+<pre><code>{
+  "mcpServers": {
+    "git": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-git"
+      ]
+    }
+  }
+}</code></pre>
+
+<p><strong>Real-world uses:</strong></p>
+<ul>
+<li>"Show me what changed in the last 3 commits" → AI uses git log and diff</li>
+<li>"Why was this function modified?" → AI examines git blame and commit messages</li>
+<li>"Generate a commit message for my staged changes" → AI analyzes the diff and writes a descriptive message</li>
+</ul>
+
+<h3>3. GitHub MCP Server — Pull Requests & Issues</h3>
+
+<p>If your project lives on GitHub, the GitHub MCP server extends your AI's reach beyond local files to your remote repository — PRs, issues, code search across repos, and more.</p>
+
+<p><strong>Configuration:</strong></p>
+<pre><code>{
+  "mcpServers": {
+    "github": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-github"
+      ],
+      "env": {
+        "GITHUB_TOKEN": "your_personal_access_token"
+      }
+    }
+  }
+}</code></pre>
+
+<p><strong>What becomes possible:</strong></p>
+<ul>
+<li>"What issues are tagged as 'good first issue'?" → AI queries GitHub Issues</li>
+<li>"Summarize the discussion in PR #247" → AI reads comments and provides a digest</li>
+<li>"Search the codebase for examples of custom hooks" → AI uses GitHub's code search across your org</li>
+</ul>
+
+<h3>4. PostgreSQL MCP Server — Database Access</h3>
+
+<p>For backend developers, database access is critical. The PostgreSQL MCP server lets your AI inspect schemas, write queries, and debug data issues without leaving your editor.</p>
+
+<p><strong>Configuration (read-only recommended):</strong></p>
+<pre><code>{
+  "mcpServers": {
+    "postgres": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-postgres"
+      ],
+      "env": {
+        "POSTGRES_URL": "postgresql://readonly_user:password@localhost:5432/mydb"
+      }
+    }
+  }
+}</code></pre>
+
+<p><strong>Common workflows:</strong></p>
+<ul>
+<li>"Show me the schema for the users table" → AI introspects and displays structure</li>
+<li>"Find all orders from the past week where status = 'pending'" → AI writes and executes the query</li>
+<li>"Why is this migration failing?" → AI reads the migration file, checks current schema, identifies conflicts</li>
+</ul>
+
+<h3>5. Brave Search MCP Server — Web Knowledge</h3>
+
+<p>Your AI doesn't know about that new library released last week, but with Brave Search MCP, it can look it up. Essential for staying current with documentation and debugging unfamiliar errors.</p>
+
+<p><strong>Configuration:</strong></p>
+<pre><code>{
+  "mcpServers": {
+    "brave-search": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-brave-search"
+      ],
+      "env": {
+        "BRAVE_API_KEY": "your_api_key"
+      }
+    }
+  }
+}</code></pre>
+
+<p><strong>When it helps:</strong></p>
+<ul>
+<li>"What's the latest syntax for React Server Components?" → AI searches and finds current docs</li>
+<li>"How do I fix 'MODULE_NOT_FOUND' in Vite?" → AI searches Stack Overflow and GitHub Issues</li>
+<li>"What are the breaking changes in Node 22?" → AI finds release notes and migration guides</li>
+</ul>
+
+<h2>The Complete VS Code MCP Configuration</h2>
+
+<p>Here's a production-ready Continue configuration with all five essential servers:</p>
+
+<pre><code>{
+  "mcpServers": {
+    "filesystem": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-filesystem", "\${workspaceFolder}"]
+    },
+    "git": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-git"]
+    },
+    "github": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-github"],
+      "env": {
+        "GITHUB_TOKEN": "\${env:GITHUB_TOKEN}"
+      }
+    },
+    "postgres": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-postgres"],
+      "env": {
+        "POSTGRES_URL": "\${env:DATABASE_URL}"
+      }
+    },
+    "brave-search": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-brave-search"],
+      "env": {
+        "BRAVE_API_KEY": "\${env:BRAVE_API_KEY}"
+      }
+    }
+  }
+}</code></pre>
+
+<p><strong>Pro tip:</strong> Use environment variables (\${env:VAR_NAME}) instead of hardcoding secrets. Store them in your shell profile or a local <code>.env</code> file.</p>
+
+<h2>Advanced MCP Servers for Power Users</h2>
+
+<p>Once you've mastered the essentials, consider adding:</p>
+
+<ul>
+<li><strong>Kubernetes MCP</strong> — Inspect and debug cluster resources from your editor</li>
+<li><strong>Docker MCP</strong> — Manage containers without switching to the terminal</li>
+<li><strong>Sentry MCP</strong> — Pull error traces and user reports into your coding context</li>
+<li><strong>Slack MCP</strong> — Read team discussions related to the code you're working on</li>
+</ul>
+
+<h2>Performance Tips for VS Code + MCP</h2>
+
+<h3>1. Limit Server Scope</h3>
+<p>Don't point filesystem MCP at your entire home directory. Use <code>\${workspaceFolder}</code> or specific project paths to keep things fast.</p>
+
+<h3>2. Use Caching</h3>
+<p>Some MCP servers (like GitHub) support response caching. Enable it to avoid redundant API calls during a coding session.</p>
+
+<h3>3. Start with 3-5 Servers</h3>
+<p>Each MCP server adds overhead. Start with the essentials and add more as you identify specific needs. Too many servers can slow down your AI responses.</p>
+
+<h3>4. Monitor Resource Usage</h3>
+<p>MCP servers run as separate processes. If VS Code starts feeling sluggish, check Activity Monitor/Task Manager to see if a particular server is consuming too many resources.</p>
+
+<h2>Common Troubleshooting</h2>
+
+<h3>Server Won't Connect</h3>
+<p>Check that <code>npx</code> is in your PATH and can be found by VS Code. Try running the <code>npx</code> command manually in your terminal to verify it works.</p>
+
+<h3>Tools Not Appearing in Continue</h3>
+<p>Restart VS Code after updating your MCP configuration. Continue reads the config on startup.</p>
+
+<h3>Permission Errors with Filesystem Server</h3>
+<p>Make sure the path you've configured exists and VS Code has read/write permissions. On macOS, you may need to grant Full Disk Access to VS Code in System Settings.</p>
+
+<h2>Why Continue Over Other AI Extensions?</h2>
+
+<p>Several AI coding assistants exist for VS Code — GitHub Copilot, Cursor (as a fork), Cody, and more. Continue stands out for MCP users because:</p>
+
+<ul>
+<li><strong>Open source</strong> — Full transparency into how it works and how your data is used</li>
+<li><strong>Model flexibility</strong> — Use Claude, GPT-4, local models, or any API-compatible LLM</li>
+<li><strong>Deep MCP integration</strong> — Built from the ground up with MCP support, not retrofitted</li>
+<li><strong>Extensible</strong> — Community plugins and custom server support</li>
+</ul>
+
+<h2>Getting Started Checklist</h2>
+
+<ol>
+<li><strong>Install Continue extension</strong> from the VS Code marketplace</li>
+<li><strong>Create your MCP config</strong> at <code>~/.continue/config.json</code> (or workspace-level)</li>
+<li><strong>Add filesystem + git servers</strong> as your baseline</li>
+<li><strong>Test with a simple query</strong> like "list all TypeScript files in src/"</li>
+<li><strong>Gradually add more servers</strong> as you identify workflow needs</li>
+</ol>
+
+<p>Browse our complete collection of <a href="/integration/vs-code">MCP servers for VS Code</a> to discover more tools for your workflow.</p>
+
+<p>For Continue-specific troubleshooting and advanced features, check out the <a href="https://continue.dev/docs" target="_blank" rel="noopener noreferrer">Continue documentation</a>.</p>
+    `.trim(),
+  },
 ];
 
 export function getBlogPostBySlug(slug: string): BlogPost | undefined {
