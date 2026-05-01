@@ -2817,6 +2817,626 @@ gh pr view 123 --json body,files | claude-code "Review this PR and suggest impro
 </ul>
     `.trim(),
   },
+  {
+    slug: "best-mcp-servers-for-security",
+    title: "Best MCP Servers for Security Teams in 2026",
+    description: "Discover the top MCP servers for security professionals. From vulnerability scanning to secret detection and SAST, these servers bring AI-powered security analysis into your workflow.",
+    date: "2026-04-30",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "7 min read",
+    keywords: ["mcp servers for security", "security mcp tools", "best security mcp servers", "vulnerability scanning mcp", "sast mcp server"],
+    relatedServerSlugs: ["snyk", "sonarqube", "semgrep", "gitguardian", "auth0", "crowdstrike", "cycode", "burp-suite"],
+    content: `
+<p>Security teams are under constant pressure to find vulnerabilities faster, review more code, and respond to incidents without dropping coverage. MCP servers bring AI-native security tooling directly into your analyst and developer workflows — no context switching required.</p>
+
+<p>This guide covers the best MCP servers for security teams in 2026, from static analysis to secret detection and identity management.</p>
+
+<h2>Why MCP for Security?</h2>
+
+<p>Traditional security tooling forces analysts to jump between dashboards, CLI tools, and ticketing systems. MCP servers collapse that workflow — your AI assistant can query scan results, triage findings, and draft remediation plans without leaving the conversation.</p>
+
+<p>Key benefits for security teams:</p>
+<ul>
+<li><strong>Faster triage</strong> — Ask your AI to summarize the top 10 critical vulnerabilities from last night's scan</li>
+<li><strong>Contextual remediation</strong> — AI suggests fixes with awareness of your actual codebase</li>
+<li><strong>Audit-ready logging</strong> — Every query and action is traceable</li>
+<li><strong>Cross-tool correlation</strong> — Combine findings from multiple security tools in one analysis</li>
+</ul>
+
+<h2>1. Snyk MCP Server — Developer-First Vulnerability Scanning</h2>
+
+<p>Snyk is the go-to vulnerability scanner for developer-focused security programs. Its MCP server surfaces CVEs, license issues, and code quality problems directly in your AI workflow.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Open source dependency vulnerability scanning</li>
+<li>Container image security analysis</li>
+<li>Infrastructure-as-code security checks (Terraform, Kubernetes)</li>
+<li>License compliance scanning</li>
+<li>Prioritized fix recommendations with remediation effort scores</li>
+</ul>
+
+<p><strong>Best for:</strong> DevSecOps teams embedding security into CI/CD pipelines and developer workflows.</p>
+
+<h2>2. SonarQube MCP Server — Static Code Analysis at Scale</h2>
+
+<p>SonarQube has been the SAST standard for enterprise teams for over a decade. Its MCP integration brings code quality and security findings into conversational AI workflows.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Multi-language SAST (Java, Python, JavaScript, Go, C#, and more)</li>
+<li>Security hotspot detection with triage workflows</li>
+<li>Technical debt quantification</li>
+<li>Branch and PR analysis integration</li>
+<li>OWASP Top 10 and CWE mapping</li>
+</ul>
+
+<p><strong>Best for:</strong> Enterprise security teams managing large, multi-language codebases with compliance requirements.</p>
+
+<h2>3. Semgrep MCP Server — Fast, Customizable Pattern Matching</h2>
+
+<p>Semgrep's pattern-based approach makes it uniquely fast for custom rule development. Security teams write rules in plain YAML that match real vulnerability patterns, not just signatures.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Custom rule authoring with semantic code understanding</li>
+<li>1,000+ pre-built security rules</li>
+<li>Supply chain risk detection</li>
+<li>Secrets detection (API keys, credentials in code)</li>
+<li>False positive reduction with taint analysis</li>
+</ul>
+
+<p><strong>Best for:</strong> Security engineers who need customizable rules tailored to their specific tech stack and threat model.</p>
+
+<h2>4. GitGuardian MCP Server — Secrets Detection</h2>
+
+<p>Leaked secrets are one of the most common causes of breaches. GitGuardian monitors every commit for accidentally exposed API keys, tokens, certificates, and credentials.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Real-time secrets detection across 400+ detector types</li>
+<li>Historical repository scanning for legacy leaks</li>
+<li>Incident management and developer notification workflows</li>
+<li>Remediation guidance with revocation checklists</li>
+<li>Policy enforcement for pre-commit hooks</li>
+</ul>
+
+<p><strong>Best for:</strong> Any team with a git-based workflow. Secrets leaks affect teams of all sizes — GitGuardian is a baseline security requirement.</p>
+
+<h2>5. Auth0 MCP Server — Identity and Access Management</h2>
+
+<p>Authentication bugs are a leading source of security incidents. The Auth0 MCP server enables AI-assisted user management, rule debugging, and security policy auditing.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>User and tenant management</li>
+<li>Security rule and action debugging</li>
+<li>Login flow analysis and anomaly detection</li>
+<li>MFA policy configuration and audit</li>
+<li>Log querying for security incident investigation</li>
+</ul>
+
+<p><strong>Best for:</strong> Security teams managing identity infrastructure and investigating authentication-related incidents.</p>
+
+<h2>Building a Security Workflow with MCP</h2>
+
+<p>The most powerful security MCP workflows combine multiple servers. A typical daily security review might:</p>
+
+<ol>
+<li>Pull overnight Snyk scan results for new critical CVEs</li>
+<li>Query Semgrep for new findings on the release branch</li>
+<li>Check GitGuardian for any new secrets alerts</li>
+<li>Summarize findings and draft a prioritized remediation plan</li>
+</ol>
+
+<p>With MCP, this entire workflow runs in a single AI conversation instead of across four separate dashboards.</p>
+
+<h2>Security Considerations for MCP Servers</h2>
+
+<p>When deploying security-focused MCP servers, apply the same scrutiny you'd apply to any tool with privileged access:</p>
+<ul>
+<li><strong>Least privilege</strong> — Grant MCP servers read-only access where possible</li>
+<li><strong>Secrets management</strong> — Store API keys in environment variables or vault, never in config files</li>
+<li><strong>Audit logging</strong> — Enable logging for all MCP tool calls</li>
+<li><strong>Network isolation</strong> — Run MCP servers in isolated environments for highly sensitive tools</li>
+</ul>
+
+<p><strong>Related guides:</strong></p>
+<ul>
+<li><a href="/blog/best-mcp-servers-for-developers">Best MCP Servers for Developers</a></li>
+<li><a href="/blog/best-mcp-servers-for-devops">Best MCP Servers for DevOps</a></li>
+<li><a href="/blog/getting-started-with-mcp">Getting Started with MCP</a></li>
+</ul>
+    `.trim(),
+  },
+  {
+    slug: "best-mcp-servers-for-productivity",
+    title: "Best MCP Servers for Productivity: Notes, Tasks & Collaboration in 2026",
+    description: "The best MCP servers for productivity teams in 2026. From Notion and Linear to Jira and Slack, these servers bring your task management and collaboration tools into your AI workflow.",
+    date: "2026-04-30",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "7 min read",
+    keywords: ["mcp servers for productivity", "notion mcp server", "linear mcp server", "jira mcp server", "task management mcp"],
+    relatedServerSlugs: ["notion", "linear", "jira", "asana", "airtable", "google-drive", "slack", "memory"],
+    content: `
+<p>Productivity work is fundamentally about context — knowing what's due, what's blocked, and what's been decided. MCP servers put your project management tools, notes, and collaboration platforms directly in your AI's context window, turning scattered information into actionable intelligence.</p>
+
+<p>Here are the best MCP servers for productivity teams in 2026.</p>
+
+<h2>1. Notion MCP Server — Your Knowledge Base in AI Context</h2>
+
+<p>Notion is the go-to knowledge base for thousands of teams. The Notion MCP server gives your AI direct access to your pages, databases, and wikis — transforming static documentation into a dynamic, queryable knowledge source.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read and write Notion pages and databases</li>
+<li>Search across your entire Notion workspace</li>
+<li>Create, update, and organize content programmatically</li>
+<li>Query database views with filters</li>
+<li>Append content to meeting notes and project wikis</li>
+</ul>
+
+<p><strong>Best for:</strong> Teams using Notion as their primary knowledge base and documentation hub. Especially powerful for teams doing weekly reviews, meeting notes, and project documentation.</p>
+
+<h2>2. Linear MCP Server — Issue Tracking That Talks Back</h2>
+
+<p>Linear is the engineering team's issue tracker of choice for its speed and clean interface. Its MCP server surfaces project status, sprint velocity, and issue details directly in your AI workflow.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Query open and closed issues by team, cycle, or label</li>
+<li>Create and update issues with proper metadata</li>
+<li>Sprint cycle progress and velocity data</li>
+<li>Project roadmap status</li>
+<li>Triage and prioritization workflows</li>
+</ul>
+
+<p><strong>Best for:</strong> Engineering and product teams using Linear for sprint management. Ask your AI "what's blocking this week's cycle?" and get a real answer.</p>
+
+<h2>3. Jira MCP Server — Enterprise Project Management at AI Scale</h2>
+
+<p>For teams on Jira, the MCP integration brings Atlassian's project tracking into AI-native workflows. Query backlogs, manage sprints, and track epics without navigating the Jira UI.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>JQL query execution for complex issue filtering</li>
+<li>Sprint board status and burndown data</li>
+<li>Epic and story hierarchy navigation</li>
+<li>Issue creation with custom field support</li>
+<li>Board and project management</li>
+</ul>
+
+<p><strong>Best for:</strong> Enterprise teams and organizations deeply invested in the Atlassian ecosystem. Pairs well with Confluence MCP for documentation.</p>
+
+<h2>4. Asana MCP Server — Work Management and Goal Tracking</h2>
+
+<p>Asana's task management structure maps well to AI workflows. The MCP server enables your AI to track project status, manage dependencies, and surface at-risk tasks before they slip.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Task and project management with deadline tracking</li>
+<li>Team workload visualization</li>
+<li>Goal and milestone progress</li>
+<li>Cross-project dependency mapping</li>
+<li>Portfolio-level status reporting</li>
+</ul>
+
+<p><strong>Best for:</strong> Marketing and operations teams using Asana for cross-functional project coordination.</p>
+
+<h2>5. Airtable MCP Server — Flexible Database-Spreadsheet Hybrid</h2>
+
+<p>Airtable's flexible grid structure makes it a favorite for content calendars, product databases, and operational tracking. The MCP integration unlocks AI-driven data management at scale.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read and write Airtable base data</li>
+<li>Filter, sort, and query records</li>
+<li>Multi-table joins and linked field traversal</li>
+<li>View-based data access</li>
+<li>Attachment and file management</li>
+</ul>
+
+<p><strong>Best for:</strong> Content teams, operations managers, and anyone using Airtable as a no-code database backend.</p>
+
+<h2>6. Slack MCP Server — Your Communication Layer</h2>
+
+<p>Decisions happen in Slack. The Slack MCP server gives your AI the ability to search conversations, post updates, and monitor channels — keeping your AI current on team communication without manual context sharing.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Channel message search and history</li>
+<li>Direct message and channel posting</li>
+<li>User presence and profile lookup</li>
+<li>Thread summarization</li>
+<li>Workflow trigger integration</li>
+</ul>
+
+<p><strong>Best for:</strong> Any team using Slack as their primary communication hub. Especially valuable for incident response and cross-team coordination.</p>
+
+<h2>The Productivity MCP Stack</h2>
+
+<p>The real power comes from combining these servers. A typical morning planning workflow:</p>
+
+<ol>
+<li>Query Linear for open issues in today's sprint cycle</li>
+<li>Check Asana for tasks due this week across all projects</li>
+<li>Search Notion for meeting notes from yesterday</li>
+<li>Summarize blockers and post a standup update to Slack</li>
+</ol>
+
+<p>All in one conversation. No tab switching. No manual aggregation.</p>
+
+<p><strong>Related guides:</strong></p>
+<ul>
+<li><a href="/blog/best-mcp-servers-for-developers">Best MCP Servers for Developers</a></li>
+<li><a href="/blog/best-mcp-servers-for-automation">Best MCP Servers for Automation</a></li>
+<li><a href="/blog/getting-started-with-mcp">Getting Started with MCP</a></li>
+</ul>
+    `.trim(),
+  },
+  {
+    slug: "claude-desktop-mcp-setup-guide",
+    title: "How to Set Up MCP Servers with Claude Desktop: Complete Guide 2026",
+    description: "Step-by-step guide to connecting MCP servers to Claude Desktop. Learn how to configure filesystem, GitHub, database, and web search servers to supercharge your Claude workflow.",
+    date: "2026-04-30",
+    author: "MyMCPTools Team",
+    category: "Tutorials",
+    readingTime: "9 min read",
+    keywords: ["claude desktop mcp setup", "how to use mcp with claude", "claude mcp configuration", "claude desktop tools", "mcp server setup guide"],
+    relatedServerSlugs: ["filesystem", "github", "postgresql", "sqlite", "brave-search", "puppeteer", "memory"],
+    content: `
+<p>Claude Desktop is one of the most popular MCP-enabled AI clients, and for good reason — it supports a rich ecosystem of MCP servers that give Claude direct access to your files, databases, APIs, and tools. This guide walks you through everything you need to know to get MCP servers running with Claude Desktop in 2026.</p>
+
+<h2>Prerequisites</h2>
+
+<p>Before you start, make sure you have:</p>
+<ul>
+<li><strong>Claude Desktop</strong> installed (Mac or Windows) — download at claude.ai/download</li>
+<li><strong>Node.js</strong> v18+ installed (for npm-based MCP servers)</li>
+<li><strong>Python</strong> 3.10+ installed (for Python-based MCP servers)</li>
+<li>A text editor for editing JSON config files</li>
+</ul>
+
+<h2>Where Is the Claude Desktop Config File?</h2>
+
+<p>Claude Desktop stores MCP server configuration in a JSON file. The location depends on your operating system:</p>
+
+<ul>
+<li><strong>macOS:</strong> <code>~/Library/Application Support/Claude/claude_desktop_config.json</code></li>
+<li><strong>Windows:</strong> <code>%APPDATA%\\Claude\\claude_desktop_config.json</code></li>
+</ul>
+
+<p>If the file doesn't exist yet, create it. If it does exist, you'll add your MCP servers to the <code>mcpServers</code> object.</p>
+
+<h2>The Configuration Format</h2>
+
+<p>Every MCP server is defined with a command and optional arguments and environment variables:</p>
+
+<pre><code>{
+  "mcpServers": {
+    "server-name": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-name"],
+      "env": {
+        "API_KEY": "your-api-key-here"
+      }
+    }
+  }
+}</code></pre>
+
+<p>After editing the config file, restart Claude Desktop for the changes to take effect.</p>
+
+<h2>Step 1: Add the Filesystem MCP Server (Start Here)</h2>
+
+<p>The filesystem server is the most universally useful MCP server — it gives Claude read and write access to files and directories on your machine.</p>
+
+<pre><code>{
+  "mcpServers": {
+    "filesystem": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-filesystem",
+        "/Users/yourname/Documents",
+        "/Users/yourname/Projects"
+      ]
+    }
+  }
+}</code></pre>
+
+<p>Replace the paths with the directories you want Claude to access. You can specify multiple directories. <strong>Note:</strong> Claude can only access the directories you explicitly list — this is a security feature, not a limitation.</p>
+
+<p><strong>Test it:</strong> After restarting Claude Desktop, ask "Can you list the files in my Documents folder?" You should see Claude accessing your files directly.</p>
+
+<h2>Step 2: Add the GitHub MCP Server</h2>
+
+<p>The GitHub MCP server lets Claude browse repositories, manage issues, review pull requests, and search code — all without leaving the conversation.</p>
+
+<p>First, create a GitHub Personal Access Token at github.com/settings/tokens with <code>repo</code> scope. Then add:</p>
+
+<pre><code>"github": {
+  "command": "npx",
+  "args": ["-y", "@modelcontextprotocol/server-github"],
+  "env": {
+    "GITHUB_PERSONAL_ACCESS_TOKEN": "ghp_your_token_here"
+  }
+}</code></pre>
+
+<p><strong>Test it:</strong> Ask Claude "What are the open issues in my [repo-name] repository?"</p>
+
+<h2>Step 3: Add the Brave Search MCP Server</h2>
+
+<p>Give Claude the ability to search the web for current information, documentation, and research.</p>
+
+<p>Get a free Brave Search API key at api.search.brave.com, then add:</p>
+
+<pre><code>"brave-search": {
+  "command": "npx",
+  "args": ["-y", "@modelcontextprotocol/server-brave-search"],
+  "env": {
+    "BRAVE_API_KEY": "BSAyour_api_key_here"
+  }
+}</code></pre>
+
+<p><strong>Test it:</strong> Ask Claude "Search for the latest news about Model Context Protocol."</p>
+
+<h2>Step 4: Add a Database Server (PostgreSQL or SQLite)</h2>
+
+<p>If you work with databases, these servers let Claude query your data directly.</p>
+
+<p><strong>For SQLite:</strong></p>
+<pre><code>"sqlite": {
+  "command": "npx",
+  "args": ["-y", "@modelcontextprotocol/server-sqlite", "--db-path", "/path/to/your/database.db"]
+}</code></pre>
+
+<p><strong>For PostgreSQL:</strong></p>
+<pre><code>"postgresql": {
+  "command": "npx",
+  "args": ["-y", "@modelcontextprotocol/server-postgres"],
+  "env": {
+    "POSTGRES_CONNECTION_STRING": "postgresql://user:password@localhost:5432/dbname"
+  }
+}</code></pre>
+
+<p><strong>Test it:</strong> Ask Claude "What tables are in my database?" or "Show me the last 10 rows of the users table."</p>
+
+<h2>Your Complete Config Example</h2>
+
+<p>Here's a complete <code>claude_desktop_config.json</code> with all four servers configured:</p>
+
+<pre><code>{
+  "mcpServers": {
+    "filesystem": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-filesystem", "/Users/yourname/Documents"]
+    },
+    "github": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-github"],
+      "env": { "GITHUB_PERSONAL_ACCESS_TOKEN": "ghp_..." }
+    },
+    "brave-search": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-brave-search"],
+      "env": { "BRAVE_API_KEY": "BSA..." }
+    },
+    "sqlite": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-sqlite", "--db-path", "/path/to/db.sqlite"]
+    }
+  }
+}</code></pre>
+
+<h2>Troubleshooting Common Issues</h2>
+
+<h3>Claude doesn't see my MCP servers</h3>
+<ul>
+<li>Restart Claude Desktop completely (quit, not just close the window)</li>
+<li>Check the JSON config is valid (use a JSON linter)</li>
+<li>Make sure Node.js is in your PATH</li>
+</ul>
+
+<h3>MCP server connection errors</h3>
+<ul>
+<li>Check the Claude Desktop logs at <code>~/Library/Logs/Claude/mcp*.log</code> (macOS)</li>
+<li>Run the install command manually in terminal to check for errors</li>
+<li>Verify your API keys are correct</li>
+</ul>
+
+<h3>npx is slow on first run</h3>
+<p>npx downloads packages on first run. This is normal — subsequent runs are cached and fast. Use <code>npm install -g</code> to pre-install servers if you prefer.</p>
+
+<h2>What to Add Next</h2>
+
+<p>Once your basics are working, consider adding:</p>
+<ul>
+<li><strong>Memory MCP</strong> — persistent memory across conversations</li>
+<li><strong>Puppeteer MCP</strong> — browser automation and web scraping</li>
+<li><strong>Slack or Notion MCP</strong> — team collaboration tool access</li>
+<li><strong>AWS or Docker MCP</strong> — infrastructure management</li>
+</ul>
+
+<p>Browse the full catalog at MyMCPTools.com to find servers for your specific stack.</p>
+
+<p><strong>Related guides:</strong></p>
+<ul>
+<li><a href="/blog/getting-started-with-mcp">Getting Started with MCP</a></li>
+<li><a href="/blog/best-mcp-servers-for-developers">Best MCP Servers for Developers</a></li>
+<li><a href="/blog/how-to-use-mcp-with-chatgpt-desktop">How to Use MCP with ChatGPT Desktop</a></li>
+</ul>
+    `.trim(),
+  },
+  {
+    slug: "best-mcp-servers-for-ai-agents",
+    title: "Best MCP Servers for AI Agents and Multi-Agent Workflows in 2026",
+    description: "The top MCP servers for building AI agent workflows in 2026. From LangChain and CrewAI to Ollama and n8n, discover the servers that power autonomous multi-agent systems.",
+    date: "2026-04-30",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "8 min read",
+    keywords: ["mcp servers for ai agents", "langchain mcp server", "crewai mcp server", "multi-agent mcp", "ai agent framework mcp"],
+    relatedServerSlugs: ["langchain", "crewai", "autogen", "llamaindex", "n8n", "ollama", "groq", "memory"],
+    content: `
+<p>AI agents are moving from demos to production. Teams building autonomous workflows — research agents, coding agents, data processing pipelines — need reliable infrastructure that bridges AI reasoning with real-world tools. MCP servers are becoming the standard integration layer for these agent stacks.</p>
+
+<p>This guide covers the best MCP servers for building AI agent and multi-agent workflows in 2026.</p>
+
+<h2>Why MCP Matters for AI Agents</h2>
+
+<p>The Model Context Protocol solves a core problem for agent builders: how do agents access tools consistently across different AI models and clients? MCP provides a standardized interface that works with Claude, Cursor, VS Code, and any MCP-compatible client.</p>
+
+<p>For agent workflows specifically, MCP offers:</p>
+<ul>
+<li><strong>Composability</strong> — Mix and match tools from different vendors without custom integration code</li>
+<li><strong>Portability</strong> — The same MCP server works across different AI orchestration frameworks</li>
+<li><strong>Security</strong> — Explicit permission scoping for each tool call</li>
+<li><strong>Observability</strong> — Structured tool call logging for debugging agent behavior</li>
+</ul>
+
+<h2>1. LangChain MCP Server — The Agent Framework Standard</h2>
+
+<p>LangChain pioneered the agent abstraction and remains the most widely-used framework for building AI agent applications. Its MCP server brings LangChain chain execution, tool management, and memory systems into the MCP ecosystem.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Chain and agent execution via MCP tool calls</li>
+<li>Tool registry management and discovery</li>
+<li>LangSmith tracing integration for debugging</li>
+<li>Vector store operations (similarity search, upsert)</li>
+<li>Memory management (conversation history, entity memory)</li>
+</ul>
+
+<p><strong>Best for:</strong> Teams already invested in the LangChain ecosystem who want MCP-compatible agent orchestration.</p>
+
+<h2>2. CrewAI MCP Server — Multi-Agent Role Coordination</h2>
+
+<p>CrewAI introduced the "crew" model for multi-agent systems — where each agent has a defined role, goal, and backstory. Its MCP server enables external control and monitoring of CrewAI crews.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Crew and agent instantiation via MCP</li>
+<li>Task delegation and result aggregation</li>
+<li>Agent role and goal configuration</li>
+<li>Tool assignment and permission management</li>
+<li>Crew execution monitoring and result streaming</li>
+</ul>
+
+<p><strong>Best for:</strong> Teams building complex multi-agent systems where different AI "roles" collaborate on a shared goal — research + analysis + writing workflows, for example.</p>
+
+<h2>3. AutoGen MCP Server — Conversational Agent Orchestration</h2>
+
+<p>Microsoft's AutoGen framework specializes in multi-agent conversation loops where agents debate, verify, and refine outputs through structured dialogue. Its MCP integration enables external orchestration of AutoGen conversations.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Multi-agent conversation initiation and management</li>
+<li>Agent configuration (model, temperature, system prompt)</li>
+<li>Human-in-the-loop conversation control</li>
+<li>Code execution agent integration</li>
+<li>Conversation history access and replay</li>
+</ul>
+
+<p><strong>Best for:</strong> Research and verification workflows where multiple AI perspectives improve output quality through structured debate.</p>
+
+<h2>4. LlamaIndex MCP Server — RAG and Knowledge Graph Access</h2>
+
+<p>LlamaIndex specializes in connecting AI to data — building retrieval-augmented generation (RAG) pipelines, knowledge graphs, and structured data access layers. Its MCP server makes these data access patterns available to any MCP client.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Document ingestion and chunking</li>
+<li>Vector similarity search across knowledge bases</li>
+<li>Structured data query with natural language</li>
+<li>Knowledge graph traversal and querying</li>
+<li>Multi-document synthesis</li>
+</ul>
+
+<p><strong>Best for:</strong> Agent workflows that need to reason over large document corpora, internal knowledge bases, or structured datasets.</p>
+
+<h2>5. n8n MCP Server — Workflow Automation as Agent Actions</h2>
+
+<p>n8n is a powerful open-source workflow automation platform. Its MCP server turns n8n workflows into agent-callable actions — enabling AI agents to trigger complex multi-step automations through a single tool call.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Workflow execution triggering</li>
+<li>Workflow result retrieval</li>
+<li>Webhook-based event triggering</li>
+<li>Node execution status monitoring</li>
+<li>Variable injection into workflow runs</li>
+</ul>
+
+<p><strong>Best for:</strong> Agents that need to trigger real-world actions (send emails, update CRMs, post to Slack) without direct API access to each service.</p>
+
+<h2>6. Ollama MCP Server — Local Model Access</h2>
+
+<p>For cost-sensitive or privacy-first agent workflows, Ollama enables running open-weight models locally. Its MCP server gives agent orchestrators a consistent interface to local models alongside cloud APIs.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Local model inference via MCP tool calls</li>
+<li>Model listing and management</li>
+<li>Embeddings generation for local RAG</li>
+<li>Model switching for cost/quality tradeoffs</li>
+<li>Streaming completion support</li>
+</ul>
+
+<p><strong>Best for:</strong> Privacy-first agent deployments, offline workflows, or teams looking to reduce AI inference costs for non-critical tasks.</p>
+
+<h2>7. Groq MCP Server — Ultra-Fast Inference</h2>
+
+<p>Groq's LPU hardware delivers inference speeds 10-25x faster than GPU-based alternatives. For agent workflows with tight latency requirements, the Groq MCP server provides sub-100ms responses for common open-weight models.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Ultra-low latency LLM inference (Llama, Mixtral, Gemma)</li>
+<li>High-throughput batch processing for agent tasks</li>
+<li>Audio transcription (Whisper) for voice agent pipelines</li>
+<li>Streaming completion with minimal time-to-first-token</li>
+</ul>
+
+<p><strong>Best for:</strong> Real-time agent applications where response latency directly impacts user experience.</p>
+
+<h2>8. Memory MCP Server — Persistent Agent State</h2>
+
+<p>Most AI agents are stateless by default — they forget everything between sessions. The Memory MCP server provides a knowledge graph-backed persistent memory layer that agents can read from and write to across conversations.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Entity and relationship storage in a knowledge graph</li>
+<li>Semantic memory search and retrieval</li>
+<li>Memory summarization and consolidation</li>
+<li>Cross-session context persistence</li>
+<li>Structured observation recording</li>
+</ul>
+
+<p><strong>Best for:</strong> Long-running agent workflows, personal assistant agents, and any application where the agent needs to remember past context to be useful.</p>
+
+<h2>Building a Multi-Agent Stack</h2>
+
+<p>A production multi-agent workflow typically combines several of these servers:</p>
+
+<ol>
+<li><strong>Orchestration layer</strong> — CrewAI or AutoGen manages agent roles and task routing</li>
+<li><strong>Knowledge layer</strong> — LlamaIndex provides RAG and document access</li>
+<li><strong>Inference layer</strong> — Groq for speed-critical tasks, Ollama for private data</li>
+<li><strong>Memory layer</strong> — Memory MCP maintains state across agent runs</li>
+<li><strong>Action layer</strong> — n8n executes real-world actions triggered by agent decisions</li>
+</ol>
+
+<p>This stack handles research, reasoning, memory, and action in a clean, composable architecture.</p>
+
+<p><strong>Related guides:</strong></p>
+<ul>
+<li><a href="/blog/best-mcp-servers-for-developers">Best MCP Servers for Developers</a></li>
+<li><a href="/blog/best-mcp-servers-for-automation">Best MCP Servers for Automation</a></li>
+<li><a href="/blog/mcp-vs-api-integrations">MCP vs Traditional API Integrations</a></li>
+</ul>
+    `.trim(),
+  },
 ];
 
 export function getBlogPostBySlug(slug: string): BlogPost | undefined {
