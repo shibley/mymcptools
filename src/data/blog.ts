@@ -3771,6 +3771,654 @@ gh pr view 123 --json body,files | claude-code "Review this PR and suggest impro
 </ul>
     `.trim(),
   },
+  {
+    slug: "best-mcp-servers-for-finance",
+    title: "Best MCP Servers for Finance & FinTech in 2026",
+    description: "Supercharge your financial AI workflows with the best MCP servers for banking data, stock market APIs, accounting, and payment processing. From Plaid to Alpha Vantage, here's what finance professionals need.",
+    date: "2026-05-01",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "7 min read",
+    keywords: ["best mcp servers for finance", "mcp servers for financial data", "mcp server stock market", "plaid mcp server", "stripe mcp server", "financial ai tools"],
+    relatedServerSlugs: ["stripe", "plaid", "alpha-vantage", "stock-data", "quickbooks", "xero", "stripe-billing"],
+    content: `
+<p>Finance and AI are converging fast. Whether you're building a trading assistant, automating accounting workflows, or analyzing market data with Claude, the right MCP servers make all the difference. Here are the best MCP servers for financial applications in 2026.</p>
+
+<h2>What Makes MCP Servers Valuable for Finance?</h2>
+
+<p>Financial AI workflows require access to live data, transaction records, and secure API integrations. MCP servers bridge the gap between your AI assistant and the financial data sources it needs — without copy-pasting spreadsheets or writing custom scripts.</p>
+
+<h2>1. Plaid MCP Server — Banking Data Made Accessible</h2>
+
+<p>The Plaid MCP server connects your AI to real bank account data, transactions, and financial health metrics. With Plaid powering thousands of fintech apps, this MCP server gives your AI the same institutional-grade data access.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read bank account balances and transaction history</li>
+<li>Categorize spending automatically across merchants</li>
+<li>Income verification and payroll data access</li>
+<li>Credit score context and financial health summaries</li>
+</ul>
+
+<p><strong>Best for:</strong> Personal finance apps, budgeting assistants, lending platforms, and any AI that needs to understand a user's complete financial picture.</p>
+
+<h2>2. Stripe MCP Server — Payments & Revenue Intelligence</h2>
+
+<p>The Stripe MCP server gives your AI direct access to your Stripe dashboard — customers, subscriptions, invoices, refunds, and revenue metrics. Stop copying revenue numbers from dashboards into chat prompts.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Query customers, subscriptions, and payment history</li>
+<li>Analyze churn, MRR, and revenue trends</li>
+<li>Create invoices and manage billing workflows</li>
+<li>Access dispute and refund data</li>
+</ul>
+
+<p><strong>Best for:</strong> SaaS founders, finance teams, and developers who want AI-powered revenue analysis without leaving their workflow.</p>
+
+<h2>3. Alpha Vantage MCP Server — Stock Market & Financial Data</h2>
+
+<p>Alpha Vantage provides institutional-quality stock market data, including real-time quotes, historical prices, technical indicators, and fundamental analysis data. The MCP server makes all of this queryable through natural language.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Real-time and historical stock prices</li>
+<li>Technical indicators (RSI, MACD, Bollinger Bands, 50+ more)</li>
+<li>Fundamental data (P/E ratios, earnings, balance sheets)</li>
+<li>Forex and cryptocurrency rates</li>
+<li>Economic indicators (GDP, inflation, unemployment)</li>
+</ul>
+
+<p><strong>Best for:</strong> Traders, quants, financial analysts, and anyone building investment research tools with AI.</p>
+
+<h2>4. Stock Data MCP Server — Real-Time Market Intelligence</h2>
+
+<p>The Stock Data MCP server complements Alpha Vantage with a focus on real-time quotes, market hours, options chains, and earnings calendars. Where Alpha Vantage excels at historical depth, Stock Data shines for live market context.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Real-time stock quotes and bid/ask spreads</li>
+<li>Options chain data and implied volatility</li>
+<li>Earnings calendar and surprise history</li>
+<li>Pre/after-market trading data</li>
+</ul>
+
+<p><strong>Best for:</strong> Active traders and portfolio managers who need live market context during AI-assisted analysis sessions.</p>
+
+<h2>5. QuickBooks MCP Server — Accounting & Business Finance</h2>
+
+<p>For business finance workflows, the QuickBooks MCP server connects your AI to the world's most popular small business accounting platform. Query P&L statements, reconcile accounts, and analyze cash flow — all through natural language.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Pull profit & loss, balance sheet, and cash flow statements</li>
+<li>Query invoices, bills, and vendor payments</li>
+<li>Analyze expense categories and budget variances</li>
+<li>Access payroll data (where Intuit integration allows)</li>
+</ul>
+
+<p><strong>Best for:</strong> Small business owners, bookkeepers, and accountants who want AI-powered financial analysis without exporting spreadsheets.</p>
+
+<h2>6. Xero MCP Server — Cloud Accounting for Growing Businesses</h2>
+
+<p>Xero's MCP server offers similar accounting capabilities to QuickBooks, with stronger international features and multi-currency support. If you operate across borders or use Xero as your primary accounting platform, this is your finance MCP of choice.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Multi-currency financial reports</li>
+<li>Invoice creation and accounts receivable tracking</li>
+<li>Bank reconciliation and transaction matching</li>
+<li>Tax reporting and compliance data</li>
+</ul>
+
+<p><strong>Best for:</strong> International businesses, SaaS companies with complex billing, and finance teams standardized on Xero.</p>
+
+<h2>The Finance AI Stack</h2>
+
+<p>For a complete AI-powered finance workflow, combine:</p>
+
+<ul>
+<li><strong>Banking layer:</strong> Plaid MCP (personal/consumer) or QuickBooks/Xero MCP (business)</li>
+<li><strong>Market layer:</strong> Alpha Vantage MCP + Stock Data MCP</li>
+<li><strong>Revenue layer:</strong> Stripe MCP (if SaaS/subscription business)</li>
+<li><strong>Research layer:</strong> Brave Search MCP (financial news, earnings reports)</li>
+</ul>
+
+<p>With this stack, your AI can analyze a complete financial picture — from personal bank transactions to public market data — without manual data exports or dashboard switching.</p>
+
+<p><strong>Related guides:</strong></p>
+<ul>
+<li><a href="/blog/best-mcp-servers-for-developers">Best MCP Servers for Developers</a></li>
+<li><a href="/blog/best-mcp-servers-for-automation">Best MCP Servers for Automation</a></li>
+<li><a href="/blog/best-mcp-servers-for-data-engineering">Best MCP Servers for Data Engineering</a></li>
+</ul>
+    `.trim(),
+  },
+  {
+    slug: "best-mcp-servers-for-research",
+    title: "Best MCP Servers for Research & Academic Work in 2026",
+    description: "Discover the top MCP servers for researchers, academics, and knowledge workers. From arXiv and PubMed to Semantic Scholar and Wikipedia, these servers give your AI direct access to the world's knowledge bases.",
+    date: "2026-05-01",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "7 min read",
+    keywords: ["best mcp servers for research", "mcp servers for academic research", "arxiv mcp server", "pubmed mcp server", "research tools mcp", "ai research assistant"],
+    relatedServerSlugs: ["arxiv", "semantic-scholar", "wikipedia", "pubmed", "brave-search", "exa", "filesystem"],
+    content: `
+<p>Research workflows are notoriously context-heavy. You're juggling papers, notes, databases, and citations — and your AI assistant can only help as much as the context you give it. MCP servers change this fundamentally, giving your AI direct access to academic databases, search engines, and knowledge repositories.</p>
+
+<h2>Why Researchers Need MCP Servers</h2>
+
+<p>Traditional AI research assistance means copy-pasting abstracts, manually searching databases, and hoping your AI remembers context from earlier in the conversation. MCP servers eliminate all of that. Your AI can search arXiv directly, retrieve PubMed citations, and cross-reference findings — all within a single conversation.</p>
+
+<h2>1. arXiv MCP Server — Cutting-Edge Research at Your AI's Fingertips</h2>
+
+<p>arXiv hosts over 2 million preprints across physics, mathematics, computer science, biology, economics, and more. The arXiv MCP server makes this entire repository queryable through natural language — no more wrestling with arXiv's search interface.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Search by keyword, author, subject category, or date range</li>
+<li>Retrieve full paper metadata, abstracts, and PDF links</li>
+<li>Find related papers and citation networks</li>
+<li>Track recent submissions in specific research areas</li>
+</ul>
+
+<p><strong>Best for:</strong> Computer scientists, physicists, mathematicians, and any researcher following active preprint communities. Essential for AI/ML research where arXiv is the primary publication venue.</p>
+
+<h2>2. PubMed MCP Server — Biomedical Literature Search</h2>
+
+<p>PubMed indexes over 35 million citations from MEDLINE, life science journals, and online books. The PubMed MCP server gives your AI access to the world's most comprehensive biomedical literature database.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Search by MESH terms, keywords, author, journal, or PMID</li>
+<li>Filter by publication type, date, species, and study design</li>
+<li>Retrieve abstracts, author information, and DOI links</li>
+<li>Access clinical trial registrations and systematic reviews</li>
+</ul>
+
+<p><strong>Best for:</strong> Medical researchers, clinicians, public health professionals, and life scientists. The gold standard for evidence-based medicine research.</p>
+
+<h2>3. Semantic Scholar MCP Server — AI-Powered Academic Search</h2>
+
+<p>Semantic Scholar uses AI to index and connect over 200 million academic papers. Unlike traditional search engines, it understands semantic relationships between papers — surfacing relevant work even when exact keyword matches don't exist.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Semantic search across 200M+ papers from all major publishers</li>
+<li>Author profiles with citation counts and h-index</li>
+<li>Citation networks (who cites this paper, what this paper cites)</li>
+<li>Influential papers identification and paper recommendations</li>
+<li>Open access PDF links where available</li>
+</ul>
+
+<p><strong>Best for:</strong> Researchers conducting literature reviews, citation analysis, and cross-disciplinary searches. The best general-purpose academic search for AI-assisted research.</p>
+
+<h2>4. Wikipedia MCP Server — Structured Background Knowledge</h2>
+
+<p>Wikipedia's MCP server provides structured access to the world's largest encyclopedia — not just search, but full article content, structured data, and knowledge graph connections.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Full article text retrieval by title or search</li>
+<li>Structured data extraction from infoboxes</li>
+<li>Cross-language article equivalents</li>
+<li>Category and related article navigation</li>
+</ul>
+
+<p><strong>Best for:</strong> Background research, fact-checking, terminology clarification, and building comprehensive context on unfamiliar topics. Great as a complement to specialized academic databases.</p>
+
+<h2>5. Exa MCP Server — Neural Search for Research</h2>
+
+<p>Exa (formerly Metaphor) is a neural search engine built specifically for AI workflows. It understands natural language queries and returns semantically relevant results — better than traditional keyword search for research queries.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Neural search that understands research intent</li>
+<li>Find similar documents based on content, not just keywords</li>
+<li>Search recent content with date filtering</li>
+<li>Return full page content (not just snippets)</li>
+</ul>
+
+<p><strong>Best for:</strong> Qualitative research, market research, and any research that requires understanding context beyond keyword matching.</p>
+
+<h2>6. Brave Search MCP Server — Independent Web Research</h2>
+
+<p>For open-web research beyond academic databases, Brave Search provides privacy-respecting results with its own independent index — not relying on Google or Bing's data.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Independent search index with no Google/Bing dependency</li>
+<li>News search and recent content discovery</li>
+<li>Video and image search</li>
+<li>No AI overviews or sponsored result manipulation</li>
+</ul>
+
+<p><strong>Best for:</strong> General web research, news monitoring, and finding recent content that academic databases don't index yet.</p>
+
+<h2>The Researcher's AI Stack</h2>
+
+<p>For a complete AI-powered research workflow:</p>
+
+<ul>
+<li><strong>Academic foundation:</strong> Semantic Scholar MCP (broad) + arXiv MCP (preprints) or PubMed MCP (biomedical)</li>
+<li><strong>Background context:</strong> Wikipedia MCP</li>
+<li><strong>Open web:</strong> Exa MCP + Brave Search MCP</li>
+<li><strong>Local files:</strong> Filesystem MCP (your notes, drafts, and saved papers)</li>
+</ul>
+
+<p>With this stack, your AI can conduct a literature review end-to-end: search databases, retrieve papers, cross-reference citations, pull background context from Wikipedia, and check recent web coverage — all without leaving the conversation.</p>
+
+<p><strong>Related guides:</strong></p>
+<ul>
+<li><a href="/blog/best-mcp-servers-for-productivity">Best MCP Servers for Productivity</a></li>
+<li><a href="/blog/best-mcp-servers-for-developers">Best MCP Servers for Developers</a></li>
+<li><a href="/blog/mcp-vs-api-integrations">MCP vs APIs: What's the Difference?</a></li>
+</ul>
+    `.trim(),
+  },
+  {
+    slug: "best-mcp-servers-for-data-science",
+    title: "Best MCP Servers for Data Science & Analytics in 2026",
+    description: "Unlock AI-powered data science workflows with MCP servers for Jupyter notebooks, BigQuery, Databricks, dbt, and more. Stop context-switching and let your AI work directly with your data infrastructure.",
+    date: "2026-05-01",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "8 min read",
+    keywords: ["best mcp servers for data science", "mcp servers for python", "jupyter mcp server", "bigquery mcp server", "data analysis mcp", "analytics mcp server"],
+    relatedServerSlugs: ["jupyter", "bigquery", "databricks", "dbt-mcp", "apache-spark", "excel-mcp", "google-analytics"],
+    content: `
+<p>Data science workflows involve constant context switching: you're in Jupyter, then BigQuery, then dbt, then Slack explaining what you found. MCP servers collapse this stack. Your AI assistant can query your data warehouse, run notebook cells, check pipeline health, and explain results — all in one continuous conversation.</p>
+
+<h2>What Changes When Data Scientists Use MCP</h2>
+
+<p>The traditional AI coding assistant model requires you to paste code snippets and results into chat. MCP flips this: your AI becomes an active participant in your data environment, capable of reading live data, executing queries, and iterating on analysis in real time.</p>
+
+<h2>1. Jupyter MCP Server — AI-Assisted Notebooks</h2>
+
+<p>The Jupyter MCP server gives your AI direct access to running Jupyter notebooks — reading cells, executing code, and inspecting outputs without copy-pasting. This is the closest thing to a genuine AI pair programmer for data science.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read and execute notebook cells directly</li>
+<li>Access variable state and dataframe previews</li>
+<li>Inspect outputs, errors, and visualizations</li>
+<li>Create new cells and modify existing ones</li>
+</ul>
+
+<p><strong>Best for:</strong> Data scientists doing exploratory analysis who want AI collaboration without copy-pasting code blocks back and forth. Works with JupyterLab and classic Jupyter.</p>
+
+<h2>2. BigQuery MCP Server — SQL at Google Scale</h2>
+
+<p>BigQuery processes petabytes. The BigQuery MCP server gives your AI the ability to write, execute, and explain SQL queries directly against your BigQuery datasets — no manual query copying required.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Execute SQL queries and return results</li>
+<li>Describe table schemas and dataset structure</li>
+<li>Estimate query costs before execution</li>
+<li>Access query history and saved queries</li>
+<li>Create and manage tables programmatically</li>
+</ul>
+
+<p><strong>Best for:</strong> Data analysts and engineers working in GCP environments who want AI-assisted SQL generation and optimization at scale.</p>
+
+<h2>3. Databricks MCP Server — Unified Analytics Platform</h2>
+
+<p>Databricks is the dominant platform for large-scale data engineering and ML workloads. Its MCP server connects your AI to Databricks clusters, notebooks, Delta tables, and Unity Catalog — making enterprise data accessible through natural language.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Query Delta tables and Unity Catalog assets</li>
+<li>Run Spark SQL and Python code in Databricks notebooks</li>
+<li>Monitor cluster health and job runs</li>
+<li>Access ML experiment tracking (MLflow integration)</li>
+</ul>
+
+<p><strong>Best for:</strong> Enterprise data teams running large-scale ETL pipelines, feature engineering, and ML training on Databricks.</p>
+
+<h2>4. dbt MCP Server — Data Transformation Workflows</h2>
+
+<p>dbt has become the standard for analytics engineering. The dbt MCP server lets your AI understand your transformation models, run them, check test results, and help debug lineage issues — turning dbt from a command-line tool into an AI-collaborative environment.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Parse and explain dbt model definitions</li>
+<li>Run dbt commands (run, test, compile, docs)</li>
+<li>Inspect model lineage and dependencies</li>
+<li>Access test results and failure details</li>
+</ul>
+
+<p><strong>Best for:</strong> Analytics engineers managing dbt projects who want AI assistance for model development, debugging, and documentation.</p>
+
+<h2>5. Apache Spark MCP Server — Distributed Processing</h2>
+
+<p>For truly large-scale data processing, the Apache Spark MCP server bridges your AI with Spark clusters. Submit jobs, monitor execution plans, and debug performance issues with AI assistance.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Submit and monitor Spark jobs</li>
+<li>Inspect execution plans and query optimizations</li>
+<li>Access Spark UI metrics programmatically</li>
+<li>Read partitioned dataset schemas and metadata</li>
+</ul>
+
+<p><strong>Best for:</strong> Data engineers running large-scale batch processing on Spark clusters (AWS EMR, Google Dataproc, Azure HDInsight).</p>
+
+<h2>6. Excel MCP Server — Spreadsheet Intelligence</h2>
+
+<p>Not every data science team works with petabytes. The Excel MCP server brings AI assistance to the world's most widely used data tool — reading sheets, running formulas, and helping analysts who live in spreadsheets.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read and write Excel files (.xlsx, .xls, .csv)</li>
+<li>Execute formulas and return computed values</li>
+<li>Analyze data ranges and suggest pivot configurations</li>
+<li>Handle multi-sheet workbooks</li>
+</ul>
+
+<p><strong>Best for:</strong> Business analysts, financial modelers, and data professionals who primarily work in Excel and want AI assistance without migrating to code-first tools.</p>
+
+<h2>7. Google Analytics MCP Server — Web Data Access</h2>
+
+<p>For data teams responsible for web analytics, the Google Analytics MCP server enables natural language querying of GA4 data — no more navigating GA's complex exploration interface to pull basic metrics.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Query GA4 dimensions and metrics through natural language</li>
+<li>Pull traffic, conversion, and engagement reports</li>
+<li>Compare date ranges and segments</li>
+<li>Export data for downstream analysis</li>
+</ul>
+
+<p><strong>Best for:</strong> Digital analytics teams, growth engineers, and marketing data analysts standardized on GA4.</p>
+
+<h2>The Data Science AI Stack</h2>
+
+<p>Build your stack based on your environment:</p>
+
+<ul>
+<li><strong>Notebook-first teams:</strong> Jupyter MCP + Filesystem MCP + BigQuery/Databricks MCP</li>
+<li><strong>Analytics engineering teams:</strong> dbt MCP + BigQuery/Databricks MCP + GitHub MCP</li>
+<li><strong>Enterprise Spark shops:</strong> Databricks MCP + Apache Spark MCP + Git MCP</li>
+<li><strong>Spreadsheet-centric teams:</strong> Excel MCP + Google Analytics MCP + Filesystem MCP</li>
+</ul>
+
+<p>The right combination turns your AI into a data teammate that can actually run queries, debug pipelines, and explain results — not just suggest code you have to execute yourself.</p>
+
+<p><strong>Related guides:</strong></p>
+<ul>
+<li><a href="/blog/best-mcp-servers-for-data-engineering">Best MCP Servers for Data Engineering</a></li>
+<li><a href="/blog/best-mcp-servers-for-developers">Best MCP Servers for Developers</a></li>
+<li><a href="/blog/best-mcp-servers-for-automation">Best MCP Servers for Automation</a></li>
+</ul>
+    `.trim(),
+  },
+  {
+    slug: "best-mcp-servers-for-customer-support",
+    title: "Best MCP Servers for Customer Support Teams in 2026",
+    description: "Empower your support team with AI that has live access to your CRM, helpdesk, and communication tools. The best MCP servers for Zendesk, HubSpot, Intercom, Freshdesk, and Salesforce.",
+    date: "2026-05-01",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "7 min read",
+    keywords: ["best mcp servers for customer support", "mcp servers for crm", "zendesk mcp server", "hubspot mcp server", "intercom mcp server", "customer support automation mcp"],
+    relatedServerSlugs: ["zendesk", "hubspot", "intercom", "freshdesk", "salesforce", "notion", "slack"],
+    content: `
+<p>Customer support teams drown in context switching — from Zendesk to Salesforce to Slack to internal wikis, all while trying to help a customer on the other end. MCP servers give your AI assistant live access to every tool your support team uses, enabling responses that are faster, more accurate, and informed by real customer history.</p>
+
+<h2>How MCP Transforms Customer Support Workflows</h2>
+
+<p>Without MCP, AI-powered support means copy-pasting customer history into chat, manually querying your CRM, and switching between a dozen tabs. With MCP servers, your AI can pull a customer's complete history, check their current subscription status, read recent tickets, and suggest resolutions — all in one conversation.</p>
+
+<h2>1. Zendesk MCP Server — Helpdesk Supercharged</h2>
+
+<p>Zendesk is the world's most popular customer support platform. Its MCP server gives your AI direct access to tickets, customer records, macros, and satisfaction scores — transforming support agents from ticket managers into resolution specialists.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Search and retrieve tickets by customer, status, or tag</li>
+<li>Read full ticket threads including internal notes</li>
+<li>Check customer satisfaction (CSAT) scores and trends</li>
+<li>Access macro library for response templates</li>
+<li>View SLA compliance and escalation status</li>
+</ul>
+
+<p><strong>Best for:</strong> Support teams on Zendesk who want AI assistance drafting responses, summarizing ticket history, and identifying patterns in support volume.</p>
+
+<h2>2. HubSpot MCP Server — CRM-Powered Support</h2>
+
+<p>When support and sales share HubSpot, the HubSpot MCP server becomes invaluable. Your AI can pull complete customer timelines — deals, conversations, contact properties, and lifecycle stage — giving support context that goes beyond just the current ticket.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Query contacts, companies, and deal records</li>
+<li>Read conversation history across email, chat, and calls</li>
+<li>Check deal stage and revenue for account-based support decisions</li>
+<li>Access custom properties and segment data</li>
+<li>Create and update tickets programmatically</li>
+</ul>
+
+<p><strong>Best for:</strong> Hybrid sales/support teams using HubSpot as their central CRM who want AI that understands the full customer relationship, not just the current issue.</p>
+
+<h2>3. Intercom MCP Server — Conversational Support Context</h2>
+
+<p>Intercom's focus on conversational support makes its MCP server particularly powerful for AI-assisted workflows. Your AI can read full conversation threads, check user attributes, and understand product usage patterns that inform better support responses.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read and search conversation threads</li>
+<li>Access user profiles, attributes, and event history</li>
+<li>Check subscription tier and feature access</li>
+<li>View conversation sentiment and CSAT ratings</li>
+<li>Search knowledge base articles for resolution suggestions</li>
+</ul>
+
+<p><strong>Best for:</strong> SaaS companies using Intercom who want AI that can reference product usage data alongside conversation history to provide contextually accurate support.</p>
+
+<h2>4. Freshdesk MCP Server — Scalable Support Operations</h2>
+
+<p>Freshdesk is popular with mid-market companies for its balance of features and affordability. The Freshdesk MCP server enables AI-assisted ticket management, routing, and knowledge base access.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Search tickets across all queues and groups</li>
+<li>Read customer contact and company records</li>
+<li>Access knowledge base articles for self-service resolution</li>
+<li>Check SLA status and ticket priority</li>
+<li>Query satisfaction ratings and survey responses</li>
+</ul>
+
+<p><strong>Best for:</strong> Support teams on Freshdesk managing high ticket volumes who want AI to help identify patterns, draft responses, and surface relevant knowledge base articles.</p>
+
+<h2>5. Salesforce MCP Server — Enterprise Account Support</h2>
+
+<p>For enterprise support teams where every customer is a significant account, Salesforce's MCP server provides access to the full account hierarchy — contracts, opportunities, cases, contacts, and custom objects.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Query accounts, contacts, opportunities, and cases</li>
+<li>Read contract terms and entitlements</li>
+<li>Access custom objects and field data</li>
+<li>View account health scores and renewal dates</li>
+<li>Search across all Salesforce records with SOQL support</li>
+</ul>
+
+<p><strong>Best for:</strong> Enterprise support and customer success teams where account context (contract value, renewal risk, executive relationships) is critical for every interaction.</p>
+
+<h2>6. Slack MCP Server — Internal Escalation Context</h2>
+
+<p>Customer support doesn't happen in isolation. The Slack MCP server lets your AI check internal conversations around a specific customer or issue — finding engineering escalation threads, product team context, and institutional knowledge that lives in chat channels.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Search messages across public channels</li>
+<li>Find threads related to specific customers or issues</li>
+<li>Check status in #incidents or #engineering-escalations channels</li>
+<li>Access shared support runbooks and procedures</li>
+</ul>
+
+<p><strong>Best for:</strong> All support teams. Internal Slack context often contains resolution information that never made it into the helpdesk — an AI that can search both sources dramatically improves resolution quality.</p>
+
+<h2>The Customer Support AI Stack</h2>
+
+<p>Build your stack around your primary tools:</p>
+
+<ul>
+<li><strong>SMB/startup:</strong> Intercom MCP + Slack MCP + Notion MCP (runbooks)</li>
+<li><strong>Mid-market:</strong> Zendesk MCP or Freshdesk MCP + HubSpot MCP + Slack MCP</li>
+<li><strong>Enterprise:</strong> Salesforce MCP + Zendesk MCP + Slack MCP</li>
+</ul>
+
+<p>The goal is giving your AI the same context a senior support agent has after five years at the company — complete customer history, internal escalation context, and product knowledge — available on demand for every interaction.</p>
+
+<p><strong>Related guides:</strong></p>
+<ul>
+<li><a href="/blog/best-mcp-servers-for-marketing">Best MCP Servers for Marketing</a></li>
+<li><a href="/blog/best-mcp-servers-for-productivity">Best MCP Servers for Productivity</a></li>
+<li><a href="/blog/best-mcp-servers-for-automation">Best MCP Servers for Automation</a></li>
+</ul>
+    `.trim(),
+  },
+  {
+    slug: "best-mcp-servers-for-project-management",
+    title: "Best MCP Servers for Project Management in 2026",
+    description: "Stop context-switching between your PM tools and your AI. The best MCP servers for Notion, Linear, Jira, Asana, ClickUp, and GitHub give your AI assistant live access to your entire project ecosystem.",
+    date: "2026-05-01",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "7 min read",
+    keywords: ["best mcp servers for project management", "mcp servers for teams", "notion mcp server", "linear mcp server", "jira mcp server", "asana mcp server", "clickup mcp"],
+    relatedServerSlugs: ["notion", "linear", "jira", "asana", "github", "slack", "monday", "clickup"],
+    content: `
+<p>Project management tools hold your team's institutional knowledge: priorities, decisions, blockers, and progress. When your AI can't see any of this, you spend more time bridging the context gap than getting actual work done. MCP servers fix this — here are the best options for project-driven teams in 2026.</p>
+
+<h2>The PM Tool Context Problem</h2>
+
+<p>Every time you ask an AI about your project, you're either copy-pasting tickets or describing context from memory. MCP servers give your AI live access to your PM tools — it can read your sprint board, check ticket status, understand dependencies, and help you make decisions based on what's actually happening in your project, not what you remember to mention.</p>
+
+<h2>1. Linear MCP Server — Engineering-First Project Management</h2>
+
+<p>Linear has become the PM tool of choice for engineering-driven teams. Its MCP server gives your AI access to issues, cycles, projects, and priorities — making it an active participant in your sprint planning and execution.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Search and read issues across all teams and projects</li>
+<li>Check current cycle status and velocity</li>
+<li>Query issues by assignee, priority, status, or label</li>
+<li>Read issue descriptions, comments, and linked PRs</li>
+<li>Access roadmap items and project milestones</li>
+</ul>
+
+<p><strong>Best for:</strong> Engineering and product teams using Linear who want AI that understands what's in progress, what's blocked, and what's coming next — without pulling up the board manually.</p>
+
+<h2>2. Notion MCP Server — Docs, Wikis, and Projects</h2>
+
+<p>Notion has become the operating system for many teams — part project tracker, part wiki, part database. The Notion MCP server gives your AI access to all of it: pages, databases, kanban boards, and linked records.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read pages, databases, and linked views</li>
+<li>Query database entries with filters and sorts</li>
+<li>Create and update pages programmatically</li>
+<li>Access team wikis and documentation</li>
+<li>Read calendar databases and meeting notes</li>
+</ul>
+
+<p><strong>Best for:</strong> Teams that centralize documentation and project tracking in Notion. Particularly powerful when your AI can read both your project tracker AND your team wiki in the same conversation.</p>
+
+<h2>3. Jira MCP Server — Enterprise Issue Tracking</h2>
+
+<p>Jira is the standard for larger engineering organizations. Its MCP server provides access to the full Jira data model — epics, stories, tasks, sprints, and custom fields — enabling AI assistance across complex, multi-team projects.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Search issues with JQL (Jira Query Language) through natural language</li>
+<li>Read epics, sprints, and board configurations</li>
+<li>Check issue history, transitions, and linked issues</li>
+<li>Access custom fields and project configurations</li>
+<li>Query agile metrics (velocity, burndown data)</li>
+</ul>
+
+<p><strong>Best for:</strong> Enterprise engineering teams using Jira with complex project structures, custom workflows, and multi-team dependencies.</p>
+
+<h2>4. Asana MCP Server — Cross-Functional Project Coordination</h2>
+
+<p>Asana excels at cross-functional projects where multiple teams need visibility. Its MCP server reflects this strength, providing access to projects, tasks, timelines, and portfolios across the organization.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read projects, sections, and task hierarchies</li>
+<li>Check task assignments, due dates, and completion status</li>
+<li>Access portfolio-level status and project health</li>
+<li>Query teams and workspace members</li>
+<li>Read timeline dependencies and critical paths</li>
+</ul>
+
+<p><strong>Best for:</strong> Cross-functional teams where marketing, product, engineering, and ops need shared project visibility. Asana's portfolio views make it especially valuable for leadership AI queries.</p>
+
+<h2>5. ClickUp MCP Server — All-in-One Work Management</h2>
+
+<p>ClickUp's ambitious "all-in-one" positioning means its MCP server covers more ground than most — tasks, docs, goals, time tracking, and automations all accessible through a single integration.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Query tasks across spaces, folders, and lists</li>
+<li>Read ClickUp Docs and attached files</li>
+<li>Check goals and OKR progress</li>
+<li>Access time tracking entries</li>
+<li>View custom fields and automation logs</li>
+</ul>
+
+<p><strong>Best for:</strong> Teams that have consolidated their work management into ClickUp and want AI that can access the full breadth of their work data in one place.</p>
+
+<h2>6. GitHub MCP Server — Where Engineering Work Actually Lives</h2>
+
+<p>For engineering teams, GitHub often holds as much project context as your PM tool — PRs, issues, reviews, and discussions are where decisions get made. The GitHub MCP server connects your AI to this stream of engineering work.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Search issues and PRs across repositories</li>
+<li>Read PR descriptions, review comments, and CI status</li>
+<li>Check milestone progress and project boards</li>
+<li>Access release notes and deployment history</li>
+</ul>
+
+<p><strong>Best for:</strong> Engineering teams where GitHub is the primary source of work context. Combine with Linear or Jira for complete PM + engineering coverage.</p>
+
+<h2>7. Slack MCP Server — Decisions Made in Chat</h2>
+
+<p>Most project decisions get made in Slack before they ever reach your PM tool. The Slack MCP server gives your AI access to those conversations — finding the context behind tickets, the reasons for priority changes, and the institutional knowledge that lives in channels.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Search messages across public channels by keyword or date</li>
+<li>Read threads and conversation context</li>
+<li>Find discussions about specific projects or features</li>
+<li>Access shared documents and links</li>
+</ul>
+
+<p><strong>Best for:</strong> All project-driven teams. Slack is where project context often originates — before it makes it into Jira, Linear, or Asana.</p>
+
+<h2>The Project Management AI Stack</h2>
+
+<ul>
+<li><strong>Startup/small team:</strong> Linear MCP + Notion MCP + GitHub MCP + Slack MCP</li>
+<li><strong>Mid-size cross-functional teams:</strong> Asana MCP + Notion MCP + Slack MCP</li>
+<li><strong>Enterprise engineering:</strong> Jira MCP + Confluence MCP + GitHub MCP + Slack MCP</li>
+<li><strong>All-in-one ClickUp shops:</strong> ClickUp MCP + GitHub MCP + Slack MCP</li>
+</ul>
+
+<p>With the right stack, your AI can answer questions like "what's blocking the Q2 launch?" or "summarize what changed in the payments epic this week" by actually reading your project data — not guessing from what you tell it.</p>
+
+<p><strong>Related guides:</strong></p>
+<ul>
+<li><a href="/blog/best-mcp-servers-for-developers">Best MCP Servers for Developers</a></li>
+<li><a href="/blog/best-mcp-servers-for-productivity">Best MCP Servers for Productivity</a></li>
+<li><a href="/blog/best-mcp-servers-for-ai-agents">Best MCP Servers for AI Agents</a></li>
+</ul>
+    `.trim(),
+  },
 ];
 
 export function getBlogPostBySlug(slug: string): BlogPost | undefined {
