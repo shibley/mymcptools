@@ -3437,6 +3437,340 @@ gh pr view 123 --json body,files | claude-code "Review this PR and suggest impro
 </ul>
     `.trim(),
   },
+  {
+    slug: "best-mcp-servers-for-marketing",
+    title: "Best MCP Servers for Marketing Teams in 2026",
+    description: "The top MCP servers for marketers, growth teams, and performance advertisers. Manage Meta, Google, TikTok, and Amazon ad campaigns directly from your AI assistant.",
+    date: "2026-05-01",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "7 min read",
+    keywords: ["best mcp servers for marketing", "mcp marketing tools", "google ads mcp", "facebook ads mcp", "meta ads mcp", "tiktok ads mcp", "marketing automation mcp"],
+    relatedServerSlugs: ["google-ads-mcp", "facebook-ads-mcp", "tiktok-ads-mcp", "meta-ads-mcp", "amazon-ads-mcp", "analytics"],
+    content: `
+<p>Marketing teams spend hours switching between ad platforms, pulling reports, and optimizing campaigns. MCP servers change that by letting your AI assistant directly access and manage your marketing stack. Here are the best MCP servers for marketing professionals in 2026.</p>
+
+<h2>Why Marketers Need MCP Servers</h2>
+
+<p>Before MCP, asking your AI to analyze your Google Ads campaigns meant copying data into the chat manually. With MCP servers, your AI assistant can pull live campaign data, identify underperforming ad sets, and suggest optimizations — all in real time, in a single conversation.</p>
+
+<h2>1. Google Ads MCP — The PPC Powerhouse</h2>
+
+<p>The Google Ads MCP server gives your AI assistant direct access to Google Ads API data. Built for performance marketers who want AI-powered insights without the manual data export process.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Pull campaign, ad group, and keyword performance data</li>
+<li>Analyze Quality Scores, CTRs, and conversion rates</li>
+<li>Surface high-CPC keywords wasting budget</li>
+<li>Identify bid adjustment opportunities by device, time, and location</li>
+<li>Generate performance reports on demand</li>
+</ul>
+
+<p><strong>Best for:</strong> PPC managers running Google Search and Performance Max campaigns who want faster optimization cycles.</p>
+
+<h2>2. Meta Ads MCP — Facebook & Instagram at Scale</h2>
+
+<p>Meta Ads MCP is trusted by over 10,000 businesses for automating Meta advertising workflows. It connects your AI directly to the Facebook Marketing API for real-time campaign access.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Campaign, ad set, and ad-level performance analysis</li>
+<li>Creative performance comparison and A/B test insights</li>
+<li>Audience overlap detection and lookalike analysis</li>
+<li>Budget pacing and spend optimization recommendations</li>
+</ul>
+
+<p><strong>Best for:</strong> DTC brands and agencies managing high-volume Meta ad accounts who need faster decision-making.</p>
+
+<h2>3. TikTok Ads MCP — Capture the Short-Form Audience</h2>
+
+<p>TikTok's advertising platform has grown dramatically. The TikTok Ads MCP server brings its API into your AI workflow with full OAuth support for secure access to campaign data.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Campaign and ad group management via natural language</li>
+<li>Creative performance analytics (video view rates, engagement)</li>
+<li>Audience segment analysis and targeting optimization</li>
+<li>Budget allocation recommendations across campaign objectives</li>
+</ul>
+
+<p><strong>Best for:</strong> Social media marketers targeting younger audiences who want to move faster on TikTok.</p>
+
+<h2>4. Amazon Advertising MCP — Dominate the Marketplace</h2>
+
+<p>For sellers and brands on Amazon, this MCP server provides direct access to Sponsored Products, Sponsored Brands, and Sponsored Display campaign data for AI-powered optimization.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>ACOS and ROAS analysis at campaign and keyword level</li>
+<li>Search term report analysis to find wasted spend</li>
+<li>Bid optimization recommendations for top ASINs</li>
+<li>Competitor conquest targeting opportunities</li>
+</ul>
+
+<p><strong>Best for:</strong> Amazon sellers and brands looking to improve ad efficiency and scale Sponsored Ads ROI.</p>
+
+<h2>5. Facebook Ads MCP — Deep Campaign Analytics</h2>
+
+<p>The Facebook Ads MCP server provides programmatic access to Facebook Ads data for sophisticated campaign analysis beyond what the native dashboard shows.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Cross-campaign performance benchmarking</li>
+<li>Attribution analysis across the funnel</li>
+<li>Creative fatigue detection and rotation recommendations</li>
+<li>Frequency and reach optimization insights</li>
+</ul>
+
+<p><strong>Best for:</strong> Marketing analysts and media buyers who need data-driven creative and audience decisions on Meta.</p>
+
+<h2>Building a Marketing AI Workflow</h2>
+
+<p>A typical morning routine for a performance marketer with MCP:</p>
+
+<ol>
+<li>Pull overnight performance data from Google Ads, Meta, and TikTok in one chat</li>
+<li>Ask your AI to identify the top 3 issues across platforms</li>
+<li>Get bid and budget recommendations for each channel</li>
+<li>Review suggested copy tweaks for underperforming ads</li>
+</ol>
+
+<p>What used to take 2-3 hours of manual platform work now happens in a 15-minute AI-assisted session.</p>
+
+<p><strong>Related guides:</strong></p>
+<ul>
+<li><a href="/blog/best-mcp-servers-for-developers">Best MCP Servers for Developers</a></li>
+<li><a href="/blog/best-mcp-servers-for-productivity">Best MCP Servers for Productivity</a></li>
+<li><a href="/blog/best-mcp-servers-for-automation">Best MCP Servers for Automation</a></li>
+</ul>
+    `.trim(),
+  },
+  {
+    slug: "best-mcp-servers-for-travel",
+    title: "Best MCP Servers for Travel Planning in 2026",
+    description: "Plan trips, find flights, discover accommodations, and explore destinations using MCP servers with your AI assistant. The complete guide for travelers and trip planners.",
+    date: "2026-05-01",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "6 min read",
+    keywords: ["best mcp servers travel", "mcp travel planning", "airbnb mcp", "flight mcp", "tripadvisor mcp", "trip planning ai", "mcp for travel"],
+    relatedServerSlugs: ["airbnb-mcp", "tripadvisor-mcp", "national-parks-mcp", "aviationstack-mcp", "rideshare-comparison-mcp", "google-maps"],
+    content: `
+<p>Planning a trip used to mean juggling 10 browser tabs — flights on one site, hotels on another, reviews on TripAdvisor, directions on Google Maps. MCP servers let your AI assistant pull all this data together in a single conversational planning session.</p>
+
+<h2>1. Airbnb MCP — Find the Perfect Stay</h2>
+
+<p>The Airbnb MCP server gives your AI assistant direct access to Airbnb's listing database. Search and refine accommodations from a single conversation instead of switching apps.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Search listings by location, dates, guests, and price range</li>
+<li>Filter by amenities (pool, pet-friendly, beachfront)</li>
+<li>Get detailed property information and host ratings</li>
+<li>Compare multiple properties side-by-side in your AI chat</li>
+</ul>
+
+<p><strong>Best for:</strong> Travelers who want personalized accommodation recommendations without leaving their AI assistant.</p>
+
+<h2>2. TripAdvisor MCP — Trusted Reviews at Your Fingertips</h2>
+
+<p>With over 1 billion reviews, TripAdvisor is the world's largest travel review platform. The MCP server gives your AI access to this data for any destination worldwide.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Search hotels, restaurants, and attractions with ratings</li>
+<li>Access traveler reviews and photo galleries</li>
+<li>Find top-rated experiences for any destination</li>
+<li>Compare options by price, rating, and traveler type</li>
+</ul>
+
+<p><strong>Best for:</strong> First-time visitors to a destination who want curated recommendations backed by millions of reviews.</p>
+
+<h2>3. AviationStack MCP — Real-Time Flight Data</h2>
+
+<p>The AviationStack MCP server provides live flight tracking and scheduling data. Monitor flights, research routes, and stay informed about delays before heading to the airport.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Real-time flight status and tracking</li>
+<li>Airport schedules and departure/arrival times</li>
+<li>Historical on-time performance data by route</li>
+<li>Airline and aircraft type information</li>
+</ul>
+
+<p><strong>Best for:</strong> Frequent flyers who want to research routes and compare airline reliability before booking.</p>
+
+<h2>4. National Parks MCP — Discover America's Outdoors</h2>
+
+<p>The US National Parks MCP server connects to the official National Park Service API, covering 400+ parks, monuments, and recreation areas across the country.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Park details, hours, entrance fees, and directions</li>
+<li>Current alerts and trail closures</li>
+<li>Campground availability and amenities</li>
+<li>Upcoming events and ranger programs</li>
+</ul>
+
+<p><strong>Best for:</strong> Outdoor enthusiasts planning camping trips, road trips, or hiking adventures in national parks.</p>
+
+<h2>5. Rideshare Comparison MCP — Never Overpay for a Ride</h2>
+
+<p>The Rideshare Comparison MCP server compares Uber and Lyft prices in real time for any route — simple but valuable when navigating an unfamiliar city.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Side-by-side Uber vs Lyft fare estimates</li>
+<li>Surge pricing detection and alerts</li>
+<li>Cheapest option recommendation by time of day</li>
+</ul>
+
+<p><strong>Best for:</strong> Business travelers and tourists who want to optimize ground transportation costs.</p>
+
+<h2>6. Google Maps MCP — Navigation and Discovery</h2>
+
+<p>The official Google Maps MCP server provides comprehensive location services — essential for routing, discovering nearby points of interest, and understanding neighborhood layouts.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Turn-by-turn routing by car, transit, or walking</li>
+<li>Place search and local discovery</li>
+<li>Distance and travel time calculations</li>
+</ul>
+
+<p><strong>Best for:</strong> Anyone who needs navigation and local discovery built into their AI travel assistant.</p>
+
+<h2>A Complete AI Travel Planning Session</h2>
+
+<p>With these MCP servers, a full trip planning session looks like:</p>
+
+<ol>
+<li>Describe your trip (destination, dates, budget, interests) to your AI</li>
+<li>AI searches Airbnb for matching accommodations</li>
+<li>AI checks TripAdvisor for top-rated restaurants and activities</li>
+<li>AI uses AviationStack to research flight options and on-time stats</li>
+<li>AI creates a day-by-day itinerary using Google Maps for routing</li>
+</ol>
+
+<p>What used to take 3+ hours of research happens in a 20-minute AI conversation.</p>
+
+<p><strong>Related guides:</strong></p>
+<ul>
+<li><a href="/blog/best-mcp-servers-for-productivity">Best MCP Servers for Productivity</a></li>
+<li><a href="/blog/getting-started-with-mcp">Getting Started with MCP</a></li>
+<li><a href="/blog/claude-desktop-mcp-setup-guide">Claude Desktop MCP Setup Guide</a></li>
+</ul>
+    `.trim(),
+  },
+  {
+    slug: "best-mcp-servers-for-game-developers",
+    title: "Best MCP Servers for Game Developers in 2026",
+    description: "Level up game development with AI-powered MCP servers. Unity and Godot engine integrations, gaming APIs, and tools that make AI a genuine game dev partner.",
+    date: "2026-05-01",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "7 min read",
+    keywords: ["best mcp servers game developers", "unity mcp", "godot mcp", "game development ai", "mcp game engine", "ai game dev tools 2026"],
+    relatedServerSlugs: ["godot-mcp", "unity-mcp", "opgg-mcp", "chess-mcp", "filesystem", "github"],
+    content: `
+<p>Game development is one of the most complex software disciplines — combining code, art, physics, and design in a single project. AI assistants are increasingly useful for game devs, but they're most powerful when they can directly interact with your engine and game data. That's where MCP servers come in.</p>
+
+<h2>Why Game Developers Should Care About MCP</h2>
+
+<p>Without MCP, using AI for game development means describing your scene structure in text, copying error logs, and pasting code back and forth. With MCP servers, your AI can read your project files, query engine APIs, and execute actions directly in your editor — dramatically accelerating iteration cycles.</p>
+
+<h2>1. Godot MCP — AI-Powered Scene Management</h2>
+
+<p>The Godot MCP server provides deep integration with the Godot 4 game engine — the most capable open-source engine integration available for AI-assisted game development.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Create, modify, and organize scene nodes via natural language</li>
+<li>Read and write GDScript code with engine context awareness</li>
+<li>Run and debug scenes directly from your AI assistant</li>
+<li>Query scene tree structure and node properties</li>
+<li>Manage project settings and export configurations</li>
+</ul>
+
+<p><strong>Best for:</strong> Indie developers and studios using Godot 4 who want to prototype gameplay mechanics faster and reduce context-switching between editor and AI chat.</p>
+
+<h2>2. Unity MCP — Industry-Standard Engine Integration</h2>
+
+<p>Unity powers over 50% of mobile games and a large share of PC/console titles. The Unity MCP server brings AI assistance directly into the Unity Editor workflow.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read and modify GameObject hierarchies and component data</li>
+<li>Create and edit C# scripts with game context</li>
+<li>Run play mode testing and query runtime values</li>
+<li>Scene layout and prefab manipulation</li>
+</ul>
+
+<p><strong>Best for:</strong> Unity developers building mobile, PC, or console games who want AI-assisted scripting and scene management.</p>
+
+<h2>3. GitHub MCP — Version Control for Game Projects</h2>
+
+<p>Game projects produce massive repositories with complex merge scenarios and frequent iteration. The GitHub MCP server makes version control management conversational.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Create branches for feature experiments and prototype builds</li>
+<li>Review PRs from collaborators with code summaries</li>
+<li>Search commit history for when bugs were introduced</li>
+<li>Manage GitHub Actions for automated build pipelines</li>
+</ul>
+
+<p><strong>Best for:</strong> Game studios and solo developers who want AI-assisted Git workflows and faster code review.</p>
+
+<h2>4. Filesystem MCP — Deep Project Access</h2>
+
+<p>Game projects contain thousands of files — scripts, shaders, assets, and configs. The Filesystem MCP server gives your AI complete access to your project directory without copy-pasting.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read any project file without copy-pasting into chat</li>
+<li>Scan directories for patterns (find all shader files, all coroutines)</li>
+<li>Write new scripts and configs directly</li>
+<li>Search for code patterns across the entire codebase</li>
+</ul>
+
+<p><strong>Best for:</strong> All game developers as the foundation of an AI-assisted development setup. Pair with Godot or Unity MCP for maximum effect.</p>
+
+<h2>5. OP.GG MCP — Gaming Data for Live Service Games</h2>
+
+<p>If you're building tools or companion apps for competitive games, OP.GG MCP provides real-time data from League of Legends, Valorant, and TFT.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Player statistics, rank history, and performance trends</li>
+<li>Champion win rates, pick rates, and tier lists</li>
+<li>Meta composition analysis for TFT</li>
+<li>Esports schedules and match results</li>
+</ul>
+
+<p><strong>Best for:</strong> Developers building gaming companion apps, stat trackers, or coaching tools for competitive titles.</p>
+
+<h2>The Game Developer's AI Stack</h2>
+
+<p>A complete AI-assisted game development setup:</p>
+
+<ul>
+<li><strong>Engine layer:</strong> Godot MCP or Unity MCP (direct engine integration)</li>
+<li><strong>Code layer:</strong> Filesystem MCP (full project access) + GitHub MCP (version control)</li>
+<li><strong>Research layer:</strong> Brave Search MCP (engine docs, shader techniques, algorithm research)</li>
+</ul>
+
+<p>With this stack, your AI becomes a genuine development partner — not just a code suggestion engine, but a collaborator that understands your entire project context.</p>
+
+<p><strong>Related guides:</strong></p>
+<ul>
+<li><a href="/blog/best-mcp-servers-for-developers">Best MCP Servers for Developers</a></li>
+<li><a href="/blog/best-mcp-servers-for-claude-code">Best MCP Servers for Claude Code</a></li>
+<li><a href="/blog/claude-desktop-mcp-setup-guide">Claude Desktop MCP Setup Guide</a></li>
+</ul>
+    `.trim(),
+  },
 ];
 
 export function getBlogPostBySlug(slug: string): BlogPost | undefined {
