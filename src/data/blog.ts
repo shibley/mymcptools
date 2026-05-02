@@ -4419,6 +4419,565 @@ gh pr view 123 --json body,files | claude-code "Review this PR and suggest impro
 </ul>
     `.trim(),
   },
+  {
+    slug: "what-is-model-context-protocol",
+    title: "What is Model Context Protocol (MCP)? The Complete Guide for 2026",
+    description: "Model Context Protocol (MCP) is the open standard that lets AI assistants connect to your tools, databases, and files. Learn what it is, how it works, and why it matters.",
+    date: "2026-05-02",
+    author: "MyMCPTools Team",
+    category: "Explainers",
+    readingTime: "9 min read",
+    keywords: ["what is model context protocol", "what is mcp", "mcp explained", "model context protocol guide", "mcp servers explained"],
+    relatedServerSlugs: ["filesystem", "github", "postgresql", "brave-search", "memory", "fetch"],
+    content: `
+<p>If you've been using AI assistants like Claude or Cursor lately, you may have come across the term <strong>Model Context Protocol</strong> — or MCP. It's become one of the most talked-about developments in the AI tooling space in 2026. But what actually is it, and why should you care?</p>
+
+<p>This guide breaks it all down — no hype, just clear explanations.</p>
+
+<h2>The Short Version</h2>
+
+<p><strong>Model Context Protocol (MCP) is an open standard that defines how AI applications connect to external tools and data sources.</strong></p>
+
+<p>Think of it as a universal plug for AI. Before MCP, every AI tool had to build its own custom integrations with every data source — a messy, fragmented approach. MCP standardizes the connection layer so that one MCP server can work with any MCP-compatible AI client.</p>
+
+<h2>The Problem MCP Solves</h2>
+
+<p>Imagine you're using an AI coding assistant. You want it to:</p>
+<ul>
+<li>Read your project files</li>
+<li>Query your database</li>
+<li>Search the web for documentation</li>
+<li>Access your GitHub issues</li>
+</ul>
+
+<p>Without MCP, you'd need to copy and paste all this context manually — or the AI tool would need to build bespoke integrations with each service. That's slow, error-prone, and doesn't scale.</p>
+
+<p>With MCP, each of these capabilities is an <strong>MCP server</strong>. Your AI client connects to whichever servers you need, and they all speak the same language.</p>
+
+<h2>How MCP Works: The Key Concepts</h2>
+
+<h3>MCP Servers</h3>
+<p>An MCP server is a small program that exposes capabilities — called <strong>tools</strong> — to AI clients. A filesystem MCP server might expose tools like <code>read_file</code>, <code>write_file</code>, and <code>list_directory</code>. A database server might expose <code>query_database</code> and <code>get_schema</code>.</p>
+
+<h3>MCP Clients</h3>
+<p>MCP clients are the AI applications that connect to servers. Claude Desktop, Cursor, VS Code with Continue, and other AI tools can all act as MCP clients — they discover available tools and call them when needed.</p>
+
+<h3>Tools, Resources, and Prompts</h3>
+<p>MCP servers can expose three types of capabilities:</p>
+<ul>
+<li><strong>Tools</strong> — Functions the AI can call (e.g., search the web, query a database)</li>
+<li><strong>Resources</strong> — Data the AI can read (e.g., file contents, database records)</li>
+<li><strong>Prompts</strong> — Pre-built prompt templates for common workflows</li>
+</ul>
+
+<h3>The Local-First Architecture</h3>
+<p>Most MCP servers run locally on your machine. This is intentional — it means your code, files, and database credentials never leave your computer. The AI client talks to the local MCP server, which has the actual credentials and access.</p>
+
+<h2>Who Created MCP?</h2>
+
+<p>MCP was created by <strong>Anthropic</strong> (the company behind Claude) and released as an open standard in late 2024. It was quickly adopted by major AI tool vendors including Cursor, GitHub Copilot, and others.</p>
+
+<p>The fact that it's an open standard matters — anyone can build an MCP server, and any AI client can implement MCP support. This avoids lock-in and creates a healthy ecosystem.</p>
+
+<h2>Real-World Example: MCP in a Developer Workflow</h2>
+
+<p>Here's a concrete example. You're debugging a bug in your Next.js app. With MCP set up, you can tell Claude Desktop:</p>
+
+<p><em>"The login page is throwing a 500 error. Look at the relevant code and check the database schema to understand what's happening."</em></p>
+
+<p>Claude then:</p>
+<ol>
+<li>Uses the <strong>filesystem MCP server</strong> to read your login route files</li>
+<li>Uses the <strong>PostgreSQL MCP server</strong> to inspect your users table schema</li>
+<li>Uses the <strong>GitHub MCP server</strong> to check recent commits to the auth code</li>
+<li>Synthesizes all this context to give you a precise diagnosis</li>
+</ol>
+
+<p>None of this required you to copy and paste anything. The AI had structured, accurate access to all relevant context.</p>
+
+<h2>How Many MCP Servers Exist?</h2>
+
+<p>As of mid-2026, there are over 500 MCP servers available covering virtually every category of developer tool: databases, cloud providers, SaaS apps, browser automation, AI frameworks, monitoring tools, and more.</p>
+
+<p>You can browse the full catalog at <a href="/">MyMCPTools</a> — we track every server with installation instructions, supported clients, and related tools.</p>
+
+<h2>Getting Started with MCP</h2>
+
+<p>Starting with MCP is easier than most people expect:</p>
+
+<ol>
+<li><strong>Pick an AI client that supports MCP</strong> — Claude Desktop and Cursor are the most popular starting points</li>
+<li><strong>Install 1-3 MCP servers</strong> — Start with the filesystem server, then add whatever else you need</li>
+<li><strong>Add them to your client's config file</strong> — Usually a JSON config with the server command and arguments</li>
+<li><strong>Test it</strong> — Ask your AI to read a file or query your database</li>
+</ol>
+
+<p>Each server page on MyMCPTools includes step-by-step installation instructions for Claude Desktop, Cursor, and VS Code.</p>
+
+<h2>Is MCP the Future?</h2>
+
+<p>MCP is already the present for serious AI-powered developers. As AI clients become more capable and the server ecosystem matures, MCP will become the standard integration layer between AI and software systems — much like REST APIs standardized web service communication.</p>
+
+<p>If you're building with AI today, MCP is worth understanding. Start with the <a href="/blog/getting-started-with-mcp">Getting Started guide</a> or browse the <a href="/">most popular MCP servers</a>.</p>
+
+<p><strong>Related guides:</strong></p>
+<ul>
+<li><a href="/blog/getting-started-with-mcp">Getting Started with MCP Servers</a></li>
+<li><a href="/blog/mcp-vs-api-integrations">MCP vs API Integrations: What's the Difference?</a></li>
+<li><a href="/blog/best-mcp-servers-for-developers">Best MCP Servers for Developers</a></li>
+</ul>
+    `.trim(),
+  },
+  {
+    slug: "best-mcp-servers-for-database",
+    title: "Best Database MCP Servers 2026: PostgreSQL, MySQL, SQLite & More",
+    description: "The top MCP servers for database access. Connect Claude, Cursor, or VS Code to PostgreSQL, MySQL, SQLite, MongoDB, Redis, and more with these database MCP integrations.",
+    date: "2026-05-02",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "7 min read",
+    keywords: ["database mcp server", "postgresql mcp", "mysql mcp server", "sql mcp server", "mongodb mcp", "redis mcp", "database ai integration"],
+    relatedServerSlugs: ["postgresql", "sqlite", "mongodb", "redis", "supabase", "neon", "clickhouse", "duckdb-mcp", "redshift"],
+    content: `
+<p>Database access is arguably the most powerful thing you can give an AI assistant. When your AI can inspect your actual schema, run queries, and understand your data model, it stops giving generic advice and starts giving precise, accurate help.</p>
+
+<p>Here are the best database MCP servers for 2026, organized by database type.</p>
+
+<h2>Why Database MCP Servers Are Game-Changers</h2>
+
+<p>Without database access, an AI assistant guesses at your schema when writing queries. It doesn't know your column names, relationships, or the actual data shape. With a database MCP server, it knows exactly what's there — and it can query it to verify assumptions.</p>
+
+<p>Common workflows that become dramatically better with database MCP:</p>
+<ul>
+<li>Writing complex SQL queries with the correct column names and types</li>
+<li>Debugging data issues by querying actual records</li>
+<li>Understanding a new codebase by exploring the data model</li>
+<li>Data analysis and aggregation tasks</li>
+<li>Schema migration planning</li>
+</ul>
+
+<h2>PostgreSQL MCP Server — The Gold Standard</h2>
+
+<p>PostgreSQL is the most popular MCP database server, and for good reason — it's the most widely deployed production database in the developer ecosystem.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Full schema introspection — tables, columns, types, constraints, indexes, foreign keys</li>
+<li>Read-only query execution with row limits (safe by default)</li>
+<li>Table statistics and query planning information</li>
+<li>Support for multiple database connections</li>
+<li>Works with Supabase, Neon, RDS, and any standard PostgreSQL endpoint</li>
+</ul>
+
+<p><strong>Installation:</strong></p>
+<pre><code>npx @modelcontextprotocol/server-postgres postgresql://localhost/mydb</code></pre>
+
+<p><strong>Best for:</strong> Backend developers, data engineers, anyone running PostgreSQL in production or locally.</p>
+
+<h2>SQLite MCP Server — Lightweight & Fast</h2>
+
+<p>SQLite is more ubiquitous than most developers realize. It powers mobile apps, local-first tools, Electron applications, and countless embedded systems. The SQLite MCP server gives your AI access without any external database process.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Schema browsing for .db files anywhere on your filesystem</li>
+<li>Query execution with sandboxed read access</li>
+<li>Support for multiple database files simultaneously</li>
+<li>Works with any SQLite database — no server required</li>
+</ul>
+
+<p><strong>Installation:</strong></p>
+<pre><code>npx @modelcontextprotocol/server-sqlite /path/to/your.db</code></pre>
+
+<p><strong>Best for:</strong> Mobile developers (React Native, Flutter), Electron app developers, prototyping with local databases.</p>
+
+<h2>MongoDB MCP Server — Document Databases</h2>
+
+<p>For teams using MongoDB, the MongoDB MCP server provides access to collections, documents, and aggregation pipelines. It understands the document model, not just SQL concepts.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Collection schema inference (MongoDB is schemaless, but patterns emerge from documents)</li>
+<li>Query execution with find, aggregate, and count operations</li>
+<li>Index inspection</li>
+<li>Atlas and self-hosted MongoDB support</li>
+</ul>
+
+<p><strong>Best for:</strong> Applications using MongoDB Atlas, self-hosted MongoDB, or Mongoose ODM.</p>
+
+<h2>Redis MCP Server — Caching & Key-Value Access</h2>
+
+<p>Redis is often used as a cache, session store, or message broker — but understanding what's in Redis during debugging can be tricky without direct access. The Redis MCP server solves this.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Key browsing and pattern matching</li>
+<li>Value inspection (strings, lists, sets, hashes, sorted sets)</li>
+<li>TTL inspection for cache debugging</li>
+<li>Read-only by default (prevents accidental writes)</li>
+</ul>
+
+<p><strong>Best for:</strong> Debugging cache issues, understanding session state, inspecting queue contents.</p>
+
+<h2>Supabase MCP Server — Postgres + Auth + Storage</h2>
+
+<p>Supabase combines PostgreSQL with authentication, file storage, and realtime capabilities. Its MCP server gives your AI access to all layers — not just the database.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Full PostgreSQL access via Supabase client</li>
+<li>Auth schema introspection (users, sessions, policies)</li>
+<li>Storage bucket contents</li>
+<li>Row Level Security policy inspection</li>
+<li>Edge Function listing</li>
+</ul>
+
+<p><strong>Best for:</strong> Developers building on Supabase who want AI that understands the entire stack, not just the database layer.</p>
+
+<h2>Neon MCP Server — Serverless Postgres</h2>
+
+<p>Neon is the leading serverless PostgreSQL platform. Its MCP server supports Neon's branching model — useful for working with development, staging, and production database branches.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>PostgreSQL access with Neon-specific features</li>
+<li>Branch awareness — query specific database branches</li>
+<li>Auto-suspend compatible (handles serverless cold starts)</li>
+<li>Connection pooling support</li>
+</ul>
+
+<p><strong>Best for:</strong> Teams using Neon for serverless database infrastructure, especially with frequent branch-based development workflows.</p>
+
+<h2>ClickHouse MCP Server — Analytics at Scale</h2>
+
+<p>ClickHouse is the go-to for high-volume analytics workloads. Its MCP server handles the columnar data model and ClickHouse's extended SQL dialect.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Table and column schema inspection</li>
+<li>Analytical query execution</li>
+<li>Table statistics and partition information</li>
+<li>ClickHouse Cloud and self-hosted support</li>
+</ul>
+
+<p><strong>Best for:</strong> Data engineers and analysts running ClickHouse for event analytics, product analytics, or log aggregation.</p>
+
+<h2>DuckDB MCP Server — In-Process Analytics</h2>
+
+<p>DuckDB is the SQLite of analytics — fast, embedded, and file-based. It's increasingly popular for local data analysis, especially with Parquet and CSV files. The DuckDB MCP server is ideal for data science workflows.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>SQL analytics on local files (Parquet, CSV, JSON)</li>
+<li>In-memory database support</li>
+<li>Full analytical SQL including window functions</li>
+<li>Blazing fast for local data analysis</li>
+</ul>
+
+<p><strong>Best for:</strong> Data scientists, analysts, and anyone doing local data analysis with Parquet/CSV files.</p>
+
+<h2>Choosing the Right Database MCP Server</h2>
+
+<table>
+<tr><th>Database</th><th>Best Use Case</th><th>Hosted Options</th></tr>
+<tr><td>PostgreSQL</td><td>Most production apps</td><td>Supabase, Neon, RDS, Heroku</td></tr>
+<tr><td>SQLite</td><td>Local/embedded apps</td><td>Local only</td></tr>
+<tr><td>MongoDB</td><td>Document data models</td><td>Atlas, self-hosted</td></tr>
+<tr><td>Redis</td><td>Cache debugging</td><td>Redis Cloud, Upstash</td></tr>
+<tr><td>ClickHouse</td><td>Event analytics</td><td>ClickHouse Cloud</td></tr>
+<tr><td>DuckDB</td><td>Local data analysis</td><td>Local only</td></tr>
+</table>
+
+<p><strong>Related guides:</strong></p>
+<ul>
+<li><a href="/blog/best-mcp-servers-for-data-engineering">Best MCP Servers for Data Engineering</a></li>
+<li><a href="/blog/best-mcp-servers-for-developers">Best MCP Servers for Developers</a></li>
+<li><a href="/blog/what-is-model-context-protocol">What is Model Context Protocol?</a></li>
+</ul>
+    `.trim(),
+  },
+  {
+    slug: "top-mcp-servers-2026",
+    title: "Top 10 Most Popular MCP Servers in 2026 (By Use & GitHub Stars)",
+    description: "The most widely-used MCP servers in 2026, ranked by popularity, GitHub stars, and real-world adoption. These are the servers developers install first.",
+    date: "2026-05-02",
+    author: "MyMCPTools Team",
+    category: "Lists",
+    readingTime: "6 min read",
+    keywords: ["most popular mcp servers", "top mcp servers 2026", "best mcp tools", "popular model context protocol servers", "mcp server rankings"],
+    relatedServerSlugs: ["filesystem", "github", "postgresql", "brave-search", "puppeteer", "playwright", "slack", "notion", "memory", "fetch"],
+    content: `
+<p>With over 500 MCP servers in the ecosystem, which ones are developers actually using? We analyzed GitHub stars, installation patterns, and community discussion to identify the ten most popular MCP servers heading into mid-2026.</p>
+
+<h2>1. Filesystem MCP Server — 15,000+ GitHub Stars</h2>
+
+<p>The filesystem server is the most universally installed MCP server. It's the first one most developers add, and it remains essential across virtually every workflow — from coding to writing to research.</p>
+
+<p><strong>Why it's #1:</strong> File access is the foundation of every AI-assisted coding workflow. No server does more to justify the MCP setup investment immediately.</p>
+<ul>
+<li>Read/write files with proper encoding</li>
+<li>Directory navigation and search</li>
+<li>Configurable access boundaries</li>
+<li>Maintained by Anthropic (official)</li>
+</ul>
+
+<h2>2. GitHub MCP Server — 12,000+ Stars</h2>
+
+<p>GitHub's MCP server rapidly became one of the most starred in the ecosystem after GitHub released the official version in early 2025. For developers, it's the second installation after filesystem.</p>
+
+<p><strong>Why it's #2:</strong> Most software development work involves GitHub in some way. PRs, issues, code search, and repo browsing are daily activities that MCP unlocks for AI.</p>
+<ul>
+<li>Issue and PR management</li>
+<li>Code search across repositories</li>
+<li>Commit history and diffs</li>
+<li>Official GitHub-maintained server</li>
+</ul>
+
+<h2>3. PostgreSQL MCP Server — 8,500+ Stars</h2>
+
+<p>The PostgreSQL MCP server is the most popular database integration by far. Its schema introspection capability — letting AI understand your actual data model — is transformative for backend development.</p>
+
+<p><strong>Why it's #3:</strong> PostgreSQL is the dominant production database for web applications. Giving AI accurate schema context for query writing is enormously practical.</p>
+
+<h2>4. Brave Search MCP Server — 7,200+ Stars</h2>
+
+<p>Web search is one of the most frequent things people want AI to do. The Brave Search server delivers current, unfiltered search results without the rate limiting and terms-of-service concerns of scraping Google.</p>
+
+<p><strong>Why it's #4:</strong> Information that post-dates the training cutoff — docs, changelogs, error messages — requires real web search. Brave Search delivers this reliably.</p>
+
+<h2>5. Puppeteer MCP Server — 6,800+ Stars</h2>
+
+<p>Browser automation is a power-user capability that Puppeteer MCP makes accessible. From automated testing to web scraping to UI debugging, it covers a wide range of workflows.</p>
+
+<p><strong>Why it's #5:</strong> Browser control is a uniquely powerful capability that few other tools provide. The ability to "show me what the page looks like" is genuinely novel.</p>
+
+<h2>6. Playwright MCP Server — 6,300+ Stars</h2>
+
+<p>Playwright's MCP server is close behind Puppeteer in popularity, and preferred by many testing-focused developers for its more modern API and multi-browser support.</p>
+
+<p><strong>Why it's #6:</strong> Playwright is the current standard for end-to-end browser testing. Its MCP server lets AI write, run, and debug Playwright tests directly.</p>
+
+<h2>7. Slack MCP Server — 5,900+ Stars</h2>
+
+<p>For team-based developers, Slack holds vast amounts of context that never makes it into code comments or documentation. The Slack MCP server mines that institutional knowledge.</p>
+
+<p><strong>Why it's #7:</strong> "Why was this decision made?" is one of the most common developer questions. The answer is often in Slack, and now AI can find it.</p>
+
+<h2>8. Notion MCP Server — 5,200+ Stars</h2>
+
+<p>Notion has become the central hub for team knowledge at many companies. Its MCP server gives AI access to that documentation layer, enabling context-aware assistance that actually knows your team's processes.</p>
+
+<p><strong>Why it's #8:</strong> Documentation lives in Notion for millions of teams. AI that can read your runbooks and wikis is dramatically more useful than AI that has to ask you for them.</p>
+
+<h2>9. Memory MCP Server — 4,800+ Stars</h2>
+
+<p>The Memory MCP server (from Anthropic) provides persistent, cross-conversation memory through a knowledge graph. It lets AI assistants remember facts, preferences, and context across sessions.</p>
+
+<p><strong>Why it's #9:</strong> AI forgetting context between sessions is a major usability limitation. Memory MCP solves this with structured, searchable persistence.</p>
+
+<h2>10. Fetch MCP Server — 4,500+ Stars</h2>
+
+<p>Sometimes you just need your AI to fetch a URL and read it — documentation, API responses, web pages. The Fetch server is the simplest possible web access mechanism, and its simplicity is exactly why it's so widely used.</p>
+
+<p><strong>Why it's #10:</strong> The lowest barrier to web access. No API key required, works on any URL, and handles HTML-to-markdown conversion automatically.</p>
+
+<h2>Honorable Mentions</h2>
+
+<ul>
+<li><strong>SQLite MCP Server</strong> — The lightweight alternative to PostgreSQL for local databases</li>
+<li><strong>Supabase MCP Server</strong> — Rapid adoption driven by Supabase's developer popularity</li>
+<li><strong>Firecrawl MCP Server</strong> — For structured web scraping at scale</li>
+<li><strong>EXA MCP Server</strong> — AI-optimized semantic web search</li>
+<li><strong>Linear MCP Server</strong> — Popular in engineering-forward teams</li>
+</ul>
+
+<h2>The Pattern: What Makes a Popular MCP Server?</h2>
+
+<p>Looking at the top 10, a few patterns emerge:</p>
+<ol>
+<li><strong>Official servers win</strong> — Servers maintained by the original company (GitHub, Anthropic) get more trust and stars</li>
+<li><strong>Universal applicability</strong> — Servers useful to almost every developer (filesystem, search) dominate over niche tools</li>
+<li><strong>Instant ROI</strong> — Servers where the benefit is immediately obvious attract faster adoption</li>
+<li><strong>Safety-first defaults</strong> — Read-only defaults for dangerous capabilities (database writes, file deletion) reduce hesitation to install</li>
+</ol>
+
+<p><a href="/">Browse the full MyMCPTools catalog</a> — we track all 500+ MCP servers with rankings, installation guides, and real-world use cases.</p>
+
+<p><strong>Related guides:</strong></p>
+<ul>
+<li><a href="/blog/what-is-model-context-protocol">What is Model Context Protocol?</a></li>
+<li><a href="/blog/getting-started-with-mcp">Getting Started with MCP Servers</a></li>
+<li><a href="/blog/best-mcp-servers-for-developers">Best MCP Servers for Developers</a></li>
+</ul>
+    `.trim(),
+  },
+  {
+    slug: "best-mcp-servers-for-testing",
+    title: "Best MCP Servers for Software Testing & QA in 2026",
+    description: "Top MCP servers for QA engineers and developers. Playwright, Cypress, Jest, Pytest, K6, Stagehand — AI-powered testing workflows that actually work.",
+    date: "2026-05-02",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "7 min read",
+    keywords: ["mcp servers for testing", "playwright mcp server", "testing mcp tools", "qa mcp servers", "automated testing ai", "cypress mcp", "jest mcp"],
+    relatedServerSlugs: ["playwright", "puppeteer", "cypress", "jest", "vitest", "pytest", "k6", "sentry", "stagehand"],
+    content: `
+<p>Software testing is one of the areas where AI assistance has the highest leverage — and the most room to go wrong. Good test coverage is hard to write. Bad tests are worse than no tests.</p>
+
+<p>MCP servers give AI assistants direct access to your testing tools, letting them run tests, analyze failures, and write targeted coverage with actual knowledge of your codebase. Here's what's worth using.</p>
+
+<h2>Why MCP Changes AI-Assisted Testing</h2>
+
+<p>Without MCP, asking AI to "write tests for this function" produces generic boilerplate. It doesn't know:</p>
+<ul>
+<li>What testing framework you're using</li>
+<li>What your existing tests look like</li>
+<li>Whether the tests it writes actually pass</li>
+<li>What real failures look like in your CI pipeline</li>
+</ul>
+
+<p>With the right MCP servers, AI can run your actual tests, see the output, and iterate until they pass. That's the difference between AI that suggests code and AI that verifies it works.</p>
+
+<h2>Playwright MCP Server — Best for Browser Testing</h2>
+
+<p>Playwright has become the dominant end-to-end browser testing framework, and its MCP server is exceptionally well-implemented. It gives AI both the ability to control browsers interactively AND to write and run Playwright test files.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Navigate pages, click elements, fill forms through AI instructions</li>
+<li>Take screenshots at any point during test execution</li>
+<li>Write and run Playwright test files</li>
+<li>Access browser console logs and network requests</li>
+<li>Multi-browser support (Chromium, Firefox, WebKit)</li>
+<li>Generate locators from page snapshots</li>
+</ul>
+
+<p><strong>Killer workflow:</strong> "Open our checkout flow, go through it as a user, and write a Playwright test covering the happy path and the card decline scenario."</p>
+
+<p><strong>Best for:</strong> Frontend developers, QA engineers, and full-stack developers who need reliable E2E test coverage.</p>
+
+<h2>Puppeteer MCP Server — Flexible Browser Automation</h2>
+
+<p>Puppeteer remains popular alongside Playwright, particularly for web scraping and visual regression testing. Its MCP server is battle-tested and widely used.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Browser navigation and interaction</li>
+<li>Screenshot and PDF generation</li>
+<li>Network interception and mocking</li>
+<li>JavaScript execution in page context</li>
+<li>Performance metrics collection</li>
+</ul>
+
+<p><strong>Best for:</strong> Teams already using Puppeteer, visual regression testing, and web scraping as part of testing workflows.</p>
+
+<h2>Stagehand MCP Server — AI-Native Browser Testing</h2>
+
+<p>Stagehand is newer but genuinely interesting — it's a browser automation framework built specifically for AI. Instead of writing XPath selectors or CSS queries, you describe what you want in plain English, and Stagehand figures out the mechanics.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Natural language browser instructions ("click the submit button")</li>
+<li>Resilient selectors that adapt to UI changes</li>
+<li>Visual understanding of page structure</li>
+<li>Works with Claude and other AI providers</li>
+</ul>
+
+<p><strong>Best for:</strong> Teams that want to write tests in plain English rather than CSS selectors. Particularly useful when UIs change frequently.</p>
+
+<h2>Jest MCP Server — JavaScript Unit Testing</h2>
+
+<p>Jest is the most popular JavaScript testing framework. Its MCP server lets AI run your test suite, see which tests fail, and write coverage targeting specific gaps.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Run full test suites or specific test files</li>
+<li>Get structured output — which tests passed, which failed, why</li>
+<li>Coverage reporting to identify untested code paths</li>
+<li>Snapshot test management</li>
+<li>Watch mode integration</li>
+</ul>
+
+<p><strong>Killer workflow:</strong> "Run our tests, find the failing ones, understand why they're failing, and fix them."</p>
+
+<p><strong>Best for:</strong> React, Node.js, and any JavaScript/TypeScript project using Jest (which is most of them).</p>
+
+<h2>Vitest MCP Server — Modern JS Testing</h2>
+
+<p>Vitest is the modern alternative to Jest — faster, ESM-native, and deeply integrated with Vite. For projects using Vite-based stacks (Vue, SvelteKit, Nuxt), Vitest is often the better choice.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Fast test execution with Vite's dev server</li>
+<li>TypeScript support without additional configuration</li>
+<li>Compatible with Jest API for easy migration</li>
+<li>Built-in coverage with v8 or Istanbul</li>
+</ul>
+
+<p><strong>Best for:</strong> Vite-based projects, modern Vue/React apps, and anyone migrating from Jest who wants better performance.</p>
+
+<h2>Pytest MCP Server — Python Testing</h2>
+
+<p>For Python projects, pytest is the standard. Its MCP server provides the same feedback loop as Jest — run tests, see failures, iterate — but for the Python ecosystem.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Run test suites with configurable verbosity</li>
+<li>Structured failure output with tracebacks</li>
+<li>Coverage reporting with pytest-cov</li>
+<li>Fixture introspection</li>
+<li>Plugin-aware (works with pytest-django, pytest-asyncio, etc.)</li>
+</ul>
+
+<p><strong>Best for:</strong> Python developers working on Django, FastAPI, Flask apps, or data science projects with test coverage requirements.</p>
+
+<h2>K6 MCP Server — Load Testing</h2>
+
+<p>K6 is the modern load testing tool. Its MCP server lets AI design, run, and analyze load tests — which is particularly useful because load test scripts are notoriously hard to write correctly without domain expertise.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Design load test scenarios from API specs or existing code</li>
+<li>Run tests with configurable VU counts and durations</li>
+<li>Analyze results — p95/p99 latency, error rates, thresholds</li>
+<li>Generate Grafana-compatible outputs</li>
+</ul>
+
+<p><strong>Best for:</strong> Engineers who need to validate API performance before launches or infrastructure changes.</p>
+
+<h2>Sentry MCP Server — Learn from Real Failures</h2>
+
+<p>Sentry is slightly different from the others — it's error monitoring, not testing infrastructure. But it belongs on this list because real production failures are the best source of test cases to write.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Query recent errors and exceptions</li>
+<li>Get stack traces with source context</li>
+<li>Filter by environment, release, or user</li>
+<li>Access event replay data (where available)</li>
+</ul>
+
+<p><strong>Killer workflow:</strong> "Show me the top 5 errors from this week, then write regression tests that would catch each one."</p>
+
+<p><strong>Best for:</strong> Every team with Sentry in production. Closing the loop from production errors to regression tests is one of the highest-value testing activities.</p>
+
+<h2>The Testing MCP Stack</h2>
+
+<ul>
+<li><strong>Frontend teams:</strong> Playwright MCP + Jest/Vitest MCP + Sentry MCP</li>
+<li><strong>Backend Python teams:</strong> Pytest MCP + K6 MCP + Sentry MCP</li>
+<li><strong>Full-stack JavaScript:</strong> Playwright MCP + Jest MCP + Sentry MCP</li>
+<li><strong>QA-heavy teams:</strong> Stagehand MCP + Playwright MCP + K6 MCP</li>
+</ul>
+
+<p><strong>Related guides:</strong></p>
+<ul>
+<li><a href="/blog/best-mcp-servers-for-developers">Best MCP Servers for Developers</a></li>
+<li><a href="/blog/best-mcp-servers-for-devops">Best MCP Servers for DevOps</a></li>
+<li><a href="/blog/best-mcp-servers-for-security">Best MCP Servers for Security</a></li>
+</ul>
+    `.trim(),
+  },
 ];
 
 export function getBlogPostBySlug(slug: string): BlogPost | undefined {
