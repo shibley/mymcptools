@@ -5749,6 +5749,433 @@ gh pr view 123 --json body,files | claude-code "Review this PR and suggest impro
 </ul>
     `.trim(),
   },
+  {
+    slug: "best-mcp-servers-for-aws",
+    title: "Best MCP Servers for AWS Developers in 2026",
+    description: "Level up your AWS workflows with these top MCP servers. From S3 and Lambda to Bedrock and CloudWatch, these Model Context Protocol servers give your AI assistant direct access to your AWS infrastructure.",
+    date: "2026-05-03",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "9 min read",
+    keywords: ["mcp servers for aws", "aws mcp server", "aws mcp tools", "model context protocol aws", "best mcp servers 2026"],
+    relatedServerSlugs: ["aws", "aws-s3", "aws-lambda", "aws-ec2", "aws-bedrock", "awscli-mcp", "datadog", "grafana"],
+    content: `
+<p>AWS is the backbone of most modern cloud infrastructure — but wrangling S3 buckets, Lambda functions, EC2 instances, and CloudWatch logs across dozens of services is genuinely painful. Context-switching between the AWS console, CLI, and your AI assistant wastes hours every week.</p>
+
+<p>MCP servers solve this. By giving your AI assistant structured, real-time access to your AWS resources, you can query infrastructure state, debug Lambda errors, inspect S3 contents, and manage deployments — all from within your AI chat without leaving your workflow.</p>
+
+<p>Here are the best MCP servers for AWS developers in 2026.</p>
+
+<h2>1. AWS MCP Server — Core Infrastructure Access</h2>
+
+<p>The foundational AWS MCP server provides broad access to AWS services through a unified interface. It wraps the AWS SDK and exposes your infrastructure as queryable tools your AI can use directly.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Query EC2 instances, security groups, and VPC configurations</li>
+<li>List and inspect CloudFormation stacks and resources</li>
+<li>Access IAM roles, policies, and permission boundaries</li>
+<li>Read CloudWatch metrics and alarm states</li>
+<li>Inspect ECS clusters, services, and task definitions</li>
+</ul>
+
+<p><strong>Best for:</strong> Platform engineers and DevOps teams managing multi-service AWS environments. Instead of memorizing CLI flags, ask your AI "which EC2 instances are in the us-east-1 prod VPC and what are their security groups?"</p>
+
+<h2>2. AWS S3 MCP Server — Storage Intelligence</h2>
+
+<p>S3 is everywhere — static assets, data lakes, backups, ML training sets, deployment artifacts. The AWS S3 MCP server gives your AI assistant full read access to bucket contents, metadata, and configurations.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>List buckets and objects with prefix/filter support</li>
+<li>Read file contents directly (text files, JSON configs, CSV data)</li>
+<li>Inspect bucket policies, ACLs, and versioning settings</li>
+<li>Check storage class distribution and object sizes</li>
+<li>Analyze bucket access logs</li>
+</ul>
+
+<p><strong>Best for:</strong> Data engineers debugging pipeline failures ("what's in the failed-jobs prefix of our ETL bucket?"), devs reviewing deployment artifacts, and anyone who's ever had to click through 15 S3 console pages to find a config file.</p>
+
+<h2>3. AWS Lambda MCP Server — Serverless Debugging</h2>
+
+<p>Lambda cold starts, timeouts, and cryptic error logs are every serverless developer's nightmare. The AWS Lambda MCP server gives your AI assistant direct access to function configs, invocation logs, and runtime metrics — making debugging dramatically faster.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>List Lambda functions with runtime, memory, and timeout settings</li>
+<li>Fetch recent CloudWatch log streams for any function</li>
+<li>Inspect environment variables and layer configurations</li>
+<li>Check concurrency limits and throttling events</li>
+<li>View recent invocation error rates and durations</li>
+</ul>
+
+<p><strong>Best for:</strong> Serverless developers who spend too much time in CloudWatch Logs. Ask your AI "show me the last 20 error logs for the payment-processor Lambda" and get an instant summary with root cause analysis.</p>
+
+<h2>4. AWS Bedrock MCP Server — AI on AWS</h2>
+
+<p>If you're building AI applications on AWS, the Bedrock MCP server is essential. It bridges your development AI assistant with your Bedrock models, knowledge bases, and agents — letting you query, test, and manage Bedrock resources conversationally.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>List available foundation models and their capabilities</li>
+<li>Query Bedrock Knowledge Bases with natural language</li>
+<li>Inspect Bedrock Agent configurations and action groups</li>
+<li>Test prompts against different models interactively</li>
+<li>Monitor model invocation metrics and costs</li>
+</ul>
+
+<p><strong>Best for:</strong> Teams building RAG systems, AI agents, or fine-tuned models on AWS Bedrock. Dramatically speeds up the "why is my knowledge base returning the wrong context?" debugging cycle.</p>
+
+<h2>5. AWS CLI MCP Server — Full AWS API Surface</h2>
+
+<p>The AWS CLI MCP server takes a different approach: instead of wrapping specific services, it exposes the entire AWS CLI as MCP tools. If the AWS CLI can do it, this server can too.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Access every AWS service and subcommand via natural language</li>
+<li>Chain multiple CLI commands in a single AI query</li>
+<li>Handle complex filters and output formatting automatically</li>
+<li>Works with named profiles and assumed roles</li>
+<li>Supports all regions and partitions</li>
+</ul>
+
+<p><strong>Best for:</strong> Power users who know the AWS CLI well but want to speed up complex multi-step operations. Also excellent for learning — ask your AI to translate your request into the exact CLI command and explain each flag.</p>
+
+<h2>6. Datadog MCP Server — AWS Observability</h2>
+
+<p>Most serious AWS environments run Datadog for monitoring. The Datadog MCP server connects your AI assistant to your observability stack — metrics, logs, APM traces, and dashboards.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Query metrics with full PromQL/DQL support</li>
+<li>Search and filter logs across your AWS services</li>
+<li>Access APM traces and service dependency maps</li>
+<li>Read alert states and incident timelines</li>
+<li>Correlate infrastructure events with application errors</li>
+</ul>
+
+<p><strong>Best for:</strong> SREs and platform engineers during incidents. Instead of tab-switching between Datadog dashboards, ask "what changed in our API latency 30 minutes ago and which Lambda functions spiked?" and get a correlated answer.</p>
+
+<h2>7. Grafana MCP Server — Custom Dashboards and Loki Logs</h2>
+
+<p>If you use Grafana for metrics visualization and Loki for log aggregation, the Grafana MCP server gives your AI assistant access to your dashboards and log streams.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Query Grafana dashboards and panels programmatically</li>
+<li>Search Loki logs with LogQL queries</li>
+<li>Access Prometheus metrics via PromQL</li>
+<li>Read alert rules and notification channels</li>
+<li>Inspect data source configurations</li>
+</ul>
+
+<p><strong>Best for:</strong> Teams running self-managed Grafana stacks alongside AWS services. Great complement to the AWS MCP server for teams who prefer open-source observability over Datadog.</p>
+
+<h2>Building Your AWS MCP Stack</h2>
+
+<p>The most impactful combination depends on your role:</p>
+
+<ul>
+<li><strong>Backend developers:</strong> AWS S3 + AWS Lambda → instant access to your code's environment and logs</li>
+<li><strong>Platform/DevOps:</strong> AWS (core) + Datadog → infrastructure state + observability in one context window</li>
+<li><strong>Data engineers:</strong> AWS S3 + AWS Lambda + Grafana → pipeline debugging across storage, compute, and metrics</li>
+<li><strong>AI/ML engineers:</strong> AWS Bedrock + AWS S3 → model management + training data access</li>
+</ul>
+
+<p>Start with the two servers that touch your most painful daily workflows. Add more once you see how much time the first pair saves.</p>
+
+<p><strong>Related guides:</strong></p>
+<ul>
+<li><a href="/blog/best-mcp-servers-for-devops">Best MCP Servers for DevOps</a></li>
+<li><a href="/blog/best-mcp-servers-for-data-engineering">Best MCP Servers for Data Engineering</a></li>
+<li><a href="/blog/best-mcp-servers-for-security">Best MCP Servers for Security</a></li>
+</ul>
+    `.trim(),
+  },
+  {
+    slug: "best-mcp-servers-for-python-developers",
+    title: "Best MCP Servers for Python Developers in 2026",
+    description: "The top MCP servers for Python developers, data scientists, and ML engineers. From Jupyter notebooks to package management, these Model Context Protocol servers supercharge your Python AI workflows.",
+    date: "2026-05-03",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "8 min read",
+    keywords: ["mcp servers for python", "python mcp server", "mcp tools python", "jupyter mcp server", "best mcp servers python developers"],
+    relatedServerSlugs: ["jupyter", "filesystem", "github", "postgres", "sqlite", "brave-search", "docker"],
+    content: `
+<p>Python is the language of data science, machine learning, and automation — and Python developers spend more time wrestling with environment management, notebook state, and database queries than almost any other language community.</p>
+
+<p>MCP servers can dramatically accelerate Python workflows. By giving your AI assistant direct access to your notebooks, files, databases, and package environments, you eliminate most of the context-switching that kills productivity.</p>
+
+<p>Here are the best MCP servers for Python developers in 2026.</p>
+
+<h2>1. Jupyter MCP Server — Notebooks with AI Context</h2>
+
+<p>Jupyter notebooks are how most data scientists think — but they're opaque to AI assistants by default. The Jupyter MCP server gives your AI full visibility into your running notebook state: cell outputs, variable values, dataframe contents, and execution history.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read notebook cell code and outputs (including matplotlib figures)</li>
+<li>Query in-memory Python variables and their types/shapes</li>
+<li>Execute code cells and retrieve results</li>
+<li>Access kernel state: imported libraries, defined functions, loaded data</li>
+<li>Navigate between notebook files in a project</li>
+</ul>
+
+<p><strong>Best for:</strong> Data scientists who want AI assistance grounded in their actual notebook state — not a generic answer that ignores your specific dataframe schema. Ask "why is my merge producing NaN values?" and your AI actually sees the dataframe.</p>
+
+<h2>2. Filesystem MCP Server — Code and Config Access</h2>
+
+<p>Python projects span dozens of files: source modules, configs, requirements.txt, .env files, test fixtures, and data directories. The Filesystem MCP server gives your AI complete visibility into your project structure.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read any file in your project (Python source, YAML configs, JSON data)</li>
+<li>Navigate directory structures and understand project layout</li>
+<li>Access requirements.txt, pyproject.toml, and setup.cfg</li>
+<li>Read .env files and configuration templates</li>
+<li>Write new files or edit existing ones with AI assistance</li>
+</ul>
+
+<p><strong>Best for:</strong> Every Python developer. This is the foundation. Your AI can't help you debug module import errors if it can't see your directory structure and actual file contents.</p>
+
+<h2>3. GitHub MCP Server — Python Package and Repo Management</h2>
+
+<p>Most Python projects live in GitHub. The GitHub MCP server gives your AI access to your repositories, issues, pull requests, and — crucially — the ability to explore other Python packages and their source code on GitHub.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Search Python packages and libraries on GitHub by functionality</li>
+<li>Read source code of any public Python library</li>
+<li>Track issues and PRs in your own repos</li>
+<li>Compare implementations across similar libraries</li>
+<li>Search code examples and usage patterns</li>
+</ul>
+
+<p><strong>Best for:</strong> Developers evaluating libraries ("show me the actual source of how requests handles connection pooling"), debugging compatibility issues, and reviewing upstream changes in dependencies.</p>
+
+<h2>4. PostgreSQL MCP Server — Database-Driven Python</h2>
+
+<p>Python and PostgreSQL are the canonical web backend stack. The PostgreSQL MCP server lets your AI assistant introspect your database schema, write queries, and help you build data access layers — all without leaving your conversation.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Schema introspection (tables, columns, types, foreign keys, indexes)</li>
+<li>Execute read-only queries and return results</li>
+<li>Generate SQLAlchemy models from existing tables</li>
+<li>Debug slow queries with EXPLAIN analysis</li>
+<li>Check constraint violations and data quality issues</li>
+</ul>
+
+<p><strong>Best for:</strong> Django/FastAPI/Flask developers who want their AI to actually understand their data model. No more "here's my schema [paste 200 lines of SQL]" — the AI reads it directly.</p>
+
+<h2>5. SQLite MCP Server — Local Data Analysis</h2>
+
+<p>SQLite is the go-to database for local Python data analysis, prototyping, and small-scale applications. The SQLite MCP server gives your AI direct query access to any SQLite database file — perfect for exploratory data analysis.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Connect to any .db or .sqlite file on disk</li>
+<li>Execute SELECT queries and return structured results</li>
+<li>Inspect table schemas and row counts</li>
+<li>Support for pandas DataFrame conversion patterns</li>
+<li>Query multiple databases in a single conversation</li>
+</ul>
+
+<p><strong>Best for:</strong> Data scientists working with local datasets, developers building SQLite-backed Python apps, and anyone prototyping with DuckDB or similar file-based analytics databases.</p>
+
+<h2>6. Docker MCP Server — Containerized Python Environments</h2>
+
+<p>Modern Python development lives in containers. The Docker MCP server gives your AI visibility into your running containers, images, and Docker Compose environments — essential for debugging containerized Python apps.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>List running containers with status, ports, and resource usage</li>
+<li>Access container logs (stdout/stderr)</li>
+<li>Inspect Docker images and their layers</li>
+<li>Read Docker Compose file configurations</li>
+<li>Execute commands inside containers</li>
+</ul>
+
+<p><strong>Best for:</strong> Python developers using Docker for development environments, data scientists running Jupyter in containers, and teams debugging microservice interactions between Python services.</p>
+
+<h2>7. Brave Search MCP Server — Research and Documentation</h2>
+
+<p>Python's ecosystem moves fast. The Brave Search MCP server lets your AI assistant search for up-to-date Python documentation, library changelogs, Stack Overflow answers, and PEP discussions in real time.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Search the web with privacy-respecting, non-personalized results</li>
+<li>Find Python documentation and tutorials for any library</li>
+<li>Locate Stack Overflow answers for specific error messages</li>
+<li>Research package alternatives and comparisons</li>
+<li>Access recent blog posts and community discussions</li>
+</ul>
+
+<p><strong>Best for:</strong> Developers encountering unfamiliar libraries, debugging cryptic error messages, and researching best practices for new Python patterns. Much faster than tab-switching to a browser.</p>
+
+<h2>The Python Developer MCP Stack</h2>
+
+<p>Here's the recommended setup by workflow:</p>
+
+<ul>
+<li><strong>Data scientists:</strong> Jupyter + PostgreSQL/SQLite + Filesystem — complete access to notebooks, databases, and project files</li>
+<li><strong>Web developers (Django/FastAPI):</strong> Filesystem + PostgreSQL + GitHub — code, schema, and dependency management</li>
+<li><strong>ML engineers:</strong> Jupyter + Filesystem + Docker + GitHub — notebooks, environments, containers, and model repos</li>
+<li><strong>DevOps/automation:</strong> Filesystem + Docker + GitHub — scripts, containers, and CI/CD configs</li>
+</ul>
+
+<p>The Python ecosystem's strength is its breadth. MCP servers extend that breadth to your AI assistant, giving it the same full-context view of your environment that you have — minus the tab-switching overhead.</p>
+
+<p><strong>Related guides:</strong></p>
+<ul>
+<li><a href="/blog/best-mcp-servers-for-data-science">Best MCP Servers for Data Science</a></li>
+<li><a href="/blog/best-mcp-servers-for-data-engineering">Best MCP Servers for Data Engineering</a></li>
+<li><a href="/blog/best-mcp-servers-for-developers">Best MCP Servers for Developers</a></li>
+</ul>
+    `.trim(),
+  },
+  {
+    slug: "best-mcp-servers-for-google-workspace",
+    title: "Best MCP Servers for Google Workspace in 2026",
+    description: "Connect your AI assistant to Gmail, Google Drive, Sheets, Docs, and Calendar with these top MCP servers. Stop copying and pasting between Google Workspace and your AI tools.",
+    date: "2026-05-03",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "8 min read",
+    keywords: ["mcp servers for google workspace", "google drive mcp", "gmail mcp server", "google sheets mcp", "google docs mcp server", "best mcp servers google"],
+    relatedServerSlugs: ["google-drive", "gmail", "google-sheets", "google-docs", "google-tasks", "google-analytics", "google-search-console", "notion"],
+    content: `
+<p>Google Workspace is where most teams live — Gmail, Drive, Docs, Sheets, Calendar, and Slides are the connective tissue of modern work. But moving context between Google's apps and your AI assistant is tedious: copy text from a Doc, paste it in, get a response, copy it back.</p>
+
+<p>MCP servers eliminate that friction. Instead of copying and pasting, your AI assistant reads your Drive files, searches your Gmail, and queries your Sheets data directly. Here are the best MCP servers for Google Workspace users in 2026.</p>
+
+<h2>1. Google Drive MCP Server — Your Files, AI-Accessible</h2>
+
+<p>Google Drive is the hub of most team's document storage. The Google Drive MCP server gives your AI assistant direct access to your Docs, Sheets, Slides, and other Drive files — without downloading anything.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Search Drive by filename, content, or folder</li>
+<li>Read Google Docs content with formatting preserved</li>
+<li>List files in any shared drive or folder</li>
+<li>Access file metadata (owner, last modified, sharing settings)</li>
+<li>Navigate nested folder structures</li>
+</ul>
+
+<p><strong>Best for:</strong> Anyone who's said "let me find that doc" during an AI conversation. Now your AI can find it for you. Ask "summarize the Q1 strategy doc in the Executive team folder" and get an answer in seconds.</p>
+
+<h2>2. Gmail MCP Server — Inbox Intelligence</h2>
+
+<p>Gmail contains your most important context: client conversations, vendor threads, internal decisions, and follow-up chains. The Gmail MCP server gives your AI assistant read access to your inbox — turning email into queryable data.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Search Gmail by sender, subject, date range, and content</li>
+<li>Read full email threads with attachments</li>
+<li>List unread and starred messages</li>
+<li>Access labels and filter configurations</li>
+<li>Find emails matching complex criteria (e.g., "all invoices from last month")</li>
+</ul>
+
+<p><strong>Best for:</strong> Business users who need AI help drafting replies ("what has this client asked me about before?"), researchers compiling information from email threads, and anyone running email-heavy workflows like sales, support, or recruiting.</p>
+
+<h2>3. Google Sheets MCP Server — Spreadsheet Data Access</h2>
+
+<p>Spreadsheets are where a surprising amount of business data lives — financial models, CRM exports, project trackers, marketing dashboards. The Google Sheets MCP server gives your AI assistant direct access to read, query, and analyze your spreadsheet data.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read cell ranges and named ranges from any Sheet</li>
+<li>Access multiple sheets within a Workbook</li>
+<li>Query data with filter conditions</li>
+<li>Read chart configurations and pivot table settings</li>
+<li>Access formula structures (not just calculated values)</li>
+</ul>
+
+<p><strong>Best for:</strong> Finance teams who want AI to analyze their models ("what's the sensitivity to a 10% revenue decline?"), ops teams tracking KPIs in Sheets, and anyone who wants to ask questions of their spreadsheet data in natural language.</p>
+
+<h2>4. Google Docs MCP Server — Document Understanding</h2>
+
+<p>Long-form documents — PRDs, proposals, legal agreements, onboarding guides — are where detailed information lives. The Google Docs MCP server gives your AI structured access to document content, making it easy to summarize, reference, or build on existing documentation.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read full document content with heading hierarchy preserved</li>
+<li>Extract specific sections by heading</li>
+<li>Access comments and suggestions</li>
+<li>Read document revision history</li>
+<li>Navigate between linked documents</li>
+</ul>
+
+<p><strong>Best for:</strong> Product managers ("what were the open questions from the last PRD?"), legal teams reviewing contracts ("list all liability clauses in this agreement"), and writers who want AI to help them build on existing documentation.</p>
+
+<h2>5. Google Tasks MCP Server — AI-Powered Task Management</h2>
+
+<p>Google Tasks integrates natively with Gmail and Calendar, making it the lightweight task manager for Workspace-centric teams. The Google Tasks MCP server gives your AI assistant full visibility into your task lists and to-dos.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>List tasks across all task lists with due dates and priorities</li>
+<li>Search tasks by title or description</li>
+<li>Read completed tasks for activity tracking</li>
+<li>Access task subtasks and nested structures</li>
+<li>Filter by due date, list, and completion status</li>
+</ul>
+
+<p><strong>Best for:</strong> Users who manage their work primarily through Google Tasks and want AI to help them prioritize, review overdue items, and plan their day. Ask "what tasks are overdue and which are due this week?" to get an instant workload summary.</p>
+
+<h2>6. Google Analytics MCP Server — Website Performance Data</h2>
+
+<p>For teams managing websites alongside their Workspace tools, the Google Analytics MCP server bridges your GA4 data with your AI workflow — no more exporting reports to analyze in Chat.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Query GA4 dimensions and metrics with natural language</li>
+<li>Access traffic, conversion, and engagement data</li>
+<li>Compare date ranges and identify trends</li>
+<li>Read audience and segment data</li>
+<li>Analyze landing page and campaign performance</li>
+</ul>
+
+<p><strong>Best for:</strong> Marketing teams who live in Google Workspace but analyze in GA4. Now you can ask "which blog posts drove the most conversions last month?" without leaving your AI conversation.</p>
+
+<h2>7. Google Search Console MCP Server — SEO Intelligence</h2>
+
+<p>For content teams and SEOs, Google Search Console is critical — and the GSC MCP server makes that data queryable by your AI assistant. Find ranking opportunities, monitor click-through rates, and diagnose indexing issues conversationally.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Query impressions, clicks, CTR, and position by page or query</li>
+<li>Identify keywords ranking in positions 10-30 (striking distance)</li>
+<li>Check indexing coverage and crawl errors</li>
+<li>Filter by device, country, and search type</li>
+<li>Compare periods to spot traffic changes</li>
+</ul>
+
+<p><strong>Best for:</strong> Content teams doing SEO research, website owners monitoring performance, and anyone trying to understand why their organic traffic changed.</p>
+
+<h2>Building Your Google Workspace MCP Stack</h2>
+
+<p>Start with the two or three servers that touch your highest-frequency workflows:</p>
+
+<ul>
+<li><strong>Knowledge workers:</strong> Google Drive + Gmail → access to all docs and email context</li>
+<li><strong>Finance/ops teams:</strong> Google Sheets + Google Drive → spreadsheet data + document storage</li>
+<li><strong>Content/marketing:</strong> Google Analytics + Google Search Console + Google Drive → performance data + content library</li>
+<li><strong>Project-focused:</strong> Google Tasks + Google Drive + Gmail → task management + project docs + communications</li>
+</ul>
+
+<p>The goal is eliminating the copy-paste loop between Google Workspace and your AI assistant. With these MCP servers, your AI has the same view of your Workspace that you do — it can find the document, read the email thread, and query the spreadsheet without you doing the retrieval work.</p>
+
+<p><strong>Related guides:</strong></p>
+<ul>
+<li><a href="/blog/best-mcp-servers-for-productivity">Best MCP Servers for Productivity</a></li>
+<li><a href="/blog/best-mcp-servers-for-marketing">Best MCP Servers for Marketing</a></li>
+<li><a href="/blog/best-mcp-servers-for-seo">Best MCP Servers for SEO</a></li>
+</ul>
+    `.trim(),
+  },
 ];
 
 export function getBlogPostBySlug(slug: string): BlogPost | undefined {
