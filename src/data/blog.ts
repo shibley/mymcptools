@@ -4978,6 +4978,777 @@ gh pr view 123 --json body,files | claude-code "Review this PR and suggest impro
 </ul>
     `.trim(),
   },
+  {
+    slug: "best-mcp-servers-for-writers",
+    title: "Best MCP Servers for Writers and Content Creators in 2026",
+    description: "Supercharge your writing workflow with MCP servers. From research and drafting to publishing — discover the top Model Context Protocol tools for bloggers, journalists, and content creators.",
+    date: "2026-05-02",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "7 min read",
+    keywords: ["best mcp servers for writers", "mcp for content creation", "mcp writing tools", "model context protocol for bloggers"],
+    relatedServerSlugs: ["google-docs", "obsidian", "wordpress", "ghost", "fetch", "memory", "twitter", "reddit"],
+    content: `
+<p>Writing has always been about research, drafting, revision, and publishing. MCP servers accelerate every stage of that process — letting your AI assistant read your notes, fetch references, publish directly to your CMS, and even monitor how your content performs.</p>
+
+<p>Whether you're a blogger, journalist, copywriter, or content strategist, these MCP servers will transform how you create.</p>
+
+<h2>Why Writers Are Adopting MCP</h2>
+
+<p>Traditional AI writing tools work in isolation. You paste in a topic, get a draft, manually add links, then copy everything to WordPress. MCP changes that equation entirely.</p>
+
+<p>With the right MCP servers, your AI assistant can:</p>
+<ul>
+<li>Read your existing notes and drafts from Obsidian or Google Docs</li>
+<li>Fetch and summarize reference articles on the fly</li>
+<li>Publish drafts directly to WordPress or Ghost</li>
+<li>Check what people are saying on Reddit and Twitter for angles</li>
+<li>Remember your brand voice and past articles for consistency</li>
+</ul>
+
+<h2>1. Google Docs MCP — Your Draft Is Already Connected</h2>
+
+<p>If you draft in Google Docs (and most professional writers do), the Google Docs MCP server is essential. It gives your AI assistant real-time access to your documents — no copy-paste required.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read and write Google Documents directly</li>
+<li>Access your full Google Drive folder structure</li>
+<li>Create new documents, add comments, track revisions</li>
+<li>Search across all your documents for reference material</li>
+</ul>
+
+<p><strong>Use case:</strong> Ask your AI to "update the outline in my Q2 content calendar doc" or "summarize all my notes from the customer-interviews folder" — without ever opening a browser.</p>
+
+<h2>2. Obsidian MCP — Your Personal Knowledge Base, AI-Accessible</h2>
+
+<p>Obsidian has become the note-taking tool of choice for serious writers. The Obsidian MCP server bridges your private vault with your AI assistant, making every note, research snippet, and outline instantly accessible.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read and write notes in your Obsidian vault</li>
+<li>Search across all notes with full-text and tag filtering</li>
+<li>Follow backlinks and explore your knowledge graph</li>
+<li>Create new notes and append to existing ones</li>
+</ul>
+
+<p><strong>Use case:</strong> "Find all my notes tagged #interview and summarize the recurring themes" — your AI does the synthesis, you do the writing.</p>
+
+<h2>3. Fetch MCP — Research Without Leaving Your AI</h2>
+
+<p>The Fetch MCP server is one of the most universally useful tools in any writer's stack. It fetches any URL and returns readable text — stripping ads, navigation, and boilerplate to deliver clean content your AI can actually work with.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Fetch any web page as clean, readable text</li>
+<li>Convert HTML to Markdown for easy AI processing</li>
+<li>Handle JavaScript-rendered pages</li>
+<li>Respects robots.txt and rate limits</li>
+</ul>
+
+<p><strong>Use case:</strong> "Fetch this competitor article and tell me the key points I should respond to" or "summarize the top 5 results for my target keyword."</p>
+
+<h2>4. WordPress MCP — Publish Without the Dashboard</h2>
+
+<p>If WordPress powers your blog (it powers 43% of the web), the WordPress MCP server eliminates the copy-paste-and-format workflow entirely. Draft, schedule, and publish posts without opening your admin panel.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Create and edit posts with full metadata (categories, tags, featured images)</li>
+<li>Manage pages, menus, and media</li>
+<li>Query existing posts for internal linking opportunities</li>
+<li>Schedule posts for future publication</li>
+</ul>
+
+<p><strong>Use case:</strong> "Take this outline, write a 1,500-word post, add appropriate tags, and schedule it for Tuesday at 8 AM" — a complete publish workflow in one command.</p>
+
+<h2>5. Ghost MCP — For Newsletter and Premium Content Publishers</h2>
+
+<p>Ghost has emerged as the platform for independent writers monetizing through newsletters and memberships. The Ghost MCP server connects your AI directly to your Ghost instance.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Create and manage posts, pages, and newsletters</li>
+<li>Access member data and subscription metrics</li>
+<li>Schedule email newsletters</li>
+<li>Manage tags and collections</li>
+</ul>
+
+<p><strong>Best for:</strong> Independent writers running paid newsletters, journalists with subscriber audiences, content entrepreneurs building media businesses.</p>
+
+<h2>6. Reddit MCP — Real-Time Audience Research</h2>
+
+<p>The best writers understand their audience deeply. Reddit MCP gives you a window into raw, unfiltered conversations about any topic — gold for finding article angles, understanding reader pain points, and spotting trending questions.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Search and browse subreddits by topic</li>
+<li>Access post comments, upvotes, and engagement data</li>
+<li>Find top posts for any keyword or community</li>
+<li>Monitor discussions in real-time</li>
+</ul>
+
+<p><strong>Use case:</strong> Before writing a piece on remote work productivity, ask your AI to "find the top 20 complaints about remote work from r/remotework this month." Instant audience insight.</p>
+
+<h2>7. Memory MCP — Your AI Remembers Your Voice</h2>
+
+<p>Consistency is everything in content creation. The Memory MCP server lets your AI assistant build and maintain a persistent knowledge base about your brand voice, past articles, key phrases to use (and avoid), and audience personas.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Persistent key-value and knowledge graph storage</li>
+<li>Store and recall brand guidelines, tone of voice, style rules</li>
+<li>Track published content to avoid topic repetition</li>
+<li>Remember reader personas and content pillars</li>
+</ul>
+
+<p><strong>Best for:</strong> Content teams maintaining consistent brand voice across multiple writers and AI sessions.</p>
+
+<h2>8. Twitter/X MCP — Track Conversations and Trends</h2>
+
+<p>For writers covering fast-moving topics — tech, business, politics, culture — Twitter/X is still where news breaks. The Twitter MCP server lets your AI monitor relevant conversations and surface trending angles.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Search tweets by keyword, hashtag, or account</li>
+<li>Monitor trending topics in specific categories</li>
+<li>Access thread context for better understanding</li>
+<li>Track engagement metrics on content topics</li>
+</ul>
+
+<h2>Building Your Writer's MCP Stack</h2>
+
+<p>You don't need all eight of these — start with two or three that match your actual workflow:</p>
+
+<ul>
+<li><strong>Blogger workflow:</strong> Fetch MCP + WordPress MCP + Google Docs MCP</li>
+<li><strong>Newsletter creator:</strong> Obsidian MCP + Ghost MCP + Reddit MCP</li>
+<li><strong>Journalist:</strong> Fetch MCP + Twitter MCP + Memory MCP</li>
+<li><strong>Content strategist:</strong> Google Docs MCP + Reddit MCP + Memory MCP</li>
+</ul>
+
+<p>The common thread: connect your AI to where your work actually lives, and let it work with real data instead of starting from scratch every session.</p>
+
+<p><strong>Related guides:</strong></p>
+<ul>
+<li><a href="/blog/best-mcp-servers-for-content-creation">Best MCP Servers for Content Creation</a></li>
+<li><a href="/blog/best-mcp-servers-for-productivity">Best MCP Servers for Productivity</a></li>
+<li><a href="/blog/best-mcp-servers-for-marketing">Best MCP Servers for Marketing</a></li>
+</ul>
+    `.trim(),
+  },
+  {
+    slug: "best-mcp-servers-for-seo",
+    title: "Best MCP Servers for SEO Professionals in 2026",
+    description: "Automate keyword research, site audits, and rank tracking with MCP servers. The top Model Context Protocol tools for SEO specialists, content strategists, and growth marketers.",
+    date: "2026-05-02",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "8 min read",
+    keywords: ["best mcp servers for seo", "mcp for seo", "mcp seo tools", "model context protocol seo", "mcp google search console"],
+    relatedServerSlugs: ["google-search-console", "google-analytics", "brave-search", "firecrawl", "exa", "tavily", "google-ads-mcp", "crawlee"],
+    content: `
+<p>SEO is fundamentally a data problem. You need to gather signals from dozens of sources — search console, analytics, competitor sites, keyword tools — synthesize them, and act quickly. MCP servers collapse that workflow, giving your AI assistant direct access to the data sources that matter most.</p>
+
+<p>These are the MCP servers every SEO professional should know.</p>
+
+<h2>Why SEO and MCP Are a Natural Fit</h2>
+
+<p>Modern SEO requires constant data analysis: tracking rankings, auditing content gaps, monitoring backlinks, analyzing competitor strategies. Most SEOs spend hours per week just pulling data into spreadsheets before they can think about what it means.</p>
+
+<p>MCP servers change this. Instead of exporting CSVs and pasting data into AI prompts, your AI can directly query your Search Console, crawl competitor pages, and synthesize findings in seconds.</p>
+
+<h2>1. Google Search Console MCP — Your Ranking Data, Directly Accessible</h2>
+
+<p>Google Search Console is the most authoritative source of organic search data for your own site. The GSC MCP server gives your AI assistant direct access to queries, impressions, clicks, and position data — enabling natural-language analysis that would take hours to replicate manually.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Query GSC performance data by page, keyword, date range, and country</li>
+<li>Identify striking-distance keywords (positions 5-15 with high impressions)</li>
+<li>Spot indexing issues and coverage errors</li>
+<li>Compare performance across time periods</li>
+</ul>
+
+<p><strong>Power query:</strong> "Show me all pages ranking positions 5-20 with more than 100 impressions in the last 28 days" — instant striking distance analysis for content optimization.</p>
+
+<h2>2. Google Analytics MCP — Connect Traffic to Business Outcomes</h2>
+
+<p>Rankings are vanity; traffic and conversions are sanity. The Google Analytics MCP server bridges SEO data with actual business outcomes — so you can prioritize by revenue impact, not just search volume.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Query GA4 data: sessions, conversions, revenue, engagement</li>
+<li>Segment by source/medium, landing page, user type</li>
+<li>Build custom reports and cohort analyses</li>
+<li>Compare periods and track trend changes</li>
+</ul>
+
+<p><strong>Best for:</strong> Content marketers who need to prove SEO ROI, and growth teams optimizing for conversion rather than pure traffic.</p>
+
+<h2>3. Firecrawl MCP — Crawl Competitor Sites at Scale</h2>
+
+<p>Competitor content analysis is essential for SEO, but manually reading dozens of competitor pages is impractical. Firecrawl MCP can crawl entire sites and return structured, AI-readable content — enabling competitive analysis at a scale that was previously impossible without expensive tools.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Crawl entire websites and extract structured content</li>
+<li>Map site structure, internal links, and page hierarchy</li>
+<li>Extract headings, meta descriptions, and schema markup</li>
+<li>Monitor sites for content changes</li>
+</ul>
+
+<p><strong>Power use case:</strong> Crawl a competitor's blog, extract all their article titles and headings, then identify topic clusters they cover that you don't — a complete content gap analysis in minutes.</p>
+
+<h2>4. Exa MCP — Neural Search for Deep Research</h2>
+
+<p>Exa (formerly Metaphor) offers semantic search that finds conceptually related content rather than just keyword matches. For SEO research, it's invaluable for finding authoritative sources, understanding how topics are covered across the web, and identifying link-worthy content opportunities.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Semantic (concept-based) search across the entire indexed web</li>
+<li>Find similar pages to any URL</li>
+<li>Retrieve full page contents alongside search results</li>
+<li>Filter by date, domain type, and content category</li>
+</ul>
+
+<p><strong>Best for:</strong> Content gap analysis, finding authoritative sources for link building outreach, and understanding topical authority landscapes.</p>
+
+<h2>5. Brave Search MCP — Unbiased SERP Intelligence</h2>
+
+<p>Brave Search offers an independent search index not influenced by Google's personalization. For SEO professionals, this provides a less biased view of actual SERP compositions — useful for understanding what content types Google is ranking for specific queries.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Real-time search results from an independent index</li>
+<li>Access AI-generated search summaries (AI Overviews equivalent)</li>
+<li>News search and freshness-prioritized results</li>
+<li>No personalization bias</li>
+</ul>
+
+<h2>6. Tavily MCP — Research-Optimized Search</h2>
+
+<p>Tavily is purpose-built for AI research workflows. Unlike general search APIs, Tavily returns clean, structured content designed for AI consumption — making it ideal for rapid competitive research, topic depth analysis, and content briefing.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Search optimized for AI consumption (clean extraction)</li>
+<li>Deep research mode for comprehensive topic coverage</li>
+<li>Source quality filtering and credibility scoring</li>
+<li>Context-aware result ranking</li>
+</ul>
+
+<h2>7. Crawlee MCP — Custom Web Crawling Infrastructure</h2>
+
+<p>For advanced SEOs who need custom crawling — auditing JavaScript-rendered pages, monitoring 404s, extracting structured data at scale — Crawlee provides enterprise-grade crawling capabilities.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Headless browser crawling for JS-rendered content</li>
+<li>Large-scale concurrent crawling with queuing</li>
+<li>Proxy rotation and request throttling</li>
+<li>Structured data extraction and export</li>
+</ul>
+
+<h2>8. Google Ads MCP — Bridge Paid and Organic Strategy</h2>
+
+<p>The best SEO strategies are informed by paid search data. Google Ads MCP gives you access to keyword performance data across your PPC campaigns — revealing which keywords drive conversions, what ad copy resonates, and where organic content can displace paid spend.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Query campaign and ad group performance data</li>
+<li>Access search term reports (actual queries triggering ads)</li>
+<li>Identify high-converting keywords to target organically</li>
+<li>Compare ad impression share with organic visibility</li>
+</ul>
+
+<h2>The SEO MCP Stack in Practice</h2>
+
+<p>Here's a typical workflow combining these servers:</p>
+
+<ol>
+<li><strong>Opportunity discovery:</strong> Query GSC MCP for striking-distance keywords → confirm traffic potential with GA MCP</li>
+<li><strong>Competitive analysis:</strong> Use Firecrawl to audit competitor content → Exa to find coverage gaps</li>
+<li><strong>Content brief creation:</strong> Tavily for research → Brave Search to check SERP features (featured snippets, PAA boxes)</li>
+<li><strong>Performance monitoring:</strong> GSC MCP weekly queries to track ranking improvements</li>
+</ol>
+
+<p>This stack replaces workflows that previously required Ahrefs, SEMrush, Screaming Frog, and hours of manual analysis — all accessible through natural language commands to your AI assistant.</p>
+
+<p><strong>Related guides:</strong></p>
+<ul>
+<li><a href="/blog/best-mcp-servers-for-marketing">Best MCP Servers for Marketing</a></li>
+<li><a href="/blog/best-mcp-servers-for-content-creation">Best MCP Servers for Content Creation</a></li>
+<li><a href="/blog/best-mcp-servers-for-data-science">Best MCP Servers for Data Science</a></li>
+</ul>
+    `.trim(),
+  },
+  {
+    slug: "best-mcp-servers-for-product-managers",
+    title: "Best MCP Servers for Product Managers in 2026",
+    description: "From roadmapping to release tracking — discover the top MCP servers that help product managers move faster, gather better insights, and make data-driven decisions.",
+    date: "2026-05-02",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "7 min read",
+    keywords: ["best mcp servers for product managers", "mcp for product management", "mcp pm tools", "model context protocol product"],
+    relatedServerSlugs: ["linear", "jira", "asana", "monday", "github", "google-sheets", "google-analytics", "confluence"],
+    content: `
+<p>Product managers live at the intersection of data, engineering, and customer needs. The problem: that data lives in five different tools, the engineering work is tracked in another, and customer feedback is scattered across Intercom, Slack, and a spreadsheet someone built in 2022.</p>
+
+<p>MCP servers don't replace your PM tools — they connect them, letting your AI assistant synthesize across systems that were never designed to talk to each other.</p>
+
+<h2>How MCP Changes the PM Workflow</h2>
+
+<p>Before MCP, a typical "what should we build next?" analysis meant: export Jira issues, export NPS data, manually scan user interviews, compile a spreadsheet, present findings. Hours of work before any thinking.</p>
+
+<p>With MCP: "Summarize the top 10 user-reported blockers from Jira, correlate with the feature requests in our roadmap doc, and tell me which ones have the most customer overlap" — done in 30 seconds.</p>
+
+<h2>1. Linear MCP — Engineering Roadmap Intelligence</h2>
+
+<p>Linear has become the de facto project management tool for modern product teams. The Linear MCP server gives your AI assistant direct access to your issue tracker — enabling natural-language queries across your entire product backlog.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Query issues, projects, and cycles by team, label, priority, and assignee</li>
+<li>Create and update issues, add comments, change statuses</li>
+<li>Access roadmap data and milestone tracking</li>
+<li>Search across issue history and decisions</li>
+</ul>
+
+<p><strong>Power query:</strong> "Show me all P0 and P1 issues assigned to the mobile team that haven't moved in 2+ weeks" — instant engineering bottleneck analysis.</p>
+
+<h2>2. Jira MCP — Enterprise Project Tracking</h2>
+
+<p>For teams on Jira, the Jira MCP server brings enterprise-grade project data into your AI workflow. Sprint planning, epic tracking, velocity analysis — all accessible through natural language.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Query issues with full JQL support through natural language</li>
+<li>Create epics, stories, and sub-tasks with proper hierarchy</li>
+<li>Track sprint velocity and burndown data</li>
+<li>Manage boards, backlogs, and release versions</li>
+</ul>
+
+<p><strong>Best for:</strong> Enterprise product teams at companies with established Jira workflows and complex issue hierarchies.</p>
+
+<h2>3. GitHub MCP — Ship Intelligence</h2>
+
+<p>Product managers who work closely with engineering benefit enormously from GitHub MCP. See what's actually being built, track PR status, understand what's blocking release cycles — without needing to ping engineers for status updates.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Browse PRs, issues, and release notes across repositories</li>
+<li>Track what's merged and what's pending review</li>
+<li>Search code for specific feature implementations</li>
+<li>Access commit history and changelogs</li>
+</ul>
+
+<p><strong>Power use case:</strong> "What user-facing changes were merged to main this week?" — generate a product changelog from actual commits, not manually written update emails.</p>
+
+<h2>4. Asana MCP — Cross-Team Project Coordination</h2>
+
+<p>Many product teams use Asana for cross-functional coordination — launch checklists, go-to-market planning, design handoffs. The Asana MCP server makes it possible to query across all these workstreams in one place.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Query tasks and projects across workspaces and teams</li>
+<li>Create and update tasks, assign owners, set due dates</li>
+<li>Access project timelines and dependencies</li>
+<li>Track completion rates and blockers</li>
+</ul>
+
+<h2>5. Confluence MCP — Your Institutional Knowledge, Finally Searchable</h2>
+
+<p>Every product team has a Confluence graveyard — hundreds of specs, meeting notes, and decisions that are technically documented but practically unfindable. Confluence MCP makes all of that searchable through natural language.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Full-text search across all Confluence spaces</li>
+<li>Create and update pages and blog posts</li>
+<li>Access page comments, history, and metadata</li>
+<li>Navigate space hierarchies and page trees</li>
+</ul>
+
+<p><strong>Power use case:</strong> "Find all product specs written in the last 6 months that mention payment flow" — surface relevant context before writing a new spec, avoid reinventing the wheel.</p>
+
+<h2>6. Google Sheets MCP — The PM's Universal Data Layer</h2>
+
+<p>Despite every tool promising to replace it, the spreadsheet persists as the PM's universal truth surface. Pricing models, feature matrices, user research summaries — they live in Google Sheets. MCP gives your AI direct read-write access.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read and write cell data across any Sheet</li>
+<li>Create new sheets and update formulas</li>
+<li>Analyze data across multiple sheets</li>
+<li>Generate charts and pivot data programmatically</li>
+</ul>
+
+<h2>7. Google Analytics MCP — User Behavior Intelligence</h2>
+
+<p>Understanding how users actually use your product is foundational to good PM work. Google Analytics MCP gives your AI assistant access to real usage data — funnels, retention, feature adoption, conversion rates.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Query GA4 events, conversions, and user segments</li>
+<li>Build funnel analysis across custom events</li>
+<li>Track feature adoption by user cohort</li>
+<li>Compare metrics across time periods and segments</li>
+</ul>
+
+<h2>8. Monday.com MCP — Visual Project Tracking</h2>
+
+<p>Monday.com is popular for teams that prefer visual boards and status tracking over text-heavy issue trackers. The Monday MCP server brings all that board data into your AI workflow.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Query boards, groups, and items with full column data</li>
+<li>Create and update items, change statuses, assign owners</li>
+<li>Access automations and workflow data</li>
+<li>Track deadlines and dependency chains</li>
+</ul>
+
+<h2>Building Your PM MCP Stack</h2>
+
+<p>The most valuable PM use cases by workflow:</p>
+
+<ul>
+<li><strong>Sprint planning:</strong> Linear or Jira MCP → query backlog by priority and estimate</li>
+<li><strong>Executive reporting:</strong> GitHub MCP + GA MCP → pull shipped features + impact metrics</li>
+<li><strong>User research synthesis:</strong> Confluence MCP + Google Sheets MCP → find and summarize research</li>
+<li><strong>Roadmap planning:</strong> All of the above → cross-reference user feedback, velocity, and business metrics</li>
+</ul>
+
+<p>The result: less time gathering data, more time making decisions.</p>
+
+<p><strong>Related guides:</strong></p>
+<ul>
+<li><a href="/blog/best-mcp-servers-for-project-management">Best MCP Servers for Project Management</a></li>
+<li><a href="/blog/best-mcp-servers-for-developers">Best MCP Servers for Developers</a></li>
+<li><a href="/blog/best-mcp-servers-for-data-science">Best MCP Servers for Data Science</a></li>
+</ul>
+    `.trim(),
+  },
+  {
+    slug: "mcp-servers-for-windsurf",
+    title: "Best MCP Servers for Windsurf IDE in 2026",
+    description: "Get the most out of Windsurf with the right MCP servers. From filesystem access to database queries — the top Model Context Protocol tools optimized for Codeium's AI-powered IDE.",
+    date: "2026-05-02",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "6 min read",
+    keywords: ["mcp servers for windsurf", "windsurf mcp servers", "best mcp for windsurf ide", "windsurf model context protocol", "codeium mcp"],
+    relatedServerSlugs: ["filesystem", "github", "git", "postgres", "sqlite", "memory", "sequential-thinking", "brave-search"],
+    content: `
+<p>Windsurf, Codeium's AI-powered IDE, has earned a devoted following among developers who want deep AI assistance without leaving their coding environment. MCP support in Windsurf unlocks a new level of capability — your AI coding assistant can now reach outside the IDE to databases, GitHub, documentation, and any service with an MCP server.</p>
+
+<p>Here's how to build the optimal MCP stack for Windsurf.</p>
+
+<h2>Setting Up MCP in Windsurf</h2>
+
+<p>Windsurf supports MCP through its settings configuration. Add servers via the Windsurf settings panel (CMD+, → Extensions → MCP) or by editing your configuration file directly. Each MCP server runs as a local process that Windsurf's Cascade AI can call during conversations.</p>
+
+<p>The key difference from other IDEs: Windsurf's Cascade is specifically optimized for multi-step coding tasks and agentic workflows, making MCP servers that provide structured data particularly valuable.</p>
+
+<h2>1. Filesystem MCP — The Non-Negotiable Foundation</h2>
+
+<p>While Windsurf already has excellent file access within your open workspace, the Filesystem MCP server extends that to any configured directory on your system — allowing Cascade to reference documentation folders, configuration files, and project assets outside the active workspace.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read and write files outside the current workspace</li>
+<li>Search across directories with glob patterns</li>
+<li>Access system configuration and dotfiles</li>
+<li>Browse file trees and directory structures</li>
+</ul>
+
+<p><strong>Windsurf-specific tip:</strong> Configure the Filesystem MCP to access your <code>~/.config</code> directory so Cascade can reference your personal configs, SSH keys (read-only), and dotfile setups when helping you configure new development environments.</p>
+
+<h2>2. GitHub MCP — PR Reviews and Issue Management Without Leaving Windsurf</h2>
+
+<p>The GitHub MCP server is essential for any developer using Windsurf professionally. Instead of switching to a browser to check PRs, create issues, or review code, Cascade can interact with GitHub directly.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Create, review, and comment on pull requests</li>
+<li>Open and manage issues from within your coding session</li>
+<li>Search code across repositories for examples and patterns</li>
+<li>Access CI/CD status and run logs</li>
+</ul>
+
+<p><strong>Power workflow:</strong> While writing code, ask Cascade to "check if there's an existing GitHub issue for the bug I just fixed and close it with a reference to this PR" — complete GitHub housekeeping without context-switching.</p>
+
+<h2>3. Git MCP — Deep Repository Intelligence</h2>
+
+<p>The Git MCP server (distinct from GitHub) gives Windsurf's Cascade direct access to your local git history — enabling context-aware code assistance that understands how your codebase evolved.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Query commit history, blame, and diff data</li>
+<li>Search commits by message, author, or date</li>
+<li>Access branch information and merge history</li>
+<li>Navigate git log to understand code evolution</li>
+</ul>
+
+<p><strong>Best for:</strong> Debugging sessions where understanding why code was written a certain way is as important as fixing it.</p>
+
+<h2>4. PostgreSQL MCP — Query Your Database Conversationally</h2>
+
+<p>Web and backend developers working in Windsurf often need to reference database schemas while writing queries or building ORM models. The PostgreSQL MCP server gives Cascade direct schema access — dramatically reducing errors in database-related code.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Inspect table schemas, columns, types, and constraints</li>
+<li>Execute read-only queries to verify data assumptions</li>
+<li>Access foreign key relationships and indexes</li>
+<li>Generate accurate SQL based on real schema data</li>
+</ul>
+
+<p><strong>Power workflow:</strong> "Write a migration to add an index on the users.email column, and check if that column already has any unique constraints" — Cascade checks the actual schema before generating migration code.</p>
+
+<h2>5. SQLite MCP — Local Database for Rapid Prototyping</h2>
+
+<p>For developers building apps with local SQLite databases — Electron apps, mobile apps with local storage, data processing scripts — the SQLite MCP server is invaluable during development and debugging.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read and query SQLite databases directly</li>
+<li>Browse table structures and sample data</li>
+<li>Run diagnostic queries during debugging</li>
+<li>Export and analyze data</li>
+</ul>
+
+<h2>6. Sequential Thinking MCP — Better Code Architecture</h2>
+
+<p>One of the most underrated MCP servers for coding work. Sequential Thinking helps Windsurf's Cascade break complex engineering problems into structured reasoning chains — leading to more architecturally sound solutions rather than quick-fix patches.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Structured multi-step reasoning for complex problems</li>
+<li>Backtrack and revise thinking chains</li>
+<li>Explicit uncertainty and assumption tracking</li>
+<li>Better handling of ambiguous requirements</li>
+</ul>
+
+<p><strong>Best for:</strong> Architecture design, refactoring decisions, debugging complex multi-system interactions.</p>
+
+<h2>7. Memory MCP — Persistent Project Context</h2>
+
+<p>Windsurf sessions don't always remember context from previous coding sessions. The Memory MCP server provides persistent storage for project-specific context — architecture decisions, coding conventions, API quirks, and "don't do this because..." notes.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Store and retrieve key-value pairs and knowledge graphs</li>
+<li>Persist architecture decisions and rationale</li>
+<li>Remember coding conventions specific to each project</li>
+<li>Track known bugs, workarounds, and technical debt</li>
+</ul>
+
+<h2>8. Brave Search MCP — Documentation and API Reference</h2>
+
+<p>When Cascade needs to look up API documentation, find code examples, or verify a library's behavior, Brave Search MCP provides real-time web access without leaving Windsurf.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Real-time web search from within coding sessions</li>
+<li>Find documentation for any library or framework</li>
+<li>Search Stack Overflow and GitHub for code examples</li>
+<li>Access recent articles about APIs and services you're integrating</li>
+</ul>
+
+<h2>Recommended Windsurf MCP Configuration</h2>
+
+<p>Here's a starter configuration that covers 90% of development workflows:</p>
+
+<pre><code>{
+  "mcpServers": {
+    "filesystem": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-filesystem", "/Users/yourname/projects"]
+    },
+    "github": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-github"],
+      "env": { "GITHUB_PERSONAL_ACCESS_TOKEN": "your-token" }
+    },
+    "git": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-git"]
+    },
+    "memory": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-memory"]
+    }
+  }
+}</code></pre>
+
+<p>Add PostgreSQL or SQLite based on your stack, and Brave Search if you want web access for documentation lookups.</p>
+
+<p><strong>Related guides:</strong></p>
+<ul>
+<li><a href="/blog/best-mcp-servers-for-cursor">Best MCP Servers for Cursor</a></li>
+<li><a href="/blog/best-mcp-servers-for-vs-code">Best MCP Servers for VS Code</a></li>
+<li><a href="/blog/claude-desktop-mcp-setup-guide">Claude Desktop MCP Setup Guide</a></li>
+</ul>
+    `.trim(),
+  },
+  {
+    slug: "best-mcp-servers-for-ecommerce",
+    title: "Best MCP Servers for Ecommerce Businesses in 2026",
+    description: "Automate order management, customer support, and marketing workflows with MCP servers. The top Model Context Protocol tools for Shopify stores, WooCommerce shops, and ecommerce teams.",
+    date: "2026-05-02",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "8 min read",
+    keywords: ["best mcp servers for ecommerce", "mcp for shopify", "shopify mcp server", "mcp ecommerce tools", "model context protocol ecommerce"],
+    relatedServerSlugs: ["shopify", "woocommerce", "stripe", "hubspot", "mailchimp", "google-analytics", "google-sheets", "paypal"],
+    content: `
+<p>Ecommerce operations are notoriously fragmented. Your orders are in Shopify, payment disputes in Stripe, email campaigns in Mailchimp, customer service in a helpdesk, and analytics spread across three platforms. MCP servers are uniquely positioned to unify this chaos — giving your AI assistant direct access to every system that drives your store.</p>
+
+<p>Here are the MCP servers that every ecommerce operator should consider.</p>
+
+<h2>The Ecommerce MCP Opportunity</h2>
+
+<p>Most ecommerce AI tools are glorified chatbots. They don't actually connect to your store — they just generate text based on what you tell them. MCP changes this fundamentally: your AI assistant can actually query your Shopify store, pull real order data, check Stripe payments, and take action based on live information.</p>
+
+<p>This unlocks genuinely autonomous workflows: automated order follow-ups based on shipping status, dynamic pricing alerts, customer segment analysis without exporting CSVs, and support responses informed by actual order history.</p>
+
+<h2>1. Shopify MCP — Your Store, Fully Accessible</h2>
+
+<p>For the 4.6 million stores running on Shopify, the Shopify MCP server is the foundation of any ecommerce AI stack. It provides direct access to your store's data and admin functions through natural language.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Query orders by date, status, customer, and product</li>
+<li>Access customer profiles, purchase history, and segments</li>
+<li>Manage products, inventory levels, and collections</li>
+<li>Pull revenue reports and sales analytics</li>
+<li>Create discounts and manage promotions</li>
+</ul>
+
+<p><strong>Power queries:</strong></p>
+<ul>
+<li>"Show me all orders from the last 7 days that haven't shipped yet"</li>
+<li>"Which products have less than 10 units in stock?"</li>
+<li>"What's the average order value for customers who used the SUMMER25 discount code?"</li>
+</ul>
+
+<h2>2. Stripe MCP — Payment Intelligence</h2>
+
+<p>Stripe is the payment backbone for most modern ecommerce businesses. The Stripe MCP server gives your AI assistant access to payment data, subscription management, and dispute handling — without logging into the Stripe dashboard.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Query payments, refunds, and charges with full metadata</li>
+<li>Access customer payment methods and billing history</li>
+<li>Monitor and respond to disputes and chargebacks</li>
+<li>Track subscription status and MRR for subscription products</li>
+<li>Access balance and payout information</li>
+</ul>
+
+<p><strong>High-value use case:</strong> "Show me all chargebacks opened this month and their current status" — dispute management without endless dashboard navigation.</p>
+
+<h2>3. WooCommerce MCP — WordPress Store Management</h2>
+
+<p>WooCommerce powers millions of stores and has a rich REST API. The WooCommerce MCP server brings that API into your AI workflow — enabling the same kind of natural-language store management that Shopify users enjoy.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Query and update orders, products, and customers</li>
+<li>Manage inventory, categories, and product variations</li>
+<li>Access sales reports and order statistics</li>
+<li>Configure shipping zones and payment methods</li>
+</ul>
+
+<p><strong>Best for:</strong> WordPress-based stores, especially those with custom product catalogs or complex category structures where natural-language queries are significantly faster than manual navigation.</p>
+
+<h2>4. HubSpot MCP — Customer Relationship Management</h2>
+
+<p>For ecommerce businesses with a sales or enterprise component, HubSpot CRM is where customer relationships live. HubSpot MCP connects your AI to every contact, deal, and conversation — enabling smarter customer communication and pipeline management.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Query contacts, companies, and deals with full property data</li>
+<li>Create and update CRM records, add notes, log activities</li>
+<li>Access email sequence and marketing campaign data</li>
+<li>Track deal stages and sales pipeline metrics</li>
+</ul>
+
+<p><strong>Power workflow:</strong> Pull Shopify customers who've purchased 3+ times → sync to HubSpot → enroll in a VIP customer sequence. Automated loyalty marketing that takes minutes to set up.</p>
+
+<h2>5. Mailchimp MCP — Email Marketing Automation</h2>
+
+<p>Email is still the highest-ROI marketing channel for ecommerce. The Mailchimp MCP server gives your AI access to campaign performance, subscriber segments, and automation flows — enabling data-driven email strategy without CSV exports.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Query campaign performance: open rates, click rates, revenue generated</li>
+<li>Access and manage subscriber lists and segments</li>
+<li>View automation flow performance and conversion data</li>
+<li>Create and schedule new campaigns</li>
+</ul>
+
+<p><strong>Power query:</strong> "Which email campaigns drove the most revenue per subscriber last quarter?" — instant attribution analysis for email content strategy.</p>
+
+<h2>6. Google Analytics MCP — Customer Journey Intelligence</h2>
+
+<p>Understanding the full customer journey — from first visit to repeat purchase — requires connecting your store data with your analytics data. Google Analytics MCP enables this analysis through natural language.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Query ecommerce events: purchases, add-to-carts, checkout starts</li>
+<li>Analyze conversion funnels by traffic source</li>
+<li>Track product performance and category trends</li>
+<li>Compare customer cohorts by acquisition channel</li>
+</ul>
+
+<p><strong>Insight example:</strong> "Which traffic sources have the highest average order value?" — immediately see where your best customers come from.</p>
+
+<h2>7. Google Sheets MCP — The Universal Data Layer</h2>
+
+<p>Every ecommerce operation has spreadsheets that no tool has replaced: wholesale price lists, supplier contacts, seasonal planning docs, return policy exceptions. Google Sheets MCP gives your AI access to all of them.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read and write data across any Google Sheet</li>
+<li>Update inventory and pricing spreadsheets programmatically</li>
+<li>Build reports by combining data from multiple sheets</li>
+<li>Trigger updates based on Shopify or Stripe data changes</li>
+</ul>
+
+<h2>8. PayPal MCP — Marketplace and International Payments</h2>
+
+<p>For stores serving international customers or marketplace sellers, PayPal remains critical. The PayPal MCP server provides transaction visibility and dispute management for PayPal-processed orders.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Query transaction history and payment status</li>
+<li>Access dispute and claim information</li>
+<li>Track refund status across orders</li>
+<li>Monitor account balance and payment holds</li>
+</ul>
+
+<h2>Building Your Ecommerce MCP Stack</h2>
+
+<p>Start with the two servers that touch your most painful workflows:</p>
+
+<ul>
+<li><strong>Inventory management:</strong> Shopify MCP → query low-stock alerts daily</li>
+<li><strong>Customer support:</strong> Shopify + Stripe MCP → pull order and payment history before every support response</li>
+<li><strong>Marketing:</strong> Mailchimp + GA MCP → cross-reference email and traffic data for campaign optimization</li>
+<li><strong>Finance:</strong> Stripe + Shopify MCP → daily revenue reconciliation without manual reports</li>
+</ul>
+
+<p>The biggest wins come from connecting systems that were never designed to share data. A customer service rep who can instantly see a customer's full order history, payment status, and email engagement history closes tickets 3x faster. MCP makes that possible.</p>
+
+<p><strong>Related guides:</strong></p>
+<ul>
+<li><a href="/blog/best-mcp-servers-for-marketing">Best MCP Servers for Marketing</a></li>
+<li><a href="/blog/best-mcp-servers-for-customer-support">Best MCP Servers for Customer Support</a></li>
+<li><a href="/blog/best-mcp-servers-for-finance">Best MCP Servers for Finance</a></li>
+</ul>
+    `.trim(),
+  },
 ];
 
 export function getBlogPostBySlug(slug: string): BlogPost | undefined {
