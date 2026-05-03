@@ -6176,6 +6176,534 @@ gh pr view 123 --json body,files | claude-code "Review this PR and suggest impro
 </ul>
     `.trim(),
   },
+  {
+    slug: "best-mcp-servers-for-react-developers",
+    title: "Best MCP Servers for React Developers in 2026",
+    description: "The top MCP servers for React and Next.js developers. Speed up component building, connect design systems, query your database, and deploy — all from your AI assistant.",
+    date: "2026-05-03",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "7 min read",
+    keywords: ["best mcp servers for react", "mcp servers nextjs", "react developer mcp tools", "model context protocol frontend"],
+    relatedServerSlugs: ["github", "vercel", "supabase", "stripe", "figma", "linear", "shadcn-ui", "vite", "turborepo", "postgresql"],
+    content: `
+<p>React developers have a unique workflow: juggling component libraries, design handoffs, database schemas, API integrations, and CI/CD pipelines — often all at once. MCP servers can collapse that tab-switching chaos into a single AI conversation.</p>
+
+<p>Here are the MCP servers that genuinely move the needle for React and Next.js development.</p>
+
+<h2>1. GitHub MCP Server — Your Codebase in Context</h2>
+
+<p>Every React project lives in GitHub. The GitHub MCP server gives your AI assistant full repository access — read files, browse history, create issues, review PRs — without leaving your AI conversation.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Browse and read any file in your repositories</li>
+<li>Search code across all branches</li>
+<li>Create and update issues and pull requests</li>
+<li>View commit history and diffs</li>
+</ul>
+
+<p><strong>Best for:</strong> Any team workflow. Essential for reviewing PRs, understanding legacy code, and generating accurate component code that matches your existing patterns.</p>
+
+<h2>2. Vercel MCP Server — Deployments and Analytics in One Place</h2>
+
+<p>If you're building with Next.js, you're probably deploying to Vercel. The Vercel MCP server makes deployment status, environment variables, and analytics available in your AI workflow.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Check deployment status and logs</li>
+<li>Manage environment variables across environments</li>
+<li>View project domains and configuration</li>
+<li>Access Vercel Analytics data</li>
+</ul>
+
+<p><strong>Best for:</strong> Next.js developers who deploy to Vercel. Stops you from opening the Vercel dashboard mid-coding session just to check a build status.</p>
+
+<h2>3. Supabase MCP Server — Full-Stack Database Without the Context Switch</h2>
+
+<p>Supabase is the go-to backend for React developers building full-stack apps. The Supabase MCP server gives your AI assistant schema introspection, query execution, and real-time data access.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Inspect tables, columns, types, and relationships</li>
+<li>Run SQL queries and view results</li>
+<li>Understand RLS policies and auth rules</li>
+<li>Explore storage buckets and edge functions</li>
+</ul>
+
+<p><strong>Best for:</strong> Full-stack React developers using Supabase. Your AI can write accurate queries because it sees your actual schema — not a generic placeholder.</p>
+
+<h2>4. Figma MCP Server — Design to Code Without the Gap</h2>
+
+<p>The design-to-code handoff is where React projects lose time. The Figma MCP server gives your AI assistant access to your Figma files — components, frames, styles, and assets — so it can generate components that match your actual design.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read Figma files, pages, frames, and components</li>
+<li>Extract colors, typography, spacing tokens</li>
+<li>Access component properties and variants</li>
+<li>Download exported assets</li>
+</ul>
+
+<p><strong>Best for:</strong> Teams with a design system in Figma. Generate components that match your design spec from day one instead of approximating from screenshots.</p>
+
+<h2>5. shadcn/ui MCP Server — Component Library in Your AI's Memory</h2>
+
+<p>shadcn/ui is the default component library for modern Next.js apps. The shadcn/ui MCP server gives your AI assistant awareness of available components, their props, and usage patterns — so it generates correct shadcn code on the first attempt.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Browse available shadcn/ui components</li>
+<li>View prop definitions and TypeScript types</li>
+<li>Access usage examples and variants</li>
+<li>Check component dependencies and installation steps</li>
+</ul>
+
+<p><strong>Best for:</strong> Any Next.js developer using shadcn/ui. Eliminates the documentation tab you keep open during development.</p>
+
+<h2>6. Linear MCP Server — Issue Management Without the Context Switch</h2>
+
+<p>Linear is where React teams manage bugs, features, and sprints. The Linear MCP server lets your AI assistant read and create issues, link commits to tasks, and understand the current sprint state.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read issues, projects, and cycles</li>
+<li>Create and update issues with labels and priority</li>
+<li>Search issues by status, assignee, or keyword</li>
+<li>View team workflows and backlogs</li>
+</ul>
+
+<p><strong>Best for:</strong> Product-focused React teams. Your AI can create a bug report directly from an error log, or update an issue status when you push a fix.</p>
+
+<h2>7. Stripe MCP Server — Payment Integration With Live Data</h2>
+
+<p>React apps with e-commerce or SaaS billing need Stripe. The Stripe MCP server gives your AI assistant access to your Stripe account — products, prices, customers, subscriptions — so it can generate accurate payment integration code.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Browse products, prices, and payment links</li>
+<li>View customer and subscription data</li>
+<li>Inspect webhook configurations</li>
+<li>Query recent charges and events</li>
+</ul>
+
+<p><strong>Best for:</strong> SaaS and e-commerce React developers. When your AI can see your actual Stripe product IDs and price tiers, it generates integration code that works without manual editing.</p>
+
+<h2>8. Vite MCP Server — Build Tool Intelligence</h2>
+
+<p>Vite has become the standard build tool for React apps. The Vite MCP server exposes your build configuration, plugin setup, and dev server status to your AI assistant.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read vite.config.ts and resolve module aliases</li>
+<li>Understand plugin configuration</li>
+<li>Check build output and optimization settings</li>
+<li>Debug dev server issues</li>
+</ul>
+
+<p><strong>Best for:</strong> React developers not on Next.js. When your AI understands your Vite config, it generates import paths and aliases correctly from the start.</p>
+
+<h2>9. PostgreSQL MCP Server — Production Database Queries</h2>
+
+<p>Most serious React apps have a PostgreSQL backend. The PostgreSQL MCP server gives your AI schema introspection and read-only query execution — so it understands your data model before writing any code.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Inspect tables, indexes, and foreign keys</li>
+<li>Run read-only queries</li>
+<li>View materialized views and stored procedures</li>
+<li>Understand query performance with EXPLAIN</li>
+</ul>
+
+<p><strong>Best for:</strong> Full-stack React developers managing their own PostgreSQL database. More control than Supabase, same AI-accessible context.</p>
+
+<h2>10. Turborepo MCP Server — Monorepo Navigation</h2>
+
+<p>Large React organizations often run monorepos. The Turborepo MCP server gives your AI assistant awareness of your workspace structure, package dependencies, and build pipeline — so it generates code in the right package with the right imports.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>List workspace packages and their dependencies</li>
+<li>Understand the turbo.json pipeline configuration</li>
+<li>Navigate cross-package imports</li>
+<li>Check build task dependencies</li>
+</ul>
+
+<p><strong>Best for:</strong> React monorepo teams. Eliminates "which package does this component live in?" confusion when your AI generates code.</p>
+
+<h2>The React Developer MCP Stack</h2>
+
+<p>Start with two or three and expand as needed:</p>
+
+<ul>
+<li><strong>Solo builder:</strong> GitHub + Supabase + Vercel</li>
+<li><strong>Design-first team:</strong> GitHub + Figma + shadcn/ui + Linear</li>
+<li><strong>SaaS product:</strong> GitHub + Supabase + Stripe + Linear + Sentry</li>
+<li><strong>Monorepo org:</strong> GitHub + Turborepo + PostgreSQL + Linear</li>
+</ul>
+
+<p>The goal is getting your AI assistant to the point where it knows your codebase, your database schema, your design system, and your issue tracker — all at once. When it has that context, the quality and accuracy of generated code improves dramatically.</p>
+
+<p><strong>Related guides:</strong></p>
+<ul>
+<li><a href="/blog/best-mcp-servers-for-developers">Best MCP Servers for Developers</a></li>
+<li><a href="/blog/best-mcp-servers-for-python-developers">Best MCP Servers for Python Developers</a></li>
+<li><a href="/blog/best-mcp-servers-for-ecommerce">Best MCP Servers for Ecommerce</a></li>
+</ul>
+    `.trim(),
+  },
+  {
+    slug: "best-mcp-servers-for-machine-learning",
+    title: "Best MCP Servers for Machine Learning Engineers in 2026",
+    description: "MCP servers built for ML workflows: model registries, vector databases, experiment tracking, notebook integration, and more. Give your AI assistant the context your models live in.",
+    date: "2026-05-03",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "8 min read",
+    keywords: ["best mcp servers for machine learning", "mcp servers ml engineers", "model context protocol ai ml", "llm mcp tools"],
+    relatedServerSlugs: ["huggingface", "langfuse", "vertex-ai", "together-ai", "chroma", "weaviate", "postgresql", "redis", "jupyter", "openai"],
+    content: `
+<p>Machine learning engineers work across more disconnected systems than almost any other role: Jupyter notebooks, model registries, vector databases, experiment trackers, training clusters, and deployment pipelines. MCP servers can connect your AI assistant to all of it.</p>
+
+<p>Here are the MCP servers that matter most for ML engineers in 2026.</p>
+
+<h2>1. Hugging Face MCP Server — Model Hub Access</h2>
+
+<p>Hugging Face is the standard model hub. The Hugging Face MCP server gives your AI assistant direct access to model cards, datasets, spaces, and the Hub API — so it can find the right model for a task without you manually searching.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Search models by task, architecture, and license</li>
+<li>Read model cards and performance benchmarks</li>
+<li>Browse datasets with schema information</li>
+<li>Check model download counts and community ratings</li>
+</ul>
+
+<p><strong>Best for:</strong> Any ML engineer evaluating pre-trained models. Ask your AI to find "a lightweight BERT-based model for sentiment analysis under 100MB" and get an answer backed by real Hub data.</p>
+
+<h2>2. Langfuse MCP Server — Experiment Tracking for LLM Apps</h2>
+
+<p>Langfuse is the go-to observability platform for LLM applications. The Langfuse MCP server makes your traces, evaluations, and prompt versions queryable by your AI assistant — so you can analyze model behavior without leaving your development environment.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Browse LLM traces, spans, and generations</li>
+<li>View evaluation scores and human feedback</li>
+<li>Compare prompt versions and their performance</li>
+<li>Query latency, cost, and error data</li>
+</ul>
+
+<p><strong>Best for:</strong> ML engineers building production LLM systems. When your AI can read your evaluation traces, it can debug prompt failures and suggest improvements with full context.</p>
+
+<h2>3. Vertex AI MCP Server — Google Cloud ML Platform</h2>
+
+<p>Vertex AI is Google Cloud's unified ML platform. The Vertex AI MCP server gives your AI assistant access to your models, datasets, training jobs, and pipelines — making Google Cloud's complex ML ecosystem much more navigable.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>List deployed model endpoints and their versions</li>
+<li>Browse training jobs and pipeline runs</li>
+<li>Access dataset metadata and statistics</li>
+<li>Check resource usage and quotas</li>
+</ul>
+
+<p><strong>Best for:</strong> ML engineers working in Google Cloud. Eliminates the Cloud Console tab-switching that breaks your flow during model development.</p>
+
+<h2>4. Together AI MCP Server — Fast LLM Inference</h2>
+
+<p>Together AI provides fast inference for open-source models at competitive pricing. The Together AI MCP server lets your AI assistant query available models, check pricing, and run inference directly — making model comparison fast and context-aware.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>List available models with context lengths and pricing</li>
+<li>Run inference with configurable parameters</li>
+<li>Compare models on the same prompt</li>
+<li>Check API status and rate limits</li>
+</ul>
+
+<p><strong>Best for:</strong> ML engineers evaluating open-source models for production use. Run a quick comparison between Llama 3 and Mistral on your actual test cases without writing a script.</p>
+
+<h2>5. Chroma MCP Server — Vector Database for Embeddings</h2>
+
+<p>Chroma is the most popular local vector database for ML prototyping. The Chroma MCP server gives your AI assistant direct access to your embedding collections — so it can understand what's in your vector store, run similarity searches, and debug retrieval quality.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>List collections and their document counts</li>
+<li>Query embeddings with filters and metadata</li>
+<li>Inspect embedding dimensions and distance metrics</li>
+<li>Sample documents from collections</li>
+</ul>
+
+<p><strong>Best for:</strong> ML engineers building RAG systems. When your AI can query your vector store directly, it can debug why certain documents aren't being retrieved and suggest index improvements.</p>
+
+<h2>6. Weaviate MCP Server — Production-Grade Vector Search</h2>
+
+<p>Weaviate is Chroma's production counterpart — a scalable vector database with hybrid search support. The Weaviate MCP server exposes your schemas, classes, and search results to your AI assistant.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Browse schema classes and their properties</li>
+<li>Run vector, keyword, and hybrid searches</li>
+<li>Inspect object metadata and cross-references</li>
+<li>Check cluster health and shard status</li>
+</ul>
+
+<p><strong>Best for:</strong> Production ML teams running Weaviate at scale. Your AI can generate GraphQL queries that work against your actual schema instead of inventing placeholder field names.</p>
+
+<h2>7. Jupyter MCP Server — Notebook Integration</h2>
+
+<p>Jupyter notebooks are where ML research lives. The Jupyter MCP server lets your AI assistant read notebook cells, execute code, and understand your analysis workflow — turning your notebooks into interactive AI collaborations.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read and write notebook cells</li>
+<li>Execute code and capture output</li>
+<li>Access kernel state and variable values</li>
+<li>Navigate between notebooks in a server</li>
+</ul>
+
+<p><strong>Best for:</strong> Data scientists and ML researchers who live in Jupyter. Your AI can see your data, your model state, and your results — not just read code in isolation.</p>
+
+<h2>8. PostgreSQL MCP Server — Feature Store and Metadata</h2>
+
+<p>ML pipelines inevitably generate structured metadata: training run configs, evaluation metrics, feature statistics, model performance history. The PostgreSQL MCP server gives your AI assistant access to your feature stores and ML metadata databases.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Query training run metrics and hyperparameter configs</li>
+<li>Browse feature store tables and statistics</li>
+<li>Access evaluation result history</li>
+<li>Compare experiment runs with SQL</li>
+</ul>
+
+<p><strong>Best for:</strong> ML teams that store experiment metadata in PostgreSQL. Enables your AI to find your best-performing model config from history instead of you digging through logs.</p>
+
+<h2>9. Redis MCP Server — Cache and Feature Serving</h2>
+
+<p>Redis is commonly used in ML pipelines for feature serving, caching model outputs, and managing job queues. The Redis MCP server gives your AI assistant visibility into your Redis instance — keys, data structures, and TTLs.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Browse and query Redis keys with pattern matching</li>
+<li>Read strings, hashes, lists, and sorted sets</li>
+<li>Check TTL and memory usage</li>
+<li>Monitor pipeline queues</li>
+</ul>
+
+<p><strong>Best for:</strong> ML engineers running real-time feature serving or model output caching. Diagnose cache miss rates and stale feature values directly in your AI conversation.</p>
+
+<h2>10. OpenAI MCP Server — API Integration and Model Access</h2>
+
+<p>The OpenAI MCP server provides direct access to OpenAI models, embeddings, and fine-tuning APIs. For ML engineers building on top of GPT-4o, o1, or specialized models, this server makes the API queryable from your AI assistant context.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Run completions with configurable parameters</li>
+<li>Generate embeddings for text</li>
+<li>Browse fine-tuned model status</li>
+<li>Check token usage and rate limits</li>
+</ul>
+
+<p><strong>Best for:</strong> ML engineers integrating OpenAI APIs into production systems. Run quick inference tests or embedding generation without switching to a Jupyter cell or writing a test script.</p>
+
+<h2>The ML Engineer MCP Stack</h2>
+
+<p>Build your stack around your core infrastructure:</p>
+
+<ul>
+<li><strong>LLM app dev:</strong> OpenAI + Langfuse + Chroma + PostgreSQL</li>
+<li><strong>Open-source ML:</strong> Hugging Face + Together AI + Weaviate + Jupyter</li>
+<li><strong>Google Cloud ML:</strong> Vertex AI + BigQuery + PostgreSQL + Redis</li>
+<li><strong>RAG pipeline:</strong> Chroma (or Weaviate) + PostgreSQL + Langfuse + filesystem</li>
+</ul>
+
+<p>The underlying pattern: connect your AI assistant to where your data lives, where your experiments run, and where your models are deployed. When it has that context, your ML development loop gets dramatically faster — fewer context switches, more accurate code generation, and real debugging instead of guessing.</p>
+
+<p><strong>Related guides:</strong></p>
+<ul>
+<li><a href="/blog/best-mcp-servers-for-data-science">Best MCP Servers for Data Science</a></li>
+<li><a href="/blog/best-mcp-servers-for-python-developers">Best MCP Servers for Python Developers</a></li>
+<li><a href="/blog/best-mcp-servers-for-ai-agents">Best MCP Servers for AI Agents</a></li>
+</ul>
+    `.trim(),
+  },
+  {
+    slug: "best-mcp-servers-for-startup-founders",
+    title: "Best MCP Servers for Startup Founders in 2026",
+    description: "MCP servers that help startup founders move faster: monitor your product, understand your users, manage your pipeline, and track your finances — all without hiring a full ops team.",
+    date: "2026-05-03",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "7 min read",
+    keywords: ["best mcp servers for startups", "mcp servers for founders", "startup tools mcp", "model context protocol business"],
+    relatedServerSlugs: ["github", "stripe", "hubspot", "linear", "slack", "notion", "gmail", "postgresql", "vercel", "sentry"],
+    content: `
+<p>Startup founders context-switch more than anyone. At any moment you're in GitHub reviewing code, in Stripe checking MRR, in HubSpot tracking deals, and in Slack answering team questions. MCP servers let your AI assistant navigate all of it from a single conversation.</p>
+
+<p>Here are the MCP servers that matter most for founders and early-stage teams.</p>
+
+<h2>1. Stripe MCP Server — Your Revenue Dashboard</h2>
+
+<p>Revenue is the number that matters. The Stripe MCP server gives your AI assistant direct access to your payments, subscriptions, and financial data — so you can ask real questions about your business and get real answers.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>View MRR, ARR, and subscription metrics</li>
+<li>Browse customer and subscription records</li>
+<li>Check failed payments and churn events</li>
+<li>Review recent charges and refunds</li>
+</ul>
+
+<p><strong>Why founders love it:</strong> "Which plan has the most churn?" "How many customers upgraded last month?" "What's our average customer lifetime so far?" — these are questions you can answer in seconds without building a BI dashboard.</p>
+
+<h2>2. GitHub MCP Server — Code Without Losing Context</h2>
+
+<p>Founders who code need to dip in and out of the codebase without losing track of product and business work. The GitHub MCP server keeps your AI assistant aware of the current state of your code, open PRs, and outstanding issues.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Browse repositories and read any file</li>
+<li>View open PRs and their review status</li>
+<li>Create and manage issues</li>
+<li>Search code across all your repos</li>
+</ul>
+
+<p><strong>Why founders love it:</strong> Create a bug report from a user complaint in seconds. Review a PR without switching to GitHub. Ask "what changed in the codebase this week?" and get a real answer.</p>
+
+<h2>3. Sentry MCP Server — Know When Things Break</h2>
+
+<p>User-facing bugs are invisible until Sentry catches them. The Sentry MCP server gives your AI assistant access to your error streams, alerts, and performance data — so you can understand what's broken before your users report it.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Browse recent errors by frequency and impact</li>
+<li>Read stack traces and event context</li>
+<li>Check performance metrics and slow endpoints</li>
+<li>View alert history and resolution status</li>
+</ul>
+
+<p><strong>Why founders love it:</strong> "What errors are hitting our most active users?" "Did the deploy yesterday cause any new issues?" — answered from your AI conversation without logging into another dashboard.</p>
+
+<h2>4. HubSpot MCP Server — Sales Pipeline in Context</h2>
+
+<p>Early-stage founders often run sales themselves. The HubSpot MCP server gives your AI assistant access to your CRM — contacts, deals, companies, and activity history — so you can manage your pipeline without it managing you.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>View deal pipeline stages and values</li>
+<li>Read contact and company records</li>
+<li>Log activity notes and tasks</li>
+<li>Search contacts by company, status, or date</li>
+</ul>
+
+<p><strong>Why founders love it:</strong> "Which deals have gone cold in the last two weeks?" "Add a follow-up task for the call I just had with [prospect]." Your AI does CRM hygiene while you stay focused on conversations.</p>
+
+<h2>5. Notion MCP Server — Company Brain</h2>
+
+<p>Notion is where most early-stage startups store their operating knowledge: product specs, OKRs, runbooks, meeting notes. The Notion MCP server gives your AI assistant access to your workspace so it can find and synthesize information you'd otherwise spend 10 minutes hunting for.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Search and read pages and databases</li>
+<li>Create and update pages</li>
+<li>Query database properties and filters</li>
+<li>Navigate nested workspace structure</li>
+</ul>
+
+<p><strong>Why founders love it:</strong> "What did we decide about pricing in Q1?" "Write a meeting summary and add it to the investor update page." Your institutional knowledge becomes AI-accessible.</p>
+
+<h2>6. Linear MCP Server — Product Roadmap Visibility</h2>
+
+<p>Linear is the issue tracker of choice for modern startups. The Linear MCP server gives your AI assistant visibility into your current sprint, backlog, and team velocity — so you can make better prioritization decisions with full context.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>View current cycle and team workload</li>
+<li>Browse and create issues with priorities and labels</li>
+<li>Track project completion status</li>
+<li>Search issues by status, assignee, or keyword</li>
+</ul>
+
+<p><strong>Why founders love it:</strong> "What's blocking the next release?" "Create an issue for the bug the customer reported." Roadmap management becomes conversational.</p>
+
+<h2>7. Slack MCP Server — Team Pulse Without Constant Monitoring</h2>
+
+<p>Founders shouldn't live in Slack, but they need awareness of what's happening. The Slack MCP server gives your AI assistant access to channels and messages — so you can get a summary without scrolling through 200 messages.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read channel messages and threads</li>
+<li>Search messages by keyword or date range</li>
+<li>Send messages to channels or DMs</li>
+<li>List channel members and activity</li>
+</ul>
+
+<p><strong>Why founders love it:</strong> "Summarize what happened in #eng this week." "Any customer escalations in #support today?" Get the signal without the noise.</p>
+
+<h2>8. Gmail MCP Server — Inbox Intelligence</h2>
+
+<p>Founder email is a mix of investor updates, customer support, recruiter spam, and board correspondence. The Gmail MCP server lets your AI assistant triage your inbox, draft responses, and surface what actually needs your attention.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read, search, and label emails</li>
+<li>Draft and send replies</li>
+<li>Manage threads and conversation history</li>
+<li>Filter by sender, date, and label</li>
+</ul>
+
+<p><strong>Why founders love it:</strong> "Any emails from investors I haven't responded to?" "Draft a reply to [customer] about their billing issue." Inbox zero becomes achievable with AI doing the drafting work.</p>
+
+<h2>9. Vercel MCP Server — Product Health at a Glance</h2>
+
+<p>If your web product is on Vercel, you need visibility into deployment health, function performance, and analytics. The Vercel MCP server brings all of that into your AI conversation.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Check deployment status and build logs</li>
+<li>View function execution times and errors</li>
+<li>Manage environment variables</li>
+<li>Access Vercel Analytics data</li>
+</ul>
+
+<p><strong>Why founders love it:</strong> "Did the Saturday deploy succeed?" "Are any edge functions timing out?" Infrastructure visibility without the ops overhead.</p>
+
+<h2>10. PostgreSQL MCP Server — Real Data, Real Answers</h2>
+
+<p>When you need business answers from your production data — user counts, activation rates, feature adoption — the PostgreSQL MCP server gives your AI assistant direct database access to query what's actually happening.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Query production data with read-only access</li>
+<li>Inspect table schemas and relationships</li>
+<li>Run analytical queries conversationally</li>
+<li>Browse indexes and query performance</li>
+</ul>
+
+<p><strong>Why founders love it:</strong> "How many users completed onboarding in the last 30 days?" "What features do churned users not engage with?" Answer product questions without waiting for a data analyst.</p>
+
+<h2>The Founder MCP Stack</h2>
+
+<p>You don't need all ten. Start with what matches your current bottleneck:</p>
+
+<ul>
+<li><strong>Pre-revenue:</strong> GitHub + Notion + Linear + Slack</li>
+<li><strong>First revenue:</strong> Stripe + GitHub + Sentry + Notion</li>
+<li><strong>Growth stage:</strong> Stripe + HubSpot + PostgreSQL + Gmail + Sentry</li>
+<li><strong>Series A+:</strong> All of the above, plus Slack for team pulse</li>
+</ul>
+
+<p>The goal is eliminating the cognitive overhead of context-switching between 10 different dashboards. When your AI assistant has access to your revenue data, codebase, CRM, and team communication simultaneously, you can ask business questions — not just technical ones — and get grounded answers.</p>
+
+<p><strong>Related guides:</strong></p>
+<ul>
+<li><a href="/blog/best-mcp-servers-for-product-managers">Best MCP Servers for Product Managers</a></li>
+<li><a href="/blog/best-mcp-servers-for-developers">Best MCP Servers for Developers</a></li>
+<li><a href="/blog/best-mcp-servers-for-customer-support">Best MCP Servers for Customer Support</a></li>
+</ul>
+    `.trim(),
+  },
 ];
 
 export function getBlogPostBySlug(slug: string): BlogPost | undefined {
