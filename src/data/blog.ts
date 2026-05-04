@@ -8387,6 +8387,744 @@ server.setRequestHandler(ReadResourceRequestSchema, async (request) => {
 </ul>
     `.trim(),
   },
+  {
+    slug: "best-mcp-servers-for-azure-microsoft",
+    title: "Best MCP Servers for Azure & Microsoft 365 in 2026",
+    description: "Connect your AI assistant to the entire Microsoft ecosystem. From Azure infrastructure and Cosmos DB to Microsoft Teams, GitHub Actions, and Azure Blob Storage — the top MCP servers for Azure developers.",
+    date: "2026-05-04",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "9 min read",
+    keywords: ["mcp servers for azure", "azure mcp server", "microsoft mcp tools", "azure mcp 2026", "model context protocol azure"],
+    relatedServerSlugs: ["azure", "azure-blob", "azure-cli-mcp", "microsoft-teams", "github", "github-actions", "datadog", "microsoft-clarity"],
+    content: `
+<p>Azure powers millions of applications worldwide — but managing resources across the portal, CLI, ARM templates, and multiple dashboards burns hours every week. MCP servers change the equation by giving your AI assistant direct, structured access to your Azure infrastructure.</p>
+
+<p>Whether you're running microservices on AKS, storing data in Cosmos DB, or automating deployments with Azure DevOps, these MCP servers collapse your Azure workflow into a single AI-native context.</p>
+
+<h2>1. Azure MCP Server — Core Infrastructure Access</h2>
+
+<p>Microsoft's official Azure MCP server is the foundation for Azure-native AI workflows. It wraps key Azure services through a unified interface, exposing your cloud resources as queryable tools without leaving your IDE or chat.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Query Azure Storage accounts, containers, and blobs</li>
+<li>Access Cosmos DB databases and collections with natural language queries</li>
+<li>Inspect Azure CLI configurations and subscriptions</li>
+<li>Manage resource groups and ARM deployments</li>
+<li>Browse Azure AD applications and service principals</li>
+</ul>
+
+<p><strong>Best for:</strong> Full-stack Azure developers who want to query infrastructure state ("what containers are in my staging storage account?") without spinning up the portal or memorizing az CLI flags.</p>
+
+<p><strong>Install:</strong> Available as a binary from Microsoft's official MCP repo.</p>
+
+<h2>2. Azure Blob Storage MCP Server — Storage Deep Dive</h2>
+
+<p>If you work with Azure Blob Storage heavily — uploads, CDN assets, data lake files, ML training sets — the dedicated Blob Storage MCP server gives your AI assistant granular read access to container contents and metadata.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>List storage accounts and containers across subscriptions</li>
+<li>Read blob contents directly (JSON configs, CSVs, text files)</li>
+<li>Inspect blob metadata, tags, and access tiers</li>
+<li>Analyze container-level access policies and SAS configurations</li>
+<li>Check lifecycle management rules and retention policies</li>
+</ul>
+
+<p><strong>Best for:</strong> Data engineers and backend developers who spend time hunting down the right blob in the wrong container. Ask "what's in the failed-uploads prefix from today?" and get an instant answer.</p>
+
+<h2>3. Azure CLI MCP Server — Full Azure API Surface</h2>
+
+<p>The Azure CLI MCP server takes a power-user approach: it exposes the entire <code>az</code> CLI surface as MCP tools. If <code>az</code> can do it, this server can too — without you typing a single command.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Access every Azure service and subcommand via natural language</li>
+<li>Chain multi-step operations in a single AI query</li>
+<li>Handle complex filters, JMESPath expressions, and output formatting automatically</li>
+<li>Works with service principals, managed identities, and named profiles</li>
+<li>Supports all regions and Azure Government/China partitions</li>
+</ul>
+
+<p><strong>Best for:</strong> Azure power users who want to eliminate CLI context-switching. Great for infrastructure audits: "list all public IPs across all my resource groups" returns in seconds.</p>
+
+<h2>4. Microsoft Teams MCP Server — Workplace Communication</h2>
+
+<p>Microsoft Teams is the communication layer for millions of organizations — meetings, channels, and chat threads all live there. The Teams MCP server connects your AI assistant to your workspace communication history and structure.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read channel messages and thread context</li>
+<li>Search across Teams conversations with natural language</li>
+<li>Access meeting transcripts and recordings metadata</li>
+<li>List teams, channels, and member information</li>
+<li>Retrieve file attachments shared in channels</li>
+</ul>
+
+<p><strong>Best for:</strong> Managers and team leads who need to catch up on channel discussions, summarize meeting notes, or find that one decision buried in a 200-message thread.</p>
+
+<h2>5. GitHub MCP Server — Code & CI on Azure DevOps</h2>
+
+<p>GitHub (owned by Microsoft) is the world's largest code platform and a natural companion to Azure deployments. The official GitHub MCP server gives your AI assistant full access to repositories, issues, pull requests, and Actions workflows.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read repository contents, branches, and commit history</li>
+<li>Search issues and pull requests with natural language</li>
+<li>View GitHub Actions workflow runs and failure logs</li>
+<li>Access code review comments and approval status</li>
+<li>Query GitHub Packages and releases</li>
+</ul>
+
+<p><strong>Best for:</strong> Teams deploying from GitHub to Azure. Use it alongside the Azure MCP server to correlate a failed deployment ("show me the GitHub Actions run that triggered this Azure rollback").</p>
+
+<h2>6. GitHub Actions MCP Server — Pipeline Intelligence</h2>
+
+<p>The GitHub Actions MCP server goes deeper than the core GitHub server, focusing specifically on CI/CD workflows and their execution history.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>List workflow definitions and their trigger conditions</li>
+<li>Fetch run histories with pass/fail status and duration</li>
+<li>Read job logs and step-level failure details</li>
+<li>Inspect secrets, variables, and environment configurations (names only)</li>
+<li>View deployment environments and protection rules</li>
+</ul>
+
+<p><strong>Best for:</strong> DevOps engineers debugging flaky CI pipelines. Ask "why did the deploy-to-azure workflow fail 3 times this week?" and get a root cause analysis from actual log data.</p>
+
+<h2>7. Datadog MCP Server — Azure Observability</h2>
+
+<p>Datadog has deep Azure integrations — APM, infrastructure metrics, log management. When you're on call and something breaks in your Azure environment, the Datadog MCP server is the fastest path from alert to root cause.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Query infrastructure metrics with Datadog Query Language</li>
+<li>Search logs across Azure services in real time</li>
+<li>Access APM traces and service maps</li>
+<li>Read monitor states and incident timelines</li>
+<li>Correlate Azure resource events with application errors</li>
+</ul>
+
+<p><strong>Best for:</strong> SREs managing Azure workloads who want incident triage without tab-switching between the Azure portal and Datadog dashboards.</p>
+
+<h2>Microsoft Clarity MCP Server — Frontend Analytics</h2>
+
+<p>Microsoft Clarity is a free behavioral analytics tool with heatmaps and session recordings. Its MCP server surfaces web analytics data directly to your AI assistant for conversion optimization work.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Query session recordings and user behavior data</li>
+<li>Access heatmap click and scroll data</li>
+<li>Read rage click and dead click reports</li>
+<li>Analyze page engagement and bounce patterns</li>
+</ul>
+
+<p><strong>Best for:</strong> Frontend developers and product managers who want to understand how users interact with their Azure-hosted web applications.</p>
+
+<h2>Building Your Azure MCP Stack</h2>
+
+<p>The right combination depends on your role:</p>
+<ul>
+<li><strong>Cloud/platform engineers:</strong> Azure + Azure CLI → full infrastructure visibility with natural language queries</li>
+<li><strong>Full-stack developers:</strong> Azure Blob + GitHub → storage access + code context in one window</li>
+<li><strong>DevOps/SRE:</strong> GitHub Actions + Datadog → pipeline debugging + observability correlation</li>
+<li><strong>Product/analytics:</strong> Microsoft Teams + Clarity → communication context + user behavior in one place</li>
+</ul>
+
+<p>Start with the two servers that eliminate your biggest daily context switches. Once you see the time savings, add from there.</p>
+
+<p><strong>Related guides:</strong></p>
+<ul>
+<li><a href="/blog/best-mcp-servers-for-aws">Best MCP Servers for AWS</a></li>
+<li><a href="/blog/best-mcp-servers-for-devops">Best MCP Servers for DevOps</a></li>
+<li><a href="/blog/best-mcp-servers-for-kubernetes">Best MCP Servers for Kubernetes</a></li>
+</ul>
+    `.trim(),
+  },
+  {
+    slug: "best-mcp-servers-for-slack",
+    title: "Best MCP Servers for Slack & Team Communication in 2026",
+    description: "Cut through communication noise with AI. The best MCP servers for Slack, Discord, email, and team collaboration — search threads, summarize meetings, and act on messages directly from your AI assistant.",
+    date: "2026-05-04",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "7 min read",
+    keywords: ["slack mcp server", "mcp servers for communication", "slack mcp tools 2026", "discord mcp server", "best communication mcp servers"],
+    relatedServerSlugs: ["slack", "discord", "telegram", "zoom", "microsoft-teams", "gmail", "linear"],
+    content: `
+<p>The average knowledge worker spends 2+ hours a day in Slack, Teams, and email — and that's before factoring in the 20 minutes of "where did that conversation go?" time per incident. MCP servers give your AI assistant direct access to communication tools, collapsing hours of context-switching into seconds of natural language.</p>
+
+<p>Here are the best MCP servers for Slack and team communication in 2026.</p>
+
+<h2>1. Slack MCP Server — The Central Hub</h2>
+
+<p>Slack is the real-time nervous system of most modern teams. The Slack MCP server gives your AI assistant read access to your workspace — channels, threads, direct messages, and search — so you never have to scroll through history manually again.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Search messages across all channels with natural language ("find the discussion about the API rate limit issue from last Tuesday")</li>
+<li>Read channel history and thread context</li>
+<li>List workspace channels, users, and user groups</li>
+<li>Fetch file attachments and shared documents</li>
+<li>Get channel member lists and activity statistics</li>
+</ul>
+
+<p><strong>Best for:</strong> Anyone who needs to catch up after being offline, onboard into a new channel's context, or find a specific decision that was made months ago in #engineering-architecture.</p>
+
+<p><strong>Install:</strong> <code>npx @zencoderai/slack-mcp-server</code> — requires a Slack bot token with the appropriate scopes.</p>
+
+<h2>2. Discord MCP Server — Community & Developer Channels</h2>
+
+<p>Discord is the home for developer communities, open-source project support, and gaming teams. Its MCP server gives your AI assistant access to server history, channels, and messages — useful for community managers, developer advocates, and open-source maintainers.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read channel messages and thread history</li>
+<li>Search across server content</li>
+<li>List guilds, channels, and member information</li>
+<li>Access role assignments and permission structures</li>
+<li>Fetch reaction data and pinned messages</li>
+</ul>
+
+<p><strong>Best for:</strong> Developer advocates monitoring community support channels, game developers managing player communities, or open-source maintainers tracking bug reports and feature requests across their Discord.</p>
+
+<h2>3. Telegram MCP Server — Messaging & Bot Integration</h2>
+
+<p>Telegram powers everything from crypto trading signals to customer support bots. The Telegram MCP server connects your AI assistant to Telegram channels, groups, and bots — valuable for teams using Telegram for operations or monitoring.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Send and receive messages from Telegram chats</li>
+<li>Read group and channel history</li>
+<li>Interact with Telegram bots programmatically</li>
+<li>Forward messages between chats</li>
+<li>Access file attachments and media</li>
+</ul>
+
+<p><strong>Best for:</strong> Teams using Telegram for ops alerts, product teams with Telegram-based customer communities, and developers building or managing Telegram bots.</p>
+
+<h2>4. Zoom MCP Server — Meeting Intelligence</h2>
+
+<p>Zoom is where decisions get made — but those decisions are buried in recordings and transcripts that no one has time to watch. The Zoom MCP server surfaces meeting metadata, recordings, and transcripts for AI-assisted review.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>List past meetings with participant counts and durations</li>
+<li>Access meeting recordings and transcript metadata</li>
+<li>Retrieve meeting summaries (requires Zoom AI Companion)</li>
+<li>Browse scheduled upcoming meetings and calendar integration</li>
+<li>Access webinar analytics and registrant data</li>
+</ul>
+
+<p><strong>Best for:</strong> Managers who want to catch up on team meetings they missed without watching hour-long recordings, and sales teams reviewing discovery call patterns.</p>
+
+<h2>5. Microsoft Teams MCP Server — Enterprise Workplace</h2>
+
+<p>For organizations on Microsoft 365, Teams is the Slack equivalent — and the Teams MCP server brings the same AI-native context to Microsoft's platform.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read Teams channel messages and thread context</li>
+<li>Search across Teams conversations</li>
+<li>Access meeting transcripts and recording metadata</li>
+<li>List teams, channels, and members</li>
+<li>Retrieve files shared in channels and chats</li>
+</ul>
+
+<p><strong>Best for:</strong> Enterprise teams on Microsoft 365 who want the same AI workflow benefits as Slack users, particularly in regulated industries where Teams is the mandated platform.</p>
+
+<h2>6. Gmail MCP Server — Email in the Loop</h2>
+
+<p>Communication doesn't stop at Slack. The Gmail MCP server gives your AI assistant access to your inbox — reading, searching, and composing emails without context-switching to the browser.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Search emails with natural language ("find all emails from vendors about the Q2 renewal")</li>
+<li>Read email threads with full context</li>
+<li>Draft and send replies</li>
+<li>Access attachments and Google Drive links</li>
+<li>Manage labels, filters, and unread counts</li>
+</ul>
+
+<p><strong>Best for:</strong> Anyone whose workflow crosses Slack and email — especially customer-facing teams who need to correlate Slack discussions with email threads from the same stakeholders.</p>
+
+<h2>7. Linear MCP Server — Where Decisions Become Work</h2>
+
+<p>Communication tools capture decisions; Linear is where those decisions become tracked work. The Linear MCP server bridges your Slack conversations to your project management layer — useful for product teams that live in both.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Search issues, projects, and cycles</li>
+<li>Create issues directly from chat context</li>
+<li>Update issue status, assignees, and priorities</li>
+<li>Read roadmap and milestone status</li>
+<li>Access team velocity and cycle metrics</li>
+</ul>
+
+<p><strong>Best for:</strong> Engineering and product teams who want to close the loop between "we discussed this in Slack" and "it's now tracked in Linear." Use alongside the Slack MCP to pull context from a conversation and immediately create a well-formed issue.</p>
+
+<h2>The Communication MCP Stack</h2>
+
+<p>The pattern that works best:</p>
+<ol>
+<li><strong>Slack + Gmail</strong> — covers 90% of async communication search and context retrieval</li>
+<li>Add <strong>Zoom</strong> for meeting catchup</li>
+<li>Add <strong>Linear</strong> to close the loop between conversation and action</li>
+</ol>
+
+<p>With this stack, your AI assistant becomes a communication layer on top of your communication tools — able to answer "what did we decide about X and is it in the backlog yet?" without you touching a single app.</p>
+
+<p><strong>Related guides:</strong></p>
+<ul>
+<li><a href="/blog/best-mcp-servers-for-productivity">Best MCP Servers for Productivity</a></li>
+<li><a href="/blog/best-mcp-servers-for-project-management">Best MCP Servers for Project Management</a></li>
+<li><a href="/blog/best-mcp-servers-for-customer-support">Best MCP Servers for Customer Support</a></li>
+</ul>
+    `.trim(),
+  },
+  {
+    slug: "best-mcp-servers-for-supabase",
+    title: "Best MCP Servers for Supabase Developers in 2026",
+    description: "Build faster with Supabase and AI. The best MCP servers for Supabase developers — direct database access, real-time subscriptions, auth debugging, and edge function management from your AI assistant.",
+    date: "2026-05-04",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "8 min read",
+    keywords: ["supabase mcp server", "mcp servers for supabase", "supabase mcp 2026", "model context protocol supabase", "best supabase tools"],
+    relatedServerSlugs: ["supabase", "supabase-realtime", "postgresql", "neon", "neon-serverless", "prisma", "prisma-mcp", "drizzle"],
+    content: `
+<p>Supabase has become the default backend for a generation of indie hackers, startups, and product teams — Postgres + Auth + Storage + Edge Functions in a single platform. But debugging Supabase issues still means bouncing between the dashboard, SQL editor, and logs.</p>
+
+<p>MCP servers change that. With the right tools, your AI assistant can query your Supabase database, inspect auth flows, monitor realtime subscriptions, and manage your schema — all without leaving your development environment.</p>
+
+<h2>1. Supabase MCP Server — The Official Integration</h2>
+
+<p>Supabase's official MCP server is the most comprehensive way to give your AI assistant access to your project. It covers all four pillars of the Supabase platform: database, auth, storage, and edge functions.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Execute SQL queries against your Postgres database</li>
+<li>Browse table schemas, indexes, and foreign key relationships</li>
+<li>Inspect Row Level Security (RLS) policies</li>
+<li>List auth users and their metadata</li>
+<li>Access storage buckets and file metadata</li>
+<li>View and invoke edge functions</li>
+<li>Read project configuration and API settings</li>
+</ul>
+
+<p><strong>Best for:</strong> Any developer building on Supabase who wants AI-assisted debugging. Ask "why is this RLS policy blocking authenticated users from reading their own data?" and get an immediate schema-aware answer.</p>
+
+<p><strong>Install:</strong> <code>npx @supabase/mcp-server-supabase</code> — authenticates via your Supabase access token.</p>
+
+<h2>2. Supabase Realtime MCP Server — Live Data Flows</h2>
+
+<p>Supabase Realtime is one of its killer features — live data sync via WebSockets. The Realtime MCP server lets your AI assistant interact with realtime channels, presence, and broadcast events for debugging and monitoring.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Monitor active realtime channels and subscriptions</li>
+<li>Inspect broadcast and presence events</li>
+<li>Debug postgres_changes listeners</li>
+<li>Check realtime connection health and latency</li>
+<li>View channel permission configurations</li>
+</ul>
+
+<p><strong>Best for:</strong> Developers building collaborative apps, live dashboards, or multiplayer features on Supabase Realtime. Invaluable for diagnosing "why isn't my subscription firing?" issues.</p>
+
+<h2>3. PostgreSQL MCP Server — Direct Database Power</h2>
+
+<p>Supabase is Postgres at its core. The PostgreSQL MCP server connects directly to your Supabase database (via the connection string), giving your AI assistant the full power of a DBA.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Execute arbitrary SQL — SELECT, INSERT, UPDATE, DELETE</li>
+<li>Inspect pg_catalog for table stats, index usage, and query plans</li>
+<li>Run EXPLAIN ANALYZE on slow queries</li>
+<li>Browse pg_stat_activity for active connections</li>
+<li>Access all Postgres extensions (pgvector, postgis, pg_cron, etc.)</li>
+</ul>
+
+<p><strong>Best for:</strong> Power users who need more than the Supabase MCP's surface area. Perfect for performance debugging — ask "which queries are doing sequential scans on the users table?" and get an analysis with index recommendations.</p>
+
+<h2>4. Prisma MCP Server — ORM-Aware Schema Intelligence</h2>
+
+<p>Many Supabase developers use Prisma as their ORM layer. The Prisma MCP server understands your schema.prisma file and provides AI assistance that's aware of your data models, relations, and migrations.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Parse and analyze Prisma schema files</li>
+<li>Generate Prisma queries and migrations from natural language</li>
+<li>Explain model relationships and cardinality</li>
+<li>Validate schema changes before applying migrations</li>
+<li>Browse migration history and pending migrations</li>
+</ul>
+
+<p><strong>Best for:</strong> Teams using Prisma with Supabase who want schema-aware code generation. Ask "generate a Prisma query that returns all users with their most recent 5 posts, ordered by engagement" and get type-safe code instantly.</p>
+
+<h2>5. Drizzle MCP Server — Type-Safe Query Builder</h2>
+
+<p>Drizzle is the TypeScript-first ORM that's gained massive adoption among Supabase developers who want full type safety without Prisma's abstraction overhead. Its MCP server brings schema intelligence into AI-assisted development.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Parse Drizzle schema definitions</li>
+<li>Generate type-safe queries from natural language</li>
+<li>Assist with migration file generation</li>
+<li>Explain table relations and join strategies</li>
+<li>Check for common query performance issues</li>
+</ul>
+
+<p><strong>Best for:</strong> TypeScript-first Supabase developers who've adopted Drizzle for its superior type inference. Use it to generate complex queries without fighting TypeScript generics.</p>
+
+<h2>6. Neon MCP Server — Serverless Postgres Alternative</h2>
+
+<p>Neon is Supabase's main competitor in the serverless Postgres space — many projects migrate between them or run Neon in development while using Supabase in production. The Neon MCP server covers both its standard and serverless drivers.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Query Neon databases with full SQL support</li>
+<li>Manage branches (Neon's database-branching feature)</li>
+<li>Inspect compute endpoints and connection pools</li>
+<li>Monitor auto-suspend and scale-to-zero behavior</li>
+<li>Access Neon's serverless driver for edge environments</li>
+</ul>
+
+<p><strong>Best for:</strong> Developers who use Neon for database branching in development (a feature Supabase doesn't have natively). The branch-per-PR workflow becomes dramatically easier with AI-assisted database management.</p>
+
+<h2>Building the Supabase Dev Stack</h2>
+
+<p>The recommended combination by use case:</p>
+<ul>
+<li><strong>App debugging:</strong> Supabase MCP → auth + RLS + table data in one context</li>
+<li><strong>Performance work:</strong> PostgreSQL MCP → direct EXPLAIN ANALYZE and query stats</li>
+<li><strong>Schema development:</strong> Prisma or Drizzle MCP → type-safe query generation</li>
+<li><strong>Realtime apps:</strong> Supabase + Supabase Realtime → full platform coverage</li>
+</ul>
+
+<p>The Supabase MCP server alone handles 80% of common debugging workflows. Add the PostgreSQL MCP when you need to go deeper on query performance or access pg_catalog.</p>
+
+<p><strong>Related guides:</strong></p>
+<ul>
+<li><a href="/blog/best-mcp-servers-for-database">Best MCP Servers for Database</a></li>
+<li><a href="/blog/best-mcp-servers-for-developers">Best MCP Servers for Developers</a></li>
+<li><a href="/blog/best-mcp-servers-for-typescript">Best MCP Servers for TypeScript Developers</a></li>
+</ul>
+    `.trim(),
+  },
+  {
+    slug: "best-mcp-servers-for-typescript",
+    title: "Best MCP Servers for TypeScript Developers in 2026",
+    description: "Supercharge your TypeScript workflow with MCP. From Bun and Deno runtimes to Drizzle ORM, Vitest, and GitHub integrations — the top MCP servers every TypeScript developer needs in 2026.",
+    date: "2026-05-04",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "8 min read",
+    keywords: ["typescript mcp server", "mcp servers for typescript developers", "bun mcp server", "deno mcp server", "best typescript mcp tools 2026"],
+    relatedServerSlugs: ["bun", "deno", "vitest", "jest", "prisma-mcp", "drizzle", "github", "filesystem", "linear"],
+    content: `
+<p>TypeScript has won the web development world — and the MCP ecosystem is catching up. Whether you're working in Node.js, Bun, or Deno, building type-safe APIs, or managing complex monorepos, there's an MCP server that can make your AI assistant significantly more useful for TypeScript work.</p>
+
+<p>Here are the best MCP servers for TypeScript developers in 2026.</p>
+
+<h2>1. Bun MCP Server — The Modern JS Runtime</h2>
+
+<p>Bun has rapidly become the default runtime for TypeScript-first developers who want speed without configuration. Its MCP server exposes Bun's runtime, package manager, bundler, and test runner as AI-usable tools.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Execute TypeScript and JavaScript scripts directly without compilation</li>
+<li>Run <code>bun install</code>, <code>bun add</code>, and <code>bun remove</code> package management</li>
+<li>Execute tests with <code>bun test</code> and surface results to AI</li>
+<li>Use Bun's built-in bundler with custom configurations</li>
+<li>Access Bun Shell for cross-platform shell scripting in TypeScript</li>
+<li>Work with Bun's native SQLite, HTTP, and WebSocket APIs</li>
+</ul>
+
+<p><strong>Best for:</strong> TypeScript developers who've adopted Bun as their primary runtime. Ask "run the test suite and summarize which tests are failing and why" and get an instant analysis with fix suggestions.</p>
+
+<p><strong>Install:</strong> Binary — install via the Bun MCP server package from the Bun team.</p>
+
+<h2>2. Deno MCP Server — TypeScript-First by Design</h2>
+
+<p>Deno was designed for TypeScript from day one — no tsconfig required, built-in formatting and linting, and a permission model that makes scripts secure by default. Its MCP server brings Deno's runtime capabilities into AI-native workflows.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Run TypeScript files natively without transpilation steps</li>
+<li>Execute code with fine-grained permission flags (<code>--allow-net</code>, <code>--allow-read</code>)</li>
+<li>Manage packages via JSR (JavaScript Registry) and npm compatibility</li>
+<li>Deploy to Deno Deploy directly from your AI chat</li>
+<li>Run <code>deno check</code>, <code>deno fmt</code>, and <code>deno lint</code> on demand</li>
+</ul>
+
+<p><strong>Best for:</strong> TypeScript developers building serverless functions on Deno Deploy or working with secure, permission-bound scripts. Great for quick TypeScript experimentation where you want immediate execution feedback.</p>
+
+<h2>3. Vitest MCP Server — Modern Testing</h2>
+
+<p>Vitest has replaced Jest as the default test runner for Vite-based TypeScript projects. Its MCP server surfaces test results, coverage data, and failure context directly to your AI assistant.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Run test suites and stream results to AI in real time</li>
+<li>Fetch detailed failure messages with stack traces</li>
+<li>Access coverage reports and uncovered code paths</li>
+<li>Filter and run specific test files or test names</li>
+<li>Watch mode integration for continuous feedback loops</li>
+</ul>
+
+<p><strong>Best for:</strong> TypeScript developers doing TDD or fixing failing test suites. Instead of reading wall-of-text test output, ask your AI "which tests are failing and what's the common cause?" for an instant summarized diagnosis.</p>
+
+<h2>4. Jest MCP Server — Legacy and Node.js Testing</h2>
+
+<p>Jest remains the standard for many Node.js + TypeScript projects, especially those using Express, NestJS, or other server-side frameworks. The Jest MCP server exposes the same test result intelligence as Vitest for Jest-based codebases.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Execute Jest test suites and parse structured results</li>
+<li>Access per-test pass/fail status with assertions detail</li>
+<li>Browse coverage reports by file, function, and line</li>
+<li>Run tests matching specific patterns</li>
+<li>Access Jest configuration and module mock state</li>
+</ul>
+
+<p><strong>Best for:</strong> Teams with existing Jest setups that aren't ready to migrate to Vitest. Also essential for NestJS projects where Jest is tightly integrated into the framework.</p>
+
+<h2>5. Drizzle MCP Server — Type-Safe Database Queries</h2>
+
+<p>Drizzle is the TypeScript ORM that generates 100% type-safe queries with zero runtime magic. Its MCP server understands your schema and generates queries, migrations, and joins that TypeScript will accept without casting.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Parse Drizzle schema files and understand table relationships</li>
+<li>Generate type-safe queries from plain English descriptions</li>
+<li>Create migration files that match your schema changes</li>
+<li>Explain complex multi-table joins in plain language</li>
+<li>Check query patterns for N+1 and performance issues</li>
+</ul>
+
+<p><strong>Best for:</strong> TypeScript developers using Drizzle with Postgres, MySQL, or SQLite. Use it to generate the complex queries that would otherwise require 30 minutes of fighting TypeScript generics.</p>
+
+<h2>6. Prisma MCP Server — Schema-First Development</h2>
+
+<p>Prisma remains the most widely used ORM in the TypeScript ecosystem. Its MCP server provides deep schema introspection and query generation capabilities that are tightly aware of your Prisma data models.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read and analyze your <code>schema.prisma</code> file</li>
+<li>Generate Prisma Client queries with proper relation includes</li>
+<li>Create migration files with correct field types and constraints</li>
+<li>Explain model relationships and cardinality</li>
+<li>Debug common migration conflicts and schema drift issues</li>
+</ul>
+
+<p><strong>Best for:</strong> TypeScript teams with established Prisma setups, particularly those using Prisma's relation query syntax which has a steep learning curve. Your AI assistant can generate the right <code>include</code> + <code>where</code> + <code>orderBy</code> combinations without you consulting the docs.</p>
+
+<h2>7. GitHub MCP Server — Code Collaboration</h2>
+
+<p>TypeScript development is inherently collaborative — pull requests, code reviews, and issue tracking happen on GitHub. The GitHub MCP server gives your AI assistant direct access to your codebase history and team interactions.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Search code across repositories (useful for finding TypeScript interface usages)</li>
+<li>Read pull request diffs and review comments</li>
+<li>Access issue discussions and feature request context</li>
+<li>Browse release notes and changelog history</li>
+<li>Query Actions workflow runs and failure logs</li>
+</ul>
+
+<p><strong>Best for:</strong> TypeScript developers who want context-aware code assistance that understands their specific codebase structure, naming conventions, and team decisions made in issues/PRs.</p>
+
+<h2>8. Filesystem MCP Server — Codebase Navigation</h2>
+
+<p>Often overlooked, the Filesystem MCP server is foundational for TypeScript development — it gives your AI assistant real-time access to your actual source files without relying on stale context windows.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read TypeScript source files, configs, and type definitions</li>
+<li>List directory structures for navigation</li>
+<li>Search file contents with pattern matching</li>
+<li>Access <code>tsconfig.json</code>, <code>package.json</code>, and build configs</li>
+<li>Monitor file changes in watch mode</li>
+</ul>
+
+<p><strong>Best for:</strong> All TypeScript developers — this is table stakes for AI-assisted development. Pair with Bun or Deno for an execute-verify loop where your AI can read, modify, run, and iterate on your TypeScript files autonomously.</p>
+
+<h2>The TypeScript MCP Stack</h2>
+
+<p>The optimal combination by project type:</p>
+<ul>
+<li><strong>Bun projects:</strong> Bun + Filesystem + Drizzle → runtime, code access, and database queries</li>
+<li><strong>Node.js/NestJS:</strong> Jest + GitHub + Prisma → testing, history, and ORM</li>
+<li><strong>Full-stack Supabase:</strong> Drizzle + Supabase + Filesystem → schema, database, and code</li>
+<li><strong>Library/package development:</strong> Vitest + GitHub + Filesystem → tests, PRs, and code access</li>
+</ul>
+
+<p>Start with Filesystem + your test runner. These two alone enable an AI feedback loop that catches bugs in real code with real test output.</p>
+
+<p><strong>Related guides:</strong></p>
+<ul>
+<li><a href="/blog/best-mcp-servers-for-supabase">Best MCP Servers for Supabase Developers</a></li>
+<li><a href="/blog/best-mcp-servers-for-react-developers">Best MCP Servers for React Developers</a></li>
+<li><a href="/blog/best-mcp-servers-for-node-developers">Best MCP Servers for Node.js Developers</a></li>
+</ul>
+    `.trim(),
+  },
+  {
+    slug: "gitlab-mcp-server-guide",
+    title: "GitLab MCP Server: Complete Setup Guide 2026",
+    description: "Set up and use the GitLab MCP server with Claude, Cursor, and VS Code. Manage issues, review MRs, query pipelines, and access repository data directly from your AI assistant.",
+    date: "2026-05-04",
+    author: "MyMCPTools Team",
+    category: "Tutorials",
+    readingTime: "8 min read",
+    keywords: ["gitlab mcp server", "gitlab mcp setup", "gitlab mcp server guide 2026", "model context protocol gitlab", "gitlab ai assistant mcp"],
+    relatedServerSlugs: ["gitlab", "git", "github-actions", "circleci", "jenkins", "docker", "kubernetes"],
+    content: `
+<p>GitLab is more than a code platform — it's a complete DevSecOps lifecycle tool with built-in CI/CD, container registry, security scanning, and issue tracking. GitLab's official MCP server connects all of that to your AI assistant, making repository management, code review, and pipeline debugging significantly faster.</p>
+
+<p>This guide covers everything you need to set up and use the GitLab MCP server with Claude, Cursor, and VS Code.</p>
+
+<h2>What the GitLab MCP Server Can Do</h2>
+
+<p>GitLab's MCP server is one of the most feature-rich in the ecosystem, covering the full GitLab project lifecycle:</p>
+<ul>
+<li><strong>Repository access:</strong> Browse files, read code, explore commit history</li>
+<li><strong>Merge requests:</strong> List, search, read diffs, view review comments, check approval status</li>
+<li><strong>Issues:</strong> Search, create, update, and triage issues and epics</li>
+<li><strong>CI/CD pipelines:</strong> View pipeline runs, job logs, and deployment environments</li>
+<li><strong>Wikis:</strong> Read and search project wiki pages</li>
+<li><strong>Users and groups:</strong> Access team member info and namespace structures</li>
+</ul>
+
+<h2>Prerequisites</h2>
+
+<ol>
+<li><strong>GitLab account</strong> — GitLab.com or a self-hosted instance</li>
+<li><strong>Personal Access Token (PAT)</strong> — with <code>read_api</code> scope at minimum; add <code>write_repository</code> if you want to create issues from your AI assistant</li>
+<li><strong>Node.js 18+</strong> installed on your machine</li>
+</ol>
+
+<h3>Creating a GitLab PAT</h3>
+<ol>
+<li>Go to GitLab → User Settings → Access Tokens</li>
+<li>Create a token with name: <code>mcp-server</code></li>
+<li>Scopes: <code>read_api</code>, optionally <code>write_repository</code></li>
+<li>Set an expiration date (recommended: 90 days)</li>
+<li>Copy and save the token — you won't see it again</li>
+</ol>
+
+<h2>Installation</h2>
+
+<pre><code>npx @gitlab-org/gitlab-mcp-server --token YOUR_GITLAB_TOKEN</code></pre>
+
+<p>For self-hosted GitLab instances:</p>
+
+<pre><code>npx @gitlab-org/gitlab-mcp-server --token YOUR_TOKEN --url https://gitlab.yourcompany.com</code></pre>
+
+<h2>Configuration: Claude Desktop</h2>
+
+<p>Add to your <code>~/.config/claude/claude_desktop_config.json</code>:</p>
+
+<pre><code>{
+  "mcpServers": {
+    "gitlab": {
+      "command": "npx",
+      "args": ["@gitlab-org/gitlab-mcp-server"],
+      "env": {
+        "GITLAB_TOKEN": "your_personal_access_token",
+        "GITLAB_URL": "https://gitlab.com"
+      }
+    }
+  }
+}</code></pre>
+
+<p>Restart Claude Desktop after saving. You'll see the GitLab tools appear in Claude's tool list.</p>
+
+<h2>Configuration: Cursor</h2>
+
+<p>Open Cursor Settings → MCP → Add Server:</p>
+<ul>
+<li><strong>Name:</strong> GitLab</li>
+<li><strong>Command:</strong> <code>npx @gitlab-org/gitlab-mcp-server</code></li>
+<li><strong>Environment:</strong> <code>GITLAB_TOKEN=your_token</code></li>
+</ul>
+
+<h2>Configuration: VS Code</h2>
+
+<p>Add to your <code>.vscode/mcp.json</code> (workspace-level) or user settings:</p>
+
+<pre><code>{
+  "servers": {
+    "gitlab": {
+      "type": "stdio",
+      "command": "npx",
+      "args": ["@gitlab-org/gitlab-mcp-server"],
+      "env": {
+        "GITLAB_TOKEN": "your_token"
+      }
+    }
+  }
+}</code></pre>
+
+<h2>Best Use Cases</h2>
+
+<h3>Merge Request Reviews</h3>
+<p>"Show me all open MRs assigned to me in the backend group, summarize the changes in each, and flag any that haven't had activity in 7+ days."</p>
+
+<h3>Issue Triage</h3>
+<p>"Find all issues labeled 'bug' created in the last 14 days with no assignee. Rank them by comment activity and suggest which 3 should be prioritized for this sprint."</p>
+
+<h3>Pipeline Debugging</h3>
+<p>"The deploy-production pipeline failed 3 times in the last 24 hours. Show me the job logs for each failure and identify the common failure point."</p>
+
+<h3>Code Archaeology</h3>
+<p>"Find all commits in the auth module from the last 90 days that touched the token validation logic. Summarize what changed and why based on commit messages and MR descriptions."</p>
+
+<h3>Documentation Gaps</h3>
+<p>"Read the project wiki and identify which API endpoints documented in the code have no corresponding wiki page."</p>
+
+<h2>GitLab MCP vs. GitHub MCP</h2>
+
+<p>If your team uses both platforms (common in enterprise environments), here's the key difference:</p>
+
+<ul>
+<li><strong>GitLab MCP</strong> is stronger on CI/CD (native pipeline integration), security scanning results, and issue/epic hierarchy</li>
+<li><strong>GitHub MCP</strong> is stronger on community integrations, GitHub Actions ecosystem, and public repository search</li>
+</ul>
+
+<p>You can run both simultaneously — each serves different project contexts without conflict.</p>
+
+<h2>Pairing GitLab with Other MCP Servers</h2>
+
+<p>The most productive combinations:</p>
+
+<ul>
+<li><strong>GitLab + Docker MCP</strong> — manage the container registry and deployed images alongside code</li>
+<li><strong>GitLab + Kubernetes MCP</strong> — correlate GitLab pipeline deployments with cluster state</li>
+<li><strong>GitLab + CircleCI/Jenkins</strong> — if you use external CI alongside GitLab for specific pipelines</li>
+<li><strong>GitLab + Filesystem</strong> — local code access + remote repository state for full context</li>
+</ul>
+
+<h2>Troubleshooting</h2>
+
+<p><strong>Authentication fails:</strong> Verify your PAT hasn't expired and has <code>read_api</code> scope. Self-hosted instances may need <code>GITLAB_URL</code> set explicitly.</p>
+
+<p><strong>Rate limiting:</strong> GitLab's API rate limits are 2,000 requests/hour for authenticated users. If you're hitting limits, add <code>--rate-limit-delay 100</code> to introduce a 100ms delay between calls.</p>
+
+<p><strong>Self-hosted SSL:</strong> If you get SSL certificate errors on self-managed GitLab, set <code>NODE_TLS_REJECT_UNAUTHORIZED=0</code> in the env config (only for trusted internal networks).</p>
+
+<p><strong>MR diffs not loading:</strong> Large MRs (>1,000 lines changed) may exceed context limits. Use the <code>--max-diff-lines 500</code> flag to truncate large diffs automatically.</p>
+
+<p><strong>Related guides:</strong></p>
+<ul>
+<li><a href="/blog/github-mcp-server-setup-guide">GitHub MCP Server Setup Guide</a></li>
+<li><a href="/blog/best-mcp-servers-for-devops">Best MCP Servers for DevOps</a></li>
+<li><a href="/blog/best-mcp-servers-for-kubernetes">Best MCP Servers for Kubernetes</a></li>
+</ul>
+    `.trim(),
+  },
 ];
 
 export function getBlogPostBySlug(slug: string): BlogPost | undefined {
