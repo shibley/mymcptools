@@ -6704,6 +6704,821 @@ gh pr view 123 --json body,files | claude-code "Review this PR and suggest impro
 </ul>
     `.trim(),
   },
+  {
+    slug: "how-to-build-an-mcp-server",
+    title: "How to Build Your Own MCP Server: Complete Tutorial 2026",
+    description: "Learn how to build a custom MCP server from scratch using the TypeScript SDK. Define tools, handle requests, connect to Claude Desktop, and ship a working MCP integration in under an hour.",
+    date: "2026-05-03",
+    author: "MyMCPTools Team",
+    category: "Tutorial",
+    readingTime: "10 min read",
+    keywords: ["how to build mcp server", "create mcp server", "mcp server tutorial", "build custom mcp server", "model context protocol development", "mcp typescript sdk"],
+    relatedServerSlugs: ["filesystem", "fetch", "memory", "everything", "github"],
+    content: `
+<p>Building a custom MCP server is the fastest way to connect any tool, API, or data source to Claude, Cursor, and other MCP-compatible AI clients. Once your server is running, your AI assistant can call your custom tools just like it calls filesystem or GitHub — conversationally, with context, in real time.</p>
+
+<p>This tutorial walks through building a working MCP server in TypeScript from scratch. By the end, you'll have a server that Claude Desktop can connect to and use.</p>
+
+<h2>What Is an MCP Server, Exactly?</h2>
+
+<p>An MCP server is a process that exposes structured "tools" to an AI client via the Model Context Protocol. Each tool has a name, description, and input schema. The AI client discovers your tools, decides when to call them, and passes structured arguments. Your server executes the logic and returns a result.</p>
+
+<p>Think of it as a type-safe function call that your AI makes on your behalf — but with natural language deciding when and why.</p>
+
+<h2>Prerequisites</h2>
+
+<ul>
+<li>Node.js 18+ installed</li>
+<li>Claude Desktop or another MCP client</li>
+<li>Basic TypeScript familiarity</li>
+</ul>
+
+<h2>Step 1: Initialize the Project</h2>
+
+<pre><code>mkdir my-mcp-server
+cd my-mcp-server
+npm init -y
+npm install @modelcontextprotocol/sdk zod
+npm install -D typescript @types/node tsx
+npx tsc --init</code></pre>
+
+<p>Update <code>tsconfig.json</code> to target ES2022 with module resolution set to <code>node</code>:</p>
+
+<pre><code>{
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "Node16",
+    "moduleResolution": "Node16",
+    "outDir": "./dist",
+    "strict": true
+  }
+}</code></pre>
+
+<h2>Step 2: Define Your Server</h2>
+
+<p>Create <code>src/index.ts</code>. This is the full skeleton of an MCP server:</p>
+
+<pre><code>import { Server } from "@modelcontextprotocol/sdk/server/index.js";
+import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
+import {
+  CallToolRequestSchema,
+  ListToolsRequestSchema,
+} from "@modelcontextprotocol/sdk/types.js";
+import { z } from "zod";
+
+const server = new Server(
+  { name: "my-mcp-server", version: "1.0.0" },
+  { capabilities: { tools: {} } }
+);
+
+server.setRequestHandler(ListToolsRequestSchema, async () => ({
+  tools: [
+    {
+      name: "hello_world",
+      description: "Returns a greeting for a given name",
+      inputSchema: {
+        type: "object",
+        properties: {
+          name: { type: "string", description: "The name to greet" },
+        },
+        required: ["name"],
+      },
+    },
+  ],
+}));
+
+server.setRequestHandler(CallToolRequestSchema, async (request) => {
+  if (request.params.name === "hello_world") {
+    const { name } = request.params.arguments as { name: string };
+    return {
+      content: [{ type: "text", text: \`Hello, \${name}! Your MCP server is working.\` }],
+    };
+  }
+  throw new Error(\`Unknown tool: \${request.params.name}\`);
+});
+
+async function main() {
+  const transport = new StdioServerTransport();
+  await server.connect(transport);
+}
+
+main().catch(console.error);</code></pre>
+
+<h2>Step 3: Add a More Useful Tool</h2>
+
+<p>Replace the hello world tool with something practical — a tool that fetches weather data from a public API:</p>
+
+<pre><code>// In ListToolsRequestSchema handler:
+{
+  name: "get_weather",
+  description: "Get current weather for a city",
+  inputSchema: {
+    type: "object",
+    properties: {
+      city: { type: "string", description: "City name (e.g. 'San Francisco')" },
+    },
+    required: ["city"],
+  },
+}
+
+// In CallToolRequestSchema handler:
+if (request.params.name === "get_weather") {
+  const { city } = request.params.arguments as { city: string };
+  const response = await fetch(
+    \`https://wttr.in/\${encodeURIComponent(city)}?format=3\`
+  );
+  const text = await response.text();
+  return { content: [{ type: "text", text }] };
+}</code></pre>
+
+<h2>Step 4: Connect to Claude Desktop</h2>
+
+<p>Add your server to Claude Desktop's config file. On Mac, edit <code>~/Library/Application Support/Claude/claude_desktop_config.json</code>:</p>
+
+<pre><code>{
+  "mcpServers": {
+    "my-mcp-server": {
+      "command": "npx",
+      "args": ["tsx", "/path/to/my-mcp-server/src/index.ts"]
+    }
+  }
+}</code></pre>
+
+<p>Restart Claude Desktop. In a new conversation, click the tools icon (🔧) — you should see <code>get_weather</code> listed. Ask Claude "What's the weather in Tokyo?" and watch it call your server.</p>
+
+<h2>Step 5: Add Input Validation with Zod</h2>
+
+<p>For production servers, validate inputs with Zod to get type safety and clear error messages:</p>
+
+<pre><code>const WeatherInput = z.object({
+  city: z.string().min(1).max(100),
+});
+
+// In your handler:
+const parsed = WeatherInput.safeParse(request.params.arguments);
+if (!parsed.success) {
+  return {
+    content: [{ type: "text", text: \`Invalid input: \${parsed.error.message}\` }],
+    isError: true,
+  };
+}
+const { city } = parsed.data;</code></pre>
+
+<h2>Step 6: Add Resources (Optional)</h2>
+
+<p>Beyond tools, MCP servers can expose "resources" — persistent data that AI clients can read at any time. This is useful for configuration, documentation, or structured data:</p>
+
+<pre><code>import { ListResourcesRequestSchema, ReadResourceRequestSchema } from "@modelcontextprotocol/sdk/types.js";
+
+server.setRequestHandler(ListResourcesRequestSchema, async () => ({
+  resources: [
+    {
+      uri: "config://server-info",
+      name: "Server Configuration",
+      mimeType: "application/json",
+    },
+  ],
+}));
+
+server.setRequestHandler(ReadResourceRequestSchema, async (request) => {
+  if (request.params.uri === "config://server-info") {
+    return {
+      contents: [{
+        uri: "config://server-info",
+        mimeType: "application/json",
+        text: JSON.stringify({ version: "1.0.0", tools: ["get_weather"] }),
+      }],
+    };
+  }
+  throw new Error(\`Unknown resource: \${request.params.uri}\`);
+});</code></pre>
+
+<h2>Best Practices for Production MCP Servers</h2>
+
+<ul>
+<li><strong>Keep tools focused.</strong> One tool per action. AI clients pick tools based on their description — precise tools get picked accurately.</li>
+<li><strong>Write clear descriptions.</strong> The tool description is the interface. "Fetches weather data" is useless. "Returns current temperature, conditions, and humidity for a city name" is actionable.</li>
+<li><strong>Return structured text.</strong> Format output as Markdown when possible — AI clients render it better in conversation.</li>
+<li><strong>Handle errors gracefully.</strong> Return <code>isError: true</code> with a human-readable message instead of throwing — the AI can recover and explain what went wrong.</li>
+<li><strong>Scope access carefully.</strong> Only expose what the AI needs. A filesystem server limited to <code>/home/user/projects</code> is safer than one with unrestricted access.</li>
+</ul>
+
+<h2>Publishing Your MCP Server</h2>
+
+<p>Once your server works locally, you can:</p>
+<ul>
+<li>Publish to npm so others can install it with <code>npx your-server</code></li>
+<li>Submit it to <a href="/submit">MyMCPTools</a> to get discovered by thousands of developers</li>
+<li>Open-source it on GitHub and add it to awesome-mcp-server lists</li>
+</ul>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How long does it take to build a working MCP server?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A basic working MCP server can be built in 30-60 minutes using the TypeScript SDK. The hello world example in this tutorial takes about 15 minutes to set up and connect to Claude Desktop."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do I need to know TypeScript to build an MCP server?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "TypeScript is the most supported language for MCP servers, but the community also has SDKs and examples in Python. Basic TypeScript knowledge is sufficient — you don't need advanced generics or decorators."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I build an MCP server in Python instead of TypeScript?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Anthropic provides an official Python SDK at pypi.org/project/mcp. The pattern is similar: define tools, handle requests, connect via stdio. The Python SDK is well-maintained and production-ready."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I test my MCP server before connecting to Claude Desktop?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Use the MCP Inspector tool (npx @modelcontextprotocol/inspector) to test your server interactively without needing Claude Desktop. It lets you call tools directly and see raw responses."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What's the difference between MCP tools and MCP resources?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Tools are callable functions — the AI decides when to invoke them based on context. Resources are persistent data the AI client can read at any time, like configuration files or documents. Most servers primarily use tools."
+      }
+    }
+  ]
+}
+</script>
+
+<p><strong>Related guides:</strong></p>
+<ul>
+<li><a href="/blog/getting-started-with-mcp">Getting Started with MCP</a></li>
+<li><a href="/blog/mcp-vs-api-integrations">MCP vs API Integrations: What's the Difference?</a></li>
+<li><a href="/blog/best-mcp-servers-for-developers">Best MCP Servers for Developers</a></li>
+</ul>
+    `.trim(),
+  },
+  {
+    slug: "best-mcp-servers-for-node-developers",
+    title: "Best MCP Servers for Node.js & JavaScript Developers in 2026",
+    description: "The top MCP servers for JavaScript and Node.js developers: GitHub integration, database access, browser automation, Redis caching, Stripe payments, and more — all accessible from your AI workflow.",
+    date: "2026-05-03",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "8 min read",
+    keywords: ["mcp servers for javascript", "node.js mcp server", "best mcp servers javascript developers", "javascript mcp integration", "node mcp tools 2026"],
+    relatedServerSlugs: ["github", "filesystem", "postgres", "playwright", "redis", "stripe", "vercel", "fetch", "slack", "linear"],
+    content: `
+<p>JavaScript developers live across a sprawling ecosystem: npm packages, GitHub repos, PostgreSQL databases, Redis caches, Stripe subscriptions, Vercel deployments, Slack channels. MCP servers give your AI assistant access to all of it — so you can ship without context-switching.</p>
+
+<p>Here are the MCP servers that matter most for Node.js and JavaScript developers.</p>
+
+<h2>1. GitHub MCP Server — Your Codebase, AI-Accessible</h2>
+
+<p>The GitHub MCP server is table stakes for any developer workflow. It gives your AI assistant direct access to your repositories, pull requests, issues, and code search — without leaving the conversation.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read any file in any repo you have access to</li>
+<li>Create, view, and comment on issues and PRs</li>
+<li>Search code across all your repositories</li>
+<li>View commit history and diffs</li>
+</ul>
+
+<p><strong>Node.js workflow:</strong> "Review my open PRs and summarize the changes." "Search for all usages of <code>express.Router</code> in the backend repo." "Create an issue: the auth middleware doesn't handle expired JWT tokens."</p>
+
+<h2>2. Filesystem MCP Server — Project-Level Context</h2>
+
+<p>JavaScript projects are complex directory trees: <code>src/</code>, <code>dist/</code>, <code>node_modules/</code>, config files everywhere. The filesystem MCP server gives your AI assistant the ability to read, write, and navigate your project without copy-pasting.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read and write files with encoding support</li>
+<li>Directory traversal and file search</li>
+<li>Configurable root directories (lock to your project)</li>
+<li>Batch file operations</li>
+</ul>
+
+<p><strong>Node.js workflow:</strong> "Read my <code>tsconfig.json</code> and suggest strict mode improvements." "Find all files that import from <code>../utils/auth</code>." "Write a Jest test for the function in <code>src/lib/parser.ts</code>."</p>
+
+<h2>3. PostgreSQL MCP Server — Database Queries in Plain English</h2>
+
+<p>Most Node.js backends talk to PostgreSQL. The PostgreSQL MCP server exposes your schema and lets your AI run read-only queries — so you can ask questions about your data without writing SQL from memory.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Schema introspection (tables, columns, types, foreign keys)</li>
+<li>Read-only query execution</li>
+<li>Query explanation and optimization hints</li>
+<li>Multi-database connection support</li>
+</ul>
+
+<p><strong>Node.js workflow:</strong> "How many users signed up in the last 7 days?" "Show me the schema for the <code>orders</code> table." "Write a Prisma query that gets all orders with their associated user data."</p>
+
+<h2>4. Playwright MCP Server — Browser Automation Without the Setup</h2>
+
+<p>Playwright is the standard for Node.js browser automation and end-to-end testing. The Playwright MCP server lets your AI assistant control a browser instance directly — navigating pages, filling forms, extracting content, and running test scenarios.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Launch and control Chromium, Firefox, or WebKit</li>
+<li>Navigate URLs and interact with page elements</li>
+<li>Take screenshots and extract structured content</li>
+<li>Execute test flows for QA validation</li>
+</ul>
+
+<p><strong>Node.js workflow:</strong> "Go to our staging URL and check that the login form submits correctly." "Scrape the pricing table from [competitor URL]." "Run through the signup flow and tell me if anything is broken."</p>
+
+<h2>5. Redis MCP Server — Cache and Queue Visibility</h2>
+
+<p>Redis is ubiquitous in Node.js stacks — session storage, job queues, rate limiting, pub/sub. The Redis MCP server gives your AI assistant visibility into your cache so you can debug caching issues without opening redis-cli.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Get, set, and inspect keys</li>
+<li>View TTLs and expiration times</li>
+<li>Browse sorted sets, hashes, and lists</li>
+<li>Flush keys by pattern</li>
+</ul>
+
+<p><strong>Node.js workflow:</strong> "Is the user session for user_id 1234 still in cache?" "How many jobs are queued in the BullMQ <code>email</code> queue?" "What's the TTL on the rate-limit key for this IP?"</p>
+
+<h2>6. Stripe MCP Server — Payment Context Without Leaving Code</h2>
+
+<p>Building subscription billing in Node.js? The Stripe MCP server gives your AI assistant access to your payment data so you can debug webhook events, check subscription states, and verify charge history during development.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>View customers, subscriptions, and payment intents</li>
+<li>Browse recent charges and refunds</li>
+<li>Check webhook event logs</li>
+<li>Inspect product and price configurations</li>
+</ul>
+
+<p><strong>Node.js workflow:</strong> "Why did this customer's subscription fail to renew?" "Show me the webhook events from the last hour." "What does the <code>pro_monthly</code> price object look like in the API?"</p>
+
+<h2>7. Vercel MCP Server — Deployment Health</h2>
+
+<p>Most Node.js web apps deploy to Vercel. The Vercel MCP server gives your AI assistant visibility into deployment status, build logs, and function performance — so you can debug a failed deploy without leaving your coding context.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Check deployment status and build logs</li>
+<li>View Edge Function and Serverless Function performance</li>
+<li>Manage environment variables</li>
+<li>Access Vercel Analytics data</li>
+</ul>
+
+<p><strong>Node.js workflow:</strong> "Did the last deploy succeed?" "Are any API routes timing out in production?" "Show me the build log for the failed deployment."</p>
+
+<h2>8. Fetch MCP Server — HTTP Requests in Context</h2>
+
+<p>The Fetch MCP server gives your AI assistant the ability to make HTTP requests to any URL — REST APIs, internal services, public data sources. It's the Swiss army knife for integrating external services without writing boilerplate.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>GET, POST, PUT, DELETE requests with custom headers</li>
+<li>Response body extraction (JSON, text, HTML)</li>
+<li>Auth header support (Bearer tokens, API keys)</li>
+</ul>
+
+<p><strong>Node.js workflow:</strong> "Hit our <code>/api/health</code> endpoint and tell me what it returns." "Fetch the latest npm release version for <code>express</code>." "Call the OpenAI API with this prompt and return the response."</p>
+
+<h2>9. Linear MCP Server — Issue Tracking in Flow</h2>
+
+<p>JavaScript teams at modern startups almost universally use Linear. The Linear MCP server lets your AI assistant browse your backlog, create issues, and update sprint status without you ever opening the Linear app.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>View current cycle and team workload</li>
+<li>Create and triage issues with priorities</li>
+<li>Track project status and blockers</li>
+<li>Search issues by keyword or assignee</li>
+</ul>
+
+<p><strong>Node.js workflow:</strong> "Create a Linear issue: the Stripe webhook handler throws a 500 on subscription.updated events." "What's blocking the current sprint?" "Move issue ENG-432 to In Review."</p>
+
+<h2>The JavaScript Developer MCP Stack</h2>
+
+<p>Start with these three — they solve the most common friction points:</p>
+<ol>
+<li><strong>GitHub</strong> — code and PR context</li>
+<li><strong>Filesystem</strong> — project file access</li>
+<li><strong>PostgreSQL</strong> — database queries</li>
+</ol>
+
+<p>Then add based on your stack: Playwright if you do browser testing, Redis if you have a cache layer, Stripe if you handle payments, Vercel if you deploy there.</p>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Which MCP server is most useful for Node.js developers?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The GitHub MCP server and Filesystem MCP server are the most universally useful for Node.js developers. GitHub gives your AI access to your codebase and PRs; Filesystem lets it read and write project files directly. Most developers start with these two."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I use MCP servers with VS Code and Node.js projects?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. VS Code supports MCP through extensions like Cline and Continue, and GitHub Copilot's agent mode. You can configure MCP servers in VS Code settings to use alongside your Node.js development workflow."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is there an MCP server for npm or package management?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Not a dedicated npm MCP server, but the Fetch MCP server can query the npm registry API directly. You can ask your AI to check package versions, read README files, or compare package download statistics using Fetch."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I connect multiple MCP servers for a Node.js project?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Claude Desktop and most MCP clients support multiple simultaneous servers. Add each server to your claude_desktop_config.json under the mcpServers key with a unique name. The AI client will discover all tools from all servers and pick the right one for each task."
+      }
+    }
+  ]
+}
+</script>
+
+<p><strong>Related guides:</strong></p>
+<ul>
+<li><a href="/blog/best-mcp-servers-for-python-developers">Best MCP Servers for Python Developers</a></li>
+<li><a href="/blog/best-mcp-servers-for-developers">Best MCP Servers for Developers</a></li>
+<li><a href="/blog/how-to-build-an-mcp-server">How to Build Your Own MCP Server</a></li>
+</ul>
+    `.trim(),
+  },
+  {
+    slug: "best-mcp-servers-for-notion-users",
+    title: "Best MCP Servers for Notion Users: AI-Powered Knowledge Management in 2026",
+    description: "Use MCP servers to supercharge your Notion workspace with AI. Search pages, create docs, connect your notes to live data, and build AI workflows that run across your entire knowledge base.",
+    date: "2026-05-03",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "7 min read",
+    keywords: ["notion mcp server", "mcp for notion", "notion ai mcp integration", "best mcp servers knowledge management", "notion mcp workflow"],
+    relatedServerSlugs: ["notion", "notion-calendar", "memory", "filesystem", "brave-search", "gmail", "linear", "slack"],
+    content: `
+<p>Notion is where millions of teams store their knowledge: project docs, meeting notes, product specs, OKRs, wikis. But Notion's built-in AI is limited to what's in your pages. MCP servers break that barrier — connecting your Notion workspace to live data, other tools, and the full power of external AI assistants.</p>
+
+<p>Here are the MCP servers that work best with Notion-centered workflows.</p>
+
+<h2>1. Notion MCP Server — Your Workspace Becomes Conversational</h2>
+
+<p>The Notion MCP server is the foundation. It gives your AI assistant — Claude, Cursor, or any MCP-compatible client — full read and write access to your Notion workspace: pages, databases, properties, and nested content.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Search and read pages across your entire workspace</li>
+<li>Create new pages with structured content</li>
+<li>Query and filter Notion databases</li>
+<li>Update page properties and database records</li>
+<li>Navigate block structure and retrieve inline content</li>
+</ul>
+
+<p><strong>Why it changes everything:</strong> Instead of searching Notion manually, you can ask "What did we decide about pricing in Q3?" and get the exact page. Instead of writing a meeting summary yourself, you say "Write a summary of this meeting and add it to the [project] notes database."</p>
+
+<h2>2. Notion Calendar MCP Server — Time-Aware Context</h2>
+
+<p>The Notion Calendar MCP server connects your scheduled work to your workspace. If you use Notion Calendar to manage meetings and deadlines, this server gives your AI assistant a time dimension — understanding what's upcoming, what's overdue, and how your calendar relates to your projects.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>View upcoming events and scheduled work</li>
+<li>Create calendar entries from Notion database records</li>
+<li>Sync deadlines between project pages and calendar</li>
+</ul>
+
+<p><strong>Workflow example:</strong> "What meetings do I have this week?" "Create a calendar event for the [client] kickoff based on their project page." "What project deadlines are coming up in the next two weeks?"</p>
+
+<h2>3. Memory MCP Server — Persistent AI Context Across Sessions</h2>
+
+<p>Notion users often want their AI assistant to "remember" things between conversations — personal preferences, ongoing project context, decisions made last month. The Memory MCP server creates a persistent knowledge graph your AI can read and write across sessions.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Store entities, relationships, and facts persistently</li>
+<li>Retrieve relevant memories based on current context</li>
+<li>Build up a knowledge graph over time</li>
+</ul>
+
+<p><strong>Why Notion users love it:</strong> Notion is your team's memory. The Memory MCP server is your AI's personal memory. Together, they give your AI assistant context that spans both structured team knowledge and personal AI-to-you continuity.</p>
+
+<h2>4. Brave Search MCP Server — Research Without Leaving Your Workflow</h2>
+
+<p>Notion is where knowledge lives after it's created. The Brave Search MCP server is where you find new knowledge to bring in — research, current events, competitor info, technical documentation. It gives your AI assistant web search capability so you can research-and-document in one step.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Web search with ad-free, privacy-respecting results</li>
+<li>Summarize search results for documentation</li>
+<li>Find citations and sources for your writing</li>
+</ul>
+
+<p><strong>Workflow example:</strong> "Search for the latest research on [topic] and add a summary to the [project] research page in Notion." "Find three competitors to [our product] and create Notion database entries for each."</p>
+
+<h2>5. Gmail MCP Server — Email Intelligence Into Your Docs</h2>
+
+<p>Important decisions, client feedback, and project context often live in email — not in Notion. The Gmail MCP server bridges that gap, letting your AI assistant pull relevant email content and surface it alongside your Notion workspace.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Search and read emails by sender, subject, or date</li>
+<li>Draft and send replies</li>
+<li>Extract key information from email threads</li>
+</ul>
+
+<p><strong>Workflow example:</strong> "Find all emails from [client] about the [project] and create a Notion page summarizing the key decisions." "Draft a reply to this email and save a copy to the [client] project page."</p>
+
+<h2>6. Linear MCP Server — Engineering Work Linked to Docs</h2>
+
+<p>Engineering teams often use Notion for documentation while using Linear for issue tracking. The Linear MCP server bridges the two — your AI assistant can check the current sprint, create issues, and sync information between your task tracker and your knowledge base.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>View and create issues, projects, and cycles</li>
+<li>Search issues by keyword, status, or assignee</li>
+<li>Track blockers and velocity</li>
+</ul>
+
+<p><strong>Workflow example:</strong> "Create a Linear issue for the bug described in this Notion bug report." "What's the status of the issues linked to the Q2 roadmap page?" "Update the Notion sprint retrospective with this week's Linear cycle stats."</p>
+
+<h2>7. Slack MCP Server — Team Context on Demand</h2>
+
+<p>Decisions made in Slack often never make it into Notion. The Slack MCP server lets your AI assistant search your Slack history and bring conversations into your documentation workflow — bridging the ephemeral and the persistent.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Search messages across channels and dates</li>
+<li>Read threads and extract decisions</li>
+<li>Post updates to channels directly</li>
+</ul>
+
+<p><strong>Workflow example:</strong> "Search Slack for the discussion about [feature] last week and add the decision to the Notion architecture doc." "Post a summary of today's meeting notes to #product."</p>
+
+<h2>The Notion-Centered MCP Stack</h2>
+
+<p>The most powerful combination for Notion users:</p>
+<ul>
+<li><strong>Core:</strong> Notion + Memory (your AI has both team and personal context)</li>
+<li><strong>Research:</strong> Add Brave Search (research-to-doc workflows)</li>
+<li><strong>Communication:</strong> Add Gmail + Slack (capture decisions from wherever they happen)</li>
+<li><strong>Engineering teams:</strong> Add Linear (code work linked to documentation)</li>
+</ul>
+
+<p>The through-line is making your AI assistant genuinely context-aware: not just about what's in Notion, but about what's happening in your calendar, inbox, team chat, and project tracker simultaneously.</p>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Is there an official Notion MCP server?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Notion has published an official MCP server that uses the Notion API. It requires a Notion integration token (from notion.so/my-integrations) and gives AI assistants read and write access to your workspace pages and databases."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I use Notion MCP with Claude Desktop?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Add the Notion MCP server to your Claude Desktop config file (claude_desktop_config.json) with your Notion integration token. Once connected, Claude can search your workspace, read pages, and create documents directly from the chat interface."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What can the Notion MCP server do that Notion AI cannot?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Notion AI is limited to content inside Notion. With the Notion MCP server, you can bring in data from external tools — email, Slack, GitHub, web search — and combine it with your Notion content. You can also use more powerful AI models like Claude Opus or GPT-4 instead of Notion's built-in AI."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is it safe to give an MCP server access to my Notion workspace?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, with proper scoping. Create a Notion integration with only the permissions it needs (read-only if you don't need write access), and only share the specific pages or databases the integration should access. Never use a workspace-admin token for an AI MCP connection."
+      }
+    }
+  ]
+}
+</script>
+
+<p><strong>Related guides:</strong></p>
+<ul>
+<li><a href="/blog/best-mcp-servers-for-productivity">Best MCP Servers for Productivity</a></li>
+<li><a href="/blog/best-mcp-servers-for-project-management">Best MCP Servers for Project Management</a></li>
+<li><a href="/blog/claude-desktop-mcp-setup-guide">Claude Desktop MCP Setup Guide</a></li>
+</ul>
+    `.trim(),
+  },
+  {
+    slug: "best-mcp-servers-for-kubernetes",
+    title: "Best MCP Servers for Kubernetes & Cloud-Native Operations in 2026",
+    description: "The essential MCP servers for Kubernetes engineers and platform teams: cluster management, observability, container ops, cloud infrastructure, and incident response — all from your AI workflow.",
+    date: "2026-05-03",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "8 min read",
+    keywords: ["kubernetes mcp server", "mcp for k8s", "k8s ai operations", "cloud native mcp servers", "best mcp servers devops kubernetes"],
+    relatedServerSlugs: ["kubernetes", "docker", "prometheus", "aws", "github", "sentry", "slack", "linear"],
+    content: `
+<p>Kubernetes engineers operate complex distributed systems where the gap between asking a question and getting an answer is usually "write a kubectl command, parse YAML, cross-reference Grafana, check Slack." MCP servers collapse that gap — your AI assistant can query your cluster, inspect metrics, check deployments, and pull incident context in a single conversation.</p>
+
+<h2>1. Kubernetes MCP Server — Cluster Operations in Plain Language</h2>
+
+<p>The Kubernetes MCP server is the core of any cloud-native AI workflow. It gives your AI assistant direct access to your cluster state via kubectl-equivalent operations — without you running commands or parsing YAML manually.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>List and describe pods, deployments, services, and namespaces</li>
+<li>Check pod logs and recent events</li>
+<li>Apply and delete manifests</li>
+<li>View resource usage and limits</li>
+<li>Query ConfigMaps and Secrets (with proper RBAC)</li>
+</ul>
+
+<p><strong>K8s workflow:</strong> "Why is the <code>payments-api</code> pod in CrashLoopBackOff?" "List all pods in the <code>production</code> namespace with less than 10% CPU headroom." "Show me the last 100 lines of logs from the <code>auth-service</code> deployment."</p>
+
+<h2>2. Docker MCP Server — Container-Level Context</h2>
+
+<p>Before workloads reach Kubernetes, they run in Docker locally. During incidents, container-level inspection often reveals what cluster-level views miss. The Docker MCP server gives your AI assistant visibility into running containers, images, and compose stacks.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>List and inspect running containers</li>
+<li>View container logs and resource stats</li>
+<li>Manage images and volumes</li>
+<li>Control Docker Compose stacks</li>
+</ul>
+
+<p><strong>K8s workflow:</strong> "Is the local dev stack running correctly?" "Check the container logs for the database container in the staging compose stack." "Pull the latest <code>api:main</code> image and check its layer diff."</p>
+
+<h2>3. Prometheus MCP Server — Metrics Without the Dashboard</h2>
+
+<p>Every serious Kubernetes deployment runs Prometheus. The Prometheus MCP server gives your AI assistant the ability to query your metrics store using PromQL — so you can ask questions about system health without opening Grafana.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Execute PromQL queries against your Prometheus instance</li>
+<li>List available metrics and labels</li>
+<li>Retrieve time-series data for specific ranges</li>
+<li>Check alert rules and their current state</li>
+</ul>
+
+<p><strong>K8s workflow:</strong> "What's the current p99 latency for the <code>checkout-api</code>?" "Is the error rate for any service above 1% right now?" "Show me the memory usage trend for the <code>redis</code> pod over the last 2 hours."</p>
+
+<h2>4. AWS MCP Server — Cloud Infrastructure Context</h2>
+
+<p>Most Kubernetes clusters run on EKS, with workloads connecting to RDS, S3, SQS, and other AWS services. The AWS MCP server gives your AI assistant access to your cloud infrastructure so you can diagnose cross-boundary issues.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Query EC2, EKS, RDS, S3, and Lambda resources</li>
+<li>View CloudWatch logs and metrics</li>
+<li>Check IAM policies and resource permissions</li>
+<li>Monitor CloudFormation and CDK stack status</li>
+</ul>
+
+<p><strong>K8s workflow:</strong> "Is the RDS instance that <code>payments-api</code> connects to healthy?" "Check if the S3 bucket policy allows the EKS service account to write." "What's the disk throughput on the EKS node group that's hosting the slow pods?"</p>
+
+<h2>5. GitHub MCP Server — Code and Infrastructure Changes</h2>
+
+<p>Most Kubernetes incidents trace back to a recent code or config change. The GitHub MCP server gives your AI assistant visibility into what changed, when, and who approved it — the three most important questions during an incident.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>View recent commits and their diffs</li>
+<li>Browse Helm chart and Kubernetes manifest changes</li>
+<li>Check PR approval status and review comments</li>
+<li>Search for recent changes to specific files</li>
+</ul>
+
+<p><strong>K8s workflow:</strong> "What changed in the Helm values for <code>payments-api</code> in the last 24 hours?" "Who last modified the <code>production-ingress.yaml</code> and what did they change?" "Did any infrastructure PRs merge today before the incident started?"</p>
+
+<h2>6. Sentry MCP Server — Application Errors in Cluster Context</h2>
+
+<p>Kubernetes tells you a pod is crashing. Sentry tells you why. The Sentry MCP server surfaces application-level error data alongside your cluster operations context — so you can correlate infrastructure state with application behavior.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>View recent errors grouped by frequency and impact</li>
+<li>Read stack traces and error context</li>
+<li>Check performance metrics and slow transactions</li>
+<li>Search errors by service, environment, or release</li>
+</ul>
+
+<p><strong>K8s workflow:</strong> "Are there Sentry errors from <code>payments-api</code> that correlate with the CrashLoopBackOff start time?" "What's the error rate for the <code>production</code> environment right now?" "Show me the stack trace for the most frequent new error in the last hour."</p>
+
+<h2>7. Slack MCP Server — Incident Context and Communication</h2>
+
+<p>Incidents live in Slack — the initial alert, the response thread, the "we found it" moment. The Slack MCP server gives your AI assistant access to incident communication history so it can understand what's already been tried and who's working the problem.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Search messages and threads by keyword and date</li>
+<li>Read incident channel history</li>
+<li>Post status updates to channels</li>
+</ul>
+
+<p><strong>K8s workflow:</strong> "Summarize what happened in #incidents in the last 2 hours." "Post an incident update to #status: payments service is degraded, investigation underway." "What was the resolution for the last payments-api incident?"</p>
+
+<h2>The Cloud-Native MCP Stack</h2>
+
+<p>Priority order for Kubernetes teams:</p>
+<ol>
+<li><strong>Kubernetes</strong> — cluster state and operations</li>
+<li><strong>Prometheus</strong> — metrics and alerting</li>
+<li><strong>GitHub</strong> — change causation</li>
+<li><strong>Sentry</strong> — application errors</li>
+<li><strong>Slack</strong> — incident communication</li>
+</ol>
+
+<p>Add AWS/Docker based on your infrastructure. The goal is giving your AI assistant enough context to answer "what broke, when, and why" without you context-switching across five different dashboards during an incident.</p>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Is there an official Kubernetes MCP server?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "There are several community-maintained Kubernetes MCP servers available. Most work by executing kubectl commands under the hood with your current kubeconfig context, giving the AI assistant the same access you have from your terminal."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is it safe to connect an AI assistant to my Kubernetes cluster?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "With proper RBAC, yes. Create a dedicated service account for MCP access with the minimum permissions needed — read-only for most use cases. Avoid giving MCP servers cluster-admin access. Treat MCP credentials with the same care as any other service account."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I use MCP servers for Kubernetes incident response?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. The combination of Kubernetes + Prometheus + GitHub + Sentry MCP servers gives your AI assistant enough context to help diagnose incidents conversationally: check cluster state, query metrics, review recent changes, and surface application errors in one conversation."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Which MCP-compatible AI client works best for Kubernetes operations?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Claude Desktop is the most fully-featured MCP client for operational workflows. Cursor is preferred for developer workflows where Kubernetes operations happen alongside coding. Both support multiple simultaneous MCP servers for full-stack context."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can the Kubernetes MCP server apply changes to my cluster?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "It depends on the RBAC permissions you grant. Most teams use read-only access for AI-assisted operations, reserving write access for explicit human-approved actions. Some advanced configurations allow the AI to apply non-destructive changes (scaling, label updates) with read-write access scoped to specific namespaces."
+      }
+    }
+  ]
+}
+</script>
+
+<p><strong>Related guides:</strong></p>
+<ul>
+<li><a href="/blog/best-mcp-servers-for-devops">Best MCP Servers for DevOps</a></li>
+<li><a href="/blog/best-mcp-servers-for-aws">Best MCP Servers for AWS</a></li>
+<li><a href="/blog/best-mcp-servers-for-data-engineering">Best MCP Servers for Data Engineering</a></li>
+</ul>
+    `.trim(),
+  },
 ];
 
 export function getBlogPostBySlug(slug: string): BlogPost | undefined {
