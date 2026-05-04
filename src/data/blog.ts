@@ -7519,6 +7519,874 @@ server.setRequestHandler(ReadResourceRequestSchema, async (request) => {
 </ul>
     `.trim(),
   },
+  {
+    slug: "github-mcp-server-setup-guide",
+    title: "GitHub MCP Server: Complete Setup Guide for Claude Desktop, Cursor & VS Code",
+    description: "Step-by-step guide to installing and configuring the GitHub MCP server with Claude Desktop, Cursor, and VS Code. Manage repos, issues, and PRs through AI.",
+    date: "2026-05-04",
+    author: "MyMCPTools Team",
+    category: "Setup Guides",
+    readingTime: "9 min read",
+    keywords: ["github mcp server", "github mcp setup", "github mcp claude desktop", "github mcp cursor", "how to use github mcp"],
+    relatedServerSlugs: ["github", "filesystem", "github-actions"],
+    content: `
+<p>The GitHub MCP server is one of the most popular MCP integrations available — and for good reason. It gives your AI assistant direct access to your GitHub repositories, letting you manage issues, review pull requests, search code, and create branches without ever leaving your AI conversation.</p>
+
+<p>This guide walks you through everything: installation, configuration for each major AI client, and the most useful workflows you can unlock.</p>
+
+<h2>What is the GitHub MCP Server?</h2>
+
+<p>The GitHub MCP server is an official Model Context Protocol server maintained by GitHub (now part of Anthropic's MCP ecosystem). It exposes your GitHub account through a set of structured tools that any MCP-compatible AI client can call.</p>
+
+<p>With it installed, you can ask Claude things like:</p>
+<ul>
+<li>"Show me open issues in my repo tagged with 'bug'"</li>
+<li>"Create a PR from my feature branch and add a description"</li>
+<li>"Find all files that import from the auth module"</li>
+<li>"What changed in the last 10 commits?"</li>
+</ul>
+
+<p>No copy-pasting. No context switching. Your AI assistant acts directly on GitHub.</p>
+
+<h2>Prerequisites</h2>
+
+<ul>
+<li>Node.js 18+ installed</li>
+<li>A GitHub Personal Access Token (PAT) with the right permissions</li>
+<li>An MCP-compatible client: Claude Desktop, Cursor, VS Code with MCP extension, or Windsurf</li>
+</ul>
+
+<h3>Creating Your GitHub Personal Access Token</h3>
+
+<p>Go to <strong>GitHub → Settings → Developer Settings → Personal Access Tokens → Fine-grained tokens</strong>.</p>
+
+<p>For most use cases, you need these permissions:</p>
+<ul>
+<li><code>Contents</code> — read (browse files and commits)</li>
+<li><code>Issues</code> — read and write (view and create issues)</li>
+<li><code>Pull requests</code> — read and write (review and create PRs)</li>
+<li><code>Metadata</code> — read (access repo info)</li>
+</ul>
+
+<p>Copy the token — you'll need it in the configuration step.</p>
+
+<h2>Installation</h2>
+
+<p>The GitHub MCP server is distributed via npm. You don't need to install it globally — your MCP client will run it via npx.</p>
+
+<pre><code>npx @modelcontextprotocol/server-github</code></pre>
+
+<h2>Configuration: Claude Desktop</h2>
+
+<p>Edit your Claude Desktop configuration file:</p>
+<ul>
+<li><strong>macOS:</strong> <code>~/Library/Application Support/Claude/claude_desktop_config.json</code></li>
+<li><strong>Windows:</strong> <code>%APPDATA%\Claude\claude_desktop_config.json</code></li>
+</ul>
+
+<p>Add the GitHub server to your <code>mcpServers</code> section:</p>
+
+<pre><code>{
+  "mcpServers": {
+    "github": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-github"],
+      "env": {
+        "GITHUB_PERSONAL_ACCESS_TOKEN": "your_token_here"
+      }
+    }
+  }
+}</code></pre>
+
+<p>Restart Claude Desktop. You'll see a hammer icon in the chat interface when tools are active.</p>
+
+<h2>Configuration: Cursor</h2>
+
+<p>In Cursor, open <strong>Settings → MCP Servers</strong> (or edit <code>~/.cursor/mcp.json</code> directly):</p>
+
+<pre><code>{
+  "mcpServers": {
+    "github": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-github"],
+      "env": {
+        "GITHUB_PERSONAL_ACCESS_TOKEN": "your_token_here"
+      }
+    }
+  }
+}</code></pre>
+
+<p>Cursor's AI Composer will now have GitHub tools available in any conversation.</p>
+
+<h2>Configuration: VS Code</h2>
+
+<p>With the MCP extension installed, add to your VS Code settings or workspace <code>.vscode/mcp.json</code>:</p>
+
+<pre><code>{
+  "servers": {
+    "github": {
+      "type": "stdio",
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-github"],
+      "env": {
+        "GITHUB_PERSONAL_ACCESS_TOKEN": "your_token_here"
+      }
+    }
+  }
+}</code></pre>
+
+<h2>Available Tools</h2>
+
+<p>The GitHub MCP server exposes these capabilities:</p>
+
+<table style="width:100%; border-collapse: collapse; margin: 1rem 0;">
+<tr style="border-bottom: 1px solid #333;"><th style="text-align:left; padding: 8px; color: #9ca3af;">Tool</th><th style="text-align:left; padding: 8px; color: #9ca3af;">What it does</th></tr>
+<tr><td style="padding: 8px; color: #d1d5db;"><code>list_repositories</code></td><td style="padding: 8px; color: #9ca3af;">Browse your repos and organizations</td></tr>
+<tr><td style="padding: 8px; color: #d1d5db;"><code>get_file_contents</code></td><td style="padding: 8px; color: #9ca3af;">Read any file from any branch</td></tr>
+<tr><td style="padding: 8px; color: #d1d5db;"><code>search_code</code></td><td style="padding: 8px; color: #9ca3af;">Full-text code search across repos</td></tr>
+<tr><td style="padding: 8px; color: #d1d5db;"><code>list_issues</code> / <code>create_issue</code></td><td style="padding: 8px; color: #9ca3af;">Read and create GitHub issues</td></tr>
+<tr><td style="padding: 8px; color: #d1d5db;"><code>list_pull_requests</code></td><td style="padding: 8px; color: #9ca3af;">Review open PRs and their diffs</td></tr>
+<tr><td style="padding: 8px; color: #d1d5db;"><code>create_pull_request</code></td><td style="padding: 8px; color: #9ca3af;">Create PRs from your current branch</td></tr>
+<tr><td style="padding: 8px; color: #d1d5db;"><code>list_commits</code></td><td style="padding: 8px; color: #9ca3af;">Browse commit history with diffs</td></tr>
+<tr><td style="padding: 8px; color: #d1d5db;"><code>create_branch</code></td><td style="padding: 8px; color: #9ca3af;">Create new branches</td></tr>
+<tr><td style="padding: 8px; color: #d1d5db;"><code>push_files</code></td><td style="padding: 8px; color: #9ca3af;">Commit and push file changes</td></tr>
+</table>
+
+<h2>Practical Workflows</h2>
+
+<h3>Bug Triage Workflow</h3>
+<p>Ask: "Show me all open issues labeled 'bug' in my-repo, sorted by most reactions. For the top 3, summarize what the user is experiencing and suggest a fix."</p>
+
+<h3>Code Review Workflow</h3>
+<p>Ask: "Fetch PR #47 in my-repo. Review the changed files and flag any potential security issues or performance regressions."</p>
+
+<h3>Documentation Workflow</h3>
+<p>Ask: "Read the README.md from my-repo. Identify any outdated sections based on recent commits and rewrite them."</p>
+
+<h2>Troubleshooting</h2>
+
+<p><strong>Tools not showing up:</strong> Restart your AI client fully (quit and reopen, not just reload).</p>
+<p><strong>Authentication errors:</strong> Check your PAT hasn't expired and has the required scopes. Fine-grained tokens require explicit permission per repo or org.</p>
+<p><strong>Rate limiting:</strong> GitHub's API allows 5,000 requests/hour on authenticated PATs. For heavy usage, consider a GitHub App token instead.</p>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Is the GitHub MCP server official?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. The GitHub MCP server (@modelcontextprotocol/server-github) is maintained in the official MCP servers repository and is endorsed by both GitHub and Anthropic."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does the GitHub MCP server require a paid GitHub plan?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. A free GitHub account with a Personal Access Token is sufficient for all core functionality. GitHub Enterprise features (like advanced SAML SSO) may require paid plans."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can the GitHub MCP server push code changes?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, if you grant write permissions to your PAT. The push_files and create_pull_request tools require Contents: write permission on your token. Most users start with read-only access and add write access deliberately."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Which AI clients support the GitHub MCP server?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Any MCP-compatible client works: Claude Desktop, Cursor, VS Code with the MCP extension, Windsurf, and Cline. The configuration format is slightly different per client but the server itself is identical."
+      }
+    }
+  ]
+}
+</script>
+
+<p><strong>Related guides:</strong></p>
+<ul>
+<li><a href="/blog/best-mcp-servers-for-developers">Best MCP Servers for Developers</a></li>
+<li><a href="/blog/best-mcp-servers-for-claude-code">Best MCP Servers for Claude Code</a></li>
+<li><a href="/blog/claude-desktop-mcp-setup-guide">Claude Desktop MCP Setup Guide</a></li>
+</ul>
+    `.trim(),
+  },
+  {
+    slug: "playwright-mcp-server-guide",
+    title: "Playwright MCP Server: Browser Automation with Claude and Cursor",
+    description: "Use the Playwright MCP server to give AI assistants full browser control. Automate web testing, scraping, and UI interactions directly from Claude Desktop or Cursor.",
+    date: "2026-05-04",
+    author: "MyMCPTools Team",
+    category: "Setup Guides",
+    readingTime: "8 min read",
+    keywords: ["playwright mcp server", "playwright mcp", "playwright mcp cursor", "browser automation mcp", "mcp web scraping"],
+    relatedServerSlugs: ["playwright", "puppeteer", "browserbase", "browserless"],
+    content: `
+<p>The Playwright MCP server gives your AI assistant a real web browser it can control programmatically. That means filling forms, clicking buttons, taking screenshots, scraping dynamic pages, and running end-to-end tests — all from a single conversation with Claude or Cursor.</p>
+
+<p>This guide covers what the Playwright MCP server can do, how to install it, and real-world workflows you'll use every day.</p>
+
+<h2>What is the Playwright MCP Server?</h2>
+
+<p>Playwright is Microsoft's battle-tested browser automation library, trusted by engineering teams worldwide for end-to-end testing. The Playwright MCP server wraps Playwright in a Model Context Protocol interface, giving AI assistants direct browser control.</p>
+
+<p>Unlike simpler scraping tools, Playwright handles:</p>
+<ul>
+<li><strong>JavaScript-heavy pages</strong> — SPAs, React/Vue apps, dynamic content</li>
+<li><strong>Authentication flows</strong> — login forms, OAuth, cookie management</li>
+<li><strong>Screenshots and PDFs</strong> — capture pages as images or documents</li>
+<li><strong>Network interception</strong> — inspect and mock API responses</li>
+<li><strong>Multi-browser support</strong> — Chromium, Firefox, and WebKit</li>
+</ul>
+
+<h2>Installation</h2>
+
+<p>Install the Playwright MCP server package:</p>
+
+<pre><code>npm install -g @playwright/mcp</code></pre>
+
+<p>Or use it via npx (no global install needed):</p>
+
+<pre><code>npx @playwright/mcp@latest</code></pre>
+
+<p>If you're using npx, Playwright will auto-download browser binaries on first run.</p>
+
+<h2>Configuration: Claude Desktop</h2>
+
+<p>Edit <code>~/Library/Application Support/Claude/claude_desktop_config.json</code> (macOS) or <code>%APPDATA%\Claude\claude_desktop_config.json</code> (Windows):</p>
+
+<pre><code>{
+  "mcpServers": {
+    "playwright": {
+      "command": "npx",
+      "args": ["@playwright/mcp@latest"]
+    }
+  }
+}</code></pre>
+
+<p>For headless mode (no visible browser window):</p>
+
+<pre><code>{
+  "mcpServers": {
+    "playwright": {
+      "command": "npx",
+      "args": ["@playwright/mcp@latest", "--headless"]
+    }
+  }
+}</code></pre>
+
+<h2>Configuration: Cursor</h2>
+
+<p>In <code>~/.cursor/mcp.json</code>:</p>
+
+<pre><code>{
+  "mcpServers": {
+    "playwright": {
+      "command": "npx",
+      "args": ["@playwright/mcp@latest", "--headless"]
+    }
+  }
+}</code></pre>
+
+<h2>Available Tools</h2>
+
+<p>The Playwright MCP server exposes a rich set of browser interaction tools:</p>
+
+<ul>
+<li><code>browser_navigate</code> — Navigate to any URL</li>
+<li><code>browser_click</code> — Click elements by selector or description</li>
+<li><code>browser_type</code> — Type text into inputs</li>
+<li><code>browser_screenshot</code> — Capture page screenshots</li>
+<li><code>browser_get_text</code> — Extract visible text from a page</li>
+<li><code>browser_get_html</code> — Get full page HTML</li>
+<li><code>browser_scroll</code> — Scroll the page</li>
+<li><code>browser_wait_for</code> — Wait for selectors or text to appear</li>
+<li><code>browser_evaluate</code> — Execute JavaScript in the page context</li>
+<li><code>browser_pdf</code> — Generate a PDF from the current page</li>
+</ul>
+
+<h2>Real-World Use Cases</h2>
+
+<h3>Web Scraping Dynamic Pages</h3>
+<p>Many sites require JavaScript execution before content appears. Ask Claude: "Go to hacker news, scrape the top 10 post titles and vote counts, and give me a summary."</p>
+
+<h3>End-to-End Testing</h3>
+<p>Ask: "Navigate to localhost:3000, log in with test@example.com / password123, verify the dashboard loads with 5 dashboard cards, and take a screenshot."</p>
+
+<h3>Competitor Research</h3>
+<p>Ask: "Visit our three main competitor pricing pages, take screenshots of their pricing tables, and compare their plans."</p>
+
+<h3>Form Automation</h3>
+<p>Ask: "Go to the contact form at example.com/contact, fill in the details for our partnership inquiry, review what you've filled in, and take a screenshot before submitting."</p>
+
+<h3>Visual Regression Detection</h3>
+<p>Ask: "Screenshot the homepage at 1280px width and 375px width (mobile). Are there any layout issues visible?"</p>
+
+<h2>Playwright vs Puppeteer MCP: Which to Use?</h2>
+
+<p>Both offer browser automation via MCP. The key differences:</p>
+
+<ul>
+<li><strong>Playwright MCP</strong> supports Chromium, Firefox, and WebKit. Better cross-browser coverage. More reliable element selection.</li>
+<li><strong>Puppeteer MCP</strong> is Chromium-only. Lighter weight. Good if you only need Chrome and want a smaller dependency footprint.</li>
+</ul>
+
+<p>For most production use cases, Playwright is the better choice. For quick local automation, either works fine.</p>
+
+<h2>Headless vs Headed Mode</h2>
+
+<p>By default, Playwright opens a visible browser window (headed mode). This is useful for debugging — you can see exactly what the AI is doing. For automated tasks, use <code>--headless</code> to run without a visible window.</p>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Is the Playwright MCP server free?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. The Playwright MCP server (@playwright/mcp) is open-source and free to use. Playwright itself is also free and open-source, maintained by Microsoft."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can Playwright MCP bypass login pages?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Playwright MCP can interact with login forms just like a human would — filling in credentials and submitting forms. It can also persist browser sessions (cookies, localStorage) between runs. It cannot bypass CAPTCHA or two-factor authentication without additional tools."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What browsers does Playwright MCP support?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Playwright MCP supports Chromium (Chrome/Edge), Firefox, and WebKit (Safari). You can specify the browser with the --browser flag when starting the server."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does Playwright MCP work on Linux servers?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Playwright supports Linux and is commonly used in CI/CD environments. On headless Linux servers, use the --headless flag. You may need to install browser dependencies with: npx playwright install-deps"
+      }
+    }
+  ]
+}
+</script>
+
+<p><strong>Related guides:</strong></p>
+<ul>
+<li><a href="/blog/best-mcp-servers-for-automation">Best MCP Servers for Automation</a></li>
+<li><a href="/blog/best-mcp-servers-for-testing">Best MCP Servers for Testing</a></li>
+<li><a href="/blog/best-mcp-servers-for-developers">Best MCP Servers for Developers</a></li>
+</ul>
+    `.trim(),
+  },
+  {
+    slug: "best-free-mcp-servers-2026",
+    title: "Best Free MCP Servers 2026: Open-Source Tools With No API Key Required",
+    description: "The top free and open-source MCP servers you can run today without a paid account or API key. Filesystem, databases, browser automation, and more — all free.",
+    date: "2026-05-04",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "7 min read",
+    keywords: ["free mcp servers", "open source mcp servers", "free model context protocol tools", "mcp servers no api key", "best free mcp tools 2026"],
+    relatedServerSlugs: ["filesystem", "playwright", "github", "sqlite", "postgresql", "brave-search", "memory"],
+    content: `
+<p>One of the best things about the MCP ecosystem is how much of it is completely free. The Model Context Protocol is open-source, most community servers are MIT-licensed, and many of the most powerful tools require zero paid subscriptions or API keys.</p>
+
+<p>Here are the best free MCP servers you can start using today.</p>
+
+<h2>What Makes a Good Free MCP Server?</h2>
+
+<p>Free doesn't always mean limited. The best free MCP servers are:</p>
+<ul>
+<li><strong>No external dependencies</strong> — runs entirely locally</li>
+<li><strong>No API keys or accounts</strong> — just install and use</li>
+<li><strong>Open-source</strong> — MIT or Apache licensed, auditable</li>
+<li><strong>Actively maintained</strong> — recent commits, responsive issues</li>
+</ul>
+
+<h2>1. Filesystem MCP Server — Free & Essential</h2>
+
+<p>The official Filesystem MCP server is the most fundamental free tool in the ecosystem. It gives your AI direct access to read and write files on your local machine.</p>
+
+<p><strong>Why it's great:</strong> No API key. No account. Just point it at a directory and your AI can read, write, search, and organize files.</p>
+
+<pre><code>npx @modelcontextprotocol/server-filesystem /path/to/directory</code></pre>
+
+<p><strong>Best for:</strong> Every workflow. This should be the first MCP server anyone installs.</p>
+
+<h2>2. Playwright MCP Server — Free Browser Automation</h2>
+
+<p>Full browser control — scraping, testing, screenshots — completely free. No Browserbase account, no proxy service, no API key.</p>
+
+<pre><code>npx @playwright/mcp@latest --headless</code></pre>
+
+<p><strong>Best for:</strong> Web scraping, end-to-end testing, competitor research, UI automation.</p>
+
+<h2>3. SQLite MCP Server — Free Local Database</h2>
+
+<p>Query any SQLite database file on your local machine. SQLite is built into most systems, so this works with zero setup beyond the MCP server itself.</p>
+
+<pre><code>npx @modelcontextprotocol/server-sqlite /path/to/database.db</code></pre>
+
+<p><strong>Best for:</strong> Local app databases, data analysis, prototype backends, mobile app data files.</p>
+
+<h2>4. GitHub MCP Server — Free with GitHub Account</h2>
+
+<p>The GitHub MCP server requires a GitHub account (free tier works), but no paid subscription. You just need a Personal Access Token.</p>
+
+<pre><code>npx @modelcontextprotocol/server-github</code></pre>
+
+<p><strong>Best for:</strong> Developers who want AI-powered access to their repos, issues, and PRs.</p>
+
+<h2>5. Memory MCP Server — Free Knowledge Graph</h2>
+
+<p>The Memory MCP server maintains a persistent knowledge graph across conversations. Your AI can remember facts, relationships, and context between sessions — all stored locally.</p>
+
+<pre><code>npx @modelcontextprotocol/server-memory</code></pre>
+
+<p><strong>Best for:</strong> Giving Claude long-term memory, building a personal knowledge base, tracking project context across sessions.</p>
+
+<h2>6. Brave Search MCP — Free Web Search</h2>
+
+<p>Brave Search offers a free tier API (2,000 queries/month) for web search. The MCP server hooks directly into it, giving your AI real-time web search without a Perplexity or Tavily subscription.</p>
+
+<p>Sign up for a free API key at <code>brave.com/search/api</code>, then:</p>
+
+<pre><code>BRAVE_API_KEY=your_key npx @modelcontextprotocol/server-brave-search</code></pre>
+
+<p><strong>Best for:</strong> Grounding AI responses with current web data. The free tier is generous enough for personal use.</p>
+
+<h2>7. Fetch MCP Server — Free URL Fetching</h2>
+
+<p>The Fetch MCP server lets your AI retrieve content from any URL — converting HTML to markdown for clean, readable text. Completely free, no accounts.</p>
+
+<pre><code>npx @modelcontextprotocol/server-fetch</code></pre>
+
+<p><strong>Best for:</strong> Reading documentation, extracting content from web pages, following links during research.</p>
+
+<h2>8. PostgreSQL MCP Server — Free with Local Postgres</h2>
+
+<p>If you run PostgreSQL locally (many developers do), the Postgres MCP server is completely free. Point it at your local database and your AI can query and understand your schema.</p>
+
+<pre><code>npx @modelcontextprotocol/server-postgres postgresql://localhost/mydb</code></pre>
+
+<p><strong>Best for:</strong> Local development databases, schema exploration, writing complex queries conversationally.</p>
+
+<h2>Free vs. Paid: What You Miss</h2>
+
+<p>The main things you need a paid service for:</p>
+<ul>
+<li><strong>Cloud databases</strong> — Supabase, Neon, PlanetScale (need account, some have free tiers)</li>
+<li><strong>AI-enhanced search</strong> — Perplexity, Exa (better quality but paid above free limits)</li>
+<li><strong>Cloud browser sessions</strong> — Browserbase, Browserless (needed for production scraping at scale)</li>
+<li><strong>Specialized data</strong> — Stock prices, flight data, maps (APIs with usage limits)</li>
+</ul>
+
+<p>For personal productivity, local development, and most research workflows, the free tier is everything you need.</p>
+
+<h2>Getting Started: Free Starter Stack</h2>
+
+<p>Here's the optimal free MCP starter configuration for your <code>claude_desktop_config.json</code>:</p>
+
+<pre><code>{
+  "mcpServers": {
+    "filesystem": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-filesystem", "~/Documents", "~/Desktop"]
+    },
+    "memory": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-memory"]
+    },
+    "fetch": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-fetch"]
+    },
+    "brave-search": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-brave-search"],
+      "env": { "BRAVE_API_KEY": "your_free_key" }
+    }
+  }
+}</code></pre>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Are there any completely free MCP servers with no API key?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. The Filesystem, Playwright, SQLite, Memory, and Fetch MCP servers all work completely locally with no API keys, accounts, or rate limits. These are the best starting point for anyone new to MCP."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do free MCP servers have rate limits?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Local MCP servers (Filesystem, SQLite, Memory, Playwright) have no rate limits since they run on your own machine. API-based free servers like Brave Search have usage limits (2,000 queries/month on the free tier)."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the best free MCP server for beginners?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The Filesystem MCP server is the best starting point. It's the most universally useful, requires zero configuration beyond a directory path, and immediately makes Claude dramatically more useful for everyday tasks."
+      }
+    }
+  ]
+}
+</script>
+
+<p><strong>Related guides:</strong></p>
+<ul>
+<li><a href="/blog/getting-started-with-mcp">Getting Started with MCP</a></li>
+<li><a href="/blog/claude-desktop-mcp-setup-guide">Claude Desktop MCP Setup Guide</a></li>
+<li><a href="/blog/best-mcp-servers-for-developers">Best MCP Servers for Developers</a></li>
+</ul>
+    `.trim(),
+  },
+  {
+    slug: "best-mcp-servers-for-docker",
+    title: "Best MCP Servers for Docker & Container Development in 2026",
+    description: "The top MCP servers for Docker, Kubernetes, and container workflows. Manage containers, inspect images, query clusters, and automate deployments through AI.",
+    date: "2026-05-04",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "7 min read",
+    keywords: ["docker mcp server", "mcp for docker", "kubernetes mcp", "container mcp server", "devops mcp tools 2026"],
+    relatedServerSlugs: ["docker", "kubernetes", "terraform", "docker-compose", "k8s-mcp"],
+    content: `
+<p>Container development involves a lot of context-switching: checking container status, reading logs, inspecting images, managing Kubernetes deployments. MCP servers collapse this into your AI conversation — letting Claude manage your containers the way it manages your files.</p>
+
+<p>Here are the best MCP servers for Docker and container workflows.</p>
+
+<h2>1. Docker MCP Server — The Essential Starting Point</h2>
+
+<p>The Docker MCP server wraps the Docker Engine API, giving your AI assistant direct control over your local Docker environment.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>List running and stopped containers</li>
+<li>Start, stop, restart, and remove containers</li>
+<li>Inspect container configuration, environment variables, and resource usage</li>
+<li>Stream container logs in real-time</li>
+<li>Build images from Dockerfiles</li>
+<li>List, pull, and inspect images</li>
+<li>Manage Docker networks and volumes</li>
+</ul>
+
+<p><strong>Typical prompt:</strong> "Which containers are currently using more than 500MB of memory? Stop any that have been running for over 7 days and aren't in production."</p>
+
+<p><strong>Installation:</strong></p>
+<pre><code>npx docker-mcp-server</code></pre>
+
+<h2>2. Kubernetes MCP Server — Cluster Operations via AI</h2>
+
+<p>For teams running Kubernetes, the K8s MCP server connects your AI to kubectl — making cluster exploration, debugging, and management conversational.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>List and describe pods, deployments, services, and namespaces</li>
+<li>Read pod logs (including multi-container pods)</li>
+<li>Check resource quotas and limits</li>
+<li>Inspect ConfigMaps and Secrets (with RBAC)</li>
+<li>Check deployment rollout status</li>
+<li>Scale deployments</li>
+<li>Port-forward to services</li>
+</ul>
+
+<p><strong>Typical prompt:</strong> "My API deployment is in a CrashLoopBackOff. Fetch logs from the failing pods and tell me what's causing the crash."</p>
+
+<pre><code>npx @flux159/mcp-server-kubernetes</code></pre>
+
+<h2>3. Docker Compose MCP Server — Multi-Service Management</h2>
+
+<p>The Docker Compose MCP server understands your <code>docker-compose.yml</code> configuration and lets your AI manage your entire service stack.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read and explain docker-compose service configuration</li>
+<li>Start, stop, and restart individual services or the full stack</li>
+<li>View logs across all services simultaneously</li>
+<li>Inspect service dependencies and networking</li>
+<li>Scale services up or down</li>
+</ul>
+
+<p><strong>Best for:</strong> Local development environments with multiple services (web + database + cache + queue). Instead of remembering 15 docker-compose commands, just describe what you want.</p>
+
+<h2>4. Terraform MCP Server — Infrastructure as Code</h2>
+
+<p>The Terraform MCP server lets your AI read, plan, and explain your infrastructure code. Useful for understanding complex Terraform configurations and debugging plan outputs.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read and explain Terraform configurations</li>
+<li>Run <code>terraform plan</code> and interpret the output</li>
+<li>Check state files for drift</li>
+<li>Validate configurations</li>
+<li>Generate Terraform modules from descriptions</li>
+</ul>
+
+<p><strong>Typical prompt:</strong> "Read my terraform/main.tf. What resources will be created when I apply? Flag any configurations that differ from AWS best practices."</p>
+
+<h2>5. Prometheus MCP Server — Metrics and Alerting</h2>
+
+<p>If you run Prometheus for container/cluster monitoring, the Prometheus MCP server gives your AI access to your metrics data.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Execute PromQL queries against your Prometheus instance</li>
+<li>Inspect alert rules and their firing status</li>
+<li>Browse available metrics and their labels</li>
+<li>Analyze metric trends over time</li>
+</ul>
+
+<p><strong>Typical prompt:</strong> "Check CPU and memory usage for all containers in the production namespace over the last hour. Which services are most resource-intensive?"</p>
+
+<h2>Docker MCP Security Considerations</h2>
+
+<p>Docker MCP servers have significant power — they can stop and remove containers, which is destructive. Best practices:</p>
+
+<ul>
+<li><strong>Use read-only mode during exploration:</strong> Many Docker MCP servers support a read-only flag. Use it when you only need to inspect, not modify.</li>
+<li><strong>Scope Kubernetes RBAC tightly:</strong> Create a dedicated ServiceAccount with only the permissions your AI needs. Don't use cluster-admin for AI tooling.</li>
+<li><strong>Review before applying:</strong> For Terraform, use <code>plan</code> mode first and review the output before applying.</li>
+<li><strong>Avoid production write access:</strong> Give AI assistants full write access to development environments, limited access to staging, and read-only access to production.</li>
+</ul>
+
+<h2>Recommended Setup for Container Developers</h2>
+
+<p>Start with Docker + Filesystem as your foundation:</p>
+
+<pre><code>{
+  "mcpServers": {
+    "docker": {
+      "command": "npx",
+      "args": ["docker-mcp-server"]
+    },
+    "filesystem": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-filesystem", "~/projects"]
+    }
+  }
+}</code></pre>
+
+<p>Add Kubernetes when you're ready to expand to cluster management.</p>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Can Docker MCP servers delete my containers?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, if the MCP server has write access to the Docker daemon. Most Docker MCP servers expose destructive operations like container removal and image deletion. Use read-only mode during exploration and only grant write access deliberately. Always confirm before running destructive operations."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does the Kubernetes MCP server need cluster-admin permissions?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. For read-only operations (listing pods, reading logs, describing deployments), a limited ClusterRole with get/list/watch on common resources is sufficient. Only add write permissions if you want the AI to scale deployments or modify configurations."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Which is better for container debugging: Docker MCP or Kubernetes MCP?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Use the Docker MCP server for local development and docker-compose environments. Use the Kubernetes MCP server for cluster-based deployments (staging, production). If you use both, install both — they complement each other."
+      }
+    }
+  ]
+}
+</script>
+
+<p><strong>Related guides:</strong></p>
+<ul>
+<li><a href="/blog/best-mcp-servers-for-devops">Best MCP Servers for DevOps</a></li>
+<li><a href="/blog/best-mcp-servers-for-kubernetes">Best MCP Servers for Kubernetes</a></li>
+<li><a href="/blog/best-mcp-servers-for-aws">Best MCP Servers for AWS</a></li>
+</ul>
+    `.trim(),
+  },
+  {
+    slug: "best-mcp-servers-for-obsidian",
+    title: "Best MCP Servers for Obsidian & Personal Knowledge Management",
+    description: "Connect AI to your Obsidian vault and knowledge base. The top MCP servers for note-taking, PKM workflows, and building a second brain with Claude.",
+    date: "2026-05-04",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "6 min read",
+    keywords: ["obsidian mcp server", "mcp for obsidian", "obsidian ai tools", "pkm mcp server", "second brain mcp", "knowledge management mcp"],
+    relatedServerSlugs: ["obsidian", "memory", "filesystem", "notion"],
+    content: `
+<p>If you live in Obsidian, you know the problem: your knowledge base is rich with linked notes, tags, and ideas — but your AI assistant has no idea it exists. MCP servers change that. With the right setup, Claude can read your vault, surface relevant notes, make connections, and help you build on what you already know.</p>
+
+<p>Here are the best MCP servers for Obsidian and knowledge management workflows.</p>
+
+<h2>1. Obsidian MCP Server — Direct Vault Access</h2>
+
+<p>The Obsidian MCP server connects directly to your Obsidian vault via the Local REST API plugin, giving your AI full access to your notes, tags, and backlinks.</p>
+
+<p><strong>Setup requirements:</strong></p>
+<ol>
+<li>Install the <strong>Local REST API</strong> community plugin in Obsidian</li>
+<li>Enable it and note your API key from the plugin settings</li>
+<li>Install the Obsidian MCP server</li>
+</ol>
+
+<pre><code>npm install -g mcp-obsidian</code></pre>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read any note by path or title</li>
+<li>Search notes by content, tag, or backlink</li>
+<li>Create and update notes</li>
+<li>List all notes in a folder or vault</li>
+<li>Read frontmatter metadata</li>
+<li>Follow backlinks and forward links between notes</li>
+</ul>
+
+<p><strong>Configuration:</strong></p>
+<pre><code>{
+  "mcpServers": {
+    "obsidian": {
+      "command": "npx",
+      "args": ["mcp-obsidian"],
+      "env": {
+        "OBSIDIAN_API_KEY": "your_local_rest_api_key",
+        "OBSIDIAN_PORT": "27123"
+      }
+    }
+  }
+}</code></pre>
+
+<p><strong>Typical prompts:</strong></p>
+<ul>
+<li>"Search my vault for notes about 'product strategy'. Summarize the key themes."</li>
+<li>"Find all notes tagged #project/active. What's the status of each project?"</li>
+<li>"Create a new note called 'Q2 Review' with links to all my notes from this quarter."</li>
+</ul>
+
+<h2>2. Filesystem MCP Server — The Simple Alternative</h2>
+
+<p>If you prefer simplicity, the Filesystem MCP server works directly with your vault directory since Obsidian stores notes as plain Markdown files. No plugin required.</p>
+
+<pre><code>npx @modelcontextprotocol/server-filesystem ~/Documents/Obsidian/MyVault</code></pre>
+
+<p><strong>Advantage:</strong> No plugin install. Works even if Obsidian isn't open.
+<strong>Limitation:</strong> No backlink traversal, no tag metadata — just raw file access.</p>
+
+<p>For most casual note-searching workflows, Filesystem is sufficient. For power users who want full graph traversal and metadata, use the dedicated Obsidian MCP server.</p>
+
+<h2>3. Memory MCP Server — Persistent Cross-Session Memory</h2>
+
+<p>The Memory MCP server creates a local knowledge graph that persists across Claude conversations. Think of it as a lighter-weight complement to Obsidian — for facts and context you want Claude to always remember.</p>
+
+<pre><code>npx @modelcontextprotocol/server-memory</code></pre>
+
+<p><strong>Best combined workflow:</strong> Use Obsidian MCP for your existing knowledge base, Memory MCP for capturing new insights from conversations. Over time, create a "sync to Obsidian" routine where Claude writes important Memory entries back to your vault.</p>
+
+<h2>4. Notion MCP Server — For Notion Users</h2>
+
+<p>If your PKM workflow lives in Notion instead of Obsidian, the Notion MCP server gives equivalent access: read pages, search databases, create content, and update records through AI.</p>
+
+<p>Requires a Notion integration token (free to create at notion.so/my-integrations).</p>
+
+<pre><code>NOTION_API_KEY=your_key npx @notionhq/notion-mcp-server</code></pre>
+
+<h2>Building a Second Brain Workflow</h2>
+
+<p>Here's a practical PKM workflow combining Obsidian MCP + Memory MCP:</p>
+
+<h3>Morning Knowledge Review</h3>
+<p>Ask: "Look at notes I created or modified in the last 7 days. What are the key ideas I've been developing? Are there connections I haven't made explicit yet?"</p>
+
+<h3>Research Integration</h3>
+<p>After reading something interesting, ask: "I just read about [topic]. Search my vault for related notes. What do I already know about this? What questions should I explore next?"</p>
+
+<h3>Project Planning</h3>
+<p>Ask: "Find all my notes tagged #idea. Group them by theme. Which ones could combine into a coherent project?"</p>
+
+<h3>Writing First Drafts</h3>
+<p>Ask: "Find my notes about [topic]. Draft an outline for an essay based on these ideas, preserving my original framing as much as possible."</p>
+
+<h2>Privacy Considerations</h2>
+
+<p>Your Obsidian vault likely contains personal information. Keep these in mind:</p>
+<ul>
+<li>The Obsidian MCP server runs locally — your notes never leave your machine</li>
+<li>When using cloud-based Claude (claude.ai), note contents are sent to Anthropic's servers as part of your conversation — same as pasting them manually</li>
+<li>Consider creating a filtered vault (or folder) for AI access that excludes highly sensitive notes</li>
+<li>The Filesystem approach can scope access to a specific subfolder: <code>server-filesystem ~/Vault/AI-accessible</code></li>
+</ul>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Does the Obsidian MCP server require Obsidian to be open?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The dedicated Obsidian MCP server (via Local REST API plugin) requires Obsidian to be running. The Filesystem MCP server alternative works whether Obsidian is open or closed, since it reads markdown files directly from disk."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can Claude create and edit notes in my Obsidian vault?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Both the Obsidian MCP server and Filesystem MCP server support write operations. Claude can create new notes, update existing ones, and add tags or frontmatter. Always review AI-created content before treating it as part of your permanent knowledge base."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is the Obsidian MCP server free?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. The Obsidian MCP server, the Local REST API plugin, and all related tools are free and open-source. You only pay for your Claude subscription, which you'd have anyway."
+      }
+    }
+  ]
+}
+</script>
+
+<p><strong>Related guides:</strong></p>
+<ul>
+<li><a href="/blog/best-mcp-servers-for-productivity">Best MCP Servers for Productivity</a></li>
+<li><a href="/blog/best-free-mcp-servers-2026">Best Free MCP Servers 2026</a></li>
+<li><a href="/blog/getting-started-with-mcp">Getting Started with MCP</a></li>
+</ul>
+    `.trim(),
+  },
 ];
 
 export function getBlogPostBySlug(slug: string): BlogPost | undefined {
