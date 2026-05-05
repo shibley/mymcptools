@@ -9751,6 +9751,445 @@ server.setRequestHandler(ReadResourceRequestSchema, async (request) => {
 <p>Browse specific setup guides for individual servers on <a href="/servers">MyMCPTools server pages</a>, each includes installation and troubleshooting notes. You can also find more help in the <a href="/blog/getting-started-with-mcp">getting started guide</a>.</p>
     `.trim(),
   },
+  {
+    slug: "best-mcp-servers-for-designers",
+    title: "Best MCP Servers for Designers in 2026: Figma, Canva & Creative Workflows",
+    description: "The top MCP servers for UX/UI designers and creatives. Connect Figma, Canva, Cloudinary, Unsplash, and more to your AI assistant for faster design workflows.",
+    date: "2026-05-05",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "8 min read",
+    keywords: ["mcp servers for designers", "figma mcp server", "canva mcp server", "design workflow ai", "mcp for ux designers", "ai design tools mcp"],
+    relatedServerSlugs: ["figma", "canva", "cloudinary", "unsplash", "pexels", "airtable", "notion", "webflow"],
+    content: `
+<p>Designers spend a disproportionate amount of time on coordination work — searching for assets, writing copy briefs, updating design system docs, exporting files, communicating specs to developers. MCP servers shift that overhead to your AI assistant.</p>
+
+<p>Here are the MCP servers that deliver the most value to UX/UI designers and creative professionals in 2026.</p>
+
+<h2>1. Figma MCP Server — Your Design System, AI-Accessible</h2>
+
+<p>Figma's official MCP server is the cornerstone integration for any design team. It exposes your Figma workspace to your AI, enabling intelligent interactions with your actual design files rather than abstract descriptions of them.</p>
+
+<p><strong>What you can do:</strong></p>
+<ul>
+<li>Ask your AI to describe components in your design system</li>
+<li>Extract exact color tokens, spacing values, and typography specs from live files</li>
+<li>Generate developer handoff notes from frames and components</li>
+<li>Query your component library by name, tag, or description</li>
+</ul>
+
+<p><strong>Real workflow example:</strong> "Describe the button variants in our design system" → your AI reads your actual Figma file and returns an accurate, up-to-date description that matches what developers will implement — not what you last documented.</p>
+
+<p><strong>Setup:</strong> Requires a Figma Personal Access Token. Generate one in Figma → Account Settings → Personal Access Tokens.</p>
+
+<h2>2. Canva MCP Server — Templates, Exports, and Brand Management</h2>
+
+<p>For designers working with marketing teams who live in Canva, the Canva MCP server bridges the gap between design execution and content strategy. Your AI can browse your brand kit, suggest templates, and coordinate asset exports without you context-switching into Canva manually.</p>
+
+<p><strong>Best for:</strong> Social media designers, brand managers, and marketing designers who produce high volumes of templated content.</p>
+
+<p><strong>Workflow unlock:</strong> Brief your AI on the campaign theme, let it pull matching templates from your Canva library, and generate the copy — you do the final visual polish.</p>
+
+<h2>3. Cloudinary MCP Server — Asset Management at Scale</h2>
+
+<p>If your team manages a large media library, Cloudinary's MCP server is transformative. Instead of searching Cloudinary's UI for the right asset, you can describe what you need in natural language and let your AI retrieve it.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Search your media library by tags, metadata, and visual descriptions</li>
+<li>Generate optimized image URLs with transformations (resize, format, quality)</li>
+<li>Bulk tag and organize assets</li>
+<li>Check asset dimensions, file sizes, and format compliance</li>
+</ul>
+
+<p><strong>Design system use case:</strong> Ensure all images in a content refresh meet your compression and dimension specs without manually checking each one. Your AI can audit the library and flag non-compliant assets.</p>
+
+<h2>4. Unsplash & Pexels MCP Servers — Stock Photography on Demand</h2>
+
+<p>The Unsplash and Pexels MCP servers give your AI assistant access to millions of free, high-quality images — surfaced through natural language search rather than keyword guessing.</p>
+
+<p><strong>Practical use:</strong></p>
+<ul>
+<li>"Find a warm, editorial-style photo of a coffee shop interior for the hero image" → returns curated options from Unsplash's catalog</li>
+<li>Generate multiple search queries in parallel to get diverse options</li>
+<li>Pull image metadata (photographer credit, dimensions, license) automatically</li>
+</ul>
+
+<p><strong>Time saved:</strong> Stock photo searches that used to take 20 minutes of manual browsing collapse to a 30-second AI query.</p>
+
+<h2>5. Airtable MCP Server — Design Project Tracking</h2>
+
+<p>Many design teams use Airtable as their project management backbone — tracking design requests, feedback rounds, and asset status. The Airtable MCP server makes this database queryable by your AI.</p>
+
+<p><strong>Design workflow applications:</strong></p>
+<ul>
+<li>Query open design requests by priority, deadline, or status</li>
+<li>Update asset status fields as you complete work</li>
+<li>Generate weekly design reports from your project data</li>
+<li>Cross-reference client feedback with design file versions</li>
+</ul>
+
+<h2>6. Notion MCP Server — Design Documentation Hub</h2>
+
+<p>Design teams that document their systems, brand guidelines, and processes in Notion can use the Notion MCP server to make all of that knowledge AI-accessible. Your assistant can reference your brand voice guide while writing microcopy, or consult your design system documentation while answering developer questions.</p>
+
+<p><strong>Setup tip:</strong> Create a "Design Resources" page in Notion with links to your design system, brand guidelines, and asset libraries. Give your AI access to that parent page — it can navigate the full hierarchy.</p>
+
+<h2>7. Webflow MCP Server — Design-to-Deploy without Hand-off Friction</h2>
+
+<p>For designers who also own their web publishing workflow, the Webflow MCP server closes the gap between design and deployment. Your AI can query your CMS, update content, and help manage the site structure — without you needing to touch the Webflow editor for routine updates.</p>
+
+<p><strong>Best for:</strong> Freelance designers who build and maintain client sites in Webflow.</p>
+
+<h2>Recommended MCP Configuration for Designers (Claude Desktop)</h2>
+
+<pre><code>{
+  "mcpServers": {
+    "figma": {
+      "command": "npx",
+      "args": ["-y", "figma-mcp-server"],
+      "env": { "FIGMA_API_KEY": "your-figma-token" }
+    },
+    "cloudinary": {
+      "command": "npx",
+      "args": ["-y", "mcp-server-cloudinary"],
+      "env": {
+        "CLOUDINARY_CLOUD_NAME": "your-cloud-name",
+        "CLOUDINARY_API_KEY": "your-api-key",
+        "CLOUDINARY_API_SECRET": "your-api-secret"
+      }
+    },
+    "notion": {
+      "command": "npx",
+      "args": ["-y", "@notionhq/notion-mcp-server"],
+      "env": { "NOTION_API_TOKEN": "your-notion-token" }
+    }
+  }
+}</code></pre>
+
+<h2>What Designers Are Using MCP For in Practice</h2>
+
+<p>Based on community feedback, the most common designer use cases for MCP servers are:</p>
+
+<ol>
+<li><strong>Component documentation:</strong> Auto-generating developer-facing docs from Figma components</li>
+<li><strong>Asset discovery:</strong> Finding the right stock photo or brand asset without manual search</li>
+<li><strong>Copy assistance:</strong> Writing UI copy with access to actual component labels and brand guidelines</li>
+<li><strong>Project status:</strong> Getting a natural language summary of all open design requests</li>
+<li><strong>Handoff notes:</strong> Generating detailed implementation notes from design specs</li>
+</ol>
+
+<p>The common thread: designers are using MCP to automate the coordination and documentation work that surrounds design execution, so more time goes to the actual creative work.</p>
+
+<p>Browse the full catalog of design-adjacent MCP servers at <a href="/category/media">MyMCPTools Media category</a>.</p>
+    `.trim(),
+  },
+  {
+    slug: "best-mcp-servers-for-freelancers",
+    title: "Best MCP Servers for Freelancers & Consultants in 2026",
+    description: "The essential MCP servers for freelancers and independent consultants. Manage clients, invoicing, projects, and outreach without leaving your AI assistant.",
+    date: "2026-05-05",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "9 min read",
+    keywords: ["mcp servers for freelancers", "mcp for consultants", "freelancer ai tools", "mcp client management", "mcp invoicing", "self-employed ai workflow"],
+    relatedServerSlugs: ["notion", "airtable", "stripe", "quickbooks", "xero", "github", "slack", "resend", "calendly", "hubspot"],
+    content: `
+<p>Freelancers and independent consultants wear every hat. You're the salesperson, the delivery lead, the accountant, and the admin. MCP servers let your AI assistant take over the coordination and administrative layer — so you can stay focused on billable work.</p>
+
+<p>These are the MCP servers that deliver the most leverage for self-employed professionals in 2026.</p>
+
+<h2>1. Notion MCP Server — Your Business Operating System</h2>
+
+<p>Most freelancers use Notion as their central hub — client tracker, project wiki, proposal templates, and process documentation. The Notion MCP server makes all of that instantly queryable by your AI.</p>
+
+<p><strong>Freelance applications:</strong></p>
+<ul>
+<li>"What's the status of the Acme Corp project?" → AI pulls from your Notion project tracker</li>
+<li>"Draft a weekly update for TechStart based on this week's notes" → AI references the project page and writes the client update</li>
+<li>"What open proposals do I have this month?" → AI queries your CRM database in Notion</li>
+</ul>
+
+<p><strong>Setup recommendation:</strong> Create a structured Notion database for clients (name, status, contract value, next action) and projects (linked to clients, deliverables, deadlines). With MCP access, your AI can serve as your on-demand operations assistant.</p>
+
+<h2>2. Stripe MCP Server — Payment & Revenue Intelligence</h2>
+
+<p>The Stripe MCP server gives your AI real-time visibility into your business finances without you opening the Stripe dashboard. For freelancers with multiple clients on retainer, this is a significant time save.</p>
+
+<p><strong>Key use cases:</strong></p>
+<ul>
+<li>"Which invoices are overdue?" → immediate answer without dashboard login</li>
+<li>"What's my revenue this quarter vs. last quarter?" → revenue comparison from your actual data</li>
+<li>"Has [client name] paid invoice #INV-2024-048?" → real-time payment status</li>
+<li>Generate revenue summaries for quarterly tax prep</li>
+</ul>
+
+<p><strong>Security note:</strong> Use a restricted Stripe API key with read-only permissions for your MCP server. Never use your full secret key.</p>
+
+<h2>3. QuickBooks / Xero MCP Server — Accounting Without the Spreadsheets</h2>
+
+<p>For freelancers who use accounting software, these MCP servers transform expense tracking and financial reporting from a monthly chore into a conversational query.</p>
+
+<p><strong>QuickBooks use cases:</strong></p>
+<ul>
+<li>Query unpaid invoices and overdue balances</li>
+<li>Pull expense totals by category for tax prep</li>
+<li>Generate profit/loss summaries for any date range</li>
+<li>Check which clients are most and least profitable</li>
+</ul>
+
+<p><strong>Xero use cases:</strong></p>
+<ul>
+<li>Track billable time entries and convert to invoices</li>
+<li>Query bank feed for unreconciled transactions</li>
+<li>Check GST/VAT position before filing</li>
+</ul>
+
+<h2>4. HubSpot MCP Server — Client Pipeline Management</h2>
+
+<p>If you manage an active client pipeline — proposals out, discovery calls scheduled, follow-ups pending — the HubSpot MCP server makes your CRM data conversationally accessible.</p>
+
+<p><strong>Freelancer pipeline use cases:</strong></p>
+<ul>
+<li>"What leads haven't I followed up with in 2 weeks?" → surfaces stale contacts</li>
+<li>"Draft a follow-up email for the TechStart proposal" → AI writes the email based on CRM context</li>
+<li>"What's my pipeline value this month?" → instant revenue forecast</li>
+</ul>
+
+<p><strong>Alternative:</strong> If you use a lighter CRM, Airtable MCP provides similar query capability for custom Airtable-based client trackers.</p>
+
+<h2>5. Calendly MCP Server — Meeting Scheduling Without Back-and-Forth</h2>
+
+<p>The Calendly MCP server lets your AI reference your scheduling data — upcoming meetings, booking links for different meeting types, and availability windows — without you digging through the Calendly dashboard.</p>
+
+<p><strong>Practical use:</strong></p>
+<ul>
+<li>Embed your Calendly link in AI-drafted outreach emails automatically</li>
+<li>Ask your AI "what's my schedule this week?" and get an accurate answer from Calendly data</li>
+<li>Draft meeting prep notes by pulling upcoming appointments</li>
+</ul>
+
+<h2>6. Resend MCP Server — Email Outreach and Client Communication</h2>
+
+<p>For freelancers who send outreach emails or client updates programmatically, the Resend MCP server provides both sending capability and delivery analytics.</p>
+
+<p><strong>Use cases:</strong></p>
+<ul>
+<li>Track delivery and open rates for proposal follow-ups</li>
+<li>Send templated client updates with your AI composing the content</li>
+<li>Query email logs to verify client communications were received</li>
+</ul>
+
+<h2>7. GitHub MCP Server — Technical Freelancers' Project Handoff</h2>
+
+<p>For developers, engineers, and technical freelancers, the GitHub MCP server is essential for client project handoffs and ongoing maintenance.</p>
+
+<p><strong>Freelance developer use cases:</strong></p>
+<ul>
+<li>Generate client-facing change summaries from commit history</li>
+<li>Create issue lists for future development phases</li>
+<li>Review open PRs across multiple client repositories</li>
+<li>Write detailed release notes from git history automatically</li>
+</ul>
+
+<h2>8. Slack MCP Server — Client Communication Intelligence</h2>
+
+<p>Many freelancers manage client communication primarily through Slack. The Slack MCP server lets your AI search message history, surface action items, and draft responses based on channel context.</p>
+
+<p><strong>Key uses:</strong></p>
+<ul>
+<li>"Summarize last week's messages from the Acme Corp channel" → AI produces a briefing</li>
+<li>"What action items came out of yesterday's discussion?" → AI extracts tasks from message threads</li>
+<li>"Draft a status update for the TechStart Slack channel" → AI writes a context-aware update</li>
+</ul>
+
+<h2>Freelancer MCP Starter Stack</h2>
+
+<p>You don't need all of these at once. Here's a prioritized starting point based on where most freelancers waste the most time:</p>
+
+<ol>
+<li><strong>Start with:</strong> Notion + Stripe — cover your project tracking and payment status in one pass</li>
+<li><strong>Add next:</strong> GitHub (if technical) or HubSpot (if focused on business development)</li>
+<li><strong>Add when scaling:</strong> Calendly + Resend for outreach and scheduling automation</li>
+<li><strong>Add for bookkeeping:</strong> QuickBooks or Xero once you're doing meaningful volume</li>
+</ol>
+
+<p>The biggest ROI for most freelancers is the combination of Notion + Stripe — those two servers alone eliminate the majority of administrative context-switching that breaks flow state during deep work sessions.</p>
+
+<p>Browse all available MCP servers at <a href="/">MyMCPTools</a> to build your personal freelancer stack.</p>
+    `.trim(),
+  },
+  {
+    slug: "notion-mcp-server-setup-guide",
+    title: "Notion MCP Server Setup Guide: Connect Notion to Claude, Cursor & More",
+    description: "Step-by-step guide to setting up the official Notion MCP server with Claude Desktop, Cursor, and VS Code. Includes integration config, permissions, and real-world use cases.",
+    date: "2026-05-05",
+    author: "MyMCPTools Team",
+    category: "Setup Guides",
+    readingTime: "7 min read",
+    keywords: ["notion mcp server", "notion mcp setup", "how to use notion with claude", "notion ai integration", "notion mcp claude desktop", "notion cursor mcp"],
+    relatedServerSlugs: ["notion", "airtable", "todoist", "linear", "asana"],
+    content: `
+<p>The official Notion MCP server, published by Notion themselves, connects your Notion workspace to any MCP-compatible AI client. Once configured, your AI can read pages, create content, query databases, and navigate your workspace without you copy-pasting anything manually.</p>
+
+<p>This guide covers the complete setup — from generating your API key to live queries in Claude Desktop.</p>
+
+<h2>Prerequisites</h2>
+
+<ul>
+<li>A Notion account (free or paid — both work)</li>
+<li>Node.js 18+ installed on your machine (<code>node --version</code> to check)</li>
+<li>An MCP-compatible client: Claude Desktop, Cursor, VS Code with Cline, or Windsurf</li>
+</ul>
+
+<h2>Step 1: Create a Notion Integration</h2>
+
+<p>Notion's MCP server authenticates via a Notion Integration (not OAuth — this is an API key model).</p>
+
+<ol>
+<li>Go to <strong>notion.so/my-integrations</strong></li>
+<li>Click <strong>New integration</strong></li>
+<li>Name it something descriptive: "Claude MCP" or "AI Assistant"</li>
+<li>Select the workspace you want the integration to access</li>
+<li>Under <strong>Capabilities</strong>, enable: Read content, Update content, Insert content</li>
+<li>Click <strong>Submit</strong></li>
+<li>On the next screen, copy your <strong>Internal Integration Secret</strong> — this is your API token</li>
+</ol>
+
+<p><strong>Important:</strong> The integration only has access to pages you explicitly share with it. You'll connect pages in Step 2.</p>
+
+<h2>Step 2: Share Pages with Your Integration</h2>
+
+<p>Unlike some integrations that access your entire workspace, Notion requires you to grant access page-by-page (or to a parent page that propagates to all children).</p>
+
+<ol>
+<li>Open the Notion page or database you want your AI to access</li>
+<li>Click the <strong>•••</strong> menu (top right) → <strong>Connections</strong></li>
+<li>Search for your integration name and click it to add access</li>
+<li>If you share a parent page, all child pages inherit access automatically</li>
+</ol>
+
+<p><strong>Recommended structure:</strong> Create a top-level "AI Workspace" page in Notion, put everything you want your AI to access under it, and share only that page with your integration. This gives you a clean access boundary without exposing your entire workspace.</p>
+
+<h2>Step 3: Configure the MCP Server</h2>
+
+<p>The Notion MCP server is installed via npx — no global installation needed. Add it to your MCP client's configuration:</p>
+
+<h3>Claude Desktop</h3>
+
+<p>Edit <code>~/Library/Application Support/Claude/claude_desktop_config.json</code> (macOS) or <code>%APPDATA%\\Claude\\claude_desktop_config.json</code> (Windows):</p>
+
+<pre><code>{
+  "mcpServers": {
+    "notion": {
+      "command": "npx",
+      "args": ["-y", "@notionhq/notion-mcp-server"],
+      "env": {
+        "NOTION_API_TOKEN": "secret_your_integration_token_here"
+      }
+    }
+  }
+}</code></pre>
+
+<p>Fully quit Claude Desktop (Cmd+Q on Mac) and reopen it. You should see "Notion" appear in the MCP server list in Settings → Developer.</p>
+
+<h3>Cursor</h3>
+
+<p>Open Cursor Settings → MCP (or edit <code>~/.cursor/mcp.json</code>):</p>
+
+<pre><code>{
+  "mcpServers": {
+    "notion": {
+      "command": "npx",
+      "args": ["-y", "@notionhq/notion-mcp-server"],
+      "env": {
+        "NOTION_API_TOKEN": "secret_your_integration_token_here"
+      }
+    }
+  }
+}</code></pre>
+
+<h3>VS Code (with Cline or Continue)</h3>
+
+<p>In your VS Code MCP configuration file (varies by extension — check Settings → MCP Config Path):</p>
+
+<pre><code>{
+  "mcpServers": {
+    "notion": {
+      "command": "npx",
+      "args": ["-y", "@notionhq/notion-mcp-server"],
+      "env": {
+        "NOTION_API_TOKEN": "secret_your_integration_token_here"
+      }
+    }
+  }
+}</code></pre>
+
+<h2>Step 4: Verify the Connection</h2>
+
+<p>After restarting your MCP client, test the connection with a simple query:</p>
+
+<p><em>"List the pages I've shared with you in Notion"</em></p>
+
+<p>Your AI should return a list of the pages your integration has access to. If it returns an error about no pages found, double-check Step 2 — the most common issue is forgetting to share pages with the integration.</p>
+
+<h2>What You Can Do with the Notion MCP Server</h2>
+
+<h3>Reading and Summarizing Content</h3>
+<ul>
+<li>"Summarize the Q2 marketing plan from my Notion workspace"</li>
+<li>"What's on my project tracker for the Acme Corp account?"</li>
+<li>"Find all pages tagged with 'meeting notes' from this week"</li>
+</ul>
+
+<h3>Database Queries</h3>
+<ul>
+<li>"Show me all tasks in my project database that are marked In Progress"</li>
+<li>"Which items in my CRM are in the 'Proposal Sent' stage?"</li>
+<li>"List all blog posts in draft status sorted by last edited date"</li>
+</ul>
+
+<h3>Creating Content</h3>
+<ul>
+<li>"Create a new page in my Meeting Notes database for today's call with TechStart"</li>
+<li>"Add a task to my project tracker: 'Review client feedback' — assign to Week 3, status Todo"</li>
+<li>"Draft a product requirements doc in Notion based on these bullet points: [paste bullets]"</li>
+</ul>
+
+<h3>Updating Existing Pages</h3>
+<ul>
+<li>"Mark the 'Landing page redesign' task as Complete in my project tracker"</li>
+<li>"Add a note to the Acme Corp client page: 'Approved Phase 2 scope on May 5th'"</li>
+</ul>
+
+<h2>Troubleshooting Common Issues</h2>
+
+<h3>"No pages found" or Empty Response</h3>
+<p>The integration doesn't have access to any pages. Go back to Step 2 and share at least one page with your integration. Remember to share parent pages if you want access to an entire section of your workspace.</p>
+
+<h3>"Unauthorized" Error</h3>
+<p>Your API token is incorrect or has been regenerated. Return to notion.so/my-integrations, find your integration, and re-copy the Internal Integration Secret. Tokens are regenerated each time you view them — always use the most recent one.</p>
+
+<h3>Server Won't Start</h3>
+<p>Run the command manually to see errors: <code>NOTION_API_TOKEN=your_token npx -y @notionhq/notion-mcp-server</code>. If you see Node.js errors, ensure you're running Node.js 18+.</p>
+
+<h3>"Cannot read database" on Notion Databases</h3>
+<p>Databases require explicit sharing. Open the database (not just the page containing it), click •••, Connections, and add your integration directly to the database.</p>
+
+<h2>Combining Notion with Other MCP Servers</h2>
+
+<p>Notion MCP works well alongside other servers for cross-system workflows:</p>
+
+<ul>
+<li><strong>Notion + GitHub:</strong> Pull PR context from GitHub, create Notion engineering update pages automatically</li>
+<li><strong>Notion + Airtable:</strong> Cross-reference project data between your Airtable client database and Notion project docs</li>
+<li><strong>Notion + Linear:</strong> Sync issue status from Linear into your Notion project tracker</li>
+<li><strong>Notion + Todoist:</strong> Surface Notion action items and create corresponding Todoist tasks</li>
+</ul>
+
+<p>See <a href="/servers/notion">the full Notion MCP server page</a> for additional configuration options, or browse <a href="/blog/best-mcp-servers-for-productivity">Best MCP Servers for Productivity</a> for the complete productivity stack.</p>
+    `.trim(),
+  },
 ];
 
 export function getBlogPostBySlug(slug: string): BlogPost | undefined {
