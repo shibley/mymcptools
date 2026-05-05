@@ -9125,6 +9125,632 @@ server.setRequestHandler(ReadResourceRequestSchema, async (request) => {
 </ul>
     `.trim(),
   },
+  {
+    slug: "mcp-servers-for-cline",
+    title: "Best MCP Servers for Cline: Complete Setup Guide 2026",
+    description: "Supercharge Cline, the autonomous VS Code coding agent, with the best MCP servers. Database access, browser automation, GitHub integration, and more — step-by-step setup.",
+    date: "2026-05-05",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "9 min read",
+    keywords: ["cline mcp servers", "mcp servers for cline", "cline mcp setup", "cline vs code mcp"],
+    relatedServerSlugs: ["filesystem", "github", "postgres", "playwright", "git", "brave-search", "docker", "redis"],
+    content: `
+<p>Cline is one of the most powerful autonomous coding agents available for VS Code. Unlike simpler AI assistants, Cline can plan multi-step tasks, run terminal commands, read and write files, and iterate until the job is done. Add MCP servers and it becomes something else entirely — a development partner with direct access to your databases, browsers, APIs, and external services.</p>
+
+<p>This guide covers the best MCP servers for Cline, how to configure them, and the workflows that change your daily development experience.</p>
+
+<h2>How Cline Uses MCP Servers</h2>
+
+<p>Cline integrates MCP servers through VS Code's MCP configuration. Once connected, Cline can autonomously invoke MCP tools as part of its planning loop — it doesn't just suggest using a tool, it uses it. This means when Cline is debugging a database issue, it can directly query your PostgreSQL schema rather than asking you to copy-paste table definitions.</p>
+
+<p>Cline reads MCP server configurations from <code>~/.config/Code/User/globalStorage/saoudrizwan.claude-dev/settings/cline_mcp_settings.json</code> on Linux/macOS or the equivalent Windows path.</p>
+
+<h2>1. Filesystem MCP Server — Your Codebase, Fully Accessible</h2>
+
+<p>The Filesystem server is Cline's foundation. While Cline already has native file access through VS Code's extension API, the Filesystem MCP server extends this to structured operations across any directory Cline is configured to access — including paths outside the current workspace.</p>
+
+<p><strong>Why it matters for Cline:</strong> Cline's autonomous planning mode works best when it can read existing code, understand directory structure, and write new files without interrupting you for confirmation at every step. The Filesystem MCP server makes this seamless.</p>
+
+<p><strong>Setup:</strong></p>
+<pre><code>{
+  "mcpServers": {
+    "filesystem": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-filesystem", "/path/to/your/project"]
+    }
+  }
+}</code></pre>
+
+<h2>2. GitHub MCP Server — Full Repo Control Inside Cline</h2>
+
+<p>The GitHub MCP server gives Cline the ability to manage your repositories directly. Create branches, open pull requests, review diffs, and manage issues — all without leaving your Cline conversation.</p>
+
+<p><strong>Power workflows with Cline + GitHub MCP:</strong></p>
+<ul>
+<li>Ask Cline to "implement this feature, create a branch, and open a PR" — it executes the entire workflow autonomously</li>
+<li>Have Cline review an existing PR's diff and suggest improvements</li>
+<li>Let Cline search across all your repos for similar implementations before writing new code</li>
+</ul>
+
+<p><strong>Setup:</strong></p>
+<pre><code>{
+  "mcpServers": {
+    "github": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-github"],
+      "env": { "GITHUB_PERSONAL_ACCESS_TOKEN": "your-token-here" }
+    }
+  }
+}</code></pre>
+
+<h2>3. PostgreSQL MCP Server — Schema-Aware Database Queries</h2>
+
+<p>Database work is where Cline + MCP truly shines. The PostgreSQL MCP server lets Cline inspect your schema, run queries, and understand your data model — so when you ask it to "write a query for this report", it actually knows your table structure instead of guessing.</p>
+
+<p><strong>What becomes possible:</strong></p>
+<ul>
+<li>Ask Cline to write optimized queries based on actual schema introspection</li>
+<li>Have Cline debug slow queries by examining execution plans</li>
+<li>Let Cline generate migration scripts that account for existing constraints</li>
+</ul>
+
+<h2>4. Playwright MCP Server — Browser Automation in Your Agent Loop</h2>
+
+<p>The Playwright MCP server gives Cline the ability to control a real browser. For frontend developers, this means Cline can test its own output: write a component, then navigate to your dev server and verify it renders correctly.</p>
+
+<p><strong>Key use cases:</strong></p>
+<ul>
+<li>End-to-end testing as part of Cline's development loop</li>
+<li>Scraping reference data from documentation sites</li>
+<li>Testing form submissions and API responses through the browser</li>
+<li>Taking screenshots to visually verify UI changes</li>
+</ul>
+
+<h2>5. Git MCP Server — Deep Version Control Context</h2>
+
+<p>The Git MCP server gives Cline direct access to your git history, diffs, and branch state. Rather than relying on VS Code's built-in git integration, this server allows Cline to programmatically query commit history and use it as context for understanding why code was written a certain way.</p>
+
+<p><strong>Powerful with Cline's autonomous mode:</strong> Tell Cline "figure out when this bug was introduced" and it can bisect through recent commits using git log and diff tools to identify the offending change.</p>
+
+<h2>6. Brave Search MCP Server — Real-Time Web Knowledge</h2>
+
+<p>Cline's training data has a cutoff. The Brave Search MCP server fills that gap — when Cline needs current documentation, error messages, or API references, it can search the web and pull the result into context without you having to tab-switch.</p>
+
+<p><strong>Especially useful for:</strong></p>
+<ul>
+<li>Looking up error messages from libraries that have been updated since Cline's training</li>
+<li>Finding recent Stack Overflow solutions</li>
+<li>Checking current API documentation versions</li>
+</ul>
+
+<h2>7. Docker MCP Server — Container Management in Context</h2>
+
+<p>The Docker MCP server lets Cline interact with your running containers and compose stacks. When debugging a containerized application, Cline can check container logs, inspect environment variables, and verify service health — all as part of its diagnostic loop.</p>
+
+<h2>8. Redis MCP Server — Cache & Session Debugging</h2>
+
+<p>The Redis MCP server gives Cline read access to your Redis instance. Useful for debugging caching issues, inspecting session data, or verifying that cache invalidation logic is working as expected after Cline makes changes to your application.</p>
+
+<h2>Recommended Cline MCP Stack</h2>
+
+<p>For most developers, this is the right starting stack:</p>
+<ol>
+<li><strong>Filesystem</strong> — always-on foundation</li>
+<li><strong>GitHub</strong> — repo operations and PR workflow</li>
+<li><strong>PostgreSQL or SQLite</strong> — depending on your project</li>
+<li><strong>Playwright or Puppeteer</strong> — browser testing</li>
+<li><strong>Brave Search</strong> — web lookup when needed</li>
+</ol>
+
+<p>Add Docker and Redis as your stack complexity grows. Avoid adding every available server at once — each server adds tool options to Cline's context, and having too many can slow down its planning and increase API costs.</p>
+
+<h2>Cline vs Other MCP Clients</h2>
+
+<p>Cline's autonomous mode makes MCP particularly powerful compared to passive clients like Claude Desktop. Where Claude Desktop presents MCP results for you to read, Cline acts on them — it queries your database, reads the results, and incorporates them into its next action, all without waiting for you to approve each step.</p>
+
+<p>Find more MCP server options in the <a href="/integration/cline">Cline integration directory</a> or browse by <a href="/category/coding">coding category</a> for developer-focused servers.</p>
+    `.trim(),
+  },
+  {
+    slug: "best-mcp-servers-for-nextjs-developers",
+    title: "Best MCP Servers for Next.js Developers in 2026",
+    description: "The top MCP servers for Next.js development. Connect your AI to Vercel, Supabase, Stripe, Contentful, and more for full-stack Next.js workflows.",
+    date: "2026-05-05",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "8 min read",
+    keywords: ["mcp servers for nextjs", "nextjs mcp server", "best mcp servers for next.js", "nextjs ai development"],
+    relatedServerSlugs: ["vercel", "supabase", "stripe", "contentful", "sanity", "resend", "neon", "github", "filesystem", "cloudflare"],
+    content: `
+<p>Next.js has become the dominant framework for full-stack React applications. With the App Router, server components, and built-in API routes, Next.js developers manage a complex stack spanning frontend, backend, database, and deployment — often simultaneously. MCP servers bridge your AI assistant to every layer of that stack.</p>
+
+<p>Here are the MCP servers that matter most for Next.js development in 2026.</p>
+
+<h2>1. Vercel MCP Server — Deployment & Edge Config</h2>
+
+<p>Since most Next.js apps run on Vercel, the Vercel MCP server is a natural starting point. It gives your AI assistant visibility into deployment state, environment variables, edge config, and project settings.</p>
+
+<p><strong>What you can do:</strong></p>
+<ul>
+<li>Query deployment logs directly in your AI conversation</li>
+<li>Check environment variable configuration across environments</li>
+<li>Inspect edge config values and update them without leaving your editor</li>
+<li>Review recent deployment failures and their error outputs</li>
+</ul>
+
+<p><strong>Best for:</strong> Teams that deploy to Vercel and want AI-assisted debugging of deployment issues and configuration drift.</p>
+
+<h2>2. Supabase MCP Server — Your Postgres Backend</h2>
+
+<p>Supabase is the most common backend choice for Next.js applications — it gives you PostgreSQL, auth, storage, and realtime in one package. The Supabase MCP server connects your AI to all of it.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Schema introspection — your AI understands your table structure</li>
+<li>Row-level security policy inspection</li>
+<li>Auth configuration and user management queries</li>
+<li>Edge function management</li>
+</ul>
+
+<p>With the Supabase MCP server, you can ask your AI to write a complex query and it will actually inspect your schema rather than making assumptions about column names and relationships.</p>
+
+<h2>3. Neon MCP Server — Serverless Postgres</h2>
+
+<p>Neon is the serverless PostgreSQL database purpose-built for Next.js and edge deployments. Its branching feature (separate database branches for PRs and staging) pairs perfectly with Next.js Preview Deployments. The Neon MCP server brings this into your AI workflow.</p>
+
+<p><strong>Unique capabilities:</strong></p>
+<ul>
+<li>Database branch management — create and delete branches like git branches</li>
+<li>Schema diff between branches</li>
+<li>Connection pooling configuration</li>
+<li>Autoscaling status and compute usage</li>
+</ul>
+
+<h2>4. Stripe MCP Server — Payment Integration</h2>
+
+<p>Most SaaS apps built with Next.js use Stripe for billing. The Stripe MCP server allows your AI to inspect customer records, subscription states, and webhook configurations without requiring you to open the Stripe dashboard.</p>
+
+<p><strong>Useful for:</strong></p>
+<ul>
+<li>Debugging subscription webhook events</li>
+<li>Looking up customer records while building billing features</li>
+<li>Verifying price IDs and product configurations</li>
+<li>Testing proration calculations and upgrade/downgrade logic</li>
+</ul>
+
+<h2>5. Contentful MCP Server — Content Management</h2>
+
+<p>Next.js content sites commonly use headless CMS platforms like Contentful. The Contentful MCP server gives your AI read access to your content models and entries, which is essential when writing GraphQL queries or building Next.js data-fetching functions that need to know the exact content structure.</p>
+
+<h2>6. Sanity MCP Server — Structured Content</h2>
+
+<p>Sanity is the other dominant headless CMS choice for Next.js. The Sanity MCP server provides schema introspection and content query capabilities, so your AI can write accurate GROQ queries without you having to manually describe the document structure.</p>
+
+<h2>7. Resend MCP Server — Transactional Email</h2>
+
+<p>Resend has become the go-to transactional email service for Next.js developers. The Resend MCP server lets your AI check email delivery logs, inspect template configurations, and debug email workflow issues.</p>
+
+<h2>8. GitHub MCP Server — Repository & PR Management</h2>
+
+<p>The GitHub MCP server is essential for Next.js teams — it closes the loop between your code changes and repository state. Your AI can check the current branch, review recent commits, and understand the context of the code it's working on.</p>
+
+<h2>9. Filesystem MCP Server — Local File Access</h2>
+
+<p>For local Next.js development, the Filesystem server gives your AI direct access to your project directory. This is especially useful in large monorepos where the AI needs to navigate multiple packages and understand the project's structure.</p>
+
+<h2>10. Cloudflare MCP Server — Edge & CDN</h2>
+
+<p>If you deploy Next.js to Cloudflare Pages or use Cloudflare's network (Workers, R2, KV), the Cloudflare MCP server provides configuration management and deployment visibility directly in your AI context.</p>
+
+<h2>Recommended Stack for Next.js Projects</h2>
+
+<p>Start lean and add as you encounter friction:</p>
+
+<table>
+<thead><tr><th>Project Type</th><th>Essential MCP Servers</th></tr></thead>
+<tbody>
+<tr><td>SaaS App</td><td>Filesystem, GitHub, Supabase/Neon, Stripe, Vercel</td></tr>
+<tr><td>Content Site</td><td>Filesystem, GitHub, Contentful/Sanity, Vercel</td></tr>
+<tr><td>Marketing Site</td><td>Filesystem, GitHub, Vercel, Resend</td></tr>
+<tr><td>Marketplace</td><td>Filesystem, GitHub, Supabase, Stripe, Cloudflare</td></tr>
+</tbody>
+</table>
+
+<h2>Setting Up MCP Servers in Cursor for Next.js</h2>
+
+<p>Most Next.js developers use Cursor as their IDE. To add MCP servers:</p>
+<ol>
+<li>Open Cursor Settings → MCP</li>
+<li>Click "Add Server" and enter the server configuration</li>
+<li>Restart Cursor to load the new servers</li>
+</ol>
+
+<p>Cursor's Composer and Chat modes both have access to your configured MCP servers. The Composer mode works particularly well for multi-file Next.js changes that span components, API routes, and data layers.</p>
+
+<p>Browse all <a href="/category/cloud">cloud MCP servers</a> and <a href="/category/database">database MCP servers</a> for more Next.js-compatible options.</p>
+    `.trim(),
+  },
+  {
+    slug: "best-mcp-servers-for-web-scraping",
+    title: "Best MCP Servers for Web Scraping & Browser Automation in 2026",
+    description: "Top MCP servers for web scraping, browser automation, and data extraction. Playwright, Puppeteer, Browserbase, Firecrawl, and more — with setup guides.",
+    date: "2026-05-05",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "8 min read",
+    keywords: ["mcp server web scraping", "browser automation mcp", "playwright mcp server", "puppeteer mcp server", "firecrawl mcp"],
+    relatedServerSlugs: ["playwright", "puppeteer", "browserbase", "stagehand", "firecrawl", "fetch", "apify", "exa", "brave-search"],
+    content: `
+<p>Web scraping and browser automation are tasks where MCP servers add enormous value. Instead of writing brittle scraping scripts and debugging them manually, you can direct your AI to navigate pages, extract data, and handle edge cases — all through natural language. The AI runs the browser commands, you describe the outcome.</p>
+
+<p>Here are the best MCP servers for web scraping and browser automation in 2026.</p>
+
+<h2>1. Playwright MCP Server — The Power Option</h2>
+
+<p>Playwright is Microsoft's browser automation framework and the gold standard for serious scraping and testing workflows. The Playwright MCP server gives your AI complete browser control: navigation, interaction, screenshot capture, and JavaScript execution.</p>
+
+<p><strong>Capabilities:</strong></p>
+<ul>
+<li>Full browser control across Chromium, Firefox, and WebKit</li>
+<li>Network interception — capture API calls made by pages</li>
+<li>Screenshot and PDF generation</li>
+<li>Form interaction and file uploads</li>
+<li>Handling SPAs, infinite scroll, and dynamic content</li>
+<li>Anti-bot handling via stealth mode</li>
+</ul>
+
+<p><strong>Best for:</strong> Complex scraping jobs, SPAs that require JavaScript execution, and test automation that verifies your application's real browser behavior.</p>
+
+<p><strong>Setup:</strong></p>
+<pre><code>npx @modelcontextprotocol/server-playwright</code></pre>
+
+<h2>2. Puppeteer MCP Server — Chromium-Focused Automation</h2>
+
+<p>Puppeteer is Google's Chromium automation library. Its MCP server provides similar capabilities to Playwright but focuses exclusively on Chromium-based browsers. It's lighter-weight for straightforward use cases and has a huge ecosystem of community extensions.</p>
+
+<p><strong>When to choose Puppeteer over Playwright:</strong></p>
+<ul>
+<li>You're specifically targeting Chrome/Chromium behavior</li>
+<li>Your project already uses Puppeteer and you want MCP access to the same driver</li>
+<li>You need lightweight headless Chrome operations</li>
+</ul>
+
+<h2>3. Browserbase MCP Server — Cloud Browser Automation</h2>
+
+<p>Browserbase runs browsers in the cloud — no local Chromium installation required. This is ideal for scraping jobs that need residential IP addresses, long-running sessions, or scale beyond what a single machine can handle.</p>
+
+<p><strong>Key advantages:</strong></p>
+<ul>
+<li>Cloud-hosted browsers that bypass IP-based bot detection</li>
+<li>Session persistence across multiple scraping tasks</li>
+<li>Parallel execution for high-volume data collection</li>
+<li>No local browser management or update headaches</li>
+</ul>
+
+<p><strong>Best for:</strong> Production scraping operations, e-commerce price monitoring, and any workflow where local browser limitations are a bottleneck.</p>
+
+<h2>4. Stagehand MCP Server — AI-Powered Browser Automation</h2>
+
+<p>Stagehand is a Browserbase-backed framework that adds an AI layer on top of browser automation — it can figure out how to interact with page elements based on natural language descriptions, even when element selectors change. The MCP server brings this capability into your AI workflow.</p>
+
+<p><strong>How Stagehand differs:</strong> Traditional scraping breaks when a website redesigns its UI. Stagehand's AI-backed selector finding adapts automatically. This makes it particularly valuable for scraping production sites that update frequently.</p>
+
+<h2>5. Firecrawl MCP Server — Fast Structured Extraction</h2>
+
+<p>Firecrawl is purpose-built for AI-ready web scraping — it crawls websites and returns clean, structured content in markdown format that LLMs can directly consume. No JavaScript parsing, no HTML cleaning, just ready-to-use text.</p>
+
+<p><strong>Key features:</strong></p>
+<ul>
+<li>Full-site crawling with configurable depth</li>
+<li>Automatic content extraction (removes navigation, ads, boilerplate)</li>
+<li>Markdown output optimized for LLM consumption</li>
+<li>Structured data extraction with schema support</li>
+<li>JavaScript rendering for SPAs</li>
+</ul>
+
+<p><strong>Best for:</strong> Content aggregation, competitor analysis, knowledge base building from documentation sites, and any workflow where you need clean text rather than raw HTML.</p>
+
+<h2>6. Fetch MCP Server — Simple URL Content Fetching</h2>
+
+<p>For basic content extraction without browser automation overhead, the Fetch MCP server is the simplest option. It retrieves web pages and converts them to LLM-friendly format. No JavaScript rendering, but perfect for static sites and API documentation.</p>
+
+<p><strong>When to use Fetch over Playwright:</strong></p>
+<ul>
+<li>The target site doesn't require JavaScript execution</li>
+<li>You need fast, lightweight page retrieval</li>
+<li>You're fetching structured content like RSS feeds or API documentation</li>
+</ul>
+
+<h2>7. Apify MCP Server — Enterprise Scraping Platform</h2>
+
+<p>Apify is an enterprise-grade scraping platform with thousands of pre-built actors (scrapers) for popular sites. The Apify MCP server gives your AI access to run these actors on demand — scrape LinkedIn, Amazon, Google Maps, and hundreds of other sites using pre-tested, production-grade scrapers.</p>
+
+<p><strong>Best for:</strong> Teams that need reliable scraping of major platforms without building and maintaining scrapers from scratch.</p>
+
+<h2>8. Exa Search MCP Server — Neural Search for Web Data</h2>
+
+<p>Exa's neural search API finds semantically relevant content across the web — not just keyword matches, but meaning-based retrieval. The MCP server makes it trivial to pull high-quality, relevant web content into your AI's context for research, fact-checking, and competitive intelligence.</p>
+
+<h2>Choosing the Right Tool for Your Use Case</h2>
+
+<p>Here's a quick decision framework:</p>
+
+<ul>
+<li><strong>Static sites, docs, articles</strong> → Fetch or Firecrawl</li>
+<li><strong>SPAs, login-required pages, complex interaction</strong> → Playwright or Puppeteer</li>
+<li><strong>Production scraping at scale, anti-bot issues</strong> → Browserbase or Apify</li>
+<li><strong>Sites that change frequently</strong> → Stagehand (AI selector adaptation)</li>
+<li><strong>Semantic research / finding relevant content</strong> → Exa</li>
+</ul>
+
+<h2>Ethical and Legal Considerations</h2>
+
+<p>Before scraping any website:</p>
+<ul>
+<li>Check the site's <code>robots.txt</code> and Terms of Service</li>
+<li>Respect rate limits — don't hammer servers with rapid requests</li>
+<li>Avoid scraping personal data that could create GDPR/privacy liabilities</li>
+<li>Consider whether the data owner has a first-party API you should use instead</li>
+</ul>
+
+<p>Browse all <a href="/category/browser">browser automation MCP servers</a> and <a href="/category/search">search MCP servers</a> on MyMCPTools.</p>
+    `.trim(),
+  },
+  {
+    slug: "best-mcp-servers-for-full-stack-developers",
+    title: "Best MCP Servers for Full-Stack Developers in 2026",
+    description: "The complete MCP server stack for full-stack developers. Cover every layer — frontend, backend, database, deployment, monitoring — with the right MCP integrations.",
+    date: "2026-05-05",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "10 min read",
+    keywords: ["mcp servers full stack", "full stack mcp server", "best mcp servers 2026 developers", "mcp server stack"],
+    relatedServerSlugs: ["filesystem", "github", "postgres", "redis", "stripe", "supabase", "vercel", "docker", "playwright", "cloudflare"],
+    content: `
+<p>Full-stack development means managing context across every layer: database schemas, API endpoints, frontend components, environment configs, and deployment pipelines. AI assistants are powerful but hit a wall when they lack access to the actual state of your system — they're guessing about column names, environment variables, and deployment configs. MCP servers fix this by giving your AI real, live access to each layer of your stack.</p>
+
+<p>This is the definitive MCP server stack for full-stack developers in 2026.</p>
+
+<h2>The Core Stack: What Every Full-Stack Developer Needs</h2>
+
+<p>Before getting specific, here's the foundation that applies regardless of your tech choices:</p>
+
+<ul>
+<li><strong>Filesystem</strong> — local file access and project navigation</li>
+<li><strong>GitHub or GitLab</strong> — repository state, PR management, code search</li>
+<li><strong>A database server</strong> — PostgreSQL, MySQL, SQLite, or MongoDB depending on your stack</li>
+<li><strong>Search</strong> — Brave or Exa for documentation and error lookups</li>
+</ul>
+
+<p>These four cover 80% of the AI context gap. Everything else is additive based on your specific stack.</p>
+
+<h2>Layer 1: Filesystem — Your Project, Fully Readable</h2>
+
+<p>The Filesystem MCP server gives your AI structural access to your codebase. It can navigate directories, read configuration files, trace imports, and understand how your project is organized — the kind of context that's obvious when you're looking at a directory tree but invisible to an AI without direct access.</p>
+
+<p>For full-stack projects with monorepo structures (packages/, apps/, libs/), filesystem access is especially valuable — the AI can navigate between frontend and backend code without requiring you to paste file contents repeatedly.</p>
+
+<h2>Layer 2: GitHub MCP Server — Version Control Context</h2>
+
+<p>Full-stack developers rarely work alone. The GitHub MCP server gives your AI access to commit history, open PRs, issues, and the ability to search across your entire codebase. When the AI understands the history of a function or component, its suggestions account for past decisions rather than ignoring them.</p>
+
+<p><strong>Key workflows:</strong></p>
+<ul>
+<li>Let your AI review a PR's diff and suggest improvements</li>
+<li>Ask "why was this implemented this way" and let it check git blame and related issues</li>
+<li>Have your AI automatically create an issue when it identifies a bug worth tracking</li>
+</ul>
+
+<h2>Layer 3: Database — Schema-Aware Queries</h2>
+
+<p>Database work is where MCP makes the biggest immediate difference. Without database access, your AI writes queries that guess at column names and relationships. With it, every query is based on actual schema introspection.</p>
+
+<p><strong>Choose your database server:</strong></p>
+<ul>
+<li><strong>PostgreSQL MCP</strong> — standard for production apps, full schema introspection</li>
+<li><strong>Supabase MCP</strong> — if you use Supabase (includes auth, storage, realtime context)</li>
+<li><strong>Neon MCP</strong> — serverless PostgreSQL with branch management</li>
+<li><strong>MongoDB MCP</strong> — document schema inspection and aggregation pipeline building</li>
+<li><strong>SQLite MCP</strong> — local development and embedded applications</li>
+</ul>
+
+<h2>Layer 4: Redis MCP Server — Cache & Session State</h2>
+
+<p>Redis is present in most production full-stack stacks — for caching, sessions, queues, and pub/sub. The Redis MCP server gives your AI visibility into your cache state, which is essential for debugging stale data issues, verifying cache invalidation logic, and understanding session storage structure.</p>
+
+<h2>Layer 5: Stripe MCP Server — Billing & Payments</h2>
+
+<p>For SaaS and e-commerce full-stack developers, payment integration is unavoidable. The Stripe MCP server connects your AI to your Stripe configuration — customer records, subscription states, webhook logs, and product catalog. Debugging billing issues without this requires constant dashboard tab-switching.</p>
+
+<h2>Layer 6: Vercel or Cloudflare — Deployment Layer</h2>
+
+<p>Your AI should understand your deployment environment, not just your code. Deployment MCP servers give it visibility into:</p>
+<ul>
+<li>Current deployment status and recent deployment history</li>
+<li>Environment variable configuration per environment</li>
+<li>Edge function performance and error rates</li>
+<li>Domain configuration and SSL status</li>
+</ul>
+
+<h2>Layer 7: Docker MCP Server — Containerization</h2>
+
+<p>If your development environment or production stack uses Docker, the Docker MCP server is invaluable. Your AI can inspect running containers, check logs, manage volumes, and verify that your compose configuration matches your application's requirements.</p>
+
+<p><strong>Development use case:</strong> When debugging a local environment issue, your AI can inspect docker-compose.yml, check container health, query environment variables passed to containers, and correlate them with application behavior — without you extracting this information manually.</p>
+
+<h2>Layer 8: Playwright MCP Server — End-to-End Testing</h2>
+
+<p>The Playwright MCP server allows your AI to test the user-facing behavior of your full-stack application. It can navigate your running application, interact with forms and UI components, verify that API calls return expected results, and take screenshots as evidence.</p>
+
+<p>This closes the loop in a powerful way: your AI writes code, runs tests, sees failures in the browser, and iterates — all as part of a single autonomous planning cycle.</p>
+
+<h2>Monitoring & Observability: Complete the Stack</h2>
+
+<p>Production full-stack developers need visibility into live system behavior. Add these depending on your observability setup:</p>
+
+<ul>
+<li><strong>Datadog MCP</strong> — APM traces, dashboards, alert configurations</li>
+<li><strong>Sentry MCP</strong> — error tracking, stack traces, issue management</li>
+<li><strong>Grafana MCP</strong> — metrics dashboards and alert rules</li>
+<li><strong>Axiom MCP</strong> — log analytics and query building</li>
+</ul>
+
+<h2>Full-Stack MCP Configuration Example (Cursor)</h2>
+
+<pre><code>{
+  "mcpServers": {
+    "filesystem": { "command": "npx", "args": ["-y", "@modelcontextprotocol/server-filesystem", "."] },
+    "github": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-github"],
+      "env": { "GITHUB_PERSONAL_ACCESS_TOKEN": "your-token" }
+    },
+    "postgres": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-postgres"],
+      "env": { "POSTGRES_CONNECTION_STRING": "postgresql://..." }
+    }
+  }
+}</code></pre>
+
+<h2>Performance Tip: Don't Enable Everything</h2>
+
+<p>Each enabled MCP server adds tools to your AI's available action space. Too many servers means the AI spends more tokens deciding which tool to use, increasing response latency and cost. Start with your three most-used integrations and expand from there based on actual friction points.</p>
+
+<p>Browse the full catalog at <a href="/">MyMCPTools</a> to find servers for every part of your stack.</p>
+    `.trim(),
+  },
+  {
+    slug: "mcp-server-troubleshooting-guide",
+    title: "MCP Server Troubleshooting Guide: Fix Common Issues & Errors 2026",
+    description: "Fix the most common MCP server errors: connection failures, authentication issues, tool not found, permission errors, and more. Complete debugging guide for Claude Desktop, Cursor, and VS Code.",
+    date: "2026-05-05",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "10 min read",
+    keywords: ["mcp server not working", "mcp server error", "mcp troubleshooting", "fix mcp server", "mcp connection failed", "claude desktop mcp not working"],
+    relatedServerSlugs: ["filesystem", "github", "postgres", "docker"],
+    content: `
+<p>MCP servers are powerful but their setup can be finicky. Configuration syntax errors, permission issues, missing environment variables, and runtime crashes are common — especially when first getting started. This guide covers the most frequent MCP server problems and exactly how to fix them.</p>
+
+<h2>Quick Diagnosis: How to See MCP Errors</h2>
+
+<p>Before debugging specific issues, know where to look for error output:</p>
+
+<ul>
+<li><strong>Claude Desktop:</strong> Go to Help → Open MCP Log File (macOS/Linux: <code>~/Library/Logs/Claude/mcp*.log</code>; Windows: <code>%APPDATA%/Claude/logs/mcp*.log</code>)</li>
+<li><strong>Cursor:</strong> Open the Output panel (View → Output) and select "MCP" from the dropdown</li>
+<li><strong>VS Code / Cline:</strong> Check the Output panel and look for the MCP server's output channel</li>
+</ul>
+
+<p>Always check logs first. Most MCP failures produce clear error messages — the hard part is knowing where to find them.</p>
+
+<h2>Error: "Server not found" or MCP Server Won't Start</h2>
+
+<p><strong>Cause:</strong> The MCP client can't find or execute the server command.</p>
+
+<p><strong>Fixes:</strong></p>
+<ol>
+<li><strong>Check that Node.js is installed:</strong> Most MCP servers run via <code>npx</code>. Run <code>node --version</code> in your terminal — if it fails, install Node.js 18+ from nodejs.org.</li>
+<li><strong>Use absolute paths:</strong> The MCP client may use a different PATH than your terminal. Instead of <code>npx</code>, try the full path: <code>/usr/local/bin/npx</code> or <code>$(which npx)</code>.</li>
+<li><strong>Check the command syntax:</strong> Make sure your JSON config is valid. A single missing comma or unclosed quote breaks the entire configuration file. Use a JSON validator at jsonlint.com before restarting.</li>
+<li><strong>Verify the package name:</strong> Package names change. Run the npx command manually in your terminal first to confirm it works and downloads correctly.</li>
+</ol>
+
+<h2>Error: "Connection timeout" or "Failed to connect"</h2>
+
+<p><strong>Cause:</strong> The server starts but doesn't establish the MCP protocol handshake within the timeout window.</p>
+
+<p><strong>Fixes:</strong></p>
+<ul>
+<li><strong>Run the server command manually</strong> in your terminal first. If it produces errors immediately (missing API keys, port conflicts), you'll see them directly rather than through the client's log format.</li>
+<li><strong>Check for startup crashes:</strong> Some servers crash silently if required environment variables aren't set. Check the server's README for required environment variables.</li>
+<li><strong>Port conflicts (rare):</strong> Some MCP servers run an HTTP server on a specific port. Check if another process is using that port with <code>lsof -i :PORT</code>.</li>
+</ul>
+
+<h2>Error: "Tool not found" or "No tools available"</h2>
+
+<p><strong>Cause:</strong> The MCP client connected to the server but couldn't load its tool definitions.</p>
+
+<p><strong>Fixes:</strong></p>
+<ul>
+<li><strong>Check server version compatibility:</strong> If you installed a server globally (<code>npm install -g</code>) months ago, it may not support the current MCP protocol version. Uninstall and reinstall: <code>npm uninstall -g package-name && npx package-name@latest</code>.</li>
+<li><strong>Use <code>-y</code> flag with npx:</strong> Add <code>-y</code> to your npx command (<code>npx -y package-name</code>) to auto-accept the install prompt. Without it, the server may hang waiting for confirmation.</li>
+<li><strong>Restart the client:</strong> Claude Desktop and Cursor sometimes cache the tool list from a previous session. Fully quit and reopen the application.</li>
+</ul>
+
+<h2>Error: Authentication / API Key Issues</h2>
+
+<p><strong>Cause:</strong> The server starts but can't authenticate with the external service (GitHub, database, etc.).</p>
+
+<p><strong>Fixes:</strong></p>
+<ul>
+<li><strong>Environment variables not loading:</strong> MCP clients start servers in a clean environment. Variables set in your shell profile (<code>.bashrc</code>, <code>.zshrc</code>) are NOT automatically available. You must explicitly include them in the MCP config's <code>env</code> block.</li>
+</ul>
+
+<pre><code>{
+  "mcpServers": {
+    "github": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-github"],
+      "env": {
+        "GITHUB_PERSONAL_ACCESS_TOKEN": "ghp_yourtokenhere"
+      }
+    }
+  }
+}</code></pre>
+
+<ul>
+<li><strong>Expired tokens:</strong> GitHub PATs, API keys, and database credentials expire or get revoked. Test your credentials independently (e.g., <code>curl -H "Authorization: token YOUR_TOKEN" https://api.github.com/user</code>) before assuming the MCP server is at fault.</li>
+<li><strong>Permissions scope:</strong> For GitHub, your PAT needs the right scopes. A PAT without <code>repo</code> scope can't access private repositories. Review the server's documentation for required permission scopes.</li>
+</ul>
+
+<h2>Database Connection Failures (PostgreSQL, MySQL, etc.)</h2>
+
+<p>Database MCP servers fail for predictable reasons:</p>
+
+<ul>
+<li><strong>Connection string format:</strong> PostgreSQL expects <code>postgresql://user:pass@host:5432/dbname</code>. A missing port, incorrect user, or wrong database name causes a connection failure. Test the connection string directly: <code>psql "postgresql://user:pass@host:5432/dbname"</code>.</li>
+<li><strong>Network access:</strong> If your database is remote, ensure the MCP server's host machine is whitelisted in your database's firewall or security group.</li>
+<li><strong>SSL requirements:</strong> Many hosted databases (Supabase, Neon, Railway) require SSL. Add <code>?sslmode=require</code> to your connection string if you see SSL-related errors.</li>
+<li><strong>Read-only mode:</strong> Some MCP servers default to read-only mode for safety. If you need write access, check the server's configuration options to enable it explicitly.</li>
+</ul>
+
+<h2>Filesystem MCP Server Issues</h2>
+
+<ul>
+<li><strong>Permission denied errors:</strong> The Filesystem server restricts access to the directories you configure. Make sure the path in your config matches the actual directory you want to access. Use absolute paths, not <code>~</code> shortcuts (expand to <code>/Users/yourname/...</code>).</li>
+<li><strong>Path doesn't exist:</strong> The directory must exist before the server starts. Create it if needed.</li>
+<li><strong>Symlinks:</strong> Some Filesystem server implementations don't follow symlinks by default. If your project uses symlinks (common in monorepos with workspaces), check if the server supports <code>--follow-symlinks</code>.</li>
+</ul>
+
+<h2>Claude Desktop: Config File Location</h2>
+
+<p>The most common mistake for Claude Desktop users is editing the wrong config file. The MCP configuration lives at:</p>
+
+<ul>
+<li><strong>macOS:</strong> <code>~/Library/Application Support/Claude/claude_desktop_config.json</code></li>
+<li><strong>Windows:</strong> <code>%APPDATA%\Claude\claude_desktop_config.json</code></li>
+</ul>
+
+<p>After any config change, fully quit Claude Desktop (Cmd+Q on Mac, not just closing the window) and reopen it. The app doesn't hot-reload config changes.</p>
+
+<h2>General Debugging Checklist</h2>
+
+<ol>
+<li>Check logs (location varies by client — see top of this guide)</li>
+<li>Run the server command manually in your terminal to see direct errors</li>
+<li>Validate your JSON config syntax</li>
+<li>Confirm environment variables are in the config's <code>env</code> block, not just your shell</li>
+<li>Test credentials independently before blaming the MCP server</li>
+<li>Fully restart (quit + reopen) your MCP client after any config change</li>
+<li>Check the server's GitHub Issues page — your error may already have a known fix</li>
+</ol>
+
+<p>Browse specific setup guides for individual servers on <a href="/servers">MyMCPTools server pages</a>, each includes installation and troubleshooting notes. You can also find more help in the <a href="/blog/getting-started-with-mcp">getting started guide</a>.</p>
+    `.trim(),
+  },
 ];
 
 export function getBlogPostBySlug(slug: string): BlogPost | undefined {
