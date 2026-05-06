@@ -11134,6 +11134,414 @@ server.setRequestHandler(ReadResourceRequestSchema, async (request) => {
 <p>Browse all <a href="/category/filesystem">File System MCP servers</a> on MyMCPTools, or see <a href="/blog/best-mcp-servers-for-research">Best MCP Servers for Research</a> for deeper academic research tooling.</p>
     `.trim(),
   },
+  {
+    slug: "best-mcp-servers-for-python-developers",
+    title: "Best MCP Servers for Python Developers in 2026",
+    description: "The top MCP servers for Python developers and data scientists. Connect Jupyter, PostgreSQL, BigQuery, GitHub, AWS S3, and more to your AI coding assistant.",
+    date: "2026-05-06",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "9 min read",
+    keywords: ["mcp servers for python", "python mcp server", "best mcp servers python", "jupyter mcp server", "python developer mcp"],
+    relatedServerSlugs: ["jupyter", "sqlite", "postgresql", "github", "brave-search", "filesystem", "bigquery", "aws-s3", "dbt-mcp", "git"],
+    content: `
+<p>Python developers and data scientists have a uniquely broad set of tool interactions — notebooks, databases, cloud storage, version control, package managers, and API endpoints all live in the same daily workflow. MCP servers make your AI assistant a first-class citizen in that ecosystem: not just a code suggester, but an active participant that can query your database, run cells, inspect schemas, and search documentation in real time.</p>
+
+<p>This guide covers the best MCP servers for Python development, from backend API work to data engineering and ML pipelines.</p>
+
+<h2>1. Jupyter MCP Server — AI That Runs in Your Notebooks</h2>
+
+<p>The Jupyter MCP server connects your AI assistant directly to running Jupyter kernels. It can read notebook cells, execute code, inspect variable state, and return outputs — making it possible to have genuine back-and-forth debugging sessions inside a live notebook.</p>
+
+<p><strong>What changes with Jupyter MCP:</strong></p>
+<ul>
+<li>Ask "why is this cell giving a shape mismatch?" and your AI can read the actual DataFrame shapes from the kernel, not guess from code alone</li>
+<li>Have your AI run exploratory cells and report results before you decide what to keep</li>
+<li>Debug memory issues by inspecting object sizes in the live kernel</li>
+<li>Generate and run data validation checks on your actual dataset</li>
+</ul>
+
+<p><strong>Setup:</strong></p>
+<pre><code>pip install jupyter-mcp-server
+jupyter mcp install</code></pre>
+
+<h2>2. PostgreSQL MCP Server — Schema-Aware Query Generation</h2>
+
+<p>Python backend work almost always involves a relational database. The PostgreSQL MCP server lets your AI introspect your actual schema — table names, column types, foreign keys, indices — before writing a single line of SQL. The result: generated queries that actually work on your data model.</p>
+
+<p><strong>Python-specific workflows:</strong></p>
+<ul>
+<li>Generate SQLAlchemy models from an existing schema ("read my tables and write the ORM models")</li>
+<li>Identify N+1 query patterns in Django ORM usage</li>
+<li>Write migration scripts that account for real constraints and existing data</li>
+<li>Debug slow queries by examining execution plans against your actual data</li>
+</ul>
+
+<p><strong>Setup:</strong></p>
+<pre><code>{
+  "mcpServers": {
+    "postgres": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-postgres", "postgresql://user:pass@localhost/mydb"]
+    }
+  }
+}</code></pre>
+
+<h2>3. SQLite MCP Server — Local Development and Testing</h2>
+
+<p>For local development, scripts, and testing environments, SQLite is the workhorse. The SQLite MCP server gives your AI direct access to your local databases — useful for data pipeline testing, script debugging, and rapid prototyping before pushing to production.</p>
+
+<p><strong>Use cases:</strong></p>
+<ul>
+<li>Inspect fixture data while writing pytest tests</li>
+<li>Debug ETL pipeline outputs at each transformation stage</li>
+<li>Validate that a migration script produced the expected schema</li>
+</ul>
+
+<h2>4. BigQuery MCP Server — Data Warehouse Queries</h2>
+
+<p>For data engineers and analysts working at scale, the BigQuery MCP server connects your AI to Google's data warehouse. Your AI can query production tables, inspect partition schemes, and help optimize queries that cost real money to run.</p>
+
+<p><strong>High-value workflows:</strong></p>
+<ul>
+<li>Audit expensive queries by reading the actual cost estimates before execution</li>
+<li>Generate optimized PARTITION BY and CLUSTER BY strategies based on your actual table schemas</li>
+<li>Write dbt-compatible SQL models informed by real column cardinality</li>
+<li>Debug pipeline failures by querying intermediate tables directly</li>
+</ul>
+
+<h2>5. AWS S3 MCP Server — Cloud Storage Operations</h2>
+
+<p>Python data pipelines frequently move files through S3. The AWS S3 MCP server lets your AI list buckets, inspect file structures, read metadata, and verify that pipeline outputs landed where they should.</p>
+
+<p><strong>Data engineering use cases:</strong></p>
+<ul>
+<li>Verify that a pipeline wrote the expected partitions (year=2026/month=05/day=06)</li>
+<li>Inspect file sizes to detect truncation or empty writes</li>
+<li>List recent files to understand landing zone patterns before writing ingestion code</li>
+<li>Debug permission errors by checking bucket policies</li>
+</ul>
+
+<h2>6. dbt MCP Server — Transformation Pipeline Intelligence</h2>
+
+<p>The dbt MCP server connects your AI to your dbt project — models, tests, sources, and documentation. When writing or debugging transformations, your AI can reference your actual DAG and lineage rather than working from general dbt knowledge.</p>
+
+<p><strong>What becomes possible:</strong></p>
+<ul>
+<li>Ask "which models depend on this source table?" and get a real lineage answer</li>
+<li>Generate new models that follow your project's existing naming conventions and style</li>
+<li>Debug test failures by reading the failing model's SQL and its upstream dependencies</li>
+</ul>
+
+<h2>7. GitHub MCP Server — Python Package and Repo Management</h2>
+
+<p>The GitHub MCP server handles the version control side of Python development: creating branches, opening PRs, reviewing diffs, and managing issues — all from inside your AI assistant. For open-source package maintainers, it also enables reviewing community contributions and managing releases.</p>
+
+<p><strong>Python-specific value:</strong></p>
+<ul>
+<li>Have your AI review a PR diff and check for common Python anti-patterns</li>
+<li>Automatically draft CHANGELOG entries from merged PR descriptions</li>
+<li>Search your repos for usage patterns before changing a shared utility function</li>
+</ul>
+
+<h2>8. Brave Search MCP Server — Documentation Lookup</h2>
+
+<p>Python's ecosystem moves fast. Library APIs change between minor versions, new packages emerge, and Stack Overflow answers go stale. The Brave Search MCP server lets your AI fetch current documentation and error solutions rather than relying on training data alone.</p>
+
+<p><strong>Most useful for:</strong></p>
+<ul>
+<li>Looking up current Pydantic v2 migration patterns (significantly different from v1)</li>
+<li>Finding accurate asyncio patterns for your Python version</li>
+<li>Checking whether a deprecation warning has an official resolution</li>
+</ul>
+
+<h2>9. Filesystem MCP Server — Project Navigation</h2>
+
+<p>The Filesystem server gives your AI structured access to your project directory — reading configuration files, inspecting package structure, understanding how your modules relate to each other. Essential for any AI assistant working across a multi-module Python project.</p>
+
+<h2>10. Git MCP Server — Commit History as Context</h2>
+
+<p>The Git MCP server provides access to your repository's commit history, diffs, and branch state. For Python projects, this is particularly useful for understanding why a function was written a certain way — blame, log, and diff give your AI the "why" behind the code.</p>
+
+<h2>Recommended Stack by Python Role</h2>
+
+<p><strong>Backend API developer:</strong> Filesystem + PostgreSQL + GitHub + Git + Brave Search</p>
+<p><strong>Data engineer:</strong> BigQuery + AWS S3 + dbt MCP + PostgreSQL + GitHub</p>
+<p><strong>Data scientist / ML:</strong> Jupyter + SQLite + AWS S3 + Brave Search + Filesystem</p>
+<p><strong>Open-source maintainer:</strong> GitHub + Git + Filesystem + Brave Search</p>
+
+<p>Browse the full <a href="/category/coding">coding MCP servers</a> directory or see <a href="/blog/best-mcp-servers-for-data-science">Best MCP Servers for Data Science</a> for ML-specific tooling.</p>
+    `.trim(),
+  },
+  {
+    slug: "mcp-servers-for-windsurf",
+    title: "Best MCP Servers for Windsurf IDE in 2026",
+    description: "Top MCP servers for Windsurf, Codeium's AI-powered IDE. Database access, GitHub integration, browser automation, and web search — step-by-step configuration.",
+    date: "2026-05-06",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "8 min read",
+    keywords: ["mcp servers for windsurf", "windsurf mcp setup", "windsurf mcp server", "codeium windsurf mcp", "windsurf ide mcp"],
+    relatedServerSlugs: ["filesystem", "github", "postgresql", "playwright", "git", "brave-search", "docker", "sqlite", "redis"],
+    content: `
+<p>Windsurf is Codeium's AI-first IDE — built from the ground up for developers who want an agentic coding experience without the context-switching tax of external tools. Its Cascade agent can plan multi-step tasks, write code, run terminal commands, and iterate on feedback. Connect MCP servers and Windsurf becomes something more powerful still: an IDE with direct access to your databases, browsers, APIs, and version control, all without leaving your editor.</p>
+
+<p>This guide covers the best MCP servers for Windsurf in 2026, how to configure them, and the workflows they unlock.</p>
+
+<h2>How Windsurf Handles MCP Servers</h2>
+
+<p>Windsurf supports MCP servers through its Cascade configuration panel. Once connected, the Cascade agent can invoke MCP tools as part of its planning and execution loop. Unlike passive AI completions, Cascade actively uses MCP tools to gather information, take action, and verify results — all as part of a single conversation thread.</p>
+
+<p>Configure MCP servers through Windsurf's settings: <strong>Settings → Cascade → MCP Servers</strong>. The configuration format is identical to Claude Desktop's JSON format, so any server that works there will work in Windsurf.</p>
+
+<h2>1. Filesystem MCP Server — Essential Foundation</h2>
+
+<p>The Filesystem server is the starting point for any Windsurf MCP setup. While Windsurf's native editor access already gives Cascade read/write capability within open files, the Filesystem MCP server extends this to structured directory operations — listing, reading metadata, and navigating project structure programmatically.</p>
+
+<p><strong>Why it matters:</strong> Cascade's multi-file refactoring and code generation tasks work best when it can survey the full project structure rather than only the files you've opened. The Filesystem server makes this survey fast and explicit.</p>
+
+<p><strong>Setup:</strong></p>
+<pre><code>{
+  "mcpServers": {
+    "filesystem": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-filesystem", "/path/to/your/project"]
+    }
+  }
+}</code></pre>
+
+<h2>2. GitHub MCP Server — Full Repository Control</h2>
+
+<p>The GitHub MCP server gives Cascade the ability to manage your repositories without leaving the IDE. Create branches, commit changes, open pull requests, review diffs, and manage issues — the complete PR workflow inside Windsurf.</p>
+
+<p><strong>Power workflows with Windsurf + GitHub MCP:</strong></p>
+<ul>
+<li>Ask Cascade to "implement this feature, create a branch, and open a PR with a description" — it handles the entire flow</li>
+<li>Have Cascade review an open PR's diff and suggest test cases</li>
+<li>Search across your org's repos for prior implementations before writing new code</li>
+<li>Let Cascade draft release notes from recent merged PRs</li>
+</ul>
+
+<p><strong>Setup:</strong></p>
+<pre><code>{
+  "mcpServers": {
+    "github": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-github"],
+      "env": { "GITHUB_PERSONAL_ACCESS_TOKEN": "your-token-here" }
+    }
+  }
+}</code></pre>
+
+<h2>3. PostgreSQL MCP Server — Schema-Aware Database Work</h2>
+
+<p>Database queries are where Windsurf's Cascade agent truly earns its keep. The PostgreSQL MCP server lets Cascade inspect your actual schema — table names, column types, relationships, indices — before writing SQL, ORM code, or migration scripts. No more generated queries that fail because of a column name mismatch.</p>
+
+<p><strong>What becomes possible:</strong></p>
+<ul>
+<li>Ask "write a migration that adds soft delete to the orders table" — Cascade reads the existing schema and writes the correct migration</li>
+<li>Debug a failing query by having Cascade explain the execution plan</li>
+<li>Generate ORM models directly from an existing database schema</li>
+</ul>
+
+<h2>4. Playwright MCP Server — Browser Testing in Your Agent Loop</h2>
+
+<p>The Playwright MCP server gives Cascade the ability to control a real browser. After making frontend changes, Cascade can navigate to your dev server, interact with the UI, and verify that its changes work visually — closing the loop without requiring manual testing between every iteration.</p>
+
+<p><strong>Key workflows:</strong></p>
+<ul>
+<li>Build a component in Windsurf, then have Cascade navigate to localhost and screenshot the result</li>
+<li>Write an end-to-end test and have Cascade run it against your dev environment</li>
+<li>Scrape API documentation from external sites when docs aren't available in text format</li>
+<li>Test form submissions and verify the full user flow after implementing a feature</li>
+</ul>
+
+<h2>5. Git MCP Server — Version Control Context</h2>
+
+<p>The Git MCP server gives Cascade direct access to your repository's commit history, diffs, and branch state. This context is invaluable for understanding why code was written a certain way — blame and log tell the story that comments usually don't.</p>
+
+<p><strong>Useful for:</strong></p>
+<ul>
+<li>Understanding which commit introduced a bug ("find when this function's signature changed")</li>
+<li>Generating meaningful commit messages based on actual diffs</li>
+<li>Reviewing your own changes before opening a PR</li>
+</ul>
+
+<h2>6. Brave Search MCP Server — Live Documentation Lookup</h2>
+
+<p>Windsurf's Cascade has a training data cutoff. The Brave Search MCP server fills the gap — when Cascade needs current library documentation, recent error message solutions, or updated API references, it can search the web in real time.</p>
+
+<p><strong>Most useful when:</strong></p>
+<ul>
+<li>Working with libraries that have released breaking changes since Cascade's training cutoff</li>
+<li>Looking up recent Stack Overflow answers for specific error messages</li>
+<li>Verifying that a proposed API pattern is still recommended in the current version</li>
+</ul>
+
+<h2>7. SQLite MCP Server — Local Development Databases</h2>
+
+<p>For projects using SQLite — common in local development, mobile apps, or smaller self-contained tools — the SQLite MCP server gives Cascade direct query access. Useful for inspecting test fixtures, verifying migration outputs, and debugging data-layer issues without switching to a separate database client.</p>
+
+<h2>8. Docker MCP Server — Container Management</h2>
+
+<p>The Docker MCP server lets Cascade interact with running containers and compose stacks. When debugging a containerized application, Cascade can check container logs, inspect environment variables, and verify service health — all as part of its diagnostic reasoning loop.</p>
+
+<h2>9. Redis MCP Server — Cache Debugging</h2>
+
+<p>The Redis MCP server gives Cascade read access to your Redis instance. Useful for debugging caching issues, inspecting session state, or verifying that cache invalidation logic works correctly after implementing changes in Windsurf.</p>
+
+<h2>Recommended Windsurf MCP Stack</h2>
+
+<p>Start here:</p>
+<ol>
+<li><strong>Filesystem</strong> — project navigation foundation</li>
+<li><strong>GitHub</strong> — complete PR workflow without leaving the IDE</li>
+<li><strong>PostgreSQL or SQLite</strong> — database-aware code generation</li>
+<li><strong>Brave Search</strong> — current documentation lookup</li>
+</ol>
+
+<p>Add Playwright for frontend work, Docker for containerized environments, and Redis as your stack grows in complexity. Avoid loading every available server at once — each server adds tools to Cascade's context, and more isn't always better.</p>
+
+<h2>Windsurf vs Other MCP Clients</h2>
+
+<p>Windsurf's Cascade agent is agentic by design — it plans multi-step tasks and executes them, not just completes individual prompts. This makes MCP particularly powerful in Windsurf compared to passive clients: Cascade can chain multiple MCP tool calls together as part of a single task without waiting for you to approve each step.</p>
+
+<p>See the full <a href="/integration/windsurf">Windsurf MCP server integration list</a> or browse <a href="/category/coding">coding category servers</a> for more developer tools. Also see <a href="/blog/mcp-servers-for-cline">Best MCP Servers for Cline</a> and <a href="/blog/best-mcp-servers-for-cursor">Best MCP Servers for Cursor</a> for comparison.</p>
+    `.trim(),
+  },
+  {
+    slug: "best-mcp-servers-for-e-commerce",
+    title: "Best MCP Servers for E-Commerce in 2026",
+    description: "Top MCP servers for e-commerce merchants and developers. Connect Shopify, Stripe, Klaviyo, Google Analytics, HubSpot, and WooCommerce to your AI assistant.",
+    date: "2026-05-06",
+    author: "MyMCPTools Team",
+    category: "Use Cases",
+    readingTime: "9 min read",
+    keywords: ["mcp servers for e-commerce", "shopify mcp server", "ecommerce mcp server", "stripe mcp server", "klaviyo mcp server"],
+    relatedServerSlugs: ["shopify", "stripe", "klaviyo", "mailchimp", "google-analytics", "hubspot", "woocommerce", "stripe-billing"],
+    content: `
+<p>E-commerce teams juggle more tools than almost any other business category: storefront platforms, payment processors, email marketing, customer data, analytics, and inventory — all running simultaneously. MCP servers let your AI assistant reach across all of these systems directly. Instead of describing your Shopify product catalog to an AI, it can read it. Instead of manually pulling Stripe revenue figures, it can query them. The result is an AI that acts like a genuinely informed business partner, not a generic responder.</p>
+
+<p>Here are the best MCP servers for e-commerce operations in 2026.</p>
+
+<h2>1. Shopify MCP Server — Your Store, Fully Accessible</h2>
+
+<p>The Shopify MCP server connects your AI to your store's products, orders, customers, inventory, and collections. It's the anchor for any e-commerce MCP setup — without it, your AI is working from descriptions. With it, your AI is working from actual data.</p>
+
+<p><strong>What you can do with Shopify MCP:</strong></p>
+<ul>
+<li>Ask "which products have less than 10 units in stock?" and get a real-time answer</li>
+<li>Generate product descriptions using actual metafields and variant data</li>
+<li>Query order history to identify trends ("what are our top 10 products this month?")</li>
+<li>Draft customer segments based on purchase history patterns</li>
+<li>Audit product pages for missing SEO fields (meta descriptions, alt text) at scale</li>
+</ul>
+
+<p><strong>Setup:</strong></p>
+<pre><code>{
+  "mcpServers": {
+    "shopify": {
+      "command": "npx",
+      "args": ["-y", "shopify-mcp-server"],
+      "env": {
+        "SHOPIFY_STORE_URL": "your-store.myshopify.com",
+        "SHOPIFY_ACCESS_TOKEN": "your-access-token"
+      }
+    }
+  }
+}</code></pre>
+
+<h2>2. Stripe MCP Server — Revenue Intelligence</h2>
+
+<p>The Stripe MCP server gives your AI access to your payment and subscription data. Useful for revenue analysis, subscription health monitoring, failed payment investigation, and customer billing history — without logging into the Stripe dashboard for every question.</p>
+
+<p><strong>E-commerce use cases:</strong></p>
+<ul>
+<li>"What's our MRR trend over the last 90 days?" — Stripe MCP queries it directly</li>
+<li>Identify customers with failed payments who haven't been contacted yet</li>
+<li>Analyze average order value by product category</li>
+<li>Review dispute patterns to identify fraud vectors</li>
+<li>Generate revenue reports by date range for stakeholder updates</li>
+</ul>
+
+<p><strong>Setup:</strong></p>
+<pre><code>{
+  "mcpServers": {
+    "stripe": {
+      "command": "npx",
+      "args": ["-y", "@stripe/mcp"],
+      "env": { "STRIPE_SECRET_KEY": "sk_live_..." }
+    }
+  }
+}</code></pre>
+
+<h2>3. Klaviyo MCP Server — Email Marketing Data</h2>
+
+<p>Klaviyo is the dominant email platform for Shopify stores, and its MCP server connects your AI to flows, campaigns, segments, and metrics. Instead of manually pulling reports, your AI can query performance data and help you make optimization decisions based on actual numbers.</p>
+
+<p><strong>What it enables:</strong></p>
+<ul>
+<li>Pull open rate and revenue attribution for your abandonment cart flow</li>
+<li>Identify which email segments have the highest lifetime value customers</li>
+<li>Draft A/B test subject line variants informed by your historical open rate data</li>
+<li>Generate campaign performance summaries for your monthly marketing report</li>
+<li>Audit your flow logic and identify gaps (e.g., post-purchase flows missing upsell sequences)</li>
+</ul>
+
+<h2>4. Google Analytics MCP Server — Traffic and Conversion Data</h2>
+
+<p>The Google Analytics MCP server connects your AI to your GA4 data — traffic sources, conversion paths, product performance, and audience behavior. Instead of building custom reports in GA4's UI, you can ask questions in plain language and get real answers.</p>
+
+<p><strong>E-commerce analytics queries:</strong></p>
+<ul>
+<li>"What's our cart abandonment rate this month vs last month?"</li>
+<li>"Which traffic source drives the highest average order value?"</li>
+<li>"What's our conversion rate by device type?"</li>
+<li>"Which product pages have the highest exit rate?"</li>
+</ul>
+
+<p>Your AI can cross-reference these analytics insights with Shopify product data and Klaviyo email metrics — connecting the full funnel from traffic to purchase to retention.</p>
+
+<h2>5. HubSpot MCP Server — Customer Relationship Management</h2>
+
+<p>For B2B e-commerce or stores with active sales teams, the HubSpot MCP server brings your CRM data into the AI conversation. Query contact history, deal pipelines, company records, and notes — all without leaving your work environment.</p>
+
+<p><strong>Use cases for e-commerce:</strong></p>
+<ul>
+<li>Identify high-value customers in your CRM who haven't purchased in 90+ days</li>
+<li>Draft personalized re-engagement emails based on their purchase history</li>
+<li>Track the relationship between marketing campaign touches and purchase conversions</li>
+<li>Generate account summaries for wholesale or B2B customer meetings</li>
+</ul>
+
+<h2>6. Mailchimp MCP Server — Audience and Campaign Management</h2>
+
+<p>For stores on Mailchimp rather than Klaviyo, the Mailchimp MCP server provides equivalent access to audiences, campaigns, and automation sequences. Query subscriber growth, segment performance, and campaign metrics directly from your AI assistant.</p>
+
+<h2>7. WooCommerce MCP Server — WordPress Store Management</h2>
+
+<p>For stores built on WooCommerce, the WooCommerce MCP server provides Shopify-equivalent access to your WordPress-based storefront — products, orders, customers, coupons, and inventory. The same workflows that work for Shopify stores apply here: bulk product audits, inventory checks, order analysis, and customer segmentation.</p>
+
+<h2>8. Stripe Billing MCP Server — Subscription Intelligence</h2>
+
+<p>For e-commerce stores with subscription products (replenishment boxes, membership programs, SaaS add-ons), the Stripe Billing MCP server provides deeper access to subscription-specific data: churn rates, dunning outcomes, upgrade/downgrade patterns, and cohort revenue retention.</p>
+
+<h2>Recommended E-Commerce MCP Stack</h2>
+
+<p><strong>Shopify merchants (most users):</strong> Shopify + Stripe + Klaviyo + Google Analytics</p>
+<p><strong>WooCommerce merchants:</strong> WooCommerce + Stripe + Mailchimp + Google Analytics</p>
+<p><strong>B2B or wholesale e-commerce:</strong> Shopify + Stripe + HubSpot + Google Analytics</p>
+<p><strong>Subscription commerce:</strong> Shopify + Stripe Billing + Klaviyo + Google Analytics</p>
+
+<h2>The Compounding Value of Multiple Servers</h2>
+
+<p>The real power of MCP for e-commerce isn't any single server — it's combining them. When your AI can simultaneously query your Shopify inventory, Klaviyo email list, Stripe revenue, and Google Analytics traffic, it can answer questions that would otherwise require a business analyst and 30 minutes of manual data pulling.</p>
+
+<p>Example: "Which products are trending in traffic this week but low on inventory, and do we have an active email segment for customers who've purchased them before?" — that's a Shopify + Stripe + Google Analytics + Klaviyo query, answered in seconds.</p>
+
+<p>Browse all <a href="/category/finance">finance and payment MCP servers</a> or see <a href="/category/analytics">analytics MCP servers</a> for more data-layer options.</p>
+    `.trim(),
+  },
 ];
 
 export function getBlogPostBySlug(slug: string): BlogPost | undefined {
