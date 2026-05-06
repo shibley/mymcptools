@@ -10571,6 +10571,569 @@ server.setRequestHandler(ReadResourceRequestSchema, async (request) => {
 <p>Browse all <a href="/category/api">API &amp; Web MCP servers</a> on MyMCPTools, or see <a href="/blog/best-mcp-servers-for-project-management">Best MCP Servers for Project Management</a> for broader ops tooling.</p>
     `.trim(),
   },
+  {
+    slug: "best-mcp-servers-for-legal",
+    title: "Best MCP Servers for Legal Teams and Law Firms in 2026",
+    description: "The top MCP servers for lawyers, paralegals, and legal ops teams. Search case law, review contracts, manage documents, and draft correspondence with AI using Model Context Protocol.",
+    date: "2026-05-06",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "7 min read",
+    keywords: ["mcp servers for legal", "legal ai tools 2026", "law firm mcp integration", "contract review ai mcp", "legal document ai"],
+    relatedServerSlugs: ["filesystem", "pdf-reader", "brave-search", "notion", "google-drive", "exa", "fetch", "gmail", "outlook"],
+    content: `
+<p>Legal work is documentation-intensive, research-heavy, and precision-critical. MCP servers bring AI-powered access to case law research, contract review, client correspondence, and internal knowledge bases — without requiring lawyers to leave their AI assistant to toggle between a dozen different systems.</p>
+
+<p>Here are the MCP servers delivering the most value for legal professionals in 2026.</p>
+
+<h2>1. Filesystem MCP Server — Your Document Repository, AI-Accessible</h2>
+
+<p>Most law firm AI workflows start with the Filesystem MCP server. It gives your AI assistant direct access to your local case files, contract drafts, templates, and notes — so you can ask "compare this NDA draft with our standard template" without copying and pasting.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read and search contract drafts, memos, and case files</li>
+<li>Compare documents by pulling both into context</li>
+<li>Write and update document drafts directly</li>
+<li>Navigate complex folder structures (by matter, client, date)</li>
+</ul>
+
+<p><strong>Best prompt:</strong> "Read the NDA in /matters/acme-corp/contracts/ and flag any clauses that deviate from our standard limitation of liability terms."</p>
+
+<h2>2. PDF Reader MCP Server — Analyze Legal Documents Natively</h2>
+
+<p>Legal documents are almost always PDFs — court filings, agreements, regulatory guidance, and discovery materials. The PDF Reader MCP server lets your AI extract, analyze, and summarize PDF content without manual copy-paste.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Full text extraction from multi-page PDFs</li>
+<li>Section navigation by heading or clause number</li>
+<li>Table and exhibit extraction</li>
+<li>Cross-reference multiple documents simultaneously</li>
+</ul>
+
+<p><strong>Best workflow:</strong> Feed a 200-page merger agreement to your AI and ask it to identify every representation and warranty clause, then summarize the key risk points for partner review.</p>
+
+<h2>3. Exa MCP Server — Case Law and Legal Research</h2>
+
+<p>Exa is a semantic search engine built for AI workflows. For legal research, it provides direct access to high-quality legal content across the web — court opinions, law review articles, regulatory guidance, and practitioner commentary — with far better precision than general search.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Semantic search across legal content sources</li>
+<li>Full-text retrieval (not just snippets) of source documents</li>
+<li>Date-filtered results for recent developments</li>
+<li>Domain filtering to restrict to .gov, court sites, or law reviews</li>
+</ul>
+
+<p><strong>Best prompt:</strong> "Research recent district court opinions interpreting the DTSA's inevitable disclosure doctrine. Get full text of the top 3 most cited cases from the past 2 years."</p>
+
+<h2>4. Brave Search MCP Server — General Legal Research</h2>
+
+<p>For broader legal research — regulatory updates, news about opposing counsel, jurisdiction-specific rules, or finding model contracts — Brave Search gives your AI reliable web access without data logging or tracking.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>General and local web search</li>
+<li>News search for recent developments</li>
+<li>No user tracking (important for client confidentiality)</li>
+<li>Image and video search for demonstrative evidence research</li>
+</ul>
+
+<h2>5. Google Drive MCP Server — Shared Matter Files</h2>
+
+<p>Most firms use Google Workspace or Microsoft 365 for document sharing. The Google Drive MCP server connects your AI to shared matter folders, enabling document search and retrieval across your firm's entire knowledge base — not just your local files.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Search across all shared drives and folders</li>
+<li>Read Google Docs, Sheets, and PDF files</li>
+<li>Create new documents and update existing ones</li>
+<li>Access version history</li>
+</ul>
+
+<h2>6. Gmail MCP Server — Client Communication Intelligence</h2>
+
+<p>The Gmail MCP server gives your AI access to client email threads, letting it draft responses, summarize correspondence history, and flag action items — saving the 30+ minutes per matter that lawyers typically spend re-reading email chains.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Search and read email threads by client, matter, or keyword</li>
+<li>Draft replies matching your communication style</li>
+<li>Summarize long email chains into key decisions and action items</li>
+<li>Create calendar events from scheduling emails</li>
+</ul>
+
+<p><strong>Best prompt:</strong> "Summarize the email thread with Acme Corp from the past 30 days and identify any outstanding items from my side."</p>
+
+<h2>7. Notion MCP Server — Internal Knowledge Base</h2>
+
+<p>Law firms increasingly use Notion for internal knowledge management — precedent libraries, clause banks, client intake forms, and know-your-client documentation. The Notion MCP server connects your AI to this institutional knowledge.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Search the firm's precedent and clause library</li>
+<li>Read and update client matter pages</li>
+<li>Add meeting notes and action items</li>
+<li>Query databases (deal timelines, client lists)</li>
+</ul>
+
+<h2>Legal AI Workflows with MCP</h2>
+
+<h3>Contract Review</h3>
+<p>Use Filesystem + PDF Reader together: "Read all three contract drafts in /matters/jones-acquisition/ and produce a redline summary showing where each party's positions diverge on indemnification, IP ownership, and termination rights."</p>
+
+<h3>Matter Summary for New Associates</h3>
+<p>Combine Gmail + Google Drive: "Summarize the Acme Corp matter — pull the key emails, read the main contract, and give me a 1-page briefing on where we are and what's next."</p>
+
+<h3>Regulatory Research</h3>
+<p>Use Exa + Brave Search together: "Research new SEC guidance on AI disclosure requirements for public companies issued in 2025-2026. Pull the full text of the most relevant guidance documents."</p>
+
+<h2>Getting Started</h2>
+
+<p>For solo practitioners and small firms, start with Filesystem + PDF Reader + Brave Search. These three servers cover 80% of legal AI use cases with minimal configuration.</p>
+
+<p>For larger firms, add Gmail (or Outlook) + Google Drive to unlock cross-matter search and client communication intelligence.</p>
+
+<p>Browse all <a href="/category/communication">Communication MCP servers</a> on MyMCPTools, or see <a href="/blog/best-mcp-servers-for-research">Best MCP Servers for Research</a> for deeper research tooling.</p>
+    `.trim(),
+  },
+  {
+    slug: "best-mcp-servers-for-hr",
+    title: "Best MCP Servers for HR and People Operations Teams in 2026",
+    description: "Top MCP servers for HR professionals and people ops teams. Manage candidates, onboarding, payroll data, and team communications with AI through Model Context Protocol integrations.",
+    date: "2026-05-06",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "6 min read",
+    keywords: ["mcp servers for hr", "hr ai tools 2026", "people ops mcp integration", "bamboohr mcp", "greenhouse mcp server"],
+    relatedServerSlugs: ["bamboohr", "greenhouse", "rippling", "slack", "notion", "google-sheets", "gmail", "airtable", "jira"],
+    content: `
+<p>HR and people operations teams juggle candidate pipelines, onboarding workflows, benefits administration, performance cycles, and headcount planning — often across disconnected systems. MCP servers connect your AI directly to HR data sources, letting you query, update, and analyze people data through natural language instead of jumping between a dozen different UIs.</p>
+
+<h2>1. BambooHR MCP Server — Core HR Data Access</h2>
+
+<p>BambooHR is the HRIS of choice for thousands of mid-size companies, and the BambooHR MCP server gives your AI direct access to employee records, org charts, time-off data, and performance information.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Query employee directory (role, department, manager, start date)</li>
+<li>Pull time-off balances and approval queues</li>
+<li>Access compensation bands and headcount by department</li>
+<li>Generate org chart summaries</li>
+<li>Retrieve onboarding task completion status</li>
+</ul>
+
+<p><strong>Best prompts:</strong></p>
+<ul>
+<li>"Which employees in engineering have been here more than 2 years and haven't had a promotion?"</li>
+<li>"Show me all open PTO requests for this week that haven't been approved yet."</li>
+<li>"How many employees do we have in each department, and what's the average tenure by team?"</li>
+</ul>
+
+<h2>2. Greenhouse MCP Server — Recruiting Pipeline</h2>
+
+<p>Greenhouse is the ATS used by most high-growth companies, and the Greenhouse MCP server gives your AI visibility into your recruiting funnel — open roles, candidate stages, interview feedback, and offer status.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Query open positions by department, level, or recruiter</li>
+<li>Pull candidate pipeline by stage (applied, screening, interviews, offer)</li>
+<li>Access interview scorecard summaries</li>
+<li>Track time-to-hire metrics by role</li>
+<li>Generate weekly recruiting reports</li>
+</ul>
+
+<p><strong>Best prompts:</strong></p>
+<ul>
+<li>"Which engineering roles have been open more than 60 days without an offer?"</li>
+<li>"Give me a pipeline summary for the senior product designer role — how many candidates at each stage?"</li>
+<li>"What's our average time-to-hire for engineering this quarter compared to last quarter?"</li>
+</ul>
+
+<h2>3. Rippling MCP Server — Payroll and Benefits</h2>
+
+<p>Rippling combines HRIS, payroll, and IT management. The Rippling MCP server gives HR and finance teams AI-assisted access to payroll runs, benefits enrollment, and workforce analytics.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Query payroll runs and employee compensation data</li>
+<li>Benefits enrollment status and coverage summaries</li>
+<li>IT provisioning status for new hires</li>
+<li>Headcount and cost reporting by department</li>
+</ul>
+
+<h2>4. Slack MCP Server — Team Pulse and Communication</h2>
+
+<p>For people ops leaders, the Slack MCP server provides access to team communication patterns — understanding which channels are active, finding announcements, and surfacing employee questions that might need HR attention.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Search messages across channels by topic or keyword</li>
+<li>Read threads and summarize discussions</li>
+<li>Post announcements to HR channels</li>
+<li>Find and update HR-related channel descriptions and resources</li>
+</ul>
+
+<p><strong>Best workflow:</strong> Combine Slack + BambooHR for a new hire check-in: "Search the #new-hires channel for messages from [name] this week and pull their onboarding task completion from BambooHR. Flag anything that looks like they're struggling."</p>
+
+<h2>5. Google Sheets MCP Server — Headcount Planning and HR Analytics</h2>
+
+<p>Most HR teams run headcount planning, compensation benchmarking, and attrition analysis in spreadsheets. The Google Sheets MCP server gives your AI read/write access to these models.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read and update headcount planning models</li>
+<li>Run calculations and add new rows for scenario analysis</li>
+<li>Query compensation band data</li>
+<li>Update hiring trackers and OKR spreadsheets</li>
+</ul>
+
+<h2>6. Airtable MCP Server — Flexible HR Workflows</h2>
+
+<p>Airtable is widely used in HR for workflows that don't fit neatly into traditional HRIS: new hire equipment requests, office management, swag inventory, and internal mobility tracking. The Airtable MCP server exposes all of these tables to your AI.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read, create, and update Airtable records via natural language</li>
+<li>Filter tables by any field combination</li>
+<li>Cross-reference Airtable data with BambooHR queries</li>
+</ul>
+
+<h2>7. Gmail MCP Server — Candidate and Employee Correspondence</h2>
+
+<p>HR teams manage high-volume email: offer letters, rejection notices, scheduling emails, employee relations threads. The Gmail MCP server lets your AI draft responses, summarize threads, and flag urgent items.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Search and read email threads by candidate or employee</li>
+<li>Draft offer letters, rejection emails, and interview confirmations</li>
+<li>Summarize complex employee relations email threads</li>
+<li>Create calendar events from scheduling emails</li>
+</ul>
+
+<h2>HR Workflows with MCP</h2>
+
+<h3>Weekly Recruiting Snapshot</h3>
+<p>Ask your AI: "Pull the recruiting pipeline from Greenhouse, get headcount by department from BambooHR, and produce a one-page recruiting snapshot for the leadership team meeting."</p>
+
+<h3>New Hire Readiness Check</h3>
+<p>Combine Greenhouse + BambooHR + Rippling: "For all new hires starting next Monday, check their Rippling IT provisioning status, BambooHR onboarding task completion, and whether their Slack accounts have been created."</p>
+
+<h3>Attrition Analysis</h3>
+<p>Use Google Sheets + BambooHR: "Pull voluntary termination data from BambooHR for the past 12 months and update the attrition analysis sheet with monthly counts by department and tenure band."</p>
+
+<h2>Getting Started</h2>
+
+<p>Start with your primary HRIS (BambooHR or Rippling) plus Gmail and Slack. These three unlock the majority of high-frequency HR tasks: recruiting updates, employee data queries, and communication drafting.</p>
+
+<p>Add Greenhouse for recruiting-heavy teams, and Google Sheets or Airtable for planning and analytics workflows.</p>
+
+<p>Browse all <a href="/category/api">API &amp; Web MCP servers</a> on MyMCPTools, or see <a href="/blog/best-mcp-servers-for-project-management">Best MCP Servers for Project Management</a> for cross-functional ops tooling.</p>
+    `.trim(),
+  },
+  {
+    slug: "best-mcp-servers-for-analytics",
+    title: "Best MCP Servers for Analytics and Data Teams in 2026",
+    description: "Top MCP servers for analysts and data teams. Query BigQuery, Snowflake, and Redshift with natural language. Connect Mixpanel, Amplitude, and Google Analytics to your AI workflow.",
+    date: "2026-05-06",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "8 min read",
+    keywords: ["mcp servers for analytics", "data team mcp", "bigquery mcp server", "snowflake mcp integration", "analytics ai tools 2026", "mixpanel mcp"],
+    relatedServerSlugs: ["google-analytics", "mixpanel", "amplitude", "posthog", "bigquery", "snowflake", "grafana", "plausible", "dbt-mcp", "segment"],
+    content: `
+<p>Analytics teams spend most of their time answering two types of questions: "what happened?" and "why?" MCP servers cut the answer time by giving your AI direct, structured access to every data source in your stack — from product analytics platforms to data warehouses — so you can ask questions in plain English instead of writing SQL or clicking through dashboards.</p>
+
+<h2>1. BigQuery MCP Server — Warehouse-Scale Analysis</h2>
+
+<p>Google BigQuery is where enterprise analytics lives, and the BigQuery MCP server is the most powerful data tool in this list. It gives your AI assistant the ability to run SQL queries across petabyte-scale datasets, explore schemas, and return results — all in a single conversation.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Natural language to SQL query generation and execution</li>
+<li>Schema introspection (tables, columns, data types, row counts)</li>
+<li>Query cost estimation before running</li>
+<li>Results returned as structured data for follow-up analysis</li>
+<li>Multi-project and multi-dataset access</li>
+</ul>
+
+<p><strong>Best prompts:</strong></p>
+<ul>
+<li>"How many new users signed up last week, segmented by acquisition channel? Compare to the same week last year."</li>
+<li>"Show me the top 20 products by revenue in the past 30 days, with YoY growth rates."</li>
+<li>"Find any users who completed checkout but didn't receive a confirmation email in the past 7 days."</li>
+</ul>
+
+<h2>2. Snowflake MCP Server — Enterprise Data Cloud</h2>
+
+<p>Snowflake is the dominant cloud data warehouse for data-mature companies. The Snowflake MCP server provides the same natural language querying power as BigQuery but against your Snowflake environment — including Snowpark and semi-structured data in variant columns.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Schema browser across databases, schemas, and tables</li>
+<li>SQL generation and execution for analytical queries</li>
+<li>Variant and JSON column handling for semi-structured data</li>
+<li>Query history inspection</li>
+<li>Role-aware access (respects Snowflake RBAC)</li>
+</ul>
+
+<h2>3. Google Analytics MCP Server — Web Traffic Intelligence</h2>
+
+<p>The Google Analytics MCP server connects your AI to GA4 data — sessions, conversions, user behavior, and acquisition performance — enabling real-time reporting in conversation without navigating the GA4 interface.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Query traffic metrics (sessions, users, page views) by dimension</li>
+<li>Conversion and goal completion reporting</li>
+<li>Acquisition channel breakdown (organic, paid, referral)</li>
+<li>Page-level performance analysis</li>
+<li>Custom date range comparisons</li>
+</ul>
+
+<p><strong>Best prompt:</strong> "Compare organic search traffic this month vs last month, broken down by landing page. Which pages had the biggest drops?"</p>
+
+<h2>4. Mixpanel MCP Server — Product Analytics</h2>
+
+<p>Mixpanel tracks user behavior inside your product. The Mixpanel MCP server brings event data and funnel analysis into your AI conversation — answering "why are users dropping off?" without requiring JPQL expertise.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Event queries by user segment and date range</li>
+<li>Funnel analysis (where do users drop off?)</li>
+<li>Retention cohort queries</li>
+<li>User profile lookups and activity streams</li>
+<li>A/B test result retrieval</li>
+</ul>
+
+<p><strong>Best workflow:</strong> Combine Mixpanel + BigQuery for a complete user journey analysis: ask Mixpanel for the conversion funnel, then use BigQuery to pull the underlying event data for the dropped-off users and identify patterns.</p>
+
+<h2>5. Amplitude MCP Server — Behavioral Analytics</h2>
+
+<p>Amplitude's MCP server is particularly powerful for product teams running growth experiments. It gives AI access to Amplitude Charts, Cohorts, and Experiments data — letting you query A/B test results and behavioral segments without logging into the UI.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Chart data retrieval (metrics, funnels, retention)</li>
+<li>Cohort definitions and membership queries</li>
+<li>A/B experiment results and statistical significance</li>
+<li>User-level behavioral data</li>
+</ul>
+
+<h2>6. PostHog MCP Server — Open Source Product Analytics</h2>
+
+<p>For teams self-hosting their analytics or preferring open source, PostHog's MCP server provides the same product analytics depth as Mixpanel/Amplitude with full data control. Particularly popular with developer-led companies.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Event-based queries and funnels</li>
+<li>Session recordings and heatmap data access</li>
+<li>Feature flag status and rollout percentages</li>
+<li>Experiment results and variant performance</li>
+<li>SQL access to raw PostHog tables via HogQL</li>
+</ul>
+
+<h2>7. dbt MCP Server — Your Data Models, AI-Explained</h2>
+
+<p>dbt is the transformation layer sitting between raw warehouse data and analytical queries. The dbt MCP server exposes your model definitions, lineage, and documentation to your AI — enabling it to write correct SQL that respects your semantic layer rather than querying raw tables directly.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Browse dbt model definitions and their SQL</li>
+<li>Inspect lineage (what does this model depend on?)</li>
+<li>Access model documentation and descriptions</li>
+<li>Identify failing tests and their root causes</li>
+<li>Generate new dbt models from natural language requirements</li>
+</ul>
+
+<p><strong>Best prompt:</strong> "Show me the dbt model for monthly_active_users and explain how it's calculated. Then write me a new model that breaks it down by pricing tier."</p>
+
+<h2>8. Grafana MCP Server — Infrastructure and Business Metrics</h2>
+
+<p>Grafana hosts dashboards for both infrastructure monitoring and business metrics. The Grafana MCP server lets your AI query Grafana panels and data sources — bridging the gap between technical observability and business reporting.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Query dashboard panels and retrieve current metric values</li>
+<li>Search and read Grafana datasources (Prometheus, Loki, InfluxDB)</li>
+<li>Alert rule inspection</li>
+<li>Annotations query for event correlation</li>
+</ul>
+
+<h2>9. Segment MCP Server — Customer Data Pipeline</h2>
+
+<p>Segment is the customer data platform connecting your product events to downstream analytics tools. The Segment MCP server provides visibility into your tracking plan, event schemas, and data quality — critical for analytics teams maintaining data governance.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Tracking plan inspection (events, properties, descriptions)</li>
+<li>Source and destination connection status</li>
+<li>Event volume and data quality metrics</li>
+<li>Violation and schema drift detection</li>
+</ul>
+
+<h2>Analytics Workflows with MCP</h2>
+
+<h3>Weekly Business Review Prep</h3>
+<p>Ask your AI: "Pull last week's key metrics from Google Analytics (traffic), Mixpanel (activation), and BigQuery (revenue). Format a weekly business review summary comparing actuals to targets."</p>
+
+<h3>Root Cause Analysis</h3>
+<p>Combine PostHog + BigQuery: "Conversion rate dropped 15% on Tuesday. Pull the PostHog funnel for that day vs Monday, then query BigQuery for any backend errors or latency spikes that correlate with the drop."</p>
+
+<h3>Experiment Readout</h3>
+<p>Use Amplitude + dbt: "Pull the results for Experiment 142 from Amplitude — statistical significance, conversion lift, and confidence interval. Then show me the underlying dbt model the primary metric is based on."</p>
+
+<h2>Getting Started</h2>
+
+<p>Start with your data warehouse (BigQuery or Snowflake) — this alone unlocks the most powerful analytical queries. Add your product analytics tool (Mixpanel, Amplitude, or PostHog) for behavioral context, and Google Analytics for acquisition data.</p>
+
+<p>Add dbt if your team uses it — the semantic layer awareness dramatically improves AI query quality.</p>
+
+<p>Browse all <a href="/category/analytics">Analytics MCP servers</a> on MyMCPTools, or see <a href="/blog/best-mcp-servers-for-data-engineering">Best MCP Servers for Data Engineering</a> for pipeline and infrastructure tooling.</p>
+    `.trim(),
+  },
+  {
+    slug: "best-mcp-servers-for-educators",
+    title: "Best MCP Servers for Teachers and Educators in 2026",
+    description: "The top MCP servers for teachers, instructors, and educational institutions. Manage lesson plans, grade data, research, and student communications with AI using Model Context Protocol.",
+    date: "2026-05-06",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "6 min read",
+    keywords: ["mcp servers for teachers", "education ai tools 2026", "classroom mcp integration", "google classroom mcp", "educator ai assistant"],
+    relatedServerSlugs: ["filesystem", "google-drive", "google-docs", "google-sheets", "notion", "brave-search", "exa", "gmail", "microsoft-learn"],
+    content: `
+<p>Teachers and educators face a relentless administrative burden: lesson planning, grading, differentiated instruction, parent communication, and curriculum research — all on top of actual teaching. MCP servers give educators AI access to their documents, research tools, and communication channels, dramatically cutting the time spent on back-office work so more time can go toward students.</p>
+
+<h2>1. Google Drive MCP Server — All Your Course Materials</h2>
+
+<p>Most educators run on Google Workspace — lesson plans in Google Docs, grade books in Sheets, slide decks in Slides. The Google Drive MCP server connects your AI to everything in your Drive, enabling intelligent search and editing across your entire course library.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Search across lesson plans, rubrics, and assessment files</li>
+<li>Read and update Google Docs (lesson plans, unit guides)</li>
+<li>Pull data from Google Sheets (grade books, attendance)</li>
+<li>Organize files and create new documents</li>
+</ul>
+
+<p><strong>Best prompts:</strong></p>
+<ul>
+<li>"Find my lesson plan for the American Revolution unit and update it to add a primary source analysis activity."</li>
+<li>"Pull the grade book from this semester's spreadsheet and calculate which students are below 70% heading into finals."</li>
+<li>"Search my Drive for all rubrics I've used for persuasive writing and synthesize the best elements into one updated rubric."</li>
+</ul>
+
+<h2>2. Google Docs MCP Server — Lesson Planning and Curriculum Writing</h2>
+
+<p>The Google Docs MCP server provides deeper, document-level access than Google Drive — ideal for educators who want their AI to read, edit, and create lesson plans, assessment items, and instructional materials at scale.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read full document content including comments and revisions</li>
+<li>Create new documents from templates</li>
+<li>Make targeted edits to existing lesson plans</li>
+<li>Add comments and suggestions for peer review workflows</li>
+</ul>
+
+<p><strong>Best workflow:</strong> Point your AI at this year's unit plan and ask: "Rewrite the Day 3 lesson to accommodate two learning levels — one version for grade-level students and one with additional scaffolding for students reading 2 years below grade level."</p>
+
+<h2>3. Filesystem MCP Server — Local Teaching Resources</h2>
+
+<p>For educators who store resources locally — textbook PDFs, downloaded worksheets, video transcripts, archived lesson materials — the Filesystem MCP server provides AI access without uploading files to the cloud.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Search and read local files across subject folders</li>
+<li>Compare materials across years (e.g., "how did I teach this concept last year?")</li>
+<li>Generate new worksheets based on existing templates</li>
+<li>Organize files by unit, standard, or grade level</li>
+</ul>
+
+<h2>4. Exa MCP Server — Educational Research and Content Discovery</h2>
+
+<p>Exa is a semantic search engine purpose-built for AI workflows. For educators, it provides high-quality search over academic content, educational research, primary sources, and curriculum resources — far more signal-rich than general web search.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Semantic search over educational content and research</li>
+<li>Full-text retrieval from academic sources</li>
+<li>Primary source discovery for history and social studies</li>
+<li>Filter by date to surface recent research findings</li>
+</ul>
+
+<p><strong>Best prompt:</strong> "Find recent research on the effectiveness of project-based learning in middle school science classrooms. Get the full text of the top 3 peer-reviewed studies from the last 3 years."</p>
+
+<h2>5. Brave Search MCP Server — Curriculum Resources and News</h2>
+
+<p>Brave Search gives your AI general web access for curriculum research, finding current events for classroom discussion, locating free teaching resources, and researching student inquiry questions in real time.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Search for free teaching resources and lesson plan databases</li>
+<li>Find current events appropriate for classroom discussion</li>
+<li>Research student inquiry questions on the fly</li>
+<li>Locate multimedia content (images, videos) for lessons</li>
+</ul>
+
+<h2>6. Notion MCP Server — Curriculum and Department Planning</h2>
+
+<p>Many schools and departments use Notion for curriculum mapping, pacing guides, meeting notes, and shared resource libraries. The Notion MCP server connects your AI to this institutional knowledge base.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Search the department's curriculum map and scope &amp; sequence</li>
+<li>Read and update pacing guides</li>
+<li>Access and add meeting notes</li>
+<li>Query resource databases (book lists, approved materials)</li>
+</ul>
+
+<h2>7. Google Sheets MCP Server — Grades, Attendance, and Data</h2>
+
+<p>Grade books, attendance trackers, and intervention logs are almost universally managed in spreadsheets. The Google Sheets MCP server gives your AI read/write access to student data — enabling instant analysis and reporting without manual calculations.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read grade books and calculate averages, trends, and outliers</li>
+<li>Update attendance records and intervention logs</li>
+<li>Generate class performance summaries for parent conferences</li>
+<li>Create progress monitoring charts from assessment data</li>
+</ul>
+
+<p><strong>Best prompt:</strong> "Read the Q3 grade book and identify the 5 students whose grades have dropped more than 15 points since Q2. Generate a brief summary for each that I can share with the counselor."</p>
+
+<h2>8. Gmail MCP Server — Parent and Colleague Communication</h2>
+
+<p>Parent communication is one of education's largest time sinks. The Gmail MCP server lets your AI draft personalized parent emails, summarize communication history, and flag urgent messages — saving hours every week.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Draft parent emails in your voice — behavior concerns, progress updates, conference requests</li>
+<li>Summarize email threads with challenging or complex situations</li>
+<li>Search correspondence history by student name</li>
+<li>Create calendar events from parent conference requests</li>
+</ul>
+
+<h2>Education Workflows with MCP</h2>
+
+<h3>Differentiated Lesson Planning</h3>
+<p>Use Google Docs + Google Drive: "Pull my existing fractions lesson plan and create three versions — one at grade level, one with visual scaffolding for ELL students, and one extension version for advanced students."</p>
+
+<h3>Student Progress Reporting</h3>
+<p>Combine Google Sheets + Gmail: "Pull the grade and attendance data for the 10 students on my watch list, then draft individual progress emails to their parents summarizing current standing and one specific area of focus."</p>
+
+<h3>Curriculum Research Sprint</h3>
+<p>Use Exa + Brave Search together: "I'm redesigning my civil rights movement unit. Find the best primary sources, current educational research on teaching this period, and any free lesson plans from reputable curriculum providers like Facing History or Newsela."</p>
+
+<h2>Getting Started</h2>
+
+<p>Start with Google Drive + Google Docs + Gmail. These three servers cover the core workflow: curriculum editing, resource search, and parent communication.</p>
+
+<p>Add Google Sheets for grade analysis and Exa for research-intensive lesson planning or academic work.</p>
+
+<p>Browse all <a href="/category/filesystem">File System MCP servers</a> on MyMCPTools, or see <a href="/blog/best-mcp-servers-for-research">Best MCP Servers for Research</a> for deeper academic research tooling.</p>
+    `.trim(),
+  },
 ];
 
 export function getBlogPostBySlug(slug: string): BlogPost | undefined {
