@@ -10190,6 +10190,387 @@ server.setRequestHandler(ReadResourceRequestSchema, async (request) => {
 <p>See <a href="/servers/notion">the full Notion MCP server page</a> for additional configuration options, or browse <a href="/blog/best-mcp-servers-for-productivity">Best MCP Servers for Productivity</a> for the complete productivity stack.</p>
     `.trim(),
   },
+  {
+    slug: "best-mcp-servers-for-cicd",
+    title: "Best MCP Servers for CI/CD Pipelines in 2026",
+    description: "Connect your AI to CI/CD workflows with these top MCP servers. From Jenkins and CircleCI to GitHub Actions and ArgoCD — fix build failures and manage deployments with natural language.",
+    date: "2026-05-05",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "7 min read",
+    keywords: ["mcp servers for ci/cd", "best mcp servers devops", "circleci mcp", "jenkins mcp server", "github actions mcp"],
+    relatedServerSlugs: ["circleci", "jenkins", "github-actions", "buildkite", "argo-cd", "tekton", "gitlab"],
+    content: `
+<p>CI/CD pipelines are the heartbeat of modern software delivery — and one of the biggest sources of developer friction. Build failures at 2am, cryptic pipeline logs, deployment rollbacks: all of these interrupt your flow and cost time.</p>
+
+<p>MCP servers for CI/CD change the equation. Instead of manually navigating dashboards and grepping through logs, you can ask your AI assistant to diagnose failures, retry jobs, and manage deployments in plain English.</p>
+
+<h2>Why CI/CD Teams Need MCP Servers</h2>
+
+<p>The traditional CI/CD workflow means tab-switching between your editor, the CI dashboard, deployment logs, and documentation. MCP servers collapse that into a single context — your AI sees the build output, understands your codebase, and can suggest or execute fixes without breaking your flow.</p>
+
+<h2>1. CircleCI MCP Server — AI-Powered Build Failure Diagnosis</h2>
+
+<p>The CircleCI MCP server is purpose-built for one high-value job: letting AI agents fix build failures. When a pipeline breaks, you can ask your AI to fetch the failing job logs, identify the root cause, and suggest a fix — all without leaving your editor.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Fetch pipeline and job run details</li>
+<li>Retrieve logs from failing builds</li>
+<li>List workflow steps and test results</li>
+<li>Rerun failed workflows</li>
+</ul>
+
+<p><strong>Best prompt:</strong> "Fetch the last failed CircleCI build for this branch and tell me what went wrong."</p>
+
+<p><strong>Install:</strong> <code>npx @circleci/mcp-server-circleci</code></p>
+
+<h2>2. Jenkins MCP Server — Full Pipeline Control</h2>
+
+<p>For teams on Jenkins, the official MCP plugin gives AI assistants broad pipeline control. From checking job status to triggering builds and retrieving console output, Jenkins becomes conversational.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>List and trigger jobs and builds</li>
+<li>Retrieve console output and build artifacts</li>
+<li>Manage job configurations</li>
+<li>Query build queue status</li>
+</ul>
+
+<p><strong>Best for:</strong> Enterprise teams with existing Jenkins infrastructure who want AI-powered operations without migrating their CI system.</p>
+
+<h2>3. GitHub Actions MCP Server — Workflow Visibility</h2>
+
+<p>GitHub Actions is where most open-source and GitHub-native teams run their CI. The GitHub Actions MCP server surfaces workflow runs, step logs, and failure details directly in your AI conversation.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>List workflow runs and their status</li>
+<li>Fetch step logs from specific jobs</li>
+<li>Trigger manual workflow dispatches</li>
+<li>Review workflow YAML configuration</li>
+</ul>
+
+<p><strong>Combine with:</strong> The GitHub MCP server for full repository context alongside CI data.</p>
+
+<h2>4. Buildkite MCP Server — Pipeline Analytics</h2>
+
+<p>Buildkite's MCP integration gives AI access to pipeline data, build analytics, and agent status. Great for teams who use Buildkite as their primary CI/CD platform and want AI-assisted pipeline debugging.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>List organizations, pipelines, and builds</li>
+<li>Fetch test analytics and job details</li>
+<li>Monitor agent availability</li>
+<li>Retrieve build artifacts</li>
+</ul>
+
+<h2>5. Argo CD MCP Server — GitOps Deployments</h2>
+
+<p>For Kubernetes teams using GitOps with Argo CD, this MCP server brings deployment management into your AI workflow. Sync applications, inspect health status, and roll back releases without kubectl gymnastics.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>List applications and check health/sync status</li>
+<li>Sync applications and rollback to previous versions</li>
+<li>Inspect resource manifests and events</li>
+<li>Manage application lifecycle operations</li>
+</ul>
+
+<p><strong>Best prompt:</strong> "Check the sync status of all Argo CD applications and tell me which ones are out of sync or unhealthy."</p>
+
+<h2>6. Tekton MCP Server — Kubernetes-Native Pipelines</h2>
+
+<p>Tekton's MCP server enables AI-driven management of Tekton pipeline runs directly on your Kubernetes cluster. List pipeline runs, fetch task logs, and trigger new executions through natural language.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>List and inspect PipelineRuns and TaskRuns</li>
+<li>Fetch logs and status for individual tasks</li>
+<li>Trigger new pipeline runs</li>
+</ul>
+
+<h2>7. GitLab MCP Server — Integrated CI/CD + Repository</h2>
+
+<p>GitLab's MCP server covers the full GitLab feature set including CI/CD pipelines, merge requests, and issues. For GitLab teams, this is the single integration you need for both repository operations and pipeline visibility.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Pipeline status and job log retrieval</li>
+<li>Merge request management</li>
+<li>Issue and project operations</li>
+<li>Trigger manual pipeline runs</li>
+</ul>
+
+<h2>Recommended CI/CD MCP Stack</h2>
+
+<ul>
+<li><strong>GitHub teams:</strong> GitHub + GitHub Actions MCP servers</li>
+<li><strong>GitLab teams:</strong> GitLab MCP server (covers both)</li>
+<li><strong>Jenkins shops:</strong> Jenkins + GitHub or GitLab MCP server</li>
+<li><strong>Kubernetes / GitOps:</strong> Argo CD + GitHub Actions</li>
+<li><strong>All teams:</strong> Filesystem MCP for reading build configs locally</li>
+</ul>
+
+<h2>Sample Workflow: AI-Assisted Build Failure Diagnosis</h2>
+
+<ol>
+<li>Push a commit that breaks a test</li>
+<li>Ask your AI: "My last push failed CI. Fetch the CircleCI logs and tell me what's wrong"</li>
+<li>AI retrieves logs, identifies the failing test, and suggests a fix</li>
+<li>Ask: "Apply the fix and commit" — AI edits the file and creates a new commit</li>
+<li>CI re-runs and passes</li>
+</ol>
+
+<p>This workflow typically saves 15-30 minutes per build failure versus digging through logs manually.</p>
+
+<p>Browse all <a href="/category/devops">DevOps &amp; CI/CD MCP servers</a> on MyMCPTools, or see <a href="/blog/best-mcp-servers-for-devops">Best MCP Servers for DevOps</a> for the broader operations stack.</p>
+    `.trim(),
+  },
+  {
+    slug: "best-mcp-servers-for-mobile-developers",
+    title: "Best MCP Servers for Mobile Developers: iOS, Android & React Native",
+    description: "Top MCP servers for iOS, Android, and React Native developers. From device testing automation to Firebase backend access — build better mobile apps with AI assistance.",
+    date: "2026-05-05",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "7 min read",
+    keywords: ["mcp servers for mobile developers", "ios mcp server", "android mcp server", "react native mcp", "firebase mcp server"],
+    relatedServerSlugs: ["appium", "firebase", "github", "filesystem", "linear", "jira"],
+    content: `
+<p>Mobile development involves a uniquely fragmented toolchain: Xcode or Android Studio, simulators and physical devices, separate front-end and backend codebases, and CI pipelines that take forever. MCP servers can pull that complexity together, giving your AI assistant direct access to your testing infrastructure, backend services, and project management tools.</p>
+
+<h2>1. Appium MCP Server — AI-Powered Mobile Test Automation</h2>
+
+<p>Appium is the industry standard for cross-platform mobile test automation, and its MCP server is the most powerful tool on this list for mobile developers. It gives your AI assistant direct control over iOS simulators and Android emulators — enabling natural language test execution and device interaction.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Control iOS simulators and Android emulators</li>
+<li>Execute tap, swipe, and text input gestures</li>
+<li>Take screenshots and inspect UI hierarchy</li>
+<li>Run automated test sequences via natural language</li>
+<li>Supports React Native, Flutter, and native apps</li>
+</ul>
+
+<p><strong>Best prompts:</strong></p>
+<ul>
+<li>"Launch the app on iPhone 15 simulator and navigate to the checkout flow"</li>
+<li>"Take a screenshot of the current screen and tell me if the login button is visible"</li>
+<li>"Run the onboarding flow and identify any UI elements that are clipped or misaligned"</li>
+</ul>
+
+<p><strong>Install:</strong> <code>npx @appium/mcp-server</code></p>
+
+<h2>2. Firebase MCP Server — Backend Access Without the Console</h2>
+
+<p>Firebase is the default backend for countless mobile apps. The Firebase MCP server gives your AI direct access to Firestore, Authentication, Storage, and Remote Config — so you can query data, inspect user records, and debug backend issues without opening the Firebase console.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Firestore read and write operations</li>
+<li>Firebase Auth user management and lookup</li>
+<li>Storage bucket operations</li>
+<li>Remote Config rule inspection</li>
+<li>Cloud Functions invocation and log retrieval</li>
+</ul>
+
+<p><strong>Best for:</strong> React Native and Flutter teams using Firebase as their primary backend. Significantly reduces context-switching when debugging Firestore queries or inspecting user data.</p>
+
+<p><strong>Install:</strong> <code>npx firebase-tools@latest experimental:mcp</code></p>
+
+<h2>3. GitHub MCP Server — PR Reviews for Mobile Code</h2>
+
+<p>Mobile codebases — especially React Native repos with separate iOS and Android native modules — can be complex to review. The GitHub MCP server lets your AI examine your repository structure, read PR diffs, and review platform-specific code changes with full context.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read platform-specific code (ios/, android/ directories)</li>
+<li>Review PR diffs with full file context</li>
+<li>Search for usage patterns across the codebase</li>
+<li>Inspect configuration files (app.json, Podfile, build.gradle)</li>
+</ul>
+
+<p><strong>Best prompt:</strong> "Read the iOS native module changes in this PR and check if the bridging header is correctly updated."</p>
+
+<h2>4. Linear MCP Server — Bug and Feature Tracking</h2>
+
+<p>Linear is the go-to project tracker for mobile teams who want speed. The Linear MCP server lets your AI create bug reports, update sprint status, and link code changes to issues — without switching apps.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Create, update, and close issues</li>
+<li>Query sprint backlogs and cycle progress</li>
+<li>Assign issues and update priority</li>
+<li>Search issues by label (e.g., "iOS", "Android", "crash")</li>
+</ul>
+
+<p><strong>Best prompt:</strong> "Create a Linear bug report: 'Keyboard dismissal causes layout jump on Android 14' with priority High and assign to the mobile team."</p>
+
+<h2>5. Filesystem MCP Server — Navigate Your Mobile Repo</h2>
+
+<p>Mobile repos have a specific structure that trips up AI assistants without file access: iOS Pods, Android Gradle files, asset catalogs, and platform-specific configuration scattered across directories. The Filesystem MCP server gives your AI direct navigation of your project tree.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read app.json, package.json, Podfile, build.gradle</li>
+<li>Navigate ios/ and android/ native directories</li>
+<li>Search for strings in source files</li>
+<li>Read and write source files directly</li>
+</ul>
+
+<h2>6. Jira MCP Server — For Enterprise Mobile Teams</h2>
+
+<p>Enterprise mobile development teams often live in Jira. The Jira MCP server enables full ticket management from your AI workflow — create stories, update statuses, and log time without opening a browser.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Create, read, update, and transition Jira issues</li>
+<li>Sprint board queries and velocity reporting</li>
+<li>Comment on issues with AI-drafted notes</li>
+<li>Search JQL queries via natural language</li>
+</ul>
+
+<h2>Recommended Stack for Mobile Developers</h2>
+
+<ul>
+<li><strong>React Native:</strong> Filesystem + Appium + Firebase + GitHub</li>
+<li><strong>iOS native (Swift):</strong> Filesystem + Appium + GitHub</li>
+<li><strong>Android native (Kotlin):</strong> Filesystem + Appium + GitHub</li>
+<li><strong>Flutter:</strong> Firebase + Appium + Filesystem</li>
+</ul>
+
+<h2>Mobile-Specific MCP Workflows</h2>
+
+<h3>Debugging a Crash Report</h3>
+<p>"Pull the latest Firebase Crashlytics logs for iOS builds, group them by crash type, and create Linear issues for the top 3 crash signatures."</p>
+
+<h3>Reviewing a Platform-Specific PR</h3>
+<p>"Read the Android native module changes in PR #142. Check if the new Kotlin code correctly handles null pointer exceptions and follows the project's existing error handling patterns."</p>
+
+<h3>Testing a New Feature</h3>
+<p>"Use the Appium server to launch the app on Android emulator API 34 and walk through the new payment flow, taking screenshots at each step."</p>
+
+<p>Browse all MCP servers on <a href="/">MyMCPTools</a>, or see related guides: <a href="/blog/best-mcp-servers-for-testing">Best MCP Servers for Testing</a> and <a href="/blog/best-mcp-servers-for-react-developers">Best MCP Servers for React Developers</a>.</p>
+    `.trim(),
+  },
+  {
+    slug: "best-mcp-servers-for-salesforce",
+    title: "Best MCP Servers for Salesforce Developers and Admins in 2026",
+    description: "Top MCP servers for Salesforce teams. Access CRM data, manage records, sync with Jira and Notion, and automate sales workflows with AI using these Model Context Protocol integrations.",
+    date: "2026-05-05",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "6 min read",
+    keywords: ["salesforce mcp server", "mcp servers for salesforce", "crm mcp integration", "hubspot mcp", "salesforce ai tools 2026"],
+    relatedServerSlugs: ["salesforce", "hubspot", "zoho-crm", "notion", "airtable", "jira", "linear"],
+    content: `
+<p>Salesforce is one of the most powerful CRM platforms in the world — and one of the most complex to navigate. MCP servers bring AI-powered natural language access to Salesforce data, letting developers query records, admins manage configurations, and sales teams pull reports without wrestling with SOQL or clicking through endless menus.</p>
+
+<h2>1. Salesforce MCP Server — Direct CRM Access</h2>
+
+<p>The official Salesforce MCP server is the cornerstone integration for any team on the platform. It exposes Salesforce's full data model to your AI assistant: query accounts and contacts, manage opportunities, run SOQL queries, and access Apex logs — all through natural language.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>SOQL query execution via natural language</li>
+<li>Account, Contact, Lead, and Opportunity record management</li>
+<li>Apex log retrieval and debug analysis</li>
+<li>Custom object and field introspection</li>
+<li>Salesforce Flow and trigger management</li>
+</ul>
+
+<p><strong>Best prompts:</strong></p>
+<ul>
+<li>"Show me all open opportunities over $50K that haven't been updated in 30 days"</li>
+<li>"Pull the Apex debug logs from the last failed transaction and identify the exception"</li>
+<li>"List all custom fields on the Contact object with their API names and data types"</li>
+</ul>
+
+<h2>2. HubSpot MCP Server — For Marketing and Sales Teams</h2>
+
+<p>For teams on HubSpot — or using both HubSpot and Salesforce — the HubSpot MCP server gives AI access to contacts, deals, companies, and marketing campaign data. Particularly powerful for sales teams who want AI-assisted pipeline reviews and marketers who need engagement metrics on demand.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Contact and company record management</li>
+<li>Deal pipeline visibility and stage updates</li>
+<li>Email campaign metrics and engagement data</li>
+<li>List management and segmentation queries</li>
+<li>Meeting and task scheduling</li>
+</ul>
+
+<p><strong>Best prompt:</strong> "Find all deals in the Proposal Sent stage that were last contacted more than 14 days ago and draft a follow-up outreach sequence."</p>
+
+<h2>3. Zoho CRM MCP Server</h2>
+
+<p>For SMBs running Zoho CRM, the Zoho MCP server provides natural language access to leads, contacts, deals, and activities. Particularly useful for sales managers who want AI-generated pipeline reports without exporting spreadsheets.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Lead and contact record CRUD operations</li>
+<li>Deal and pipeline management</li>
+<li>Activity logging (calls, emails, meetings)</li>
+<li>Custom module and field access</li>
+</ul>
+
+<h2>4. Notion MCP Server — For Salesforce Documentation</h2>
+
+<p>Salesforce implementations generate enormous documentation: custom object specs, workflow descriptions, integration guides, and meeting notes. The Notion MCP server connects your AI to that knowledge base, enabling cross-referencing of CRM data with your internal docs.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Search and read pages across your workspace</li>
+<li>Create and update documentation pages</li>
+<li>Query databases (client lists, integration specs)</li>
+<li>Add meeting notes and action items</li>
+</ul>
+
+<p><strong>Best workflow:</strong> Salesforce MCP + Notion MCP together let you ask: "Pull the top 10 accounts from Salesforce and create a Notion table with their current stage, owner, and last activity date."</p>
+
+<h2>5. Jira MCP Server — Connecting CRM to Engineering</h2>
+
+<p>Enterprise Salesforce teams often run complex integration projects spanning CRM customization and backend engineering. The Jira MCP server bridges the gap — your AI can correlate Salesforce feature requests with development tickets and manage the full lifecycle from requirements to deployment.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Create Jira stories from Salesforce feature requests</li>
+<li>Query sprint status and link to CRM milestones</li>
+<li>Manage epic/story hierarchies for Salesforce projects</li>
+<li>Report on engineering velocity tied to CRM deliverables</li>
+</ul>
+
+<h2>6. Airtable MCP Server — Flexible Data Layer</h2>
+
+<p>Many Salesforce shops use Airtable as a lightweight layer alongside their CRM — for partner tracking, content calendars, or custom reporting. The Airtable MCP server enables AI access to these tables without requiring SOQL expertise.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read, create, and update Airtable records</li>
+<li>Filter and sort data via natural language</li>
+<li>Cross-reference Airtable data with Salesforce queries</li>
+</ul>
+
+<h2>Salesforce Developer Workflows with MCP</h2>
+
+<h3>Apex Debugging</h3>
+<p>Ask your AI to pull Apex debug logs, parse the exception stack trace, identify the failing line, and suggest a fix — all in one conversation. Combine the Salesforce MCP server with the Filesystem MCP server for reading your local Apex files.</p>
+
+<h3>Admin Pipeline Reviews</h3>
+<p>Sales leaders can ask: "Give me a pipeline review for Q2: total open value by stage, deals closing this month, and reps with more than 5 stale opportunities." The AI runs the SOQL queries and returns a formatted summary.</p>
+
+<h3>Integration Documentation</h3>
+<p>After completing a Salesforce-to-external-system integration, ask your AI to read the code, pull the custom object definitions from Salesforce, and generate a Notion integration specification page automatically.</p>
+
+<h2>Getting Started</h2>
+
+<p>For Salesforce developers, start with the Salesforce MCP server plus the Filesystem MCP server (to read your SFDX project locally). Add Jira if you're managing a development backlog, and Notion if your team documents there.</p>
+
+<p>For sales admins and operators, the Salesforce MCP server alone is transformative — it brings natural language querying to data that previously required SOQL knowledge.</p>
+
+<p>Browse all <a href="/category/api">API &amp; Web MCP servers</a> on MyMCPTools, or see <a href="/blog/best-mcp-servers-for-project-management">Best MCP Servers for Project Management</a> for broader ops tooling.</p>
+    `.trim(),
+  },
 ];
 
 export function getBlogPostBySlug(slug: string): BlogPost | undefined {
