@@ -11135,7 +11135,7 @@ server.setRequestHandler(ReadResourceRequestSchema, async (request) => {
     `.trim(),
   },
   {
-    slug: "best-mcp-servers-for-python-developers",
+    slug: "mcp-servers-python-data-engineering-guide",
     title: "Best MCP Servers for Python Developers in 2026",
     description: "The top MCP servers for Python developers and data scientists. Connect Jupyter, PostgreSQL, BigQuery, GitHub, AWS S3, and more to your AI coding assistant.",
     date: "2026-05-06",
@@ -11274,7 +11274,7 @@ jupyter mcp install</code></pre>
     `.trim(),
   },
   {
-    slug: "mcp-servers-for-windsurf",
+    slug: "windsurf-mcp-server-configuration-guide",
     title: "Best MCP Servers for Windsurf IDE in 2026",
     description: "Top MCP servers for Windsurf, Codeium's AI-powered IDE. Database access, GitHub integration, browser automation, and web search — step-by-step configuration.",
     date: "2026-05-06",
@@ -11635,7 +11635,7 @@ jupyter mcp install</code></pre>
     `.trim(),
   },
   {
-    slug: "best-mcp-servers-for-machine-learning",
+    slug: "mcp-servers-for-ml-engineers-guide",
     title: "Best MCP Servers for Machine Learning Engineers in 2026",
     description: "Top MCP servers for ML engineers and AI researchers. Connect your AI assistant to model registries, experiment tracking, vector databases, and inference APIs.",
     date: "2026-05-07",
@@ -11750,7 +11750,7 @@ jupyter mcp install</code></pre>
     `.trim(),
   },
   {
-    slug: "best-mcp-servers-for-react-developers",
+    slug: "react-developer-mcp-setup-guide",
     title: "Best MCP Servers for React Developers in 2026",
     description: "The essential MCP servers for React and Next.js developers. From component testing to API mocking, these tools integrate directly into your React development workflow.",
     date: "2026-05-07",
@@ -12764,6 +12764,288 @@ jupyter mcp install</code></pre>
 <p>The data analyst MCP stack eliminates the most time-consuming low-value work — boilerplate SQL, spreadsheet reformatting, and reference lookups — so you can spend more time on what actually requires your expertise: translating data into decisions.</p>
 
 <p>Browse all <a href="/category/database">database MCP servers</a> or explore <a href="/category/ai">AI and analytics servers</a> for more data workflow integrations.</p>
+    `.trim(),
+  },
+  {
+    slug: "best-mcp-servers-for-javascript-developers",
+    title: "Best MCP Servers for JavaScript Developers in 2026",
+    description: "Top MCP servers for JavaScript and TypeScript developers. From Node.js debugging to browser automation, API testing, and npm package management — build faster with AI that knows your stack.",
+    date: "2026-05-08",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "9 min read",
+    keywords: ["mcp servers for javascript", "javascript mcp server", "best mcp servers js", "node.js mcp server", "typescript mcp server", "mcp tools for frontend developers"],
+    relatedServerSlugs: ["filesystem", "github", "playwright", "git", "brave-search", "sqlite", "redis", "puppeteer", "docker"],
+    content: `
+<p>JavaScript is the language of the web — and JavaScript developers juggle more moving parts than almost any other stack. Frontend frameworks, Node.js backends, browser APIs, npm ecosystems, REST/GraphQL clients, and build toolchains all live in the same codebase. MCP servers can plug your AI assistant directly into this environment: not just as a code completer, but as an active participant that can run tests in a browser, query a local database, inspect your git history, and search npm documentation in real time.</p>
+
+<p>This guide covers the best MCP servers for JavaScript and TypeScript developers in 2026 — whether you're building React SPAs, Node.js APIs, full-stack Next.js apps, or browser extensions.</p>
+
+<h2>1. Filesystem MCP Server — Project Navigation Across Monorepos</h2>
+
+<p>Modern JS projects are frequently monorepos: multiple packages, shared configs, nested node_modules, and framework-specific directory conventions that vary between Next.js, Remix, Astro, and Vite setups. The Filesystem MCP server gives your AI a complete map of your project structure — not just the files you've opened.</p>
+
+<p><strong>JavaScript-specific use cases:</strong></p>
+<ul>
+<li>Understanding a Next.js project's app vs pages directory split without manual exploration</li>
+<li>Reading package.json, tsconfig.json, and .eslintrc across multiple workspace packages</li>
+<li>Navigating shared component libraries and their relationship to consuming apps</li>
+<li>Finding all usages of a deprecated import before refactoring</li>
+</ul>
+
+<p><strong>Setup:</strong></p>
+<pre><code>{
+  "mcpServers": {
+    "filesystem": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-filesystem", "/path/to/your/project"]
+    }
+  }
+}</code></pre>
+
+<h2>2. Playwright MCP Server — Browser Automation and E2E Testing</h2>
+
+<p>The Playwright MCP server is particularly valuable for JavaScript developers because Playwright is the dominant E2E testing framework in the JS ecosystem. Connect it to your AI and you can describe a testing scenario in plain language, have your AI write the test, run it against your localhost, and iterate on failures — all in a single conversation.</p>
+
+<p><strong>Playwright + AI workflows:</strong></p>
+<ul>
+<li>Describe a user flow ("user signs up, confirms email, reaches dashboard") and get a working test</li>
+<li>Debug a flaky test by having your AI run it 5 times and analyze the failure pattern</li>
+<li>Generate visual regression tests for a component library</li>
+<li>Test accessibility by having your AI navigate with keyboard-only and audit ARIA roles</li>
+<li>Write Playwright scripts for web scraping without leaving your editor</li>
+</ul>
+
+<p><strong>Setup:</strong></p>
+<pre><code>npx @playwright/mcp@latest</code></pre>
+
+<h2>3. GitHub MCP Server — PR Workflow Without Context Switching</h2>
+
+<p>JavaScript projects move fast — open source libraries, frontend frameworks, and npm packages all operate on rapid release cycles. The GitHub MCP server lets your AI stay current with your repository without context switching to a browser.</p>
+
+<p><strong>JS-specific workflows:</strong></p>
+<ul>
+<li>Search your org's repos for how a specific pattern was solved before — no more re-inventing wheel patterns</li>
+<li>Have your AI review a dependency update PR and flag any breaking API changes</li>
+<li>Draft release notes from merged PRs automatically using conventional commit messages</li>
+<li>Search issues for known bugs before spending hours debugging a library interaction</li>
+</ul>
+
+<h2>4. Brave Search MCP Server — npm, MDN, and Framework Docs</h2>
+
+<p>JavaScript's ecosystem evolves constantly. React hooks introduced in 2019 have replacement patterns in 2024. Next.js app router changed how data fetching works. Vite configuration differs between major versions. The Brave Search MCP server lets your AI fetch current documentation rather than relying on training data that may be months or years out of date.</p>
+
+<p><strong>When it matters most:</strong></p>
+<ul>
+<li>Looking up current Next.js 15 App Router patterns (significantly different from Pages Router)</li>
+<li>Checking whether a React library has updated its peer dependencies for React 19</li>
+<li>Finding the current recommended approach for TypeScript strict mode configuration</li>
+<li>Debugging npm peer dependency conflicts with the actual current package versions</li>
+</ul>
+
+<p><strong>Setup:</strong></p>
+<pre><code>{
+  "mcpServers": {
+    "brave-search": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-brave-search"],
+      "env": { "BRAVE_API_KEY": "your-key" }
+    }
+  }
+}</code></pre>
+
+<h2>5. Puppeteer MCP Server — Lightweight Browser Scripting</h2>
+
+<p>For simpler browser automation tasks where full Playwright test infrastructure is overkill, the Puppeteer MCP server provides a lighter-weight option. Particularly useful for scraping, PDF generation, and headless browser tasks that are common in Node.js backend work.</p>
+
+<p><strong>Node.js use cases:</strong></p>
+<ul>
+<li>Generate PDF reports from HTML templates without a separate service</li>
+<li>Scrape JavaScript-rendered pages as part of a data pipeline</li>
+<li>Screenshot pages for change detection or visual testing on a budget</li>
+<li>Automate form interactions for integration testing against staging environments</li>
+</ul>
+
+<h2>6. SQLite MCP Server — Local Data and Prototyping</h2>
+
+<p>SQLite is the default local database for many JavaScript projects — it's embedded in Electron apps, used in Bun's native storage layer, and common in Cloudflare Workers (D1). The SQLite MCP server gives your AI direct query access to your local databases during development.</p>
+
+<p><strong>JS developer workflows:</strong></p>
+<ul>
+<li>Inspect Electron app local storage during debugging</li>
+<li>Validate that a Drizzle ORM migration applied correctly</li>
+<li>Debug a Cloudflare D1 schema locally before deploying</li>
+<li>Write seed data scripts informed by your actual schema</li>
+</ul>
+
+<h2>7. Redis MCP Server — Cache and Session Inspection</h2>
+
+<p>Redis is common in Node.js applications for session storage, rate limiting, job queues (Bull/BullMQ), and caching. The Redis MCP server lets your AI inspect your Redis state directly — seeing what's in cache, debugging queue states, and validating that sessions are being stored correctly.</p>
+
+<p><strong>Node.js + Redis workflows:</strong></p>
+<ul>
+<li>Debug a BullMQ job queue by inspecting delayed, waiting, and failed jobs</li>
+<li>Validate that your API cache is populating and expiring as expected</li>
+<li>Check session keys during authentication debugging</li>
+<li>Monitor rate limiter counters during load testing</li>
+</ul>
+
+<h2>8. Git MCP Server — Commit History as Documentation</h2>
+
+<p>In fast-moving JavaScript projects, understanding why code was written a certain way is often more valuable than knowing what it does. The Git MCP server gives your AI access to commit history, blame, and diffs — turning your git log into searchable context.</p>
+
+<p><strong>Particularly useful for:</strong></p>
+<ul>
+<li>Understanding why a specific React workaround exists ("when was this added and what bug does it fix?")</li>
+<li>Tracing a performance regression to its introduction commit</li>
+<li>Reviewing your own recent commits before opening a PR</li>
+</ul>
+
+<h2>Recommended Stack by JavaScript Role</h2>
+
+<p><strong>Frontend developer (React/Vue/Angular):</strong> Filesystem + Playwright + GitHub + Brave Search + Git</p>
+<p><strong>Full-stack Next.js developer:</strong> Filesystem + GitHub + Brave Search + SQLite or PostgreSQL + Playwright</p>
+<p><strong>Node.js backend developer:</strong> Filesystem + GitHub + Redis + SQLite/PostgreSQL + Git + Brave Search</p>
+<p><strong>JavaScript tooling/DevEx engineer:</strong> Filesystem + GitHub + Git + Brave Search + Docker</p>
+
+<p>Browse the full <a href="/category/coding">coding MCP servers</a> directory or see <a href="/blog/best-mcp-servers-for-typescript">Best MCP Servers for TypeScript Developers</a> for TypeScript-specific tooling.</p>
+    `.trim(),
+  },
+  {
+    slug: "mcp-servers-for-backend-development",
+    title: "Best MCP Servers for Backend Development in 2026",
+    description: "The essential MCP servers for backend engineers. Database access, API testing, infrastructure management, logging, and caching — connect your AI to every layer of your backend stack.",
+    date: "2026-05-08",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "10 min read",
+    keywords: ["mcp servers for backend", "backend mcp server", "best mcp servers backend development", "mcp server api testing", "database mcp server", "mcp tools for engineers"],
+    relatedServerSlugs: ["postgresql", "redis", "docker", "filesystem", "github", "brave-search", "git", "sqlite", "elasticsearch"],
+    content: `
+<p>Backend engineering is the discipline of invisible infrastructure. Your users never see the PostgreSQL schema, the Redis cache layer, the Docker container orchestration, or the API gateway configuration — but every user experience depends on them. MCP servers bridge the gap between your AI assistant's natural language interface and the real systems that underlie your application, giving it live read access to the stack components that matter most during development and debugging.</p>
+
+<p>This guide covers the essential MCP servers for backend engineers — organized by the layer of the stack they address.</p>
+
+<h2>Database Layer</h2>
+
+<h3>PostgreSQL MCP Server — Production-Quality SQL Generation</h3>
+
+<p>The PostgreSQL MCP server is the highest-leverage tool for most backend teams. It gives your AI assistant live access to your database schema — table structures, constraints, indices, foreign key relationships, and row counts — before generating a single line of SQL. The difference between AI-assisted SQL with and without schema access is dramatic: with it, generated queries respect your actual column names, use appropriate join conditions, and account for nullable fields. Without it, you get generic SQL that doesn't work on your data model.</p>
+
+<p><strong>Backend-specific use cases:</strong></p>
+<ul>
+<li>Generate migration files that account for existing data and constraints</li>
+<li>Debug N+1 query problems by having your AI analyze ORM-generated SQL against the actual schema</li>
+<li>Write complex reporting queries that join across multiple normalized tables</li>
+<li>Identify missing indices by examining query patterns against actual table sizes</li>
+<li>Generate seed data that satisfies foreign key constraints in the correct order</li>
+</ul>
+
+<p><strong>Setup:</strong></p>
+<pre><code>{
+  "mcpServers": {
+    "postgres": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-postgres", "postgresql://user:pass@localhost/mydb"]
+    }
+  }
+}</code></pre>
+
+<h3>Redis MCP Server — Cache and Queue Debugging</h3>
+
+<p>Redis is the backbone of most high-throughput backend systems: caching, session storage, pub/sub messaging, rate limiting, and job queues (Sidekiq, BullMQ, Celery). The Redis MCP server lets your AI inspect live Redis state — not just generate code that assumes Redis is working correctly.</p>
+
+<p><strong>Debugging workflows:</strong></p>
+<ul>
+<li>Inspect job queue state when BullMQ or Sidekiq jobs are stuck</li>
+<li>Verify that cache keys are being set and expiring as expected</li>
+<li>Debug rate limiter counters during load testing</li>
+<li>Inspect pub/sub channel activity during event-driven architecture debugging</li>
+<li>Check session storage format when authentication bugs occur</li>
+</ul>
+
+<h3>Elasticsearch MCP Server — Search Index Inspection</h3>
+
+<p>For applications with search functionality, the Elasticsearch MCP server provides access to index mappings, document counts, and query analysis. Debug search relevance issues by letting your AI examine your actual mapping and run test queries before touching production.</p>
+
+<h2>API and Service Layer</h2>
+
+<h3>GitHub MCP Server — Source of Truth for Service Contracts</h3>
+
+<p>Backend APIs are contracts. The GitHub MCP server lets your AI access the actual source code of services you're integrating with, rather than working from potentially outdated documentation. For microservice architectures, this is particularly valuable: your AI can cross-reference the service interface it's reading against the implementation it's working with.</p>
+
+<p><strong>Microservice use cases:</strong></p>
+<ul>
+<li>Check the exact request/response shape of an internal service before writing a client</li>
+<li>Review recent changes to a dependency's API before upgrading</li>
+<li>Search all services in an org for examples of a specific integration pattern</li>
+<li>Draft interface documentation from actual implementation code</li>
+</ul>
+
+<h3>Brave Search MCP Server — Library and Framework Lookups</h3>
+
+<p>Backend frameworks evolve. Authentication libraries change their APIs. Cloud SDK versions introduce breaking changes. The Brave Search MCP server lets your AI fetch current documentation for the exact library version you're using, preventing the common failure mode of AI assistants confidently generating code for a deprecated API.</p>
+
+<p><strong>Most valuable for:</strong></p>
+<ul>
+<li>AWS SDK v3 patterns (significantly different from v2; training data often mixes them)</li>
+<li>Current SQLAlchemy 2.0 session patterns vs legacy 1.x</li>
+<li>Exact gRPC protobuf syntax for your language and version</li>
+<li>Current best practices for JWT handling in your framework</li>
+</ul>
+
+<h2>Infrastructure Layer</h2>
+
+<h3>Docker MCP Server — Container Environment Context</h3>
+
+<p>Modern backend development happens inside containers. The Docker MCP server gives your AI visibility into your running container environment: which containers are running, their configuration, volumes, networks, and logs. This context is essential for debugging issues that only appear in containerized environments.</p>
+
+<p><strong>Backend use cases:</strong></p>
+<ul>
+<li>Diagnose container startup failures by reading logs in real time</li>
+<li>Check environment variable injection when secrets aren't reaching your app</li>
+<li>Inspect network configuration when service-to-service connections fail</li>
+<li>Validate volume mounts when file permission errors appear</li>
+<li>Compare running container config against your docker-compose.yml</li>
+</ul>
+
+<p><strong>Setup:</strong></p>
+<pre><code>{
+  "mcpServers": {
+    "docker": {
+      "command": "npx",
+      "args": ["-y", "mcp-server-docker"]
+    }
+  }
+}</code></pre>
+
+<h3>Filesystem MCP Server — Config File Archaeology</h3>
+
+<p>Backend projects accumulate configuration: environment files, deployment manifests, infrastructure-as-code, CI/CD pipelines, and application configs. The Filesystem server gives your AI the ability to navigate this configuration landscape holistically — reading how your app is configured rather than asking you to paste relevant sections.</p>
+
+<h2>Development Workflow</h2>
+
+<h3>Git MCP Server — Debugging with Commit History</h3>
+
+<p>Backend bugs often have a history. A performance regression was introduced in a specific commit. A security fix in one service wasn't replicated to another. The Git MCP server lets your AI use commit history as diagnostic context — not just as a record of what changed, but as a tool for understanding why things broke.</p>
+
+<p><strong>Backend debugging workflows:</strong></p>
+<ul>
+<li>Find the commit that introduced a performance regression using binary search through history</li>
+<li>Identify all places a deprecated function is still used before removing it</li>
+<li>Review recent changes to infrastructure code before debugging a deployment issue</li>
+</ul>
+
+<h2>Recommended Backend Stack by Scale</h2>
+
+<p><strong>Early-stage / small team:</strong> Filesystem + PostgreSQL or SQLite + GitHub + Git + Brave Search</p>
+<p><strong>Mid-scale API service:</strong> PostgreSQL + Redis + Docker + GitHub + Brave Search + Git</p>
+<p><strong>Microservices / distributed system:</strong> PostgreSQL + Redis + Elasticsearch + Docker + GitHub + Git + Brave Search</p>
+<p><strong>Data-intensive backend:</strong> PostgreSQL + Elasticsearch + Redis + GitHub + Brave Search + Filesystem</p>
+
+<p>Start with PostgreSQL (or SQLite for local development) plus GitHub — these two together eliminate most of the context-switching that kills backend development velocity. Add Docker and Redis as your infrastructure complexity grows.</p>
+
+<p>Browse all <a href="/category/database">database MCP servers</a> and <a href="/category/devops">DevOps MCP servers</a> on MyMCPTools for the full backend infrastructure catalog.</p>
     `.trim(),
   },
 ];
