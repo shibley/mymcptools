@@ -13436,6 +13436,592 @@ jupyter mcp install</code></pre>
 <p>Browse the full <a href="/category/database">database MCP servers</a> catalog or see <a href="/blog/best-mcp-servers-for-data-science">Best MCP Servers for Data Scientists</a> for a broader perspective on AI-assisted data work beyond visualization.</p>
     `.trim(),
   },
+  {
+    slug: "best-mcp-servers-for-product-managers",
+    title: "Best MCP Servers for Product Managers in 2026",
+    description: "Accelerate product decisions with MCP servers that give your AI direct access to your roadmap, analytics, and team tools. From Jira to Linear to user analytics, these servers eliminate context-switching.",
+    date: "2026-05-09",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "8 min read",
+    keywords: ["mcp servers for product managers", "product management mcp", "jira mcp server", "linear mcp server", "notion mcp server", "product analytics mcp"],
+    relatedServerSlugs: ["jira", "linear", "notion", "airtable", "github", "slack", "google-analytics", "heap", "filesystem"],
+    content: `
+<p>Product management is a context-switching job. You're in Jira reviewing sprint progress, then Notion writing a spec, then Slack answering a question about a metric, then Linear triaging a bug report — and at each stop you're carrying mental context that an AI assistant has to rebuild from scratch.</p>
+
+<p>MCP servers change this dynamic entirely. Instead of describing your product to your AI, you give it direct read access to your actual tools. It can read your backlog, understand your sprint state, examine your analytics data, and reference your documentation — without you copying and pasting anything.</p>
+
+<h2>Project and Task Management</h2>
+
+<h3>Jira MCP Server — Sprint Intelligence Without the Navigation</h3>
+
+<p>For teams on Jira, the Jira MCP server turns your AI into a sprint analyst that can access real ticket state instead of working from your memory of it. The server connects to your Jira instance and gives your AI the ability to search issues, read ticket details, understand sprint composition, and examine project boards.</p>
+
+<p><strong>Product management workflows enabled:</strong></p>
+<ul>
+<li><strong>Sprint retrospectives:</strong> "Summarize all tickets closed in the last sprint and identify any recurring themes in the bug reports"</li>
+<li><strong>Backlog grooming prep:</strong> "List all P0 tickets in the backlog that don't have acceptance criteria — I need to write them before planning"</li>
+<li><strong>Release notes drafting:</strong> "Read all tickets tagged with the v2.4 fix-version and draft release notes grouped by feature area"</li>
+<li><strong>Stakeholder updates:</strong> "What's the current sprint status? Which tickets are at-risk based on their age and remaining story points?"</li>
+<li><strong>Spec cross-referencing:</strong> "Are there any open tickets that contradict the spec in this document?" — then read both the ticket and the Notion spec</li>
+</ul>
+
+<p><strong>Epic analysis:</strong> The Jira MCP server lets your AI understand the full scope of an epic — all child tickets, their status, the percentage complete, and which tickets are blocking others — in a single request. This turns "write me a status email for this epic" from a 20-minute copy-paste exercise into a 30-second command.</p>
+
+<h3>Linear MCP Server — Engineering Team Alignment</h3>
+
+<p>For product teams on Linear, the Linear MCP server provides the same deep integration with Linear's issue tracking and cycle system. Linear's structured data model — teams, cycles, projects, issues — makes it particularly well-suited for AI-assisted product operations.</p>
+
+<p><strong>Linear-specific workflows:</strong></p>
+<ul>
+<li>Review all issues in the current cycle and identify which are over their estimated completion date</li>
+<li>Find all issues with the "needs-product-input" label across all teams</li>
+<li>Search for issues related to a specific feature area to understand the full scope of technical debt</li>
+<li>Generate a weekly engineering update from cycle progress without manual reporting</li>
+<li>Track triage velocity and backlog growth across weeks to identify process problems early</li>
+</ul>
+
+<p><strong>Cross-team coordination:</strong> In organizations with multiple Linear teams, the MCP server lets your AI understand dependencies across team backlogs. "Are there any mobile issues blocking the web features in this cycle?" becomes a query instead of a Slack thread.</p>
+
+<h2>Documentation and Specification</h2>
+
+<h3>Notion MCP Server — Living Specs and Product Wiki</h3>
+
+<p>Product documentation in Notion tends to be rich, interconnected, and constantly evolving — and AI assistants that can't read it will constantly contradict it. The Notion MCP server gives your AI access to your product wiki, spec library, and decision logs.</p>
+
+<p><strong>Spec-assisted workflows:</strong></p>
+<ul>
+<li><strong>Consistency checking:</strong> "Read the authentication spec in Notion and check if the new OAuth ticket in Jira is consistent with it"</li>
+<li><strong>Spec drafting with context:</strong> "Read our existing checkout flow spec before drafting the spec for the new payment method — match the format and reference the relevant sections"</li>
+<li><strong>Decision archaeology:</strong> "Find the decision log for why we chose monthly-only billing and summarize the reasoning for a stakeholder question"</li>
+<li><strong>Onboarding acceleration:</strong> New PMs can ask "explain our product philosophy around [feature area]" and get an answer synthesized from the actual wiki</li>
+</ul>
+
+<h3>Airtable MCP Server — Structured Product Data</h3>
+
+<p>Many product teams use Airtable for feature request tracking, customer feedback synthesis, competitor matrices, and roadmap databases. The Airtable MCP server connects your AI to these structured datasets.</p>
+
+<p><strong>Product data workflows:</strong></p>
+<ul>
+<li>Query the customer feedback database for all feedback mentioning a specific feature area before writing a spec</li>
+<li>Read the competitor feature matrix before drafting a positioning argument for a roadmap discussion</li>
+<li>Summarize all feature requests tagged as "high-priority" from enterprise customers in the last quarter</li>
+<li>Update roadmap status fields programmatically after sprint completion without manual Airtable editing</li>
+</ul>
+
+<h2>Analytics and Metrics</h2>
+
+<h3>Google Analytics MCP Server — Behavioral Data Context</h3>
+
+<p>The Google Analytics MCP server gives your AI access to behavioral data about how users actually interact with your product. Instead of downloading a CSV and describing it, you can query GA directly in conversation.</p>
+
+<p><strong>Analytics-driven product decisions:</strong></p>
+<ul>
+<li>"What's the drop-off rate at the third onboarding step over the last 30 days? I'm writing a spec to improve it."</li>
+<li>"Which pages have the highest exit rates? I need to prioritize UX improvements for the next quarter."</li>
+<li>"Compare feature adoption between users who completed onboarding vs those who skipped it."</li>
+<li>"Show me session duration trends for mobile vs desktop since the last release."</li>
+</ul>
+
+<h3>Heap MCP Server — Event-Level Product Analytics</h3>
+
+<p>Heap's retroactive event capture model makes it particularly powerful for product analysis — you can query user events that were never explicitly instrumented. The Heap MCP server brings this capability into AI-assisted analysis workflows.</p>
+
+<p><strong>Product analytics questions Heap answers:</strong></p>
+<ul>
+<li>What percentage of users who visited the pricing page converted within 7 days?</li>
+<li>What's the most common path users take before reaching the upgrade CTA?</li>
+<li>How has click-through rate on the new feature announcement banner changed week-over-week?</li>
+</ul>
+
+<h2>Engineering Collaboration</h2>
+
+<h3>GitHub MCP Server — Technical Context for Product Decisions</h3>
+
+<p>Product managers rarely need to read code — but they often need technical context that lives in GitHub. The GitHub MCP server surfaces this context without requiring repository access or help from engineering.</p>
+
+<p><strong>PM GitHub workflows:</strong></p>
+<ul>
+<li>"Search the repository issues for complaints about API rate limits from developers — I'm writing a spec to increase them"</li>
+<li>"What open PRs are related to the authentication flow? I need to understand what's currently changing before I write a spec that touches that area"</li>
+<li>"Find the README for our public API and summarize what endpoints are currently documented for a partner meeting"</li>
+</ul>
+
+<h3>Slack MCP Server — Institutional Memory Recovery</h3>
+
+<p>Critical product decisions often live in Slack threads rather than documentation. The Slack MCP server makes that institutional memory searchable for AI-assisted context building.</p>
+
+<p><strong>Context recovery workflows:</strong></p>
+<ul>
+<li>"Search Slack for the conversation where we decided to delay the payment flow redesign — I need to understand the reasoning before revisiting it"</li>
+<li>"Find all messages in #product-feedback from the last 60 days mentioning the search feature"</li>
+<li>"Summarize the discussion in #eng-oncall about the checkout bug from last Tuesday before I write the postmortem"</li>
+</ul>
+
+<h2>Recommended Stack by PM Role</h2>
+
+<p><strong>Early-stage startup PM:</strong> Linear + Notion + GitHub + Filesystem</p>
+<p><strong>Growth PM (analytics focus):</strong> Google Analytics + Heap + Jira + Notion</p>
+<p><strong>Enterprise PM:</strong> Jira + Slack + GitHub + Airtable + Notion</p>
+<p><strong>Platform/API PM:</strong> GitHub + Jira + Notion + Brave Search</p>
+
+<p>Start with your primary tracking tool (Jira or Linear) and your documentation system (Notion) — those two together eliminate the most common context-switching bottleneck in product work. Add analytics access when you're doing metric-driven speccing, and GitHub when your work requires technical context from the codebase.</p>
+
+<p>Browse the full <a href="/category/productivity">productivity MCP servers</a> catalog or see <a href="/blog/best-mcp-servers-for-startups">Best MCP Servers for Startups</a> for broader team tooling recommendations.</p>
+    `.trim(),
+  },
+  {
+    slug: "best-mcp-servers-for-seo-professionals",
+    title: "Best MCP Servers for SEO Professionals in 2026",
+    description: "Give your AI access to real search data, crawl insights, and content tools. These MCP servers turn vague SEO advice into data-backed actions using your actual site data.",
+    date: "2026-05-09",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "9 min read",
+    keywords: ["mcp servers for seo", "seo mcp server", "google search console mcp", "seo automation mcp", "keyword research mcp", "technical seo mcp"],
+    relatedServerSlugs: ["google-search-console", "brave-search", "firecrawl", "exa", "brightdata", "filesystem", "github", "wordpress"],
+    content: `
+<p>SEO advice without data is just opinion. The challenge for SEO professionals using AI assistants isn't generating recommendations — it's grounding those recommendations in actual search performance, real crawl data, and current SERP state. Generic AI responses about "optimizing your title tags" are noise. An AI that can read your Google Search Console data, crawl a competitor's page, and check current ranking positions is a different tool entirely.</p>
+
+<p>MCP servers connect your AI to live SEO data sources — turning AI assistance from a content generator into an analytical co-pilot.</p>
+
+<h2>Search Performance Data</h2>
+
+<h3>Google Search Console MCP Server — Your Actual Ranking Data</h3>
+
+<p>The Google Search Console MCP server is the foundation of data-driven SEO work. It gives your AI read access to your actual impression, click, CTR, and position data — the same data you'd pull from the GSC interface, but accessible directly in your AI conversation.</p>
+
+<p><strong>SEO analysis workflows enabled:</strong></p>
+<ul>
+<li><strong>Striking-distance identification:</strong> "Find all keywords where we rank positions 8-15 with more than 500 monthly impressions — these are my optimization targets"</li>
+<li><strong>CTR anomaly detection:</strong> "Which pages have below-average CTR for their average position? List them ranked by impression volume so I can prioritize title tag rewrites"</li>
+<li><strong>Content decay monitoring:</strong> "Show me pages where clicks have declined more than 20% quarter-over-quarter — I need to identify which need refreshing"</li>
+<li><strong>Coverage diagnostics:</strong> "What's our current indexed page count vs submitted sitemap pages? Are there coverage errors I should address?"</li>
+<li><strong>Query intent mapping:</strong> "Show me all queries driving traffic to our pricing page — do they match purchase intent or are we attracting the wrong audience?"</li>
+</ul>
+
+<p><strong>Keyword cannibalization detection:</strong> One of the GSC MCP server's most valuable applications is identifying cannibalization — multiple pages competing for the same queries. "Which queries have more than one page appearing in GSC data? Show me the pages and their positions so I can assess cannibalization risk."</p>
+
+<h2>SERP Research and Competitor Analysis</h2>
+
+<h3>Brave Search MCP Server — Current SERP Intelligence</h3>
+
+<p>SEO decisions need to be grounded in current SERP state, not your AI's training data from months ago. The Brave Search MCP server lets your AI fetch live search results, analyze the current competitive landscape, and understand what Google is rewarding for specific queries today.</p>
+
+<p><strong>Competitor analysis workflows:</strong></p>
+<ul>
+<li><strong>SERP feature analysis:</strong> "Search for 'best project management software' and tell me what SERP features appear — featured snippets, People Also Ask, image carousels"</li>
+<li><strong>Top-ranking content audit:</strong> "Search for our target keyword and summarize the common structural elements in the top 5 organic results — what do they all have that we might be missing?"</li>
+<li><strong>Intent verification:</strong> "Search for this query and tell me whether the results are informational, commercial, or transactional — I need to know the intent before writing"</li>
+<li><strong>PAA research:</strong> "What 'People Also Ask' questions appear for 'crm software for small business'? I'll use these for FAQ sections"</li>
+<li><strong>Algorithm update checking:</strong> "Search for recent news about Google algorithm updates in the last 30 days — have there been any changes affecting my niche?"</li>
+</ul>
+
+<h3>Firecrawl MCP Server — Deep Page Content Extraction</h3>
+
+<p>Competitor page analysis requires reading the actual page content, not just the title and description. The Firecrawl MCP server can crawl and extract full page content from any URL — delivering clean, readable text that your AI can analyze for content gaps, structural patterns, and optimization opportunities.</p>
+
+<p><strong>Content intelligence workflows:</strong></p>
+<ul>
+<li><strong>Top-ranking page analysis:</strong> "Crawl the top-ranking page for 'email marketing best practices' and tell me: word count, heading structure, FAQ sections, and any structured data signals"</li>
+<li><strong>Content gap identification:</strong> "Crawl these three competitor pages on the same topic and identify what they cover that our page doesn't"</li>
+<li><strong>Schema markup audit:</strong> "Crawl our /blog/ section and identify which pages are missing FAQ, HowTo, or Article structured data"</li>
+<li><strong>Internal link mapping:</strong> "Crawl this category page and list all internal links — I'm mapping the current internal linking architecture"</li>
+<li><strong>Competitor freshness tracking:</strong> "Crawl this competitor page and check the last-modified meta tag and any visible date references — when was it last updated?"</li>
+</ul>
+
+<h3>Exa MCP Server — Semantic Web Research</h3>
+
+<p>Exa's neural search finds semantically similar content across the web — valuable for topical authority research and finding content examples that Google considers relevant to your target queries.</p>
+
+<p><strong>Topical authority workflows:</strong></p>
+<ul>
+<li>"Find the most authoritative pieces of content on the topic of 'programmatic SEO' — these are the pages I need to match or surpass"</li>
+<li>"Search for content about [topic] and identify any angles or subtopics that appear frequently in high-authority results but are missing from our coverage"</li>
+<li>"Find all major articles about [keyword] published in the last 6 months — what's new in this topic that I should cover?"</li>
+</ul>
+
+<h3>BrightData MCP Server — Large-Scale SERP Data</h3>
+
+<p>For agencies or SEOs doing large-scale competitive analysis, the BrightData MCP server provides programmatic access to SERP data, enabling systematic tracking across keyword sets at a scale that manual checking can't match.</p>
+
+<p><strong>Scale analysis workflows:</strong></p>
+<ul>
+<li>Check current ranking positions for a large keyword set without manual lookup</li>
+<li>Monitor competitor ranking changes for tracked keywords over time</li>
+<li>Harvest structured data (schema markup types, content lengths) from large sets of ranking pages</li>
+</ul>
+
+<h2>Content and Technical SEO</h2>
+
+<h3>Filesystem MCP Server — Local Content Audit</h3>
+
+<p>For SEOs managing content in local files — markdown content repositories, static site generators, content databases — the Filesystem MCP server makes bulk content auditing possible without manual file-by-file review.</p>
+
+<p><strong>Content audit workflows:</strong></p>
+<ul>
+<li><strong>Title tag review:</strong> "Read all markdown files in the /content/blog/ directory and list any where the title is over 60 characters or missing"</li>
+<li><strong>Meta description audit:</strong> "Scan all content files and identify pages with missing or duplicate meta descriptions"</li>
+<li><strong>Internal link gap analysis:</strong> "Read the content directory and identify which high-priority pages have fewer than three internal links from other content"</li>
+<li><strong>Keyword presence checking:</strong> "Scan the top 20 blog posts and verify that our primary target keyword appears in the first paragraph of each"</li>
+<li><strong>Content freshness flagging:</strong> "Find all posts with a date field older than 18 months — these are candidates for content refreshing"</li>
+</ul>
+
+<h3>WordPress MCP Server — CMS-Level SEO Operations</h3>
+
+<p>For SEOs managing WordPress sites, the WordPress MCP server provides direct access to post data, taxonomy structure, and site configuration — enabling bulk SEO operations that would normally require plugin configuration or manual editing.</p>
+
+<p><strong>WordPress SEO workflows:</strong></p>
+<ul>
+<li>Query all posts missing a Yoast/RankMath SEO title or meta description</li>
+<li>Find all posts in a category with thin content (under 500 words) for refresh prioritization</li>
+<li>Identify orphaned posts with zero internal links from other content</li>
+<li>Review category and tag taxonomy for consolidation opportunities</li>
+<li>Export page title and description data for bulk Yoast SEO field updates</li>
+</ul>
+
+<h2>Reporting and Documentation</h2>
+
+<h3>GitHub MCP Server — SEO Data and Templates</h3>
+
+<p>GitHub is increasingly a repository for SEO tools, templates, and data files — from robots.txt configurations to structured data templates to keyword research spreadsheets stored in repos. The GitHub MCP server makes this infrastructure accessible.</p>
+
+<p><strong>SEO GitHub workflows:</strong></p>
+<ul>
+<li>Retrieve the current robots.txt configuration from a client site repository before recommending crawl changes</li>
+<li>Search for Schema.org FAQ structured data implementation examples to reference when writing guidelines</li>
+<li>Access SEO tracking templates or keyword databases stored in team repos</li>
+</ul>
+
+<h2>Recommended Stack by SEO Role</h2>
+
+<p><strong>In-house SEO (content focus):</strong> Google Search Console + Brave Search + Firecrawl + Filesystem</p>
+<p><strong>Technical SEO specialist:</strong> Google Search Console + Firecrawl + Brave Search + Filesystem + GitHub</p>
+<p><strong>SEO agency (client reporting):</strong> Google Search Console + Brave Search + Firecrawl + Exa</p>
+<p><strong>Enterprise SEO (scale analysis):</strong> Google Search Console + BrightData + Firecrawl + Exa</p>
+
+<p>Start with Google Search Console — it's the only data source that shows you exactly what Google sees and rewards for your specific site. Add Brave Search for competitive research and Firecrawl for deep page analysis. These three together cover 80% of SEO intelligence work that currently requires manual tool switching.</p>
+
+<p>Browse the full <a href="/category/search">search MCP servers</a> catalog or see <a href="/blog/best-mcp-servers-for-content-creation">Best MCP Servers for Content Creation</a> for SEO-adjacent content production workflows.</p>
+    `.trim(),
+  },
+  {
+    slug: "best-mcp-servers-for-blockchain-developers",
+    title: "Best MCP Servers for Blockchain Developers in 2026",
+    description: "Query on-chain data, monitor DeFi protocols, and build Web3 applications faster with MCP servers that give your AI direct access to blockchain networks and crypto data feeds.",
+    date: "2026-05-09",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "8 min read",
+    keywords: ["mcp servers for blockchain developers", "web3 mcp server", "ethereum mcp server", "solana mcp server", "defi mcp", "crypto developer tools mcp"],
+    relatedServerSlugs: ["ethereum", "solana", "thegraph", "coinbase", "coingecko", "brave-search", "github", "filesystem"],
+    content: `
+<p>Blockchain development sits at the intersection of distributed systems, cryptography, and real-time financial data — three domains where AI assistance is most limited by lack of current context. Smart contract ABIs change. Protocol state is live and dynamic. On-chain data requires querying specific RPC endpoints, not consulting training data from months ago.</p>
+
+<p>MCP servers bridge this gap by giving your AI live access to blockchain networks, DeFi protocol data, and crypto market feeds — making AI assistance genuinely useful for on-chain work instead of generically informative.</p>
+
+<h2>Blockchain Network Access</h2>
+
+<h3>Ethereum MCP Server — On-Chain State and Contract Interaction</h3>
+
+<p>The Ethereum MCP server connects your AI to Ethereum mainnet (and EVM-compatible chains) via RPC, enabling direct on-chain queries without manual curl commands or Etherscan lookups. For smart contract developers, this means your AI can examine actual contract state before generating code that interacts with it.</p>
+
+<p><strong>Smart contract development workflows:</strong></p>
+<ul>
+<li><strong>Contract inspection:</strong> "Read the current state of this ERC-20 token contract — total supply, decimals, owner address — before I write the integration code"</li>
+<li><strong>ABI verification:</strong> "Fetch the ABI for this deployed contract and verify that my interface definition matches the live deployment"</li>
+<li><strong>Gas estimation:</strong> "Estimate gas for calling this function with these parameters on the current network before I write the transaction logic"</li>
+<li><strong>Event log analysis:</strong> "Fetch the last 50 Transfer events from this token contract — I'm debugging an integration that's missing events"</li>
+<li><strong>Bytecode verification:</strong> "Check whether this contract address has verified source code on Etherscan and if its bytecode matches my local compiled artifact"</li>
+</ul>
+
+<p><strong>DeFi protocol integration:</strong> When building protocols that interact with Uniswap, Aave, Compound, or Curve, live on-chain state is critical. The Ethereum MCP server lets your AI fetch current pool reserves, borrow rates, and liquidity positions before generating protocol interaction code — avoiding the class of bugs that comes from hardcoding stale values.</p>
+
+<h3>Solana MCP Server — High-Performance Chain Queries</h3>
+
+<p>Solana's account model and program architecture differ significantly from EVM — and AI assistants trained on general blockchain content often mix up the two. The Solana MCP server gives your AI direct access to Solana RPC, grounding its assistance in Solana's actual on-chain data model.</p>
+
+<p><strong>Solana development workflows:</strong></p>
+<ul>
+<li>Fetch account data for a specific public key to understand its current state before writing account manipulation code</li>
+<li>Query recent transaction signatures for an address to debug transaction patterns</li>
+<li>Read program data accounts to understand the on-chain state your program needs to handle</li>
+<li>Check current rent costs and minimum balances for account creation before writing SOL transfer logic</li>
+<li>Fetch SPL token account balances and mint information for token program integration</li>
+</ul>
+
+<p><strong>Anchor program development:</strong> When building Anchor programs, understanding the on-chain state of existing programs you're integrating with is critical. The Solana MCP server lets your AI inspect deployed program accounts and IDL data before generating CPI (cross-program invocation) code.</p>
+
+<h2>Protocol and Market Data</h2>
+
+<h3>The Graph MCP Server — Indexed Protocol Data</h3>
+
+<p>The Graph Protocol provides indexed, queryable data for hundreds of DeFi protocols — far more structured than raw event logs. The Graph MCP server lets your AI query subgraphs directly, enabling complex protocol state queries that would require dozens of raw RPC calls to construct manually.</p>
+
+<p><strong>DeFi data workflows:</strong></p>
+<ul>
+<li><strong>Uniswap analytics:</strong> "Query the Uniswap v3 subgraph for the current TVL, volume, and fee APR for the WETH/USDC 0.05% pool — I'm building a liquidity position analyzer"</li>
+<li><strong>Aave protocol state:</strong> "Fetch current borrow rates and utilization for all markets from the Aave subgraph before I write the rate comparison logic"</li>
+<li><strong>Historical price data:</strong> "Get hourly price data for ETH from the Uniswap v3 subgraph for the last 30 days — I'm backtesting a strategy"</li>
+<li><strong>Liquidity provider analysis:</strong> "Find the top liquidity providers for this pool and their position ranges — I'm building an LP tracking dashboard"</li>
+<li><strong>Protocol event history:</strong> "Query governance proposal events from the Compound subgraph — I'm building a governance analytics dashboard"</li>
+</ul>
+
+<h3>CoinGecko MCP Server — Market Data and Token Information</h3>
+
+<p>CoinGecko's MCP server provides programmatic access to market data, token metadata, exchange information, and trending coins — the kind of live market intelligence that smart contract developers and dApp builders need as runtime context.</p>
+
+<p><strong>Market data workflows:</strong></p>
+<ul>
+<li>Fetch current prices for a list of tokens before writing oracle price validation logic</li>
+<li>Get token contract addresses across multiple chains for a specific asset before writing cross-chain bridge code</li>
+<li>Retrieve market cap and volume data for trending tokens to inform product decisions</li>
+<li>Look up exchange listing information for token distribution analysis</li>
+<li>Fetch category data to understand protocol classification and competitive positioning</li>
+</ul>
+
+<h3>Coinbase MCP Server — Exchange and Wallet Integration</h3>
+
+<p>For developers building Coinbase-integrated applications, the Coinbase MCP server provides access to exchange data, wallet functionality, and Coinbase's product APIs — enabling AI assistance grounded in the actual API responses your code will receive.</p>
+
+<p><strong>Coinbase integration workflows:</strong></p>
+<ul>
+<li>Fetch current exchange rates and market pairs before writing trade execution logic</li>
+<li>Check current API rate limits and response formats before generating API client code</li>
+<li>Verify wallet balance and transaction history for testing and debugging integration flows</li>
+<li>Access Coinbase Commerce product data when building crypto payment integrations</li>
+</ul>
+
+<h2>Research and Documentation</h2>
+
+<h3>Brave Search MCP Server — Current Protocol Documentation</h3>
+
+<p>The blockchain space moves fast. EIP specifications change, protocol upgrades modify behavior, and new security vulnerabilities get discovered continuously. The Brave Search MCP server lets your AI research current documentation and security advisories before generating code that depends on them.</p>
+
+<p><strong>Blockchain research workflows:</strong></p>
+<ul>
+<li>"Look up the current EIP-4337 account abstraction specification — I'm implementing a compliant bundler and need the latest spec"</li>
+<li>"Search for recent Solidity security vulnerabilities discovered in the last 6 months — I'm auditing a contract for common patterns"</li>
+<li>"Find the current Foundry documentation for fuzz testing invariants — the API changed in a recent version"</li>
+<li>"Search for recent exploits of reentrancy vulnerabilities on chains using Cancun opcodes"</li>
+<li>"Look up the current status of EIP-7702 — I need to know if it's been finalized before implementing it"</li>
+</ul>
+
+<h3>GitHub MCP Server — Open-Source Protocol Code</h3>
+
+<p>The most reliable documentation for most DeFi protocols is their source code. The GitHub MCP server gives your AI access to the actual smart contract code from Uniswap, Aave, OpenZeppelin, and thousands of other protocols — enabling precise references instead of hallucinated approximations.</p>
+
+<p><strong>Protocol research workflows:</strong></p>
+<ul>
+<li>Read the OpenZeppelin ERC-20 implementation before writing a custom token — verify the exact hook signature</li>
+<li>Browse Uniswap v3 core contracts to understand the exact tick math implementation before writing a custom router</li>
+<li>Search Hardhat or Foundry repositories for testing patterns that match your specific scenario</li>
+<li>Find example implementations of EIP standards to validate your implementation against</li>
+<li>Check recent commits to protocol repositories for breaking changes before upgrading integration dependencies</li>
+</ul>
+
+<h3>Filesystem MCP Server — Local Contract and Test Management</h3>
+
+<p>Blockchain projects typically have complex local file structures — contracts, interfaces, tests, deployment scripts, ABI JSON files, and configuration. The Filesystem MCP server lets your AI navigate and work with your actual project structure.</p>
+
+<p><strong>Local blockchain project workflows:</strong></p>
+<ul>
+<li>Read existing contract interfaces before writing new contracts that extend or interact with them</li>
+<li>Find all test files for a specific contract to understand current test coverage before adding new tests</li>
+<li>Read deployment scripts to understand the current deployment configuration before modifying it</li>
+<li>Access cached ABI files for contracts your code interacts with</li>
+</ul>
+
+<h2>Recommended Stack by Blockchain Developer Role</h2>
+
+<p><strong>Solidity/EVM developer:</strong> Ethereum + GitHub + Brave Search + Filesystem</p>
+<p><strong>Solana program developer:</strong> Solana + GitHub + Brave Search + Filesystem</p>
+<p><strong>DeFi protocol builder:</strong> Ethereum + The Graph + CoinGecko + GitHub + Brave Search</p>
+<p><strong>dApp frontend developer:</strong> Ethereum + CoinGecko + The Graph + Brave Search</p>
+<p><strong>Crypto analytics builder:</strong> The Graph + CoinGecko + Coinbase + Brave Search</p>
+
+<p>Start with the network MCP server for your target chain (Ethereum or Solana) and GitHub for protocol source code access — together they give your AI the live on-chain context and accurate reference implementations that make blockchain AI assistance actually reliable. Add The Graph when building data-intensive dApps, and CoinGecko when market data is part of your application's requirements.</p>
+
+<p>Browse the full <a href="/category/finance">finance MCP servers</a> catalog or see <a href="/blog/best-mcp-servers-for-api-development">Best MCP Servers for API Development</a> for broader Web3 backend patterns.</p>
+    `.trim(),
+  },
+  {
+    slug: "best-mcp-servers-for-cloud-engineers",
+    title: "Best MCP Servers for Cloud Engineers in 2026",
+    description: "Manage infrastructure faster with MCP servers that give your AI direct access to AWS, GCP, Azure, Kubernetes, Terraform, and your observability stack. Stop describing your infrastructure — show it.",
+    date: "2026-05-09",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "9 min read",
+    keywords: ["mcp servers for cloud engineers", "aws mcp server", "kubernetes mcp server", "terraform mcp server", "cloud infrastructure mcp", "devops mcp server"],
+    relatedServerSlugs: ["aws", "kubernetes", "terraform", "docker", "grafana", "opentelemetry", "awscli-mcp", "gcloud-mcp", "azure-cli-mcp", "brave-search", "github", "filesystem"],
+    content: `
+<p>Cloud infrastructure is defined by state — the live state of hundreds of resources across compute, networking, storage, and services. AI assistants that can't read that state can only give you generic advice. An AI that knows your actual VPC CIDR ranges, your current EKS node utilization, and the exact error in your Terraform plan is a different class of tool.</p>
+
+<p>MCP servers give your AI direct access to your infrastructure state, turning it from a documentation reader into an active infrastructure co-pilot.</p>
+
+<h2>Cloud Provider Access</h2>
+
+<h3>AWS MCP Server — Infrastructure State and Resource Management</h3>
+
+<p>The AWS MCP server connects your AI to AWS APIs, enabling read access to your actual resource state across EC2, S3, RDS, ECS, Lambda, IAM, and every other AWS service. Instead of describing your setup, you show it.</p>
+
+<p><strong>AWS engineering workflows:</strong></p>
+<ul>
+<li><strong>Cost analysis:</strong> "Query our EC2 instances and identify any running instances that haven't received requests in the last 7 days — potential idle resource waste"</li>
+<li><strong>Security audit:</strong> "List all S3 buckets and flag any with public read ACLs or missing server-side encryption"</li>
+<li><strong>IAM review:</strong> "Find all IAM roles with administrator access policies attached and list the last-used date for each"</li>
+<li><strong>Capacity planning:</strong> "Check current RDS instance sizes across all production databases and compare against CloudWatch average CPU utilization"</li>
+<li><strong>Incident diagnosis:</strong> "Read the last 100 CloudTrail events for this EC2 instance — I need to understand what changed before it became unreachable"</li>
+</ul>
+
+<p><strong>Architecture documentation:</strong> A common use case is using the AWS MCP server to generate infrastructure documentation. "Enumerate our VPC topology, subnets, and route tables, then generate a Mermaid diagram of the network architecture" produces accurate documentation from live state instead of from someone's memory.</p>
+
+<h3>AWS CLI MCP Server — Command Generation and Execution</h3>
+
+<p>The AWS CLI MCP server wraps the AWS CLI for AI-assisted command generation with your actual account context. Instead of constructing complex CLI commands manually, your AI builds them from your resource inventory.</p>
+
+<p><strong>CLI-assisted operations:</strong></p>
+<ul>
+<li>Generate the exact AWS CLI command to rotate a specific IAM access key, using the real key ID from your account</li>
+<li>Build a CloudFormation deploy command with the correct parameter overrides for a specific environment</li>
+<li>Construct an S3 sync command with the correct bucket path and exclusion patterns from your actual setup</li>
+<li>Generate a Lambda update-function-code command pointing to the correct ECR image tag</li>
+</ul>
+
+<h3>GCloud MCP Server — Google Cloud Platform Operations</h3>
+
+<p>For GCP-based infrastructure, the gcloud MCP server provides the same pattern: AI access to your actual GCP resource state for assisted operations, diagnostics, and documentation.</p>
+
+<p><strong>GCP engineering workflows:</strong></p>
+<ul>
+<li>List all GKE cluster configurations and identify nodes running deprecated Kubernetes versions</li>
+<li>Review Cloud IAM bindings for a specific project to find over-privileged service accounts</li>
+<li>Check BigQuery dataset access controls before migrating data</li>
+<li>Generate gcloud commands for Cloud Run service deployments using actual project and region values</li>
+<li>Audit Cloud Storage bucket lifecycle policies for cost optimization opportunities</li>
+</ul>
+
+<h3>Azure CLI MCP Server — Azure Resource Operations</h3>
+
+<p>Azure infrastructure teams can use the Azure CLI MCP server to bring the same live-state awareness to Azure resource groups, virtual machines, AKS clusters, and Azure services.</p>
+
+<p><strong>Azure workflows:</strong></p>
+<ul>
+<li>List all Azure VMs in a resource group and check their current running state and SKU</li>
+<li>Review Network Security Group rules for a specific subnet before making changes</li>
+<li>Check AKS node pool configurations and current utilization metrics</li>
+<li>Generate az CLI commands for Azure Key Vault secret rotation workflows</li>
+</ul>
+
+<h2>Container Orchestration</h2>
+
+<h3>Kubernetes MCP Server — Cluster State and Workload Management</h3>
+
+<p>The Kubernetes MCP server gives your AI direct kubectl-equivalent access to your cluster state — pods, deployments, services, configmaps, events, and logs. This is one of the highest-value MCP servers for cloud engineers: Kubernetes troubleshooting is heavily dependent on current state, and describing it manually is error-prone and slow.</p>
+
+<p><strong>Kubernetes operations workflows:</strong></p>
+<ul>
+<li><strong>Incident diagnosis:</strong> "Check the events for pods in the payment namespace over the last hour — I'm getting CrashLoopBackOff alerts"</li>
+<li><strong>Resource optimization:</strong> "List all deployments and compare their requested CPU/memory vs actual usage from metrics-server — identify over-provisioned workloads"</li>
+<li><strong>Deployment verification:</strong> "Verify that the rollout completed successfully and all pods are running the new image tag after the deployment"</li>
+<li><strong>Config review:</strong> "Read the configmap for the auth service and identify any settings that differ between staging and production"</li>
+<li><strong>Network policy audit:</strong> "List all NetworkPolicy objects and identify any pods that have no egress restrictions"</li>
+</ul>
+
+<p><strong>Runbook automation:</strong> Complex operational procedures that involve multiple kubectl commands can be described once and executed with AI-assisted command generation. "Walk me through checking cluster health before a maintenance window" becomes a structured checklist executed against real cluster data.</p>
+
+<h3>Docker MCP Server — Container Diagnostics</h3>
+
+<p>For containerized development and operations, the Docker MCP server provides access to local or remote Docker daemon state — running containers, images, volumes, and network configurations.</p>
+
+<p><strong>Docker workflows:</strong></p>
+<ul>
+<li>List all running containers and identify any that have been restarting frequently</li>
+<li>Read container logs for a specific service to diagnose a startup failure</li>
+<li>Inspect Docker network configuration for multi-container application debugging</li>
+<li>Identify large images that are consuming excess disk space on build hosts</li>
+</ul>
+
+<h2>Infrastructure as Code</h2>
+
+<h3>Terraform MCP Server — IaC State and Plan Analysis</h3>
+
+<p>The Terraform MCP server brings your AI into the infrastructure-as-code workflow — reading Terraform state files, analyzing plan outputs, and understanding resource dependency graphs.</p>
+
+<p><strong>Terraform-assisted IaC workflows:</strong></p>
+<ul>
+<li><strong>Plan review:</strong> "Read the terraform plan output and identify any destructive changes that affect production resources — flag anything that requires manual review"</li>
+<li><strong>State drift detection:</strong> "Compare the Terraform state for the database module against current AWS RDS resource state — are there drift indicators?"</li>
+<li><strong>Module documentation:</strong> "Read the Terraform module files for our VPC module and generate documentation for each variable"</li>
+<li><strong>Dependency analysis:</strong> "Map the resource dependencies in this Terraform configuration — which resources will be affected if I modify the security group?"</li>
+<li><strong>Refactoring assistance:</strong> "Read our current Terraform state and suggest which resources should be moved into modules for better organization"</li>
+</ul>
+
+<h2>Observability</h2>
+
+<h3>Grafana MCP Server — Dashboard and Alert State</h3>
+
+<p>The Grafana MCP server gives your AI access to your Grafana dashboards, data sources, and alert configurations — enabling AI-assisted dashboard building and alert review using your actual metric schema.</p>
+
+<p><strong>Grafana operations:</strong></p>
+<ul>
+<li>Read an existing dashboard JSON and generate a new panel using the same data source configuration and query patterns</li>
+<li>List all firing alerts across all dashboards during an incident investigation</li>
+<li>Review alert thresholds across all services and identify alerts that have never fired (potential dead alerts)</li>
+<li>Generate dashboard documentation from actual panel configurations</li>
+</ul>
+
+<h3>OpenTelemetry MCP Server — Trace and Metric Context</h3>
+
+<p>The OpenTelemetry MCP server connects your AI to your observability data — traces, metrics, and logs — enabling AI-assisted performance analysis and incident diagnosis using real telemetry.</p>
+
+<p><strong>Observability-driven diagnosis:</strong></p>
+<ul>
+<li>Fetch recent traces for a specific service and identify the slowest spans in the critical path</li>
+<li>Query P95 latency metrics for a service over the last 24 hours to contextualize a performance regression</li>
+<li>Find distributed traces that crossed the error threshold and identify their common characteristics</li>
+</ul>
+
+<h2>Documentation and Research</h2>
+
+<h3>Brave Search MCP Server — Current Cloud Documentation</h3>
+
+<p>Cloud provider documentation changes constantly — new service features, deprecated APIs, updated pricing models, and security advisories. The Brave Search MCP server ensures your AI generates advice based on current documentation rather than potentially outdated training data.</p>
+
+<p><strong>Cloud documentation research:</strong></p>
+<ul>
+<li>"Look up the current AWS Lambda limits for provisioned concurrency — I'm designing an auto-scaling policy"</li>
+<li>"Find the latest GKE Autopilot documentation for custom node pools — the behavior changed in a recent release"</li>
+<li>"Search for recent AWS RDS changes to automated backup retention policies"</li>
+<li>"Find the current Kubernetes documentation for the PodDisruptionBudget API — I need the exact field names"</li>
+</ul>
+
+<h3>GitHub MCP Server — Infrastructure Code Examples</h3>
+
+<p>Infrastructure patterns, Terraform modules, Helm charts, and Kubernetes manifests are extensively documented in open-source repositories. The GitHub MCP server gives your AI access to production-quality examples to reference when generating infrastructure code.</p>
+
+<p><strong>IaC research workflows:</strong></p>
+<ul>
+<li>Find production-quality Terraform modules for EKS cluster setup in the AWS Terraform modules repository</li>
+<li>Search for Helm chart examples that match your application type and deployment pattern</li>
+<li>Browse GitHub Actions workflow examples for your specific deployment target (ECS, Lambda, GKE)</li>
+<li>Find Kubernetes operator implementations that match the pattern you're building</li>
+</ul>
+
+<h2>Recommended Stack by Cloud Engineering Role</h2>
+
+<p><strong>AWS cloud engineer:</strong> AWS + Kubernetes + Terraform + Grafana + Brave Search</p>
+<p><strong>GCP cloud engineer:</strong> GCloud + Kubernetes + Terraform + OpenTelemetry + Brave Search</p>
+<p><strong>Multi-cloud / platform engineer:</strong> AWS + GCloud + Azure CLI + Kubernetes + Terraform + Grafana</p>
+<p><strong>SRE / on-call engineer:</strong> Kubernetes + Grafana + OpenTelemetry + AWS + Brave Search</p>
+<p><strong>DevOps / IaC engineer:</strong> Terraform + AWS + Docker + Kubernetes + GitHub + Brave Search</p>
+
+<p>Start with your primary cloud provider's MCP server and Kubernetes — together they cover the live state access that makes AI assistance genuinely useful for infrastructure work. Add Terraform for IaC workflows and Grafana or OpenTelemetry for observability. Brave Search is always valuable for ensuring your AI's recommendations reference current documentation.</p>
+
+<p>Browse the full <a href="/category/cloud">cloud MCP servers</a> catalog or see <a href="/blog/best-mcp-servers-for-devops">Best MCP Servers for DevOps Engineers</a> for CI/CD pipeline integrations that complement this cloud infrastructure stack.</p>
+    `.trim(),
+  },
 ];
 
 export function getBlogPostBySlug(slug: string): BlogPost | undefined {
