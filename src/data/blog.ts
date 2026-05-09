@@ -13048,6 +13048,394 @@ jupyter mcp install</code></pre>
 <p>Browse all <a href="/category/database">database MCP servers</a> and <a href="/category/devops">DevOps MCP servers</a> on MyMCPTools for the full backend infrastructure catalog.</p>
     `.trim(),
   },
+  {
+    slug: "best-mcp-servers-for-rust-developers",
+    title: "Best MCP Servers for Rust Developers in 2026",
+    description: "Supercharge your Rust development with MCP servers. From Cargo dependency lookups to database schema inspection, these tools give your AI real context for writing safe, idiomatic Rust code.",
+    date: "2026-05-09",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "9 min read",
+    keywords: ["mcp servers for rust", "rust mcp server", "best mcp tools rust developer", "rust ai coding", "cargo mcp", "model context protocol rust"],
+    relatedServerSlugs: ["filesystem", "github", "git", "brave-search", "postgres", "sqlite", "docker"],
+    content: `
+<p>Rust's greatest strengths — the borrow checker, lifetime annotations, zero-cost abstractions — are also the source of its steepest learning curve. AI assistants can be transformative for Rust developers, but only when they have real context about your codebase: your actual data structures, your Cargo.toml dependencies, the exact compiler error you're seeing. MCP servers close that gap, giving your AI live access to the files, tools, and documentation it needs to generate code that actually compiles.</p>
+
+<p>This guide covers the essential MCP servers for Rust developers, with a focus on workflows where real-time context is most valuable.</p>
+
+<h2>Filesystem Access — The Foundation</h2>
+
+<h3>Filesystem MCP Server — Read Your Actual Codebase</h3>
+
+<p>The Filesystem MCP server is non-negotiable for any serious Rust development workflow. It gives your AI read access to your source files, Cargo.toml, and workspace configuration — enabling it to understand your actual type definitions, trait implementations, and module structure before generating a single line of code.</p>
+
+<p><strong>Rust-specific workflows:</strong></p>
+<ul>
+<li><strong>Lifetime help:</strong> Share your struct definitions directly and ask "explain why this lifetime annotation is needed" — the AI sees your actual types, not a simplified example</li>
+<li><strong>Trait implementation:</strong> "Implement the Display trait for this enum" — the AI reads your enum variants before generating the match arms</li>
+<li><strong>Cargo.toml analysis:</strong> "What version of tokio am I using, and is there a newer stable release?" — reads your actual lockfile</li>
+<li><strong>Macro debugging:</strong> Share complex macro definitions and ask for expansion explanations or fixes</li>
+<li><strong>Error message triage:</strong> Paste compiler output alongside the source file for targeted, accurate fix suggestions</li>
+</ul>
+
+<p><strong>Recommended setup:</strong> Point the Filesystem server at your workspace root (the directory containing your Cargo.toml or workspace Cargo.toml). This gives the AI access to all crates in the workspace while keeping it scoped to your project.</p>
+
+<pre><code>{
+  "mcpServers": {
+    "filesystem": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-filesystem", "/path/to/your/rust-workspace"]
+    }
+  }
+}</code></pre>
+
+<h2>Documentation and Library Research</h2>
+
+<h3>Brave Search MCP Server — Real-Time Docs.rs and Crates.io Lookups</h3>
+
+<p>Rust's ecosystem moves fast. Tokio's async runtime patterns have evolved significantly across versions. Serde's derive macros have nuances that change across point releases. The Actix Web and Axum frameworks have diverged in their approach to middleware and error handling. AI assistants trained on historical data will confidently generate code for older API patterns that no longer compile.</p>
+
+<p>The Brave Search MCP server solves this by letting your AI fetch current documentation from docs.rs before generating code that uses a specific crate.</p>
+
+<p><strong>Rust documentation workflows:</strong></p>
+<ul>
+<li>"Look up the current API for tokio::sync::RwLock and show me how to use it with async/await"</li>
+<li>"What's the current serde_json API for handling optional fields with custom defaults?"</li>
+<li>"Check docs.rs for the latest axum version and show the routing API changes from 0.6 to 0.7"</li>
+<li>"Find examples of using rayon's ParallelIterator with custom thread pool configuration"</li>
+<li>"Look up the current sqlx query macro API for PostgreSQL with compile-time checking"</li>
+</ul>
+
+<p><strong>Crates.io research:</strong> The Brave Search server is equally useful for crate discovery. "Find a well-maintained Rust crate for parsing TOML files with good serde support" returns current ecosystem recommendations rather than dated training data.</p>
+
+<h2>Version Control and Collaboration</h2>
+
+<h3>GitHub MCP Server — Crate Source Code and Issues</h3>
+
+<p>For Rust developers working with open-source crates, the GitHub MCP server provides direct access to crate source code, issues, and pull requests. This is invaluable when documentation is incomplete or when you're debugging behavior that differs from the documented API.</p>
+
+<p><strong>Open source Rust workflows:</strong></p>
+<ul>
+<li>Read the actual implementation of a crate function when the docs don't fully explain the behavior</li>
+<li>Search issues for known bugs or limitations before spending time debugging</li>
+<li>Find usage examples from the crate's own tests — usually the most accurate documentation</li>
+<li>Review recent commits to a dependency before upgrading to catch breaking changes</li>
+<li>Search for trait implementation examples across Rust ecosystem codebases</li>
+</ul>
+
+<h3>Git MCP Server — Your Codebase History as Context</h3>
+
+<p>The Git MCP server makes your project's commit history available as diagnostic context. For Rust projects, this is particularly valuable when debugging type system changes or API breakage during refactors.</p>
+
+<p><strong>Rust-specific git workflows:</strong></p>
+<ul>
+<li>Find the commit that changed a struct definition when a downstream type check broke</li>
+<li>Review the full context of a recent unsafe block addition before audit</li>
+<li>Diff versions of a trait implementation across a refactor to identify behavioral changes</li>
+<li>Search commit messages for when a particular dependency was upgraded</li>
+</ul>
+
+<h2>Database Integration</h2>
+
+<h3>PostgreSQL MCP Server — Schema Context for sqlx and Diesel</h3>
+
+<p>Rust's compile-time database query verification (via sqlx macros or Diesel's schema DSL) requires accurate schema knowledge. The PostgreSQL MCP server gives your AI access to your actual database schema before generating query code — eliminating the round-trip of "it compiles but the column name is wrong" errors.</p>
+
+<p><strong>Database workflow in Rust:</strong></p>
+<ul>
+<li>Generate correct sqlx query! macros with actual column types and nullability from schema inspection</li>
+<li>Write Diesel model structs that match your exact schema column types</li>
+<li>Debug migration files by checking the current schema state before and after</li>
+<li>Generate sea-orm entities from live schema inspection</li>
+</ul>
+
+<h3>SQLite MCP Server — Embedded Database Development</h3>
+
+<p>SQLite is common in Rust CLI tools, desktop apps, and embedded systems. The SQLite MCP server enables the same schema-aware code generation for SQLite-backed Rust projects using rusqlite or sqlx with SQLite.</p>
+
+<h2>Infrastructure and Deployment</h2>
+
+<h3>Docker MCP Server — Containerizing Rust Applications</h3>
+
+<p>Rust's cross-compilation support and small binary sizes make it excellent for containerization, but multi-stage Docker builds for Rust have specific patterns (musl compilation for scratch images, layer caching for Cargo dependencies). The Docker MCP server lets your AI inspect your actual Docker environment and running containers while generating Dockerfile content.</p>
+
+<p><strong>Rust containerization patterns:</strong></p>
+<ul>
+<li>Generate optimized multi-stage Dockerfiles that cache Cargo dependency compilation</li>
+<li>Debug container runtime behavior by inspecting the actual container state</li>
+<li>Verify that your static binary works in a minimal Alpine or scratch container</li>
+</ul>
+
+<h2>Recommended Stack by Rust Project Type</h2>
+
+<p><strong>CLI tool / systems utility:</strong> Filesystem + Git + Brave Search + GitHub</p>
+<p><strong>Web service (Axum / Actix):</strong> Filesystem + PostgreSQL + Git + GitHub + Brave Search + Docker</p>
+<p><strong>Embedded / async systems:</strong> Filesystem + GitHub + Brave Search (for no_std crate lookup) + Git</p>
+<p><strong>Library / open source crate:</strong> Filesystem + GitHub + Git + Brave Search</p>
+<p><strong>Data processing / CLI pipeline:</strong> Filesystem + SQLite or PostgreSQL + Git + Brave Search</p>
+
+<p>Start with Filesystem + Brave Search — these two alone eliminate the most common failure modes in AI-assisted Rust development (type mismatch from stale training data, deprecated API patterns). Add GitHub when you're working with external crates, and PostgreSQL when you're working with databases.</p>
+
+<p>Browse the full <a href="/category/coding">coding MCP servers</a> catalog or see <a href="/blog/best-mcp-servers-for-go-developers">Best MCP Servers for Go Developers</a> for a comparable guide in the systems programming space.</p>
+    `.trim(),
+  },
+  {
+    slug: "best-mcp-servers-for-system-administrators",
+    title: "Best MCP Servers for System Administrators in 2026",
+    description: "The essential MCP servers for sysadmins. Manage configuration files, monitor infrastructure, inspect running containers, search documentation, and automate repetitive tasks with AI that has real context.",
+    date: "2026-05-09",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "9 min read",
+    keywords: ["mcp servers for sysadmins", "system administrator mcp", "best mcp tools sysadmin", "linux admin mcp server", "infrastructure mcp server", "devops mcp server"],
+    relatedServerSlugs: ["filesystem", "docker", "brave-search", "git", "github", "postgres", "sqlite"],
+    content: `
+<p>System administrators live in a world of configuration files, log streams, running processes, and infrastructure state that changes constantly. The biggest challenge in AI-assisted sysadmin work isn't capability — modern AI can reason about complex infrastructure problems — it's context. An AI that can't see your actual sshd_config, your current Docker network state, or your nginx error log will give you generic advice that may not apply to your specific environment.</p>
+
+<p>MCP servers fix this. They give your AI assistant live access to the files, databases, and systems you're actually managing — not hypothetical examples.</p>
+
+<h2>Configuration and File Management</h2>
+
+<h3>Filesystem MCP Server — Your Config Files as Context</h3>
+
+<p>The Filesystem MCP server is the most fundamental tool for sysadmin workflows. Configuration management is largely about reading, understanding, and modifying text files — and the Filesystem server makes those files directly accessible to your AI.</p>
+
+<p><strong>Sysadmin workflows enabled:</strong></p>
+<ul>
+<li><strong>Config file analysis:</strong> "Read my nginx.conf and explain why requests to /api are being proxied to the wrong upstream" — the AI sees your actual config, not a generic example</li>
+<li><strong>Security audit:</strong> "Scan my sshd_config for settings that deviate from CIS benchmark recommendations"</li>
+<li><strong>Log analysis:</strong> "Parse /var/log/auth.log for failed login attempts in the last hour and group by source IP"</li>
+<li><strong>Cron job review:</strong> "Read all files in /etc/cron.d and identify any jobs that run as root without full path specifications"</li>
+<li><strong>Diff and drift detection:</strong> "Compare these two nginx config files and explain what changed in the server block"</li>
+</ul>
+
+<p><strong>Security note:</strong> Scope the Filesystem MCP server to specific directories rather than root — for example, /etc/nginx, /etc/ssh, /var/log. This limits exposure while still enabling the most common sysadmin use cases.</p>
+
+<pre><code>{
+  "mcpServers": {
+    "filesystem": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-filesystem", "/etc/nginx", "/var/log", "/etc/ssh"]
+    }
+  }
+}</code></pre>
+
+<h2>Container and Infrastructure Management</h2>
+
+<h3>Docker MCP Server — Container State Inspection</h3>
+
+<p>The Docker MCP server gives your AI access to your actual Docker environment: running containers, network configurations, volume mounts, image layers, and compose stacks. Instead of pasting docker inspect output manually, your AI queries the Docker daemon directly.</p>
+
+<p><strong>Container management workflows:</strong></p>
+<ul>
+<li><strong>Network debugging:</strong> "Why can't container A reach container B? Inspect both and check their network configurations"</li>
+<li><strong>Resource analysis:</strong> "Which containers are using the most memory right now?"</li>
+<li><strong>Compose validation:</strong> "Review my docker-compose.yml for common misconfigurations before I deploy"</li>
+<li><strong>Image cleanup:</strong> "Identify dangling images and stopped containers safe to remove"</li>
+<li><strong>Volume debugging:</strong> "What volumes is this container mounting and are the paths correct?"</li>
+</ul>
+
+<p><strong>On-call use case:</strong> When a containerized service goes down at 2 AM, the Docker MCP server lets you ask "what changed in this container's configuration in the last deploy?" and get an answer grounded in the actual running state — not a guess.</p>
+
+<h2>Documentation and Troubleshooting</h2>
+
+<h3>Brave Search MCP Server — Up-to-Date Man Pages and Documentation</h3>
+
+<p>Sysadmin work involves an enormous range of tools — from kernel parameters to cloud CLI commands to application-specific configuration formats. No AI model has comprehensive knowledge of every tool version and its exact behavior. The Brave Search MCP server lets your AI fetch current documentation before answering questions about specific tool versions.</p>
+
+<p><strong>Sysadmin documentation workflows:</strong></p>
+<ul>
+<li>"Look up the exact systemctl command to reload nginx configuration without downtime"</li>
+<li>"Find the current AWS CLI v2 syntax for assuming an IAM role with MFA"</li>
+<li>"What's the correct kernel parameter to increase file descriptor limits in Linux 6.x?"</li>
+<li>"Find the current CIS benchmark recommendation for OpenSSH server hardening"</li>
+<li>"Look up how to configure rsyslog to forward logs to a remote syslog server with TLS"</li>
+</ul>
+
+<p><strong>Security advisories:</strong> Brave Search is also your real-time CVE lookup tool. "Is there a known vulnerability in nginx 1.24 that I should patch immediately?" returns current security advisory information rather than training data from months ago.</p>
+
+<h2>Configuration Version Control</h2>
+
+<h3>Git MCP Server — Infrastructure as Code History</h3>
+
+<p>Configuration drift is one of the most persistent sysadmin problems. The Git MCP server makes your infrastructure configuration history — stored in Git as it should be — accessible as diagnostic context.</p>
+
+<p><strong>Infrastructure git workflows:</strong></p>
+<ul>
+<li>Find the commit that changed a failing configuration parameter before a service outage</li>
+<li>Review all config changes to a server in the last 30 days before a compliance audit</li>
+<li>Identify who approved a specific firewall rule change</li>
+<li>Compare configuration state between environments (staging vs production configs)</li>
+</ul>
+
+<p><strong>Ansible / Terraform workflows:</strong> If you manage infrastructure with Ansible playbooks or Terraform configurations stored in Git, the Git MCP server lets your AI use the full history of those configurations as context — understanding why a particular variable was set the way it was, or what a role was doing before a refactor.</p>
+
+<h3>GitHub MCP Server — Ops Team Collaboration</h3>
+
+<p>For teams using GitHub for infrastructure-as-code, the GitHub MCP server enables collaboration-aware operations: checking open PRs for pending config changes, searching issues for known problems with a configuration approach, and finding runbook documentation stored in team wikis.</p>
+
+<p><strong>Team operations workflows:</strong></p>
+<ul>
+<li>Check if there's an open PR for the nginx config change before manually editing the file</li>
+<li>Search team runbooks for the standard procedure for a specific failure mode</li>
+<li>Find examples of how other team members configured a specific service</li>
+</ul>
+
+<h2>Data and Monitoring</h2>
+
+<h3>SQLite MCP Server — Local Configuration Databases</h3>
+
+<p>Many monitoring tools, package managers, and system utilities use SQLite for local state storage (apt, snap, various monitoring agents). The SQLite MCP server lets you query these databases directly when you need to understand system state that isn't exposed through a CLI interface.</p>
+
+<p><strong>Examples:</strong></p>
+<ul>
+<li>Query apt's package database to understand installation history and dependency chains</li>
+<li>Inspect local agent state databases for monitoring tools</li>
+<li>Read configuration databases for tools that use SQLite as their config store</li>
+</ul>
+
+<h3>PostgreSQL MCP Server — Application Database Context</h3>
+
+<p>Sysadmins supporting application teams often need to understand database state during incidents. The PostgreSQL MCP server provides read access to application databases, enabling faster incident diagnosis without requiring the development team to be on call.</p>
+
+<p><strong>Incident response workflows:</strong></p>
+<ul>
+<li>Check table sizes and row counts to identify runaway data growth causing disk alerts</li>
+<li>Identify long-running queries during database performance incidents</li>
+<li>Verify that a deployment migration completed successfully by inspecting schema state</li>
+</ul>
+
+<h2>Recommended Stack by Sysadmin Role</h2>
+
+<p><strong>Linux/Unix server admin:</strong> Filesystem + Brave Search + Git + Docker</p>
+<p><strong>Cloud infrastructure admin (AWS/GCP/Azure):</strong> Filesystem + Brave Search + Git + GitHub + Docker</p>
+<p><strong>Database admin (DBA):</strong> PostgreSQL + SQLite + Filesystem + Brave Search + Git</p>
+<p><strong>Platform / SRE:</strong> Docker + PostgreSQL + GitHub + Git + Brave Search + Filesystem</p>
+<p><strong>Security-focused sysadmin:</strong> Filesystem (scoped) + Brave Search + Git + GitHub</p>
+
+<p>The Filesystem + Brave Search combination gives immediate ROI for most sysadmin tasks — it puts your actual config files and current documentation in front of your AI. Add Docker when managing containerized workloads, and Git when managing infrastructure as code.</p>
+
+<p>Browse the full <a href="/category/devops">DevOps MCP servers</a> catalog or see <a href="/blog/best-mcp-servers-for-devops">Best MCP Servers for DevOps Engineers</a> for a CI/CD-focused perspective on overlapping infrastructure tools.</p>
+    `.trim(),
+  },
+  {
+    slug: "best-mcp-servers-for-data-visualization",
+    title: "Best MCP Servers for Data Visualization in 2026",
+    description: "Build better charts, dashboards, and visual analytics with MCP servers that give your AI direct access to your data sources. From SQL queries to CSV analysis to Grafana configuration.",
+    date: "2026-05-09",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "8 min read",
+    keywords: ["mcp servers for data visualization", "data viz mcp server", "chart building mcp", "dashboard mcp server", "data analysis mcp", "sql visualization mcp"],
+    relatedServerSlugs: ["postgres", "sqlite", "filesystem", "brave-search", "github", "git"],
+    content: `
+<p>Data visualization is fundamentally a translation problem: raw numbers in a database become insight through the right chart, the right query, the right configuration. AI assistants can dramatically accelerate this translation — but only when they can see your actual data structure. An AI that doesn't know your column names, your data types, or whether your date field has nulls will generate visualization code that doesn't work on your actual dataset.</p>
+
+<p>MCP servers give your AI the context it needs to generate accurate, working visualization code for your specific data — not for hypothetical perfect data.</p>
+
+<h2>Data Source Access</h2>
+
+<h3>PostgreSQL MCP Server — Schema-Aware Query Generation</h3>
+
+<p>For data visualization work, the PostgreSQL MCP server's most valuable capability is schema introspection. Before writing a single SQL query for a chart, your AI examines your actual table structure — column names, data types, nullability, relationships between tables, and row counts. The difference between schema-aware and schema-blind SQL generation for visualization is the difference between "try this query" and "here's the exact query for your data model."</p>
+
+<p><strong>Visualization workflows enabled:</strong></p>
+<ul>
+<li><strong>Time series charts:</strong> "What's the correct query for a monthly revenue trend chart? Inspect the orders table first" — the AI finds your actual date column name and handles timezone offsets</li>
+<li><strong>Cohort analysis:</strong> "Write a user retention cohort query" — the AI reads your user and events tables before generating the complex self-join</li>
+<li><strong>Funnel visualization:</strong> "Build a conversion funnel query from signup to purchase" — the AI maps your actual event types and filters</li>
+<li><strong>Geographic aggregation:</strong> "Aggregate sales by region for a choropleth map" — the AI finds your location columns and understands their format</li>
+<li><strong>Dashboard KPI queries:</strong> Generate all dashboard metric queries with accurate column references from schema inspection</li>
+</ul>
+
+<p><strong>Grafana / Metabase / Redash users:</strong> Paste your connection details once. Your AI can generate dashboard queries using your actual schema, dramatically reducing the iteration time between "I want to see X" and "here's the working SQL."</p>
+
+<h3>SQLite MCP Server — Local Data Analysis</h3>
+
+<p>SQLite is the most accessible data source for rapid visualization prototyping. Many data tools export to SQLite, and it's a common intermediate format for data analysis workflows. The SQLite MCP server provides the same schema-aware generation as PostgreSQL for local datasets.</p>
+
+<p><strong>Common SQLite visualization scenarios:</strong></p>
+<ul>
+<li>Analyze CSV data exported to SQLite via pandas or the sqlite3 CLI</li>
+<li>Work with application SQLite databases (browser data, app exports, embedded databases)</li>
+<li>Prototype dashboard queries on a local copy of production data before running against the live database</li>
+<li>Generate visualization queries for SQLite-backed tools like Datasette</li>
+</ul>
+
+<h2>File-Based Data Sources</h2>
+
+<h3>Filesystem MCP Server — CSV, JSON, and Flat File Analysis</h3>
+
+<p>Not all data lives in databases. CSV exports, JSON files, log files, and flat text data are the raw material for many visualization projects — especially in research, journalism, and ad-hoc analytics. The Filesystem MCP server gives your AI direct access to these files.</p>
+
+<p><strong>File-based data visualization workflows:</strong></p>
+<ul>
+<li><strong>CSV exploration:</strong> "Look at this CSV file and suggest the best chart types for each numeric column based on the value distributions"</li>
+<li><strong>Data cleaning advice:</strong> "Read sales-data.csv and identify columns that need cleaning before I can create a time series chart"</li>
+<li><strong>Chart code generation:</strong> "Generate Python matplotlib code to create a bar chart from this CSV — use the actual column names from the file"</li>
+<li><strong>JSON structure analysis:</strong> "Examine this API response JSON and generate the nested path queries needed to extract data for a D3.js chart"</li>
+<li><strong>Multi-file comparison:</strong> "Read both monthly-sales-q1.csv and monthly-sales-q2.csv and write a combined dataset for a year-over-year comparison chart"</li>
+</ul>
+
+<p><strong>Jupyter notebook integration:</strong> Data scientists using Jupyter often have complex directory structures with multiple data files. Pointing the Filesystem server at your data directory lets your AI navigate the file landscape and understand relationships between datasets before generating visualization code.</p>
+
+<h2>Documentation and Library Research</h2>
+
+<h3>Brave Search MCP Server — Chart Library Documentation</h3>
+
+<p>The data visualization library ecosystem is fragmented and rapidly evolving. D3.js v7 has a different selection API than v5. Plotly's React integration has changed across major versions. Vega-Lite has version-specific syntax for mark types and encoding channels. Recharts and Victory have different approaches to responsive containers.</p>
+
+<p>The Brave Search MCP server lets your AI fetch current documentation for the specific charting library and version you're using before generating code.</p>
+
+<p><strong>Visualization library lookups:</strong></p>
+<ul>
+<li>"Look up the current D3.js v7 syntax for creating a force-directed graph with node labels"</li>
+<li>"Find the Recharts API for adding a reference line with a custom label to a line chart"</li>
+<li>"Check the current Plotly Express API for animated scatter plots with frame-by-frame data"</li>
+<li>"Find the Vega-Lite v5 specification for a layered chart with a line and confidence interval band"</li>
+<li>"Look up how to configure Chart.js doughnut charts with percentage labels in the center"</li>
+</ul>
+
+<p><strong>Grafana / BI tool configuration:</strong> Brave Search is equally valuable for dashboard tool documentation. "What's the current Grafana 10 panel API for custom time range variables?" or "Find the Metabase API for programmatically creating dashboards" — these are the kinds of questions where current documentation is critical.</p>
+
+<h2>Version Control and Collaboration</h2>
+
+<h3>GitHub MCP Server — Dashboard Code and Example Charts</h3>
+
+<p>The GitHub MCP server provides access to the vast ecosystem of open-source visualization code on GitHub — from Observable notebooks to Grafana dashboard configurations to D3.js examples.</p>
+
+<p><strong>Visualization research workflows:</strong></p>
+<ul>
+<li>Search for production-quality D3.js examples that match your chart type</li>
+<li>Find Grafana dashboard JSON configurations for common infrastructure metrics</li>
+<li>Browse Observable plot examples for data journalism visualization patterns</li>
+<li>Check the Recharts or Victory component library's own example repository for complex chart patterns</li>
+</ul>
+
+<h3>Git MCP Server — Dashboard Version History</h3>
+
+<p>For teams managing dashboard configurations in version control, the Git MCP server surfaces the history of dashboard changes as context for troubleshooting and iteration.</p>
+
+<p><strong>Dashboard management workflows:</strong></p>
+<ul>
+<li>Find when a metric query was last changed before a dashboard discrepancy was reported</li>
+<li>Review the evolution of a KPI definition across dashboard versions</li>
+<li>Identify who changed a chart's Y-axis scale before a misleading visualization was published</li>
+</ul>
+
+<h2>Recommended Stack by Visualization Role</h2>
+
+<p><strong>Data analyst (SQL + BI tools):</strong> PostgreSQL + Brave Search + Filesystem + GitHub</p>
+<p><strong>Data scientist (Python/R + notebooks):</strong> Filesystem + SQLite + PostgreSQL + Brave Search</p>
+<p><strong>Frontend developer (D3/Recharts/Plotly):</strong> Filesystem + Brave Search + GitHub + Git</p>
+<p><strong>Dashboard engineer (Grafana/Metabase):</strong> PostgreSQL + Brave Search + Git + GitHub + Filesystem</p>
+<p><strong>Data journalist / researcher:</strong> Filesystem + Brave Search + GitHub + SQLite</p>
+
+<p>Start with PostgreSQL (or SQLite) and Brave Search — schema access plus current charting library documentation eliminates the two most common failure modes in AI-assisted visualization work. Add Filesystem when working with flat file data sources, and GitHub when you need chart code examples.</p>
+
+<p>Browse the full <a href="/category/database">database MCP servers</a> catalog or see <a href="/blog/best-mcp-servers-for-data-science">Best MCP Servers for Data Scientists</a> for a broader perspective on AI-assisted data work beyond visualization.</p>
+    `.trim(),
+  },
 ];
 
 export function getBlogPostBySlug(slug: string): BlogPost | undefined {
