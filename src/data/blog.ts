@@ -14396,6 +14396,375 @@ jupyter mcp install</code></pre>
 <p>Browse the full <a href="/category/crm">CRM MCP servers</a> catalog. For teams managing customer relationships across the full funnel, see <a href="/blog/best-mcp-servers-for-salesforce">Best MCP Servers for Salesforce Teams</a>.</p>
     `.trim(),
   },
+  {
+    slug: "best-mcp-servers-for-sales-teams",
+    title: "Best MCP Servers for Sales Teams in 2026",
+    description: "Discover the top MCP servers for sales workflows — from CRM data access and prospect research to pipeline management and email outreach. Power your AI-assisted sales process.",
+    date: "2026-05-10",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "8 min read",
+    keywords: ["best mcp servers for sales", "mcp servers crm", "sales ai tools mcp", "hubspot mcp server", "salesforce mcp server", "apollo mcp server"],
+    relatedServerSlugs: ["hubspot", "salesforce", "apollo-io", "pipedrive", "close", "linkedin", "slack", "notion"],
+    content: `
+<p>Sales teams are drowning in context-switching. A rep handling 100 accounts checks Salesforce for opportunity status, HubSpot for contact history, LinkedIn for prospect updates, Slack for team signals, and their inbox for follow-ups — all before writing a single email.</p>
+
+<p>MCP servers collapse that workflow. Instead of switching between six tabs, your AI assistant pulls live CRM data, prospect intelligence, and pipeline context directly into your conversation. Here are the MCP servers that make the biggest difference for sales teams.</p>
+
+<h2>1. HubSpot MCP Server — The All-in-One Sales CRM</h2>
+
+<p>For teams on HubSpot, this is the foundational MCP server. It gives your AI direct access to your contacts, companies, deals, and activity history — so you can ask "What's the status on the Acme deal?" and get a real answer from your CRM.</p>
+
+<p><strong>Key sales use cases:</strong></p>
+<ul>
+<li>Pull contact history and past touchpoints before a cold call</li>
+<li>Query deal pipeline stage, value, and close date across accounts</li>
+<li>Find all contacts at a target company and their engagement history</li>
+<li>Draft follow-up emails with full context from past interactions</li>
+</ul>
+
+<p><strong>Best for:</strong> SMB and mid-market sales teams using HubSpot CRM.</p>
+
+<h2>2. Salesforce MCP Server — Enterprise Pipeline Intelligence</h2>
+
+<p>The Salesforce MCP server unlocks your Salesforce data for AI-assisted workflows. Query opportunities, accounts, contacts, and activity logs without ever leaving your AI conversation.</p>
+
+<p><strong>Key sales use cases:</strong></p>
+<ul>
+<li>Check opportunity stage, amount, and close probability for your entire pipeline</li>
+<li>Find accounts in your territory with no activity in 90+ days (re-engagement targets)</li>
+<li>Pull account hierarchy for enterprise prospects before executive outreach</li>
+<li>Summarize activity history for weekly forecast calls</li>
+</ul>
+
+<p><strong>Best for:</strong> Enterprise sales teams and ops running Salesforce CRM.</p>
+
+<h2>3. Apollo.io MCP Server — Prospect Research at Scale</h2>
+
+<p>Apollo.io is one of the largest B2B contact databases with 275M+ contacts. The MCP server makes Apollo's prospecting intelligence available to your AI — find decision-makers, verify emails, and build outbound lists conversationally.</p>
+
+<p><strong>Key sales use cases:</strong></p>
+<ul>
+<li>Find VP of Sales contacts at companies with 100-500 employees in SaaS</li>
+<li>Verify email addresses and LinkedIn profiles for prospect lists</li>
+<li>Research a company's tech stack before a discovery call</li>
+<li>Pull intent data for accounts showing buying signals</li>
+</ul>
+
+<p><strong>Best for:</strong> SDRs and AEs doing outbound prospecting at scale.</p>
+
+<h2>4. Pipedrive MCP Server — Activity-Driven Pipeline Management</h2>
+
+<p>Pipedrive's MCP server connects your deals, contacts, and activity history to your AI. Ideal for teams that live in Pipedrive's activity-based selling methodology.</p>
+
+<p><strong>Key sales use cases:</strong></p>
+<ul>
+<li>List all deals with overdue follow-up activities</li>
+<li>Pull deal velocity metrics — average days per stage</li>
+<li>Find stalled deals that haven't moved stages in 14+ days</li>
+<li>Summarize notes and calls from a specific deal for handoff</li>
+</ul>
+
+<p><strong>Best for:</strong> SMB sales teams using Pipedrive for pipeline management.</p>
+
+<h2>5. LinkedIn MCP Server — Prospect Intelligence</h2>
+
+<p>LinkedIn is the richest source of professional context for B2B sales. The LinkedIn MCP server lets your AI pull profile data, recent activity, and company updates — critical for personalized outreach.</p>
+
+<p><strong>Key sales use cases:</strong></p>
+<ul>
+<li>Research a prospect's recent posts and activity before outreach</li>
+<li>Find mutual connections for warm introduction paths</li>
+<li>Monitor target companies for leadership changes or funding announcements</li>
+<li>Build prospect lists from LinkedIn company pages</li>
+</ul>
+
+<p><strong>Best for:</strong> AEs and BDRs running personalized outbound campaigns.</p>
+
+<h2>6. Slack MCP Server — Internal Sales Intelligence</h2>
+
+<p>The best sales context often lives in internal Slack threads — deal war rooms, competitive intel channels, and customer success handoffs. The Slack MCP server lets your AI surface that institutional knowledge on demand.</p>
+
+<p><strong>Key sales use cases:</strong></p>
+<ul>
+<li>Search competitive intel channels before a deal with a specific competitor</li>
+<li>Find previous objection-handling discussions for common pushbacks</li>
+<li>Check if CS has flagged any issues with an existing customer before expansion outreach</li>
+<li>Surface context from deal war rooms when re-engaging stalled prospects</li>
+</ul>
+
+<h2>7. Notion MCP Server — Sales Playbooks and Battle Cards</h2>
+
+<p>Most sales teams store their playbooks, battle cards, and onboarding materials in Notion. The Notion MCP server makes that content available to your AI — so you can ask "What's our positioning against Competitor X?" and get the actual battle card.</p>
+
+<p><strong>Key sales use cases:</strong></p>
+<ul>
+<li>Pull competitive battle cards before a deal involving specific competitors</li>
+<li>Access discovery question frameworks during call prep</li>
+<li>Find case studies and proof points for specific verticals or use cases</li>
+<li>Reference pricing guidelines and discount approval thresholds</li>
+</ul>
+
+<h2>Recommended Sales MCP Stack</h2>
+
+<p>Build your stack around your primary CRM, then layer in prospecting and intelligence tools:</p>
+<ul>
+<li><strong>HubSpot or Salesforce</strong> — your CRM (pick the one your team lives in)</li>
+<li><strong>Apollo.io</strong> — for outbound prospecting and contact enrichment</li>
+<li><strong>LinkedIn</strong> — for prospect research and personalization signals</li>
+<li><strong>Slack</strong> — for internal competitive and customer intelligence</li>
+<li><strong>Notion</strong> — if your playbooks and battle cards live there</li>
+</ul>
+
+<p>Browse the full <a href="/category/api">API & integrations MCP servers</a> catalog. For teams managing the full customer lifecycle, see <a href="/blog/best-mcp-servers-for-customer-support">Best MCP Servers for Customer Support</a>.</p>
+    `.trim(),
+  },
+  {
+    slug: "best-mcp-servers-for-social-media-managers",
+    title: "Best MCP Servers for Social Media Managers in 2026",
+    description: "The top MCP servers for social media workflows — content planning, scheduling, analytics, and audience research. Run your social strategy with AI and live data access.",
+    date: "2026-05-10",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "7 min read",
+    keywords: ["best mcp servers for social media", "social media ai tools mcp", "twitter mcp server", "linkedin mcp server", "canva mcp server", "content planning mcp"],
+    relatedServerSlugs: ["twitter", "linkedin", "instagram", "canva", "airtable", "notion", "slack"],
+    content: `
+<p>Social media managers are some of the most context-dependent workers in any organization. They need to know what's trending, what the brand voice is, what's already been published, what the performance data says — all at once, and usually under deadline.</p>
+
+<p>MCP servers give your AI assistant live access to the platforms, tools, and databases you already use. Instead of pulling analytics from one tab, checking the content calendar in another, and drafting in a third — you work in one conversation with your AI pulling the real data.</p>
+
+<h2>1. Twitter/X MCP Server — Real-Time Trend Intelligence</h2>
+
+<p>Twitter/X is where conversations happen first. The Twitter MCP server lets your AI monitor trends, search conversations, and pull engagement data without leaving your AI assistant.</p>
+
+<p><strong>Key social media use cases:</strong></p>
+<ul>
+<li>Monitor brand mentions and sentiment in real time</li>
+<li>Find trending hashtags and conversations in your niche</li>
+<li>Research what competitors are posting and what's engaging</li>
+<li>Pull engagement metrics on recent posts to inform next week's strategy</li>
+<li>Search for UGC (user-generated content) featuring your brand or products</li>
+</ul>
+
+<p><strong>Best for:</strong> Social managers running brand accounts where Twitter/X is a priority channel.</p>
+
+<h2>2. LinkedIn MCP Server — B2B Content Intelligence</h2>
+
+<p>For B2B brands, LinkedIn is the primary content channel. The LinkedIn MCP server gives your AI access to post analytics, profile data, and company page insights — essential for content that actually reaches decision-makers.</p>
+
+<p><strong>Key social media use cases:</strong></p>
+<ul>
+<li>Pull analytics on recent posts — impressions, engagement rate, follower growth</li>
+<li>Research what content formats are performing in your industry</li>
+<li>Find relevant conversations to engage with in comments</li>
+<li>Identify potential collaboration partners by looking at audience overlap</li>
+</ul>
+
+<p><strong>Best for:</strong> B2B social media managers and personal brand builders.</p>
+
+<h2>3. Canva MCP Server — AI-Assisted Design at Scale</h2>
+
+<p>Canva is the go-to design tool for most social teams. The Canva MCP server lets your AI interact with your brand kit, templates, and assets — so you can describe what you need and have the right starting point pulled up instantly.</p>
+
+<p><strong>Key social media use cases:</strong></p>
+<ul>
+<li>Access brand color palettes and typography when briefing design requests</li>
+<li>Pull recent post designs to maintain visual consistency</li>
+<li>Find templates for specific content types (carousels, reels thumbnails, stories)</li>
+<li>Check asset library for approved imagery and illustrations</li>
+</ul>
+
+<p><strong>Best for:</strong> Social managers who handle their own content design in Canva.</p>
+
+<h2>4. Airtable MCP Server — Content Calendar Command Center</h2>
+
+<p>Many social teams use Airtable as their content calendar and asset management system. The Airtable MCP server lets your AI query your content pipeline, track post status, and surface scheduling gaps.</p>
+
+<p><strong>Key social media use cases:</strong></p>
+<ul>
+<li>Check what's scheduled for next week across all channels</li>
+<li>Find gaps in the content calendar that need to be filled</li>
+<li>Pull all posts tagged with a specific campaign for performance review</li>
+<li>Update post status from draft to approved without opening Airtable manually</li>
+</ul>
+
+<p><strong>Best for:</strong> Teams with structured content calendars and multi-stakeholder approval workflows.</p>
+
+<h2>5. Notion MCP Server — Brand Voice and Strategy Documents</h2>
+
+<p>Brand guidelines, content pillars, tone-of-voice documents, and campaign briefs typically live in Notion. The Notion MCP server makes all that context available to your AI when drafting content — so it actually sounds like your brand.</p>
+
+<p><strong>Key social media use cases:</strong></p>
+<ul>
+<li>Pull brand voice guidelines when reviewing AI-drafted captions</li>
+<li>Access content pillar definitions to ensure new content fits the strategy</li>
+<li>Reference campaign briefs when creating campaign-specific content</li>
+<li>Find approved messaging frameworks for product launches or announcements</li>
+</ul>
+
+<h2>6. Instagram MCP Server — Visual Content Analytics</h2>
+
+<p>Instagram remains the top visual content platform for most consumer brands. The Instagram MCP server provides access to post analytics, story insights, and hashtag performance data.</p>
+
+<p><strong>Key social media use cases:</strong></p>
+<ul>
+<li>Pull reach, impressions, and saves on recent posts</li>
+<li>Find top-performing content types (reels vs. carousels vs. static) by engagement rate</li>
+<li>Research hashtag performance and reach potential</li>
+<li>Monitor competitor accounts for content inspiration and timing patterns</li>
+</ul>
+
+<h2>7. Slack MCP Server — Internal Review and Approvals</h2>
+
+<p>Most social content goes through an internal review process. The Slack MCP server lets your AI check review status, find stakeholder feedback, and surface pending approvals — so nothing gets published without sign-off.</p>
+
+<p><strong>Key social media use cases:</strong></p>
+<ul>
+<li>Check if a draft has been approved in the #content-review channel</li>
+<li>Find feedback from legal or compliance on specific content types</li>
+<li>Surface campaign kick-off notes from brand team channels</li>
+<li>Coordinate with design team on pending asset requests</li>
+</ul>
+
+<h2>Recommended Social Media MCP Stack</h2>
+
+<p>Build around your primary channels, then layer in planning and brand tools:</p>
+<ul>
+<li><strong>Twitter + LinkedIn or Instagram</strong> — your primary channel servers (match your brand's audience)</li>
+<li><strong>Airtable</strong> — for content calendar and pipeline management</li>
+<li><strong>Notion</strong> — for brand guidelines, voice docs, and campaign briefs</li>
+<li><strong>Canva</strong> — for design asset access and template management</li>
+<li><strong>Slack</strong> — for internal approval workflow visibility</li>
+</ul>
+
+<p>Browse the full <a href="/category/marketing">Marketing MCP servers</a> catalog. For teams focused on content creation across formats, see <a href="/blog/best-mcp-servers-for-content-creation">Best MCP Servers for Content Creation</a>.</p>
+    `.trim(),
+  },
+  {
+    slug: "best-mcp-servers-for-video-creators",
+    title: "Best MCP Servers for Video Creators and YouTubers in 2026",
+    description: "Top MCP servers for video creators — from YouTube analytics and script management to thumbnail design and content planning. Build a smarter video production workflow with AI.",
+    date: "2026-05-10",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "7 min read",
+    keywords: ["best mcp servers for video creators", "youtube mcp server", "mcp servers for youtubers", "video production ai tools", "content creator mcp", "loom mcp server"],
+    relatedServerSlugs: ["youtube", "loom", "notion", "airtable", "canva", "github", "slack"],
+    content: `
+<p>Video creators manage more moving pieces than most people realize. A single YouTube video involves keyword research, scripting, recording, editing, thumbnail design, SEO optimization, scheduling, and performance analysis — often all handled by one or two people.</p>
+
+<p>MCP servers give your AI assistant live access to the tools and data in your production pipeline. Instead of context-switching between YouTube Studio, your script doc, Notion, and analytics — you stay in one conversation while your AI pulls real numbers and updates your workflow.</p>
+
+<h2>1. YouTube MCP Server — Channel and Video Analytics</h2>
+
+<p>YouTube Studio is where video creators live, but its analytics can be slow and fragmented. The YouTube MCP server gives your AI direct access to your channel data — views, watch time, subscriber trends, and video performance — so you can make decisions based on actual numbers.</p>
+
+<p><strong>Key use cases:</strong></p>
+<ul>
+<li>Pull watch time and retention curves for recent videos to identify drop-off points</li>
+<li>Find your top 10 performing videos by views, watch time, or subscriber gain</li>
+<li>Analyze which video topics are driving the most channel growth</li>
+<li>Compare CTR across thumbnails to inform next thumbnail design</li>
+<li>Research competitor channels — video cadence, topic clusters, subscriber growth</li>
+</ul>
+
+<p><strong>Best for:</strong> YouTubers with established channels who want data-driven content decisions.</p>
+
+<h2>2. Loom MCP Server — Async Video Communication</h2>
+
+<p>Loom is the go-to tool for video creators managing a team or client relationships. The Loom MCP server lets your AI access recordings, organize video libraries, and surface relevant async updates without scrolling through your Loom workspace.</p>
+
+<p><strong>Key use cases:</strong></p>
+<ul>
+<li>Find client feedback recordings by project or date</li>
+<li>Pull internal process walkthroughs when onboarding a new editor or VA</li>
+<li>Organize recordings into workspaces by project or client</li>
+<li>Search recorded team updates for decisions or action items</li>
+</ul>
+
+<p><strong>Best for:</strong> Creator businesses with remote teams or client deliverables.</p>
+
+<h2>3. Notion MCP Server — Scripts, Briefs, and Content Strategy</h2>
+
+<p>Most serious video creators keep their scripts, video briefs, and content strategy in Notion. The Notion MCP server makes that knowledge base accessible to your AI — so you can draft with brand context, reference past scripts, and maintain consistent messaging across videos.</p>
+
+<p><strong>Key use cases:</strong></p>
+<ul>
+<li>Pull the hook and CTA formulas that perform best for your channel</li>
+<li>Access past scripts to maintain your voice in AI-assisted drafts</li>
+<li>Reference your channel's content pillars when brainstorming new topics</li>
+<li>Find video briefs and sponsor deliverables without opening Notion manually</li>
+<li>Update video status (scripting → recording → editing → published) in your content tracker</li>
+</ul>
+
+<h2>4. Airtable MCP Server — Production Pipeline Management</h2>
+
+<p>Airtable is the ideal tool for managing a video production pipeline with multiple videos in various stages simultaneously. The Airtable MCP server lets your AI query your pipeline status, find bottlenecks, and surface what needs attention.</p>
+
+<p><strong>Key use cases:</strong></p>
+<ul>
+<li>Check which videos are in editing vs. awaiting review vs. scheduled to publish</li>
+<li>Find gaps in your publishing calendar over the next 30 days</li>
+<li>Pull the full task list for a specific video by title or topic</li>
+<li>Track sponsorship deliverable deadlines and brand deal commitments</li>
+</ul>
+
+<p><strong>Best for:</strong> Creators producing 2+ videos per week or running a content studio.</p>
+
+<h2>5. Canva MCP Server — Thumbnail Design Assets</h2>
+
+<p>Thumbnails drive CTR, and CTR drives channel growth. The Canva MCP server gives your AI access to your thumbnail templates, brand kit, and approved image assets — critical for maintaining visual consistency while producing at speed.</p>
+
+<p><strong>Key use cases:</strong></p>
+<ul>
+<li>Pull your thumbnail templates when briefing a new thumbnail request</li>
+<li>Access your brand color palette and typography for design consistency</li>
+<li>Find approved image assets (headshots, product images, brand elements)</li>
+<li>Check your template library for the right format (16:9, shorts, community post)</li>
+</ul>
+
+<h2>6. GitHub MCP Server — Script and Asset Version Control</h2>
+
+<p>For technical creators or channels with collaborative scripting workflows, GitHub is a surprisingly powerful way to version-control scripts, track changes, and manage collaborative editing.</p>
+
+<p><strong>Key use cases:</strong></p>
+<ul>
+<li>Track script revisions with full change history and reviewer comments</li>
+<li>Manage collaborative scripts with editor or co-author access control</li>
+<li>Store and version your channel's style guide, branding assets, and templates</li>
+<li>Use issues to track video ideas, research tasks, and production notes</li>
+</ul>
+
+<p><strong>Best for:</strong> Technical creators or those with collaborative scripting processes.</p>
+
+<h2>7. Brave Search MCP Server — Research Without Tab-Switching</h2>
+
+<p>Every video starts with research. The Brave Search MCP server lets your AI pull current data, quotes, statistics, and source material directly in context — without you opening a browser and losing your train of thought.</p>
+
+<p><strong>Key use cases:</strong></p>
+<ul>
+<li>Research the latest statistics and studies for a video topic</li>
+<li>Find current events and news hooks to make content timely</li>
+<li>Verify facts and find primary sources to cite in your video</li>
+<li>Discover related videos and creators for cross-promotion research</li>
+</ul>
+
+<h2>Recommended Video Creator MCP Stack</h2>
+
+<p>Start with your analytics and strategy tools, then layer in production workflow tools:</p>
+<ul>
+<li><strong>YouTube</strong> — for channel analytics and data-driven topic decisions</li>
+<li><strong>Notion</strong> — for scripts, briefs, and content strategy documents</li>
+<li><strong>Airtable</strong> — for production pipeline management across multiple videos</li>
+<li><strong>Canva</strong> — for thumbnail template access and brand asset management</li>
+<li><strong>Brave Search</strong> — for in-conversation research without browser tab-switching</li>
+<li><strong>Loom</strong> — if you're managing a remote team or handling client video projects</li>
+</ul>
+
+<p>Browse the full <a href="/category/media">Media MCP servers</a> catalog. For creators focused on written content alongside video, see <a href="/blog/best-mcp-servers-for-content-creation">Best MCP Servers for Content Creation</a>.</p>
+    `.trim(),
+  },
 ];
 
 export function getBlogPostBySlug(slug: string): BlogPost | undefined {
