@@ -14765,6 +14765,427 @@ jupyter mcp install</code></pre>
 <p>Browse the full <a href="/category/media">Media MCP servers</a> catalog. For creators focused on written content alongside video, see <a href="/blog/best-mcp-servers-for-content-creation">Best MCP Servers for Content Creation</a>.</p>
     `.trim(),
   },
+  {
+    slug: "best-mcp-servers-for-web-scraping",
+    title: "Best MCP Servers for Web Scraping & Data Extraction in 2026",
+    description: "The top MCP servers for web scraping, browser automation, and data extraction. From Firecrawl to Playwright, these Model Context Protocol servers let your AI assistant crawl, extract, and transform web data at scale.",
+    date: "2026-05-10",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "8 min read",
+    keywords: ["mcp servers for web scraping", "web scraping mcp", "browser automation mcp", "firecrawl mcp", "playwright mcp server", "data extraction mcp"],
+    relatedServerSlugs: ["firecrawl", "apify", "browserbase", "puppeteer", "playwright", "brave-search", "fetch"],
+    content: `
+<p>Web scraping and data extraction are among the most common developer tasks — and the most tedious. Copying URLs into tools, waiting for crawls, cleaning messy HTML, and managing browser sessions eats hours every week.</p>
+
+<p>MCP servers change this entirely. By giving your AI assistant direct, structured access to web scraping tools, you can crawl sites, extract structured data, automate browsers, and transform raw HTML — all through natural language, without leaving your workflow.</p>
+
+<p>Here are the best MCP servers for web scraping and data extraction in 2026.</p>
+
+<h2>1. Firecrawl MCP Server — Production-Grade Web Crawling</h2>
+
+<p>Firecrawl is the go-to web crawling tool for developers who need clean, AI-ready content from any website. The Firecrawl MCP server brings this power directly into your AI assistant, letting you crawl and extract structured content without writing a line of crawler code.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Crawl entire websites and return clean markdown (strips ads, nav, boilerplate)</li>
+<li>Extract structured data from pages using AI-generated schemas</li>
+<li>Handle JavaScript-rendered pages automatically</li>
+<li>Respect robots.txt and rate limiting out of the box</li>
+<li>Batch scrape multiple URLs in a single request</li>
+</ul>
+
+<p><strong>Best for:</strong> Developers building competitive intelligence pipelines, content aggregators, or any workflow that starts with "I need to get data from this website." Ask your AI "crawl this competitor's pricing page and extract all plan names, features, and prices as JSON" — Firecrawl handles the rest.</p>
+
+<p><strong>Power use case:</strong> Crawl a company's entire blog, extract all article titles, dates, and summaries, then generate a content gap analysis against your own site — in a single AI conversation.</p>
+
+<h2>2. Apify MCP Server — Enterprise Scraping at Scale</h2>
+
+<p>Apify is the platform behind many production scraping workflows — thousands of pre-built scrapers (called Actors), managed infrastructure, and built-in proxy rotation. The Apify MCP server gives your AI assistant access to this entire ecosystem.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Run any Apify Actor directly from your AI chat (LinkedIn, Amazon, Google Maps, and thousands more)</li>
+<li>Retrieve Actor results as structured data</li>
+<li>Manage datasets and key-value stores</li>
+<li>Schedule recurring scrape jobs</li>
+<li>Access proxy pools for geo-targeted or anti-bot scraping</li>
+</ul>
+
+<p><strong>Best for:</strong> Teams that need ready-made scrapers for specific platforms (LinkedIn profiles, Google SERPs, Amazon product data, Yelp reviews). Instead of building a scraper from scratch, just run the right Actor. "Pull the top 50 Google results for 'best CRM software' using the Google Search Actor" is a real command you can run.</p>
+
+<h2>3. Browserbase MCP Server — Headless Browser in the Cloud</h2>
+
+<p>Browserbase provides managed headless Chromium instances in the cloud — no local browser setup, no memory leaks, no "works on my machine" issues. The Browserbase MCP server lets your AI assistant control these browsers directly for automation and scraping tasks.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Navigate to any URL and capture full-page screenshots</li>
+<li>Interact with forms, buttons, and dynamic UI elements</li>
+<li>Execute JavaScript in the browser context</li>
+<li>Handle authentication flows (cookies, sessions)</li>
+<li>Extract page content after JavaScript rendering</li>
+</ul>
+
+<p><strong>Best for:</strong> Scraping JavaScript-heavy single-page applications (SPAs) where static HTML fetchers fail. Great for automating workflows that require login — log in once, let the AI navigate the authenticated session. Particularly useful for extracting data from dashboards that don't offer an API.</p>
+
+<h2>4. Puppeteer MCP Server — Programmatic Browser Automation</h2>
+
+<p>Puppeteer is the classic headless Chrome library, and its MCP server brings that familiar browser automation capability into your AI assistant workflow. Unlike cloud solutions, Puppeteer runs locally — giving you full control over the browser instance.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Full headless Chrome control (navigation, clicks, form fills)</li>
+<li>Screenshot and PDF generation of any page</li>
+<li>Network request interception and response inspection</li>
+<li>Wait conditions for dynamic content (element appears, network idle)</li>
+<li>Multi-tab session management</li>
+</ul>
+
+<p><strong>Best for:</strong> Developers who prefer local browser control for privacy-sensitive scraping, or who need fine-grained network inspection. Also excellent for automated UI testing workflows where your AI can capture screenshots and verify visual regressions.</p>
+
+<h2>5. Playwright MCP Server — Cross-Browser Automation</h2>
+
+<p>Playwright extends beyond Chrome to cover Firefox and WebKit — important for testing cross-browser compatibility. The Playwright MCP server is particularly popular for QA automation combined with AI-assisted test generation.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Control Chrome, Firefox, and WebKit from a single interface</li>
+<li>Robust element selectors that don't break on minor UI changes</li>
+<li>Network mocking and request interception</li>
+<li>Mobile device emulation</li>
+<li>Parallel browser session management</li>
+</ul>
+
+<p><strong>Best for:</strong> QA engineers using AI to generate and run browser tests, and developers who need to verify scraper behavior across browser engines. "Test this checkout flow in Firefox and tell me if anything breaks" is a powerful use case.</p>
+
+<h2>6. Fetch MCP Server — Simple HTTP Requests</h2>
+
+<p>Not every scraping job needs a full browser. For static HTML pages, APIs, or simple data fetches, the Fetch MCP server is the fastest option — direct HTTP requests without browser overhead.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Fetch any public URL and return content as text, JSON, or markdown</li>
+<li>Set custom headers (User-Agent, Accept, Authorization)</li>
+<li>Handle redirects automatically</li>
+<li>Extract specific content with CSS selectors</li>
+<li>Support for pagination via sequential requests</li>
+</ul>
+
+<p><strong>Best for:</strong> Quick lookups, API polling, and scraping static pages where browser rendering isn't needed. Often the right first tool — reach for Firecrawl or Browserbase only when Fetch can't handle the job.</p>
+
+<h2>7. Brave Search MCP Server — Structured Web Data</h2>
+
+<p>Sometimes you don't need to scrape a specific page — you need to find relevant pages first. The Brave Search MCP server gives your AI assistant access to Brave's independent search index with structured results: titles, URLs, snippets, and metadata.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Web search with structured JSON results (not rendered HTML)</li>
+<li>News search with freshness filtering</li>
+<li>Image search with metadata</li>
+<li>SafeSearch controls</li>
+<li>No rate-limit surprises (unlike scraping Google directly)</li>
+</ul>
+
+<p><strong>Best for:</strong> Research workflows that start with "find me pages about X" before drilling into specific content. Use Brave Search to discover URLs, then Firecrawl or Fetch to extract the actual content — a powerful two-step pipeline.</p>
+
+<h2>Recommended Stacks for Common Use Cases</h2>
+
+<p>No single server handles every scraping scenario. Here's how to combine them:</p>
+
+<ul>
+<li><strong>Competitive intel pipeline:</strong> Brave Search (discover) → Firecrawl (crawl + extract) → filesystem (save)</li>
+<li><strong>SPA scraping:</strong> Browserbase or Puppeteer for rendering → structured data extraction</li>
+<li><strong>Large-scale platform data:</strong> Apify (pre-built Actors for LinkedIn, Amazon, etc.)</li>
+<li><strong>Quick lookups:</strong> Fetch (fastest, lowest overhead)</li>
+<li><strong>QA automation:</strong> Playwright (cross-browser) + filesystem (save screenshots)</li>
+</ul>
+
+<p>Browse the full <a href="/category/browser">Browser MCP servers</a> catalog and <a href="/category/api">API &amp; Web servers</a> catalog for more options. For AI-powered research workflows, see <a href="/blog/best-mcp-servers-for-research">Best MCP Servers for Research</a>.</p>
+    `.trim(),
+  },
+  {
+    slug: "best-mcp-servers-for-startups",
+    title: "Best MCP Servers for Startups in 2026: Ship Faster with AI",
+    description: "The top MCP servers for startup teams. From GitHub and Stripe to Notion and Linear, these Model Context Protocol servers let your AI assistant plug into your entire stack so a small team can move at the speed of a large one.",
+    date: "2026-05-10",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "8 min read",
+    keywords: ["mcp servers for startups", "startup mcp tools", "best mcp servers small team", "model context protocol startup", "ai tools for startups 2026"],
+    relatedServerSlugs: ["github", "stripe", "notion", "linear", "slack", "hubspot", "postgresql", "redis"],
+    content: `
+<p>Startups operate under a permanent constraint: not enough people, too much to do. Every hour spent context-switching between tools — checking GitHub for PR status, querying Stripe for revenue, reading Linear tickets, digging through Notion docs — is an hour not spent building.</p>
+
+<p>MCP servers collapse that overhead. By giving your AI assistant direct, real-time access to your entire stack, a team of five can operate with the situational awareness of a team of twenty. Here are the MCP servers that matter most for startups.</p>
+
+<h2>1. GitHub MCP Server — Your Entire Codebase in Context</h2>
+
+<p>For technical founders and small engineering teams, GitHub is the source of truth for everything. The GitHub MCP server gives your AI assistant live access to your repositories, PRs, issues, and CI status — transforming how you manage code and collaborate.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Search code across all your repositories with natural language</li>
+<li>Read PR diffs and review comments without switching tabs</li>
+<li>Create issues, assign them, and set labels from your AI chat</li>
+<li>Check CI workflow status and parse failing test output</li>
+<li>Browse commit history and file change timelines</li>
+</ul>
+
+<p><strong>Best for:</strong> Engineering leads doing async code review and issue triage. "Summarize all open PRs waiting for my review, flag any that have been open more than 3 days" — then actually act on them without leaving your flow.</p>
+
+<h2>2. Linear MCP Server — Sprint Management without the Meetings</h2>
+
+<p>Linear has become the default issue tracker for fast-moving startups. The Linear MCP server brings your backlog, sprints, and cycle progress into your AI assistant — letting you triage, prioritize, and update tickets conversationally.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>List and filter issues by assignee, status, label, or cycle</li>
+<li>Create new issues with priority, estimates, and descriptions</li>
+<li>Update issue status and add comments</li>
+<li>Query cycle progress and identify blockers</li>
+<li>Search across all issues with natural language</li>
+</ul>
+
+<p><strong>Best for:</strong> Founders and leads who run weekly planning in their AI chat. "What are the 3 highest-priority bugs assigned to the backend team this cycle?" gives you an instant answer without opening Linear.</p>
+
+<h2>3. Stripe MCP Server — Revenue Intelligence</h2>
+
+<p>For SaaS startups, Stripe is the financial heartbeat. The Stripe MCP server gives your AI assistant access to subscription data, payment events, customer records, and revenue metrics — without requiring a dedicated analytics engineer.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Query MRR, ARR, and churn rates in real time</li>
+<li>Look up specific customer subscriptions and payment history</li>
+<li>Identify failed payments and retry candidates</li>
+<li>Track new subscription events and upgrades</li>
+<li>Analyze cohort behavior (trial-to-paid conversion rates)</li>
+</ul>
+
+<p><strong>Best for:</strong> Founders who want revenue data on demand without waiting for a weekly report. "Which customers downgraded this week and what plan did they move to?" is a question you can answer in 30 seconds.</p>
+
+<h2>4. Notion MCP Server — Your Company Brain</h2>
+
+<p>Most startups store their institutional knowledge in Notion — product specs, onboarding docs, meeting notes, roadmaps. The Notion MCP server makes that knowledge base queryable by your AI assistant, turning a static wiki into a live knowledge resource.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Search across all your Notion pages and databases</li>
+<li>Read specific pages, documents, and database records</li>
+<li>Create and update pages from your AI chat</li>
+<li>Query structured databases (CRM tables, content calendars, project trackers)</li>
+<li>Navigate workspace hierarchy without opening the app</li>
+</ul>
+
+<p><strong>Best for:</strong> Teams that live in Notion but waste time navigating to specific pages. "Find our API rate limiting policy from the engineering handbook" returns the answer directly — no clicking through folders.</p>
+
+<h2>5. Slack MCP Server — Team Communication Context</h2>
+
+<p>Your team's decision-making history lives in Slack. The Slack MCP server gives your AI assistant access to channel history, threads, and user messages — letting you surface institutional knowledge that would otherwise get buried.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Search message history across channels with natural language</li>
+<li>Read threads and summarize discussions</li>
+<li>Post messages and replies on your behalf</li>
+<li>List channel members and user profiles</li>
+<li>Track reactions and responses to specific messages</li>
+</ul>
+
+<p><strong>Best for:</strong> Finding decisions that were made in Slack conversations months ago ("when did we decide to drop support for IE11?") and summarizing long threads before jumping in.</p>
+
+<h2>6. HubSpot MCP Server — Sales Pipeline Visibility</h2>
+
+<p>For startups with an outbound or inbound sales motion, HubSpot stores your pipeline, contact data, and deal history. The HubSpot MCP server makes that CRM data queryable without a sales ops person pulling reports.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Query deals by stage, owner, or close date</li>
+<li>Pull contact and company records with engagement history</li>
+<li>Update deal stages and add notes from your AI chat</li>
+<li>Calculate pipeline value and conversion rates by stage</li>
+<li>Identify stale deals that need follow-up</li>
+</ul>
+
+<p><strong>Best for:</strong> Founder-led sales where the CEO is also the account manager. "Which deals in the final stage haven't had any activity in 7 days?" — then immediately take action.</p>
+
+<h2>7. PostgreSQL MCP Server — Your Product Database</h2>
+
+<p>Your product database holds the ground truth for everything: user accounts, feature usage, billing state, audit logs. The PostgreSQL MCP server gives your AI assistant read access to your database — turning complex SQL queries into natural language questions.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Run read-only queries expressed in natural language</li>
+<li>Inspect table schemas and relationships</li>
+<li>Aggregate data across tables (user counts, feature adoption rates)</li>
+<li>Generate and explain complex SQL queries</li>
+<li>Profile query performance and identify slow queries</li>
+</ul>
+
+<p><strong>Best for:</strong> Founders and PMs who need product analytics without waiting for an engineer to write a query. Always configure with a read-only user and connection limits — never grant write access to an AI-facing connection.</p>
+
+<h2>8. Redis MCP Server — Cache & Queue Visibility</h2>
+
+<p>Redis quietly powers session management, job queues, rate limiting, and feature flags for most modern startups. When things go wrong — slow APIs, failed jobs, mysterious rate limit errors — Redis is often where the answer lives. The Redis MCP server makes that visibility instant.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Inspect key-value data and TTLs without a Redis CLI session</li>
+<li>Monitor queue depth for background job systems (Sidekiq, BullMQ)</li>
+<li>Check cache hit rates and memory usage patterns</li>
+<li>Identify hot keys causing latency spikes</li>
+<li>Review pub/sub channel activity</li>
+</ul>
+
+<p><strong>Best for:</strong> Debugging production incidents where the root cause is in Redis state. "Why are jobs piling up in the email queue?" is answerable in seconds when your AI can inspect queue depth directly.</p>
+
+<h2>The Startup MCP Stack</h2>
+
+<p>You don't need all of these on day one. Here's a suggested rollout by stage:</p>
+
+<ul>
+<li><strong>Pre-launch:</strong> GitHub + filesystem (build faster)</li>
+<li><strong>Post-launch:</strong> Add Stripe + PostgreSQL (understand your product)</li>
+<li><strong>Series A:</strong> Add Linear + Notion + Slack (scale the team without losing context)</li>
+<li><strong>Growth:</strong> Add HubSpot + Redis (optimize sales and reliability)</li>
+</ul>
+
+<p>Browse the full <a href="/category/productivity">Productivity MCP servers</a> and <a href="/category/coding">Coding &amp; Dev servers</a> for more options. For AI-powered project management specifically, see <a href="/blog/best-mcp-servers-for-project-management">Best MCP Servers for Project Management</a>.</p>
+    `.trim(),
+  },
+  {
+    slug: "best-mcp-servers-for-learning",
+    title: "Best MCP Servers for Learning & Education in 2026",
+    description: "The top MCP servers for students, researchers, and lifelong learners. From Readwise and Anki to Zotero and Brave Search, these Model Context Protocol servers turn your AI assistant into a personal learning accelerator.",
+    date: "2026-05-10",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "7 min read",
+    keywords: ["mcp servers for education", "learning mcp tools", "mcp servers for students", "readwise mcp server", "anki mcp server", "zotero mcp server"],
+    relatedServerSlugs: ["readwise-mcp", "anki-mcp", "zotero-mcp", "notion", "brave-search", "fetch", "memory"],
+    content: `
+<p>Learning is increasingly AI-assisted — but most AI workflows treat learning as passive: ask a question, get an answer, move on. The result is shallow retention and disconnected knowledge.</p>
+
+<p>MCP servers change this. By connecting your AI assistant to your actual learning tools — your highlights, flashcard decks, reference library, and notes — you get an AI that works with your knowledge, not around it. Here are the best MCP servers for learners, students, and researchers.</p>
+
+<h2>1. Readwise MCP Server — Your Highlights, Unified</h2>
+
+<p>Readwise aggregates highlights from Kindle, Instapaper, Pocket, web articles, and PDFs into a single searchable library. The Readwise MCP server gives your AI assistant access to everything you've ever highlighted — turning months of reading into instantly queryable context.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Search highlights across all your books, articles, and documents</li>
+<li>Filter by source, author, tag, or date range</li>
+<li>Access Readwise Reader annotations and notes</li>
+<li>Surface relevant past highlights during current learning sessions</li>
+<li>Review daily highlights programmatically</li>
+</ul>
+
+<p><strong>Best for:</strong> Connecting your current study topic to things you've read before. "Find everything I've highlighted about cognitive biases" surfaces passages from across your entire reading history — Kahneman, Cialdini, behavioral economics papers — in a single query. Great for synthesis and avoiding the "I know I read something about this..." frustration.</p>
+
+<h2>2. Anki MCP Server — Flashcard Intelligence</h2>
+
+<p>Anki is the gold standard for spaced-repetition learning, used by medical students, language learners, and anyone mastering dense technical material. The Anki MCP server brings your decks and review data into your AI assistant — letting you create cards, analyze weak spots, and optimize your study schedule.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Browse your decks and card counts</li>
+<li>Add new cards (front/back) directly from your AI chat</li>
+<li>Query cards due for review today</li>
+<li>Identify cards with low retention rates (frequent lapses)</li>
+<li>Search your card library by keyword or tag</li>
+</ul>
+
+<p><strong>Best for:</strong> Rapidly converting learning sessions into Anki cards without leaving your workflow. Reading a dense technical document? "Generate 10 Anki cards from the key concepts in this passage" and add them directly to your deck. Also useful for identifying which topics your review data says you're weakest on.</p>
+
+<h2>3. Zotero MCP Server — Academic Reference Management</h2>
+
+<p>Zotero is the reference manager of choice for academics, researchers, and serious non-fiction readers. It stores your papers, books, and web pages with full citation metadata. The Zotero MCP server makes your reference library queryable by your AI assistant.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Search your library by title, author, abstract, or tags</li>
+<li>Retrieve full citation metadata (author, journal, DOI, year)</li>
+<li>Access notes and annotations attached to references</li>
+<li>List items in specific collections or reading lists</li>
+<li>Generate formatted citations in APA, MLA, Chicago, and more</li>
+</ul>
+
+<p><strong>Best for:</strong> Literature reviews and academic writing. "Find all papers in my library about transformer architectures published after 2022" returns structured results your AI can then summarize, compare, or cite. Dramatically speeds up the research-to-writing pipeline.</p>
+
+<h2>4. Notion MCP Server — Structured Study Notes</h2>
+
+<p>Many learners use Notion as their personal knowledge base — organized by subject, course, or project. The Notion MCP server makes that structure queryable, turning your notes into an active resource rather than a static archive.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Search all your notes across workspaces and databases</li>
+<li>Read and update specific pages without opening the app</li>
+<li>Create new notes and study logs from your AI chat</li>
+<li>Query structured databases (course trackers, book lists, project logs)</li>
+<li>Build connections between concepts across different note pages</li>
+</ul>
+
+<p><strong>Best for:</strong> Students who organize coursework in Notion. "Summarize my notes from Week 3 of the machine learning course and identify gaps I should review" works when your AI can actually see those notes. Also excellent for maintaining a learning journal that your AI can reference across sessions.</p>
+
+<h2>5. Brave Search MCP Server — Research Without Tab Switching</h2>
+
+<p>Research starts with discovery. The Brave Search MCP server gives your AI assistant access to Brave's independent search index — letting you find sources, check facts, and explore topics without leaving your current workflow to open a browser.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Search the web with structured results (title, URL, snippet)</li>
+<li>News search with freshness controls</li>
+<li>Find recent academic discussions and preprints</li>
+<li>Verify claims and check current information</li>
+<li>Discover related topics and alternative perspectives</li>
+</ul>
+
+<p><strong>Best for:</strong> Keeping your AI's knowledge current. Your AI assistant's training data has a cutoff — Brave Search adds real-time web context. "What are the latest benchmarks for this model as of this week?" is now answerable within your learning session.</p>
+
+<h2>6. Fetch MCP Server — Read Any Article or Paper</h2>
+
+<p>When a specific article, blog post, or publicly accessible paper is central to your learning, the Fetch MCP server retrieves it directly into your AI context. No need to copy-paste — just provide the URL.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Fetch any publicly accessible URL as clean text or markdown</li>
+<li>Handle standard academic preprint servers (arXiv HTML pages)</li>
+<li>Extract article content without ads and navigation clutter</li>
+<li>Retrieve multiple pages in sequence for multi-part content</li>
+</ul>
+
+<p><strong>Best for:</strong> Deep-reading sessions where you want your AI to engage with a specific article alongside you. "Fetch this arXiv paper, then explain the methodology section in plain English and identify the key assumptions" is a powerful study workflow.</p>
+
+<h2>7. Memory MCP Server — Persistent Learning Context</h2>
+
+<p>AI assistants don't remember previous conversations by default — which means every learning session starts from scratch. The Memory MCP server gives your AI a persistent knowledge store, letting it remember what you've learned, what you're struggling with, and what context to carry forward.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Store and retrieve facts, concepts, and preferences</li>
+<li>Build a knowledge graph of connected ideas over time</li>
+<li>Tag memories by topic, date, or confidence level</li>
+<li>Surface relevant past knowledge during new learning sessions</li>
+<li>Track ongoing questions and open loops</li>
+</ul>
+
+<p><strong>Best for:</strong> Long-term learning projects where continuity matters — learning a new programming language, working through a multi-week course, or building expertise in a domain over months. The Memory server turns your AI from a stateless tool into a true learning companion.</p>
+
+<h2>Building Your Learning Stack</h2>
+
+<p>The right combination depends on your learning style:</p>
+
+<ul>
+<li><strong>Reading-focused learner:</strong> Readwise + Brave Search + Fetch (capture highlights, find sources, read anything)</li>
+<li><strong>Academic researcher:</strong> Zotero + Brave Search + Fetch + Notion (reference management + notes + discovery)</li>
+<li><strong>Active recall learner:</strong> Anki + Readwise (flashcards from highlights, identify weak spots)</li>
+<li><strong>Knowledge builder:</strong> Memory + Notion + Readwise (persistent context across all sessions)</li>
+</ul>
+
+<p>Browse the full <a href="/category/memory">Memory &amp; Knowledge MCP servers</a> and <a href="/category/productivity">Productivity servers</a> for more options. For research-specific workflows, see <a href="/blog/best-mcp-servers-for-research">Best MCP Servers for Research</a>.</p>
+    `.trim(),
+  },
 ];
 
 export function getBlogPostBySlug(slug: string): BlogPost | undefined {
