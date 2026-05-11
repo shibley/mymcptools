@@ -15609,6 +15609,342 @@ jupyter mcp install</code></pre>
 <p>Browse all <a href="/category/productivity">Productivity MCP servers</a>, <a href="/category/finance">Finance MCP servers</a>, and <a href="/category/analytics">Analytics MCP servers</a> to build your ideal founder stack. For marketing automation, see <a href="/blog/best-mcp-servers-for-marketing">Best MCP Servers for Marketing</a>.</p>
     `.trim(),
   },
+  {
+    slug: "best-mcp-servers-for-iot-developers",
+    title: "Best MCP Servers for IoT Developers in 2026: Sensors, Devices & Home Automation",
+    description: "Top MCP servers for IoT developers. Connect your AI to MQTT brokers, openHAB, Grafana dashboards, and time-series databases to build smarter device workflows.",
+    date: "2026-05-11",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "7 min read",
+    keywords: ["best mcp servers for iot", "iot mcp server", "mqtt mcp", "home automation mcp", "model context protocol iot"],
+    relatedServerSlugs: ["mqtt", "openhab", "grafana", "postgresql", "influxdb", "fetch", "brave-search"],
+    content: `
+<p>IoT development lives at the intersection of hardware, networking, and data — and that complexity makes AI assistance especially valuable. The right MCP servers can give your AI direct access to device telemetry, automation rules, and dashboards, turning vague debugging sessions into precise, context-rich conversations.</p>
+
+<p>Here are the best MCP servers for IoT developers in 2026.</p>
+
+<h2>1. MQTT MCP Server — Talk to Your Devices</h2>
+
+<p>MQTT is the backbone of IoT messaging: lightweight, pub/sub, and purpose-built for constrained devices on unreliable networks. The <a href="/servers/mqtt">MQTT MCP server</a> gives your AI assistant the ability to publish and subscribe to MQTT topics, inspect live payloads, and interact with any MQTT-enabled device or sensor.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Subscribe to topics and read live sensor payloads</li>
+<li>Publish control commands to devices</li>
+<li>Inspect message structure and diagnose payload schema issues</li>
+<li>Test device connectivity by sending test messages</li>
+</ul>
+
+<p><strong>Why it matters for IoT:</strong> Instead of running separate MQTT clients to debug device communication, you can have a conversation: "What is my temperature sensor publishing on topic home/sensors/temp?" or "Send a reset command to device ID 42." Your AI sees the raw data and can help you interpret it immediately.</p>
+
+<p><strong>Best for:</strong> Any developer working with MQTT-enabled devices — from home automation sensors to industrial equipment to connected vehicles.</p>
+
+<h2>2. openHAB MCP Server — Home Automation Intelligence</h2>
+
+<p>openHAB is one of the most popular open-source home automation platforms, and the <a href="/servers/openhab">openHAB MCP server</a> makes your entire automation setup accessible to your AI. Query item states, trigger rules, and manage your smart home configuration conversationally.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Query the state of any item (lights, locks, sensors, thermostats)</li>
+<li>Trigger rules and scenes by name</li>
+<li>List configured items, channels, and bindings</li>
+<li>Read automation rule logic for debugging or optimization</li>
+</ul>
+
+<p><strong>Why it matters for IoT:</strong> Home automation debugging is notoriously opaque — rules fire at odd times, states don't update, devices fall off the network. With openHAB MCP, you can ask "Why didn't my motion-triggered light rule fire last night?" and get a real answer grounded in your actual configuration, not guesswork.</p>
+
+<p><strong>Best for:</strong> Home automation enthusiasts and smart home developers running openHAB on Raspberry Pi or dedicated home servers.</p>
+
+<h2>3. Grafana MCP Server — Visualize and Diagnose Device Telemetry</h2>
+
+<p>Most IoT deployments funnel sensor data into time-series databases and visualize it in Grafana. The <a href="/servers/grafana">Grafana MCP server</a> gives your AI access to your dashboards, panels, and alert configurations — so you can diagnose anomalies and understand device health without tab-switching.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Query dashboard panels and data sources</li>
+<li>Inspect alert rules and current alert states</li>
+<li>Search dashboards by name or tag</li>
+<li>Pull current metric values for any panel</li>
+</ul>
+
+<p><strong>Why it matters for IoT:</strong> When a device starts misbehaving, you need to cross-reference multiple dashboards — power consumption, network latency, sensor readings. With Grafana MCP, you can describe what you're seeing in plain language and let your AI navigate the dashboards to identify the correlation.</p>
+
+<p><strong>Best for:</strong> IoT teams using Grafana for device fleet monitoring, industrial telemetry, or home energy dashboards.</p>
+
+<h2>4. PostgreSQL MCP Server — Query Device History</h2>
+
+<p>Many IoT backends store device data in PostgreSQL — event logs, configuration history, device registry. The <a href="/servers/postgresql">PostgreSQL MCP server</a> lets your AI query that data directly, enabling questions like "Which devices haven't reported in the last 24 hours?" or "Show me the 10 sensors with the highest error rate this week."</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Schema introspection — understand device registry tables immediately</li>
+<li>Natural language to SQL for complex event queries</li>
+<li>Read-only by default (safe for production databases)</li>
+<li>Explain query plans for performance optimization</li>
+</ul>
+
+<p><strong>Best for:</strong> IoT backends using PostgreSQL for device management, event storage, or time-series data (with TimescaleDB extension).</p>
+
+<h2>5. Brave Search MCP Server — Debug with Current Documentation</h2>
+
+<p>IoT development frequently runs into obscure hardware quirks, protocol edge cases, and firmware-specific behavior. The <a href="/servers/brave-search">Brave Search MCP server</a> gives your AI access to current documentation, forum threads, and community solutions — especially useful when dealing with niche sensors or hardware with sparse official docs.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Search for device-specific error codes or behaviors</li>
+<li>Pull current firmware release notes</li>
+<li>Find community workarounds for known bugs</li>
+<li>Research protocol specifications (MQTT, CoAP, Zigbee, Z-Wave)</li>
+</ul>
+
+<p><strong>Best for:</strong> Any IoT developer who spends time searching forums for hardware-specific answers. Keeps research in-context rather than requiring constant tab-switching.</p>
+
+<h2>6. Fetch MCP Server — Read Device Documentation Inline</h2>
+
+<p>Hardware manufacturers publish datasheets, API references, and integration guides online. The <a href="/servers/fetch">Fetch MCP server</a> lets your AI pull any public documentation into context as clean text — so you can ask "What does register 0x3F control on this sensor?" and get an answer grounded in the actual datasheet.</p>
+
+<p><strong>Best for:</strong> Developers integrating unfamiliar sensors or modules who want to discuss documentation without copy-pasting PDF content.</p>
+
+<h2>The IoT Developer MCP Stack</h2>
+
+<p>You don't need all six — match your stack:</p>
+
+<ul>
+<li><strong>Home automation:</strong> MQTT + openHAB + Brave Search (control + debug + research)</li>
+<li><strong>Industrial IoT:</strong> MQTT + Grafana + PostgreSQL (messaging + monitoring + history)</li>
+<li><strong>Hardware prototyping:</strong> Fetch + Brave Search + MQTT (documentation + community answers + device testing)</li>
+<li><strong>Fleet management:</strong> PostgreSQL + Grafana + Brave Search (device registry + dashboards + research)</li>
+</ul>
+
+<p>Browse all <a href="/category/devops">DevOps MCP servers</a> and <a href="/category/analytics">Analytics MCP servers</a> on MyMCPTools to expand your IoT development workflow. For cloud infrastructure that powers IoT backends, see <a href="/blog/best-mcp-servers-for-aws">Best MCP Servers for AWS</a>.</p>
+    `.trim(),
+  },
+  {
+    slug: "best-mcp-servers-for-academic-researchers",
+    title: "Best MCP Servers for Academic Researchers in 2026: Literature, Citations & Data",
+    description: "Top MCP servers for academic researchers. Search PubMed, manage Zotero citations, look up DOIs via Crossref, and access Wikipedia — all from your AI assistant.",
+    date: "2026-05-11",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "7 min read",
+    keywords: ["best mcp servers for researchers", "academic mcp server", "pubmed mcp", "zotero mcp", "research mcp tools"],
+    relatedServerSlugs: ["pubmed", "zotero-mcp", "crossref", "wikipedia", "brave-search", "fetch", "pdf-reader"],
+    content: `
+<p>Academic research is fundamentally about synthesizing information — literature reviews, citation management, data analysis, and writing. AI assistants are increasingly central to that workflow, but they're most useful when they have access to actual sources rather than hallucinated ones. That's exactly where MCP servers make the difference.</p>
+
+<p>Here are the best MCP servers for academic researchers in 2026.</p>
+
+<h2>1. PubMed / NCBI MCP Server — Biomedical Literature Search</h2>
+
+<p>For life sciences and biomedical research, PubMed is the primary database. The <a href="/servers/pubmed">PubMed / NCBI MCP server</a> gives your AI direct access to 35+ million biomedical citations — enabling literature searches, abstract retrieval, and clinical trial queries without leaving your AI conversation.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Search PubMed by keyword, author, journal, or MeSH term</li>
+<li>Retrieve full abstracts with PMID, DOI, and author information</li>
+<li>Access NCBI databases: Gene, Protein, ClinicalTrials.gov</li>
+<li>Filter by publication date, article type, or species</li>
+</ul>
+
+<p><strong>Why it matters:</strong> Literature reviews become conversational. Instead of running separate PubMed queries and copying abstracts, you can ask "What does the recent literature say about IL-6 in post-COVID fatigue?" and get grounded answers with real citations. Your AI can't fabricate a PMID.</p>
+
+<p><strong>Best for:</strong> Biomedical researchers, clinical researchers, pharmacologists, and anyone writing in life science fields.</p>
+
+<h2>2. Zotero MCP Server — Your Reference Library in Context</h2>
+
+<p>Zotero is the reference manager of choice for academics who care about open-source software and control over their citations. The <a href="/servers/zotero-mcp">Zotero MCP server</a> connects your AI directly to your Zotero library — so it can search your existing references, retrieve metadata, and help you cite accurately.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Search your Zotero library by title, author, tag, or keyword</li>
+<li>Retrieve full bibliographic metadata for any reference</li>
+<li>List items in specific collections or by publication year</li>
+<li>Access notes and annotations attached to references</li>
+</ul>
+
+<p><strong>Why it matters:</strong> When writing, you shouldn't need to switch to Zotero to find the right citation. With this server, you can say "Find me the Smith et al. paper I have saved about neuroplasticity" and get the exact reference — formatted correctly — without leaving your writing workflow.</p>
+
+<p><strong>Best for:</strong> Any academic who manages citations in Zotero. Particularly powerful for PhD students and researchers during the writing phase of projects.</p>
+
+<h2>3. Crossref DOI MCP Server — Authoritative Paper Metadata</h2>
+
+<p>Crossref is the authoritative source for DOI-based academic metadata — journal articles, conference papers, books, datasets. The <a href="/servers/crossref">Crossref DOI MCP server</a> lets your AI look up any paper by DOI or search the scholarly literature database for verified publication data.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Retrieve complete metadata for any paper by DOI</li>
+<li>Search Crossref by author, title, journal, or ISSN</li>
+<li>Get citation counts and reference lists where available</li>
+<li>Verify publication details (year, volume, issue, pages) for accurate citations</li>
+</ul>
+
+<p><strong>Why it matters:</strong> Citation accuracy matters in academic writing. Instead of relying on potentially stale database records, Crossref provides the authoritative metadata registered by publishers. It's also useful for verifying that a paper actually exists before citing it — a basic sanity check that prevents embarrassing errors.</p>
+
+<p><strong>Best for:</strong> Researchers across all disciplines who need verified citation metadata. Essential for systematic reviews where citation accuracy is critical.</p>
+
+<h2>4. Wikipedia MCP Server — Fast Background Context</h2>
+
+<p>Wikipedia isn't a citable academic source, but it's invaluable for quickly understanding terminology, background context, and the lay of the land in an unfamiliar subfield. The <a href="/servers/wikipedia">Wikipedia MCP server</a> lets your AI pull Wikipedia articles into context without you having to navigate there yourself.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Search Wikipedia by title or keyword</li>
+<li>Retrieve article text, sections, and summaries</li>
+<li>Follow references to related concepts</li>
+<li>Access Wikipedia in multiple languages</li>
+</ul>
+
+<p><strong>Why it matters:</strong> When you're reading a paper in an adjacent field, the jargon can be opaque. Rather than interrupting your flow by opening Wikipedia, you can ask your AI to pull the relevant background article into context and explain the terminology in relation to what you're reading.</p>
+
+<p><strong>Best for:</strong> Interdisciplinary researchers who regularly work across fields, and early-stage researchers building foundational knowledge in a new area.</p>
+
+<h2>5. PDF Reader MCP Server — Engage with Papers Directly</h2>
+
+<p>PDFs are how academic knowledge travels. The <a href="/servers/pdf-reader">PDF Reader MCP server</a> lets your AI extract text from local PDF files — enabling you to ask questions about specific papers, compare sections across documents, or summarize methods sections without copy-pasting.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Extract text from local PDFs by file path</li>
+<li>Query specific sections (methods, results, discussion)</li>
+<li>Compare content across multiple paper PDFs</li>
+<li>Extract tables and figures text where supported</li>
+</ul>
+
+<p><strong>Best for:</strong> Any researcher with a folder of downloaded papers. Particularly useful for systematic review teams who need to extract standardized data from multiple papers.</p>
+
+<h2>6. Brave Search MCP Server — Current Research Landscape</h2>
+
+<p>Academic databases have indexing delays. For genuinely recent developments — preprints, conference proceedings, newly published studies — the <a href="/servers/brave-search">Brave Search MCP server</a> gives your AI access to the current web, including arXiv, bioRxiv, SSRN, and institutional repositories.</p>
+
+<p><strong>Best for:</strong> Staying current on fast-moving research areas where database indexing lags, or finding grey literature not captured in formal databases.</p>
+
+<h2>The Academic Researcher MCP Stack</h2>
+
+<p>Match your server selection to your research phase:</p>
+
+<ul>
+<li><strong>Literature review:</strong> PubMed + Crossref + Zotero (search → verify → file references)</li>
+<li><strong>Writing phase:</strong> Zotero + Crossref + Wikipedia (citations + verification + background)</li>
+<li><strong>Reading and annotation:</strong> PDF Reader + PubMed + Brave Search (engage with papers + context + current updates)</li>
+<li><strong>Interdisciplinary work:</strong> All of the above — field boundaries require more context sources</li>
+</ul>
+
+<p>Browse all <a href="/category/search">Search MCP servers</a> and <a href="/category/productivity">Productivity MCP servers</a> on MyMCPTools. For researchers using Python for data analysis, see <a href="/blog/best-mcp-servers-for-data-science">Best MCP Servers for Data Science</a>.</p>
+    `.trim(),
+  },
+  {
+    slug: "best-mcp-servers-for-wordpress-developers",
+    title: "Best MCP Servers for WordPress Developers in 2026",
+    description: "Top MCP servers for WordPress developers. Manage content, debug plugins, search documentation, and automate WordPress workflows with AI — all via MCP.",
+    date: "2026-05-11",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "6 min read",
+    keywords: ["best mcp servers for wordpress", "wordpress mcp server", "wordpress ai tools", "wordpress developer mcp"],
+    relatedServerSlugs: ["wordpress", "github", "filesystem", "brave-search", "fetch", "postgresql", "puppeteer"],
+    content: `
+<p>WordPress powers over 40% of the web — and that massive footprint means WordPress developers spend their days navigating a sprawling ecosystem of plugins, themes, hooks, and database quirks. AI assistance is increasingly useful for this work, but only when the AI can actually see your WordPress environment. That's where MCP servers come in.</p>
+
+<p>Here are the best MCP servers for WordPress developers in 2026.</p>
+
+<h2>1. WordPress MCP Server — Direct Site Management</h2>
+
+<p>The <a href="/servers/wordpress">WordPress MCP server</a> connects your AI directly to your WordPress site via the REST API. Create posts, manage pages, handle media, check plugin status, and automate publishing workflows — all from your AI conversation.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Create and edit posts, pages, and custom post types</li>
+<li>Query and manage categories, tags, and taxonomies</li>
+<li>Handle media uploads and attachments</li>
+<li>Check plugin and theme activation status</li>
+<li>Access user accounts and role assignments</li>
+</ul>
+
+<p><strong>Why it matters:</strong> Content management tasks that normally require navigating the WP admin — especially programmatic bulk operations — become conversational. "Create draft posts for all 50 items in this product list" becomes a single instruction rather than 50 manual entries.</p>
+
+<p><strong>Setup note:</strong> Requires a WordPress Application Password (generated in Users → Profile → Application Passwords). Works with self-hosted WordPress and WordPress.com business plans.</p>
+
+<p><strong>Best for:</strong> WordPress developers building content pipelines, managing client sites, or building pSEO content at scale.</p>
+
+<h2>2. Filesystem MCP Server — Work with Theme and Plugin Code</h2>
+
+<p>WordPress development is file-heavy: themes, child themes, custom plugins, functions.php, configuration files. The <a href="/servers/filesystem">Filesystem MCP server</a> gives your AI direct access to your local WordPress installation — so it can read template files, inspect plugin code, and write changes with your oversight.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read and write PHP files (templates, plugins, functions.php)</li>
+<li>Navigate directory structures (wp-content/themes/, wp-content/plugins/)</li>
+<li>Search code across multiple files for hooks, filters, or functions</li>
+<li>View configuration files (wp-config.php, .htaccess)</li>
+</ul>
+
+<p><strong>Why it matters:</strong> Debugging a WordPress site means reading through theme and plugin files to trace hook execution. Instead of opening files manually, you can describe what you're looking for and let your AI navigate the codebase: "Find where the_content filter is being modified across all active plugins."</p>
+
+<p><strong>Best for:</strong> WordPress developers working on local environments (LocalWP, MAMP, Docker) or via SSH file access to staging/production.</p>
+
+<h2>3. GitHub MCP Server — Plugin and Theme Version Control</h2>
+
+<p>Custom WordPress plugins and themes belong in version control. The <a href="/servers/github">GitHub MCP server</a> connects your AI to your plugin or theme repositories — enabling code review, issue management, and deployment tracking without leaving your AI conversation.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Browse plugin/theme repository files and commit history</li>
+<li>Create and review pull requests for plugin updates</li>
+<li>Search code for specific WordPress hooks or function names</li>
+<li>Manage issues for client bug reports or feature requests</li>
+</ul>
+
+<p><strong>Best for:</strong> WordPress agencies and freelancers who version-control their custom plugins and themes, or who maintain client sites through GitHub-based deployment workflows.</p>
+
+<h2>4. Brave Search MCP Server — WordPress Ecosystem Research</h2>
+
+<p>WordPress development is an ecosystem problem as much as a coding problem. Which plugin handles this use case? Is this hook available in WooCommerce 8.x? Has this security vulnerability been patched? The <a href="/servers/brave-search">Brave Search MCP server</a> gives your AI access to current WordPress documentation, support forums, and security advisories.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Search the WordPress Developer Handbook for hooks and functions</li>
+<li>Find plugin compatibility information for specific WordPress versions</li>
+<li>Research security vulnerabilities in plugins or themes</li>
+<li>Find WooCommerce documentation and Stack Overflow answers</li>
+</ul>
+
+<p><strong>Best for:</strong> Any WordPress developer who regularly references documentation, debug answers, or plugin compatibility information while building.</p>
+
+<h2>5. Fetch MCP Server — Read Documentation Inline</h2>
+
+<p>WordPress has extensive official documentation — the Developer Handbook, WooCommerce docs, plugin readme files, changelog pages. The <a href="/servers/fetch">Fetch MCP server</a> pulls any public URL into your AI conversation as clean text, so you can discuss documentation in context without tab-switching.</p>
+
+<p><strong>Why it matters:</strong> When integrating a new plugin API or debugging a WooCommerce hook, having the documentation in the same conversation as your code discussion removes constant context-switching — a major source of friction in WordPress development.</p>
+
+<p><strong>Best for:</strong> Developers integrating third-party plugins or building against WooCommerce, ACF, or other plugin APIs with extensive documentation.</p>
+
+<h2>6. PostgreSQL MCP Server — Advanced Database Work</h2>
+
+<p>While WordPress runs on MySQL by default, many advanced setups use external databases or need AI-assisted query work. The <a href="/servers/postgresql">PostgreSQL MCP server</a> is useful for developers who've migrated WordPress to PostgreSQL (via plugins like PG4WP) or who maintain companion databases alongside WordPress.</p>
+
+<p>Even for standard MySQL setups, this server's pattern of AI-assisted schema introspection and query writing applies: understanding WordPress table structure (wp_posts, wp_postmeta, wp_options) and writing efficient queries becomes much faster when your AI can inspect the schema directly.</p>
+
+<p><strong>Best for:</strong> Advanced WordPress developers doing custom database work, performance optimization, or building on top of the WordPress database directly.</p>
+
+<h2>7. Puppeteer MCP Server — End-to-End Testing</h2>
+
+<p>WordPress sites need testing — especially after plugin updates, theme changes, or WooCommerce modifications. The <a href="/servers/puppeteer">Puppeteer MCP server</a> gives your AI the ability to control a browser, enabling automated testing scenarios: does the checkout flow still work? Does the contact form submit correctly?</p>
+
+<p><strong>Best for:</strong> WordPress developers who need to test UI flows after updates, or agencies managing client sites where regressions after updates are a real risk.</p>
+
+<h2>The WordPress Developer MCP Stack</h2>
+
+<ul>
+<li><strong>Content management:</strong> WordPress + Filesystem (site API + local code)</li>
+<li><strong>Custom development:</strong> Filesystem + GitHub + Brave Search (code + version control + docs)</li>
+<li><strong>Client site management:</strong> WordPress + Brave Search + Fetch (site control + research + documentation)</li>
+<li><strong>Agency workflow:</strong> All of the above — client site diversity demands every context source</li>
+</ul>
+
+<p>Browse all <a href="/category/coding">Coding MCP servers</a> on MyMCPTools. For PHP-heavy backend work beyond WordPress, see <a href="/blog/best-mcp-servers-for-developers">Best MCP Servers for Developers</a> and <a href="/blog/best-mcp-servers-for-database">Best MCP Servers for Database</a>.</p>
+    `.trim(),
+  },
 ];
 
 export function getBlogPostBySlug(slug: string): BlogPost | undefined {
