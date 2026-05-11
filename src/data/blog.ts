@@ -15186,6 +15186,429 @@ jupyter mcp install</code></pre>
 <p>Browse the full <a href="/category/memory">Memory &amp; Knowledge MCP servers</a> and <a href="/category/productivity">Productivity servers</a> for more options. For research-specific workflows, see <a href="/blog/best-mcp-servers-for-research">Best MCP Servers for Research</a>.</p>
     `.trim(),
   },
+  {
+    slug: "best-mcp-servers-for-mobile-developers",
+    title: "Best MCP Servers for Mobile Developers in 2026",
+    description: "The top MCP servers for React Native, Expo, iOS, and Android developers. Supercharge your mobile development workflow with AI-powered tools for debugging, backend integration, and more.",
+    date: "2026-05-11",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "7 min read",
+    keywords: ["best mcp servers for mobile developers", "mcp servers react native", "mcp expo", "mcp ios development", "mcp android development", "model context protocol mobile"],
+    relatedServerSlugs: ["filesystem", "github", "sqlite", "appwrite-mcp", "pocketbase-mcp", "brave-search", "memory", "fetch"],
+    content: `
+<p>Mobile development has always involved juggling dozens of tools — simulators, device logs, backend APIs, asset pipelines, app stores. MCP servers are changing that by giving your AI assistant direct access to the tools you already use, so you spend less time context-switching and more time shipping.</p>
+
+<p>Whether you're building in React Native, Expo, SwiftUI, or Kotlin, these MCP servers will meaningfully upgrade your mobile dev workflow.</p>
+
+<h2>1. Filesystem MCP Server — Your Project, AI-Accessible</h2>
+
+<p>Every mobile project starts with files. The <a href="/servers/filesystem">Filesystem MCP server</a> gives your AI full visibility into your project structure — components, screens, navigation configs, native modules — so it can reason about your codebase without you pasting snippets.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read and navigate deeply nested project trees (typical RN projects are 3-4 directories deep)</li>
+<li>Inspect native module bridges in <code>ios/</code> and <code>android/</code> subdirectories</li>
+<li>Write generated code files (component scaffolds, store slices, navigation configs)</li>
+<li>Search for specific patterns across all TypeScript/Swift/Kotlin files</li>
+</ul>
+
+<p><strong>Best for:</strong> Every mobile developer. The filesystem server is the foundation everything else builds on.</p>
+
+<h2>2. GitHub MCP Server — PR Reviews and Issue Triage While You Ship</h2>
+
+<p>The <a href="/servers/github">GitHub MCP server</a> turns your AI into a capable PR reviewer and issue triage assistant. For mobile teams, this is particularly valuable during release weeks when you need to track platform-specific bugs across iOS and Android.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Fetch open PRs and review diffs in context</li>
+<li>Search issues by label (<code>ios-only</code>, <code>android-regression</code>, <code>crash</code>)</li>
+<li>Create issues with structured reproduction steps</li>
+<li>Check CI/CD run status without leaving your workflow</li>
+</ul>
+
+<p><strong>Best for:</strong> Teams managing parallel iOS and Android bug queues, or anyone doing release gating.</p>
+
+<h2>3. SQLite MCP Server — Local Database Inspection</h2>
+
+<p>SQLite powers local storage in most mobile apps — from React Native's AsyncStorage alternatives to Core Data's underlying store to Android's Room database. The <a href="/servers/sqlite">SQLite MCP server</a> lets your AI inspect local database schemas and debug data issues conversationally.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Schema introspection: tables, columns, indexes, foreign keys</li>
+<li>Query execution against simulator or extracted device databases</li>
+<li>Data migration assistance (identify breaking schema changes)</li>
+<li>Offline-first app debugging</li>
+</ul>
+
+<p><strong>Best for:</strong> Apps with local persistence layers, offline-first architectures, or complex data models.</p>
+
+<h2>4. Appwrite MCP Server — Backend in Context</h2>
+
+<p>For mobile developers using Appwrite as their backend-as-a-service, the <a href="/servers/appwrite-mcp">Appwrite MCP server</a> brings your collections, functions, and auth configuration directly into your AI conversation.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Browse database collections and documents</li>
+<li>Inspect function deployments and logs</li>
+<li>Check user authentication state and permissions</li>
+<li>Query storage buckets and file metadata</li>
+</ul>
+
+<p><strong>Best for:</strong> Indie developers and small teams using Appwrite as a Firebase alternative.</p>
+
+<h2>5. PocketBase MCP Server — Self-Hosted Backend for Mobile</h2>
+
+<p>PocketBase is increasingly popular among mobile developers who want a self-hosted backend without the complexity of a full cloud stack. The <a href="/servers/pocketbase-mcp">PocketBase MCP server</a> gives your AI access to your collections and records.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Query PocketBase collections and records</li>
+<li>Inspect auth rules and collection schemas</li>
+<li>Debug API response shapes during development</li>
+<li>Understand relationships between collections</li>
+</ul>
+
+<p><strong>Best for:</strong> Developers using PocketBase for small-to-medium mobile apps who want fast iteration without cloud vendor lock-in.</p>
+
+<h2>6. Fetch MCP Server — Documentation and API Reference On Demand</h2>
+
+<p>Mobile development is documentation-heavy: platform SDKs, third-party libraries, App Store review guidelines, Firebase docs. The <a href="/servers/fetch">Fetch MCP server</a> lets your AI pull any web page into context as clean text.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Fetch React Native, Expo, Swift, and Kotlin documentation</li>
+<li>Pull App Store Connect and Google Play Console guidelines</li>
+<li>Access any SDK reference page without tab-switching</li>
+<li>Read changelog pages to understand breaking changes</li>
+</ul>
+
+<p><strong>Best for:</strong> Developers upgrading libraries, navigating breaking API changes, or working with unfamiliar SDKs.</p>
+
+<h2>7. Brave Search MCP Server — Stack Overflow for Your AI</h2>
+
+<p>The <a href="/servers/brave-search">Brave Search MCP server</a> gives your AI real-time web search — critical for mobile development where Stack Overflow solutions are often version-specific and the ecosystem moves fast.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Search for version-specific bug fixes and workarounds</li>
+<li>Find community solutions for React Native bridging issues</li>
+<li>Discover new libraries with relevant search context</li>
+<li>Check if a reported crash is a known SDK bug</li>
+</ul>
+
+<p><strong>Best for:</strong> All mobile developers. Version-specific bugs and platform quirks make search essential in mobile dev.</p>
+
+<h2>8. Memory MCP Server — Persistent Project Context</h2>
+
+<p>Mobile projects accumulate architectural decisions: why you chose Zustand over Redux, which API endpoint to avoid because of backend throttling, which device-specific workarounds are in place. The <a href="/servers/memory">Memory MCP server</a> gives your AI a persistent store for these decisions.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Store architectural decisions and their rationale</li>
+<li>Remember known device-specific workarounds</li>
+<li>Track open debugging threads across sessions</li>
+<li>Build a knowledge graph of your app's behavior</li>
+</ul>
+
+<p><strong>Best for:</strong> Long-lived projects where institutional knowledge matters, or solo developers who can't always remember every past decision.</p>
+
+<h2>Building Your Mobile Dev MCP Stack</h2>
+
+<p>For most mobile developers, a core stack of three servers covers 80% of daily needs:</p>
+
+<ul>
+<li><strong>React Native / Expo developer:</strong> Filesystem + GitHub + Brave Search (codebase access + PR management + version-specific search)</li>
+<li><strong>Backend-heavy app:</strong> Add Appwrite or PocketBase for backend visibility</li>
+<li><strong>Local-first app:</strong> Add SQLite for database debugging</li>
+<li><strong>Long-term project:</strong> Add Memory for persistent architectural context</li>
+</ul>
+
+<p>Browse all <a href="/category/coding">Coding & Dev MCP servers</a> and <a href="/category/database">Database MCP servers</a> for more tools that fit your mobile stack. For automation workflows that mobile teams use, see <a href="/blog/best-mcp-servers-for-automation">Best MCP Servers for Automation</a>.</p>
+    `.trim(),
+  },
+  {
+    slug: "best-mcp-servers-for-machine-learning",
+    title: "Best MCP Servers for Machine Learning Engineers in 2026",
+    description: "Top MCP servers for ML engineers and AI researchers. From vector databases to experiment tracking, these Model Context Protocol servers streamline your ML workflow.",
+    date: "2026-05-11",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "8 min read",
+    keywords: ["best mcp servers for machine learning", "mcp servers ml engineers", "mcp ai research", "model context protocol machine learning", "mcp vector database", "mcp experiment tracking"],
+    relatedServerSlugs: ["filesystem", "github", "postgres", "lancedb-mcp", "brave-search", "memory", "fetch", "sequential-thinking"],
+    content: `
+<p>Machine learning engineering sits at an unusual intersection: part software engineering, part statistics, part infrastructure work. The context that matters — dataset stats, model checkpoints, experiment results, paper references — is scattered across S3 buckets, notebooks, GitHub repos, and experiment trackers.</p>
+
+<p>MCP servers can pull this context together, giving your AI assistant the ability to reason across your full ML stack. Here are the servers that matter most for ML engineers and researchers.</p>
+
+<h2>1. Filesystem MCP Server — Code and Artifacts in Context</h2>
+
+<p>ML projects are file-heavy: training scripts, config YAML files, preprocessing pipelines, evaluation scripts, model cards. The <a href="/servers/filesystem">Filesystem MCP server</a> gives your AI visibility across your entire project without you pasting files manually.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read training scripts, configs, and evaluation code</li>
+<li>Navigate complex multi-directory ML project structures</li>
+<li>Inspect dataset manifests and preprocessing outputs</li>
+<li>Write boilerplate: training loops, eval harnesses, config schemas</li>
+</ul>
+
+<p><strong>Best for:</strong> Every ML engineer. Filesystem access is the foundation for getting AI assistance on your actual codebase.</p>
+
+<h2>2. Sequential Thinking MCP Server — Structured Reasoning for Complex Problems</h2>
+
+<p>ML debugging requires systematic reasoning: eliminating hypotheses about data bugs, model architecture issues, optimization problems, and evaluation errors. The <a href="/servers/sequential-thinking">Sequential Thinking MCP server</a> gives your AI a structured reasoning scratchpad for multi-step analysis.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Break complex debugging problems into sequential hypothesis tests</li>
+<li>Reason about confounding variables in experiment design</li>
+<li>Systematically analyze training instability causes</li>
+<li>Work through architectural trade-offs step by step</li>
+</ul>
+
+<p><strong>Best for:</strong> Debugging training runs, analyzing unexpected evaluation results, or working through architecture decisions with real trade-offs.</p>
+
+<h2>3. LanceDB MCP Server — Vector Database Queries in Context</h2>
+
+<p>Vector databases are now central to retrieval-augmented generation, semantic search, and embedding-based recommendation systems. The <a href="/servers/lancedb-mcp">LanceDB MCP server</a> brings your vector store directly into your AI conversation — search, inspect, and debug embeddings without writing boilerplate client code.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Execute semantic similarity searches against your vector store</li>
+<li>Inspect embedding dimensions and distance metrics</li>
+<li>Debug retrieval quality by exploring nearest-neighbor results</li>
+<li>Query hybrid (vector + metadata filter) searches</li>
+</ul>
+
+<p><strong>Best for:</strong> ML engineers building RAG systems, semantic search, or recommendation engines with LanceDB as the backend.</p>
+
+<h2>4. PostgreSQL MCP Server — Structured Data and Experiment Logs</h2>
+
+<p>ML experiment metadata often lives in SQL databases — run IDs, hyperparameters, dataset versions, evaluation metrics. The <a href="/servers/postgres">PostgreSQL MCP server</a> lets your AI query this data conversationally without writing SQL from memory.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Query experiment tracking tables by metric ranges</li>
+<li>Join across runs, hyperparameters, and dataset versions</li>
+<li>Analyze training history with aggregate functions</li>
+<li>Schema introspection for your experiment database</li>
+</ul>
+
+<p><strong>Best for:</strong> Teams with custom experiment tracking in Postgres, or any ML workflow with structured metadata storage.</p>
+
+<h2>5. GitHub MCP Server — Model Cards and Research Code</h2>
+
+<p>ML research produces a lot of GitHub artifacts: model implementations, paper reproductions, benchmark scripts, dataset preprocessing code. The <a href="/servers/github">GitHub MCP server</a> gives your AI access to any public repository for reference, and your private repos for active development.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Search popular ML repositories for reference implementations</li>
+<li>Review PRs that touch model architecture or training configs</li>
+<li>Access issue trackers for open bugs in libraries you depend on</li>
+<li>Browse training scripts from papers you're reproducing</li>
+</ul>
+
+<p><strong>Best for:</strong> ML researchers reproducing papers, engineers maintaining ML codebases, or anyone working with open-source ML tooling.</p>
+
+<h2>6. Fetch MCP Server — Papers and Documentation Without Tab-Switching</h2>
+
+<p>ML engineers live on documentation: PyTorch docs, HuggingFace documentation, arXiv abstracts, MLSYS proceedings. The <a href="/servers/fetch">Fetch MCP server</a> pulls any web page into your AI's context as clean text.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Fetch arXiv papers and read methodology sections in context</li>
+<li>Pull PyTorch/JAX/HuggingFace API documentation</li>
+<li>Access CUDA documentation for performance-critical debugging</li>
+<li>Read changelogs for dependency updates</li>
+</ul>
+
+<p><strong>Best for:</strong> Researchers implementing techniques from papers, or engineers upgrading framework versions with breaking API changes.</p>
+
+<h2>7. Brave Search MCP Server — Current Research and Library Updates</h2>
+
+<p>The ML landscape moves fast — new architectures, new training techniques, new libraries every week. The <a href="/servers/brave-search">Brave Search MCP server</a> gives your AI real-time search so it can find current information rather than relying on training data from 12+ months ago.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Search for recent papers on specific architectures or techniques</li>
+<li>Find community solutions to PyTorch/JAX bugs</li>
+<li>Discover new libraries for specific ML subproblems</li>
+<li>Check if a performance issue is a known framework regression</li>
+</ul>
+
+<p><strong>Best for:</strong> All ML engineers — the field moves too fast to rely on static knowledge cutoffs.</p>
+
+<h2>8. Memory MCP Server — Persistent Experimental Context</h2>
+
+<p>ML projects accumulate institutional knowledge: which hyperparameters failed, which data augmentation strategies hurt performance, which hardware-specific workarounds are in place. The <a href="/servers/memory">Memory MCP server</a> gives your AI a persistent store for this experimental history.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Store and recall experiment findings across sessions</li>
+<li>Track open debugging hypotheses and their status</li>
+<li>Remember data quality issues and their mitigations</li>
+<li>Build a project-specific knowledge graph over time</li>
+</ul>
+
+<p><strong>Best for:</strong> Long-running research projects, or any project where "why did we do it this way?" questions recur regularly.</p>
+
+<h2>Building Your ML MCP Stack</h2>
+
+<p>Match your server choices to your current focus:</p>
+
+<ul>
+<li><strong>Research / paper implementation:</strong> Filesystem + GitHub + Fetch + Sequential Thinking (read code, pull papers, reason systematically)</li>
+<li><strong>RAG / embedding systems:</strong> LanceDB + Filesystem + Brave Search (vector queries + codebase + current library info)</li>
+<li><strong>Experiment management:</strong> PostgreSQL + Filesystem + Memory (query runs + read scripts + track findings)</li>
+<li><strong>Production ML:</strong> GitHub + Filesystem + Brave Search + Memory (monitor codebase + debug + recall past decisions)</li>
+</ul>
+
+<p>Browse all <a href="/category/ai">AI & ML MCP servers</a> and <a href="/category/database">Database servers</a> for more options. For data engineering workflows, see <a href="/blog/best-mcp-servers-for-data-engineering">Best MCP Servers for Data Engineering</a>.</p>
+    `.trim(),
+  },
+  {
+    slug: "best-mcp-servers-for-entrepreneurs",
+    title: "Best MCP Servers for Entrepreneurs and Indie Hackers in 2026",
+    description: "MCP servers that help founders move faster — from market research to customer data to payment analytics. The Model Context Protocol tools that matter when you're building solo or with a small team.",
+    date: "2026-05-11",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "7 min read",
+    keywords: ["best mcp servers for entrepreneurs", "mcp servers indie hackers", "mcp for startups", "mcp founders tools", "model context protocol business", "mcp for solo founders"],
+    relatedServerSlugs: ["brave-search", "notion", "stripe-billing", "posthog-mcp", "linear", "github", "memory", "fetch"],
+    content: `
+<p>When you're a solo founder or a two-person team, leverage is everything. You don't have a research team, a data analyst, or a dedicated growth engineer. What you have is your judgment — and increasingly, AI tools that can punch far above their weight if you give them the right context.</p>
+
+<p>MCP servers are the difference between an AI that gives generic advice and one that knows your actual product, your actual metrics, and your actual customers. Here are the servers that matter most for entrepreneurs and indie hackers.</p>
+
+<h2>1. Brave Search MCP Server — Market Research That Actually Works</h2>
+
+<p>Market research used to mean spending hours on Google, industry reports, and Reddit threads. The <a href="/servers/brave-search">Brave Search MCP server</a> gives your AI live search access so you can have genuine market conversations: "What are the top complaints about [competitor]?" or "What's trending in [niche] right now?"</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Research competitors by synthesizing multiple search results</li>
+<li>Find trending pain points in your target market</li>
+<li>Discover pricing benchmarks for your category</li>
+<li>Monitor your brand mentions and competitor announcements</li>
+</ul>
+
+<p><strong>Best for:</strong> Pre-launch validation, competitive positioning, content research, and any time you need current market intelligence rather than AI training-data assumptions.</p>
+
+<h2>2. Notion MCP Server — Your Second Brain in Context</h2>
+
+<p>Most founders run their thinking through Notion: strategy docs, customer research, roadmaps, investor updates. The <a href="/servers/notion">Notion MCP server</a> makes all of that accessible to your AI — so instead of "help me write a landing page," you can say "help me write a landing page based on my customer research notes in Notion."</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Search and read pages across your Notion workspace</li>
+<li>Access databases (CRM, content calendar, feature requests)</li>
+<li>Pull meeting notes and research documents into AI context</li>
+<li>Create new pages and database entries</li>
+</ul>
+
+<p><strong>Best for:</strong> Founders using Notion as their operational hub. Every AI interaction becomes grounded in your actual documentation rather than generic advice.</p>
+
+<h2>3. Stripe Billing MCP Server — Revenue Data Without the Dashboard</h2>
+
+<p>Revenue is the number that matters. The <a href="/servers/stripe-billing">Stripe Billing MCP server</a> gives your AI direct access to your subscription data, payment events, and customer records — so you can have real conversations about your business: "Which cohort is churning fastest?" or "What's my MRR trend over the last 90 days?"</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Query subscription counts, MRR, and churn data</li>
+<li>Inspect customer payment history and subscription status</li>
+<li>Analyze plan distribution across your customer base</li>
+<li>Review failed payment patterns and dunning opportunities</li>
+</ul>
+
+<p><strong>Best for:</strong> Any SaaS founder using Stripe. Revenue conversations become dramatically more useful when your AI can see the actual numbers.</p>
+
+<h2>4. PostHog MCP Server — Product Analytics in Plain Language</h2>
+
+<p>PostHog is increasingly the analytics tool of choice for technical founders — self-hosted, privacy-friendly, event-based. The <a href="/servers/posthog-mcp">PostHog MCP server</a> puts your product analytics directly in your AI conversation so you can ask questions in plain language rather than building queries in a dashboard.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Query event funnels to identify conversion bottlenecks</li>
+<li>Analyze feature adoption across user segments</li>
+<li>Inspect session recordings metadata for UX research</li>
+<li>Access A/B test results and feature flag states</li>
+</ul>
+
+<p><strong>Best for:</strong> Product-led founders who want to understand user behavior without becoming a BI analyst. "Show me where users drop off in the onboarding flow" becomes a real question, not a 20-minute dashboard exercise.</p>
+
+<h2>5. Linear MCP Server — Roadmap and Sprint Context</h2>
+
+<p>For founders using Linear for product management, the <a href="/servers/linear">Linear MCP server</a> pulls your issues, projects, and cycles into AI context. Instead of context-switching between your task manager and your AI, you can plan sprints, write tickets, and triage bugs all in one conversation.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Browse open issues by priority, assignee, or label</li>
+<li>Create well-structured tickets from conversation</li>
+<li>Review cycle progress and identify blockers</li>
+<li>Search issues for specific bug reports or feature requests</li>
+</ul>
+
+<p><strong>Best for:</strong> Technical founders or small teams using Linear as their primary product management tool.</p>
+
+<h2>6. GitHub MCP Server — Codebase Access for Technical Founders</h2>
+
+<p>If you're a technical founder building your own product, the <a href="/servers/github">GitHub MCP server</a> gives your AI access to your codebase for code review, debugging assistance, and shipping support. You shouldn't need to paste code snippets — your AI should be able to read the relevant files directly.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Review PRs with actual diff context</li>
+<li>Search your codebase for specific patterns</li>
+<li>Create issues with structured bug reports</li>
+<li>Check CI/CD status on recent deployments</li>
+</ul>
+
+<p><strong>Best for:</strong> Solo technical founders who are both building and shipping, or small teams where the founder still reviews all code.</p>
+
+<h2>7. Fetch MCP Server — Read Anything, Research Anything</h2>
+
+<p>Founders consume a lot of external content: competitor landing pages, industry reports, investor updates, customer case studies. The <a href="/servers/fetch">Fetch MCP server</a> lets your AI pull any public web page into context as clean text for analysis.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Analyze competitor landing pages for positioning angles</li>
+<li>Read industry reports without copy-pasting</li>
+<li>Pull documentation for integrations you're evaluating</li>
+<li>Summarize long-form content (blog posts, whitepapers)</li>
+</ul>
+
+<p><strong>Best for:</strong> Competitive analysis, content research, and any time you want your AI to engage with a specific external document.</p>
+
+<h2>8. Memory MCP Server — Institutional Memory When You're a Team of One</h2>
+
+<p>Solo founders make dozens of decisions daily — pricing experiments, positioning pivots, technical trade-offs — and it's easy to forget why decisions were made. The <a href="/servers/memory">Memory MCP server</a> gives your AI a persistent knowledge store so your institutional memory doesn't live only in your head.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Store key decisions and their rationale</li>
+<li>Track customer feedback themes over time</li>
+<li>Remember experiments and their outcomes</li>
+<li>Build context that persists across AI sessions</li>
+</ul>
+
+<p><strong>Best for:</strong> Solo founders or small teams where "why did we do this?" is a real question that comes up regularly.</p>
+
+<h2>The Founder MCP Stack</h2>
+
+<p>You don't need all eight servers — pick the ones that match your current phase:</p>
+
+<ul>
+<li><strong>Pre-launch:</strong> Brave Search + Fetch + Notion (market research + competitive analysis + capture findings)</li>
+<li><strong>Early traction:</strong> Stripe Billing + PostHog + Brave Search (understand revenue + product behavior + market context)</li>
+<li><strong>Scaling:</strong> All of the above + Linear + Memory (add roadmap management + institutional memory)</li>
+<li><strong>Technical founder:</strong> Add GitHub for codebase visibility at any stage</li>
+</ul>
+
+<p>Browse all <a href="/category/productivity">Productivity MCP servers</a>, <a href="/category/finance">Finance MCP servers</a>, and <a href="/category/analytics">Analytics MCP servers</a> to build your ideal founder stack. For marketing automation, see <a href="/blog/best-mcp-servers-for-marketing">Best MCP Servers for Marketing</a>.</p>
+    `.trim(),
+  },
 ];
 
 export function getBlogPostBySlug(slug: string): BlogPost | undefined {
