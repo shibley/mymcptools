@@ -15945,6 +15945,426 @@ jupyter mcp install</code></pre>
 <p>Browse all <a href="/category/coding">Coding MCP servers</a> on MyMCPTools. For PHP-heavy backend work beyond WordPress, see <a href="/blog/best-mcp-servers-for-developers">Best MCP Servers for Developers</a> and <a href="/blog/best-mcp-servers-for-database">Best MCP Servers for Database</a>.</p>
     `.trim(),
   },
+  {
+    slug: "best-mcp-servers-for-design-teams",
+    title: "Best MCP Servers for Design Teams in 2026",
+    description: "From Figma to Canva, these MCP servers give designers AI-powered access to their tools, assets, and workflows — so AI can help with the actual work, not just advice.",
+    date: "2026-05-11",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "7 min read",
+    keywords: ["mcp servers for designers", "figma mcp server", "design workflow ai", "best mcp servers design", "model context protocol design tools"],
+    relatedServerSlugs: ["figma", "canva", "miro", "excalidraw", "cloudinary", "unsplash", "pexels", "giphy", "google-drive", "notion"],
+    content: `
+<p>Design teams live in Figma, Canva, and Miro — but most AI assistants can only give generic advice about those tools, not actually work inside them. MCP servers change that. With the right setup, your AI assistant can inspect Figma components, retrieve brand assets from Cloudinary, search stock photos, and read design specs directly from Notion.</p>
+
+<p>Here are the best MCP servers for design teams in 2026.</p>
+
+<h2>1. Figma MCP Server — AI Access to Your Design Files</h2>
+
+<p>The Figma MCP server is the crown jewel for design teams. It gives your AI assistant read access to your Figma files: components, variants, styles, frames, and layer structure. Instead of describing a design to your AI, let it read the file directly.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read component libraries and design tokens</li>
+<li>Inspect layer structure, constraints, and auto-layout</li>
+<li>Extract color styles, typography, and spacing systems</li>
+<li>Search across files and pages</li>
+</ul>
+
+<p><strong>Best for:</strong> Frontend developers translating designs to code, and design systems teams documenting component specs. Ask your AI to turn Figma specs directly into Tailwind CSS or React component props.</p>
+
+<h2>2. Cloudinary MCP Server — AI-Powered Asset Management</h2>
+
+<p>Cloudinary stores images, videos, and documents for thousands of companies. The Cloudinary MCP server lets your AI search, retrieve, and transform assets without leaving your conversation.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Search and retrieve media assets by tag, folder, or metadata</li>
+<li>Apply transformations (resize, crop, format conversion) via URL parameters</li>
+<li>Upload assets and generate delivery URLs</li>
+<li>Access usage analytics for storage and bandwidth</li>
+</ul>
+
+<p><strong>Best for:</strong> Marketing teams managing large asset libraries and web developers needing optimized image URLs on demand.</p>
+
+<h2>3. Miro MCP Server — Whiteboards AI Can Read</h2>
+
+<p>Miro is where design thinking happens — brainstorms, journey maps, service blueprints. The Miro MCP server makes those boards accessible to your AI, turning sticky notes and diagrams into structured context.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read board content: cards, stickies, shapes, and text</li>
+<li>Create and update cards programmatically</li>
+<li>Navigate between boards and frames</li>
+<li>Extract content for summarization or export</li>
+</ul>
+
+<p><strong>Best for:</strong> UX researchers synthesizing user interviews on Miro boards, and teams who want AI to help structure and summarize workshop outputs.</p>
+
+<h2>4. Unsplash MCP Server — Stock Photos on Demand</h2>
+
+<p>Need a hero image for a landing page or blog post? The Unsplash MCP server gives your AI instant access to millions of high-quality photos without you ever leaving your workflow.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Search photos by keyword, color, or orientation</li>
+<li>Retrieve download URLs in multiple sizes</li>
+<li>Browse curated collections</li>
+<li>Trigger downloads and track attribution</li>
+</ul>
+
+<p><strong>Best for:</strong> Content teams needing quick image sourcing and developers building CMS-driven sites that pull in stock photos automatically.</p>
+
+<h2>5. Canva MCP Server — Design at AI Speed</h2>
+
+<p>Canva has become the default design tool for non-designers and marketers. The Canva MCP server bridges Canva's template library and brand kit with your AI workflow.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Search and access Canva templates</li>
+<li>Retrieve brand kit assets (colors, fonts, logos)</li>
+<li>Programmatically generate designs from templates</li>
+<li>Export finished designs in various formats</li>
+</ul>
+
+<p><strong>Best for:</strong> Marketing teams producing high-volume social media graphics and presentation decks with consistent branding.</p>
+
+<h2>6. Excalidraw MCP Server — Diagrams Your AI Can Build</h2>
+
+<p>Excalidraw is the open-source virtual whiteboard that developers love for architecture diagrams and quick sketches. The Excalidraw MCP server means your AI can generate, read, and modify diagrams directly.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Create and modify diagram elements (shapes, arrows, text)</li>
+<li>Export diagrams as SVG or PNG</li>
+<li>Import existing Excalidraw files for analysis</li>
+<li>Generate architecture diagrams from code descriptions</li>
+</ul>
+
+<p><strong>Best for:</strong> Engineers who want AI to generate system architecture or data flow diagrams from a plain-English description.</p>
+
+<h2>7. Google Drive MCP Server — Design Assets in Your Cloud</h2>
+
+<p>Most design assets live in shared drives. The Google Drive MCP server gives your AI read and write access to files across Drive, Docs, and Sheets — essential for design teams who use Google Workspace for project management and briefs.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Search and retrieve files by name, type, or folder</li>
+<li>Read Google Docs (briefs, specs, copy) directly</li>
+<li>Create and update Sheets for content inventories</li>
+<li>Manage sharing permissions</li>
+</ul>
+
+<p><strong>Best for:</strong> Teams running creative projects through Google Drive who want AI to pull briefs, specs, and copy directly into context.</p>
+
+<h2>8. Notion MCP Server — Design Documentation AI Can Navigate</h2>
+
+<p>Many design teams use Notion for design systems documentation, project trackers, and component libraries. The Notion MCP server gives your AI access to that knowledge base without copy-paste.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Query databases (project boards, asset catalogs)</li>
+<li>Read and write pages and blocks</li>
+<li>Search across your entire workspace</li>
+<li>Create structured documentation automatically</li>
+</ul>
+
+<p><strong>Best for:</strong> Design systems teams maintaining component documentation and design ops professionals tracking projects in Notion.</p>
+
+<h2>Recommended Stacks by Role</h2>
+
+<ul>
+<li><strong>UI/UX designer:</strong> Figma + Notion + Unsplash (design context + docs + images)</li>
+<li><strong>Brand designer:</strong> Canva + Cloudinary + Google Drive (templates + assets + briefs)</li>
+<li><strong>Design engineer:</strong> Figma + Excalidraw + GitHub (specs + diagrams + code)</li>
+<li><strong>Creative director:</strong> Miro + Notion + Google Drive (ideation + docs + files)</li>
+<li><strong>Full design team:</strong> All of the above — the Figma + Cloudinary + Notion trio covers 80% of workflows</li>
+</ul>
+
+<p>Browse all <a href="/category/media">Media MCP servers</a> on MyMCPTools. For teams working heavily in code alongside design, see <a href="/blog/best-mcp-servers-for-developers">Best MCP Servers for Developers</a> and <a href="/blog/best-mcp-servers-for-content-creation">Best MCP Servers for Content Creation</a>.</p>
+    `.trim(),
+  },
+  {
+    slug: "best-mcp-servers-for-hr-teams",
+    title: "Best MCP Servers for HR Teams in 2026",
+    description: "HR teams are drowning in data across ATS, HRIS, and payroll tools. These MCP servers let your AI assistant directly access BambooHR, Greenhouse, Rippling, and more to automate the busywork.",
+    date: "2026-05-11",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "7 min read",
+    keywords: ["mcp servers for hr", "bamboohr mcp", "hr automation ai", "best mcp servers human resources", "greenhouse mcp server"],
+    relatedServerSlugs: ["bamboohr", "greenhouse", "rippling", "deel", "gusto", "slack", "notion", "google-sheets", "calendly", "cal-com"],
+    content: `
+<p>HR teams manage more systems than almost any other function: applicant tracking, onboarding, payroll, benefits, performance reviews, and compliance. The result is endless copy-pasting between tools and manual data entry that takes hours every week.</p>
+
+<p>MCP servers change that by giving your AI assistant direct access to your HR platforms. Here are the best MCP servers for HR teams in 2026.</p>
+
+<h2>1. BambooHR MCP Server — Employee Data AI Can Access</h2>
+
+<p>BambooHR is the go-to HRIS for small and mid-size companies. The BambooHR MCP server gives your AI real-time access to employee records, org charts, and time-off data without requiring you to export CSVs.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Query employee directory (name, role, department, manager)</li>
+<li>Read time-off requests and balances</li>
+<li>Pull headcount reports by department or location</li>
+<li>Access onboarding task status</li>
+</ul>
+
+<p><strong>Best for:</strong> HR managers who want to quickly answer "how many engineers do we have?" or "who is out next week?" without logging into BambooHR. Also great for generating headcount reports on demand.</p>
+
+<h2>2. Greenhouse MCP Server — Recruiting Pipeline Intelligence</h2>
+
+<p>Greenhouse is the ATS of choice for high-growth companies. The Greenhouse MCP server lets your AI navigate the recruiting pipeline: open roles, candidate stages, interview feedback, and offer status.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>List open jobs and pipeline stages</li>
+<li>Retrieve candidate profiles and activity history</li>
+<li>Read interview scorecards and feedback</li>
+<li>Track offer status and acceptance rates</li>
+</ul>
+
+<p><strong>Best for:</strong> Recruiters who want to generate pipeline reports, identify stuck candidates, or prep for hiring reviews without manually pulling data from Greenhouse dashboards.</p>
+
+<h2>3. Rippling MCP Server — One Platform, Full Context</h2>
+
+<p>Rippling combines HR, IT, and finance into a single platform. The Rippling MCP server is particularly powerful because of this breadth — your AI can cross-reference employee records with device assignments, app access, and payroll data.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Employee records with department, role, and compensation</li>
+<li>IT device and app access management</li>
+<li>Payroll run data and deduction history</li>
+<li>Benefits enrollment and coverage status</li>
+</ul>
+
+<p><strong>Best for:</strong> HR ops teams at companies running Rippling who want AI to help with offboarding checklists, access audits, or payroll reconciliation.</p>
+
+<h2>4. Deel MCP Server — Global Payroll and Contractor Management</h2>
+
+<p>If your company hires internationally, Deel is likely in your stack. The Deel MCP server gives your AI access to contractor agreements, payment status, and compliance documents across jurisdictions.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Contractor and employee contract status</li>
+<li>Payment history and upcoming payroll cycles</li>
+<li>Compliance document tracking by country</li>
+<li>Entity and EOR information by region</li>
+</ul>
+
+<p><strong>Best for:</strong> HR and finance teams managing distributed workforces who need AI to quickly surface contractor status, upcoming payments, or compliance gaps by country.</p>
+
+<h2>5. Gusto MCP Server — Payroll and Benefits AI</h2>
+
+<p>Gusto handles payroll and benefits for thousands of small businesses. The Gusto MCP server makes your payroll data queryable by your AI — no more logging in to pull reports for finance or answer employee benefit questions.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Payroll run history and upcoming schedules</li>
+<li>Employee compensation and deduction details</li>
+<li>Benefits enrollment and carrier information</li>
+<li>Tax filing status and forms</li>
+</ul>
+
+<p><strong>Best for:</strong> Small business HR teams who want AI to help prepare payroll summaries, answer benefits questions, or generate comp reports for board decks.</p>
+
+<h2>6. Slack MCP Server — Where HR Communication Lives</h2>
+
+<p>HR announcements, policy questions, and onboarding happen in Slack. The Slack MCP server lets your AI search message history, read channel content, and send structured messages — turning Slack into an actionable HR communication layer.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Search messages and channels by keyword or date</li>
+<li>Read DMs and threads (with appropriate permissions)</li>
+<li>Send messages and notifications programmatically</li>
+<li>List channel members and workspace users</li>
+</ul>
+
+<p><strong>Best for:</strong> HR teams who want AI to draft policy announcements, send onboarding reminders, or search for previous HR discussions without digging through chat history manually.</p>
+
+<h2>7. Notion MCP Server — HR Policies and Documentation</h2>
+
+<p>Many HR teams maintain their employee handbook, job descriptions, and onboarding checklists in Notion. The Notion MCP server gives your AI direct access to these knowledge bases.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Search and retrieve pages by title or content</li>
+<li>Query HR databases (job openings, performance reviews)</li>
+<li>Create and update structured documentation</li>
+<li>Read onboarding checklists and SOPs</li>
+</ul>
+
+<p><strong>Best for:</strong> HR teams using Notion as their intranet who want AI to answer employee questions about policies, PTO, or onboarding steps by reading the actual documentation.</p>
+
+<h2>8. Calendly MCP Server — Interview Scheduling Automation</h2>
+
+<p>Scheduling interviews is one of the biggest time drains in recruiting. The Calendly MCP server lets your AI check availability, book slots, and reschedule without back-and-forth emails.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Query available scheduling slots</li>
+<li>Create and cancel events</li>
+<li>Retrieve invitee details and no-show rates</li>
+<li>Manage routing forms and assignment logic</li>
+</ul>
+
+<p><strong>Best for:</strong> Recruiting coordinators who want AI to manage interview scheduling workflows, send reminders, and handle rescheduling requests automatically.</p>
+
+<h2>Recommended HR Stacks by Use Case</h2>
+
+<ul>
+<li><strong>Recruiting:</strong> Greenhouse + Calendly + Slack (pipeline + scheduling + communication)</li>
+<li><strong>HR ops (US):</strong> BambooHR + Gusto + Notion (records + payroll + docs)</li>
+<li><strong>Global HR:</strong> Rippling + Deel + Notion (unified platform + global payroll + docs)</li>
+<li><strong>People analytics:</strong> BambooHR + Google Sheets + Slack (data + reporting + comms)</li>
+<li><strong>Full-stack HR team:</strong> BambooHR + Greenhouse + Slack + Notion — covers 90% of daily workflows</li>
+</ul>
+
+<p>Browse all <a href="/category/productivity">Productivity MCP servers</a> on MyMCPTools. For automating repetitive HR workflows across systems, see <a href="/blog/best-mcp-servers-for-automation">Best MCP Servers for Automation</a> and <a href="/blog/best-mcp-servers-for-project-management">Best MCP Servers for Project Management</a>.</p>
+    `.trim(),
+  },
+  {
+    slug: "best-mcp-servers-for-docker-and-kubernetes",
+    title: "Best MCP Servers for Docker and Kubernetes in 2026",
+    description: "Container orchestration is complex enough without context-switching. These MCP servers give your AI direct access to Docker, Kubernetes, Helm, and your observability stack — so debugging happens in conversation.",
+    date: "2026-05-11",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "8 min read",
+    keywords: ["mcp servers for kubernetes", "docker mcp server", "kubernetes ai assistant", "best mcp servers devops", "helm mcp server"],
+    relatedServerSlugs: ["docker", "kubernetes", "helm", "argo-cd", "prometheus", "grafana", "docker-compose", "k8s-mcp", "datadog", "sentry"],
+    content: `
+<p>Kubernetes is notoriously complex. Between deployments, services, ingress rules, resource limits, and rolling updates, there's an enormous amount of state to track — spread across namespaces, clusters, and config files. Most of that context never makes it into your AI conversation.</p>
+
+<p>MCP servers fix that. With the right setup, your AI assistant can inspect running pods, read Helm values, check Prometheus metrics, and tail logs from Grafana without you switching terminals. Here are the best MCP servers for Docker and Kubernetes workflows in 2026.</p>
+
+<h2>1. Kubernetes MCP Server — Your Cluster, AI-Accessible</h2>
+
+<p>The Kubernetes MCP server is the essential foundation for any container-heavy team. It exposes the Kubernetes API to your AI — pods, deployments, services, configmaps, events, and more — all queryable in natural language.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>List and describe pods, deployments, services, and ingresses</li>
+<li>Read pod logs and events across namespaces</li>
+<li>Check resource requests, limits, and node capacity</li>
+<li>Apply and patch manifests via kubectl-compatible commands</li>
+</ul>
+
+<p><strong>Best for:</strong> Platform engineers and SREs who want AI to help triage pod failures, explain CrashLoopBackOff errors, or identify resource-constrained nodes. Ask "why is my pod restarting?" and get a real answer based on live cluster state.</p>
+
+<h2>2. Docker MCP Server — Container Visibility Without the Terminal</h2>
+
+<p>Before production, everything runs in Docker. The Docker MCP server gives your AI access to running containers, images, volumes, and networks — locally or against a remote daemon.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>List running and stopped containers with status</li>
+<li>Read container logs and inspect configurations</li>
+<li>Manage images (pull, tag, push) and volumes</li>
+<li>Execute commands inside containers</li>
+</ul>
+
+<p><strong>Best for:</strong> Developers debugging local Docker setups and DevOps engineers managing Docker-based CI environments. Pair with the Filesystem MCP server to let AI read your Dockerfiles alongside live container output.</p>
+
+<h2>3. Helm MCP Server — Chart Management AI Can Navigate</h2>
+
+<p>Helm manages Kubernetes application packaging. The Helm MCP server exposes your releases, values, and chart templates to your AI — making it much easier to understand what's deployed and why it's configured that way.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>List Helm releases and their status</li>
+<li>Read values.yaml and rendered templates</li>
+<li>Inspect chart hooks, notes, and NOTES.txt</li>
+<li>Diff values between revisions</li>
+</ul>
+
+<p><strong>Best for:</strong> Platform teams managing multiple Helm releases who want AI to explain configuration differences between environments, or identify which release controls a specific service.</p>
+
+<h2>4. Argo CD MCP Server — GitOps Pipeline Intelligence</h2>
+
+<p>Argo CD is the GitOps deployment engine for Kubernetes. The Argo CD MCP server lets your AI check application sync status, health, and deployment history without opening the Argo dashboard.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>List applications and their sync/health status</li>
+<li>Read deployment history and revision diffs</li>
+<li>Trigger sync operations (with appropriate permissions)</li>
+<li>Inspect resource tree and current live state</li>
+</ul>
+
+<p><strong>Best for:</strong> GitOps teams who want AI to explain why an app is out-of-sync, identify the last successful deployment, or help debug degraded application health.</p>
+
+<h2>5. Prometheus MCP Server — Metrics Your AI Can Query</h2>
+
+<p>Prometheus collects your cluster metrics. The Prometheus MCP server makes those metrics queryable through your AI conversation — CPU, memory, request rates, error rates, latency percentiles.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Execute PromQL queries and return results</li>
+<li>List available metrics and their labels</li>
+<li>Query time-series data for trending analysis</li>
+<li>Evaluate alert rules and their current state</li>
+</ul>
+
+<p><strong>Best for:</strong> SREs and platform engineers who want to ask "what's the current error rate for the payments service?" and get a real number from Prometheus rather than guessing from dashboards.</p>
+
+<h2>6. Grafana MCP Server — Dashboard Data in Conversation</h2>
+
+<p>Grafana visualizes your observability data. The Grafana MCP server extracts that data from dashboards and panels, making it available in your AI conversation without screenshot-based guesswork.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>List dashboards and panels</li>
+<li>Query panel data sources programmatically</li>
+<li>Read dashboard annotations and alert rules</li>
+<li>Export dashboard JSON for review or modification</li>
+</ul>
+
+<p><strong>Best for:</strong> Teams who want AI to read their Grafana dashboards and generate incident summaries or capacity reports based on current metrics.</p>
+
+<h2>7. Docker Compose MCP Server — Multi-Service Context</h2>
+
+<p>Most local development and staging environments use Docker Compose. The Docker Compose MCP server gives your AI visibility into your compose configurations — services, dependencies, volumes, and environment variables.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read docker-compose.yml and override files</li>
+<li>List defined services and their configurations</li>
+<li>Check service dependency graphs</li>
+<li>Inspect environment variable definitions</li>
+</ul>
+
+<p><strong>Best for:</strong> Developers working on multi-service applications locally who want AI to understand the full service topology before debugging networking issues between containers.</p>
+
+<h2>8. Datadog MCP Server — APM and Infrastructure in One</h2>
+
+<p>Datadog combines logs, metrics, traces, and APM. The Datadog MCP server is particularly powerful for Kubernetes environments because it surfaces application-level performance data alongside infrastructure metrics.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Query metrics and logs with Datadog's query language</li>
+<li>Read APM trace data and service maps</li>
+<li>List monitors and their alert status</li>
+<li>Access infrastructure host and container data</li>
+</ul>
+
+<p><strong>Best for:</strong> Engineering teams using Datadog for full-stack observability who want AI to help triage incidents by correlating pod logs, APM traces, and infrastructure metrics simultaneously.</p>
+
+<h2>Recommended Stacks by Role</h2>
+
+<ul>
+<li><strong>Platform engineer:</strong> Kubernetes + Helm + Argo CD (full deployment stack context)</li>
+<li><strong>SRE / on-call:</strong> Kubernetes + Prometheus + Grafana (cluster state + metrics + dashboards)</li>
+<li><strong>Backend developer:</strong> Docker + Docker Compose + Sentry (local containers + error tracking)</li>
+<li><strong>DevOps generalist:</strong> Kubernetes + Helm + Datadog (K8s + releases + observability)</li>
+<li><strong>Full platform team:</strong> All 8 — Kubernetes is complex enough to warrant every layer of context</li>
+</ul>
+
+<p>Browse all <a href="/category/devops">DevOps MCP servers</a> on MyMCPTools. For cloud infrastructure context alongside your container stack, see <a href="/blog/best-mcp-servers-for-aws">Best MCP Servers for AWS</a> and <a href="/blog/best-mcp-servers-for-cloud-engineers">Best MCP Servers for Cloud Engineers</a>.</p>
+    `.trim(),
+  },
 ];
 
 export function getBlogPostBySlug(slug: string): BlogPost | undefined {
