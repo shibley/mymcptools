@@ -17135,6 +17135,426 @@ jupyter mcp install</code></pre>
 <p>Browse all <a href="/category/productivity">Productivity MCP servers</a> on MyMCPTools. For related guides, see <a href="/blog/best-mcp-servers-for-software-architects">Best MCP Servers for Software Architects</a> and <a href="/blog/best-mcp-servers-for-project-management">Best MCP Servers for Project Management</a>.</p>
     `.trim(),
   },
+  {
+    slug: "best-mcp-servers-for-platform-engineers",
+    title: "Best MCP Servers for Platform Engineers in 2026",
+    description: "Platform engineers build and maintain internal developer platforms — the infrastructure, tooling, and self-service systems that keep engineering teams moving. These MCP servers give your AI access to cluster state, infrastructure as code, secret management, CI/CD pipelines, and observability data.",
+    date: "2026-05-12",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "9 min read",
+    keywords: ["mcp servers for platform engineers", "platform engineering mcp", "kubernetes mcp server", "terraform mcp server", "internal developer platform ai tools"],
+    relatedServerSlugs: ["kubernetes", "terraform", "vault", "github-actions", "prometheus", "grafana", "helm", "argo-cd", "github", "datadog"],
+    content: `
+<p>Platform engineering is infrastructure work at the speed of product development. Your job is to abstract the complexity of distributed systems into reliable, self-service primitives that product engineers can consume without needing a PhD in Kubernetes. The challenge: the state of those systems is always changing, and understanding it requires pulling context from a dozen different tools.</p>
+
+<p>MCP servers collapse that context into a single conversation. Instead of switching between kubectl, Terraform, Vault, Grafana, and GitHub Actions to diagnose a problem or plan a change, your AI can query all of them at once. Here are the best MCP servers for platform engineers in 2026.</p>
+
+<h2>1. Kubernetes MCP Server — Live Cluster State as Context</h2>
+
+<p>The cluster is the platform. The Kubernetes MCP server gives your AI direct access to cluster state — pods, deployments, services, namespaces, config maps, events, and resource quotas — making it possible to reason about operational issues and configuration changes with real data rather than stale documentation.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Query pod status, logs, and events across namespaces</li>
+<li>Inspect deployment rollout history and current replica counts</li>
+<li>Check resource quota consumption by namespace or team</li>
+<li>Read config maps and secrets metadata for configuration auditing</li>
+</ul>
+
+<p><strong>Best for:</strong> Diagnosing why a team's deployment is failing without opening a terminal. Ask "what's happening in the payments namespace right now?" and get pod status, recent events, and resource pressure in one response. Excellent for capacity planning discussions where current utilization needs to be grounded in real numbers.</p>
+
+<h2>2. Terraform MCP Server — Infrastructure as Code at Scale</h2>
+
+<p>Platform infrastructure is code. The Terraform MCP server gives your AI access to your infrastructure declarations — module trees, resource dependencies, state, and planned changes — so infrastructure design conversations can reference the actual configuration rather than diagrams that drift from reality.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read module structures and resource dependency graphs</li>
+<li>Query Terraform state for current infrastructure inventory</li>
+<li>Review planned changes before apply to catch unintended side effects</li>
+<li>Search for resource patterns or anti-patterns across environments</li>
+</ul>
+
+<p><strong>Best for:</strong> Architecture reviews where you need to understand what's actually deployed. Ask "what AWS resources does the data platform module create?" and get a precise answer from the actual Terraform configuration — not from someone's memory of what they think they shipped six months ago.</p>
+
+<h2>3. Vault MCP Server — Secret Management and Access Auditing</h2>
+
+<p>Secret sprawl is the silent killer of platform security. The Vault MCP server gives your AI visibility into your secret management posture — engines, policies, lease TTLs, and access patterns — making it easier to audit access, enforce rotation policies, and diagnose authentication issues without manually navigating the Vault UI.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Audit secret engine configurations and mount paths</li>
+<li>Review policy definitions for over-permissioned access</li>
+<li>Check token lease TTLs and renewal patterns</li>
+<li>Diagnose authentication failures by reviewing auth method configurations</li>
+</ul>
+
+<p><strong>Best for:</strong> Quarterly security reviews where you need to audit who has access to what, and whether rotation policies are being enforced. Ask "which services have leases expiring this week?" before a high-traffic event to avoid authentication failures from stale credentials.</p>
+
+<h2>4. GitHub Actions MCP Server — CI/CD Pipeline Intelligence</h2>
+
+<p>The CI/CD pipeline is your platform's delivery nervous system. The GitHub Actions MCP server gives your AI access to workflow runs, job logs, failure patterns, and pipeline configuration — so you can diagnose build failures, identify flaky tests, and optimize pipeline performance without manually trawling through run logs.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read recent workflow run results across repositories</li>
+<li>Access job logs to diagnose build failures</li>
+<li>Identify recurring failure patterns across runs</li>
+<li>Review workflow configuration for optimization opportunities</li>
+</ul>
+
+<p><strong>Best for:</strong> Platform teams responsible for build reliability who want AI to identify why a specific workflow has been failing intermittently, or to audit whether teams are following established pipeline patterns before approving new workflow additions.</p>
+
+<h2>5. Prometheus MCP Server — Metrics as Operational Context</h2>
+
+<p>Platform health is measured in metrics. The Prometheus MCP server gives your AI access to your metrics data — cluster resource utilization, service SLIs, custom business metrics, and alerting rules — so reliability discussions can be grounded in real performance data rather than intuition.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Query time-series metrics for infrastructure resources</li>
+<li>Read alerting rules to understand current monitoring coverage</li>
+<li>Check metric cardinality for scalability assessment</li>
+<li>Evaluate recording rule efficiency for high-cardinality queries</li>
+</ul>
+
+<p><strong>Best for:</strong> Capacity planning conversations where you need to project resource growth from current utilization trends. Ask "based on current memory growth, when do we need to add nodes to the production cluster?" and get an answer grounded in actual metric data rather than guesswork.</p>
+
+<h2>6. Helm MCP Server — Release Management and Chart Intelligence</h2>
+
+<p>Helm charts are how platform teams package and distribute standardized workloads. The Helm MCP server gives your AI access to chart definitions, release histories, and value configurations — so you can audit what's deployed, diagnose release failures, and maintain chart hygiene across environments.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Inspect chart templates and default value schemas</li>
+<li>Read release histories and rollback availability</li>
+<li>Compare values between environments to identify configuration drift</li>
+<li>Review chart dependencies for version compatibility</li>
+</ul>
+
+<p><strong>Best for:</strong> Diagnosing environment-specific issues caused by value overrides. Ask "how do the production values for the API gateway chart differ from staging?" to quickly identify why a service behaves differently across environments without manually diffing YAML files.</p>
+
+<h2>7. Grafana MCP Server — Dashboards and Alert Context</h2>
+
+<p>Grafana is the observation layer of most platform stacks. The Grafana MCP server gives your AI access to dashboard definitions, panel queries, and alert configurations — making it possible to audit monitoring coverage, update dashboards, and understand what's being measured without navigating the Grafana UI manually.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read dashboard definitions and panel configurations</li>
+<li>Audit alert rules for correctness and coverage gaps</li>
+<li>Search for dashboards related to a specific service or metric</li>
+<li>Review data source configurations for connection issues</li>
+</ul>
+
+<p><strong>Best for:</strong> Onboarding new services onto the platform's observability stack. Ask "do we have dashboards covering the key SLIs for the payment service?" and get an assessment of current monitoring coverage before the service goes to production.</p>
+
+<h2>8. Argo CD MCP Server — GitOps Delivery State</h2>
+
+<p>GitOps means the cluster state should match the Git state. The Argo CD MCP server gives your AI visibility into your application synchronization status — which apps are out of sync, which are degraded, and what the git diff looks like between desired and actual state — making GitOps drift easy to detect and diagnose.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>List applications and their current sync status</li>
+<li>Read sync errors and health assessment for degraded apps</li>
+<li>Review application manifests and target revisions</li>
+<li>Check sync policy configurations for auto-sync enforcement</li>
+</ul>
+
+<p><strong>Best for:</strong> Platform teams operating GitOps workflows who need to quickly assess the delivery state of the entire fleet. Ask "which production applications are out of sync right now and why?" to get a prioritized list of drift incidents before your daily platform review.</p>
+
+<h2>Recommended Stacks for Platform Engineers</h2>
+
+<ul>
+<li><strong>Incident diagnosis:</strong> Kubernetes + Prometheus + Grafana (cluster state → metrics → dashboards)</li>
+<li><strong>Infrastructure review:</strong> Terraform + Vault + GitHub Actions (IaC state → secrets posture → CI/CD health)</li>
+<li><strong>Release management:</strong> Argo CD + Helm + GitHub Actions (GitOps state → chart config → pipeline logs)</li>
+<li><strong>Capacity planning:</strong> Kubernetes + Prometheus + Terraform (current utilization → trends → IaC for scaling)</li>
+<li><strong>Full platform stack:</strong> Kubernetes + Terraform + Vault + Prometheus + Grafana + Argo CD — complete coverage across runtime, infrastructure, security, and observability</li>
+</ul>
+
+<p>Browse all <a href="/category/devops">DevOps MCP servers</a> on MyMCPTools. For related guides, see <a href="/blog/best-mcp-servers-for-devops">Best MCP Servers for DevOps</a> and <a href="/blog/best-mcp-servers-for-site-reliability-engineers">Best MCP Servers for Site Reliability Engineers</a>.</p>
+    `.trim(),
+  },
+  {
+    slug: "best-mcp-servers-for-business-analysts",
+    title: "Best MCP Servers for Business Analysts in 2026",
+    description: "Business analysts translate data into decisions — but only when they can access the right data at the right moment. These MCP servers give your AI direct access to databases, spreadsheets, BI tools, project trackers, and documentation so every analysis starts from source-of-truth data.",
+    date: "2026-05-12",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "8 min read",
+    keywords: ["mcp servers for business analysts", "business analysis ai tools", "bigquery mcp server", "sql mcp server", "data analysis mcp tools 2026"],
+    relatedServerSlugs: ["bigquery", "postgresql", "google-sheets", "notion", "jira", "metabase", "excel-mcp", "confluence", "slack", "google-analytics"],
+    content: `
+<p>Business analysis is fundamentally a context problem. Every stakeholder request — "why did churn spike last month?", "which segments are underperforming?", "what's the ROI on this initiative?" — requires pulling together data from systems that don't talk to each other, then synthesizing it into something a decision-maker can act on. That synthesis step is where most BA time disappears.</p>
+
+<p>MCP servers let your AI do the heavy lifting. Instead of manually exporting CSVs, pivoting spreadsheets, and querying dashboards, you can ask questions directly against live data sources. Here are the best MCP servers for business analysts in 2026.</p>
+
+<h2>1. BigQuery MCP Server — Enterprise Analytics at Query Speed</h2>
+
+<p>For organizations running analytics on Google Cloud, BigQuery is often the source of truth. The BigQuery MCP server gives your AI direct SQL query access to your data warehouse — so you can answer stakeholder questions with fresh data instead of waiting for a data engineer to pull a report.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Execute SQL queries against production and analytics datasets</li>
+<li>Browse dataset schemas to understand available dimensions and metrics</li>
+<li>Inspect table partitioning and clustering for query optimization</li>
+<li>Read query job history to audit data pipeline runs</li>
+</ul>
+
+<p><strong>Best for:</strong> Any analyst working in a Google Cloud data stack who needs to answer ad hoc questions without filing a data request. Ask "what was the week-over-week revenue change by region for the last quarter?" and get a SQL-backed answer in seconds rather than days.</p>
+
+<h2>2. PostgreSQL MCP Server — Direct Database Access</h2>
+
+<p>For organizations running PostgreSQL as their primary operational database, the PostgreSQL MCP server provides direct query access — making it possible to answer questions about transactional data, user behavior, and system state without waiting for that data to be replicated to a warehouse.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Execute read queries against operational databases</li>
+<li>Browse table schemas and relationships</li>
+<li>Inspect index usage and query performance characteristics</li>
+<li>Access views and stored procedures for business logic queries</li>
+</ul>
+
+<p><strong>Best for:</strong> Analysts at smaller organizations where the operational database IS the analytics database. Also valuable at any size for analyzing data that hasn't yet been replicated to the warehouse — current-day transactions, live support ticket counts, real-time user activity.</p>
+
+<h2>3. Google Sheets MCP Server — Collaborative Data and Financial Models</h2>
+
+<p>The spreadsheet remains the universal BA tool. Google Sheets is where financial models live, tracking sheets accumulate, and stakeholder-facing dashboards get built before they graduate to proper BI tools. The Google Sheets MCP server makes all of that accessible to your AI.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read and write data across any sheet in your Drive</li>
+<li>Query specific ranges or named tables for analysis</li>
+<li>Update cells and formulas from AI-generated insights</li>
+<li>Create new sheets and populate them with query results</li>
+</ul>
+
+<p><strong>Best for:</strong> Analysts who maintain living spreadsheets for stakeholders — budget trackers, KPI scorecards, sales pipeline models. Ask AI to update this week's actuals against targets, flag variances, and draft the summary email — without opening the sheet manually.</p>
+
+<h2>4. Metabase MCP Server — BI Dashboard Intelligence</h2>
+
+<p>Many business teams run Metabase as their self-service BI layer. The Metabase MCP server gives your AI access to your question library, dashboard definitions, and saved queries — making it possible to find existing analysis, understand what's being measured, and avoid duplicating work that's already been done.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Search existing questions and dashboards by topic or metric</li>
+<li>Read question SQL to understand how metrics are calculated</li>
+<li>Execute Metabase questions and retrieve current results</li>
+<li>Identify which dashboards reference a specific table or metric</li>
+</ul>
+
+<p><strong>Best for:</strong> Analysts fielding repeated stakeholder questions who want to point to existing dashboards rather than building new ones every time. Also valuable for auditing metric definitions — ask "how is 'active user' defined across our dashboards?" to surface inconsistencies before they cause stakeholder confusion.</p>
+
+<h2>5. Notion MCP Server — Requirements, Documentation, and Team Knowledge</h2>
+
+<p>Requirements live in Notion. So do meeting notes, OKR tracking, product roadmaps, and the strategic context that makes an analysis actually useful. The Notion MCP server makes all of that searchable and readable during the analysis process — so insights can be connected to the decisions they're meant to support.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Search for requirements docs, project briefs, and OKR definitions</li>
+<li>Read team wikis and process documentation during analysis</li>
+<li>Create and update analysis deliverables directly in Notion</li>
+<li>Query database views for project tracking and status data</li>
+</ul>
+
+<p><strong>Best for:</strong> Analysts working on strategic projects who need to align findings with current business priorities. Ask "what are the Q2 OKRs for the growth team?" before building an analysis — so the metrics you highlight actually map to what leadership is trying to move.</p>
+
+<h2>6. Jira MCP Server — Product and Sprint Metrics</h2>
+
+<p>Engineering velocity and delivery metrics often fall to business analysts in product-aligned teams. The Jira MCP server gives your AI access to sprint data, issue types, cycle times, and backlog composition — so you can build delivery health reports and velocity analyses without manually exporting Jira reports.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Query issues by project, sprint, status, and assignee</li>
+<li>Calculate completion rates and velocity by team</li>
+<li>Identify recurring issue types that signal process problems</li>
+<li>Read epic progress and roadmap delivery tracking</li>
+</ul>
+
+<p><strong>Best for:</strong> Business analysts who support product and engineering teams and are responsible for delivery reporting. Ask "what was the sprint completion rate across all product teams last quarter?" and get the raw data to build a leadership summary without coordinating with each team separately.</p>
+
+<h2>7. Confluence MCP Server — Institutional Knowledge and Process Documentation</h2>
+
+<p>Every analysis exists within institutional context: previous decisions, historical baselines, documented processes, and past retrospectives. The Confluence MCP server makes that institutional memory searchable, so your analysis can reference what's actually happened rather than starting from scratch each time.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Search for past analysis reports and business reviews</li>
+<li>Read process documentation for business logic context</li>
+<li>Access decision logs and meeting notes for historical context</li>
+<li>Find existing metrics definitions and calculation methodologies</li>
+</ul>
+
+<p><strong>Best for:</strong> Analysts newer to an organization who need to quickly understand institutional context before building an analysis. Ask "what analyses have we done on customer churn before?" to find prior work rather than reinventing the methodology from scratch.</p>
+
+<h2>8. Google Analytics MCP Server — Web and Product Behavioral Data</h2>
+
+<p>For analysts working on growth, marketing, or product, web and app behavioral data is core to the work. The Google Analytics MCP server gives your AI access to traffic data, conversion funnels, acquisition channels, and audience segments — bringing behavioral context into your analysis alongside transactional data.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Query traffic and conversion metrics by channel and segment</li>
+<li>Read funnel completion rates and drop-off analysis</li>
+<li>Compare cohort behavior across acquisition periods</li>
+<li>Access audience dimension data for segmentation analysis</li>
+</ul>
+
+<p><strong>Best for:</strong> Growth and marketing analysts who need to correlate campaign spend with downstream revenue impact. Ask "how did the Q1 paid campaign affect 60-day retention for acquired users?" and get an answer that bridges acquisition channels with downstream conversion data.</p>
+
+<h2>Recommended Stacks for Business Analysts</h2>
+
+<ul>
+<li><strong>Ad hoc data questions:</strong> BigQuery + PostgreSQL (warehouse queries → operational data for freshness)</li>
+<li><strong>Stakeholder reporting:</strong> Metabase + Google Sheets + Notion (existing dashboards → live updates → strategic context)</li>
+<li><strong>Growth analysis:</strong> Google Analytics + BigQuery + Jira (behavioral data → revenue data → delivery context)</li>
+<li><strong>Strategic briefing:</strong> Notion + Confluence + Slack (current priorities → institutional context → team signals)</li>
+<li><strong>Full BA stack:</strong> BigQuery + Google Sheets + Metabase + Notion + Confluence — complete coverage from raw data to stakeholder deliverables</li>
+</ul>
+
+<p>Browse all <a href="/category/analytics">Analytics MCP servers</a> on MyMCPTools. For related guides, see <a href="/blog/best-mcp-servers-for-data-analysts">Best MCP Servers for Data Analysts</a> and <a href="/blog/best-mcp-servers-for-product-managers">Best MCP Servers for Product Managers</a>.</p>
+    `.trim(),
+  },
+  {
+    slug: "best-mcp-servers-for-growth-engineers",
+    title: "Best MCP Servers for Growth Engineers in 2026",
+    description: "Growth engineers sit at the intersection of product, data, and marketing — running experiments, analyzing funnels, and shipping features that move acquisition and retention metrics. These MCP servers give your AI access to analytics, A/B testing, CRM, and campaign data so you can ship faster and learn clearer.",
+    date: "2026-05-12",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "8 min read",
+    keywords: ["mcp servers for growth engineers", "growth engineering ai tools", "posthog mcp server", "amplitude mcp server", "a/b testing mcp tools 2026"],
+    relatedServerSlugs: ["posthog", "amplitude", "mixpanel", "github", "launchdarkly", "segment", "hubspot", "bigquery", "slack", "notion"],
+    content: `
+<p>Growth engineering is a high-velocity discipline. You run experiments, analyze results, ship follow-up features, and repeat — often across acquisition, activation, retention, and revenue simultaneously. The bottleneck is rarely ideas or engineering capacity; it's the time it takes to pull context from a fragmented tool stack before you can act on it.</p>
+
+<p>MCP servers let your AI become a growth research assistant that can actually query your stack. Ask it to pull funnel data, summarize experiment results, check what segments converted, or draft a hypothesis from recent behavioral patterns. Here are the best MCP servers for growth engineers in 2026.</p>
+
+<h2>1. PostHog MCP Server — Product Analytics and Experimentation</h2>
+
+<p>PostHog combines product analytics, session recordings, feature flags, and A/B testing in a single platform — making it the natural hub for a growth engineer's workflow. The PostHog MCP server gives your AI access to all of it, so you can query behavioral data and experiment results in one conversation.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Query funnel conversion rates by step, cohort, and segment</li>
+<li>Read A/B test results and statistical significance assessments</li>
+<li>Access feature flag configurations and rollout percentages</li>
+<li>Pull retention curves and cohort analysis data</li>
+</ul>
+
+<p><strong>Best for:</strong> Analyzing experiment results immediately after a test concludes. Ask "did the new onboarding modal improve 7-day retention for users who saw it?" and get the PostHog data to answer the question before writing up the results for the team.</p>
+
+<h2>2. Amplitude MCP Server — Behavioral Event Analytics</h2>
+
+<p>Amplitude excels at event-based product analytics — tracking user actions, building behavioral cohorts, and computing engagement metrics over time. The Amplitude MCP server lets your AI query this behavioral layer directly, turning raw event data into growth insights without manual chart-building.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Query event counts and unique user metrics by segment and timeframe</li>
+<li>Read funnel reports to identify drop-off points</li>
+<li>Access retention and stickiness metrics for cohort comparison</li>
+<li>Retrieve chart data from saved Amplitude analyses</li>
+</ul>
+
+<p><strong>Best for:</strong> Identifying the highest-leverage drop-off in your funnel. Ask "at what step do we lose the most users between signup and first value?" and get an Amplitude-backed answer that turns a vague hypothesis into a prioritized experiment opportunity.</p>
+
+<h2>3. Mixpanel MCP Server — Conversion Funnel Deep Dives</h2>
+
+<p>Mixpanel's strength is cohort-based funnel analysis and user journey mapping. The Mixpanel MCP server gives your AI access to saved funnels, user profiles, and engagement reports — making it possible to answer segment-level questions that would normally require building custom reports manually.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Query funnel conversion rates with breakdowns by property</li>
+<li>Access user profile data for segment profiling</li>
+<li>Read flow reports to visualize navigation paths</li>
+<li>Retrieve saved reports and board data for synthesis</li>
+</ul>
+
+<p><strong>Best for:</strong> Understanding behavioral differences between converting and non-converting users. Ask "what do users who complete the first purchase do differently from users who don't?" to identify the behavioral patterns worth amplifying in your growth experiments.</p>
+
+<h2>4. LaunchDarkly MCP Server — Feature Flag Control and Rollout Management</h2>
+
+<p>Feature flags are the mechanism of controlled growth experiments. The LaunchDarkly MCP server gives your AI access to your flag library, targeting rules, rollout percentages, and evaluation logs — making flag management faster and less error-prone during high-stakes experiments.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>List active flags and their current rollout configurations</li>
+<li>Read targeting rules and segment definitions for flag evaluations</li>
+<li>Check flag evaluation logs to diagnose unexpected behavior</li>
+<li>Audit flag lifecycle to identify stale flags accumulating technical debt</li>
+</ul>
+
+<p><strong>Best for:</strong> Pre-launch experiment audits. Ask "what flags are currently active in production with more than 50% rollout?" to catch configuration errors before they affect your control group, or to identify flags that have been fully rolled out and should be cleaned up.</p>
+
+<h2>5. Segment MCP Server — Customer Data Pipeline Visibility</h2>
+
+<p>Segment is the data pipeline that connects your product events to every downstream tool in your growth stack. The Segment MCP server gives your AI visibility into your sources, destinations, and event schemas — making it easier to debug data pipelines, audit tracking coverage, and ensure your analytics are measuring what you think they are.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Browse source configurations and connected destinations</li>
+<li>Read event schemas and property definitions</li>
+<li>Inspect workspace settings for data governance</li>
+<li>Audit destination connections for data flow verification</li>
+</ul>
+
+<p><strong>Best for:</strong> Diagnosing missing data before blaming the analytics tool. When an Amplitude funnel shows unexpected drop-off, check Segment first — ask "is the checkout_completed event configured to flow through to Amplitude?" before assuming the product behavior is wrong.</p>
+
+<h2>6. HubSpot MCP Server — Marketing Attribution and Lead Flow</h2>
+
+<p>Growth doesn't end at the product boundary. For B2B or mixed motion companies, HubSpot connects marketing acquisition with sales pipeline — and the HubSpot MCP server makes that connection queryable, letting you trace user journeys from first touch to closed revenue.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Query contacts, deals, and companies by segment, stage, or source</li>
+<li>Read email campaign performance and engagement metrics</li>
+<li>Access marketing attribution data for channel ROI analysis</li>
+<li>Review workflow automations for lead nurture sequence logic</li>
+</ul>
+
+<p><strong>Best for:</strong> Attribution analysis for B2B growth. Ask "what was the conversion rate from free signup to paid for users acquired through the content channel last quarter?" and get a traceable answer across the product and CRM data — the kind of analysis that usually requires a BI query and a CRM export to reconcile manually.</p>
+
+<h2>7. BigQuery MCP Server — Data Warehouse Queries for Growth Analysis</h2>
+
+<p>Growth questions often require joining behavioral data with transactional data — cohort revenue, LTV by acquisition channel, subscription retention by plan type. BigQuery is where most of that joined analysis lives, and the BigQuery MCP server makes it queryable in natural language rather than requiring a data engineering request.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Execute SQL queries across growth and revenue datasets</li>
+<li>Browse table schemas for available dimensions and metrics</li>
+<li>Run ad hoc cohort queries for LTV and payback period analysis</li>
+<li>Access dbt model outputs for business-logic-enriched metrics</li>
+</ul>
+
+<p><strong>Best for:</strong> Revenue-side growth analysis that product analytics tools can't answer on their own. Ask "what is the 90-day LTV for users acquired through the referral program versus organic?" and get a SQL-backed answer from the data warehouse where revenue and acquisition source data actually live together.</p>
+
+<h2>8. GitHub MCP Server — Experiment Code and Implementation Context</h2>
+
+<p>Growth experiments are code. Variant implementations, tracking calls, flag evaluations, and A/B test configurations all live in the codebase. The GitHub MCP server gives your AI access to the actual experiment implementation — so you can verify what a variant actually does, rather than relying on a brief written weeks ago.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read experiment code to verify variant implementation correctness</li>
+<li>Search for feature flag references to understand experiment scope</li>
+<li>Review tracking calls to audit data collection completeness</li>
+<li>Check pull request diffs to understand what changed between experiment iterations</li>
+</ul>
+
+<p><strong>Best for:</strong> Post-experiment debugging when results don't match expectations. Ask "what exactly does the B variant of the checkout experiment do differently?" and get the answer from the actual code, not from a product brief that may have evolved during implementation.</p>
+
+<h2>Recommended Stacks for Growth Engineers</h2>
+
+<ul>
+<li><strong>Experiment analysis:</strong> PostHog + LaunchDarkly + GitHub (results → flag config → implementation verification)</li>
+<li><strong>Funnel optimization:</strong> Amplitude + Mixpanel + Segment (event data → cohort analysis → data pipeline audit)</li>
+<li><strong>Revenue growth:</strong> BigQuery + HubSpot + PostHog (LTV queries → pipeline data → behavioral context)</li>
+<li><strong>B2B growth:</strong> HubSpot + BigQuery + Amplitude (CRM data → revenue data → product behavior)</li>
+<li><strong>Full growth stack:</strong> PostHog + Amplitude + LaunchDarkly + BigQuery + HubSpot — complete coverage across behavioral data, experiments, revenue, and CRM</li>
+</ul>
+
+<p>Browse all <a href="/category/analytics">Analytics MCP servers</a> on MyMCPTools. For related guides, see <a href="/blog/best-mcp-servers-for-marketing">Best MCP Servers for Marketing</a> and <a href="/blog/best-mcp-servers-for-product-managers">Best MCP Servers for Product Managers</a>.</p>
+    `.trim(),
+  },
 ];
 
 export function getBlogPostBySlug(slug: string): BlogPost | undefined {
