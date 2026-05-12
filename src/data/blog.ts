@@ -16365,6 +16365,384 @@ jupyter mcp install</code></pre>
 <p>Browse all <a href="/category/devops">DevOps MCP servers</a> on MyMCPTools. For cloud infrastructure context alongside your container stack, see <a href="/blog/best-mcp-servers-for-aws">Best MCP Servers for AWS</a> and <a href="/blog/best-mcp-servers-for-cloud-engineers">Best MCP Servers for Cloud Engineers</a>.</p>
     `.trim(),
   },
+  {
+    slug: "best-mcp-servers-for-technical-writers",
+    title: "Best MCP Servers for Technical Writers in 2026",
+    description: "Technical writers need context from code, APIs, and product systems to write accurate docs. These MCP servers connect your AI directly to GitHub, Confluence, Notion, and OpenAPI specs — so your docs stay in sync with your product.",
+    date: "2026-05-12",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "7 min read",
+    keywords: ["mcp servers for technical writers", "documentation mcp server", "best mcp servers docs", "ai for technical writing", "confluence mcp server"],
+    relatedServerSlugs: ["github", "confluence", "notion", "openapi-spec", "filesystem", "gitlab", "pdf-reader", "brave-search", "fetch", "markdown-mcp"],
+    content: `
+<p>Technical writing is a research-heavy discipline. Before you write a single sentence, you need to understand the feature, the API, the existing docs, and the product history. Most of that context is scattered across GitHub, Confluence, Jira tickets, and internal wikis — none of it in your AI conversation.</p>
+
+<p>MCP servers change that. With the right setup, your AI assistant can read your OpenAPI specs, search your Confluence docs, check GitHub for recent code changes, and compare them against existing documentation — all in one conversation. Here are the best MCP servers for technical writers in 2026.</p>
+
+<h2>1. OpenAPI Spec MCP Server — Your API Docs, AI-Readable</h2>
+
+<p>Most technical writing about APIs starts with the spec. The OpenAPI Spec MCP server loads your Swagger/OpenAPI specification and makes it fully queryable — endpoints, parameters, request/response schemas, authentication methods, and examples.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>List all API endpoints with their HTTP methods and descriptions</li>
+<li>Read request body schemas and parameter definitions</li>
+<li>Extract example requests and responses for documentation</li>
+<li>Identify deprecated endpoints or breaking changes between spec versions</li>
+</ul>
+
+<p><strong>Best for:</strong> API documentation writers who want AI to draft accurate endpoint descriptions, generate code examples in multiple languages, or identify spec gaps before publishing. Ask "what parameters does the /users endpoint accept?" and get a precise answer directly from your spec.</p>
+
+<h2>2. GitHub MCP Server — Code Context for Better Docs</h2>
+
+<p>Documentation that doesn't match the code is worse than no documentation. The GitHub MCP server gives your AI direct access to your repositories — pull requests, commits, issues, and source files — so your docs can stay synchronized with code changes.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read files and directories from any branch or commit</li>
+<li>Search issues and pull requests by keyword or label</li>
+<li>Check recent commits to understand what changed and why</li>
+<li>Read CHANGELOG files and release notes</li>
+</ul>
+
+<p><strong>Best for:</strong> Writers documenting open-source projects or internal APIs who need to understand recent code changes. Ask "what changed in the authentication module in the last sprint?" and get an accurate summary before updating your docs.</p>
+
+<h2>3. Confluence MCP Server — Your Knowledge Base in Conversation</h2>
+
+<p>Confluence is the canonical doc store for many engineering teams. The Confluence MCP server makes all that institutional knowledge available to your AI — pages, spaces, comments, and version history — without leaving your writing workflow.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Search across spaces and pages by keyword or CQL query</li>
+<li>Read full page content including tables and code blocks</li>
+<li>Check page history to understand how docs have evolved</li>
+<li>List child pages to map documentation structure</li>
+</ul>
+
+<p><strong>Best for:</strong> Enterprise technical writers who need to audit existing docs before writing, identify duplicate coverage, or understand how the team has previously explained a concept. Essential for maintaining consistency across large documentation sets.</p>
+
+<h2>4. Notion MCP Server — Modern Docs Workflows</h2>
+
+<p>Many teams use Notion as their primary knowledge base. The Notion MCP server gives your AI access to databases, pages, and linked content — making it easy to draft new docs that are consistent with existing ones.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Search Notion workspaces and read page content</li>
+<li>Query database properties and filter entries</li>
+<li>Read linked databases and relation properties</li>
+<li>Create and update pages programmatically</li>
+</ul>
+
+<p><strong>Best for:</strong> Technical writers working in Notion-first teams who want AI to draft new doc pages, update existing ones based on feature changes, or maintain a changelog database automatically.</p>
+
+<h2>5. Filesystem MCP Server — Work Directly in Your Doc Repo</h2>
+
+<p>Docs-as-code teams store documentation in Git repositories as Markdown files. The Filesystem MCP server gives your AI direct read/write access to those files — making it possible to draft, edit, and organize docs without leaving your AI conversation.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read and write Markdown, MDX, AsciiDoc, and reStructuredText files</li>
+<li>Navigate directory structures to understand doc organization</li>
+<li>Search file contents for existing coverage of a topic</li>
+<li>Create new files and update front matter metadata</li>
+</ul>
+
+<p><strong>Best for:</strong> Technical writers using Docusaurus, MkDocs, Hugo, or any static site generator who want AI to draft new pages, refactor existing content, or perform bulk updates to front matter across hundreds of files.</p>
+
+<h2>6. Fetch MCP Server — Read Any URL for Research</h2>
+
+<p>Research is core to technical writing. The Fetch MCP server allows your AI to retrieve any URL and return its content — competitor docs, reference implementations, library READMEs, or official specifications.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Fetch any URL and return cleaned text content</li>
+<li>Read HTML pages, plain text, and PDF documents</li>
+<li>Follow redirects and handle common page structures</li>
+<li>Extract structured content from documentation sites</li>
+</ul>
+
+<p><strong>Best for:</strong> Writers who need to compare their docs against competitors, reference official specs, or pull content from library READMEs to generate accurate integration guides. Combine with Brave Search to find and then read the most relevant pages.</p>
+
+<h2>7. Brave Search MCP Server — Real-Time Research</h2>
+
+<p>Good documentation starts with understanding what users are searching for and what gaps exist in the ecosystem. The Brave Search MCP server lets your AI run live web searches — useful for finding the latest documentation conventions, common user questions, and community discussions.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Search the web and return organic results</li>
+<li>Find StackOverflow questions related to your API or SDK</li>
+<li>Identify common user confusion points from community forums</li>
+<li>Research terminology and industry standards before writing</li>
+</ul>
+
+<p><strong>Best for:</strong> Writers who want to understand user intent before drafting docs. Searching "how to authenticate with [your API]" before writing the auth guide surfaces the exact questions users have — letting you structure your docs around real confusion points.</p>
+
+<h2>Recommended Stack for Technical Writers</h2>
+
+<ul>
+<li><strong>API docs:</strong> OpenAPI Spec + GitHub + Filesystem (spec → code → write)</li>
+<li><strong>Enterprise docs:</strong> Confluence + Notion + GitHub (find existing → understand changes → update)</li>
+<li><strong>Docs-as-code:</strong> Filesystem + GitHub + Fetch (local files + code context + research)</li>
+<li><strong>Research-heavy writing:</strong> Brave Search + Fetch + Confluence (find → read → cross-reference internal)</li>
+<li><strong>Full stack:</strong> All 7 — technical writers who switch between API docs, conceptual guides, and tutorials benefit most from the complete setup</li>
+</ul>
+
+<p>Browse all <a href="/category/api">API MCP servers</a> on MyMCPTools. For writing workflows specifically in VS Code, see <a href="/blog/best-mcp-servers-for-vs-code">Best MCP Servers for VS Code</a>.</p>
+    `.trim(),
+  },
+  {
+    slug: "best-mcp-servers-for-qa-engineers",
+    title: "Best MCP Servers for QA Engineers in 2026",
+    description: "QA engineers need access to test suites, bug trackers, browser automation, and build pipelines. These MCP servers connect your AI to Playwright, Sentry, GitHub, Jira, and your CI system — so testing and triage move faster.",
+    date: "2026-05-12",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "7 min read",
+    keywords: ["mcp servers for qa engineers", "playwright mcp server", "testing mcp server", "best mcp tools for testers", "sentry mcp server quality assurance"],
+    relatedServerSlugs: ["playwright", "github", "sentry", "jira", "cypress", "github-actions", "browserbase", "datadog", "linear", "jest"],
+    content: `
+<p>Quality assurance is about context. When a bug report comes in, you need to understand what changed, what the test suite covers, what errors are surfacing in production, and whether CI passed — before you can even reproduce the issue. That context is spread across GitHub, Jira, Sentry, and your test runner output.</p>
+
+<p>MCP servers close that gap. With the right setup, your AI can read recent pull requests, check Sentry for the error trace, find relevant test cases, and draft a reproduction script — in a single conversation. Here are the best MCP servers for QA engineers in 2026.</p>
+
+<h2>1. Playwright MCP Server — Browser Automation in Conversation</h2>
+
+<p>Playwright is the standard for end-to-end testing. The Playwright MCP server gives your AI direct control of a real browser — clicking, filling forms, navigating, and asserting page states — making it possible to explore bugs and draft test scripts interactively.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Navigate to any URL and interact with page elements</li>
+<li>Fill forms, click buttons, and submit actions</li>
+<li>Take screenshots and capture DOM snapshots</li>
+<li>Generate Playwright test code from browser interactions</li>
+</ul>
+
+<p><strong>Best for:</strong> QA engineers who want AI to reproduce reported bugs step-by-step, draft e2e test cases from user stories, or identify flaky test root causes by replaying the failing interaction. Ask "reproduce this login bug" and get a working Playwright script.</p>
+
+<h2>2. Sentry MCP Server — Error Context for Faster Triage</h2>
+
+<p>Sentry captures production errors with full stack traces, breadcrumbs, and user context. The Sentry MCP server makes all that error data available in your AI conversation — so instead of copying error messages, your AI can read the full trace and suggest fixes or test coverage.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>List recent issues by project, environment, and severity</li>
+<li>Read full stack traces and breadcrumb events</li>
+<li>Check error frequency trends and affected user counts</li>
+<li>Link errors to source code releases and commits</li>
+</ul>
+
+<p><strong>Best for:</strong> QA engineers triaging production issues who want AI to analyze Sentry errors, identify the code path that caused them, and draft regression test cases to prevent recurrence. Critical for teams doing shift-left quality work.</p>
+
+<h2>3. GitHub MCP Server — Code and PR Context</h2>
+
+<p>Most bugs are introduced by code changes. The GitHub MCP server gives your AI access to pull requests, commits, and diffs — making it straightforward to correlate a bug report with the specific change that introduced it.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read pull request diffs and review comments</li>
+<li>Search issues for related bug reports or duplicate tickets</li>
+<li>Check commit history for recent changes to affected files</li>
+<li>Read test files to understand current coverage</li>
+</ul>
+
+<p><strong>Best for:</strong> QA engineers performing root cause analysis who want to know "what changed in the checkout flow this week?" before writing reproduction steps. Also useful for reviewing new PRs to identify testing gaps before they reach production.</p>
+
+<h2>4. Jira MCP Server — Bug Tracking in Your Workflow</h2>
+
+<p>Bug tracking context belongs in your AI conversation. The Jira MCP server makes your issue backlog searchable and readable — letting AI help you write clear bug reports, identify duplicate tickets, or understand acceptance criteria for features under test.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Search issues by JQL query, project, assignee, or status</li>
+<li>Read issue details including description, comments, and attachments</li>
+<li>Create and update issues with structured fields</li>
+<li>List sprint contents and check issue priority</li>
+</ul>
+
+<p><strong>Best for:</strong> QA engineers who want AI to draft detailed bug reports from their observations, search for existing tickets before filing duplicates, or summarize what's in the current sprint's test scope.</p>
+
+<h2>5. GitHub Actions MCP Server — CI Pipeline Visibility</h2>
+
+<p>Understanding whether tests passed in CI is critical context for QA. The GitHub Actions MCP server exposes your workflow runs, job logs, and test outputs — so your AI can read why a build failed and suggest fixes without you hunting through log files.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>List recent workflow runs and their status</li>
+<li>Read job logs and step output for failed runs</li>
+<li>Check which test files are part of which CI workflow</li>
+<li>Identify flaky tests from run history patterns</li>
+</ul>
+
+<p><strong>Best for:</strong> QA engineers managing CI pipelines who want AI to diagnose test failures in GitHub Actions without manually scanning thousands of log lines. Ask "why did the nightly regression suite fail?" and get a specific answer.</p>
+
+<h2>6. Browserbase MCP Server — Cloud Browser Testing</h2>
+
+<p>Browserbase provides managed cloud browsers for automation. The Browserbase MCP server gives your AI access to cloud browser sessions — useful for cross-browser testing, running tests against staging environments, or investigating rendering issues in specific browsers.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Launch browser sessions across Chrome, Firefox, and Safari</li>
+<li>Run Playwright or Puppeteer scripts in isolated cloud environments</li>
+<li>Capture screenshots and videos of test sessions</li>
+<li>Test against specific browser versions for compatibility</li>
+</ul>
+
+<p><strong>Best for:</strong> QA teams doing cross-browser compatibility testing who want to reproduce browser-specific bugs or run smoke tests against a staging deployment from within their AI conversation.</p>
+
+<h2>7. Datadog MCP Server — Performance Testing Context</h2>
+
+<p>Performance regressions are bugs too. The Datadog MCP server makes your APM data, latency metrics, and trace information available to your AI — so performance testing has real comparison data, not just anecdotal observations.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Query response time metrics before and after a deployment</li>
+<li>Read distributed traces to identify slow spans</li>
+<li>Check error rates and throughput by endpoint</li>
+<li>Compare performance across environments</li>
+</ul>
+
+<p><strong>Best for:</strong> QA engineers running performance regression testing who want to quantify whether a new release degraded API response times or increased error rates compared to the previous version.</p>
+
+<h2>Recommended Stacks for QA Engineers</h2>
+
+<ul>
+<li><strong>E2E test authoring:</strong> Playwright + GitHub + Filesystem (automate → check code → write test files)</li>
+<li><strong>Bug triage:</strong> Sentry + GitHub + Jira (error trace → code change → ticket)</li>
+<li><strong>CI debugging:</strong> GitHub Actions + GitHub + Sentry (pipeline failure → code context → production errors)</li>
+<li><strong>Performance QA:</strong> Datadog + GitHub + Jira (metrics → code change → document regression)</li>
+<li><strong>Full QA stack:</strong> Playwright + Sentry + GitHub + Jira + GitHub Actions — the complete context loop from user action to error to code to ticket</li>
+</ul>
+
+<p>Browse all <a href="/category/browser">Browser Automation MCP servers</a> on MyMCPTools. For security testing context, see <a href="/blog/best-mcp-servers-for-security">Best MCP Servers for Security</a>.</p>
+    `.trim(),
+  },
+  {
+    slug: "best-mcp-servers-for-software-architects",
+    title: "Best MCP Servers for Software Architects in 2026",
+    description: "Software architects need to reason about system design, dependencies, APIs, infrastructure, and team decisions. These MCP servers give your AI access to your codebase, architecture decisions, cloud resources, and API contracts — so design discussions are grounded in reality.",
+    date: "2026-05-12",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "8 min read",
+    keywords: ["mcp servers for software architects", "architecture mcp server", "best mcp tools for system design", "terraform mcp server", "github mcp architecture review"],
+    relatedServerSlugs: ["github", "terraform", "confluence", "openapi-spec", "filesystem", "sourcegraph", "aws", "datadog", "brave-search", "fetch"],
+    content: `
+<p>Software architecture is a discipline of trade-offs — and trade-offs require context. Before recommending a design, an architect needs to understand the existing system, the team's constraints, the infrastructure, the API contracts, and the historical decisions that shaped the current state. Almost none of that context fits in a chat window.</p>
+
+<p>MCP servers change the equation. With the right setup, your AI can read the codebase, query your infrastructure state, check your API specs, and review past architecture decision records — all in one conversation. Here are the best MCP servers for software architects in 2026.</p>
+
+<h2>1. GitHub MCP Server — Codebase as Architecture Context</h2>
+
+<p>The architecture is the code. The GitHub MCP server gives your AI direct access to your repositories — files, pull requests, issues, and commit history — so design discussions can be grounded in the actual system, not a whiteboard abstraction of it.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read source files across any branch or tag</li>
+<li>Search the codebase for patterns, dependencies, and conventions</li>
+<li>Review pull requests to assess architectural impact before merge</li>
+<li>Check issue history for recurring pain points that signal design problems</li>
+</ul>
+
+<p><strong>Best for:</strong> Architects evaluating the current state before proposing changes. Ask "what services call the payments module?" and get a factual answer based on the actual codebase, not a diagram that was last updated two years ago.</p>
+
+<h2>2. Terraform MCP Server — Infrastructure as Code Context</h2>
+
+<p>Modern systems are defined as code. The Terraform MCP server gives your AI access to your infrastructure declarations — resources, modules, variables, outputs, and state — making it possible to reason about infrastructure architecture with the same precision as application design.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read Terraform configurations and module structures</li>
+<li>Inspect resource dependencies and graph topology</li>
+<li>Query Terraform state for current infrastructure inventory</li>
+<li>Review planned changes before apply</li>
+</ul>
+
+<p><strong>Best for:</strong> Architects making decisions that span application and infrastructure — service mesh deployments, multi-region designs, data residency requirements, or cost optimization reviews. The infrastructure IS part of the architecture.</p>
+
+<h2>3. Sourcegraph MCP Server — Cross-Repo Code Intelligence</h2>
+
+<p>Complex systems span multiple repositories. The Sourcegraph MCP server provides cross-repository code search and intelligence — letting your AI find where a function is used across the entire codebase, trace data flows through services, or identify all callers of a deprecated API.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Search code across all repositories simultaneously</li>
+<li>Find all references to a function, type, or variable</li>
+<li>Navigate symbol definitions and usage chains</li>
+<li>Search for specific patterns or anti-patterns at scale</li>
+</ul>
+
+<p><strong>Best for:</strong> Architects at larger organizations who need to understand cross-service dependencies before proposing a breaking API change or major refactor. Ask "how many services use the old authentication library?" before deciding whether to migrate.</p>
+
+<h2>4. OpenAPI Spec MCP Server — API Contract Intelligence</h2>
+
+<p>APIs are the contracts between services. The OpenAPI Spec MCP server makes your service API definitions queryable — endpoints, schemas, versioning, and deprecations — so architectural API design discussions are anchored to real contracts rather than assumptions.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Compare API contracts between services for consistency</li>
+<li>Identify breaking changes between spec versions</li>
+<li>Review schema definitions for design pattern compliance</li>
+<li>Generate API documentation drafts from specs</li>
+</ul>
+
+<p><strong>Best for:</strong> Architects driving API governance who want AI to enforce naming conventions, identify inconsistent patterns across service APIs, or assess the blast radius of a proposed API change before implementation begins.</p>
+
+<h2>5. Confluence MCP Server — Architecture Decision Records</h2>
+
+<p>Architecture decisions accumulate over years. The Confluence MCP server makes that institutional memory searchable — ADRs, design docs, post-mortems, and system overview pages — so architectural discussions can reference past decisions rather than relitigating them.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Search for past architecture decision records by topic</li>
+<li>Read design documents and their approval history</li>
+<li>Identify which decisions are still active versus superseded</li>
+<li>Draft new ADRs in the team's established format</li>
+</ul>
+
+<p><strong>Best for:</strong> Architects who want AI to check whether a proposed design has been considered before, find the rationale behind an existing constraint, or draft a new ADR that references related historical decisions.</p>
+
+<h2>6. AWS MCP Server — Cloud Architecture Inventory</h2>
+
+<p>Understanding the real cloud architecture — not the diagram — requires querying the cloud. The AWS MCP server gives your AI access to your actual AWS resource inventory, configuration, and account structure through the AWS CLI and APIs.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>List and describe deployed AWS resources by type and region</li>
+<li>Query VPC topology, security groups, and network configurations</li>
+<li>Read IAM policies and cross-account trust relationships</li>
+<li>Check Lambda functions, ECS services, and RDS instances</li>
+</ul>
+
+<p><strong>Best for:</strong> Architects assessing current cloud sprawl, planning a migration, or reviewing security posture. Ask "what compute resources do we have in us-east-1 that aren't tagged?" and get a real inventory from the live account.</p>
+
+<h2>7. Datadog MCP Server — Operational Architecture Intelligence</h2>
+
+<p>The architecture that runs in production is often different from what was designed. The Datadog MCP server gives your AI access to service maps, latency data, error rates, and dependency graphs derived from live traffic — the most accurate picture of your actual architecture.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Query service dependency maps and upstream/downstream relationships</li>
+<li>Read p99 latency by service and identify bottlenecks</li>
+<li>Check error budget consumption across services</li>
+<li>Analyze traffic patterns to inform capacity and scaling design</li>
+</ul>
+
+<p><strong>Best for:</strong> Architects making scaling or resiliency decisions who want operational data to validate assumptions. The service map from production traffic is more honest than any diagram.</p>
+
+<h2>Recommended Stacks for Software Architects</h2>
+
+<ul>
+<li><strong>Code architecture review:</strong> GitHub + Sourcegraph + Confluence (code → cross-repo search → past decisions)</li>
+<li><strong>API governance:</strong> OpenAPI Spec + GitHub + Confluence (contracts → implementation → ADRs)</li>
+<li><strong>Infrastructure architecture:</strong> Terraform + AWS + Datadog (IaC → cloud inventory → operational data)</li>
+<li><strong>System design research:</strong> Brave Search + Fetch + Confluence (external patterns → read docs → draft ADR)</li>
+<li><strong>Full architecture practice:</strong> GitHub + Terraform + Sourcegraph + OpenAPI Spec + Confluence + Datadog — the complete context stack for organizations where architecture decisions have real consequence</li>
+</ul>
+
+<p>Browse all <a href="/category/coding">Coding MCP servers</a> on MyMCPTools. For cloud-focused architectural work, see <a href="/blog/best-mcp-servers-for-aws">Best MCP Servers for AWS</a> and <a href="/blog/best-mcp-servers-for-cloud-engineers">Best MCP Servers for Cloud Engineers</a>.</p>
+    `.trim(),
+  },
 ];
 
 export function getBlogPostBySlug(slug: string): BlogPost | undefined {
