@@ -16743,6 +16743,398 @@ jupyter mcp install</code></pre>
 <p>Browse all <a href="/category/coding">Coding MCP servers</a> on MyMCPTools. For cloud-focused architectural work, see <a href="/blog/best-mcp-servers-for-aws">Best MCP Servers for AWS</a> and <a href="/blog/best-mcp-servers-for-cloud-engineers">Best MCP Servers for Cloud Engineers</a>.</p>
     `.trim(),
   },
+  {
+    slug: "best-mcp-servers-for-ux-researchers",
+    title: "Best MCP Servers for UX Researchers in 2026",
+    description: "UX researchers need to synthesize interview data, analyze behavioral patterns, connect insights to design decisions, and communicate findings clearly. These MCP servers give your AI access to your research repository, analytics, design files, and documentation — turning hours of synthesis into minutes.",
+    date: "2026-05-12",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "7 min read",
+    keywords: ["mcp servers for ux researchers", "ux research mcp server", "figma mcp server research", "posthog mcp analytics", "notion mcp research repository"],
+    relatedServerSlugs: ["figma", "notion", "posthog", "airtable", "google-drive", "slack", "brave-search", "fetch", "confluence", "github"],
+    content: `
+<p>UX research lives or dies on synthesis. You can run twenty interviews, collect hundreds of usability observations, and pile up behavioral analytics data — but the value only appears when those pieces connect into coherent patterns. That synthesis work is exactly where AI can help most, and MCP servers are how you give AI the context it needs to do it well.</p>
+
+<p>Here are the best MCP servers for UX researchers in 2026.</p>
+
+<h2>1. Notion MCP Server — Research Repository and Insight Management</h2>
+
+<p>Most UX teams store their research in Notion: interview notes, affinity diagrams, personas, and insight archives. The Notion MCP server makes all of that queryable by your AI — not just searchable, but readable and cross-referenceable across projects and time.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Search across all research notes, interview transcripts, and insight databases</li>
+<li>Read and update affinity maps and synthesis workspaces</li>
+<li>Create structured research reports from raw note collections</li>
+<li>Query personas and jobs-to-be-done frameworks during design reviews</li>
+</ul>
+
+<p><strong>Best for:</strong> Researchers who want to ask "what have we learned about onboarding friction across all studies from the last 18 months?" and get a synthesized answer from the actual research archive, not from memory.</p>
+
+<h2>2. Figma MCP Server — Design Context for Research Findings</h2>
+
+<p>Research findings only matter if they reach design. The Figma MCP server gives your AI access to your design files — components, flows, prototype screens, and comments — so research synthesis can be tied directly to the specific designs being tested or evaluated.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read screen layouts and component names in current design files</li>
+<li>Access prototype flows to understand what users will experience</li>
+<li>Review design comments for existing feedback patterns</li>
+<li>Reference component states and variants during usability analysis</li>
+</ul>
+
+<p><strong>Best for:</strong> Researchers preparing usability studies who want AI to review the actual prototype before writing a test script — so tasks are grounded in the real flow, not an approximation of it.</p>
+
+<h2>3. PostHog MCP Server — Behavioral Analytics as Research Evidence</h2>
+
+<p>Qualitative research explains the why; quantitative data reveals the scale. The PostHog MCP server gives your AI access to product analytics — user flows, funnel drop-offs, feature adoption, and session data — so behavioral patterns can validate or challenge qualitative findings.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Query funnel conversion rates to find where users drop off</li>
+<li>Read feature flag adoption and rollout data</li>
+<li>Access cohort analysis to compare behavior across user segments</li>
+<li>Check event counts to quantify how common an observed problem actually is</li>
+</ul>
+
+<p><strong>Best for:</strong> Mixed-methods researchers who want to triangulate findings — "five participants struggled with checkout in testing; here's how that maps to the 34% drop-off we see in the analytics funnel."</p>
+
+<h2>4. Airtable MCP Server — Research Operations and Participant Management</h2>
+
+<p>Research operations run on structured data: participant databases, recruitment screeners, study calendars, and incentive tracking. The Airtable MCP server makes all of that accessible to your AI, turning research ops from administrative overhead into queryable context.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Query participant databases by segment, demographics, or study history</li>
+<li>Check study schedules and recruitment status</li>
+<li>Read screener responses to identify qualified participants</li>
+<li>Track research requests from product and design teams</li>
+</ul>
+
+<p><strong>Best for:</strong> Research teams running multiple studies simultaneously who want AI to help triage research requests, identify participants who match new study criteria, or synthesize findings across related studies.</p>
+
+<h2>5. Confluence MCP Server — Product Knowledge and Decision History</h2>
+
+<p>Good UX research connects to product decisions. The Confluence MCP server gives your AI access to PRDs, design specs, meeting notes, and decision logs — the institutional context that makes research findings land rather than sit in a repo unread.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Search product requirements and feature specs for research alignment</li>
+<li>Read past design decisions to understand the constraints research must work within</li>
+<li>Access roadmap documentation to prioritize research questions by impact</li>
+<li>Find existing research findings that may answer a new stakeholder question</li>
+</ul>
+
+<p><strong>Best for:</strong> Researchers preparing stakeholder presentations who want AI to identify which past findings are most relevant to a current product decision — so the presentation cites real precedent instead of starting from scratch.</p>
+
+<h2>6. Google Drive MCP Server — Research Artifacts and Raw Data</h2>
+
+<p>Interview recordings, survey exports, screener spreadsheets, and presentation decks often live in Drive. The Google Drive MCP server makes those files accessible to your AI for synthesis, analysis, and report generation without manual copy-pasting.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read spreadsheet exports from survey tools (Typeform, Google Forms)</li>
+<li>Access presentation files to understand how past findings were framed</li>
+<li>Find and read shared research reports across team folders</li>
+<li>Organize and tag research artifacts by project or theme</li>
+</ul>
+
+<p><strong>Best for:</strong> Researchers synthesizing longitudinal data who want AI to compare survey results across multiple time periods or studies stored in Drive folders.</p>
+
+<h2>7. Slack MCP Server — Stakeholder Signals and Research Feedback</h2>
+
+<p>Research insights travel through Slack: design team reactions, product manager questions, engineering clarifications, and the informal conversation that shapes how findings get used. The Slack MCP server makes those signals visible to your AI.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Search channels for stakeholder reactions to past research presentations</li>
+<li>Find questions and clarifications that indicate where findings need more depth</li>
+<li>Read threads where research insights influenced design or product decisions</li>
+<li>Identify recurring user complaints or feature requests surfacing in customer-facing channels</li>
+</ul>
+
+<p><strong>Best for:</strong> Researchers tracking research impact who want to understand where their findings actually influenced decisions — not just where they were presented.</p>
+
+<h2>Recommended Stacks for UX Researchers</h2>
+
+<ul>
+<li><strong>Qualitative synthesis:</strong> Notion + Google Drive + Confluence (research archive → raw files → product context)</li>
+<li><strong>Mixed-methods triangulation:</strong> PostHog + Notion + Figma (behavioral data → insights → design reference)</li>
+<li><strong>Research operations:</strong> Airtable + Slack + Notion (participant management → team communication → synthesis)</li>
+<li><strong>Stakeholder reporting:</strong> Confluence + Slack + Figma (product context → stakeholder signals → design reference)</li>
+<li><strong>Full research practice:</strong> Notion + Figma + PostHog + Airtable + Confluence — the complete stack for research teams embedded in a product organization</li>
+</ul>
+
+<p>Browse all <a href="/category/productivity">Productivity MCP servers</a> on MyMCPTools. For related reading, see <a href="/blog/best-mcp-servers-for-designers">Best MCP Servers for Designers</a> and <a href="/blog/best-mcp-servers-for-product-managers">Best MCP Servers for Product Managers</a>.</p>
+    `.trim(),
+  },
+  {
+    slug: "best-mcp-servers-for-site-reliability-engineers",
+    title: "Best MCP Servers for Site Reliability Engineers in 2026",
+    description: "SREs need to investigate incidents, correlate metrics and logs, query infrastructure state, and reduce time to recovery. These MCP servers connect your AI to your observability stack, infrastructure, runbooks, and deployment history — so the next incident doesn't start from a blank page.",
+    date: "2026-05-12",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "8 min read",
+    keywords: ["mcp servers for site reliability engineers", "sre mcp server", "datadog mcp server incident", "grafana mcp server", "pagerduty mcp server"],
+    relatedServerSlugs: ["datadog", "grafana", "sentry", "aws", "kubernetes", "github", "confluence", "slack", "axiom", "k8s-mcp"],
+    content: `
+<p>When something is on fire, the last thing an SRE needs is friction. The fastest path to resolution runs through your observability stack, your infrastructure state, your runbooks, and your deployment history — and right now, most of that context has to be assembled manually, tab by tab, under pressure.</p>
+
+<p>MCP servers change the investigation flow. With the right setup, your AI can query metrics, search logs, inspect infrastructure state, and pull relevant runbook sections in a single conversation. Here are the best MCP servers for site reliability engineers in 2026.</p>
+
+<h2>1. Datadog MCP Server — Metrics, APM, and Service Intelligence</h2>
+
+<p>Datadog is where most SRE investigations start. The Datadog MCP server gives your AI direct access to metrics, APM traces, service maps, and dashboards — so you can ask natural language questions about system behavior and get answers grounded in live telemetry data.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Query time-series metrics for any service or infrastructure component</li>
+<li>Read APM trace data to identify latency spikes and error hotspots</li>
+<li>Access service dependency maps and upstream/downstream health</li>
+<li>Search monitors and alert history to understand recent state changes</li>
+</ul>
+
+<p><strong>Best for:</strong> Incident investigation — ask "what changed in the payments service latency in the 30 minutes before the alert fired?" and get a data-grounded answer rather than manually building a dashboard under pressure.</p>
+
+<h2>2. Grafana MCP Server — Unified Observability Query</h2>
+
+<p>Grafana aggregates metrics from Prometheus, Loki, Tempo, and other sources into a single pane. The Grafana MCP server gives your AI access to your dashboards, panels, and data sources — so investigation queries can cross observability pillars in one conversation.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Query Prometheus metrics via Grafana data sources</li>
+<li>Read Loki log streams with label filters and time ranges</li>
+<li>Access Tempo distributed traces for end-to-end request tracking</li>
+<li>Read dashboard configurations to understand what's being monitored</li>
+</ul>
+
+<p><strong>Best for:</strong> Teams running open-source observability stacks who want AI to correlate metrics and logs without switching between the Grafana UI, Prometheus, and Loki query interfaces separately.</p>
+
+<h2>3. Sentry MCP Server — Error Tracking and Issue Context</h2>
+
+<p>Production errors have fingerprints: stack traces, affected versions, user impact counts, and issue history. The Sentry MCP server gives your AI access to that structured error data — so diagnosis can start from the actual exception rather than reconstructed from logs.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read current error issues by project, severity, and recency</li>
+<li>Access full stack traces and breadcrumb event sequences</li>
+<li>Query error occurrence counts and affected user metrics</li>
+<li>Check release health and regression status per deployment</li>
+</ul>
+
+<p><strong>Best for:</strong> SREs triaging application-layer incidents who want to understand the error pattern — "is this a new regression or a recurring flake?" — before spending time in logs.</p>
+
+<h2>4. AWS MCP Server — Infrastructure State and Configuration</h2>
+
+<p>Infrastructure incidents often trace to configuration drift, resource exhaustion, or unexpected state. The AWS MCP server gives your AI access to your actual AWS resource inventory and configuration — EC2, ECS, RDS, Lambda, VPCs, security groups — via the AWS CLI.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Describe EC2 instances, ECS services, and their current health status</li>
+<li>Check RDS instance state, replication lag, and connection limits</li>
+<li>Query CloudWatch metrics directly for any AWS resource</li>
+<li>Inspect security group rules and network ACLs during a network incident</li>
+</ul>
+
+<p><strong>Best for:</strong> Infrastructure incidents where the problem is in the cloud layer — ask "what's the current CPU credit balance on our t3 RDS instance and when did it start dropping?" instead of navigating to the CloudWatch console under stress.</p>
+
+<h2>5. Kubernetes MCP Server — Container Orchestration State</h2>
+
+<p>Most modern services run on Kubernetes, and Kubernetes incidents require reading pod state, events, logs, and resource configurations. The Kubernetes MCP server gives your AI kubectl-level access to your clusters without requiring you to type the queries yourself.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>List pods by namespace and check their status, restarts, and readiness</li>
+<li>Read pod events and describe failing deployments</li>
+<li>Check resource requests and limits versus actual consumption</li>
+<li>Query node conditions and capacity constraints</li>
+</ul>
+
+<p><strong>Best for:</strong> SREs investigating OOMKills, CrashLoopBackoffs, or deployment rollout failures who want AI to diagnose the cluster state rather than running individual kubectl commands one by one.</p>
+
+<h2>6. GitHub MCP Server — Deployment and Change History</h2>
+
+<p>The leading cause of production incidents is a recent change. The GitHub MCP server gives your AI access to your deployment history through recent commits, pull requests, and releases — so incident timelines can be correlated with code changes immediately.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>List recent commits and PRs merged around the incident timeframe</li>
+<li>Read the diff of a specific release to understand what changed</li>
+<li>Check deployment workflow runs and their status</li>
+<li>Review recent changes to configuration files and infrastructure code</li>
+</ul>
+
+<p><strong>Best for:</strong> Root cause analysis — "what was deployed between 14:00 and 15:00 UTC before the error rate spiked?" — answered from Git history rather than Slack archaeology.</p>
+
+<h2>7. Confluence MCP Server — Runbooks and Post-Mortem History</h2>
+
+<p>The fastest incident resolution reuses solutions that have already worked. The Confluence MCP server gives your AI access to your runbook library, past incident post-mortems, and architecture documentation — institutional knowledge that's otherwise buried in pages nobody opens under pressure.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Search runbooks by service name or symptom description</li>
+<li>Read past post-mortems to find similar incidents and their resolutions</li>
+<li>Access architecture documentation to understand service dependencies</li>
+<li>Draft post-mortem documents from incident timeline notes</li>
+</ul>
+
+<p><strong>Best for:</strong> SREs who want AI to find the relevant runbook section during active incidents, or to draft the post-mortem afterward by pulling from the incident's Slack timeline and GitHub history.</p>
+
+<h2>8. Axiom MCP Server — High-Volume Log Search</h2>
+
+<p>Log volumes at scale make manual search impractical. The Axiom MCP server provides efficient querying over high-volume log streams — so your AI can search millions of log events with structured filters without timing out or requiring you to write APL queries by hand.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Execute structured log queries with field filters and time ranges</li>
+<li>Search for specific error strings, trace IDs, or user identifiers</li>
+<li>Aggregate log counts to identify the highest-frequency error patterns</li>
+<li>Correlate logs with metrics by timestamp during incident investigation</li>
+</ul>
+
+<p><strong>Best for:</strong> SREs correlating log-level evidence with metric-level signals during complex incidents — finding the specific request that caused the spike, not just that the spike happened.</p>
+
+<h2>Recommended SRE Stacks</h2>
+
+<ul>
+<li><strong>Incident triage:</strong> Datadog + Sentry + GitHub (metrics → error context → recent changes)</li>
+<li><strong>Infrastructure investigation:</strong> AWS + Kubernetes + Grafana (cloud state → container state → metrics)</li>
+<li><strong>Root cause analysis:</strong> GitHub + Confluence + Axiom (change history → runbooks → log evidence)</li>
+<li><strong>Post-mortem workflow:</strong> GitHub + Slack + Confluence (deployment history → incident timeline → draft post-mortem)</li>
+<li><strong>Full SRE on-call stack:</strong> Datadog + Grafana + Sentry + AWS + Kubernetes + GitHub + Confluence — complete context for any production incident, from alert to resolution to written post-mortem</li>
+</ul>
+
+<p>Browse all <a href="/category/devops">DevOps MCP servers</a> on MyMCPTools. For related guides, see <a href="/blog/best-mcp-servers-for-devops">Best MCP Servers for DevOps</a> and <a href="/blog/best-mcp-servers-for-cloud-engineers">Best MCP Servers for Cloud Engineers</a>.</p>
+    `.trim(),
+  },
+  {
+    slug: "best-mcp-servers-for-engineering-managers",
+    title: "Best MCP Servers for Engineering Managers in 2026",
+    description: "Engineering managers need visibility across team output, project health, hiring pipelines, and technical decisions without getting lost in the weeds. These MCP servers give your AI access to your team's GitHub activity, project tracking, documentation, and communication — so you lead with data, not guesswork.",
+    date: "2026-05-12",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "7 min read",
+    keywords: ["mcp servers for engineering managers", "engineering manager mcp server", "github mcp team metrics", "linear mcp project tracking", "jira mcp engineering manager"],
+    relatedServerSlugs: ["github", "linear", "jira", "confluence", "slack", "notion", "datadog", "sentry", "brave-search", "fetch"],
+    content: `
+<p>Engineering management is information synthesis at scale. You're responsible for shipping velocity, team health, technical quality, and headcount — and each of those dimensions has its own data source, its own cadence, and its own failure mode. The challenge isn't finding information; it's connecting it fast enough to act while it still matters.</p>
+
+<p>MCP servers give AI the context it needs to help. With the right setup, you can ask your AI about sprint health, recent incident patterns, PR review bottlenecks, or team capacity — and get answers grounded in the actual data, not approximations from memory. Here are the best MCP servers for engineering managers in 2026.</p>
+
+<h2>1. GitHub MCP Server — Team Output and Code Health</h2>
+
+<p>GitHub is the primary record of engineering work. The GitHub MCP server gives your AI access to your team's PR activity, commit velocity, review patterns, and open issues — turning scattered Git history into queryable team intelligence.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Query recent pull requests by author, team, or date range</li>
+<li>Measure PR cycle time and review response patterns</li>
+<li>Identify open issues and stale PRs blocking delivery</li>
+<li>Check CI/CD pipeline health and failure patterns by workflow</li>
+</ul>
+
+<p><strong>Best for:</strong> Weekly team reviews — ask "which PRs have been open for more than 5 days and what's blocking them?" and get a real list from GitHub, not a reconstructed one from memory or spreadsheet updates.</p>
+
+<h2>2. Linear MCP Server — Sprint and Project Tracking</h2>
+
+<p>Linear is where engineering work gets planned and tracked. The Linear MCP server gives your AI access to your team's cycles, project status, and issue backlogs — so sprint reviews and planning sessions can start from real data rather than manually assembled status updates.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Query current cycle progress and issue completion rates</li>
+<li>List issues by assignee, priority, and status</li>
+<li>Read project milestones and identify at-risk items</li>
+<li>Check backlog depth and priority distribution</li>
+</ul>
+
+<p><strong>Best for:</strong> Sprint retrospectives and planning — "what's our cycle completion rate over the last 6 sprints, and which issue types most often roll over?" — answered with real cycle data rather than subjective recall.</p>
+
+<h2>3. Jira MCP Server — Issue Tracking and Engineering Workflow</h2>
+
+<p>For teams running Jira, the Jira MCP server provides the same sprint and project visibility that Linear offers — epics, stories, bugs, velocity metrics, and board states — queryable by your AI in natural language.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Query sprint progress and story point completion rates</li>
+<li>Read epic status and roadmap alignment</li>
+<li>Identify blocked issues and their stated blockers</li>
+<li>Check bug severity distribution and age by component</li>
+</ul>
+
+<p><strong>Best for:</strong> Engineering managers reporting upward — "what's the current P1 bug count by product area and how has it trended over 30 days?" — answered from Jira data in seconds rather than built from a custom report.</p>
+
+<h2>4. Confluence MCP Server — Technical Documentation and Decision Records</h2>
+
+<p>The institutional knowledge that makes new engineers productive lives in Confluence: architecture decisions, onboarding guides, runbooks, and design docs. The Confluence MCP server makes that documentation queryable for both you and the AI you work with.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Search for architecture decision records by topic or service</li>
+<li>Read onboarding documentation to identify gaps before new hires start</li>
+<li>Access engineering team processes and working agreements</li>
+<li>Draft new documentation from meeting notes or design decisions</li>
+</ul>
+
+<p><strong>Best for:</strong> Managers preparing for new hire onboarding, architecture reviews, or quarterly planning — asking AI to synthesize existing documentation into a briefing rather than reading it all manually.</p>
+
+<h2>5. Slack MCP Server — Team Communication and Signal Detection</h2>
+
+<p>Team health shows up in Slack before it shows up in metrics. Morale issues, process friction, cross-team blockers, and technical risks all surface in channel conversations before they become formal escalations. The Slack MCP server gives your AI access to those signals.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Search channels for recurring complaints, blockers, or escalation patterns</li>
+<li>Read incident and on-call channels to understand operational load</li>
+<li>Find cross-team dependencies surfacing in async conversations</li>
+<li>Identify who's active on what by message patterns during planning cycles</li>
+</ul>
+
+<p><strong>Best for:</strong> Weekly 1:1 preparation — understanding what each team member has been working on, what's been frustrating them, and what they might raise before you walk into the room.</p>
+
+<h2>6. Datadog MCP Server — Production Health as Management Signal</h2>
+
+<p>Engineering managers don't need to be deep in metrics, but they do need to know when production health is degrading. The Datadog MCP server gives your AI access to service error rates, latency trends, and SLO burn rates — so you can spot reliability drift before it becomes an incident.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Check SLO compliance rates across services your team owns</li>
+<li>Read error rate trends by service over weekly timeframes</li>
+<li>Access on-call alert volume to measure operational burden</li>
+<li>Query deployment frequency metrics as an engineering productivity signal</li>
+</ul>
+
+<p><strong>Best for:</strong> Engineering managers who want a weekly production health brief — "how are our SLOs trending, and which services are generating the most on-call alerts?" — without attending every incident retrospective personally.</p>
+
+<h2>7. Notion MCP Server — Team Documentation and Planning</h2>
+
+<p>Many engineering teams run planning, hiring, and team operations in Notion. The Notion MCP server gives your AI access to team wikis, hiring pipelines, interview feedback, and OKR tracking — the operational layer of engineering management.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Query hiring pipeline status and candidate interview stages</li>
+<li>Read OKR databases and key result progress</li>
+<li>Access team ritual notes and action item tracking</li>
+<li>Find past performance review templates and feedback examples</li>
+</ul>
+
+<p><strong>Best for:</strong> Managers running hiring pipelines who want AI to draft interview prep briefs, summarize candidate notes across interviewers, or track action items from team retrospectives.</p>
+
+<h2>Recommended Stacks for Engineering Managers</h2>
+
+<ul>
+<li><strong>Weekly team review:</strong> GitHub + Linear + Slack (output metrics → sprint health → team signals)</li>
+<li><strong>Upward reporting:</strong> Linear + Datadog + Confluence (delivery status → production health → technical context)</li>
+<li><strong>1:1 preparation:</strong> Slack + GitHub + Notion (recent communication → recent commits → feedback history)</li>
+<li><strong>Hiring cycle:</strong> Notion + Confluence + Slack (pipeline status → job description context → team capacity discussion)</li>
+<li><strong>Full EM stack:</strong> GitHub + Linear + Confluence + Slack + Datadog — complete visibility across delivery, operations, documentation, and team communication</li>
+</ul>
+
+<p>Browse all <a href="/category/productivity">Productivity MCP servers</a> on MyMCPTools. For related guides, see <a href="/blog/best-mcp-servers-for-software-architects">Best MCP Servers for Software Architects</a> and <a href="/blog/best-mcp-servers-for-project-management">Best MCP Servers for Project Management</a>.</p>
+    `.trim(),
+  },
 ];
 
 export function getBlogPostBySlug(slug: string): BlogPost | undefined {
