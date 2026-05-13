@@ -17555,6 +17555,418 @@ jupyter mcp install</code></pre>
 <p>Browse all <a href="/category/analytics">Analytics MCP servers</a> on MyMCPTools. For related guides, see <a href="/blog/best-mcp-servers-for-marketing">Best MCP Servers for Marketing</a> and <a href="/blog/best-mcp-servers-for-product-managers">Best MCP Servers for Product Managers</a>.</p>
     `.trim(),
   },
+  {
+    slug: "best-mcp-servers-for-frontend-developers",
+    title: "Best MCP Servers for Frontend Developers in 2026",
+    description: "Frontend developers juggle design systems, component libraries, browser APIs, and deployment pipelines simultaneously. These MCP servers connect your AI to the tools you actually use — Figma, GitHub, browser automation, CSS frameworks, and deployment platforms — so you can ship faster without context-switching.",
+    date: "2026-05-12",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "8 min read",
+    keywords: ["mcp servers for frontend developers", "figma mcp server", "tailwind css mcp", "playwright mcp server", "vercel mcp server 2026"],
+    relatedServerSlugs: ["figma", "github", "playwright", "vercel", "tailwind-css", "storyblok-mcp", "vite", "chromadb", "puppeteer", "netlify"],
+    content: `
+<p>Frontend development in 2026 means managing design-to-code handoffs, component state, cross-browser behavior, and deployment pipelines — all while keeping design systems consistent and performance budgets intact. The cognitive load of switching between Figma, GitHub, your framework docs, and your analytics dashboard is a real productivity tax.</p>
+
+<p>MCP servers eliminate that switching cost by letting your AI pull context directly from the tools you use. Instead of copy-pasting component specs from Figma or manually checking a Vercel deployment log, you ask once and get an answer grounded in live data. Here are the best MCP servers for frontend developers in 2026.</p>
+
+<h2>1. Figma MCP Server — Design-to-Code Without the Handoff Gap</h2>
+
+<p>The Figma MCP server is one of the highest-leverage tools a frontend developer can add to their workflow. It gives your AI direct access to Figma file contents — component names, variant properties, spacing tokens, color values, and layout constraints — so you can implement designs accurately without squinting at specs or asking a designer to annotate every detail.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read component properties, variants, and auto-layout constraints from any Figma file</li>
+<li>Extract design token values (colors, typography, spacing) in exact pixel/rem values</li>
+<li>Inspect layer structure to understand component hierarchy before implementation</li>
+<li>Compare design specs against your actual implementation for pixel-perfect QA</li>
+</ul>
+
+<p><strong>Best for:</strong> Starting a new component implementation. Ask "what are the exact spacing values and font weights for the card component in the design file?" and get the precise values from Figma rather than approximating from a screenshot or waiting on a designer to respond in Slack.</p>
+
+<h2>2. GitHub MCP Server — Code Navigation and PR Context</h2>
+
+<p>Frontend codebases are full of interconnected components, shared hooks, and CSS modules that are hard to navigate without IDE context. The GitHub MCP server gives your AI access to your entire repository — so it can understand how a component is used across the codebase before suggesting a change that breaks three other places.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Search for component usage patterns across the entire repository</li>
+<li>Read PR diffs to understand what changed before reviewing or merging</li>
+<li>Access file history to understand why a particular implementation decision was made</li>
+<li>Browse issues and discussions for context on design system decisions</li>
+</ul>
+
+<p><strong>Best for:</strong> Refactoring components safely. Ask "how many places use the old Button component variant before I remove it?" and get an accurate count from GitHub search — not a guess based on your recent memory of the codebase.</p>
+
+<h2>3. Playwright MCP Server — Browser Automation and Visual Testing</h2>
+
+<p>Browser behavior is the ground truth of frontend development — and the Playwright MCP server gives your AI the ability to interact with browsers directly. Navigate to pages, fill forms, click elements, and capture screenshots without writing boilerplate test scripts for every scenario you want to verify.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Navigate to any URL and interact with page elements programmatically</li>
+<li>Capture screenshots at multiple viewport sizes for visual regression checks</li>
+<li>Fill and submit forms to test user flows end-to-end</li>
+<li>Extract computed styles and DOM structure for debugging layout issues</li>
+</ul>
+
+<p><strong>Best for:</strong> Cross-browser visual debugging. When a component looks wrong in production but correct in your local dev environment, ask your AI to "open the staging URL in a browser, navigate to the affected component, and take a screenshot" — often faster than setting up a dedicated visual regression test run.</p>
+
+<h2>4. Vercel MCP Server — Deployment Status and Preview URLs</h2>
+
+<p>Vercel is where most frontend projects live in production. The Vercel MCP server connects your AI to deployment status, preview URLs, environment variables, and build logs — so you can check whether a feature branch deployed successfully without leaving your development environment.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>List recent deployments and their build status for any project</li>
+<li>Access preview URLs for feature branch deployments</li>
+<li>Read build logs to diagnose failed deployments</li>
+<li>Check environment variable configuration across preview and production environments</li>
+</ul>
+
+<p><strong>Best for:</strong> Post-push verification during active development. Ask "did my last push to the feature branch deploy successfully and what's the preview URL?" without opening the Vercel dashboard — then paste the preview URL directly into a message to your designer for feedback.</p>
+
+<h2>5. Tailwind CSS MCP Server — Class Documentation On Demand</h2>
+
+<p>Tailwind CSS has thousands of utility classes across layout, spacing, typography, color, and animation systems. The Tailwind CSS MCP server surfaces documentation for any class or utility instantly — so you stop guessing whether it's <code>gap-x-4</code> or <code>space-x-4</code> for that specific layout problem.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Look up any Tailwind utility class with its exact CSS output</li>
+<li>Browse responsive variant patterns and breakpoint modifiers</li>
+<li>Access arbitrary value syntax for custom spacing or color values</li>
+<li>Reference the full plugin API for custom utility creation</li>
+</ul>
+
+<p><strong>Best for:</strong> Getting Tailwind class syntax right on the first try. Ask "what's the Tailwind class for a 14px font size with 1.6 line height?" and get the exact v4 syntax without leaving your editor to check the documentation site.</p>
+
+<h2>6. Vite MCP Server — Build Configuration and Plugin Docs</h2>
+
+<p>Vite is the build tool of choice for most modern frontend stacks. The Vite MCP server provides access to configuration documentation, plugin APIs, and troubleshooting guidance — so you can configure HMR behavior, resolve module aliasing issues, or set up a new plugin integration without deep-diving into the docs manually.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Look up config options with their type signatures and defaults</li>
+<li>Access plugin documentation for official and community plugins</li>
+<li>Reference rollup options available through Vite's build config</li>
+<li>Troubleshoot common build errors with context-specific documentation</li>
+</ul>
+
+<p><strong>Best for:</strong> Resolving build configuration issues during project setup. When your Vite dev server throws an opaque error about a module resolution failure, ask "how do I configure the resolve.alias option to point @components to ./src/components?" and get a working configuration snippet.</p>
+
+<h2>7. Puppeteer MCP Server — Headless Browser Scripting</h2>
+
+<p>Puppeteer provides lower-level browser control than Playwright — useful for scraping, screenshot generation, PDF export, and performance profiling tasks that don't need a full test framework. The Puppeteer MCP server lets your AI write and execute these scripts on demand without you writing boilerplate.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Control headless Chrome for scraping, screenshots, and PDF generation</li>
+<li>Access browser performance timings for Core Web Vitals audits</li>
+<li>Execute JavaScript in the browser context for dynamic content extraction</li>
+<li>Intercept network requests to test loading behavior under throttled conditions</li>
+</ul>
+
+<p><strong>Best for:</strong> Quick performance audits during development. Ask "load the homepage in a headless browser with simulated 4G throttling and report the LCP and FID values" to catch Core Web Vitals regressions before they reach production — without setting up a full Lighthouse CI pipeline.</p>
+
+<h2>8. Netlify MCP Server — Alternative Deployment and Edge Function Context</h2>
+
+<p>For teams on Netlify, the Netlify MCP server provides access to deployment status, build settings, redirects configuration, and edge function logs. It pairs naturally with GitHub MCP for a complete deployment-aware development workflow.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Check deployment status and build logs for all sites</li>
+<li>Read redirect and header configuration from netlify.toml</li>
+<li>Access form submission data for sites using Netlify Forms</li>
+<li>Inspect edge function configuration and deployment metadata</li>
+</ul>
+
+<p><strong>Best for:</strong> Diagnosing redirect chain issues. When a URL returns an unexpected response, ask "what redirects are configured for this path in netlify.toml?" and get the exact rules — rather than manually parsing a redirect file that may have grown to hundreds of entries.</p>
+
+<h2>Recommended Stacks for Frontend Developers</h2>
+
+<ul>
+<li><strong>Design-to-code:</strong> Figma + GitHub + Vercel (specs → implementation → deployment verification)</li>
+<li><strong>Component development:</strong> Figma + Tailwind CSS + GitHub (design system → styling → usage audit)</li>
+<li><strong>Visual QA:</strong> Playwright + Figma + Vercel (browser interaction → design comparison → preview URL access)</li>
+<li><strong>Build and deploy:</strong> Vite + Vercel + GitHub (build config → deployment status → code history)</li>
+<li><strong>Performance:</strong> Puppeteer + GitHub + Vercel (Core Web Vitals → code context → deployment verification)</li>
+</ul>
+
+<p>Browse all <a href="/category/coding">Coding MCP servers</a> on MyMCPTools. For related guides, see <a href="/blog/best-mcp-servers-for-developers">Best MCP Servers for Developers</a> and <a href="/blog/best-mcp-servers-for-vs-code">Best MCP Servers for VS Code</a>.</p>
+    `.trim(),
+  },
+  {
+    slug: "best-mcp-servers-for-ecommerce-teams",
+    title: "Best MCP Servers for Ecommerce Teams in 2026",
+    description: "Ecommerce teams manage inventory, orders, customer data, ad campaigns, and fulfillment simultaneously across multiple platforms. These MCP servers connect your AI to Shopify, Stripe, WooCommerce, and your marketing stack — so you can answer operational questions and move faster without juggling dashboards.",
+    date: "2026-05-12",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "8 min read",
+    keywords: ["mcp servers for ecommerce", "shopify mcp server", "stripe mcp server", "woocommerce mcp", "ecommerce ai tools 2026"],
+    relatedServerSlugs: ["stripe", "stripe-billing", "woocommerce", "hubspot", "slack", "google-drive", "airtable", "postgresql", "zapier", "sendgrid"],
+    content: `
+<p>Running an ecommerce operation means living across a dozen platforms at once — orders in Shopify, revenue in Stripe, campaigns in Google Ads, fulfillment in a 3PL portal, and customer conversations in Zendesk. Every operational question requires a tour of dashboards, and every data-driven decision starts with an export.</p>
+
+<p>MCP servers change that by letting your AI pull live data from your actual tools. Instead of logging into Stripe to check a payout, opening Shopify to look up an order, and cross-referencing a spreadsheet to understand why a product is underperforming, you ask once and get a grounded answer. Here are the best MCP servers for ecommerce teams in 2026.</p>
+
+<h2>1. Stripe MCP Server — Revenue and Payment Operations</h2>
+
+<p>Stripe is the financial backbone of most ecommerce operations. The Stripe MCP server gives your AI access to payment intents, customer records, refund history, subscription status, and payout schedules — so operational questions about revenue and payments get answered without opening the Stripe dashboard.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Look up customer payment history, charges, and refund records by email or customer ID</li>
+<li>Check payout status and scheduled transfer timelines</li>
+<li>Read dispute and chargeback details for individual transactions</li>
+<li>Access subscription status, plan details, and renewal dates for subscription products</li>
+</ul>
+
+<p><strong>Best for:</strong> Customer service escalations involving payment issues. When a customer reports a double charge or a refund that didn't arrive, ask "look up all charges for [email] in the last 30 days and show me any refund records" — getting a precise answer in seconds rather than navigating Stripe's customer lookup interface manually.</p>
+
+<h2>2. Stripe Billing MCP Server — Subscription Revenue Visibility</h2>
+
+<p>For ecommerce businesses with subscription components — membership clubs, replenishment subscriptions, or SaaS add-ons — the Stripe Billing MCP server provides subscription-specific context that the general Stripe MCP doesn't surface. This includes invoice sequences, dunning status, and plan migration history.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read active subscription counts and MRR breakdowns by plan</li>
+<li>Check invoice status including open, paid, void, and uncollectible</li>
+<li>Inspect dunning sequences and retry schedules for failed payments</li>
+<li>Review plan migration history to understand upgrade/downgrade patterns</li>
+</ul>
+
+<p><strong>Best for:</strong> Monthly revenue reviews. Ask "how many active subscriptions are on each plan and what is the MRR contribution of each?" to get a complete picture of your recurring revenue base without exporting a Stripe report to a spreadsheet for manual calculation.</p>
+
+<h2>3. WooCommerce MCP Server — Order and Inventory Operations</h2>
+
+<p>WooCommerce powers a significant portion of independent ecommerce stores, and the WooCommerce MCP server gives your AI access to your product catalog, order history, customer records, and inventory levels. This makes operational questions about specific orders or products answerable in natural language without logging into your WordPress admin.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Look up orders by customer name, email, order number, or date range</li>
+<li>Check product inventory levels and variant stock counts</li>
+<li>Read customer purchase history for support and retention workflows</li>
+<li>Access coupon usage data and discount code performance</li>
+</ul>
+
+<p><strong>Best for:</strong> Daily operational triage. Ask "show me all orders placed in the last 24 hours that are still in processing status" to identify orders that need attention before fulfillment cutoff — without running a WooCommerce order report manually every morning.</p>
+
+<h2>4. HubSpot MCP Server — Customer Lifecycle and Marketing Attribution</h2>
+
+<p>Ecommerce growth depends on understanding where customers come from and how they behave over time. The HubSpot MCP server gives your AI access to contact records, deal pipelines, email engagement data, and marketing attribution — making it possible to answer customer lifetime value questions and attribution questions without BI queries.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Query contact records with purchase history, engagement score, and acquisition source</li>
+<li>Read email campaign performance including open rates, clicks, and revenue attributed</li>
+<li>Access list membership to understand which segments customers belong to</li>
+<li>Review workflow logic for automated marketing sequences</li>
+</ul>
+
+<p><strong>Best for:</strong> Identifying retention opportunities. Ask "which customers made their first purchase in Q4 and haven't purchased again?" to generate a winback segment — getting the list from HubSpot data without exporting to a spreadsheet and writing filters manually.</p>
+
+<h2>5. PostgreSQL MCP Server — Analytics and Custom Reporting</h2>
+
+<p>Most mature ecommerce operations eventually centralize their data in a relational database — order history, customer records, product catalog, marketing spend, and fulfillment data all in one place. The PostgreSQL MCP server gives your AI the ability to query this data warehouse directly for the analytical questions your ecommerce dashboards can't answer out of the box.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Run SQL queries across order, customer, and product datasets</li>
+<li>Calculate LTV, repeat purchase rate, and cohort retention by acquisition channel</li>
+<li>Query inventory velocity and sell-through rates for buying decisions</li>
+<li>Join marketing spend data with revenue outcomes for channel-level ROI</li>
+</ul>
+
+<p><strong>Best for:</strong> Product performance analysis. Ask "what is the 90-day repeat purchase rate for customers whose first purchase was in the home goods category versus apparel?" and get a SQL-backed answer that informs your email segmentation and inventory buying decisions.</p>
+
+<h2>6. Airtable MCP Server — Operations and Inventory Planning</h2>
+
+<p>Many ecommerce teams use Airtable as an operational hub — tracking purchase orders, vendor relationships, product launches, and influencer campaigns in structured bases. The Airtable MCP server makes that operational data queryable, so your AI can pull context from your internal systems when answering operational questions.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read records from any Airtable base with filtering and sorting</li>
+<li>Access linked record data across related tables (e.g., products → vendors → purchase orders)</li>
+<li>Check status fields for workflow items across operations pipelines</li>
+<li>Pull summary data for planning and review workflows</li>
+</ul>
+
+<p><strong>Best for:</strong> Vendor and inventory coordination. Ask "which active products have purchase orders with delivery dates in the next 14 days that aren't yet marked as received?" to get ahead of stockouts without manually scanning an Airtable view that your ops team updates asynchronously.</p>
+
+<h2>7. SendGrid MCP Server — Transactional Email and Campaign Monitoring</h2>
+
+<p>Transactional email reliability is critical for ecommerce — order confirmations, shipping notifications, and password resets all run through your ESP. The SendGrid MCP server gives your AI visibility into email delivery status, template configurations, and suppression lists so you can diagnose delivery issues before customers complain.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Check delivery status for transactional emails by recipient or message ID</li>
+<li>Read bounce and unsubscribe records to maintain list hygiene</li>
+<li>Access email template configurations for transactional flows</li>
+<li>Review suppression list status for specific email addresses</li>
+</ul>
+
+<p><strong>Best for:</strong> Delivery issue triage. When a customer reports they didn't receive an order confirmation, ask "check delivery status for the order confirmation email sent to [email] in the last 24 hours" — getting a definitive answer about whether the email was sent, delivered, bounced, or landed in spam, without logging into the SendGrid activity feed.</p>
+
+<h2>8. Zapier MCP Server — Automation Audit and Workflow Context</h2>
+
+<p>Ecommerce operations run on automation — Zapier zaps that sync orders to fulfillment, update inventory spreadsheets, and trigger email flows. The Zapier MCP server gives your AI access to your automation configurations, making it possible to audit workflows and diagnose automation failures without navigating the Zapier dashboard.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>List active and paused Zaps with their trigger and action configurations</li>
+<li>Read recent Zap run history including errors and successes</li>
+<li>Check Zap step configurations to understand data flow between tools</li>
+<li>Access task history to diagnose why an automation didn't fire as expected</li>
+</ul>
+
+<p><strong>Best for:</strong> Automation failure diagnosis. When an order processes in Shopify but doesn't appear in your fulfillment system, ask "check the Zap that syncs Shopify orders to the fulfillment platform — did it run for order #12345 and if not, why?" to trace the failure point without manually reviewing Zap history in the dashboard.</p>
+
+<h2>Recommended Stacks for Ecommerce Teams</h2>
+
+<ul>
+<li><strong>Payment operations:</strong> Stripe + Stripe Billing + HubSpot (transaction history → subscription status → customer record)</li>
+<li><strong>Order operations:</strong> WooCommerce + Airtable + Zapier (order lookup → PO tracking → automation audit)</li>
+<li><strong>Revenue analytics:</strong> PostgreSQL + Stripe + HubSpot (SQL analysis → payment data → marketing attribution)</li>
+<li><strong>Customer service:</strong> Stripe + WooCommerce + SendGrid (payment history → order details → email delivery status)</li>
+<li><strong>Full ops stack:</strong> Stripe + WooCommerce + PostgreSQL + HubSpot + SendGrid — complete coverage from payment to fulfillment to email delivery</li>
+</ul>
+
+<p>Browse all <a href="/category/finance">Finance MCP servers</a> and <a href="/category/marketing">Marketing MCP servers</a> on MyMCPTools. For related guides, see <a href="/blog/best-mcp-servers-for-finance">Best MCP Servers for Finance</a> and <a href="/blog/best-mcp-servers-for-marketing">Best MCP Servers for Marketing</a>.</p>
+    `.trim(),
+  },
+  {
+    slug: "best-mcp-servers-for-legal-teams",
+    title: "Best MCP Servers for Legal Teams in 2026",
+    description: "Legal teams manage contracts, research, document workflows, and compliance obligations across disconnected tools. These MCP servers connect your AI to document storage, knowledge bases, communication platforms, and workflow systems — so legal professionals can move faster without sacrificing accuracy.",
+    date: "2026-05-12",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "7 min read",
+    keywords: ["mcp servers for legal teams", "legal ai tools mcp", "notion mcp server legal", "google drive mcp server", "legal workflow automation 2026"],
+    relatedServerSlugs: ["google-drive", "notion", "slack", "github", "airtable", "postgresql", "zotero-mcp", "asana", "linear", "sendgrid"],
+    content: `
+<p>Legal work is fundamentally information work — finding precedents, reviewing contracts, tracking obligations, and managing client communications across a sprawling document ecosystem. The challenge is that legal information lives in too many places: email threads, document management systems, matter management platforms, and shared drives that grow into archives no one can search effectively.</p>
+
+<p>MCP servers give legal professionals AI that can actually navigate that ecosystem. Instead of manually searching for a contract clause, pulling a research memo from a shared drive, or checking the status of a matter in your workflow system, you ask once and get a grounded answer from live data. Here are the best MCP servers for legal teams in 2026.</p>
+
+<h2>1. Google Drive MCP Server — Document Access and Contract Search</h2>
+
+<p>Most legal documents live in Google Drive — contracts, NDAs, SOWs, memos, research briefs, and correspondence archives that grow for years and become difficult to search. The Google Drive MCP server gives your AI the ability to locate, read, and summarize documents from your Drive without manual file browsing.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Search documents by filename, content keyword, or folder location</li>
+<li>Read and summarize document contents for quick review without full download</li>
+<li>Browse folder structures to understand how matter files are organized</li>
+<li>Access file metadata including version history and last modified dates</li>
+</ul>
+
+<p><strong>Best for:</strong> Contract clause search. When you need to find every NDA in your Drive that includes a specific non-solicitation provision, ask "search for documents containing 'non-solicitation' in the contracts folder" and get results from Drive rather than relying on memory or manually scanning file names. Significantly faster than Drive's native search for content-level queries.</p>
+
+<h2>2. Notion MCP Server — Knowledge Base and Template Access</h2>
+
+<p>Legal teams increasingly use Notion as a shared knowledge base — storing playbooks, standard contract templates, jurisdiction-specific checklists, and matter intake forms. The Notion MCP server gives your AI access to this institutional knowledge, so it can reference your firm's actual standards rather than generic legal guidance.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read pages and databases from any Notion workspace the integration can access</li>
+<li>Browse databases to find checklist templates, matter types, or playbook entries</li>
+<li>Access linked pages to follow cross-references within your knowledge base</li>
+<li>Query database records with filters for status, matter type, or jurisdiction</li>
+</ul>
+
+<p><strong>Best for:</strong> Accessing firm-specific standards during document review. Ask "pull the M&A due diligence checklist from our Notion playbooks" and get your firm's actual checklist — not a generic template — to ground your review in established internal standards before customizing for the specific transaction.</p>
+
+<h2>3. Zotero MCP Server — Research and Citation Management</h2>
+
+<p>Legal research requires managing a large body of sources — cases, statutes, law review articles, and secondary sources — and keeping them organized for citation. The Zotero MCP server gives your AI access to your research library, so it can retrieve relevant sources during drafting without you pausing to search your citation manager manually.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Search your Zotero library by title, author, keyword, or tag</li>
+<li>Access full citation metadata for any item in your library</li>
+<li>Browse collections organized by practice area or matter</li>
+<li>Read notes and annotations attached to sources</li>
+</ul>
+
+<p><strong>Best for:</strong> Research synthesis during brief drafting. Ask "find everything in my library tagged 'unconscionability' and summarize the key arguments from each source" to build a research summary grounded in your actual citation library — faster than manually reviewing each source file and without the risk of hallucinated citations.</p>
+
+<h2>4. Airtable MCP Server — Matter Tracking and Client Management</h2>
+
+<p>Many legal teams build matter management systems in Airtable — tracking client engagements, deadlines, billing milestones, and contract renewal dates in structured bases that can be filtered and sorted without purchasing expensive matter management software. The Airtable MCP server makes that operational data queryable for your AI.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Query matter records by client, status, responsible attorney, or deadline</li>
+<li>Access linked record data across related tables (clients → matters → documents → deadlines)</li>
+<li>Check status fields for active workflow items across the practice</li>
+<li>Pull deadline summaries for planning and review purposes</li>
+</ul>
+
+<p><strong>Best for:</strong> Deadline management. Ask "show me all active matters with contract deadlines in the next 30 days that haven't been marked reviewed" to get a prioritized to-do list from your Airtable matter database — without manually scanning every record or waiting for someone to update a shared spreadsheet.</p>
+
+<h2>5. Slack MCP Server — Communication and Matter Thread Context</h2>
+
+<p>Legal teams use Slack for matter-specific channels, client communication updates, and internal legal ops discussions. The Slack MCP server gives your AI access to channel history and direct messages, making it possible to surface communication context for any matter without manually scrolling through months of threads.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Search messages across channels and DMs by keyword or user</li>
+<li>Read channel history for matter-specific channels to synthesize status</li>
+<li>Access file attachments shared in Slack conversations</li>
+<li>Find messages from a specific date range for timeline reconstruction</li>
+</ul>
+
+<p><strong>Best for:</strong> Matter status updates before client calls. Ask "summarize the key decisions and open items from the #matter-acme-acquisition channel in the last two weeks" to prepare for a client call with accurate context — rather than manually scrolling through a busy channel or relying on memory of conversations from the previous week.</p>
+
+<h2>6. Asana MCP Server — Legal Ops Workflow and Task Management</h2>
+
+<p>Legal operations teams increasingly run structured workflows for contract review, vendor onboarding, policy updates, and compliance programs in Asana. The Asana MCP server gives your AI access to project status, task assignments, and deadline tracking across your legal ops programs.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>List tasks by assignee, project, deadline, or completion status</li>
+<li>Read project progress against milestones for program status reviews</li>
+<li>Access task details and subtasks for complex workflow items</li>
+<li>Check overdue tasks across all active legal ops programs</li>
+</ul>
+
+<p><strong>Best for:</strong> Legal ops program reviews. Ask "which contract review requests have been open for more than 5 business days and who is assigned to each?" to identify bottlenecks in your contract review pipeline — without manually filtering an Asana project view or pulling a workload report.</p>
+
+<h2>7. PostgreSQL MCP Server — Contract Analytics and Compliance Reporting</h2>
+
+<p>Legal teams with mature contract management programs eventually want analytics — contract renewal rates, average negotiation time, clause frequency analysis, vendor compliance rates. When that data lives in a relational database, the PostgreSQL MCP server makes it queryable without requiring a data engineering request for every report.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Query contract records with filters for type, status, counterparty, or jurisdiction</li>
+<li>Calculate metrics like average contract cycle time, renewal rate, and exception rate</li>
+<li>Run compliance tracking queries for vendor certifications and policy acknowledgments</li>
+<li>Join contract data with business unit data for spend analysis</li>
+</ul>
+
+<p><strong>Best for:</strong> Annual legal operations reviews. Ask "what was the average contract review cycle time by contract type this year and how does it compare to last year?" to get a data-backed answer for leadership reporting — without exporting a contract database and building pivot tables manually.</p>
+
+<h2>8. Google Drive + Notion + Airtable: The Legal Knowledge Triangle</h2>
+
+<p>The highest-leverage configuration for legal teams combines three MCP servers into a unified knowledge layer. Google Drive holds your documents, Notion holds your institutional knowledge and standards, and Airtable holds your operational data and matter tracking. With all three connected to your AI, you can answer complex questions that cross all three systems in a single conversation.</p>
+
+<p>Ask "find the NDA template in our Google Drive, check if there are any jurisdiction-specific amendments for California in our Notion playbook, and verify whether this counterparty has an active NDA in our Airtable matter database" — and get a grounded answer that would normally require opening three separate tools.</p>
+
+<h2>Recommended Stacks for Legal Teams</h2>
+
+<ul>
+<li><strong>Contract review:</strong> Google Drive + Notion + Airtable (document access → firm standards → matter tracking)</li>
+<li><strong>Legal research:</strong> Zotero + Google Drive + Notion (citation library → source documents → research playbooks)</li>
+<li><strong>Matter management:</strong> Airtable + Slack + Asana (matter records → communication history → workflow tracking)</li>
+<li><strong>Legal ops analytics:</strong> PostgreSQL + Airtable + Google Drive (contract analytics → operational data → document archive)</li>
+<li><strong>Full legal stack:</strong> Google Drive + Notion + Zotero + Airtable + Slack — complete coverage from document access to research to matter tracking to communication</li>
+</ul>
+
+<p>Browse all <a href="/category/productivity">Productivity MCP servers</a> and <a href="/category/search">Search MCP servers</a> on MyMCPTools. For related guides, see <a href="/blog/best-mcp-servers-for-research">Best MCP Servers for Research</a> and <a href="/blog/best-mcp-servers-for-project-management">Best MCP Servers for Project Management</a>.</p>
+    `.trim(),
+  },
 ];
 
 export function getBlogPostBySlug(slug: string): BlogPost | undefined {
