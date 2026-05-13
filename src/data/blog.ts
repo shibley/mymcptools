@@ -18799,6 +18799,381 @@ jupyter mcp install</code></pre>
 <p>Browse the full catalog of <a href="/">500+ MCP servers</a> on MyMCPTools. For specific use case guides, see <a href="/blog/best-mcp-servers-for-developers">Best MCP Servers for Developers</a> and <a href="/blog/getting-started-with-mcp">Getting Started with MCP</a>.</p>
     `.trim(),
   },
+  {
+    slug: "best-mcp-servers-for-operations-teams",
+    title: "Best MCP Servers for Operations Teams in 2026",
+    description: "Top MCP servers for BizOps, RevOps, and Operations teams: Linear project tracking, Notion SOPs, Airtable workflows, Slack communication, PostgreSQL reporting, and Google Sheets dashboards. Automate ops with AI.",
+    date: "2026-05-13",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "8 min read",
+    keywords: ["best mcp servers for operations", "operations team mcp servers", "bizops mcp", "revops mcp server", "operations workflow ai 2026"],
+    relatedServerSlugs: ["linear", "notion", "airtable", "slack", "postgresql", "google-sheets", "zapier", "jira"],
+    content: `
+<p>Operations teams sit at the intersection of every system in a company — tracking projects in Linear, writing SOPs in Notion, managing data in Airtable, coordinating in Slack, and building reports in Google Sheets. The problem: these systems don't talk to each other, so ops professionals spend enormous time copying data between them, building cross-system reports, and manually correlating information that should be connected. MCP servers change this by giving your AI assistant direct access to all your ops systems simultaneously.</p>
+
+<p>Here are the best MCP servers for operations teams working with modern ops tool stacks.</p>
+
+<h2>1. Linear MCP Server — Project and Initiative Tracking</h2>
+
+<p>Linear is the issue tracker of choice for modern ops and engineering-adjacent teams. The Linear MCP server gives your AI direct access to projects, issues, cycles, and team workload — making ops reporting and coordination dramatically faster.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Query issues and projects with filtering by status, assignee, priority, and label</li>
+<li>Read cycle (sprint) progress and completion rates</li>
+<li>Access team workload distribution and issue aging data</li>
+<li>Read project milestones and dependency relationships</li>
+</ul>
+
+<p><strong>Best for:</strong> Weekly ops reporting. Ask "pull all high-priority issues across the three active projects that have been open for more than 14 days with no status update, grouped by team, and flag any that are on the critical path for the Q3 launch" — generating a blockers report without manually checking each project in Linear.</p>
+
+<h2>2. Notion MCP Server — SOPs, Runbooks, and Documentation</h2>
+
+<p>Operations teams are the custodians of institutional knowledge: SOPs, runbooks, vendor contacts, process documentation, and decision logs. The Notion MCP server gives your AI access to this knowledge base — so instead of searching through pages to find the right process, your AI can retrieve it contextually.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read pages, databases, and linked content across workspaces</li>
+<li>Search for relevant documentation by topic or keyword</li>
+<li>Access database records including vendor lists, contact directories, and checklists</li>
+<li>Read embedded tables and structured data within pages</li>
+</ul>
+
+<p><strong>Best for:</strong> Process-aware execution. Ask "search our Notion workspace for the onboarding SOP, then pull the list of pending new hires from the HR database, and create a checklist showing which onboarding steps are still open for each person" — applying documented processes to live data without reading the SOP and cross-referencing manually.</p>
+
+<h2>3. Airtable MCP Server — Operational Databases and Trackers</h2>
+
+<p>Airtable is the ops team's Swiss Army knife: vendor databases, project trackers, budget approval workflows, vendor contracts, and cross-functional request queues all live there. The Airtable MCP server lets your AI query and update these structured databases — turning Airtable into an AI-accessible operational data layer.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Query Airtable bases with filtering, sorting, and field selection</li>
+<li>Read linked record relationships across tables in a base</li>
+<li>Write and update records for status changes and data entry</li>
+<li>Access formula field values and rollup calculations</li>
+</ul>
+
+<p><strong>Best for:</strong> Vendor and contract management. Ask "pull all vendors in our contracts database where the renewal date is within 60 days, check if we have an approved budget in the budget tracker for each renewal, and flag any that need budget approval before the renewal deadline" — correlating contract timelines with budget status across two Airtable tables.</p>
+
+<h2>4. Slack MCP Server — Team Communication and Decision Context</h2>
+
+<p>Critical decisions, escalations, and context often live in Slack threads rather than formal documentation. The Slack MCP server gives your AI access to channel history — essential when you need to reconstruct the reasoning behind a past decision or find the approval that authorized a spend.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Search messages across channels and direct messages by keyword or date</li>
+<li>Read full thread replies for complete conversation context</li>
+<li>Access file attachments and shared documents in conversations</li>
+<li>Check channel membership for team structure awareness</li>
+</ul>
+
+<p><strong>Best for:</strong> Decision archaeology. Ask "search the #ops-approvals and #leadership channels for any discussion about the office lease renewal from the last three months — I need to reconstruct what was decided before the landlord calls back" — finding decision context in Slack without scrolling through months of messages across multiple channels.</p>
+
+<h2>5. PostgreSQL MCP Server — Operational Data and Reporting</h2>
+
+<p>Mature ops teams often have an operational data warehouse or analytics database where business metrics, event logs, and aggregated reporting data live. The PostgreSQL MCP server lets your AI query this data directly — enabling conversational analytics without requiring an analyst or a BI tool query.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Schema introspection to understand table structure and relationships</li>
+<li>Read-only query execution with safe, sandboxed access</li>
+<li>Cross-table joins for multi-dimensional analysis</li>
+<li>Aggregate queries for summary metrics and trend analysis</li>
+</ul>
+
+<p><strong>Best for:</strong> Operational metrics reporting. Ask "query the events table for last week, calculate the daily active user count by day, compare it to the previous week's baseline, and flag any day where the drop exceeded 10%" — running a standard ops health check without writing SQL or waiting for a scheduled report.</p>
+
+<h2>6. Google Sheets MCP Server — Dashboards and Shared Reports</h2>
+
+<p>Operations teams maintain shared dashboards, weekly metrics trackers, headcount plans, and budget models in Google Sheets. The Google Sheets MCP server gives your AI direct read/write access to these documents — making it possible to update dashboards and read actuals without manual data entry.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read cell ranges and named ranges from any spreadsheet</li>
+<li>Write values back to specific cells or ranges for automated updates</li>
+<li>Access multiple sheets within a single spreadsheet</li>
+<li>Read formula definitions to understand model structure</li>
+</ul>
+
+<p><strong>Best for:</strong> Weekly dashboard updates. Ask "read last week's numbers from the ops metrics sheet, update the dashboard tab with the new values in the weekly actuals column, and highlight any metric that is more than 15% below the target in that row" — automating the weekly metrics update that normally requires manually copying numbers from multiple sources.</p>
+
+<h2>7. Jira MCP Server — Cross-Team Project Coordination</h2>
+
+<p>For ops teams coordinating with engineering and product organizations that live in Jira, the Jira MCP server provides cross-system visibility without requiring everyone to duplicate data. Query Jira issues, epics, and sprint status alongside your Linear and Airtable data.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Query issues with JQL filters including project, status, component, and label</li>
+<li>Read epic and story hierarchies for initiative-level visibility</li>
+<li>Access sprint boards and velocity data</li>
+<li>Read issue history including status transitions and comment threads</li>
+</ul>
+
+<p><strong>Best for:</strong> Cross-team dependency mapping. Ask "pull all Jira issues tagged as dependencies for the ops team's Q3 initiatives, check which ones are still in 'To Do' status, and match them against the owning team's sprint schedule to identify which dependencies we're at risk of missing" — identifying cross-team blockers without chasing down updates from every team lead.</p>
+
+<h2>Recommended Stacks for Operations Teams</h2>
+
+<ul>
+<li><strong>BizOps stack:</strong> Notion + Airtable + Google Sheets + Slack (documentation + operational data + reporting + communication context)</li>
+<li><strong>RevOps stack:</strong> PostgreSQL + Airtable + Slack + Google Sheets (data warehouse + CRM tracker + deal context + reporting)</li>
+<li><strong>Project ops stack:</strong> Linear + Jira + Notion + Slack (project tracking + engineering dependency + documentation + communication)</li>
+<li><strong>Full ops stack:</strong> Linear + Notion + Airtable + Slack + PostgreSQL + Google Sheets — complete coverage across project management, documentation, operational databases, communication, data, and reporting</li>
+</ul>
+
+<p>Browse all <a href="/category/productivity">Productivity MCP servers</a> and <a href="/category/analytics">Analytics MCP servers</a> on MyMCPTools. For related guides, see <a href="/blog/best-mcp-servers-for-business-analysts">Best MCP Servers for Business Analysts</a> and <a href="/blog/best-mcp-servers-for-project-management">Best MCP Servers for Project Management</a>.</p>
+    `.trim(),
+  },
+  {
+    slug: "best-mcp-servers-for-consulting-firms",
+    title: "Best MCP Servers for Consulting Firms in 2026",
+    description: "Top MCP servers for consultants and consulting firms: research with Brave Search, document management with Google Drive, client data in PostgreSQL, presentations via Google Slides, project tracking in Notion and Airtable.",
+    date: "2026-05-13",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "8 min read",
+    keywords: ["best mcp servers for consulting", "consulting firm mcp servers", "management consulting ai tools", "consultant workflow mcp 2026", "ai tools for consultants"],
+    relatedServerSlugs: ["brave-search", "google-drive", "postgresql", "notion", "airtable", "slack", "filesystem", "puppeteer"],
+    content: `
+<p>Consultants spend the majority of their time doing three things: researching markets and competitors, synthesizing findings into client-ready deliverables, and managing multiple client engagements simultaneously. Each of these activities involves constant context switching between browser tabs, documents, spreadsheets, slide decks, and communication tools. MCP servers give your AI assistant direct access to all of these systems — making research, synthesis, and project management dramatically faster.</p>
+
+<p>Here are the best MCP servers for consultants and consulting firms building AI-augmented workflows.</p>
+
+<h2>1. Brave Search MCP Server — Market and Competitor Research</h2>
+
+<p>Consulting work is research-intensive: industry analysis, competitor benchmarking, regulatory landscape mapping, and market sizing all require extensive web research. The Brave Search MCP server gives your AI direct access to search results — enabling research workflows that don't require constant browser tab management.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Web search with full result snippets and source URLs</li>
+<li>News search for recent industry developments and press coverage</li>
+<li>Structured result access for programmatic research workflows</li>
+<li>No tracking — important for confidential client research on sensitive topics</li>
+</ul>
+
+<p><strong>Best for:</strong> Rapid competitive analysis. Ask "search for the latest financial results, strategic announcements, and analyst commentary for these five competitors over the last 90 days, and organize the findings by competitor with a brief summary of their strategic direction" — building a competitive intelligence brief in minutes rather than hours of manual research.</p>
+
+<h2>2. Filesystem MCP Server — Local Document and Deliverable Access</h2>
+
+<p>Consultants generate enormous volumes of local documents: frameworks, slide drafts, interview notes, data models, and client deliverables. The Filesystem MCP server gives your AI direct access to these files — enabling it to read previous deliverables for context, synthesize interview notes, and maintain consistency across documents in a project folder.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read and write files in any format including Word documents, CSVs, and text files</li>
+<li>Directory browsing and file search within project folders</li>
+<li>Configurable access boundaries (restrict to specific client project directories)</li>
+<li>File metadata access for version and modification tracking</li>
+</ul>
+
+<p><strong>Best for:</strong> Interview synthesis. Ask "read all the interview notes files in the /client-x/research/interviews/ folder, extract the key themes mentioned more than twice across multiple interviewees, and organize them by the framework categories in the /client-x/framework.md file" — synthesizing qualitative research across dozens of interview notes without reading each file manually.</p>
+
+<h2>3. Google Drive MCP Server — Client File and Deliverable Management</h2>
+
+<p>Most consulting firms use Google Drive (or a SharePoint/Drive hybrid) for client deliverable storage, shared working documents, and cross-team collaboration on proposals and reports. The Google Drive MCP server gives your AI access to these shared documents — useful for maintaining consistency across deliverables and retrieving context from previous project materials.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Search Google Drive by filename, document content, or shared drive location</li>
+<li>Read document content including Google Docs text and structure</li>
+<li>Access file sharing permissions and document version history</li>
+<li>List folder contents for project file navigation</li>
+</ul>
+
+<p><strong>Best for:</strong> Proposal reuse and consistency. Ask "search the client proposals shared drive for all proposals we've written for retail industry clients in the last two years, read the executive summary sections, and pull the three most compelling value propositions we've used — I'm drafting a new retail client proposal and want to build on our best past language" — leveraging institutional proposal knowledge without manually searching through old files.</p>
+
+<h2>4. Notion MCP Server — Knowledge Management and Client Wikis</h2>
+
+<p>Progressive consulting firms use Notion for internal knowledge management: methodology libraries, industry research repositories, client relationship notes, and cross-engagement learnings. The Notion MCP server gives your AI access to this institutional knowledge — so consultants can apply past learnings to new engagements without re-researching from scratch.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Full-text search across workspace pages and databases</li>
+<li>Read structured databases including client relationship records and methodology cards</li>
+<li>Access linked page content and hierarchical page structures</li>
+<li>Read embedded tables, timelines, and kanban boards</li>
+</ul>
+
+<p><strong>Best for:</strong> Methodology application. Ask "search our Notion knowledge base for any past engagements where we ran a value chain analysis for a manufacturing client, find the key findings and recommendations from those projects, and help me adapt the framework for a new client in automotive parts distribution" — applying institutional methodology knowledge to new client contexts.</p>
+
+<h2>5. Airtable MCP Server — Client and Project Portfolio Tracking</h2>
+
+<p>Consulting firm operations require tracking multiple client engagements simultaneously: project timelines, billing status, staffing plans, deliverable schedules, and client health scores. Airtable serves as the ops backbone for many boutique and mid-sized firms. The Airtable MCP server gives your AI access to this portfolio data — enabling cross-engagement visibility and automated portfolio reporting.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Query client and project databases with filtering by status, lead, and date</li>
+<li>Read linked record relationships (staffing plans tied to projects, contacts tied to clients)</li>
+<li>Access formula fields for calculated metrics like utilization and margin</li>
+<li>Write status updates and notes for automated tracking workflows</li>
+</ul>
+
+<p><strong>Best for:</strong> Portfolio health monitoring. Ask "pull all active client projects from our Airtable CRM, identify any where the scheduled completion date is within 30 days but the deliverable status is still 'In Progress', and for each one show me the lead partner, the last status note, and the billing amount still pending" — generating a project risk report without building a custom report in Airtable.</p>
+
+<h2>6. PostgreSQL MCP Server — Analytics and Client Data Analysis</h2>
+
+<p>Data-heavy consulting engagements often involve client data dumps that end up in a PostgreSQL database for analysis. The PostgreSQL MCP server lets your AI query this data conversationally — enabling the rapid data exploration that normally requires writing custom SQL or waiting for an analyst.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Schema introspection to understand client data structure without documentation</li>
+<li>Complex analytical queries across multiple tables</li>
+<li>Read-only access mode for safe handling of client confidential data</li>
+<li>Aggregate and window function support for time-series and cohort analysis</li>
+</ul>
+
+<p><strong>Best for:</strong> Diagnostic analysis. Ask "explore the schema of the client's operational database, find the tables related to customer orders and returns, then calculate the return rate by product category and by customer segment for the last 12 months — I need to identify which categories are driving the highest return costs" — running diagnostic analysis on client data without writing SQL from scratch or waiting for a data team.</p>
+
+<h2>7. Puppeteer MCP Server — Competitor and Market Web Research</h2>
+
+<p>Some consulting research requires structured web data extraction: competitor pricing, product catalog analysis, job posting trend monitoring, and public financial data aggregation. The Puppeteer MCP server enables AI-driven web browsing and data extraction — turning ad-hoc web research into a structured, repeatable process.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Navigate to any URL and extract page content in structured format</li>
+<li>Fill forms, click buttons, and interact with dynamic web applications</li>
+<li>Take screenshots for visual documentation and client presentations</li>
+<li>Extract structured data from tables, lists, and product catalogs</li>
+</ul>
+
+<p><strong>Best for:</strong> Pricing benchmarking. Ask "navigate to each of these five competitor websites, find their pricing page, extract the pricing tiers and features included at each tier, and organize the data into a comparison table sorted by price" — building a competitive pricing matrix from live web data in minutes rather than hours of manual research.</p>
+
+<h2>Recommended Stacks for Consulting Firms</h2>
+
+<ul>
+<li><strong>Research-heavy engagement stack:</strong> Brave Search + Puppeteer + Filesystem + Notion (web research + extraction + local notes + knowledge base)</li>
+<li><strong>Data-driven engagement stack:</strong> PostgreSQL + Filesystem + Google Drive + Airtable (client data + local analysis + deliverable storage + project tracking)</li>
+<li><strong>Firm operations stack:</strong> Airtable + Notion + Slack + Google Drive (portfolio tracking + knowledge management + communication + deliverable management)</li>
+<li><strong>Full consulting stack:</strong> Brave Search + Filesystem + Notion + Airtable + PostgreSQL — covering research, local document access, institutional knowledge, portfolio management, and client data analysis</li>
+</ul>
+
+<p>Browse all <a href="/category/search">Search MCP servers</a> and <a href="/category/productivity">Productivity MCP servers</a> on MyMCPTools. For related guides, see <a href="/blog/best-mcp-servers-for-research">Best MCP Servers for Research</a> and <a href="/blog/best-mcp-servers-for-business-analysts">Best MCP Servers for Business Analysts</a>.</p>
+    `.trim(),
+  },
+  {
+    slug: "best-mcp-servers-for-customer-success-teams",
+    title: "Best MCP Servers for Customer Success Teams in 2026",
+    description: "Top MCP servers for customer success: Salesforce CRM data, PostgreSQL usage analytics, Slack communication history, Notion playbooks, Stripe subscription data, and Intercom customer conversations. Drive retention with AI.",
+    date: "2026-05-13",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "8 min read",
+    keywords: ["best mcp servers for customer success", "customer success mcp servers", "cs team ai tools", "salesforce mcp server", "customer retention ai 2026"],
+    relatedServerSlugs: ["salesforce", "postgresql", "slack", "notion", "stripe", "intercom", "airtable", "hubspot"],
+    content: `
+<p>Customer success teams are data-rich but insight-poor. Product usage data lives in the analytics database. Contract and billing data lives in Salesforce or HubSpot. Conversation history lives in Intercom or Zendesk. Health score calculations live in spreadsheets. By the time a CSM compiles a complete picture of a customer's situation, the window to intervene has often already closed. MCP servers give your AI assistant simultaneous access to all of these systems — enabling proactive, data-driven customer success at a scale no manual process can match.</p>
+
+<p>Here are the best MCP servers for customer success teams managing modern SaaS customer portfolios.</p>
+
+<h2>1. Salesforce MCP Server — CRM and Account Intelligence</h2>
+
+<p>Salesforce is the system of record for customer relationships at most mid-market and enterprise companies: account health, contract terms, renewal dates, expansion opportunities, and escalation history all live there. The Salesforce MCP server gives your AI direct access to this data — enabling account intelligence queries that normally require navigating multiple Salesforce views and building custom reports.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>SOQL query execution across standard and custom Salesforce objects</li>
+<li>Account, contact, opportunity, and case record access</li>
+<li>Custom field and custom object support for CS-specific data models</li>
+<li>Task and activity history for account engagement tracking</li>
+</ul>
+
+<p><strong>Best for:</strong> Renewal risk identification. Ask "pull all accounts in Salesforce where the renewal date is within 90 days, the health score is below 60, and there has been no CSM activity logged in the last 30 days — sort by annual contract value descending and flag the top 10 as highest priority for outreach this week" — generating a renewal risk list without building a custom Salesforce report and exporting it to a spreadsheet.</p>
+
+<h2>2. PostgreSQL MCP Server — Product Usage and Engagement Data</h2>
+
+<p>Product usage data is the leading indicator of customer health — and it usually lives in a PostgreSQL data warehouse, not in your CRM. The PostgreSQL MCP server lets your AI query usage data directly — enabling health scores based on real engagement patterns rather than just survey responses and CSM gut feel.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Complex analytical queries across event tables and user activity logs</li>
+<li>Time-series analysis for trend detection and cohort comparison</li>
+<li>Schema introspection to discover what usage data exists without documentation</li>
+<li>Aggregate functions for feature adoption rates and engagement metrics</li>
+</ul>
+
+<p><strong>Best for:</strong> Usage-based health scoring. Ask "for these 20 accounts, calculate their 30-day active user count as a percentage of their licensed seats, average weekly logins per active user, and which core features they've used at least once in the last month — sort by overall engagement score ascending to show me the most at-risk accounts first" — computing a real usage-based health score across your portfolio without an analyst running queries.</p>
+
+<h2>3. Slack MCP Server — Customer Communication History</h2>
+
+<p>High-touch customers often have dedicated Slack Connect channels where real product feedback, feature requests, support escalations, and relationship context accumulates. The Slack MCP server gives your AI access to this conversation history — enabling preparation for QBRs, renewal conversations, and escalation responses without manually scrolling through months of messages.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Search messages across channels by keyword, sender, date range, or reaction</li>
+<li>Read full thread conversations for complete context on any topic</li>
+<li>Access shared files and documents within channel conversations</li>
+<li>Check message metadata for sentiment signals (reactions, urgency language)</li>
+</ul>
+
+<p><strong>Best for:</strong> QBR preparation. Ask "search the Slack Connect channel for Acme Corp for the last 90 days, pull all messages where they mentioned feature requests, bugs, or expressed frustration, organize them chronologically, and cross-reference them with how we responded — I need a complete picture of their experience before the renewal QBR" — building a comprehensive account narrative from real conversation history in minutes.</p>
+
+<h2>4. Notion MCP Server — CS Playbooks and Account Documentation</h2>
+
+<p>Customer success teams maintain playbooks for onboarding, expansion, at-risk intervention, and renewal in Notion. Account notes, success plans, and stakeholder maps also live there. The Notion MCP server gives your AI access to both institutional knowledge and account-specific documentation.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read CS playbooks, onboarding templates, and process documentation</li>
+<li>Access account wikis and customer success plans by account name</li>
+<li>Search across the workspace for relevant precedents and frameworks</li>
+<li>Read stakeholder maps and org charts maintained in Notion databases</li>
+</ul>
+
+<p><strong>Best for:</strong> Playbook-driven intervention. Ask "pull the at-risk customer intervention playbook from Notion, then look at the account notes for three of our churned accounts from last quarter and identify which playbook steps were skipped or executed too late — I want to update the playbook based on what we actually learned" — applying documented process knowledge to real account outcomes for continuous improvement.</p>
+
+<h2>5. Stripe MCP Server — Subscription and Billing Health</h2>
+
+<p>Billing friction is a hidden churn driver: failed payment retries, unexpected invoices, and subscription confusion create negative customer experiences that CSMs rarely see in time. The Stripe MCP server gives your AI visibility into the payment and subscription layer — enabling proactive outreach before billing issues become relationship problems.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Query subscription records including plan, status, trial end dates, and pricing</li>
+<li>Read invoice history including payment failures and retry attempts</li>
+<li>Access customer billing records and payment method status</li>
+<li>Check discount, coupon, and credit note history for contract context</li>
+</ul>
+
+<p><strong>Best for:</strong> Proactive billing intervention. Ask "find all active subscriptions in Stripe where there has been a failed payment attempt in the last 7 days that hasn't been resolved, and for each one show me the account name, the amount due, the number of retry attempts, and whether the card on file is expired — I need to reach out before these become churn events" — catching payment issues before they become escalations.</p>
+
+<h2>6. Intercom MCP Server — Support Ticket and Conversation History</h2>
+
+<p>Support conversation history is rich signal for customer health: ticket volume trends, recurring issue categories, sentiment in conversations, and resolution times all correlate with churn risk. The Intercom MCP server gives your AI access to this support data — enabling health assessment based on actual support experience, not just usage metrics.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Search conversations by account, topic, date range, and resolution status</li>
+<li>Read full conversation threads including customer and agent messages</li>
+<li>Access conversation tags, ratings, and resolution metadata</li>
+<li>Query contact records with conversation history linked</li>
+</ul>
+
+<p><strong>Best for:</strong> Support-driven health assessment. Ask "pull all Intercom conversations for our top 50 accounts over the last 90 days, calculate the average resolution time and conversation count per account, identify any accounts with more than 5 open or recently escalated tickets, and flag any where the customer used negative sentiment language like 'frustrated', 'broken', or 'unacceptable'" — building a support health signal across your portfolio without manually reviewing thousands of conversations.</p>
+
+<h2>7. Airtable MCP Server — CS Operations and Success Plans</h2>
+
+<p>Customer success teams use Airtable for managing success plans, tracking onboarding milestones, running QBR schedules, and coordinating cross-functional customer escalations. The Airtable MCP server gives your AI access to these structured operational databases — making CS ops management conversational.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Query success plan databases with filtering by milestone status and health score</li>
+<li>Read linked records across accounts, CSMs, and milestone tables</li>
+<li>Write status updates and notes for automated tracking workflows</li>
+<li>Access formula field values for calculated health scores and risk ratings</li>
+</ul>
+
+<p><strong>Best for:</strong> Onboarding milestone tracking. Ask "pull all accounts from our onboarding tracker in Airtable where the 'Go-Live' milestone is more than 14 days overdue, group them by assigned CSM, and for each one show me which specific milestone is blocked and when the customer last engaged in the onboarding checklist" — generating an onboarding risk report across the full portfolio without reviewing each account card manually.</p>
+
+<h2>Recommended Stacks for Customer Success Teams</h2>
+
+<ul>
+<li><strong>Retention operations stack:</strong> Salesforce + PostgreSQL + Stripe + Notion (CRM + usage data + billing health + playbooks)</li>
+<li><strong>High-touch account stack:</strong> Slack + Intercom + Salesforce + Notion (communication history + support data + CRM + account documentation)</li>
+<li><strong>CS ops stack:</strong> Airtable + Notion + Salesforce + PostgreSQL (success plans + playbooks + CRM + product data)</li>
+<li><strong>Full CS stack:</strong> Salesforce + PostgreSQL + Slack + Stripe + Intercom + Notion — complete coverage from CRM and product data to communication history, billing health, support conversations, and process documentation</li>
+</ul>
+
+<p>Browse all <a href="/category/productivity">Productivity MCP servers</a> and <a href="/category/analytics">Analytics MCP servers</a> on MyMCPTools. For related guides, see <a href="/blog/best-mcp-servers-for-sales-teams">Best MCP Servers for Sales Teams</a> and <a href="/blog/best-mcp-servers-for-customer-support">Best MCP Servers for Customer Support</a>.</p>
+    `.trim(),
+  },
 ];
 
 export function getBlogPostBySlug(slug: string): BlogPost | undefined {
