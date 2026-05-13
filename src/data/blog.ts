@@ -19174,6 +19174,383 @@ jupyter mcp install</code></pre>
 <p>Browse all <a href="/category/productivity">Productivity MCP servers</a> and <a href="/category/analytics">Analytics MCP servers</a> on MyMCPTools. For related guides, see <a href="/blog/best-mcp-servers-for-sales-teams">Best MCP Servers for Sales Teams</a> and <a href="/blog/best-mcp-servers-for-customer-support">Best MCP Servers for Customer Support</a>.</p>
     `.trim(),
   },
+  {
+    slug: "best-mcp-servers-for-ruby-developers",
+    title: "Best MCP Servers for Ruby Developers in 2026",
+    description: "Top MCP servers for Ruby and Rails developers: GitHub for code review, PostgreSQL for database work, Redis for caching, Docker for containers, Brave Search for documentation, and more.",
+    date: "2026-05-13",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "7 min read",
+    keywords: ["best mcp servers for ruby developers", "ruby on rails mcp server", "mcp servers ruby 2026", "rails developer ai tools", "ruby mcp integration"],
+    relatedServerSlugs: ["github", "postgresql", "redis", "docker", "brave-search", "filesystem", "sentry", "elasticsearch"],
+    content: `
+<p>Ruby developers — and especially Rails developers — work across a rich ecosystem: GitHub for code collaboration, PostgreSQL or MySQL for databases, Redis for caching and background jobs, Docker for containerization, and Sentry for error tracking. The context switching between these systems and your AI assistant costs real time. MCP servers eliminate that friction by giving your AI direct access to the tools already in your stack.</p>
+
+<p>Here are the best MCP servers for Ruby and Rails developers building AI-augmented workflows.</p>
+
+<h2>1. GitHub MCP Server — Code Review and Repository Intelligence</h2>
+
+<p>GitHub is the center of gravity for most Ruby development: pull requests, code review, issue tracking, Actions workflows, and repository navigation all live there. The GitHub MCP server gives your AI direct access to your repositories — enabling code-aware assistance without copy-pasting files into your chat window.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read file contents and directory structure from any branch</li>
+<li>Search code across your repositories by symbol, pattern, or file type</li>
+<li>Access pull request diffs, comments, and review threads</li>
+<li>Read issue details, labels, and linked PRs</li>
+<li>Check GitHub Actions workflow runs and failure logs</li>
+</ul>
+
+<p><strong>Best for:</strong> Pull request review and debugging. Ask "read the diff for PR #412, look at the test file changes, and identify any edge cases in the new billing logic that aren't covered by the test suite" — getting substantive code review help without manually describing what changed.</p>
+
+<h2>2. PostgreSQL MCP Server — Rails Database Introspection</h2>
+
+<p>Rails developers spend significant time reasoning about database schema: writing migrations, optimizing queries, debugging N+1s, and understanding how ActiveRecord translates to SQL. The PostgreSQL MCP server gives your AI direct access to your actual database schema and query execution — making database work dramatically faster.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Full schema introspection including tables, columns, indexes, and foreign keys</li>
+<li>Read-only query execution to explore data and test queries</li>
+<li>EXPLAIN plan analysis for query optimization</li>
+<li>Constraint and trigger inspection</li>
+</ul>
+
+<p><strong>Best for:</strong> Migration and query work. Ask "look at the schema for the users and subscriptions tables, then write a migration to add a composite index on (account_id, status, created_at) for the subscriptions table that will optimize this query I keep seeing in slow query logs" — getting schema-aware migration help that accounts for your actual data model.</p>
+
+<h2>3. Redis MCP Server — Cache and Background Job Debugging</h2>
+
+<p>Redis is everywhere in Rails applications: Action Cable, Sidekiq queues, Rails cache, rate limiting, and session storage all commonly use it. When something goes wrong with background jobs or caching behavior, debugging requires poking around in Redis directly. The Redis MCP server gives your AI access to your Redis instance — making cache and queue debugging conversational.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Key inspection and value retrieval for any Redis data type</li>
+<li>Pattern-based key scanning to explore namespaces</li>
+<li>TTL inspection for cache debugging</li>
+<li>Queue depth and job inspection for Sidekiq debugging</li>
+</ul>
+
+<p><strong>Best for:</strong> Sidekiq queue debugging. Ask "scan all keys in the Sidekiq namespace, show me the depth of each queue, identify any jobs that have been in the retry queue for more than 24 hours, and pull the error details from the first three failed jobs" — diagnosing background job failures without opening a Redis CLI and manually navigating key namespaces.</p>
+
+<h2>4. Docker MCP Server — Container and Environment Management</h2>
+
+<p>Modern Rails development typically involves Docker Compose for local services: the app container, PostgreSQL, Redis, Sidekiq, and potentially Elasticsearch or Kafka. The Docker MCP server gives your AI visibility into your container environment — useful for debugging environment issues and understanding service connectivity problems.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>List running containers with status, ports, and resource usage</li>
+<li>Read container logs for any service</li>
+<li>Inspect container environment variables and volume mounts</li>
+<li>Check network configuration and service connectivity</li>
+</ul>
+
+<p><strong>Best for:</strong> Local environment debugging. Ask "check all my running Docker containers, look at the logs from the Rails app container and the PostgreSQL container from the last 10 minutes, and identify what's causing the connection refused error I'm getting when the app tries to query the database" — diagnosing service connectivity issues without manually reading logs from multiple containers.</p>
+
+<h2>5. Sentry MCP Server — Error Tracking and Production Debugging</h2>
+
+<p>Sentry is the standard for error tracking in production Rails apps. When you get paged about an error spike, the debugging loop starts with Sentry: what's the error, what's the stack trace, what's the frequency, has it happened before? The Sentry MCP server gives your AI direct access to your error data — compressing that debugging loop significantly.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Query issues by project, status, level, and date range</li>
+<li>Read full stack traces and exception details</li>
+<li>Access breadcrumbs and request context for individual events</li>
+<li>Check issue frequency trends and first/last seen timestamps</li>
+</ul>
+
+<p><strong>Best for:</strong> Production incident triage. Ask "pull all new Sentry errors that appeared in the last 2 hours in the production environment, filter to anything with more than 10 occurrences, and for the top three by frequency show me the full stack trace and the request parameters from the most recent event" — triaging an error spike without clicking through Sentry's UI for each issue.</p>
+
+<h2>6. Brave Search MCP Server — Documentation and Gem Research</h2>
+
+<p>Ruby developers frequently search for gem documentation, ActiveRecord behavior edge cases, Rails version upgrade guides, and community discussions on specific patterns. The Brave Search MCP server gives your AI web search capabilities — enabling research workflows that surface current documentation without browser tab switching.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Web search with full snippet extraction and source URLs</li>
+<li>News search for recent gem releases, Rails announcements, and security advisories</li>
+<li>Privacy-focused — important for searching on sensitive codebase patterns</li>
+</ul>
+
+<p><strong>Best for:</strong> Gem evaluation and upgrade research. Ask "search for the current status of the paper_trail gem for Rails 8 compatibility, any known issues with the latest version, and alternative audit logging gems in case paper_trail isn't maintained" — getting a current picture of a gem's health without reading through GitHub issues and changelog entries manually.</p>
+
+<h2>7. Filesystem MCP Server — Local Codebase Access</h2>
+
+<p>While GitHub MCP covers remote repositories, the Filesystem MCP server gives your AI access to your local working directory — including uncommitted changes, local config files, and generated files that don't live in version control.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read and write files in your local project directory</li>
+<li>Directory traversal for exploring unfamiliar codebases</li>
+<li>Access local config files including database.yml, credentials, and environment files</li>
+<li>Read Gemfile.lock for exact dependency resolution</li>
+</ul>
+
+<p><strong>Best for:</strong> Local debugging and refactoring. Ask "read the Gemfile.lock, identify all gems with known security vulnerabilities or that are more than two major versions behind current, and then read the initializers directory to find any gems that have custom initialization code that might break during an upgrade" — getting upgrade impact analysis grounded in your actual dependency tree.</p>
+
+<h2>Recommended Stacks for Ruby Developers</h2>
+
+<ul>
+<li><strong>Rails API stack:</strong> GitHub + PostgreSQL + Redis + Sentry (code + database + cache/jobs + error tracking)</li>
+<li><strong>Full-stack Rails stack:</strong> GitHub + PostgreSQL + Redis + Docker + Filesystem (code + data + cache + containers + local files)</li>
+<li><strong>Production debugging stack:</strong> Sentry + PostgreSQL + Redis + Brave Search (errors + database queries + job queues + documentation)</li>
+<li><strong>Complete Ruby developer stack:</strong> GitHub + PostgreSQL + Redis + Docker + Sentry + Brave Search + Filesystem — full coverage from code to data to infrastructure to errors</li>
+</ul>
+
+<p>Browse all <a href="/category/coding">Coding MCP servers</a> and <a href="/category/database">Database MCP servers</a> on MyMCPTools. For related guides, see <a href="/blog/best-mcp-servers-for-backend-developers">Best MCP Servers for Backend Developers</a> and <a href="/blog/best-mcp-servers-for-python-developers">Best MCP Servers for Python Developers</a>.</p>
+    `.trim(),
+  },
+  {
+    slug: "best-mcp-servers-for-java-developers",
+    title: "Best MCP Servers for Java Developers in 2026",
+    description: "Top MCP servers for Java developers: GitHub for code and PRs, Maven and Gradle for build tooling, SonarQube for code quality, Jenkins for CI, PostgreSQL for databases, and Docker for containers.",
+    date: "2026-05-13",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "8 min read",
+    keywords: ["best mcp servers for java developers", "java mcp server 2026", "spring boot mcp", "java developer ai tools", "mcp server java enterprise"],
+    relatedServerSlugs: ["github", "maven", "gradle", "sonarqube", "jenkins", "postgresql", "docker", "jira"],
+    content: `
+<p>Java development — especially in enterprise environments — involves a complex toolchain: GitHub or GitLab for version control, Maven or Gradle for builds, Jenkins or GitHub Actions for CI/CD, SonarQube for code quality, and Jira for project tracking. Getting AI assistance across this toolchain traditionally requires switching between systems and describing context manually. MCP servers change this by giving your AI direct, real-time access to each tool in your stack.</p>
+
+<p>Here are the best MCP servers for Java and Spring Boot developers building AI-augmented workflows.</p>
+
+<h2>1. GitHub MCP Server — Code Review and Repository Navigation</h2>
+
+<p>Most Java development teams use GitHub (or GitLab) as the primary hub for pull requests, code review, and version control. Java codebases tend to be large and deeply nested — navigating them to provide meaningful code review assistance is exactly where MCP context shines.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read source files and directory trees across any branch without cloning locally</li>
+<li>Search code by symbol, annotation, or pattern across the repository</li>
+<li>Access PR diffs, inline review comments, and discussion threads</li>
+<li>Read GitHub Actions workflow configurations and run failure logs</li>
+<li>Check issue details and linked pull requests</li>
+</ul>
+
+<p><strong>Best for:</strong> Code review for large codebases. Ask "read the changes in PR #891 — focus on the new service layer classes, check whether they follow our existing transaction management patterns in the other Service files, and flag any methods that acquire multiple locks without consistent ordering" — getting architecture-aware code review that references existing patterns in the codebase, not just the changed lines.</p>
+
+<h2>2. Maven MCP Server — Dependency and Build Management</h2>
+
+<p>Maven is the dominant build tool for enterprise Java. Managing dependencies, resolving version conflicts, understanding the effective POM, and diagnosing build failures all benefit enormously from AI assistance that can actually see your project's dependency tree and build configuration.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Parse and analyze pom.xml files including parent POMs and module hierarchies</li>
+<li>Identify dependency conflicts and version mismatches across the dependency tree</li>
+<li>Check for newer versions of dependencies with CVE information</li>
+<li>Analyze build lifecycle configuration and plugin settings</li>
+</ul>
+
+<p><strong>Best for:</strong> Dependency conflict resolution. Ask "read the effective POM for this project, identify all transitive dependency conflicts where the same artifact is pulled in at multiple versions, and recommend which version to pin in the dependency management section to resolve the conflicts without breaking Spring Boot's BOM" — diagnosing dependency hell with full visibility into the actual dependency tree.</p>
+
+<h2>3. Gradle MCP Server — Modern Build Tooling</h2>
+
+<p>Gradle is increasingly common in Java projects and is standard for Android development. The Gradle MCP server gives your AI access to build scripts, task graphs, and dependency configurations — making build optimization and troubleshooting much faster.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read build.gradle and settings.gradle files across multi-project builds</li>
+<li>Analyze task dependencies and build graph structure</li>
+<li>Inspect dependency configurations including compile, runtime, and test scopes</li>
+<li>Identify custom tasks and plugin usage patterns</li>
+</ul>
+
+<p><strong>Best for:</strong> Multi-module build optimization. Ask "read the build configuration for all subprojects in this Gradle multi-project build, identify which subprojects are being rebuilt on every run even when their sources haven't changed, and suggest which ones should be configured with up-to-date checks or declared outputs to enable incremental builds" — getting targeted build performance improvements grounded in your actual Gradle configuration.</p>
+
+<h2>4. SonarQube MCP Server — Code Quality and Technical Debt</h2>
+
+<p>SonarQube is standard in enterprise Java shops for tracking code quality metrics: code smells, security vulnerabilities, coverage gaps, and technical debt estimates. The SonarQube MCP server gives your AI access to your quality data — making code quality review part of the development workflow rather than a separate audit process.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Query issues by type (bug, vulnerability, code smell), severity, and component</li>
+<li>Read quality gate status and metric thresholds</li>
+<li>Access security hotspot details and remediation guidance</li>
+<li>Check coverage metrics by module or package</li>
+</ul>
+
+<p><strong>Best for:</strong> Pre-release quality gate review. Ask "pull all critical and blocker severity issues in SonarQube for the payment-service module that were introduced in the last sprint, group them by rule category, and for each security vulnerability show me the specific line and the recommended fix" — reviewing quality gate blockers before a release without clicking through each SonarQube finding manually.</p>
+
+<h2>5. Jenkins MCP Server — CI/CD Pipeline Visibility</h2>
+
+<p>Jenkins remains widely used in enterprise Java environments for build pipelines, deployment automation, and release management. When builds fail, the debugging loop — navigating Jenkins UI, reading console output, correlating with test failures — is time-consuming. The Jenkins MCP server makes this conversational.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Query build history and status for any pipeline or job</li>
+<li>Read full console output for failed builds</li>
+<li>Access test result reports including failure details and stack traces</li>
+<li>Check pipeline stage breakdowns for identifying bottlenecks</li>
+</ul>
+
+<p><strong>Best for:</strong> Build failure diagnosis. Ask "pull the console output from the last three failed builds of the payment-service pipeline, identify the recurring error pattern across all three failures, and tell me whether this looks like a flaky test, an environment issue, or a code regression" — correlating build failures across runs without reading through thousands of lines of Jenkins console output manually.</p>
+
+<h2>6. PostgreSQL MCP Server — Database and JPA Schema Work</h2>
+
+<p>Java applications using JPA/Hibernate need their AI to understand the actual database schema to generate meaningful queries, write effective migrations, and optimize JPQL. The PostgreSQL MCP server gives your AI direct schema introspection — making database-related Java work dramatically faster.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Full schema introspection including tables, columns, indexes, and foreign keys</li>
+<li>Read-only query execution for data exploration and query testing</li>
+<li>EXPLAIN plan analysis for JPQL optimization work</li>
+<li>Constraint and trigger inspection</li>
+</ul>
+
+<p><strong>Best for:</strong> JPA and Hibernate optimization. Ask "read the schema for the orders and order_items tables, then look at this JPQL query that's generating an N+1 in Hibernate, and suggest the optimal fetch strategy and JPQL rewrite to solve it — showing me both the updated entity annotation and the corrected query" — getting Hibernate optimization advice grounded in your actual schema rather than generic patterns.</p>
+
+<h2>7. Jira MCP Server — Sprint and Issue Tracking</h2>
+
+<p>Enterprise Java teams almost universally use Jira for project management. The Jira MCP server gives your AI access to your sprint, epic, and issue data — enabling AI-assisted sprint planning, standup prep, and progress reporting without leaving your development environment.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Query issues with JQL for sprint-specific, component-specific, or label-filtered views</li>
+<li>Read epic and story hierarchies for release scope visibility</li>
+<li>Access sprint boards and velocity data</li>
+<li>Read issue history including status changes and comment threads</li>
+</ul>
+
+<p><strong>Best for:</strong> Sprint planning and velocity analysis. Ask "pull all stories in the current sprint for the payment-service component, calculate how many story points remain open, compare our completion rate to last sprint's velocity, and flag any stories that are in-progress but have had no updates in more than 3 days" — running a real-time sprint health check without manually reviewing each card in Jira.</p>
+
+<h2>Recommended Stacks for Java Developers</h2>
+
+<ul>
+<li><strong>Spring Boot API stack:</strong> GitHub + PostgreSQL + Maven + SonarQube (code + database + build + quality)</li>
+<li><strong>Enterprise Java stack:</strong> GitHub + Jenkins + Jira + SonarQube (code + CI + project management + quality gates)</li>
+<li><strong>Full development stack:</strong> GitHub + Maven + PostgreSQL + SonarQube + Jenkins + Docker (complete from code to build to data to quality to CI to containers)</li>
+<li><strong>Microservices stack:</strong> GitHub + Docker + Gradle + SonarQube + Jira — modern multi-module service architecture coverage</li>
+</ul>
+
+<p>Browse all <a href="/category/coding">Coding MCP servers</a> and <a href="/category/devops">DevOps MCP servers</a> on MyMCPTools. For related guides, see <a href="/blog/best-mcp-servers-for-backend-developers">Best MCP Servers for Backend Developers</a> and <a href="/blog/best-mcp-servers-for-software-architects">Best MCP Servers for Software Architects</a>.</p>
+    `.trim(),
+  },
+  {
+    slug: "best-mcp-servers-for-monitoring",
+    title: "Best MCP Servers for Monitoring and Observability in 2026",
+    description: "Top MCP servers for monitoring and observability: Datadog for metrics and APM, Prometheus for time-series data, Grafana for dashboards, Sentry for error tracking, PagerDuty for incident management, and more.",
+    date: "2026-05-13",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "8 min read",
+    keywords: ["best mcp servers for monitoring", "observability mcp server 2026", "datadog mcp integration", "prometheus mcp server", "sentry mcp tools", "incident management mcp"],
+    relatedServerSlugs: ["datadog", "prometheus", "grafana", "sentry", "pagerduty", "elasticsearch", "influxdb", "logfire"],
+    content: `
+<p>Monitoring and observability work is fundamentally about correlation: connecting a spike in error rates to a deployment, linking slow response times to a specific database query, or tracing a cascade failure through distributed services. Traditionally, that correlation requires switching between Datadog, your logs search, Grafana dashboards, and Sentry simultaneously — a mentally exhausting process during an active incident. MCP servers change this by giving your AI direct, simultaneous access to all your observability tools.</p>
+
+<p>Here are the best MCP servers for monitoring, observability, and incident response workflows.</p>
+
+<h2>1. Datadog MCP Server — Metrics, APM, and Infrastructure Monitoring</h2>
+
+<p>Datadog is the most comprehensive monitoring platform in wide use: infrastructure metrics, APM traces, log management, RUM, synthetics, and alerting all in one place. The Datadog MCP server gives your AI direct access to this data — enabling conversational monitoring that can correlate metrics, traces, and logs without you manually navigating between dashboards.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Query metrics with full Datadog query language (DQL) support</li>
+<li>Read APM trace data and service performance summaries</li>
+<li>Access monitor states, alert history, and downtime windows</li>
+<li>Read log events with filter and aggregation support</li>
+<li>Check infrastructure host and container health</li>
+</ul>
+
+<p><strong>Best for:</strong> Incident correlation during an outage. Ask "query Datadog for any metrics that spiked in the 10 minutes before our alert fired at 14:32 UTC — look at p99 latency by service, error rate by endpoint, and infrastructure CPU across the payment cluster — then check the APM traces for the payment-api service in that window and identify the slowest downstream calls" — building a root cause hypothesis in minutes rather than navigating five Datadog views manually.</p>
+
+<h2>2. Prometheus MCP Server — Time-Series Metrics and Alerting</h2>
+
+<p>Prometheus is the standard metrics backend in Kubernetes-native and cloud-native environments. The Prometheus MCP server gives your AI direct access to your metrics data and alerting rules through PromQL — making metrics exploration and alert tuning conversational rather than requiring PromQL expertise on demand.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Execute PromQL queries for instant and range metric data</li>
+<li>List available metrics and their label cardinality</li>
+<li>Read alerting rules and recording rules from configured rule groups</li>
+<li>Check current alert states and firing conditions</li>
+</ul>
+
+<p><strong>Best for:</strong> Alert rule development and tuning. Ask "query the http_request_duration_seconds metric over the last 7 days, calculate the p95 and p99 latency per service and endpoint, identify the three endpoints with the highest variance between normal operation and peak load, and write PromQL alerting rules that would fire when they exceed the 99th percentile baseline by more than 50%" — developing alert rules grounded in your actual metric distribution rather than arbitrary thresholds.</p>
+
+<h2>3. Grafana MCP Server — Dashboard and Visualization Access</h2>
+
+<p>Grafana is the visualization layer for most Prometheus deployments — dashboards, panel configurations, and variable definitions all live there. The Grafana MCP server gives your AI access to your dashboard configurations and can read panel data — enabling AI assistance with dashboard development and debugging.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>List and search dashboards across Grafana folders</li>
+<li>Read dashboard JSON configurations including panel queries and variables</li>
+<li>Query panel data directly for specific time ranges</li>
+<li>Access data source configurations and query editors</li>
+</ul>
+
+<p><strong>Best for:</strong> Dashboard audit and improvement. Ask "read all dashboards in the 'Production' folder, identify any panels that have no data for the last 7 days (likely broken queries), check for panels using deprecated Prometheus functions, and suggest updated PromQL for the three most-viewed dashboards based on our metric naming conventions" — auditing your dashboard health without manually opening each one in Grafana.</p>
+
+<h2>4. Sentry MCP Server — Error Tracking and Exception Analysis</h2>
+
+<p>Sentry provides error tracking, performance monitoring, and release health visibility. During incidents, Sentry is often the first tool that shows you what's actually broken — which users are affected, what the stack trace looks like, and whether this error has happened before. The Sentry MCP server makes that data immediately accessible to your AI.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Query issues by project, severity, status, and date range</li>
+<li>Read full exception details including stack traces and breadcrumbs</li>
+<li>Access event frequency trends and affected user counts</li>
+<li>Check release health metrics and regression detection</li>
+</ul>
+
+<p><strong>Best for:</strong> Post-deploy regression detection. Ask "query Sentry for any new issues that first appeared in the last 2 hours tagged to the v2.4.1 release, sort by event frequency, and for the top five show me the full stack trace, the affected user count, and whether the same exception appeared in any previous release" — running an automated release health check that would normally require 20 minutes of Sentry navigation.</p>
+
+<h2>5. PagerDuty MCP Server — Incident Management and On-Call</h2>
+
+<p>PagerDuty manages incident response: alert routing, on-call schedules, escalation policies, and incident timelines. During and after incidents, the PagerDuty data is critical for understanding what happened, who was paged, and whether the right escalation paths fired. The PagerDuty MCP server gives your AI direct access to this incident data.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Query incidents by status, service, urgency, and date range</li>
+<li>Read incident timelines including acknowledgment and resolution events</li>
+<li>Access on-call schedule information for any team or service</li>
+<li>Read alert details and routing rule configurations</li>
+</ul>
+
+<p><strong>Best for:</strong> Incident postmortem preparation. Ask "pull all P1 and P2 incidents from the last 30 days that had a time-to-acknowledge greater than 10 minutes, group them by service and on-call team, calculate the average time-to-acknowledge per team, and flag any incidents where the escalation policy fired (meaning the primary wasn't reached) — I'm building our monthly on-call health report" — generating postmortem data that typically requires manual PagerDuty report navigation and spreadsheet work.</p>
+
+<h2>6. Elasticsearch MCP Server — Log Search and Analysis</h2>
+
+<p>Elasticsearch (often combined with Kibana as part of the ELK stack) is a common centralized log storage backend. When debugging production issues, log search is critical — but crafting Elasticsearch queries manually or navigating Kibana's UI during an incident is slow. The Elasticsearch MCP server gives your AI direct log query access.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Execute Elasticsearch queries with full DSL support</li>
+<li>Search across indices with field filtering and aggregations</li>
+<li>Access index mappings to understand log field structure</li>
+<li>Run log pattern analysis and frequency aggregations</li>
+</ul>
+
+<p><strong>Best for:</strong> Log-driven incident investigation. Ask "search the application logs index for the 30-minute window around our incident at 14:32 UTC, filter to ERROR and FATAL level events in the payment-service, group by exception class and count occurrences, then for the top three exception types pull the full log entries from the first occurrence — I need to understand the cascade sequence" — reconstructing an incident timeline from logs without manually building Elasticsearch queries.</p>
+
+<h2>7. InfluxDB MCP Server — Time-Series Infrastructure Metrics</h2>
+
+<p>InfluxDB is purpose-built for time-series data and is commonly used for infrastructure metrics, IoT sensor data, and high-frequency telemetry where Prometheus's cardinality limits become a constraint. The InfluxDB MCP server provides conversational access to your time-series data.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Execute Flux queries for time-series analysis</li>
+<li>List buckets, measurements, and field keys</li>
+<li>Query data with windowing and aggregation functions</li>
+<li>Access retention policies and continuous query configurations</li>
+</ul>
+
+<p><strong>Best for:</strong> Capacity planning and trend analysis. Ask "query InfluxDB for the last 30 days of disk utilization data across our database servers, calculate the growth trend per server, project when each server will exceed 85% capacity at the current growth rate, and flag any that will breach that threshold within 60 days" — running a capacity planning analysis without writing Flux queries manually.</p>
+
+<h2>Recommended Stacks for Monitoring Teams</h2>
+
+<ul>
+<li><strong>Cloud-native stack:</strong> Prometheus + Grafana + Sentry + PagerDuty (metrics + visualization + errors + incidents)</li>
+<li><strong>Enterprise stack:</strong> Datadog + PagerDuty + Elasticsearch (all-in-one APM + incident management + log search)</li>
+<li><strong>Incident response stack:</strong> Datadog + Sentry + PagerDuty (correlated alerts, errors, and incident timelines during active incidents)</li>
+<li><strong>Full observability stack:</strong> Datadog + Prometheus + Grafana + Sentry + PagerDuty + Elasticsearch — complete coverage from metrics to errors to logs to incidents</li>
+</ul>
+
+<p>Browse all <a href="/category/analytics">Analytics MCP servers</a> and <a href="/category/devops">DevOps MCP servers</a> on MyMCPTools. For related guides, see <a href="/blog/best-mcp-servers-for-devops">Best MCP Servers for DevOps</a> and <a href="/blog/best-mcp-servers-for-site-reliability-engineers">Best MCP Servers for Site Reliability Engineers</a>.</p>
+    `.trim(),
+  },
 ];
 
 export function getBlogPostBySlug(slug: string): BlogPost | undefined {
