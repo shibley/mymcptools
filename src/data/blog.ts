@@ -17967,6 +17967,384 @@ jupyter mcp install</code></pre>
 <p>Browse all <a href="/category/productivity">Productivity MCP servers</a> and <a href="/category/search">Search MCP servers</a> on MyMCPTools. For related guides, see <a href="/blog/best-mcp-servers-for-research">Best MCP Servers for Research</a> and <a href="/blog/best-mcp-servers-for-project-management">Best MCP Servers for Project Management</a>.</p>
     `.trim(),
   },
+  {
+    slug: "best-mcp-servers-for-mobile-developers",
+    title: "Best MCP Servers for Mobile Developers in 2026",
+    description: "Mobile developers juggle device APIs, backend services, crash reports, analytics dashboards, and app store reviews across iOS and Android simultaneously. These MCP servers connect your AI to GitHub, Sentry, Firebase, Supabase, and your CI pipelines — so you can ship faster and debug with more context.",
+    date: "2026-05-13",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "8 min read",
+    keywords: ["mcp servers for mobile developers", "react native mcp server", "firebase mcp", "supabase mcp mobile", "mobile app development ai tools 2026"],
+    relatedServerSlugs: ["github", "sentry", "supabase", "firebase-mcp", "postgresql", "slack", "figma", "appwrite-mcp", "posthog-mcp", "redis"],
+    content: `
+<p>Mobile development spans more environments than almost any other engineering discipline — local simulators, physical test devices, staging backends, production APIs, app store review queues, and crash analytics dashboards all running simultaneously. Context switching between these systems burns time and breaks flow.</p>
+
+<p>MCP servers give your AI direct access to the tools and data your mobile project actually runs on, so you can ask questions grounded in real state instead of mental models that drift out of sync. Here are the best MCP servers for mobile developers in 2026.</p>
+
+<h2>1. GitHub MCP Server — Code Review and Issue Context</h2>
+
+<p>Mobile development is intensely branchy — feature branches for each platform, release branches per version, hotfix branches that need backporting across multiple active releases. The GitHub MCP server gives your AI access to pull request state, commit history, issue discussions, and CI run results without leaving your IDE or terminal.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read open PRs with diff context, review comments, and CI status</li>
+<li>Query issue trackers for related bugs, linked PRs, and reproduction steps</li>
+<li>Access commit history for a file or component to trace regressions</li>
+<li>Check branch protection rules and required status checks before merging</li>
+</ul>
+
+<p><strong>Best for:</strong> Regression triage. When a crash report points to a recent commit, ask "show me all changes to the NetworkManager class in the last 5 commits and any related issues that mention network timeout" — getting the full picture without navigating between GitHub tabs and Sentry simultaneously.</p>
+
+<h2>2. Sentry MCP Server — Crash Analytics and Error Monitoring</h2>
+
+<p>Mobile crashes need fast diagnosis — an app store rating can drop within hours of a regression reaching production users. The Sentry MCP server gives your AI access to error events, stack traces, affected user counts, and release regression data, making it possible to triage crashes without manually navigating the Sentry dashboard.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Query recent errors by project, environment, or release version</li>
+<li>Read stack traces with full context frames and breadcrumbs</li>
+<li>Check user impact counts and affected device types for each issue</li>
+<li>Identify regressions introduced by specific app releases</li>
+</ul>
+
+<p><strong>Best for:</strong> Release quality gates. Before approving a release for production rollout, ask "show me all unresolved Sentry issues introduced in release 4.2.1-rc and their user impact counts" — making go/no-go decisions with crash data rather than hope.</p>
+
+<h2>3. Supabase MCP Server — Backend Database and Auth</h2>
+
+<p>Many React Native and Flutter apps use Supabase as their primary backend — Postgres database, row-level security policies, realtime subscriptions, and auth all in one platform. The Supabase MCP server gives your AI access to your database schema, table data, and RLS policies, making backend debugging and feature work faster.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Query any Supabase table with filtering, joining, and aggregation</li>
+<li>Read and inspect row-level security policies on tables</li>
+<li>Access database schema including column types, constraints, and indexes</li>
+<li>Check auth configuration and user records for debugging login issues</li>
+</ul>
+
+<p><strong>Best for:</strong> RLS policy debugging. When a user reports that their app feed is empty despite having records in the database, ask "check the RLS policies on the posts table and run a test query as user [id] to see what rows they can actually read" — catching policy misconfiguration in seconds rather than hours of SQL console work.</p>
+
+<h2>4. AppWrite MCP Server — Self-Hosted Backend Context</h2>
+
+<p>Teams using AppWrite as their mobile backend get database, auth, storage, and cloud functions in a self-hosted package. The AppWrite MCP server connects your AI to your AppWrite project data so you can inspect documents, check user records, and understand function execution without switching between your code and the AppWrite console.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read documents from any AppWrite collection with query filters</li>
+<li>Check user account records, sessions, and auth status</li>
+<li>Access storage bucket contents and file metadata</li>
+<li>Review cloud function logs and execution history</li>
+</ul>
+
+<p><strong>Best for:</strong> Debugging cloud functions during development. Ask "show me the last 10 execution logs for the push-notification function and any errors they returned" — getting function context without opening the AppWrite console and navigating to the functions section.</p>
+
+<h2>5. PostHog MCP Server — Product Analytics and Feature Flags</h2>
+
+<p>Mobile product decisions live and die by analytics — session counts, funnel drop-off rates, feature adoption curves, and A/B test results. The PostHog MCP server gives your AI access to your product analytics data so you can ask questions about user behavior grounded in real event data rather than guessing from dashboard screenshots.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Query event counts and user properties from your PostHog project</li>
+<li>Check feature flag configurations and rollout percentages</li>
+<li>Access A/B test results including conversion rates per variant</li>
+<li>Read session recording metadata for debugging user journeys</li>
+</ul>
+
+<p><strong>Best for:</strong> Feature flag rollout decisions. Ask "what is the crash rate and retention difference between users in the new-onboarding feature flag group versus control in the last 7 days?" — making rollout decisions with comparative data rather than gut feel.</p>
+
+<h2>6. Figma MCP Server — Design Spec and Asset Access</h2>
+
+<p>Mobile implementation quality depends on accurate spec handoff. The Figma MCP server gives your AI access to your design files — component properties, spacing values, color tokens, and layer structure — so you can answer "what should this look like?" questions without switching to the Figma desktop app.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read component properties, variants, and auto-layout constraints from design files</li>
+<li>Access color styles and typography tokens defined in design systems</li>
+<li>Inspect specific frames and layers for implementation reference</li>
+<li>Check design comments for open questions and design decisions</li>
+</ul>
+
+<p><strong>Best for:</strong> Pixel-perfect implementation. When implementing a new screen, ask "give me the exact spacing, typography, and color values for the checkout summary card component in the iOS design file" — getting spec data that matches the design system rather than approximating from a screenshot.</p>
+
+<h2>7. Redis MCP Server — Cache and Session State</h2>
+
+<p>Mobile APIs rely on caching for performance — token validation, user session data, rate limiting counters, and feed prefetch caches all frequently live in Redis. The Redis MCP server gives your AI visibility into your cache state so you can diagnose cache-related bugs without SSH'ing into a server and running redis-cli commands manually.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read key-value pairs with TTL information for cache inspection</li>
+<li>Check list and set contents for queue and session data</li>
+<li>Run pattern-based key searches to identify cache entries by prefix</li>
+<li>Read hash fields for structured cache objects</li>
+</ul>
+
+<p><strong>Best for:</strong> Auth session debugging. When users report being unexpectedly logged out, ask "check the Redis key for user session [token] — is it present, what's the TTL, and does the value match the expected session structure?" — diagnosing cache expiration issues without manual redis-cli access.</p>
+
+<h2>Recommended Stacks for Mobile Developers</h2>
+
+<ul>
+<li><strong>React Native + Supabase:</strong> GitHub + Supabase + Sentry + PostHog (code context → backend state → crash data → analytics)</li>
+<li><strong>Flutter + AppWrite:</strong> GitHub + AppWrite + Sentry + Figma (repo context → backend data → error tracking → design spec)</li>
+<li><strong>API debugging:</strong> Supabase + Redis + Sentry (database query → cache state → error correlation)</li>
+<li><strong>Release quality:</strong> GitHub + Sentry + PostHog (commit history → crash impact → user behavior regression)</li>
+<li><strong>Full mobile stack:</strong> GitHub + Supabase + Sentry + PostHog + Figma — complete coverage from design spec to database to production monitoring</li>
+</ul>
+
+<p>Browse all <a href="/category/coding">Coding MCP servers</a> and <a href="/category/devops">DevOps MCP servers</a> on MyMCPTools. For related guides, see <a href="/blog/best-mcp-servers-for-developers">Best MCP Servers for Developers</a> and <a href="/blog/best-mcp-servers-for-frontend-developers">Best MCP Servers for Frontend Developers</a>.</p>
+    `.trim(),
+  },
+  {
+    slug: "best-mcp-servers-for-backend-developers",
+    title: "Best MCP Servers for Backend Developers in 2026",
+    description: "Backend developers build and maintain APIs, databases, queues, caches, and infrastructure that everything else depends on. These MCP servers connect your AI to PostgreSQL, Redis, GitHub, Sentry, and your cloud environment — so you can debug production issues and ship new features without losing context across a dozen tools.",
+    date: "2026-05-13",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "9 min read",
+    keywords: ["mcp servers for backend developers", "postgresql mcp server", "redis mcp", "github mcp backend", "backend development ai tools 2026"],
+    relatedServerSlugs: ["postgresql", "redis", "github", "sentry", "docker", "aws", "supabase", "graphql-mcp", "prisma-mcp", "datadog"],
+    content: `
+<p>Backend development means owning the systems that everything else depends on. When something breaks in production, you're navigating database consoles, log aggregators, infrastructure dashboards, and code history simultaneously — each tool in a separate tab, each requiring its own mental model to interpret.</p>
+
+<p>MCP servers let your AI operate with the same context you have — pulling live database state, reading recent error logs, checking infrastructure health, and tracing code history — so you can move faster through debugging, code review, and architecture decisions. Here are the best MCP servers for backend developers in 2026.</p>
+
+<h2>1. PostgreSQL MCP Server — Live Database Context</h2>
+
+<p>Most backend systems center on a relational database, and for backend developers PostgreSQL is often the primary source of truth. The PostgreSQL MCP server gives your AI direct query access to your database schema, table contents, indexes, and query performance data — making database work conversational instead of context-switching intensive.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Run SELECT queries across any table with filtering, joins, and aggregation</li>
+<li>Inspect schema definitions including column types, constraints, and foreign keys</li>
+<li>Check index usage and identify missing indexes for slow queries</li>
+<li>Read query execution plans for performance analysis</li>
+</ul>
+
+<p><strong>Best for:</strong> Production debugging. When a customer reports data inconsistency, ask "show me all transactions for customer [id] in the last 24 hours including status and timestamps, then check if any related events in the audit log are missing" — correlating data across tables without writing the JOIN manually and copying results between tabs.</p>
+
+<h2>2. Redis MCP Server — Cache, Queue, and Session State</h2>
+
+<p>Redis underpins most production backend systems — token validation, rate limiting, job queues, session storage, and feature flag caches all typically live here. The Redis MCP server gives your AI visibility into live cache state so debugging cache-related issues doesn't require SSH access and manual redis-cli commands.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read key-value pairs with TTL inspection for cache analysis</li>
+<li>Check list lengths and queue depths for job processing health</li>
+<li>Scan key patterns to find all cache entries for a given resource</li>
+<li>Inspect hash fields for structured session or config data</li>
+</ul>
+
+<p><strong>Best for:</strong> Rate limiting and queue debugging. When an API endpoint is returning 429s unexpectedly, ask "check the rate limit counter keys for user [id] and endpoint [path] — what are the current counts and TTLs?" — diagnosing whether the rate limiter logic is correct without manual redis-cli inspection.</p>
+
+<h2>3. GitHub MCP Server — Code History and Review Context</h2>
+
+<p>Backend changes are high-stakes — a schema migration, API contract change, or authentication logic edit can break dependent systems. The GitHub MCP server gives your AI access to commit history, pull request discussions, and code review context so you can make changes with full awareness of why previous decisions were made.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read commit history for any file or directory with diff content</li>
+<li>Access PR review comments and discussion threads for context on past decisions</li>
+<li>Check open issues and linked PRs for known bugs and in-progress work</li>
+<li>View CI run results and failing test details for any branch</li>
+</ul>
+
+<p><strong>Best for:</strong> Informed refactoring. Before changing an authentication middleware, ask "show me the git history for auth/middleware.ts including commit messages and any linked PRs — especially any security-related changes in the last 6 months" — understanding the reasoning behind current implementation before modifying it.</p>
+
+<h2>4. Sentry MCP Server — Error Tracking and Production Monitoring</h2>
+
+<p>Production errors need immediate context — stack traces, breadcrumb sequences, affected user counts, and release attribution all matter for triaging whether a new error is a regression or a known issue. The Sentry MCP server gives your AI access to this error data without requiring you to navigate the Sentry dashboard mid-debugging session.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Query errors by project, environment, and time range</li>
+<li>Read full stack traces with request context and user data</li>
+<li>Check release-specific error rates to identify regressions</li>
+<li>Access issue assignments, comments, and resolution status</li>
+</ul>
+
+<p><strong>Best for:</strong> Incident response. When an alert fires, ask "show me all new Sentry errors in the production API project that started in the last 30 minutes — stack traces, affected user counts, and whether any are regressions from today's release" — getting triage context in one query rather than opening the Sentry UI and filtering manually.</p>
+
+<h2>5. Docker MCP Server — Container State and Configuration</h2>
+
+<p>Modern backend services run in containers, and container state is often the first thing to check when something behaves unexpectedly in staging or production. The Docker MCP server gives your AI access to running container status, logs, environment configuration, and resource usage without requiring terminal access to the host.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>List running containers with status, uptime, and health check state</li>
+<li>Read container logs with timestamp filtering for recent events</li>
+<li>Inspect container environment variables and port mappings</li>
+<li>Check resource usage including CPU, memory, and network I/O</li>
+</ul>
+
+<p><strong>Best for:</strong> Staging environment debugging. When a service behaves differently in staging than local, ask "compare the environment variables and image tags between the staging and local container configurations for the auth service" — catching configuration drift that explains environment-specific behavior.</p>
+
+<h2>6. GraphQL MCP Server — API Schema and Query Execution</h2>
+
+<p>Backend developers maintaining GraphQL APIs need fast access to schema definitions and the ability to test queries without context-switching to GraphQL Playground or Insomnia. The GraphQL MCP server lets your AI explore your API schema and execute queries, making API development and debugging faster.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Introspect the full GraphQL schema including types, fields, and arguments</li>
+<li>Execute queries and mutations against a GraphQL endpoint</li>
+<li>Read resolver documentation embedded in the schema</li>
+<li>Explore type relationships for API design and documentation work</li>
+</ul>
+
+<p><strong>Best for:</strong> API contract review. When a frontend developer asks why their query is returning null for a field, ask "introspect the schema definition for the User type and check if the profileImage field has any non-null constraints or deprecated markers that might explain the null return" — diagnosing schema-level issues without switching to a schema explorer tool.</p>
+
+<h2>7. Prisma MCP Server — ORM Schema and Migration Context</h2>
+
+<p>Prisma has become the dominant ORM for Node.js backends, and schema management is one of the most error-prone parts of database work. The Prisma MCP server gives your AI access to your Prisma schema definitions and migration history, making it possible to answer data model questions and plan migrations with full context.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read the current Prisma schema including models, relations, and field types</li>
+<li>Access migration history with applied migration names and timestamps</li>
+<li>Check for pending migrations that haven't been applied to an environment</li>
+<li>Inspect model documentation and annotations in the schema file</li>
+</ul>
+
+<p><strong>Best for:</strong> Migration planning. Before writing a migration that changes a widely-referenced model, ask "show me all models in the Prisma schema that have a relation to the User model and what fields they reference" — understanding the blast radius of a schema change before writing the migration SQL.</p>
+
+<h2>Recommended Stacks for Backend Developers</h2>
+
+<ul>
+<li><strong>Node.js API stack:</strong> GitHub + PostgreSQL + Prisma + Sentry (code context → live data → schema → error tracking)</li>
+<li><strong>Production incident response:</strong> Sentry + PostgreSQL + Redis + Docker (error context → data state → cache state → container health)</li>
+<li><strong>GraphQL API development:</strong> GitHub + GraphQL + PostgreSQL + Sentry (schema history → API execution → data queries → production errors)</li>
+<li><strong>Database debugging:</strong> PostgreSQL + Prisma + Redis (live queries → schema context → cache correlation)</li>
+<li><strong>Full backend stack:</strong> GitHub + PostgreSQL + Redis + Sentry + Docker — complete coverage from code history to database to cache to production monitoring</li>
+</ul>
+
+<p>Browse all <a href="/category/database">Database MCP servers</a> and <a href="/category/devops">DevOps MCP servers</a> on MyMCPTools. For related guides, see <a href="/blog/best-mcp-servers-for-developers">Best MCP Servers for Developers</a> and <a href="/blog/best-mcp-servers-for-database">Best MCP Servers for Database</a>.</p>
+    `.trim(),
+  },
+  {
+    slug: "best-mcp-servers-for-machine-learning-engineers",
+    title: "Best MCP Servers for Machine Learning Engineers in 2026",
+    description: "Machine learning engineers train models, manage datasets, track experiments, and deploy ML pipelines that serve predictions at scale. These MCP servers connect your AI to HuggingFace, LangFuse, GitHub, PostgreSQL, and your data infrastructure — so you can iterate faster and debug model behavior with real context.",
+    date: "2026-05-13",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "8 min read",
+    keywords: ["mcp servers for machine learning", "huggingface mcp server", "langfuse mcp", "ml experiment tracking mcp", "machine learning ai tools 2026"],
+    relatedServerSlugs: ["huggingface", "langfuse", "github", "postgresql", "supabase", "openai", "e2b", "chroma", "milvus", "lancedb-mcp"],
+    content: `
+<p>Machine learning engineering sits at the intersection of software engineering and empirical science — every model change is a hypothesis, every training run is an experiment, and every deployment ships a system whose behavior is probabilistic rather than deterministic. The tooling complexity matches: model registries, experiment trackers, vector databases, feature stores, and serving infrastructure all need to stay in sync.</p>
+
+<p>MCP servers give your AI access to the actual state of your ML systems — model performance metrics, experiment results, dataset contents, and inference logs — so you can make decisions grounded in data rather than documentation. Here are the best MCP servers for machine learning engineers in 2026.</p>
+
+<h2>1. HuggingFace MCP Server — Model Registry and Dataset Access</h2>
+
+<p>HuggingFace is the central registry for open-source models and datasets, and ML engineers spend significant time evaluating model options, reading model cards, and benchmarking alternatives. The HuggingFace MCP server gives your AI direct access to model metadata, dataset descriptions, and benchmark results so model selection research happens faster.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Search models by task, architecture, language, and license type</li>
+<li>Read model cards with performance benchmarks and training details</li>
+<li>Access dataset metadata, size, and sample records</li>
+<li>Check model popularity metrics and recent community activity</li>
+</ul>
+
+<p><strong>Best for:</strong> Model selection. When evaluating embedding models for a new semantic search feature, ask "compare the top-5 sentence transformer models on HuggingFace for multilingual text — MTEB scores, model size, license, and inference speed benchmarks" — making a selection decision in one query rather than opening five model card pages.</p>
+
+<h2>2. LangFuse MCP Server — LLM Observability and Experiment Tracking</h2>
+
+<p>Teams building LLM-powered features need visibility into how prompts perform in production — latency distributions, token costs, quality scores, and failure patterns all matter for iterating toward better behavior. The LangFuse MCP server gives your AI access to your LLM traces and evaluation data without navigating the LangFuse dashboard.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Query traces by model, prompt version, and time range</li>
+<li>Read individual trace spans with input/output, latency, and token counts</li>
+<li>Access evaluation scores and human feedback records for prompt quality</li>
+<li>Check cost data by model and prompt template for optimization decisions</li>
+</ul>
+
+<p><strong>Best for:</strong> Prompt regression analysis. After a prompt change, ask "compare latency, token cost, and evaluation scores between prompt version v3 and v4 in the last 7 days — are there any response quality regressions in the low-confidence score bucket?" — catching prompt regressions before they compound in production.</p>
+
+<h2>3. Chroma MCP Server — Vector Database and Embedding Search</h2>
+
+<p>Vector databases are central to RAG systems, semantic search, and recommendation features. The Chroma MCP server gives your AI access to your vector collections — querying by semantic similarity, inspecting stored embeddings metadata, and verifying retrieval behavior — making RAG debugging tractable without custom tooling.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Query collections by semantic similarity with configurable top-k results</li>
+<li>Read document metadata and embedding identifiers for stored records</li>
+<li>Check collection statistics including document count and embedding dimensions</li>
+<li>Inspect retrieval results for specific queries to debug RAG pipelines</li>
+</ul>
+
+<p><strong>Best for:</strong> RAG retrieval debugging. When an LLM returns an answer that doesn't match your source documents, ask "run a similarity search for query '[user question]' against the product docs collection and show me the top 5 retrieved chunks with their similarity scores" — verifying whether retrieval failure or generation failure is the root cause.</p>
+
+<h2>4. Milvus MCP Server — Production Vector Search at Scale</h2>
+
+<p>For ML teams running vector search at production scale, Milvus provides the performance and reliability guarantees that Chroma doesn't offer. The Milvus MCP server gives your AI access to your Milvus collections and indexes so you can inspect production retrieval behavior and diagnose performance issues without writing Milvus client code manually.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Query Milvus collections with vector similarity search</li>
+<li>Read collection schema and index configurations</li>
+<li>Check partition statistics and data distribution</li>
+<li>Inspect search parameters and their impact on recall vs. latency tradeoffs</li>
+</ul>
+
+<p><strong>Best for:</strong> Index optimization. When semantic search quality degrades after a data reload, ask "compare the index parameters on the product-embeddings collection before and after the reload — specifically HNSW ef_construction and M values — and run sample queries to check recall differences" — diagnosing index configuration regressions without Milvus client code.</p>
+
+<h2>5. E2B MCP Server — Sandboxed Code Execution for ML Workflows</h2>
+
+<p>ML experiments often need safe environments to run data processing scripts, evaluate model outputs, or test preprocessing pipelines without affecting production systems. The E2B MCP server provides sandboxed code execution that lets your AI run Python analysis code in isolated environments, making exploratory data work safer and faster.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Execute Python code in isolated sandbox environments</li>
+<li>Run data processing and analysis scripts with file I/O</li>
+<li>Install and use Python packages including numpy, pandas, and scikit-learn</li>
+<li>Execute model inference code against sample inputs for testing</li>
+</ul>
+
+<p><strong>Best for:</strong> Exploratory data analysis. Ask "run a Python script that loads this CSV sample, checks for class imbalance, computes feature correlation with the target variable, and reports which features have correlation above 0.3" — getting analysis results without spinning up a Jupyter notebook locally.</p>
+
+<h2>6. LanceDB MCP Server — Embedded Vector Storage for Local Development</h2>
+
+<p>ML teams frequently prototype retrieval systems locally before committing to a production vector database. LanceDB runs embedded (no server required), making it ideal for development and evaluation workflows. The LanceDB MCP server lets your AI interact with your local vector tables directly during development.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Query LanceDB tables with vector similarity and metadata filters</li>
+<li>Read table schema and record counts for dataset inspection</li>
+<li>Run hybrid search combining vector similarity with structured filters</li>
+<li>Access full-text search results from indexed LanceDB tables</li>
+</ul>
+
+<p><strong>Best for:</strong> Prototype evaluation. During RAG system development, ask "run hybrid search on the local knowledge-base table — combine semantic similarity for query '[test question]' with a filter for document_date > 2025-01-01 and show the top 5 results with scores" — evaluating retrieval quality against test queries without writing evaluation scripts.</p>
+
+<h2>7. PostgreSQL MCP Server — Feature Store and Experiment Results</h2>
+
+<p>ML engineering teams frequently use Postgres as a feature store, experiment results database, or model evaluation log. The PostgreSQL MCP server gives your AI query access to your feature tables, evaluation results, and model metadata so you can analyze experiment outcomes and feature distributions without exporting to notebooks.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Query feature tables for distribution analysis and drift detection</li>
+<li>Read experiment results including metrics, hyperparameters, and training metadata</li>
+<li>Access model evaluation logs with per-sample score breakdowns</li>
+<li>Join experiment metadata with production inference logs for model comparison</li>
+</ul>
+
+<p><strong>Best for:</strong> Feature drift analysis. Ask "compare the mean and standard deviation of the user_engagement_score feature between last week's training data and yesterday's inference requests — flag any features where the distribution shift exceeds 2 standard deviations" — catching feature drift before it degrades model performance in production.</p>
+
+<h2>Recommended Stacks for ML Engineers</h2>
+
+<ul>
+<li><strong>LLM feature development:</strong> LangFuse + Chroma + GitHub + OpenAI (trace analysis → retrieval debugging → code history → model access)</li>
+<li><strong>Production RAG system:</strong> LangFuse + Milvus + PostgreSQL + Sentry (LLM traces → vector search → feature data → error tracking)</li>
+<li><strong>Experiment workflow:</strong> HuggingFace + PostgreSQL + E2B + GitHub (model selection → results storage → code execution → version tracking)</li>
+<li><strong>Local prototyping:</strong> LanceDB + HuggingFace + E2B (embedded vector store → model cards → sandboxed execution)</li>
+<li><strong>Full ML stack:</strong> LangFuse + Chroma + PostgreSQL + HuggingFace + GitHub — complete coverage from experiment tracking to vector search to feature data to model registry</li>
+</ul>
+
+<p>Browse all <a href="/category/ai">AI MCP servers</a> and <a href="/category/database">Database MCP servers</a> on MyMCPTools. For related guides, see <a href="/blog/best-mcp-servers-for-data-science">Best MCP Servers for Data Science</a> and <a href="/blog/best-mcp-servers-for-developers">Best MCP Servers for Developers</a>.</p>
+    `.trim(),
+  },
 ];
 
 export function getBlogPostBySlug(slug: string): BlogPost | undefined {
