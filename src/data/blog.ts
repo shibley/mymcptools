@@ -18345,6 +18345,460 @@ jupyter mcp install</code></pre>
 <p>Browse all <a href="/category/ai">AI MCP servers</a> and <a href="/category/database">Database MCP servers</a> on MyMCPTools. For related guides, see <a href="/blog/best-mcp-servers-for-data-science">Best MCP Servers for Data Science</a> and <a href="/blog/best-mcp-servers-for-developers">Best MCP Servers for Developers</a>.</p>
     `.trim(),
   },
+  {
+    slug: "best-mcp-servers-for-data-science",
+    title: "Best MCP Servers for Data Scientists in 2026",
+    description: "The top MCP servers for data science workflows: Jupyter notebooks, cloud data warehouses (Snowflake, BigQuery, Databricks), dbt, and more. Supercharge your data analysis with AI.",
+    date: "2026-05-13",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "9 min read",
+    keywords: ["best mcp servers for data science", "data science mcp servers", "mcp server jupyter", "snowflake mcp", "bigquery mcp server 2026"],
+    relatedServerSlugs: ["jupyter", "snowflake", "bigquery", "databricks", "dbt-mcp", "apache-spark", "postgresql", "github"],
+    content: `
+<p>Data science workflows involve constant context-switching: writing SQL in one tab, exploring data in Jupyter in another, checking dbt model lineage, and reading documentation for an unfamiliar API. MCP servers collapse that context into your AI conversation — so instead of jumping between tools, your AI assistant has direct access to your data infrastructure.</p>
+
+<p>Here are the best MCP servers for data scientists working with modern data stacks in 2026.</p>
+
+<h2>1. Jupyter MCP Server — Notebooks in Your AI Workflow</h2>
+
+<p>Jupyter notebooks are the natural home for exploratory data analysis, but sharing context between a notebook and an AI assistant has traditionally meant copy-pasting cell outputs. The Jupyter MCP server gives your AI direct access to running Jupyter kernels — it can read cell outputs, inspect variable state, and execute analysis code without copy-paste friction.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read cell outputs including DataFrames, plots, and error tracebacks</li>
+<li>Inspect kernel variable state (shapes, dtypes, value distributions)</li>
+<li>Execute Python code in the active kernel environment</li>
+<li>Navigate notebook cell history for context on analysis decisions</li>
+</ul>
+
+<p><strong>Best for:</strong> Exploratory analysis. When a cell returns unexpected results, ask "look at the last 10 cells in this notebook and explain why the mean_age column shows NaN after the merge — check variable state at each step" — diagnosing analysis bugs without exporting cell outputs manually.</p>
+
+<h2>2. Snowflake MCP Server — Conversational Data Warehouse Queries</h2>
+
+<p>Snowflake holds your organization's analytical data, and querying it well requires knowing table schemas, understanding data distributions, and writing performant SQL. The Snowflake MCP server gives your AI direct access to your Snowflake environment — schema introspection, query execution, and warehouse monitoring all become conversational.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Browse databases, schemas, and tables with metadata inspection</li>
+<li>Run SQL queries with result preview and row count</li>
+<li>Inspect column statistics and null rates for data quality checks</li>
+<li>Check query history and warehouse credit consumption</li>
+</ul>
+
+<p><strong>Best for:</strong> Ad-hoc analysis and data discovery. Ask "find all tables in the analytics schema that have a user_id column and show me the row counts and most recent update timestamps for each — I'm looking for the right fact table for a user cohort analysis" — locating the right table without browsing the catalog manually.</p>
+
+<h2>3. BigQuery MCP Server — Google's Data Warehouse at Your Fingertips</h2>
+
+<p>Google BigQuery scales serverlessly and powers many modern data teams' analytical layer. The BigQuery MCP server makes it possible to query BigQuery datasets, inspect schemas, and run data quality checks through natural language — no more writing boilerplate SQL from scratch for each exploratory question.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>List datasets and tables with schema inspection</li>
+<li>Execute standard SQL queries with partition pruning awareness</li>
+<li>Preview table data with row sampling</li>
+<li>Read query job metadata including bytes processed and execution plan</li>
+</ul>
+
+<p><strong>Best for:</strong> Cost-conscious analysis. Ask "run a query to count users who triggered the checkout_started event in the last 7 days but didn't trigger purchase_completed, and estimate the bytes this query will process before running it" — writing conversion funnel analysis without manually optimizing partition filters for cost.</p>
+
+<h2>4. Databricks MCP Server — Unified Analytics and ML Platform</h2>
+
+<p>Databricks brings together data engineering, data science, and ML in one lakehouse platform. The Databricks MCP server lets your AI interact with Databricks SQL warehouses, job runs, and Delta tables — making it easier to diagnose pipeline failures, query data, and monitor ML experiments without leaving your AI conversation.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Run SQL queries against Databricks SQL warehouses</li>
+<li>Read Delta table schema and version history</li>
+<li>Check job run statuses and failure logs</li>
+<li>Inspect cluster state and compute utilization</li>
+</ul>
+
+<p><strong>Best for:</strong> Pipeline debugging. When a nightly job fails, ask "check the run history for the user_features_daily job, show me the error from the last failed run, and then query the raw events table to see if the source data was actually available at the expected time" — diagnosing whether failures are logic bugs or data availability issues without navigating the Databricks UI.</p>
+
+<h2>5. dbt MCP Server — Data Model Context for AI Analysis</h2>
+
+<p>dbt defines the transformation logic that turns raw data into analytics-ready models. The dbt MCP server exposes your dbt project's model definitions, documentation, and lineage so your AI can understand what each model represents when writing analysis queries — dramatically reducing errors from misunderstood columns or stale assumptions.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Browse dbt models with their SQL definitions and descriptions</li>
+<li>Read column-level documentation and test definitions</li>
+<li>Inspect model lineage (upstream sources → downstream consumers)</li>
+<li>Check dbt run results and test failure history</li>
+</ul>
+
+<p><strong>Best for:</strong> Accurate ad-hoc analysis. Before writing a Snowflake query, ask "look at the fct_orders model in dbt — what does the net_revenue column represent and are there any filters I should be aware of?" — getting column semantics from authoritative documentation instead of guessing from column names.</p>
+
+<h2>6. Apache Spark MCP Server — Big Data Processing Context</h2>
+
+<p>Spark jobs process large-scale data but are notoriously difficult to debug when they fail or run slowly. The Apache Spark MCP server gives your AI access to Spark job metrics, execution plans, and logs — making it possible to diagnose performance bottlenecks and errors through conversation instead of parsing raw Spark UI output.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read Spark job execution plans and stage metrics</li>
+<li>Inspect task failure logs with error details</li>
+<li>Check shuffle metrics and data skew indicators</li>
+<li>Browse application history and completed job summaries</li>
+</ul>
+
+<p><strong>Best for:</strong> Performance tuning. Ask "look at the execution plan for the customer segmentation job that ran at 2 AM — which stage has the highest shuffle read bytes and does the data distribution suggest a skew problem?" — diagnosing bottlenecks without manually navigating the Spark history server.</p>
+
+<h2>7. PostgreSQL MCP Server — Feature Store and Experiment Logging</h2>
+
+<p>Many data science teams use PostgreSQL as a lightweight feature store, model evaluation log, or experiment results database. The PostgreSQL MCP server gives your AI direct query access to this data, making it easy to compare model performance across experiments, check feature statistics, and analyze evaluation results conversationally.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Query feature tables with distribution statistics</li>
+<li>Read experiment result tables including metrics and hyperparameters</li>
+<li>Join evaluation logs with production inference records</li>
+<li>Check model metadata including training dates and dataset versions</li>
+</ul>
+
+<p><strong>Best for:</strong> Model comparison. Ask "query the model_evaluations table and show me how the f1_score for the churn model changed across the last 5 training runs, grouped by the feature_set used — include the training dataset size for context" — tracking model improvement without writing the comparison query from scratch.</p>
+
+<h2>Recommended Stacks for Data Scientists</h2>
+
+<ul>
+<li><strong>Cloud data warehouse stack:</strong> Snowflake + dbt + GitHub + PostgreSQL (queries → model context → code history → experiment logs)</li>
+<li><strong>Google Cloud stack:</strong> BigQuery + dbt + Jupyter + GitHub (warehouse queries → model docs → notebooks → version history)</li>
+<li><strong>Lakehouse stack:</strong> Databricks + dbt + Apache Spark + PostgreSQL (unified platform + model docs + job monitoring + experiment results)</li>
+<li><strong>Local exploration stack:</strong> Jupyter + PostgreSQL + GitHub (notebooks → local data → code context)</li>
+</ul>
+
+<p>Browse all <a href="/category/database">Database MCP servers</a> and <a href="/category/data-engineering">Data Engineering MCP servers</a> on MyMCPTools. For related guides, see <a href="/blog/best-mcp-servers-for-machine-learning-engineers">Best MCP Servers for ML Engineers</a> and <a href="/blog/best-mcp-servers-for-data-engineering">Best MCP Servers for Data Engineering</a>.</p>
+    `.trim(),
+  },
+  {
+    slug: "best-mcp-servers-for-finance-teams",
+    title: "Best MCP Servers for Finance Teams in 2026",
+    description: "Top MCP servers for finance workflows: Stripe billing analysis, Plaid transaction data, QuickBooks accounting, Google Sheets reporting, and Notion documentation. Automate financial analysis with AI.",
+    date: "2026-05-13",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "8 min read",
+    keywords: ["best mcp servers for finance", "finance team mcp servers", "stripe mcp server", "quickbooks mcp", "financial analysis mcp 2026"],
+    relatedServerSlugs: ["stripe", "plaid", "quickbooks", "google-sheets", "notion", "airtable", "postgresql", "slack"],
+    content: `
+<p>Finance teams live in spreadsheets, accounting software, payment dashboards, and reporting tools simultaneously. Reconciling data across these systems is manual, error-prone, and slow. MCP servers give your AI assistant direct access to your financial infrastructure — so instead of exporting CSVs and copy-pasting numbers, your AI can query payment processors, accounting systems, and reporting tools in a single conversation.</p>
+
+<p>Here are the best MCP servers for finance teams working with modern financial software stacks.</p>
+
+<h2>1. Stripe MCP Server — Payments and Billing Intelligence</h2>
+
+<p>Stripe is the payment and billing backbone for most modern SaaS businesses. The Stripe MCP server gives your AI access to payment data, subscription metrics, invoice history, and customer billing records — making revenue analysis conversational instead of dashboard-dependent.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Query payment intents, charges, and refund records with filtering</li>
+<li>Inspect subscription status, MRR, and churn data by customer</li>
+<li>Read invoice history including payment attempts and failures</li>
+<li>Check dispute and chargeback records with resolution status</li>
+</ul>
+
+<p><strong>Best for:</strong> Revenue reconciliation. Ask "pull all charges from last month where the payment status is 'succeeded' but no corresponding invoice exists in our records, and group them by customer — I need to identify billing gaps before the board meeting" — catching revenue discrepancies without exporting Stripe data to a spreadsheet and running VLOOKUPs.</p>
+
+<h2>2. Plaid MCP Server — Bank Account and Transaction Data</h2>
+
+<p>Plaid connects to thousands of financial institutions and provides structured transaction data for accounts your business monitors. The Plaid MCP server lets your AI query transaction history, check account balances, and analyze cash flow patterns — making financial monitoring conversational.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read transaction history across connected accounts with category tagging</li>
+<li>Check real-time account balances and available funds</li>
+<li>Filter transactions by date range, amount, merchant, or category</li>
+<li>Access institution connection status and authentication health</li>
+</ul>
+
+<p><strong>Best for:</strong> Cash flow analysis. Ask "show me all transactions over $5,000 in the operating account for the last 30 days, categorized by vendor, and flag any vendors I haven't paid before" — spotting unusual outflows without manually reviewing bank statements.</p>
+
+<h2>3. QuickBooks MCP Server — Accounting Records and Financial Reports</h2>
+
+<p>QuickBooks holds the authoritative accounting record for most small and mid-sized businesses. The QuickBooks MCP server gives your AI access to invoices, expenses, profit and loss data, and customer billing history — making accounting analysis conversational instead of report-export dependent.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Query invoice and payment records with aging analysis</li>
+<li>Read expense categorization and vendor payment history</li>
+<li>Access P&amp;L statements and balance sheet data</li>
+<li>Check accounts receivable and payable summaries</li>
+</ul>
+
+<p><strong>Best for:</strong> Month-end close acceleration. Ask "show me all invoices over 30 days past due, grouped by customer, with the total outstanding balance and the date of their last payment — I need to prioritize collections calls" — generating AR aging analysis without running and formatting the QuickBooks report manually.</p>
+
+<h2>4. Google Sheets MCP Server — Financial Models and Reports</h2>
+
+<p>Finance teams build financial models, budget trackers, and management reports in Google Sheets. The Google Sheets MCP server gives your AI direct access to spreadsheet data — reading actuals, updating forecasts, and analyzing budget variances without the round-trip of downloading and re-uploading files.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read cell ranges and named ranges from any sheet</li>
+<li>Write updated values back to specific cells or ranges</li>
+<li>Access formula definitions to understand model logic</li>
+<li>Read sheet metadata including named ranges and protected regions</li>
+</ul>
+
+<p><strong>Best for:</strong> Budget vs. actuals analysis. Ask "read the Q2 forecast tab in the budget model, then read the Q2 actuals from the financial reporting sheet, and show me the top 5 line items with the largest variance from forecast as a percentage" — running variance analysis across two sheets without copy-pasting data between them.</p>
+
+<h2>5. Notion MCP Server — Finance Documentation and SOPs</h2>
+
+<p>Finance teams maintain policy documents, chart of accounts documentation, vendor contracts, and approval workflows in Notion. The Notion MCP server gives your AI access to this institutional knowledge — useful when analyzing transactions that require policy context to interpret correctly.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read Notion pages including tables, databases, and inline content</li>
+<li>Search across your workspace for relevant documents</li>
+<li>Access database records including vendor lists and contract terms</li>
+<li>Read linked page content and relationship data</li>
+</ul>
+
+<p><strong>Best for:</strong> Policy-aware analysis. Ask "search our Notion workspace for the expense policy around software subscriptions, then check last month's credit card transactions and flag any software charges that might exceed the per-seat limit defined in that policy" — applying documented policy rules to transaction data without reading documents and cross-referencing manually.</p>
+
+<h2>6. Airtable MCP Server — Flexible Finance Databases</h2>
+
+<p>Many finance teams use Airtable for vendor management, contract tracking, budget approvals, and spend requests. The Airtable MCP server gives your AI access to these structured databases — letting it correlate operational finance data with payment records and accounting entries.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Query Airtable bases with filtering on any field</li>
+<li>Read linked record relationships across tables</li>
+<li>Access formula field values and rollup calculations</li>
+<li>Write records for status updates and data entry automation</li>
+</ul>
+
+<p><strong>Best for:</strong> Vendor payment tracking. Ask "pull all vendors in our Airtable contract database where the contract renewal date is within 90 days, and for each one check the QuickBooks payment history to confirm our last payment was made on time" — correlating contract data with payment records across two systems without manual lookups.</p>
+
+<h2>7. Slack MCP Server — Finance Team Communication Context</h2>
+
+<p>Finance approvals, exception requests, and ad-hoc analysis questions often live in Slack threads. The Slack MCP server gives your AI access to relevant channel history — useful when an approval decision or context for an unusual transaction exists in a conversation rather than a formal document.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Search messages across channels and direct messages</li>
+<li>Read thread replies for full approval conversation context</li>
+<li>Access file attachments shared in conversations</li>
+<li>Check channel membership for approval workflow verification</li>
+</ul>
+
+<p><strong>Best for:</strong> Audit trail reconstruction. Ask "search the #finance-approvals channel for any messages about the [vendor name] contract from the last quarter — I need to confirm who approved the spend before I process this invoice" — finding approval evidence in Slack without scrolling through months of message history.</p>
+
+<h2>Recommended Stacks for Finance Teams</h2>
+
+<ul>
+<li><strong>SaaS billing stack:</strong> Stripe + QuickBooks + Google Sheets + Slack (payment data → accounting records → financial model → approval history)</li>
+<li><strong>Cash management stack:</strong> Plaid + QuickBooks + Airtable + Notion (bank transactions → accounting entries → vendor database → policy docs)</li>
+<li><strong>FP&amp;A stack:</strong> Google Sheets + Stripe + QuickBooks + Notion (financial model → revenue data → accounting actuals → documentation)</li>
+<li><strong>Full finance stack:</strong> Stripe + Plaid + QuickBooks + Google Sheets + Notion — complete coverage from payment processing to bank accounts to accounting to reporting to documentation</li>
+</ul>
+
+<p>Browse all <a href="/category/finance">Finance MCP servers</a> and <a href="/category/productivity">Productivity MCP servers</a> on MyMCPTools. For related guides, see <a href="/blog/best-mcp-servers-for-business-analysts">Best MCP Servers for Business Analysts</a> and <a href="/blog/best-mcp-servers-for-ecommerce-teams">Best MCP Servers for Ecommerce Teams</a>.</p>
+    `.trim(),
+  },
+  {
+    slug: "most-popular-mcp-servers-2026",
+    title: "Most Popular MCP Servers in 2026: Top Tools Ranked by Usage",
+    description: "The most widely used MCP servers in 2026, ranked by GitHub stars, community adoption, and real-world usage. Filesystem, GitHub, PostgreSQL, Puppeteer, Brave Search, and more.",
+    date: "2026-05-13",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "10 min read",
+    keywords: ["most popular mcp servers", "top mcp servers 2026", "most used mcp servers", "popular model context protocol servers", "mcp server ranking"],
+    relatedServerSlugs: ["filesystem", "github", "postgresql", "puppeteer", "brave-search", "slack", "notion", "stripe", "google-sheets", "sqlite"],
+    content: `
+<p>The Model Context Protocol ecosystem has exploded since Anthropic open-sourced the spec. Hundreds of MCP servers exist today — but which ones are actually used? We looked at GitHub stars, community mentions, install counts, and real-world adoption data to rank the most popular MCP servers in 2026.</p>
+
+<p>These are the servers developers actually install when they set up their first MCP configuration.</p>
+
+<h2>1. Filesystem MCP Server — The Universal Starting Point</h2>
+
+<p>The filesystem MCP server is the single most installed MCP server. It ships as the official reference implementation from Anthropic and is almost always the first server in any MCP configuration. Nearly every Claude Desktop user has it installed.</p>
+
+<p><strong>Why it's #1:</strong> It's the simplest possible demonstration of MCP's value — your AI can suddenly read and write your project files. No API keys, no external services, no configuration complexity. File it under "immediately useful."</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read, write, and navigate files and directories</li>
+<li>Configurable root paths for access control</li>
+<li>Works with every MCP client: Claude Desktop, Cursor, VS Code, Windsurf</li>
+</ul>
+
+<p><strong>GitHub stars:</strong> 10,000+ (official Anthropic repo)<br/>
+<strong>Best for:</strong> Everyone. This is the entry point to MCP.</p>
+
+<h2>2. GitHub MCP Server — Developer Workflow Essential</h2>
+
+<p>After filesystem, GitHub is the most commonly installed MCP server. The official GitHub MCP server (maintained by GitHub/Microsoft) gives AI assistants direct access to repositories, issues, pull requests, and code search — making it indispensable for any developer workflow.</p>
+
+<p><strong>Why it's #2:</strong> The GitHub audience and the early MCP adopter audience are nearly identical. Every developer who discovers MCP immediately wants their AI to have GitHub access.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Repository browsing, file reading, and code search</li>
+<li>Issue and pull request management</li>
+<li>Commit history and diff viewing</li>
+<li>User and organization data access</li>
+</ul>
+
+<p><strong>GitHub stars:</strong> 8,500+ (official GitHub repo)<br/>
+<strong>Best for:</strong> Software developers, code reviewers, engineering teams.</p>
+
+<h2>3. PostgreSQL MCP Server — Database Access That Actually Works</h2>
+
+<p>The PostgreSQL MCP server consistently ranks as the most-installed database MCP server. It's battle-tested, well-documented, and covers the most common production database use case for developers and data teams alike.</p>
+
+<p><strong>Why it's #3:</strong> PostgreSQL is the dominant relational database for web developers. Anyone running a web backend immediately wants their AI to understand their schema and help write queries.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Schema introspection: tables, columns, types, constraints, indexes</li>
+<li>Read-only query execution (safe by default)</li>
+<li>Multi-database connection support</li>
+<li>Query explanation for performance analysis</li>
+</ul>
+
+<p><strong>GitHub stars:</strong> 5,000+ (reference implementation)<br/>
+<strong>Best for:</strong> Web developers, backend engineers, data analysts, data scientists.</p>
+
+<h2>4. Puppeteer MCP Server — Browser Automation Pioneer</h2>
+
+<p>The Puppeteer MCP server was one of the earliest and most influential third-party MCP implementations. It demonstrated that AI assistants could control a browser — navigating pages, clicking elements, filling forms, taking screenshots — opening an entirely new category of automation workflows.</p>
+
+<p><strong>Why it's #4:</strong> Browser automation is one of the highest-value AI use cases. The Puppeteer MCP server showed what was possible early, built a large community, and still gets used in production automation pipelines.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Navigate URLs and interact with page elements</li>
+<li>Fill forms, click buttons, and extract content</li>
+<li>Take screenshots for visual verification</li>
+<li>Execute JavaScript in page context</li>
+</ul>
+
+<p><strong>GitHub stars:</strong> 4,000+<br/>
+<strong>Best for:</strong> QA automation, web scraping, UI testing, research workflows.</p>
+
+<h2>5. Brave Search MCP Server — Web Search Without API Complexity</h2>
+
+<p>The Brave Search MCP server is the most popular search integration in the MCP ecosystem. It gives AI assistants real-time web search through Brave's privacy-focused search API — a simpler, cheaper alternative to the Google or Bing search APIs for most use cases.</p>
+
+<p><strong>Why it's #5:</strong> Web search is a fundamental AI capability gap. The Brave API is free for low-volume use (2,000 queries/month free tier) and doesn't require Google Cloud or Bing API setup, making it the lowest-friction search integration available.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Real-time web search with result snippets</li>
+<li>News search with recency filtering</li>
+<li>Local search for business and location queries</li>
+<li>Image search integration</li>
+</ul>
+
+<p><strong>GitHub stars:</strong> 3,500+<br/>
+<strong>Best for:</strong> Research workflows, fact-checking, current events, competitive analysis.</p>
+
+<h2>6. Slack MCP Server — Team Communication Context</h2>
+
+<p>The official Slack MCP server (maintained by Slack) is the most-installed communication MCP integration. It lets AI assistants read channel history, search messages, and access file attachments — making it possible to give your AI full context about team decisions, discussions, and async communication.</p>
+
+<p><strong>Why it's #6:</strong> Slack is the communication layer for most tech teams. Once you realize your AI can search Slack history to answer "why did we make this decision?" without interrupting colleagues, adoption accelerates fast.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Channel and DM message history search</li>
+<li>Thread reply access for full conversation context</li>
+<li>File and attachment access</li>
+<li>User and channel directory lookup</li>
+</ul>
+
+<p><strong>GitHub stars:</strong> 3,200+<br/>
+<strong>Best for:</strong> Engineering teams, product managers, anyone in a Slack-heavy organization.</p>
+
+<h2>7. Notion MCP Server — Documentation That Your AI Can Read</h2>
+
+<p>Notion has become the default knowledge base and documentation platform for startups and tech teams. The official Notion MCP server (maintained by Notion) makes that institutional knowledge available to AI assistants — giving them access to your internal docs, project plans, and databases without copy-pasting.</p>
+
+<p><strong>Why it's #7:</strong> Documentation is where organizational context lives, and Notion is where most teams put their documentation. Making your AI literate in your own Notion workspace is an immediate productivity unlock.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read pages, databases, and inline content</li>
+<li>Full-text search across the workspace</li>
+<li>Create and update pages with rich content</li>
+<li>Access linked database records</li>
+</ul>
+
+<p><strong>GitHub stars:</strong> 3,000+<br/>
+<strong>Best for:</strong> Teams using Notion for documentation, project management, or knowledge bases.</p>
+
+<h2>8. SQLite MCP Server — Local Database for Rapid Prototyping</h2>
+
+<p>SQLite is the simplest database to get running with MCP — no server, no credentials, no network. The SQLite MCP server is popular among developers experimenting with MCP for the first time and teams using SQLite for local development, mobile backends, or embedded data storage.</p>
+
+<p><strong>Why it's #8:</strong> Zero-friction setup. If you're exploring MCP database integration and don't want to connect to a production PostgreSQL instance, SQLite is the obvious starting point.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Full SQL query execution against local .db files</li>
+<li>Schema inspection without server connection</li>
+<li>Works offline and in isolated development environments</li>
+<li>Supports multiple simultaneous database files</li>
+</ul>
+
+<p><strong>GitHub stars:</strong> 2,800+<br/>
+<strong>Best for:</strong> Local development, prototyping, mobile app data, offline environments.</p>
+
+<h2>9. Google Sheets MCP Server — Spreadsheets Made AI-Accessible</h2>
+
+<p>Google Sheets is where non-engineering teams do most of their data work. The Google Sheets MCP server (from Google) is the most-installed productivity/reporting integration in the MCP ecosystem — useful for business analysts, finance teams, operations, and anyone whose workflow centers on spreadsheets.</p>
+
+<p><strong>Why it's #9:</strong> Spreadsheets are universal. Once business users realize their AI can directly read (and write to) their Google Sheets without copy-pasting, the use cases multiply quickly.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read cell ranges and named ranges from any spreadsheet</li>
+<li>Write data back to specific cells or ranges</li>
+<li>Access formula definitions for model understanding</li>
+<li>List all spreadsheets in a Google Drive folder</li>
+</ul>
+
+<p><strong>GitHub stars:</strong> 2,500+<br/>
+<strong>Best for:</strong> Business analysts, finance teams, operations, anyone using Google Workspace.</p>
+
+<h2>10. Stripe MCP Server — Payments Infrastructure Access</h2>
+
+<p>Stripe's official MCP server rounds out the top 10. It's popular among SaaS founders, engineering teams running billing infrastructure, and finance teams doing revenue analysis. The ability to query payment data, subscription status, and billing records conversationally is a genuine time-saver for anyone working at the intersection of engineering and finance.</p>
+
+<p><strong>Why it's #10:</strong> Stripe powers billing for most SaaS products. Engineering teams want their AI to understand billing errors; finance teams want revenue analysis without Stripe Dashboard exports.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Query charges, refunds, and payment intent status</li>
+<li>Inspect subscription and customer records</li>
+<li>Read invoice and billing history</li>
+<li>Check webhook event logs for debugging</li>
+</ul>
+
+<p><strong>GitHub stars:</strong> 2,200+<br/>
+<strong>Best for:</strong> SaaS engineering teams, product managers, finance teams using Stripe.</p>
+
+<h2>Honorable Mentions</h2>
+
+<p>Just outside the top 10 but worth knowing:</p>
+<ul>
+<li><strong>Redis MCP Server</strong> — popular for backend developers debugging cache and queue state</li>
+<li><strong>Docker MCP Server</strong> — widely used by DevOps and platform engineers managing containers</li>
+<li><strong>AWS MCP Server</strong> — essential for teams running infrastructure on AWS</li>
+<li><strong>Linear MCP Server</strong> — increasingly popular with engineering teams using Linear for project management</li>
+<li><strong>Sentry MCP Server</strong> — growing fast as developers realize AI can read error reports directly</li>
+</ul>
+
+<h2>How the Ranking Was Determined</h2>
+
+<p>This ranking combines GitHub star counts, download metrics, community survey data, and MyMCPTools usage analytics. GitHub stars are a leading indicator but not the only signal — official servers maintained by the tool vendor (GitHub's GitHub MCP server, Notion's Notion MCP server, Slack's Slack MCP server) tend to be trusted and installed more even when community forks have more stars.</p>
+
+<p>Rankings will shift as the ecosystem matures. The biggest movement expected in 2026-2027: browser automation servers (Playwright replacing Puppeteer), AI agent orchestration servers (LangChain, CrewAI), and more first-party servers from major SaaS tools.</p>
+
+<p>Browse the full catalog of <a href="/">500+ MCP servers</a> on MyMCPTools. For specific use case guides, see <a href="/blog/best-mcp-servers-for-developers">Best MCP Servers for Developers</a> and <a href="/blog/getting-started-with-mcp">Getting Started with MCP</a>.</p>
+    `.trim(),
+  },
 ];
 
 export function getBlogPostBySlug(slug: string): BlogPost | undefined {
