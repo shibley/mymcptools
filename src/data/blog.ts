@@ -20309,6 +20309,320 @@ jupyter mcp install</code></pre>
 <p>Browse all <a href="/servers">MCP servers</a> on MyMCPTools. For related guides, see <a href="/blog/best-mcp-servers-for-backend-developers">Best MCP Servers for Backend Developers</a> and <a href="/blog/best-mcp-servers-for-docker-and-kubernetes">Best MCP Servers for Docker and Kubernetes</a>.</p>
     `.trim(),
   },
+  {
+    slug: "best-mcp-servers-for-security-engineers",
+    title: "Best MCP Servers for Security Engineers in 2026",
+    description: "AppSec, pentesting, vulnerability management, SIEM, and threat analysis — these MCP servers give security engineers AI assistance that understands the actual security stack.",
+    date: "2026-05-14",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "8 min read",
+    keywords: ["mcp servers for security engineers", "appsec mcp tools", "security mcp server", "vulnerability management mcp", "siem mcp server", "best mcp servers security"],
+    relatedServerSlugs: ["filesystem", "github", "postgres", "brave-search", "docker", "prometheus"],
+    content: `
+<p>Security engineering is one of the disciplines where AI assistance has the highest ceiling — and the most failure modes. An AI that doesn't understand your security stack gives dangerously confident wrong answers. An AI that does can dramatically accelerate vulnerability triage, policy writing, incident response, and code review.</p>
+
+<p>These MCP servers give your AI assistant the security-specific context it needs to actually be useful.</p>
+
+<h2>1. Filesystem MCP Server — Code and Config Audit Access</h2>
+
+<p>Most security work starts with reading: reading application code for vulnerabilities, reading configuration files for misconfigurations, reading infrastructure-as-code for exposure. The filesystem MCP server gives your AI direct read access to your codebase — enabling genuine security analysis rather than pattern-matching on hypothetical examples.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Audit application code for injection vulnerabilities, hardcoded secrets, and insecure patterns</li>
+<li>Review Terraform, CloudFormation, and Kubernetes manifests for misconfigurations</li>
+<li>Inspect environment files and configuration for secret sprawl</li>
+<li>Analyze dependency files for vulnerable package versions</li>
+</ul>
+
+<p><strong>Best for:</strong> Application security engineers doing code review and security assessment. Your AI can scan for OWASP Top 10 patterns across an entire codebase with real context about how the code actually works.</p>
+
+<h2>2. GitHub MCP Server — Vulnerability Triage and PR Review</h2>
+
+<p>The GitHub MCP server connects your AI to your repositories, issues, and pull requests — turning security-focused PR review into a collaborative workflow. Your AI can review incoming changes for security regressions, track vulnerability issues through to resolution, and search for vulnerable patterns across your entire organization's codebase.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Security-focused code review on pull requests</li>
+<li>Vulnerability tracking through issues and milestones</li>
+<li>Cross-repository code search for vulnerable patterns</li>
+<li>Dependency version scanning across repositories</li>
+</ul>
+
+<p><strong>Best for:</strong> AppSec engineers embedded in development teams. Enables shift-left security by giving AI genuine PR review context rather than just scanning diffs in isolation.</p>
+
+<h2>3. Brave Search MCP Server — CVE Research and Threat Intelligence</h2>
+
+<p>Security engineers spend significant time researching CVEs, understanding threat actors, and following vulnerability disclosures. The Brave Search MCP server gives your AI access to current threat intelligence without hitting rate limits or requiring API key management for every search.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>CVE detail lookup and impact analysis</li>
+<li>Threat actor research and TTPs</li>
+<li>Vulnerability disclosure timeline tracking</li>
+<li>Security advisory monitoring</li>
+</ul>
+
+<p><strong>Best for:</strong> Security engineers who need current threat intelligence integrated into their analysis workflow. Ask "what's the latest on the Log4Shell exploitation patterns" and get real context rather than training data cutoff answers.</p>
+
+<h2>4. PostgreSQL MCP Server — Security Events and Audit Logs</h2>
+
+<p>Security data lives in databases: audit logs, access events, vulnerability scan results, asset inventories. The PostgreSQL MCP server gives your AI direct query access to your security database — enabling conversational analysis of security events that would otherwise require manual SQL writing.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Audit log querying and anomaly detection</li>
+<li>Asset inventory analysis</li>
+<li>Vulnerability scan result aggregation</li>
+<li>Access control and permission analysis</li>
+</ul>
+
+<p><strong>Best for:</strong> Security operations teams with security data in PostgreSQL (common with tools like DefectDojo, Wazuh, and custom SIEM implementations). Ask your AI to "find all privileged access events from external IPs in the last 30 days" without writing the query yourself.</p>
+
+<h2>5. Docker MCP Server — Container Security Analysis</h2>
+
+<p>Container security requires understanding both the image layer composition and the runtime configuration. The Docker MCP server gives your AI visibility into your container environment — enabling analysis of image vulnerabilities, runtime security policies, and misconfigured containers.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Image inspection (layers, base images, installed packages)</li>
+<li>Running container analysis (exposed ports, volume mounts, capabilities)</li>
+<li>Docker Compose and Swarm configuration review</li>
+<li>Network policy and container isolation analysis</li>
+</ul>
+
+<p><strong>Best for:</strong> Security engineers responsible for container security posture. Particularly useful for identifying containers running as root, overly permissive volume mounts, or containers with unnecessary capabilities.</p>
+
+<h2>6. Prometheus MCP Server — Security Metrics and Alerting</h2>
+
+<p>Security operations teams increasingly use Prometheus for security metrics: failed authentication counts, anomalous request rates, certificate expiry tracking. The Prometheus MCP server gives your AI access to these security signals through natural-language queries.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Security metric queries via PromQL</li>
+<li>Alert rule review and gap analysis</li>
+<li>Anomaly detection through metric analysis</li>
+<li>Certificate and credential expiry monitoring</li>
+</ul>
+
+<p><strong>Best for:</strong> Security engineers who own the security monitoring stack. Ask "show me authentication failure spikes in the last week" and immediately correlate with incident timelines.</p>
+
+<h2>Recommended Stacks for Security Engineers</h2>
+
+<ul>
+<li><strong>AppSec engineers:</strong> Filesystem + GitHub + Brave Search (code audit + PR review + CVE research)</li>
+<li><strong>Security operations:</strong> PostgreSQL + Prometheus + Brave Search (log analysis + metrics + threat intel)</li>
+<li><strong>Cloud security:</strong> Filesystem + GitHub + Docker (IaC review + container security)</li>
+<li><strong>Full security platform:</strong> All of the above — your AI understands the entire security lifecycle</li>
+</ul>
+
+<p>Browse all <a href="/category/security">Security MCP servers</a> on MyMCPTools. For related guides, see <a href="/blog/mcp-server-security-best-practices">MCP Server Security Best Practices</a> and <a href="/blog/best-mcp-servers-for-devops">Best MCP Servers for DevOps</a>.</p>
+    `.trim(),
+  },
+  {
+    slug: "best-mcp-servers-for-embedded-developers",
+    title: "Best MCP Servers for Embedded Systems Developers in 2026",
+    description: "Firmware engineers, IoT developers, and embedded C/C++ specialists — these MCP servers give your AI assistant the hardware context it needs to actually help.",
+    date: "2026-05-14",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "7 min read",
+    keywords: ["mcp servers for embedded developers", "embedded systems mcp", "firmware development mcp", "iot mcp server", "c++ embedded mcp", "embedded ai tools"],
+    relatedServerSlugs: ["filesystem", "github", "docker", "sqlite", "brave-search"],
+    content: `
+<p>Embedded development presents unique challenges for AI assistance: hardware-specific constraints, real-time requirements, memory limitations, and toolchains that most AI training data barely covers. Generic AI assistance in embedded development often produces code that looks right but ignores the realities of running on a 64KB microcontroller.</p>
+
+<p>MCP servers can give your AI the embedded-specific context that makes the difference between suggestions that work and suggestions that waste your time debugging.</p>
+
+<h2>1. Filesystem MCP Server — Firmware Source and Build System Access</h2>
+
+<p>Embedded projects have complex build systems — Makefiles, CMake with toolchain files, Zephyr's west build system, ESP-IDF configurations. The filesystem MCP server gives your AI complete visibility into your project structure: source files, linker scripts, memory maps, and board support packages.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read source files, headers, and RTOS configuration</li>
+<li>Inspect linker scripts and memory layout (.ld files)</li>
+<li>Access device tree source files (Zephyr, Linux kernel)</li>
+<li>Review CMakeLists.txt and toolchain configurations</li>
+<li>Navigate board support packages (BSPs)</li>
+</ul>
+
+<p><strong>Best for:</strong> All embedded developers. Your AI understanding your actual memory map and linker configuration means it won't suggest code that overflows your flash or stack. Context about your RTOS configuration means RTOS-specific suggestions are actually correct.</p>
+
+<h2>2. GitHub MCP Server — Reference Code and Upstream Collaboration</h2>
+
+<p>Embedded development relies heavily on reference implementations: official SDK examples, RTOS sample projects, hardware abstraction layer (HAL) reference code. The GitHub MCP server lets your AI browse these repositories directly — comparing your implementation against the official examples without you manually copying code between windows.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Browse official SDK repositories (STM32Cube, ESP-IDF, Zephyr)</li>
+<li>Compare your implementation against reference examples</li>
+<li>Track upstream bug fixes relevant to your hardware</li>
+<li>Search for working implementations of specific peripherals</li>
+</ul>
+
+<p><strong>Best for:</strong> Embedded developers working with platforms that have official GitHub repos (most major MCU vendors do). Particularly useful when debugging peripheral drivers — your AI can compare your SPI or I2C implementation against the reference implementation to find subtle timing or initialization differences.</p>
+
+<h2>3. Brave Search MCP Server — Datasheet and Application Note Research</h2>
+
+<p>Embedded development is documentation-intensive: datasheets, errata sheets, application notes, reference manuals. The Brave Search MCP server gives your AI the ability to find and reference current documentation — critical when working with hardware where an errata sheet from 2022 explains a bug you're hitting today.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Find current datasheets and errata for specific ICs</li>
+<li>Locate application notes for specific design patterns</li>
+<li>Research known hardware bugs and workarounds</li>
+<li>Find community solutions to specific embedded problems</li>
+</ul>
+
+<p><strong>Best for:</strong> Any embedded developer dealing with obscure hardware or debugging mysterious peripheral behavior. "Search for STM32F4 SPI DMA errata" gives your AI the specific errata context it needs to help you avoid a known hardware bug.</p>
+
+<h2>4. SQLite MCP Server — Configuration and Test Data Management</h2>
+
+<p>Embedded projects often need to manage large amounts of configuration data, test vectors, calibration values, or device provisioning records. SQLite is commonly used for development tooling around embedded systems. The SQLite MCP server lets your AI query this configuration and test data directly.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Query device configuration databases</li>
+<li>Analyze test vector datasets</li>
+<li>Review calibration data across device batches</li>
+<li>Manage device provisioning records</li>
+</ul>
+
+<p><strong>Best for:</strong> Embedded teams with manufacturing or testing infrastructure that stores data in SQLite. Useful for correlating test failures with configuration parameters or analyzing calibration drift across production batches.</p>
+
+<h2>5. Docker MCP Server — Cross-Compilation and CI Environments</h2>
+
+<p>Modern embedded development increasingly uses Docker for reproducible build environments: a container with the exact GCC ARM toolchain version, QEMU for simulation, and build dependencies — ensuring every developer and CI run produces identical outputs. The Docker MCP server lets your AI inspect and help manage these build containers.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Inspect build container configuration and installed toolchains</li>
+<li>Troubleshoot cross-compilation environment issues</li>
+<li>Review QEMU simulation container setup</li>
+<li>Analyze CI/CD build pipeline containers</li>
+</ul>
+
+<p><strong>Best for:</strong> Embedded teams using Docker for build reproducibility (increasingly common in production firmware development). Particularly useful when CI builds fail but local builds succeed — your AI can compare the container environments to find the discrepancy.</p>
+
+<h2>Embedded Developer Workflow Tips</h2>
+
+<ul>
+<li><strong>Always include linker scripts:</strong> When asking your AI about memory optimization, make sure the filesystem MCP server has access to your .ld file. Without it, your AI doesn't know your actual Flash/RAM layout.</li>
+<li><strong>Share your RTOS config:</strong> FreeRTOS, Zephyr, and ThreadX all have configuration files that dramatically affect valid suggestions. Include them in your AI's context.</li>
+<li><strong>Reference the datasheet:</strong> Use Brave Search to pull the specific datasheet section for the peripheral you're debugging, then paste the relevant register description into your conversation.</li>
+</ul>
+
+<h2>Recommended Stacks for Embedded Developers</h2>
+
+<ul>
+<li><strong>Firmware development:</strong> Filesystem + GitHub + Brave Search (code + reference examples + datasheets)</li>
+<li><strong>IoT products:</strong> Filesystem + GitHub + SQLite (code + upstream + device data)</li>
+<li><strong>Production teams:</strong> Filesystem + Docker + SQLite (build environment + test/config data)</li>
+</ul>
+
+<p>Browse all <a href="/category/coding">Coding MCP servers</a> on MyMCPTools. For related guides, see <a href="/blog/best-mcp-servers-for-iot-developers">Best MCP Servers for IoT Developers</a> and <a href="/blog/best-mcp-servers-for-backend-developers">Best MCP Servers for Backend Developers</a>.</p>
+    `.trim(),
+  },
+  {
+    slug: "best-mcp-servers-for-dbt-developers",
+    title: "Best MCP Servers for dbt Developers in 2026",
+    description: "dbt, Snowflake, BigQuery, data warehousing — these MCP servers give analytics engineers AI assistance that understands your actual data models, lineage, and warehouse.",
+    date: "2026-05-14",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "7 min read",
+    keywords: ["mcp servers for dbt developers", "dbt mcp server", "data warehouse mcp", "analytics engineering mcp", "snowflake mcp server", "bigquery mcp server", "dbt ai tools"],
+    relatedServerSlugs: ["postgres", "filesystem", "github", "sqlite", "brave-search"],
+    content: `
+<p>Analytics engineers working with dbt occupy an interesting position: their code is SQL, but the engineering discipline looks a lot like software development. Data model lineage, test coverage, documentation, and incremental builds — these are software engineering concepts applied to data transformation.</p>
+
+<p>AI assistance for dbt work fails when the AI doesn't know your actual schema, data model relationships, or warehouse configuration. These MCP servers give your AI the context it needs to be genuinely useful.</p>
+
+<h2>1. PostgreSQL MCP Server — Live Schema and Query Context</h2>
+
+<p>dbt models compile to SQL that runs against your warehouse. Whether you're developing locally with PostgreSQL, DuckDB, or connecting to Snowflake/BigQuery through a compatible interface, having your AI understand your actual schema is the foundation of useful assistance. The PostgreSQL MCP server gives your AI introspection access to your database schema — enabling accurate model writing and query generation.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Inspect source tables, materialized views, and dbt-created models</li>
+<li>Understand column types, nullability, and constraints for accurate SQL generation</li>
+<li>Query data for development and debugging</li>
+<li>Analyze query performance (EXPLAIN plans)</li>
+</ul>
+
+<p><strong>Best for:</strong> Analytics engineers developing against a PostgreSQL target or using PostgreSQL as a local development environment (common with dbt Core). Your AI writing a model that joins three source tables produces accurate SQL when it can see those tables' actual schemas.</p>
+
+<h2>2. Filesystem MCP Server — dbt Project Navigation</h2>
+
+<p>A mature dbt project is a complex directory: models, tests, sources, macros, seeds, snapshots, and documentation. The filesystem MCP server gives your AI natural navigation of your dbt project structure — understanding not just individual model files but how the entire project is organized and cross-referenced.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read model SQL files, YAML configurations, and schema definitions</li>
+<li>Navigate the models/ directory tree (staging, marts, intermediate layers)</li>
+<li>Access profiles.yml and dbt_project.yml for project context</li>
+<li>Read custom macros and understand the macro library</li>
+<li>Inspect packages.toml and installed dbt packages</li>
+</ul>
+
+<p><strong>Best for:</strong> All dbt developers. Your AI understanding your actual project structure — including how your models are layered (raw → staging → marts) and what macros are available — means suggestions match your project conventions rather than generic dbt examples.</p>
+
+<h2>3. GitHub MCP Server — PR Review and Model Lineage Tracking</h2>
+
+<p>dbt projects benefit enormously from version control discipline: every model change goes through a PR, breaking changes get flagged, and the data contract between model layers is documented in git history. The GitHub MCP server connects your AI to this PR workflow, enabling data-aware code review.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Review model changes in PRs for breaking schema changes</li>
+<li>Track data contract changes across model versions</li>
+<li>Search the project's git history for when a model was changed and why</li>
+<li>Browse the dbt packages repository for reference implementations</li>
+</ul>
+
+<p><strong>Best for:</strong> Analytics engineering teams who treat their dbt project with the same rigor as a software codebase. Particularly valuable for reviewing PRs that modify widely-referenced staging models — your AI can identify all downstream models that might be affected by a column rename.</p>
+
+<h2>4. SQLite MCP Server — dbt Artifacts and Manifest Analysis</h2>
+
+<p>dbt generates rich artifacts after each run: <code>manifest.json</code>, <code>run_results.json</code>, and <code>catalog.json</code>. These files contain complete model lineage, test results, execution timing, and schema documentation. While dbt artifacts are JSON, many teams load them into SQLite or DuckDB for analysis. The SQLite MCP server enables your AI to query this run history directly.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Query model run history and execution timing</li>
+<li>Analyze test failures across runs</li>
+<li>Explore model lineage from artifact data</li>
+<li>Track schema drift over time</li>
+</ul>
+
+<p><strong>Best for:</strong> Analytics engineering teams who build tooling around dbt artifacts. If you've loaded your manifest.json into SQLite or DuckDB for lineage analysis, your AI can query it directly to answer "which models depend on this source table?"</p>
+
+<h2>5. Brave Search MCP Server — dbt Ecosystem and Package Research</h2>
+
+<p>The dbt ecosystem evolves quickly: new packages, warehouse-specific best practices, dbt Core release notes, and community solutions to common problems. The Brave Search MCP server gives your AI current information about the dbt ecosystem — beyond its training data cutoff.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Find current dbt-utils, dbt-expectations, and other package documentation</li>
+<li>Research warehouse-specific SQL syntax and optimizations</li>
+<li>Look up current dbt Core release notes and breaking changes</li>
+<li>Find community-vetted solutions for common dbt patterns</li>
+</ul>
+
+<p><strong>Best for:</strong> Analytics engineers evaluating dbt packages or working across multiple warehouses with different SQL dialects. "Find the current dbt-utils documentation for generate_surrogate_key" gets you accurate, current docs rather than outdated training data.</p>
+
+<h2>Recommended Stacks for dbt Developers</h2>
+
+<ul>
+<li><strong>Solo analytics engineers:</strong> Filesystem + PostgreSQL (project navigation + schema context)</li>
+<li><strong>Analytics engineering teams:</strong> Filesystem + PostgreSQL + GitHub (full development workflow)</li>
+<li><strong>Platform-focused teams:</strong> Filesystem + GitHub + SQLite (project + version control + artifact analysis)</li>
+<li><strong>Full stack:</strong> All of the above — your AI understands the complete dbt project lifecycle</li>
+</ul>
+
+<p>Browse all <a href="/category/database">Database MCP servers</a> on MyMCPTools. For related guides, see <a href="/blog/best-mcp-servers-for-data-engineering">Best MCP Servers for Data Engineering</a> and <a href="/blog/best-mcp-servers-for-data-analysts">Best MCP Servers for Data Analysts</a>.</p>
+    `.trim(),
+  },
 ];
 
 export function getBlogPostBySlug(slug: string): BlogPost | undefined {
