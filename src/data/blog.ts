@@ -19933,6 +19933,382 @@ jupyter mcp install</code></pre>
 <p>Browse all <a href="/servers">MCP servers</a> on MyMCPTools. For related guides, see <a href="/blog/best-mcp-servers-for-marketing">Best MCP Servers for Marketing Teams</a> and <a href="/blog/best-mcp-servers-for-customer-success-teams">Best MCP Servers for Customer Success Teams</a>.</p>
     `.trim(),
   },
+  {
+    slug: "best-mcp-servers-for-go-developers",
+    title: "Best MCP Servers for Go Developers in 2026",
+    description: "Speed up your Go development workflow with the right MCP servers. From gopls-powered code navigation to Docker orchestration and PostgreSQL queries, here are the essential MCP tools for Gophers.",
+    date: "2026-05-13",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "7 min read",
+    keywords: ["mcp servers for go developers", "golang mcp tools", "go language mcp server", "gopls mcp", "best mcp servers 2026"],
+    relatedServerSlugs: ["gopls", "filesystem", "github", "docker", "postgresql", "redis", "kubernetes"],
+    content: `
+<p>Go developers work at a distinctive intersection: systems-level thinking combined with modern cloud-native tooling. Your stack typically includes multiple microservices, PostgreSQL or Redis backends, Docker containers, and Kubernetes deployments. The right MCP servers can make your AI assistant fluent in all of it.</p>
+
+<p>Here are the MCP servers that deliver the most value for Go development workflows in 2026.</p>
+
+<h2>1. gopls MCP Server — AI-Native Go Language Support</h2>
+
+<p>The gopls MCP server connects your AI assistant directly to the official Go language server. This means accurate, Go-specific code intelligence rather than generic suggestions that look like Go but miss the idioms.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Type-aware completions and refactoring suggestions</li>
+<li>Interface satisfaction checking — verify structs implement interfaces</li>
+<li>Go module dependency navigation</li>
+<li>Accurate import path resolution</li>
+<li>Error analysis with Go-specific context</li>
+</ul>
+
+<p><strong>Best for:</strong> Any Go developer who wants AI suggestions that respect Go's type system and module conventions. Particularly valuable when working with complex interfaces and generics (Go 1.18+).</p>
+
+<h2>2. Filesystem MCP Server — Essential Project Context</h2>
+
+<p>Go projects follow predictable conventions — <code>cmd/</code>, <code>internal/</code>, <code>pkg/</code>, <code>api/</code>. The filesystem MCP server lets your AI navigate these patterns naturally, understanding your project layout without you explaining it every time.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read <code>go.mod</code> and <code>go.sum</code> for dependency context</li>
+<li>Navigate Go workspace layouts</li>
+<li>Write generated code (protobuf stubs, mock implementations)</li>
+<li>File watching for build artifact changes</li>
+</ul>
+
+<p><strong>Best for:</strong> Every Go developer. Your AI can't give useful code suggestions without understanding your project structure.</p>
+
+<h2>3. GitHub MCP Server — Code Review and Issue Management</h2>
+
+<p>The GitHub MCP server integrates your repositories directly into your AI workflow. For Go teams using GitHub, this means reviewing PRs, creating issues from errors, and browsing your codebase — all within your AI conversation.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Pull request creation and review from your AI assistant</li>
+<li>Issue tracking linked to your code changes</li>
+<li>Repository search across all your Go packages</li>
+<li>Commit history for understanding code evolution</li>
+</ul>
+
+<p><strong>Best for:</strong> Go teams on GitHub. Pairs well with gopls for reviewing changes in context.</p>
+
+<h2>4. Docker MCP Server — Container-Aware Development</h2>
+
+<p>Go's fast compilation and small binary sizes make it the language of choice for containerized services. The Docker MCP server gives your AI visibility into your running containers, images, and compose configurations.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Container status and log inspection</li>
+<li>Docker Compose service management</li>
+<li>Image listing and layer analysis</li>
+<li>Network and volume inspection</li>
+</ul>
+
+<p><strong>Best for:</strong> Go microservices developers. Ask your AI to "check why the auth service container is restarting" and it can read the logs directly.</p>
+
+<h2>5. PostgreSQL MCP Server — Database Query Intelligence</h2>
+
+<p>Go's <code>database/sql</code> package is powerful but verbose. The PostgreSQL MCP server gives your AI access to your actual schema — table structures, column types, constraints, and indexes — so it can write accurate queries and <code>sqlc</code>-compatible SQL from the start.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Schema introspection for accurate query generation</li>
+<li>Query execution and result inspection</li>
+<li>Index usage analysis for performance work</li>
+<li>Migration planning support</li>
+</ul>
+
+<p><strong>Best for:</strong> Go backend developers using PostgreSQL (which is most of them). Essential for <code>sqlc</code>, GORM, or raw <code>database/sql</code> workflows.</p>
+
+<h2>6. Redis MCP Server — Cache and Queue Visibility</h2>
+
+<p>Redis is the go-to for Go services that need caching, rate limiting, or distributed coordination. The Redis MCP server lets your AI inspect key patterns, TTLs, and data structures without you writing debug scripts.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Key inspection with type and TTL information</li>
+<li>Data structure browsing (sets, sorted sets, hashes, streams)</li>
+<li>Memory usage analysis</li>
+<li>Pattern-based key scanning</li>
+</ul>
+
+<p><strong>Best for:</strong> Go services using Redis for caching, sessions, rate limiting, or pub/sub. Particularly useful when debugging cache invalidation issues.</p>
+
+<h2>7. Kubernetes MCP Server — Production Cluster Management</h2>
+
+<p>Go services often run in Kubernetes. The Kubernetes MCP server gives your AI visibility into your cluster state — pods, deployments, services, and config maps — turning "why is this pod crashing?" from a multi-command debug session into a single question.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Pod and deployment status inspection</li>
+<li>Log streaming from running pods</li>
+<li>Resource usage and limit analysis</li>
+<li>Event history for debugging failures</li>
+</ul>
+
+<p><strong>Best for:</strong> Go developers running services in Kubernetes. Combine with Docker MCP for local-to-production debugging workflows.</p>
+
+<h2>Recommended Stacks for Go Developers</h2>
+
+<ul>
+<li><strong>CLI tools:</strong> gopls + Filesystem + GitHub (code quality focus)</li>
+<li><strong>API services:</strong> gopls + Filesystem + PostgreSQL + Redis (data layer coverage)</li>
+<li><strong>Microservices:</strong> gopls + Filesystem + GitHub + Docker + Kubernetes (full service lifecycle)</li>
+<li><strong>Full-stack:</strong> All of the above — your AI becomes a true platform partner</li>
+</ul>
+
+<p>Browse all <a href="/servers">MCP servers</a> on MyMCPTools. For related guides, see <a href="/blog/best-mcp-servers-for-backend-developers">Best MCP Servers for Backend Developers</a> and <a href="/blog/best-mcp-servers-for-docker-and-kubernetes">Best MCP Servers for Docker and Kubernetes</a>.</p>
+    `.trim(),
+  },
+  {
+    slug: "best-mcp-servers-for-product-managers",
+    title: "Best MCP Servers for Product Managers in 2026",
+    description: "PMs spend hours context-switching between Figma, Jira, analytics, and docs. These MCP servers bring your product data into your AI assistant so you can make faster decisions with less copy-pasting.",
+    date: "2026-05-13",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "7 min read",
+    keywords: ["mcp servers for product managers", "mcp tools for product management", "ai tools for product managers", "jira mcp server", "figma mcp server"],
+    relatedServerSlugs: ["linear", "jira", "figma", "google-analytics", "notion", "airtable", "slack", "asana"],
+    content: `
+<p>Product managers live in context-switching hell. Figma for designs, Jira for issues, Google Analytics for metrics, Notion for specs, Slack for team communication — and none of it talks to each other. MCP servers change that equation by giving your AI assistant direct access to all these tools simultaneously.</p>
+
+<p>Here are the MCP servers that deliver the most value for product managers in 2026.</p>
+
+<h2>1. Linear MCP Server — Issue Tracking That Speaks AI</h2>
+
+<p>Linear has become the default issue tracker for modern product teams, and its MCP server integrates it directly into your AI workflow. Query your backlog, understand sprint progress, and create tickets — all through conversation.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Query issues by status, priority, assignee, and label</li>
+<li>Create well-structured tickets from your AI conversations</li>
+<li>Sprint and cycle progress visibility</li>
+<li>Roadmap status across teams and projects</li>
+</ul>
+
+<p><strong>Best for:</strong> Product teams on Linear. Ask "what's blocking the mobile team this sprint?" and get an immediate answer instead of navigating dashboards.</p>
+
+<h2>2. Jira MCP Server — Enterprise Issue Management</h2>
+
+<p>For teams on Atlassian's Jira, the MCP server provides the same conversational access to your project data. Particularly powerful for large organizations with complex project hierarchies.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>JQL query execution for advanced filtering</li>
+<li>Epic and story hierarchy navigation</li>
+<li>Sprint board status and velocity data</li>
+<li>Comment and attachment management</li>
+</ul>
+
+<p><strong>Best for:</strong> Enterprise PMs who need to synthesize information across multiple Jira projects. Especially useful for weekly status report generation.</p>
+
+<h2>3. Figma MCP Server — Design Context Without the Tab-Switching</h2>
+
+<p>The Figma MCP server connects your AI to your design files. Instead of describing UI components in words, your AI can inspect the actual designs — component structure, spacing, interactions, and assets.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Component tree inspection and export</li>
+<li>Design token and style system access</li>
+<li>Page and frame navigation</li>
+<li>Asset download in multiple formats</li>
+</ul>
+
+<p><strong>Best for:</strong> PMs who need to translate designs into dev specs without designer bottlenecks. Ask your AI to "describe the checkout flow from the Figma designs in implementation terms an engineer would understand."</p>
+
+<h2>4. Google Analytics MCP Server — Metrics Without Dashboard Fatigue</h2>
+
+<p>Data-informed product decisions require constant metric checks — but logging into GA4 every time kills your flow. The Google Analytics MCP server brings your metrics into your AI conversation so you can ask questions in plain language.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Traffic and user behavior queries</li>
+<li>Conversion funnel analysis</li>
+<li>Cohort and segment comparisons</li>
+<li>Custom event tracking visibility</li>
+</ul>
+
+<p><strong>Best for:</strong> PMs who own growth metrics. "How did the new onboarding flow affect day-7 retention compared to last month?" becomes a one-sentence question instead of a 30-minute analysis session.</p>
+
+<h2>5. Notion MCP Server — Product Docs as AI Context</h2>
+
+<p>Product specs, PRDs, and meeting notes live in Notion for most modern product teams. The Notion MCP server gives your AI access to these documents, making it a genuine product knowledge base.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Document search and retrieval</li>
+<li>Database query and filtering</li>
+<li>Page creation and updates</li>
+<li>Template-based document generation</li>
+</ul>
+
+<p><strong>Best for:</strong> Teams using Notion as their product wiki. Your AI can reference past PRDs when writing new ones, maintaining consistency without you manually copying context.</p>
+
+<h2>6. Airtable MCP Server — Flexible Data and Roadmaps</h2>
+
+<p>Many product teams use Airtable for roadmaps, customer research, and release tracking. The Airtable MCP server gives your AI direct access to these structured datasets.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Table data query with filtering and sorting</li>
+<li>Record creation and updates</li>
+<li>View-based data access</li>
+<li>Linked record traversal</li>
+</ul>
+
+<p><strong>Best for:</strong> PMs who use Airtable for product roadmaps or customer research repositories. Combine with Notion for full product knowledge coverage.</p>
+
+<h2>7. Slack MCP Server — Team Pulse Without the Scroll</h2>
+
+<p>Product decisions live in Slack threads. The Slack MCP server lets your AI search and summarize these conversations — surfacing the context behind decisions without you scrolling through hundreds of messages.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Channel search and message retrieval</li>
+<li>Thread summarization</li>
+<li>User and team context</li>
+<li>File and link access from messages</li>
+</ul>
+
+<p><strong>Best for:</strong> PMs at organizations where key product decisions happen in Slack threads. Particularly useful before writing PRDs — "summarize all Slack discussions about the checkout redesign from the last 30 days" gives you rich context fast.</p>
+
+<h2>Recommended Stacks for Product Managers</h2>
+
+<ul>
+<li><strong>Early-stage:</strong> Linear + Notion + Google Analytics (lean, high-signal tools)</li>
+<li><strong>Mid-size team:</strong> Jira + Figma + Notion + Google Analytics (enterprise-ready)</li>
+<li><strong>Full coverage:</strong> Linear/Jira + Figma + Notion + Google Analytics + Airtable + Slack — your AI becomes a product intelligence layer across your entire stack</li>
+</ul>
+
+<p>Browse all <a href="/servers">MCP servers</a> on MyMCPTools. For related guides, see <a href="/blog/best-mcp-servers-for-business-analysts">Best MCP Servers for Business Analysts</a> and <a href="/blog/best-mcp-servers-for-project-management">Best MCP Servers for Project Management</a>.</p>
+    `.trim(),
+  },
+  {
+    slug: "best-mcp-servers-for-rust-developers",
+    title: "Best MCP Servers for Rust Developers in 2026",
+    description: "Rust's strict type system and ownership model make AI assistance especially valuable — when the AI actually understands your code. These MCP servers give your AI the context it needs to write idiomatic Rust.",
+    date: "2026-05-13",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "7 min read",
+    keywords: ["mcp servers for rust developers", "rust mcp tools", "rust language server mcp", "rust-analyzer mcp", "best mcp servers rust"],
+    relatedServerSlugs: ["rust-analyzer", "filesystem", "github", "docker", "postgresql", "redis", "prometheus"],
+    content: `
+<p>Rust has the steepest learning curve of any mainstream systems language — and the most unforgiving compiler. AI assistance that understands Rust's ownership model, lifetime annotations, and trait system can be transformative. AI that doesn't just makes things worse.</p>
+
+<p>These MCP servers give your AI assistant the Rust-specific context it needs to actually help.</p>
+
+<h2>1. rust-analyzer MCP Server — Rust Language Intelligence</h2>
+
+<p>rust-analyzer is the official Rust language server, and its MCP integration brings genuine Rust intelligence to your AI assistant. This isn't generic code suggestions with Rust syntax — it's type-aware, borrow-checker-aware assistance.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Accurate type inference across complex generic bounds</li>
+<li>Borrow checker error explanation and fix suggestions</li>
+<li>Trait implementation checking and suggestions</li>
+<li>Macro expansion visibility</li>
+<li>Cargo.toml dependency resolution context</li>
+</ul>
+
+<p><strong>Best for:</strong> Every Rust developer. The difference between AI that understands lifetimes and AI that doesn't is the difference between useful and actively harmful suggestions.</p>
+
+<h2>2. Filesystem MCP Server — Cargo Workspace Navigation</h2>
+
+<p>Rust projects using Cargo workspaces can span dozens of crates with complex inter-dependencies. The filesystem MCP server gives your AI natural navigation of your workspace structure — understanding which crate owns what, where traits are defined, and how the dependency graph flows.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read <code>Cargo.toml</code> and <code>Cargo.lock</code> for dependency context</li>
+<li>Navigate workspace member crates</li>
+<li>Access build outputs and generated code</li>
+<li>Write implementations across multiple crates</li>
+</ul>
+
+<p><strong>Best for:</strong> Rust developers working on multi-crate projects. Your AI understands your workspace layout rather than treating every crate as isolated.</p>
+
+<h2>3. GitHub MCP Server — Open Source and Team Collaboration</h2>
+
+<p>Rust has a strong open-source culture, and the GitHub MCP server connects your AI to the repositories that matter — whether your own code, upstream dependencies you're contributing to, or reference implementations you're studying.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Crate source code browsing across GitHub repositories</li>
+<li>Issue and PR management for open-source contributions</li>
+<li>Code search across your organization's Rust codebases</li>
+<li>Dependency crate source inspection</li>
+</ul>
+
+<p><strong>Best for:</strong> Rust developers contributing to open-source projects or working in teams. Particularly useful for understanding a dependency's implementation when the docs aren't enough.</p>
+
+<h2>4. Docker MCP Server — Containerized Rust Services</h2>
+
+<p>Rust's zero-cost abstractions and memory safety make it excellent for containerized services. The Docker MCP server gives your AI visibility into your build and runtime containers — especially useful given Rust's compilation complexity.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Container and image inspection</li>
+<li>Multi-stage build visibility</li>
+<li>Log streaming for running Rust services</li>
+<li>Cross-compilation environment management</li>
+</ul>
+
+<p><strong>Best for:</strong> Rust developers building web services or CLI tools that ship as containers. The multi-stage Dockerfile patterns for Rust (builder → slim runtime) are easy to get wrong — your AI can inspect and fix them.</p>
+
+<h2>5. PostgreSQL MCP Server — Systems-Level Database Work</h2>
+
+<p>Rust's <code>sqlx</code> and <code>diesel</code> libraries for PostgreSQL are powerful but demand precise SQL. The PostgreSQL MCP server gives your AI your actual schema — enabling accurate <code>sqlx</code> queries, proper type mapping, and migration planning that respects your constraints.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Schema inspection for accurate query generation</li>
+<li>Type mapping guidance (PostgreSQL types → Rust types)</li>
+<li>Migration verification before execution</li>
+<li>Query performance analysis</li>
+</ul>
+
+<p><strong>Best for:</strong> Rust backend developers. <code>sqlx</code>'s compile-time query checking means your schema and queries must match exactly — the PostgreSQL MCP server ensures your AI starts from the right schema.</p>
+
+<h2>6. Redis MCP Server — High-Performance Caching</h2>
+
+<p>Rust services often use Redis for caching and rate limiting, leveraging the <code>redis</code> crate or <code>fred</code>. The Redis MCP server gives your AI visibility into your cache state — useful for debugging cache invalidation issues and key expiry bugs.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Key inspection with type and TTL information</li>
+<li>Data structure analysis (hashes, sets, sorted sets, streams)</li>
+<li>Memory usage profiling</li>
+<li>Pub/sub channel inspection</li>
+</ul>
+
+<p><strong>Best for:</strong> Rust services using Redis for caching, rate limiting, or async messaging. Particularly useful when debugging <code>tokio</code>-based async Redis workflows.</p>
+
+<h2>7. Prometheus MCP Server — Metrics-Driven Development</h2>
+
+<p>Rust services typically expose Prometheus metrics via the <code>prometheus</code> crate. The Prometheus MCP server gives your AI access to these metrics — enabling performance analysis and anomaly detection through conversation.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>PromQL query execution</li>
+<li>Metric discovery and label inspection</li>
+<li>Alert rule analysis</li>
+<li>Historical data queries</li>
+</ul>
+
+<p><strong>Best for:</strong> Rust developers working on performance-critical services. Ask "show me the p99 latency for the auth service over the last hour" and immediately understand your service's behavior under load.</p>
+
+<h2>Recommended Stacks for Rust Developers</h2>
+
+<ul>
+<li><strong>CLI tools:</strong> rust-analyzer + Filesystem + GitHub (compilation and code navigation)</li>
+<li><strong>Web services:</strong> rust-analyzer + Filesystem + PostgreSQL + Redis (Actix-web / Axum backends)</li>
+<li><strong>Systems services:</strong> rust-analyzer + Filesystem + Docker + Prometheus (containerized, observable)</li>
+<li><strong>Full-stack:</strong> All of the above — your AI understands the entire Rust service lifecycle</li>
+</ul>
+
+<p>Browse all <a href="/servers">MCP servers</a> on MyMCPTools. For related guides, see <a href="/blog/best-mcp-servers-for-backend-developers">Best MCP Servers for Backend Developers</a> and <a href="/blog/best-mcp-servers-for-docker-and-kubernetes">Best MCP Servers for Docker and Kubernetes</a>.</p>
+    `.trim(),
+  },
 ];
 
 export function getBlogPostBySlug(slug: string): BlogPost | undefined {
