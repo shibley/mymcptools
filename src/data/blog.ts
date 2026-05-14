@@ -18867,6 +18867,419 @@ jupyter mcp install</code></pre>
 <p>Browse all <a href="/category/developer-tools">Developer Tools MCP servers</a> on MyMCPTools. For related guides, see <a href="/blog/best-mcp-servers-for-testing">Best MCP Servers for Testing</a> and <a href="/blog/best-mcp-servers-for-backend-developers">Best MCP Servers for Backend Developers</a>.</p>
     `.trim(),
   },
+  {
+    slug: "best-mcp-servers-for-data-scientists",
+    title: "Best MCP Servers for Data Scientists in 2026",
+    description: "Top MCP servers for data science workflows: Jupyter notebooks, SQL databases, BigQuery, Snowflake, Hugging Face, and more. AI-powered data analysis starts here.",
+    date: "2026-05-14",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "8 min read",
+    keywords: ["mcp servers for data scientists", "mcp for data science", "jupyter mcp server", "best mcp for python", "mcp data analysis"],
+    relatedServerSlugs: ["jupyter", "postgresql", "sqlite", "bigquery", "snowflake", "huggingface", "databricks", "duckdb-mcp", "arxiv", "semantic-scholar"],
+    content: `
+<p>Data science is drowning in context switching: a Jupyter notebook here, a SQL query there, a literature search somewhere else. MCP servers change that. Your AI assistant gets direct access to your notebooks, databases, and data pipelines — and suddenly exploratory analysis feels like a conversation.</p>
+
+<p>Here are the MCP servers that actually move the needle for data scientists.</p>
+
+<h2>1. Jupyter MCP Server — Notebooks in Your AI Workflow</h2>
+
+<p>The Jupyter MCP server gives your AI assistant read and write access to running Jupyter kernels. You can ask your AI to inspect a DataFrame, fix a broken cell, or explain what a function does — all with real notebook context, not a pasted snippet.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Execute code in a live Jupyter kernel and retrieve outputs</li>
+<li>Read and modify notebook cells programmatically</li>
+<li>Inspect variables, DataFrames, and in-memory state</li>
+<li>Restart kernels and manage environments</li>
+</ul>
+
+<p><strong>Best for:</strong> Anyone doing exploratory data analysis in Jupyter Lab or Notebook. This is the server that makes AI genuinely useful in a data science context.</p>
+
+<h2>2. PostgreSQL MCP Server — SQL You Can Actually Talk To</h2>
+
+<p>Most data scientists write SQL daily. The PostgreSQL MCP server gives your AI your actual schema — tables, columns, foreign keys, indexes — so it can write accurate queries instead of generic templates that break on your data model.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Full schema introspection (tables, columns, types, constraints)</li>
+<li>Read-only query execution with safe defaults</li>
+<li>Multi-schema and multi-database support</li>
+<li>Explain plan analysis for query optimization</li>
+</ul>
+
+<p><strong>Best for:</strong> Data scientists working with production PostgreSQL databases or analytical replicas.</p>
+
+<h2>3. DuckDB MCP Server — Analytical SQL at Laptop Speed</h2>
+
+<p>DuckDB has become the go-to OLAP engine for local data science. The DuckDB MCP server lets your AI run analytical queries directly against Parquet files, CSVs, and in-memory datasets — no cloud warehouse needed.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Query Parquet, CSV, and JSON files directly without loading</li>
+<li>In-process analytical queries with full SQL support</li>
+<li>Window functions, CTEs, and advanced analytical SQL</li>
+<li>Direct integration with pandas DataFrames</li>
+</ul>
+
+<p><strong>Best for:</strong> Data scientists who work with large flat files and want fast local analytics without spinning up a cloud warehouse.</p>
+
+<h2>4. BigQuery MCP Server — Petabyte-Scale Analysis via AI</h2>
+
+<p>Google BigQuery handles petabyte-scale analytics, but writing correct BigQuery SQL from memory is painful. The BigQuery MCP server gives your AI your actual datasets and schemas, enabling accurate query generation for even complex analytical workloads.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Dataset and table schema discovery across projects</li>
+<li>Query execution with cost estimates before running</li>
+<li>Support for BigQuery ML queries and functions</li>
+<li>Partitioned table awareness for cost-efficient queries</li>
+</ul>
+
+<p><strong>Best for:</strong> Data scientists at companies using BigQuery as their cloud data warehouse.</p>
+
+<h2>5. Snowflake MCP Server — Enterprise Data Warehouse Access</h2>
+
+<p>Snowflake's multi-cluster architecture and share-based data marketplace make it the enterprise data warehouse of choice. The Snowflake MCP server brings your data model into context so your AI understands your schemas, stages, and warehouses.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Schema and table introspection across databases and schemas</li>
+<li>Query execution with warehouse selection</li>
+<li>Time travel query support for point-in-time analysis</li>
+<li>Stage and file format awareness for ETL workflows</li>
+</ul>
+
+<p><strong>Best for:</strong> Data scientists working in enterprises running Snowflake as the central data platform.</p>
+
+<h2>6. Hugging Face MCP Server — ML Models and Datasets in Context</h2>
+
+<p>Hugging Face hosts over 500K models and 100K datasets. The Hugging Face MCP server lets your AI browse models, compare benchmarks, and pull dataset cards without leaving your workflow — critical when you're evaluating which pre-trained model to fine-tune.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Model search by task, architecture, and benchmark score</li>
+<li>Dataset discovery with sample data previews</li>
+<li>Model card and README access for documentation</li>
+<li>Download links and code snippet generation</li>
+</ul>
+
+<p><strong>Best for:</strong> ML engineers and data scientists who work with pre-trained models and need to evaluate options quickly.</p>
+
+<h2>7. Databricks MCP Server — Unified Analytics Platform</h2>
+
+<p>Databricks spans data engineering, ML training, and analytical SQL in one platform. The Databricks MCP server gives your AI access to your Unity Catalog, notebooks, and SQL warehouses — enabling end-to-end data workflows without context switching.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Unity Catalog metadata browsing (tables, volumes, functions)</li>
+<li>SQL warehouse query execution</li>
+<li>Notebook cell inspection and editing</li>
+<li>MLflow experiment and run access</li>
+</ul>
+
+<p><strong>Best for:</strong> Data teams using Databricks for the full stack from ingestion to ML training.</p>
+
+<h2>8. arXiv MCP Server — Research Literature at Your Fingertips</h2>
+
+<p>Data scientists rely on research papers for new techniques, architectures, and benchmarks. The arXiv MCP server lets your AI search and retrieve papers by keyword, author, or category — so you can discuss methodology with full paper context.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Full-text search across arXiv categories (cs.LG, stat.ML, etc.)</li>
+<li>Abstract and metadata retrieval</li>
+<li>Citation and reference lookup</li>
+<li>Recent papers feed by category</li>
+</ul>
+
+<p><strong>Best for:</strong> Researchers and data scientists who need to stay current with ML literature or validate methodology against published work.</p>
+
+<h2>Recommended Data Science MCP Stacks</h2>
+
+<ul>
+<li><strong>Local exploration:</strong> Jupyter + DuckDB + arXiv (notebook workflows + fast file analytics + research)</li>
+<li><strong>Cloud analytics:</strong> BigQuery or Snowflake + PostgreSQL + Hugging Face (warehouse + transactional + model discovery)</li>
+<li><strong>ML research:</strong> Jupyter + Hugging Face + arXiv + Databricks (full research-to-deployment pipeline)</li>
+<li><strong>Full data stack:</strong> All of the above — your AI has context across every layer from raw data to deployed model</li>
+</ul>
+
+<p>Browse all <a href="/category/database">Database MCP servers</a> and <a href="/category/ai">AI &amp; ML MCP servers</a> on MyMCPTools. For related reading, see <a href="/blog/best-mcp-servers-for-machine-learning-engineers">Best MCP Servers for Machine Learning Engineers</a> and <a href="/blog/best-mcp-servers-for-backend-developers">Best MCP Servers for Backend Developers</a>.</p>
+    `.trim(),
+  },
+  {
+    slug: "best-mcp-servers-for-mobile-developers",
+    title: "Best MCP Servers for Mobile Developers in 2026",
+    description: "Essential MCP servers for iOS and Android development: Firebase, Swift MCP, Kotlin MCP, Appium, BrowserStack, and more. Supercharge your mobile AI workflow.",
+    date: "2026-05-14",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "7 min read",
+    keywords: ["mcp servers for mobile developers", "mcp for ios development", "mcp for android", "firebase mcp server", "mobile ai tools"],
+    relatedServerSlugs: ["firebase", "swift-mcp", "kotlin-mcp", "appium", "browserstack", "lambdatest", "github", "sentry", "stripe-billing", "sqlite"],
+    content: `
+<p>Mobile development has unique AI challenges: platform-specific APIs, simulator-dependent testing, and app store constraints that change constantly. MCP servers bridge the gap — giving your AI assistant real access to your Firebase backends, language toolchains, and device testing platforms.</p>
+
+<h2>1. Firebase MCP Server — Your Mobile Backend in AI Context</h2>
+
+<p>Firebase powers the backend for hundreds of millions of mobile apps. The Firebase MCP server gives your AI direct access to Firestore, Authentication, Storage, and Realtime Database — so it can write accurate queries, security rules, and data models for your specific project.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Firestore collection and document browsing</li>
+<li>Authentication user management and rule inspection</li>
+<li>Cloud Storage bucket and file access</li>
+<li>Realtime Database read and query support</li>
+</ul>
+
+<p><strong>Best for:</strong> iOS and Android developers using Firebase as their primary backend. This alone dramatically improves AI accuracy on Firebase-specific code.</p>
+
+<h2>2. Swift MCP Server — iOS-Aware Code Assistance</h2>
+
+<p>Generic AI code suggestions for Swift often miss platform-specific patterns: SwiftUI lifecycle, Combine publishers, async/await integration, and Xcode build system quirks. The Swift MCP server provides language-aware tooling that understands your iOS codebase's actual structure.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Swift package resolution and dependency graph access</li>
+<li>Xcode project structure introspection</li>
+<li>Symbol lookup and type information</li>
+<li>Build configuration and target access</li>
+</ul>
+
+<p><strong>Best for:</strong> iOS developers writing Swift who want AI assistance that understands Swift idioms, not just generic code patterns.</p>
+
+<h2>3. Kotlin MCP Server — Android-Native Development Support</h2>
+
+<p>Android development with Kotlin has its own patterns: Coroutines, Flow, Jetpack Compose, and Gradle build logic. The Kotlin MCP server brings your Android project context into AI conversations so suggestions are Gradle-aware and Compose-compatible.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Gradle project structure and dependency access</li>
+<li>Kotlin source analysis and symbol resolution</li>
+<li>Android manifest and resource file access</li>
+<li>Build variant and flavor awareness</li>
+</ul>
+
+<p><strong>Best for:</strong> Android developers who want AI suggestions that match their actual Gradle setup and Kotlin version.</p>
+
+<h2>4. Appium MCP Server — Mobile Automation Context</h2>
+
+<p>Appium is the standard for cross-platform mobile UI automation. The Appium MCP server gives your AI access to your test sessions, element inspectors, and capability configurations — enabling AI-assisted test writing that works with your actual app's UI hierarchy.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Device and simulator session management</li>
+<li>Element hierarchy inspection (iOS XCUITest + Android UIAutomator)</li>
+<li>Test script generation with real element locators</li>
+<li>Session log and screenshot access</li>
+</ul>
+
+<p><strong>Best for:</strong> QA engineers and mobile developers who write automated UI tests for both iOS and Android.</p>
+
+<h2>5. BrowserStack MCP Server — Real Device Testing at Scale</h2>
+
+<p>Testing on real devices catches bugs that simulators miss. BrowserStack hosts thousands of real iOS and Android devices. The BrowserStack MCP server brings your test session data, device logs, and test results into AI context — making failure analysis much faster.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Device list and capability selection for test sessions</li>
+<li>Test session logs, screenshots, and video access</li>
+<li>App upload management and versioning</li>
+<li>Parallel test execution and result aggregation</li>
+</ul>
+
+<p><strong>Best for:</strong> Mobile QA teams running automated tests against real device farms. Pairs well with Appium for end-to-end test coverage.</p>
+
+<h2>6. SQLite MCP Server — Mobile Local Database</h2>
+
+<p>SQLite is the most deployed database in history — it powers Core Data on iOS and Room on Android. The SQLite MCP server lets your AI inspect your local app databases during development, helping diagnose data layer bugs without logging every query.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Schema browsing for local SQLite database files</li>
+<li>Read-only query execution for data inspection</li>
+<li>Support for multiple database files (one per schema version)</li>
+<li>Migration history inspection</li>
+</ul>
+
+<p><strong>Best for:</strong> Mobile developers debugging local persistence issues in apps using SQLite, Core Data, or Room.</p>
+
+<h2>7. Sentry MCP Server — Crash Reporting in Context</h2>
+
+<p>Mobile apps crash in ways that are hard to reproduce locally. Sentry captures crash stacks, user context, and breadcrumbs from real devices. The Sentry MCP server lets your AI read your crash reports directly, connecting stack traces to your actual source code for faster fixes.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Issue list with crash frequency and affected user counts</li>
+<li>Full stack trace and breadcrumb access</li>
+<li>Release version and device breakdown</li>
+<li>Source context integration for readable stack frames</li>
+</ul>
+
+<p><strong>Best for:</strong> Mobile developers who ship to production and need to fix user-reported crashes quickly.</p>
+
+<h2>8. GitHub MCP Server — Mobile CI/CD Integration</h2>
+
+<p>Mobile CI/CD is complex: Xcode Cloud, Fastlane, Bitrise, or GitHub Actions each have their own YAML dialects and secrets management. The GitHub MCP server gives your AI access to your Actions workflows, PR status, and failed build logs — so debugging CI failures doesn't require tab-switching.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Workflow file access and run history</li>
+<li>PR status checks and failed step logs</li>
+<li>Repository code search for debugging</li>
+<li>Issue tracking for app store feedback management</li>
+</ul>
+
+<p><strong>Best for:</strong> Mobile developers running automated builds, signing, and distribution through GitHub Actions.</p>
+
+<h2>Recommended Mobile Development Stacks</h2>
+
+<ul>
+<li><strong>iOS stack:</strong> Firebase + Swift MCP + SQLite + Sentry (backend + language + local DB + crash reports)</li>
+<li><strong>Android stack:</strong> Firebase + Kotlin MCP + SQLite + Sentry (same pattern, Android-native tooling)</li>
+<li><strong>Cross-platform testing:</strong> Appium + BrowserStack + GitHub (automation + real devices + CI)</li>
+<li><strong>Full mobile AI stack:</strong> All of the above — your AI has complete context across backend, language, testing, and monitoring</li>
+</ul>
+
+<p>Browse all MCP servers on MyMCPTools. For related guides, see <a href="/blog/best-mcp-servers-for-developers">Best MCP Servers for Developers</a> and <a href="/blog/best-mcp-servers-for-backend-developers">Best MCP Servers for Backend Developers</a>.</p>
+    `.trim(),
+  },
+  {
+    slug: "best-mcp-servers-for-blockchain-developers",
+    title: "Best MCP Servers for Blockchain and Web3 Developers in 2026",
+    description: "Top MCP servers for Web3 development: Ethereum, Solana, The Graph, DeFi data, and blockchain monitoring tools. AI-powered smart contract development.",
+    date: "2026-05-14",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "7 min read",
+    keywords: ["mcp servers for blockchain", "mcp for web3", "ethereum mcp server", "solana mcp server", "web3 ai tools", "smart contract mcp"],
+    relatedServerSlugs: ["ethereum", "solana", "thegraph", "coinex", "coinstats", "mongodb", "redis", "github", "postgresql", "sentry"],
+    content: `
+<p>Blockchain development is notoriously context-heavy: smart contract ABIs, on-chain state, token addresses, and protocol documentation scattered across Etherscan, GitHub, and documentation sites. MCP servers change the game — your AI can query on-chain data, browse indexed blockchain events, and cross-reference protocol specs without leaving your workflow.</p>
+
+<h2>1. Ethereum MCP Server — On-Chain Data in Your AI</h2>
+
+<p>The Ethereum MCP server gives your AI read access to the Ethereum blockchain: account balances, transaction history, contract state, and ABI decoding. Instead of writing ethers.js boilerplate to inspect a contract, ask your AI directly.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Account balance and transaction history lookup</li>
+<li>Smart contract state reading via ABI-decoded calls</li>
+<li>Event log querying with topic filtering</li>
+<li>Gas price and block data access</li>
+</ul>
+
+<p><strong>Best for:</strong> Solidity developers debugging contract interactions, DeFi protocol engineers, and anyone building on Ethereum or EVM-compatible chains.</p>
+
+<h2>2. Solana MCP Server — High-Performance Blockchain Access</h2>
+
+<p>Solana's account model and program architecture differ fundamentally from EVM chains. The Solana MCP server provides RPC access to accounts, programs, token mints, and transaction data — with Solana-native data structures your AI can reason about correctly.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Account data deserialization for known program schemas</li>
+<li>Token mint and associated token account lookups</li>
+<li>Transaction simulation before submission</li>
+<li>Program instruction decoding with IDL support</li>
+</ul>
+
+<p><strong>Best for:</strong> Rust/Anchor developers building on Solana, SPL token engineers, and dApp builders targeting high-throughput use cases.</p>
+
+<h2>3. The Graph MCP Server — Indexed Blockchain Data</h2>
+
+<p>Raw blockchain data is expensive to query at scale. The Graph indexes blockchain events into efficient GraphQL APIs called subgraphs. The Graph MCP server lets your AI query these indexed datasets — historical DeFi trades, NFT transfers, governance votes — with simple GraphQL syntax.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Subgraph schema discovery and entity browsing</li>
+<li>GraphQL query execution against indexed protocol data</li>
+<li>Multi-chain subgraph access (Ethereum, Arbitrum, Polygon, etc.)</li>
+<li>Historical time-series data for DeFi analytics</li>
+</ul>
+
+<p><strong>Best for:</strong> DeFi data engineers, protocol analysts, and frontend developers building dashboards on top of indexed blockchain data.</p>
+
+<h2>4. CoinEx MCP Server — Exchange Data and Trading Context</h2>
+
+<p>Building trading bots, portfolio trackers, or DeFi dashboards requires real-time market data. The CoinEx MCP server provides current prices, order book depth, trading pairs, and historical OHLCV data — giving your AI the market context needed to reason about trading logic and price feeds.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Real-time price and ticker data across 600+ trading pairs</li>
+<li>Order book depth and market microstructure data</li>
+<li>Historical OHLCV candlestick data</li>
+<li>24-hour volume and market statistics</li>
+</ul>
+
+<p><strong>Best for:</strong> Crypto trading bot developers, DeFi developers integrating price oracles, and portfolio tracking app builders.</p>
+
+<h2>5. CoinStats MCP Server — Portfolio and DeFi Analytics</h2>
+
+<p>DeFi positions span multiple protocols, chains, and wallet addresses. CoinStats aggregates this into a unified portfolio view. The CoinStats MCP server lets your AI access portfolio data, DeFi positions, and token analytics — useful for building wealth management or DeFi dashboard applications.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Multi-chain portfolio balance aggregation</li>
+<li>DeFi position tracking (liquidity pools, staking, lending)</li>
+<li>Token metadata and price history</li>
+<li>NFT portfolio valuation</li>
+</ul>
+
+<p><strong>Best for:</strong> Builders creating crypto portfolio apps, DeFi analytics tools, or wallet management interfaces.</p>
+
+<h2>6. MongoDB MCP Server — Off-Chain Data Storage</h2>
+
+<p>Most Web3 applications pair on-chain data with off-chain storage for user data, metadata, and application state. MongoDB is the most popular choice for its flexible schema and JSON-native storage. The MongoDB MCP server gives your AI your collection schemas and sample documents — essential context for building hybrid on/off-chain applications.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Collection schema introspection and document browsing</li>
+<li>Aggregation pipeline assistance with real schema context</li>
+<li>Index analysis for query optimization</li>
+<li>Atlas Search integration for full-text queries</li>
+</ul>
+
+<p><strong>Best for:</strong> NFT marketplaces, DeFi dashboards, and Web3 apps that store user data and metadata off-chain.</p>
+
+<h2>7. Redis MCP Server — Blockchain Cache Layer</h2>
+
+<p>Blockchain RPC calls are slow and rate-limited. Most production Web3 apps cache on-chain data in Redis — token prices, block numbers, contract state. The Redis MCP server lets your AI inspect your cache keys and structures to help optimize caching strategies and debug stale data issues.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Key inspection and TTL analysis</li>
+<li>Data structure browsing (strings, hashes, sorted sets)</li>
+<li>Pub/sub channel monitoring for real-time events</li>
+<li>Memory usage analysis for cache optimization</li>
+</ul>
+
+<p><strong>Best for:</strong> Web3 backend developers optimizing RPC call caching and real-time event systems.</p>
+
+<h2>8. GitHub MCP Server — Smart Contract Auditing Context</h2>
+
+<p>Smart contract security reviews require deep code reading — previous audits, issue history, test coverage, and dependency trees. The GitHub MCP server gives your AI full access to your repository context, making AI-assisted security reviews dramatically more accurate than copy-pasting code snippets.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Repository code search across your contracts and tests</li>
+<li>Issue and PR history for audit follow-up tracking</li>
+<li>Dependency inspection for known vulnerable packages</li>
+<li>Commit history for change impact analysis</li>
+</ul>
+
+<p><strong>Best for:</strong> Solidity developers doing self-audits, smart contract security researchers, and teams preparing for external audits.</p>
+
+<h2>Recommended Web3 Development Stacks</h2>
+
+<ul>
+<li><strong>EVM dApp stack:</strong> Ethereum + The Graph + MongoDB + GitHub (on-chain + indexed + off-chain + code)</li>
+<li><strong>Solana dApp stack:</strong> Solana + CoinStats + Redis + GitHub (chain + portfolio + cache + code)</li>
+<li><strong>DeFi analytics:</strong> The Graph + CoinEx + MongoDB + Redis (indexed events + market data + storage + cache)</li>
+<li><strong>Full Web3 stack:</strong> All of the above — your AI has complete context from raw chain data to cached application state</li>
+</ul>
+
+<p>Browse all MCP servers on MyMCPTools. For related guides, see <a href="/blog/best-mcp-servers-for-backend-developers">Best MCP Servers for Backend Developers</a> and <a href="/blog/best-mcp-servers-for-security-engineers">Best MCP Servers for Security Engineers</a>.</p>
+    `.trim(),
+  },
 ];
 
 export function getBlogPostBySlug(slug: string): BlogPost | undefined {
