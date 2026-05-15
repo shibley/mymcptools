@@ -19280,6 +19280,417 @@ jupyter mcp install</code></pre>
 <p>Browse all MCP servers on MyMCPTools. For related guides, see <a href="/blog/best-mcp-servers-for-backend-developers">Best MCP Servers for Backend Developers</a> and <a href="/blog/best-mcp-servers-for-security-engineers">Best MCP Servers for Security Engineers</a>.</p>
     `.trim(),
   },
+  {
+    slug: "best-mcp-servers-for-recruiters",
+    title: "Best MCP Servers for Recruiters and Talent Acquisition Teams in 2026",
+    description: "Top MCP servers for recruiters: LinkedIn sourcing, ATS integrations, email outreach, calendar scheduling, and candidate research tools to accelerate hiring.",
+    date: "2026-05-14",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "7 min read",
+    keywords: ["mcp servers for recruiters", "mcp for talent acquisition", "recruiting ai tools", "ats mcp integration", "mcp linkedin recruiting", "ai recruiting tools 2026"],
+    relatedServerSlugs: ["github", "notion", "slack", "gmail", "google-calendar", "hubspot", "airtable", "exa", "brave-search", "filesystem"],
+    content: `
+<p>Recruiting is a research-heavy, relationship-driven workflow — candidate sourcing, resume review, outreach sequences, interview scheduling, and offer coordination all happening simultaneously. MCP servers let your AI operate across these workflows with real context: live candidate data, your ATS records, and your outreach templates, all in one conversation.</p>
+
+<h2>1. Exa MCP Server — Candidate Research and Sourcing</h2>
+
+<p>Exa is a semantic search engine built for AI workflows. For recruiters, it transforms candidate sourcing: instead of Boolean search strings in LinkedIn, describe the ideal candidate in natural language and Exa surfaces relevant profiles, GitHub portfolios, conference talks, and published work across the web.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Semantic search for candidate profiles and portfolios</li>
+<li>Company research for target employer lists</li>
+<li>Industry news and talent market intelligence</li>
+<li>Technical content search (GitHub, Medium, dev.to) for niche skills</li>
+</ul>
+
+<p><strong>Best for:</strong> Technical recruiters doing passive sourcing, talent researchers building candidate pipelines, and agency recruiters working niche roles.</p>
+
+<h2>2. GitHub MCP Server — Technical Candidate Evaluation</h2>
+
+<p>For engineering roles, a candidate's GitHub profile reveals more than their resume. The GitHub MCP server lets your AI analyze public repositories, contribution history, code quality, and open source involvement — giving you a richer picture before the first call.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Repository language breakdown and activity analysis</li>
+<li>Contribution history and commit frequency</li>
+<li>Open source project impact (stars, forks, community)</li>
+<li>README and documentation quality assessment</li>
+</ul>
+
+<p><strong>Best for:</strong> Technical recruiters evaluating engineering candidates, engineering managers doing sourcing, and startups hiring their first engineers.</p>
+
+<h2>3. Notion MCP Server — Candidate Tracking and ATS Workflows</h2>
+
+<p>Many growing teams use Notion as a lightweight ATS. The Notion MCP server lets your AI read and update your candidate database — adding notes from interviews, updating pipeline stages, and surfacing candidates who match a new opening without manually searching your database.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Candidate database search and filtering</li>
+<li>Pipeline stage updates and note creation</li>
+<li>Job description management and comparison</li>
+<li>Interview feedback aggregation</li>
+</ul>
+
+<p><strong>Best for:</strong> Small to mid-size recruiting teams using Notion as their talent database, founders managing their own hiring, and recruiters who want AI-assisted candidate matching.</p>
+
+<h2>4. HubSpot MCP Server — Candidate Relationship Management</h2>
+
+<p>Top recruiters treat candidates like prospects: nurturing relationships over time, tracking touchpoints, and re-engaging warm candidates for future roles. HubSpot's CRM, connected via MCP, gives your AI your full candidate relationship history — email sequences, call notes, and engagement data.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Contact history and interaction timeline</li>
+<li>Email sequence status and open/click tracking</li>
+<li>Pipeline and deal stage management</li>
+<li>Task creation for follow-up scheduling</li>
+</ul>
+
+<p><strong>Best for:</strong> Agency recruiters managing large candidate pools, executive search firms, and recruiting teams running structured outreach campaigns.</p>
+
+<h2>5. Gmail MCP Server — Outreach and Communication</h2>
+
+<p>Recruiting is email-heavy: initial outreach, follow-ups, interview confirmations, offer letters. The Gmail MCP server gives your AI access to your inbox and sent history — drafting personalized outreach based on candidate research, checking response rates, and managing follow-up timing.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Inbox search and thread context reading</li>
+<li>Draft creation with candidate-specific personalization</li>
+<li>Response tracking and follow-up scheduling</li>
+<li>Template management and variant testing</li>
+</ul>
+
+<p><strong>Best for:</strong> Recruiters running high-volume outreach, sourcing specialists, and anyone who wants AI to handle the boilerplate while they focus on relationship-building.</p>
+
+<h2>6. Google Calendar MCP Server — Interview Coordination</h2>
+
+<p>Interview scheduling is one of the biggest time sinks in recruiting. The Google Calendar MCP server lets your AI check availability, propose interview slots, and draft scheduling emails — cutting the back-and-forth that typically takes days into minutes.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Calendar availability lookup for multiple interviewers</li>
+<li>Event creation with video conferencing links</li>
+<li>Scheduling conflict detection and resolution</li>
+<li>Automated interview confirmation drafting</li>
+</ul>
+
+<p><strong>Best for:</strong> Recruiting coordinators scheduling interview loops, small teams without dedicated coordination tooling, and recruiters juggling multiple open roles simultaneously.</p>
+
+<h2>7. Slack MCP Server — Team Communication and Feedback</h2>
+
+<p>Interview feedback, hiring manager updates, and offer approvals often happen in Slack. The Slack MCP server lets your AI search relevant channels for hiring discussions, surface interviewer feedback, and draft status updates for hiring managers — keeping everyone aligned without manual chasing.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Channel search for candidate discussions and feedback</li>
+<li>Message drafting for hiring manager updates</li>
+<li>Notification management for urgent hiring decisions</li>
+<li>Team availability checks during interview scheduling</li>
+</ul>
+
+<p><strong>Best for:</strong> In-house recruiting teams embedded in Slack-first organizations, people ops teams coordinating with multiple hiring managers.</p>
+
+<h2>8. Airtable MCP Server — Custom Recruiting Workflows</h2>
+
+<p>Many recruiting teams build custom Airtable bases for specific workflows: diversity tracking, referral management, offer approval processes. The Airtable MCP server gives your AI access to these custom databases — surfacing data, running automations, and keeping records current without manual entry.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Custom base and table querying</li>
+<li>Record creation and field updates</li>
+<li>View filtering for pipeline reporting</li>
+<li>Linked record traversal for complex workflows</li>
+</ul>
+
+<p><strong>Best for:</strong> Recruiting ops teams with custom Airtable workflows, talent acquisition teams tracking diversity metrics, and organizations managing complex offer approval chains.</p>
+
+<h2>The Recruiter MCP Stack</h2>
+
+<ul>
+<li><strong>Sourcing stack:</strong> Exa + GitHub + Brave Search (web research + technical profiles + broad discovery)</li>
+<li><strong>Pipeline stack:</strong> Notion + HubSpot + Gmail (tracking + relationships + outreach)</li>
+<li><strong>Coordination stack:</strong> Google Calendar + Slack + Gmail (scheduling + communication + confirmations)</li>
+<li><strong>Full-cycle stack:</strong> All of the above — your AI runs the entire funnel from sourcing to offer</li>
+</ul>
+
+<p>Browse all <a href="/category/productivity">productivity MCP servers</a> and <a href="/category/communication">communication MCP servers</a> on MyMCPTools. For related guides, see <a href="/blog/best-mcp-servers-for-hr-teams">Best MCP Servers for HR Teams</a> and <a href="/blog/best-mcp-servers-for-sales-teams">Best MCP Servers for Sales Teams</a>.</p>
+    `.trim(),
+  },
+  {
+    slug: "best-mcp-servers-for-agencies",
+    title: "Best MCP Servers for Digital Agencies in 2026: Client Work at Scale",
+    description: "Top MCP servers for digital agencies and consultancies: project management, client reporting, SEO tools, content production, and multi-client workflow automation.",
+    date: "2026-05-14",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "8 min read",
+    keywords: ["mcp servers for agencies", "mcp for digital agencies", "agency ai tools", "mcp client management", "mcp for marketing agencies", "ai agency tools 2026"],
+    relatedServerSlugs: ["notion", "slack", "github", "linear", "hubspot", "firecrawl", "exa", "google-analytics", "ahrefs", "stripe"],
+    content: `
+<p>Digital agencies run parallel workstreams across multiple clients simultaneously — each with their own stack, deadlines, and reporting requirements. MCP servers let your AI operate across all of it: pulling client data, drafting reports, tracking project status, and surfacing risks before they become client escalations.</p>
+
+<h2>1. Linear MCP Server — Multi-Client Project Tracking</h2>
+
+<p>Linear has become the project management tool of choice for technical agencies. The Linear MCP server gives your AI real-time visibility into all client projects: sprint status, blocked issues, upcoming deadlines, and team capacity — without manually checking multiple boards.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Cross-project issue search and status queries</li>
+<li>Sprint progress and velocity tracking</li>
+<li>Blocked issue surfacing and dependency mapping</li>
+<li>Team workload distribution analysis</li>
+</ul>
+
+<p><strong>Best for:</strong> Dev agencies managing multiple client sprints, product studios running parallel builds, and technical project managers overseeing distributed teams.</p>
+
+<h2>2. Notion MCP Server — Client Knowledge Base and SOPs</h2>
+
+<p>Agencies live on institutional knowledge: client brand guidelines, approved messaging, past campaign performance, and documented processes. The Notion MCP server gives your AI access to this knowledge base — writing on-brand content, referencing past work, and following client-specific SOPs without starting from scratch each time.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Client workspace and document search</li>
+<li>Brand guideline and style guide access</li>
+<li>Process documentation and SOP retrieval</li>
+<li>Meeting notes and decision history</li>
+</ul>
+
+<p><strong>Best for:</strong> Content agencies managing multiple brand voices, marketing teams with complex client approval workflows, and agencies onboarding new team members to existing accounts.</p>
+
+<h2>3. HubSpot MCP Server — Client Pipeline and Retainer Management</h2>
+
+<p>Agency revenue depends on retainer renewals and upsell opportunities. The HubSpot MCP server gives your AI your full client relationship history — engagement trends, contract renewal dates, support ticket patterns, and expansion opportunities — so you can proactively manage accounts instead of reacting to churn.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Deal pipeline and renewal date tracking</li>
+<li>Client interaction history and health signals</li>
+<li>Upsell opportunity identification</li>
+<li>Contact and company record management</li>
+</ul>
+
+<p><strong>Best for:</strong> Agency account managers tracking retainer clients, business development teams managing proposal pipelines, and agency owners forecasting revenue.</p>
+
+<h2>4. Firecrawl MCP Server — Client Competitive Research</h2>
+
+<p>Every client engagement starts with research — competitor analysis, market positioning, content audits. Firecrawl scrapes and structures web content at scale, letting your AI ingest competitor sites, industry publications, and client properties and synthesize findings into actionable insights.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Full website content extraction and structuring</li>
+<li>Competitor site analysis and content mapping</li>
+<li>Client site auditing for content gaps</li>
+<li>Industry publication monitoring</li>
+</ul>
+
+<p><strong>Best for:</strong> Strategy agencies doing market research, SEO agencies auditing client sites, and content agencies building competitive content calendars.</p>
+
+<h2>5. GitHub MCP Server — Code Quality and Client Delivery</h2>
+
+<p>Dev agencies need visibility into the code they're shipping to clients. The GitHub MCP server gives your AI full repository context — PR status, open issues, code review backlogs, and deployment readiness — so project managers and tech leads can assess delivery risk without being engineers themselves.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>PR status and review pipeline tracking</li>
+<li>Open issue prioritization and backlog health</li>
+<li>Repository code search for cross-project patterns</li>
+<li>Release and tag history for client delivery documentation</li>
+</ul>
+
+<p><strong>Best for:</strong> Dev agencies shipping client builds, technical project managers overseeing multiple codebases, and agencies doing code quality reviews before handoff.</p>
+
+<h2>6. Slack MCP Server — Internal Team Coordination</h2>
+
+<p>Agency teams live in Slack. The Slack MCP server lets your AI surface what's happening across client channels: escalations, approval requests, client feedback that needs response, and team blockers — giving agency leads a real-time pulse on all accounts without monitoring dozens of channels manually.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Cross-channel search for client mentions and escalations</li>
+<li>Unread message prioritization by urgency</li>
+<li>Status update drafting for client threads</li>
+<li>Team availability and workload signals</li>
+</ul>
+
+<p><strong>Best for:</strong> Agency directors overseeing multiple teams, account managers embedded in client Slack workspaces, and ops managers running agency-wide standup workflows.</p>
+
+<h2>7. Exa MCP Server — Industry Intelligence and Content Research</h2>
+
+<p>Agencies need to stay ahead of trends across every client's industry. Exa's semantic search surfaces relevant research, news, and expert opinions — giving your AI the context to write informed briefs, spot emerging opportunities, and keep clients ahead of their markets.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Industry trend research across verticals</li>
+<li>Competitor news monitoring and tracking</li>
+<li>Expert opinion and thought leadership discovery</li>
+<li>Academic and technical research for niche industries</li>
+</ul>
+
+<p><strong>Best for:</strong> Content strategists building editorial calendars, PR agencies monitoring client industry news, and strategy consultants doing market intelligence.</p>
+
+<h2>8. Stripe MCP Server — Invoice and Revenue Tracking</h2>
+
+<p>Agency billing is complex: project milestones, retainer cycles, usage-based services, and one-time work orders. The Stripe MCP server gives your AI visibility into your billing pipeline — outstanding invoices, upcoming renewals, and revenue by client — without logging into your billing dashboard.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Invoice status and payment history</li>
+<li>Subscription and retainer renewal tracking</li>
+<li>Revenue reporting by client or service line</li>
+<li>Overdue payment identification and follow-up drafting</li>
+</ul>
+
+<p><strong>Best for:</strong> Agency owners managing cash flow, operations managers tracking billing, and account managers who need to know payment status before client calls.</p>
+
+<h2>The Agency MCP Stack by Function</h2>
+
+<ul>
+<li><strong>Project delivery:</strong> Linear + GitHub + Slack (tracking + code + communication)</li>
+<li><strong>Client management:</strong> HubSpot + Notion + Stripe (relationships + knowledge + billing)</li>
+<li><strong>Research and content:</strong> Firecrawl + Exa + Notion (scraping + intelligence + brand context)</li>
+<li><strong>Full agency stack:</strong> All of the above — your AI manages delivery, client relationships, research, and revenue in one workflow</li>
+</ul>
+
+<p>Browse all <a href="/category/productivity">productivity MCP servers</a> on MyMCPTools. For related guides, see <a href="/blog/best-mcp-servers-for-consulting-firms">Best MCP Servers for Consulting Firms</a> and <a href="/blog/best-mcp-servers-for-marketing">Best MCP Servers for Marketing</a>.</p>
+    `.trim(),
+  },
+  {
+    slug: "best-mcp-servers-for-community-managers",
+    title: "Best MCP Servers for Community Managers in 2026",
+    description: "Top MCP servers for community managers: Discord, Slack, social media monitoring, content scheduling, analytics, and member engagement workflows.",
+    date: "2026-05-14",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "7 min read",
+    keywords: ["mcp servers for community managers", "mcp for discord", "mcp for slack community", "community management ai tools", "mcp social media", "ai community tools 2026"],
+    relatedServerSlugs: ["slack", "discord", "twitter", "notion", "airtable", "exa", "brave-search", "youtube", "github"],
+    content: `
+<p>Community management is real-time, context-heavy work: monitoring conversations across platforms, responding to member questions, surfacing trending topics, and keeping engagement healthy across Discord servers, Slack communities, and social channels. MCP servers give your AI the live context to operate across all of it — not just draft responses, but understand the actual state of your community.</p>
+
+<h2>1. Slack MCP Server — Community Operations Hub</h2>
+
+<p>For B2B communities and developer ecosystems built on Slack, the Slack MCP server is essential. Your AI can monitor channel activity, surface unanswered questions, identify highly engaged members, and draft responses that match your community's tone — turning a reactive moderation workflow into a proactive engagement strategy.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Channel search for unanswered questions and trending topics</li>
+<li>Member activity and engagement pattern analysis</li>
+<li>Response drafting with community-appropriate tone</li>
+<li>Announcement and update drafting for community channels</li>
+</ul>
+
+<p><strong>Best for:</strong> Developer community managers, SaaS community teams, and professional communities built on Slack workspaces.</p>
+
+<h2>2. Twitter MCP Server — Social Listening and Engagement</h2>
+
+<p>Brand communities extend far beyond owned channels. The Twitter MCP server lets your AI monitor brand mentions, track community conversations, identify influencers discussing your product, and draft timely responses — keeping your brand present in organic conversations without constant manual monitoring.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Brand mention and hashtag monitoring</li>
+<li>Sentiment analysis across community conversations</li>
+<li>Influencer and advocate identification</li>
+<li>Tweet drafting and thread planning</li>
+</ul>
+
+<p><strong>Best for:</strong> Community managers at consumer brands, open source projects with Twitter presence, and communities with active social media components.</p>
+
+<h2>3. Notion MCP Server — Community Knowledge Base</h2>
+
+<p>Thriving communities run on good documentation: FAQs, onboarding guides, resource libraries, and event archives. The Notion MCP server gives your AI access to your community knowledge base — answering member questions with accurate information, updating docs when policies change, and identifying knowledge gaps based on recurring questions.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>FAQ and documentation search for member question answering</li>
+<li>Resource library management and updates</li>
+<li>Event and program documentation</li>
+<li>Community guidelines and policy retrieval</li>
+</ul>
+
+<p><strong>Best for:</strong> Community teams with extensive documentation needs, creator communities with resource libraries, and education communities managing course materials.</p>
+
+<h2>4. Airtable MCP Server — Member Management and Programs</h2>
+
+<p>Structured community programs — ambassador programs, beta tester groups, expert networks — require member tracking beyond what discussion platforms provide. Airtable is the go-to for community teams managing custom member databases, and the MCP server lets your AI query and update these records without manual lookup.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Member database search and profile access</li>
+<li>Program participation tracking and status updates</li>
+<li>Contribution and engagement scoring</li>
+<li>Event attendance and follow-up management</li>
+</ul>
+
+<p><strong>Best for:</strong> Ambassador program managers, community teams running structured programs, and organizations with tiered membership models.</p>
+
+<h2>5. YouTube MCP Server — Video Community Engagement</h2>
+
+<p>For communities built around video content, YouTube comment sections are a major engagement surface. The YouTube MCP server lets your AI monitor comment activity, surface insightful member responses worth highlighting, identify frequently asked questions from video comments, and draft creator responses — turning passive comments into community interactions.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Comment monitoring and sentiment analysis</li>
+<li>Frequently asked question identification</li>
+<li>Community highlight and pinned comment recommendations</li>
+<li>Video analytics for community-driven content planning</li>
+</ul>
+
+<p><strong>Best for:</strong> Creator communities, educational content creators, and brands with active YouTube presences.</p>
+
+<h2>6. Exa MCP Server — Community Research and Content Ideas</h2>
+
+<p>The best community content addresses what members are actually searching for and talking about elsewhere. Exa's semantic search helps your AI research trending topics in your community's niche, find expert perspectives to share, and identify content gaps your community could fill — keeping your content calendar relevant and valuable.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Niche topic trend research and discovery</li>
+<li>Expert opinion and thought leadership sourcing</li>
+<li>Competitive community content analysis</li>
+<li>Resource discovery for member sharing</li>
+</ul>
+
+<p><strong>Best for:</strong> Community managers who own content calendars, communities with active newsletters or digests, and teams curating resources for members.</p>
+
+<h2>7. GitHub MCP Server — Developer Community Management</h2>
+
+<p>Developer communities often center around open source projects. The GitHub MCP server lets your AI monitor issue activity, surface contributor questions, track PR review backlogs, and identify first-time contributors who need onboarding — making maintainer community management sustainable at scale.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Issue triage and question identification</li>
+<li>First-time contributor detection and welcome message drafting</li>
+<li>PR review backlog monitoring</li>
+<li>Community health metrics (response time, contributor diversity)</li>
+</ul>
+
+<p><strong>Best for:</strong> Open source project maintainers, developer advocate teams, and companies managing community-driven development projects.</p>
+
+<h2>8. Brave Search MCP Server — Real-Time Community Intelligence</h2>
+
+<p>Community managers need to know what's happening in their space right now — product launches, industry news, competitor announcements, and emerging trends that your community will want to discuss. The Brave Search MCP server gives your AI fresh web search results to surface timely topics before your members bring them up.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Real-time web search for current events and trends</li>
+<li>News monitoring for community-relevant topics</li>
+<li>Product and competitor announcement tracking</li>
+<li>Discussion prompt discovery based on trending content</li>
+</ul>
+
+<p><strong>Best for:</strong> Community managers in fast-moving industries, news and media communities, and teams running daily or weekly community digests.</p>
+
+<h2>The Community Manager MCP Stack</h2>
+
+<ul>
+<li><strong>Engagement stack:</strong> Slack + Twitter + YouTube (owned community + social + video)</li>
+<li><strong>Operations stack:</strong> Notion + Airtable + GitHub (knowledge + members + developer community)</li>
+<li><strong>Intelligence stack:</strong> Exa + Brave Search (research + real-time trends)</li>
+<li><strong>Full community stack:</strong> All of the above — your AI manages every engagement surface, member database, and content channel from one workflow</li>
+</ul>
+
+<p>Browse all <a href="/category/communication">communication MCP servers</a> on MyMCPTools. For related guides, see <a href="/blog/best-mcp-servers-for-social-media-managers">Best MCP Servers for Social Media Managers</a> and <a href="/blog/best-mcp-servers-for-marketing">Best MCP Servers for Marketing</a>.</p>
+    `.trim(),
+  },
 ];
 
 export function getBlogPostBySlug(slug: string): BlogPost | undefined {
