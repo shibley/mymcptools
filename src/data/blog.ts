@@ -20088,6 +20088,146 @@ jupyter mcp install</code></pre>
 <p>Browse all <a href="/category/browser-automation">browser automation MCP servers</a> and <a href="/category/productivity">productivity MCP servers</a> on MyMCPTools. For related guides, see <a href="/blog/best-mcp-servers-for-frontend-developers">Best MCP Servers for Frontend Developers</a> and <a href="/blog/best-mcp-servers-for-content-creation">Best MCP Servers for Content Creation</a>.</p>
     `.trim(),
   },
+  {
+    slug: "best-mcp-servers-for-project-managers",
+    title: "Best MCP Servers for Project Managers in 2026",
+    description: "The top MCP servers that help project managers track work, surface blockers, coordinate teams, and generate status reports automatically.",
+    date: "2026-05-15",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "7 min read",
+    keywords: ["best mcp servers for project managers", "project management mcp", "mcp for pm workflow", "project tracking mcp tools", "mcp project management 2026"],
+    relatedServerSlugs: ["linear", "notion", "slack", "github", "google-tasks", "memory", "brave-search", "fetch"],
+    content: `
+<p>Project managers live at the intersection of every team — engineering, design, product, and stakeholders — which means context-switching is constant. The right MCP servers eliminate that overhead by giving your AI direct access to every system of record, so you can generate status reports, surface blockers, and coordinate work without toggling between seven browser tabs.</p>
+
+<p>Here are the best MCP servers for project managers in 2026.</p>
+
+<h2>1. Linear MCP Server — Engineering Work Tracking</h2>
+
+<p>Linear is the default issue tracker for modern engineering teams, and its MCP server makes your AI a full participant in your project workflow. Query sprint progress, pull open blockers, check cycle completions, identify overdue issues, and generate status summaries by team or project — all without loading the Linear dashboard or manually compiling issue lists for your weekly reports.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Sprint progress and cycle completion queries</li>
+<li>Open blocker and overdue issue identification</li>
+<li>Team velocity and throughput analysis</li>
+<li>Issue status and assignee queries for reporting</li>
+</ul>
+
+<p><strong>Best for:</strong> Technical PMs managing engineering sprints, product managers tracking feature delivery timelines, and program managers generating cross-team status reports from Linear data.</p>
+
+<h2>2. Notion MCP Server — Project Documentation and Specs</h2>
+
+<p>Project specs, PRDs, meeting notes, decision logs, and retrospective findings live in Notion. The MCP server makes this documentation AI-searchable — your assistant can retrieve the relevant spec when writing a status update, pull decision history when a stakeholder questions a scope change, reference meeting notes when following up on action items, and draft new documents from your existing templates.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Project spec and PRD retrieval by feature or milestone</li>
+<li>Meeting note and action item search</li>
+<li>Decision log and change history access</li>
+<li>Retrospective finding retrieval for planning sessions</li>
+</ul>
+
+<p><strong>Best for:</strong> PMs using Notion as their primary documentation hub, product managers maintaining living specs, and program managers tracking cross-project decision histories.</p>
+
+<h2>3. Slack MCP Server — Team Communication and Status</h2>
+
+<p>Project health lives in Slack — engineers post blockers, designers share review links, stakeholders ask questions, and incidents surface in channels. The Slack MCP server lets your AI monitor relevant project channels, compile team updates into structured status reports, identify unresolved questions, flag threads that need PM attention, and draft channel announcements for milestone communications — keeping you informed without reading every message.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Project channel update compilation and summarization</li>
+<li>Blocker identification from engineering and design channels</li>
+<li>Unresolved question and pending decision flagging</li>
+<li>Milestone announcement drafting from channel context</li>
+</ul>
+
+<p><strong>Best for:</strong> PMs managing distributed teams, program managers monitoring multiple project channels simultaneously, and technical PMs coordinating between engineering and design in Slack.</p>
+
+<h2>4. GitHub MCP Server — Engineering Delivery Status</h2>
+
+<p>For technical PMs, GitHub is ground truth for delivery status. The MCP server gives your AI access to PR merge rates, open pull requests by contributor, release branch status, CI/CD pipeline results, and issue-to-PR linkage — so you can accurately report on what's actually shipping versus what's still in review, without asking engineers for individual status updates.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Pull request status and review progress queries</li>
+<li>Release branch and deployment readiness checks</li>
+<li>CI/CD pipeline status and failure identification</li>
+<li>Issue resolution and commit history tracking</li>
+</ul>
+
+<p><strong>Best for:</strong> Technical PMs tracking engineering delivery velocity, program managers preparing release communications, and product managers validating feature completion before stakeholder demos.</p>
+
+<h2>5. Google Tasks MCP Server — Personal Action Item Tracking</h2>
+
+<p>Between running meetings, reviewing specs, unblocking engineers, and preparing stakeholder updates, PMs accumulate action items faster than they can process them. The Google Tasks MCP server lets your AI read, add, and update your task list — capturing action items from meeting context, checking what's overdue before a planning session, and organizing your day's priorities without manual list maintenance.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Action item capture and task creation from conversation context</li>
+<li>Overdue task identification and priority surfacing</li>
+<li>Task list organization and deadline management</li>
+<li>Follow-up reminder creation from meeting outcomes</li>
+</ul>
+
+<p><strong>Best for:</strong> PMs managing high volumes of async action items, program managers tracking follow-ups across multiple stakeholder meetings, and product managers staying on top of cross-functional commitments.</p>
+
+<h2>6. Memory MCP Server — Project Context Retention</h2>
+
+<p>Project context accumulates over time — decisions made three months ago, constraints established in kickoff meetings, vendor commitments buried in email threads. The Memory MCP server gives your AI persistent recall of project history so you don't have to re-explain context every session. Store key decisions, constraints, stakeholder preferences, and milestone history — your AI carries that context forward through every sprint and planning cycle.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Project decision and rationale storage for long-term recall</li>
+<li>Stakeholder preference and constraint tracking</li>
+<li>Milestone history and delivery record maintenance</li>
+<li>Cross-project context and dependency tracking</li>
+</ul>
+
+<p><strong>Best for:</strong> Long-running program managers tracking multi-month initiatives, PMs handing off projects, and technical PMs maintaining architectural decision records alongside delivery context.</p>
+
+<h2>7. Fetch MCP Server — External Documentation and Tickets</h2>
+
+<p>PMs constantly reference external resources — vendor documentation, JIRA ticket histories accessible via URL, Confluence pages, status pages for third-party dependencies, and stakeholder-shared Google Docs. The Fetch MCP server lets your AI retrieve any URL content directly, pulling the relevant external context into your workflow without manual copying and pasting between browser tabs and your AI assistant.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>External documentation and vendor spec retrieval</li>
+<li>Publicly accessible JIRA and Confluence page reading</li>
+<li>Dependency status page monitoring</li>
+<li>Stakeholder-shared document content extraction</li>
+</ul>
+
+<p><strong>Best for:</strong> PMs integrating with external vendor systems, program managers tracking third-party dependency status, and product managers referencing shared stakeholder documents during planning sessions.</p>
+
+<h2>8. Brave Search MCP Server — Industry and Competitive Research</h2>
+
+<p>Good project planning requires external context — understanding how competitors solve similar problems, researching best practices for features under development, and staying current on tools and frameworks your team might adopt. Brave Search gives your AI live web access to research relevant precedents, benchmark against industry patterns, and gather the external context that informs better project decisions.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Competitive feature research and benchmarking</li>
+<li>Best practice discovery for features under development</li>
+<li>Tool and framework evaluation research</li>
+<li>Industry trend monitoring for roadmap planning</li>
+</ul>
+
+<p><strong>Best for:</strong> Product managers doing competitive research ahead of roadmap planning, technical PMs evaluating new frameworks, and program managers benchmarking project delivery processes against industry standards.</p>
+
+<h2>The Project Manager MCP Stack</h2>
+
+<ul>
+<li><strong>Delivery stack:</strong> Linear + GitHub (issue tracking + engineering truth)</li>
+<li><strong>Documentation stack:</strong> Notion + Memory (specs + persistent project context)</li>
+<li><strong>Communication stack:</strong> Slack + Fetch (team updates + external content)</li>
+<li><strong>Research stack:</strong> Brave Search + Google Tasks (external context + personal task management)</li>
+<li><strong>Full PM stack:</strong> All of the above — your AI generates status reports, surfaces blockers, tracks action items, recalls project history, and researches external context from a single integrated workflow</li>
+</ul>
+
+<p>Browse all <a href="/category/productivity">productivity MCP servers</a> and <a href="/category/coding">dev tool MCP servers</a> on MyMCPTools. For related guides, see <a href="/blog/best-mcp-servers-for-business-analysts">Best MCP Servers for Business Analysts</a> and <a href="/blog/best-mcp-servers-for-operations-teams">Best MCP Servers for Operations Teams</a>.</p>
+    `.trim(),
+  },
 ];
 
 export function getBlogPostBySlug(slug: string): BlogPost | undefined {
