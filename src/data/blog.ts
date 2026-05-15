@@ -19691,6 +19691,403 @@ jupyter mcp install</code></pre>
 <p>Browse all <a href="/category/communication">communication MCP servers</a> on MyMCPTools. For related guides, see <a href="/blog/best-mcp-servers-for-social-media-managers">Best MCP Servers for Social Media Managers</a> and <a href="/blog/best-mcp-servers-for-marketing">Best MCP Servers for Marketing</a>.</p>
     `.trim(),
   },
+  {
+    slug: "best-mcp-servers-for-hr-teams",
+    title: "Best MCP Servers for HR Teams in 2026",
+    description: "Top MCP servers for HR professionals: recruiting automation, employee data management, onboarding workflows, Slack people ops, and workforce analytics.",
+    date: "2026-05-14",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "7 min read",
+    keywords: ["mcp servers for hr", "mcp for recruiting", "hr automation mcp", "hr ai tools 2026", "mcp for people ops", "model context protocol hr"],
+    relatedServerSlugs: ["slack", "notion", "airtable", "postgres", "google-drive", "brave-search", "resend", "github"],
+    content: `
+<p>HR teams operate across a web of systems — ATS, HRIS, Slack, Google Drive, onboarding docs, performance data — and most of the context that matters lives in all of them simultaneously. MCP servers connect your AI directly to these systems, replacing the copy-paste-summarize cycle with live, structured access to people data, workflows, and communications.</p>
+
+<h2>1. Slack MCP Server — People Ops Communication Hub</h2>
+
+<p>HR teams live in Slack. Benefits announcements, policy updates, onboarding channels, manager check-ins — the Slack MCP server gives your AI real-time access to workplace communications, letting it monitor sentiment, identify employees who may be struggling, surface recurring policy questions, and draft responses that match your company's culture and tone.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Onboarding channel monitoring and new hire question detection</li>
+<li>Benefits and policy question identification across channels</li>
+<li>Employee sentiment analysis from team communications</li>
+<li>Announcement drafting for company-wide or team-specific channels</li>
+</ul>
+
+<p><strong>Best for:</strong> HR business partners, people ops teams, and HR generalists managing employee communications across Slack workspaces.</p>
+
+<h2>2. Airtable MCP Server — Recruiting Pipeline and HR Data</h2>
+
+<p>Recruiting pipelines, headcount trackers, employee databases, and performance review cycles all live comfortably in Airtable. The MCP server lets your AI query candidate status, update pipeline stages, pull compensation benchmarks, and generate reports from your HR data without manual lookup — turning Airtable into an AI-accessible HR system of record.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Candidate pipeline status and stage tracking</li>
+<li>Headcount and role requisition management</li>
+<li>Employee directory search and profile access</li>
+<li>Performance review cycle tracking and status updates</li>
+</ul>
+
+<p><strong>Best for:</strong> Recruiting coordinators, HR ops teams managing candidate pipelines, and organizations using Airtable as their HRIS or ATS.</p>
+
+<h2>3. Notion MCP Server — HR Knowledge Base and Policies</h2>
+
+<p>Employee handbooks, PTO policies, onboarding checklists, job description templates, and performance review frameworks all need to be findable and current. The Notion MCP server gives your AI direct access to your HR documentation, enabling it to answer policy questions with accurate sourced content, update docs when policies change, and identify documentation gaps based on recurring employee questions.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Policy and handbook search for employee question answering</li>
+<li>Onboarding checklist tracking and documentation</li>
+<li>Job description and role template management</li>
+<li>Benefits documentation retrieval and updates</li>
+</ul>
+
+<p><strong>Best for:</strong> HR teams managing large employee knowledge bases, remote-first companies with documentation-heavy onboarding, and organizations with complex, frequently updated policies.</p>
+
+<h2>4. PostgreSQL MCP Server — HRIS Data Analytics</h2>
+
+<p>Most enterprise HRIS platforms (Workday, ADP, BambooHR) have PostgreSQL databases underneath or export to them. The PostgreSQL MCP server lets your AI query employee data directly — headcount reports, attrition analysis, compensation bands, diversity metrics — without requiring manual report generation or BI dashboard access.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Headcount and organizational structure queries</li>
+<li>Attrition and retention analysis by department or role</li>
+<li>Compensation band and salary range reporting</li>
+<li>Benefits enrollment and utilization analytics</li>
+</ul>
+
+<p><strong>Best for:</strong> HR analytics teams, people operations leaders, and CHROs who need workforce data on demand without BI team dependency.</p>
+
+<h2>5. Google Drive MCP Server — HR Document Management</h2>
+
+<p>Offer letters, employment contracts, performance improvement plans, separation agreements — HR generates and stores an enormous volume of sensitive documents. The Google Drive MCP server lets your AI access these documents (with proper permissions), draft new ones from templates, locate specific files, and organize document libraries without manual search.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Offer letter and employment agreement drafting from templates</li>
+<li>Document search across HR folders and shared drives</li>
+<li>Policy document version tracking</li>
+<li>Performance documentation retrieval</li>
+</ul>
+
+<p><strong>Best for:</strong> HR teams managing high-volume hiring, companies with complex employment documentation, and organizations with compliance-heavy document retention requirements.</p>
+
+<h2>6. Resend MCP Server — HR Communications Automation</h2>
+
+<p>Recruiting follow-ups, onboarding email sequences, benefits enrollment reminders, and performance review notifications — HR teams send a lot of structured email. The Resend MCP server enables your AI to draft and send transactional emails programmatically, automating the communication workflows that currently require manual drafting and scheduling.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Candidate status update and interview scheduling emails</li>
+<li>New hire onboarding email sequence automation</li>
+<li>Benefits open enrollment reminder campaigns</li>
+<li>Performance review cycle notification emails</li>
+</ul>
+
+<p><strong>Best for:</strong> Recruiting teams with high applicant volume, HR teams managing company-wide communication programs, and people ops automating repetitive email workflows.</p>
+
+<h2>7. Brave Search MCP Server — Compensation Benchmarking and HR Research</h2>
+
+<p>Compensation benchmarking, job market research, benefits trend analysis, and labor law updates all require current external information. The Brave Search MCP server gives your AI real-time web access to pull salary data, job market trends, competitor benefits packages, and HR industry news — keeping your people strategy grounded in current market data.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Compensation benchmarking from public salary sources</li>
+<li>Job market demand analysis for hard-to-fill roles</li>
+<li>Benefits trend research and competitive benchmarking</li>
+<li>Labor law and HR compliance update monitoring</li>
+</ul>
+
+<p><strong>Best for:</strong> Compensation analysts, HR business partners preparing for headcount reviews, and organizations benchmarking benefits or compensation against competitors.</p>
+
+<h2>The HR Team MCP Stack</h2>
+
+<ul>
+<li><strong>Recruiting stack:</strong> Airtable + Resend + Brave Search (pipeline + emails + market data)</li>
+<li><strong>People ops stack:</strong> Slack + Notion + Google Drive (communications + policies + documents)</li>
+<li><strong>Analytics stack:</strong> PostgreSQL + Airtable (workforce data + structured HR records)</li>
+<li><strong>Full HR stack:</strong> All of the above — your AI manages candidate pipelines, employee communications, policy documentation, and workforce analytics from one workflow</li>
+</ul>
+
+<p>Browse all <a href="/category/communication">communication MCP servers</a> and <a href="/category/productivity">productivity MCP servers</a> on MyMCPTools. For related guides, see <a href="/blog/best-mcp-servers-for-operations-teams">Best MCP Servers for Operations Teams</a> and <a href="/blog/best-mcp-servers-for-project-management">Best MCP Servers for Project Management</a>.</p>
+    `.trim(),
+  },
+  {
+    slug: "best-mcp-servers-for-seo-teams",
+    title: "Best MCP Servers for SEO Teams in 2026",
+    description: "Top MCP servers for SEO professionals: keyword research, competitor analysis, content audits, GSC data access, backlink tracking, and technical SEO automation.",
+    date: "2026-05-14",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "8 min read",
+    keywords: ["mcp servers for seo", "mcp for seo teams", "seo automation mcp", "seo ai tools 2026", "mcp for keyword research", "model context protocol seo"],
+    relatedServerSlugs: ["brave-search", "exa", "postgres", "airtable", "notion", "fetch", "puppeteer", "google-drive"],
+    content: `
+<p>SEO work is fundamentally about understanding content, competitors, and search intent at scale — exactly the kind of context-heavy analysis that AI excels at when it has the right data access. MCP servers give your AI direct access to web crawl data, keyword databases, content audits, and analytics exports, turning hours of manual research into structured AI-driven workflows.</p>
+
+<h2>1. Brave Search MCP Server — Keyword Research and SERP Analysis</h2>
+
+<p>Real-time SERP analysis is the foundation of competitive SEO. The Brave Search MCP server gives your AI live search results for any keyword, enabling it to analyze top-ranking content, identify SERP feature opportunities, assess competitor positioning, and determine search intent — without leaving your AI workflow to manually check Google.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>SERP analysis for target keywords and competitor research</li>
+<li>Search intent determination from result types and top content</li>
+<li>Featured snippet and SERP feature opportunity identification</li>
+<li>Keyword difficulty assessment from ranking page authority signals</li>
+</ul>
+
+<p><strong>Best for:</strong> SEO strategists doing keyword research, content managers planning new pages, and agencies auditing client keyword opportunities.</p>
+
+<h2>2. Exa MCP Server — Semantic Search and Content Research</h2>
+
+<p>Unlike traditional keyword search, Exa's semantic search finds content based on meaning — ideal for topic cluster research, finding authoritative sources for content, identifying subtopic gaps, and discovering link-worthy resources. Your AI can use Exa to research any topic deeply before writing or auditing content, ensuring factual accuracy and comprehensive coverage.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Semantic topic research across indexed web content</li>
+<li>Authoritative source discovery for citation and link building</li>
+<li>Content gap analysis by finding underserved subtopics</li>
+<li>Competitor content deep-dive and analysis</li>
+</ul>
+
+<p><strong>Best for:</strong> Content strategists, SEO writers, and teams building topic clusters and content hubs requiring deep research.</p>
+
+<h2>3. Fetch MCP Server — Technical SEO Auditing</h2>
+
+<p>Technical SEO requires examining actual page HTML: meta tags, structured data, heading hierarchy, internal link structure, canonical tags, and hreflang implementation. The Fetch MCP server lets your AI directly retrieve and analyze page source, running technical audits on any URL without manual inspection — essential for large-scale audits and pre-publish QA.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Meta title and description audit across URLs</li>
+<li>Structured data (JSON-LD, schema.org) validation</li>
+<li>Heading hierarchy and keyword placement analysis</li>
+<li>Canonical and hreflang tag verification</li>
+</ul>
+
+<p><strong>Best for:</strong> Technical SEO specialists, SEO developers, and agencies conducting large-scale audits across client sites.</p>
+
+<h2>4. Puppeteer MCP Server — JavaScript-Rendered Page Analysis</h2>
+
+<p>Modern sites rely heavily on JavaScript rendering — meaning static fetch misses critical content that Googlebot sees. The Puppeteer MCP server renders pages fully in a real browser, letting your AI audit JavaScript-dependent content, test Core Web Vitals impact, verify lazy-loaded content is indexable, and analyze pages exactly as search engines see them.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Full JavaScript page rendering for accurate content audits</li>
+<li>Dynamic content visibility verification for crawlers</li>
+<li>Interactive element and pagination auditing</li>
+<li>Screenshot capture for visual rendering QA</li>
+</ul>
+
+<p><strong>Best for:</strong> Technical SEOs auditing SPAs and JavaScript-heavy sites, e-commerce SEO teams, and agencies working with headless CMS implementations.</p>
+
+<h2>5. PostgreSQL MCP Server — Search Analytics and Ranking Data</h2>
+
+<p>Google Search Console, keyword ranking tools (Ahrefs, Semrush), and analytics platforms export data to databases. The PostgreSQL MCP server lets your AI query ranking history, traffic trends, CTR by keyword, page performance comparisons, and indexation status across your entire keyword portfolio — enabling sophisticated analysis without manual spreadsheet work.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Keyword ranking trend analysis and position tracking</li>
+<li>CTR optimization opportunity identification (high rank, low CTR)</li>
+<li>Traffic attribution and content performance reporting</li>
+<li>Indexation status tracking across large page sets</li>
+</ul>
+
+<p><strong>Best for:</strong> SEO analysts, in-house SEO teams with custom data pipelines, and enterprise SEO operations managing thousands of tracked keywords.</p>
+
+<h2>6. Airtable MCP Server — Content Calendar and SEO Project Management</h2>
+
+<p>SEO content pipelines — keyword research to brief to draft to publish — involve multiple stakeholders and status stages. Airtable is the most popular tool for SEO content calendars, and the MCP server lets your AI query which pages are in progress, flag overdue items, update statuses after publishing, and generate sprint summaries from your content pipeline data.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Content pipeline status tracking and bottleneck identification</li>
+<li>Keyword-to-URL mapping for canonical management</li>
+<li>Link building prospect tracking and outreach status</li>
+<li>Technical SEO audit task management</li>
+</ul>
+
+<p><strong>Best for:</strong> SEO project managers, content operations teams, and agencies managing client SEO content pipelines across multiple properties.</p>
+
+<h2>7. Notion MCP Server — SEO Strategy Documentation</h2>
+
+<p>SEO strategies, keyword research archives, competitor analysis notes, client briefs, and content frameworks all accumulate in Notion. The MCP server makes this institutional knowledge AI-accessible — your assistant can retrieve previous research, reference brand guidelines when writing, and ensure new content aligns with documented strategy rather than starting from scratch.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Keyword research database search and retrieval</li>
+<li>Brand voice and content guideline access</li>
+<li>Competitor analysis archive search</li>
+<li>Content brief template management</li>
+</ul>
+
+<p><strong>Best for:</strong> SEO agencies managing multiple clients, in-house teams with documented content strategies, and organizations maintaining keyword research databases in Notion.</p>
+
+<h2>8. Google Drive MCP Server — SEO Reports and Client Deliverables</h2>
+
+<p>Monthly reports, quarterly strategy decks, content briefs, and technical audit spreadsheets — SEO generates a lot of Drive documents. The Google Drive MCP server lets your AI access previous reports for context, pull data from audit spreadsheets, draft new briefs based on templates, and locate specific documents without manual search through client folders.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>SEO report retrieval and historical data access</li>
+<li>Technical audit spreadsheet data extraction</li>
+<li>Content brief drafting from Drive templates</li>
+<li>Client folder organization and document search</li>
+</ul>
+
+<p><strong>Best for:</strong> SEO agencies managing client deliverables, in-house SEO teams creating recurring reports, and consultants working across multiple client Drive environments.</p>
+
+<h2>The SEO Team MCP Stack</h2>
+
+<ul>
+<li><strong>Research stack:</strong> Brave Search + Exa + Fetch (SERP data + semantic research + page audits)</li>
+<li><strong>Technical stack:</strong> Fetch + Puppeteer + PostgreSQL (static audit + JS audit + ranking data)</li>
+<li><strong>Operations stack:</strong> Airtable + Notion + Google Drive (pipeline + strategy + reports)</li>
+<li><strong>Full SEO stack:</strong> All of the above — your AI handles research, audits, ranking analysis, and content operations from one workflow</li>
+</ul>
+
+<p>Browse all <a href="/category/search">search MCP servers</a> and <a href="/category/data">data MCP servers</a> on MyMCPTools. For related guides, see <a href="/blog/best-mcp-servers-for-content-creation">Best MCP Servers for Content Creation</a> and <a href="/blog/best-mcp-servers-for-marketing">Best MCP Servers for Marketing</a>.</p>
+    `.trim(),
+  },
+  {
+    slug: "best-mcp-servers-for-design-teams",
+    title: "Best MCP Servers for Design and UX Teams in 2026",
+    description: "Top MCP servers for designers and UX teams: asset management, design research, user feedback analysis, Figma workflows, content generation, and accessibility auditing.",
+    date: "2026-05-14",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "7 min read",
+    keywords: ["mcp servers for designers", "mcp for ux teams", "design workflow mcp", "design ai tools 2026", "mcp for figma", "model context protocol design"],
+    relatedServerSlugs: ["brave-search", "exa", "fetch", "puppeteer", "notion", "google-drive", "airtable", "slack"],
+    content: `
+<p>Design and UX work is highly contextual — good design decisions require understanding user research, business goals, technical constraints, brand guidelines, and competitor benchmarks simultaneously. MCP servers give your AI access to the assets, research, and feedback that live across Notion, Drive, Figma exports, analytics, and communication tools — so it can contribute meaningfully to design workflows rather than just generating generic suggestions.</p>
+
+<h2>1. Fetch MCP Server — Competitive UI Research and Accessibility Audits</h2>
+
+<p>Design research starts with understanding what's out there. The Fetch MCP server lets your AI pull live page HTML to audit competitor UI patterns, analyze accessible markup implementations, review how design systems are structured in production, and identify common patterns in your design space — turning competitive research from a manual bookmark exercise into a structured AI analysis.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Competitor UI pattern research from live pages</li>
+<li>Accessibility markup audit (ARIA roles, semantic HTML, alt text)</li>
+<li>Design system implementation analysis</li>
+<li>WCAG compliance spot-checking across key pages</li>
+</ul>
+
+<p><strong>Best for:</strong> UX researchers doing competitive analysis, accessibility specialists auditing design implementations, and design leads benchmarking UI patterns against industry standards.</p>
+
+<h2>2. Puppeteer MCP Server — Visual QA and Interaction Testing</h2>
+
+<p>Design QA requires seeing how interfaces actually render — not just reading the code. The Puppeteer MCP server renders pages in a real browser, enabling your AI to capture screenshots, test responsive breakpoints, verify animation and interaction states, and identify visual regressions before they reach users. It's the closest thing to automated design review without a full visual testing suite.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Screenshot capture at multiple viewport sizes for responsive QA</li>
+<li>Interaction state testing (hover, focus, active states)</li>
+<li>Visual regression identification against design specs</li>
+<li>Form flow and navigation sequence testing</li>
+</ul>
+
+<p><strong>Best for:</strong> Design QA specialists, UX engineers verifying implementations, and product designers doing pre-launch visual checks.</p>
+
+<h2>3. Notion MCP Server — Design System and Research Repository</h2>
+
+<p>Design teams document their systems, research findings, user personas, and brand guidelines in Notion. The MCP server makes this institutional knowledge AI-accessible — your assistant can retrieve color tokens when generating design specs, reference user personas when evaluating design decisions, access brand voice guidelines when writing UX copy, and search research archives for relevant prior findings.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Design system documentation search (tokens, components, guidelines)</li>
+<li>User research and persona retrieval</li>
+<li>Brand guidelines and voice documentation access</li>
+<li>UX writing guidelines for copy review</li>
+</ul>
+
+<p><strong>Best for:</strong> Design system teams, UX researchers managing research repositories, and product designers working within documented brand guidelines.</p>
+
+<h2>4. Google Drive MCP Server — Design Asset and Brief Management</h2>
+
+<p>Wireframes, mockup exports, client briefs, design specs, and presentation decks accumulate in Drive. The Google Drive MCP server lets your AI locate specific assets, pull context from previous project briefs, access exported design documentation, and draft new briefs from templates — without manual folder navigation through nested client directories.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Design brief and project specification search</li>
+<li>Previous project asset and mockup discovery</li>
+<li>Client presentation retrieval and context access</li>
+<li>Brand asset and style guide file location</li>
+</ul>
+
+<p><strong>Best for:</strong> Design agencies managing client projects, in-house design teams with complex Drive hierarchies, and UX leads coordinating design work across multiple products.</p>
+
+<h2>5. Exa MCP Server — Design Inspiration and Research</h2>
+
+<p>Finding genuinely relevant design inspiration requires semantic understanding, not keyword matching. Exa's semantic search helps your AI discover relevant UX patterns, research interaction design approaches for specific use cases, find accessibility case studies, and surface design thinking articles that apply to your current design challenge — faster than Dribbble browsing.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>UX pattern research for specific interaction challenges</li>
+<li>Design case study discovery for relevant product types</li>
+<li>Accessibility research and implementation examples</li>
+<li>Design system and component library discovery</li>
+</ul>
+
+<p><strong>Best for:</strong> UX designers researching unfamiliar interaction patterns, design researchers exploring user mental models, and product designers looking for evidence-based design decisions.</p>
+
+<h2>6. Brave Search MCP Server — Design Trend Research</h2>
+
+<p>Design trends move fast — new patterns in mobile UX, dark mode implementations, AI interface conventions, and accessibility standards emerge constantly. The Brave Search MCP server gives your AI current web search to track emerging design patterns, find recent research on UX topics, monitor what design leaders are publishing, and stay current on tools and methodologies.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Current design trend research and pattern discovery</li>
+<li>UX research and usability study discovery</li>
+<li>Tool and plugin update monitoring</li>
+<li>Design conference talk and thought leadership search</li>
+</ul>
+
+<p><strong>Best for:</strong> Design leads staying current on industry trends, UX researchers monitoring published studies, and design educators preparing course materials.</p>
+
+<h2>7. Airtable MCP Server — User Feedback and Research Data</h2>
+
+<p>User research data — survey results, usability test notes, NPS responses, support ticket themes — often lives in Airtable. The MCP server lets your AI query this feedback data to identify UX pain points, surface patterns across user segments, track usability issue resolution, and generate research summaries for design reviews — turning raw feedback into design-actionable insights.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>User feedback and survey response analysis</li>
+<li>Usability issue tracking and pattern identification</li>
+<li>NPS and satisfaction score trend analysis</li>
+<li>Research participant database management</li>
+</ul>
+
+<p><strong>Best for:</strong> UX researchers managing feedback in Airtable, product designers interpreting user research, and design teams building user insight libraries.</p>
+
+<h2>8. Slack MCP Server — Design Review and Feedback Workflows</h2>
+
+<p>Design feedback happens in Slack — quick comments on mockups, async review threads, stakeholder reactions to prototypes. The Slack MCP server lets your AI monitor design review channels, compile feedback from multiple stakeholders into structured summaries, identify conflicting requests, and draft follow-up questions that move design reviews forward without losing important context across threads.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Design review thread summarization and feedback compilation</li>
+<li>Stakeholder feedback conflict identification</li>
+<li>Design critique follow-up question drafting</li>
+<li>Design decision documentation from Slack discussion</li>
+</ul>
+
+<p><strong>Best for:</strong> Design teams using Slack for async review, product designers managing multi-stakeholder feedback, and design leads documenting design decisions from team discussions.</p>
+
+<h2>The Design Team MCP Stack</h2>
+
+<ul>
+<li><strong>Research stack:</strong> Brave Search + Exa + Fetch (trend research + semantic research + live page analysis)</li>
+<li><strong>QA stack:</strong> Puppeteer + Fetch (visual rendering + markup audit)</li>
+<li><strong>Operations stack:</strong> Notion + Google Drive + Airtable + Slack (system docs + assets + feedback + review)</li>
+<li><strong>Full design stack:</strong> All of the above — your AI handles competitive research, visual QA, design documentation, user feedback, and stakeholder communication from one workflow</li>
+</ul>
+
+<p>Browse all <a href="/category/browser-automation">browser automation MCP servers</a> and <a href="/category/productivity">productivity MCP servers</a> on MyMCPTools. For related guides, see <a href="/blog/best-mcp-servers-for-frontend-developers">Best MCP Servers for Frontend Developers</a> and <a href="/blog/best-mcp-servers-for-content-creation">Best MCP Servers for Content Creation</a>.</p>
+    `.trim(),
+  },
 ];
 
 export function getBlogPostBySlug(slug: string): BlogPost | undefined {
