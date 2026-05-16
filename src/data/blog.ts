@@ -20645,6 +20645,427 @@ jupyter mcp install</code></pre>
 <p>Browse all <a href="/category/productivity">productivity MCP servers</a> and <a href="/category/communication">communication MCP servers</a> on MyMCPTools. For related guides, see <a href="/blog/best-mcp-servers-for-business-analysts">Best MCP Servers for Business Analysts</a> and <a href="/blog/best-mcp-servers-for-operations-teams">Best MCP Servers for Operations Teams</a>.</p>
     `.trim(),
   },
+  {
+    slug: "best-mcp-servers-for-ecommerce",
+    title: "Best MCP Servers for E-Commerce Teams in 2026",
+    description: "The top MCP servers for online retailers and e-commerce teams — from order management and payments to inventory tracking, customer data, and marketing automation.",
+    date: "2026-05-15",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "8 min read",
+    keywords: ["best mcp servers for ecommerce", "ecommerce mcp servers", "mcp tools for online stores", "shopify mcp server", "stripe mcp server", "ecommerce ai workflow 2026"],
+    relatedServerSlugs: ["stripe", "postgresql", "airtable", "slack", "google-drive", "notion", "brave-search", "memory", "sendgrid", "hubspot"],
+    content: `
+<p>E-commerce teams run on data — order volumes, inventory levels, customer lifetime value, campaign performance, return rates. The challenge isn't access to data, it's the constant context-switching between Shopify, your payment processor, your warehouse system, your CRM, and your analytics tools. MCP servers eliminate that switching cost by giving your AI assistant direct, structured access to the systems where your store's data lives.</p>
+
+<p>Here are the best MCP servers for e-commerce teams in 2026.</p>
+
+<h2>1. Stripe MCP Server — Payments, Revenue, and Subscription Data</h2>
+
+<p>For e-commerce businesses, Stripe is the financial source of truth. The Stripe MCP server gives your AI direct access to payment data — query revenue by time period, product, or customer segment; identify failed payments requiring recovery; track subscription churn and cohort retention; pull charge and dispute data for accounting reconciliation; and analyze which products and pricing tiers are driving the most revenue without exporting CSVs or waiting for finance to run reports.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Revenue query by period, product, and customer segment</li>
+<li>Failed payment identification and recovery workflow support</li>
+<li>Subscription churn and retention cohort analysis</li>
+<li>Charge history, dispute status, and refund tracking for reconciliation</li>
+</ul>
+
+<p><strong>Best for:</strong> E-commerce operators tracking revenue performance, subscription businesses monitoring churn, and finance teams reconciling payment data without manual Stripe dashboard exports.</p>
+
+<h2>2. PostgreSQL MCP Server — Order History and Customer Database</h2>
+
+<p>Most mature e-commerce stacks store order history, product catalog, and customer records in a relational database. The PostgreSQL MCP server lets your AI query this data conversationally — pull average order value by product category, identify customers who haven't ordered in 90 days for win-back campaigns, calculate repeat purchase rates by acquisition source, and analyze which product combinations appear in the same cart most often for bundle optimization.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Order history queries by period, customer, product, and status</li>
+<li>Customer segmentation by purchase frequency, recency, and value (RFM)</li>
+<li>Product performance and catalog analytics without BI tool setup</li>
+<li>Cart combination and bundle affinity analysis for merchandising</li>
+</ul>
+
+<p><strong>Best for:</strong> E-commerce analysts running customer segmentation, merchandising teams identifying bundle opportunities, and operators who need order data insights without writing SQL from memory.</p>
+
+<h2>3. Airtable MCP Server — Inventory and Supplier Management</h2>
+
+<p>Inventory management, supplier contacts, purchase orders, and product launch timelines often live in Airtable for e-commerce teams that haven't yet invested in dedicated ERP software. The Airtable MCP server makes this operational data AI-accessible — check current stock levels before committing to a promotion, pull supplier lead times when planning a reorder, track which SKUs are flagged for discontinuation, and draft purchase orders from your supplier contact list.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Real-time inventory level queries by SKU, category, and warehouse location</li>
+<li>Supplier contact and lead time lookup for procurement planning</li>
+<li>Purchase order status tracking and reorder point alerts</li>
+<li>Product launch timeline and milestone tracking across teams</li>
+</ul>
+
+<p><strong>Best for:</strong> E-commerce operations teams managing inventory across multiple SKUs, buying teams planning seasonal reorders, and product teams coordinating launch timelines with suppliers.</p>
+
+<h2>4. HubSpot MCP Server — Customer Relationships and Post-Purchase Flows</h2>
+
+<p>E-commerce CRM is where customer lifetime value actually gets built — follow-up sequences, loyalty triggers, win-back campaigns, and VIP programs. The HubSpot MCP server lets your AI access customer contact records, purchase history associations, email engagement data, and active deal stages — so you can identify your highest-LTV customers before a campaign, check where a VIP customer stands in a win-back sequence, or draft a personalized re-engagement email with full purchase history context.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Contact record lookup with purchase history and engagement score</li>
+<li>Sequence enrollment status and email performance by customer segment</li>
+<li>VIP and loyalty tier identification for campaign personalization</li>
+<li>Deal and pipeline stage tracking for wholesale and B2B customers</li>
+</ul>
+
+<p><strong>Best for:</strong> E-commerce marketers personalizing post-purchase flows, retention teams managing win-back campaigns, and B2B e-commerce businesses managing wholesale customer relationships.</p>
+
+<h2>5. SendGrid MCP Server — Email Campaign Performance</h2>
+
+<p>Email is the highest-ROI channel for most e-commerce businesses. The SendGrid MCP server gives your AI access to campaign performance data — open rates by subject line and send time, click-through rates by product category, unsubscribe patterns by segment, and deliverability metrics — so you can optimize your next send based on real performance data without logging into SendGrid and manually pulling reports.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Campaign open and click-through rate queries by send date, list, and template</li>
+<li>Subject line performance comparison for A/B test analysis</li>
+<li>Unsubscribe and bounce rate monitoring by segment and send pattern</li>
+<li>Deliverability health tracking for domain reputation management</li>
+</ul>
+
+<p><strong>Best for:</strong> E-commerce email marketers optimizing send cadence and subject lines, retention teams analyzing campaign performance, and operators monitoring email deliverability during high-volume promotional periods.</p>
+
+<h2>6. Brave Search MCP Server — Competitor Monitoring and Trend Research</h2>
+
+<p>E-commerce competitive intelligence — monitoring competitor pricing changes, tracking trending products before they peak, researching new entrants in your category — requires ongoing attention. The Brave Search MCP server lets your AI run real-time competitor and market research: monitor when a competitor launches a new product line, research what customers are saying about alternatives to your products, and identify rising search trends in your category before your competitors do.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Competitor product launch and pricing change monitoring</li>
+<li>Trending product and category research for merchandising decisions</li>
+<li>Customer review and sentiment research for competitor products</li>
+<li>Category trend analysis for inventory and buying decisions</li>
+</ul>
+
+<p><strong>Best for:</strong> E-commerce buyers tracking competitor assortment changes, marketing teams researching trending products for content, and operators monitoring their brand reputation across review platforms.</p>
+
+<h2>7. Notion MCP Server — SOPs, Launch Plans, and Campaign Briefs</h2>
+
+<p>Product launches, seasonal campaign plans, vendor SOPs, and brand guidelines live in Notion for most e-commerce teams. The Notion MCP server makes this institutional knowledge AI-accessible — pull the checklist for a new product launch before kicking one off, retrieve the brand guidelines when briefing an agency, check the campaign calendar before scheduling a promotion, and draft a campaign brief from your existing brand and audience documentation.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Launch checklist and SOP retrieval for product and campaign kicks</li>
+<li>Brand guideline and asset location lookup for agency briefings</li>
+<li>Campaign calendar access for promotion scheduling and conflict avoidance</li>
+<li>Vendor and supplier SOP retrieval for operational consistency</li>
+</ul>
+
+<p><strong>Best for:</strong> E-commerce operations teams running repeatable launch processes, marketing teams briefing creative agencies, and growing e-commerce businesses documenting and scaling their operational playbooks.</p>
+
+<h2>8. Memory MCP Server — Customer and Vendor Relationship Context</h2>
+
+<p>Relationship context — what a key wholesale customer requested in the last call, which supplier has been unreliable on lead times, what a VIP customer's preferences are — doesn't live in any system. The Memory MCP server gives your AI persistent recall of this accumulated knowledge, so you can brief yourself before a vendor negotiation, recall a VIP customer's specific preferences before a high-touch interaction, and maintain relationship continuity without manually reviewing notes before every call.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Vendor relationship notes and negotiation history for procurement context</li>
+<li>VIP customer preference and interaction history for high-touch service</li>
+<li>Supplier reliability and issue history for sourcing decisions</li>
+<li>Agency and partner relationship context for briefing continuity</li>
+</ul>
+
+<p><strong>Best for:</strong> E-commerce buyers managing vendor relationships, customer success teams serving VIP accounts, and operators who manage a large number of supplier relationships that require ongoing context.</p>
+
+<h2>The E-Commerce MCP Stack</h2>
+
+<ul>
+<li><strong>Revenue stack:</strong> Stripe + PostgreSQL (payment data + order history = complete revenue picture)</li>
+<li><strong>Operations stack:</strong> Airtable + Notion + Memory (inventory + SOPs + relationship context)</li>
+<li><strong>Marketing stack:</strong> HubSpot + SendGrid + Brave Search (CRM + email performance + market intelligence)</li>
+<li><strong>Full e-commerce stack:</strong> All of the above — your AI tracks revenue, monitors inventory, personalizes customer outreach, and researches competitors from a single integrated workflow</li>
+</ul>
+
+<p>Browse all <a href="/category/finance">finance MCP servers</a> and <a href="/category/analytics">analytics MCP servers</a> on MyMCPTools. For related guides, see <a href="/blog/best-mcp-servers-for-marketing">Best MCP Servers for Marketing</a> and <a href="/blog/best-mcp-servers-for-customer-support">Best MCP Servers for Customer Support</a>.</p>
+    `.trim(),
+  },
+  {
+    slug: "best-mcp-servers-for-legal-teams",
+    title: "Best MCP Servers for Legal Teams in 2026",
+    description: "The top MCP servers for lawyers and legal professionals — from contract review and document management to legal research, deadline tracking, and client communication.",
+    date: "2026-05-15",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "8 min read",
+    keywords: ["best mcp servers for lawyers", "legal mcp servers", "mcp tools for law firms", "mcp server contract review", "legal ai workflow 2026", "law firm mcp"],
+    relatedServerSlugs: ["filesystem", "google-drive", "brave-search", "fetch", "notion", "memory", "gmail", "slack"],
+    content: `
+<p>Legal work is fundamentally document-intensive and research-heavy. Lawyers spend enormous time locating precedents, reviewing contracts, tracking deadlines, and managing client communications — work that requires high accuracy and deep contextual understanding. MCP servers give AI assistants direct access to the document repositories, research sources, and communication systems where legal work happens, turning scattered information into structured, retrievable context.</p>
+
+<p>Here are the best MCP servers for legal teams in 2026.</p>
+
+<h2>1. Filesystem MCP Server — Local Document and Contract Access</h2>
+
+<p>Most legal work begins with documents — contracts, briefs, pleadings, discovery materials, and correspondence — stored in organized folder structures on local drives or network shares. The Filesystem MCP server gives your AI direct access to this document library: locate and surface a specific contract clause across all agreements with a counterparty, find every document mentioning a specific party name across a matter's files, pull the most recent version of a template for a specific deal type, and compare contract language across agreements to identify deviations from standard terms.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Contract search by party name, clause type, or term across document libraries</li>
+<li>Agreement version history navigation and comparison</li>
+<li>Template location and retrieval by matter type and jurisdiction</li>
+<li>Discovery document organization and keyword identification</li>
+</ul>
+
+<p><strong>Best for:</strong> Lawyers reviewing contracts, paralegals organizing discovery files, and legal operations teams managing large document repositories across multiple client matters.</p>
+
+<h2>2. Google Drive MCP Server — Shared Matter Files and Collaboration</h2>
+
+<p>Law firms using Google Workspace store client matter files, research memos, drafts, and correspondence in Google Drive. The MCP server makes this shared repository AI-navigable: retrieve the research memo a colleague drafted on a specific issue, find the last draft of an agreement that a client returned, pull all correspondence with a counterparty across a transaction's file, and locate the firm's standard representations and warranties for a particular deal type across the shared template library.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Matter file search and document retrieval by client, matter, and document type</li>
+<li>Correspondence thread compilation by counterparty or date range</li>
+<li>Draft agreement version tracking across collaborative editing sessions</li>
+<li>Firm template library search by deal type, jurisdiction, and clause category</li>
+</ul>
+
+<p><strong>Best for:</strong> Law firms using Google Workspace, legal teams collaborating on large transaction files, and in-house legal departments managing a shared document library across multiple business units.</p>
+
+<h2>3. Brave Search MCP Server — Legal Research and Case Law</h2>
+
+<p>Legal research requires locating relevant statutes, regulations, case law, and secondary sources. The Brave Search MCP server gives your AI real-time search capability for legal research: find recent case law on a specific legal issue, locate the current text of a regulation or statute, research how courts in different jurisdictions have treated a specific contractual provision, and identify recent developments in a practice area before a client call or matter update.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Case law research by legal issue, jurisdiction, and court level</li>
+<li>Statute and regulation text retrieval and recent amendment tracking</li>
+<li>Regulatory guidance and agency opinion research</li>
+<li>Practice area development and recent ruling monitoring</li>
+</ul>
+
+<p><strong>Best for:</strong> Associates conducting preliminary legal research, in-house counsel monitoring regulatory developments, and lawyers needing a fast first-pass on a legal issue before escalating to a specialized research platform.</p>
+
+<h2>4. Fetch MCP Server — Court Websites and Regulatory Sources</h2>
+
+<p>Legal information lives on specific authoritative websites — court filing systems, regulatory agency sites, government databases, and bar association resources. The Fetch MCP server lets your AI retrieve current content from these targeted sources: pull the current court rules for a specific jurisdiction before filing, retrieve an agency's most recent guidance document, access a court's docket system for case status information, and pull public filings from regulatory databases for competitive intelligence or due diligence research.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Court rules and local procedures retrieval for specific jurisdictions</li>
+<li>Regulatory agency guidance and enforcement action monitoring</li>
+<li>Public filing and docket information access for due diligence</li>
+<li>Bar association ethics opinions and professional rules retrieval</li>
+</ul>
+
+<p><strong>Best for:</strong> Litigators checking court-specific filing rules, regulatory counsel monitoring agency guidance, and M&A lawyers conducting public filing research during due diligence.</p>
+
+<h2>5. Notion MCP Server — Matter Management and Deadline Tracking</h2>
+
+<p>Legal teams increasingly use Notion to manage matters, track client commitments, maintain deadline calendars, and document work product across engagements. The Notion MCP server makes this matter management system AI-accessible: check all upcoming deadlines for a specific matter, pull the task list for a transaction to identify open items, retrieve the matter summary for a client before a status call, and identify which matters are past their estimated completion dates for portfolio review.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Matter deadline and milestone retrieval by client and engagement</li>
+<li>Open task and responsibility tracking across active matters</li>
+<li>Matter status summary for client reporting and partner review</li>
+<li>Engagement scope and billing rate documentation for matter management</li>
+</ul>
+
+<p><strong>Best for:</strong> Law firms managing multiple simultaneous matters, in-house counsel tracking legal project portfolios, and legal operations teams overseeing engagement status across the firm's active caseload.</p>
+
+<h2>6. Memory MCP Server — Client Relationship and Matter History</h2>
+
+<p>Effective client representation depends on accumulated context — the client's risk tolerance, their specific negotiating preferences, issues that arose in prior transactions, and the reasoning behind past legal decisions. The Memory MCP server gives your AI persistent recall of this relationship and matter history: brief yourself on a client's prior positions before a negotiation, recall the specific concerns a counterparty raised in a previous deal when engaging with them again, and maintain institutional knowledge about a client's business that doesn't make it into formal matter records.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Client preference and negotiating position history for relationship context</li>
+<li>Counterparty history and prior deal context for negotiation preparation</li>
+<li>Matter-specific decision rationale preservation for future reference</li>
+<li>Client business context notes for industry-specific representation continuity</li>
+</ul>
+
+<p><strong>Best for:</strong> Partners managing long-term client relationships, litigators with recurring counterparties, and legal teams where institutional knowledge about clients risks being lost when attorneys transition off matters.</p>
+
+<h2>7. Gmail MCP Server — Client Communication and Correspondence Management</h2>
+
+<p>Client correspondence — questions, document requests, approval confirmations, and status updates — flows through email. The Gmail MCP server lets your AI manage this communication stream: find all correspondence with a client about a specific issue, identify emails requiring response that have gone unaddressed, draft client status updates with full matter context, and compile correspondence with a counterparty across a transaction for negotiation history review.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Client correspondence search by matter, issue, and date range</li>
+<li>Pending response identification for follow-up management</li>
+<li>Status update drafting with matter progress context</li>
+<li>Counterparty communication compilation for negotiation history</li>
+</ul>
+
+<p><strong>Best for:</strong> Attorneys managing high-volume client correspondence, paralegals supporting multiple lawyers' email workflows, and legal teams maintaining comprehensive correspondence records for matter files.</p>
+
+<h2>8. Slack MCP Server — Team Coordination and Internal Escalations</h2>
+
+<p>Internal legal team coordination — case strategy discussions, research questions, work product review requests, and deadline escalations — happens in Slack. The Slack MCP server lets your AI surface the most important internal conversations: find the research memo a colleague mentioned sharing last week, identify matters where team members have flagged concerns or blockers, retrieve the discussion thread about a client's specific ask, and catch up on internal matter discussions after time away.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Matter-specific discussion and research thread retrieval</li>
+<li>Blocker and escalation identification across team channels</li>
+<li>Work product sharing and internal review request tracking</li>
+<li>Client-specific discussion history for matter context</li>
+</ul>
+
+<p><strong>Best for:</strong> Legal teams using Slack for internal coordination, law firms with distributed teams working on shared matters, and legal operations teams monitoring matter health across a large caseload.</p>
+
+<h2>The Legal Team MCP Stack</h2>
+
+<ul>
+<li><strong>Document stack:</strong> Filesystem + Google Drive (local contract files + shared matter documents)</li>
+<li><strong>Research stack:</strong> Brave Search + Fetch (case law and legal issues + court rules and regulatory sources)</li>
+<li><strong>Matter management stack:</strong> Notion + Memory (deadline and task tracking + client and counterparty context)</li>
+<li><strong>Communication stack:</strong> Gmail + Slack (client correspondence + internal team coordination)</li>
+<li><strong>Full legal stack:</strong> All of the above — your AI locates documents, researches issues, tracks deadlines, maintains client context, and manages correspondence from a single integrated workflow</li>
+</ul>
+
+<p>Browse all <a href="/category/productivity">productivity MCP servers</a> and <a href="/category/search">search MCP servers</a> on MyMCPTools. For related guides, see <a href="/blog/best-mcp-servers-for-research">Best MCP Servers for Research</a> and <a href="/blog/best-mcp-servers-for-compliance-teams">Best MCP Servers for Compliance Teams</a>.</p>
+    `.trim(),
+  },
+  {
+    slug: "best-mcp-servers-for-healthcare",
+    title: "Best MCP Servers for Healthcare Teams in 2026",
+    description: "The top MCP servers for healthcare professionals and medical teams — from clinical documentation and research to scheduling, patient communication, and regulatory compliance.",
+    date: "2026-05-15",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "7 min read",
+    keywords: ["best mcp servers for healthcare", "healthcare mcp servers", "mcp tools for medical teams", "clinical ai workflow", "mcp server medical documentation 2026", "healthcare ai productivity"],
+    relatedServerSlugs: ["filesystem", "google-drive", "brave-search", "fetch", "notion", "memory", "slack", "postgresql"],
+    content: `
+<p>Healthcare teams operate under unique constraints — information accuracy is life-critical, regulatory compliance is mandatory, and documentation burden is one of the field's most persistent productivity drains. Clinicians spend an estimated 30-50% of their time on documentation rather than direct patient care. MCP servers can help by giving AI assistants structured access to medical literature, scheduling systems, clinical protocols, and institutional knowledge — reducing documentation friction while keeping humans in the decision-making loop.</p>
+
+<p><strong>Important note:</strong> MCP servers in healthcare contexts must be configured to work with compliant data infrastructure. Patient health information (PHI) falls under HIPAA, and any deployment must use HIPAA-compliant systems and access controls. The servers and use cases described here focus on non-PHI workflows, clinical literature access, and institutional knowledge management.</p>
+
+<p>Here are the best MCP servers for healthcare teams in 2026.</p>
+
+<h2>1. Brave Search MCP Server — Medical Literature and Clinical Research</h2>
+
+<p>Clinical decision-making depends on access to current evidence. The Brave Search MCP server gives your AI real-time access to medical literature and clinical resources: search for recent studies on a specific treatment protocol, look up current clinical guidelines from professional societies, research drug interaction information across medical databases, and identify recent systematic reviews or meta-analyses on a clinical question — accelerating literature access without requiring a separate PubMed workflow.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>PubMed-indexed study and systematic review search by condition and intervention</li>
+<li>Clinical guideline lookup from specialty societies (AHA, ADA, ACOG, etc.)</li>
+<li>Drug interaction, dosing, and contraindication reference research</li>
+<li>Rare condition and case report research for differential diagnosis support</li>
+</ul>
+
+<p><strong>Best for:</strong> Clinicians reviewing evidence before a complex case discussion, residents researching treatment protocols, and clinical teams staying current with rapidly evolving specialty guidelines.</p>
+
+<h2>2. Fetch MCP Server — Clinical Guidelines and Regulatory Sources</h2>
+
+<p>Authoritative clinical information lives on specific institutional websites — CDC, NIH, FDA, WHO, and professional society portals. The Fetch MCP server lets your AI retrieve current content from these targeted sources: pull the CDC's current vaccination schedule, retrieve the FDA's latest drug safety communication, access WHO protocols for a specific infectious disease, and get the current version of a specialty society's clinical practice guideline without navigating multiple websites.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>CDC immunization schedule and infectious disease guidance retrieval</li>
+<li>FDA drug approval, safety alert, and labeling change monitoring</li>
+<li>WHO clinical protocol and global health guidance access</li>
+<li>Professional society clinical practice guideline retrieval by specialty</li>
+</ul>
+
+<p><strong>Best for:</strong> Clinicians needing current regulatory and guideline information during patient care planning, infection control teams monitoring CDC updates, and clinical educators developing training content from authoritative sources.</p>
+
+<h2>3. Notion MCP Server — Clinical Protocols and Institutional SOPs</h2>
+
+<p>Healthcare institutions document clinical protocols, standard operating procedures, care pathways, and quality improvement processes. Teams increasingly use Notion to maintain these institutional knowledge bases. The Notion MCP server makes this documentation AI-accessible: retrieve the protocol for a specific clinical procedure, pull the SOP for a departmental process, check the care pathway for a patient population, and identify which protocols are under active review or have been recently updated.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Clinical protocol retrieval by condition, procedure, and department</li>
+<li>Standard operating procedure lookup for departmental workflows</li>
+<li>Care pathway documentation access for multidisciplinary team planning</li>
+<li>Protocol update tracking and version history for compliance management</li>
+</ul>
+
+<p><strong>Best for:</strong> Clinical teams managing complex care pathways, nursing staff accessing procedural SOPs, and quality improvement teams maintaining and distributing updated institutional protocols.</p>
+
+<h2>4. Filesystem MCP Server — Clinical Documentation Templates and Reference Files</h2>
+
+<p>Healthcare teams maintain large libraries of documentation templates — H&P formats, discharge summary structures, referral letter templates, and clinical note formats. The Filesystem MCP server gives your AI direct access to these local document libraries: locate the correct documentation template for a specific visit type, retrieve a prior note format to match institutional style, access reference files for coding and billing workflows, and find the most current version of a form before completing it.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Documentation template location and retrieval by visit type and specialty</li>
+<li>Reference file access for coding, billing, and compliance workflows</li>
+<li>Form version management and current-version identification</li>
+<li>Clinical reference material organization and quick retrieval</li>
+</ul>
+
+<p><strong>Best for:</strong> Clinicians drafting documentation in unfamiliar formats, medical coders locating billing reference materials, and clinical operations teams distributing updated templates across departments.</p>
+
+<h2>5. PostgreSQL MCP Server — Operational and Administrative Analytics</h2>
+
+<p>Healthcare administrative systems — scheduling, billing, quality metrics, and operational data — often reside in relational databases. The PostgreSQL MCP server enables AI-powered queries of this operational data (in compliant, de-identified contexts): analyze scheduling utilization patterns by provider and clinic, query billing and coding data for compliance review, track quality metric performance across departments, and identify operational bottlenecks from appointment and throughput data without manual report generation.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Scheduling utilization and capacity analytics by provider and time period</li>
+<li>Billing and coding pattern analysis for compliance review</li>
+<li>Quality metric tracking and trend analysis across departments</li>
+<li>Operational throughput analysis for capacity planning</li>
+</ul>
+
+<p><strong>Best for:</strong> Healthcare administrators analyzing operational performance, quality improvement teams tracking metric trends, and billing compliance teams auditing coding patterns — all in de-identified or non-PHI operational data contexts.</p>
+
+<h2>6. Memory MCP Server — Institutional Knowledge and Care Team Context</h2>
+
+<p>Clinical teams accumulate institutional knowledge that doesn't fit into formal documentation — a specific patient population's patterns, a department's informal workflows, the context behind why a protocol was designed a particular way. The Memory MCP server gives your AI persistent recall of this accumulated knowledge: brief an onboarding resident on a patient population's specific characteristics, recall why a specific clinical process was designed as it was, and maintain care team context across the handoffs and rotations that characterize healthcare delivery.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Institutional clinical knowledge preservation across staff transitions</li>
+<li>Department-specific workflow context for onboarding support</li>
+<li>Protocol design rationale documentation for compliance and education</li>
+<li>Care team relationship and communication preference context</li>
+</ul>
+
+<p><strong>Best for:</strong> Teaching hospitals preserving clinical knowledge through resident rotations, departments maintaining continuity across staff transitions, and clinical educators building on accumulated institutional learning rather than starting from scratch each cohort.</p>
+
+<h2>7. Slack MCP Server — Care Team Communication and Handoffs</h2>
+
+<p>Intra-team communication — handoff notes, urgent clinical questions, departmental announcements, and coordination across care teams — increasingly flows through Slack in healthcare settings. The Slack MCP server lets your AI surface critical communications: find the handoff note a colleague posted for a specific case type, identify urgent messages that arrived during a procedure or overnight shift, retrieve the announcement about a protocol change that was shared in a departmental channel, and compile the discussion about a specific clinical issue from a consultation channel.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Handoff note and case-specific communication retrieval</li>
+<li>Urgent message identification across departmental channels</li>
+<li>Protocol change announcement and policy update tracking</li>
+<li>Consultation and multidisciplinary team discussion compilation</li>
+</ul>
+
+<p><strong>Best for:</strong> Healthcare teams using Slack for non-PHI clinical coordination, administrative and operational staff managing departmental communications, and clinical leaders monitoring team communications during distributed care delivery.</p>
+
+<h2>8. Google Drive MCP Server — Research, Education, and Institutional Documents</h2>
+
+<p>Medical education materials, research protocols, department meeting notes, quality improvement project documentation, and institutional policy documents live in Google Drive for many healthcare organizations. The Google Drive MCP server enables AI-powered retrieval: find the research protocol for a study you're participating in, access the education curriculum for a specific training module, retrieve the meeting notes from the last quality committee session, and locate the current institutional policy on a specific clinical or compliance issue.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Research protocol and IRB documentation retrieval for study teams</li>
+<li>Medical education curriculum and training material access</li>
+<li>Committee meeting notes and institutional decision documentation</li>
+<li>Policy document search by topic and effective date</li>
+</ul>
+
+<p><strong>Best for:</strong> Academic medical centers managing research and education documentation, quality committees maintaining meeting records, and compliance teams distributing and tracking institutional policy documents.</p>
+
+<h2>The Healthcare Team MCP Stack</h2>
+
+<ul>
+<li><strong>Clinical knowledge stack:</strong> Brave Search + Fetch (medical literature + authoritative guideline sources)</li>
+<li><strong>Documentation stack:</strong> Filesystem + Google Drive (local templates + shared institutional documents)</li>
+<li><strong>Operations stack:</strong> Notion + PostgreSQL (protocols and SOPs + administrative analytics)</li>
+<li><strong>Communication stack:</strong> Slack + Memory (care team coordination + institutional knowledge)</li>
+<li><strong>Full healthcare stack:</strong> All of the above — your AI accesses clinical evidence, retrieves protocols, analyzes operations, and maintains care team context from a single integrated workflow</li>
+</ul>
+
+<p>Browse all <a href="/category/search">search MCP servers</a> and <a href="/category/productivity">productivity MCP servers</a> on MyMCPTools. For related guides, see <a href="/blog/best-mcp-servers-for-research">Best MCP Servers for Research</a> and <a href="/blog/best-mcp-servers-for-compliance-teams">Best MCP Servers for Compliance Teams</a>.</p>
+    `.trim(),
+  },
 ];
 
 export function getBlogPostBySlug(slug: string): BlogPost | undefined {
