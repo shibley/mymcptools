@@ -21486,6 +21486,426 @@ jupyter mcp install</code></pre>
 <p>Browse all <a href="/category/productivity">productivity MCP servers</a> and <a href="/category/analytics">analytics MCP servers</a> on MyMCPTools. For related guides, see <a href="/blog/best-mcp-servers-for-project-management">Best MCP Servers for Project Management</a> and <a href="/blog/best-mcp-servers-for-developers">Best MCP Servers for Developers</a>.</p>
     `.trim(),
   },
+  {
+    slug: "best-mcp-servers-for-saas-developers",
+    title: "Best MCP Servers for SaaS Developers in 2026",
+    description: "The top MCP servers for SaaS developers — from payment processing and user authentication to product analytics, error monitoring, and customer communication.",
+    date: "2026-05-16",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "8 min read",
+    keywords: ["best mcp servers for saas developers", "saas development mcp servers", "mcp tools for saas", "saas mcp server 2026", "stripe mcp server", "supabase mcp server saas"],
+    relatedServerSlugs: ["stripe", "supabase", "postgresql", "sentry", "github", "linear", "slack", "posthog"],
+    content: `
+<p>Building a SaaS product means managing an unusually wide surface area: billing and subscriptions, user authentication, product analytics, error monitoring, customer communication, and the engineering workflows that hold it all together. Context switches between these systems are constant — and each one slows you down. MCP servers give AI assistants direct access to the tools SaaS developers actually use, making it possible to reason across billing data, error logs, feature usage, and code in a single conversation.</p>
+
+<p>Here are the best MCP servers for SaaS developers in 2026.</p>
+
+<h2>1. Stripe MCP Server — Billing, Subscriptions, and Revenue Intelligence</h2>
+
+<p>Stripe is the revenue layer for most SaaS products, and the Stripe MCP server makes that revenue data AI-accessible. Query subscription status for a specific customer before a support escalation, analyze MRR by plan tier and acquisition cohort, investigate a failed payment before a churn event, retrieve invoice history for an enterprise account, and check webhook delivery status when debugging a billing integration — all without leaving your development environment. For SaaS founders and engineers, conversational access to billing data eliminates the context switch between code and the Stripe dashboard.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Customer subscription status and plan history retrieval for support and debugging</li>
+<li>MRR and revenue cohort analysis by plan, acquisition source, and date range</li>
+<li>Failed payment investigation and retry status for churn prevention workflows</li>
+<li>Webhook delivery log inspection for billing integration debugging</li>
+</ul>
+
+<p><strong>Best for:</strong> SaaS founders monitoring revenue health, engineers debugging billing integrations, and customer success teams investigating subscription issues without Stripe dashboard access.</p>
+
+<h2>2. Supabase MCP Server — User Data, Auth, and Real-Time Features</h2>
+
+<p>Supabase is a popular backend-as-a-service for SaaS products, combining PostgreSQL with built-in auth, storage, and real-time subscriptions. The Supabase MCP server gives your AI direct access to your application data: query user records and profile data during debugging, inspect auth state and session history for a specific user, retrieve storage bucket contents, monitor real-time subscription activity, and execute database queries against your application tables — making it dramatically faster to investigate user-reported issues and debug application behavior.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>User record and profile data retrieval for debugging and customer support</li>
+<li>Auth session and token state inspection for login and access issue diagnosis</li>
+<li>Database table query execution with natural language to SQL translation</li>
+<li>Real-time subscription monitoring and storage bucket inspection</li>
+</ul>
+
+<p><strong>Best for:</strong> SaaS developers using Supabase as their backend, engineers investigating user-reported bugs, and founders who need to query their application database without writing SQL manually.</p>
+
+<h2>3. PostgreSQL MCP Server — Product Analytics and Business Intelligence</h2>
+
+<p>Every meaningful SaaS metric lives in a database. The PostgreSQL MCP server enables conversational analytics: calculate feature adoption rates by cohort and plan tier, identify users approaching usage limits before they churn, analyze trial-to-paid conversion by onboarding variant, query retention curves by acquisition channel, and investigate anomalies in usage data that appear in your dashboards — without waiting for a data analyst to build the query. For SaaS teams that own their analytics database, this is the fastest path from business question to data-backed answer.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Feature adoption and usage frequency analysis by user segment and plan tier</li>
+<li>Trial-to-paid conversion funnel analysis by onboarding variant and channel</li>
+<li>Retention and churn analysis by acquisition cohort and product usage pattern</li>
+<li>Usage limit and overage detection for proactive expansion revenue identification</li>
+</ul>
+
+<p><strong>Best for:</strong> SaaS founders answering growth questions, engineers investigating anomalous usage patterns, and product teams analyzing feature adoption without involving a data team for every query.</p>
+
+<h2>4. Sentry MCP Server — Error Monitoring and Crash Intelligence</h2>
+
+<p>Sentry captures the errors and exceptions your users encounter before they file a support ticket — making it the fastest signal for production issues. The Sentry MCP server lets your AI reason over error data: investigate the full error context for a user-reported issue, identify which errors are affecting the most users, analyze error frequency trends after a deployment, retrieve the stack trace and breadcrumbs for a specific exception, and prioritize which bugs to fix based on user impact — turning reactive debugging into systematic quality management.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>User-specific error history retrieval for support escalation investigation</li>
+<li>Error frequency and user impact ranking for prioritization decisions</li>
+<li>Post-deployment error regression detection by release and environment</li>
+<li>Stack trace and breadcrumb retrieval for specific exceptions and sessions</li>
+</ul>
+
+<p><strong>Best for:</strong> SaaS engineers investigating user-reported issues, engineering managers triaging bug queues by user impact, and on-call responders diagnosing production incidents with full error context.</p>
+
+<h2>5. GitHub MCP Server — Feature Development and Release Management</h2>
+
+<p>SaaS engineering teams live in GitHub — PRs for feature work, issues for bug tracking, actions for CI/CD, and discussions for architecture decisions. The GitHub MCP server makes this engineering context AI-accessible: review what's in a release before pushing to production, check which issues are blocking a milestone, investigate a regression by searching commit history, identify which team members have the most context on a specific service, and get a status summary across open PRs without context-switching to the browser.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Release content and PR status review for deployment readiness assessment</li>
+<li>Milestone and sprint issue status tracking for engineering planning</li>
+<li>Regression investigation via commit history search and blame attribution</li>
+<li>PR review queue management and code ownership context for planning</li>
+</ul>
+
+<p><strong>Best for:</strong> SaaS engineering leads managing release cadences, engineers investigating production regressions, and founders tracking feature development progress without interrupting individual contributors.</p>
+
+<h2>6. Linear MCP Server — Issue Tracking and Engineering Velocity</h2>
+
+<p>Linear has become the preferred issue tracker for SaaS teams that value speed and clean UX. The Linear MCP server makes your issue tracking AI-queryable: retrieve all open bugs in a specific service, check which features are in the current sprint, identify blocked issues, analyze cycle time trends to spot velocity slowdowns, and generate status summaries across multiple teams — making it faster to answer "what are we actually working on?" without navigating the Linear UI.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Open issue retrieval by service, team, priority, and sprint</li>
+<li>Sprint status and completion rate tracking for engineering reporting</li>
+<li>Blocked issue identification and dependency chain analysis</li>
+<li>Cycle time trend analysis for engineering velocity measurement</li>
+</ul>
+
+<p><strong>Best for:</strong> Engineering managers tracking sprint health, SaaS founders getting engineering status updates, and engineers identifying and resolving blockers across multiple workstreams.</p>
+
+<h2>7. PostHog MCP Server — Product Analytics and Feature Flag Management</h2>
+
+<p>PostHog combines product analytics, session recording, feature flags, and A/B testing in a single platform. The PostHog MCP server gives your AI access to user behavior intelligence: query funnel conversion rates for a specific onboarding flow, retrieve feature flag status for a user or cohort, analyze retention curves by user segment, check experiment results for an A/B test, and identify which user actions correlate with long-term retention — making product analytics a conversational layer over your user behavior data.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Funnel conversion analysis by step, segment, and time period</li>
+<li>Feature flag status and rollout percentage retrieval by feature and cohort</li>
+<li>A/B test result retrieval and statistical significance assessment</li>
+<li>Retention cohort analysis and behavioral correlation identification</li>
+</ul>
+
+<p><strong>Best for:</strong> SaaS product teams running experiments, engineers managing feature flag rollouts, and founders analyzing which product behaviors predict long-term retention and expansion.</p>
+
+<h2>8. Slack MCP Server — Customer Feedback and Team Communication</h2>
+
+<p>For SaaS teams, Slack channels aggregate critical signals: customer feedback from the #feedback channel, sales-to-product escalations, on-call incident communications, and the tribal knowledge embedded in decision threads. The Slack MCP server lets your AI surface this distributed intelligence: retrieve customer feedback threads mentioning a specific feature, find the incident timeline for a recent outage, identify unanswered customer questions in your Slack Connect channels, and catch up on discussions that happened while you were focused on a development sprint.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Customer feedback thread retrieval by product area, feature, and date</li>
+<li>Incident timeline reconstruction from on-call channel history</li>
+<li>Unanswered question identification in customer-facing Slack Connect channels</li>
+<li>Cross-channel discussion compilation by feature and release</li>
+</ul>
+
+<p><strong>Best for:</strong> SaaS founders synthesizing customer feedback, engineers reconstructing incident timelines for postmortems, and customer success teams surfacing unanswered questions in high-volume Slack channels.</p>
+
+<h2>The SaaS Developer MCP Stack</h2>
+
+<ul>
+<li><strong>Revenue stack:</strong> Stripe + PostgreSQL (billing and subscriptions + business analytics)</li>
+<li><strong>Backend stack:</strong> Supabase + Sentry (application data and auth + error monitoring)</li>
+<li><strong>Engineering stack:</strong> GitHub + Linear (code and releases + issue tracking and velocity)</li>
+<li><strong>Intelligence stack:</strong> PostHog + Slack (product analytics and flags + customer feedback and team context)</li>
+<li><strong>Full SaaS stack:</strong> All of the above — your AI reasons across billing data, application errors, feature usage, and engineering progress in a single integrated workflow</li>
+</ul>
+
+<p>Browse all <a href="/category/finance">finance MCP servers</a> and <a href="/category/analytics">analytics MCP servers</a> on MyMCPTools. For related guides, see <a href="/blog/best-mcp-servers-for-developers">Best MCP Servers for Developers</a> and <a href="/blog/best-mcp-servers-for-startup-founders">Best MCP Servers for Startup Founders</a>.</p>
+    `.trim(),
+  },
+  {
+    slug: "best-mcp-servers-for-email-marketing",
+    title: "Best MCP Servers for Email Marketing in 2026",
+    description: "The top MCP servers for email marketers — from campaign analytics and subscriber management to deliverability monitoring, personalization, and competitive intelligence.",
+    date: "2026-05-16",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "8 min read",
+    keywords: ["best mcp servers for email marketing", "email marketing mcp servers", "mcp tools for email campaigns", "sendgrid mcp server", "email automation mcp 2026", "email marketer ai tools"],
+    relatedServerSlugs: ["sendgrid", "resend", "hubspot", "postgresql", "airtable", "brave-search", "fetch", "slack"],
+    content: `
+<p>Email marketing is a data-intensive discipline. Effective campaigns require understanding subscriber behavior, segmentation data, deliverability signals, competitive benchmarks, and the performance history of past sends — all of which lives in different systems. MCP servers connect AI assistants directly to the tools email marketers use, making it possible to analyze campaign performance, diagnose deliverability issues, and generate personalized content without constant context switching.</p>
+
+<p>Here are the best MCP servers for email marketing in 2026.</p>
+
+<h2>1. SendGrid MCP Server — Campaign Analytics and Deliverability Intelligence</h2>
+
+<p>SendGrid is the transactional and marketing email backbone for thousands of businesses. The SendGrid MCP server makes your email data AI-accessible: query open rates and click-through rates for a specific campaign, analyze unsubscribe patterns after a list segment send, investigate a deliverability drop by reviewing bounce and spam complaint rates, retrieve suppression list entries for a specific domain, and check webhook event logs when debugging email delivery — turning reactive email troubleshooting into proactive performance management.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Campaign performance metrics retrieval by send date, list segment, and template</li>
+<li>Bounce and spam complaint rate analysis for deliverability diagnosis</li>
+<li>Suppression list management and unsubscribe pattern investigation</li>
+<li>Webhook event log inspection for transactional email debugging</li>
+</ul>
+
+<p><strong>Best for:</strong> Email marketers diagnosing deliverability issues, marketing engineers debugging transactional email workflows, and campaign managers analyzing performance trends across multiple send types.</p>
+
+<h2>2. HubSpot MCP Server — Contact Intelligence and Campaign Lifecycle</h2>
+
+<p>HubSpot centralizes contact records, email sequences, deal stages, and campaign performance for marketing teams. The HubSpot MCP server gives your AI access to this marketing database: retrieve the engagement history for a specific contact before a personalized follow-up, analyze which email sequences convert at the highest rate, identify contacts who opened but didn't click for re-engagement targeting, check the enrollment status of contacts in active workflows, and pull campaign attribution data for a specific quarter — making segmentation and personalization decisions AI-assisted rather than manual.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Contact engagement history retrieval by email, list membership, and date range</li>
+<li>Email sequence conversion rate analysis by step, segment, and persona</li>
+<li>Behavioral segmentation: open-not-click, high-engagement, and re-engagement cohort identification</li>
+<li>Workflow enrollment status and sequence progression tracking</li>
+</ul>
+
+<p><strong>Best for:</strong> Email marketers building behavioral segments, SDRs personalizing follow-up sequences, and marketing operations teams auditing workflow enrollment and contact data quality.</p>
+
+<h2>3. PostgreSQL MCP Server — Subscriber Analytics and Cohort Analysis</h2>
+
+<p>When email data lives in your own database — subscriber records, behavioral events, purchase history, and segmentation attributes — the PostgreSQL MCP server enables conversational analytics. Query which subscriber segments have the highest lifetime value, analyze how email engagement correlates with product usage, identify subscribers who are approaching churn signals, calculate the ROI of a specific email campaign by tracing conversions to subscriber actions, and build ad-hoc segments from behavioral data without waiting for an analyst to run the query.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Subscriber segment LTV and engagement correlation analysis</li>
+<li>Email-to-conversion attribution analysis by campaign and product behavior</li>
+<li>Churn signal identification from engagement decay and behavioral patterns</li>
+<li>Ad-hoc behavioral segmentation from subscriber activity and purchase data</li>
+</ul>
+
+<p><strong>Best for:</strong> Email marketing teams with subscriber data in their own database, growth engineers analyzing campaign ROI, and marketers building complex behavioral segments without SQL expertise.</p>
+
+<h2>4. Resend MCP Server — Transactional Email and Developer Workflow</h2>
+
+<p>Resend is the modern transactional email API built for developers, with clean React Email templates and fast deliverability. The Resend MCP server makes your transactional email pipeline AI-accessible: check delivery status for a specific email send, retrieve email logs for a user who didn't receive a password reset or welcome message, inspect webhook events for failed deliveries, monitor open and click tracking for triggered emails, and debug template rendering issues — giving developers and marketers a unified view of transactional email health without the Resend dashboard.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Individual email delivery status and log retrieval for user support</li>
+<li>Failed delivery investigation by recipient domain and error type</li>
+<li>Webhook event inspection for transactional email pipeline debugging</li>
+<li>Open and click tracking for triggered email performance monitoring</li>
+</ul>
+
+<p><strong>Best for:</strong> Developers debugging transactional email delivery, customer support teams investigating missed system emails, and marketing engineers monitoring triggered campaign performance.</p>
+
+<h2>5. Airtable MCP Server — Content Calendar and Campaign Database</h2>
+
+<p>Many email marketing teams manage their content calendar, campaign briefs, and asset inventory in Airtable. The MCP server makes this campaign database AI-accessible: retrieve the brief and copy for a campaign scheduled in the next two weeks, check which campaigns are awaiting review or approval, identify gaps in the content calendar for a specific product launch, pull the A/B test hypothesis and results for recent sends, and retrieve asset status for campaigns that require design resources — streamlining campaign production without spreadsheet navigation.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Campaign brief and copy retrieval by date, status, and product area</li>
+<li>Approval workflow status and reviewer assignment tracking</li>
+<li>Content calendar gap identification for launch and promotional planning</li>
+<li>A/B test hypothesis and results documentation retrieval for optimization learning</li>
+</ul>
+
+<p><strong>Best for:</strong> Email marketing managers coordinating multi-campaign production, content strategists planning email calendars, and marketing operations teams tracking campaign approval workflows.</p>
+
+<h2>6. Brave Search MCP Server — Competitive Email Intelligence</h2>
+
+<p>Understanding what competitors are sending — subject line patterns, promotional cadences, offer structures, and seasonal campaign timing — is a core email marketing competency. The Brave Search MCP server gives your AI real-time competitive intelligence: research what promotional emails a competitor sent during a recent sales event, identify industry benchmark data for email frequency and timing, find case studies on high-performing subject line patterns for your niche, monitor press coverage of email deliverability changes that affect your platform, and research regulatory changes affecting email compliance in your target markets.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Competitor promotional email pattern and timing research</li>
+<li>Industry benchmark retrieval for email frequency, open rates, and click rates</li>
+<li>Subject line and copywriting pattern research for specific niches</li>
+<li>Regulatory and compliance change monitoring for email marketing law</li>
+</ul>
+
+<p><strong>Best for:</strong> Email marketers building competitive intelligence libraries, copywriters researching high-performing subject line patterns, and compliance-focused teams monitoring regulatory changes in email marketing.</p>
+
+<h2>7. Fetch MCP Server — Email Benchmark Reports and Industry Research</h2>
+
+<p>Email marketing decisions benefit from external benchmarks — what open rates are typical for your industry, what send frequency drives the best results for your segment size, and what deliverability trends affect your sending infrastructure. The Fetch MCP server lets your AI retrieve this external intelligence directly: pull the latest Mailchimp or Campaign Monitor benchmark report for your industry category, retrieve deliverability research from Validity or Return Path, access ESP comparison data for platform evaluation, and fetch regulatory guidance documents for CAN-SPAM, GDPR, and CASL compliance research.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Industry benchmark report access by sector, list size, and send frequency</li>
+<li>Deliverability research and sender reputation guidance retrieval</li>
+<li>ESP feature comparison data for platform evaluation and switching decisions</li>
+<li>Regulatory compliance guidance for CAN-SPAM, GDPR, and CASL requirements</li>
+</ul>
+
+<p><strong>Best for:</strong> Email marketing strategists setting performance benchmarks, marketing operations teams evaluating ESP platforms, and compliance teams researching email regulatory requirements across jurisdictions.</p>
+
+<h2>8. Slack MCP Server — Campaign Feedback and Cross-Team Coordination</h2>
+
+<p>Email campaigns involve feedback from multiple stakeholders — sales teams reporting on lead quality from a specific campaign, customer success surfacing replies from high-value accounts, product teams providing copy review, and leadership requesting performance summaries. The Slack MCP server lets your AI surface this distributed feedback: retrieve sales team observations about a campaign's lead quality, find the product team's copy review comments for an upcoming campaign, identify outstanding questions about a promotional calendar, and catch up on campaign feedback threads that arrived while you were executing a send.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Sales and customer success feedback retrieval by campaign and date</li>
+<li>Cross-functional copy review comment identification for campaign production</li>
+<li>Outstanding stakeholder question and approval gap detection</li>
+<li>Campaign post-mortem discussion retrieval for optimization learning</li>
+</ul>
+
+<p><strong>Best for:</strong> Email marketing managers coordinating across sales, product, and design teams, marketing operations teams tracking multi-stakeholder approval workflows, and campaign managers synthesizing distributed feedback after a major send.</p>
+
+<h2>The Email Marketing MCP Stack</h2>
+
+<ul>
+<li><strong>Delivery stack:</strong> SendGrid + Resend (marketing campaigns and deliverability + transactional email pipeline)</li>
+<li><strong>Intelligence stack:</strong> HubSpot + PostgreSQL (contact engagement and sequences + subscriber cohort analytics)</li>
+<li><strong>Production stack:</strong> Airtable + Slack (content calendar and briefs + cross-team feedback and approvals)</li>
+<li><strong>Research stack:</strong> Brave Search + Fetch (competitive intelligence + industry benchmarks and compliance)</li>
+<li><strong>Full email marketing stack:</strong> All of the above — your AI manages campaign production, analyzes subscriber data, monitors deliverability, and synthesizes stakeholder feedback from a single integrated workflow</li>
+</ul>
+
+<p>Browse all <a href="/category/marketing">marketing MCP servers</a> and <a href="/category/analytics">analytics MCP servers</a> on MyMCPTools. For related guides, see <a href="/blog/best-mcp-servers-for-marketing">Best MCP Servers for Marketing</a> and <a href="/blog/best-mcp-servers-for-sales-teams">Best MCP Servers for Sales Teams</a>.</p>
+    `.trim(),
+  },
+  {
+    slug: "best-mcp-servers-for-open-source-developers",
+    title: "Best MCP Servers for Open Source Developers in 2026",
+    description: "The top MCP servers for open source developers — from issue triage and contributor management to release automation, community engagement, and documentation.",
+    date: "2026-05-16",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "8 min read",
+    keywords: ["best mcp servers for open source developers", "open source mcp servers", "mcp tools for oss maintainers", "github mcp server open source", "open source contributor tools 2026", "oss mcp server"],
+    relatedServerSlugs: ["github", "gitlab", "brave-search", "discord", "fetch", "filesystem", "git", "linear"],
+    content: `
+<p>Maintaining an open source project is a unique kind of software work — you're simultaneously a developer, a community manager, a technical writer, a release engineer, and a support team. The overhead of issue triage, contributor onboarding, documentation, and community engagement compounds quickly as a project grows. MCP servers give AI assistants direct access to the platforms open source developers live in, making it possible to triage issues, manage contributors, track the release pipeline, and engage the community without leaving your development environment.</p>
+
+<p>Here are the best MCP servers for open source developers in 2026.</p>
+
+<h2>1. GitHub MCP Server — Issue Triage, PR Review, and Release Management</h2>
+
+<p>GitHub is the center of gravity for open source development. The GitHub MCP server makes your repository's activity AI-accessible at scale: triage a queue of new issues by severity and area, identify which PRs have been waiting longest for review, check which contributors are most active in the last 30 days, generate a changelog from merged PRs for a release, search for duplicate issues before triaging a new report, and retrieve the full context of a bug report thread — making issue management and release preparation dramatically faster for projects with high activity volume.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Issue queue triage and duplicate detection by label, area, and reporter history</li>
+<li>PR review queue prioritization by wait time, contributor status, and impact area</li>
+<li>Contributor activity tracking and recognition for community management</li>
+<li>Changelog generation from merged PRs by label, milestone, and date range</li>
+</ul>
+
+<p><strong>Best for:</strong> OSS maintainers managing high-volume issue queues, project leads preparing releases and changelogs, and community managers tracking contributor engagement across large repositories.</p>
+
+<h2>2. GitLab MCP Server — Self-Hosted Projects and CI/CD Pipeline Visibility</h2>
+
+<p>Many enterprise-adjacent and privacy-focused open source projects are hosted on GitLab, either on gitlab.com or self-hosted. The GitLab MCP server gives your AI access to this project infrastructure: review pipeline status and failure patterns after a CI change, inspect merge request queues across multiple projects, retrieve project milestone progress, check runner availability and job logs for debugging CI failures, and analyze issue velocity across a GitLab group — making GitLab-hosted project management as accessible as GitHub for AI-assisted workflows.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>CI/CD pipeline status and failure pattern analysis by branch and job type</li>
+<li>Merge request queue review and priority identification across projects</li>
+<li>Milestone progress tracking and velocity analysis for release planning</li>
+<li>Runner job log retrieval for CI failure debugging and infrastructure diagnosis</li>
+</ul>
+
+<p><strong>Best for:</strong> OSS maintainers hosting projects on GitLab, engineering teams managing CI/CD pipelines for open source libraries, and project leads tracking milestone health across multi-repository GitLab groups.</p>
+
+<h2>3. Git MCP Server — Local Repository History and Blame Attribution</h2>
+
+<p>Understanding how code evolved — who introduced a specific behavior, when a regression was introduced, which commits touched a critical file — is essential for debugging and contributor guidance. The Git MCP server gives your AI direct access to your local repository history: retrieve the commit history for a specific file, run blame to understand who last modified a function and when, search commit messages for previous attempts to solve a recurring bug, identify which changes introduced a regression by bisecting through history, and generate a structured summary of changes between two releases — without running manual git commands.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>File history retrieval and blame attribution for code archaeology</li>
+<li>Commit message search for prior fix attempts and historical context</li>
+<li>Diff generation between tags, branches, or commits for release documentation</li>
+<li>Regression introduction identification from commit history analysis</li>
+</ul>
+
+<p><strong>Best for:</strong> OSS maintainers investigating regression origins, contributors onboarding to a codebase's historical decisions, and release managers generating structured change summaries between versions.</p>
+
+<h2>4. Filesystem MCP Server — Documentation, Config, and Local Project Context</h2>
+
+<p>Open source projects accumulate local context that isn't in the repository — notes on architectural decisions, draft documentation, contributor guidelines in progress, benchmarking results, and local environment configurations. The Filesystem MCP server gives your AI access to this local project knowledge: retrieve the draft CONTRIBUTING.md before finalizing it, find your notes on a performance regression you investigated last month, access the local benchmark results for a proposed optimization, and read the configuration files for your development environment when debugging a contributor's setup issue — keeping all project context available in your AI workflow.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Local documentation draft retrieval and editing for contributor guides</li>
+<li>Development notes and investigation log access for context continuity</li>
+<li>Local benchmark and test result retrieval for performance analysis</li>
+<li>Configuration file access for development environment debugging</li>
+</ul>
+
+<p><strong>Best for:</strong> OSS maintainers working with extensive local project notes, contributors developing documentation alongside code, and project leads managing local configuration and tooling context for complex development environments.</p>
+
+<h2>5. Discord MCP Server — Community Support and User Feedback</h2>
+
+<p>Many open source projects run their community support, feature discussions, and contributor coordination on Discord. The Discord MCP server lets your AI access this community intelligence: retrieve support threads mentioning a specific error message before responding, identify recurring questions that should become documentation, surface feature requests discussed in community channels, find contributor discussions about a PR or design decision, and catch up on community activity during a development sprint — making community management systematic rather than reactive.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Support thread retrieval by error message, feature area, and recency</li>
+<li>Recurring question identification for documentation gap analysis</li>
+<li>Feature request and user feedback compilation from community channels</li>
+<li>Contributor discussion retrieval by PR, RFC, and design decision topic</li>
+</ul>
+
+<p><strong>Best for:</strong> OSS maintainers managing community support channels, project leads identifying documentation gaps from recurring questions, and contributor community managers tracking feature feedback and engagement patterns.</p>
+
+<h2>6. Linear MCP Server — Roadmap Planning and Contributor Assignment</h2>
+
+<p>Larger open source projects benefit from structured issue tracking beyond GitHub's native tools. Linear provides a clean interface for roadmap planning, milestone tracking, and contributor assignment. The Linear MCP server makes this project management context AI-accessible: retrieve the current roadmap for the next major release, identify which issues are unassigned and ready for new contributors, check which contributors are working on which areas, and analyze cycle time trends to identify where the project is moving slowly — making contributor coordination and release planning more data-driven.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Roadmap and milestone retrieval for release planning and contributor communication</li>
+<li>Unassigned issue identification for contributor onboarding and good-first-issue curation</li>
+<li>Contributor workload and area ownership tracking for coordination</li>
+<li>Cycle time analysis for identifying slow areas and planning bottlenecks</li>
+</ul>
+
+<p><strong>Best for:</strong> OSS project leads managing structured roadmaps, community managers identifying good-first-issues for new contributors, and maintainers tracking contributor workload and velocity across a growing project.</p>
+
+<h2>7. Brave Search MCP Server — Ecosystem Intelligence and Adoption Research</h2>
+
+<p>Understanding your project's position in the ecosystem — who is using it, how it's being discussed, what alternatives exist, and what problems users encounter that aren't filing issues — is critical for OSS project strategy. The Brave Search MCP server gives your AI real-time ecosystem intelligence: find blog posts and tutorials about your library written by community members, monitor Stack Overflow questions that reveal undocumented behavior, identify competing libraries and their recent development activity, research how your project is discussed in comparison to alternatives, and find media coverage that could drive contributor and user growth.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Community blog post, tutorial, and use case discovery for adoption tracking</li>
+<li>Stack Overflow and forum question monitoring for undocumented behavior signals</li>
+<li>Competing library activity and feature comparison research</li>
+<li>Press and media coverage tracking for project visibility measurement</li>
+</ul>
+
+<p><strong>Best for:</strong> OSS project leads monitoring ecosystem adoption, maintainers identifying documentation gaps from community questions, and project strategists analyzing competitive positioning and differentiation.</p>
+
+<h2>8. Fetch MCP Server — Spec Documents, RFCs, and External Standards</h2>
+
+<p>Open source projects often implement external standards — protocol specifications, RFC documents, W3C standards, language proposals, and API contracts. The Fetch MCP server lets your AI retrieve authoritative external documents directly: pull the current RFC for a protocol your library implements, retrieve the latest W3C specification for a web standard, access the IETF draft for a security protocol, check the current version of a language specification before implementing a new language feature, and retrieve the API documentation for a third-party service your library integrates — keeping implementation work grounded in authoritative specs.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>RFC and IETF specification retrieval for protocol implementation reference</li>
+<li>W3C and web standards document access for browser API implementation</li>
+<li>Language specification retrieval for compiler and toolchain development</li>
+<li>Third-party API documentation access for library integration implementation</li>
+</ul>
+
+<p><strong>Best for:</strong> OSS developers implementing external standards and protocols, library authors verifying specification compliance, and contributors working on language tooling who need authoritative language spec access during implementation.</p>
+
+<h2>The Open Source Developer MCP Stack</h2>
+
+<ul>
+<li><strong>Code stack:</strong> GitHub + Git (repository activity and management + local history and blame)</li>
+<li><strong>Community stack:</strong> Discord + Brave Search (community support and feedback + ecosystem adoption intelligence)</li>
+<li><strong>Project stack:</strong> Linear + GitLab (roadmap planning and contributor coordination + CI/CD and self-hosted infrastructure)</li>
+<li><strong>Context stack:</strong> Filesystem + Fetch (local notes and documentation + external specs and standards)</li>
+<li><strong>Full OSS stack:</strong> All of the above — your AI triages issues, manages contributors, monitors community health, and implements specifications from a single integrated workflow</li>
+</ul>
+
+<p>Browse all <a href="/category/coding">coding MCP servers</a> and <a href="/category/devops">DevOps MCP servers</a> on MyMCPTools. For related guides, see <a href="/blog/best-mcp-servers-for-developers">Best MCP Servers for Developers</a> and <a href="/blog/github-mcp-server-setup-guide">GitHub MCP Server Setup Guide</a>.</p>
+    `.trim(),
+  },
 ];
 
 export function getBlogPostBySlug(slug: string): BlogPost | undefined {
