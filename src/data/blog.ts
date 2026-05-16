@@ -21906,6 +21906,440 @@ jupyter mcp install</code></pre>
 <p>Browse all <a href="/category/coding">coding MCP servers</a> and <a href="/category/devops">DevOps MCP servers</a> on MyMCPTools. For related guides, see <a href="/blog/best-mcp-servers-for-developers">Best MCP Servers for Developers</a> and <a href="/blog/github-mcp-server-setup-guide">GitHub MCP Server Setup Guide</a>.</p>
     `.trim(),
   },
+  {
+    slug: "best-mcp-servers-for-rust-developers",
+    title: "Best MCP Servers for Rust Developers in 2026",
+    description: "The top MCP servers for Rust development: filesystem access, GitHub integration, crate documentation, database queries, and CI/CD automation to supercharge your Rust AI workflow.",
+    date: "2026-05-16",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "8 min read",
+    keywords: ["mcp servers for rust", "rust mcp server", "rust ai tools", "model context protocol rust developers", "best mcp servers 2026"],
+    relatedServerSlugs: ["filesystem", "git", "github", "postgresql", "brave-search", "docker", "sentry", "circleci"],
+    content: `
+<p>Rust's emphasis on memory safety, performance, and correctness makes it one of the most demanding — and rewarding — languages to work with. AI assistants that understand your codebase, can query your databases, and have access to current documentation can dramatically reduce the friction of Rust development.</p>
+
+<p>MCP servers give your AI that context. Here are the best MCP servers for Rust developers in 2026.</p>
+
+<h2>1. Filesystem MCP Server — Essential for Every Rust Project</h2>
+
+<p>Rust projects tend to have complex module hierarchies. The filesystem MCP server gives your AI assistant direct access to navigate your project structure — reading source files, Cargo.toml manifests, and build outputs without requiring you to paste code manually.</p>
+
+<p><strong>Key capabilities for Rust developers:</strong></p>
+<ul>
+<li>Read and write Rust source files across complex module structures</li>
+<li>Navigate workspace layouts with multiple crates</li>
+<li>Access Cargo.toml and Cargo.lock for dependency analysis</li>
+<li>Read build outputs, error logs, and test results</li>
+</ul>
+
+<p><strong>Best for:</strong> Every Rust project. The AI can see your full module tree, understand your crate structure, and write code that fits your architecture — not generic Rust that ignores your actual project layout.</p>
+
+<h2>2. GitHub MCP Server — Crate Maintenance and Code Review</h2>
+
+<p>Most Rust crates are developed on GitHub, and the GitHub MCP server bridges your repositories with your AI workflow. Search code across the Rust ecosystem, manage issues from library users, review pull requests, and track the GitHub Issues of upstream crates you depend on.</p>
+
+<p><strong>Key capabilities for Rust developers:</strong></p>
+<ul>
+<li>Search Rust source code across the ecosystem to find real-world usage examples</li>
+<li>Manage issue trackers for your published crates</li>
+<li>Review PRs with AI understanding of ownership and lifetime implications</li>
+<li>Monitor upstream dependency repositories for breaking changes</li>
+</ul>
+
+<p><strong>Best for:</strong> Rust crate authors and contributors. Particularly powerful when researching how other projects solve specific ownership or async patterns.</p>
+
+<h2>3. Git MCP Server — Deep History and Blame Analysis</h2>
+
+<p>Rust codebases accumulate significant history — especially safety-critical decisions about unsafe blocks, lifetime annotations, and API contracts. The Git MCP server gives your AI access to commit history, blame, and diffs directly, without needing to paste git output manually.</p>
+
+<p><strong>Key capabilities for Rust developers:</strong></p>
+<ul>
+<li>Blame analysis to understand why unsafe blocks were introduced</li>
+<li>Commit history for tracking API evolution and breaking changes</li>
+<li>Diff analysis for understanding refactors across ownership models</li>
+<li>Branch comparison for feature development</li>
+</ul>
+
+<p><strong>Best for:</strong> Safety-critical Rust projects where the history of unsafe decisions matters, and for maintaining large codebases where understanding the "why" behind architectural choices is essential.</p>
+
+<h2>4. Brave Search MCP Server — Crate Documentation and Error Research</h2>
+
+<p>Rust's type system produces some of the most complex compiler errors in any language. The Brave Search MCP server lets your AI search for documentation, real-world examples, and solutions to specific error messages without you leaving your workflow.</p>
+
+<p><strong>Key capabilities for Rust developers:</strong></p>
+<ul>
+<li>Search docs.rs for crate API documentation</li>
+<li>Find real-world usage examples on GitHub and crates.io</li>
+<li>Research Rust RFC documents for language feature context</li>
+<li>Find Stack Overflow solutions for specific borrow checker or lifetime errors</li>
+</ul>
+
+<p><strong>Best for:</strong> Any Rust developer working with unfamiliar crates or debugging complex lifetime and ownership errors. The AI can research the specific error type and apply the fix directly.</p>
+
+<h2>5. PostgreSQL MCP Server — Database-Backed Rust Applications</h2>
+
+<p>Many Rust applications — especially those using Diesel, SQLx, or SeaORM — are backed by PostgreSQL. The PostgreSQL MCP server gives your AI direct schema access, enabling it to write accurate queries, understand your data model, and help design migrations without guessing at column names or types.</p>
+
+<p><strong>Key capabilities for Rust developers:</strong></p>
+<ul>
+<li>Schema introspection for Diesel and SQLx query generation</li>
+<li>Read-only query execution for testing and validation</li>
+<li>Migration planning with full awareness of existing schema</li>
+<li>Type mapping between PostgreSQL types and Rust types</li>
+</ul>
+
+<p><strong>Best for:</strong> Rust developers building backend services with PostgreSQL. The AI can generate type-safe SQLx queries that match your actual schema, not hypothetical tables.</p>
+
+<h2>6. Docker MCP Server — Container-First Rust Deployment</h2>
+
+<p>Rust's compiled binaries are perfect for containerization — small, self-contained, and fast to start. The Docker MCP server lets your AI manage containers, inspect running services, and help optimize your multi-stage Dockerfile builds for minimal image sizes.</p>
+
+<p><strong>Key capabilities for Rust developers:</strong></p>
+<ul>
+<li>Container lifecycle management for development environments</li>
+<li>Image inspection for optimizing multi-stage Rust builds</li>
+<li>Log access for debugging running Rust services</li>
+<li>Network and volume management for integration testing</li>
+</ul>
+
+<p><strong>Best for:</strong> Rust backend developers deploying services in containers. The AI can help optimize your builder stage, minimize your final image, and debug containerized Rust services.</p>
+
+<h2>7. Sentry MCP Server — Error Tracking for Production Rust Services</h2>
+
+<p>Even with Rust's safety guarantees, production services encounter panics, logic errors, and unexpected states. The Sentry MCP server connects your error tracking directly to your AI workflow — query real production errors and let the AI trace them back to specific code paths.</p>
+
+<p><strong>Key capabilities for Rust developers:</strong></p>
+<ul>
+<li>Query production errors and panics by frequency and impact</li>
+<li>Stack trace analysis mapped to Rust source locations</li>
+<li>Error trend monitoring for regression detection</li>
+<li>Release tracking for correlating deployments with error spikes</li>
+</ul>
+
+<p><strong>Best for:</strong> Rust services teams running production workloads. Having the AI see real error data — not hypothetical issues — makes debugging production panics dramatically faster.</p>
+
+<h2>8. CircleCI MCP Server — CI/CD for Rust Workspaces</h2>
+
+<p>Rust compilation is notoriously slow, and CI pipelines require careful caching to remain practical. The CircleCI MCP server lets your AI inspect pipeline configurations, identify cache misses, and optimize compilation steps without manual log diving.</p>
+
+<p><strong>Key capabilities for Rust developers:</strong></p>
+<ul>
+<li>Pipeline status and failure analysis</li>
+<li>Build log inspection for compilation error triage</li>
+<li>Cache configuration review for incremental compilation optimization</li>
+<li>Test result aggregation across workspace crates</li>
+</ul>
+
+<p><strong>Best for:</strong> Rust teams running multi-crate workspace CI pipelines. Rust's compile times make caching strategy critical — the AI can analyze your pipeline and identify where cache hits are being missed.</p>
+
+<h2>The Rust Developer MCP Stack</h2>
+
+<ul>
+<li><strong>Core stack:</strong> Filesystem + Git + GitHub (local code access + history analysis + ecosystem search)</li>
+<li><strong>Research stack:</strong> Brave Search (docs.rs, crate examples, error solutions)</li>
+<li><strong>Backend stack:</strong> PostgreSQL + Redis (schema-aware query generation + cache inspection)</li>
+<li><strong>Ops stack:</strong> Docker + CircleCI + Sentry (containerization + CI + production errors)</li>
+<li><strong>Full Rust stack:</strong> All of the above — your AI understands your codebase, researches solutions, generates accurate queries, and monitors production, all without context switching</li>
+</ul>
+
+<p>Browse all <a href="/category/coding">coding MCP servers</a> and <a href="/category/devops">DevOps MCP servers</a> on MyMCPTools. For related guides, see <a href="/blog/best-mcp-servers-for-developers">Best MCP Servers for Developers</a> and <a href="/blog/best-mcp-servers-for-backend-developers">Best MCP Servers for Backend Developers</a>.</p>
+    `.trim(),
+  },
+  {
+    slug: "best-mcp-servers-for-go-developers",
+    title: "Best MCP Servers for Go Developers in 2026",
+    description: "The best MCP servers for Go development: filesystem access, GitHub repositories, database integration, Kubernetes management, and observability tools for Go backend and cloud-native engineers.",
+    date: "2026-05-16",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "8 min read",
+    keywords: ["mcp servers for go", "golang mcp server", "go ai tools", "model context protocol go developers", "best mcp servers golang 2026"],
+    relatedServerSlugs: ["filesystem", "git", "github", "postgresql", "redis", "kubernetes", "docker", "grafana", "brave-search"],
+    content: `
+<p>Go's simplicity, fast compilation, and built-in concurrency primitives make it the language of choice for cloud infrastructure, backend APIs, and CLI tools. AI assistants that understand your Go codebase, can query your databases, and have access to Kubernetes contexts can transform how you develop and operate Go services.</p>
+
+<p>MCP servers bridge that gap. Here are the best MCP servers for Go developers in 2026.</p>
+
+<h2>1. Filesystem MCP Server — Navigate Go Package Structures</h2>
+
+<p>Go's package-based organization creates distinct project structures. The filesystem MCP server gives your AI direct access to navigate your Go workspace — reading source files, go.mod manifests, and package hierarchies without manual copy-pasting.</p>
+
+<p><strong>Key capabilities for Go developers:</strong></p>
+<ul>
+<li>Read and write Go source files across package boundaries</li>
+<li>Navigate Go module workspaces with replace directives</li>
+<li>Access go.mod and go.sum for dependency resolution context</li>
+<li>Read generated code, proto outputs, and mock files</li>
+</ul>
+
+<p><strong>Best for:</strong> Every Go project. The AI can understand your package layout, respect interface boundaries, and generate code that fits your module structure rather than producing generic Go.</p>
+
+<h2>2. GitHub MCP Server — Go Ecosystem Navigation</h2>
+
+<p>The Go ecosystem is deeply GitHub-native — most packages live on GitHub, issues and PRs are the primary contribution mechanism, and GitHub search is how you find real-world usage examples. The GitHub MCP server connects your AI to this ecosystem directly.</p>
+
+<p><strong>Key capabilities for Go developers:</strong></p>
+<ul>
+<li>Search Go source code across the ecosystem for interface implementations and usage examples</li>
+<li>Manage issues and PRs for your open-source packages</li>
+<li>Monitor upstream dependency repositories for API changes</li>
+<li>Review contributions with AI understanding of Go idioms and interface composition</li>
+</ul>
+
+<p><strong>Best for:</strong> Go library authors and contributors. Particularly valuable when searching for how other projects implement specific interfaces or handle concurrency patterns.</p>
+
+<h2>3. Git MCP Server — Module History and API Evolution</h2>
+
+<p>Go modules have versioning built in, but understanding why an API was designed a certain way requires git history. The Git MCP server gives your AI access to commit history, blame analysis, and diffs that reveal the context behind interface decisions and breaking changes.</p>
+
+<p><strong>Key capabilities for Go developers:</strong></p>
+<ul>
+<li>Commit history for understanding API evolution across major versions</li>
+<li>Blame analysis for tracing interface design decisions</li>
+<li>Branch comparison for feature development and release preparation</li>
+<li>Tag history for understanding module versioning patterns</li>
+</ul>
+
+<p><strong>Best for:</strong> Go module maintainers managing semver-compatible APIs, and teams working on large codebases where architectural decisions have deep history.</p>
+
+<h2>4. PostgreSQL MCP Server — Go Backend Database Access</h2>
+
+<p>Go backends frequently use PostgreSQL via pgx, sqlx, or GORM. The PostgreSQL MCP server gives your AI schema access, enabling it to write accurate queries that match your actual table structure — not hypothetical schemas generated from thin air.</p>
+
+<p><strong>Key capabilities for Go developers:</strong></p>
+<ul>
+<li>Schema introspection for pgx and sqlx query generation</li>
+<li>Read-only query execution for development validation</li>
+<li>Migration planning with full awareness of existing constraints and indexes</li>
+<li>Type mapping between PostgreSQL types and Go types</li>
+</ul>
+
+<p><strong>Best for:</strong> Go backend developers building REST or gRPC services with PostgreSQL. The AI can generate accurate pgx or sqlx queries that match your real schema, reducing iteration time significantly.</p>
+
+<h2>5. Redis MCP Server — Caching and Session Inspection</h2>
+
+<p>Redis is everywhere in Go backend architectures — caching, session storage, rate limiting, pub/sub messaging. The Redis MCP server lets your AI inspect your Redis instance directly: check cache states, debug key patterns, and understand the data structures your code interacts with.</p>
+
+<p><strong>Key capabilities for Go developers:</strong></p>
+<ul>
+<li>Key pattern inspection and TTL analysis for cache debugging</li>
+<li>Data structure browsing (sets, sorted sets, hashes, streams)</li>
+<li>Memory usage analysis for optimization</li>
+<li>Pub/sub channel monitoring for message flow debugging</li>
+</ul>
+
+<p><strong>Best for:</strong> Go developers building services with Redis caching or session management. When cache behavior is unexpected, the AI can inspect the actual Redis state rather than guessing.</p>
+
+<h2>6. Kubernetes MCP Server — Cloud-Native Go Operations</h2>
+
+<p>Go is the language of the Kubernetes ecosystem — most operators, controllers, and CLIs are written in Go. The Kubernetes MCP server gives your AI direct cluster access: inspect pod states, read deployment configurations, and debug service connectivity from within your development workflow.</p>
+
+<p><strong>Key capabilities for Go developers:</strong></p>
+<ul>
+<li>Pod status inspection and log access for debugging deployed services</li>
+<li>Deployment and service configuration review</li>
+<li>CRD and operator status for custom controller development</li>
+<li>Namespace and RBAC inspection for permission debugging</li>
+</ul>
+
+<p><strong>Best for:</strong> Go developers building Kubernetes operators, controllers, or services deployed to Kubernetes. The AI can inspect real cluster state while helping you debug controller reconciliation loops.</p>
+
+<h2>7. Grafana MCP Server — Observability for Go Services</h2>
+
+<p>Go's built-in pprof and expvar make instrumentation straightforward, but understanding service behavior in production requires access to aggregated metrics and traces. The Grafana MCP server connects your AI to your observability stack directly.</p>
+
+<p><strong>Key capabilities for Go developers:</strong></p>
+<ul>
+<li>Dashboard query execution for understanding production traffic patterns</li>
+<li>Alert rule inspection for latency and error rate baselines</li>
+<li>Metric exploration for Go runtime metrics (GC pauses, goroutine counts, memory)</li>
+<li>Incident correlation across services</li>
+</ul>
+
+<p><strong>Best for:</strong> Go backend teams running services in production. Having the AI understand your actual production metrics — not hypothetical behavior — leads to more accurate optimization and debugging.</p>
+
+<h2>8. Brave Search MCP Server — Go Documentation and Pattern Research</h2>
+
+<p>Go's standard library is extensive, and the ecosystem grows fast. The Brave Search MCP server lets your AI search pkg.go.dev documentation, real-world GitHub usage examples, and Go blog posts for patterns specific to your use case.</p>
+
+<p><strong>Key capabilities for Go developers:</strong></p>
+<ul>
+<li>Search pkg.go.dev for interface documentation and method signatures</li>
+<li>Find real-world Go code examples on GitHub for specific patterns</li>
+<li>Research Go proposals and design documents for language feature context</li>
+<li>Discover community best practices for concurrency, error handling, and testing</li>
+</ul>
+
+<p><strong>Best for:</strong> Any Go developer working with unfamiliar packages or researching idiomatic patterns. The AI can find real-world usage examples and apply them directly to your codebase.</p>
+
+<h2>The Go Developer MCP Stack</h2>
+
+<ul>
+<li><strong>Core stack:</strong> Filesystem + Git + GitHub (local code + history + ecosystem)</li>
+<li><strong>Backend stack:</strong> PostgreSQL + Redis (database queries + cache inspection)</li>
+<li><strong>Cloud-native stack:</strong> Kubernetes + Docker (cluster operations + container management)</li>
+<li><strong>Observability stack:</strong> Grafana + Brave Search (production metrics + documentation research)</li>
+<li><strong>Full Go stack:</strong> All of the above — your AI understands your module structure, generates accurate database queries, inspects your Kubernetes cluster, and monitors production metrics without leaving your workflow</li>
+</ul>
+
+<p>Browse all <a href="/category/coding">coding MCP servers</a> and <a href="/category/devops">DevOps MCP servers</a> on MyMCPTools. For related guides, see <a href="/blog/best-mcp-servers-for-developers">Best MCP Servers for Developers</a> and <a href="/blog/best-mcp-servers-for-backend-developers">Best MCP Servers for Backend Developers</a>.</p>
+    `.trim(),
+  },
+  {
+    slug: "best-mcp-servers-for-infrastructure-as-code",
+    title: "Best MCP Servers for Infrastructure as Code (IaC) in 2026",
+    description: "The top MCP servers for infrastructure as code workflows: Terraform, Kubernetes, AWS, Azure, GCP CLI access, GitHub for plan reviews, and observability tools for IaC practitioners.",
+    date: "2026-05-16",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "9 min read",
+    keywords: ["mcp servers for infrastructure as code", "terraform mcp", "iac ai tools", "model context protocol devops", "best mcp servers for devops 2026"],
+    relatedServerSlugs: ["terraform", "kubernetes", "github", "aws", "azure-cli-mcp", "gcloud-mcp", "grafana", "filesystem", "brave-search"],
+    content: `
+<p>Infrastructure as Code (IaC) has transformed how teams provision and manage cloud resources. But writing Terraform modules, Kubernetes manifests, and CloudFormation templates still requires deep knowledge of provider APIs, resource dependencies, and state management.</p>
+
+<p>MCP servers give your AI the context it needs to become a genuine IaC collaborator — not just a template generator. Here are the best MCP servers for IaC practitioners in 2026.</p>
+
+<h2>1. Terraform MCP Server — Your State and Provider Context</h2>
+
+<p>The Terraform MCP server is the cornerstone of any AI-assisted IaC workflow. Instead of writing Terraform from memory or guessing at resource attribute names, your AI can access your actual state, understand your module structure, and generate configurations grounded in your real infrastructure.</p>
+
+<p><strong>Key capabilities for IaC practitioners:</strong></p>
+<ul>
+<li>State inspection to understand currently provisioned resources and their attributes</li>
+<li>Module browsing for understanding existing abstractions before writing new ones</li>
+<li>Variable and output introspection across root and child modules</li>
+<li>Provider configuration review for multi-account and multi-region setups</li>
+</ul>
+
+<p><strong>Best for:</strong> Any team using Terraform for infrastructure management. The AI can inspect your current state before proposing changes, dramatically reducing plan errors caused by unknown existing resources.</p>
+
+<h2>2. Kubernetes MCP Server — Live Cluster Context</h2>
+
+<p>Writing Kubernetes manifests in isolation is a recipe for deployment failures. The Kubernetes MCP server gives your AI direct access to your cluster: inspect existing workloads, understand your namespace structure, and validate that new manifests fit your actual cluster configuration.</p>
+
+<p><strong>Key capabilities for IaC practitioners:</strong></p>
+<ul>
+<li>Existing workload inspection before writing new deployments or services</li>
+<li>RBAC configuration review for permission-aware manifest generation</li>
+<li>CRD discovery for operator-extended resource types</li>
+<li>Resource quota and limit range inspection for right-sizing specifications</li>
+</ul>
+
+<p><strong>Best for:</strong> Platform engineers and DevOps teams managing Kubernetes with GitOps workflows. The AI can see what's actually running before proposing changes, and can validate new manifests against cluster constraints.</p>
+
+<h2>3. Filesystem MCP Server — Module Libraries and Config Management</h2>
+
+<p>IaC projects accumulate complex directory structures — Terraform workspaces, Helm charts, Kustomize overlays, Ansible playbooks. The filesystem MCP server gives your AI full visibility into your configuration repository without requiring you to paste files manually.</p>
+
+<p><strong>Key capabilities for IaC practitioners:</strong></p>
+<ul>
+<li>Navigate Terraform module hierarchies across multiple environments</li>
+<li>Read Helm chart values and templates for customization</li>
+<li>Access Kustomize base and overlay structures for GitOps pipelines</li>
+<li>Inspect CI/CD pipeline definitions and deployment scripts</li>
+</ul>
+
+<p><strong>Best for:</strong> Teams with complex IaC repository structures. The AI can understand your module library, reuse existing patterns, and generate new configurations consistent with your established conventions.</p>
+
+<h2>4. GitHub MCP Server — Plan Reviews and Change Management</h2>
+
+<p>IaC changes are high-stakes — a misconfigured security group or missing IAM policy can have immediate production impact. The GitHub MCP server enables AI-assisted plan reviews in pull requests, helping catch resource conflicts, missing dependencies, and security misconfigurations before apply.</p>
+
+<p><strong>Key capabilities for IaC practitioners:</strong></p>
+<ul>
+<li>Pull request review for Terraform plan output analysis and risk assessment</li>
+<li>Issue tracking for infrastructure debt and pending migrations</li>
+<li>Repository search for finding existing module implementations</li>
+<li>CI/CD pipeline status monitoring for plan and apply workflows</li>
+</ul>
+
+<p><strong>Best for:</strong> IaC teams using GitHub-based GitOps workflows. The AI can review Terraform plans posted in PRs, identify risky changes, and suggest missing safeguards like deletion protection or backup policies.</p>
+
+<h2>5. AWS CLI MCP Server — Cloud State and Resource Discovery</h2>
+
+<p>Even with Terraform managing your AWS infrastructure, operational queries — "what's the current security group config?", "which EC2 instances are running?" — require AWS access. The AWS CLI MCP server lets your AI query AWS resources directly to validate expected vs. actual state.</p>
+
+<p><strong>Key capabilities for IaC practitioners:</strong></p>
+<ul>
+<li>Resource state queries to validate Terraform-managed infrastructure</li>
+<li>IAM policy inspection for permission validation before deployment</li>
+<li>Cost and usage queries for rightsizing recommendations</li>
+<li>CloudFormation stack status for hybrid environments</li>
+</ul>
+
+<p><strong>Best for:</strong> Teams managing AWS infrastructure with Terraform. The AI can compare Terraform state with actual AWS resource configurations to identify drift before it causes incidents.</p>
+
+<h2>6. Azure CLI MCP Server — Microsoft Cloud Resource Access</h2>
+
+<p>For teams managing Azure infrastructure with Terraform's AzureRM provider or Bicep, the Azure CLI MCP server provides equivalent cloud-state access. Query resource groups, inspect RBAC assignments, and validate that deployed configurations match your IaC definitions.</p>
+
+<p><strong>Key capabilities for IaC practitioners:</strong></p>
+<ul>
+<li>Resource group and subscription resource enumeration</li>
+<li>Azure AD and RBAC assignment inspection for permission validation</li>
+<li>AKS cluster configuration review for Kubernetes-on-Azure workflows</li>
+<li>Policy assignment inspection for compliance validation</li>
+</ul>
+
+<p><strong>Best for:</strong> Azure-focused infrastructure teams using Terraform's AzureRM provider or managing hybrid environments. Pairs with the Terraform server for full state-plus-cloud-API context.</p>
+
+<h2>7. GCloud CLI MCP Server — Google Cloud Resource Access</h2>
+
+<p>Google Cloud's resource model — projects, folders, organizations — is more complex than most clouds. The gcloud CLI MCP server gives your AI access to GCP resource hierarchy and IAM configuration, enabling accurate Terraform Google provider configurations and policy analysis.</p>
+
+<p><strong>Key capabilities for IaC practitioners:</strong></p>
+<ul>
+<li>Project and folder hierarchy inspection for organizational policy configuration</li>
+<li>IAM binding analysis for service account permission audits</li>
+<li>GKE cluster configuration for Kubernetes-on-GCP deployments</li>
+<li>Cloud Run and Cloud Functions status for serverless infrastructure review</li>
+</ul>
+
+<p><strong>Best for:</strong> GCP-focused teams using Terraform's Google provider. The AI can inspect your project IAM structure and generate accurate bindings rather than guessing at GCP-specific permission formats.</p>
+
+<h2>8. Grafana MCP Server — Infrastructure Observability</h2>
+
+<p>Infrastructure changes without observability are changes made blind. The Grafana MCP server connects your AI to your metrics and alerting stack — enabling it to reference real resource utilization data when making rightsizing recommendations or designing auto-scaling policies.</p>
+
+<p><strong>Key capabilities for IaC practitioners:</strong></p>
+<ul>
+<li>Resource utilization metrics for compute rightsizing decisions</li>
+<li>Alert rule review before modifying infrastructure that feeds existing alerts</li>
+<li>Dashboard inspection for understanding infrastructure dependency maps</li>
+<li>Incident history correlation for understanding blast radius of past changes</li>
+</ul>
+
+<p><strong>Best for:</strong> Platform engineering teams responsible for both infrastructure definition and operational health. The AI can recommend rightsized instance types based on actual utilization data, not rule-of-thumb estimates.</p>
+
+<h2>9. Brave Search MCP Server — Provider Documentation and Best Practices</h2>
+
+<p>Cloud provider APIs change constantly — new resource arguments, deprecated attributes, new service tiers. The Brave Search MCP server lets your AI search the Terraform Registry, provider documentation, and community guides for current best practices.</p>
+
+<p><strong>Key capabilities for IaC practitioners:</strong></p>
+<ul>
+<li>Search Terraform Registry for module documentation and required arguments</li>
+<li>Find current provider version changelogs for upgrade planning</li>
+<li>Research cloud provider best practices for specific resource configurations</li>
+<li>Discover community solutions for common IaC patterns and anti-patterns</li>
+</ul>
+
+<p><strong>Best for:</strong> Any IaC practitioner working with unfamiliar resource types or planning major provider version upgrades. The AI can find current documentation rather than relying on potentially outdated training data.</p>
+
+<h2>The IaC Practitioner MCP Stack</h2>
+
+<ul>
+<li><strong>Core stack:</strong> Filesystem + Git + GitHub (module libraries + history + plan reviews)</li>
+<li><strong>State stack:</strong> Terraform + Kubernetes (IaC state + live cluster context)</li>
+<li><strong>Cloud stack:</strong> AWS CLI + Azure CLI + GCloud CLI (multi-cloud resource queries)</li>
+<li><strong>Operations stack:</strong> Grafana + Brave Search (observability + current documentation)</li>
+<li><strong>Full IaC stack:</strong> All of the above — your AI understands your module structure, inspects real cloud state, validates cluster configurations, references live metrics, and researches current provider documentation in one unified workflow</li>
+</ul>
+
+<p>Browse all <a href="/category/devops">DevOps MCP servers</a> and <a href="/category/cloud">cloud MCP servers</a> on MyMCPTools. For related guides, see <a href="/blog/best-mcp-servers-for-devops">Best MCP Servers for DevOps</a> and <a href="/blog/best-mcp-servers-for-kubernetes-cloud-native-operations">Best MCP Servers for Kubernetes</a>.</p>
+    `.trim(),
+  },
 ];
 
 export function getBlogPostBySlug(slug: string): BlogPost | undefined {
