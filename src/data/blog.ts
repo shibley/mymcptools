@@ -21066,6 +21066,426 @@ jupyter mcp install</code></pre>
 <p>Browse all <a href="/category/search">search MCP servers</a> and <a href="/category/productivity">productivity MCP servers</a> on MyMCPTools. For related guides, see <a href="/blog/best-mcp-servers-for-research">Best MCP Servers for Research</a> and <a href="/blog/best-mcp-servers-for-compliance-teams">Best MCP Servers for Compliance Teams</a>.</p>
     `.trim(),
   },
+  {
+    slug: "best-mcp-servers-for-sales-teams",
+    title: "Best MCP Servers for Sales Teams in 2026",
+    description: "The top MCP servers for sales professionals and revenue teams — from CRM updates and prospect research to pipeline tracking, outreach personalization, and deal intelligence.",
+    date: "2026-05-15",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "8 min read",
+    keywords: ["best mcp servers for sales", "sales mcp servers", "mcp tools for sales teams", "crm mcp server", "salesforce mcp server", "sales ai workflow 2026"],
+    relatedServerSlugs: ["hubspot", "brave-search", "postgresql", "notion", "memory", "gmail", "slack", "fetch"],
+    content: `
+<p>Sales is fundamentally a context-retrieval problem. Before every call, every email, every negotiation — reps need to know what was discussed last time, what the prospect cares about, where the deal stands in the pipeline, and what objections are likely to come up. Most of that context is buried in CRM fields, email threads, call notes, and company research that takes longer to find than the conversation itself. MCP servers fix this by giving AI assistants direct, structured access to the systems where sales context lives.</p>
+
+<p>Here are the best MCP servers for sales teams in 2026.</p>
+
+<h2>1. HubSpot MCP Server — CRM, Pipeline, and Contact Intelligence</h2>
+
+<p>HubSpot is the operational core for most modern sales teams — contacts, deals, activity timelines, and pipeline stages all live there. The HubSpot MCP server makes this CRM data AI-accessible: pull a prospect's full contact record and activity history before a call, check where every deal in a rep's pipeline stands and what the next action is, identify deals that have gone cold by activity date, surface every open deal associated with a specific company, and draft follow-up emails from actual conversation notes stored in contact timelines — without opening HubSpot at all.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Contact record retrieval with full activity history and deal associations</li>
+<li>Pipeline stage and next-action tracking by rep, deal size, and close date</li>
+<li>Cold deal identification by last activity date for re-engagement prioritization</li>
+<li>Company-level deal and contact rollup for account-based selling</li>
+</ul>
+
+<p><strong>Best for:</strong> Sales reps preparing for calls, sales managers reviewing team pipeline health, and RevOps teams auditing CRM data quality — all without switching between tools.</p>
+
+<h2>2. Brave Search MCP Server — Prospect Research and Trigger Events</h2>
+
+<p>Personalized outreach requires real context — not generic "I saw you're growing your team" messages, but specific, timely triggers. The Brave Search MCP server gives your AI real-time prospect research capability: find recent news about a target company before a discovery call, identify a prospect's published content and stated priorities for conversation hooks, research a company's recent funding, leadership changes, or product launches as outreach triggers, and monitor a competitive account for signals that indicate they're evaluating alternatives.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Company news monitoring for funding, hiring, product launch, and leadership change triggers</li>
+<li>Prospect content and thought leadership research for personalization hooks</li>
+<li>Competitor monitoring for customer dissatisfaction signals and switching intent</li>
+<li>Industry trend research for informed discovery conversations</li>
+</ul>
+
+<p><strong>Best for:</strong> Enterprise AEs doing pre-call research, SDRs personalizing outreach sequences, and account managers monitoring their book of business for expansion or churn signals.</p>
+
+<h2>3. Gmail MCP Server — Outreach History and Thread Management</h2>
+
+<p>Email is where most sales conversations actually happen — but finding the right context in a full inbox is its own productivity tax. The Gmail MCP server lets your AI navigate your sales email history: pull the full thread with a prospect before replying so you never ask a question they've already answered, identify prospects who opened emails but didn't reply for follow-up timing, find every email conversation with a specific company across a multi-stakeholder deal, and draft highly contextual follow-ups that reference actual prior conversation content.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Full thread retrieval by prospect, company, and date range for pre-reply context</li>
+<li>Unanswered email and follow-up gap identification across active sequences</li>
+<li>Multi-stakeholder thread compilation for complex enterprise deals</li>
+<li>Prior commitment and next-step documentation extraction for follow-up drafts</li>
+</ul>
+
+<p><strong>Best for:</strong> AEs managing high-volume enterprise deals with multiple stakeholders, SDRs tracking sequence gaps, and sales managers reviewing rep communication quality and follow-through consistency.</p>
+
+<h2>4. Memory MCP Server — Relationship Context That Never Gets Into CRM</h2>
+
+<p>The most valuable sales context never makes it into CRM fields — a prospect's personal priorities, the real internal dynamics at an account, what motivates a specific champion, and the history of relationship nuances that determine whether a deal closes. The Memory MCP server gives your AI persistent recall of this relationship intelligence: brief yourself on a prospect's personality and stated concerns before a call, recall the internal dynamics at an account that surfaced during a site visit, and maintain relationship continuity for accounts you touch infrequently without re-reading months of notes.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Prospect personality, priorities, and objection pattern memory for call prep</li>
+<li>Account internal dynamics and champion relationship context</li>
+<li>Deal history and negotiation context for renewal and expansion conversations</li>
+<li>Competitive landscape notes specific to each account's evaluation history</li>
+</ul>
+
+<p><strong>Best for:</strong> Enterprise AEs managing long-cycle deals, account managers handling large books of business, and sales leaders who need to quickly re-immerse in accounts after handoffs or coverage gaps.</p>
+
+<h2>5. PostgreSQL MCP Server — Revenue Analytics and Pipeline Forecasting</h2>
+
+<p>Sales operations teams need granular data access for forecasting, quota analysis, and rep performance review. The PostgreSQL MCP server enables conversational access to revenue data: query win rates by deal size, source, and rep over any time period; calculate average sales cycle length by segment and product line; identify which deal stages are longest for process bottleneck analysis; and pull rep-level pipeline coverage ratios for forecast review — without waiting for the RevOps team to run a report.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Win rate analysis by segment, deal size, lead source, and rep</li>
+<li>Sales cycle length benchmarking by stage, product line, and account type</li>
+<li>Pipeline coverage ratio and forecast accuracy analysis by rep and team</li>
+<li>Quota attainment tracking and trend analysis for performance review</li>
+</ul>
+
+<p><strong>Best for:</strong> Sales managers building forecast calls, RevOps teams analyzing pipeline health, and sales leaders reviewing rep performance without running manual Salesforce reports.</p>
+
+<h2>6. Notion MCP Server — Playbooks, Battle Cards, and Sales Content</h2>
+
+<p>Sales enablement content — objection handling guides, competitive battle cards, product one-pagers, discovery question frameworks, and qualification criteria — lives in Notion for most modern sales teams. The Notion MCP server makes this content AI-accessible during live selling: pull the battle card for a specific competitor before a call where they're in the evaluation, retrieve the discovery framework for a specific use case, find the ROI calculation template for a specific industry vertical, and access the most current pricing and packaging documentation before a negotiation.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Competitor battle card retrieval by specific competitor and deal stage</li>
+<li>Discovery question framework access by vertical, use case, and buyer persona</li>
+<li>Pricing and packaging documentation retrieval for negotiation prep</li>
+<li>ROI and business case template access for late-stage deal support</li>
+</ul>
+
+<p><strong>Best for:</strong> Reps preparing for competitive deals, SDRs accessing discovery frameworks for specific personas, and sales managers ensuring reps use current enablement content rather than outdated decks.</p>
+
+<h2>7. Slack MCP Server — Deal Intelligence and Team Knowledge</h2>
+
+<p>Sales teams share deal intelligence, competitive information, and best practices in Slack — but this tribal knowledge is impossible to find when you need it. The Slack MCP server lets your AI surface this distributed intelligence: find what a colleague learned from a meeting with a specific company, identify how the team has handled a particular objection in past deals, retrieve the discussion thread about a competitor's recent pricing change, and catch up on account-specific conversations that happened while you were traveling or out.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Account-specific deal intelligence retrieval from team channels</li>
+<li>Objection handling pattern research from past deal discussion threads</li>
+<li>Competitive intelligence and pricing change discussion compilation</li>
+<li>Colleague best practice and win story access for deal coaching</li>
+</ul>
+
+<p><strong>Best for:</strong> AEs tapping into team deal intelligence before competitive evaluations, sales managers surfacing best practices during coaching, and new reps onboarding to a team's accumulated selling knowledge.</p>
+
+<h2>8. Fetch MCP Server — Company Financials and Public Intelligence</h2>
+
+<p>Enterprise sales requires deep company intelligence — financial health, strategic priorities from earnings calls, recent acquisitions, and press coverage. The Fetch MCP server lets your AI pull targeted intelligence from authoritative public sources: retrieve a company's most recent earnings call transcript or investor letter for strategic context before an executive meeting, pull SEC filings for a publicly-traded prospect to understand their stated priorities, access company news coverage for recent developments, and retrieve LinkedIn company page data for headcount and hiring trend signals.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Earnings call transcript and investor letter retrieval for strategic context</li>
+<li>SEC filing access for financial health and stated priority research</li>
+<li>Press coverage compilation for recent company development intelligence</li>
+<li>Hiring trend and headcount signal retrieval for expansion intent identification</li>
+</ul>
+
+<p><strong>Best for:</strong> Enterprise AEs preparing for C-level meetings, strategic account managers building account plans, and sales leaders conducting executive business reviews with named accounts.</p>
+
+<h2>The Sales Team MCP Stack</h2>
+
+<ul>
+<li><strong>CRM stack:</strong> HubSpot + PostgreSQL (contact and deal management + revenue analytics)</li>
+<li><strong>Research stack:</strong> Brave Search + Fetch (prospect triggers + public company intelligence)</li>
+<li><strong>Relationship stack:</strong> Gmail + Memory (email context + relationship intelligence that lives outside CRM)</li>
+<li><strong>Enablement stack:</strong> Notion + Slack (playbooks and battle cards + team deal intelligence)</li>
+<li><strong>Full sales stack:</strong> All of the above — your AI prepares for calls, tracks pipeline, drafts personalized outreach, and surfaces team intelligence from a single integrated workflow</li>
+</ul>
+
+<p>Browse all <a href="/category/productivity">productivity MCP servers</a> and <a href="/category/analytics">analytics MCP servers</a> on MyMCPTools. For related guides, see <a href="/blog/best-mcp-servers-for-marketing">Best MCP Servers for Marketing</a> and <a href="/blog/best-mcp-servers-for-customer-support">Best MCP Servers for Customer Support</a>.</p>
+    `.trim(),
+  },
+  {
+    slug: "best-mcp-servers-for-education",
+    title: "Best MCP Servers for Educators and Teachers in 2026",
+    description: "The top MCP servers for teachers, professors, and education professionals — from lesson planning and student research to curriculum development, grading support, and learning management.",
+    date: "2026-05-15",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "7 min read",
+    keywords: ["best mcp servers for educators", "education mcp servers", "mcp tools for teachers", "mcp server for lesson planning", "teaching ai tools 2026", "classroom ai workflow"],
+    relatedServerSlugs: ["brave-search", "fetch", "filesystem", "google-drive", "notion", "memory", "youtube", "slack"],
+    content: `
+<p>Educators spend enormous time on work that happens outside the classroom — lesson planning, curriculum development, grading, research, parent communication, and professional development. AI assistants can meaningfully reduce this overhead, but only when they have access to the right context: your curriculum materials, current pedagogical research, your students' learning profiles, and the subject-matter resources specific to what you're teaching. MCP servers provide this contextual access.</p>
+
+<p>Here are the best MCP servers for educators in 2026.</p>
+
+<h2>1. Brave Search MCP Server — Subject Research and Pedagogical Resources</h2>
+
+<p>Teaching at any level requires ongoing subject-matter currency and access to pedagogical best practices. The Brave Search MCP server gives your AI real-time research capability: find recent developments in your subject area for contemporary examples, locate current educational research on a specific teaching strategy, identify relevant primary sources for a unit topic, research how other educators have approached a challenging concept, and discover open educational resources available for your subject and grade level.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Subject-matter current events and contemporary example research by topic</li>
+<li>Educational research and pedagogical strategy literature access</li>
+<li>Primary source and supplementary material discovery for unit planning</li>
+<li>Open educational resource search by subject, grade level, and standard</li>
+</ul>
+
+<p><strong>Best for:</strong> Teachers developing engaging contemporary examples for curriculum units, professors integrating current research into courses, and curriculum developers researching evidence-based instructional approaches.</p>
+
+<h2>2. Filesystem MCP Server — Curriculum Materials and Lesson Archives</h2>
+
+<p>Most educators maintain large libraries of lesson plans, assessments, handouts, presentations, and curriculum materials accumulated over years of teaching. The Filesystem MCP server gives your AI direct access to this local archive: locate a lesson plan you used successfully for a particular concept three years ago, find the assessment rubric from a specific unit, retrieve the handout you developed for a difficult topic and adapt it for this year's students, and search across all your materials to identify where you've previously addressed a particular standard or learning objective.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Lesson plan retrieval by topic, grade level, and standard across multi-year archives</li>
+<li>Assessment and rubric location by unit type and learning objective</li>
+<li>Handout and student-facing material retrieval for adaptation and reuse</li>
+<li>Standard coverage mapping across the full curriculum library</li>
+</ul>
+
+<p><strong>Best for:</strong> Experienced teachers building on accumulated curriculum materials, department heads auditing standard coverage across grade levels, and educators onboarding to a new grade or subject who inherit predecessor materials.</p>
+
+<h2>3. Google Drive MCP Server — Shared Curriculum and Collaborative Planning</h2>
+
+<p>Teaching teams — grade-level teams, department groups, and curriculum committees — develop and share materials in Google Drive. The MCP server makes this shared repository AI-navigable: retrieve the unit plan a colleague developed for a shared course, access the school's curriculum map for your grade level, pull the shared assessment bank for a specific content area, and locate the professional development resources shared from the last training session — without spending time navigating folder structures.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Shared unit plan and curriculum map access across teaching team drives</li>
+<li>Common assessment and rubric retrieval from department or grade-level banks</li>
+<li>Professional development resource access by topic and session date</li>
+<li>Student-facing material location across shared course folders</li>
+</ul>
+
+<p><strong>Best for:</strong> Grade-level or department teaching teams co-planning curriculum, new teachers accessing established course materials, and instructional coaches navigating materials across multiple teachers' shared folders.</p>
+
+<h2>4. Notion MCP Server — Lesson Planning, Standards Tracking, and Pacing</h2>
+
+<p>Educators who use Notion to manage their curriculum have a powerful base for AI integration. The Notion MCP server makes lesson planning infrastructure AI-accessible: check your pacing guide to see where you are relative to the planned scope and sequence, retrieve the standards addressed in an upcoming unit, pull your lesson planning template for a specific instructional type, and review the differentiation strategies documented for a particular learning objective — so your AI assistant can help you plan with full curriculum context.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Pacing guide and scope-and-sequence tracking by unit and week</li>
+<li>Standards documentation retrieval by grade level and content area</li>
+<li>Lesson planning template and framework access by instructional type</li>
+<li>Differentiation and accommodation strategy documentation retrieval</li>
+</ul>
+
+<p><strong>Best for:</strong> Teachers managing complex multi-unit curricula, special education teachers tracking IEP goal alignment, and department chairs overseeing standards coverage across a full course sequence.</p>
+
+<h2>5. Fetch MCP Server — Education Standards and Policy Documents</h2>
+
+<p>State curriculum standards, Common Core documentation, district policy guides, and professional organization frameworks are published on specific authoritative websites. The Fetch MCP server lets your AI retrieve current content from these targeted sources: pull the current state standards for your grade level and content area, retrieve a professional organization's position statement on a teaching practice, access your district's current assessment policy, and get the most recent version of a curriculum framework your school has adopted — without navigating multiple government and organization websites.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>State content standards and grade-level expectations retrieval by subject</li>
+<li>Common Core and Next Generation Science Standards document access</li>
+<li>Professional organization framework and position statement retrieval</li>
+<li>District policy and assessment guide access by topic</li>
+</ul>
+
+<p><strong>Best for:</strong> Teachers aligning curriculum to current standards, curriculum coordinators auditing standard coverage, and educators preparing for accreditation reviews that require standards documentation.</p>
+
+<h2>6. Memory MCP Server — Student Learning Profiles and Class Context</h2>
+
+<p>Effective teaching depends on knowing your students — their learning styles, prior knowledge, specific challenges, what motivates each of them, and the accommodations that work for particular students. The Memory MCP server gives your AI persistent recall of student learning context (in non-identifying, instructionally focused form): brief yourself on a student's documented learning preferences before differentiating an assignment, recall which approach worked for a specific student during a prior unit, and maintain instructional continuity for students who need consistent approaches across subjects or school years.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Student learning preference and instructional strategy documentation</li>
+<li>Prior unit performance pattern recall for differentiation planning</li>
+<li>Accommodation and support strategy notes for consistent implementation</li>
+<li>Class-level context and group dynamic notes for instructional decisions</li>
+</ul>
+
+<p><strong>Best for:</strong> Special education teachers maintaining IEP strategy context, classroom teachers differentiating instruction for diverse learners, and educators who teach the same students across multiple years and want to maintain instructional continuity.</p>
+
+<h2>7. YouTube MCP Server — Video Resource Discovery and Curation</h2>
+
+<p>Video has become a core instructional resource — explanatory videos, primary source footage, documentary clips, and educator-created content are used across every subject and grade level. The YouTube MCP server lets your AI search for and retrieve information about relevant video resources: find high-quality explanatory videos on a specific concept at the right complexity level, locate primary source footage for a historical unit, identify documentary clips suitable for a specific learning objective, and compile a playlist of curated resources for a unit before students access them independently.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Explanatory video search by concept, complexity level, and subject area</li>
+<li>Primary source and historical footage discovery for social studies and humanities</li>
+<li>Documentary and educational clip identification by topic and grade level</li>
+<li>Resource curation support for student independent study playlists</li>
+</ul>
+
+<p><strong>Best for:</strong> Teachers integrating video into blended learning, educators building flipped classroom resource libraries, and curriculum developers vetting video resources for accuracy and grade-level appropriateness.</p>
+
+<h2>8. Slack MCP Server — Professional Learning Community and Team Communication</h2>
+
+<p>Teaching teams and professional learning communities (PLCs) coordinate in Slack — sharing observations from classroom experiments, discussing assessment data, planning collaborative projects, and supporting each other through instructional challenges. The Slack MCP server lets your AI surface this professional community knowledge: find what a colleague shared about an effective approach for a challenging concept, retrieve the discussion about an assessment result that prompted a curriculum adjustment, and access the professional development follow-through commitments your team made after the last training.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>PLC discussion retrieval by instructional topic and unit focus</li>
+<li>Peer observation and classroom experiment outcome sharing</li>
+<li>Assessment data discussion and curriculum adjustment decision retrieval</li>
+<li>Professional development commitment and follow-through tracking</li>
+</ul>
+
+<p><strong>Best for:</strong> Teaching teams participating in structured PLCs, instructional coaches supporting collaborative planning, and department heads facilitating evidence-based curriculum adjustment discussions.</p>
+
+<h2>The Educator MCP Stack</h2>
+
+<ul>
+<li><strong>Research stack:</strong> Brave Search + Fetch (subject and pedagogical research + standards and policy documents)</li>
+<li><strong>Curriculum stack:</strong> Filesystem + Google Drive (personal archive + shared team materials)</li>
+<li><strong>Planning stack:</strong> Notion + Memory (pacing and standards tracking + student learning profiles)</li>
+<li><strong>Resources stack:</strong> YouTube + Slack (video curation + professional community knowledge)</li>
+<li><strong>Full educator stack:</strong> All of the above — your AI plans lessons, retrieves curriculum materials, researches current content, and maintains student context from a single integrated workflow</li>
+</ul>
+
+<p>Browse all <a href="/category/productivity">productivity MCP servers</a> and <a href="/category/search">search MCP servers</a> on MyMCPTools. For related guides, see <a href="/blog/best-mcp-servers-for-research">Best MCP Servers for Research</a> and <a href="/blog/best-mcp-servers-for-writers">Best MCP Servers for Writers</a>.</p>
+    `.trim(),
+  },
+  {
+    slug: "best-mcp-servers-for-product-managers",
+    title: "Best MCP Servers for Product Managers in 2026",
+    description: "The top MCP servers for product managers — from user research and competitive analysis to roadmap planning, stakeholder communication, and data-driven prioritization.",
+    date: "2026-05-15",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "8 min read",
+    keywords: ["best mcp servers for product managers", "product management mcp servers", "mcp tools for product teams", "pm mcp server", "product roadmap ai workflow 2026", "product manager ai tools"],
+    relatedServerSlugs: ["brave-search", "postgresql", "notion", "memory", "github", "slack", "fetch", "airtable"],
+    content: `
+<p>Product management is a context-synthesis job. PMs are constantly moving between user research, competitive intelligence, engineering discussions, stakeholder updates, and data analysis — each requiring a different type of context that lives in a different tool. The overhead of retrieval — finding the right Jira ticket, pulling analytics data, reviewing the competitive landscape, surfacing prior research — is one of the biggest hidden productivity taxes in product work. MCP servers give AI assistants direct access to the systems where product context lives, making that retrieval instant.</p>
+
+<p>Here are the best MCP servers for product managers in 2026.</p>
+
+<h2>1. Notion MCP Server — PRDs, Roadmap, and Product Knowledge Base</h2>
+
+<p>Most product teams use Notion as their system of record for product requirements, roadmaps, strategy documents, and historical context. The Notion MCP server makes this knowledge base AI-accessible: retrieve the PRD for a feature before a design review, pull the roadmap for a specific team or quarter, find the historical context around a past product decision before repeating it, access the user research synthesis for a specific problem area, and retrieve the acceptance criteria for a shipped feature when diagnosing an edge case — all without switching applications.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>PRD and requirements document retrieval by feature, team, and release</li>
+<li>Roadmap access by quarter, team, and strategic theme</li>
+<li>Historical product decision documentation for context and rationale</li>
+<li>User research synthesis and customer insight retrieval by problem area</li>
+</ul>
+
+<p><strong>Best for:</strong> PMs preparing for feature reviews and sprint planning, product leaders synthesizing roadmap context for stakeholder presentations, and new PMs onboarding to an established product area's accumulated context.</p>
+
+<h2>2. Brave Search MCP Server — Competitive Intelligence and Market Research</h2>
+
+<p>Effective product decisions require knowing what competitors are shipping, how markets are shifting, and what customers of alternative solutions are saying. The Brave Search MCP server gives your AI real-time competitive and market intelligence: monitor a competitor's product blog for recent feature announcements, research customer reviews of competing products for unmet needs, identify industry analyst coverage of your product category, and track emerging technology developments that could affect your product strategy — turning reactive competitive awareness into systematic intelligence.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Competitor feature announcement and product blog monitoring</li>
+<li>Customer review sentiment analysis for competing products</li>
+<li>Industry analyst and press coverage retrieval by product category</li>
+<li>Emerging technology trend research for product strategy input</li>
+</ul>
+
+<p><strong>Best for:</strong> PMs conducting competitive analysis before roadmap planning, product strategy teams tracking market shifts, and PMs preparing for board or investor conversations that require competitive positioning depth.</p>
+
+<h2>3. PostgreSQL MCP Server — Product Analytics and User Behavior Data</h2>
+
+<p>Data-driven product decisions require fast, flexible access to user behavior, feature adoption, retention, and revenue data. The PostgreSQL MCP server enables conversational access to product analytics: query feature adoption rates for a specific cohort, calculate retention curves by acquisition channel and user segment, identify which features correlate most strongly with paid conversion, analyze how usage patterns differ between churned and retained users, and pull engagement data for a specific feature before a roadmap prioritization conversation — without waiting for a data team to run reports.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Feature adoption and usage frequency analysis by user segment and cohort</li>
+<li>Retention curve calculation by acquisition source, plan, and feature set</li>
+<li>Conversion funnel analysis by step, segment, and time period</li>
+<li>Churn vs. retention behavior pattern comparison for product insight</li>
+</ul>
+
+<p><strong>Best for:</strong> PMs preparing data for roadmap prioritization and strategy reviews, growth teams analyzing funnel performance, and product leaders building evidence-based cases for resource allocation.</p>
+
+<h2>4. GitHub MCP Server — Engineering Context and Shipping Velocity</h2>
+
+<p>PMs need visibility into what engineering is actually working on, how fast the team is shipping, and what technical decisions are being made that affect product direction. The GitHub MCP server provides this engineering context: review open PRs for a feature before a product review, check the status of issues associated with a release, understand what technical debt or architectural work is in flight, search commit history for when a specific behavior was introduced, and identify which engineers have the most context on specific areas of the codebase — without needing to parse GitHub independently.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Open PR and issue status tracking by feature area, release, and milestone</li>
+<li>Release readiness assessment from issue closure and PR merge status</li>
+<li>Technical debt and architectural work identification from issue labels</li>
+<li>Code ownership and context mapping for cross-functional planning</li>
+</ul>
+
+<p><strong>Best for:</strong> Technical PMs tracking engineering progress, PMs managing release readiness, and product leaders needing engineering context for stakeholder updates without interrupting developers for status checks.</p>
+
+<h2>5. Slack MCP Server — Team Decisions, Customer Feedback, and Escalations</h2>
+
+<p>Critical product context flows through Slack — customer feedback escalated from support, engineering decisions made in channel discussions, stakeholder questions that arrived while you were in meetings, and the tribal knowledge that informs day-to-day product decisions. The Slack MCP server lets your AI surface this distributed context: find the customer feedback thread that prompted a feature request, retrieve the engineering decision discussion about a specific architectural choice, identify unresolved stakeholder questions across your product channels, and catch up on discussions that happened during a product sprint.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Customer feedback escalation retrieval by product area and date</li>
+<li>Engineering decision discussion and rationale extraction from channel history</li>
+<li>Stakeholder question identification and response gap tracking</li>
+<li>Cross-functional discussion compilation by feature and sprint</li>
+</ul>
+
+<p><strong>Best for:</strong> PMs managing high-volume communication across multiple stakeholder groups, product leads synthesizing customer feedback from multiple channels, and new PMs onboarding to a team's decision history and institutional context.</p>
+
+<h2>6. Memory MCP Server — Stakeholder Context and Relationship Intelligence</h2>
+
+<p>Product management requires constant stakeholder management — understanding each stakeholder's priorities, communication preferences, past requests, and political context within the organization. The Memory MCP server gives your AI persistent recall of this stakeholder intelligence: brief yourself on a key executive's stated priorities before a product review, recall what drove a specific stakeholder's objection in a previous roadmap discussion, maintain context on customer champion relationships across a portfolio of key accounts, and remember which team's priorities are in conflict before a cross-functional planning session.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Executive and stakeholder priority and communication preference documentation</li>
+<li>Past roadmap objection and negotiation context for planning sessions</li>
+<li>Customer champion relationship notes for account-level product decisions</li>
+<li>Cross-functional team priority conflict documentation for alignment planning</li>
+</ul>
+
+<p><strong>Best for:</strong> Senior PMs managing complex internal stakeholder landscapes, product leaders building alignment across engineering, sales, and go-to-market teams, and PMs managing strategic customer relationships with product influence.</p>
+
+<h2>7. Airtable MCP Server — Feature Requests, User Research Tracker, and Feedback Database</h2>
+
+<p>Many product teams maintain their feature request database, user interview tracker, and feedback log in Airtable. The MCP server makes this structured product intelligence AI-accessible: query the feature request database to see how many customers requested a specific capability, pull all user interview notes that mentioned a particular pain point, identify which customer segments generate the most feature requests for a product area, and retrieve the outcome tracking records for recently shipped features to assess actual impact versus predicted impact.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Feature request volume and customer segment analysis by capability and priority</li>
+<li>User interview note retrieval by pain point, persona, and research question</li>
+<li>Customer feedback pattern identification across segment and use case dimensions</li>
+<li>Shipped feature outcome tracking for prioritization model calibration</li>
+</ul>
+
+<p><strong>Best for:</strong> PMs conducting discovery for roadmap planning, product researchers synthesizing user interview data, and product teams building evidence-based prioritization from structured feedback data.</p>
+
+<h2>8. Fetch MCP Server — Industry Reports and Analyst Coverage</h2>
+
+<p>Strategic product decisions require external intelligence — industry analyst reports, competitive press coverage, government regulatory developments that could affect your market, and academic research on user behavior in your product category. The Fetch MCP server lets your AI retrieve targeted intelligence from authoritative external sources: pull the summary of a recent Gartner or Forrester report on your product category, retrieve recent press coverage of a regulatory development affecting your market, access academic research on user behavior patterns relevant to your product experience, and monitor analyst commentary on your competitors.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Industry analyst report summary access by product category and firm</li>
+<li>Regulatory development monitoring for market-affecting policy changes</li>
+<li>Academic and practitioner research retrieval on user experience topics</li>
+<li>Analyst and press commentary compilation on key competitors</li>
+</ul>
+
+<p><strong>Best for:</strong> PMs preparing for board-level strategy presentations, product leaders building market context for roadmap justification, and PMs in regulated industries monitoring policy developments that could require product changes.</p>
+
+<h2>The Product Manager MCP Stack</h2>
+
+<ul>
+<li><strong>Knowledge stack:</strong> Notion + Memory (PRDs and roadmaps + stakeholder and relationship context)</li>
+<li><strong>Intelligence stack:</strong> Brave Search + Fetch (competitive monitoring + analyst and regulatory coverage)</li>
+<li><strong>Data stack:</strong> PostgreSQL + Airtable (product analytics + structured feedback and research data)</li>
+<li><strong>Collaboration stack:</strong> GitHub + Slack (engineering progress + team decisions and customer feedback)</li>
+<li><strong>Full PM stack:</strong> All of the above — your AI synthesizes product context, retrieves competitive intelligence, analyzes user data, and tracks engineering progress from a single integrated workflow</li>
+</ul>
+
+<p>Browse all <a href="/category/productivity">productivity MCP servers</a> and <a href="/category/analytics">analytics MCP servers</a> on MyMCPTools. For related guides, see <a href="/blog/best-mcp-servers-for-project-management">Best MCP Servers for Project Management</a> and <a href="/blog/best-mcp-servers-for-developers">Best MCP Servers for Developers</a>.</p>
+    `.trim(),
+  },
 ];
 
 export function getBlogPostBySlug(slug: string): BlogPost | undefined {
