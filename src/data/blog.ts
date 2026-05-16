@@ -22715,6 +22715,517 @@ jupyter mcp install</code></pre>
 <p>Browse all MCP servers on <a href="/servers">MyMCPTools</a>. For related guides, see <a href="/blog/best-mcp-servers-for-developers">Best MCP Servers for Developers</a> and <a href="/blog/best-mcp-servers-for-community-managers">Best MCP Servers for Community Managers</a>.</p>
     `.trim(),
   },
+  {
+    slug: "best-mcp-servers-for-python-developers",
+    title: "Best MCP Servers for Python Developers in 2026: Jupyter, Testing & More",
+    description: "Discover the top MCP servers for Python development. From Jupyter notebooks to pytest automation, database queries, and package management — these MCP servers supercharge your Python AI workflow.",
+    date: "2026-05-16",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "9 min read",
+    keywords: ["best mcp servers for python", "python mcp servers", "mcp servers python developers", "jupyter mcp server", "python ai tools 2026"],
+    relatedServerSlugs: ["jupyter", "pylsp", "pytest", "filesystem", "postgresql", "sqlite", "github", "brave-search", "duckdb", "redis"],
+    content: `
+<p>Python developers have an embarrassment of riches when it comes to MCP server integrations. Whether you're building data pipelines, training machine learning models, writing web scrapers, or developing APIs, there's an MCP server that plugs directly into your workflow.</p>
+
+<p>This guide covers the most valuable MCP servers specifically for Python development in 2026 — chosen for their impact on day-to-day productivity, not just their GitHub star counts.</p>
+
+<h2>What Python Developers Need from MCP</h2>
+
+<p>Python workflows span an unusually wide range: data analysis in Jupyter, API development in FastAPI/Django, ML training pipelines, scripting, and automation. Good MCP servers for Python need to handle this breadth:</p>
+
+<ul>
+<li><strong>Notebook awareness</strong> — Jupyter is central to Python data work</li>
+<li><strong>Package ecosystem fluency</strong> — pip, conda, pyenv, virtual environments</li>
+<li><strong>Database diversity</strong> — Python talks to PostgreSQL, SQLite, DuckDB, Redis, and more</li>
+<li><strong>Testing integration</strong> — pytest is the Python testing standard</li>
+<li><strong>Fast search</strong> — PyPI, docs, and Stack Overflow for package research</li>
+</ul>
+
+<h2>1. Filesystem MCP Server — The Foundation of Every Python Project</h2>
+
+<p>Every Python developer needs the filesystem MCP server. Python projects involve dozens of files: source modules, virtual environments, config files, requirements.txt, pyproject.toml, Makefiles, and more. The filesystem server gives your AI complete visibility into this structure.</p>
+
+<p><strong>Key capabilities for Python:</strong></p>
+<ul>
+<li>Read and write Python source files with correct encoding</li>
+<li>Navigate project structure to understand module organization</li>
+<li>Access requirements.txt, pyproject.toml, setup.py for dependency context</li>
+<li>Read and update .env files (with appropriate restrictions)</li>
+<li>Inspect virtual environment structures</li>
+</ul>
+
+<p><strong>Best for:</strong> All Python developers. If you're not using filesystem MCP, your AI is working blind.</p>
+
+<h2>2. Jupyter MCP Server — AI-Native Notebook Development</h2>
+
+<p>Jupyter notebooks are the Python data scientist's primary workspace. The Jupyter MCP server lets your AI assistant read, understand, and generate notebook content with full awareness of cell outputs, data transformations, and the exploratory narrative that makes notebooks valuable.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read notebook cells including code, markdown, and rich outputs</li>
+<li>Understand cell execution order and variable state</li>
+<li>Generate new cells with correct Python for your data context</li>
+<li>Access dataframe previews and visualization metadata</li>
+<li>Navigate between notebook sections without copy-pasting</li>
+</ul>
+
+<p><strong>Best for:</strong> Data scientists, ML engineers, and researchers who live in Jupyter notebooks. Eliminates the constant context-switching between notebook and chat.</p>
+
+<h2>3. Python Language Server (pylsp) MCP Server — Deep Code Intelligence</h2>
+
+<p>The Python Language Server Protocol integration brings IDE-level code intelligence to your AI assistant. Instead of relying on pattern matching, your AI gets the same type information, import resolution, and symbol lookups that your editor uses.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Type inference for Python 3.x type hints and annotations</li>
+<li>Import resolution across your entire project and virtual environment</li>
+<li>Symbol definitions and references (go-to-definition for AI)</li>
+<li>Diagnostic information (unused imports, undefined variables)</li>
+<li>Signature help for function calls</li>
+</ul>
+
+<p><strong>Best for:</strong> Python developers working on larger codebases where type correctness and import structure matter. Particularly valuable for FastAPI/Pydantic heavy projects.</p>
+
+<h2>4. PostgreSQL MCP Server — AI-Assisted Database Work</h2>
+
+<p>Python is the lingua franca of database tooling. Whether you're using SQLAlchemy, Django ORM, psycopg2 directly, or writing data pipelines with pandas, having your AI understand your actual database schema changes everything.</p>
+
+<p><strong>Key capabilities for Python:</strong></p>
+<ul>
+<li>Schema introspection for accurate SQLAlchemy model generation</li>
+<li>Query validation before running expensive operations</li>
+<li>Migration analysis — understand what your Alembic migrations actually change</li>
+<li>Django ORM to raw SQL translation for performance debugging</li>
+<li>Index analysis for slow query optimization</li>
+</ul>
+
+<p><strong>Best for:</strong> Django developers, data engineers, and backend Python developers who work with PostgreSQL daily.</p>
+
+<h2>5. DuckDB MCP Server — Analytics-Native Python Workflows</h2>
+
+<p>DuckDB has become the default analytics database for Python data work. Its pandas/Polars integration, columnar storage, and SQL interface make it ideal for local analytics. The DuckDB MCP server lets your AI query and understand your analytical data without any data leaving your machine.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Query DuckDB databases and Parquet files directly</li>
+<li>Schema awareness for accurate pandas-to-SQL conversions</li>
+<li>Run analytics queries and inspect results in context</li>
+<li>Compatible with local data lakes and S3-backed Parquet files</li>
+<li>Works alongside pandas/Polars workflows</li>
+</ul>
+
+<p><strong>Best for:</strong> Data scientists, ML engineers, and analytics engineers using Python for local data analysis.</p>
+
+<h2>6. GitHub MCP Server — Python Open Source Workflow</h2>
+
+<p>The Python ecosystem is built on open source. The GitHub MCP server bridges your repositories with your AI — enabling PR reviews, issue triage, codebase search across repos, and dependency tracking without leaving your conversation.</p>
+
+<p><strong>Key capabilities for Python:</strong></p>
+<ul>
+<li>Search PyPI-published packages in their source repos</li>
+<li>Review Python PRs with full codebase context</li>
+<li>Track issue patterns across multiple repos</li>
+<li>Inspect third-party library source when docs are insufficient</li>
+<li>Manage GitHub Actions workflows for Python CI/CD</li>
+</ul>
+
+<p><strong>Best for:</strong> Python open source contributors, library maintainers, and teams using GitHub.</p>
+
+<h2>7. Brave Search MCP Server — Live Python Docs and PyPI Research</h2>
+
+<p>Python's ecosystem evolves fast. New library releases, deprecations, breaking changes — the Brave Search MCP server keeps your AI current with live documentation lookups instead of relying on training data that may be months out of date.</p>
+
+<p><strong>Key capabilities for Python development:</strong></p>
+<ul>
+<li>Search PyPI for packages matching specific use cases</li>
+<li>Look up current documentation for rapidly evolving libraries (FastAPI, Pydantic v2, SQLAlchemy 2.0)</li>
+<li>Find Stack Overflow solutions for specific error messages</li>
+<li>Research library comparison before adding a dependency</li>
+<li>Verify Python version compatibility for packages</li>
+</ul>
+
+<p><strong>Best for:</strong> Any Python developer hitting unfamiliar APIs or evaluating new packages.</p>
+
+<h2>8. Redis MCP Server — Cache and Queue Awareness</h2>
+
+<p>Redis powers caching, session storage, message queues (via Celery), and rate limiting in Python applications. The Redis MCP server gives your AI visibility into your cache state — essential for debugging cache invalidation bugs and understanding queue depths.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Inspect Redis keys, values, TTLs, and data structures</li>
+<li>Debug Celery task queues and worker state</li>
+<li>Understand session storage patterns in Django/Flask apps</li>
+<li>Analyze cache hit rates and key patterns</li>
+<li>Monitor pub/sub channels</li>
+</ul>
+
+<p><strong>Best for:</strong> Python backend developers using Redis for caching, Celery for task queues, or Django's cache framework.</p>
+
+<h2>Recommended Python Developer MCP Stacks</h2>
+
+<ul>
+<li><strong>Data science stack:</strong> Filesystem + Jupyter + DuckDB + Brave Search</li>
+<li><strong>Backend dev stack:</strong> Filesystem + PostgreSQL + Redis + GitHub</li>
+<li><strong>ML engineering stack:</strong> Filesystem + Jupyter + PostgreSQL + Brave Search</li>
+<li><strong>Full Python stack:</strong> Filesystem + pylsp + PostgreSQL + GitHub + Brave Search</li>
+<li><strong>Open source stack:</strong> Filesystem + GitHub + Brave Search + SQLite</li>
+</ul>
+
+<p>Browse all Python-relevant MCP servers on <a href="/servers">MyMCPTools</a>. For related guides, see <a href="/blog/best-mcp-servers-for-developers">Best MCP Servers for Developers</a> and <a href="/blog/best-mcp-servers-for-data-science">Best MCP Servers for Data Science</a>.</p>
+    `.trim(),
+  },
+  {
+    slug: "best-mcp-servers-for-web-scraping",
+    title: "Best MCP Servers for Web Scraping in 2026: Firecrawl, Bright Data & More",
+    description: "The top MCP servers for web scraping and data extraction in 2026. Compare Firecrawl, Bright Data, Apify, Puppeteer, and Playwright for AI-powered scraping workflows.",
+    date: "2026-05-16",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "8 min read",
+    keywords: ["best mcp servers for web scraping", "firecrawl mcp server", "bright data mcp", "web scraping mcp servers 2026", "ai web scraping tools"],
+    relatedServerSlugs: ["firecrawl", "brightdata", "apify", "puppeteer", "playwright", "browserbase", "brave-search", "filesystem", "postgresql", "exa"],
+    content: `
+<p>Web scraping has been transformed by MCP. Instead of writing brittle XPath selectors and managing headless browser sessions manually, you can now give your AI direct access to scraping infrastructure — describing what you want extracted in plain language and letting the AI handle the mechanics.</p>
+
+<p>This guide covers the best MCP servers for web scraping and data extraction workflows in 2026, from simple article fetching to large-scale enterprise crawling.</p>
+
+<h2>The MCP Advantage for Web Scraping</h2>
+
+<p>Traditional scraping requires:</p>
+<ul>
+<li>Writing and maintaining selectors for every site structure change</li>
+<li>Managing proxies, rate limits, and anti-bot detection manually</li>
+<li>Handling JavaScript rendering in separate browser sessions</li>
+<li>Post-processing raw HTML into structured data</li>
+</ul>
+
+<p>MCP servers collapse this complexity. Your AI can navigate to a page, extract structured data, store it, and process it — all in a single conversation with context preserved throughout.</p>
+
+<h2>1. Firecrawl MCP Server — Best for AI-Ready Content Extraction</h2>
+
+<p>Firecrawl is purpose-built for AI workflows. It turns any URL into clean markdown that language models can immediately understand and process — handling JavaScript rendering, pagination, and anti-bot measures automatically.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Single-URL scraping with JavaScript rendering</li>
+<li>Full-site crawling with configurable depth and scope</li>
+<li>Structured data extraction with schema-based output</li>
+<li>Automatic markdown conversion for AI consumption</li>
+<li>Link discovery and sitemap generation</li>
+<li>Search-and-scrape: find pages via search, extract their content</li>
+</ul>
+
+<p><strong>Best for:</strong> Content research, competitive intelligence, building training datasets, and any workflow where you need clean text from websites. The default choice for AI-native scraping.</p>
+
+<h2>2. Bright Data MCP Server — Best for Scale and Reliability</h2>
+
+<p>Bright Data operates the world's largest proxy network with 72M+ IPs across 195 countries. Their MCP server gives your AI access to enterprise-grade scraping infrastructure — including residential proxies, browser rendering, and CAPTCHA solving — without managing infrastructure yourself.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Access to 72M+ residential, datacenter, and mobile IPs</li>
+<li>Browser API for JavaScript-heavy sites</li>
+<li>Automatic CAPTCHA solving</li>
+<li>Geo-targeting for localized content extraction</li>
+<li>Scraper APIs for major platforms (Amazon, LinkedIn, Instagram)</li>
+<li>Structured data pipelines with data quality guarantees</li>
+</ul>
+
+<p><strong>Best for:</strong> Enterprise scraping at scale, e-commerce price monitoring, social media data collection, and any use case where reliability and IP diversity are critical.</p>
+
+<h2>3. Apify MCP Server — Best for Pre-Built Scraping Actors</h2>
+
+<p>Apify's marketplace has 1,500+ pre-built scraping actors for specific websites and use cases. Their MCP server lets your AI trigger these actors directly — no custom scraper development required for common targets.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Access to 1,500+ pre-built scrapers for popular websites</li>
+<li>Run, monitor, and retrieve results from Apify actors</li>
+<li>Dataset storage and retrieval</li>
+<li>Web search integration</li>
+<li>Scheduled and triggered scraping runs</li>
+<li>Webhook support for event-driven workflows</li>
+</ul>
+
+<p><strong>Best for:</strong> Teams that need to scrape specific websites regularly (Amazon, Google, LinkedIn, YouTube) without building custom scrapers. The actor marketplace eliminates most boilerplate.</p>
+
+<h2>4. Puppeteer MCP Server — Best for Custom Browser Automation</h2>
+
+<p>When you need precise control over browser interactions — clicking buttons, filling forms, handling authentication flows — the Puppeteer MCP server provides headless Chrome automation that your AI can orchestrate with natural language instructions.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Full headless Chrome browser control</li>
+<li>Click, type, scroll, and interact with page elements</li>
+<li>Screenshot capture at any point in the workflow</li>
+<li>Handle complex authentication and session management</li>
+<li>PDF generation from web pages</li>
+<li>Network request interception and modification</li>
+</ul>
+
+<p><strong>Best for:</strong> Sites requiring login flows, JavaScript-heavy SPAs, multi-step form submissions, and any scraping target that requires human-like interaction patterns.</p>
+
+<h2>5. Playwright MCP Server — Best for Cross-Browser Testing and Scraping</h2>
+
+<p>Playwright extends Puppeteer's capabilities with native cross-browser support (Chrome, Firefox, Safari) and better handling of modern web features. It's particularly strong for scraping sites that behave differently across browsers.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Chrome, Firefox, and Safari (WebKit) support</li>
+<li>Auto-waiting for elements to appear (reduces flaky scraping)</li>
+<li>Network route interception for blocking tracking scripts</li>
+<li>Mobile device emulation for mobile-specific content</li>
+<li>Video recording of scraping sessions for debugging</li>
+<li>Parallel context support for concurrent scraping</li>
+</ul>
+
+<p><strong>Best for:</strong> Scraping targets with strict anti-bot detection, mobile-specific content, or sites that serve different content to different browsers.</p>
+
+<h2>6. Browserbase MCP Server — Best for Cloud Browser Execution</h2>
+
+<p>Browserbase provides hosted browser infrastructure — your AI controls cloud browsers without managing local Puppeteer/Playwright installs. It handles browser fingerprinting, stealth mode, and session persistence automatically.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Cloud-hosted browsers with stealth fingerprinting</li>
+<li>Session recording and debugging</li>
+<li>Proxy integration built-in</li>
+<li>Persistent sessions across requests</li>
+<li>Live browser viewing for real-time monitoring</li>
+<li>Enterprise security and compliance features</li>
+</ul>
+
+<p><strong>Best for:</strong> Teams that want browser automation without infrastructure management. Pairs well with Stagehand for AI-native browser control.</p>
+
+<h2>7. Exa MCP Server — Best for Semantic Web Search</h2>
+
+<p>Sometimes you don't want to scrape a specific URL — you want to find all relevant content on a topic and extract it. The Exa MCP server provides neural search that finds semantically relevant web pages, then lets you extract their content.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Neural (meaning-based) search vs. keyword matching</li>
+<li>Highlight extraction — pulls the most relevant passages</li>
+<li>Domain filtering for targeted research</li>
+<li>Date filtering for recent content</li>
+<li>Company and person research workflows</li>
+<li>Content similarity search</li>
+</ul>
+
+<p><strong>Best for:</strong> Research workflows where you need to discover relevant pages before extracting content. Excellent for competitive analysis, market research, and content aggregation.</p>
+
+<h2>8. PostgreSQL MCP Server — Storing and Querying Scraped Data</h2>
+
+<p>Scraped data needs to go somewhere. The PostgreSQL MCP server closes the loop — your AI can scrape data with Firecrawl/Apify, then store and query it in PostgreSQL with schema awareness, all in the same conversation.</p>
+
+<p><strong>Key capabilities for scraping workflows:</strong></p>
+<ul>
+<li>Store scraped data with correct schema understanding</li>
+<li>Query accumulated data to identify gaps and duplicates</li>
+<li>Track scraping run history and success rates</li>
+<li>Build and query indexes for scraped content</li>
+<li>Export processed data for downstream consumption</li>
+</ul>
+
+<p><strong>Best for:</strong> Any scraping workflow that accumulates data over time and needs structured storage, querying, and deduplication.</p>
+
+<h2>Web Scraping MCP Stacks by Use Case</h2>
+
+<ul>
+<li><strong>Content research:</strong> Firecrawl + Exa + Filesystem (find, extract, save locally)</li>
+<li><strong>Competitive intelligence:</strong> Bright Data + PostgreSQL (scale + structured storage)</li>
+<li><strong>E-commerce monitoring:</strong> Apify + PostgreSQL (pre-built Amazon/retail actors + storage)</li>
+<li><strong>Custom scraping:</strong> Puppeteer/Playwright + Filesystem + PostgreSQL (full control)</li>
+<li><strong>Enterprise pipeline:</strong> Bright Data + Firecrawl + PostgreSQL (scale + clean content + storage)</li>
+</ul>
+
+<h2>Choosing the Right Scraping MCP Server</h2>
+
+<table>
+<tr><td><strong>Use case</strong></td><td><strong>Recommended server</strong></td></tr>
+<tr><td>Quick content extraction</td><td>Firecrawl</td></tr>
+<tr><td>Scale and reliability</td><td>Bright Data</td></tr>
+<tr><td>Pre-built site scrapers</td><td>Apify</td></tr>
+<tr><td>Browser interaction flows</td><td>Puppeteer or Playwright</td></tr>
+<tr><td>Cloud browser (no setup)</td><td>Browserbase</td></tr>
+<tr><td>Semantic content discovery</td><td>Exa</td></tr>
+</table>
+
+<p>Browse all web scraping MCP servers on <a href="/servers">MyMCPTools</a>. For related guides, see <a href="/blog/best-mcp-servers-for-developers">Best MCP Servers for Developers</a> and <a href="/blog/best-mcp-servers-for-research">Best MCP Servers for Research</a>.</p>
+    `.trim(),
+  },
+  {
+    slug: "best-mcp-servers-for-knowledge-management",
+    title: "Best MCP Servers for Knowledge Management in 2026: Obsidian, Notion & More",
+    description: "Top MCP servers for personal knowledge management and PKM workflows. Connect Obsidian, Notion, Logseq, and Mem0 to your AI for smarter note-taking, linking, and knowledge retrieval.",
+    date: "2026-05-16",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "8 min read",
+    keywords: ["best mcp servers for knowledge management", "obsidian mcp server", "notion mcp server", "pkm mcp servers 2026", "personal knowledge management ai tools"],
+    relatedServerSlugs: ["obsidian", "notion", "logseq", "mem0", "zep", "filesystem", "brave-search", "exa", "ragie", "supermemory"],
+    content: `
+<p>Personal knowledge management (PKM) is one of the most compelling use cases for MCP. Instead of copy-pasting notes into an AI chat to get help connecting ideas, MCP servers give your AI direct, persistent access to your knowledge base — transforming it from a static archive into an active thinking partner.</p>
+
+<p>This guide covers the best MCP servers for knowledge management workflows in 2026, from Obsidian vaults to AI-native memory systems.</p>
+
+<h2>Why MCP Changes PKM</h2>
+
+<p>Traditional PKM tools are isolated. You write notes, build links, create MOCs (Maps of Content) — but your AI assistant can't see any of it. Every conversation starts from zero, and you spend cognitive energy re-explaining context that you've already documented.</p>
+
+<p>MCP breaks this isolation. With the right servers connected:</p>
+<ul>
+<li>Your AI can search your vault before answering questions</li>
+<li>Notes get linked automatically based on conceptual relationships</li>
+<li>Your AI remembers context across conversations (persistent memory)</li>
+<li>You can query your knowledge base in natural language</li>
+</ul>
+
+<h2>1. Obsidian MCP Server — AI-Powered Vault Integration</h2>
+
+<p>Obsidian is the most popular markdown-based PKM tool, beloved for local-first storage and the visual graph of linked notes. The Obsidian MCP server gives your AI full access to your vault — reading notes, creating new ones, adding backlinks, and searching across your entire knowledge base.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read and write notes in your Obsidian vault</li>
+<li>Search across all notes by content, tags, and properties</li>
+<li>Create new notes with proper frontmatter and backlinks</li>
+<li>Update existing notes and append to daily notes</li>
+<li>Access and modify your graph structure</li>
+<li>Work with templates, dataview queries, and canvas files</li>
+</ul>
+
+<p><strong>Best for:</strong> Obsidian users who want their AI to participate in the knowledge-linking process rather than working from isolated snippets. Transformative for Zettelkasten practitioners.</p>
+
+<h2>2. Notion MCP Server — Structured Knowledge in Workspaces</h2>
+
+<p>Notion's database-driven approach to knowledge management — pages, databases, properties, relations — maps naturally to structured AI workflows. The Notion MCP server lets your AI query databases, create and update pages, and navigate your workspace hierarchy.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Search across your entire Notion workspace</li>
+<li>Query databases with filters and sorts</li>
+<li>Create pages with proper parent-child structure</li>
+<li>Update page properties and database records</li>
+<li>Read and write rich text content including blocks</li>
+<li>Manage relations between database items</li>
+</ul>
+
+<p><strong>Best for:</strong> Teams and individuals using Notion as a central knowledge hub. Particularly powerful for project wikis, CRM databases, and structured meeting notes.</p>
+
+<h2>3. Logseq MCP Server — Outliner-Based Knowledge Access</h2>
+
+<p>Logseq's block-based, outliner approach to PKM creates a different knowledge structure than Obsidian — every block is addressable, and the journal-first workflow creates a dense temporal record. The Logseq MCP server exposes this structure to your AI.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Access block-level content and relationships</li>
+<li>Query your Logseq graph for specific concepts or tags</li>
+<li>Read journal entries across date ranges</li>
+<li>Create new blocks and pages in your graph</li>
+<li>Navigate hierarchical block structures</li>
+<li>Search by content, properties, and queries</li>
+</ul>
+
+<p><strong>Best for:</strong> Logseq users who want AI participation in their daily journaling and knowledge capture workflows. Strong fit for developer knowledge management.</p>
+
+<h2>4. Mem0 MCP Server — Persistent AI Memory Layer</h2>
+
+<p>Mem0 is an AI-native memory system — not a traditional note-taking app, but a persistent memory layer designed specifically for AI applications. It automatically extracts, organizes, and retrieves relevant memories from your conversations and documents.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Automatic memory extraction from conversations</li>
+<li>Semantic memory retrieval (finds relevant context without exact search)</li>
+<li>User, agent, and session-level memory organization</li>
+<li>Memory versioning and conflict resolution</li>
+<li>Cross-application memory access via API</li>
+<li>Personalization based on accumulated preferences and context</li>
+</ul>
+
+<p><strong>Best for:</strong> Power users and developers who want AI assistants that genuinely remember context across sessions. Essential for long-term AI collaboration on complex projects.</p>
+
+<h2>5. Zep MCP Server — Long-Term Memory for AI Assistants</h2>
+
+<p>Zep provides long-term memory infrastructure for AI assistants — storing conversation history, extracting entities and facts, and providing temporally-aware retrieval. It's designed for the case where your AI needs months of conversation context, not just last week's.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Persistent conversation history across sessions</li>
+<li>Automatic entity and fact extraction</li>
+<li>Temporal memory — understands that facts change over time</li>
+<li>Semantic and keyword hybrid search</li>
+<li>Knowledge graph construction from conversations</li>
+<li>Memory summarization to manage context window limits</li>
+</ul>
+
+<p><strong>Best for:</strong> Developers building AI assistants that need genuine long-term memory, and researchers or professionals who want AI collaboration that improves with time.</p>
+
+<h2>6. Ragie MCP Server — RAG Infrastructure for Your Knowledge</h2>
+
+<p>Ragie provides managed RAG (Retrieval-Augmented Generation) infrastructure. Upload documents, PDFs, and web content — Ragie handles chunking, embedding, and retrieval so your AI can answer questions from your knowledge base without you managing vector databases.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Document ingestion (PDF, Word, web pages, Notion, Google Drive)</li>
+<li>Automatic chunking and embedding</li>
+<li>Semantic search across all ingested content</li>
+<li>Source citations in AI responses</li>
+<li>Connector integrations for automatic content sync</li>
+<li>Managed infrastructure — no vector database setup required</li>
+</ul>
+
+<p><strong>Best for:</strong> Knowledge workers who want AI that can answer questions from their document libraries without technical RAG setup. Strong for legal, research, and consulting workflows.</p>
+
+<h2>7. Supermemory MCP Server — Unified Memory Across Sources</h2>
+
+<p>Supermemory aggregates memory from multiple sources — your browser history, bookmarks, notes, and conversations — into a single searchable knowledge store. It's the closest thing to an AI with eidetic memory of your digital life.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Ingest from browser history, bookmarks, notes, and documents</li>
+<li>Unified search across all memory sources</li>
+<li>Automatic categorization and tagging</li>
+<li>Space-based organization for project contexts</li>
+<li>API access for custom integrations</li>
+</ul>
+
+<p><strong>Best for:</strong> Power users who want to turn their entire digital history into a searchable knowledge base that their AI can access.</p>
+
+<h2>8. Filesystem MCP Server — Local Knowledge Files</h2>
+
+<p>For knowledge stored as plain text files, markdown documents, or in file-based systems, the filesystem MCP server provides direct access. Many PKM practitioners keep structured notes as plain markdown — the filesystem server makes these immediately accessible to any AI workflow.</p>
+
+<p><strong>Key capabilities for PKM:</strong></p>
+<ul>
+<li>Read any markdown note or document directly</li>
+<li>Search file contents with pattern matching</li>
+<li>Create new notes in the correct directory structure</li>
+<li>Access templates and snippets</li>
+<li>Read and write frontmatter and metadata</li>
+</ul>
+
+<p><strong>Best for:</strong> Plain text practitioners, Obsidian users with complex vault structures, and anyone whose knowledge base lives as files on disk.</p>
+
+<h2>PKM MCP Stacks by Workflow</h2>
+
+<ul>
+<li><strong>Obsidian-centered:</strong> Obsidian + Filesystem + Brave Search (vault + files + live research)</li>
+<li><strong>Team knowledge:</strong> Notion + Ragie + Exa (structured workspace + document RAG + discovery)</li>
+<li><strong>AI-native memory:</strong> Mem0 + Zep + Filesystem (persistent memory + conversation history + notes)</li>
+<li><strong>Full PKM stack:</strong> Obsidian + Mem0 + Ragie + Exa (vault + memory + document search + discovery)</li>
+<li><strong>Minimalist:</strong> Filesystem + Supermemory (files + unified search)</li>
+</ul>
+
+<h2>The Future of AI-Augmented PKM</h2>
+
+<p>The best knowledge management workflow in 2026 isn't about picking the right app — it's about connecting your existing tools to your AI via MCP. Your Obsidian vault becomes a live collaborator. Your Notion database becomes queryable. Your conversation history becomes institutional memory.</p>
+
+<p>The result: an AI that knows what you know, learns from what you document, and helps you connect ideas you'd never notice yourself.</p>
+
+<p>Browse all knowledge management MCP servers on <a href="/servers">MyMCPTools</a>. For related guides, see <a href="/blog/best-mcp-servers-for-research">Best MCP Servers for Research</a> and <a href="/blog/best-mcp-servers-for-productivity">Best MCP Servers for Productivity</a>.</p>
+    `.trim(),
+  },
 ];
 
 export function getBlogPostBySlug(slug: string): BlogPost | undefined {
