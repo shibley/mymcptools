@@ -22340,6 +22340,381 @@ jupyter mcp install</code></pre>
 <p>Browse all <a href="/category/devops">DevOps MCP servers</a> and <a href="/category/cloud">cloud MCP servers</a> on MyMCPTools. For related guides, see <a href="/blog/best-mcp-servers-for-devops">Best MCP Servers for DevOps</a> and <a href="/blog/best-mcp-servers-for-kubernetes-cloud-native-operations">Best MCP Servers for Kubernetes</a>.</p>
     `.trim(),
   },
+  {
+    slug: "best-mcp-servers-for-spreadsheets",
+    title: "Best MCP Servers for Spreadsheets: Google Sheets & Excel in 2026",
+    description: "Connect your AI assistant directly to Google Sheets and Excel. These MCP servers let you query, update, and analyze spreadsheet data without copy-pasting — perfect for data analysts and business teams.",
+    date: "2026-05-16",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "7 min read",
+    keywords: ["mcp server for google sheets", "excel mcp server", "best mcp servers for spreadsheets", "google sheets mcp", "spreadsheet ai integration"],
+    relatedServerSlugs: ["google-drive", "google-sheets", "filesystem", "postgres", "brave-search"],
+    content: `
+<p>Spreadsheets are where business data lives. Whether your team runs on Google Sheets or Excel, getting your AI assistant to read, write, and analyze that data directly — without endless copy-paste cycles — is a genuine productivity unlock.</p>
+
+<p>MCP servers bridge that gap. The right combination lets your AI query live spreadsheet data, update cells based on natural language instructions, and pull insights that would take hours to compile manually.</p>
+
+<h2>Why MCP Changes Spreadsheet Workflows</h2>
+
+<p>Traditional AI spreadsheet workflows look like this: copy 200 rows → paste into chat → ask a question → manually apply the answer. It's slow, error-prone, and breaks the moment your data updates.</p>
+
+<p>With MCP, your AI has direct, live access to your sheets. You ask once, it reads directly, and the answer reflects the current data — not the snapshot you pasted three hours ago.</p>
+
+<h2>1. Google Sheets MCP Server — Live Google Workspace Data</h2>
+
+<p>The Google Sheets MCP server provides structured, two-way access to your Google Sheets — reading data, writing values, appending rows, and inspecting sheet structure.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read cell ranges, full sheets, or named ranges</li>
+<li>Write and append rows with proper data types</li>
+<li>List all sheets in a spreadsheet</li>
+<li>Batch updates for bulk data changes</li>
+<li>Formula-aware reading (returns computed values)</li>
+</ul>
+
+<p><strong>Best for:</strong> Business teams using Google Workspace for reporting, CRM tracking, project management in sheets, or any workflow where Google Sheets is the source of truth.</p>
+
+<p><strong>Setup:</strong> Requires Google Sheets API OAuth credentials. Once configured in Claude Desktop or Cursor, your AI can reference any sheet by URL or ID.</p>
+
+<h2>2. Google Drive MCP Server — Find and Access the Right Spreadsheet</h2>
+
+<p>Before you can work with spreadsheet data, you need to find the right file. The Google Drive MCP server gives your AI the ability to search and locate files across your entire Drive — including all your spreadsheets.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Search files by name, type, owner, or modification date</li>
+<li>List recent files and shared drives</li>
+<li>Read file metadata (last modified, sharing settings)</li>
+<li>Navigate folder hierarchies</li>
+</ul>
+
+<p><strong>Best for:</strong> Anyone who works across multiple spreadsheets and wants their AI to find the relevant one based on natural language ("find the Q2 budget sheet" → Drive search → Sheets read).</p>
+
+<h2>3. Filesystem MCP Server — Excel Files and Local Spreadsheets</h2>
+
+<p>For Excel files (.xlsx, .csv) stored locally or on mounted network drives, the Filesystem MCP server is your starting point. Your AI can read CSV data directly and, with proper tooling, parse Excel file structures.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read CSV files with full content access</li>
+<li>List directory contents to locate spreadsheet files</li>
+<li>Write CSV output from AI-generated data transformations</li>
+<li>Access Excel files for content extraction (with spreadsheet parsing libraries)</li>
+</ul>
+
+<p><strong>Best for:</strong> Data analysts working with downloaded reports, exported data, or Excel-heavy organizations that haven't migrated to cloud spreadsheets.</p>
+
+<p><strong>Practical workflow:</strong> "Read the sales_q2.csv, identify the top 10 customers by revenue, and write a summary to summary.txt." The AI reads, processes, and writes — no manual steps.</p>
+
+<h2>4. PostgreSQL / SQLite MCP Server — Spreadsheet as Database Source</h2>
+
+<p>Many spreadsheet workflows are really database workflows in disguise. If your data originates in PostgreSQL, MySQL, or SQLite and gets exported to sheets, going directly to the database with an MCP server eliminates the intermediate step entirely.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Schema introspection — understand table structure before querying</li>
+<li>Safe read-only query execution</li>
+<li>Multi-table joins that spreadsheets can't handle natively</li>
+<li>Aggregate queries (SUM, COUNT, GROUP BY) at database speed</li>
+</ul>
+
+<p><strong>Best for:</strong> Analysts who currently export database data to spreadsheets for analysis. Remove the export step entirely — have your AI query the source directly and present the results.</p>
+
+<h2>5. Brave Search MCP Server — Find Formulas and Spreadsheet Help</h2>
+
+<p>Writing complex spreadsheet formulas (ARRAYFORMULA, QUERY, XLOOKUP, pivot configurations) requires up-to-date documentation. The Brave Search MCP server lets your AI research the correct syntax in real time rather than relying on training data that may be outdated.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Search Google Sheets and Excel documentation</li>
+<li>Find community solutions for complex formula patterns</li>
+<li>Research new features in the latest Google Workspace releases</li>
+<li>Locate specific error resolution guides</li>
+</ul>
+
+<p><strong>Best for:</strong> Any user who needs help with complex formulas. The AI can search official docs rather than guessing from memory.</p>
+
+<h2>The Spreadsheet Power-User MCP Stack</h2>
+
+<ul>
+<li><strong>Google Workspace stack:</strong> Google Drive + Google Sheets (find any file → read/write data)</li>
+<li><strong>Excel/local stack:</strong> Filesystem (read CSV/XLSX → process → write output)</li>
+<li><strong>Database-first stack:</strong> PostgreSQL or SQLite (skip the export, query the source)</li>
+<li><strong>Formula research:</strong> Add Brave Search for documentation and formula help</li>
+<li><strong>Full analytics stack:</strong> Sheets + Drive + PostgreSQL + Brave Search — your AI can pull from any data source, join datasets, and document findings</li>
+</ul>
+
+<h2>Common Spreadsheet + MCP Use Cases</h2>
+
+<p><strong>Sales reporting:</strong> "Read the pipeline tracker, calculate close rate by rep for Q2, and add a summary row."</p>
+
+<p><strong>Data cleaning:</strong> "Read the contacts export, find rows with missing email addresses, and write a cleaned version without them."</p>
+
+<p><strong>Budget analysis:</strong> "Compare this month's actuals in the finance sheet against the budget column and flag anything over 10% variance."</p>
+
+<p><strong>CRM hygiene:</strong> "Read the leads sheet and identify duplicates based on email domain."</p>
+
+<p>These workflows take minutes with the right MCP stack — and they work on live data, not last week's export.</p>
+
+<p>Browse all available MCP servers on <a href="/servers">MyMCPTools</a>. For related guides, see <a href="/blog/best-mcp-servers-for-data-engineering">Best MCP Servers for Data Engineering</a> and <a href="/blog/best-mcp-servers-for-data-analysts">Best MCP Servers for Data Analysts</a>.</p>
+    `.trim(),
+  },
+  {
+    slug: "best-mcp-servers-for-local-ai-ollama",
+    title: "Best MCP Servers for Local AI & Ollama in 2026",
+    description: "Running Ollama, LM Studio, or other local LLMs? These MCP servers extend your local AI setup with filesystem access, database queries, web search, and more — all without sending data to the cloud.",
+    date: "2026-05-16",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "8 min read",
+    keywords: ["mcp server for ollama", "local llm mcp", "ollama mcp server", "local ai mcp server", "lm studio mcp", "private ai mcp"],
+    relatedServerSlugs: ["filesystem", "sqlite", "brave-search", "postgres", "git"],
+    content: `
+<p>Local AI has gone mainstream. Ollama, LM Studio, Jan, and similar tools let you run powerful language models on your own hardware — no API keys, no usage fees, no data leaving your machine.</p>
+
+<p>But local LLMs have historically been limited by what they could access. MCP changes that. With the right MCP servers, your local Ollama setup can read files, query databases, search the web, and interact with your development environment — everything cloud AI can do, running entirely on your hardware.</p>
+
+<h2>Why MCP Matters for Local AI</h2>
+
+<p>Privacy-conscious developers and enterprises choose local AI specifically because they don't want their data in third-party systems. MCP servers that connect to local resources (filesystem, local databases, Git repos) honor that constraint completely — all tool calls stay on your machine.</p>
+
+<p>For Ollama users specifically, MCP support has expanded significantly in 2026. Tools like <strong>Open WebUI</strong>, <strong>Continue</strong>, and <strong>LibreChat</strong> support MCP natively when configured alongside Ollama, enabling the same context-aware workflows that Claude Desktop users enjoy.</p>
+
+<h2>1. Filesystem MCP Server — The Non-Negotiable Foundation</h2>
+
+<p>Every local AI workflow starts here. The Filesystem MCP server gives your local LLM direct access to your project files, documents, and directories.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read any file within configured directories</li>
+<li>Write, create, and edit files</li>
+<li>Directory listing and recursive search</li>
+<li>File watching and change detection</li>
+<li>Configurable sandboxing — restrict access to specific paths</li>
+</ul>
+
+<p><strong>Why it matters for local AI:</strong> Your local model can read your private codebase, personal documents, and internal notes without any of that content ever leaving your machine. Full context, zero cloud exposure.</p>
+
+<h2>2. SQLite MCP Server — Local Database Access</h2>
+
+<p>SQLite is everywhere — mobile apps, Electron apps, local development databases, browser data stores, and countless tools use it for local persistence. The SQLite MCP server gives your local LLM schema awareness and query execution against any SQLite database on your system.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Schema introspection (tables, columns, relationships)</li>
+<li>Read-only query execution with natural language to SQL translation</li>
+<li>Multi-database support</li>
+<li>Zero external network calls — entirely local</li>
+</ul>
+
+<p><strong>Why it matters for local AI:</strong> Many applications store their data in SQLite files you can query directly. Your local LLM can analyze that data without any cloud dependency.</p>
+
+<h2>3. Git MCP Server — Local Repository Context</h2>
+
+<p>The Git MCP server gives your local AI assistant full visibility into your repository's history, branches, diffs, and commit metadata — all from your local .git directory.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Commit history browsing and search</li>
+<li>Diff generation between commits, branches, or files</li>
+<li>Branch listing and status</li>
+<li>Blame information for understanding code authorship</li>
+<li>Entirely local — reads your .git directory directly</li>
+</ul>
+
+<p><strong>Why it matters for local AI:</strong> Code review, change summarization, and "why was this changed?" questions are core to developer workflows. Git MCP provides that context without pushing your code to any external API.</p>
+
+<h2>4. PostgreSQL MCP Server — Self-Hosted Database Access</h2>
+
+<p>For developers running PostgreSQL locally or on self-hosted infrastructure, the PostgreSQL MCP server enables the same conversational database interaction as cloud setups — with your data staying in your network.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Full schema introspection</li>
+<li>Natural language to SQL query generation</li>
+<li>Safe read-only execution mode</li>
+<li>Supports both local and remote (self-hosted) PostgreSQL instances</li>
+</ul>
+
+<p><strong>Why it matters for local AI:</strong> Production databases often contain sensitive information that can't be sent to cloud AI. With local Ollama + PostgreSQL MCP, your AI can analyze production data without any external API calls.</p>
+
+<h2>5. Brave Search MCP Server — Web Search Without Sending Your Context</h2>
+
+<p>Even privacy-first setups need web search occasionally — for documentation, error lookup, or current information. The Brave Search MCP server sends only your search query to Brave's API, not your full conversation or local file context.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Web search with privacy-respecting Brave Search</li>
+<li>Returns structured results (title, URL, snippet) for AI processing</li>
+<li>No tracking across requests</li>
+<li>Minimal data exposure — only the search query leaves your machine</li>
+</ul>
+
+<p><strong>Why it matters for local AI:</strong> The best privacy-preserving option for web search integration. Your documents and codebase context stay local; only explicit search queries go out.</p>
+
+<h2>6. Memory MCP Server — Persistent Context Across Sessions</h2>
+
+<p>Local LLMs lose context between sessions. The Memory MCP server provides persistent, structured storage for facts, preferences, and ongoing context that your AI can reference across conversations.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Store and retrieve named facts and context snippets</li>
+<li>Build a persistent knowledge graph about your projects and preferences</li>
+<li>Entirely local storage — no cloud sync</li>
+<li>Semantic retrieval so your AI can find relevant memories</li>
+</ul>
+
+<p><strong>Why it matters for local AI:</strong> One of the biggest limitations of local LLMs is statelessness. Memory MCP gives your Ollama instance continuity that rivals cloud AI assistants.</p>
+
+<h2>Setting Up MCP with Ollama</h2>
+
+<p>Ollama itself is an inference engine — it doesn't natively handle MCP. You need a compatible client layer:</p>
+
+<ul>
+<li><strong>Continue (VS Code/JetBrains):</strong> Supports MCP servers via its config file, works with Ollama as the backend model provider</li>
+<li><strong>Open WebUI:</strong> Can be configured with MCP tool plugins alongside Ollama</li>
+<li><strong>LibreChat:</strong> Full MCP support, runs Ollama as a model provider</li>
+<li><strong>Claude Desktop / Cursor:</strong> These use Anthropic/OpenAI-compatible models, but the MCP servers themselves (filesystem, SQLite, etc.) are model-agnostic</li>
+</ul>
+
+<p>The MCP servers listed above all run as local processes — they don't know or care which AI model is calling them. You get the same tools regardless of whether your model is Claude 3.5, Llama 3.3, Mistral, or Gemma.</p>
+
+<h2>The Privacy-First Local AI MCP Stack</h2>
+
+<ul>
+<li><strong>Core local stack:</strong> Filesystem + Git + SQLite (files + code history + local databases — zero cloud exposure)</li>
+<li><strong>Database-heavy stack:</strong> Filesystem + PostgreSQL + SQLite (full database access for self-hosted infrastructure)</li>
+<li><strong>Developer stack:</strong> Filesystem + Git + Brave Search (code + history + minimal-exposure web search)</li>
+<li><strong>Persistent AI stack:</strong> Any of the above + Memory (add continuity across sessions)</li>
+<li><strong>Full local stack:</strong> Filesystem + Git + SQLite + PostgreSQL + Memory (all local, comprehensive context)</li>
+</ul>
+
+<p>Running local AI with MCP is the closest thing to having a fully private, context-aware AI assistant that operates entirely within your infrastructure. The setup overhead is worth it for sensitive codebases, regulated industries, or anyone who simply values privacy.</p>
+
+<p>Browse all MCP servers on <a href="/servers">MyMCPTools</a>. For related guides, see <a href="/blog/best-mcp-servers-for-developers">Best MCP Servers for Developers</a> and <a href="/blog/best-mcp-servers-for-security">Best MCP Servers for Security</a>.</p>
+    `.trim(),
+  },
+  {
+    slug: "best-mcp-servers-for-discord",
+    title: "Best MCP Servers for Discord Communities & Bot Development in 2026",
+    description: "Build smarter Discord bots and manage communities with AI. These MCP servers connect your AI assistant to Discord data, file management, databases, and real-time search for community insights.",
+    date: "2026-05-16",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "7 min read",
+    keywords: ["discord mcp server", "mcp server for discord", "discord bot mcp", "discord ai integration", "best mcp servers for discord"],
+    relatedServerSlugs: ["filesystem", "postgres", "sqlite", "brave-search", "puppeteer"],
+    content: `
+<p>Discord has evolved from a gaming chat platform into the default community layer for developer communities, open-source projects, AI startups, and creator audiences. Whether you're building Discord bots, managing a community, or developing integrations, MCP servers give your AI assistant the context it needs to help effectively.</p>
+
+<h2>Discord + MCP: Two Primary Use Cases</h2>
+
+<p><strong>Community management:</strong> Using AI to analyze community health, draft announcements, moderate content, or generate reports on member activity.</p>
+
+<p><strong>Bot development:</strong> Using AI to write, debug, and iterate on Discord bot code (discord.js, discord.py) with full codebase context.</p>
+
+<p>The MCP servers below serve both use cases, with specific notes on which excels at each.</p>
+
+<h2>1. Filesystem MCP Server — Bot Codebase Access</h2>
+
+<p>For Discord bot developers, the Filesystem MCP server is the foundation. Your AI needs to read your bot's command files, event handlers, configuration, and utilities to write accurate, context-aware code.</p>
+
+<p><strong>Key capabilities for Discord development:</strong></p>
+<ul>
+<li>Read all bot source files (commands/, events/, utils/)</li>
+<li>Write new command files following your project's patterns</li>
+<li>Navigate complex bot architectures (slashboard structures, handler patterns)</li>
+<li>Read config files (config.json, .env patterns) for context</li>
+</ul>
+
+<p><strong>Practical use:</strong> "Read my existing slash commands, then write a new /poll command that follows the same pattern." The AI reads your codebase, learns your style, and writes matching code.</p>
+
+<h2>2. PostgreSQL MCP Server — Community Data and Bot State</h2>
+
+<p>Most production Discord bots store data in PostgreSQL — user profiles, XP/leveling systems, warnings, custom configurations per guild, economy systems, and more. The PostgreSQL MCP server gives your AI direct visibility into that data.</p>
+
+<p><strong>Key capabilities for Discord use cases:</strong></p>
+<ul>
+<li>Query member data (XP rankings, warning history, join dates)</li>
+<li>Inspect guild configuration tables</li>
+<li>Analyze economy data (top earners, transaction history)</li>
+<li>Debug query performance for high-volume bot databases</li>
+</ul>
+
+<p><strong>Community management use:</strong> "Query the activity table and identify the top 20 most active members this month for a community spotlight."</p>
+
+<p><strong>Bot development use:</strong> "Read my guild_settings table schema and write a command to update moderation thresholds per guild."</p>
+
+<h2>3. SQLite MCP Server — Development Database and Smaller Bots</h2>
+
+<p>Smaller Discord bots, development environments, and single-server bots often use SQLite for simplicity. The SQLite MCP server provides the same schema awareness and query capabilities as PostgreSQL, without requiring a full database server.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Full schema introspection of your bot.db or similar files</li>
+<li>Safe read-only queries during debugging</li>
+<li>Understand your data model before writing migration scripts</li>
+<li>Works with any SQLite file — exported data, analytics, temporary stores</li>
+</ul>
+
+<p><strong>Best for:</strong> Bot developers in development/staging, single-server community tools, or bots that don't require PostgreSQL scale.</p>
+
+<h2>4. Brave Search MCP Server — discord.js Documentation and Community Resources</h2>
+
+<p>Discord's API changes frequently. New interaction types, updated permission systems, deprecated endpoints — staying current requires live documentation access. The Brave Search MCP server lets your AI search the latest discord.js docs, discord.py references, and community resources in real time.</p>
+
+<p><strong>Key capabilities for Discord development:</strong></p>
+<ul>
+<li>Search discord.js v14 documentation for current API patterns</li>
+<li>Find community solutions for specific bot patterns (modal submissions, select menus, context menus)</li>
+<li>Research Discord API changelogs for breaking changes</li>
+<li>Locate example implementations from the Discord.js Guide</li>
+</ul>
+
+<p><strong>Best for:</strong> Any bot developer hitting unfamiliar API features. The AI can look up current syntax rather than relying on potentially outdated training data.</p>
+
+<h2>5. Puppeteer MCP Server — Discord Web Automation</h2>
+
+<p>For scraping public Discord data, testing web-based Discord interfaces, or automating browser-based community management tasks, the Puppeteer MCP server provides headless browser automation that your AI can orchestrate.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Headless browser control for web-based workflows</li>
+<li>Screenshot capture for documenting UI states</li>
+<li>Form interaction for web-based Discord settings</li>
+<li>Data extraction from Discord's web client when API access is limited</li>
+</ul>
+
+<p><strong>Best for:</strong> Community managers and developers automating web-based workflows that aren't covered by the Discord API directly.</p>
+
+<h2>Discord Bot Development Workflow with MCP</h2>
+
+<p>Here's what a typical discord.js bot development session looks like with MCP:</p>
+
+<ol>
+<li><strong>Read the codebase</strong> (Filesystem) — AI understands your command structure, event handlers, and existing patterns</li>
+<li><strong>Inspect the database</strong> (PostgreSQL/SQLite) — AI sees your data schema before writing queries</li>
+<li><strong>Research the API</strong> (Brave Search) — AI verifies current discord.js v14 syntax for new features</li>
+<li><strong>Write the code</strong> — matching your patterns, with correct schema references, using current API</li>
+<li><strong>Debug with context</strong> — AI reads error logs, traces the code path, proposes fixes</li>
+</ol>
+
+<p>This workflow eliminates the "AI wrote code for discord.js v13 when I'm on v14" problem that plagues Discord bot development.</p>
+
+<h2>Community Management MCP Stack</h2>
+
+<ul>
+<li><strong>Analytics stack:</strong> PostgreSQL + Brave Search (query member data + research moderation best practices)</li>
+<li><strong>Bot dev stack:</strong> Filesystem + PostgreSQL + Brave Search (full codebase + data + live docs)</li>
+<li><strong>Lightweight stack:</strong> Filesystem + SQLite (smaller bots, development environments)</li>
+<li><strong>Full Discord stack:</strong> Filesystem + PostgreSQL + Brave Search + Puppeteer (everything — code + data + docs + web automation)</li>
+</ul>
+
+<p>Browse all MCP servers on <a href="/servers">MyMCPTools</a>. For related guides, see <a href="/blog/best-mcp-servers-for-developers">Best MCP Servers for Developers</a> and <a href="/blog/best-mcp-servers-for-community-managers">Best MCP Servers for Community Managers</a>.</p>
+    `.trim(),
+  },
 ];
 
 export function getBlogPostBySlug(slug: string): BlogPost | undefined {
