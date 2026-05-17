@@ -23226,6 +23226,501 @@ jupyter mcp install</code></pre>
 <p>Browse all knowledge management MCP servers on <a href="/servers">MyMCPTools</a>. For related guides, see <a href="/blog/best-mcp-servers-for-research">Best MCP Servers for Research</a> and <a href="/blog/best-mcp-servers-for-productivity">Best MCP Servers for Productivity</a>.</p>
     `.trim(),
   },
+  {
+    slug: "best-mcp-servers-for-swift-developers",
+    title: "Best MCP Servers for Swift Developers in 2026: iOS, macOS & visionOS",
+    description: "Top MCP servers for Swift developers building iOS, macOS, and visionOS apps. From Xcode automation to App Store analytics, supercharge your Apple ecosystem workflow with AI.",
+    date: "2026-05-17",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "8 min read",
+    keywords: ["best mcp servers for swift developers", "swift mcp server", "ios development mcp", "xcode mcp server", "apple developer mcp tools 2026"],
+    relatedServerSlugs: ["filesystem", "github", "sqlite", "postgresql", "brave-search", "exa", "fetch", "git", "sequential-thinking"],
+    content: `
+<p>Swift development has one of the richest tooling ecosystems in software — Xcode, SwiftUI previews, TestFlight, Instruments, App Store Connect. The challenge has always been that these tools don't talk to each other well, and your AI assistant sits completely outside all of them.</p>
+
+<p>MCP changes that. With the right servers connected, your AI can read your Swift source files, query your local database, check documentation, and help you navigate the Apple ecosystem without constant copy-pasting. This guide covers the best MCP servers for Swift developers in 2026.</p>
+
+<h2>What Swift Developers Need from MCP</h2>
+
+<p>Swift development has a few unique characteristics that shape which MCP servers matter most:</p>
+<ul>
+<li><strong>Local-first files</strong> — Swift projects live on your Mac, making filesystem access essential</li>
+<li><strong>CoreData/SwiftData</strong> — SQLite under the hood for most iOS data persistence</li>
+<li><strong>GitHub-hosted packages</strong> — Swift Package Manager pulls from GitHub extensively</li>
+<li><strong>Documentation-heavy</strong> — Apple's API surface is vast; fast doc lookup is critical</li>
+<li><strong>Build feedback loops</strong> — Xcode errors need fast resolution without context-switching</li>
+</ul>
+
+<h2>1. Filesystem MCP Server — Your Xcode Project, AI-Accessible</h2>
+
+<p>The single most important MCP server for any Swift developer. Xcode projects are directories of Swift files, plists, storyboards, and assets — the filesystem server gives your AI full read/write access to all of it.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read Swift source files, headers, and resource files</li>
+<li>Navigate complex Xcode project structures (.xcodeproj, SPM packages)</li>
+<li>Write refactored code back to the correct file</li>
+<li>Search across your codebase for specific APIs or patterns</li>
+<li>Access Info.plist, entitlements, and configuration files</li>
+</ul>
+
+<p><strong>Best for:</strong> All Swift developers. Enables your AI to work on your actual codebase rather than isolated snippets. Essential pairing with any other server on this list.</p>
+
+<h2>2. SQLite MCP Server — CoreData and SwiftData Made Readable</h2>
+
+<p>CoreData and SwiftData both use SQLite under the hood. The SQLite MCP server lets your AI inspect your app's data model, write test queries, and debug persistence issues by working directly with the underlying database.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Inspect CoreData / SwiftData generated schemas</li>
+<li>Query app databases for debugging data model issues</li>
+<li>Validate migration scripts before running them on device</li>
+<li>Check relationship integrity and index coverage</li>
+<li>Lightweight — no external process, works with your app's .sqlite file directly</li>
+</ul>
+
+<p><strong>Best for:</strong> iOS developers using CoreData or SwiftData who want to debug persistence issues without writing temporary diagnostic code. Also useful for SQLite.swift and GRDB users.</p>
+
+<h2>3. GitHub MCP Server — Swift Package Manager Workflows</h2>
+
+<p>Swift Package Manager has made GitHub central to iOS development. The GitHub MCP server connects your AI to your repositories and the packages you depend on — enabling smarter dependency management and PR-driven development workflows.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Browse Swift package repositories and their APIs</li>
+<li>Create issues and PRs without leaving your AI assistant</li>
+<li>Search code across your org's repos (find how a dependency is used elsewhere)</li>
+<li>Review Swift package release notes and changelogs</li>
+<li>Manage GitHub Actions workflows for CI/CD</li>
+</ul>
+
+<p><strong>Best for:</strong> Swift developers using SPM who want AI assistance with dependency decisions, PR reviews, and cross-repo code search. Also useful for open-source Swift library authors.</p>
+
+<h2>4. Git MCP Server — Commit History and Change Tracking</h2>
+
+<p>Xcode's built-in source control is limited. The Git MCP server gives your AI access to your full commit history, branch structure, and change diffs — enabling smarter code review assistance and regression hunting.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read full commit history with messages and diffs</li>
+<li>Compare branches to identify what changed between releases</li>
+<li>Search commit messages for specific bug fixes or feature additions</li>
+<li>Generate changelog entries from commit history</li>
+<li>Identify which commits introduced specific code patterns</li>
+</ul>
+
+<p><strong>Best for:</strong> Swift developers who want to understand the history behind code decisions or identify when regressions were introduced. Essential for maintaining long-running codebases.</p>
+
+<h2>5. Brave Search MCP Server — Apple Documentation on Demand</h2>
+
+<p>Apple's developer documentation is excellent but dense, and SwiftUI and Swift concurrency APIs evolve rapidly across OS versions. The Brave Search server gives your AI live search access to Apple docs, WWDC session transcripts, and community resources.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Search developer.apple.com for API documentation</li>
+<li>Find WWDC session videos and transcripts for specific APIs</li>
+<li>Search Swift Evolution proposals (swift-evolution GitHub)</li>
+<li>Look up Stack Overflow solutions for Swift-specific errors</li>
+<li>Check Hacking with Swift, Swift by Sundell, and community blogs</li>
+</ul>
+
+<p><strong>Best for:</strong> All Swift developers. Particularly valuable when working with new APIs introduced in the latest iOS/macOS SDK — documentation that may be too recent for your AI's training cutoff.</p>
+
+<h2>6. Exa MCP Server — Deep Swift Ecosystem Research</h2>
+
+<p>When Brave Search gives you results, Exa gives you full content. The Exa server fetches complete pages from documentation, tutorials, and forums — so your AI can read the entire SwiftUI migration guide or the full content of a WWDC session rather than just a snippet.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Fetch full content from any Apple documentation page</li>
+<li>Read complete Swift Evolution proposal text</li>
+<li>Access forum threads from Swift Forums (forums.swift.org)</li>
+<li>Retrieve blog post content from Swift community sites</li>
+<li>Neural search for semantically similar Swift resources</li>
+</ul>
+
+<p><strong>Best for:</strong> Swift developers researching best practices for complex topics — SwiftUI state management, Swift concurrency patterns, TCA architecture decisions. Pairs well with Brave Search for a search-then-read workflow.</p>
+
+<h2>7. Fetch MCP Server — Direct URL Access for Documentation</h2>
+
+<p>Sometimes you know exactly where the documentation is. The Fetch server lets your AI retrieve content from any URL — perfect for pinning to specific Apple developer documentation pages, sample code repositories, or Swift package READMEs.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Fetch any URL and return its content as clean text or markdown</li>
+<li>Access Swift package documentation at docs.swiftpackageindex.com</li>
+<li>Read Apple sample code repositories on GitHub</li>
+<li>Retrieve specific App Store Connect API documentation pages</li>
+<li>Access Swift.org news and release notes</li>
+</ul>
+
+<p><strong>Best for:</strong> Swift developers who work from bookmarked documentation URLs. Great for accessing Swift Package Index documentation that isn't well-indexed by search engines.</p>
+
+<h2>8. Sequential Thinking MCP Server — Architecture Planning</h2>
+
+<p>Swift and SwiftUI architecture decisions are among the most consequential in iOS development — MVVM vs TCA vs Clean Architecture, async/await patterns, dependency injection approaches. The Sequential Thinking server helps your AI reason through multi-step design decisions systematically.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Structured reasoning for complex architecture decisions</li>
+<li>Step-by-step planning for large refactors (UIKit to SwiftUI migrations)</li>
+<li>Breaking down multi-screen feature implementation</li>
+<li>Evaluating trade-offs between Swift concurrency approaches</li>
+<li>Planning CoreData migration strategies</li>
+</ul>
+
+<p><strong>Best for:</strong> Senior Swift developers making high-stakes architecture decisions. Particularly useful when planning SwiftUI rewrites of legacy UIKit codebases or designing complex async data flows.</p>
+
+<h2>Recommended Swift Developer Stacks</h2>
+
+<ul>
+<li><strong>Solo indie developer:</strong> Filesystem + SQLite + Brave Search (covers 90% of daily needs)</li>
+<li><strong>Team iOS developer:</strong> Filesystem + GitHub + Git + Brave Search (collaboration + research)</li>
+<li><strong>SwiftUI architect:</strong> Filesystem + Sequential Thinking + Exa (design + deep research)</li>
+<li><strong>Full-stack Swift:</strong> Filesystem + GitHub + SQLite + PostgreSQL (mobile + server)</li>
+<li><strong>Open source maintainer:</strong> GitHub + Git + Brave Search + Fetch (community + docs)</li>
+</ul>
+
+<h2>Getting Started with MCP in Your Swift Workflow</h2>
+
+<p>The fastest setup for Swift developers is Claude Desktop with the Filesystem and Brave Search servers. Once connected, your AI can read your .swift files, search Apple documentation, and produce code that fits your actual project structure — not generic examples it hallucinates.</p>
+
+<p>Add the SQLite server if you use CoreData or SwiftData. Add GitHub if you use SPM heavily or work on a team. Build from there based on your specific workflow.</p>
+
+<p>Browse all developer MCP servers on <a href="/servers">MyMCPTools</a>. For related guides, see <a href="/blog/best-mcp-servers-for-mobile-developers">Best MCP Servers for Mobile Developers</a> and <a href="/blog/best-mcp-servers-for-developers">Best MCP Servers for Developers</a>.</p>
+    `.trim(),
+  },
+  {
+    slug: "best-mcp-servers-for-journalism",
+    title: "Best MCP Servers for Journalists in 2026: Research, Fact-Checking & Writing",
+    description: "Top MCP servers for investigative journalists, reporters, and media professionals. AI-powered research, source discovery, fact-checking, and document analysis — all connected via MCP.",
+    date: "2026-05-17",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "8 min read",
+    keywords: ["best mcp servers for journalists", "journalism mcp tools", "ai fact checking mcp", "investigative journalism ai tools", "mcp servers for media professionals 2026"],
+    relatedServerSlugs: ["brave-search", "exa", "fetch", "firecrawl", "google-drive", "filesystem", "memory", "sequential-thinking", "readwise-mcp", "zotero-mcp"],
+    content: `
+<p>Journalism is fundamentally a research profession. Finding sources, verifying claims, connecting documents, and synthesizing information under deadline pressure — these are tasks where AI can provide genuine leverage. But generic AI assistants have a critical weakness for journalists: they can't access your notes, your document archive, or live news sources.</p>
+
+<p>MCP bridges that gap. With the right servers connected, your AI can search live news, read documents from your Google Drive, query your research notes, and help you fact-check claims against primary sources — all in a single conversation. This guide covers the best MCP servers for journalists in 2026.</p>
+
+<h2>Why MCP Matters for Journalism</h2>
+
+<p>Traditional AI assistants fail journalists in three critical ways:</p>
+<ul>
+<li><strong>Stale knowledge</strong> — training cutoffs mean they don't know about events from last month</li>
+<li><strong>No source access</strong> — they can't read your documents, PDFs, or research notes</li>
+<li><strong>Hallucination risk</strong> — they'll confidently state facts that aren't true, which is professionally catastrophic</li>
+</ul>
+
+<p>MCP solves all three: live search servers provide current information, document servers give AI access to your actual sources, and grounding in real documents dramatically reduces hallucination.</p>
+
+<h2>1. Brave Search MCP Server — Live News and Source Discovery</h2>
+
+<p>The foundation of any journalism MCP stack. Brave Search gives your AI access to live web search, including recent news — critical for a profession where yesterday's news is old.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Search news articles and press releases published hours ago</li>
+<li>Find primary sources (official statements, court records, government documents)</li>
+<li>Discover expert sources for commentary and verification</li>
+<li>Research background on people, organizations, and events</li>
+<li>No filter bubble — Brave's independent index often surfaces sources other engines bury</li>
+</ul>
+
+<p><strong>Best for:</strong> All journalists. The starting point for any MCP journalism stack. Enables your AI to work with current information rather than its training data cutoff.</p>
+
+<h2>2. Exa MCP Server — Deep Source Research</h2>
+
+<p>Exa's neural search goes beyond keyword matching to find semantically relevant sources. For investigative journalism — where you're looking for patterns across disparate documents, not just keyword matches — this is a significant capability upgrade.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Neural search for conceptually related sources (not just keyword matches)</li>
+<li>Full-content retrieval from any web page (read entire articles, not just snippets)</li>
+<li>Domain-filtered searches (academia, news, government sites only)</li>
+<li>Find similar documents to a reference you already have</li>
+<li>Date-filtered results for timeline research</li>
+</ul>
+
+<p><strong>Best for:</strong> Investigative journalists researching complex topics across many sources. The "find me articles similar to this one" feature is particularly powerful for building a comprehensive source archive.</p>
+
+<h2>3. Fetch MCP Server — Primary Document Access</h2>
+
+<p>Good journalism goes back to primary sources. The Fetch server lets your AI retrieve the actual text of government reports, court filings, press releases, and institutional documents — not summaries, not paraphrases, the actual text.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Retrieve full content from government websites (.gov, .gov.uk, etc.)</li>
+<li>Read SEC filings, court dockets, and regulatory documents</li>
+<li>Access press releases directly from company newsrooms</li>
+<li>Retrieve academic papers and research reports</li>
+<li>Convert web content to clean markdown for analysis</li>
+</ul>
+
+<p><strong>Best for:</strong> Journalists covering beats that involve regulatory filings, court cases, or government data. Essential for anyone doing accountability journalism where primary documents matter.</p>
+
+<h2>4. Firecrawl MCP Server — Structured Web Data Extraction</h2>
+
+<p>When you need to analyze patterns across multiple web pages — a politician's voting record, a company's historical press releases, changes to a government policy page — Firecrawl handles the structured extraction at scale.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Crawl entire sections of websites systematically</li>
+<li>Extract structured data from web pages (tables, lists, key facts)</li>
+<li>Track changes to web pages over time (useful for accountability reporting)</li>
+<li>Batch retrieval of multiple URLs with clean content extraction</li>
+<li>Handle JavaScript-rendered content that simple fetch tools miss</li>
+</ul>
+
+<p><strong>Best for:</strong> Data journalists and investigative reporters who need to analyze patterns across many web sources. Excellent for monitoring official websites for changes that indicate policy shifts.</p>
+
+<h2>5. Google Drive MCP Server — Your Document Archive</h2>
+
+<p>Journalists accumulate enormous research archives: interview notes, source documents, previous articles, background research. The Google Drive server gives your AI access to all of it — turning your archive into an active research resource rather than a pile of files.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Search across all your Google Docs, Sheets, and PDFs</li>
+<li>Read interview notes and source documents</li>
+<li>Access previous stories for background and context</li>
+<li>Search shared team drives for collaborative research</li>
+<li>Create new documents from AI-generated drafts</li>
+</ul>
+
+<p><strong>Best for:</strong> Journalists who use Google Workspace as their document archive. Particularly powerful for beat reporters who accumulate deep archives over years.</p>
+
+<h2>6. Filesystem MCP Server — Local Research Archives</h2>
+
+<p>For journalists who keep documents locally — PDFs of source documents, downloaded datasets, interview transcripts — the Filesystem server provides the same archive access as Google Drive but for your local file system.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Search and read files across your local document archive</li>
+<li>Access downloaded PDFs, spreadsheets, and text files</li>
+<li>Navigate folder structures organized by beat or story</li>
+<li>Read exported interview transcripts and notes</li>
+<li>Write research summaries back to organized locations</li>
+</ul>
+
+<p><strong>Best for:</strong> Journalists who prefer local storage for sensitive source materials, or who work with large downloaded datasets (FOIA responses, leaked documents).</p>
+
+<h2>7. Memory MCP Server — Persistent Source and Context Memory</h2>
+
+<p>Beat journalists develop deep knowledge of sources, organizations, and ongoing stories over months and years. The Memory server gives your AI persistent memory of this context across conversations — so it knows who your sources are, what ongoing stories you're tracking, and what you've already investigated.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Store and retrieve information about sources, organizations, and ongoing stories</li>
+<li>Maintain a knowledge graph of relationships between entities you're covering</li>
+<li>Remember context from previous research sessions</li>
+<li>Build institutional memory for long-running investigations</li>
+<li>Recall source background and interview history</li>
+</ul>
+
+<p><strong>Best for:</strong> Beat journalists covering complex ongoing stories. Transforms each AI conversation from a blank slate into an informed research partner that knows your beat.</p>
+
+<h2>8. Sequential Thinking MCP Server — Story Structure and Investigation Planning</h2>
+
+<p>Long-form journalism and investigative pieces require sustained, structured reasoning — following an argument across many sources, mapping a timeline, identifying which threads to pursue. The Sequential Thinking server helps your AI reason through complex investigations methodically.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Structured analysis of complex, multi-source stories</li>
+<li>Timeline construction from disparate events and documents</li>
+<li>Identifying logical gaps in an investigation</li>
+<li>Story structure planning for long-form pieces</li>
+<li>Hypothesis testing against available evidence</li>
+</ul>
+
+<p><strong>Best for:</strong> Investigative journalists working on complex, multi-week stories. Helps prevent tunnel vision by forcing systematic analysis of what's known vs. what's missing.</p>
+
+<h2>Recommended Journalism Stacks</h2>
+
+<ul>
+<li><strong>Breaking news reporter:</strong> Brave Search + Fetch + Exa (live news + primary docs + deep research)</li>
+<li><strong>Beat journalist:</strong> Brave Search + Google Drive + Memory (current news + archive + persistent context)</li>
+<li><strong>Investigative reporter:</strong> Brave Search + Exa + Firecrawl + Filesystem + Sequential Thinking (full research stack)</li>
+<li><strong>Data journalist:</strong> Firecrawl + Fetch + Filesystem + Brave Search (data extraction + analysis)</li>
+<li><strong>Freelance journalist:</strong> Brave Search + Exa + Filesystem (lean but powerful)</li>
+</ul>
+
+<h2>Verification-First Workflows</h2>
+
+<p>MCP doesn't eliminate the need for verification — but it makes verification workflows much faster. The key practice: always trace AI research back to primary sources using Fetch or the document servers. Never publish a claim that your AI generated without confirming it exists in a primary source you've read yourself.</p>
+
+<p>The safest journalism workflow: use search servers to find sources, document servers to read them, and your own judgment to verify. AI is your research assistant, not your editor.</p>
+
+<p>Browse all research MCP servers on <a href="/servers">MyMCPTools</a>. For related guides, see <a href="/blog/best-mcp-servers-for-research">Best MCP Servers for Research</a> and <a href="/blog/best-mcp-servers-for-writers">Best MCP Servers for Writers</a>.</p>
+    `.trim(),
+  },
+  {
+    slug: "best-mcp-servers-for-prompt-engineering",
+    title: "Best MCP Servers for Prompt Engineers in 2026: Testing, Evaluation & Iteration",
+    description: "Top MCP servers for prompt engineers and LLM developers. Build, test, and iterate on prompts faster with direct model access, tracing, sandbox execution, and structured evaluation via MCP.",
+    date: "2026-05-17",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "9 min read",
+    keywords: ["best mcp servers for prompt engineering", "prompt engineer mcp tools", "llm testing mcp server", "langfuse mcp", "ai evaluation tools mcp 2026"],
+    relatedServerSlugs: ["openai", "huggingface", "e2b", "langfuse", "filesystem", "sequential-thinking", "postgresql", "sqlite", "brave-search", "exa"],
+    content: `
+<p>Prompt engineering is a discipline built on rapid iteration — write a prompt, test it, analyze where it fails, revise, repeat. The bottleneck has always been tooling: context-switching between a prompt, a model API, an evaluation spreadsheet, and a tracing dashboard kills iteration velocity.</p>
+
+<p>MCP collapses that toolchain. With the right servers connected, your AI assistant becomes a meta-prompt engineer — helping you write, test, analyze, and iterate on prompts without leaving the conversation. This guide covers the best MCP servers for prompt engineers in 2026.</p>
+
+<h2>What Prompt Engineers Need from MCP</h2>
+
+<p>Prompt engineering work has distinct requirements:</p>
+<ul>
+<li><strong>Model access</strong> — calling multiple LLMs and comparing outputs</li>
+<li><strong>Execution sandboxing</strong> — running code that processes or evaluates LLM outputs</li>
+<li><strong>Tracing and observability</strong> — understanding why a prompt produced a specific output</li>
+<li><strong>Version management</strong> — tracking which prompt versions produced which results</li>
+<li><strong>Systematic evaluation</strong> — testing against benchmark datasets, not just vibes</li>
+</ul>
+
+<h2>1. OpenAI MCP Server — Direct Model API Access</h2>
+
+<p>The most direct way to build prompt engineering workflows. The OpenAI MCP server connects your AI to the OpenAI API — letting you run prompts against GPT-4o, compare responses, and evaluate outputs without leaving your AI conversation.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Send completion and chat requests to any OpenAI model</li>
+<li>Adjust temperature, top-p, and other sampling parameters</li>
+<li>Access GPT-4o, GPT-4o Mini, o1, o3, and new models as they ship</li>
+<li>Run batch requests for systematic evaluation</li>
+<li>Access embeddings API for semantic similarity evaluation</li>
+</ul>
+
+<p><strong>Best for:</strong> Prompt engineers working primarily in the OpenAI ecosystem. Enables a meta-loop where your AI helps you write prompts and then tests them directly. Also useful for comparing OpenAI outputs against your current model.</p>
+
+<h2>2. Langfuse MCP Server — Prompt Tracing and Observability</h2>
+
+<p>Langfuse is the leading open-source LLM observability platform. The Langfuse MCP server connects your AI to your traces, evaluations, and prompt versions — transforming debugging from a manual dashboard exercise into a conversational analysis.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Query traces for specific prompt versions or time ranges</li>
+<li>Retrieve evaluation scores and compare across prompt iterations</li>
+<li>Access prompt templates stored in Langfuse's prompt management system</li>
+<li>Analyze token usage and latency patterns across model calls</li>
+<li>Pull evaluation datasets for systematic testing</li>
+</ul>
+
+<p><strong>Best for:</strong> Prompt engineers working on production systems where understanding failure modes matters. Being able to ask "what were the 10 worst-scoring traces yesterday?" and get an actual answer from your AI is a significant workflow improvement over dashboard browsing.</p>
+
+<h2>3. E2B MCP Server — Code Execution for Evaluation</h2>
+
+<p>Evaluation in prompt engineering often requires running code: parsing JSON outputs, computing similarity scores, running LLM-as-judge pipelines, processing datasets. The E2B server provides secure cloud sandbox execution for arbitrary Python code — without the security risks of local execution.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Execute Python code in isolated cloud sandboxes</li>
+<li>Install packages on-demand (numpy, pandas, openai, datasets, etc.)</li>
+<li>Process and transform LLM output data programmatically</li>
+<li>Run evaluation scripts against prompt output datasets</li>
+<li>Generate charts and visualizations of evaluation results</li>
+</ul>
+
+<p><strong>Best for:</strong> Prompt engineers who need to run evaluation code as part of their workflow. Pairs with the OpenAI server for a complete "generate and evaluate" loop — your AI writes a prompt, calls OpenAI to test it, then runs Python code to score the outputs.</p>
+
+<h2>4. Hugging Face MCP Server — Open Model Access and Datasets</h2>
+
+<p>Prompt engineering isn't only GPT. Hugging Face hosts thousands of open models and evaluation datasets. The Hugging Face server gives your AI access to this ecosystem — for comparing prompt performance across model families and accessing standardized evaluation benchmarks.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Search and retrieve model information (parameters, architecture, benchmarks)</li>
+<li>Access model cards for capability documentation</li>
+<li>Browse evaluation datasets (MMLU, HellaSwag, BIG-Bench, etc.)</li>
+<li>Run inference on Hugging Face Inference API models</li>
+<li>Access community prompts and model-specific recommendations</li>
+</ul>
+
+<p><strong>Best for:</strong> Prompt engineers working with open-source models or doing cross-model evaluation. Essential for anyone who needs to understand how prompt techniques generalize across model families.</p>
+
+<h2>5. Filesystem MCP Server — Prompt Library and Version Control</h2>
+
+<p>Most prompt engineers maintain a local library of prompt templates, evaluation scripts, and result logs. The Filesystem server turns this archive into an active resource your AI can read, modify, and organize.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read and write prompt template files</li>
+<li>Access evaluation result logs and CSV exports</li>
+<li>Navigate prompt library directory structures</li>
+<li>Write new prompt variants back to versioned files</li>
+<li>Read Python evaluation scripts and notebooks</li>
+</ul>
+
+<p><strong>Best for:</strong> All prompt engineers with local prompt libraries. Enables your AI to read your existing prompt templates before generating new variants — ensuring new prompts build on what's already been learned.</p>
+
+<h2>6. SQLite MCP Server — Evaluation Result Storage</h2>
+
+<p>Systematic prompt evaluation generates data: prompt versions, inputs, outputs, scores, timestamps. Storing this in SQLite makes it queryable — and the SQLite MCP server makes it queryable by your AI in natural language.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Query evaluation result databases in natural language</li>
+<li>Compare performance across prompt versions with aggregate queries</li>
+<li>Identify failure patterns across test cases</li>
+<li>Track evaluation scores over time as you iterate</li>
+<li>Join prompt version data with output quality scores</li>
+</ul>
+
+<p><strong>Best for:</strong> Prompt engineers who run systematic evaluations and want to analyze results conversationally. "Which prompt version had the highest average score for questions about legal topics?" becomes a trivial query instead of a manual analysis task.</p>
+
+<h2>7. Sequential Thinking MCP Server — Structured Prompt Design</h2>
+
+<p>Writing effective prompts requires systematic reasoning: what exactly is the task, what failure modes exist, what instructions prevent each failure mode, what examples demonstrate the target behavior. Sequential Thinking makes your AI reason through this systematically rather than generating prompts intuitively.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Structured decomposition of complex prompt engineering problems</li>
+<li>Step-by-step failure mode analysis</li>
+<li>Systematic generation of example-based few-shot sets</li>
+<li>Chain-of-thought prompt design for multi-step reasoning tasks</li>
+<li>Systematic comparison of prompt strategy alternatives</li>
+</ul>
+
+<p><strong>Best for:</strong> Prompt engineers tackling complex tasks — multi-step reasoning, structured output generation, classification with many edge cases. Makes the reasoning behind prompt decisions explicit rather than intuitive.</p>
+
+<h2>8. Brave Search MCP Server — Research and Technique Discovery</h2>
+
+<p>Prompt engineering research moves fast — chain-of-thought, constitutional AI, ReAct, structured generation, tool-use patterns. The Brave Search server keeps your AI current on techniques published after its training cutoff.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Search for recently published prompt engineering research papers</li>
+<li>Find implementation examples for specific prompting techniques</li>
+<li>Research model-specific prompting recommendations</li>
+<li>Discover community-developed prompt patterns and templates</li>
+<li>Check recent model release notes for prompting guidance</li>
+</ul>
+
+<p><strong>Best for:</strong> Prompt engineers who want to stay current with the research frontier. Given how fast techniques evolve, a search server that accesses today's internet is essential for a discipline where the rules change with every major model release.</p>
+
+<h2>Recommended Prompt Engineering Stacks</h2>
+
+<ul>
+<li><strong>Rapid iteration:</strong> OpenAI + Filesystem + Sequential Thinking (write, test, iterate)</li>
+<li><strong>Production debugging:</strong> Langfuse + OpenAI + SQLite (trace, query, analyze)</li>
+<li><strong>Systematic evaluation:</strong> OpenAI + E2B + SQLite + Filesystem (generate + run + store + analyze)</li>
+<li><strong>Research-focused:</strong> Brave Search + Exa + OpenAI + Sequential Thinking (research + apply + test)</li>
+<li><strong>Multi-model:</strong> OpenAI + HuggingFace + E2B + Langfuse (cross-model comparison at scale)</li>
+</ul>
+
+<h2>The Meta-Prompting Loop</h2>
+
+<p>The most powerful pattern enabled by MCP for prompt engineers is the meta-prompting loop: your AI helps you write a prompt → tests it against the target model via the OpenAI server → runs evaluation code via E2B → analyzes results via SQLite → suggests improvements → repeat. What used to take 20 minutes of context-switching takes 2 minutes in a single conversation.</p>
+
+<p>The key insight: MCP turns your AI assistant from a prompt generator into a prompt engineering partner — one that can actually test and evaluate its own suggestions, not just produce them.</p>
+
+<p>Browse all AI and developer MCP servers on <a href="/servers">MyMCPTools</a>. For related guides, see <a href="/blog/best-mcp-servers-for-llm-app-developers">Best MCP Servers for LLM App Developers</a> and <a href="/blog/best-mcp-servers-for-ai-agents">Best MCP Servers for AI Agents</a>.</p>
+    `.trim(),
+  },
 ];
 
 export function getBlogPostBySlug(slug: string): BlogPost | undefined {
