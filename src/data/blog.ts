@@ -24216,6 +24216,456 @@ jupyter mcp install</code></pre>
 <p>Browse all productivity and research MCP servers on <a href="/servers">MyMCPTools</a>. For related guides, see <a href="/blog/best-mcp-servers-for-project-management">Best MCP Servers for Project Management</a> and <a href="/blog/best-mcp-servers-for-productivity">Best MCP Servers for Productivity</a>.</p>
     `.trim(),
   },
+  {
+    slug: "best-mcp-servers-for-claude-4",
+    title: "Best MCP Servers for Claude 4 in 2026 (Sonnet 4.6 & Opus 4.7)",
+    description: "Claude 4 raises the bar for AI assistants — and the right MCP servers unlock its full potential. Discover the top Model Context Protocol servers optimized for Claude Sonnet 4.6 and Opus 4.7.",
+    date: "2026-05-17",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "9 min read",
+    keywords: ["claude 4 mcp servers", "claude sonnet 4.6 mcp", "claude opus mcp servers", "best mcp servers 2026", "model context protocol claude"],
+    relatedServerSlugs: ["filesystem", "github", "postgresql", "memory", "brave-search", "sequential-thinking", "fetch", "git"],
+    content: `
+<p>Claude 4 — encompassing Claude Sonnet 4.6 and Claude Opus 4.7 — represents Anthropic's most capable AI models to date. With extended context windows, improved instruction following, and deeper reasoning, Claude 4 models can handle complex, multi-step tasks that previous generations struggled with.</p>
+
+<p>But raw capability alone doesn't unlock Claude 4's full potential. The right MCP servers give Claude structured access to your tools, data, and services — turning it from a smart chatbot into a genuine AI operator. Here are the best MCP servers to pair with Claude 4 in 2026.</p>
+
+<h2>Why Claude 4 + MCP Is a Game Changer</h2>
+
+<p>Claude 4's extended context window and stronger instruction-following make it significantly better at sustained MCP workflows. Earlier models would lose track of tool results mid-task; Claude Sonnet 4.6 and Opus 4.7 maintain full coherence across dozens of tool calls in a single session.</p>
+
+<p>The key improvements that matter for MCP workflows:</p>
+<ul>
+<li><strong>Longer sustained attention</strong> — Claude 4 doesn't "drift" when juggling multiple MCP tools across complex tasks</li>
+<li><strong>Better tool selection</strong> — Knows when to use which server without being explicitly prompted</li>
+<li><strong>Improved error recovery</strong> — When a tool call fails, Claude 4 adapts its approach rather than giving up</li>
+<li><strong>Stronger code execution</strong> — More reliable at writing and debugging scripts that interact with MCP tools</li>
+</ul>
+
+<h2>1. Filesystem MCP Server — The Essential Foundation</h2>
+
+<p>The Anthropic-maintained Filesystem MCP server remains the single most important server for Claude 4 users. Give Claude direct read/write access to your project files and watch multi-step tasks compress from hours to minutes.</p>
+
+<p><strong>Why it's especially powerful with Claude 4:</strong></p>
+<ul>
+<li>Claude 4's extended context means it can process entire codebases in a single session</li>
+<li>Stronger instruction following means file operations are more accurate and safer</li>
+<li>Better at scoping its own access (won't touch files outside the specified directory)</li>
+</ul>
+
+<p><strong>Setup:</strong> Install via npm with <code>npx @modelcontextprotocol/server-filesystem</code>. Configure allowed directories in your Claude Desktop config.</p>
+
+<h2>2. GitHub MCP Server — Repository Operations at AI Speed</h2>
+
+<p>The official GitHub MCP server is tailor-made for Claude 4's strengths. Claude can now read full repository contexts, draft PRs with proper diffs, triage issues, and search code across your entire organization — all in a single conversation.</p>
+
+<p><strong>Claude 4-specific use cases:</strong></p>
+<ul>
+<li><strong>Code review:</strong> Point Claude at a PR URL — it reads the full diff, understands the repo context, and drafts a comprehensive review</li>
+<li><strong>Issue resolution:</strong> Describe a bug in natural language, Claude searches issues, finds related PRs, and proposes a fix</li>
+<li><strong>Release notes:</strong> Claude reads commits since last tag and drafts structured changelog entries</li>
+</ul>
+
+<h2>3. Memory MCP Server — Persistent Context Across Sessions</h2>
+
+<p>Claude 4 sessions are stateless by default — every conversation starts fresh. The Memory MCP server solves this by giving Claude a structured knowledge store that persists between sessions. This transforms Claude from a session-bound assistant into a genuine long-term operator.</p>
+
+<p><strong>What to store in Memory:</strong></p>
+<ul>
+<li>Project architecture decisions and their rationale</li>
+<li>Team preferences and code style conventions</li>
+<li>Recurring client requirements and context</li>
+<li>Previous research findings and conclusions</li>
+</ul>
+
+<p><strong>Why it matters for Claude 4:</strong> Opus 4.7 in particular benefits from rich memory contexts — it can synthesize stored knowledge with new information more effectively than previous models.</p>
+
+<h2>4. Sequential Thinking MCP Server — Structured Problem Solving</h2>
+
+<p>This Anthropic-built server gives Claude an external scratchpad for complex reasoning. Instead of holding all intermediate steps in its context window, Claude can write thoughts, revise them, and build toward conclusions iteratively.</p>
+
+<p><strong>Best for:</strong></p>
+<ul>
+<li>Multi-step debugging across interconnected systems</li>
+<li>Strategic planning and trade-off analysis</li>
+<li>Architecture decisions with many competing constraints</li>
+<li>Research synthesis across multiple sources</li>
+</ul>
+
+<p>Particularly valuable when combining Claude 4 Opus (maximum reasoning depth) with complex engineering or analytical tasks.</p>
+
+<h2>5. Brave Search MCP Server — Real-Time Research</h2>
+
+<p>Claude 4's knowledge cutoff means it doesn't know about recent events, new tools, or current pricing. The Brave Search MCP server fills this gap with real-time web search — and Claude 4 is significantly better than previous models at synthesizing search results into actionable answers.</p>
+
+<p><strong>Key use cases with Claude 4:</strong></p>
+<ul>
+<li>Competitive research on tools and services released after the training cutoff</li>
+<li>Current documentation when library APIs have changed</li>
+<li>Market research and pricing discovery</li>
+<li>Real-time news context for business decisions</li>
+</ul>
+
+<h2>6. Fetch MCP Server — Targeted Content Extraction</h2>
+
+<p>Where Brave Search casts a wide net, Fetch retrieves specific URLs in full. Pair it with Brave Search to create a research pipeline: search for relevant sources, then fetch and read the most promising ones in full.</p>
+
+<p><strong>Claude 4 makes this especially powerful:</strong> The extended context window lets Claude read multiple full web pages in a single session without losing coherence. Summarize documentation, extract data from competitor pages, or compile research from multiple sources.</p>
+
+<h2>7. PostgreSQL MCP Server — Database as Context</h2>
+
+<p>Claude 4's improved schema comprehension makes the PostgreSQL MCP server more capable than ever. Give Claude read access to your database schema and it can write accurate queries on first attempt — no more trial-and-error SQL.</p>
+
+<p><strong>Advanced Claude 4 database workflows:</strong></p>
+<ul>
+<li>Natural language business intelligence — "How many users churned last month vs the month before?"</li>
+<li>Schema analysis and migration planning</li>
+<li>Query optimization with explanation</li>
+<li>Anomaly detection across large datasets</li>
+</ul>
+
+<h2>8. Git MCP Server — Local Version Control</h2>
+
+<p>The Git MCP server gives Claude access to your local git history — commits, branches, diffs, and tags. Combine with the Filesystem server for complete repository awareness without the GitHub API rate limits.</p>
+
+<p><strong>Best uses with Claude 4:</strong></p>
+<ul>
+<li>Generate commit messages that accurately describe changes</li>
+<li>Understand feature history by reading commit messages and diffs</li>
+<li>Compare branch states when debugging regressions</li>
+<li>Draft release notes from commit history</li>
+</ul>
+
+<h2>Recommended Configurations for Claude 4</h2>
+
+<p>Different Claude 4 use cases call for different MCP server combinations:</p>
+
+<ul>
+<li><strong>Software development:</strong> Filesystem + Git + GitHub + PostgreSQL + Sequential Thinking</li>
+<li><strong>Research and writing:</strong> Brave Search + Fetch + Memory + Filesystem</li>
+<li><strong>Data analysis:</strong> PostgreSQL + Filesystem + Sequential Thinking + Brave Search</li>
+<li><strong>General productivity:</strong> Memory + Filesystem + Brave Search + Fetch</li>
+<li><strong>AI engineering:</strong> Filesystem + GitHub + Qdrant + Memory + Sequential Thinking</li>
+</ul>
+
+<h2>Claude 4 vs Earlier Models: MCP Performance Comparison</h2>
+
+<p>Users migrating from Claude 3.5 Sonnet to Claude 4 Sonnet report noticeable improvements in MCP workflows:</p>
+
+<ul>
+<li><strong>Fewer tool call mistakes</strong> — Claude 4 is less likely to call a tool with incorrect arguments</li>
+<li><strong>Better context retention</strong> — Can maintain awareness of earlier tool results across longer conversations</li>
+<li><strong>More initiative</strong> — Proactively uses MCP tools when they'd be helpful, rather than waiting to be prompted</li>
+<li><strong>Cleaner output</strong> — Synthesizes tool results into coherent responses rather than dumping raw data</li>
+</ul>
+
+<p>For maximum capability, consider Claude Opus 4.7 for complex reasoning tasks (architecture planning, multi-step analysis) and Claude Sonnet 4.6 for everyday tasks where speed matters. Both work seamlessly with all MCP servers.</p>
+
+<p>Explore all available MCP servers on <a href="/servers">MyMCPTools</a>. For setup help, see our <a href="/blog/claude-desktop-mcp-setup-guide">Claude Desktop MCP Setup Guide</a> and <a href="/blog/getting-started-with-mcp">Getting Started with MCP</a>.</p>
+    `.trim(),
+  },
+  {
+    slug: "best-mcp-servers-for-n8n",
+    title: "Best MCP Servers for n8n Workflow Automation in 2026",
+    description: "Supercharge your n8n workflows with MCP integration. Discover how to combine n8n's 400+ integrations with AI-powered MCP servers to build intelligent, self-healing automation pipelines.",
+    date: "2026-05-17",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "8 min read",
+    keywords: ["n8n mcp servers", "n8n ai automation", "mcp workflow automation", "n8n model context protocol", "ai workflow tools"],
+    relatedServerSlugs: ["filesystem", "postgresql", "github", "slack", "notion", "brave-search", "fetch", "memory"],
+    content: `
+<p>n8n has emerged as the workflow automation platform of choice for developers and technical teams who want the flexibility of code without giving up the visual canvas. With 400+ integrations and a self-hostable architecture, it sits in a unique position: powerful enough for engineers, accessible enough for operations teams.</p>
+
+<p>MCP servers complement n8n in a specific and powerful way. Where n8n excels at deterministic, scheduled workflows, MCP brings AI reasoning into the loop — allowing your automation pipelines to handle edge cases, interpret ambiguous inputs, and make judgment calls that rigid if/then logic can't.</p>
+
+<h2>How n8n and MCP Work Together</h2>
+
+<p>n8n includes an AI Agent node that supports MCP tool integration. This means you can build workflows where:</p>
+
+<ul>
+<li>An n8n trigger fires (new email, webhook, schedule, etc.)</li>
+<li>The AI Agent node receives the trigger data with MCP tools available</li>
+<li>Claude (or another model) uses MCP servers to gather additional context, perform lookups, or take actions</li>
+<li>The result flows into the rest of your n8n workflow</li>
+</ul>
+
+<p>This pattern unlocks a class of automations that previously required custom code: intelligent email routing, context-aware ticket triage, dynamic content generation with database lookups, and more.</p>
+
+<h2>1. PostgreSQL MCP Server — Database-Aware Automation</h2>
+
+<p>Most meaningful n8n workflows interact with databases. The PostgreSQL MCP server gives your AI agent the ability to look up context before making decisions — rather than working with only the trigger payload.</p>
+
+<p><strong>n8n use cases:</strong></p>
+<ul>
+<li><strong>Lead enrichment:</strong> New contact arrives via webhook → AI queries CRM database for existing account info → Enriches the lead record with relevant history</li>
+<li><strong>Intelligent routing:</strong> Support ticket arrives → AI queries ticket history for this customer → Routes to appropriate team based on context</li>
+<li><strong>Anomaly detection:</strong> Hourly schedule triggers → AI queries metrics database → Flags anomalies and generates summary report</li>
+</ul>
+
+<h2>2. Brave Search MCP Server — Real-Time Research in Workflows</h2>
+
+<p>Automated workflows that require current information — pricing, news, competitor data — benefit enormously from Brave Search integration. Your AI agent can research topics in real-time rather than relying on stale training data.</p>
+
+<p><strong>Powerful n8n patterns:</strong></p>
+<ul>
+<li>Daily competitive intelligence: search for competitor mentions → summarize → send Slack digest</li>
+<li>Automated market research: list of company names → search each → extract funding/news → output to spreadsheet</li>
+<li>Content freshness checker: crawl your blog posts → search for outdated stats → flag for review</li>
+</ul>
+
+<h2>3. Slack MCP Server — Conversation-Aware Notifications</h2>
+
+<p>The Slack MCP server lets your AI agent send context-rich notifications, not just templated messages. Instead of "Alert: Error in production," Claude can read the error logs, understand the impact, and send a structured incident summary with relevant context.</p>
+
+<p><strong>High-value patterns with n8n:</strong></p>
+<ul>
+<li>Intelligent incident escalation: parse error → assess severity → draft context-rich Slack alert → page on-call if critical</li>
+<li>Daily standup automation: query GitHub, Jira, and calendar → AI synthesizes into team standup summary → posts to channel</li>
+<li>Approval workflows: trigger arrives → AI drafts summary → posts to Slack with approval buttons → continues workflow based on response</li>
+</ul>
+
+<h2>4. Notion MCP Server — Knowledge Base Integration</h2>
+
+<p>Teams using Notion as their knowledge base can connect it to n8n workflows via MCP. Your AI agent can read Notion context before acting, or write structured data back to Notion as workflow output.</p>
+
+<p><strong>Example workflows:</strong></p>
+<ul>
+<li>Meeting notes processor: Zoom transcript arrives → AI reads project context from Notion → generates structured action items → creates Notion tasks</li>
+<li>Documentation updater: API change deployed → AI reads existing docs → generates diff and updated sections → updates Notion pages</li>
+<li>Project tracker: weekly schedule fires → AI queries Notion project pages → generates status report → sends to stakeholders</li>
+</ul>
+
+<h2>5. GitHub MCP Server — Engineering Workflow Automation</h2>
+
+<p>Engineering teams using n8n for DevOps automation get significant leverage from the GitHub MCP server. Connect CI/CD events to AI-powered analysis and response.</p>
+
+<p><strong>DevOps automation patterns:</strong></p>
+<ul>
+<li>PR review automation: new PR opened → AI reads diff + existing code context → posts initial review comment with questions and concerns</li>
+<li>Release notes automation: new tag pushed → AI reads commits since last tag → generates structured changelog → posts to GitHub releases</li>
+<li>Issue triage: new issue created → AI reads issue + searches similar closed issues → labels, assigns, and adds context comment</li>
+</ul>
+
+<h2>6. Filesystem MCP Server — Template and File Management</h2>
+
+<p>For n8n workflows that generate or process files, the Filesystem MCP server gives your AI agent the ability to read templates, write outputs, and manage file-based workflows.</p>
+
+<p><strong>File automation patterns:</strong></p>
+<ul>
+<li>Contract generation: form submission arrives → AI reads contract templates → fills in details → saves to output directory</li>
+<li>Report compilation: scheduled trigger → AI reads data files → synthesizes into formatted report → saves as PDF input</li>
+<li>Config management: deployment trigger → AI reads existing config → generates updated config with new parameters → writes to file</li>
+</ul>
+
+<h2>7. Memory MCP Server — Stateful Workflow Context</h2>
+
+<p>n8n workflows are typically stateless between runs. The Memory MCP server adds persistent context — allowing your AI agent to remember what it did in previous workflow runs and adapt accordingly.</p>
+
+<p><strong>Why this matters:</strong></p>
+<ul>
+<li>Learn which decisions worked well in past runs</li>
+<li>Avoid sending duplicate alerts for the same issue</li>
+<li>Build context about recurring patterns over time</li>
+<li>Maintain running summaries that accumulate across scheduled runs</li>
+</ul>
+
+<h2>Setting Up MCP in n8n</h2>
+
+<p>To use MCP servers in n8n:</p>
+
+<ol>
+<li><strong>Add the AI Agent node</strong> to your workflow</li>
+<li><strong>Configure the chat model</strong> (Claude via Anthropic API recommended for MCP workflows)</li>
+<li><strong>Add MCP tools</strong> via the "Tools" section of the AI Agent node — n8n supports MCP server connections</li>
+<li><strong>Configure credentials</strong> for each MCP server in n8n's credentials manager</li>
+<li><strong>Test with simple workflows</strong> before building complex automations</li>
+</ol>
+
+<h2>Recommended n8n + MCP Stack by Use Case</h2>
+
+<ul>
+<li><strong>Customer support automation:</strong> PostgreSQL + Slack + Memory + Brave Search</li>
+<li><strong>Engineering workflows:</strong> GitHub + Filesystem + Slack + Sequential Thinking</li>
+<li><strong>Content operations:</strong> Notion + Brave Search + Fetch + Filesystem</li>
+<li><strong>Business intelligence:</strong> PostgreSQL + Brave Search + Slack + Memory</li>
+<li><strong>DevOps automation:</strong> GitHub + Filesystem + Slack + Sequential Thinking</li>
+</ul>
+
+<p>The combination of n8n's trigger ecosystem and MCP's AI reasoning layer creates automation pipelines that handle real-world complexity — not just happy-path scenarios. Start with one MCP server and one workflow pattern, then expand from there.</p>
+
+<p>Browse all available MCP servers at <a href="/servers">MyMCPTools</a>. For automation-focused guides, see <a href="/blog/best-mcp-servers-for-automation">Best MCP Servers for Automation</a> and <a href="/blog/best-mcp-servers-for-developers">Best MCP Servers for Developers</a>.</p>
+    `.trim(),
+  },
+  {
+    slug: "mcp-servers-for-openai-agents-sdk",
+    title: "MCP Servers for OpenAI Agents SDK: Complete Setup Guide 2026",
+    description: "OpenAI's Agents SDK now supports Model Context Protocol. Learn which MCP servers work best with OpenAI agents and how to integrate them for powerful, tool-augmented AI workflows.",
+    date: "2026-05-17",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "9 min read",
+    keywords: ["openai agents sdk mcp", "openai mcp servers", "openai agents model context protocol", "openai mcp integration", "openai tool use mcp"],
+    relatedServerSlugs: ["filesystem", "github", "postgresql", "brave-search", "fetch", "memory", "sequential-thinking", "qdrant-mcp"],
+    content: `
+<p>OpenAI's Agents SDK — announced in early 2026 — marked a major shift in how developers build AI-powered applications. Rather than one-off API calls, the SDK enables persistent agents that can maintain state, use tools, and orchestrate complex multi-step tasks.</p>
+
+<p>One of the SDK's most significant features is native Model Context Protocol (MCP) support. OpenAI agents can now connect to any MCP-compatible server, giving them access to the same rich ecosystem of tools that Claude Desktop users have been building on for over a year.</p>
+
+<h2>Why OpenAI's MCP Support Matters</h2>
+
+<p>Before MCP support, OpenAI agents used function calling — a powerful but proprietary format that required writing custom tool definitions for every integration. MCP changes this dynamic:</p>
+
+<ul>
+<li><strong>Instant access to 500+ existing MCP servers</strong> — No custom function definitions needed</li>
+<li><strong>Interoperability</strong> — An MCP server built for Claude works with OpenAI agents without modification</li>
+<li><strong>Community tooling</strong> — The entire MCP ecosystem (clients, servers, registries) is now available to OpenAI agent developers</li>
+<li><strong>Standardized interfaces</strong> — Tool definitions are maintained by server authors, not your codebase</li>
+</ul>
+
+<h2>Setting Up MCP with OpenAI Agents SDK</h2>
+
+<p>The OpenAI Agents SDK connects to MCP servers via the <code>MCPServerStdio</code> or <code>MCPServerSSE</code> client classes. Here's the basic pattern:</p>
+
+<pre><code>from agents import Agent, Runner
+from agents.mcp import MCPServerStdio
+
+async with MCPServerStdio(
+    name="filesystem",
+    params={"command": "npx", "args": ["-y", "@modelcontextprotocol/server-filesystem", "/workspace"]}
+) as mcp_server:
+    agent = Agent(
+        name="file-agent",
+        model="gpt-4o",
+        mcp_servers=[mcp_server]
+    )
+    result = await Runner.run(agent, "List the files in my project and summarize the README")</code></pre>
+
+<p>The agent automatically discovers available tools from the MCP server and can use them in response to user requests.</p>
+
+<h2>1. Filesystem MCP Server — Essential for File Operations</h2>
+
+<p>The Anthropic-maintained Filesystem server is the most widely used MCP server in the ecosystem and works seamlessly with OpenAI agents. Give your agent file system access for document processing, code analysis, and content management.</p>
+
+<p><strong>OpenAI Agents SDK use cases:</strong></p>
+<ul>
+<li>Document analysis agents that read and summarize files</li>
+<li>Code review agents with access to local repositories</li>
+<li>Report generation agents that write structured output files</li>
+<li>Configuration management agents</li>
+</ul>
+
+<h2>2. Brave Search MCP Server — Web Research Capability</h2>
+
+<p>OpenAI's GPT-4o has a knowledge cutoff — Brave Search closes that gap. Add real-time web research capability to your agents for tasks that require current information.</p>
+
+<p><strong>Agent patterns with Brave Search:</strong></p>
+<ul>
+<li>Research agents that gather and synthesize current information on topics</li>
+<li>Competitive intelligence agents that monitor market developments</li>
+<li>News monitoring agents with configurable alert criteria</li>
+<li>Fact-checking agents that verify claims against current sources</li>
+</ul>
+
+<h2>3. PostgreSQL MCP Server — Database-Connected Agents</h2>
+
+<p>Database access transforms AI agents from general-purpose assistants into domain-specific operators. The PostgreSQL MCP server gives your OpenAI agents structured access to your application data.</p>
+
+<p><strong>Production agent patterns:</strong></p>
+<ul>
+<li><strong>Support agents:</strong> Read customer data, order history, and account status to provide personalized assistance</li>
+<li><strong>Analytics agents:</strong> Query business metrics and generate natural language summaries</li>
+<li><strong>Operations agents:</strong> Monitor database metrics and trigger alerts based on thresholds</li>
+</ul>
+
+<h2>4. Qdrant MCP Server — Vector Search for RAG Agents</h2>
+
+<p>Qdrant's MCP server is particularly valuable for OpenAI agents implementing Retrieval-Augmented Generation (RAG). Store your document embeddings in Qdrant and let your agents perform semantic search across private knowledge bases.</p>
+
+<p><strong>RAG agent architecture with Qdrant MCP:</strong></p>
+<ol>
+<li>Documents are ingested and embedded into Qdrant collections</li>
+<li>User query arrives at the OpenAI agent</li>
+<li>Agent uses Qdrant MCP to perform semantic search</li>
+<li>Retrieves relevant chunks and synthesizes an answer</li>
+</ol>
+
+<p>This pattern gives OpenAI agents access to private, domain-specific knowledge without fine-tuning.</p>
+
+<h2>5. GitHub MCP Server — Engineering Agents</h2>
+
+<p>For engineering teams building developer tooling, the GitHub MCP server enables a class of agents that can genuinely participate in software development workflows.</p>
+
+<p><strong>Engineering agent use cases:</strong></p>
+<ul>
+<li>Code review agents that analyze PRs and leave structured comments</li>
+<li>Issue triage agents that label and assign incoming issues</li>
+<li>Documentation agents that update docs when code changes</li>
+<li>Release preparation agents that generate changelogs from commits</li>
+</ul>
+
+<h2>6. Memory MCP Server — Persistent Agent State</h2>
+
+<p>OpenAI agents maintain conversation state within a session but start fresh each time. The Memory MCP server adds a persistent knowledge layer that survives session boundaries.</p>
+
+<p><strong>Why persistence matters for production agents:</strong></p>
+<ul>
+<li>Customer-facing agents can remember previous interactions</li>
+<li>Research agents can build on previous findings across sessions</li>
+<li>Operations agents can track historical decisions and outcomes</li>
+<li>Personal assistant agents accumulate context about preferences over time</li>
+</ul>
+
+<h2>7. Fetch MCP Server — Targeted Content Retrieval</h2>
+
+<p>Pair Brave Search with Fetch for a complete research pipeline. Where Brave Search discovers relevant sources, Fetch retrieves their full content — giving your agent deep access to specific pages, documentation, or data endpoints.</p>
+
+<p><strong>Research agent architecture:</strong></p>
+<ol>
+<li>Brave Search: find the most relevant sources for a query</li>
+<li>Fetch: retrieve full content from selected URLs</li>
+<li>Agent: synthesize information into structured output</li>
+</ol>
+
+<h2>MCP Server Configuration for OpenAI Agents</h2>
+
+<p>Unlike Claude Desktop (JSON config file), OpenAI Agents SDK configures MCP servers in code. A multi-server agent looks like this:</p>
+
+<pre><code>async with (
+    MCPServerStdio(name="filesystem", params={"command": "npx", "args": ["-y", "@modelcontextprotocol/server-filesystem", "/workspace"]}),
+    MCPServerStdio(name="brave-search", params={"command": "npx", "args": ["-y", "@modelcontextprotocol/server-brave-search"], "env": {"BRAVE_API_KEY": "your-key"}}),
+    MCPServerStdio(name="github", params={"command": "npx", "args": ["-y", "@modelcontextprotocol/server-github"], "env": {"GITHUB_TOKEN": "your-token"}}),
+) as (fs_server, search_server, gh_server):
+    agent = Agent(
+        name="engineering-agent",
+        model="gpt-4o",
+        mcp_servers=[fs_server, search_server, gh_server]
+    )</code></pre>
+
+<h2>Recommended MCP Stacks for OpenAI Agents</h2>
+
+<ul>
+<li><strong>Customer support agent:</strong> PostgreSQL + Memory + Brave Search</li>
+<li><strong>Research agent:</strong> Brave Search + Fetch + Filesystem + Memory</li>
+<li><strong>Engineering agent:</strong> GitHub + Filesystem + PostgreSQL + Brave Search</li>
+<li><strong>RAG knowledge agent:</strong> Qdrant + Filesystem + Memory</li>
+<li><strong>Operations agent:</strong> PostgreSQL + Slack + GitHub + Memory</li>
+</ul>
+
+<h2>OpenAI vs Anthropic: MCP Compatibility</h2>
+
+<p>One of the best aspects of MCP is its model-agnostic design. MCP servers don't know or care which AI model is using them — a server built for Claude Desktop works identically with OpenAI Agents SDK. This means:</p>
+
+<ul>
+<li>The 500+ MCP servers in the ecosystem are available to both OpenAI and Anthropic model users</li>
+<li>You can switch models without rewriting tool integrations</li>
+<li>Multi-model architectures (Claude for reasoning, GPT-4o for generation) share the same tool layer</li>
+</ul>
+
+<p>Browse all compatible MCP servers at <a href="/servers">MyMCPTools</a>. For more guides, see <a href="/blog/mcp-vs-api-integrations">MCP vs API Integrations</a> and <a href="/blog/best-mcp-servers-for-ai-agents">Best MCP Servers for AI Agents</a>.</p>
+    `.trim(),
+  },
 ];
 
 export function getBlogPostBySlug(slug: string): BlogPost | undefined {
