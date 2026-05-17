@@ -23721,6 +23721,501 @@ jupyter mcp install</code></pre>
 <p>Browse all AI and developer MCP servers on <a href="/servers">MyMCPTools</a>. For related guides, see <a href="/blog/best-mcp-servers-for-llm-app-developers">Best MCP Servers for LLM App Developers</a> and <a href="/blog/best-mcp-servers-for-ai-agents">Best MCP Servers for AI Agents</a>.</p>
     `.trim(),
   },
+  {
+    slug: "best-mcp-servers-for-nonprofits",
+    title: "Best MCP Servers for Nonprofits in 2026: Grant Research, Donor Management & Impact Reporting",
+    description: "Top MCP servers for nonprofit organizations. Automate grant research, donor outreach, impact reporting, and program management with AI tools built for mission-driven teams.",
+    date: "2026-05-17",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "9 min read",
+    keywords: ["best mcp servers for nonprofits", "nonprofit ai tools mcp", "grant research mcp server", "donor management mcp", "nonprofit automation 2026"],
+    relatedServerSlugs: ["brave-search", "exa", "filesystem", "google-drive", "airtable", "notion", "gmail", "sequential-thinking", "fetch", "postgresql"],
+    content: `
+<p>Nonprofits operate under a unique constraint: limited staff capacity stretched across mission-critical work. Grant writing alone can consume 20–30% of a development director's time. Donor reporting, program tracking, compliance documentation — each task competes for hours that could go toward mission delivery.</p>
+
+<p>MCP servers offer nonprofits the same AI leverage that well-funded companies use — but applied to grant research, donor relationship management, and impact measurement. This guide covers the best MCP servers for nonprofit teams in 2026.</p>
+
+<h2>What Nonprofits Need from MCP</h2>
+
+<p>Nonprofit workflows have distinct requirements that differ from for-profit organizations:</p>
+<ul>
+<li><strong>Grant discovery</strong> — finding funders aligned with your mission across foundation databases</li>
+<li><strong>Document synthesis</strong> — turning program data into grant narratives and impact reports</li>
+<li><strong>Donor intelligence</strong> — researching prospect backgrounds and giving histories</li>
+<li><strong>Compliance documentation</strong> — maintaining audit trails for restricted funding</li>
+<li><strong>Volunteer coordination</strong> — managing schedules and communications at scale</li>
+</ul>
+
+<h2>1. Brave Search MCP Server — Grant Opportunity Discovery</h2>
+
+<p>Grant research is a constant hunt: finding new funders, tracking RFP deadlines, monitoring foundation priorities as they shift. The Brave Search server gives your AI assistant real-time web access to surface grant opportunities that post-training cutoff models will miss entirely.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Search for active grant opportunities by program area and geography</li>
+<li>Monitor foundation websites for new funding announcements</li>
+<li>Research funder giving histories and stated priorities</li>
+<li>Find peer organizations receiving grants from target foundations</li>
+<li>Track government grant portals (grants.gov, state foundations, local funders)</li>
+</ul>
+
+<p><strong>Best for:</strong> Development staff running prospect research. A development director can ask "find foundations funding early childhood education programs in the Pacific Northwest with deadlines in the next 90 days" and get a working list rather than spending hours on foundation databases.</p>
+
+<h2>2. Exa MCP Server — Deep Funder Research</h2>
+
+<p>Exa's semantic search goes beyond keyword matching to understand meaning — critical for nonprofit research where you need to find funders whose priorities align with your mission, not just funders who use the same terminology.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Semantic search across foundation 990 filings and annual reports</li>
+<li>Find similar organizations and their funder networks</li>
+<li>Research corporate giving programs and CSR priorities</li>
+<li>Surface academic and sector research to strengthen grant narratives</li>
+<li>Analyze funder language to match your grant writing style</li>
+</ul>
+
+<p><strong>Best for:</strong> Prospect research that requires understanding funder intent, not just matching keywords. Particularly useful for identifying foundation priorities that aren't explicitly stated in guidelines but emerge from their grant-making patterns.</p>
+
+<h2>3. Google Drive MCP Server — Document and Report Management</h2>
+
+<p>Most nonprofits live in Google Workspace. Grant applications, program reports, board meeting minutes, donor acknowledgment letters — all stored in shared drives. The Google Drive server makes this archive accessible to your AI assistant for research, synthesis, and drafting.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Search existing grant applications for language to reuse or adapt</li>
+<li>Read program reports and extract impact data for new applications</li>
+<li>Access budget templates and financial data for grant budgets</li>
+<li>Draft new documents and save directly to shared drives</li>
+<li>Navigate folder hierarchies to find historical funder correspondence</li>
+</ul>
+
+<p><strong>Best for:</strong> Grant writers who want to build on existing organizational materials. Being able to say "find all the language we've used to describe our food security program in past grants" and get an actual synthesis is a significant productivity gain for development teams.</p>
+
+<h2>4. Notion MCP Server — Program and Project Tracking</h2>
+
+<p>Many nonprofits use Notion for program management, volunteer coordination, and internal knowledge bases. The Notion server connects your AI to this organizational memory — enabling intelligent queries across your program data.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Query program outcome data stored in Notion databases</li>
+<li>Access volunteer schedules and coordination logs</li>
+<li>Read program documentation for grant application context</li>
+<li>Create and update grant tracking databases</li>
+<li>Generate program reports from structured Notion data</li>
+</ul>
+
+<p><strong>Best for:</strong> Organizations using Notion as their program management hub. Grant writers can pull real program metrics directly into application drafts rather than manually gathering numbers from team members.</p>
+
+<h2>5. Gmail MCP Server — Donor Communication at Scale</h2>
+
+<p>Donor stewardship requires consistent, personalized communication — thank you letters, impact updates, event invitations. The Gmail server enables your AI to draft and manage donor correspondence at a scale that small development teams couldn't sustain manually.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Draft personalized donor acknowledgment and stewardship emails</li>
+<li>Search correspondence history with specific donors</li>
+<li>Prepare cultivation sequences for major gift prospects</li>
+<li>Draft grant inquiry letters and funder correspondence</li>
+<li>Manage and organize grant-related email threads</li>
+</ul>
+
+<p><strong>Best for:</strong> Development staff managing active donor portfolios. Being able to pull a donor's complete correspondence history before a call — without manually searching email — saves significant preparation time and makes conversations more meaningful.</p>
+
+<h2>6. Airtable MCP Server — Donor Database Queries</h2>
+
+<p>Many smaller nonprofits use Airtable as their CRM. The Airtable server makes your donor database queryable in natural language — enabling the kind of donor intelligence that typically requires dedicated database staff.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Query donor giving histories and gift amounts</li>
+<li>Identify LYBUNT/SYBUNT donor segments for re-engagement</li>
+<li>Pull contact information for targeted cultivation campaigns</li>
+<li>Track grant deadlines and reporting requirements</li>
+<li>Analyze giving patterns by program area or geography</li>
+</ul>
+
+<p><strong>Best for:</strong> Nonprofits using Airtable as their donor management system. LYBUNT analysis ("who gave last year but not this year?") becomes a conversational query rather than a manual spreadsheet exercise.</p>
+
+<h2>7. Filesystem MCP Server — Grant Library and Template Management</h2>
+
+<p>Every development office accumulates a library of successful grant applications, boilerplate narratives, and program descriptions. The Filesystem server turns this archive into a resource your AI can actively consult when drafting new applications.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read existing grant applications for reusable language</li>
+<li>Access organization fact sheets, bios, and statistics</li>
+<li>Read financial statements and budget templates</li>
+<li>Write draft applications directly to organized folder structures</li>
+<li>Maintain and access a local grant calendar</li>
+</ul>
+
+<p><strong>Best for:</strong> All nonprofits with a local document archive. Particularly powerful when combined with Google Drive — local files and cloud documents accessible in the same conversation.</p>
+
+<h2>8. Sequential Thinking MCP Server — Grant Narrative Structure</h2>
+
+<p>Strong grant narratives require systematic argument structure: need statement, program description, outcomes, evaluation plan, organizational capacity, sustainability. Sequential Thinking makes your AI reason through this framework explicitly before drafting, producing more coherent applications.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Structured decomposition of grant application requirements</li>
+<li>Step-by-step logic model development</li>
+<li>Systematic analysis of funder priorities against your program</li>
+<li>Evidence-based need statement construction</li>
+<li>Outcome framework alignment with funder expectations</li>
+</ul>
+
+<p><strong>Best for:</strong> Complex federal or foundation grants requiring rigorous logic model and evaluation frameworks. Makes the narrative argument explicit before writing begins — reducing revision cycles.</p>
+
+<h2>Recommended Nonprofit MCP Stacks</h2>
+
+<ul>
+<li><strong>Grant research:</strong> Brave Search + Exa + Filesystem (find funders + deep research + build on existing materials)</li>
+<li><strong>Application drafting:</strong> Google Drive + Filesystem + Sequential Thinking (access archive + structured drafting)</li>
+<li><strong>Donor stewardship:</strong> Gmail + Airtable + Notion (correspondence + database + program data)</li>
+<li><strong>Impact reporting:</strong> Notion + Google Drive + Filesystem + Exa (pull program data + synthesize + find supporting research)</li>
+<li><strong>Full development office:</strong> Brave Search + Exa + Google Drive + Gmail + Airtable + Sequential Thinking</li>
+</ul>
+
+<h2>The Capacity Multiplier</h2>
+
+<p>The core value proposition of MCP for nonprofits is capacity multiplication. A single development director with MCP access can research 3x more grant opportunities, draft applications faster with better-organized supporting materials, and maintain meaningful donor relationships at a portfolio scale that previously required multiple staff.</p>
+
+<p>The organizations that will benefit most are those doing important work with small teams — which describes most nonprofits. MCP doesn't replace the relationship expertise and mission knowledge of your development staff; it removes the research and administrative overhead that keeps that expertise from being deployed where it matters.</p>
+
+<p>Browse all research and productivity MCP servers on <a href="/servers">MyMCPTools</a>. For related guides, see <a href="/blog/best-mcp-servers-for-research">Best MCP Servers for Research</a> and <a href="/blog/best-mcp-servers-for-writers">Best MCP Servers for Writers</a>.</p>
+    `.trim(),
+  },
+  {
+    slug: "best-mcp-servers-for-copywriters",
+    title: "Best MCP Servers for Copywriters in 2026: Research, Voice Matching & High-Converting Copy",
+    description: "Top MCP servers for professional copywriters. Research competitors, match brand voice, generate variations, and write high-converting copy faster with AI tools connected to live data.",
+    date: "2026-05-17",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "8 min read",
+    keywords: ["best mcp servers for copywriters", "copywriting ai tools mcp", "brand voice mcp server", "competitor research mcp", "conversion copywriting mcp 2026"],
+    relatedServerSlugs: ["brave-search", "exa", "fetch", "filesystem", "puppeteer", "google-drive", "sequential-thinking", "memory", "notion"],
+    content: `
+<p>Copywriting is research-heavy work that most non-copywriters don't see. Before writing a single word, you need to understand the customer's language, the competitor's positioning, the product's unique mechanism, and the market's current conversation. That research phase often takes longer than the writing itself.</p>
+
+<p>MCP servers compress the research phase dramatically — while also enabling new capabilities like systematic competitor analysis, voice-matched variation generation, and real-time market language monitoring. This guide covers the best MCP servers for professional copywriters in 2026.</p>
+
+<h2>What Copywriters Need from MCP</h2>
+
+<p>Professional copywriting has distinct research and workflow requirements:</p>
+<ul>
+<li><strong>Market language</strong> — understanding exactly how customers describe their pain and desires</li>
+<li><strong>Competitor intelligence</strong> — analyzing what's already working in the market</li>
+<li><strong>Brand voice consistency</strong> — matching established tone across all assets</li>
+<li><strong>Systematic variation</strong> — generating and organizing multiple angle options</li>
+<li><strong>Real-time data</strong> — staying current on trends, prices, and market events</li>
+</ul>
+
+<h2>1. Brave Search MCP Server — Market Language Research</h2>
+
+<p>The best copy uses the customer's own words. Brave Search gives your AI assistant live access to Reddit threads, review sites, forums, and social discussions where real customers describe their problems in unfiltered language — the voice-of-customer research that powers the strongest copy.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Search Reddit for customer pain points and desire language by niche</li>
+<li>Find review content on Amazon, G2, Trustpilot, Yelp for specific products</li>
+<li>Monitor competitor ad copy and landing page changes</li>
+<li>Research trending topics for timely hooks and angles</li>
+<li>Find recent press coverage and product news for topical copy</li>
+</ul>
+
+<p><strong>Best for:</strong> All copywriters, but especially those entering a new niche. The ability to ask "find me the exact language customers use when they're frustrated with [problem]" and get actual Reddit quotes and review excerpts is the closest thing to customer interview synthesis at scale.</p>
+
+<h2>2. Fetch MCP Server — Competitor Landing Page Analysis</h2>
+
+<p>Competitor landing pages are a goldmine: they show you what's converting in your market, what claims are being made, what objections are being addressed, and what proof elements are working. The Fetch server scrapes any URL and returns clean content for your AI to analyze.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Scrape competitor landing pages, pricing pages, and homepages</li>
+<li>Extract headlines, subheads, and call-to-action language</li>
+<li>Analyze page structure and hierarchy</li>
+<li>Read testimonial and case study content</li>
+<li>Monitor competitor copy changes over time</li>
+</ul>
+
+<p><strong>Best for:</strong> Copywriters doing competitive positioning work. Being able to pull 10 competitor homepages and ask "what claims are all these competitors making?" and "where are the gaps?" gives you positioning intelligence that would take hours to compile manually.</p>
+
+<h2>3. Exa MCP Server — Deep Research and Proof Points</h2>
+
+<p>Strong copy is supported by credible proof: statistics, research findings, expert quotes, case study data. Exa's semantic search surfaces this material more accurately than keyword-based search — finding the specific evidence your copy needs to be believable.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Find specific statistics and research findings by semantic query</li>
+<li>Locate expert quotes and authority endorsements in niche areas</li>
+<li>Research case studies and success stories in the market</li>
+<li>Find technical product details for features-to-benefits translation</li>
+<li>Surface negative social proof (what happens when people don't solve the problem)</li>
+</ul>
+
+<p><strong>Best for:</strong> B2B copywriters who need credible proof elements, and direct response writers building detailed arguments. Makes the research phase of copy development significantly faster when you need specific evidence, not just general information.</p>
+
+<h2>4. Filesystem MCP Server — Swipe File and Voice Guide Management</h2>
+
+<p>Every serious copywriter maintains a swipe file — collections of winning ads, emails, landing pages, and copy formulas. The Filesystem server makes your local swipe file an active resource your AI can reference when generating new copy, ensuring outputs are informed by what's actually worked.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read swipe file examples organized by format and niche</li>
+<li>Access brand voice guides and style documentation</li>
+<li>Read previous copy versions for tone reference</li>
+<li>Save new copy drafts and variations to organized structures</li>
+<li>Access client brief templates and copy frameworks</li>
+</ul>
+
+<p><strong>Best for:</strong> Agency copywriters and freelancers with established swipe file systems. Telling your AI "read my direct mail swipe folder before writing this sales letter" produces substantially more on-point output than asking without that reference material.</p>
+
+<h2>5. Memory MCP Server — Client Voice and Project Context</h2>
+
+<p>Long-term client relationships require consistent voice across dozens of projects. The Memory server gives your AI persistent knowledge of client-specific information: their brand voice quirks, approved terminology, avoided phrases, audience personas, and past copy decisions — without re-briefing on every project.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Store client brand voice profiles and terminology guides</li>
+<li>Maintain project-specific audience persona details</li>
+<li>Record approved and rejected copy directions per client</li>
+<li>Track offer details, pricing, and guarantee language</li>
+<li>Maintain consistency across multiple assets for the same campaign</li>
+</ul>
+
+<p><strong>Best for:</strong> Freelance copywriters managing multiple ongoing client relationships. The productivity gain compounds over time — the longer you work with a client, the more context your AI carries without explicit re-briefing.</p>
+
+<h2>6. Puppeteer MCP Server — Ad and SERP Intelligence</h2>
+
+<p>Google Ads copy and organic search snippets reveal what's performing in a market. The Puppeteer server can capture full browser-rendered pages — including dynamic ad content that simpler scrapers miss — giving you complete competitor ad intelligence.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Capture Google search results pages including ads for target keywords</li>
+<li>Screenshot competitor landing pages for visual analysis</li>
+<li>Scrape dynamically rendered content (SPAs, lazy-loaded copy)</li>
+<li>Monitor ad creative rotations over time</li>
+<li>Capture email capture popups and exit-intent overlays</li>
+</ul>
+
+<p><strong>Best for:</strong> PPC copywriters and direct response writers who need to understand what the market is running at scale. Keyword-specific SERP analysis tells you which headlines Google is rewarding — a direct signal of what's resonating with searchers.</p>
+
+<h2>7. Sequential Thinking MCP Server — Structured Copy Architecture</h2>
+
+<p>Long-form copy requires explicit structural reasoning before writing: what's the big idea, what's the primary mechanism, what's the objection sequence, what's the proof architecture, where does the CTA land? Sequential Thinking externalizes this reasoning, producing copy outlines that are architecturally sound before words are written.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Develop big idea and unique mechanism frameworks</li>
+<li>Systematic objection identification and sequencing</li>
+<li>Proof element audit before drafting</li>
+<li>Lead type selection and hook structure development</li>
+<li>CTA hierarchy and placement logic</li>
+</ul>
+
+<p><strong>Best for:</strong> Long-form sales letter and VSL copywriters. Direct response copy that runs to 3,000–10,000 words benefits significantly from explicit architectural reasoning before a word of body copy is written.</p>
+
+<h2>8. Google Drive MCP Server — Client Asset Access</h2>
+
+<p>Client briefs, brand guides, past copy, customer research, product documentation — most client assets live in shared Google Drive folders. The Google Drive server makes this material directly accessible during copywriting sessions.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read client-provided brand guidelines and style documentation</li>
+<li>Access customer research, surveys, and interview transcripts</li>
+<li>Read previous campaigns and copy for voice consistency</li>
+<li>Access product specifications and feature documentation</li>
+<li>Pull testimonials and case studies from client libraries</li>
+</ul>
+
+<p><strong>Best for:</strong> Agency and freelance copywriters with Google Workspace clients. Replacing "can you send me the brand guide?" with "I'll read it directly from your Drive" removes a friction point from the client relationship.</p>
+
+<h2>Recommended Copywriting MCP Stacks</h2>
+
+<ul>
+<li><strong>Market research phase:</strong> Brave Search + Exa + Fetch (customer language + proof + competitor analysis)</li>
+<li><strong>Long-form copy:</strong> Filesystem + Memory + Sequential Thinking + Brave Search (swipe file + client voice + structure + hooks)</li>
+<li><strong>PPC and ads:</strong> Brave Search + Puppeteer + Fetch + Filesystem (SERP intel + ad capture + competitor pages + swipe file)</li>
+<li><strong>Agency workflow:</strong> Google Drive + Memory + Filesystem + Brave Search (client assets + persistent context + local archive + research)</li>
+<li><strong>Full copywriter stack:</strong> Brave Search + Exa + Fetch + Filesystem + Memory + Sequential Thinking</li>
+</ul>
+
+<h2>The Research-to-Copy Compression</h2>
+
+<p>The fundamental value of MCP for copywriters is compressing the research-to-copy pipeline. What used to take 2–4 hours of pre-writing research — customer language, competitor positioning, proof points — can happen in 20–30 minutes when your AI has direct tool access to the right sources.</p>
+
+<p>The output quality improves too: copy written from actual customer language, real competitor intelligence, and specific proof points consistently outperforms copy written from general knowledge. MCP doesn't write the copy for you — but it makes sure your AI is writing from the same quality of research inputs that the best manual copywriters use.</p>
+
+<p>Browse all research and productivity MCP servers on <a href="/servers">MyMCPTools</a>. For related guides, see <a href="/blog/best-mcp-servers-for-writers">Best MCP Servers for Writers</a> and <a href="/blog/best-mcp-servers-for-marketing">Best MCP Servers for Marketing</a>.</p>
+    `.trim(),
+  },
+  {
+    slug: "best-mcp-servers-for-event-planners",
+    title: "Best MCP Servers for Event Planners in 2026: Venue Research, Vendor Management & Logistics",
+    description: "Top MCP servers for event planners and coordinators. Research venues, manage vendors, track budgets, and coordinate logistics faster with AI tools connected to live data and your project files.",
+    date: "2026-05-17",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "8 min read",
+    keywords: ["best mcp servers for event planners", "event planning ai tools mcp", "venue research mcp server", "event management mcp", "event coordinator ai 2026"],
+    relatedServerSlugs: ["brave-search", "exa", "fetch", "google-drive", "gmail", "notion", "airtable", "filesystem", "sequential-thinking"],
+    content: `
+<p>Event planning is coordination-dense work: dozens of vendors, hundreds of logistics dependencies, and zero tolerance for dropped details. A missed caterer confirmation or an overlooked venue policy can cascade into visible failures in front of hundreds of people.</p>
+
+<p>MCP servers give event planners AI assistance that's connected to real data — not just general knowledge. Venue research from live web sources, vendor communications from actual email history, budget tracking from your real spreadsheets. This guide covers the best MCP servers for event planners and coordinators in 2026.</p>
+
+<h2>What Event Planners Need from MCP</h2>
+
+<p>Event planning workflows have requirements distinct from most professional contexts:</p>
+<ul>
+<li><strong>Venue and vendor discovery</strong> — finding options that match specific requirements and geography</li>
+<li><strong>Documentation management</strong> — keeping contracts, run-of-show, and vendor specs organized</li>
+<li><strong>Communication at scale</strong> — coordinating with dozens of vendors simultaneously</li>
+<li><strong>Budget tracking</strong> — monitoring costs across complex multi-vendor events</li>
+<li><strong>Timeline precision</strong> — managing interdependencies across the production schedule</li>
+</ul>
+
+<h2>1. Brave Search MCP Server — Venue and Vendor Discovery</h2>
+
+<p>Venue and vendor research is the most research-intensive phase of event planning. Brave Search gives your AI live access to venue listing sites, local vendor directories, recent reviews, and current availability information — far more current than any training data.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Search for venues by capacity, location, and event type</li>
+<li>Find local vendors (catering, AV, florists, photographers) with recent reviews</li>
+<li>Research venue policies, restrictions, and preferred vendor lists</li>
+<li>Monitor competitor events and industry trends</li>
+<li>Find current pricing ranges for event services by market</li>
+</ul>
+
+<p><strong>Best for:</strong> Early-stage event planning when building the vendor shortlist. "Find event venues in Austin that accommodate 250 people for a corporate dinner with AV capabilities" becomes a directed research task rather than an hour of browser tabs.</p>
+
+<h2>2. Fetch MCP Server — Venue and Vendor Website Research</h2>
+
+<p>Venue websites often contain critical details that don't appear in listing directories: setup and breakdown windows, insurance requirements, preferred vendor lists, catering policies, AV specifications. The Fetch server reads these pages directly, extracting the details that make or break event logistics.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read venue websites for policies, capacities, and layout details</li>
+<li>Extract vendor portfolio information and service offerings</li>
+<li>Access catering menus and pricing documentation</li>
+<li>Read hotel block and room rate information for attendee accommodations</li>
+<li>Pull speaker and entertainment bio details from professional websites</li>
+</ul>
+
+<p><strong>Best for:</strong> Due diligence on shortlisted venues and vendors. Reading the full requirements section of a venue website before the site visit prevents surprises that force last-minute replanning.</p>
+
+<h2>3. Google Drive MCP Server — Contract and Document Management</h2>
+
+<p>Event documentation is extensive: venue contracts, vendor agreements, run-of-show documents, attendee lists, floor plans, insurance certificates. The Google Drive server makes this archive searchable and accessible during planning sessions — without the manual file-hunting that interrupts creative flow.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Search contracts for specific terms and requirements</li>
+<li>Access run-of-show templates from previous events</li>
+<li>Read vendor agreements for payment terms and deliverable specs</li>
+<li>Pull attendee data and dietary restriction lists</li>
+<li>Access floor plans and seating charts</li>
+</ul>
+
+<p><strong>Best for:</strong> Planners managing multiple simultaneous events. Being able to ask "what are the cancellation terms in our venue contract for the June conference?" without manually opening and scanning a 20-page PDF saves repeated minutes that compound across a complex event calendar.</p>
+
+<h2>4. Gmail MCP Server — Vendor Communication Management</h2>
+
+<p>Event planning generates enormous email volume: vendor inquiries, quote responses, contract negotiations, confirmation threads, day-of coordination. The Gmail server makes this correspondence searchable and actionable — enabling your AI to draft responses informed by the full thread history.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Search correspondence history with specific vendors</li>
+<li>Draft vendor inquiry and follow-up emails at scale</li>
+<li>Prepare confirmation and reminder messages for upcoming events</li>
+<li>Monitor outstanding responses and flag overdue communications</li>
+<li>Draft attendee communication sequences (invitations, reminders, post-event follow-up)</li>
+</ul>
+
+<p><strong>Best for:</strong> All event planners managing active vendor relationships. Preparing the pre-event vendor confirmation sequence — 8–12 vendors each needing specific confirmations — takes minutes instead of an hour when your AI has access to both the email history and the event details.</p>
+
+<h2>5. Airtable MCP Server — Event Database and Budget Tracking</h2>
+
+<p>Many event planners use Airtable to track vendor contacts, event budgets, attendee databases, and task assignments. The Airtable server makes these databases queryable in natural language — enabling real-time budget checks, attendee queries, and vendor status reviews without opening Airtable manually.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Query vendor lists by event, status, and payment terms</li>
+<li>Track budget allocations and actual spend across line items</li>
+<li>Pull attendee registration data and dietary restrictions</li>
+<li>Monitor task completion across the planning timeline</li>
+<li>Generate summary reports from event tracking databases</li>
+</ul>
+
+<p><strong>Best for:</strong> Planners using Airtable as their primary project management tool. "What's our current spend vs. budget for the November gala?" becomes a conversational query rather than a manual Airtable review.</p>
+
+<h2>6. Notion MCP Server — Runbook and Knowledge Management</h2>
+
+<p>Experienced event planners accumulate institutional knowledge: vendor recommendations by city, venue-specific quirks, equipment checklists by event type, post-event lessons learned. The Notion server makes this knowledge accessible during active planning without manual searching.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Access venue and vendor recommendation databases by location</li>
+<li>Read event-type checklists and runbook templates</li>
+<li>Query post-event debrief notes for lessons learned</li>
+<li>Access client preference profiles and event history</li>
+<li>Navigate brand and style guide documentation</li>
+</ul>
+
+<p><strong>Best for:</strong> Event planning agencies and experienced freelancers with systematic knowledge management. Years of accumulated institutional knowledge becomes actively useful rather than buried in notebooks or memory.</p>
+
+<h2>7. Filesystem MCP Server — Template and Archive Access</h2>
+
+<p>Local event planning archives contain templates, floor plan files, equipment lists, and reference documents that get reused across events. The Filesystem server makes these accessible to your AI for active reference during planning sessions.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read event timeline and run-of-show templates</li>
+<li>Access floor plan files and room layout configurations</li>
+<li>Read vendor contact databases and preferred vendor lists</li>
+<li>Access budget spreadsheet templates</li>
+<li>Read post-event reporting templates and frameworks</li>
+</ul>
+
+<p><strong>Best for:</strong> Planners with organized local file systems. Particularly useful when combined with Google Drive — local templates and cloud documents accessible in the same planning conversation.</p>
+
+<h2>8. Sequential Thinking MCP Server — Complex Event Logistics Planning</h2>
+
+<p>Multi-day conferences and high-production events have interdependent logistics: venue load-in schedules affect AV setup windows, which affect rehearsal times, which affect speaker preparation. Sequential Thinking makes your AI reason through these dependencies systematically before surfacing a logistics plan.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Structured dependency mapping for complex event timelines</li>
+<li>Risk identification and contingency planning</li>
+<li>Day-of logistics sequencing with explicit dependency chains</li>
+<li>Vendor coordination scheduling across multiple parties</li>
+<li>Post-event debrief structuring and lessons learned capture</li>
+</ul>
+
+<p><strong>Best for:</strong> Planners managing large-scale events with significant production complexity. Multi-stage conferences, award ceremonies with complex AV, and outdoor events with weather contingencies all benefit from explicit dependency reasoning before the logistics plan is finalized.</p>
+
+<h2>Recommended Event Planner MCP Stacks</h2>
+
+<ul>
+<li><strong>Venue and vendor research:</strong> Brave Search + Fetch + Exa (discovery + website details + reviews)</li>
+<li><strong>Communication management:</strong> Gmail + Google Drive + Airtable (correspondence + contracts + database)</li>
+<li><strong>Large conference logistics:</strong> Sequential Thinking + Notion + Filesystem + Google Drive (dependency planning + knowledge base + templates + documents)</li>
+<li><strong>Full planning workflow:</strong> Brave Search + Fetch + Gmail + Google Drive + Airtable + Sequential Thinking</li>
+<li><strong>Agency workflow:</strong> Notion + Gmail + Google Drive + Airtable + Brave Search (full client management)</li>
+</ul>
+
+<h2>The Coordination Multiplier</h2>
+
+<p>The core value of MCP for event planners is reducing the coordination overhead that expands as event complexity grows. A planner managing a 500-person corporate conference is coordinating 20+ vendors, monitoring a budget with 40+ line items, and tracking 200+ decisions and confirmations simultaneously.</p>
+
+<p>MCP servers don't remove the need for the relationships and judgment that make great event planners irreplaceable — but they handle the information retrieval and communication drafting that currently consumes time that should go toward creative direction and client relationship management. The result is a planner who can manage more complex events or more simultaneous clients without proportionally more administrative overhead.</p>
+
+<p>Browse all productivity and research MCP servers on <a href="/servers">MyMCPTools</a>. For related guides, see <a href="/blog/best-mcp-servers-for-project-management">Best MCP Servers for Project Management</a> and <a href="/blog/best-mcp-servers-for-productivity">Best MCP Servers for Productivity</a>.</p>
+    `.trim(),
+  },
 ];
 
 export function getBlogPostBySlug(slug: string): BlogPost | undefined {
