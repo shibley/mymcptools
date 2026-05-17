@@ -24666,6 +24666,412 @@ async with MCPServerStdio(
 <p>Browse all compatible MCP servers at <a href="/servers">MyMCPTools</a>. For more guides, see <a href="/blog/mcp-vs-api-integrations">MCP vs API Integrations</a> and <a href="/blog/best-mcp-servers-for-ai-agents">Best MCP Servers for AI Agents</a>.</p>
     `.trim(),
   },
+  {
+    slug: "best-mcp-servers-for-zapier-users",
+    title: "Best MCP Servers for Zapier Users in 2026",
+    description: "Zapier now supports MCP tool integration in its AI features. Discover the best MCP servers to pair with Zapier workflows for intelligent automation that goes beyond simple if-this-then-that logic.",
+    date: "2026-05-17",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "8 min read",
+    keywords: ["zapier mcp servers", "zapier ai automation", "mcp zapier integration", "zapier model context protocol", "ai workflow automation"],
+    relatedServerSlugs: ["zapier", "slack", "postgresql", "notion", "brave-search", "github", "google-sheets", "memory"],
+    content: `
+<p>Zapier has long been the automation platform of choice for non-technical teams. With over 6,000 app integrations and a no-code visual builder, it powers millions of workflows worldwide. Now, Zapier's AI features support MCP tool integration — opening the door to genuinely intelligent automation that can reason, adapt, and handle edge cases.</p>
+
+<p>The combination is powerful: Zapier handles the deterministic plumbing (trigger on new email, create row in spreadsheet, send Slack message), while MCP-connected AI handles the judgment calls that rule-based automation can't.</p>
+
+<h2>How MCP and Zapier Work Together</h2>
+
+<p>Zapier's AI features — including its AI by Zapier action and Zapier Agents — can connect to MCP servers as external tools. This means:</p>
+
+<ul>
+<li>A Zapier trigger fires (Gmail, form submission, calendar event, etc.)</li>
+<li>An AI step in the workflow accesses MCP tools for context and action</li>
+<li>Claude (or another model) uses the MCP tools to gather data, make decisions, or take actions</li>
+<li>Results flow back into the rest of the Zapier workflow</li>
+</ul>
+
+<p>This unlocks automation patterns that Zapier's traditional if/then logic simply can't handle: classifying ambiguous inputs, enriching data from multiple sources, generating personalized content, and making conditional decisions based on context.</p>
+
+<h2>1. Zapier MCP Server — Native Integration</h2>
+
+<p>Zapier itself publishes an MCP server that exposes your existing Zaps and workflows as MCP tools. This creates a powerful feedback loop: AI in one Zap can trigger other Zaps via the Zapier MCP server, enabling multi-step AI orchestration across your entire automation stack.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Trigger existing Zaps from within AI workflows</li>
+<li>Query Zap history and execution status</li>
+<li>Access connected app data through Zapier's auth infrastructure</li>
+<li>Chain multiple automation workflows with AI decision-making between steps</li>
+</ul>
+
+<h2>2. PostgreSQL / MySQL MCP Server — Database Context</h2>
+
+<p>Most meaningful business automation involves databases. When your Zapier AI step can query a database before acting, the quality of decisions improves dramatically.</p>
+
+<p><strong>Zapier use cases:</strong></p>
+<ul>
+<li><strong>Smart lead routing:</strong> New lead arrives → AI queries CRM database for account history → Routes to appropriate sales rep based on deal size and fit</li>
+<li><strong>Inventory-aware orders:</strong> New order arrives → AI checks inventory database → Flags backordered items before fulfillment</li>
+<li><strong>Customer context:</strong> Support ticket arrives → AI reads customer purchase history → Generates personalized response with relevant order details</li>
+</ul>
+
+<h2>3. Brave Search MCP Server — Real-Time Research</h2>
+
+<p>Zapier workflows that rely on current information — competitor pricing, news, job postings — benefit enormously from live search capability. The Brave Search MCP server lets your AI agent research topics in real-time rather than working from stale training data.</p>
+
+<p><strong>High-value automation patterns:</strong></p>
+<ul>
+<li>Competitor monitoring: daily schedule → AI searches for competitor product announcements → Summarizes into Slack digest</li>
+<li>Job market intelligence: weekly trigger → AI searches new job postings in your niche → Extracts trends → Updates dashboard</li>
+<li>News-triggered workflows: keyword mention detected → AI searches for full story context → Generates summary with relevant background</li>
+</ul>
+
+<h2>4. Slack MCP Server — Intelligent Notifications</h2>
+
+<p>Most Zapier users already connect to Slack for notifications. Adding the Slack MCP server to an AI step upgrades simple alerts into context-rich communications.</p>
+
+<p><strong>Upgrade patterns:</strong></p>
+<ul>
+<li>Replace "New form submission received" with "New enterprise lead from Acme Corp — they match your ICP, have 500+ employees, and their last contact was 6 months ago"</li>
+<li>Incident alerts that include root cause analysis, not just error codes</li>
+<li>Weekly team digests that synthesize multiple data sources into narrative summaries</li>
+</ul>
+
+<h2>5. Notion MCP Server — Knowledge-Aware Automation</h2>
+
+<p>Teams that use Notion as their knowledge base can give AI in Zapier workflows access to company context. Before taking an action, the AI can read relevant Notion pages — procedures, playbooks, customer notes — to inform its decision.</p>
+
+<p><strong>Practical applications:</strong></p>
+<ul>
+<li>Customer onboarding: new customer signup → AI reads onboarding playbook → Generates customized welcome sequence specific to their use case</li>
+<li>Content workflows: topic request arrives → AI reads content guidelines and previous articles → Generates brief that follows brand voice</li>
+<li>Project updates: milestone trigger → AI reads project notes → Generates stakeholder update in consistent format</li>
+</ul>
+
+<h2>6. Google Sheets MCP Server — Spreadsheet Intelligence</h2>
+
+<p>Many Zapier users rely on Google Sheets as a lightweight database. The Google Sheets MCP server lets AI read, analyze, and update spreadsheets with reasoning — not just write raw data.</p>
+
+<p><strong>Smart spreadsheet automation:</strong></p>
+<ul>
+<li>Categorize and enrich rows based on content analysis</li>
+<li>Generate summaries and trend analysis across sheet data</li>
+<li>Flag anomalies and outliers before reporting</li>
+<li>Auto-format and clean messy incoming data</li>
+</ul>
+
+<h2>7. GitHub MCP Server — Developer Workflow Intelligence</h2>
+
+<p>Engineering teams using Zapier for DevOps automation get significant leverage from GitHub MCP integration. Connect code events to AI-powered analysis.</p>
+
+<p><strong>DevOps patterns:</strong></p>
+<ul>
+<li>PR summary automation: new PR opened → AI reads diff → Posts plain-English summary to Slack</li>
+<li>Release notes: new tag → AI reads commits → Generates user-facing changelog</li>
+<li>Issue triage: new issue → AI classifies type and priority → Applies labels and routing</li>
+</ul>
+
+<h2>8. Memory MCP Server — Cross-Workflow Context</h2>
+
+<p>Zapier workflows are stateless by default. The Memory MCP server adds persistent context that carries across workflow runs — so your AI can learn from past executions and adapt over time.</p>
+
+<p><strong>Why this matters:</strong></p>
+<ul>
+<li>Avoid duplicate alerts for the same issue across multiple workflow runs</li>
+<li>Track which decisions worked and adapt future recommendations</li>
+<li>Build accumulating context about customers, leads, or projects</li>
+<li>Maintain running summaries that update with each workflow execution</li>
+</ul>
+
+<h2>Getting Started with MCP in Zapier</h2>
+
+<p>To use MCP servers with Zapier:</p>
+
+<ol>
+<li><strong>Enable AI features</strong> in your Zapier account (requires Teams or Enterprise plan for full MCP support)</li>
+<li><strong>Add an "AI by Zapier" step</strong> to your workflow</li>
+<li><strong>Configure MCP tools</strong> in the AI step settings — Zapier supports MCP server connections</li>
+<li><strong>Set up credentials</strong> for each MCP server (API keys, database connections)</li>
+<li><strong>Test with simple workflows</strong> before adding complex AI logic</li>
+</ol>
+
+<h2>Recommended Stack by Use Case</h2>
+
+<ul>
+<li><strong>Marketing automation:</strong> Brave Search + Notion + Slack + Google Sheets</li>
+<li><strong>Sales workflows:</strong> PostgreSQL + Memory + Slack + GitHub</li>
+<li><strong>Customer support:</strong> Notion + Memory + Slack + Zapier native</li>
+<li><strong>DevOps automation:</strong> GitHub + PostgreSQL + Slack + Brave Search</li>
+</ul>
+
+<p>Browse all Zapier-compatible MCP servers at <a href="/servers">MyMCPTools</a>. See also <a href="/blog/best-mcp-servers-for-n8n">Best MCP Servers for n8n</a> for comparison with the open-source alternative.</p>
+    `.trim(),
+  },
+  {
+    slug: "best-mcp-servers-for-android-developers",
+    title: "Best MCP Servers for Android Developers in 2026",
+    description: "Speed up Android development with MCP. From Gradle build management to Firebase integration, Firebase Crashlytics debugging, and Play Store automation — these are the MCP servers Android devs actually use.",
+    date: "2026-05-17",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "9 min read",
+    keywords: ["android developer mcp servers", "android mcp tools", "mcp for android development", "gradle mcp", "firebase mcp server"],
+    relatedServerSlugs: ["gradle-mcp", "firebase", "github", "sqlite", "playwright", "postgresql", "slack", "filesystem"],
+    content: `
+<p>Android development involves a complex toolchain: Gradle builds, ADB device management, Firebase backend services, Play Store submissions, and increasingly, AI-assisted code generation. MCP servers bring all of these together — letting Claude or another AI assistant interact with your actual dev environment rather than just writing code in a vacuum.</p>
+
+<p>The result is a development workflow where AI can run your Gradle tasks, read your Crashlytics logs, query your Firebase database, and understand your project structure simultaneously — context that makes suggestions dramatically more useful.</p>
+
+<h2>1. Gradle MCP Server — Build System Intelligence</h2>
+
+<p>Gradle is the backbone of Android development. The Gradle MCP server exposes build tasks, dependencies, and Android SDK configurations to your AI assistant — enabling it to help with build failures, dependency conflicts, and project configuration with full context.</p>
+
+<p><strong>How it helps Android devs:</strong></p>
+<ul>
+<li><strong>Build failure diagnosis:</strong> Share your failing build log → AI reads Gradle configuration → Pinpoints the conflicting dependency or missing config</li>
+<li><strong>Flavor and variant management:</strong> AI inspects your build variants → Suggests optimal product flavor structure for your release requirements</li>
+<li><strong>Dependency updates:</strong> AI reads current dependencies → Checks for updates → Generates updated version catalog with compatibility notes</li>
+<li><strong>SDK configuration:</strong> AI reads minSdk/targetSdk settings → Flags deprecated API usage → Suggests migration path</li>
+</ul>
+
+<h2>2. Firebase MCP Server — Backend Context</h2>
+
+<p>Most Android apps use Firebase for authentication, real-time data, analytics, or push notifications. The Firebase MCP server connects your AI assistant to your actual Firebase project data — enabling debugging and development with real backend context.</p>
+
+<p><strong>Android development use cases:</strong></p>
+<ul>
+<li>Query Firestore collections to generate type-safe Kotlin data models that match actual schema</li>
+<li>Read Firebase Remote Config values to understand feature flag states across environments</li>
+<li>Inspect Firebase App Distribution release history to correlate crash reports with releases</li>
+<li>Generate Firebase Security Rules based on your actual data structure</li>
+</ul>
+
+<h2>3. GitHub MCP Server — Code and PR Workflow</h2>
+
+<p>Android projects on GitHub benefit from AI that can read your entire codebase context during code review and development. The GitHub MCP server gives your AI assistant access to your repo, issues, and pull request history.</p>
+
+<p><strong>Practical patterns for Android devs:</strong></p>
+<ul>
+<li>PR review: AI reads diff + existing architecture patterns → Flags consistency issues with your team's Android conventions</li>
+<li>Issue triage: New crash report in GitHub Issues → AI reads stack trace + related code → Identifies likely cause and affected versions</li>
+<li>Migration guidance: AI reads your current code → Generates step-by-step migration plan for View → Compose or Java → Kotlin conversions</li>
+<li>Changelog generation: New release tag → AI reads commits + milestone issues → Generates Play Store release notes</li>
+</ul>
+
+<h2>4. SQLite MCP Server — Local Database Development</h2>
+
+<p>Room database (built on SQLite) is the standard local storage solution for Android. The SQLite MCP server lets you interact with your development database directly through your AI assistant.</p>
+
+<p><strong>Android-specific uses:</strong></p>
+<ul>
+<li>Inspect actual Room database schema to generate or validate entity annotations</li>
+<li>Run migration queries to test database upgrade paths before writing production migration code</li>
+<li>Seed test data for UI testing scenarios</li>
+<li>Debug Room query performance with EXPLAIN QUERY PLAN</li>
+</ul>
+
+<h2>5. Filesystem MCP Server — Project Navigation</h2>
+
+<p>Android projects have complex directory structures (modules, resources, flavors, generated code). The Filesystem MCP server lets your AI assistant navigate and understand your actual project layout — not a generic template.</p>
+
+<p><strong>How this helps:</strong></p>
+<ul>
+<li>Read your manifest files to understand app configuration before suggesting permissions or features</li>
+<li>Navigate module dependencies to suggest the right module for new code</li>
+<li>Read existing resource files (strings, drawables, layouts) to maintain consistency</li>
+<li>Understand your project's multi-module architecture when writing code that spans modules</li>
+</ul>
+
+<h2>6. Slack MCP Server — Team Communication</h2>
+
+<p>Android teams distributed across timezones rely on Slack for async communication. Connecting MCP to Slack lets your AI assistant pull conversation context — understanding what your team has already discussed before suggesting solutions.</p>
+
+<p><strong>Team workflow patterns:</strong></p>
+<ul>
+<li>Before suggesting a solution: AI searches Slack for related discussions to avoid re-solving already-resolved issues</li>
+<li>After a Crashlytics alert: AI reads recent Slack channel discussion to understand if team is already investigating</li>
+<li>Release coordination: AI reads release channel history to understand what's blocked before generating status update</li>
+</ul>
+
+<h2>7. Playwright MCP Server — UI Testing Automation</h2>
+
+<p>While primarily a web testing tool, Playwright can test Android web apps and Progressive Web Apps. More importantly, its MCP server provides useful patterns for thinking about UI test automation that translates to Espresso and UI Automator workflows.</p>
+
+<p><strong>Applicable patterns:</strong></p>
+<ul>
+<li>Generate Espresso test scaffolding based on UI component descriptions</li>
+<li>Create parameterized test cases for screen variations</li>
+<li>Build test fixtures that mirror real user flows through your app</li>
+</ul>
+
+<h2>8. Memory MCP Server — Development Context Persistence</h2>
+
+<p>Android projects evolve over years. The Memory MCP server lets your AI assistant maintain context about your project's history, architectural decisions, and known issues — reducing the need to re-explain the same context in every session.</p>
+
+<p><strong>What to persist:</strong></p>
+<ul>
+<li>Your app's target API level strategy and minimum SDK rationale</li>
+<li>Known third-party library conflicts and workarounds</li>
+<li>Architecture patterns your team has standardized on (MVVM, MVI, clean architecture)</li>
+<li>Performance bottlenecks identified in profiling sessions</li>
+<li>Play Store review feedback trends</li>
+</ul>
+
+<h2>Setting Up MCP for Android Development</h2>
+
+<ol>
+<li><strong>Install Claude Desktop</strong> or use Cursor with MCP support</li>
+<li><strong>Add MCP servers</strong> most relevant to your stack (Firebase, GitHub, Gradle are the core three)</li>
+<li><strong>Point the Filesystem MCP</strong> at your project root for navigation context</li>
+<li><strong>Configure the SQLite MCP</strong> to connect to your development database file</li>
+<li><strong>Test with a specific task</strong> — ask AI to diagnose a Gradle build failure with the tools available</li>
+</ol>
+
+<h2>Recommended Stack by Role</h2>
+
+<ul>
+<li><strong>Solo Android developer:</strong> GitHub + Firebase + SQLite + Filesystem + Memory</li>
+<li><strong>Team lead:</strong> GitHub + Gradle + Slack + PostgreSQL + Memory</li>
+<li><strong>QA engineer:</strong> GitHub + SQLite + Filesystem + Playwright</li>
+<li><strong>Full-stack Android dev:</strong> Firebase + PostgreSQL + GitHub + Slack + Brave Search</li>
+</ul>
+
+<p>Browse all Android-relevant MCP servers at <a href="/servers">MyMCPTools</a>. See also <a href="/blog/best-mcp-servers-for-mobile-developers">Best MCP Servers for Mobile Developers</a> and <a href="/blog/best-mcp-servers-for-swift-developers">Best MCP Servers for Swift Developers</a>.</p>
+    `.trim(),
+  },
+  {
+    slug: "best-mcp-servers-for-php-developers",
+    title: "Best MCP Servers for PHP Developers in 2026",
+    description: "PHP powers 77% of the web. Discover the best MCP servers for PHP and Laravel developers — from database tools and Composer dependency management to deployment automation and API testing.",
+    date: "2026-05-17",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "8 min read",
+    keywords: ["php developer mcp servers", "laravel mcp tools", "mcp for php development", "php mcp integration", "laravel ai tools"],
+    relatedServerSlugs: ["postgresql", "mysql", "redis", "github", "filesystem", "brave-search", "slack", "memory"],
+    content: `
+<p>PHP powers approximately 77% of all websites with a known server-side language — including WordPress, Laravel, Symfony, and countless custom applications. Yet PHP developers are often overlooked in the AI tooling conversation. MCP changes that, giving PHP devs AI assistance that integrates directly with their stack: MySQL databases, Composer packages, Laravel queues, and Redis caches.</p>
+
+<p>This guide covers the MCP servers that provide the most value for PHP and Laravel development workflows.</p>
+
+<h2>1. MySQL MCP Server — Database-Native Development</h2>
+
+<p>MySQL is the de facto database for PHP applications. The MySQL MCP server gives your AI assistant direct access to your database — enabling development workflows that understand your actual schema, not a generic template.</p>
+
+<p><strong>PHP-specific use cases:</strong></p>
+<ul>
+<li><strong>Migration generation:</strong> AI reads current schema → Generates Laravel migration files that correctly reflect existing tables and relationships</li>
+<li><strong>Eloquent model generation:</strong> AI inspects tables → Creates model classes with correct relationships, casts, and fillable attributes</li>
+<li><strong>Query optimization:</strong> AI reads slow query log + EXPLAIN output → Identifies missing indexes and query rewrites</li>
+<li><strong>Seed data creation:</strong> AI reads schema + business logic → Generates realistic factory and seeder files</li>
+</ul>
+
+<h2>2. PostgreSQL MCP Server — Advanced PHP Applications</h2>
+
+<p>Growing numbers of PHP applications use PostgreSQL for advanced features like JSON columns, full-text search, and geospatial queries. The PostgreSQL MCP server offers the same schema-aware development benefits with PostgreSQL-specific capabilities.</p>
+
+<p><strong>Laravel + PostgreSQL patterns:</strong></p>
+<ul>
+<li>Generate JSONB column handlers with proper casting in Eloquent</li>
+<li>Build full-text search configurations that leverage PostgreSQL's tsvector type</li>
+<li>Create database functions and stored procedures with AI assistance using real schema context</li>
+</ul>
+
+<h2>3. Redis MCP Server — Cache and Queue Management</h2>
+
+<p>Laravel applications rely heavily on Redis for caching, session storage, and job queues. The Redis MCP server lets your AI assistant inspect cache contents, monitor queue depth, and debug caching issues.</p>
+
+<p><strong>Laravel development patterns:</strong></p>
+<ul>
+<li>Inspect Redis cache keys to debug caching strategy and TTL configuration</li>
+<li>Monitor Laravel queue depths to identify processing bottlenecks</li>
+<li>Debug session data issues in staging environments</li>
+<li>Generate cache warming scripts based on application hot paths</li>
+</ul>
+
+<h2>4. GitHub MCP Server — Code Review and CI/CD</h2>
+
+<p>The GitHub MCP server connects your AI assistant to your PHP project's version control — enabling code review, issue analysis, and release automation with full codebase context.</p>
+
+<p><strong>PHP development workflows:</strong></p>
+<ul>
+<li>PR review: AI reads diff + existing code patterns → Flags PSR violations, missing type declarations, security issues (SQL injection risks, XSS vulnerabilities)</li>
+<li>Composer audit: AI reads composer.lock → Identifies packages with known CVEs</li>
+<li>Changelog generation: New release → AI reads commits → Generates user-facing changelog in keep-a-changelog format</li>
+<li>Issue triage: New bug report with stack trace → AI reads relevant code → Identifies likely cause</li>
+</ul>
+
+<h2>5. Filesystem MCP Server — Project Structure Awareness</h2>
+
+<p>Laravel projects follow a structured convention, but real applications diverge — custom service providers, domain-driven directories, packages within the project. The Filesystem MCP server lets AI navigate your actual structure.</p>
+
+<p><strong>What this unlocks:</strong></p>
+<ul>
+<li>Read your existing controllers before generating new ones to match your team's patterns</li>
+<li>Navigate service class organization to understand where new functionality belongs</li>
+<li>Read configuration files before generating feature code that depends on them</li>
+<li>Understand your custom artisan commands before suggesting new automation</li>
+</ul>
+
+<h2>6. Brave Search MCP Server — Package Research</h2>
+
+<p>PHP's Packagist ecosystem has tens of thousands of packages. The Brave Search MCP server lets your AI assistant research current packages — finding maintained alternatives, checking download stats, and comparing options.</p>
+
+<p><strong>Research automation:</strong></p>
+<ul>
+<li>Research the current state of PHP packages for a specific use case (e.g., "PDF generation in PHP 2026") before recommending one</li>
+<li>Check whether an abandoned package has a maintained fork</li>
+<li>Find the current recommended way to implement a pattern in Laravel (practices change between major versions)</li>
+</ul>
+
+<h2>7. Slack MCP Server — Team Development Communication</h2>
+
+<p>PHP teams using Slack for communication can connect MCP to avoid context-switching during development. AI assistance that can read your team's previous discussions about a problem gives more relevant answers.</p>
+
+<p><strong>Development workflow patterns:</strong></p>
+<ul>
+<li>Before investigating a bug: search Slack for previous discussions of the error</li>
+<li>During incident response: AI reads #alerts channel history to understand what's already been tried</li>
+<li>Code review: AI reads team discussion about architectural decisions before commenting on new code</li>
+</ul>
+
+<h2>8. Memory MCP Server — Long-Term Project Context</h2>
+
+<p>PHP applications often have years of accumulated technical debt, quirks, and conventions. The Memory MCP server lets you persist context that your AI assistant should always know — reducing repetitive explanation.</p>
+
+<p><strong>What to store for PHP projects:</strong></p>
+<ul>
+<li>Your PHP version target and upgrade roadmap</li>
+<li>Known legacy code patterns to avoid (and their modern replacements)</li>
+<li>Custom helper functions and their preferred usage patterns</li>
+<li>Deployment requirements and environment-specific gotchas</li>
+<li>Third-party API integrations and their limitations</li>
+</ul>
+
+<h2>Setting Up MCP for PHP Development</h2>
+
+<ol>
+<li><strong>Start with MySQL or PostgreSQL MCP</strong> — database context provides the most immediate value for PHP developers</li>
+<li><strong>Add GitHub MCP</strong> for code review and repository navigation</li>
+<li><strong>Configure Filesystem MCP</strong> pointing to your project root</li>
+<li><strong>Add Redis MCP</strong> if you use Laravel queues or caching heavily</li>
+<li><strong>Use Memory MCP</strong> to persist project-specific context</li>
+</ol>
+
+<h2>Recommended Stack by PHP Framework</h2>
+
+<ul>
+<li><strong>Laravel developers:</strong> MySQL + Redis + GitHub + Filesystem + Memory</li>
+<li><strong>WordPress developers:</strong> MySQL + Filesystem + GitHub + Brave Search</li>
+<li><strong>Symfony developers:</strong> PostgreSQL + GitHub + Filesystem + Slack</li>
+<li><strong>API-first PHP (Slim, Lumen):</strong> PostgreSQL + GitHub + Brave Search + Memory</li>
+</ul>
+
+<p>Browse all PHP-relevant MCP servers at <a href="/servers">MyMCPTools</a>. See also <a href="/blog/best-mcp-servers-for-backend-developers">Best MCP Servers for Backend Developers</a> and <a href="/blog/best-mcp-servers-for-database">Best MCP Servers for Database Management</a>.</p>
+    `.trim(),
+  },
 ];
 
 export function getBlogPostBySlug(slug: string): BlogPost | undefined {
