@@ -26709,6 +26709,403 @@ async with MCPServerStdio(
 <p>Browse all C/C++-relevant MCP servers at <a href="/servers">MyMCPTools</a>. See also <a href="/blog/best-mcp-servers-for-embedded-developers">Best MCP Servers for Embedded Developers</a> and <a href="/blog/best-mcp-servers-for-system-administrators">Best MCP Servers for System Administrators</a>.</p>
     `.trim(),
   },
+  {
+    slug: "best-mcp-servers-for-rust-developers",
+    title: "Best MCP Servers for Rust Developers in 2026",
+    description: "The top MCP servers for Rust developers: cargo integration, crates.io docs access, memory-safe debugging, and AI-assisted systems programming workflows.",
+    date: "2026-05-18",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "8 min read",
+    keywords: ["mcp servers for rust developers", "rust mcp server", "best mcp tools rust", "model context protocol rust", "rust ai coding tools 2026", "cargo mcp"],
+    relatedServerSlugs: ["filesystem", "github", "fetch", "brave-search", "git", "sqlite", "memory"],
+    content: `
+<p>Rust's steep learning curve — ownership, lifetimes, borrow checker errors — is exactly where AI assistants shine. But AI without context is just autocomplete. Model Context Protocol servers give your AI assistant direct access to your project files, crate documentation, compiler output, and git history — transforming it from a generic code suggester into a Rust-aware pair programmer.</p>
+
+<p>Here are the MCP servers that matter most for Rust developers in 2026.</p>
+
+<h2>1. Filesystem MCP Server — Full Project Visibility</h2>
+
+<p>Rust projects have a recognizable structure: <code>src/</code>, <code>Cargo.toml</code>, <code>Cargo.lock</code>, <code>tests/</code>, <code>benches/</code>, <code>examples/</code>. The Filesystem server gives your AI assistant access to all of it — so it can understand your actual module structure, trait implementations, and type definitions when answering questions.</p>
+
+<p><strong>Rust-specific workflows it enables:</strong></p>
+<ul>
+<li><strong>Lifetime debugging:</strong> "Read my src/parser.rs and explain why the borrow checker is rejecting this lifetime annotation"</li>
+<li><strong>Trait implementation:</strong> "Read my types.rs and implement Display and Debug for all structs"</li>
+<li><strong>Cargo.toml audit:</strong> "Read my Cargo.toml and identify any duplicate functionality between crates"</li>
+<li><strong>Module refactoring:</strong> "Read my src/ tree and suggest how to reorganize these modules to reduce circular dependencies"</li>
+<li><strong>Test generation:</strong> "Read my lib.rs and generate unit tests for all public functions"</li>
+</ul>
+
+<pre><code>{
+  "mcpServers": {
+    "filesystem": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-filesystem", "/path/to/your/rust/project"]
+    }
+  }
+}</code></pre>
+
+<h2>2. Fetch MCP Server — Live Documentation Access</h2>
+
+<p>Rust's documentation ecosystem is exceptional — docs.rs, the standard library reference, the Rust reference, the Rustonomicon, the async book. The Fetch server lets your AI pull live documentation pages directly, ensuring it gives you accurate API information rather than relying on training data that may describe older APIs.</p>
+
+<p><strong>High-value Rust documentation fetches:</strong></p>
+<ul>
+<li>Fetch docs.rs pages for any crate to get current API signatures</li>
+<li>Access the std library docs for trait implementations and type details</li>
+<li>Pull the Rust Reference for syntax and language specification details</li>
+<li>Fetch the Async Book chapters when working with tokio or async-std</li>
+<li>Access the Rustonomicon when working with unsafe code</li>
+</ul>
+
+<p><strong>Example prompt:</strong> "Fetch the docs for tokio::sync::RwLock and explain when I should prefer it over std::sync::RwLock in my async server code."</p>
+
+<h2>3. Brave Search MCP Server — Crate Discovery and Error Resolution</h2>
+
+<p>Rust compile errors are notoriously verbose and sometimes cryptic. The Brave Search server lets your AI search for solutions, crate alternatives, and community discussion without you switching tabs.</p>
+
+<p><strong>Rust-specific search patterns:</strong></p>
+<ul>
+<li>"Search for the best crate for async HTTP client in Rust 2026" — crate selection research</li>
+<li>"Search for E0505 cannot move out of borrowed content common patterns" — error resolution</li>
+<li>"Search for Rust zero-copy deserialization serde alternatives" — performance optimization</li>
+<li>"Search for safe alternatives to raw pointers for arena allocation in Rust"</li>
+<li>"Search for recent benchmarks comparing tokio vs async-std throughput"</li>
+</ul>
+
+<p><strong>Best for:</strong> Crate evaluation, error code lookup, performance research, and finding community-endorsed patterns.</p>
+
+<h2>4. Git MCP Server — Refactor Tracking and Bisection</h2>
+
+<p>Rust codebases evolve significantly during development — especially during the fighting-the-borrow-checker phase. The Git server gives your AI access to your commit history, helping it understand how your code got to its current state.</p>
+
+<p><strong>Rust-specific Git workflows:</strong></p>
+<ul>
+<li>"What changed between the commit where tests passed and the current failing state?"</li>
+<li>"Show me all commits where I modified the memory management in arena.rs"</li>
+<li>"I introduced a regression — diff the allocator module across the last 5 commits"</li>
+<li>"Write a CHANGELOG entry from my commits since v0.3.0"</li>
+<li>"Show the history of my Cargo.toml dependency changes"</li>
+</ul>
+
+<h2>5. GitHub MCP Server — Crate Source Exploration</h2>
+
+<p>Rust developers frequently need to read upstream crate source code — to understand trait implementations, find undocumented behavior, or replicate patterns from well-maintained crates. The GitHub server enables this without leaving your AI workflow.</p>
+
+<p><strong>Crate research workflows:</strong></p>
+<ul>
+<li>Browse tokio, serde, or rayon source to understand internal implementations</li>
+<li>Read open issues and discussions before choosing between competing crates</li>
+<li>Find real-world examples of how a crate is used across popular repos</li>
+<li>Review changelogs and breaking changes before upgrading dependencies</li>
+<li>Inspect how Rust stdlib traits are implemented in popular third-party types</li>
+</ul>
+
+<h2>6. SQLite MCP Server — Build Artifact and Benchmark Analysis</h2>
+
+<p>Rust's performance focus makes benchmarking central to many projects. If you store benchmark results or build timing data in SQLite (tools like cargo-criterion can export to structured formats), the SQLite server lets your AI analyze performance trends conversationally.</p>
+
+<p><strong>Performance analysis workflows:</strong></p>
+<ul>
+<li>"Query my benchmark results and show which functions regressed after the last refactor"</li>
+<li>"Compare throughput across optimization levels O0, O1, O2, O3 from my benchmark database"</li>
+<li>"Show me any benchmarks where performance is worse on the new async implementation"</li>
+</ul>
+
+<p>Also useful for projects that store configuration, logs, or application data in SQLite.</p>
+
+<h2>7. Memory MCP Server — Persistent Rust Project Context</h2>
+
+<p>Rust projects accumulate hard-won knowledge: why a certain unsafe block exists, what lifetime annotation approach was tried and abandoned, which crates were rejected for what reasons. The Memory server preserves this context across sessions.</p>
+
+<p><strong>What Rust developers store in memory:</strong></p>
+<ul>
+<li>The reason a specific unsafe block was necessary (and what safe alternatives were rejected)</li>
+<li>Known soundness concerns and the tracking issue they're waiting on</li>
+<li>Crate evaluation decisions — what was tried and why it was dropped</li>
+<li>MSRV (minimum supported Rust version) constraints and why they exist</li>
+<li>Platform-specific quirks and target compilation notes</li>
+</ul>
+
+<h2>Recommended Stack for Rust Developers</h2>
+
+<p><strong>Solo Rust developer:</strong> Filesystem + Fetch + Git + Brave Search</p>
+<p><strong>Team working on a library:</strong> Add GitHub for crate source exploration and community research</p>
+<p><strong>Performance-focused project:</strong> Add SQLite for benchmark result analysis</p>
+<p><strong>Long-running project:</strong> Add Memory for accumulated project context</p>
+
+<p>The Filesystem + Fetch combination is the highest-leverage starting point for Rust development. Fetch eliminates outdated API suggestions by pulling live docs.rs documentation — a problem that costs Rust developers significant debugging time when AI assistants cite stale API signatures.</p>
+
+<p>Browse all Rust-relevant MCP servers at <a href="/servers">MyMCPTools</a>. See also <a href="/blog/best-mcp-servers-for-developers">Best MCP Servers for Developers</a> and <a href="/blog/best-mcp-servers-for-system-administrators">Best MCP Servers for System Administrators</a>.</p>
+    `.trim(),
+  },
+  {
+    slug: "best-mcp-servers-for-sales-teams",
+    title: "Best MCP Servers for Sales Teams in 2026",
+    description: "The top MCP servers for sales professionals: CRM data access, email outreach, prospect research, pipeline analysis, and AI-assisted deal management.",
+    date: "2026-05-18",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "8 min read",
+    keywords: ["mcp servers for sales teams", "sales mcp server", "best mcp tools sales", "model context protocol sales", "crm mcp server", "sales ai tools 2026"],
+    relatedServerSlugs: ["filesystem", "fetch", "brave-search", "postgres", "sqlite", "memory", "github"],
+    content: `
+<p>Sales is a data-intensive job. Between CRM updates, prospect research, email personalization, pipeline reporting, and call prep, reps spend hours per week on work that AI can accelerate — if the AI has access to the right context. Model Context Protocol servers bridge that gap, giving your AI assistant direct access to your prospect data, sales documents, and research tools.</p>
+
+<p>Here are the MCP servers that deliver the most value for sales professionals and teams in 2026.</p>
+
+<h2>1. Filesystem MCP Server — Your Sales Collateral, Always in Context</h2>
+
+<p>Sales teams accumulate mountains of documents: battle cards, case studies, proposal templates, pricing sheets, objection-handling guides, onboarding decks. The Filesystem server gives your AI assistant access to all of it — so it can pull the right content for every situation without you manually searching shared drives.</p>
+
+<p><strong>Sales workflows it enables:</strong></p>
+<ul>
+<li><strong>Proposal generation:</strong> "Read our proposal template and our case study for [industry] and draft a customized proposal for this prospect"</li>
+<li><strong>Objection prep:</strong> "Read our battle cards folder and give me the top 3 responses to the 'your competitor is cheaper' objection"</li>
+<li><strong>Call prep:</strong> "Read our discovery question library and create a call prep sheet for a mid-market fintech prospect"</li>
+<li><strong>Email personalization:</strong> "Read our case studies and find the most relevant one for a prospect in healthcare"</li>
+<li><strong>Deal review:</strong> "Read my notes from the last 3 calls with this account and summarize where we are in the deal"</li>
+</ul>
+
+<pre><code>{
+  "mcpServers": {
+    "filesystem": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-filesystem", "/path/to/sales/documents"]
+    }
+  }
+}</code></pre>
+
+<h2>2. Fetch MCP Server — Live Prospect and Company Research</h2>
+
+<p>Before any call or email, a good rep researches the prospect. The Fetch server lets your AI pull live web pages — company websites, press releases, LinkedIn company pages, product pages — so your outreach is current and relevant, not based on stale training data.</p>
+
+<p><strong>Pre-call research workflows:</strong></p>
+<ul>
+<li>Fetch a prospect's company website to understand their product, positioning, and customers</li>
+<li>Pull their About page to understand company size, founding story, and leadership</li>
+<li>Fetch recent press releases or news pages for relevant conversation starters</li>
+<li>Access their pricing page to understand their own sales model</li>
+<li>Pull their job postings to infer growth initiatives and pain points</li>
+</ul>
+
+<p><strong>Example prompt:</strong> "Fetch [company].com and their /about page, then draft a personalized cold email for their VP of Engineering that references something specific about their business."</p>
+
+<h2>3. Brave Search MCP Server — Market Intelligence and Account Research</h2>
+
+<p>Sales requires constant market intelligence: understanding industry trends, finding recent company news, researching competitors mentioned in calls, and identifying trigger events (funding rounds, executive changes, new product launches).</p>
+
+<p><strong>High-value sales searches:</strong></p>
+<ul>
+<li>"Search for recent news about [company] — funding, leadership changes, new products" — trigger events</li>
+<li>"Search for [prospect's industry] trends 2026" — conversation context for calls</li>
+<li>"Search for common pain points in [target vertical] around [your product category]" — ICP research</li>
+<li>"Search for [competitor] vs [your product] reviews 2026" — competitive intelligence</li>
+<li>"Search for [company] CEO recent interviews or LinkedIn posts" — executive research</li>
+</ul>
+
+<p><strong>Best for:</strong> Account research, competitive intelligence, and identifying trigger events before reaching out.</p>
+
+<h2>4. PostgreSQL MCP Server — CRM and Pipeline Data Analysis</h2>
+
+<p>Many CRM platforms (HubSpot, Salesforce, custom builds) can export or sync data to PostgreSQL. With the PostgreSQL server, your AI can query your pipeline data conversationally — replacing hours of spreadsheet manipulation and dashboard building.</p>
+
+<p><strong>Pipeline analysis queries:</strong></p>
+<ul>
+<li>"What's our average days in each stage for deals that closed in Q1 vs Q2?"</li>
+<li>"Which reps have the highest conversion rate from demo to proposal?"</li>
+<li>"Show me all deals stuck in discovery for more than 30 days"</li>
+<li>"What's the win rate for deals where we did a competitive POC vs. no POC?"</li>
+<li>"Which industries have the shortest sales cycles? Break it down by deal size."</li>
+</ul>
+
+<p>This replaces the weekly "can you pull that report" request to a revenue ops analyst with a natural language query.</p>
+
+<h2>5. SQLite MCP Server — Local Pipeline Tracking and Analysis</h2>
+
+<p>For teams or individuals who manage deals in local spreadsheets or lightweight tools that export to SQLite, this server provides the same conversational analysis capability without requiring a full CRM database connection.</p>
+
+<p><strong>Useful for:</strong></p>
+<ul>
+<li>SDR teams tracking outreach sequences and response rates</li>
+<li>Account executives managing their own deal notes and forecasts</li>
+<li>Sales managers analyzing team performance from exported CSVs</li>
+<li>Analyzing historical closed/lost data to find patterns</li>
+</ul>
+
+<h2>6. Memory MCP Server — Account Intelligence That Persists</h2>
+
+<p>Sales relationships take months to close. The Memory server gives your AI persistent knowledge about your active accounts — everything discussed on calls, key stakeholders, their concerns, your positioning, the competitive landscape — so you never start a session from scratch.</p>
+
+<p><strong>What to store for each account:</strong></p>
+<ul>
+<li>Key stakeholders and their roles, priorities, and personalities</li>
+<li>Pain points surfaced in discovery and how they map to your solution</li>
+<li>Objections raised and how they were addressed</li>
+<li>Next steps committed and their status</li>
+<li>Competitive situation — which competitors are in play and their positioning</li>
+<li>Internal champion strength and political dynamics</li>
+</ul>
+
+<p><strong>Example prompt after storing context:</strong> "Given what you know about the Acme deal, draft talking points for my executive sponsor call tomorrow that address the CFO's concerns about implementation cost."</p>
+
+<h2>7. Google Drive / SharePoint MCP Server — Team Sales Assets</h2>
+
+<p>Larger sales organizations store their collateral in Google Drive or SharePoint. MCP servers for these platforms give your AI access to the latest versions of team-maintained assets — ensuring proposals and presentations use current messaging, not outdated templates from a local download.</p>
+
+<p><strong>Asset access workflows:</strong></p>
+<ul>
+<li>Pull the latest deck template for a specific vertical or use case</li>
+<li>Access the most current pricing sheet and packaging options</li>
+<li>Read approved reference customer stories for relevant industries</li>
+<li>Find the most recent competitive battle cards</li>
+</ul>
+
+<h2>Recommended Stack for Sales Teams</h2>
+
+<p><strong>Individual rep:</strong> Filesystem + Fetch + Brave Search + Memory</p>
+<p><strong>Sales team with CRM data:</strong> Add PostgreSQL for pipeline analysis</p>
+<p><strong>SDR/outbound team:</strong> Prioritize Fetch + Brave Search for prospect research velocity</p>
+<p><strong>Enterprise AE:</strong> Full stack — all 7 servers for complex multi-stakeholder deals</p>
+
+<p>The highest-ROI combination for most reps is Filesystem + Fetch + Memory. These three servers handle proposal customization, live prospect research, and cross-session account intelligence — the three areas where AI assistance most directly compresses deal cycle time.</p>
+
+<p>Browse all sales-relevant MCP servers at <a href="/servers">MyMCPTools</a>. See also <a href="/blog/best-mcp-servers-for-marketing">Best MCP Servers for Marketing</a> and <a href="/blog/best-mcp-servers-for-customer-support">Best MCP Servers for Customer Support</a>.</p>
+    `.trim(),
+  },
+  {
+    slug: "best-mcp-servers-for-data-visualization",
+    title: "Best MCP Servers for Data Visualization in 2026",
+    description: "The top MCP servers for data visualization work: database queries, chart generation, dataset exploration, and AI-assisted dashboard and report building.",
+    date: "2026-05-18",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "9 min read",
+    keywords: ["mcp servers for data visualization", "data viz mcp server", "best mcp tools charts", "model context protocol data", "dashboard mcp server", "data analysis mcp 2026"],
+    relatedServerSlugs: ["filesystem", "postgres", "sqlite", "fetch", "brave-search", "github", "memory"],
+    content: `
+<p>Data visualization is where analysis becomes insight. But the path from raw data to a compelling chart or dashboard is filled with friction: writing queries, wrestling with plotting libraries, formatting labels, choosing chart types, and explaining what the data actually means. MCP servers eliminate much of this friction by giving your AI assistant direct access to your data sources and visualization tools.</p>
+
+<p>Here are the MCP servers that matter most for data visualization workflows in 2026.</p>
+
+<h2>1. PostgreSQL MCP Server — Query Your Data Conversationally</h2>
+
+<p>The most important MCP server for data visualization is direct database access. The PostgreSQL server lets your AI assistant inspect your schema, understand your data structure, and write accurate queries — rather than you writing SQL and then pasting results back.</p>
+
+<p><strong>Visualization-focused workflows:</strong></p>
+<ul>
+<li><strong>Chart data extraction:</strong> "Query the sales table and give me monthly revenue by region for the last 12 months as a JSON array I can feed to Chart.js"</li>
+<li><strong>Distribution analysis:</strong> "What's the distribution of user signup dates? Break it into weekly buckets for a histogram"</li>
+<li><strong>Comparison queries:</strong> "Compare conversion rates by acquisition channel and return the data formatted for a grouped bar chart"</li>
+<li><strong>Trend detection:</strong> "Is there a correlation between support ticket volume and churn rate in my monthly data?"</li>
+<li><strong>Cohort data:</strong> "Build a cohort retention query for users who signed up in each month of 2025"</li>
+</ul>
+
+<pre><code>{
+  "mcpServers": {
+    "postgres": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-postgres", "postgresql://localhost/analytics"]
+    }
+  }
+}</code></pre>
+
+<h2>2. SQLite MCP Server — Local Data Files and Exports</h2>
+
+<p>Much of the data that needs visualizing lives in CSV exports, DuckDB files, or SQLite databases — not in a production PostgreSQL instance. The SQLite server handles this local data tier, letting you query CSV-derived databases and analysis artifacts conversationally.</p>
+
+<p><strong>Common data visualization scenarios:</strong></p>
+<ul>
+<li>Analyze exported analytics data (Google Analytics, Mixpanel, Amplitude CSV exports)</li>
+<li>Query survey results and build chart-ready aggregations</li>
+<li>Explore sales data exports from CRM systems</li>
+<li>Analyze A/B test results and compute statistical significance</li>
+<li>Build chart data from ad platform exports (Facebook Ads, Google Ads)</li>
+</ul>
+
+<p>Most data that lands in spreadsheets can be loaded into SQLite in minutes — and then queried with natural language.</p>
+
+<h2>3. Filesystem MCP Server — Visualization Codebases and Assets</h2>
+
+<p>If you're building charts in code — Python with matplotlib or seaborn, JavaScript with D3 or Chart.js, R with ggplot2 — the Filesystem server gives your AI access to your existing visualization scripts, data files, and generated outputs.</p>
+
+<p><strong>Code-based visualization workflows:</strong></p>
+<ul>
+<li><strong>Script modification:</strong> "Read my chart.py and update the color palette to use these brand hex codes: [colors]"</li>
+<li><strong>Chart type conversion:</strong> "Read my bar chart code and convert it to a stacked area chart showing the same data"</li>
+<li><strong>Template reuse:</strong> "Read my existing chart templates folder and create a new choropleth map using the same style conventions"</li>
+<li><strong>Data pipeline:</strong> "Read my data/ folder and build a processing script that outputs the CSVs in the format my D3 charts expect"</li>
+<li><strong>Report generation:</strong> "Read my quarterly data files and generate a Python script that produces all 8 charts in our standard report"</li>
+</ul>
+
+<h2>4. Fetch MCP Server — Documentation and Chart Library References</h2>
+
+<p>Data visualization involves constant library reference lookups — Chart.js options, D3 scale types, Plotly layout parameters, Observable Plot mark syntax. The Fetch server pulls live documentation so your AI gives you current, accurate API details.</p>
+
+<p><strong>Visualization documentation fetches:</strong></p>
+<ul>
+<li>Fetch Chart.js documentation for specific chart types and configuration options</li>
+<li>Pull D3 API documentation for scale, axis, and layout functions</li>
+<li>Access Plotly Python or JavaScript reference pages for chart-specific parameters</li>
+<li>Fetch Observable Plot documentation for mark and transform syntax</li>
+<li>Pull Recharts or Victory documentation for React-based chart components</li>
+</ul>
+
+<p><strong>Best for:</strong> Any workflow involving visualization libraries where API accuracy matters.</p>
+
+<h2>5. Brave Search MCP Server — Chart Inspiration and Technique Research</h2>
+
+<p>Sometimes you know what data you have but not what chart tells the story best. The Brave Search server lets your AI search for visualization techniques, examples, and best practices without you leaving your workflow.</p>
+
+<p><strong>High-value visualization searches:</strong></p>
+<ul>
+<li>"Search for best chart types for showing change over time with multiple categories" — chart selection guidance</li>
+<li>"Search for D3.js sankey diagram examples with weighted flows" — technique research</li>
+<li>"Search for data visualization best practices for showing statistical uncertainty" — design guidance</li>
+<li>"Search for color palettes that are accessible to colorblind viewers" — accessibility</li>
+<li>"Search for how to visualize geographic data without a full GIS stack in 2026"</li>
+</ul>
+
+<h2>6. GitHub MCP Server — Chart Libraries and Visualization Frameworks</h2>
+
+<p>Open-source visualization libraries live on GitHub, and understanding a library's internals — its examples, its issues, its undocumented features — often requires browsing the source. The GitHub server makes this seamless.</p>
+
+<p><strong>Visualization library research workflows:</strong></p>
+<ul>
+<li>Browse D3.js or Observable Plot examples in the official repo</li>
+<li>Read open issues before choosing between chart libraries</li>
+<li>Find community-contributed chart types or extensions for your preferred library</li>
+<li>Check how popular data dashboards (Observable notebooks, Grafana plugins) implement specific chart patterns</li>
+<li>Inspect the source of a chart component to understand customization hooks</li>
+</ul>
+
+<h2>7. Memory MCP Server — Visualization Standards and Brand Context</h2>
+
+<p>Data visualization work has significant style and brand constraints: approved color palettes, font families, chart templates, annotation conventions, axis formatting rules. The Memory server preserves your organization's visualization standards so you don't re-explain them in every session.</p>
+
+<p><strong>What to store for visualization work:</strong></p>
+<ul>
+<li>Brand color palette with hex codes and their semantic meanings (positive, negative, neutral)</li>
+<li>Typography: preferred fonts, sizes, and weight conventions for chart text</li>
+<li>Chart type conventions — when to use bars vs. lines vs. area charts in your context</li>
+<li>Axis formatting rules (currency symbols, percentage formats, number abbreviations)</li>
+<li>Chart sizing standards for different output contexts (slide decks, web embeds, print)</li>
+<li>Accessibility requirements (color contrast ratios, alt text conventions)</li>
+</ul>
+
+<h2>Recommended Stack for Data Visualization</h2>
+
+<p><strong>Data analyst (SQL focus):</strong> PostgreSQL + SQLite + Brave Search</p>
+<p><strong>Visualization developer (code focus):</strong> Filesystem + Fetch + GitHub</p>
+<p><strong>Dashboard builder (full stack):</strong> PostgreSQL + Filesystem + Fetch + Memory</p>
+<p><strong>BI/reporting team:</strong> All servers — deep data access + documentation + brand standards</p>
+
+<p>The highest-impact combination is database access (PostgreSQL or SQLite) plus Fetch for documentation. Together, they let your AI write accurate queries against your actual data structure and generate visualization code that uses current library APIs — eliminating the two most common failure modes in AI-assisted data visualization work.</p>
+
+<p>Browse all data-relevant MCP servers at <a href="/servers">MyMCPTools</a>. See also <a href="/blog/best-mcp-servers-for-data-science">Best MCP Servers for Data Scientists</a> and <a href="/blog/best-mcp-servers-for-data-engineering">Best MCP Servers for Data Engineers</a>.</p>
+    `.trim(),
+  },
 ];
 
 export function getBlogPostBySlug(slug: string): BlogPost | undefined {
