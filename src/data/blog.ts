@@ -25886,6 +25886,829 @@ async with MCPServerStdio(
 <p>Browse all relevant MCP servers at <a href="/servers">MyMCPTools</a>. See also <a href="/blog/best-mcp-servers-for-research">Best MCP Servers for Research</a> and <a href="/blog/best-mcp-servers-for-knowledge-management">Best MCP Servers for Knowledge Management</a>.</p>
     `.trim(),
   },
+  {
+    slug: "best-mcp-servers-for-vue-developers",
+    title: "Best MCP Servers for Vue.js Developers in 2026: Complete Guide",
+    description: "The top MCP servers for Vue.js developers: codebase access, Pinia state management context, component testing, API integration, and deployment tools to supercharge your Vue AI workflow.",
+    date: "2026-05-18",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "9 min read",
+    keywords: ["mcp servers for vue", "vue mcp server", "best mcp tools vue developer", "vuejs ai coding", "model context protocol vue", "mcp vue development 2026", "vue 3 mcp"],
+    relatedServerSlugs: ["filesystem", "github", "git", "brave-search", "fetch", "vercel", "figma", "vite", "vitest", "tailwind-css", "postgresql", "supabase"],
+    content: `
+<p>Vue.js is one of the world's most-loved frontend frameworks, renowned for its approachable progressive architecture, excellent developer experience, and the Composition API that debuted in Vue 3. AI assistants can accelerate Vue development dramatically — but only when they have real context about your component hierarchy, your Pinia stores, your composables, and your build configuration. Generic AI responses miss project-specific patterns and suggest outdated Options API patterns in Vue 3 codebases.</p>
+
+<p>MCP servers give your AI assistant the live context it needs to generate Vue code that actually fits your project. This guide covers the essential servers for Vue 3 developers in 2026.</p>
+
+<h2>1. Filesystem MCP Server — Your Vue Codebase, AI-Accessible</h2>
+
+<p>The Filesystem server is the foundation of any serious Vue development workflow. It gives your AI assistant direct read access to your SFCs (Single File Components), composables, Pinia stores, and project configuration — enabling it to understand your actual component structure before generating code.</p>
+
+<p><strong>Vue-specific workflows:</strong></p>
+<ul>
+<li><strong>Composable audits:</strong> "Read all composables in /src/composables and identify any that could be simplified with newer Vue 3.4 APIs" — reads your actual code</li>
+<li><strong>Pinia store analysis:</strong> "Look at my useUserStore and explain why the computed getter is running on every state change"</li>
+<li><strong>Component tree mapping:</strong> "Map the component hierarchy under DashboardLayout and identify deeply nested prop drilling"</li>
+<li><strong>Package.json inspection:</strong> "What version of Vue am I on? What's changed since then that I should adopt?"</li>
+<li><strong>Tailwind class audit:</strong> "Find all components using old color classes and migrate them to our custom design tokens"</li>
+</ul>
+
+<p><strong>Recommended setup:</strong> Point the server at your project root or <code>/src</code> directory.</p>
+
+<pre><code>{
+  "mcpServers": {
+    "filesystem": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-filesystem", "/path/to/your/vue-app/src"]
+    }
+  }
+}</code></pre>
+
+<h2>2. GitHub MCP Server — PR Reviews and Org Code Search</h2>
+
+<p>The GitHub MCP server is essential for collaborative Vue development. It lets your AI assistant read pull requests, review component diffs, search across your organization's codebase, and manage issues without switching context.</p>
+
+<p><strong>Vue developer workflows:</strong></p>
+<ul>
+<li>"Review this PR and flag any Vue 3 anti-patterns: v-for without keys, mutating props directly, reactive leaks in composables"</li>
+<li>"Search our org for how we've implemented infinite scroll before — I need the same pattern"</li>
+<li>"Create a GitHub issue: the ProductCard component causes a layout shift on mobile below 375px"</li>
+<li>"What breaking changes are in the latest vue-router 4.x release?"</li>
+<li>"Show me all open PRs touching the auth composables"</li>
+</ul>
+
+<h2>3. Brave Search MCP Server — Current Vue 3 Docs</h2>
+
+<p>Vue 3's ecosystem has matured significantly. The Composition API, the <code>&lt;script setup&gt;</code> syntax sugar, Pinia replacing Vuex, and Vue Router 4 all represent substantial changes from Vue 2 patterns. AI assistants trained on older data frequently suggest Options API patterns and Vuex store syntax in codebases that have fully migrated to Vue 3.</p>
+
+<p>The Brave Search server gives your AI access to current Vue documentation, RFC discussions, and package changelogs.</p>
+
+<p><strong>Where current docs matter most:</strong></p>
+<ul>
+<li>Vue 3.4+ improvements — defineModel, v-bind shorthand, improved hydration errors</li>
+<li>Pinia vs Vuex migration patterns</li>
+<li>Vue Router 4 composition API integration</li>
+<li>Nuxt 4 breaking changes and new directory structure</li>
+<li>Third-party library changelogs — "What changed in VueUse 11 vs 10?"</li>
+</ul>
+
+<h2>4. Vite MCP Server — Build and Dev Server Configuration</h2>
+
+<p>Vite was built by Evan You (Vue's creator) and is the first-class build tool for Vue projects. The Vite MCP server gives your AI assistant full visibility into your build configuration for optimization and troubleshooting.</p>
+
+<p><strong>Vue + Vite workflows:</strong></p>
+<ul>
+<li>"Analyze my vite.config.ts and suggest optimizations for production bundle size"</li>
+<li>"Configure the Vue plugin to enable the Composition API transform for all .vue files"</li>
+<li>"Set up path aliases so I can import from @/components and @/composables"</li>
+<li>"Configure code splitting so each route loads its dependencies lazily"</li>
+<li>"Why is HMR not preserving Pinia state when I edit this component?"</li>
+</ul>
+
+<h2>5. Vitest MCP Server — Component Test Generation</h2>
+
+<p>Vue 3 testing with Vue Test Utils and Vitest is the standard workflow. The Vitest MCP server lets your AI read your existing test suite to understand patterns and generate consistent new tests that match your project conventions.</p>
+
+<p><strong>Vue testing workflows:</strong></p>
+<ul>
+<li>"Read the existing tests for UserCard and write similar tests for ProductCard"</li>
+<li>"This test is failing because the Pinia store isn't initialized in the test environment — fix the setup"</li>
+<li>"Generate tests for the useAuth composable covering loading, success, and error states"</li>
+<li>"Identify which components in /src/components have no test coverage"</li>
+<li>"Write a test that verifies this component emits the correct event on form submit"</li>
+</ul>
+
+<h2>6. Figma MCP Server — Design System to Vue Components</h2>
+
+<p>The Figma MCP server gives your AI direct access to Figma designs — component specs, design tokens, and spacing values. For Vue developers building from design systems, this enables accurate component generation instead of approximate eyeballed implementations.</p>
+
+<p><strong>Design-to-Vue workflows:</strong></p>
+<ul>
+<li>"Read the Button component in this Figma file and generate a Vue SFC with all size and variant props"</li>
+<li>"Extract the design tokens and create a Tailwind theme config that matches the Figma design system"</li>
+<li>"The designer shared this layout frame — build it as a responsive Vue component with Tailwind"</li>
+</ul>
+
+<h2>7. Vercel MCP Server — Nuxt and Vue App Deployment</h2>
+
+<p>Vue apps and Nuxt applications commonly deploy to Vercel. The Vercel MCP server provides deployment status, build logs, environment variable management, and preview URL access.</p>
+
+<p><strong>Deployment workflows:</strong></p>
+<ul>
+<li>"Check if the latest deployment succeeded — show the build log if it failed"</li>
+<li>"List environment variables set for production"</li>
+<li>"The preview deployment for this PR shows a hydration mismatch — what's different?"</li>
+</ul>
+
+<h2>8. Supabase MCP Server — Full-Stack Vue Data Access</h2>
+
+<p>Vue applications using Supabase as a backend benefit from the Supabase MCP server's ability to run queries against your actual schema, inspect your auth setup, and troubleshoot real-time subscriptions.</p>
+
+<p><strong>Full-stack Vue workflows:</strong></p>
+<ul>
+<li>"What does the products table schema look like? I need to build a listing with filters"</li>
+<li>"Generate composable types for all my Supabase tables"</li>
+<li>"Why is the real-time subscription on the messages table not firing in this component?"</li>
+</ul>
+
+<h2>Vue Developer MCP Stack by Role</h2>
+
+<table>
+<thead><tr><th>Role</th><th>Essential servers</th></tr></thead>
+<tbody>
+<tr><td>Vue frontend engineer</td><td>Filesystem + GitHub + Brave Search + Vite</td></tr>
+<tr><td>Full-stack Vue/Nuxt dev</td><td>Filesystem + GitHub + Supabase + Vercel + Figma</td></tr>
+<tr><td>Vue + design system</td><td>Filesystem + Figma + Tailwind CSS + GitHub</td></tr>
+<tr><td>Vue testing specialist</td><td>Filesystem + Vitest + GitHub + Brave Search</td></tr>
+<tr><td>Nuxt developer</td><td>Filesystem + Vite + Vercel + GitHub + Brave Search</td></tr>
+</tbody>
+</table>
+
+<h2>Getting Started: Minimal Vue Dev Stack</h2>
+
+<p>Start with three servers that cover 80% of Vue development friction:</p>
+<ol>
+<li><strong>Filesystem</strong> — points at your /src directory; enables all component-aware assistance</li>
+<li><strong>GitHub</strong> — PR reviews, code search, issue creation without context switching</li>
+<li><strong>Brave Search</strong> — current Vue 3 docs and Pinia/VueRouter changelogs, not stale training data</li>
+</ol>
+
+<p>Add Figma when working from a design system. Add Supabase or PostgreSQL for full-stack data access. Add Vercel for Nuxt deployment debugging.</p>
+
+<p>Browse all Vue-relevant MCP servers at <a href="/servers">MyMCPTools</a>. See also <a href="/blog/best-mcp-servers-for-javascript-developers">Best MCP Servers for JavaScript Developers</a> and <a href="/blog/best-mcp-servers-for-developers">Best MCP Servers for Developers</a>.</p>
+    `.trim(),
+  },
+  {
+    slug: "best-mcp-servers-for-healthcare-professionals",
+    title: "Best MCP Servers for Healthcare Professionals in 2026",
+    description: "How healthcare professionals — clinicians, researchers, health IT teams — can use MCP servers to give AI assistants real context about medical literature, patient workflows, and clinical data (while maintaining HIPAA compliance).",
+    date: "2026-05-18",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "8 min read",
+    keywords: ["mcp servers for healthcare", "healthcare ai tools", "medical mcp server", "clinical ai workflow", "model context protocol healthcare", "hipaa ai assistant"],
+    relatedServerSlugs: ["filesystem", "fetch", "brave-search", "exa", "memory", "supabase", "postgresql", "notion"],
+    content: `
+<p>Healthcare professionals interact with enormous amounts of structured and unstructured information daily — clinical guidelines, EHR notes, research literature, billing codes, formulary data, and patient education materials. AI assistants can dramatically accelerate this work, but only when they have the right context. MCP servers give your AI direct, structured access to the information sources that matter in clinical and health IT workflows.</p>
+
+<p>This guide focuses on MCP servers suited for healthcare use cases — from clinical researchers pulling PubMed literature to health IT teams querying care databases to clinicians maintaining up-to-date clinical knowledge.</p>
+
+<p><strong>Important note on HIPAA compliance:</strong> Before connecting any MCP server to patient data systems, review your organization's data governance policy and BAA requirements. Most use cases below involve non-PHI workflows (literature research, guideline lookup, documentation templates). Patient-identifiable data requires separate compliance review.</p>
+
+<h2>1. Fetch MCP Server — Clinical Guidelines and Formulary Data On Demand</h2>
+
+<p>The Fetch server gives your AI assistant the ability to retrieve content from any URL in real time. For healthcare professionals, this is a powerful capability: pull the current version of a clinical guideline, retrieve a drug interaction table from an authoritative source, or fetch the latest CMS billing code updates without manual lookup.</p>
+
+<p><strong>Healthcare workflows:</strong></p>
+<ul>
+<li>Fetch current AHA/ACC guidelines before drafting a patient education summary: "Get the current ACC/AHA hypertension guidelines from heart.org and summarize the first-line treatment recommendations"</li>
+<li>Pull drug prescribing information: "Fetch the FDA prescribing information for [medication] and extract the contraindications section"</li>
+<li>Access CMS reimbursement updates: "Fetch the latest CMS fee schedule update for [procedure code] and tell me if the rate changed"</li>
+<li>Retrieve institutional policies: "Fetch our hospital's antibiotic stewardship policy from [intranet URL] and answer this question about MRSA coverage criteria"</li>
+</ul>
+
+<h2>2. Brave Search MCP Server — Real-Time Medical Literature</h2>
+
+<p>Medical knowledge evolves constantly. Drug approvals, updated meta-analyses, revised clinical guidelines, and new safety signals emerge weekly. The Brave Search server lets your AI assistant access current medical literature and news, keeping clinical reasoning grounded in up-to-date evidence rather than training data from years ago.</p>
+
+<p><strong>Clinical research workflows:</strong></p>
+<ul>
+<li>"Search for recent systematic reviews on SGLT2 inhibitor use in heart failure with preserved ejection fraction published in 2025-2026"</li>
+<li>"Has there been any new safety data on [medication] since 2024? Search medical news sources"</li>
+<li>"What are the current recommendations for GLP-1 agonists in obesity management — find the most recent guidelines"</li>
+<li>"Search for recent RCTs on [intervention] for [condition] — I need to update my evidence summary"</li>
+</ul>
+
+<h2>3. Exa MCP Server — Semantic Medical Literature Search</h2>
+
+<p>Exa's semantic search engine returns conceptually relevant content rather than just keyword matches — particularly useful for medical literature searches where the vocabulary is specialized and the concepts are nuanced.</p>
+
+<p><strong>Research workflows:</strong></p>
+<ul>
+<li>"Find recent literature on the relationship between gut microbiome diversity and autoimmune disease progression" — Exa understands the concept, not just the keywords</li>
+<li>"Search for case reports on unusual presentations of [rare condition]"</li>
+<li>"Find health economics studies comparing [treatment A] vs [treatment B] for cost-effectiveness"</li>
+<li>"Locate patient-reported outcome measures validated for use in [specialty] populations"</li>
+</ul>
+
+<p><strong>Note:</strong> Exa searches the public web, not subscription databases like PubMed Central or Ovid. Use it for initial literature orientation and open-access articles. For comprehensive systematic reviews, augment with direct PubMed searches.</p>
+
+<h2>4. Memory MCP Server — Patient Context and Clinical Notes Across Sessions</h2>
+
+<p>Complex clinical cases span multiple encounters, consultations, and referrals. The Memory server gives your AI persistent context — so every AI-assisted documentation session starts with awareness of the case history, not a blank slate.</p>
+
+<p><strong>Important HIPAA note:</strong> Memory stores data locally on your machine by default. Confirm your organization's policy on AI tool usage before storing any PHI. For de-identified case summaries and medical education contexts, Memory is extremely useful.</p>
+
+<p><strong>Compliant use cases:</strong></p>
+<ul>
+<li><strong>Medical education:</strong> Store de-identified case summaries for case-based learning sessions across multiple days</li>
+<li><strong>Research project context:</strong> Keep the protocol summary, inclusion criteria, and outcome measures persistent across research assistance sessions</li>
+<li><strong>Administrative tracking:</strong> Maintain context on non-PHI workflows like credentialing, compliance tasks, or quality improvement project status</li>
+<li><strong>Literature synthesis:</strong> Track which papers you've reviewed and their key findings across a multi-week systematic review project</li>
+</ul>
+
+<h2>5. Filesystem MCP Server — Clinical Document Templates and References</h2>
+
+<p>The Filesystem server gives your AI assistant access to local documents — clinical templates, reference sheets, formularies, coding guides, and institutional policies stored on your workstation.</p>
+
+<p><strong>Healthcare document workflows:</strong></p>
+<ul>
+<li>Template management: "Read my discharge summary template and generate a completed version for a patient with [de-identified diagnosis] based on these notes"</li>
+<li>Coding reference: "Read the ICD-10 reference sheet in my documents folder and help me code this encounter"</li>
+<li>Protocol access: "Read the sepsis bundle protocol and create a checklist for this patient presentation"</li>
+<li>Research document synthesis: "Read all the PDFs in my literature review folder and create a comparison table of study designs and primary endpoints"</li>
+</ul>
+
+<h2>6. Notion MCP Server — Clinical Knowledge Base and Team Workflows</h2>
+
+<p>Many healthcare teams use Notion for clinical knowledge bases, protocol repositories, on-call handoff documents, and team wikis. The Notion MCP server lets your AI assistant read and write to your team's knowledge base directly.</p>
+
+<p><strong>Healthcare team workflows:</strong></p>
+<ul>
+<li>"Update the on-call handoff note in Notion with today's signouts"</li>
+<li>"Search the clinical protocol database for our current sepsis bundle criteria"</li>
+<li>"Add this new drug interaction to the formulary reference page"</li>
+<li>"Create a new page in the QI project database for this root cause analysis"</li>
+</ul>
+
+<h2>7. PostgreSQL / Supabase MCP Server — Health IT and Research Databases</h2>
+
+<p>Health IT teams and clinical researchers working with de-identified datasets, operational databases, or quality reporting systems can use the PostgreSQL and Supabase MCP servers to give their AI assistant direct query access.</p>
+
+<p><strong>Health IT workflows (de-identified / non-PHI):</strong></p>
+<ul>
+<li>"Query the quality metrics database and show me the HEDIS measure performance for Q1 2026"</li>
+<li>"Count patients in our cohort who meet the inclusion criteria: age 18-65, diagnosis code E11, prescribed metformin"</li>
+<li>"Summarize the schema for our research data warehouse so I can write an extraction query"</li>
+<li>"Run this SQL against the operational database and explain what the results mean for the capacity planning report"</li>
+</ul>
+
+<p><strong>Compliance reminder:</strong> Ensure all database connections comply with your organization's data access policies. Use read-only database roles where possible. Never connect AI tools to live PHI databases without explicit compliance approval and appropriate BAA arrangements.</p>
+
+<h2>Healthcare Professional MCP Stack by Role</h2>
+
+<table>
+<thead><tr><th>Role</th><th>Recommended servers</th></tr></thead>
+<tbody>
+<tr><td>Clinician (non-PHI work)</td><td>Fetch + Brave Search + Filesystem + Memory</td></tr>
+<tr><td>Clinical researcher</td><td>Exa + Brave Search + Filesystem + Memory + PostgreSQL</td></tr>
+<tr><td>Health IT engineer</td><td>Filesystem + PostgreSQL + GitHub + Supabase</td></tr>
+<tr><td>Medical educator</td><td>Memory + Fetch + Brave Search + Filesystem + Notion</td></tr>
+<tr><td>Quality improvement lead</td><td>Notion + PostgreSQL + Fetch + Brave Search</td></tr>
+</tbody>
+</table>
+
+<h2>Getting Started: Low-Risk Entry Point</h2>
+
+<p>The safest entry point for healthcare professionals new to MCP: configure the Fetch server and Brave Search, and use them exclusively for guideline lookups, literature searches, and drug information retrieval. These workflows use no PHI, require no special compliance review, and deliver immediate value.</p>
+
+<p>Move to Filesystem only with de-identified templates and reference documents. Engage your compliance team before connecting any tool to patient data systems.</p>
+
+<p>Browse all healthcare-relevant MCP servers at <a href="/servers">MyMCPTools</a>. See also <a href="/blog/best-mcp-servers-for-research">Best MCP Servers for Research</a> and <a href="/blog/best-mcp-servers-for-knowledge-management">Best MCP Servers for Knowledge Management</a>.</p>
+    `.trim(),
+  },
+  {
+    slug: "best-mcp-servers-for-typescript-developers",
+    title: "Best MCP Servers for TypeScript Developers in 2026",
+    description: "The essential MCP servers for TypeScript developers: type-aware codebase access, schema introspection, ORM integration, API testing, and deployment tools that understand your TypeScript project.",
+    date: "2026-05-18",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "9 min read",
+    keywords: ["mcp servers for typescript", "typescript mcp server", "best mcp tools typescript developer", "typescript ai coding", "model context protocol typescript", "ts mcp 2026"],
+    relatedServerSlugs: ["filesystem", "github", "git", "brave-search", "fetch", "vercel", "supabase", "postgresql", "prisma", "drizzle", "vitest", "jest"],
+    content: `
+<p>TypeScript has become the de facto standard for serious JavaScript development — and for good reason. But TypeScript's greatest strength — its type system — is also the hardest thing for AI assistants to reason about without direct codebase access. Generic type parameters, conditional types, discriminated unions, and branded types don't exist in training data context. They exist in your <code>tsconfig.json</code>, your type declaration files, and your actual source code.</p>
+
+<p>MCP servers give your AI assistant real access to your TypeScript project — your interfaces, your schemas, your ORM types, your tsconfig — enabling code generation that actually passes the type checker rather than producing plausible-looking code that fails on compile.</p>
+
+<h2>1. Filesystem MCP Server — Type-Aware Codebase Access</h2>
+
+<p>TypeScript codebases have complex dependency graphs between types. A change to a base interface cascades through dozens of consuming types. The Filesystem server gives your AI assistant the ability to read your entire type system before generating code that integrates with it.</p>
+
+<p><strong>TypeScript-specific workflows:</strong></p>
+<ul>
+<li><strong>Type navigation:</strong> "Read /src/types and map out the inheritance hierarchy for the User types" — the AI sees your actual interfaces, not a fabricated example</li>
+<li><strong>Generic type help:</strong> "Read this utility type and explain what it produces for a User generic parameter" — real comprehension, not guessing</li>
+<li><strong>tsconfig analysis:</strong> "Read my tsconfig.json and tell me why I'm getting 'noUncheckedIndexedAccess' errors on this array access"</li>
+<li><strong>Declaration file audit:</strong> "Review the .d.ts files in /types and identify any that have incomplete or incorrect type definitions"</li>
+<li><strong>Type migration:</strong> "I need to add strict null checks — read the codebase and estimate the scope of changes"</li>
+</ul>
+
+<pre><code>{
+  "mcpServers": {
+    "filesystem": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-filesystem", "/path/to/your/typescript-project"]
+    }
+  }
+}</code></pre>
+
+<h2>2. Prisma MCP Server — Database Schema as TypeScript Types</h2>
+
+<p>Prisma is the dominant ORM for TypeScript projects. The Prisma MCP server gives your AI assistant direct access to your Prisma schema, enabling it to generate database queries, migrations, and TypeScript types that match your actual data model — not a hallucinated schema.</p>
+
+<p><strong>Prisma + TypeScript workflows:</strong></p>
+<ul>
+<li>"Read my schema.prisma and generate a TypeScript service function for creating a user with their default preferences"</li>
+<li>"Add a new <code>isVerified</code> boolean field to the User model and generate the migration and updated TypeScript types"</li>
+<li>"This Prisma query is returning a type error — read the schema and fix the include statement"</li>
+<li>"Generate Zod validation schemas for all my Prisma models"</li>
+<li>"I need a complex query joining users, orders, and products — write it as a Prisma query with proper TypeScript types"</li>
+</ul>
+
+<h2>3. GitHub MCP Server — Type-Safe Code Review</h2>
+
+<p>TypeScript PRs require type-aware code review. The GitHub MCP server lets your AI assistant review pull requests with direct access to the diff — flagging type safety regressions, improper use of <code>any</code>, missing return type annotations, and non-null assertion abuse.</p>
+
+<p><strong>TypeScript PR review workflows:</strong></p>
+<ul>
+<li>"Review this PR and flag all uses of <code>any</code> that should be properly typed"</li>
+<li>"Check this PR for missing return type annotations on public API functions"</li>
+<li>"Does this PR introduce any breaking changes to the exported types?"</li>
+<li>"Search our repo for examples of how we've typed this pattern before — I need consistency"</li>
+</ul>
+
+<h2>4. Drizzle MCP Server — Schema-First Type Generation</h2>
+
+<p>Drizzle ORM has emerged as a popular Prisma alternative, prized for its SQL-like syntax and first-class TypeScript inference. The Drizzle MCP server provides schema introspection capabilities so your AI can generate type-safe queries that match your actual table definitions.</p>
+
+<p><strong>Drizzle workflows:</strong></p>
+<ul>
+<li>"Read my Drizzle schema and generate a type-safe select query for products with their category and price filters"</li>
+<li>"Create a new Drizzle migration to add a compound index on the orders table"</li>
+<li>"Generate TypeScript types from my Drizzle schema for use in the API response layer"</li>
+</ul>
+
+<h2>5. Vitest MCP Server — Type-Safe Test Generation</h2>
+
+<p>Testing TypeScript code requires tests that respect your type constraints. The Vitest MCP server lets your AI assistant read your existing test suite to understand your testing patterns and write new tests that follow the same conventions — with proper TypeScript types throughout.</p>
+
+<p><strong>TypeScript testing workflows:</strong></p>
+<ul>
+<li>"Read the test for UserService and write similar tests for OrderService using the same patterns"</li>
+<li>"This test is failing with a TypeScript error about incompatible function signatures — read the implementation and fix it"</li>
+<li>"Generate type-safe mock factories for all my Prisma models"</li>
+<li>"Write tests for this generic utility type that verify it produces the correct output types"</li>
+<li>"Set up typed test fixtures for the E2E test suite"</li>
+</ul>
+
+<h2>6. Brave Search MCP Server — Current TypeScript Patterns</h2>
+
+<p>The TypeScript ecosystem evolves rapidly. TypeScript 5.x introduced significant changes to decorators, const type parameters, and variadic tuple types. React 19's type definitions changed substantially. tRPC, Zod, and Effect have each introduced new patterns that didn't exist in training data from 2023-2024.</p>
+
+<p>The Brave Search server ensures your AI is generating TypeScript that follows current patterns, not deprecated approaches.</p>
+
+<p><strong>TypeScript research workflows:</strong></p>
+<ul>
+<li>"Look up the current TypeScript 5.5 pattern for typed error handling — I want to use the new satisfies keyword"</li>
+<li>"What's the correct way to type a Next.js 15 App Router server action in 2026?"</li>
+<li>"Find the latest tRPC v11 documentation for setting up typed procedures"</li>
+<li>"Check if there are known issues with this TypeScript pattern in strict mode"</li>
+</ul>
+
+<h2>7. PostgreSQL / Supabase MCP Server — Query Your Actual Schema</h2>
+
+<p>TypeScript developers working with PostgreSQL need their AI to understand the actual database schema — column types, constraints, relationships, and indexes — to generate queries and types that work. The PostgreSQL and Supabase MCP servers provide direct schema introspection.</p>
+
+<p><strong>TypeScript + database workflows:</strong></p>
+<ul>
+<li>"Introspect my PostgreSQL schema and generate TypeScript interface types for all tables"</li>
+<li>"Run this query and show me the result shape so I can write the correct TypeScript type for the API response"</li>
+<li>"Generate a Zod schema that validates API inputs against this database column's constraints (varchar(255), not null)"</li>
+<li>"Why is TypeScript inferring the wrong type for this Supabase query result?"</li>
+</ul>
+
+<h2>8. Vercel MCP Server — Deployment and Edge Config</h2>
+
+<p>TypeScript applications on Vercel can leverage Vercel's Edge Config, environment variable types, and serverless function constraints. The Vercel MCP server gives your AI assistant deployment context to help you write TypeScript that respects the Vercel runtime environment.</p>
+
+<p><strong>Deployment workflows:</strong></p>
+<ul>
+<li>"Check if the current TypeScript compilation is clean in the latest Vercel build logs"</li>
+<li>"I'm getting a type error in my Edge Function — read the build log and help me fix it"</li>
+<li>"What environment variables are set? I need to add the type-safe config for a new API key"</li>
+</ul>
+
+<h2>TypeScript Developer MCP Stack by Use Case</h2>
+
+<table>
+<thead><tr><th>Use case</th><th>Essential servers</th></tr></thead>
+<tbody>
+<tr><td>Full-stack TypeScript</td><td>Filesystem + Prisma + GitHub + Vitest + Vercel</td></tr>
+<tr><td>TypeScript API developer</td><td>Filesystem + PostgreSQL + GitHub + Brave Search</td></tr>
+<tr><td>Frontend TypeScript</td><td>Filesystem + GitHub + Vitest + Brave Search + Vercel</td></tr>
+<tr><td>Type system specialist</td><td>Filesystem + GitHub + Brave Search + Vitest</td></tr>
+<tr><td>TypeScript library author</td><td>Filesystem + GitHub + Brave Search + Vitest</td></tr>
+</tbody>
+</table>
+
+<h2>Getting Started: Core TypeScript Stack</h2>
+
+<p>The highest-ROI combination for TypeScript developers:</p>
+<ol>
+<li><strong>Filesystem</strong> — type-aware codebase access; enables all context-aware generation</li>
+<li><strong>Prisma or Drizzle</strong> — database schema as TypeScript types; prevents schema mismatch errors</li>
+<li><strong>Brave Search</strong> — current TypeScript patterns and library APIs; prevents hallucinated deprecated APIs</li>
+</ol>
+
+<p>Add GitHub for teams collaborating on TypeScript codebases. Add Vitest or Jest for test-driven TypeScript development. Add Vercel when deployment type errors become a pain point.</p>
+
+<p>Browse all TypeScript-relevant MCP servers at <a href="/servers">MyMCPTools</a>. See also <a href="/blog/best-mcp-servers-for-javascript-developers">Best MCP Servers for JavaScript Developers</a> and <a href="/blog/best-mcp-servers-for-developers">Best MCP Servers for Developers</a>.</p>
+    `.trim(),
+  },
+  {
+    slug: "best-mcp-servers-for-ai-researchers",
+    title: "Best MCP Servers for AI Researchers in 2026",
+    description: "The top MCP servers for AI researchers: dataset access, experiment tracking, paper retrieval, code execution, and literature search tools that streamline your research workflow.",
+    date: "2026-05-18",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "9 min read",
+    keywords: ["mcp servers for ai researchers", "ai research mcp server", "best mcp tools research", "model context protocol research", "mcp for machine learning research", "ai research tools 2026"],
+    relatedServerSlugs: ["filesystem", "github", "brave-search", "fetch", "sqlite", "postgres", "jupyter", "arxiv", "python"],
+    content: `
+<p>AI research moves fast. Between keeping up with arXiv papers, running experiments, managing datasets, writing code, and documenting results, a researcher's day is fragmented across a dozen tools. Model Context Protocol servers can unify this workflow — giving your AI assistant direct access to the files, databases, search APIs, and notebooks that power your research.</p>
+
+<p>Here are the MCP servers that matter most for AI researchers in 2026.</p>
+
+<h2>1. Filesystem MCP Server — Your Research Environment, Fully Accessible</h2>
+
+<p>AI research involves complex directory structures: raw datasets, processed splits, model checkpoints, experiment configs, results CSVs, and draft papers. The Filesystem server gives your AI assistant visibility into all of it.</p>
+
+<p><strong>Research workflows it enables:</strong></p>
+<ul>
+<li><strong>Experiment comparison:</strong> "Read my results/ directory and compare accuracy across all runs in the last 3 experiments"</li>
+<li><strong>Config management:</strong> "Look at my hyperparameter configs and suggest what to sweep next based on the results"</li>
+<li><strong>Dataset inspection:</strong> "Read my data/train/ directory and tell me the class distribution based on the file structure"</li>
+<li><strong>Paper drafting:</strong> "Read my results CSV and draft the results section of my paper"</li>
+<li><strong>Reproducibility:</strong> "Read this experiment folder and write a README that documents how to reproduce it"</li>
+</ul>
+
+<pre><code>{
+  "mcpServers": {
+    "filesystem": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-filesystem", "/path/to/research/workspace"]
+    }
+  }
+}</code></pre>
+
+<h2>2. GitHub MCP Server — Research Code and Collaboration</h2>
+
+<p>Most AI research is versioned on GitHub. The GitHub MCP server lets your AI assistant access your repositories, review pull requests from collaborators, track issues, and search existing research implementations without leaving your workflow.</p>
+
+<p><strong>Key capabilities for researchers:</strong></p>
+<ul>
+<li>Browse your research repos and read implementation code</li>
+<li>Search public GitHub repos for reference implementations of architectures</li>
+<li>Track experiment branches and merge results</li>
+<li>Review collaborator PRs in context</li>
+<li>Find and inspect open-source dataset loaders and preprocessing pipelines</li>
+</ul>
+
+<p><strong>Best for:</strong> Researchers who publish code alongside papers and those working in collaborative teams.</p>
+
+<h2>3. Fetch MCP Server — Live Web Access for Literature and APIs</h2>
+
+<p>Research requires constant access to live information: documentation pages, API references, preprint servers, benchmark leaderboards. The Fetch server gives your AI assistant the ability to retrieve any web page in real time.</p>
+
+<p><strong>Research use cases:</strong></p>
+<ul>
+<li><strong>Paper lookups:</strong> Fetch an arXiv abstract page to pull methodology details without switching tabs</li>
+<li><strong>Documentation access:</strong> Retrieve current PyTorch, JAX, or Hugging Face docs for accurate API usage</li>
+<li><strong>Leaderboard monitoring:</strong> Fetch Papers With Code leaderboard pages to track SOTA</li>
+<li><strong>Dataset documentation:</strong> Pull dataset cards from Hugging Face Hub for accurate citation details</li>
+<li><strong>API exploration:</strong> Retrieve OpenAI, Anthropic, or Cohere API docs during eval scripting</li>
+</ul>
+
+<h2>4. Brave Search MCP Server — Research Discovery Without Tab-Switching</h2>
+
+<p>Finding the right paper, dataset, or implementation often requires web search. The Brave Search server brings web search directly into your AI research context — no browser switching, no copy-pasting URLs.</p>
+
+<p><strong>High-value research queries:</strong></p>
+<ul>
+<li>"Search for the latest papers on state space models for long context"</li>
+<li>"Find open-source implementations of diffusion model guidance techniques"</li>
+<li>"Search for benchmark datasets for multi-hop question answering"</li>
+<li>"Find any recent papers citing [paper title] on arXiv"</li>
+</ul>
+
+<p><strong>Best for:</strong> Literature review, identifying baselines, and staying current without interrupting your coding flow.</p>
+
+<h2>5. SQLite MCP Server — Experiment Tracking and Results Analysis</h2>
+
+<p>Many researchers use SQLite for lightweight experiment tracking — storing run configurations, metrics, and hyperparameters in a local database. The SQLite server gives your AI assistant direct access to query and analyze your experiment database conversationally.</p>
+
+<p><strong>Research workflows:</strong></p>
+<ul>
+<li><strong>Results querying:</strong> "What's the best validation accuracy across all runs where learning rate was below 1e-4?"</li>
+<li><strong>Ablation analysis:</strong> "Compare mean test F1 for runs with and without data augmentation"</li>
+<li><strong>Sweep analysis:</strong> "Which hyperparameter combinations have we not tried yet?"</li>
+<li><strong>Regression detection:</strong> "Show me any runs where accuracy dropped more than 5% from the previous run"</li>
+</ul>
+
+<p>Works equally well with MLflow, W&B export CSVs converted to SQLite, or custom experiment trackers.</p>
+
+<h2>6. PostgreSQL MCP Server — Large-Scale Dataset and Annotation Storage</h2>
+
+<p>For research teams working with large annotated datasets stored in PostgreSQL — common in NLP, computer vision, and medical AI — the PostgreSQL server enables natural language queries over your annotation databases.</p>
+
+<p><strong>Use cases:</strong></p>
+<ul>
+<li>Query annotation databases to understand label distributions</li>
+<li>Find disagreements between annotators for quality analysis</li>
+<li>Extract slices of data for targeted experiments</li>
+<li>Generate dataset statistics for paper methodology sections</li>
+</ul>
+
+<h2>7. Git MCP Server — Experiment History and Reproducibility</h2>
+
+<p>Reproducibility is a core concern in AI research. The Git server gives your AI assistant access to your repository history — commit messages, diffs, branches — making it easy to trace exactly what changed between experiment runs.</p>
+
+<p><strong>Research-specific workflows:</strong></p>
+<ul>
+<li>"What changed in the training script between the run that got 82% and the one that got 79%?"</li>
+<li>"Show me all commits where I modified the loss function"</li>
+<li>"Compare the model architecture code between this branch and main"</li>
+<li>"Write a changelog entry for all changes made since the last paper submission"</li>
+</ul>
+
+<h2>8. Memory MCP Server — Cross-Session Research Context</h2>
+
+<p>Research projects span months. The Memory server gives your AI assistant persistent knowledge about your project — key findings, failed approaches, dataset quirks, and decisions made — so you don't re-explain context in every session.</p>
+
+<p><strong>What to store:</strong></p>
+<ul>
+<li>Key experimental findings and what they imply</li>
+<li>Known dataset biases or quality issues</li>
+<li>Architectural decisions and why alternatives were rejected</li>
+<li>Reviewer feedback from previous submissions</li>
+<li>TODO items for future experiments</li>
+</ul>
+
+<h2>Recommended Stack for AI Researchers</h2>
+
+<p><strong>Individual researcher:</strong> Filesystem + Fetch + Brave Search + Git + SQLite</p>
+<p><strong>Research team:</strong> Add GitHub + PostgreSQL for collaboration and shared data</p>
+<p><strong>Paper-writing mode:</strong> Add Memory for cross-session context retention</p>
+
+<p>The combination of Filesystem, Fetch, and Git covers 80% of daily AI research workflows. Add SQLite when you need to analyze experiment results conversationally — it replaces a lot of pandas wrangling with natural language queries.</p>
+
+<p>Browse all research-relevant MCP servers at <a href="/servers">MyMCPTools</a>. See also <a href="/blog/best-mcp-servers-for-data-science">Best MCP Servers for Data Scientists</a> and <a href="/blog/best-mcp-servers-for-machine-learning">Best MCP Servers for Machine Learning</a>.</p>
+    `.trim(),
+  },
+  {
+    slug: "best-mcp-servers-for-devrel-teams",
+    title: "Best MCP Servers for Developer Relations Teams in 2026",
+    description: "The top MCP servers for DevRel teams: documentation access, community monitoring, GitHub insights, content creation, and analytics tools that help you scale developer advocacy.",
+    date: "2026-05-18",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "8 min read",
+    keywords: ["mcp servers for devrel", "developer relations mcp", "best mcp tools devrel", "developer advocacy mcp server", "devrel ai tools 2026", "model context protocol devrel"],
+    relatedServerSlugs: ["filesystem", "github", "brave-search", "fetch", "slack", "notion", "postgres", "git"],
+    content: `
+<p>Developer relations is one of the most context-heavy jobs in tech. You're simultaneously managing documentation, answering community questions, creating tutorials, tracking GitHub issues, analyzing adoption metrics, and writing content for a technical audience. The context-switching alone costs hours every week.</p>
+
+<p>MCP servers give your AI assistant direct access to the repos, docs, databases, and communication channels that define DevRel work — enabling a kind of ambient intelligence that works across your entire stack.</p>
+
+<h2>1. GitHub MCP Server — The Core DevRel Tool</h2>
+
+<p>For DevRel teams, GitHub isn't just where the code lives — it's where the community lives. Issues, discussions, PRs, and stars are all leading indicators of developer sentiment and adoption. The GitHub MCP server makes all of that programmatically accessible to your AI assistant.</p>
+
+<p><strong>DevRel-specific workflows:</strong></p>
+<ul>
+<li><strong>Issue triage:</strong> "Read the last 50 open issues and group them by category — docs gap, bug report, feature request, or question"</li>
+<li><strong>Community health:</strong> "How many new contributors opened their first PR this month?"</li>
+<li><strong>Content mining:</strong> "What pain points come up most in issues opened by developers who just started using the SDK?"</li>
+<li><strong>Release notes:</strong> "Read all merged PRs since v2.3.0 and draft developer-facing release notes"</li>
+<li><strong>Docs gap analysis:</strong> "Find issues where users say they couldn't find documentation for a feature"</li>
+</ul>
+
+<pre><code>{
+  "mcpServers": {
+    "github": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-github"],
+      "env": { "GITHUB_PERSONAL_ACCESS_TOKEN": "your-token" }
+    }
+  }
+}</code></pre>
+
+<h2>2. Filesystem MCP Server — Documentation and Content Workspace</h2>
+
+<p>DevRel teams own large bodies of documentation, sample code, blog post drafts, tutorial scripts, and slide decks. The Filesystem server gives your AI assistant full access to your content workspace — enabling content audits, cross-references, and consistency checks that would take days to do manually.</p>
+
+<p><strong>High-value DevRel uses:</strong></p>
+<ul>
+<li><strong>Docs audit:</strong> "Read all docs under /docs/getting-started and identify anywhere we reference the deprecated v1 API"</li>
+<li><strong>Sample code review:</strong> "Read every code sample in the /examples directory and check for security anti-patterns"</li>
+<li><strong>Consistency check:</strong> "Read the last 10 blog posts and tell me if our terminology is consistent"</li>
+<li><strong>SEO audit:</strong> "Read all documentation pages and identify which ones are missing meta descriptions"</li>
+<li><strong>Changelog generation:</strong> "Read the /changelog directory and create a 'what's new' developer summary"</li>
+</ul>
+
+<h2>3. Fetch MCP Server — Competitive and Community Intelligence</h2>
+
+<p>DevRel teams need to monitor what developers are saying and doing across the web — competitors' docs, community forums, Stack Overflow threads, Twitter/X conversations. The Fetch server enables real-time retrieval of any URL without leaving your workflow.</p>
+
+<p><strong>DevRel use cases:</strong></p>
+<ul>
+<li>Fetch competitor documentation pages to identify gaps your docs can fill</li>
+<li>Retrieve Stack Overflow questions tagged with your product to find common pain points</li>
+<li>Pull Reddit threads from r/programming to monitor organic developer sentiment</li>
+<li>Access your developer portal analytics dashboards if they have web UIs</li>
+<li>Retrieve your own live docs to verify they match the source of truth</li>
+</ul>
+
+<h2>4. Brave Search MCP Server — Developer Sentiment and SEO Research</h2>
+
+<p>Understanding what developers are searching for — and whether your content answers those queries — is core DevRel work. Brave Search lets your AI assistant run research queries directly in context.</p>
+
+<p><strong>Practical DevRel queries:</strong></p>
+<ul>
+<li>"Search for common questions developers ask about OAuth 2.0 PKCE flow"</li>
+<li>"Find tutorials for [your product] written by third-party developers to understand community adoption"</li>
+<li>"Search for '[your product] vs [competitor]' to understand how developers are comparing us"</li>
+<li>"Find developer complaints about [your product] on forums and Reddit"</li>
+</ul>
+
+<h2>5. Slack MCP Server — Community and Internal Context</h2>
+
+<p>Many developer communities live in Slack. The Slack MCP server gives your AI assistant access to channel history — community Slack workspaces, internal engineering discussions, and developer feedback threads — enabling pattern analysis and response drafting at scale.</p>
+
+<p><strong>DevRel Slack workflows:</strong></p>
+<ul>
+<li>Analyze the last 30 days of #support questions to identify documentation gaps</li>
+<li>Draft responses to common Slack questions with context from your docs</li>
+<li>Identify power users who are helping others in the community</li>
+<li>Monitor #feedback channels for recurring feature requests</li>
+<li>Summarize weekly community highlights for internal stakeholder updates</li>
+</ul>
+
+<h2>6. Notion MCP Server — Content Calendar and Knowledge Base</h2>
+
+<p>DevRel content pipelines — blog posts, tutorials, talks, demos, changelogs — often live in Notion. The Notion MCP server gives your AI assistant access to your content database, making it easy to identify gaps, update content plans, and maintain consistency.</p>
+
+<p><strong>Use cases:</strong></p>
+<ul>
+<li>Read your content calendar and identify upcoming publish dates with no assigned topics</li>
+<li>Search your knowledge base for previous research before starting a new article</li>
+<li>Update tutorial pages with new API changes after a release</li>
+<li>Track which developers have been featured in your content and who to invite next</li>
+</ul>
+
+<h2>7. PostgreSQL MCP Server — Developer Adoption Analytics</h2>
+
+<p>If your product tracks developer metrics in a PostgreSQL database — API key activations, SDK downloads, documentation page views, event signups — the PostgreSQL server lets your AI assistant query and analyze developer adoption data conversationally.</p>
+
+<p><strong>Queries DevRel teams run:</strong></p>
+<ul>
+<li>"What's the 30-day retention rate for developers who attended our last workshop?"</li>
+<li>"Which SDK language has the highest activation-to-active-use conversion?"</li>
+<li>"How many developers completed our getting-started tutorial last month?"</li>
+<li>"Which geographic regions are underrepresented in our developer community?"</li>
+</ul>
+
+<h2>Recommended Stack for DevRel Teams</h2>
+
+<p><strong>Content-focused DevRel:</strong> Filesystem + GitHub + Brave Search + Fetch</p>
+<p><strong>Community-focused DevRel:</strong> GitHub + Slack + Notion + Fetch</p>
+<p><strong>Analytics-focused DevRel:</strong> PostgreSQL + GitHub + Brave Search</p>
+<p><strong>Full-stack DevRel team:</strong> All of the above</p>
+
+<p>Start with GitHub and Filesystem — they address the most common daily tasks. Add Slack when community monitoring becomes a significant time sink. Add PostgreSQL when you need to prove DevRel impact with metrics.</p>
+
+<p>Browse all DevRel-relevant MCP servers at <a href="/servers">MyMCPTools</a>. See also <a href="/blog/best-mcp-servers-for-technical-writers">Best MCP Servers for Technical Writers</a> and <a href="/blog/best-mcp-servers-for-open-source-developers">Best MCP Servers for Open Source Developers</a>.</p>
+    `.trim(),
+  },
+  {
+    slug: "best-mcp-servers-for-c-cpp-developers",
+    title: "Best MCP Servers for C and C++ Developers in 2026",
+    description: "The essential MCP servers for C and C++ developers: codebase navigation, build system access, memory analysis tools, documentation lookup, and compiler integration for low-level development.",
+    date: "2026-05-18",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "9 min read",
+    keywords: ["mcp servers for c developers", "mcp servers for c++ developers", "c cpp mcp server", "best mcp tools c++", "model context protocol c development", "c++ ai coding 2026"],
+    relatedServerSlugs: ["filesystem", "github", "git", "brave-search", "fetch", "sqlite", "memory", "postgres"],
+    content: `
+<p>C and C++ development is uniquely challenging for AI-assisted coding. The sheer size of production codebases, the complexity of build systems (CMake, Bazel, Meson), the absence of runtime type information, and the domain-specific tooling (Valgrind, AddressSanitizer, perf) mean generic AI suggestions often miss the mark. The solution isn't a smarter model — it's a model with real access to your codebase, build config, and tooling output.</p>
+
+<p>MCP servers bridge that gap. Here are the ones that matter most for C and C++ development.</p>
+
+<h2>1. Filesystem MCP Server — The Non-Negotiable Foundation</h2>
+
+<p>C and C++ projects can span hundreds of thousands of lines across deeply nested directory structures. Header files, source files, build configs, and generated code all interact in ways that are impossible to reason about from a conversation snippet. The Filesystem server gives your AI assistant direct access to your project tree.</p>
+
+<p><strong>C/C++-specific workflows:</strong></p>
+<ul>
+<li><strong>Header analysis:</strong> "Read all headers in /include and identify functions that are declared but never defined in /src"</li>
+<li><strong>CMake comprehension:</strong> "Read my CMakeLists.txt files and explain the build graph — which targets depend on which"</li>
+<li><strong>Include graph inspection:</strong> "Read the main.cpp include chain and trace where UINT32_MAX is ultimately defined"</li>
+<li><strong>ABI investigation:</strong> "Read these two versions of mylib.h and identify any ABI-breaking changes"</li>
+<li><strong>Portability audit:</strong> "Read my codebase and flag any platform-specific assumptions that would break on ARM"</li>
+</ul>
+
+<pre><code>{
+  "mcpServers": {
+    "filesystem": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-filesystem", "/path/to/your/c-project"]
+    }
+  }
+}</code></pre>
+
+<h2>2. Git MCP Server — Code History for Debugging</h2>
+
+<p>In C and C++ development, bugs are often regressions introduced by a specific commit — a subtle memory layout change, a macro redefinition, an optimization flag toggle. The Git server gives your AI assistant access to commit history, diffs, and blame information critical for root cause analysis.</p>
+
+<p><strong>Debugging workflows:</strong></p>
+<ul>
+<li>"What changed in buffer.c between the last known-good commit and the commit where the crash started?"</li>
+<li>"Show me every commit that touched the memory allocator in the last 6 months"</li>
+<li>"Who last modified this function and what was the stated reason?"</li>
+<li>"Find all commits where we changed compiler flags in CMakeLists.txt"</li>
+<li>"Generate a diff between the v2.1.0 and v2.2.0 tags for the networking module"</li>
+</ul>
+
+<h2>3. GitHub MCP Server — Upstream Libraries and Issue Tracking</h2>
+
+<p>C/C++ development involves navigating upstream library codebases — Boost, Abseil, LLVM, gRPC, OpenSSL — that live on GitHub. The GitHub server lets your AI assistant search and read upstream code without leaving your dev environment.</p>
+
+<p><strong>Use cases:</strong></p>
+<ul>
+<li>Browse upstream library source to understand how an API actually behaves vs. what docs say</li>
+<li>Search upstream issues for known bugs that match symptoms you're seeing</li>
+<li>Read recent commits to a library to identify if a dependency upgrade caused a regression</li>
+<li>Find reference implementations of patterns (RAII wrappers, custom allocators, etc.) in mature codebases</li>
+<li>Track open issues in your own project and triage crash reports</li>
+</ul>
+
+<h2>4. Fetch MCP Server — Documentation and Standards Access</h2>
+
+<p>C and C++ development requires constant access to live documentation: cppreference.com, POSIX specs, compiler-specific docs (GCC, Clang, MSVC), library docs, and RFC standards. The Fetch server retrieves any URL in real time.</p>
+
+<p><strong>C/C++ developer use cases:</strong></p>
+<ul>
+<li>Fetch cppreference pages for standard library functions to verify exact behavior</li>
+<li>Retrieve GCC or Clang documentation for specific compiler flags and their interactions</li>
+<li>Access POSIX man pages for syscall semantics</li>
+<li>Pull OpenSSL or Boost documentation for current API surface</li>
+<li>Fetch RFC documents for protocol implementation reference</li>
+</ul>
+
+<h2>5. Brave Search MCP Server — Debugging and Research</h2>
+
+<p>When you hit a linker error, a sanitizer report, or an obscure compiler warning, the fastest path to a solution is often a targeted web search. Brave Search brings that directly into your AI context.</p>
+
+<p><strong>Common C/C++ search patterns:</strong></p>
+<ul>
+<li>"Search for 'undefined behavior undefined reference vtable' GCC C++"</li>
+<li>"Find examples of implementing a custom allocator compatible with std::allocator_traits"</li>
+<li>"Search for known issues with AddressSanitizer and thread-local storage on Linux"</li>
+<li>"Find discussions about cache line alignment for lock-free data structures"</li>
+</ul>
+
+<h2>6. SQLite MCP Server — Build Artifacts and Compile Database</h2>
+
+<p>LLVM-based toolchains generate <code>compile_commands.json</code> — a compilation database that records exactly how each translation unit was compiled. Some teams also store build metrics, symbol tables, and static analysis results in SQLite. The SQLite server makes this machine-readable data conversationally accessible.</p>
+
+<p><strong>Use cases:</strong></p>
+<ul>
+<li>Query compile_commands.json (converted to SQLite) to find all files compiled with specific flags</li>
+<li>Store and query static analysis results to track warnings over time</li>
+<li>Analyze build performance data to identify bottlenecks in compilation</li>
+<li>Query symbol databases for large refactoring analysis</li>
+</ul>
+
+<h2>7. Memory MCP Server — Project Context Persistence</h2>
+
+<p>C/C++ projects accumulate technical debt, workarounds, and tribal knowledge over years. The Memory server lets your AI assistant retain project-specific knowledge across sessions — so you don't re-explain the same context every time you start a new conversation.</p>
+
+<p><strong>What to store:</strong></p>
+<ul>
+<li>Known platform-specific workarounds and why they exist</li>
+<li>Which parts of the codebase are particularly fragile</li>
+<li>Non-obvious invariants that must be maintained</li>
+<li>Which compiler versions or flags break specific features</li>
+<li>Active bugs and their current investigation status</li>
+</ul>
+
+<h2>Recommended Stack for C/C++ Developers</h2>
+
+<p><strong>Solo developer:</strong> Filesystem + Git + Fetch + Brave Search</p>
+<p><strong>Team working on a library:</strong> Add GitHub for upstream navigation and issue tracking</p>
+<p><strong>Systems / embedded developers:</strong> Add Memory for platform-specific context retention</p>
+<p><strong>Large codebase (100K+ lines):</strong> Add SQLite for compile database and analysis artifact queries</p>
+
+<p>The Filesystem + Git combination alone covers the majority of C/C++ AI coding workflows. Add Fetch for documentation-heavy work (systems programming, protocol implementation) and Brave Search when debugging unfamiliar compiler or linker behavior.</p>
+
+<p>Browse all C/C++-relevant MCP servers at <a href="/servers">MyMCPTools</a>. See also <a href="/blog/best-mcp-servers-for-embedded-developers">Best MCP Servers for Embedded Developers</a> and <a href="/blog/best-mcp-servers-for-system-administrators">Best MCP Servers for System Administrators</a>.</p>
+    `.trim(),
+  },
 ];
 
 export function getBlogPostBySlug(slug: string): BlogPost | undefined {
