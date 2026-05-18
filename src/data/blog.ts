@@ -25072,6 +25072,434 @@ async with MCPServerStdio(
 <p>Browse all PHP-relevant MCP servers at <a href="/servers">MyMCPTools</a>. See also <a href="/blog/best-mcp-servers-for-backend-developers">Best MCP Servers for Backend Developers</a> and <a href="/blog/best-mcp-servers-for-database">Best MCP Servers for Database Management</a>.</p>
     `.trim(),
   },
+  {
+    slug: "best-mcp-servers-for-code-review",
+    title: "Best MCP Servers for Code Review in 2026",
+    description: "Speed up code reviews with MCP servers that give AI assistants direct access to your repositories, static analysis tools, security scanners, and issue trackers.",
+    date: "2026-05-17",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "7 min read",
+    keywords: ["mcp servers code review", "ai code review tools", "mcp github", "mcp sonarqube", "mcp snyk", "ai pull request review"],
+    relatedServerSlugs: ["github", "gitlab", "git", "sonarqube", "snyk", "semgrep", "codacy", "linear", "filesystem", "coderabbit"],
+    content: `
+<p>Code review is one of the highest-leverage activities in software development — and one of the most time-consuming. MCP servers let AI assistants go beyond surface-level feedback by giving them direct access to your repositories, static analysis output, security scans, and issue trackers.</p>
+
+<p>Here are the MCP servers that transform how your team does code review.</p>
+
+<h2>Why AI Code Review Needs MCP</h2>
+
+<p>Without MCP, AI code review is limited to whatever you paste into the chat. With MCP servers, your AI assistant can:</p>
+
+<ul>
+<li><strong>Read the full diff in context</strong> — not just isolated snippets</li>
+<li><strong>Check the existing codebase</strong> — catch inconsistencies with surrounding patterns</li>
+<li><strong>Pull static analysis results</strong> — surface linting and quality findings automatically</li>
+<li><strong>Reference open issues and PRs</strong> — understand what problem the code is solving</li>
+<li><strong>Run security scans</strong> — flag vulnerabilities before they hit production</li>
+</ul>
+
+<h2>1. GitHub MCP Server — The Foundation</h2>
+
+<p>If your team uses GitHub, the GitHub MCP server is the single most impactful server for code review workflows. It gives your AI assistant direct access to pull requests, diffs, comments, and repository structure.</p>
+
+<p><strong>Key capabilities for code review:</strong></p>
+<ul>
+<li>Read pull request diffs, descriptions, and review comments</li>
+<li>Browse the full repository to understand context around changed files</li>
+<li>Post review comments directly on specific lines</li>
+<li>Search across your codebase to find similar patterns or prior implementations</li>
+<li>Check CI status — understand whether the build is passing before reviewing</li>
+</ul>
+
+<p><strong>How to use it:</strong> Ask your AI to review an open PR by number. It reads the diff, checks surrounding code for consistency, and generates structured feedback with line references — far more thorough than reviewing from a screenshot.</p>
+
+<h2>2. GitLab MCP Server — For GitLab Teams</h2>
+
+<p>GitLab teams get the same workflow as GitHub users through the GitLab MCP server. Merge request access, discussion threads, pipeline status, and repository browsing are all available.</p>
+
+<p><strong>Standout feature:</strong> GitLab's integrated CI/CD means your AI can correlate code changes with pipeline results in a single conversation, without switching tools.</p>
+
+<h2>3. Git MCP Server — Local Repository Access</h2>
+
+<p>For local review workflows (or when working with private repositories that aren't on a hosted platform), the Git MCP server provides direct access to your local git history, staged changes, and branch diffs.</p>
+
+<p><strong>Best for:</strong> Pre-commit review — catching issues before they're pushed. Ask your AI to review your staged changes before you submit a PR.</p>
+
+<h2>4. SonarQube MCP Server — Quality Gate Access</h2>
+
+<p>SonarQube runs static analysis on your codebase and tracks quality metrics over time. The MCP server lets your AI pull SonarQube findings directly into the review conversation.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Fetch open issues for a project or specific file</li>
+<li>Check quality gate status — is this PR passing the quality threshold?</li>
+<li>Pull code smell and bug reports with severity levels</li>
+<li>Track technical debt trends across branches</li>
+</ul>
+
+<p><strong>Why this matters:</strong> Instead of cross-referencing SonarQube separately, your AI reviewer can say "SonarQube flagged a null pointer risk on line 47 — here's why and how to fix it."</p>
+
+<h2>5. Snyk MCP Server — Security-First Review</h2>
+
+<p>Security vulnerabilities are the most expensive code review misses. The Snyk MCP server integrates security scanning results directly into your AI review workflow.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Dependency vulnerability scanning — catch CVEs in package.json / requirements.txt changes</li>
+<li>Code-level security issue detection (SQL injection, XSS, insecure deserialization)</li>
+<li>License compliance checking for new dependencies</li>
+<li>Remediation suggestions tied to specific vulnerabilities</li>
+</ul>
+
+<p><strong>Recommended workflow:</strong> After a PR is opened, have your AI run a Snyk scan through MCP. Any HIGH or CRITICAL findings get escalated in the review before a human even looks at the code.</p>
+
+<h2>6. Semgrep MCP Server — Custom Rule Enforcement</h2>
+
+<p>Semgrep lets you write custom static analysis rules specific to your codebase — enforcing patterns your linter can't catch. The MCP server makes those findings available to your AI reviewer.</p>
+
+<p><strong>Best for:</strong> Teams with custom security rules, deprecated API enforcement, or architectural guardrails that can't be expressed in standard linters.</p>
+
+<h2>7. Linear MCP Server — Context from the Issue Tracker</h2>
+
+<p>Code review gets better when the reviewer understands <em>why</em> the code exists. The Linear MCP server connects your AI to your issue tracker so it can pull the original ticket, acceptance criteria, and related discussions.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Fetch the issue linked to a PR — understand requirements while reviewing</li>
+<li>Check if implementation matches the spec</li>
+<li>Flag scope creep (code that isn't related to the ticket)</li>
+<li>Post review findings as comments on the related issue</li>
+</ul>
+
+<h2>8. Filesystem MCP Server — Local Code Exploration</h2>
+
+<p>For deeply contextual reviews, the Filesystem server lets your AI browse the local codebase beyond what's in the diff — checking how similar functions are implemented elsewhere, what tests exist for the changed module, and whether the change is consistent with the surrounding architecture.</p>
+
+<h2>Building a Code Review Stack</h2>
+
+<p>The most effective code review setups combine 3-4 servers:</p>
+
+<ul>
+<li><strong>Minimal stack:</strong> GitHub + Git + Filesystem</li>
+<li><strong>Quality-focused:</strong> GitHub + SonarQube + Codacy + Linear</li>
+<li><strong>Security-focused:</strong> GitHub + Snyk + Semgrep + Filesystem</li>
+<li><strong>Full stack:</strong> GitHub + Snyk + SonarQube + Linear + Filesystem</li>
+</ul>
+
+<p>Start with the minimal stack and add servers based on where your team's biggest review gaps are.</p>
+
+<h2>Practical Tips</h2>
+
+<p><strong>Write a review prompt template.</strong> Instead of re-explaining what you want each time, create a standard prompt: "Review PR #[number] for correctness, security issues, and consistency with the existing codebase. Check SonarQube for any open issues on changed files."</p>
+
+<p><strong>Use Git for pre-push review.</strong> Before pushing: "Review my staged changes. Are there any issues I should fix before opening a PR?"</p>
+
+<p><strong>Don't skip the issue context.</strong> "What's the Linear ticket for this PR?" followed by "Does the implementation match the acceptance criteria?" catches requirement mismatches before they become production bugs.</p>
+
+<p>Browse all code review-relevant MCP servers at <a href="/servers">MyMCPTools</a>. See also <a href="/blog/best-mcp-servers-for-developers">Best MCP Servers for Developers</a> and <a href="/blog/best-mcp-servers-for-security-engineers">Best MCP Servers for Security Engineers</a>.</p>
+    `.trim(),
+  },
+  {
+    slug: "best-mcp-servers-for-shopify-developers",
+    title: "Best MCP Servers for Shopify Developers in 2026",
+    description: "The top MCP servers for building and managing Shopify stores. Connect your AI to Shopify, analytics, email marketing, payments, and inventory tools for faster ecommerce development.",
+    date: "2026-05-17",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "6 min read",
+    keywords: ["mcp servers shopify", "shopify ai development", "mcp shopify tools", "ai shopify developer", "shopify mcp integration"],
+    relatedServerSlugs: ["shopify", "stripe", "klaviyo", "google-analytics", "github", "filesystem", "bigcommerce", "woocommerce", "postman"],
+    content: `
+<p>Shopify development spans a wide stack: Liquid templating, the Storefront API, Admin API, webhooks, third-party app integrations, and analytics pipelines. MCP servers can give your AI assistant direct access to all of it — cutting development time and reducing context-switching.</p>
+
+<p>Here are the best MCP servers for Shopify developers in 2026.</p>
+
+<h2>Why Shopify Developers Need MCP</h2>
+
+<p>Shopify development without MCP means constantly copying API responses, pasting schema docs, and explaining your store's data model to your AI. With the right MCP servers:</p>
+
+<ul>
+<li>Your AI reads your actual store data — products, orders, customers, inventory</li>
+<li>It generates accurate Liquid and API code against real schemas</li>
+<li>It can query analytics and surface insights without leaving your workflow</li>
+<li>It understands your theme structure and app integrations</li>
+</ul>
+
+<h2>1. Shopify MCP Server — Core Store Access</h2>
+
+<p>The Shopify MCP server connects your AI assistant directly to your store's Admin API. This is the foundation of any Shopify developer's MCP stack.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Browse and query products, variants, collections, and inventory</li>
+<li>Read and manage orders, fulfillments, and returns</li>
+<li>Access customer profiles, tags, and purchase history</li>
+<li>Query store settings, shipping zones, and tax configurations</li>
+<li>Manage metafields across resources</li>
+</ul>
+
+<p><strong>Best use cases:</strong></p>
+<ul>
+<li>Writing Admin API integrations: "Show me the product schema, then write a function to sync inventory across two locations."</li>
+<li>Debugging: "Fetch order #5012 and tell me why the fulfillment is stuck."</li>
+<li>Bulk operations: "Which products have no metafield for 'care_instructions'? List them."</li>
+</ul>
+
+<h2>2. Stripe MCP Server — Payments and Subscriptions</h2>
+
+<p>Most Shopify stores rely on Stripe for payment processing, subscriptions, or custom checkout flows. The Stripe MCP server gives your AI access to payment intents, customer data, subscription plans, and dispute records.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Inspect payment intent status and failure reasons</li>
+<li>Browse subscription plans and customer billing history</li>
+<li>Check dispute and chargeback records</li>
+<li>Generate test payment flows for development environments</li>
+</ul>
+
+<p><strong>Why it matters for Shopify:</strong> When debugging checkout issues, being able to cross-reference Shopify order status with Stripe payment intent in a single conversation saves significant debugging time.</p>
+
+<h2>3. Klaviyo MCP Server — Email and SMS Marketing</h2>
+
+<p>Klaviyo is the dominant email marketing platform for Shopify stores. The Klaviyo MCP server lets your AI access flow configurations, segment definitions, campaign performance, and subscriber data.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Browse and edit email flow logic and triggers</li>
+<li>Query subscriber lists and segment membership</li>
+<li>Access campaign analytics (open rates, click rates, revenue)</li>
+<li>Inspect event tracking configuration</li>
+</ul>
+
+<p><strong>Best use case:</strong> "Our abandoned cart flow has a 12% open rate. Review the flow logic and the email copy, and suggest what to change." Your AI sees the actual flow, not a description of it.</p>
+
+<h2>4. Google Analytics MCP Server — Traffic and Conversion Data</h2>
+
+<p>Understanding what drives Shopify conversions requires analytics data. The Google Analytics MCP server gives your AI access to traffic sources, conversion funnels, product performance, and user behavior — without you manually exporting CSVs.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Query sessions, users, and conversion metrics by channel</li>
+<li>Analyze product detail page performance</li>
+<li>Compare traffic segments (paid vs. organic, mobile vs. desktop)</li>
+<li>Pull funnel drop-off data for checkout optimization</li>
+</ul>
+
+<h2>5. GitHub MCP Server — Theme and App Development</h2>
+
+<p>Shopify themes and custom apps live in git repositories. The GitHub MCP server gives your AI full access to your theme codebase — reading Liquid templates, reviewing section schemas, and understanding your app's architecture.</p>
+
+<p><strong>Key capabilities for Shopify:</strong></p>
+<ul>
+<li>Browse theme directory structure (templates, sections, snippets, assets)</li>
+<li>Read and write Liquid template files</li>
+<li>Search across your theme for specific variables or filters</li>
+<li>Review and comment on pull requests for theme updates</li>
+</ul>
+
+<h2>6. Filesystem MCP Server — Local Theme Development</h2>
+
+<p>When developing locally with Shopify CLI, the Filesystem server gives your AI access to your theme files without needing a GitHub remote. Essential for rapid local iteration.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read and write Liquid templates directly</li>
+<li>Navigate your theme's directory structure</li>
+<li>Edit section schema JSON</li>
+<li>Access locale files for multi-language stores</li>
+</ul>
+
+<h2>7. Postman MCP Server — API Testing and Documentation</h2>
+
+<p>Building a Shopify app means working with a lot of REST and GraphQL APIs. The Postman MCP server lets your AI access your API collections, run requests, and generate documentation — keeping your integration tests in sync with your implementation.</p>
+
+<h2>Shopify Developer MCP Stack by Use Case</h2>
+
+<table>
+<thead><tr><th>Use case</th><th>Recommended servers</th></tr></thead>
+<tbody>
+<tr><td>Theme development</td><td>Filesystem + GitHub + Shopify</td></tr>
+<tr><td>App development</td><td>Shopify + GitHub + Stripe + Postman</td></tr>
+<tr><td>Store operations</td><td>Shopify + Klaviyo + Google Analytics</td></tr>
+<tr><td>Checkout optimization</td><td>Shopify + Stripe + Google Analytics</td></tr>
+<tr><td>Email marketing</td><td>Klaviyo + Shopify</td></tr>
+</tbody>
+</table>
+
+<h2>Getting Started</h2>
+
+<p>The fastest path to value: install the Shopify MCP server and connect it to Claude Desktop or Cursor. Run: "Describe my store's top 10 products by revenue in the last 30 days." If that works, you're ready to go deeper.</p>
+
+<p>Add the GitHub or Filesystem server next if you're actively working on theme or app code. Add Klaviyo and Google Analytics once you're comfortable with the core workflow.</p>
+
+<p>Browse all ecommerce-relevant MCP servers at <a href="/servers">MyMCPTools</a>. See also <a href="/blog/best-mcp-servers-for-ecommerce">Best MCP Servers for Ecommerce</a> and <a href="/blog/best-mcp-servers-for-full-stack-developers">Best MCP Servers for Full-Stack Developers</a>.</p>
+    `.trim(),
+  },
+  {
+    slug: "best-mcp-servers-for-agentic-workflows",
+    title: "Best MCP Servers for Agentic Workflows in 2026",
+    description: "Build reliable AI agents with MCP servers that handle memory, tool use, planning, web access, and code execution. The essential MCP stack for autonomous AI workflows.",
+    date: "2026-05-17",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "8 min read",
+    keywords: ["mcp servers ai agents", "agentic workflow mcp", "mcp memory server", "ai agent tools", "mcp sequential thinking", "autonomous ai mcp"],
+    relatedServerSlugs: ["memory", "sequential-thinking", "filesystem", "github", "exa", "brave-search", "e2b", "fetch", "everything", "langchain"],
+    content: `
+<p>Agentic AI workflows — where an AI executes multi-step tasks autonomously rather than answering a single question — require a fundamentally different toolset than conversational AI. MCP servers are the bridge between language models and the real-world tools that make agents actually useful.</p>
+
+<p>Here are the MCP servers that matter most for building reliable agentic workflows in 2026.</p>
+
+<h2>What Agentic Workflows Need from MCP</h2>
+
+<p>A capable AI agent needs four core capabilities:</p>
+
+<ol>
+<li><strong>Persistent memory</strong> — retaining context across steps and sessions</li>
+<li><strong>Planning and reasoning</strong> — breaking complex goals into executable steps</li>
+<li><strong>Tool access</strong> — web search, file I/O, API calls, code execution</li>
+<li><strong>Observation and verification</strong> — checking results and adjusting course</li>
+</ol>
+
+<p>MCP servers provide all four. The right stack depends on what your agent is doing — but the servers below form the universal foundation.</p>
+
+<h2>1. Memory MCP Server — Persistent Agent State</h2>
+
+<p>The Memory server is the single most important MCP server for agentic workflows. It provides a knowledge graph that agents can read from and write to, creating persistent memory across sessions.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Store and retrieve entities with structured attributes and relationships</li>
+<li>Create observations — facts the agent has learned during a task</li>
+<li>Query the knowledge graph for relevant prior context</li>
+<li>Maintain task state across multiple agent runs</li>
+</ul>
+
+<p><strong>Why it matters:</strong> Without persistent memory, every agent run starts from zero. With the Memory server, your agent can say "I checked this URL yesterday and it returned a 404 — skip it" or "The user prefers JSON output based on prior sessions."</p>
+
+<p><strong>Best practice:</strong> Have your agent write a summary of what it learned at the end of each run. The next run starts by reading that summary before taking action.</p>
+
+<h2>2. Sequential Thinking MCP Server — Structured Reasoning</h2>
+
+<p>The Sequential Thinking server gives agents an explicit planning tool — a structured space to reason through a problem before acting. This dramatically reduces "acting before thinking" errors in complex workflows.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Create a chain of thought with explicit steps</li>
+<li>Revise earlier steps when new information changes the plan</li>
+<li>Branch reasoning paths for uncertainty</li>
+<li>Output a structured plan that other MCP tools execute against</li>
+</ul>
+
+<p><strong>When to use it:</strong> Any task with more than 3-4 steps. Before an agent makes any external call (web search, API call, file write), it should first plan the sequence through Sequential Thinking.</p>
+
+<h2>3. Filesystem MCP Server — File-Based Task Execution</h2>
+
+<p>Most agentic workflows involve files — reading inputs, writing outputs, maintaining logs, producing artifacts. The Filesystem server is the basic building block for any agent that works with local data.</p>
+
+<p><strong>Key capabilities for agents:</strong></p>
+<ul>
+<li>Read input files (CSVs, configs, prompts, datasets)</li>
+<li>Write output artifacts (reports, transformed data, generated code)</li>
+<li>Maintain agent log files across runs</li>
+<li>Check file modification times — useful for incremental processing agents</li>
+</ul>
+
+<h2>4. Fetch MCP Server — Web Content Access</h2>
+
+<p>The Fetch server is the simplest and most reliable way to give agents web access. It retrieves URL content as clean text, making it usable for reading documentation, scraping structured data, and verifying live information.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Fetch any URL and return clean text content</li>
+<li>Follow redirects and handle common response types</li>
+<li>Return raw HTML when needed for structured extraction</li>
+</ul>
+
+<p><strong>Best for:</strong> Research agents, documentation agents, and any workflow that needs to verify information against live web sources.</p>
+
+<h2>5. Exa MCP Server — Semantic Web Search</h2>
+
+<p>Exa is a search engine built for AI agents — it returns semantically relevant results rather than keyword-matched pages, and includes full text content rather than just snippets. For research and information-gathering agents, it outperforms traditional search APIs.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Semantic similarity search across the web</li>
+<li>Full-text content return (not just snippets)</li>
+<li>Date filtering for freshness-sensitive research</li>
+<li>Domain filtering to scope searches to trusted sources</li>
+</ul>
+
+<p><strong>Why agents prefer Exa:</strong> Traditional search returns 10 blue links. Exa returns ranked full-text results that an agent can immediately process — no click-through required.</p>
+
+<h2>6. Brave Search MCP Server — Real-Time Web Intelligence</h2>
+
+<p>For agents that need current information — news, prices, status updates, recent events — Brave Search provides a reliable, privacy-respecting web index with fresh results.</p>
+
+<p><strong>Best used alongside Exa:</strong> Use Exa for deep research on established topics; use Brave Search for real-time queries where recency matters most.</p>
+
+<h2>7. E2B MCP Server — Secure Code Execution</h2>
+
+<p>When an agent needs to run code — data processing, test execution, computation — the E2B server provides a sandboxed execution environment. This is safer than running code locally and enables agents to iterate on code without risk.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Execute Python, JavaScript, and other languages in isolated sandboxes</li>
+<li>Install packages and run scripts</li>
+<li>Return stdout, stderr, and file outputs</li>
+<li>Timeout protection against runaway executions</li>
+</ul>
+
+<p><strong>Ideal for:</strong> Data processing agents, coding agents, and any workflow where the agent needs to verify results by running code rather than just generating it.</p>
+
+<h2>8. GitHub MCP Server — Code Agent Workflows</h2>
+
+<p>For agents that work with codebases — code generation agents, PR automation, dependency update bots — the GitHub MCP server provides full repository access.</p>
+
+<p><strong>Agent-specific use cases:</strong></p>
+<ul>
+<li>Automated PR review agents that post review comments</li>
+<li>Dependency update agents that open PRs for version bumps</li>
+<li>Documentation agents that keep READMEs in sync with code</li>
+<li>Issue triage agents that label and assign incoming issues</li>
+</ul>
+
+<h2>Building a Reliable Agentic Stack</h2>
+
+<p>Here are three proven stacks based on agent type:</p>
+
+<h3>Research Agent</h3>
+<ul>
+<li>Sequential Thinking + Memory + Exa + Brave Search + Fetch + Filesystem</li>
+<li>Flow: plan the research → search → fetch relevant pages → store findings → write report</li>
+</ul>
+
+<h3>Coding Agent</h3>
+<ul>
+<li>Sequential Thinking + GitHub + Filesystem + E2B + Memory</li>
+<li>Flow: understand the task → read relevant code → generate solution → run tests → open PR</li>
+</ul>
+
+<h3>Data Processing Agent</h3>
+<ul>
+<li>Sequential Thinking + Filesystem + E2B + Memory + Brave Search</li>
+<li>Flow: read input data → plan transformation → execute code → verify output → write results</li>
+</ul>
+
+<h2>Common Agentic Workflow Mistakes</h2>
+
+<p><strong>Skipping the memory server.</strong> Agents that don't write to persistent memory repeat work across runs and lose context. Always configure Memory from the start.</p>
+
+<p><strong>No planning step.</strong> Agents that jump directly to tool calls make more errors than agents that reason through a plan first. Use Sequential Thinking before any multi-step execution.</p>
+
+<p><strong>Unverified outputs.</strong> After an agent writes a file, calls an API, or runs code — it should verify the result before proceeding. Build verification steps into your prompts.</p>
+
+<p><strong>Too many tools at once.</strong> Start with the minimal viable stack. Adding five servers before you've validated the core workflow makes debugging impossible.</p>
+
+<p>Browse all agent-relevant MCP servers at <a href="/servers">MyMCPTools</a>. See also <a href="/blog/best-mcp-servers-for-ai-agents">Best MCP Servers for AI Agents</a> and <a href="/blog/best-mcp-servers-for-automation">Best MCP Servers for Automation</a>.</p>
+    `.trim(),
+  },
 ];
 
 export function getBlogPostBySlug(slug: string): BlogPost | undefined {
