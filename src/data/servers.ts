@@ -7020,6 +7020,19 @@ export const servers: MCPServer[] = [
     official: false,
     stars: 340,
   },
+  {
+    slug: 'bilig-workpaper',
+    name: 'Bilig WorkPaper',
+    description: 'Formula-backed WorkPaper MCP server for agents and backend services. Edit spreadsheet-style cells through an API, recalculate formulas, verify exact readback, and persist WorkPaper JSON without UI automation.',
+    author: 'proompteng',
+    github_url: 'https://github.com/proompteng/bilig',
+    website_url: 'https://proompteng.github.io/bilig/',
+    categories: ['coding', 'ai', 'productivity'],
+    integrations: ['claude-desktop', 'cursor', 'vs-code', 'cline'],
+    install_type: 'npm',
+    install_command: 'npx -y @bilig/headless bilig-workpaper-mcp',
+    stars: 24,
+  },
 ];
 
 // Helper functions
