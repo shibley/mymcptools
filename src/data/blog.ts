@@ -25500,6 +25500,392 @@ async with MCPServerStdio(
 <p>Browse all agent-relevant MCP servers at <a href="/servers">MyMCPTools</a>. See also <a href="/blog/best-mcp-servers-for-ai-agents">Best MCP Servers for AI Agents</a> and <a href="/blog/best-mcp-servers-for-automation">Best MCP Servers for Automation</a>.</p>
     `.trim(),
   },
+  {
+    slug: "best-mcp-servers-for-javascript-developers",
+    title: "Best MCP Servers for JavaScript Developers in 2026",
+    description: "The top MCP servers for JavaScript and TypeScript developers. From Node.js debugging to npm package research, these tools supercharge your JS workflow with AI-native tooling.",
+    date: "2026-05-18",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "8 min read",
+    keywords: ["mcp servers javascript", "mcp servers nodejs", "mcp servers typescript", "javascript developer mcp", "best mcp servers 2026", "node mcp server"],
+    relatedServerSlugs: ["filesystem", "github", "postgres", "sqlite", "brave-search", "puppeteer", "fetch", "e2b", "memory"],
+    content: `
+<p>JavaScript is the world's most widely used programming language — and with the rise of AI-assisted development, the question isn't whether you'll use AI in your JS workflow, but which MCP servers will make that workflow actually useful.</p>
+
+<p>This guide covers the essential MCP servers for JavaScript and TypeScript developers in 2026, from core workflow tools to JavaScript-specific integrations.</p>
+
+<h2>Why MCP Matters for JavaScript Developers</h2>
+
+<p>JavaScript development spans a uniquely wide surface: browser frontends, Node.js backends, serverless functions, mobile apps via React Native, and desktop apps via Electron. No single tool covers all of it. MCP servers let your AI assistant work across all these contexts by giving it structured access to the tools you actually use.</p>
+
+<p>Instead of copying stack traces into a chat window, your AI can read your package.json, inspect your node_modules, run test suites, and query your databases — all in the same conversation.</p>
+
+<h2>1. Filesystem MCP Server — Project Navigation</h2>
+
+<p>JavaScript projects are file-heavy. Dozens of config files, nested node_modules, complex build outputs. The Filesystem server gives your AI direct access to navigate and work with your project structure.</p>
+
+<p><strong>Key use cases:</strong></p>
+<ul>
+<li>Read and modify source files without copy-pasting into chat</li>
+<li>Inspect package.json dependencies and scripts</li>
+<li>Navigate monorepos with multiple packages</li>
+<li>Read .env files, tsconfig.json, webpack/vite configs</li>
+</ul>
+
+<p><strong>Setup tip:</strong> Restrict the server to your project directory only — you don't want your AI accessing system files outside your workspace.</p>
+
+<h2>2. GitHub MCP Server — Repository-Aware AI</h2>
+
+<p>The GitHub server is indispensable for any team using GitHub. For JavaScript developers specifically, it enables workflows like automated PR reviews for TypeScript type safety, dependency bump PRs, and issue triage for open-source projects.</p>
+
+<p><strong>JavaScript-specific use cases:</strong></p>
+<ul>
+<li>Search your codebase for all uses of a deprecated API</li>
+<li>Open PRs for major version dependency upgrades</li>
+<li>Review pull requests with full repository context</li>
+<li>Query GitHub issues to find known bugs before debugging</li>
+</ul>
+
+<h2>3. Puppeteer MCP Server — Browser Automation</h2>
+
+<p>JavaScript lives in the browser. The Puppeteer MCP server gives your AI assistant full browser control — perfect for end-to-end testing, scraping, and debugging browser-specific issues.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Navigate pages and interact with DOM elements</li>
+<li>Take screenshots for visual debugging</li>
+<li>Execute JavaScript in the browser context</li>
+<li>Test authentication flows, form submissions, and UI interactions</li>
+</ul>
+
+<p><strong>Best for:</strong> Frontend developers, QA engineers, and anyone building browser-based JavaScript apps.</p>
+
+<h2>4. E2B MCP Server — Sandboxed Node.js Execution</h2>
+
+<p>The E2B server provides a sandboxed execution environment where your AI can run JavaScript and TypeScript code safely. This is the difference between an AI that <em>generates</em> code and one that <em>verifies</em> its code actually works.</p>
+
+<p><strong>Key use cases:</strong></p>
+<ul>
+<li>Run JavaScript snippets to verify logic before applying to your codebase</li>
+<li>Test npm package behavior without polluting your local environment</li>
+<li>Execute data transformation scripts on sample datasets</li>
+<li>Debug async/await patterns, Promise chains, and event handlers</li>
+</ul>
+
+<h2>5. Fetch MCP Server — API and Documentation Access</h2>
+
+<p>JavaScript developers live in documentation. MDN Web Docs, npm package READMEs, framework docs — the Fetch server lets your AI pull this content directly rather than relying on potentially stale training data.</p>
+
+<p><strong>Key use cases:</strong></p>
+<ul>
+<li>Fetch the latest docs for a package before suggesting usage patterns</li>
+<li>Check REST API endpoint documentation for correct request formats</li>
+<li>Read GitHub READMEs for third-party packages</li>
+<li>Verify current browser compatibility for Web APIs</li>
+</ul>
+
+<h2>6. PostgreSQL or SQLite MCP Server — Database Integration</h2>
+
+<p>Most JavaScript backends talk to a database. Whether you're using Prisma, Drizzle, Sequelize, or raw SQL, the database MCP servers give your AI schema awareness — so it generates queries that actually work with your tables, not hypothetical ones.</p>
+
+<p><strong>PostgreSQL for:</strong> Production backends, Supabase projects, and any Node.js API with a relational database.</p>
+
+<p><strong>SQLite for:</strong> Local development databases, Electron apps, and Next.js projects using SQLite as a lightweight store.</p>
+
+<h2>7. Brave Search MCP Server — npm Package Research</h2>
+
+<p>When evaluating an npm package, you need current information — recent stars, open issues, last commit date, known vulnerabilities. Brave Search lets your AI research packages in real time rather than recommending outdated options.</p>
+
+<p><strong>Typical queries your AI can now answer:</strong></p>
+<ul>
+<li>"Is [package] still actively maintained in 2026?"</li>
+<li>"What are the known security issues with [dependency]?"</li>
+<li>"What's the recommended alternative to the deprecated [package]?"</li>
+</ul>
+
+<h2>JavaScript Developer MCP Stack by Role</h2>
+
+<table>
+<thead><tr><th>Role</th><th>Recommended servers</th></tr></thead>
+<tbody>
+<tr><td>Frontend developer</td><td>Filesystem + GitHub + Puppeteer + Fetch</td></tr>
+<tr><td>Node.js backend developer</td><td>Filesystem + GitHub + PostgreSQL + E2B</td></tr>
+<tr><td>Full-stack (Next.js/Remix)</td><td>Filesystem + GitHub + PostgreSQL + Puppeteer + E2B</td></tr>
+<tr><td>Open-source maintainer</td><td>GitHub + Brave Search + Filesystem + Memory</td></tr>
+<tr><td>JavaScript educator</td><td>E2B + Filesystem + Fetch + Brave Search</td></tr>
+</tbody>
+</table>
+
+<h2>Getting Started</h2>
+
+<p>The simplest entry point: install the Filesystem server and point it at your current JavaScript project. Open Claude Desktop or Cursor, and ask: "Read my package.json and tell me which dependencies have major version updates available." That single workflow saves an hour of manual npm audit work.</p>
+
+<p>Add GitHub next if you're working in a team repo, then layer in Puppeteer or E2B depending on whether your bottleneck is browser testing or server-side logic.</p>
+
+<p>Browse all developer-relevant MCP servers at <a href="/servers">MyMCPTools</a>. See also <a href="/blog/best-mcp-servers-for-developers">Best MCP Servers for Developers</a> and <a href="/blog/best-mcp-servers-for-web-scraping">Best MCP Servers for Web Scraping</a>.</p>
+    `.trim(),
+  },
+  {
+    slug: "best-mcp-servers-for-machine-learning",
+    title: "Best MCP Servers for Machine Learning Engineers in 2026",
+    description: "Top MCP servers for ML engineers and AI researchers. Connect your AI assistant to datasets, model registries, experiment tracking, and Python execution environments.",
+    date: "2026-05-18",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "9 min read",
+    keywords: ["mcp servers machine learning", "mcp servers ml engineers", "mcp servers data science", "model context protocol ml", "best mcp servers ai research", "mcp python machine learning"],
+    relatedServerSlugs: ["filesystem", "github", "postgres", "sqlite", "fetch", "e2b", "memory", "brave-search", "exa"],
+    content: `
+<p>Machine learning engineers sit at the intersection of software engineering, data engineering, and research. Their workflows are some of the most context-heavy in any technical field — switching between datasets, model checkpoints, experiment logs, research papers, and production APIs constantly.</p>
+
+<p>MCP servers are uniquely well-suited for ML workflows. Here's the definitive guide to which servers matter most for machine learning engineers in 2026.</p>
+
+<h2>The ML Context Problem</h2>
+
+<p>Standard AI assistants give ML engineers generic advice because they lack context: your model architecture, your dataset schema, your experiment results, your infrastructure constraints. MCP servers solve this by giving your AI assistant live access to the systems where your actual work lives.</p>
+
+<h2>1. Filesystem MCP Server — Your ML Project, AI-Accessible</h2>
+
+<p>ML projects are filesystem-intensive. Model checkpoints, training logs, configuration YAML files, preprocessed datasets, evaluation results — the Filesystem server makes all of this available to your AI assistant without copy-pasting.</p>
+
+<p><strong>ML-specific use cases:</strong></p>
+<ul>
+<li>Read training configuration files (model architecture, hyperparameters, data paths)</li>
+<li>Inspect model output logs to diagnose training failures</li>
+<li>Compare multiple experiment config files to identify what changed between runs</li>
+<li>Read and write Python scripts for data preprocessing and evaluation</li>
+</ul>
+
+<p><strong>Setup tip:</strong> Create a restricted access scope — point the server at your project root, not your entire home directory. ML checkpoints can be multi-GB; you want schema awareness, not accidental large file reads.</p>
+
+<h2>2. E2B MCP Server — Sandboxed Python Execution</h2>
+
+<p>The E2B server is arguably the most powerful MCP server for ML engineers. It provides a sandboxed Python environment where your AI can run code — not just generate it. This changes AI-assisted ML from "suggestion generation" to "verified experimentation."</p>
+
+<p><strong>Key ML use cases:</strong></p>
+<ul>
+<li>Run data preprocessing scripts on sample data to verify the output before applying to full datasets</li>
+<li>Test model evaluation code on small test sets</li>
+<li>Debug training loops and loss functions with actual execution</li>
+<li>Validate data augmentation pipelines end-to-end</li>
+<li>Run statistical tests on experiment results</li>
+</ul>
+
+<p><strong>Why this matters:</strong> ML bugs are often subtle — tensor dimension mismatches, silent NaN propagation, incorrect normalization. E2B lets your AI catch these by running the code, not just reading it.</p>
+
+<h2>3. PostgreSQL MCP Server — ML Metadata and Feature Stores</h2>
+
+<p>Many ML teams store experiment metadata, feature definitions, model performance metrics, and dataset lineage in PostgreSQL. With the Postgres MCP server, your AI has schema-aware access to query this data directly.</p>
+
+<p><strong>Key use cases:</strong></p>
+<ul>
+<li>Query experiment results to find the best-performing hyperparameter configurations</li>
+<li>Inspect feature store schemas before writing feature engineering code</li>
+<li>Retrieve dataset lineage and version information</li>
+<li>Query model serving logs to investigate production inference issues</li>
+</ul>
+
+<h2>4. GitHub MCP Server — Research Codebases and Model Repos</h2>
+
+<p>The ML community shares code on GitHub. The GitHub MCP server enables your AI to work directly with research codebases — reading architecture implementations, comparing approaches, and contributing to your own model repositories.</p>
+
+<p><strong>ML-specific use cases:</strong></p>
+<ul>
+<li>Search Hugging Face model repositories for specific architectures</li>
+<li>Compare your implementation against a reference implementation from a paper's repo</li>
+<li>Track changes across experiment branches in your own project</li>
+<li>Open PRs for improvements to shared ML utility libraries</li>
+</ul>
+
+<h2>5. Exa MCP Server — Research Paper Discovery</h2>
+
+<p>Exa's semantic search is uniquely valuable for ML engineers who need to find research papers, related work, and technical blog posts. Unlike keyword search, Exa finds conceptually related content — surface papers on "attention mechanisms for long sequences" without knowing the exact paper titles.</p>
+
+<p><strong>Key use cases:</strong></p>
+<ul>
+<li>Find related papers when implementing a new architecture</li>
+<li>Discover benchmark results for comparison with your model performance</li>
+<li>Research dataset provenance and licensing before using training data</li>
+<li>Find blog posts explaining implementation details not covered in papers</li>
+</ul>
+
+<h2>6. Fetch MCP Server — Documentation and API References</h2>
+
+<p>ML frameworks move fast — PyTorch, JAX, TensorFlow, Transformers, scikit-learn all release breaking changes regularly. The Fetch server lets your AI pull current documentation rather than relying on training data that may reflect year-old API signatures.</p>
+
+<p><strong>Key use cases:</strong></p>
+<ul>
+<li>Fetch current Hugging Face Transformers API docs before writing model loading code</li>
+<li>Read the latest PyTorch migration guides for major version upgrades</li>
+<li>Access Weights & Biases or MLflow API documentation for experiment tracking</li>
+<li>Check cloud provider ML service pricing before scaling training runs</li>
+</ul>
+
+<h2>7. Memory MCP Server — Experiment Context Across Sessions</h2>
+
+<p>ML experiments often span days or weeks. The Memory server lets your AI maintain context across sessions — remembering which hyperparameters you've tried, what failure modes you've encountered, and what hypotheses you're currently testing.</p>
+
+<p><strong>ML-specific workflow:</strong></p>
+<ol>
+<li>Start a training run — have the AI write the configuration and initial hypothesis to Memory</li>
+<li>Return the next day — AI reads prior context: "We tried lr=0.001 yesterday, validation loss diverged at epoch 15"</li>
+<li>Iterate with accumulated context instead of repeating work</li>
+</ol>
+
+<h2>ML Engineer MCP Stack by Specialty</h2>
+
+<table>
+<thead><tr><th>Specialty</th><th>Recommended servers</th></tr></thead>
+<tbody>
+<tr><td>Deep learning researcher</td><td>E2B + Filesystem + Exa + Fetch + GitHub</td></tr>
+<tr><td>MLOps / ML engineer</td><td>Filesystem + PostgreSQL + GitHub + E2B + Memory</td></tr>
+<tr><td>NLP engineer</td><td>E2B + Fetch + Exa + Filesystem + GitHub</td></tr>
+<tr><td>Computer vision engineer</td><td>E2B + Filesystem + GitHub + Fetch</td></tr>
+<tr><td>Data scientist</td><td>PostgreSQL + E2B + Filesystem + Brave Search</td></tr>
+</tbody>
+</table>
+
+<h2>Getting Started</h2>
+
+<p>Start with E2B + Filesystem. These two servers together transform your AI from a code generator into a genuine pair programmer who can run your code and verify results. Open your current ML project in Claude Desktop or Cursor and ask: "Read my training config and identify the three most likely causes of the validation loss spike I'm seeing after epoch 10."</p>
+
+<p>Add the Postgres server if your team has a centralized experiment tracking database, Exa if you're doing active research, and Memory if you're running long multi-session experiments.</p>
+
+<p>Browse all ML-relevant MCP servers at <a href="/servers">MyMCPTools</a>. See also <a href="/blog/best-mcp-servers-for-data-science">Best MCP Servers for Data Science</a> and <a href="/blog/best-mcp-servers-for-data-engineering">Best MCP Servers for Data Engineering</a>.</p>
+    `.trim(),
+  },
+  {
+    slug: "best-mcp-servers-for-legal-professionals",
+    title: "Best MCP Servers for Legal Professionals in 2026",
+    description: "How lawyers, paralegals, and legal ops teams use MCP servers to accelerate document review, contract analysis, research, and case management with AI assistants.",
+    date: "2026-05-18",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "8 min read",
+    keywords: ["mcp servers legal", "mcp servers lawyers", "legal ai mcp", "contract analysis mcp", "law firm ai tools", "legal document mcp server"],
+    relatedServerSlugs: ["filesystem", "fetch", "brave-search", "exa", "memory", "github"],
+    content: `
+<p>Legal work is document-intensive, research-heavy, and deadline-driven. AI assistants have rapidly become core tools for legal professionals — but their value is limited without access to the actual documents, databases, and systems where legal work happens.</p>
+
+<p>MCP servers bridge that gap. Here are the most valuable MCP servers for lawyers, paralegals, and legal operations teams in 2026.</p>
+
+<h2>Why Legal Professionals Need MCP</h2>
+
+<p>A general AI assistant knows a lot about law in the abstract. But legal work is specific: <em>your</em> contracts, <em>your</em> client's jurisdiction, <em>your</em> matter's facts. Without MCP, you're copy-pasting documents into a chat window and hoping the AI stays in context. With MCP, your AI assistant has structured, persistent access to your actual work.</p>
+
+<p><strong>Important note:</strong> MCP servers process your data locally or through your organization's chosen infrastructure. Always review your firm's data governance policies before connecting client documents to any AI tool.</p>
+
+<h2>1. Filesystem MCP Server — Document Access and Management</h2>
+
+<p>Legal work lives in files. Contracts, briefs, deposition transcripts, discovery documents, correspondence — the Filesystem server gives your AI assistant direct read and write access to your matter folders without requiring manual uploads.</p>
+
+<p><strong>Key legal use cases:</strong></p>
+<ul>
+<li>Review a contract folder and identify all indemnification clauses across multiple agreements</li>
+<li>Compare two versions of a draft agreement to identify what changed between redlines</li>
+<li>Search across discovery documents for specific facts, dates, or entities</li>
+<li>Draft correspondence based on templates in your firm's style guide</li>
+</ul>
+
+<p><strong>Setup guidance:</strong> Create a read-only configuration for review tasks, and a read-write configuration only for drafting workflows. Restrict access to matter-specific directories, not your entire document management system.</p>
+
+<h2>2. Fetch MCP Server — Court Rules and Statutory Research</h2>
+
+<p>Legal requirements change. Court local rules are updated, statutes are amended, regulatory guidance is revised. The Fetch server lets your AI retrieve current versions of these documents rather than relying on training data that may be months or years out of date.</p>
+
+<p><strong>Key use cases:</strong></p>
+<ul>
+<li>Fetch the current local rules for a specific federal district court</li>
+<li>Retrieve the latest version of a regulatory agency's guidance document</li>
+<li>Pull statutory text directly from official government websites (congress.gov, state legislature sites)</li>
+<li>Access bar association ethics opinions and professional conduct rules</li>
+</ul>
+
+<h2>3. Exa MCP Server — Case Law and Legal Research</h2>
+
+<p>Exa's semantic search is particularly well-suited for legal research. It returns conceptually relevant content — useful when you need cases about "implied warranty of fitness in commercial lease disputes" rather than just keyword matches.</p>
+
+<p><strong>Key use cases:</strong></p>
+<ul>
+<li>Find recent case law on a legal theory before citing it in a brief</li>
+<li>Research how courts in a specific circuit have interpreted a statutory provision</li>
+<li>Discover academic articles and secondary sources for novel legal arguments</li>
+<li>Find examples of how opposing counsel has argued similar issues in other cases</li>
+</ul>
+
+<p><strong>Note:</strong> Exa searches the public web and does not replace dedicated legal research databases like Westlaw or Lexis. Use it for initial research orientation and secondary sources, not as a substitute for comprehensive case law research.</p>
+
+<h2>4. Brave Search MCP Server — Real-Time Legal News</h2>
+
+<p>For regulatory compliance work, M&A due diligence, and litigation strategy, current information matters. Brave Search gives your AI access to recent legal news, regulatory announcements, and industry developments.</p>
+
+<p><strong>Key use cases:</strong></p>
+<ul>
+<li>Check for recent enforcement actions against companies in a regulated industry before closing a deal</li>
+<li>Research recent verdicts in similar cases to inform settlement strategy</li>
+<li>Monitor regulatory rulemaking status for compliance planning</li>
+<li>Research a counterparty's litigation history in recent filings</li>
+</ul>
+
+<h2>5. Memory MCP Server — Matter Context Across Sessions</h2>
+
+<p>Complex matters span months or years. The Memory server gives your AI persistent matter context — so every session starts with awareness of the matter's history, not a blank slate.</p>
+
+<p><strong>How to use it for legal work:</strong></p>
+<ul>
+<li>After each working session, have your AI write a brief matter status update to Memory: key facts, open issues, upcoming deadlines, agreed positions</li>
+<li>Start each new session by having the AI read the matter summary before diving into document review or drafting</li>
+<li>Store key definitions, agreed interpretations, and disputed issues for consistent reference across the team</li>
+</ul>
+
+<p><strong>Value for large matters:</strong> On multi-year litigation or complex transactions, Memory prevents the "starting over" problem — where a new AI session doesn't know that the parties already agreed on a particular interpretation three months ago.</p>
+
+<h2>6. GitHub MCP Server — Legal Technology and Templates</h2>
+
+<p>Legal operations and legal tech teams increasingly maintain contract templates, playbooks, and automation workflows in GitHub repositories. The GitHub server enables AI assistance with legal technology development and template management.</p>
+
+<p><strong>Legal ops use cases:</strong></p>
+<ul>
+<li>Manage contract template repositories with version control</li>
+<li>Track changes to standard form agreements across deals</li>
+<li>Automate document generation workflows using AI with direct repo access</li>
+<li>Collaborate on legal playbooks across distributed teams</li>
+</ul>
+
+<h2>Legal Professional MCP Stack by Role</h2>
+
+<table>
+<thead><tr><th>Role</th><th>Recommended servers</th></tr></thead>
+<tbody>
+<tr><td>Litigator</td><td>Filesystem + Exa + Fetch + Memory + Brave Search</td></tr>
+<tr><td>Transactional lawyer</td><td>Filesystem + Memory + Fetch + Brave Search</td></tr>
+<tr><td>Paralegal</td><td>Filesystem + Fetch + Memory</td></tr>
+<tr><td>Legal operations</td><td>GitHub + Filesystem + Memory + Fetch</td></tr>
+<tr><td>Compliance officer</td><td>Fetch + Brave Search + Exa + Filesystem + Memory</td></tr>
+</tbody>
+</table>
+
+<h2>Data Security Considerations</h2>
+
+<p>Legal professionals handle privileged communications, confidential client information, and sensitive business data. Before deploying any MCP server in a legal workflow:</p>
+
+<ul>
+<li><strong>Review your firm's data governance policy</strong> regarding AI tools and cloud data processing</li>
+<li><strong>Understand where data is processed</strong> — most MCP servers process data locally, but confirm before connecting client documents</li>
+<li><strong>Apply matter-specific access controls</strong> — restrict Filesystem server access to one matter at a time, not your entire document management system</li>
+<li><strong>Consider privilege implications</strong> — work product processed through AI tools should be handled consistently with how your firm treats other assisted research</li>
+</ul>
+
+<h2>Getting Started</h2>
+
+<p>The lowest-risk entry point: install the Filesystem server, point it at a non-confidential sample matter or publicly available documents, and test contract review workflows. Once you're comfortable with the tooling, apply your firm's data governance guidelines to live client matters.</p>
+
+<p>Add the Fetch server next to pull court rules and statutory text on demand. Memory is the highest-leverage add for long-running complex matters.</p>
+
+<p>Browse all relevant MCP servers at <a href="/servers">MyMCPTools</a>. See also <a href="/blog/best-mcp-servers-for-research">Best MCP Servers for Research</a> and <a href="/blog/best-mcp-servers-for-knowledge-management">Best MCP Servers for Knowledge Management</a>.</p>
+    `.trim(),
+  },
 ];
 
 export function getBlogPostBySlug(slug: string): BlogPost | undefined {
