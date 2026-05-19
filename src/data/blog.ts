@@ -28310,6 +28310,390 @@ async with MCPServerStdio(
 <p>Browse all MCP servers at <a href="/servers">MyMCPTools</a>. See also <a href="/blog/best-mcp-servers-for-content-creation">Best MCP Servers for Content Creation</a> and <a href="/blog/best-mcp-servers-for-productivity">Best MCP Servers for Productivity</a>.</p>
     `.trim(),
   },
+  {
+    slug: "best-mcp-servers-for-python-developers",
+    title: "Best MCP Servers for Python Developers in 2026",
+    description: "The top MCP servers for Python developers — from running scripts and querying databases to searching PyPI packages and managing virtual environments. Supercharge your Python AI workflow.",
+    date: "2026-05-19",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "7 min read",
+    keywords: ["mcp servers for python developers", "python mcp server", "python ai workflow", "mcp for python", "pypi mcp", "python coding assistant mcp"],
+    relatedServerSlugs: ["filesystem", "postgres", "sqlite", "brave-search", "fetch", "github", "shell"],
+    content: `
+<p>Python developers deal with a uniquely fragmented toolchain — package managers, virtual environments, notebooks, data pipelines, and a massive ecosystem of libraries that evolve faster than any AI's training data. MCP servers close the gap by giving AI assistants live access to your Python environment, databases, package documentation, and repositories — so your AI stays current and contextually accurate.</p>
+
+<p>Here are the MCP servers that deliver the most value for Python developers in 2026.</p>
+
+<h2>1. Filesystem MCP Server — Navigate Your Python Projects</h2>
+
+<p>The filesystem MCP server is the foundation of any Python development workflow with AI. It gives your assistant read and write access to your project files — source code, configuration, requirements files, Jupyter notebooks, and test suites — without constant copy-pasting.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read and write Python source files, notebooks, and configuration</li>
+<li>Traverse project structure to understand module organization</li>
+<li>Search for patterns across your codebase (grep-style)</li>
+<li>Manage requirements.txt, pyproject.toml, and setup.py</li>
+</ul>
+
+<p><strong>Best for:</strong> All Python developers. The most immediate use: have your AI read your entire project structure before asking it to implement a new feature or debug a complex issue — context makes the difference between a generic answer and a precise one.</p>
+
+<h2>2. PostgreSQL MCP Server — Query Production and Development Databases</h2>
+
+<p>Python is the primary language for data-intensive applications, and most of them talk to PostgreSQL. The PostgreSQL MCP server gives your AI read access to your schema, enabling it to write accurate SQLAlchemy models, Django ORM queries, and raw SQL without guessing at column names and types.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Inspect schema — tables, columns, types, constraints, indexes</li>
+<li>Run read-only queries against your development database</li>
+<li>Explore foreign key relationships for ORM modeling</li>
+<li>Identify slow queries and suggest index improvements</li>
+</ul>
+
+<p><strong>Best for:</strong> Django, FastAPI, and SQLAlchemy developers. Instead of manually describing your schema in a prompt, let your AI read it directly — then watch it write migration files and model definitions that match your actual database structure.</p>
+
+<h2>3. SQLite MCP Server — Local Development and Data Analysis</h2>
+
+<p>SQLite is everywhere in Python — local development databases, test fixtures, pandas output, Jupyter notebook data storage, and CLI tool state. The SQLite MCP server covers all of these use cases with zero configuration overhead.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Query any SQLite database file directly</li>
+<li>Inspect table schemas and row counts</li>
+<li>Explore Jupyter and pandas-generated SQLite outputs</li>
+<li>Analyze test database state for debugging</li>
+</ul>
+
+<p><strong>Best for:</strong> Python developers doing local development, data science work, or building CLI tools. Particularly valuable when working with Jupyter notebooks that output intermediate data to SQLite for later analysis.</p>
+
+<h2>4. Brave Search MCP Server — Current Package Documentation</h2>
+
+<p>The Python ecosystem moves fast. New library versions, deprecations, and breaking changes happen constantly — and LLMs trained before a certain date will confidently give you outdated API calls. Brave Search keeps your AI current by fetching live documentation and PyPI release notes when needed.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Search PyPI for package versions, alternatives, and compatibility info</li>
+<li>Pull current documentation for fast-moving libraries (Pydantic v2, FastAPI, SQLAlchemy 2.0)</li>
+<li>Research common errors and Stack Overflow solutions</li>
+<li>Find Python-specific tutorials and migration guides</li>
+</ul>
+
+<p><strong>Best for:</strong> Any Python developer working with libraries that have changed significantly in the last year or two. Essential when migrating from Pydantic v1 to v2, or from older Django patterns to modern async Django.</p>
+
+<h2>5. Fetch MCP Server — Pull Package Docs and READMEs</h2>
+
+<p>When you need the exact API for a specific library function — not a cached approximation — the Fetch server retrieves it directly from the source. Pull PyPI README files, Read the Docs pages, and GitHub README files as clean Markdown for your AI to parse.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Fetch Read the Docs pages for detailed API documentation</li>
+<li>Pull PyPI project pages for package metadata and install instructions</li>
+<li>Retrieve GitHub READMEs from library repositories</li>
+<li>Access Python Enhancement Proposals (PEPs) directly</li>
+</ul>
+
+<p><strong>Best for:</strong> Developers integrating new libraries or working with niche packages that LLMs may not have strong training data for. When you're implementing a Celery beat schedule or configuring a Pydantic settings model, having the exact docs reduces iteration cycles significantly.</p>
+
+<h2>6. GitHub MCP Server — Open Source Context and Issue Tracking</h2>
+
+<p>Python development is deeply connected to open source. The GitHub MCP server gives your AI access to library source code, issue trackers, and pull requests — so it can check if a bug is a known issue, find workarounds in issue discussions, and reference real implementation examples.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Search issues for known bugs and workarounds in dependencies</li>
+<li>Read library source code to understand implementation details</li>
+<li>Browse pull requests for upcoming fixes to known issues</li>
+<li>Create issues and PRs for your own open source Python projects</li>
+</ul>
+
+<p><strong>Best for:</strong> Python developers debugging dependency issues or working with open source libraries. When your FastAPI application throws an unexpected exception, checking whether it's a known issue in the GitHub tracker saves significant debugging time.</p>
+
+<h2>7. Shell MCP Server — Run Python Scripts and Commands</h2>
+
+<p>The Shell MCP server (when available and properly sandboxed) closes the loop between code generation and execution — your AI can write a Python script, run it, see the output, and iterate. This is particularly powerful for data transformation scripts, API clients, and automation tools.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Execute Python scripts and capture stdout/stderr</li>
+<li>Run pip commands to check installed package versions</li>
+<li>Execute pytest and see test results inline</li>
+<li>Run data pipeline steps and inspect intermediate output</li>
+</ul>
+
+<p><strong>Best for:</strong> Python developers who want a true code-execute-iterate loop with AI. Write a data transformation function, run it against sample data, see the output, and refine — all within a single AI session. Always configure shell access with appropriate sandboxing.</p>
+
+<h2>Recommended Python Developer Stack</h2>
+
+<p>The core trio for most Python workflows:</p>
+
+<ol>
+<li><strong>Filesystem</strong> — read your project, understand the structure, write code in place</li>
+<li><strong>PostgreSQL or SQLite</strong> — database access for accurate ORM and query generation</li>
+<li><strong>Brave Search</strong> — keep your AI current with the fast-moving Python ecosystem</li>
+</ol>
+
+<p>Add Fetch for detailed API documentation, GitHub for open source context and issue research, and Shell if you need a code-execute loop. This stack makes your AI an effective Python pair programmer rather than a well-meaning generalist making educated guesses.</p>
+
+<p>Browse all MCP servers at <a href="/servers">MyMCPTools</a>. See also <a href="/blog/best-mcp-servers-for-developers">Best MCP Servers for Developers</a> and <a href="/blog/best-mcp-servers-for-data-engineers">Best MCP Servers for Data Engineers</a>.</p>
+    `.trim(),
+  },
+  {
+    slug: "best-mcp-servers-for-devops-engineers",
+    title: "Best MCP Servers for DevOps Engineers in 2026",
+    description: "The top MCP servers for DevOps engineers — infrastructure management, log analysis, CI/CD pipelines, Kubernetes, and cloud operations. Let AI handle the context-switching between tools.",
+    date: "2026-05-19",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "8 min read",
+    keywords: ["mcp servers for devops", "devops mcp server", "kubernetes mcp", "ci cd mcp server", "infrastructure mcp", "devops ai tools"],
+    relatedServerSlugs: ["filesystem", "github", "postgres", "brave-search", "fetch", "slack", "shell"],
+    content: `
+<p>DevOps engineers are professional context-switchers — bouncing between Kubernetes dashboards, CI/CD pipelines, cloud consoles, runbooks, and monitoring tools in a single incident response session. MCP servers give AI assistants the same multi-tool access, so your AI understands your actual infrastructure state rather than working from abstract descriptions.</p>
+
+<p>Here are the MCP servers that deliver the most value for DevOps engineers in 2026.</p>
+
+<h2>1. Filesystem MCP Server — Configs, Manifests, and Infrastructure Code</h2>
+
+<p>Terraform files, Helm charts, Kubernetes manifests, Ansible playbooks, Dockerfiles — DevOps work is infrastructure as code, and the filesystem server gives your AI direct read and write access to all of it. No more pasting 200-line Terraform modules into chat windows.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read and write Terraform, Helm, Kubernetes YAML, and Ansible files</li>
+<li>Navigate complex monorepo structures to find relevant configurations</li>
+<li>Search across infrastructure code for specific resource definitions</li>
+<li>Edit .env files, Docker Compose configs, and CI/CD pipeline definitions</li>
+</ul>
+
+<p><strong>Best for:</strong> All DevOps engineers. Let your AI read your entire Terraform module before suggesting changes — it will understand your resource dependencies, naming conventions, and existing variable patterns instead of generating generic boilerplate.</p>
+
+<h2>2. GitHub MCP Server — Pipeline Configuration and Runbooks</h2>
+
+<p>GitHub Actions, repository configuration, and runbook documentation often live in the same repository as your application code. The GitHub MCP server gives your AI access to workflow files, issue trackers, and PR history — essential for debugging pipeline failures and reviewing infrastructure changes.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read GitHub Actions workflow files to understand and debug CI/CD pipelines</li>
+<li>Browse infrastructure-related PRs and their review history</li>
+<li>Create and manage issues for infrastructure problems and runbook updates</li>
+<li>Search across repositories for specific configuration patterns</li>
+</ul>
+
+<p><strong>Best for:</strong> Teams using GitHub Actions for CI/CD. When a workflow fails at 2 AM, having your AI read the actual workflow YAML and recent run logs dramatically accelerates root cause analysis.</p>
+
+<h2>3. PostgreSQL MCP Server — Operational Databases and Metrics</h2>
+
+<p>DevOps teams often maintain operational databases — deployment logs, incident records, metric aggregations, and service registry data. The PostgreSQL MCP server gives your AI access to query this data for incident analysis, capacity planning, and reporting.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Query deployment history tables for correlation with incidents</li>
+<li>Analyze database performance metrics and slow query logs</li>
+<li>Inspect service registry and configuration databases</li>
+<li>Query custom monitoring aggregation tables</li>
+</ul>
+
+<p><strong>Best for:</strong> DevOps engineers with PostgreSQL-backed observability platforms or internal tooling. Being able to correlate deployment timestamps with performance metrics in a single AI session accelerates post-incident analysis significantly.</p>
+
+<h2>4. Brave Search MCP Server — Current Documentation and CVEs</h2>
+
+<p>The infrastructure tooling landscape changes constantly — new Kubernetes APIs, Terraform provider updates, security advisories, and breaking changes in cloud SDKs. Brave Search keeps your AI current, particularly for security-sensitive operations where outdated guidance can create vulnerabilities.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Search for current CVEs and security advisories for your stack</li>
+<li>Pull Kubernetes changelog entries for version migration guidance</li>
+<li>Research Terraform provider updates and deprecated resources</li>
+<li>Find current cloud provider documentation for new services</li>
+</ul>
+
+<p><strong>Best for:</strong> DevOps engineers managing security patching and infrastructure upgrades. When upgrading Kubernetes versions or updating Terraform providers, current documentation prevents compatibility issues that AI training data might miss.</p>
+
+<h2>5. Fetch MCP Server — Cloud Provider and Tool Documentation</h2>
+
+<p>Cloud provider documentation changes frequently as services evolve. The Fetch server retrieves current AWS, GCP, and Azure documentation directly — so when your AI helps you configure an IAM policy or write a CloudFormation template, it's working from the actual current specification.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Fetch AWS, GCP, and Azure documentation pages as clean Markdown</li>
+<li>Pull Kubernetes API reference documentation for specific resource types</li>
+<li>Retrieve Terraform Registry module documentation</li>
+<li>Access Helm chart README files and values documentation</li>
+</ul>
+
+<p><strong>Best for:</strong> DevOps engineers working with rapidly evolving cloud services. Essential when working with newer AWS services or recently updated Terraform providers where the AI's training data may be incomplete or outdated.</p>
+
+<h2>6. Slack MCP Server — Incident Context and Runbook Coordination</h2>
+
+<p>Incident response happens in Slack. The Slack MCP server gives your AI access to the conversation history around ongoing incidents — what's been tried, what services are affected, what stakeholders have been notified, and what the current theory is.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Search incident channels for current status and timeline</li>
+<li>Read on-call handoff messages for context on ongoing issues</li>
+<li>Draft incident update messages for stakeholder channels</li>
+<li>Access historical incident discussions for pattern recognition</li>
+</ul>
+
+<p><strong>Best for:</strong> SRE and DevOps teams doing incident response via Slack. When joining a P1 incident in progress, having your AI quickly summarize the last two hours of #incidents conversation brings you up to speed in seconds instead of minutes.</p>
+
+<h2>7. Shell MCP Server — Command Execution and Infrastructure Validation</h2>
+
+<p>When properly sandboxed, the Shell server lets your AI run kubectl, terraform plan, helm lint, and other validation commands — seeing actual output rather than predicting it. This closes the validation loop on infrastructure changes before they reach production.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Run kubectl commands against development/staging clusters</li>
+<li>Execute terraform plan and parse the output</li>
+<li>Validate Helm charts with helm lint and helm template</li>
+<li>Run ansible-playbook with --check flag for dry runs</li>
+</ul>
+
+<p><strong>Best for:</strong> DevOps engineers with secure, sandboxed environments where shell access to development infrastructure is appropriate. Use with strict access controls — never point at production without explicit safeguards.</p>
+
+<h2>Recommended DevOps Engineer Stack</h2>
+
+<p>The core setup for infrastructure-as-code workflows:</p>
+
+<ol>
+<li><strong>Filesystem</strong> — read your Terraform, Helm, and Kubernetes configs directly</li>
+<li><strong>GitHub</strong> — pipeline debugging, PR review, and runbook management</li>
+<li><strong>Brave Search</strong> — stay current on CVEs, API changes, and deprecations</li>
+</ol>
+
+<p>Add Fetch for cloud provider API documentation, Slack for incident context, PostgreSQL for operational data queries, and Shell for infrastructure validation in safe environments. This stack makes AI a genuine force multiplier for DevOps work — not just a code generator, but an informed infrastructure assistant with real-time context.</p>
+
+<p>Browse all MCP servers at <a href="/servers">MyMCPTools</a>. See also <a href="/blog/best-mcp-servers-for-developers">Best MCP Servers for Developers</a> and <a href="/blog/best-mcp-servers-for-security">Best MCP Servers for Security</a>.</p>
+    `.trim(),
+  },
+  {
+    slug: "best-mcp-servers-for-product-managers",
+    title: "Best MCP Servers for Product Managers in 2026",
+    description: "The top MCP servers for product managers — from pulling customer feedback and roadmap data to researching competitors and drafting specs. Use AI to cut through information overload.",
+    date: "2026-05-19",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "7 min read",
+    keywords: ["mcp servers for product managers", "product management mcp", "notion mcp server", "product manager ai tools", "mcp for product managers", "product roadmap mcp"],
+    relatedServerSlugs: ["notion", "github", "brave-search", "fetch", "slack", "google-drive"],
+    content: `
+<p>Product managers live at the intersection of customer data, engineering capacity, business strategy, and competitive dynamics — and they're expected to synthesize all of it constantly. MCP servers give AI assistants live access to your roadmaps, customer feedback, research documents, and communication threads, turning information overload into structured, actionable intelligence.</p>
+
+<p>Here are the MCP servers that deliver the most value for product managers in 2026.</p>
+
+<h2>1. Notion MCP Server — Roadmaps, Specs, and Research</h2>
+
+<p>Most product teams live in Notion — roadmaps, PRDs, customer interview notes, competitive analysis, and sprint planning all in one place. The Notion MCP server makes all of that institutional knowledge available to your AI, so it can synthesize customer research, draft specs that reference prior decisions, and surface relevant context from months-old documents.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read roadmap databases and filter by status, quarter, or team</li>
+<li>Search customer interview repositories and user research findings</li>
+<li>Read and write PRDs, feature specs, and decision logs</li>
+<li>Access competitive analysis databases and update with new findings</li>
+</ul>
+
+<p><strong>Best for:</strong> All product managers using Notion. The highest-value workflow: before writing a new PRD, have your AI read your existing research, past spec decisions, and customer feedback database — it will write a much more contextually grounded spec than if you describe everything from memory.</p>
+
+<h2>2. Slack MCP Server — Customer Signals and Team Feedback</h2>
+
+<p>Product decisions are made in Slack — customer feedback forwarded from sales, engineering concerns about scope, design alternatives debated in threads, and executive priorities surfaced in #all-hands. The Slack MCP server gives your AI access to this conversational intelligence for synthesis and pattern recognition.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Search customer feedback channels for themes around specific features</li>
+<li>Read engineering discussion threads to understand technical constraints</li>
+<li>Access sales-to-product feedback pipelines and customer requests</li>
+<li>Draft product update announcements and sprint review messages</li>
+</ul>
+
+<p><strong>Best for:</strong> PMs at companies where Slack is the primary communication layer between product, engineering, sales, and support. Being able to ask "what has the support team said about [feature] in the last 60 days?" and get a synthesized answer is enormously useful for prioritization.</p>
+
+<h2>3. GitHub MCP Server — Engineering Backlog and Velocity Context</h2>
+
+<p>PMs need to understand engineering capacity and backlog without drowning in implementation details. The GitHub MCP server gives structured access to issues, milestones, and PR activity — so your AI can answer questions about what's blocking, what's in progress, and what engineering estimates look like for upcoming roadmap items.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Browse open issues by label, milestone, and assignee</li>
+<li>Search for existing engineering tickets related to your feature</li>
+<li>Read PR descriptions to understand what's shipping in the current sprint</li>
+<li>Create well-structured feature issues with acceptance criteria</li>
+</ul>
+
+<p><strong>Best for:</strong> PMs at engineering-led teams using GitHub Issues or GitHub Projects for sprint management. Being able to have your AI draft a GitHub issue with proper acceptance criteria, labels, and context — based on your Notion spec — eliminates a significant translation step.</p>
+
+<h2>4. Brave Search MCP Server — Competitive Intelligence and Market Research</h2>
+
+<p>Competitive landscapes shift constantly, and AI training data is always months behind. Brave Search gives your AI access to current competitor announcements, industry analyst reports, customer reviews, and market signals — so your competitive analysis is based on what's happening now, not what happened before the model's training cutoff.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Search for recent competitor product announcements and changelog entries</li>
+<li>Research customer sentiment on competitor products via review sites</li>
+<li>Pull industry analyst coverage and market sizing data</li>
+<li>Find recent fundraising announcements and strategic moves</li>
+</ul>
+
+<p><strong>Best for:</strong> PMs in fast-moving competitive markets. Running a quarterly competitive analysis? Have your AI search for what each competitor has shipped in the last 90 days, then synthesize it against your own roadmap — in minutes instead of hours.</p>
+
+<h2>5. Google Drive MCP Server — Documents, Surveys, and Stakeholder Reports</h2>
+
+<p>Executive briefings, board decks, customer survey results, and cross-functional project plans often live in Google Drive. The Google Drive MCP server makes these documents accessible to your AI for analysis and content generation.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read Google Docs for stakeholder briefs, strategy documents, and reports</li>
+<li>Access Google Sheets for customer survey data and metrics exports</li>
+<li>Search across Drive for specific research or customer documents</li>
+<li>Create new documents for product briefs and executive summaries</li>
+</ul>
+
+<p><strong>Best for:</strong> PMs in companies using Google Workspace for executive communication and cross-functional planning. When preparing for a quarterly review, having your AI read your metrics sheet and strategy documents before drafting the presentation saves significant manual synthesis.</p>
+
+<h2>6. Fetch MCP Server — Pull Documentation and Product Pages</h2>
+
+<p>When researching competitor products, industry standards, or technical specifications, the Fetch server retrieves the actual content from URLs rather than relying on potentially outdated AI knowledge. Pull competitor help docs, API documentation, and product pages as clean Markdown.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Fetch competitor product and pricing pages for analysis</li>
+<li>Pull help documentation from competitor products for comparison</li>
+<li>Retrieve industry standard documentation (GDPR, SOC 2, accessibility)</li>
+<li>Access partner API documentation for integration planning</li>
+</ul>
+
+<p><strong>Best for:</strong> PMs doing competitive feature analysis or planning integrations with third-party platforms. Being able to have your AI read a competitor's help center article and compare it to your own product documentation reveals differentiation opportunities and feature gaps.</p>
+
+<h2>7. PostgreSQL MCP Server — Product Analytics and Behavioral Data</h2>
+
+<p>Many product analytics platforms expose their data via PostgreSQL-compatible interfaces. The PostgreSQL MCP server lets your AI query behavioral data directly for cohort analysis, funnel investigation, and feature adoption metrics.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Query user behavior tables for feature adoption and funnel analysis</li>
+<li>Analyze cohort retention data across different user segments</li>
+<li>Investigate usage patterns around specific features or workflows</li>
+<li>Pull export data from analytics platforms for executive reporting</li>
+</ul>
+
+<p><strong>Best for:</strong> Data-driven PMs with access to product analytics databases. The ability to ask natural-language questions about user behavior — and have your AI translate them into SQL queries and synthesize the results — dramatically accelerates the research phase of product decisions.</p>
+
+<h2>Recommended Product Manager Stack</h2>
+
+<p>The essential trio for most product workflows:</p>
+
+<ol>
+<li><strong>Notion</strong> — connect your roadmap, research, and specs to your AI workflow</li>
+<li><strong>Slack</strong> — synthesize customer and stakeholder signals from conversation history</li>
+<li><strong>Brave Search</strong> — keep competitive intelligence current and real</li>
+</ol>
+
+<p>Add GitHub for engineering backlog context, Google Drive for executive documents, Fetch for competitor deep-dives, and PostgreSQL if you have access to a product analytics database. This stack lets AI handle the information synthesis that currently consumes most of a PM's week — freeing time for the strategic judgment that only you can provide.</p>
+
+<p>Browse all MCP servers at <a href="/servers">MyMCPTools</a>. See also <a href="/blog/best-mcp-servers-for-productivity">Best MCP Servers for Productivity</a> and <a href="/blog/best-mcp-servers-for-data-analysis">Best MCP Servers for Data Analysis</a>.</p>
+    `.trim(),
+  },
 ];
 
 export function getBlogPostBySlug(slug: string): BlogPost | undefined {
