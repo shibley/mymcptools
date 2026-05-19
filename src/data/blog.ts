@@ -29078,6 +29078,374 @@ async with MCPServerStdio(
 <p>Browse all MCP servers at <a href="/servers">MyMCPTools</a>. See also <a href="/blog/best-mcp-servers-for-devops">Best MCP Servers for DevOps</a> and <a href="/blog/best-mcp-servers-for-cloud-engineers">Best MCP Servers for Cloud Engineers</a>.</p>
     `.trim(),
   },
+  {
+    slug: "best-mcp-servers-for-backend-developers",
+    title: "Best MCP Servers for Backend Developers in 2026",
+    description: "The top MCP servers for backend developers — from database introspection and API testing to infrastructure access and observability data. Build better backend systems with AI that has context of your actual architecture.",
+    date: "2026-05-19",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "7 min read",
+    keywords: ["mcp servers for backend developers", "backend development mcp", "backend ai tools", "database mcp server", "api development mcp", "server-side mcp servers 2026"],
+    relatedServerSlugs: ["postgres", "sqlite", "filesystem", "github", "brave-search", "fetch", "redis", "grafana"],
+    content: `
+<p>Backend developers build the systems that power applications — APIs, databases, message queues, cron jobs, and infrastructure. MCP servers give your AI assistant access to your actual backend systems: the schema of your database, the structure of your codebase, the state of your infrastructure, and the behavior of your APIs. The result is an AI that can genuinely help with backend work rather than generating code that doesn't match your actual data model.</p>
+
+<p>Here are the MCP servers that deliver the most value for backend developers in 2026.</p>
+
+<h2>1. PostgreSQL MCP Server — Live Database Access</h2>
+
+<p>The database schema is the ground truth of a backend system. The PostgreSQL MCP server gives your AI direct access to your schema — tables, columns, data types, constraints, indexes, and foreign key relationships — without you manually pasting ERDs or schema dumps into the chat.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read complete schema information — tables, columns, types, constraints, and indexes</li>
+<li>Execute read-only queries to understand actual data distributions and relationships</li>
+<li>Analyze query performance with EXPLAIN ANALYZE for N+1 and slow query diagnosis</li>
+<li>Check foreign key constraints and understand relationship cardinality</li>
+</ul>
+
+<p><strong>Best for:</strong> Backend developers writing complex queries, designing migrations, or debugging data issues. When designing a new feature, your AI can read your actual schema and generate migrations that respect existing constraints, follow your naming conventions, and avoid column type mismatches — none of which are possible without schema access.</p>
+
+<h2>2. Filesystem MCP Server — Codebase Navigation</h2>
+
+<p>Backend codebases have structure — routers, controllers, services, repositories, middleware, configuration files, and test fixtures. The Filesystem server gives your AI access to your actual codebase so it can follow your existing patterns rather than generating generic code that doesn't integrate.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read existing API handlers to understand your response format and error handling patterns</li>
+<li>Access configuration files (database connections, environment variable handling, middleware setup)</li>
+<li>Read test files to understand your testing patterns and fixture structure</li>
+<li>Navigate your project directory tree to understand the architecture before making changes</li>
+</ul>
+
+<p><strong>Best for:</strong> Backend developers adding features to existing systems. Before generating a new API endpoint, your AI can read several existing ones — learning your exact response format, authentication middleware usage, error handling pattern, and input validation approach — then generate a new endpoint that actually fits your codebase.</p>
+
+<h2>3. GitHub MCP Server — PR Reviews and Code History</h2>
+
+<p>Backend changes carry significant risk — a schema migration or API contract change can break downstream clients. The GitHub MCP server gives your AI access to your pull request context, code history, and open issues so it can review backend changes with awareness of your system's history.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read PR diffs with full context for backend code review assistance</li>
+<li>Access commit history to understand why specific design decisions were made</li>
+<li>Check open issues related to a specific API endpoint or service</li>
+<li>Read PR comments to understand review context and previous feedback</li>
+</ul>
+
+<p><strong>Best for:</strong> Backend developers doing code review or investigating historical decisions. When a colleague asks why a specific endpoint returns a non-standard response format, your AI can read the commit history and PR comments to surface the actual reason — a client requirement, a performance constraint, or a legacy compatibility issue — rather than speculating.</p>
+
+<h2>4. Redis MCP Server — Cache and Queue State</h2>
+
+<p>Backend systems commonly use Redis for caching, session storage, rate limiting, and message queues (via Redis Streams or lists). When caching bugs cause stale data or queue workers fall behind, the Redis MCP server gives your AI visibility into the actual Redis state rather than requiring you to describe what you're seeing.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read specific cache keys to verify cache hit/miss behavior and TTL values</li>
+<li>Check Redis Streams consumer group lag to diagnose queue backpressure</li>
+<li>Inspect rate limiting keys to understand current counter state</li>
+<li>Monitor memory usage and key distribution for performance analysis</li>
+</ul>
+
+<p><strong>Best for:</strong> Backend developers debugging cache invalidation or queue processing issues. When a data consistency bug is reported, your AI can read the actual Redis cache key to determine whether stale data is being served, whether the invalidation event fired, and whether the TTL is set correctly — closing the diagnostic loop without manual Redis CLI access.</p>
+
+<h2>5. Fetch MCP Server — API Documentation and External Contracts</h2>
+
+<p>Backend systems integrate with external APIs — payment processors, notification services, identity providers, and third-party data sources. Accurate integration requires current API documentation. The Fetch server retrieves external API docs and OpenAPI specs directly for accurate integration code generation.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Retrieve your own OpenAPI spec to generate accurate client SDKs or test cases</li>
+<li>Fetch Stripe, Twilio, or Sendgrid documentation for accurate webhook handling</li>
+<li>Access OAuth provider documentation for correct token exchange implementation</li>
+<li>Pull third-party API specs to generate correct request/response models</li>
+</ul>
+
+<p><strong>Best for:</strong> Backend developers building integrations. When implementing a Stripe webhook handler, providing the actual Stripe documentation via Fetch produces correct event type handling, accurate signature verification code, and proper idempotency key usage — versus generating plausible-but-incorrect code from training data that may reflect an older API version.</p>
+
+<h2>6. Grafana MCP Server — Observability and Performance Data</h2>
+
+<p>Backend performance issues manifest in metrics — request latency histograms, error rate spikes, database connection pool exhaustion, and memory growth patterns. Grafana aggregates this observability data. The Grafana MCP server gives your AI access to your monitoring dashboards during performance investigations.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read request latency data by endpoint to identify performance bottlenecks</li>
+<li>Check error rate trends to correlate with deployment times or traffic spikes</li>
+<li>Access database connection pool metrics for connection leak diagnosis</li>
+<li>Query memory and CPU usage data for capacity planning conversations</li>
+</ul>
+
+<p><strong>Best for:</strong> Backend developers investigating performance regressions. When p99 latency on a specific endpoint spikes after a deployment, your AI can read the Grafana data to correlate the spike with query execution time, external API latency, or connection pool saturation — narrowing the investigation to the actual bottleneck rather than guessing.</p>
+
+<h2>7. Brave Search MCP Server — Security Advisories and Framework Updates</h2>
+
+<p>Backend frameworks evolve rapidly — security patches, breaking changes, new authentication patterns, and deprecated APIs. The Brave Search server keeps your AI current on the backend ecosystem beyond its training cutoff date.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Search for recent CVEs in your framework or runtime version</li>
+<li>Find current best practices for authentication, input validation, and API security</li>
+<li>Research dependency upgrade paths and breaking changes</li>
+<li>Find community solutions to specific backend architecture challenges</li>
+</ul>
+
+<p><strong>Best for:</strong> Backend developers handling security patching or major version upgrades. Before upgrading from Express 4 to Express 5 or from Node 18 to Node 22, your AI can search for the actual breaking changes, deprecated APIs, and recommended migration steps — rather than working from training data that may predate the release.</p>
+
+<h2>Recommended Backend Developer Stack</h2>
+
+<p>The core setup for backend development:</p>
+
+<ol>
+<li><strong>PostgreSQL (or SQLite)</strong> — live database schema for accurate query and migration generation</li>
+<li><strong>Filesystem</strong> — codebase navigation to follow your existing patterns</li>
+<li><strong>GitHub</strong> — PR reviews and historical context for design decisions</li>
+</ol>
+
+<p>Add Redis for cache and queue debugging, Fetch for external API documentation access, Grafana for observability data during performance investigations, and Brave Search for current security advisories. This stack gives your AI the context to act as a genuine backend engineering partner — working from your actual schema, your real codebase patterns, and live system state rather than generic examples.</p>
+
+<p>Browse all MCP servers at <a href="/servers">MyMCPTools</a>. See also <a href="/blog/best-mcp-servers-for-developers">Best MCP Servers for Developers</a> and <a href="/blog/best-mcp-servers-for-database">Best MCP Servers for Database Work</a>.</p>
+    `.trim(),
+  },
+  {
+    slug: "best-mcp-servers-for-cloud-engineers",
+    title: "Best MCP Servers for Cloud Engineers in 2026",
+    description: "The top MCP servers for cloud engineers — from AWS and Azure infrastructure access to Terraform state, monitoring data, and cost analysis. Build and manage cloud infrastructure with AI that has real context of your environment.",
+    date: "2026-05-19",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "8 min read",
+    keywords: ["mcp servers for cloud engineers", "cloud engineering mcp", "aws mcp server", "azure mcp server", "terraform mcp", "cloud infrastructure ai tools 2026"],
+    relatedServerSlugs: ["aws", "azure", "filesystem", "github", "brave-search", "fetch", "grafana", "cloudflare"],
+    content: `
+<p>Cloud engineers design, build, and operate infrastructure at scale — multi-account AWS environments, Azure landing zones, hybrid connectivity, Kubernetes clusters, and infrastructure-as-code pipelines. MCP servers give your AI assistant access to your actual cloud environment: live resource state, Terraform configurations, monitoring data, and cost information. The result is an AI that reasons about your real cloud architecture rather than generating generic templates.</p>
+
+<p>Here are the MCP servers that deliver the most value for cloud engineers in 2026.</p>
+
+<h2>1. AWS MCP Server — Live Infrastructure State</h2>
+
+<p>The AWS MCP server provides direct access to your AWS environment through the AWS API — reading resource configurations, security group rules, IAM policies, and infrastructure topology without requiring you to paste CloudFormation outputs or console screenshots into the chat.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>List and describe EC2 instances, RDS databases, EKS clusters, and Lambda functions</li>
+<li>Read security group rules and IAM policies to audit access configurations</li>
+<li>Check VPC topology — subnets, route tables, peering connections, and transit gateway attachments</li>
+<li>Access CloudWatch metrics and alarms for current infrastructure health</li>
+</ul>
+
+<p><strong>Best for:</strong> Cloud engineers troubleshooting connectivity or security issues. When a service can't reach a dependency, your AI can read the actual security groups, NACLs, and route tables for both resources — identifying whether the issue is a missing ingress rule, an incorrect route, or a private subnet with no NAT gateway — without you manually navigating the console.</p>
+
+<h2>2. Azure MCP Server — Azure Infrastructure Access</h2>
+
+<p>The Azure MCP server provides access to your Azure environment — Virtual Networks, Network Security Groups, App Services, AKS clusters, and Key Vault configurations. Essential for cloud engineers operating in Azure or hybrid AWS/Azure environments.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read Virtual Network configurations, subnets, and peering relationships</li>
+<li>Access Network Security Group rules and application gateway configurations</li>
+<li>Check AKS cluster state, node pool configurations, and Kubernetes version</li>
+<li>Inspect Key Vault access policies and certificate expiry status</li>
+</ul>
+
+<p><strong>Best for:</strong> Cloud engineers managing Azure or hybrid environments. Multi-cloud architecture decisions — choosing between Azure VNet peering, Virtual WAN, or ExpressRoute Global Reach for a specific connectivity pattern — benefit from your AI reading your actual network topology rather than working from a high-level description.</p>
+
+<h2>3. Filesystem MCP Server — Terraform and IaC Configurations</h2>
+
+<p>Cloud infrastructure is defined in code — Terraform modules, CloudFormation templates, CDK constructs, Helm charts, and Kubernetes manifests. The Filesystem server gives your AI access to your actual IaC codebase so generated code follows your real module structure, variable naming, and tagging conventions.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read existing Terraform modules to follow your variable and output naming conventions</li>
+<li>Access Kubernetes manifests and Helm values files for cluster configuration context</li>
+<li>Read backend configurations and state file references to understand your workspace structure</li>
+<li>Navigate your full IaC repository to understand resource dependencies before making changes</li>
+</ul>
+
+<p><strong>Best for:</strong> Cloud engineers writing new infrastructure modules. Before generating a new Terraform module, your AI can read several existing ones — learning your exact variable type patterns, required tags, backend configuration approach, and output naming conventions — then generate a new module that fits naturally into your existing codebase rather than introducing inconsistencies.</p>
+
+<h2>4. GitHub MCP Server — IaC Change Reviews and History</h2>
+
+<p>Infrastructure changes require careful review — a Terraform change that modifies a security group or IAM policy can have broad impact. The GitHub MCP server gives your AI access to PR context, change history, and incident postmortems to support informed infrastructure review.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read Terraform plan outputs from PR CI checks for accurate change review</li>
+<li>Access commit history to understand why specific resource configurations were chosen</li>
+<li>Check open issues and past PRs related to specific infrastructure components</li>
+<li>Review IaC changes against your team's security and compliance requirements</li>
+</ul>
+
+<p><strong>Best for:</strong> Cloud engineers doing infrastructure code review. When reviewing a Terraform PR that modifies IAM policies, your AI can read the actual policy change, compare it against your organization's least-privilege requirements, and check the commit history to understand whether this expands an existing exception or introduces a new one — providing substantive review rather than generic feedback.</p>
+
+<h2>5. Grafana MCP Server — Infrastructure Observability</h2>
+
+<p>Cloud infrastructure generates continuous telemetry — node CPU and memory utilization, network I/O, disk IOPS, API call rates, and cost metrics. Grafana aggregates this data. The Grafana MCP server gives your AI access to your monitoring dashboards during capacity planning, performance investigation, and incident response.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read EC2 or node utilization data to identify over- and under-provisioned resources</li>
+<li>Access Kubernetes pod and node metrics for cluster rightsizing analysis</li>
+<li>Check network throughput and latency data for connectivity troubleshooting</li>
+<li>Query cost and usage metrics for resource optimization opportunities</li>
+</ul>
+
+<p><strong>Best for:</strong> Cloud engineers doing cost optimization or performance investigation. When a cluster node is consistently at 90% memory utilization, your AI can read the Grafana data to determine whether the pressure is from a single workload or distributed across many pods — and generate a rightsizing recommendation based on actual usage patterns rather than guesswork.</p>
+
+<h2>6. Cloudflare MCP Server — Edge and Zero Trust Configuration</h2>
+
+<p>Many cloud environments use Cloudflare for DNS, DDoS protection, Zero Trust Network Access (ZTNA), and WAF. The Cloudflare MCP server gives your AI access to your edge configuration for security auditing and troubleshooting.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read DNS records and verify configuration for all managed zones</li>
+<li>Access WAF rules and firewall policies to understand traffic filtering behavior</li>
+<li>Check Zero Trust Access application policies and tunnel configurations</li>
+<li>Review Workers scripts and routes for edge compute deployments</li>
+</ul>
+
+<p><strong>Best for:</strong> Cloud engineers using Cloudflare for security or access control. When a Zero Trust access policy is blocking legitimate traffic, your AI can read the actual policy rules, check the audit logs, and identify whether the issue is a missing identity provider claim, an incorrect IP range exclusion, or a misconfigured device posture check.</p>
+
+<h2>7. Brave Search MCP Server — Security Advisories and Cloud Service Updates</h2>
+
+<p>Cloud services change continuously — AWS announces new features, Kubernetes releases new versions with breaking changes, and CVEs emerge in widely-used container images. The Brave Search server keeps your AI current on the cloud landscape beyond its training data.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Search for recent AWS or Azure service outages and their impact on specific services</li>
+<li>Find current Kubernetes version support timelines and upgrade guidance</li>
+<li>Research CVEs in specific container images or cloud service dependencies</li>
+<li>Find current best practices for specific cloud architecture patterns</li>
+</ul>
+
+<p><strong>Best for:</strong> Cloud engineers planning infrastructure upgrades or security hardening. Before upgrading an EKS cluster from Kubernetes 1.28 to 1.30, your AI can search for the actual breaking changes, deprecated APIs, and migration requirements — producing an upgrade plan based on current documentation rather than training data that may predate the release.</p>
+
+<h2>Recommended Cloud Engineer Stack</h2>
+
+<p>The core setup for cloud engineering work:</p>
+
+<ol>
+<li><strong>AWS or Azure</strong> — live infrastructure state for your primary cloud provider</li>
+<li><strong>Filesystem</strong> — Terraform modules and IaC codebase access</li>
+<li><strong>GitHub</strong> — IaC change reviews with full PR and history context</li>
+</ol>
+
+<p>Add Grafana for infrastructure observability during capacity planning and incident response, Cloudflare for edge and Zero Trust configuration access, and Brave Search for current security advisories and service update information. This stack gives your AI the context to act as a genuine cloud engineering partner — reading your actual infrastructure state, following your IaC conventions, and working from live monitoring data rather than hypothetical cloud architectures.</p>
+
+<p>Browse all MCP servers at <a href="/servers">MyMCPTools</a>. See also <a href="/blog/best-mcp-servers-for-devops">Best MCP Servers for DevOps</a> and <a href="/blog/best-mcp-servers-for-kubernetes">Best MCP Servers for Kubernetes</a>.</p>
+    `.trim(),
+  },
+  {
+    slug: "best-mcp-servers-for-mobile-developers",
+    title: "Best MCP Servers for Mobile Developers in 2026",
+    description: "The top MCP servers for mobile developers building React Native, Flutter, iOS, and Android apps — from codebase access and API testing to app store monitoring and crash analytics. Build better mobile apps with AI that understands your stack.",
+    date: "2026-05-19",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "7 min read",
+    keywords: ["mcp servers for mobile developers", "react native mcp", "flutter mcp server", "mobile development ai tools", "ios android mcp", "mobile ai assistant 2026"],
+    relatedServerSlugs: ["filesystem", "github", "brave-search", "fetch", "postgres", "sqlite"],
+    content: `
+<p>Mobile developers navigate a uniquely complex environment — cross-platform frameworks that abstract native APIs, device-specific behavior that changes across OS versions, app store review processes with opaque requirements, and backend APIs that mobile clients consume but don't own. MCP servers give your AI assistant access to your actual mobile project: the codebase structure, the backend API contracts, the crash analytics, and the current mobile ecosystem documentation. Here are the MCP servers that deliver the most value for mobile developers in 2026.</p>
+
+<h2>1. Filesystem MCP Server — Project Structure and Codebase Access</h2>
+
+<p>Mobile projects have distinctive structures — React Native with metro bundler configuration and native modules, Flutter with pubspec.yaml and platform folders, or native iOS/Android with Xcode projects and Gradle build files. The Filesystem server gives your AI access to your actual project structure so generated code follows your real patterns.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read your component library and understand your existing UI pattern conventions</li>
+<li>Access navigation configuration to generate correctly-typed route definitions</li>
+<li>Read state management setup (Redux, Zustand, Riverpod) to follow your existing store patterns</li>
+<li>Navigate platform-specific folders (<code>ios/</code>, <code>android/</code>) to understand native module configuration</li>
+</ul>
+
+<p><strong>Best for:</strong> Mobile developers adding features to existing apps. Before generating a new screen or component, your AI can read several existing ones — learning your styling approach (NativeWind, StyleSheet, or Styled Components), your navigation hook usage, your state management patterns, and your prop type conventions — then generate a new screen that integrates naturally.</p>
+
+<h2>2. GitHub MCP Server — PR Reviews and Platform-Specific Change History</h2>
+
+<p>Mobile PRs carry platform-specific risk — a change that works on iOS may behave differently on Android, and a dependency upgrade may require native module relinking. The GitHub MCP server gives your AI access to your PR context, including CI results and platform-specific test outcomes.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read PR diffs with full component and hook context for mobile code review</li>
+<li>Access CI check results including iOS and Android build status</li>
+<li>Check commit history to understand why platform-specific workarounds were introduced</li>
+<li>Read issue history to surface past platform compatibility problems before making changes</li>
+</ul>
+
+<p><strong>Best for:</strong> Mobile developers reviewing cross-platform changes. When a PR modifies a shared component that has platform-specific behavior, your AI can read the change, the existing platform-specific branches in the codebase, and the CI results — identifying whether the change might break the iOS or Android-specific rendering path.</p>
+
+<h2>3. SQLite MCP Server — Local Database Access</h2>
+
+<p>Mobile apps commonly use SQLite for local storage — React Native via <code>expo-sqlite</code> or <code>react-native-sqlite-storage</code>, Flutter via <code>sqflite</code>, and native iOS/Android via SQLite or Room. The SQLite MCP server gives your AI access to your local database schema for accurate query generation and migration planning.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read your local SQLite schema — tables, columns, indexes, and constraints</li>
+<li>Analyze query performance to identify slow local queries on mobile hardware</li>
+<li>Check migration scripts against your current schema for correctness</li>
+<li>Understand your data model to generate accurate offline-first sync logic</li>
+</ul>
+
+<p><strong>Best for:</strong> Mobile developers building offline-first features. When implementing a sync mechanism that merges server state with local SQLite data, your AI can read your actual schema, your existing migration pattern, and generate sync logic that correctly handles your specific table structure and conflict resolution requirements.</p>
+
+<h2>4. Fetch MCP Server — Backend API Contracts and Documentation</h2>
+
+<p>Mobile apps are API clients — they consume backend endpoints that mobile developers often don't own or control. Accurate mobile code requires accurate API documentation. The Fetch server retrieves OpenAPI specs and API documentation directly for correct request/response handling.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Fetch your backend's OpenAPI spec to generate type-safe API client code</li>
+<li>Retrieve third-party SDK documentation (Stripe, RevenueCat, Firebase) for correct integration</li>
+<li>Access App Store Connect API documentation for automated release workflows</li>
+<li>Pull push notification service documentation (FCM, APNs) for correct payload formatting</li>
+</ul>
+
+<p><strong>Best for:</strong> Mobile developers integrating payment SDKs or push notifications. When implementing RevenueCat for in-app purchases, providing the actual RevenueCat documentation via Fetch produces correct entitlement checking, proper purchase restoration logic, and accurate webhook handling — versus generating plausible-but-incorrect code from training data that may reflect an older SDK version.</p>
+
+<h2>5. Brave Search MCP Server — OS Updates and Framework Releases</h2>
+
+<p>The mobile development landscape changes with every iOS and Android release — new privacy requirements, deprecated APIs, new gesture system changes, and updated App Store review guidelines. The Brave Search server keeps your AI current on mobile platform changes beyond its training cutoff.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Search for breaking changes in the latest iOS or Android release affecting your code</li>
+<li>Find current App Store review guideline requirements for specific feature types</li>
+<li>Research React Native or Flutter upgrade migration guides for your specific version jump</li>
+<li>Find current native module compatibility status for your React Native version</li>
+</ul>
+
+<p><strong>Best for:</strong> Mobile developers targeting new OS versions or upgrading frameworks. When Apple announces new privacy manifest requirements or changes to background processing APIs, your AI can search for the current documentation and generate the required configuration changes — rather than working from training data that predates the policy change.</p>
+
+<h2>6. PostgreSQL MCP Server — Backend Database Schema for API Integration</h2>
+
+<p>If you own or have access to your backend database, the PostgreSQL MCP server gives your AI visibility into the server-side data model — helping generate accurate API response types, understand pagination approaches, and reason about data relationships that affect your mobile data layer design.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read backend schema to generate accurate TypeScript or Dart types for API responses</li>
+<li>Understand database relationships to design correct mobile data model structures</li>
+<li>Check field types and nullability to generate correct optional type handling in mobile code</li>
+<li>Analyze backend data volumes to make informed pagination and caching decisions</li>
+</ul>
+
+<p><strong>Best for:</strong> Full-stack mobile developers who own both the app and the backend. When the backend returns a complex nested object, your AI can read the actual database schema to generate correct TypeScript interfaces or Dart classes — including correct nullable field handling, proper list typing, and accurate relationship representation.</p>
+
+<h2>Recommended Mobile Developer Stack</h2>
+
+<p>The core setup for mobile development:</p>
+
+<ol>
+<li><strong>Filesystem</strong> — project structure and codebase navigation for pattern-consistent code generation</li>
+<li><strong>GitHub</strong> — PR reviews with platform-specific CI context</li>
+<li><strong>Brave Search</strong> — current iOS/Android release notes and framework upgrade guides</li>
+</ol>
+
+<p>Add SQLite for local database schema access when building offline-first features, Fetch for accurate API and SDK documentation, and PostgreSQL if you own the backend database. This stack gives your AI the context to act as a genuine mobile development partner — reading your actual project structure, following your state management patterns, and working from current platform documentation rather than potentially outdated training data.</p>
+
+<p>Browse all MCP servers at <a href="/servers">MyMCPTools</a>. See also <a href="/blog/best-mcp-servers-for-react-developers">Best MCP Servers for React Developers</a> and <a href="/blog/best-mcp-servers-for-android-developers">Best MCP Servers for Android Developers</a>.</p>
+    `.trim(),
+  },
 ];
 
 export function getBlogPostBySlug(slug: string): BlogPost | undefined {
