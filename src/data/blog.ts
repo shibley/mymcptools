@@ -28694,6 +28694,390 @@ async with MCPServerStdio(
 <p>Browse all MCP servers at <a href="/servers">MyMCPTools</a>. See also <a href="/blog/best-mcp-servers-for-productivity">Best MCP Servers for Productivity</a> and <a href="/blog/best-mcp-servers-for-data-analysis">Best MCP Servers for Data Analysis</a>.</p>
     `.trim(),
   },
+  {
+    slug: "best-mcp-servers-for-angular-developers",
+    title: "Best MCP Servers for Angular Developers in 2026",
+    description: "The top MCP servers for Angular developers — from TypeScript tooling and component testing to API integration and performance analysis. Supercharge your Angular workflow with AI that has real-time project context.",
+    date: "2026-05-19",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "7 min read",
+    keywords: ["mcp servers for angular developers", "angular mcp server", "angular ai tools", "angular developer tools 2026", "mcp for frontend developers", "angular typescript mcp"],
+    relatedServerSlugs: ["filesystem", "github", "playwright", "brave-search", "fetch", "sentry", "linear"],
+    content: `
+<p>Angular developers juggle TypeScript complexity, RxJS observables, component architecture, NgModules (or standalone components), and a constantly evolving CLI. The right MCP servers give your AI assistant live access to your codebase, test results, API contracts, and documentation — transforming it from a generic code generator into an informed Angular collaborator.</p>
+
+<p>Here are the MCP servers that deliver the most value for Angular developers in 2026.</p>
+
+<h2>1. Filesystem MCP Server — Read Your Angular Project Directly</h2>
+
+<p>Angular projects have a specific structure — <code>src/app/</code>, lazy-loaded feature modules or standalone components, shared services, interceptors, guards, and environments. The Filesystem server gives your AI direct access to read your actual project files, understanding your specific component tree, service injection patterns, and routing configuration rather than working from pasted snippets.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read component files (<code>.component.ts</code>, <code>.component.html</code>, <code>.component.scss</code>) as a set</li>
+<li>Navigate your <code>app.routes.ts</code> or module routing to understand lazy-loading structure</li>
+<li>Read shared services and understand injection context across the app</li>
+<li>Access <code>angular.json</code>, <code>tsconfig.json</code>, and environment files for build configuration</li>
+</ul>
+
+<p><strong>Best for:</strong> All Angular developers. The highest-value use: reading your existing component before generating a new one — the AI writes code that follows your actual naming conventions, imports from your real paths, and handles your specific RxJS patterns rather than generating generic examples.</p>
+
+<h2>2. GitHub MCP Server — PR Reviews and Issue-Driven Development</h2>
+
+<p>Angular's component architecture benefits enormously from thorough code review — catching missing <code>OnPush</code> change detection, memory leaks from unsubscribed observables, accessibility gaps in templates, and circular dependency risks. The GitHub server lets your AI review pull requests with awareness of the full diff and project history.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Review PRs for Angular-specific patterns (change detection strategy, lifecycle hook usage)</li>
+<li>Read issue descriptions to understand feature requirements before implementing</li>
+<li>Check CI status and read workflow files to understand your build and test pipeline</li>
+<li>Search commit history for how similar components were built in this specific codebase</li>
+</ul>
+
+<p><strong>Best for:</strong> Angular developers working in teams. Asking your AI to review a PR with full GitHub context — rather than pasting code — produces comments about actual project patterns, not generic Angular advice. Particularly valuable for catching RxJS memory leaks before they reach production.</p>
+
+<h2>3. Playwright MCP Server — Component and E2E Testing</h2>
+
+<p>Angular applications demand comprehensive testing — unit tests with TestBed, component harnesses, and E2E flows. Playwright is the modern choice for E2E Angular testing, replacing Protractor. The Playwright MCP server lets your AI execute tests, read results, and interact with your running Angular application to diagnose failures.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Run E2E tests and read failure output with full context</li>
+<li>Navigate your Angular app in a real browser to observe behavior</li>
+<li>Take screenshots of component states for visual regression context</li>
+<li>Test routing, lazy loading, and Angular animations in real browser conditions</li>
+</ul>
+
+<p><strong>Best for:</strong> Angular developers writing or debugging E2E tests. When a Playwright test fails on a specific route or user interaction, your AI can navigate to that page, observe the actual behavior, and propose a fix rather than guessing from the error message alone.</p>
+
+<h2>4. Brave Search MCP Server — Angular Documentation and Ecosystem Updates</h2>
+
+<p>Angular moves fast — standalone components became the default, signals replaced much of RxJS for state management, and the new control flow syntax (<code>@if</code>, <code>@for</code>) replaced structural directives. The Brave Search server keeps your AI current with Angular 17/18/19 patterns rather than generating deprecated NgModule-based code from training data.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Search for current Angular documentation on signals, deferrable views, and control flow</li>
+<li>Find solutions to specific Angular CLI or build tool errors that appeared after the AI's training cutoff</li>
+<li>Research Angular Material or CDK component API changes across versions</li>
+<li>Find community solutions to Angular-specific challenges on Stack Overflow and GitHub</li>
+</ul>
+
+<p><strong>Best for:</strong> Any Angular developer working with Angular 17+ features. When you're working with Angular signals for the first time or migrating from NgModules to standalone components, live search prevents the AI from generating outdated patterns confidently.</p>
+
+<h2>5. Fetch MCP Server — API Documentation and OpenAPI Specs</h2>
+
+<p>Angular applications consume REST or GraphQL APIs. The Fetch server retrieves OpenAPI specifications, API documentation, and backend contract definitions directly — so when your AI helps you write an Angular service or interceptor, it's working from the actual API spec rather than the shape you describe verbally.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Fetch OpenAPI/Swagger specs to generate typed Angular services with correct interfaces</li>
+<li>Retrieve GraphQL schemas for Apollo Angular client configuration</li>
+<li>Pull in third-party API documentation (Stripe, Firebase, etc.) when integrating SDKs</li>
+<li>Access Angular package changelogs to understand what changed between versions</li>
+</ul>
+
+<p><strong>Best for:</strong> Angular developers building API-consuming applications. Providing your actual OpenAPI spec via Fetch produces dramatically better Angular service code — correct TypeScript interfaces, proper error handling, and accurate endpoint paths rather than generic HttpClient examples.</p>
+
+<h2>6. Sentry MCP Server — Error Tracking and Performance Context</h2>
+
+<p>Angular applications can suffer from specific runtime errors — change detection cycles triggering errors, route guards redirecting unexpectedly, lazy chunks failing to load. Sentry captures these with full stack traces and user context. The Sentry MCP server gives your AI access to real production errors to diagnose and fix.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read recent Angular error events with full stack traces and breadcrumbs</li>
+<li>Access performance profiles to identify slow component rendering or change detection cycles</li>
+<li>Check which Angular routes are generating the most errors</li>
+<li>Read user session replays context to understand error reproduction paths</li>
+</ul>
+
+<p><strong>Best for:</strong> Angular developers maintaining production applications. When Sentry surfaces a cryptic <code>ExpressionChangedAfterItHasBeenCheckedError</code> with a specific component stack trace, your AI can read the actual error context and propose the correct <code>ChangeDetectionStrategy.OnPush</code> or <code>detectChanges()</code> fix.</p>
+
+<h2>7. Linear MCP Server — Feature Tickets and Sprint Context</h2>
+
+<p>Angular component development is driven by feature tickets and design specs. The Linear server gives your AI access to the actual ticket description, acceptance criteria, and linked design files — producing Angular components that implement the right behavior rather than a generic version of what you describe in the prompt.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read feature ticket descriptions to understand component requirements fully</li>
+<li>Check acceptance criteria before writing component logic</li>
+<li>Access linked tickets to understand component dependencies and integration points</li>
+<li>Update ticket status and add implementation notes as you ship</li>
+</ul>
+
+<p><strong>Best for:</strong> Angular developers working from a Linear sprint. Pointing your AI at the actual ticket produces code that satisfies the full acceptance criteria — including edge cases and states mentioned in the description that you wouldn't think to include in a brief prompt.</p>
+
+<h2>Recommended Angular Developer Stack</h2>
+
+<p>The core setup for Angular development:</p>
+
+<ol>
+<li><strong>Filesystem</strong> — read your actual Angular project structure and component files</li>
+<li><strong>GitHub</strong> — PR reviews and issue-driven development</li>
+<li><strong>Brave Search</strong> — stay current on Angular 17/18/19 patterns and signals</li>
+</ol>
+
+<p>Add Playwright for E2E test debugging, Fetch for API contract access, Sentry for production error context, and Linear for ticket-driven development. This stack gives your AI the context it needs to write idiomatic Angular code — not generic TypeScript examples dressed up as Angular components.</p>
+
+<p>Browse all MCP servers at <a href="/servers">MyMCPTools</a>. See also <a href="/blog/best-mcp-servers-for-frontend-developers">Best MCP Servers for Frontend Developers</a> and <a href="/blog/best-mcp-servers-for-typescript-developers">Best MCP Servers for TypeScript Developers</a>.</p>
+    `.trim(),
+  },
+  {
+    slug: "best-mcp-servers-for-django-developers",
+    title: "Best MCP Servers for Django Developers in 2026",
+    description: "The top MCP servers for Django developers — from database introspection and test running to API documentation and deployment. Use AI with full context of your Django project, models, and views.",
+    date: "2026-05-19",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "7 min read",
+    keywords: ["mcp servers for django developers", "django mcp server", "django ai tools", "django developer tools 2026", "python web development mcp", "django rest framework mcp"],
+    relatedServerSlugs: ["filesystem", "postgresql", "github", "brave-search", "fetch", "redis", "sentry"],
+    content: `
+<p>Django developers work across the full stack — data models, ORM queries, REST APIs with DRF, authentication, background tasks, and deployment. MCP servers give your AI assistant live access to your database schema, codebase, test results, and documentation — making it an informed Django collaborator rather than a generic Python assistant.</p>
+
+<p>Here are the MCP servers that deliver the most value for Django developers in 2026.</p>
+
+<h2>1. Filesystem MCP Server — Read Your Django Project Structure</h2>
+
+<p>Django projects have a distinctive structure — <code>settings.py</code>, multiple apps with models/views/serializers/urls, migrations folder, management commands, and templates. The Filesystem server gives your AI direct access to your actual project, understanding your specific model relationships, custom managers, and URL routing rather than working from pasted snippets.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read model definitions to understand field types, relationships, and custom methods</li>
+<li>Access your <code>settings.py</code> (and environment-specific settings) for configuration context</li>
+<li>Read existing views, serializers, and URL patterns before generating new ones</li>
+<li>Navigate your migrations folder to understand schema history and pending changes</li>
+</ul>
+
+<p><strong>Best for:</strong> All Django developers. Before writing a new view or serializer, have your AI read the existing ones — it will follow your actual naming conventions, import from your real module paths, and handle your specific authentication or permission patterns.</p>
+
+<h2>2. PostgreSQL MCP Server — Live Database Introspection</h2>
+
+<p>Django's ORM abstracts SQL, but complex queries, N+1 problems, and migration decisions require understanding the actual database state. The PostgreSQL server lets your AI query your development or staging database directly — reading real data, checking index usage, and verifying that your queryset produces the SQL you expect.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Inspect actual table schemas after migrations run</li>
+<li>Run <code>EXPLAIN ANALYZE</code> on ORM-generated queries to identify N+1 issues</li>
+<li>Check for missing indexes by examining slow query patterns</li>
+<li>Query development data to verify serializer output against real records</li>
+</ul>
+
+<p><strong>Best for:</strong> Django developers optimizing database performance. When <code>django-debug-toolbar</code> shows 200 queries on a list view, your AI can inspect the actual queryset SQL, identify the N+1 source, and generate the correct <code>select_related()</code> or <code>prefetch_related()</code> fix by reading both your model code and the resulting SQL.</p>
+
+<h2>3. GitHub MCP Server — PR Reviews and Migration Safety</h2>
+
+<p>Django migrations are risky — a zero-downtime deployment requires careful attention to backward compatibility, multi-phase migrations for large tables, and avoiding locks. The GitHub server lets your AI review migration PRs with full diff context and an understanding of your deployment process.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Review migration PRs for unsafe operations (adding NOT NULL columns, renaming fields)</li>
+<li>Check CI results and read test output when builds fail</li>
+<li>Read issue descriptions to understand feature requirements before writing views</li>
+<li>Search the codebase for patterns when implementing similar functionality</li>
+</ul>
+
+<p><strong>Best for:</strong> Django developers in teams with active CI/CD pipelines. Migration review is the killer use case — asking your AI to review a migration with the GitHub diff produces specific warnings about table locks, missing backward migrations, and multi-phase patterns needed for large datasets.</p>
+
+<h2>4. Redis MCP Server — Cache and Queue Inspection</h2>
+
+<p>Django applications heavily use Redis for caching (<code>django-redis</code>), session storage, and background task queues (Celery, Django-Q). The Redis server lets your AI inspect your actual cache keys, check TTLs, and debug queue states during development.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Inspect cache keys and their values during development and debugging</li>
+<li>Check Celery queue depths and worker task states</li>
+<li>Verify cache invalidation logic by reading actual cached values</li>
+<li>Debug rate limiting or session issues by reading Redis state directly</li>
+</ul>
+
+<p><strong>Best for:</strong> Django developers using Celery or Redis-based caching. When a caching bug causes stale data, your AI can read the actual Redis state to verify whether the cache key is set, what value it contains, and whether your invalidation logic ran correctly — rather than guessing from log output.</p>
+
+<h2>5. Brave Search MCP Server — Django Ecosystem Updates</h2>
+
+<p>The Django ecosystem evolves rapidly — Django REST Framework releases, new async view patterns in Django 4.x/5.x, ASGI deployment options, and authentication library updates. The Brave Search server keeps your AI current on the Django ecosystem state rather than suggesting outdated patterns from training data.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Search for current Django 5.x async view patterns and ORM async API usage</li>
+<li>Find solutions to specific DRF serializer or authentication issues</li>
+<li>Research compatibility between Django versions and third-party packages</li>
+<li>Find current best practices for Django deployment (Gunicorn, uvicorn, ASGI)</li>
+</ul>
+
+<p><strong>Best for:</strong> Django developers upgrading to newer versions or using async features. When working with Django's async ORM or ASGI configuration for the first time, live search prevents the AI from generating deprecated WSGI-only patterns or mixing sync and async code incorrectly.</p>
+
+<h2>6. Fetch MCP Server — API Contracts and Third-Party Integration</h2>
+
+<p>Django REST Framework APIs need to match client expectations, and Django integrations with third-party services (Stripe webhooks, SendGrid, OAuth providers) require up-to-date documentation. The Fetch server retrieves API specs and documentation directly for accurate code generation.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Fetch your own DRF OpenAPI schema (<code>/api/schema/</code>) to generate accurate client code or documentation</li>
+<li>Retrieve Stripe webhook documentation for accurate Django webhook handler implementation</li>
+<li>Access current OAuth provider documentation for <code>django-allauth</code> or <code>social-django</code> configuration</li>
+<li>Pull third-party service API specs to generate accurate DRF serializers</li>
+</ul>
+
+<p><strong>Best for:</strong> Django developers integrating payment processors, email services, or OAuth providers. Providing your actual API spec produces correct DRF serializer field types, proper error responses, and accurate webhook signature validation — none of which can be reliably inferred from a brief description.</p>
+
+<h2>7. Sentry MCP Server — Production Error Context</h2>
+
+<p>Django applications surface specific runtime errors — unhandled exceptions in views, database connection timeouts, ORM-related attribute errors, and middleware failures. Sentry captures these with request context, user data, and full tracebacks. The Sentry MCP server gives your AI access to real production errors.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read Django exception tracebacks with full request context (method, path, user)</li>
+<li>Access database query context when ORM errors occur</li>
+<li>Check performance traces to identify slow middleware or database bottlenecks</li>
+<li>Monitor Celery task failure rates and exception patterns</li>
+</ul>
+
+<p><strong>Best for:</strong> Django developers maintaining production applications. When Sentry shows an <code>IntegrityError</code> in a specific view with a specific user's request, your AI can read the full context — the view code, the ORM query, and the constraint that failed — and propose either a fix or a data migration.</p>
+
+<h2>Recommended Django Developer Stack</h2>
+
+<p>The core setup for Django development:</p>
+
+<ol>
+<li><strong>Filesystem</strong> — read your actual Django project, models, and views</li>
+<li><strong>PostgreSQL</strong> — live database introspection and query analysis</li>
+<li><strong>GitHub</strong> — PR reviews with migration safety analysis</li>
+</ol>
+
+<p>Add Brave Search for Django 5.x async patterns and ecosystem updates, Redis for cache and Celery queue debugging, Fetch for API contract access, and Sentry for production error diagnosis. This stack gives your AI the context needed to write correct Django code — informed by your actual schema, your specific patterns, and your real production behavior.</p>
+
+<p>Browse all MCP servers at <a href="/servers">MyMCPTools</a>. See also <a href="/blog/best-mcp-servers-for-python-developers">Best MCP Servers for Python Developers</a> and <a href="/blog/best-mcp-servers-for-backend-developers">Best MCP Servers for Backend Developers</a>.</p>
+    `.trim(),
+  },
+  {
+    slug: "best-mcp-servers-for-network-engineers",
+    title: "Best MCP Servers for Network Engineers in 2026",
+    description: "The top MCP servers for network engineers — from infrastructure documentation and cloud networking to monitoring data and vendor API access. Use AI with real context of your network topology and configurations.",
+    date: "2026-05-19",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "7 min read",
+    keywords: ["mcp servers for network engineers", "network engineering mcp", "network automation mcp", "network ai tools 2026", "cisco mcp server", "cloud networking mcp"],
+    relatedServerSlugs: ["filesystem", "brave-search", "fetch", "aws", "azure", "cloudflare", "grafana"],
+    content: `
+<p>Network engineers manage increasingly complex hybrid environments — on-premises routing and switching alongside cloud VPCs, SD-WAN overlays, zero-trust access policies, and multi-cloud connectivity. MCP servers give your AI assistant access to your network configurations, monitoring data, cloud infrastructure APIs, and vendor documentation — making it an informed assistant for network automation and troubleshooting.</p>
+
+<p>Here are the MCP servers that deliver the most value for network engineers in 2026.</p>
+
+<h2>1. Filesystem MCP Server — Configuration Files and Documentation</h2>
+
+<p>Network configurations live in files — Ansible playbooks, Terraform modules, device configuration backups, topology diagrams (as-built documentation), and runbooks. The Filesystem server gives your AI direct access to read your actual configuration state and documentation rather than working from fragments you describe verbally.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read Ansible inventory files and playbooks for network device automation</li>
+<li>Access Terraform modules for cloud networking resources (VPCs, transit gateways, peering)</li>
+<li>Read device configuration backups to understand the current state before making changes</li>
+<li>Access runbooks and standard operating procedures for incident response</li>
+</ul>
+
+<p><strong>Best for:</strong> Network engineers using infrastructure-as-code. Before generating a new Ansible playbook or Terraform module, have your AI read your existing ones — it will follow your actual variable naming, import from your real module paths, and handle your specific inventory structure rather than generating generic examples.</p>
+
+<h2>2. AWS MCP Server — Cloud Networking Configuration</h2>
+
+<p>AWS networking is a discipline of its own — VPCs, transit gateways, VPC peering, Direct Connect, Route 53, WAF, Network Firewall, and VPN connections. The AWS MCP server gives your AI access to your actual AWS network topology, security group rules, and routing tables through the AWS API.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>List VPCs, subnets, and route tables to understand current network topology</li>
+<li>Read security group rules and NACLs to audit access policies</li>
+<li>Check VPC peering connections, transit gateway attachments, and routing</li>
+<li>Inspect Route 53 zones and records for DNS troubleshooting</li>
+</ul>
+
+<p><strong>Best for:</strong> Network engineers managing AWS infrastructure. When troubleshooting connectivity between two services, your AI can read the actual security groups, NACLs, and route tables rather than asking you to paste them — and identify the specific rule or missing route causing the issue.</p>
+
+<h2>3. Azure MCP Server — Azure Network Infrastructure</h2>
+
+<p>Azure networking encompasses Virtual Networks, Network Security Groups, Azure Firewall, ExpressRoute, VPN gateways, and Private Endpoints. The Azure MCP server provides access to your Azure network configuration for troubleshooting and automation.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read Virtual Network configurations, subnets, and address spaces</li>
+<li>Access Network Security Group rules to audit inbound and outbound traffic policies</li>
+<li>Check ExpressRoute circuit status and peering configurations</li>
+<li>Inspect Private Endpoint connections for PaaS service connectivity</li>
+</ul>
+
+<p><strong>Best for:</strong> Network engineers in Azure-heavy or hybrid AWS/Azure environments. Multi-cloud connectivity troubleshooting — diagnosing why traffic between an Azure VNet and AWS VPC isn't flowing as expected — benefits significantly from having your AI read the actual configuration from both clouds simultaneously.</p>
+
+<h2>4. Cloudflare MCP Server — Edge Networking and DNS</h2>
+
+<p>Cloudflare sits at the edge of many enterprise networks — DNS, DDoS protection, Zero Trust Access (ZTNA), WAF rules, and CDN configuration. The Cloudflare MCP server gives your AI access to your Cloudflare configuration for auditing and troubleshooting.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read DNS records and check for misconfiguration or missing entries</li>
+<li>Access WAF rules and security settings to understand traffic policies</li>
+<li>Check Zero Trust Access policies and tunnel configurations</li>
+<li>Review page rules and cache settings for CDN behavior</li>
+</ul>
+
+<p><strong>Best for:</strong> Network engineers using Cloudflare for DNS, security, or ZTNA. When a Zero Trust policy is blocking unexpected traffic or a WAF rule is generating false positives, your AI can read the actual rule configuration and access logs to diagnose the issue without you manually navigating the Cloudflare dashboard.</p>
+
+<h2>5. Grafana MCP Server — Network Monitoring and Observability</h2>
+
+<p>Network monitoring produces enormous volumes of time-series data — interface utilization, BGP peer status, latency measurements, error counters, and flow data. Grafana visualizes this data. The Grafana MCP server gives your AI access to your monitoring dashboards and alert states during incident response.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read dashboard panel data to understand current network utilization and health</li>
+<li>Check alert states to see what's currently firing across your network</li>
+<li>Query time-series data for specific interfaces or devices during troubleshooting</li>
+<li>Access historical data to correlate network events with application incidents</li>
+</ul>
+
+<p><strong>Best for:</strong> Network engineers doing incident response. When a P1 incident fires, your AI can read the current Grafana alert state and utilization data across your network fabric — identifying whether the problem is a specific link, a BGP peer, or a broader infrastructure issue — before you even open your monitoring dashboards manually.</p>
+
+<h2>6. Fetch MCP Server — Vendor Documentation and RFC References</h2>
+
+<p>Network engineering requires constant reference to vendor documentation — Cisco IOS-XE command references, Juniper Junos documentation, AWS networking guides, and IETF RFCs. The Fetch server retrieves these directly for accurate configuration generation and troubleshooting guidance.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Fetch Cisco, Juniper, or Arista documentation pages for specific feature configuration</li>
+<li>Retrieve AWS networking documentation for VPC, Transit Gateway, or Direct Connect configuration</li>
+<li>Access IETF RFC text for BGP, OSPF, or IS-IS protocol references</li>
+<li>Pull vendor release notes to understand known issues in specific software versions</li>
+</ul>
+
+<p><strong>Best for:</strong> Network engineers working with specific vendor configurations. When generating a BGP route policy or OSPF area configuration, providing the actual vendor documentation via Fetch produces correct syntax for your specific platform and software version rather than generic protocol examples that might not match your vendor's CLI.</p>
+
+<h2>7. Brave Search MCP Server — Current CVEs and Vendor Advisories</h2>
+
+<p>Network security requires staying current on vulnerabilities — CVEs in routing software, vendor security advisories for specific hardware, and new attack techniques targeting network infrastructure. The Brave Search server keeps your AI current on the threat landscape beyond its training cutoff.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Search for recent CVEs affecting specific network OS versions (IOS-XE, Junos, etc.)</li>
+<li>Find current vendor security advisories and recommended mitigations</li>
+<li>Research new network attack techniques for zero-trust policy review</li>
+<li>Find community solutions to specific networking challenges and known bugs</li>
+</ul>
+
+<p><strong>Best for:</strong> Network engineers responsible for security patching and hardening. When planning a maintenance window to patch network devices, your AI can search for the current CVE list for your specific software version and generate a prioritized remediation plan based on actual current advisories.</p>
+
+<h2>Recommended Network Engineer Stack</h2>
+
+<p>The core setup for network engineering work:</p>
+
+<ol>
+<li><strong>Filesystem</strong> — read your Ansible playbooks, Terraform modules, and configuration backups</li>
+<li><strong>AWS or Azure</strong> — live cloud network topology access for your primary cloud</li>
+<li><strong>Brave Search</strong> — current CVEs, vendor advisories, and protocol documentation</li>
+</ol>
+
+<p>Add Cloudflare for edge networking and DNS management, Grafana for monitoring context during incident response, and Fetch for vendor documentation access when configuring specific features. This stack gives your AI the context to act as a genuine network engineering assistant — reading your actual topology, referencing current documentation, and working from real monitoring data rather than generic networking examples.</p>
+
+<p>Browse all MCP servers at <a href="/servers">MyMCPTools</a>. See also <a href="/blog/best-mcp-servers-for-devops">Best MCP Servers for DevOps</a> and <a href="/blog/best-mcp-servers-for-cloud-engineers">Best MCP Servers for Cloud Engineers</a>.</p>
+    `.trim(),
+  },
 ];
 
 export function getBlogPostBySlug(slug: string): BlogPost | undefined {
