@@ -27926,6 +27926,390 @@ async with MCPServerStdio(
 <p>Browse all MCP servers at <a href="/servers">MyMCPTools</a>. See also <a href="/blog/best-mcp-servers-for-technical-writers">Best MCP Servers for Technical Writers</a> and <a href="/blog/best-mcp-servers-for-developers">Best MCP Servers for Developers</a>.</p>
     `.trim(),
   },
+  {
+    slug: "best-mcp-servers-for-react-developers",
+    title: "Best MCP Servers for React Developers in 2026",
+    description: "The top MCP servers for React developers — covering component debugging, state management, testing, and deployment. Give your AI direct access to your React codebase, UI libraries, and development tools.",
+    date: "2026-05-19",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "8 min read",
+    keywords: ["mcp servers for react", "react mcp server", "best mcp servers react developers", "mcp react debugging", "storybook mcp", "vercel mcp"],
+    relatedServerSlugs: ["filesystem", "github", "brave-search", "playwright", "puppeteer", "vercel", "figma", "notion"],
+    content: `
+<p>React developers work across a uniquely layered stack — JSX components, state management, hooks, server components, build tooling, and deployment pipelines. MCP servers give your AI direct access to each layer, turning it from a generic code assistant into a tool that actually understands your specific application.</p>
+
+<p>Here are the MCP servers that deliver the most leverage for React development workflows in 2026.</p>
+
+<h2>1. Filesystem MCP Server — Read Your Component Tree</h2>
+
+<p>The foundation of every React MCP setup. Without filesystem access, your AI is writing code blind. With it, it can read your existing component structure, understand your file conventions, and write code that actually fits your codebase.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read component files, hooks, and context providers</li>
+<li>Traverse your <code>src/</code> directory to understand project structure</li>
+<li>Read package.json to know your exact dependency versions</li>
+<li>Write new components and tests directly into the right directories</li>
+</ul>
+
+<p><strong>Best for:</strong> All React developers. The quality of AI-generated React code increases dramatically when the AI can see your existing patterns, naming conventions, and component library choices.</p>
+
+<h2>2. GitHub MCP Server — PR Reviews and Issue Context</h2>
+
+<p>React development is collaborative. The GitHub MCP server connects your AI to the full repository workflow — reading issues that describe a bug, inspecting PRs for component changes, and searching your codebase for how a specific pattern is used across the app.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Browse component history and blame for recent changes</li>
+<li>Read and create issues to document bugs and features</li>
+<li>Inspect PRs to understand what changed and why</li>
+<li>Search your codebase for specific hook usage or component patterns</li>
+</ul>
+
+<p><strong>Best for:</strong> Team-based React development where issues, PRs, and code review are central to the workflow. Pair it with filesystem access for complete context on any bug or feature.</p>
+
+<h2>3. Playwright MCP Server — UI Testing and Debugging</h2>
+
+<p>Playwright has become the standard for React E2E and component testing. Its MCP server goes further than running tests — it can take screenshots of your running app, interact with UI elements, and capture console errors, giving your AI a live view of what the browser actually sees.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Screenshot capture of specific pages and components</li>
+<li>Browser interaction (click, fill, navigate) for testing workflows</li>
+<li>Console log and network request inspection</li>
+<li>Accessibility tree inspection for a11y debugging</li>
+</ul>
+
+<p><strong>Best for:</strong> React developers debugging visual issues, accessibility problems, or flaky E2E tests. When a component renders differently in the browser than you expect, Playwright lets your AI see what you're seeing.</p>
+
+<h2>4. Vercel MCP Server — Deployment and Preview URLs</h2>
+
+<p>Most React apps deploy to Vercel. Its MCP server exposes deployment status, preview URL management, environment variables, and build logs — giving your AI the deployment context that's otherwise invisible during development.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Deployment list and status inspection</li>
+<li>Preview URL management for PR-based deployments</li>
+<li>Build log access for debugging failed deployments</li>
+<li>Environment variable management (with appropriate access controls)</li>
+</ul>
+
+<p><strong>Best for:</strong> React developers deployed on Vercel who need AI help debugging build failures, understanding deployment differences, or managing preview environments across branches.</p>
+
+<h2>5. Figma MCP Server — Design to Component Accuracy</h2>
+
+<p>The gap between design and implementation is where React bugs are born. The Figma MCP server lets your AI inspect design files directly — reading component specs, spacing values, color tokens, and interaction states — so generated components match the design system.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Component spec extraction (dimensions, spacing, typography)</li>
+<li>Design token and color style inspection</li>
+<li>Asset export for use in code</li>
+<li>Layer structure browsing for complex components</li>
+</ul>
+
+<p><strong>Best for:</strong> React developers working closely with design systems. When your AI can see the Figma spec and your existing Tailwind/CSS configuration simultaneously, it writes components that actually match the design.</p>
+
+<h2>6. Brave Search MCP Server — Library Docs and Error Research</h2>
+
+<p>React's ecosystem moves fast — React 19, Server Components, new Next.js APIs, evolving state management patterns. Brave Search keeps your AI current with the latest documentation rather than relying on potentially outdated training data.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Web search for current React documentation and patterns</li>
+<li>Error message research — paste a cryptic runtime error, get current solutions</li>
+<li>Library documentation for dependencies your AI wasn't trained on</li>
+<li>Stack Overflow and GitHub Issues search for known bugs</li>
+</ul>
+
+<p><strong>Best for:</strong> Any React developer working with fast-moving libraries. Particularly useful for React 19 features, Next.js App Router patterns, and third-party libraries updated after your AI's training cutoff.</p>
+
+<h2>7. Puppeteer MCP Server — Headless Browser Automation</h2>
+
+<p>For React developers building scraping tools, browser automation, or testing legacy flows, Puppeteer's MCP server provides AI-assisted browser control at a lower level than Playwright.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Headless browser control for automation scripts</li>
+<li>PDF generation from React-rendered pages</li>
+<li>Screenshot comparison workflows</li>
+<li>Form automation and interaction scripting</li>
+</ul>
+
+<p><strong>Best for:</strong> React developers who build tools that automate browser interactions, generate PDFs from React components, or need fine-grained browser control for testing specific scenarios.</p>
+
+<h2>Recommended React Developer Stack</h2>
+
+<p>Start with these three, then add based on your specific stack:</p>
+
+<ol>
+<li><strong>Filesystem</strong> — non-negotiable. Your AI needs to see your component tree.</li>
+<li><strong>Brave Search</strong> — keeps your AI current with React ecosystem changes</li>
+<li><strong>Playwright</strong> — for visual debugging and E2E test development</li>
+</ol>
+
+<p>Add Vercel if you're debugging deployments, Figma if you're implementing designs, and GitHub if you're working in a team context. This stack gives your AI the full picture of a modern React application — from design spec to live deployment.</p>
+
+<p>Browse all frontend-related MCP servers at <a href="/servers">MyMCPTools</a>. See also <a href="/blog/best-mcp-servers-for-developers">Best MCP Servers for Developers</a> and <a href="/blog/best-mcp-servers-for-javascript-developers">Best MCP Servers for JavaScript Developers</a>.</p>
+    `.trim(),
+  },
+  {
+    slug: "best-mcp-servers-for-blockchain-developers",
+    title: "Best MCP Servers for Blockchain Developers in 2026",
+    description: "The top MCP servers for blockchain and Web3 developers — from on-chain data queries to smart contract auditing and DeFi protocol interaction. Supercharge your AI workflow across EVM chains, Solana, and more.",
+    date: "2026-05-19",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "8 min read",
+    keywords: ["mcp servers for blockchain developers", "web3 mcp server", "blockchain mcp", "smart contract mcp", "ethereum mcp", "solana mcp server"],
+    relatedServerSlugs: ["filesystem", "github", "brave-search", "fetch", "postgresql", "brave-search"],
+    content: `
+<p>Blockchain development combines the complexity of distributed systems with the stakes of financial contracts. A bug in a smart contract isn't a broken UI — it's potentially millions of dollars lost to a vulnerability. MCP servers help by giving your AI assistant access to on-chain data, verified source code, and current protocol documentation, turning it into an informed collaborator rather than a pattern-matcher.</p>
+
+<p>Here are the MCP servers that deliver the most value for blockchain and Web3 development in 2026.</p>
+
+<h2>1. Filesystem MCP Server — Smart Contract Context</h2>
+
+<p>The foundation of any blockchain development workflow. Your AI needs to see your contract source, deployment scripts, test files, and ABI definitions to write code that integrates correctly with your existing codebase.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read Solidity, Vyper, Rust (Anchor), and Move contract files</li>
+<li>Access Hardhat/Foundry/Anchor project configuration</li>
+<li>Read deployment artifacts and ABI files</li>
+<li>Write tests and deployment scripts alongside your existing code</li>
+</ul>
+
+<p><strong>Best for:</strong> All blockchain developers. Smart contract code is highly context-dependent — your AI needs to see your inheritance chain, your existing interfaces, and your testing patterns to write code that integrates correctly.</p>
+
+<h2>2. Fetch MCP Server — Live Protocol Documentation</h2>
+
+<p>DeFi protocols evolve constantly. Uniswap v4, Aave v3, EigenLayer, and dozens of other protocols publish developer documentation that changes with each upgrade. The Fetch MCP server retrieves current documentation directly, so your AI references the actual protocol state rather than its training snapshot.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Fetch protocol documentation pages as clean Markdown</li>
+<li>Read Etherscan contract pages for deployed bytecode and ABIs</li>
+<li>Access GitHub repositories for protocol source code</li>
+<li>Pull Solidity compiler and tool documentation</li>
+</ul>
+
+<p><strong>Best for:</strong> DeFi developers building integrations with major protocols. When you're integrating with a protocol, point Fetch at its official developer docs and your AI will work from the current specification, not a stale training snapshot.</p>
+
+<h2>3. GitHub MCP Server — Open Source Contract Auditing</h2>
+
+<p>The most important reference for smart contract development is the ecosystem of audited, production-deployed contracts on GitHub. The GitHub MCP server lets your AI browse and search this reference material — OpenZeppelin, Uniswap, Compound, Aave — to understand established patterns before writing your own implementation.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Browse audited contract repositories (OpenZeppelin, major protocols)</li>
+<li>Search for specific Solidity patterns across public repositories</li>
+<li>Inspect your own repository's deployment history and PRs</li>
+<li>Create issues for security findings during code review</li>
+</ul>
+
+<p><strong>Best for:</strong> Smart contract developers who want AI that references established, audited implementations rather than generating patterns from scratch. Pair it with filesystem access for full context on both your code and the reference implementations.</p>
+
+<h2>4. Brave Search MCP Server — Security Research and CVE Lookup</h2>
+
+<p>Smart contract security moves fast. New vulnerability classes, exploit postmortems, and audit findings are published constantly. Brave Search keeps your AI current with the latest security research, giving it access to information about vulnerabilities discovered after its training cutoff.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Search for recent exploit postmortems and vulnerability disclosures</li>
+<li>Look up specific attack vectors (reentrancy variants, oracle manipulation, flash loan attacks)</li>
+<li>Research audit findings for protocols you're integrating with</li>
+<li>Find current gas optimization techniques</li>
+</ul>
+
+<p><strong>Best for:</strong> Smart contract developers and auditors who need current security intelligence. Before deploying a contract, use Brave Search to research whether similar patterns have been exploited recently — your AI can then incorporate that awareness into its review.</p>
+
+<h2>5. PostgreSQL MCP Server — Indexed Blockchain Data</h2>
+
+<p>Most serious blockchain applications maintain an off-chain indexed database — event logs, transaction history, protocol state snapshots indexed for fast querying. The PostgreSQL MCP server gives your AI access to this indexed data for analytics, debugging, and business logic development.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Query indexed event logs and transaction data</li>
+<li>Explore schema for your blockchain indexer (The Graph subgraph, custom indexers)</li>
+<li>Write analytics queries across protocol activity data</li>
+<li>Debug data pipeline issues with direct schema inspection</li>
+</ul>
+
+<p><strong>Best for:</strong> Blockchain developers building full-stack dApps with off-chain indexing. When your frontend needs complex queries over historical on-chain data, having AI that understands both your smart contract logic and your indexed database schema is invaluable.</p>
+
+<h2>6. Notion MCP Server — Protocol Documentation and Specs</h2>
+
+<p>DeFi teams often maintain internal documentation in Notion — tokenomics specs, governance rules, upgrade plans, and security requirements. The Notion MCP server gives your AI access to these specs so it can write code that matches the documented intent.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read protocol specification documents</li>
+<li>Access governance proposal templates and voting parameters</li>
+<li>Browse security requirements and audit checklists</li>
+<li>Write technical documentation for new contracts</li>
+</ul>
+
+<p><strong>Best for:</strong> Protocol development teams using Notion for internal documentation. When implementing a governance mechanism or tokenomics change, your AI can read the spec directly and check its implementation against the documented requirements.</p>
+
+<h2>7. Slack MCP Server — Team and Audit Coordination</h2>
+
+<p>Blockchain security audits and protocol upgrades involve significant coordination — back-and-forth with auditors, governance discussions, incident response. The Slack MCP server connects your AI to these conversations for context.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read channel history for audit feedback and action items</li>
+<li>Search conversations for specific vulnerability discussions</li>
+<li>Access DM threads with auditors and security researchers</li>
+<li>Draft and send update messages to governance channels</li>
+</ul>
+
+<p><strong>Best for:</strong> Protocol teams coordinating security audits and governance upgrades via Slack. Being able to pull audit feedback directly into your development context reduces the back-and-forth between communication and code.</p>
+
+<h2>Recommended Blockchain Developer Stack</h2>
+
+<p>The essential trio for most smart contract workflows:</p>
+
+<ol>
+<li><strong>Filesystem</strong> — read your contracts, write your tests and scripts</li>
+<li><strong>Fetch</strong> — pull current protocol documentation and Etherscan data</li>
+<li><strong>Brave Search</strong> — stay current with security research and vulnerability disclosures</li>
+</ol>
+
+<p>Add GitHub for referencing audited implementations, PostgreSQL if you maintain an off-chain indexer, and Notion for spec-aligned development. This stack gives your AI the security awareness and current protocol context that blockchain development requires.</p>
+
+<p>Browse all MCP servers at <a href="/servers">MyMCPTools</a>. See also <a href="/blog/best-mcp-servers-for-security">Best MCP Servers for Security</a> and <a href="/blog/best-mcp-servers-for-developers">Best MCP Servers for Developers</a>.</p>
+    `.trim(),
+  },
+  {
+    slug: "best-mcp-servers-for-ux-designers",
+    title: "Best MCP Servers for UX Designers in 2026",
+    description: "The top MCP servers for UX designers — covering user research analysis, design system management, prototype feedback, and handoff to development. Use AI to accelerate every stage of the design process.",
+    date: "2026-05-19",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "7 min read",
+    keywords: ["mcp servers for ux designers", "ux design mcp", "figma mcp server", "design system mcp", "user research mcp", "mcp for designers"],
+    relatedServerSlugs: ["figma", "notion", "google-drive", "brave-search", "fetch", "github", "slack"],
+    content: `
+<p>UX design sits at the intersection of research, visual craft, and engineering — which means designers spend a surprising amount of time managing files, synthesizing research, coordinating with developers, and hunting through documentation. MCP servers give AI assistants direct access to design artifacts, research data, and communication channels, turning those coordination tasks into fast, AI-assisted workflows.</p>
+
+<p>Here are the MCP servers that deliver the most value for UX designers in 2026.</p>
+
+<h2>1. Figma MCP Server — Your Design System in Context</h2>
+
+<p>Figma is the hub of UX work, and its MCP server is the single highest-value tool for designers using AI assistants. It gives your AI direct access to component specs, design tokens, spacing values, typography styles, and interaction states — so AI-generated documentation and handoff notes are accurate to the actual design, not a description of it.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Component library inspection — dimensions, spacing, typography, color tokens</li>
+<li>Design token and style variable export</li>
+<li>Layer structure browsing for complex components</li>
+<li>Asset extraction and spec documentation</li>
+</ul>
+
+<p><strong>Best for:</strong> All UX designers. The most common use case: have your AI read a component from your Figma file and automatically generate accurate developer handoff documentation, including exact spacing values, color tokens, and interaction states.</p>
+
+<h2>2. Notion MCP Server — Research Synthesis and Documentation</h2>
+
+<p>Most UX teams keep their research in Notion — interview notes, affinity maps, personas, journey maps, and design briefs. The Notion MCP server makes all of that research accessible to your AI, so it can synthesize findings, identify themes, and help develop design rationale grounded in actual user data.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read and search research repositories, interview notes, and user feedback</li>
+<li>Access design briefs, project specs, and stakeholder requirements</li>
+<li>Create new pages for research summaries and design documentation</li>
+<li>Update database records for research tracking and project status</li>
+</ul>
+
+<p><strong>Best for:</strong> UX researchers and designers who store research artifacts in Notion. Have your AI read through twenty interview notes and synthesize the top themes, or draft a design rationale document that references specific research findings.</p>
+
+<h2>3. Google Drive MCP Server — Document-Based Collaboration</h2>
+
+<p>Many UX teams use Google Docs for collaborative documents — project briefs, stakeholder presentations, usability test reports, and content inventories. The Google Drive MCP server gives your AI access to this content for analysis and content generation.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read Google Docs, Sheets, and Slides</li>
+<li>Search across your Drive for specific research or project files</li>
+<li>Access shared folders for team design documentation</li>
+<li>Create new documents for research reports and specifications</li>
+</ul>
+
+<p><strong>Best for:</strong> Design teams using Google Workspace for cross-functional collaboration. Particularly useful when working with stakeholders who share briefs, feedback, and requirements via Google Docs.</p>
+
+<h2>4. Brave Search MCP Server — Design Patterns and Accessibility Research</h2>
+
+<p>Good UX design is informed by established patterns, accessibility guidelines, and current research. Brave Search gives your AI access to current design resources — Material Design updates, WCAG guidelines, Nielsen Norman Group articles, and competitor analysis — rather than relying on potentially outdated training data.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Search for current design patterns and component conventions</li>
+<li>Look up WCAG accessibility requirements for specific components</li>
+<li>Research competitor UX approaches for benchmarking</li>
+<li>Find recent usability research relevant to specific design problems</li>
+</ul>
+
+<p><strong>Best for:</strong> UX designers who need current accessibility guidance, want to benchmark against competitor patterns, or need to reference design system documentation that may have been updated after the AI's training cutoff.</p>
+
+<h2>5. Fetch MCP Server — Pull Design System Documentation</h2>
+
+<p>When implementing designs within an established design system (Carbon, Material, Ant Design, Radix), the Fetch server retrieves current component documentation — usage guidelines, accessibility notes, prop specs — so your AI can provide guidance that matches the actual component API.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Fetch design system documentation pages as clean Markdown</li>
+<li>Pull component usage guidelines and accessibility requirements</li>
+<li>Read design token documentation from public design systems</li>
+<li>Access pattern library documentation from third-party systems</li>
+</ul>
+
+<p><strong>Best for:</strong> Designers working within established design systems. When a developer asks which component to use for a specific use case, your AI can pull the official guidance from the design system docs rather than guessing.</p>
+
+<h2>6. GitHub MCP Server — Design-Dev Handoff and Feedback</h2>
+
+<p>The gap between design and implementation is a primary source of UX quality loss. The GitHub MCP server connects designers to the implementation side — reading component code to verify it matches specifications, checking open issues for design-related bugs, and reviewing PR descriptions for design feedback.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read component implementation code to verify spec adherence</li>
+<li>Browse open design-related issues and bug reports</li>
+<li>Create issues for design discrepancies discovered in implementation</li>
+<li>Search codebase for specific component usage to understand context</li>
+</ul>
+
+<p><strong>Best for:</strong> UX designers who collaborate closely with engineering teams. Being able to check how a component is actually implemented — versus how it was designed — is invaluable for maintaining design system consistency over time.</p>
+
+<h2>7. Slack MCP Server — Stakeholder Feedback and Research Coordination</h2>
+
+<p>UX work is deeply collaborative — managing stakeholder feedback, coordinating research sessions, following up on design decisions. The Slack MCP server gives your AI access to the conversation history around design decisions for context and follow-up.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Search conversation history for specific design decisions and rationale</li>
+<li>Read feedback threads on specific designs or prototypes</li>
+<li>Draft update messages for design review sessions</li>
+<li>Access DMs with stakeholders for project context</li>
+</ul>
+
+<p><strong>Best for:</strong> UX designers on teams where design feedback and decisions happen primarily in Slack. Being able to pull a full conversation thread about a design decision into your AI context helps reconstruct the rationale when revisiting earlier work.</p>
+
+<h2>Recommended UX Designer Stack</h2>
+
+<p>Start with the research-to-handoff core:</p>
+
+<ol>
+<li><strong>Figma</strong> — non-negotiable for accurate design specifications and handoff</li>
+<li><strong>Notion</strong> — connect your research repository to your AI workflow</li>
+<li><strong>Brave Search</strong> — current accessibility guidelines and design patterns</li>
+</ol>
+
+<p>Add Google Drive for document-based collaboration, GitHub for design-dev handoff verification, and Slack for stakeholder feedback context. This stack gives your AI the full picture of a UX workflow — from initial research through design specification and developer handoff.</p>
+
+<p>Browse all MCP servers at <a href="/servers">MyMCPTools</a>. See also <a href="/blog/best-mcp-servers-for-content-creation">Best MCP Servers for Content Creation</a> and <a href="/blog/best-mcp-servers-for-productivity">Best MCP Servers for Productivity</a>.</p>
+    `.trim(),
+  },
 ];
 
 export function getBlogPostBySlug(slug: string): BlogPost | undefined {
