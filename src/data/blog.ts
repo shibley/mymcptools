@@ -27106,6 +27106,440 @@ async with MCPServerStdio(
 <p>Browse all data-relevant MCP servers at <a href="/servers">MyMCPTools</a>. See also <a href="/blog/best-mcp-servers-for-data-science">Best MCP Servers for Data Scientists</a> and <a href="/blog/best-mcp-servers-for-data-engineering">Best MCP Servers for Data Engineers</a>.</p>
     `.trim(),
   },
+  {
+    slug: "best-mcp-servers-for-github-copilot",
+    title: "Best MCP Servers for GitHub Copilot: Supercharge VS Code Agent Mode",
+    description: "The top MCP servers to use with GitHub Copilot's agent mode in VS Code. Connect your AI coding assistant to databases, APIs, and dev tools for far more powerful workflows.",
+    date: "2026-05-18",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "8 min read",
+    keywords: ["mcp servers github copilot", "github copilot mcp", "vs code agent mode mcp", "copilot mcp servers", "github copilot tools", "vscode mcp extension"],
+    relatedServerSlugs: ["github", "filesystem", "fetch", "postgresql", "sentry", "docker", "brave-search", "memory"],
+    content: `
+<p>GitHub Copilot's agent mode — now available in VS Code with full MCP support — turns your AI coding assistant from a code completer into a capable autonomous agent. Instead of only reading your open files, Copilot can now call MCP servers to query databases, browse documentation, search the web, and interact with your dev toolchain.</p>
+
+<p>Here are the MCP servers that deliver the biggest productivity boost for GitHub Copilot users.</p>
+
+<h2>How MCP Works with GitHub Copilot</h2>
+
+<p>VS Code's GitHub Copilot agent mode supports MCP servers via the <code>.vscode/mcp.json</code> configuration file (or user settings). When you ask Copilot a question in agent mode, it can invoke any MCP tool available — fetching real data, running queries, or reading files beyond your workspace.</p>
+
+<p>The key insight: MCP servers give Copilot context it couldn't have otherwise. Instead of hallucinating your database schema, it can inspect it directly. Instead of suggesting outdated API calls, it can fetch the current documentation first.</p>
+
+<h2>1. Filesystem MCP Server — Full Workspace Awareness</h2>
+
+<p>The built-in Copilot context covers your open editor tabs. The Filesystem MCP server covers your entire project — configuration files, hidden directories, build outputs, and any file not currently open.</p>
+
+<p><strong>Why it matters for Copilot users:</strong></p>
+<ul>
+<li>Copilot can read your <code>.env.example</code> to understand environment variable requirements</li>
+<li>It can inspect your <code>package.json</code> scripts, CI configuration, and Docker files holistically</li>
+<li>Multi-repo workspaces become manageable — Copilot can traverse the full directory structure</li>
+<li>Build artifacts, generated types, and compiled outputs are accessible for debugging</li>
+</ul>
+
+<p><strong>Best for:</strong> All Copilot users. This is the highest-ROI MCP server to add first.</p>
+
+<h2>2. GitHub MCP Server — Repository Intelligence</h2>
+
+<p>GitHub Copilot already has some awareness of GitHub through its training data, but the GitHub MCP server provides real-time access to your specific repositories: open issues, pull requests, commit history, and code search across branches.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Search issues and PRs by keyword, label, or assignee</li>
+<li>Read the full context of any issue before implementing a fix</li>
+<li>Browse commit history to understand why a piece of code was written</li>
+<li>Create issues, comments, and PR descriptions without leaving VS Code</li>
+<li>Cross-reference code changes with related issues automatically</li>
+</ul>
+
+<p><strong>Best workflow:</strong> Ask Copilot "implement the fix described in issue #247" — it reads the issue, checks related code, and implements the solution with full context.</p>
+
+<h2>3. Fetch MCP Server — Live Documentation Access</h2>
+
+<p>Copilot's training data has a cutoff. New library versions, updated APIs, and recently released frameworks may be partially or fully unknown to it. The Fetch server solves this permanently.</p>
+
+<p><strong>Use cases:</strong></p>
+<ul>
+<li>Fetch the latest docs for any npm package before using it</li>
+<li>Read changelog entries to understand breaking changes in a new major version</li>
+<li>Access internal documentation sites that Copilot has never seen</li>
+<li>Pull API references from vendor documentation portals</li>
+</ul>
+
+<p><strong>Example prompt:</strong> "Fetch the migration guide from Next.js 14 to 15 and help me update this project."</p>
+
+<h2>4. PostgreSQL / SQLite MCP Server — Database Schema Access</h2>
+
+<p>One of the most common sources of Copilot hallucinations is database schema. When Copilot guesses at column names and relationships, it generates incorrect queries. With a database MCP server, it works from your actual schema.</p>
+
+<p><strong>What changes with database MCP:</strong></p>
+<ul>
+<li>Generated queries reference real column names and types — no more fixing schema mismatches</li>
+<li>Foreign key relationships are understood automatically</li>
+<li>Copilot can suggest index improvements based on actual table structures</li>
+<li>ORM model generation (Prisma, Drizzle, TypeORM) aligns with your existing database</li>
+</ul>
+
+<p><strong>Safety note:</strong> Configure database MCP servers with read-only credentials for production databases. Use a read-only replica if available.</p>
+
+<h2>5. Sentry MCP Server — Debug with Error Context</h2>
+
+<p>When you're debugging a production issue, copying Sentry stack traces into Copilot chat is slow and loses context. The Sentry MCP server lets Copilot query your error tracking directly.</p>
+
+<p><strong>Debugging workflow:</strong></p>
+<ul>
+<li>Ask "what are the top 5 errors in production this week?" — Copilot queries Sentry directly</li>
+<li>Drill into a specific error: full stack trace, breadcrumbs, affected users, and related releases</li>
+<li>Cross-reference error patterns with recent commits to identify regressions</li>
+<li>Generate fix proposals with full error context already loaded</li>
+</ul>
+
+<h2>6. Docker MCP Server — Container Awareness</h2>
+
+<p>Modern development runs in containers. The Docker MCP server gives Copilot visibility into your running containers, images, volumes, and compose configurations.</p>
+
+<p><strong>Useful for:</strong></p>
+<ul>
+<li>Diagnosing container startup failures with real log access</li>
+<li>Understanding what's running in your development environment before writing code that interacts with it</li>
+<li>Generating accurate Docker configurations based on your actual image catalog</li>
+</ul>
+
+<h2>7. Brave Search MCP Server — Real-Time Web Search</h2>
+
+<p>When Copilot hits the edge of its training data — obscure libraries, very recent framework changes, Stack Overflow answers to novel errors — Brave Search gives it a path to current information.</p>
+
+<p><strong>Best for:</strong> Debugging unusual errors, evaluating new libraries, and answering "what's the current best practice for X" questions in fast-moving ecosystems like React and Next.js.</p>
+
+<h2>8. Memory MCP Server — Project Context Persistence</h2>
+
+<p>Copilot loses context between sessions. The Memory server persists important project knowledge across conversations: architectural decisions, naming conventions, business logic rules, and team standards.</p>
+
+<p><strong>What to store:</strong></p>
+<ul>
+<li>Architectural decisions and their rationale ("we use X pattern because Y")</li>
+<li>Naming conventions for your codebase</li>
+<li>Business domain terminology Copilot should know</li>
+<li>Known technical debt areas to avoid</li>
+</ul>
+
+<h2>Setting Up MCP Servers in VS Code for GitHub Copilot</h2>
+
+<p>Add a <code>.vscode/mcp.json</code> file to your project:</p>
+
+<pre><code>{
+  "servers": {
+    "filesystem": {
+      "type": "stdio",
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-filesystem", "/path/to/project"]
+    },
+    "github": {
+      "type": "stdio",
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-github"],
+      "env": {
+        "GITHUB_PERSONAL_ACCESS_TOKEN": "\${env:GITHUB_TOKEN}"
+      }
+    },
+    "fetch": {
+      "type": "stdio",
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-fetch"]
+    }
+  }
+}</code></pre>
+
+<p>VS Code will prompt you to approve server connections the first time. Each tool call appears inline in the Copilot chat, so you can see exactly what data your AI is accessing.</p>
+
+<h2>Recommended Copilot MCP Stack by Role</h2>
+
+<p><strong>Frontend developer:</strong> Filesystem + Fetch + Brave Search</p>
+<p><strong>Full-stack developer:</strong> Filesystem + GitHub + PostgreSQL + Fetch</p>
+<p><strong>Backend/API developer:</strong> Filesystem + GitHub + PostgreSQL + Sentry</p>
+<p><strong>DevOps-adjacent developer:</strong> Filesystem + Docker + GitHub + Fetch</p>
+
+<p>Start with Filesystem + Fetch as a baseline — those two servers eliminate the most common Copilot frustrations (stale docs, incomplete workspace context) with minimal setup. Add database and error tracking servers once you've felt the difference those make.</p>
+
+<p>Browse all available MCP servers at <a href="/servers">MyMCPTools</a>. See also <a href="/blog/best-mcp-servers-for-cursor">Best MCP Servers for Cursor</a> and <a href="/blog/best-mcp-servers-for-vs-code">Best MCP Servers for VS Code</a>.</p>
+    `.trim(),
+  },
+  {
+    slug: "best-mcp-servers-for-debugging",
+    title: "Best MCP Servers for Debugging: Fix Bugs Faster with AI Context",
+    description: "The top MCP servers for debugging workflows. Connect your AI assistant to error tracking, logs, browser DevTools, and databases so it debugs with real context instead of guesses.",
+    date: "2026-05-18",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "7 min read",
+    keywords: ["mcp servers debugging", "mcp debug tools", "ai debugging assistant", "mcp sentry", "mcp error tracking", "ai bug fixing mcp"],
+    relatedServerSlugs: ["sentry", "filesystem", "github", "postgresql", "playwright", "chrome-devtools", "logfire", "fetch"],
+    content: `
+<p>Debugging is where AI assistants most frequently fail: they see the error message you paste but none of the context that explains it. MCP servers change this. By connecting your AI to live error tracking, logs, database state, and browser diagnostics, you can debug with the same context an experienced engineer would have — not just a stripped stack trace.</p>
+
+<p>Here are the MCP servers that make the biggest difference for debugging workflows.</p>
+
+<h2>Why Context Makes or Breaks AI Debugging</h2>
+
+<p>When you paste an error message into an AI chat without MCP, you get generic suggestions: "check your environment variables," "make sure you're using the right version," "verify your imports." These answers are useless when you've already checked all of them.</p>
+
+<p>With MCP servers, your AI can:</p>
+<ul>
+<li>Read the actual stack trace from Sentry, not a copy-pasted excerpt</li>
+<li>Query the database state at the time the error occurred</li>
+<li>Inspect the browser DOM and console errors directly</li>
+<li>Cross-reference the error with recent commits to find regressions</li>
+<li>Search logs for related errors across your entire application</li>
+</ul>
+
+<p>The result is debugging suggestions that are specific to your actual codebase and runtime state — not generic patterns.</p>
+
+<h2>1. Sentry MCP Server — Production Error Intelligence</h2>
+
+<p>Sentry is where production bugs live. The Sentry MCP server gives your AI direct access to your error tracking without requiring you to navigate the Sentry UI and copy data manually.</p>
+
+<p><strong>Debugging workflows enabled:</strong></p>
+<ul>
+<li>"What are the top errors introduced in the last release?" — Copilot queries Sentry, returns ranked list</li>
+<li>Full stack trace access including breadcrumbs, user context, and release information</li>
+<li>Error frequency trends to distinguish regressions from pre-existing issues</li>
+<li>Issue assignment and resolution without leaving your editor</li>
+<li>Cross-reference errors with specific deployments or commits</li>
+</ul>
+
+<p><strong>Best prompt pattern:</strong> "Pull the details on Sentry issue PROJ-1234 and suggest a fix." Your AI gets the full event context — stack trace, breadcrumbs, environment, affected users — and proposes a solution against your actual code.</p>
+
+<h2>2. Filesystem MCP Server — Read Everything Around the Error</h2>
+
+<p>Stack traces point to file paths. The Filesystem server lets your AI read those files directly — along with configuration files, logs, and any other files in your project.</p>
+
+<p><strong>For debugging specifically:</strong></p>
+<ul>
+<li>Read the full function containing the error, not just the line number</li>
+<li>Inspect configuration files (database configs, environment setups) that might cause the issue</li>
+<li>Access log files written to disk during the error</li>
+<li>Read test files to understand intended behavior vs. actual behavior</li>
+<li>Check package.json and lockfiles to identify dependency version mismatches</li>
+</ul>
+
+<h2>3. GitHub MCP Server — Blame and History</h2>
+
+<p>Many bugs are regressions: something that worked before, broken by a recent change. The GitHub server lets your AI trace the history of a piece of code to find when and why it changed.</p>
+
+<p><strong>Regression debugging workflow:</strong></p>
+<ul>
+<li>Search commits touching the file where the error occurs</li>
+<li>Read the PR description and review comments for context on recent changes</li>
+<li>Compare the current implementation against a working historical version</li>
+<li>Find related issues or PRs that might describe the same bug</li>
+</ul>
+
+<p><strong>Example:</strong> "Look at the git history for <code>src/api/payments.ts</code> and find what changed in the last 2 weeks that could cause the error in Sentry issue #847."</p>
+
+<h2>4. PostgreSQL / SQLite MCP Server — Database State Debugging</h2>
+
+<p>Many bugs manifest in the data layer: unexpected nulls, violated constraints, missing records, bad joins. With a database MCP server, your AI can inspect the actual data state — not a description of it.</p>
+
+<p><strong>Data debugging scenarios:</strong></p>
+<ul>
+<li>Run queries to reproduce the data state that triggered the error</li>
+<li>Inspect schema constraints to understand why an insert failed</li>
+<li>Check for missing indexes causing unexpected query timeouts</li>
+<li>Verify foreign key relationships when associations aren't loading correctly</li>
+<li>Compare expected vs. actual data for a specific user or record</li>
+</ul>
+
+<p><strong>Safety:</strong> Always use read-only database credentials for MCP connections to production databases.</p>
+
+<h2>5. Playwright / Puppeteer MCP Server — Browser Debugging</h2>
+
+<p>Frontend bugs are notoriously hard to debug from descriptions alone. Playwright and Puppeteer MCP servers let your AI control a browser to reproduce issues directly.</p>
+
+<p><strong>Frontend debugging workflows:</strong></p>
+<ul>
+<li>Navigate to a specific URL and take a screenshot to see the current rendering state</li>
+<li>Interact with UI elements to reproduce click-path bugs</li>
+<li>Execute JavaScript in the page context to inspect component state</li>
+<li>Monitor network requests to catch failed API calls</li>
+<li>Capture console errors that don't appear in your stack trace</li>
+</ul>
+
+<p><strong>Best for:</strong> Visual regressions, interaction bugs, and timing-dependent UI issues that are impossible to explain by description alone.</p>
+
+<h2>6. Chrome DevTools MCP Server — Runtime Inspection</h2>
+
+<p>The Chrome DevTools MCP server provides programmatic access to Chrome's debugging protocol. Instead of explaining what you see in DevTools, your AI can inspect it directly.</p>
+
+<p><strong>Capabilities:</strong></p>
+<ul>
+<li>Read the DOM structure of a live page</li>
+<li>Inspect network requests and response bodies</li>
+<li>Access the JavaScript console log</li>
+<li>Profile performance to find bottlenecks</li>
+<li>Inspect Web Storage (localStorage, sessionStorage, cookies)</li>
+</ul>
+
+<h2>7. Logfire MCP Server — Structured Log Analysis</h2>
+
+<p>Application logs contain the full story of a bug, but searching through them manually is slow. The Logfire MCP server makes your structured logs queryable by your AI assistant.</p>
+
+<p><strong>Log debugging workflows:</strong></p>
+<ul>
+<li>Search logs by error message, user ID, request ID, or time range</li>
+<li>Trace a specific request through your distributed system</li>
+<li>Find log patterns that precede the error to understand its cause chain</li>
+<li>Compare log behavior before and after a deployment</li>
+</ul>
+
+<h2>8. Fetch MCP Server — Documentation Lookup</h2>
+
+<p>Sometimes a bug is caused by using a library incorrectly. The Fetch server lets your AI check the current documentation for the library version you're actually using — catching API mismatches, deprecated methods, and version-specific behavior changes.</p>
+
+<h2>Debugging MCP Stack Recommendations</h2>
+
+<p><strong>Backend bugs:</strong> Sentry + Filesystem + GitHub + PostgreSQL</p>
+<p><strong>Frontend bugs:</strong> Filesystem + GitHub + Playwright + Chrome DevTools</p>
+<p><strong>Data layer bugs:</strong> PostgreSQL + Filesystem + Fetch</p>
+<p><strong>Production incidents:</strong> Sentry + Logfire + GitHub + Filesystem</p>
+<p><strong>Full-stack debugging:</strong> Sentry + Filesystem + GitHub + PostgreSQL + Playwright</p>
+
+<h2>The Debugging Multiplier Effect</h2>
+
+<p>The real power of MCP for debugging isn't any single server — it's the combination. When your AI can simultaneously read the error from Sentry, inspect the database state that triggered it, read the full file context from the filesystem, and trace the recent commits that changed the code, it can generate a root cause analysis that would take an engineer 30-60 minutes of manual investigation.</p>
+
+<p>Start with Sentry + Filesystem as your debugging baseline. Add database access once you've seen how much faster schema-aware debugging is. Then add browser tooling if you work on frontends.</p>
+
+<p>Browse all MCP servers at <a href="/servers">MyMCPTools</a>. See also <a href="/blog/best-mcp-servers-for-developers">Best MCP Servers for Developers</a> and <a href="/blog/best-mcp-servers-for-qa-engineers">Best MCP Servers for QA Engineers</a>.</p>
+    `.trim(),
+  },
+  {
+    slug: "best-mcp-servers-for-replit",
+    title: "Best MCP Servers for Replit: Extend Your AI Agent with Real Tools",
+    description: "Top MCP servers to use with Replit's AI agent. Connect your Replit projects to databases, web search, APIs, and external services for more capable AI-assisted development.",
+    date: "2026-05-18",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "6 min read",
+    keywords: ["mcp servers replit", "replit mcp", "replit ai agent mcp", "replit mcp tools", "mcp replit integration", "replit model context protocol"],
+    relatedServerSlugs: ["replit", "filesystem", "fetch", "postgresql", "brave-search", "github", "memory", "sqlite"],
+    content: `
+<p>Replit's AI agent is one of the most accessible ways to build with AI assistance — but like all AI coding tools, it works best when it has access to real context. MCP servers extend Replit's agent with live data: database schemas, web search, documentation, and external APIs that make it dramatically more capable.</p>
+
+<p>Here are the MCP servers that deliver the most value for Replit developers.</p>
+
+<h2>MCP in Replit: What's Possible</h2>
+
+<p>Replit supports MCP server configuration through its agent settings, allowing the AI to call external tools during your development sessions. The agent can browse your codebase, query databases, fetch documentation, and interact with APIs — all within the Replit environment.</p>
+
+<p>For developers building on Replit, MCP servers are especially valuable because:</p>
+<ul>
+<li>Replit projects often integrate with external databases and APIs that the AI has no knowledge of</li>
+<li>Quick prototypes frequently need live web data or current documentation</li>
+<li>The cloud-first nature of Replit makes database MCP connections straightforward to configure</li>
+<li>New developers on Replit benefit most from an AI that can fetch documentation for libraries they're learning</li>
+</ul>
+
+<h2>1. Fetch MCP Server — Fetch Any URL or Documentation Page</h2>
+
+<p>The single highest-impact MCP server for Replit developers. The Fetch server lets the AI retrieve any URL — documentation pages, API references, README files, or any public web content — and use it as context.</p>
+
+<p><strong>Why it's #1 for Replit:</strong></p>
+<ul>
+<li>Replit is popular for learning new technologies — Fetch lets your AI read current docs for any library</li>
+<li>External API integration (the most common Replit use case) requires up-to-date API documentation</li>
+<li>Package documentation, changelog entries, and migration guides are always current</li>
+<li>Internal API docs, Notion pages, and private documentation are accessible</li>
+</ul>
+
+<p><strong>Example:</strong> "Fetch the Stripe webhook documentation and help me implement webhook signature verification in my Express app."</p>
+
+<h2>2. Brave Search MCP Server — Web Search from Your AI</h2>
+
+<p>When documentation isn't at a specific URL, web search fills the gap. Brave Search MCP lets Replit's agent search the web for answers, examples, and solutions to problems its training data doesn't cover.</p>
+
+<p><strong>Best for Replit use cases:</strong></p>
+<ul>
+<li>Finding code examples for unfamiliar libraries</li>
+<li>Looking up error messages to find community-proven solutions</li>
+<li>Discovering best practices for the specific stack you're building</li>
+<li>Checking if a library or service is still maintained before adding it as a dependency</li>
+</ul>
+
+<h2>3. PostgreSQL MCP Server — Database Schema Awareness</h2>
+
+<p>Many Replit projects connect to external PostgreSQL databases (Neon, Supabase, Railway, or self-hosted). Without MCP, Replit's AI guesses at your schema. With the PostgreSQL server, it reads it directly.</p>
+
+<p><strong>For Replit database projects:</strong></p>
+<ul>
+<li>The AI generates accurate queries using your real column names and types</li>
+<li>Schema migration suggestions are based on your actual table structure</li>
+<li>ORM model generation (with Prisma, Drizzle, or raw SQL) matches your database</li>
+<li>Foreign key relationships are understood without manual explanation</li>
+</ul>
+
+<p><strong>Works well with:</strong> Neon Postgres (popular Replit database), Supabase, Railway, and standard PostgreSQL instances.</p>
+
+<h2>4. SQLite MCP Server — Local Database Projects</h2>
+
+<p>For smaller Replit projects that use SQLite — which includes most tutorial apps, personal tools, and prototypes — the SQLite MCP server provides the same schema awareness without requiring an external database connection.</p>
+
+<p><strong>Ideal for:</strong> Beginners learning SQL with AI assistance, quick data persistence projects, and apps where you want to stay entirely within Replit's environment.</p>
+
+<h2>5. GitHub MCP Server — Repository Access</h2>
+
+<p>Replit developers frequently start projects by forking repos or working from GitHub repositories. The GitHub MCP server gives your AI real-time access to repository content, issues, and history.</p>
+
+<p><strong>Useful for:</strong></p>
+<ul>
+<li>Reading the source of a library you've installed to understand how it works</li>
+<li>Finding examples in a repo's <code>examples/</code> directory</li>
+<li>Checking open issues before implementing a workaround for a bug</li>
+<li>Browsing community repos for inspiration or reference code</li>
+</ul>
+
+<h2>6. Memory MCP Server — Project Context Persistence</h2>
+
+<p>Replit sessions reset context frequently. The Memory server persists important project information across AI conversations so you don't repeat yourself every session.</p>
+
+<p><strong>What to store for Replit projects:</strong></p>
+<ul>
+<li>Your database schema (for projects where direct database MCP isn't configured)</li>
+<li>External API keys format and authentication patterns you're using</li>
+<li>Project architecture decisions and technical constraints</li>
+<li>Business logic rules that the AI needs to respect when generating code</li>
+</ul>
+
+<h2>7. Replit MCP Server — Native Integration</h2>
+
+<p>The official Replit MCP server provides first-party integration with Replit's platform features. This enables programmatic access to Replit's APIs and environment management capabilities for advanced workflows.</p>
+
+<h2>Getting Started: Minimal MCP Stack for Replit</h2>
+
+<p>If you're new to MCP, start with just two servers:</p>
+
+<ol>
+<li><strong>Fetch</strong> — Eliminates most documentation-related hallucinations immediately</li>
+<li><strong>Brave Search</strong> — Gives your AI access to current web knowledge for anything Fetch doesn't cover</li>
+</ol>
+
+<p>These two servers together cost almost nothing to set up and eliminate the most frustrating class of AI coding errors: suggestions based on outdated or incorrect library documentation.</p>
+
+<p>Add database access (PostgreSQL or SQLite) once you're comfortable with MCP and are working on a project with a significant data layer. Add Memory for projects you'll return to across multiple sessions.</p>
+
+<h2>Recommended Stacks by Replit Project Type</h2>
+
+<p><strong>Learning project / tutorial:</strong> Fetch + Brave Search</p>
+<p><strong>API integration project:</strong> Fetch + Brave Search + GitHub</p>
+<p><strong>Database-backed app:</strong> Fetch + PostgreSQL + Memory</p>
+<p><strong>Full-stack web app:</strong> Fetch + PostgreSQL + GitHub + Memory</p>
+
+<p>MCP makes Replit's AI agent significantly more reliable on the types of projects where it matters most — integrating external APIs, working with databases, and building on libraries that change faster than AI training data. Start simple, add servers as your projects grow.</p>
+
+<p>Browse all MCP servers at <a href="/servers">MyMCPTools</a>. See also <a href="/blog/getting-started-with-mcp">Getting Started with MCP</a> and <a href="/blog/best-mcp-servers-for-developers">Best MCP Servers for Developers</a>.</p>
+    `.trim(),
+  },
 ];
 
 export function getBlogPostBySlug(slug: string): BlogPost | undefined {
