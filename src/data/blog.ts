@@ -27540,6 +27540,392 @@ async with MCPServerStdio(
 <p>Browse all MCP servers at <a href="/servers">MyMCPTools</a>. See also <a href="/blog/getting-started-with-mcp">Getting Started with MCP</a> and <a href="/blog/best-mcp-servers-for-developers">Best MCP Servers for Developers</a>.</p>
     `.trim(),
   },
+  {
+    slug: "best-mcp-servers-for-sql-developers",
+    title: "Best MCP Servers for SQL Developers in 2026",
+    description: "The top MCP servers for SQL developers — from PostgreSQL and Snowflake to DuckDB and BigQuery. Query databases conversationally, explore schemas instantly, and write accurate SQL with AI that actually understands your data.",
+    date: "2026-05-18",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "7 min read",
+    keywords: ["best mcp servers for sql", "mcp server sql", "sql mcp tools", "database mcp server 2026", "postgres mcp", "snowflake mcp"],
+    relatedServerSlugs: ["postgresql", "sqlite", "snowflake", "bigquery", "clickhouse", "duckdb", "supabase", "neon", "mongodb"],
+    content: `
+<p>SQL developers spend a remarkable amount of time in context-switching hell — jumping between a database client, documentation, and an AI chat window, copying schemas back and forth. MCP servers eliminate that friction. The right setup gives your AI assistant live access to your database structure, so it can write accurate queries without hallucinating column names.</p>
+
+<p>Here are the MCP servers that matter most for SQL-heavy workflows in 2026.</p>
+
+<h2>1. PostgreSQL MCP Server — The Foundation</h2>
+
+<p>If you're working with PostgreSQL, this is non-negotiable. The PostgreSQL MCP server gives your AI assistant direct schema introspection — tables, columns, data types, constraints, foreign keys — so every query it writes is structurally accurate.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Full schema inspection (tables, views, indexes, constraints)</li>
+<li>Read-only query execution with row limits for safety</li>
+<li>Multi-schema and multi-database support</li>
+<li>Query plan analysis for performance work</li>
+</ul>
+
+<p><strong>Best for:</strong> Backend developers, data analysts, and anyone who's tired of AI writing SQL that references columns that don't exist. The moment you connect it to your real schema, query quality improves dramatically.</p>
+
+<h2>2. Snowflake MCP Server — Data Warehouse SQL</h2>
+
+<p>Snowflake's MCP integration brings warehouse-scale SQL into your AI workflow. Perfect for analysts and data engineers who live in Snowflake for reporting, dbt workflows, and ad-hoc analysis.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Warehouse and database schema browsing</li>
+<li>Query execution with cost awareness</li>
+<li>Stage and file format introspection</li>
+<li>Role-based access (runs queries as your configured role)</li>
+</ul>
+
+<p><strong>Best for:</strong> Data teams running analytics on Snowflake. Ask your AI to write complex window functions or multi-table joins and it'll have the actual schema to work from — not guesses.</p>
+
+<h2>3. DuckDB MCP Server — Fast Local Analytics</h2>
+
+<p>DuckDB has become the go-to for local analytical workloads — fast, zero-dependency, handles Parquet files natively. Its MCP server makes it an ideal pairing for AI-assisted data exploration.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>In-process analytical SQL — no server required</li>
+<li>Native Parquet, CSV, and JSON file querying</li>
+<li>Schema inference from raw files</li>
+<li>Fast aggregation on large datasets</li>
+</ul>
+
+<p><strong>Best for:</strong> Data scientists and analysts working with local files. Point DuckDB at a folder of Parquet files and have your AI write analytical queries across them — no database setup needed.</p>
+
+<h2>4. BigQuery MCP Server — Petabyte-Scale SQL</h2>
+
+<p>Google's BigQuery MCP server connects your AI to GCP's serverless data warehouse. Ideal for teams with large datasets and complex analytical workloads who want AI-assisted query authoring.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Dataset and table schema exploration</li>
+<li>Dry-run mode to estimate query costs before executing</li>
+<li>Partitioned table awareness</li>
+<li>Project and dataset-level access control</li>
+</ul>
+
+<p><strong>Best for:</strong> GCP-native data teams. The dry-run capability is particularly valuable — your AI can see how expensive a query will be before running it on petabytes of data.</p>
+
+<h2>5. SQLite MCP Server — Lightweight Local SQL</h2>
+
+<p>Don't overlook SQLite. It powers mobile apps, Electron applications, local tools, and countless embedded systems. The SQLite MCP server handles schema introspection and query execution for local database files.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Schema browsing for local .db and .sqlite files</li>
+<li>Read-write query support (configurable)</li>
+<li>No external process — opens files directly</li>
+<li>Works with any SQLite-compatible database</li>
+</ul>
+
+<p><strong>Best for:</strong> Mobile developers, Electron app builders, and anyone doing local prototyping. Pair it with a filesystem MCP server to let your AI find and query SQLite files in your project.</p>
+
+<h2>6. ClickHouse MCP Server — Real-Time Analytics</h2>
+
+<p>ClickHouse is the engine behind many real-time analytics dashboards and event stores. Its MCP server makes it practical to have AI assist with the complex aggregation queries ClickHouse is optimized for.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Table and engine inspection (MergeTree family, Distributed)</li>
+<li>Materialized view introspection</li>
+<li>Read-optimized query execution</li>
+<li>Support for ClickHouse-specific SQL extensions</li>
+</ul>
+
+<p><strong>Best for:</strong> Teams building analytics dashboards, event processing systems, or time-series workloads on ClickHouse.</p>
+
+<h2>7. Supabase MCP Server — Postgres + Auth in One</h2>
+
+<p>Supabase wraps PostgreSQL with authentication, real-time subscriptions, and storage. Its MCP server exposes both the database layer and the platform layer, making it ideal for full-stack developers who use Supabase as their backend.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>PostgreSQL schema and row-level security policy inspection</li>
+<li>Edge function management</li>
+<li>Storage bucket operations</li>
+<li>Auth user and policy management</li>
+</ul>
+
+<p><strong>Best for:</strong> Developers building on Supabase who want AI that understands both their schema and their security model.</p>
+
+<h2>Recommended SQL Developer Stack</h2>
+
+<p>For most SQL-focused workflows, start with:</p>
+
+<ol>
+<li><strong>Your primary database MCP</strong> (PostgreSQL, Snowflake, or BigQuery depending on your stack)</li>
+<li><strong>Brave Search</strong> — for database documentation lookups and error research</li>
+<li><strong>Filesystem</strong> — to read migration files, ORM models, and seed scripts alongside your queries</li>
+</ol>
+
+<p>This trio covers 90% of what SQL developers need: accurate schema-aware query generation, documentation access, and context from your codebase.</p>
+
+<p>Browse all database-related MCP servers at <a href="/servers">MyMCPTools</a>. See also <a href="/blog/best-mcp-servers-for-data-engineering">Best MCP Servers for Data Engineering</a> and <a href="/blog/best-mcp-servers-for-backend-developers">Best MCP Servers for Backend Developers</a>.</p>
+    `.trim(),
+  },
+  {
+    slug: "best-mcp-servers-for-data-pipelines",
+    title: "Best MCP Servers for Data Pipelines in 2026",
+    description: "The top MCP servers for data pipeline engineers — covering orchestration, transformation, monitoring, and warehouse integration. Build, debug, and optimize your pipelines faster with AI that has live access to your data infrastructure.",
+    date: "2026-05-18",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "8 min read",
+    keywords: ["mcp servers for data pipelines", "data pipeline mcp", "mcp server etl", "databricks mcp", "airflow mcp", "dbt mcp server"],
+    relatedServerSlugs: ["databricks", "snowflake", "bigquery", "duckdb", "postgresql", "redis", "n8n", "zapier"],
+    content: `
+<p>Data pipeline engineers work across a uniquely wide surface area — orchestrators, warehouses, transformation tools, monitoring dashboards, and source databases, often all in the same incident. MCP servers collapse that surface area by giving your AI assistant live access to the tools you're debugging and building with.</p>
+
+<p>Here are the MCP servers that deliver the most leverage for data pipeline workflows in 2026.</p>
+
+<h2>1. Databricks MCP Server — Unified Analytics Platform</h2>
+
+<p>Databricks is the hub for many modern data engineering teams — Delta Lake, Spark, MLflow, Unity Catalog, and SQL Warehouse all in one platform. Its MCP server brings that ecosystem into your AI workflow.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Unity Catalog table and schema exploration</li>
+<li>Notebook execution and job management</li>
+<li>Delta Lake table history and version inspection</li>
+<li>SQL Warehouse query execution</li>
+</ul>
+
+<p><strong>Best for:</strong> Data engineers on the Databricks/Spark stack who want AI-assisted pipeline debugging, query optimization, and Delta table analysis.</p>
+
+<h2>2. Snowflake MCP Server — Warehouse at the Center</h2>
+
+<p>For teams where Snowflake is the destination warehouse, the Snowflake MCP server makes AI-assisted pipeline development practical. Schema exploration and query execution let your AI write accurate COPY INTO statements, transformations, and stored procedures.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Stage, file format, and pipe inspection for data loading</li>
+<li>Task and stream visibility for Snowflake-native pipelines</li>
+<li>Cost-aware query execution</li>
+<li>Role and warehouse management</li>
+</ul>
+
+<p><strong>Best for:</strong> Teams using Snowflake as the load target for ELT pipelines. Particularly valuable when debugging COPY errors or optimizing transformation queries.</p>
+
+<h2>3. BigQuery MCP Server — Google Cloud Pipelines</h2>
+
+<p>BigQuery sits at the center of many GCP data stacks, often as both the destination and the transformation layer. Its MCP server enables AI-assisted authoring of complex analytical SQL across massive datasets.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Partitioned table and clustering introspection</li>
+<li>Scheduled query visibility</li>
+<li>Cost estimation via dry-run before execution</li>
+<li>Dataset-level access control awareness</li>
+</ul>
+
+<p><strong>Best for:</strong> GCP-native data teams running Dataflow, Pub/Sub, or Cloud Composer pipelines that land data in BigQuery.</p>
+
+<h2>4. PostgreSQL MCP Server — Source and Staging Database Access</h2>
+
+<p>Pipelines read from somewhere. PostgreSQL is often that source — operational databases, CDC sources, or staging schemas. The PostgreSQL MCP server gives your AI the schema context to write accurate extraction queries.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Source table schema and constraint inspection</li>
+<li>Query planning for large extraction queries</li>
+<li>Logical replication slot visibility (for CDC workflows)</li>
+<li>Multi-schema exploration</li>
+</ul>
+
+<p><strong>Best for:</strong> Engineers building extraction layers from operational PostgreSQL databases. Understanding foreign key relationships and index coverage directly improves extraction query quality.</p>
+
+<h2>5. DuckDB MCP Server — Local Pipeline Development</h2>
+
+<p>DuckDB has become the standard for local pipeline development and testing. Process Parquet files, run analytical queries, and validate transformation logic without spinning up a cloud warehouse.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Parquet, CSV, and JSON file querying without a server</li>
+<li>Schema inference from raw files</li>
+<li>Fast local aggregation for testing transformation logic</li>
+<li>Export to various formats</li>
+</ul>
+
+<p><strong>Best for:</strong> Data engineers who develop pipeline transformations locally before deploying to a cloud warehouse. Point DuckDB at sample data files and iterate on SQL logic quickly.</p>
+
+<h2>6. Redis MCP Server — Cache and Queue Inspection</h2>
+
+<p>Many data pipelines use Redis for job queues, rate limiting, deduplication sets, or intermediate caching. The Redis MCP server lets your AI inspect queue depths, cache states, and key patterns during debugging.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Key browsing and value inspection</li>
+<li>List, set, and sorted set operations</li>
+<li>Pub/sub channel inspection</li>
+<li>TTL and memory usage analysis</li>
+</ul>
+
+<p><strong>Best for:</strong> Pipeline engineers using Redis as a queue (Celery, RQ, BullMQ) or deduplication layer. When a pipeline is stuck, being able to inspect the queue state directly in your AI conversation speeds up diagnosis considerably.</p>
+
+<h2>7. n8n MCP Server — Workflow Orchestration</h2>
+
+<p>n8n is a popular open-source workflow automation platform used for lighter-weight pipeline orchestration, API integrations, and data routing. Its MCP server exposes workflow definitions for AI-assisted editing and debugging.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Workflow listing and definition access</li>
+<li>Execution history inspection</li>
+<li>Node configuration and connection visibility</li>
+<li>Credential management (read-only)</li>
+</ul>
+
+<p><strong>Best for:</strong> Teams using n8n for API-to-database pipelines, webhook processing, or integration workflows between SaaS tools.</p>
+
+<h2>Recommended Data Pipeline Stack</h2>
+
+<p>The right MCP stack depends on your orchestrator, but a general-purpose starting point for most data engineers:</p>
+
+<ol>
+<li><strong>Your warehouse MCP</strong> (Snowflake, BigQuery, or Databricks) — for transformation development and debugging</li>
+<li><strong>PostgreSQL or source DB MCP</strong> — for extraction layer development</li>
+<li><strong>DuckDB</strong> — for local testing and prototyping</li>
+<li><strong>Brave Search</strong> — for documentation, error messages, and library-specific patterns</li>
+</ol>
+
+<p>This gives your AI the full pipeline picture: where data comes from, where it goes, and the ability to test transformations locally before deploying them.</p>
+
+<p>Browse all data-related MCP servers at <a href="/servers">MyMCPTools</a>. See also <a href="/blog/best-mcp-servers-for-data-engineering">Best MCP Servers for Data Engineering</a> and <a href="/blog/best-mcp-servers-for-sql-developers">Best MCP Servers for SQL Developers</a>.</p>
+    `.trim(),
+  },
+  {
+    slug: "best-mcp-servers-for-documentation",
+    title: "Best MCP Servers for Documentation in 2026",
+    description: "The top MCP servers for writing, maintaining, and automating technical documentation. From fetching live API docs to publishing via Notion and Confluence, these servers turn AI into a documentation powerhouse.",
+    date: "2026-05-18",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "7 min read",
+    keywords: ["mcp servers for documentation", "documentation mcp", "mcp server docs", "technical writing mcp", "notion mcp server", "confluence mcp"],
+    relatedServerSlugs: ["notion", "confluence", "github", "filesystem", "fetch", "brave-search", "google-drive", "openai"],
+    content: `
+<p>Documentation is the part of software development that everyone agrees is important and almost no one enjoys. MCP servers change that equation by giving AI assistants direct access to your existing docs, your codebase, and your publishing platforms — so generating and maintaining documentation becomes a leverage multiplier rather than a chore.</p>
+
+<p>Here are the MCP servers that matter most for documentation workflows in 2026.</p>
+
+<h2>1. Filesystem MCP Server — Read the Code, Write the Docs</h2>
+
+<p>Good technical documentation requires understanding the code it describes. The filesystem MCP server gives your AI direct access to your source files — function signatures, module structure, configuration files — so it can write documentation that's actually accurate.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read source files, READMEs, and existing docs</li>
+<li>Traverse directory structures to understand project layout</li>
+<li>Write and update documentation files in place</li>
+<li>Configurable access boundaries for security</li>
+</ul>
+
+<p><strong>Best for:</strong> Any documentation workflow. This is the foundation — without access to the code, your AI is guessing. With it, generated docs reflect actual behavior.</p>
+
+<h2>2. Fetch MCP Server — Pull Live Documentation</h2>
+
+<p>When writing about third-party integrations, your AI needs access to current API documentation. The Fetch server retrieves web content in clean, AI-readable format — so your AI can reference the actual docs instead of its potentially outdated training data.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Fetch any URL and return clean Markdown</li>
+<li>Strips navigation, ads, and boilerplate</li>
+<li>Handles authentication-free pages (public docs)</li>
+<li>Works with static and rendered documentation sites</li>
+</ul>
+
+<p><strong>Best for:</strong> Writing integration guides, API references, and tutorials that reference external libraries. Point it at the official docs for a dependency and your AI will write guides based on the current API, not a stale training snapshot.</p>
+
+<h2>3. GitHub MCP Server — Docs as Code</h2>
+
+<p>For teams using a docs-as-code approach — Markdown in Git, documentation PRs, versioned docs — the GitHub MCP server connects your AI to the full repository workflow.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Browse documentation repositories and file history</li>
+<li>Create and update files via the GitHub API</li>
+<li>Open PRs for documentation updates</li>
+<li>Search code and docs across your organization</li>
+</ul>
+
+<p><strong>Best for:</strong> Engineering teams who manage documentation in GitHub alongside their code. Your AI can open a PR with new docs, update existing pages, or check what's changed in recent commits that might need documentation updates.</p>
+
+<h2>4. Notion MCP Server — Collaborative Docs Platform</h2>
+
+<p>Notion has become a dominant platform for team documentation — product specs, runbooks, wikis, and onboarding guides. Its MCP server lets your AI read existing Notion content and create new pages.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read and search Notion pages and databases</li>
+<li>Create new pages and update existing content</li>
+<li>Database record creation and updates</li>
+<li>Block-level content manipulation</li>
+</ul>
+
+<p><strong>Best for:</strong> Teams using Notion as their primary documentation platform. Have your AI draft runbooks, update product specs, or maintain a database of API endpoints — all directly in Notion without copy-pasting.</p>
+
+<h2>5. Confluence MCP Server — Enterprise Documentation</h2>
+
+<p>Confluence remains the standard for enterprise documentation — particularly for engineering orgs using Atlassian's ecosystem alongside Jira. Its MCP server makes AI-assisted documentation practical at scale.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Space and page browsing</li>
+<li>Content creation and updates</li>
+<li>Comment and inline feedback support</li>
+<li>Macro-aware content handling</li>
+</ul>
+
+<p><strong>Best for:</strong> Enterprise teams using Confluence for architecture docs, API references, incident runbooks, and team wikis. Particularly valuable for keeping documentation in sync with rapidly changing codebases.</p>
+
+<h2>6. Brave Search MCP Server — Research for Documentation</h2>
+
+<p>Good documentation requires understanding how concepts are explained in the broader ecosystem — what terminology is standard, what examples resonate, what related tools exist. Brave Search brings that research directly into your documentation workflow.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Web search for current terminology and conventions</li>
+<li>News filtering for recent library releases</li>
+<li>Snippet extraction for quick reference</li>
+<li>Independent index (not Google)</li>
+</ul>
+
+<p><strong>Best for:</strong> Documentation writers who need to research how to explain complex concepts, find analogies, or verify that terminology aligns with current industry standards.</p>
+
+<h2>7. Google Drive MCP Server — Document Collaboration</h2>
+
+<p>For teams working in Google Docs for collaborative documentation — design documents, RFCs, meeting notes that become specs — the Google Drive MCP server connects your AI to that content.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read and search Google Docs, Sheets, and Slides</li>
+<li>Create new documents</li>
+<li>Drive folder browsing and file search</li>
+<li>Comment reading</li>
+</ul>
+
+<p><strong>Best for:</strong> Teams using Google Workspace for documentation. Have your AI read an RFC, understand the context, and help write the corresponding API documentation or implementation guide.</p>
+
+<h2>Recommended Documentation Stack</h2>
+
+<p>The right stack depends on where your docs live, but this combination covers most workflows:</p>
+
+<ol>
+<li><strong>Filesystem</strong> — read the code, write the docs in your repo</li>
+<li><strong>Fetch</strong> — pull live third-party documentation when writing integration guides</li>
+<li><strong>GitHub</strong> — open PRs, manage docs-as-code workflow</li>
+<li><strong>Your docs platform</strong> (Notion, Confluence, or Google Drive) — publish to where your team reads docs</li>
+</ol>
+
+<p>This stack turns documentation from a manual chore into an AI-assisted workflow: read the code, fetch current references, write the docs, and publish — without leaving your AI conversation.</p>
+
+<p>Browse all MCP servers at <a href="/servers">MyMCPTools</a>. See also <a href="/blog/best-mcp-servers-for-technical-writers">Best MCP Servers for Technical Writers</a> and <a href="/blog/best-mcp-servers-for-developers">Best MCP Servers for Developers</a>.</p>
+    `.trim(),
+  },
 ];
 
 export function getBlogPostBySlug(slug: string): BlogPost | undefined {
