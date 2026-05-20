@@ -29824,6 +29824,356 @@ async with MCPServerStdio(
 <p>Browse all MCP servers at <a href="/servers">MyMCPTools</a>. See also <a href="/blog/best-mcp-servers-for-react-developers">Best MCP Servers for React Developers</a> and <a href="/blog/best-mcp-servers-for-backend-developers">Best MCP Servers for Backend Developers</a>.</p>
     `.trim(),
   },
+  {
+    slug: "best-mcp-servers-for-go-developers",
+    title: "Best MCP Servers for Go Developers in 2026",
+    description: "The top MCP servers for Go developers — filesystem access for idiomatic Go codebases, GitHub for PR reviews, PostgreSQL for schema-aware queries, and Go-specific tooling context. Build faster with AI that understands your actual Go project.",
+    date: "2026-05-20",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "7 min read",
+    keywords: ["mcp servers for go developers", "golang mcp server", "go developer ai tools 2026", "best mcp servers golang", "go mcp server 2026"],
+    relatedServerSlugs: ["filesystem", "github", "postgresql", "brave-search", "docker", "redis"],
+    content: `
+<p>Go developers work with one of the most opinionated languages in the ecosystem — idiomatic Go patterns, strict error handling conventions, interface-based design, goroutines, channels, and a flat package structure that differs sharply from Java or Python conventions. MCP servers give your AI direct access to your actual Go project: the real module graph, the database schema your service queries, the GitHub PRs your team is reviewing, and the Go documentation for the specific module version you're using. Here are the MCP servers that deliver the most value for Go developers in 2026.</p>
+
+<h2>1. Filesystem MCP Server — Go Project Navigation</h2>
+
+<p>Go projects have strong structural conventions — package-per-directory, internal packages, cmd/ for entry points, pkg/ for reusable code, and idiomatic file naming. The Filesystem server gives your AI access to your actual project so generated code follows your real package hierarchy, interface definitions, and error handling patterns — not generic Go templates.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read any file or directory in the Go module without leaving your AI conversation</li>
+<li>Explore package structures, interface definitions, and struct layouts</li>
+<li>Access go.mod and go.sum for dependency version context</li>
+<li>Read test files alongside implementation files for test-driven development</li>
+<li>Navigate nested packages within cmd/, internal/, and pkg/ hierarchies</li>
+</ul>
+
+<p><strong>Best for:</strong> Generating code that follows your conventions. Ask "read the existing handler patterns in the internal/api/ package, look at how we do request validation and error responses, then generate a new handler for POST /api/v1/orders that follows exactly the same patterns including our custom ErrorResponse type and structured logging" — getting Go code that matches your actual codebase rather than generic textbook patterns.</p>
+
+<h2>2. GitHub MCP Server — Code Review and Module History</h2>
+
+<p>Go's strong convention culture means code review is about catching non-idiomatic patterns: missing error checks, goroutine leaks, interface over-design, and exported identifiers that should be unexported. The GitHub MCP server gives your AI access to PR diffs and discussion threads — making Go-specific code review much faster.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read PR diffs with full file context for any branch or commit</li>
+<li>Access inline review comments and discussion threads</li>
+<li>Search the codebase for specific patterns, function names, or interface implementations</li>
+<li>Read GitHub Actions workflow files for Go build and test pipelines</li>
+<li>Check issue details and linked PRs for context on architectural decisions</li>
+</ul>
+
+<p><strong>Best for:</strong> Idiomatic Go review. Ask "read the changes in PR #234, focus on the new middleware package — check whether error handling follows Go idioms (wrapping with fmt.Errorf and %w, returning errors rather than logging+returning), look for goroutine leaks in any concurrent code, and flag any exported types that are only used internally and should be unexported" — getting Go-specific review feedback grounded in the actual diff.</p>
+
+<h2>3. PostgreSQL MCP Server — Database Schema and Query Optimization</h2>
+
+<p>Go services frequently use PostgreSQL with sqlc, pgx, or database/sql. Effective AI assistance for database work requires the actual schema — not a description of it. The PostgreSQL MCP server gives your AI direct schema introspection so it can generate type-safe queries, write accurate migrations, and identify optimization opportunities.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Full schema introspection including tables, columns, types, indexes, and foreign keys</li>
+<li>Read-only query execution for testing query logic before writing Go code</li>
+<li>EXPLAIN plan analysis for query optimization</li>
+<li>Enum type inspection for PostgreSQL enums used in sqlc generated types</li>
+<li>Constraint and trigger inspection for understanding business rules encoded in the DB</li>
+</ul>
+
+<p><strong>Best for:</strong> sqlc and pgx development. Ask "read the schema for the orders and line_items tables, look at the existing sqlc queries in db/queries/orders.sql, then write a new query that fetches orders with their line items for a given user including the total amount — generating both the SQL query and the corresponding sqlc.yaml annotation for the Go types we need" — getting queries that work with your real schema and sqlc setup.</p>
+
+<h2>4. Docker MCP Server — Container and Compose Configuration</h2>
+
+<p>Go services are commonly containerized with minimal scratch or distroless images, and local development typically uses Docker Compose with multiple services. The Docker MCP server gives your AI visibility into running containers, compose configurations, and container logs — making debugging Go services in a containerized environment much faster.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>List running containers with status and resource usage</li>
+<li>Read container logs for any service including structured JSON logs</li>
+<li>Access Docker Compose configuration and service dependency graphs</li>
+<li>Inspect container environment variables and mounted volumes</li>
+<li>Check image details and layer information for image size optimization</li>
+</ul>
+
+<p><strong>Best for:</strong> Debugging Go microservices locally. Ask "read the logs from the api-gateway container from the last 5 minutes, look for any errors related to the new auth middleware we just deployed, then check the auth-service container logs for the corresponding request IDs to trace the full request path" — correlating logs across services without switching between terminal windows.</p>
+
+<h2>5. Redis MCP Server — Caching and Session Debugging</h2>
+
+<p>Redis is ubiquitous in Go services for caching, session storage, rate limiting, and pub/sub. When cache behavior is causing bugs — stale data, unexpected TTLs, wrong key patterns — the Redis MCP server lets your AI inspect actual cache state rather than reasoning from assumptions.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read any key with its value and TTL</li>
+<li>Scan for keys matching a pattern to understand what's cached</li>
+<li>Inspect Redis data structures (strings, hashes, lists, sets, sorted sets)</li>
+<li>Check memory usage for specific keys or key patterns</li>
+<li>Read pub/sub channel state for queue-based debugging</li>
+</ul>
+
+<p><strong>Best for:</strong> Cache invalidation debugging in Go services. Ask "scan for all keys matching the pattern user:*:permissions, show me their TTLs and current values, and identify any keys that have TTLs inconsistent with our 15-minute cache policy — I suspect stale permission data is causing authorization failures after user role updates" — debugging cache bugs by looking at actual Redis state rather than reading through application code trying to reconstruct what should be cached.</p>
+
+<h2>6. Brave Search MCP Server — Go Ecosystem Updates</h2>
+
+<p>The Go ecosystem evolves quickly — new standard library additions in each minor release, evolving best practices for generics usage since 1.18, new tooling in the Go toolchain, and shifting recommendations for module management. The Brave Search server keeps your AI current on Go ecosystem changes beyond its training data.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Search for Go 1.24 and later release notes and new features</li>
+<li>Find current best practices for generics usage in Go</li>
+<li>Research module compatibility and replace directives for specific packages</li>
+<li>Find community solutions for specific concurrency patterns or tooling issues</li>
+</ul>
+
+<p><strong>Best for:</strong> Go version upgrades and new feature adoption. When adopting Go 1.23's range-over-function iterators or the new structured logging slog package, your AI can search for current community guidance, known gotchas, and real-world usage patterns — rather than relying on training data that may predate the feature's wide adoption.</p>
+
+<h2>Recommended Go Developer Stack</h2>
+
+<p>The core setup for Go development:</p>
+
+<ol>
+<li><strong>Filesystem</strong> — project structure and convention-consistent code generation</li>
+<li><strong>GitHub</strong> — PR reviews with idiomatic Go feedback</li>
+<li><strong>PostgreSQL</strong> — live schema access for sqlc and pgx query development</li>
+</ol>
+
+<p>Add Docker for containerized service debugging, Redis for cache state inspection, and Brave Search for current Go ecosystem guidance. This stack gives your AI the context to act as a genuine Go development partner — reading your actual module structure, following your error handling and interface patterns, and producing code that compiles and fits your project's architecture on the first try.</p>
+
+<p>Browse all MCP servers at <a href="/servers">MyMCPTools</a>. See also <a href="/blog/best-mcp-servers-for-backend-developers">Best MCP Servers for Backend Developers</a> and <a href="/blog/best-mcp-servers-for-cloud-engineers">Best MCP Servers for Cloud Engineers</a>.</p>
+    `.trim(),
+  },
+  {
+    slug: "best-mcp-servers-for-ml-engineers",
+    title: "Best MCP Servers for ML Engineers in 2026",
+    description: "Top MCP servers for machine learning engineers — filesystem for notebook and pipeline access, GitHub for experiment history, PostgreSQL for feature store queries, and web search for current model benchmarks. Build ML systems faster with AI that understands your stack.",
+    date: "2026-05-20",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "8 min read",
+    keywords: ["mcp servers for ml engineers", "machine learning mcp server", "mlops mcp tools 2026", "best mcp servers machine learning", "ml engineer ai tools"],
+    relatedServerSlugs: ["filesystem", "github", "postgresql", "brave-search", "docker", "sqlite"],
+    content: `
+<p>ML engineers operate at the intersection of data science and software engineering — managing experiment tracking, feature pipelines, model training infrastructure, deployment workflows, and monitoring. The context required to get meaningful AI assistance is substantial: the actual dataset schema, the current model architecture code, the experiment configuration, the training pipeline, and the deployment infrastructure. MCP servers make this context available directly, without copy-pasting. Here are the MCP servers that deliver the most value for ML engineers in 2026.</p>
+
+<h2>1. Filesystem MCP Server — Notebooks, Configs, and Pipeline Code</h2>
+
+<p>ML engineering involves a wide variety of file types — Jupyter notebooks, Python training scripts, YAML configuration files for experiments, Docker files for training containers, and inference server code. The Filesystem server gives your AI access to all of it in context, so generated code follows your actual project structure and configuration patterns.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read Jupyter notebooks cell-by-cell or as full documents</li>
+<li>Access training scripts, model definition files, and data loaders</li>
+<li>Read YAML and JSON experiment configuration files (Hydra, OmegaConf, etc.)</li>
+<li>Navigate feature pipeline code, preprocessing scripts, and data validation logic</li>
+<li>Access requirements files, setup.py, and pyproject.toml for dependency context</li>
+</ul>
+
+<p><strong>Best for:</strong> Debugging training pipelines. Ask "read the training script in train.py and the data loader in datasets/imagenet.py, then look at the config in configs/experiment/resnet50_baseline.yaml — I'm getting OOM errors on GPU only during the second epoch of training, and I think it's related to how we're handling the augmentation pipeline in the DataLoader workers, identify the likely cause and suggest fixes" — getting debugging help grounded in your actual training code rather than generic PyTorch DataLoader advice.</p>
+
+<h2>2. GitHub MCP Server — Experiment History and Codebase Search</h2>
+
+<p>ML codebases accumulate significant institutional knowledge in git history — experiment results in commit messages, architectural decisions in PR discussions, and incremental improvements to model architectures across dozens of branches. The GitHub MCP server makes this history searchable and accessible to your AI.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read commit history with full diffs to understand how architectures evolved</li>
+<li>Search across branches for specific experiment configurations or model variants</li>
+<li>Access PR discussions for context on why specific architectural decisions were made</li>
+<li>Read GitHub Actions or CI workflow files for training pipeline automation</li>
+<li>Check issue history for known dataset problems or model regression tracking</li>
+</ul>
+
+<p><strong>Best for:</strong> Recovering experiment context. Ask "search the git history for any commits that modified the attention mechanism in models/transformer.py in the last 6 months, summarize what changes were made and what the PR discussion said about their impact on validation loss — I need to understand why our current architecture diverges from the original implementation before I modify the positional encoding" — recovering experiment rationale from git history rather than trying to remember or read through months of commits manually.</p>
+
+<h2>3. PostgreSQL MCP Server — Feature Stores and Experiment Databases</h2>
+
+<p>Many ML platforms store feature data, experiment results, and model metadata in PostgreSQL — Feast feature stores, MLflow backend stores, and custom experiment tracking databases. The PostgreSQL MCP server gives your AI direct access to query this data, making feature engineering and experiment analysis much faster.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Query feature store tables for specific entity IDs or time ranges</li>
+<li>Read experiment results and hyperparameter configurations from MLflow backend tables</li>
+<li>Join feature tables with label tables for dataset preparation queries</li>
+<li>Inspect schema for understanding what features are available and their data types</li>
+<li>Run statistical summary queries on feature distributions for data quality checks</li>
+</ul>
+
+<p><strong>Best for:</strong> Feature engineering and experiment analysis. Ask "read the schema of the feature_store.user_features table, then write a query that joins user features from the last 30 days with the conversion_events table, filtering to users with at least 3 events and computing the feature correlation matrix inputs I need for feature selection — I want to identify highly correlated features to remove before training" — getting precise SQL for ML-specific data preparation grounded in the actual schema.</p>
+
+<h2>4. SQLite MCP Server — Local Experiment Tracking</h2>
+
+<p>Many ML engineers use local SQLite databases for lightweight experiment tracking — storing hyperparameter configurations, validation metrics, and artifact paths. The SQLite MCP server gives your AI direct access to query local experiment results without exporting to CSV or writing custom analysis code.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Query experiment runs by metric value, date, or configuration parameter</li>
+<li>Compare hyperparameter configurations across runs</li>
+<li>Read the full schema of local MLflow, Optuna, or custom experiment databases</li>
+<li>Aggregate results to identify trends across experiment series</li>
+</ul>
+
+<p><strong>Best for:</strong> Hyperparameter analysis. Ask "read the Optuna study database at experiments/study.db, query the best 20 trials by validation loss, and for those trials create a summary of which hyperparameter ranges appear most consistently — I want to narrow the search space for the next round of optimization" — getting experiment analysis by querying the actual Optuna database rather than exporting results and running pandas manually.</p>
+
+<h2>5. Docker MCP Server — Training Container Debugging</h2>
+
+<p>ML training increasingly runs in Docker containers — for CUDA version isolation, dependency management, and cloud training job reproducibility. When training containers behave differently from local development environments, the Docker MCP server gives your AI visibility into what's actually running inside the container.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read container logs including GPU memory allocation logs and training progress</li>
+<li>Inspect environment variables in training containers for config debugging</li>
+<li>Check which CUDA and cuDNN versions are available inside the container</li>
+<li>Access mounted volume contents for dataset path debugging</li>
+<li>Inspect multi-stage build configurations for training vs. inference image optimization</li>
+</ul>
+
+<p><strong>Best for:</strong> Debugging training container environment mismatches. Ask "read the logs from the training container that failed 20 minutes into the epoch, look for CUDA out-of-memory errors or NCCL errors in the distributed training setup, then read the Dockerfile to check whether we're using the right base image for our A100 setup — I suspect a cuDNN version mismatch from the new base image" — debugging containerized training failures without SSH-ing into remote training infrastructure.</p>
+
+<h2>6. Brave Search MCP Server — Current Model Benchmarks and Research</h2>
+
+<p>ML engineering requires staying current on a rapidly evolving landscape — new model architectures, benchmark results, training techniques, and hardware capabilities change quarterly. The Brave Search server gives your AI access to current research and benchmarks beyond its training data cutoff.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Search for current state-of-the-art results on specific benchmarks</li>
+<li>Find recent papers on specific model architectures or training techniques</li>
+<li>Research current hardware-specific optimization recommendations for specific GPU families</li>
+<li>Find community discussions about specific framework versions or known issues</li>
+</ul>
+
+<p><strong>Best for:</strong> Architecture selection and optimization. When deciding whether to adopt FlashAttention 3, Mamba-2 state space models, or specific quantization techniques, your AI can search for current benchmark comparisons and real-world deployment reports — rather than relying on training data that may predate the relevant papers or production experience.</p>
+
+<h2>Recommended ML Engineer Stack</h2>
+
+<p>The core setup for ML engineering:</p>
+
+<ol>
+<li><strong>Filesystem</strong> — training scripts, notebook content, and configuration access</li>
+<li><strong>GitHub</strong> — experiment history and architectural decision context</li>
+<li><strong>PostgreSQL</strong> — feature store and experiment database queries</li>
+</ol>
+
+<p>Add SQLite for local experiment tracking queries, Docker for containerized training debugging, and Brave Search for current model benchmarks and research. This stack gives your AI the context to act as a genuine ML engineering partner — reading your actual training code, querying your experiment results directly, and producing pipeline code that fits your real infrastructure rather than a generic ML template.</p>
+
+<p>Browse all MCP servers at <a href="/servers">MyMCPTools</a>. See also <a href="/blog/best-mcp-servers-for-data-science">Best MCP Servers for Data Science</a> and <a href="/blog/best-mcp-servers-for-ai-researchers">Best MCP Servers for AI Researchers</a>.</p>
+    `.trim(),
+  },
+  {
+    slug: "best-mcp-servers-for-php-developers",
+    title: "Best MCP Servers for PHP Developers in 2026",
+    description: "Top MCP servers for PHP developers — filesystem for Laravel and WordPress codebases, GitHub for PR reviews, MySQL for schema-aware query generation, and web search for current PHP ecosystem guidance. Build PHP applications faster with AI that understands your stack.",
+    date: "2026-05-20",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "7 min read",
+    keywords: ["mcp servers for php developers", "php mcp server 2026", "laravel mcp server", "wordpress mcp tools", "php developer ai tools 2026"],
+    relatedServerSlugs: ["filesystem", "github", "mysql", "brave-search", "docker", "redis"],
+    content: `
+<p>PHP powers over 80% of websites with a server-side scripting language — from WordPress and Laravel to Symfony, Drupal, and custom e-commerce platforms. PHP developers work with a deeply established ecosystem: Composer for dependency management, Eloquent or Doctrine for database access, Blade or Twig for templating, and a rich library of frameworks with strong conventions. MCP servers give your AI direct access to your actual PHP project — the real database schema, the Composer dependency tree, the existing code patterns, and your development environment. Here are the MCP servers that deliver the most value for PHP developers in 2026.</p>
+
+<h2>1. Filesystem MCP Server — Laravel, WordPress, and Framework Navigation</h2>
+
+<p>PHP frameworks have strong structural conventions — Laravel's app/Http/Controllers, app/Models, resources/views, and database/migrations directories; WordPress's theme structure with functions.php, template parts, and custom post types. The Filesystem server gives your AI access to your actual project so generated code follows your real conventions, uses your existing helper functions, and doesn't reinvent what's already in your codebase.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read any PHP file, template, or configuration file in your project</li>
+<li>Access composer.json and composer.lock for dependency context</li>
+<li>Navigate Laravel's service providers, middleware, and route definitions</li>
+<li>Read WordPress plugin and theme files including custom post type registrations</li>
+<li>Access .env.example and config/ files for environment configuration context</li>
+</ul>
+
+<p><strong>Best for:</strong> Generating code that fits your Laravel project. Ask "read the existing controllers in app/Http/Controllers/Api/V1/ to understand our response format and validation patterns, look at the User model in app/Models/User.php for the relationships we have defined, then generate a new OrderController with CRUD endpoints that follows exactly the same patterns including our ApiResponse helper and FormRequest validation classes" — getting Laravel code that matches your actual project architecture.</p>
+
+<h2>2. GitHub MCP Server — Code Review and Pull Requests</h2>
+
+<p>PHP codebases often accumulate technical debt across long lifespans — mixed PSR standards, legacy procedural code alongside OOP, and framework version migrations in progress. The GitHub MCP server gives your AI access to PR diffs and discussion threads — making PHP code review faster and more grounded in your specific codebase context.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read PR diffs with full surrounding file context for any branch</li>
+<li>Access inline review comments and resolution threads</li>
+<li>Search the codebase for existing function names, class implementations, or patterns</li>
+<li>Read GitHub Actions or CI workflow files for PHP build and test pipelines</li>
+<li>Check commit history for context on architectural decisions and previous implementations</li>
+</ul>
+
+<p><strong>Best for:</strong> PHP code review with context. Ask "read PR #178 which adds a new payment processing integration, check whether it properly handles database transactions and rolls back on payment API failures, verify that sensitive card data is never logged anywhere in the code path, and check that it follows our existing exception handling patterns defined in app/Exceptions/Handler.php" — getting security-aware PHP code review grounded in your existing patterns.</p>
+
+<h2>3. MySQL MCP Server — Schema-Aware Query and Migration Development</h2>
+
+<p>PHP applications typically use MySQL, and whether you're writing raw PDO queries, using Eloquent, or building Doctrine entities, having your AI understand the actual schema is essential for generating correct code. The MySQL MCP server provides direct schema introspection so your AI can generate accurate queries, migrations, and model relationships.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Full schema introspection including tables, columns, indexes, and foreign keys</li>
+<li>Read-only query execution for testing SQL logic</li>
+<li>EXPLAIN analysis for query optimization</li>
+<li>Inspect stored procedures, views, and triggers for legacy codebases</li>
+<li>Check character set and collation settings for multi-language applications</li>
+</ul>
+
+<p><strong>Best for:</strong> Eloquent model and relationship generation. Ask "read the schema for the products, categories, orders, and order_items tables including all foreign key relationships, then generate the corresponding Laravel Eloquent models with the correct relationships (hasMany, belongsTo, belongsToMany), including the fillable arrays, casts, and scopes we'd need for the admin panel we're building" — generating accurate Eloquent models grounded in the real schema rather than a description of it.</p>
+
+<h2>4. Redis MCP Server — Cache and Session Debugging</h2>
+
+<p>Laravel and Symfony both use Redis extensively for caching, session storage, and queue drivers. When cache behavior is causing bugs — stale views, wrong session data, queue processing issues — the Redis MCP server lets your AI inspect actual cache state rather than reasoning from the application code alone.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read cached values with their TTLs for any Laravel cache key pattern</li>
+<li>Scan for keys matching Laravel's cache key prefixes (laravel_cache:*)</li>
+<li>Inspect session data stored in Redis for debugging session-related bugs</li>
+<li>Check queue job lists and failed job counts</li>
+<li>Monitor pub/sub channels for Laravel Broadcasting debugging</li>
+</ul>
+
+<p><strong>Best for:</strong> Laravel cache debugging. Ask "scan for all Redis keys matching our product cache prefix (laravel_cache:products:*), show me their TTLs and check whether any keys are missing that should be cached based on our CacheServiceProvider configuration — we're seeing inconsistent product data between requests and I think our cache invalidation is incomplete" — debugging Laravel cache bugs by looking at actual Redis state.</p>
+
+<h2>5. Docker MCP Server — Local Development Environment</h2>
+
+<p>PHP local development commonly uses Docker — Laravel Sail, Lando, or custom Docker Compose setups with PHP-FPM, Nginx, MySQL, and Redis containers. When services behave differently from production or configuration issues arise, the Docker MCP server gives your AI visibility into the actual container state.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read PHP-FPM and Nginx container logs for request debugging</li>
+<li>Inspect container environment variables for configuration verification</li>
+<li>Check PHP version and extension availability inside containers</li>
+<li>Access Docker Compose configuration for service dependency debugging</li>
+<li>Read mounted volume state for storage and upload debugging</li>
+</ul>
+
+<p><strong>Best for:</strong> PHP-FPM configuration debugging. Ask "read the logs from the php-fpm container from the last hour, look for any 502 Bad Gateway errors or timeout issues, then check the php-fpm.conf in the container to see our current pm.max_children setting — we're getting intermittent 502s under load and I suspect we need to tune the process manager settings" — debugging PHP performance issues by reading actual container logs and configuration.</p>
+
+<h2>6. Brave Search MCP Server — PHP Ecosystem Updates</h2>
+
+<p>PHP's ecosystem evolves faster than its reputation suggests — PHP 8.3 and 8.4 added significant features (readonly classes, property hooks, asymmetric visibility), Laravel releases major versions annually, and WordPress blocks and FSE continue to reshape WordPress development. The Brave Search server keeps your AI current on PHP ecosystem changes beyond its training data.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Search for PHP 8.4 features and migration guides from earlier versions</li>
+<li>Find current Laravel 12 upgrade notes and breaking changes</li>
+<li>Research WordPress 6.x block development patterns and FSE guidance</li>
+<li>Find Composer package compatibility information for PHP version upgrades</li>
+</ul>
+
+<p><strong>Best for:</strong> PHP version upgrades and framework migrations. When upgrading from PHP 8.1 to 8.4 or from Laravel 10 to 12, your AI can search for the specific breaking changes, deprecated functions, and migration requirements — rather than relying on training data that may predate the relevant release.</p>
+
+<h2>Recommended PHP Developer Stack</h2>
+
+<p>The core setup for PHP development:</p>
+
+<ol>
+<li><strong>Filesystem</strong> — project structure and convention-consistent code generation for Laravel, WordPress, or Symfony</li>
+<li><strong>GitHub</strong> — PR reviews with PHP-specific pattern checking</li>
+<li><strong>MySQL</strong> — live schema access for accurate Eloquent model and query generation</li>
+</ol>
+
+<p>Add Redis for cache and session debugging, Docker for containerized development environment visibility, and Brave Search for current PHP ecosystem guidance. This stack gives your AI the context to act as a genuine PHP development partner — reading your actual project structure, following your framework conventions, and producing code that fits your real application rather than a generic PHP template.</p>
+
+<p>Browse all MCP servers at <a href="/servers">MyMCPTools</a>. See also <a href="/blog/best-mcp-servers-for-backend-developers">Best MCP Servers for Backend Developers</a> and <a href="/blog/best-mcp-servers-for-database">Best Database MCP Servers</a>.</p>
+    `.trim(),
+  },
 ];
 
 export function getBlogPostBySlug(slug: string): BlogPost | undefined {
