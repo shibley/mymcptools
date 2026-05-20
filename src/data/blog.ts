@@ -30471,6 +30471,313 @@ async with MCPServerStdio(
 <p>Browse all MCP servers at <a href="/servers">MyMCPTools</a>. See also <a href="/blog/best-mcp-servers-for-designers">Best MCP Servers for Designers</a> and <a href="/blog/best-mcp-servers-for-frontend-developers">Best MCP Servers for Frontend Developers</a>.</p>
     `.trim(),
   },
+  {
+    slug: "best-mcp-servers-for-flutter-developers",
+    title: "Best MCP Servers for Flutter Developers in 2026",
+    description: "Top MCP servers for Flutter developers — Dart codebase navigation, Firebase integration, platform channel debugging, and cross-platform build tooling directly in your AI workflow.",
+    date: "2026-05-20",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "7 min read",
+    keywords: ["mcp servers for flutter developers", "flutter mcp server 2026", "flutter ai tools", "dart mcp server", "flutter firebase mcp"],
+    relatedServerSlugs: ["filesystem", "github", "firebase", "brave-search", "appwrite-mcp"],
+    content: `
+<p>Flutter's cross-platform model is powerful but demanding: one codebase targeting iOS, Android, web, and desktop means platform-specific edge cases multiply quickly. Your AI needs to understand your widget tree, your state management approach, your platform channel implementations, and your Firebase backend to give useful suggestions rather than generic Dart snippets. MCP servers connect your AI to the actual context it needs — your codebase, your backend, your documentation sources. Here are the MCP servers that provide the most value for Flutter developers in 2026.</p>
+
+<h2>1. Filesystem MCP Server — Your Flutter Codebase</h2>
+
+<p>The Filesystem server gives your AI direct access to your Flutter project. This means it can read your actual widget implementations, understand your folder structure (feature-based, layer-based, or otherwise), inspect your pubspec.yaml dependencies, and follow your state management patterns whether you use Bloc, Riverpod, Provider, or GetX.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read widget implementations and understand your composition patterns</li>
+<li>Navigate feature modules and shared component libraries</li>
+<li>Inspect pubspec.yaml for dependencies and version constraints</li>
+<li>Read platform channel code in android/ and ios/ directories</li>
+<li>Understand your state management architecture from actual code</li>
+</ul>
+
+<p><strong>Best for:</strong> Consistent code generation. When your AI reads your existing BLoC implementations before generating a new feature, it produces correct event/state structures, uses your actual dependency injection setup, and follows your specific folder conventions — not a generic BLoC tutorial that requires heavy rework.</p>
+
+<h2>2. GitHub MCP Server — Flutter Package Ecosystem and PR Reviews</h2>
+
+<p>Flutter development involves heavy package evaluation: comparing pub.dev packages, checking GitHub issue trackers for known bugs, reviewing changelogs before upgrades. The GitHub MCP server lets your AI search package repositories, read issue discussions, and check release notes without leaving your workflow.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Search Flutter package repositories for known issues and bug reports</li>
+<li>Read changelogs and migration guides before package upgrades</li>
+<li>Review PR diffs for Flutter-specific code quality issues</li>
+<li>Check compatibility issues between package versions</li>
+<li>Search flutter/flutter issues for platform-specific bug context</li>
+</ul>
+
+<p><strong>Best for:</strong> Package evaluation and upgrade planning. Before upgrading from go_router 13 to 14, your AI reads the actual changelog and open issues to surface breaking changes and migration steps — not a hallucinated summary of what might have changed.</p>
+
+<h2>3. Firebase MCP Server — Backend Integration Context</h2>
+
+<p>Most Flutter apps use Firebase: Firestore, Authentication, Cloud Functions, Remote Config. The Firebase MCP server gives your AI access to your Firebase project configuration so it generates queries with correct collection paths, writes security rules that match your data model, and implements authentication flows that work with your actual user schema.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Access Firestore collection structure and document schemas</li>
+<li>Read Firebase Authentication configuration and custom claims setup</li>
+<li>Inspect Cloud Functions for backend logic context</li>
+<li>Review security rules for Firestore and Storage</li>
+<li>Check Remote Config parameters for feature flag implementation</li>
+</ul>
+
+<p><strong>Best for:</strong> Firestore query generation and security rule writing. When your AI knows your actual collection structure and existing rules, it writes queries with the correct field names and generates security rules that don't break your existing access patterns.</p>
+
+<h2>4. Brave Search MCP Server — Flutter Documentation and Platform APIs</h2>
+
+<p>Flutter moves fast: new widget additions, breaking API changes between major versions, platform-specific behavior differences, and evolving best practices. The Brave Search server lets your AI find current Flutter documentation, pub.dev package pages, and platform-specific guidance.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Search flutter.dev and api.flutter.dev for current widget documentation</li>
+<li>Find pub.dev package documentation and example code</li>
+<li>Research platform-specific behavior differences (iOS vs Android)</li>
+<li>Look up current null safety migration guidance and deprecation notices</li>
+<li>Find community solutions for specific Flutter error messages</li>
+</ul>
+
+<p><strong>Best for:</strong> Debugging platform-specific issues. When a MediaQuery behavior differs between iOS and Android or a platform channel call fails on one target, your AI can find current documentation and community reports about the specific behavior rather than working from potentially outdated training data.</p>
+
+<h2>5. Appwrite MCP Server — Firebase Alternative Backend</h2>
+
+<p>For Flutter apps using Appwrite as a Firebase alternative, the Appwrite MCP server gives your AI access to your database collections, authentication configuration, and storage buckets so it can generate correctly typed queries and SDK calls without guessing at your schema.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read Appwrite database collection schemas and attribute definitions</li>
+<li>Access authentication provider configuration</li>
+<li>Inspect storage bucket permissions and file organization</li>
+<li>Generate correctly typed Flutter SDK calls matching your actual schema</li>
+</ul>
+
+<p><strong>Best for:</strong> Flutter teams using Appwrite for self-hosted or privacy-focused backends. Your AI generates appwrite-dart SDK calls with the correct collection IDs, attribute names, and query filters — no manual schema lookup required.</p>
+
+<h2>Recommended Flutter Developer Stack</h2>
+
+<p>The core setup for Flutter development:</p>
+
+<ol>
+<li><strong>Filesystem</strong> — your full Flutter codebase for pattern-aware code generation</li>
+<li><strong>GitHub</strong> — package ecosystem research and issue tracking before upgrades</li>
+<li><strong>Firebase or Appwrite</strong> — backend context for accurate query and rule generation</li>
+</ol>
+
+<p>Add Brave Search for current Flutter documentation and platform-specific debugging guidance. This stack gives your AI the context it needs to generate Dart code that actually fits your architecture, understand your state management patterns, and help you navigate the Flutter package ecosystem without needing to context-switch out of your editor.</p>
+
+<p>Browse all MCP servers at <a href="/servers">MyMCPTools</a>. See also <a href="/blog/best-mcp-servers-for-mobile-developers">Best MCP Servers for Mobile Developers</a> and <a href="/blog/best-mcp-servers-for-react-developers">Best MCP Servers for React Developers</a>.</p>
+    `.trim(),
+  },
+  {
+    slug: "best-mcp-servers-for-redis-developers",
+    title: "Best MCP Servers for Redis Developers in 2026",
+    description: "Top MCP servers for Redis developers — cache inspection, key-space analysis, Pub/Sub debugging, and Redis Stack (Search, JSON, TimeSeries) integration directly in your AI workflow.",
+    date: "2026-05-20",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "6 min read",
+    keywords: ["mcp servers for redis developers", "redis mcp server 2026", "redis ai tools", "redis cache mcp", "redis stack mcp"],
+    relatedServerSlugs: ["redis", "filesystem", "github", "postgresql", "brave-search"],
+    content: `
+<p>Redis is the layer that makes everything else fast — session storage, cache invalidation, rate limiting, Pub/Sub messaging, leaderboards, and increasingly, vector search via Redis Stack. When something goes wrong in production, the diagnostic questions are always the same: what keys are hot, what's the memory distribution, what are the TTLs on this key pattern, is the cache hit rate where it should be. MCP servers bring Redis inspection, your application code, and your infrastructure context into the same AI session. Here are the MCP servers that deliver the most value for Redis developers in 2026.</p>
+
+<h2>1. Redis MCP Server — Live Cache Inspection</h2>
+
+<p>The Redis MCP server gives your AI direct access to your Redis instance. Instead of switching to redis-cli, constructing SCAN commands, and manually interpreting the output, your AI can query key patterns, inspect TTLs, check key types, and analyze memory usage as part of a natural debugging conversation.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>SCAN key spaces with pattern matching and type filtering</li>
+<li>Inspect individual key values, TTLs, and encoding types</li>
+<li>Analyze memory usage by key prefix or data structure type</li>
+<li>Check Redis server info: version, memory stats, client connections, command stats</li>
+<li>Inspect Redis Streams, Sorted Sets, and Hash structures</li>
+</ul>
+
+<p><strong>Best for:</strong> Cache debugging and key-space analysis. When a caching bug surfaces in production, your AI can scan the key pattern, inspect sample values, check TTL consistency, and cross-reference against your application code — identifying whether the problem is in your cache-aside logic, your TTL strategy, or your serialization layer.</p>
+
+<h2>2. Filesystem MCP Server — Your Application Codebase</h2>
+
+<p>Cache bugs live at the intersection of your Redis key design and your application logic. The Filesystem server lets your AI read your actual caching layer — your key generation functions, your cache-aside implementations, your invalidation logic, your serialization approach — so it can diagnose mismatches between what the code does and what Redis actually contains.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read your Redis client initialization and connection pool configuration</li>
+<li>Navigate your caching abstraction layer and understand key naming conventions</li>
+<li>Inspect cache invalidation logic for correctness and race conditions</li>
+<li>Review Pub/Sub publisher and subscriber implementations</li>
+<li>Understand your session storage schema and serialization format</li>
+</ul>
+
+<p><strong>Best for:</strong> Cache invalidation debugging — one of the hardest problems in software. Your AI reads both your invalidation code and the actual Redis key-space together, identifying where keys that should have been evicted are still present, or where stale data is being served.</p>
+
+<h2>3. GitHub MCP Server — Redis Client Libraries and Configuration</h2>
+
+<p>Redis client behavior varies significantly between libraries and versions: ioredis vs redis (Node.js), Jedis vs Lettuce (Java), redis-py (Python), StackExchange.Redis (.NET). The GitHub MCP server lets your AI research client-specific behaviors, known issues, and configuration patterns from the actual source repositories.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Search Redis client library issues for known bugs and workarounds</li>
+<li>Read changelogs before major version upgrades</li>
+<li>Look up cluster mode configuration examples for your specific client</li>
+<li>Research connection pool tuning recommendations from real-world discussions</li>
+<li>Check Redis module (RediSearch, RedisJSON) compatibility matrices</li>
+</ul>
+
+<p><strong>Best for:</strong> Diagnosing client library behavior differences. When connection pooling behaves differently in production than in development, or when a specific Redis command returns unexpected results through your client library, your AI can search the actual GitHub issues for that library rather than guessing.</p>
+
+<h2>4. PostgreSQL MCP Server — Cache-Database Consistency</h2>
+
+<p>Redis typically caches data from a primary datastore. The PostgreSQL MCP server (or your relevant database MCP) gives your AI access to your schema and actual data so it can verify cache-database consistency — comparing what Redis has cached against what the database actually contains, diagnosing stale cache scenarios, and understanding the data model your caching strategy is built on.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Query the database to verify cache contents match source-of-truth data</li>
+<li>Understand your schema for accurate cache key design recommendations</li>
+<li>Analyze query patterns that would benefit most from caching</li>
+<li>Cross-reference database update timestamps against cache TTLs</li>
+</ul>
+
+<p><strong>Best for:</strong> Cache consistency debugging and cache warming strategies. Your AI can identify specific rows where cached data is stale, analyze which database queries are most expensive (and therefore most valuable to cache), and recommend TTL values based on your actual data update frequency.</p>
+
+<h2>5. Brave Search MCP Server — Redis Documentation and Redis Stack</h2>
+
+<p>Redis Stack extends Redis with modules for JSON documents (RedisJSON), full-text and vector search (RediSearch), time-series data (RedisTimeSeries), and probabilistic data structures (RedisBloom). These modules evolve rapidly. The Brave Search server lets your AI find current Redis documentation and Redis Stack module guides.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Search redis.io documentation for current command syntax and options</li>
+<li>Find RediSearch query syntax and index configuration guidance</li>
+<li>Look up RedisJSON path expression syntax</li>
+<li>Research Redis Cluster configuration and slot management</li>
+<li>Find current Redis Cloud and Redis Enterprise documentation</li>
+</ul>
+
+<p><strong>Best for:</strong> Redis Stack development. When building vector similarity search with RediSearch or complex JSON document queries with RedisJSON, your AI can find current index configuration syntax and query examples rather than working from training data that may predate the current module versions.</p>
+
+<h2>Recommended Redis Developer Stack</h2>
+
+<p>The core setup for Redis development:</p>
+
+<ol>
+<li><strong>Redis</strong> — live key-space inspection and server diagnostics</li>
+<li><strong>Filesystem</strong> — your application's caching layer code for debugging context</li>
+<li><strong>PostgreSQL</strong> (or your primary datastore) — cache-database consistency verification</li>
+</ol>
+
+<p>Add GitHub for Redis client library research and Brave Search for current Redis documentation and Redis Stack module guidance. This stack gives your AI the context to debug cache issues where the problem spans Redis, your application code, and your underlying data model — which is most real-world cache bugs.</p>
+
+<p>Browse all MCP servers at <a href="/servers">MyMCPTools</a>. See also <a href="/blog/best-mcp-servers-for-backend-developers">Best MCP Servers for Backend Developers</a> and <a href="/blog/best-mcp-servers-for-database">Best MCP Servers for Database</a>.</p>
+    `.trim(),
+  },
+  {
+    slug: "best-mcp-servers-for-dotnet-developers",
+    title: "Best MCP Servers for .NET Developers in 2026",
+    description: "Top MCP servers for .NET developers — C# codebase navigation, Azure integration, NuGet package research, SQL Server context, and ASP.NET Core debugging directly in your AI workflow.",
+    date: "2026-05-20",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "7 min read",
+    keywords: ["mcp servers for dotnet developers", ".net mcp server 2026", "c# mcp server", "aspnet mcp server", "azure mcp server dotnet"],
+    relatedServerSlugs: ["filesystem", "github", "aws", "postgresql", "brave-search"],
+    content: `
+<p>.NET development spans a wide range: ASP.NET Core web APIs, Blazor front-ends, Azure Functions, microservices, desktop apps with MAUI, background workers, and increasingly AI integrations via Semantic Kernel. The common thread is that your AI needs to understand C# and F# idioms, your dependency injection configuration, your Entity Framework Core models, and your Azure infrastructure to give useful suggestions. MCP servers provide that context — connecting your AI to your codebase, your cloud infrastructure, and your documentation sources. Here are the MCP servers that deliver the most value for .NET developers in 2026.</p>
+
+<h2>1. Filesystem MCP Server — Your .NET Codebase</h2>
+
+<p>The Filesystem server gives your AI direct access to your .NET project. This means it reads your Program.cs service registrations, understands your middleware pipeline, navigates your domain model, and follows your project structure — whether you use Clean Architecture, vertical slices, or a more traditional N-tier layout.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read Program.cs and Startup.cs for DI container and middleware configuration</li>
+<li>Navigate solution structure, project references, and shared library boundaries</li>
+<li>Inspect Entity Framework Core DbContext and entity configurations</li>
+<li>Read appsettings.json and understand your configuration model</li>
+<li>Follow your CQRS handlers, domain events, or repository implementations</li>
+</ul>
+
+<p><strong>Best for:</strong> Architecture-aware code generation. When your AI reads your existing IRepository implementations and your DI registrations before generating a new service, it produces code that uses your actual abstractions, follows your naming conventions, and registers correctly in your container — not a generic example that requires restructuring.</p>
+
+<h2>2. GitHub MCP Server — NuGet Packages and .NET Ecosystem</h2>
+
+<p>The .NET ecosystem is rich with NuGet packages, and package selection and upgrade decisions require research: comparing Mapster vs AutoMapper, evaluating MediatR alternatives, checking MassTransit vs Rebus for messaging, understanding breaking changes between major ASP.NET Core versions. The GitHub MCP server gives your AI access to package repositories and issue trackers.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Search NuGet package GitHub repositories for known issues and workarounds</li>
+<li>Read breaking change documentation for .NET 8 → .NET 9 migrations</li>
+<li>Compare package activity, maintenance status, and community engagement</li>
+<li>Find migration guides for major version upgrades (EF Core, ASP.NET Core)</li>
+<li>Research Semantic Kernel updates and Azure OpenAI SDK changes</li>
+</ul>
+
+<p><strong>Best for:</strong> Package evaluation and upgrade planning. Before upgrading your Entity Framework Core version or switching from Newtonsoft.Json to System.Text.Json, your AI reads the actual migration guide and open issues rather than summarizing what it thinks might have changed.</p>
+
+<h2>3. AWS or Azure MCP Server — Cloud Infrastructure Context</h2>
+
+<p>Most .NET applications run in Azure (App Service, Azure Functions, AKS, Azure Container Apps) or on AWS (Elastic Beanstalk, Lambda, ECS). The AWS MCP server gives your AI access to your cloud configuration so it understands your deployment targets, environment-specific configuration, and infrastructure constraints when generating code.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read Azure resource configurations and understand deployment topology</li>
+<li>Access Lambda function configurations and environment variables</li>
+<li>Inspect IAM roles and permissions relevant to your application's AWS access</li>
+<li>Read CloudFormation or ARM templates for infrastructure-as-code context</li>
+<li>Understand your secrets management approach (Key Vault, AWS Secrets Manager)</li>
+</ul>
+
+<p><strong>Best for:</strong> Cloud-aware configuration and deployment code. When your AI knows you're deploying to Azure Container Apps with managed identity, it generates configuration code that uses DefaultAzureCredential correctly, sets up the right connection string patterns, and handles environment-specific settings properly.</p>
+
+<h2>4. PostgreSQL MCP Server — Database Schema and Query Context</h2>
+
+<p>Entity Framework Core migrations are only half the story — your actual database schema, existing indexes, and current data distribution matter for query optimization. The PostgreSQL MCP server (or SQL Server equivalent for MSSQL shops) lets your AI inspect your schema and analyze query performance alongside your EF Core models.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read table schemas to verify EF Core model mappings are correct</li>
+<li>Inspect existing indexes for query optimization recommendations</li>
+<li>Run EXPLAIN ANALYZE equivalent queries to diagnose performance issues</li>
+<li>Cross-reference EF Core migration history against actual schema state</li>
+<li>Understand your database constraints for accurate validation logic</li>
+</ul>
+
+<p><strong>Best for:</strong> EF Core query optimization. When a LINQ query generates inefficient SQL, your AI can analyze the actual execution plan against your real schema — understanding which indexes are available, where table scans are occurring, and what projections would reduce the data transferred.</p>
+
+<h2>5. Brave Search MCP Server — .NET Documentation and ASP.NET Core APIs</h2>
+
+<p>.NET evolves on an annual release cadence, with significant changes to ASP.NET Core, the BCL, and the runtime each year. Minimal APIs introduced new patterns, Native AOT changed compilation assumptions, and Blazor United merged server and client rendering models. The Brave Search server keeps your AI current on .NET documentation.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Search learn.microsoft.com for current ASP.NET Core documentation</li>
+<li>Find .NET 9 and .NET 10 preview feature documentation</li>
+<li>Research C# language version feature additions and usage patterns</li>
+<li>Look up current Semantic Kernel and Azure AI SDK documentation</li>
+<li>Find community guidance on performance optimization and benchmarking</li>
+</ul>
+
+<p><strong>Best for:</strong> Staying current with .NET's rapid release cadence. When implementing a new feature using .NET 9 APIs like the new LINQ methods, TimeProvider abstractions, or updated System.Text.Json source generation, your AI can find current documentation rather than working from training data that may reflect an earlier .NET version.</p>
+
+<h2>Recommended .NET Developer Stack</h2>
+
+<p>The core setup for .NET development:</p>
+
+<ol>
+<li><strong>Filesystem</strong> — your full solution for architecture-aware, pattern-consistent code generation</li>
+<li><strong>GitHub</strong> — NuGet package research, breaking change investigation, ecosystem navigation</li>
+<li><strong>PostgreSQL or equivalent</strong> — database schema context for EF Core query optimization</li>
+</ol>
+
+<p>Add your cloud provider MCP (AWS or Azure CLI MCP) for deployment configuration context and Brave Search for current .NET documentation. This stack gives your AI what it needs to generate C# code that fits your architecture, uses your existing patterns, and works correctly in your deployment environment.</p>
+
+<p>Browse all MCP servers at <a href="/servers">MyMCPTools</a>. See also <a href="/blog/best-mcp-servers-for-backend-developers">Best MCP Servers for Backend Developers</a> and <a href="/blog/best-mcp-servers-for-azure-microsoft">Best MCP Servers for Azure and Microsoft</a>.</p>
+    `.trim(),
+  },
 ];
 
 export function getBlogPostBySlug(slug: string): BlogPost | undefined {
