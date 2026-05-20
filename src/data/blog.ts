@@ -29446,6 +29446,384 @@ async with MCPServerStdio(
 <p>Browse all MCP servers at <a href="/servers">MyMCPTools</a>. See also <a href="/blog/best-mcp-servers-for-react-developers">Best MCP Servers for React Developers</a> and <a href="/blog/best-mcp-servers-for-android-developers">Best MCP Servers for Android Developers</a>.</p>
     `.trim(),
   },
+  {
+    slug: "best-mcp-servers-for-java-developers",
+    title: "Best MCP Servers for Java Developers in 2026",
+    description: "The top MCP servers for Java developers — from Maven and Gradle build access to Spring Boot context, database introspection, and SonarQube analysis. Build better Java applications with AI that understands your actual project structure.",
+    date: "2026-05-20",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "7 min read",
+    keywords: ["mcp servers for java developers", "java mcp server", "spring boot mcp", "maven mcp server", "gradle mcp server", "java ai tools 2026"],
+    relatedServerSlugs: ["filesystem", "github", "maven", "gradle-mcp", "postgresql", "sonarqube", "jira", "brave-search"],
+    content: `
+<p>Java developers work within one of the most mature and opinionated ecosystems in software — Maven or Gradle build systems, Spring Boot conventions, JVM tuning, layered architectures with repositories and services, and enterprise-scale databases with decades of schema history. MCP servers give your AI assistant access to your actual Java environment: the build dependency tree, the database schema, the static analysis results, and the JVM-specific documentation. Here are the MCP servers that deliver the most value for Java developers in 2026.</p>
+
+<h2>1. Filesystem MCP Server — Project Structure and Code Navigation</h2>
+
+<p>Java projects follow strong conventions — <code>src/main/java</code>, <code>src/test/java</code>, Spring Boot auto-configuration, domain-driven package structures, and layered architecture. The Filesystem server gives your AI access to your actual project so it follows your real package hierarchy, naming conventions, and architectural patterns.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read your existing service, repository, and controller classes to follow your architectural patterns</li>
+<li>Access Spring Boot configuration files (<code>application.yml</code>, <code>application.properties</code>) for context-aware configuration generation</li>
+<li>Navigate your <code>pom.xml</code> or <code>build.gradle</code> to understand your dependency set before generating code that uses a library</li>
+<li>Read your existing test classes to match your JUnit 5 or Mockito testing patterns</li>
+</ul>
+
+<p><strong>Best for:</strong> Java developers adding features to existing Spring Boot applications. Before generating a new REST endpoint, your AI can read several existing controllers — learning your exact annotation usage, exception handler conventions, DTO naming patterns, and validation approach — then generate a new endpoint that integrates naturally with your codebase.</p>
+
+<h2>2. Maven MCP Server — Dependency and Build Context</h2>
+
+<p>The Maven MCP server gives your AI direct access to your project's dependency tree, plugin configuration, and effective POM — the resolved view of all inherited and overridden settings. This is essential for accurate library-specific code generation and dependency conflict resolution.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read the full dependency tree including transitive dependencies and version resolution</li>
+<li>Access the effective POM to understand inherited settings from parent POMs</li>
+<li>Check dependency conflicts and convergence issues before adding new dependencies</li>
+<li>Review plugin configuration for build, test, and packaging behavior</li>
+</ul>
+
+<p><strong>Best for:</strong> Java developers resolving dependency conflicts or upgrading Spring Boot versions. When a transitive dependency version conflict causes a <code>ClassNotFoundException</code> at runtime, your AI can read the actual dependency tree to identify which artifact is forcing the conflicting version — and generate the correct <code>dependencyManagement</code> entry to force resolution.</p>
+
+<h2>3. GitHub MCP Server — Code Reviews and Architectural History</h2>
+
+<p>Java enterprise codebases accumulate architectural decisions over years — design patterns, naming conventions, exception hierarchies, and integration approaches that reflect specific business requirements. The GitHub MCP server gives your AI access to the full history and review context behind these decisions.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read PR diffs with full class context for Java code review assistance</li>
+<li>Access commit history to understand why specific architectural patterns were chosen</li>
+<li>Check open issues related to specific service boundaries or API contracts</li>
+<li>Review PR comments to understand the reasoning behind design decisions over time</li>
+</ul>
+
+<p><strong>Best for:</strong> Java developers working in large, long-lived codebases. When a specific service has non-obvious behavior — handling a legacy integration in an unusual way — your AI can read the commit history and PR comments to surface the business requirement or technical constraint that drove the decision, rather than treating it as a mistake to fix.</p>
+
+<h2>4. PostgreSQL MCP Server — Database Schema Access</h2>
+
+<p>Java applications commonly use PostgreSQL via JPA/Hibernate or jOOQ. The PostgreSQL MCP server gives your AI direct access to your database schema — tables, columns, constraints, indexes, and foreign key relationships — for accurate query generation and migration planning.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read complete schema information for accurate JPA entity and repository generation</li>
+<li>Analyze foreign key relationships to generate correct Hibernate mapping annotations</li>
+<li>Check existing indexes before writing JPQL or native SQL queries for performance</li>
+<li>Verify column nullability to generate correct <code>@Column(nullable = false)</code> annotations</li>
+</ul>
+
+<p><strong>Best for:</strong> Java developers writing JPA entities or Flyway migrations. When mapping an existing database table to a JPA entity, your AI can read the actual schema — getting correct column names, data types, constraints, and relationships — and generate a well-annotated entity class with accurate <code>@Column</code>, <code>@OneToMany</code>, and <code>@ManyToOne</code> mappings that reflect the real database structure.</p>
+
+<h2>5. SonarQube MCP Server — Static Analysis and Code Quality</h2>
+
+<p>Java teams commonly use SonarQube for static analysis — tracking bugs, code smells, security hotspots, and test coverage. The SonarQube MCP server gives your AI access to your actual quality metrics and issue list for targeted improvement work.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read current code smell and bug counts by component to prioritize cleanup work</li>
+<li>Access security hotspot details for accurate vulnerability remediation</li>
+<li>Check test coverage metrics by class or method to identify coverage gaps</li>
+<li>Review issue history to understand quality trends and regression patterns</li>
+</ul>
+
+<p><strong>Best for:</strong> Java developers doing code quality sprints or security hardening. When SonarQube flags a SQL injection hotspot, your AI can read the specific issue details — the exact line, the vulnerable pattern, and the recommended fix — and generate the correct parameterized query replacement rather than a generic security suggestion.</p>
+
+<h2>6. Jira MCP Server — Ticket Context for Feature Development</h2>
+
+<p>Java enterprise teams live in Jira — user stories, acceptance criteria, API contract requirements, and domain-specific business logic requirements. The Jira MCP server gives your AI access to the actual ticket context before you write code.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read acceptance criteria to understand the complete behavioral requirements before implementation</li>
+<li>Access linked tickets to understand related constraints or dependency requirements</li>
+<li>Check bug report details including stack traces and reproduction steps</li>
+<li>Review sprint context to understand which other changes are in flight alongside yours</li>
+</ul>
+
+<p><strong>Best for:</strong> Java developers implementing features from detailed Jira stories. Providing the actual ticket — including acceptance criteria, edge cases, and linked API design documents — produces implementation code that satisfies the stated requirements rather than a generic interpretation of the ticket title.</p>
+
+<h2>7. Brave Search MCP Server — Java Ecosystem Updates</h2>
+
+<p>The Java ecosystem evolves with each JDK release — new language features, updated Spring Boot conventions, Hibernate version changes, and security patches for common dependencies. The Brave Search server keeps your AI current on Java ecosystem changes beyond its training data.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Search for Spring Boot 3.x migration guides for your specific Spring version</li>
+<li>Find current JDK 21+ virtual thread best practices for your use case</li>
+<li>Research CVEs in specific Spring or Hibernate versions</li>
+<li>Find current Hibernate 6 breaking changes when upgrading from Hibernate 5</li>
+</ul>
+
+<p><strong>Best for:</strong> Java developers upgrading Spring Boot or adopting JDK 21 features. When migrating from Spring Boot 2.x to 3.x, your AI can search for the actual migration guide — deprecated APIs, namespace changes, and auto-configuration differences — and generate the correct updated configuration rather than relying on training data that may predate the release.</p>
+
+<h2>Recommended Java Developer Stack</h2>
+
+<p>The core setup for Java development:</p>
+
+<ol>
+<li><strong>Filesystem</strong> — project structure and codebase navigation for pattern-consistent code generation</li>
+<li><strong>Maven or Gradle</strong> — dependency tree and build configuration context</li>
+<li><strong>GitHub</strong> — PR reviews and architectural decision history</li>
+</ol>
+
+<p>Add PostgreSQL for live schema access when writing JPA entities or SQL queries, SonarQube for static analysis context during code quality work, Jira for ticket acceptance criteria during feature development, and Brave Search for current Spring Boot and JDK upgrade guidance. This stack gives your AI the context to act as a genuine Java engineering partner — working from your actual project structure, your real dependency tree, and live quality metrics rather than generic Java patterns.</p>
+
+<p>Browse all MCP servers at <a href="/servers">MyMCPTools</a>. See also <a href="/blog/best-mcp-servers-for-backend-developers">Best MCP Servers for Backend Developers</a> and <a href="/blog/best-mcp-servers-for-database">Best MCP Servers for Database Work</a>.</p>
+    `.trim(),
+  },
+  {
+    slug: "best-mcp-servers-for-data-analysts",
+    title: "Best MCP Servers for Data Analysts in 2026",
+    description: "The top MCP servers for data analysts — from SQL database access and BigQuery integration to spreadsheet automation and business intelligence dashboards. Do faster, more accurate analysis with AI that has direct access to your data.",
+    date: "2026-05-20",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "7 min read",
+    keywords: ["mcp servers for data analysts", "data analysis mcp", "sql mcp server", "bigquery mcp server", "business intelligence mcp", "data analyst ai tools 2026"],
+    relatedServerSlugs: ["postgresql", "sqlite", "bigquery", "brave-search", "fetch", "github", "filesystem"],
+    content: `
+<p>Data analysts live at the intersection of data, business questions, and decision-makers. The job requires querying databases across multiple systems, building reports in spreadsheets and BI tools, translating business questions into SQL, and explaining findings to non-technical stakeholders. MCP servers give your AI assistant direct access to your actual data environment — the database schemas you query against, the dashboards you maintain, and the documentation you reference. Here are the MCP servers that deliver the most value for data analysts in 2026.</p>
+
+<h2>1. PostgreSQL MCP Server — Live Database Schema and Query Access</h2>
+
+<p>The most common bottleneck in data analysis is writing SQL against schemas you don't have memorized — especially in large databases with hundreds of tables, complex naming conventions, and non-obvious relationships. The PostgreSQL MCP server gives your AI direct access to your database schema so every query is generated from the actual table structure, not a description of it.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read complete schema information — tables, columns, data types, and foreign keys — across your full database</li>
+<li>Execute read-only queries to verify data distributions and understand actual data quality</li>
+<li>Analyze query performance with EXPLAIN ANALYZE to optimize slow reports</li>
+<li>Check column nullability and data ranges before writing aggregation queries</li>
+</ul>
+
+<p><strong>Best for:</strong> Data analysts writing ad-hoc SQL against complex schemas. Instead of manually looking up table names and column types, your AI can read the schema directly — and generate a correctly-joined, properly-filtered query against your actual table structure. This eliminates the "column not found" and "ambiguous column name" errors that come from working from memory.</p>
+
+<h2>2. BigQuery MCP Server — Cloud Data Warehouse Access</h2>
+
+<p>Many data analytics teams have migrated to BigQuery for its scalability, partitioning, and cost-based query model. The BigQuery MCP server gives your AI access to your dataset and table schemas — including partition and clustering columns that dramatically affect query cost and performance.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read BigQuery dataset and table schemas including partition and clustering columns</li>
+<li>Generate cost-efficient queries that filter on partition columns to avoid full-table scans</li>
+<li>Access table metadata including row counts and last modified times</li>
+<li>Understand nested and repeated RECORD fields for correct UNNEST query patterns</li>
+</ul>
+
+<p><strong>Best for:</strong> Data analysts working in BigQuery who need to control query costs. When analyzing a partitioned event table with nested fields, your AI can read the actual schema — understanding the partition column, the clustering key, and the RECORD structure — and generate a query that filters on the partition column first, correctly unnests the nested records, and avoids the common mistake of a full-table scan on a multi-terabyte table.</p>
+
+<h2>3. SQLite MCP Server — Local Analysis Databases</h2>
+
+<p>Data analysts frequently use SQLite for local analysis — DuckDB exports, CSV-to-SQLite imports, or lightweight local data stores for prototyping. The SQLite MCP server gives your AI access to local database schemas for the same schema-aware query generation as production databases.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read local SQLite schemas for accurate query generation against imported data</li>
+<li>Check column types and constraints to avoid type mismatch errors</li>
+<li>Understand table structure for CSV or export data that has been imported for analysis</li>
+<li>Generate accurate aggregation and window function queries against local datasets</li>
+</ul>
+
+<p><strong>Best for:</strong> Data analysts doing local exploratory analysis on exported data. When a stakeholder sends a CSV export that you've imported into SQLite for analysis, your AI can read the actual schema — including the inferred column types from the import — and generate correct aggregation queries without manual schema description.</p>
+
+<h2>4. Filesystem MCP Server — Analysis Scripts and Report Templates</h2>
+
+<p>Data analysts maintain libraries of SQL scripts, Python analysis notebooks, Excel templates, and report configurations. The Filesystem server gives your AI access to your existing analysis assets so new work builds on your established patterns.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read existing SQL scripts to understand your query style and business metric definitions</li>
+<li>Access Python analysis scripts to follow your existing pandas or polars patterns</li>
+<li>Read report configuration files to generate consistent output formatting</li>
+<li>Navigate your analysis project structure to understand how reports are organized</li>
+</ul>
+
+<p><strong>Best for:</strong> Data analysts maintaining consistent metric definitions across reports. When a new report needs to use the same customer lifetime value calculation as three existing reports, your AI can read those existing SQL definitions — ensuring the new report uses the identical calculation logic, filter conditions, and cohort definition rather than a slightly different implementation that produces inconsistent numbers.</p>
+
+<h2>5. GitHub MCP Server — Analysis Version Control and Review</h2>
+
+<p>Data analysis code — SQL queries, Python scripts, and dbt models — benefits from version control and code review. The GitHub MCP server gives your AI access to your analysis repository history and PR context.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read PR diffs for SQL query review and optimization feedback</li>
+<li>Access commit history to understand why specific metric definitions were changed</li>
+<li>Check open issues tracking data quality problems or metric definition disputes</li>
+<li>Review past PRs to understand the business context behind specific query decisions</li>
+</ul>
+
+<p><strong>Best for:</strong> Data analysts working in teams with dbt or version-controlled SQL. When a metric definition was changed six months ago and stakeholders are questioning the historical trend, your AI can read the commit history to find the exact change — identifying when the definition shifted, which PR introduced the change, and what the stated reason was — providing an accurate explanation rather than speculation.</p>
+
+<h2>6. Brave Search MCP Server — Current Data and Market Research</h2>
+
+<p>Data analysis frequently requires context that goes beyond internal data — industry benchmarks, market trends, competitor metrics, and macroeconomic context. The Brave Search server gives your AI access to current external data and research.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Search for current industry benchmarks to contextualize internal metrics</li>
+<li>Find recent market research reports for competitive analysis context</li>
+<li>Research current SQL or Python analysis patterns for specific analytical problems</li>
+<li>Find current documentation for data tools and libraries beyond training data cutoff</li>
+</ul>
+
+<p><strong>Best for:</strong> Data analysts preparing business presentations that need external context. When presenting churn rate data to leadership, your AI can search for current industry average churn rates for your specific sector — allowing you to contextualize whether your rate is above or below market, rather than presenting the number in isolation.</p>
+
+<h2>7. Fetch MCP Server — API Data Sources and Documentation</h2>
+
+<p>Data analysts increasingly pull data directly from APIs — marketing platforms, CRM systems, financial data providers, and SaaS tools. The Fetch server retrieves current API documentation for accurate data extraction code.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Fetch API documentation for data sources like Salesforce, HubSpot, or Stripe</li>
+<li>Retrieve current schema documentation for APIs that export data for analysis</li>
+<li>Access authentication documentation for correct API credential handling</li>
+<li>Pull pagination and rate limiting documentation to build reliable data pipelines</li>
+</ul>
+
+<p><strong>Best for:</strong> Data analysts building Python scripts to extract data from SaaS APIs. When pulling Salesforce opportunity data via the REST API, providing the actual Salesforce API documentation via Fetch produces correct field names, proper SOQL syntax, and accurate pagination handling — versus generating plausible-but-incorrect code from training data that may reflect an older API version.</p>
+
+<h2>Recommended Data Analyst Stack</h2>
+
+<p>The core setup for data analysis work:</p>
+
+<ol>
+<li><strong>PostgreSQL or BigQuery</strong> — live schema access for the databases you query most</li>
+<li><strong>Filesystem</strong> — existing SQL scripts and analysis patterns for consistent metric definitions</li>
+<li><strong>Brave Search</strong> — industry benchmarks and current tool documentation</li>
+</ol>
+
+<p>Add SQLite for local exploratory analysis, GitHub for version-controlled analysis review, and Fetch for API data extraction work. This stack gives your AI the context to act as a genuine data analysis partner — reading your actual schema, following your established metric definitions, and producing SQL and Python that works against your real data environment rather than a hypothetical dataset.</p>
+
+<p>Browse all MCP servers at <a href="/servers">MyMCPTools</a>. See also <a href="/blog/best-mcp-servers-for-data-science">Best MCP Servers for Data Science</a> and <a href="/blog/best-mcp-servers-for-database">Best MCP Servers for Database Work</a>.</p>
+    `.trim(),
+  },
+  {
+    slug: "best-mcp-servers-for-nextjs-developers",
+    title: "Best MCP Servers for Next.js Developers in 2026",
+    description: "The top MCP servers for Next.js developers — from codebase navigation and Vercel deployment access to database introspection and component library context. Build better Next.js applications with AI that understands your actual stack.",
+    date: "2026-05-20",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "7 min read",
+    keywords: ["mcp servers for nextjs developers", "nextjs mcp server", "vercel mcp", "next.js ai tools", "react server components mcp", "nextjs development 2026"],
+    relatedServerSlugs: ["filesystem", "github", "postgresql", "brave-search", "fetch", "redis", "cloudflare"],
+    content: `
+<p>Next.js has become the dominant full-stack React framework — App Router, React Server Components, Server Actions, API routes, edge middleware, and seamless Vercel deployment. The complexity of the modern Next.js stack means your AI needs context about your actual project: whether you're using App Router or Pages Router, how you've structured your data fetching layer, which database ORM you're using, and what your deployment configuration looks like. MCP servers give your AI that project-specific context. Here are the MCP servers that deliver the most value for Next.js developers in 2026.</p>
+
+<h2>1. Filesystem MCP Server — App Router Structure and Codebase Navigation</h2>
+
+<p>Next.js App Router introduced a new file-system-based routing convention — layouts, loading states, error boundaries, route groups, and parallel routes — that differs significantly from Pages Router patterns. The Filesystem server gives your AI access to your actual project structure so generated code follows your real routing approach, data fetching patterns, and component organization.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read your <code>app/</code> directory structure to understand your layout hierarchy and route organization</li>
+<li>Access existing Server Components to understand your data fetching and cache patterns</li>
+<li>Read your component library to follow your styling approach (Tailwind, CSS Modules, or styled-components)</li>
+<li>Navigate your <code>lib/</code> and <code>utils/</code> directories to find existing utilities before generating new ones</li>
+</ul>
+
+<p><strong>Best for:</strong> Next.js developers adding new routes or features to existing apps. Before generating a new page component, your AI can read several existing ones — learning whether you're using Server Components or Client Components for this type of page, your data fetching pattern (direct database queries vs API calls vs React Query), your error boundary approach, and your TypeScript typing conventions — then generate a new page that integrates naturally.</p>
+
+<h2>2. GitHub MCP Server — PR Reviews and Architectural Decisions</h2>
+
+<p>Next.js apps accumulate architectural decisions quickly — the choice between App Router and Pages Router, how Server Actions are structured, how authentication is handled, and how caching is configured. The GitHub MCP server gives your AI the history behind these decisions.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read PR diffs with full Next.js component context for code review assistance</li>
+<li>Access commit history to understand why specific App Router or data fetching patterns were chosen</li>
+<li>Check open issues related to specific routes, API endpoints, or performance problems</li>
+<li>Review past PR discussions to understand previous decisions about Server vs Client Components</li>
+</ul>
+
+<p><strong>Best for:</strong> Next.js developers joining existing projects or reviewing complex PRs. When a PR modifies a data-fetching boundary in an App Router layout — changing what data is fetched at layout level vs page level — your AI can read the PR diff, the architectural discussion in previous PRs, and generate feedback that's grounded in your project's actual data fetching strategy.</p>
+
+<h2>3. PostgreSQL MCP Server — Database Schema for Server-Side Data Fetching</h2>
+
+<p>Next.js with App Router enables direct database access in Server Components — using Prisma, Drizzle ORM, or raw SQL in server-side code without a separate API layer. The PostgreSQL MCP server gives your AI access to your actual database schema for accurate query and mutation generation.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read your database schema to generate accurate Prisma or Drizzle ORM queries</li>
+<li>Understand foreign key relationships for correct <code>include</code> or <code>join</code> query patterns</li>
+<li>Check column types and nullability to generate correct TypeScript return types</li>
+<li>Verify existing indexes before generating new queries to avoid performance issues</li>
+</ul>
+
+<p><strong>Best for:</strong> Next.js developers using Prisma or Drizzle for server-side data access. When building a new Server Component that fetches related data across multiple tables, your AI can read the actual schema — understanding the relationship structure and constraints — and generate the correct Prisma <code>findMany</code> with <code>include</code> or Drizzle join that returns the exact data shape your component needs.</p>
+
+<h2>4. Fetch MCP Server — Next.js Documentation and Third-Party Integration</h2>
+
+<p>Next.js evolves rapidly — App Router patterns, caching semantics, and Server Action conventions changed significantly between Next.js 13, 14, and 15. The Fetch server retrieves current Next.js documentation and third-party service docs for accurate code generation.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Fetch current Next.js documentation for caching, routing, or middleware APIs</li>
+<li>Retrieve authentication library documentation (NextAuth.js, Clerk, Auth0) for correct configuration</li>
+<li>Access Stripe or payment SDK docs for accurate Server Action integration</li>
+<li>Pull Vercel deployment documentation for correct environment variable and edge configuration</li>
+</ul>
+
+<p><strong>Best for:</strong> Next.js developers implementing authentication or payment integrations. When integrating Clerk or NextAuth.js with App Router, providing the current library documentation via Fetch produces correct middleware configuration, accurate session handling, and proper route protection patterns — versus generating code based on training data that may reflect an older version of the library that had a different API.</p>
+
+<h2>5. Redis MCP Server — Caching and Session State</h2>
+
+<p>Next.js apps commonly use Redis for caching expensive computations, storing user sessions (via iron-session or express-session), managing rate limiting for API routes, and caching third-party API responses. The Redis MCP server gives your AI visibility into your Redis state for caching logic debugging.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read specific cache keys to verify what's cached and check TTL values</li>
+<li>Inspect session data to diagnose authentication or state persistence issues</li>
+<li>Check rate limiting counter state for API route debugging</li>
+<li>Verify cache invalidation behavior when testing cache busting logic</li>
+</ul>
+
+<p><strong>Best for:</strong> Next.js developers debugging caching or session issues. When a user reports that their session data is lost after a specific action, your AI can read the actual session key in Redis — verifying whether the session is being written correctly, checking the TTL, and determining whether invalidation is happening prematurely — closing the diagnostic loop without manual Redis CLI investigation.</p>
+
+<h2>6. Cloudflare MCP Server — Edge Configuration and Deployment</h2>
+
+<p>Many Next.js applications use Cloudflare for DNS management, edge caching, WAF rules, and Cloudflare Workers for edge-computed routes. The Cloudflare MCP server gives your AI access to your edge configuration for deployment troubleshooting and security review.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read DNS records to verify domain routing for Vercel or custom deployments</li>
+<li>Access cache rules and page rules to understand what's being cached at the edge</li>
+<li>Check WAF rules that might be interfering with API routes or form submissions</li>
+<li>Review Workers configurations for edge middleware deployments</li>
+</ul>
+
+<p><strong>Best for:</strong> Next.js developers troubleshooting deployment or caching issues. When Server Actions are returning 403 errors in production but not in development, your AI can read your Cloudflare WAF rules to identify whether a rule is blocking the POST request to <code>/_next/server</code> — a common production-only issue for Next.js apps behind Cloudflare.</p>
+
+<h2>7. Brave Search MCP Server — Next.js Ecosystem Updates</h2>
+
+<p>Next.js major versions bring significant changes — App Router maturity improvements, Turbopack enabling by default, new caching model changes in Next.js 15, and React 19 integration. The Brave Search server keeps your AI current on Next.js ecosystem changes beyond its training data.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Search for Next.js 15 breaking changes and migration requirements</li>
+<li>Find current React 19 compatibility information for specific libraries</li>
+<li>Research Turbopack compatibility for your specific plugins and loaders</li>
+<li>Find community solutions for specific App Router patterns or caching behaviors</li>
+</ul>
+
+<p><strong>Best for:</strong> Next.js developers upgrading major versions or adopting new features. When migrating from Next.js 14 to 15, your AI can search for the actual breaking changes — the fetch caching semantic changes, the new async request APIs, and the updated configuration options — and generate the correct migration changes rather than relying on training data that predates the release.</p>
+
+<h2>Recommended Next.js Developer Stack</h2>
+
+<p>The core setup for Next.js development:</p>
+
+<ol>
+<li><strong>Filesystem</strong> — App Router structure and codebase navigation for pattern-consistent code generation</li>
+<li><strong>GitHub</strong> — PR reviews and architectural decision history</li>
+<li><strong>PostgreSQL</strong> — live schema access for server-side data fetching with Prisma or Drizzle</li>
+</ol>
+
+<p>Add Fetch for current Next.js documentation and third-party integration docs, Redis for caching and session debugging, Cloudflare for edge configuration access, and Brave Search for Next.js ecosystem updates. This stack gives your AI the context to act as a genuine Next.js development partner — reading your actual project structure, following your App Router patterns, and producing code that works in your specific Next.js configuration rather than a generic template.</p>
+
+<p>Browse all MCP servers at <a href="/servers">MyMCPTools</a>. See also <a href="/blog/best-mcp-servers-for-react-developers">Best MCP Servers for React Developers</a> and <a href="/blog/best-mcp-servers-for-backend-developers">Best MCP Servers for Backend Developers</a>.</p>
+    `.trim(),
+  },
 ];
 
 export function getBlogPostBySlug(slug: string): BlogPost | undefined {
