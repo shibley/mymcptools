@@ -30174,6 +30174,303 @@ async with MCPServerStdio(
 <p>Browse all MCP servers at <a href="/servers">MyMCPTools</a>. See also <a href="/blog/best-mcp-servers-for-backend-developers">Best MCP Servers for Backend Developers</a> and <a href="/blog/best-mcp-servers-for-database">Best Database MCP Servers</a>.</p>
     `.trim(),
   },
+  {
+    slug: "best-mcp-servers-for-stripe-developers",
+    title: "Best MCP Servers for Stripe Developers in 2026",
+    description: "Top MCP servers for Stripe developers — integrate payment data, webhook debugging, and customer management directly into your AI workflow. Build and ship Stripe integrations faster with MCP.",
+    date: "2026-05-20",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "7 min read",
+    keywords: ["mcp servers for stripe developers", "stripe mcp server 2026", "stripe ai integration", "payment developer mcp tools", "stripe webhook mcp"],
+    relatedServerSlugs: ["stripe", "stripe-billing", "filesystem", "github", "brave-search", "postgresql"],
+    content: `
+<p>Stripe is the backbone of modern payment infrastructure — subscriptions, one-time charges, marketplaces, Connect platforms, and increasingly complex revenue logic. Stripe developers deal with a unique challenge: your AI assistant has training data about the Stripe API, but it doesn't know your actual payment flows, your live webhook configurations, your customer data structure, or the specific edge cases in your integration. MCP servers close that gap. Here are the MCP servers that deliver the most value for Stripe developers in 2026.</p>
+
+<h2>1. Stripe MCP Server — Live Payment Data in Your AI Workflow</h2>
+
+<p>The official Stripe MCP server (maintained by Stripe) gives your AI assistant direct access to your Stripe account data. Instead of asking generic questions about the Stripe API, your AI can query your actual customers, subscriptions, invoices, payment intents, and disputes.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Retrieve customer records, subscription status, and payment history</li>
+<li>Query payment intents, charges, and refund data</li>
+<li>Inspect webhook event logs for debugging</li>
+<li>Look up product and price configurations</li>
+<li>Review dispute and chargeback details</li>
+</ul>
+
+<p><strong>Best for:</strong> Debugging payment failures, auditing subscription states, and answering customer support questions without leaving your IDE. When a customer reports a failed payment, your AI can pull the actual charge, look at the failure code, and suggest the specific fix — not a generic troubleshooting checklist.</p>
+
+<h2>2. Filesystem MCP Server — Your Stripe Integration Codebase</h2>
+
+<p>Stripe integrations live in your codebase — webhook handlers, checkout session creation, subscription lifecycle management, and billing portal configurations. The Filesystem server gives your AI access to your actual integration code so generated suggestions follow your real patterns: your error handling approach, your idempotency key strategy, your webhook signature verification middleware.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read existing webhook handlers and middleware</li>
+<li>Navigate your payment flow implementation</li>
+<li>Understand your Stripe client initialization and config</li>
+<li>Reference your existing test fixtures and mocking setup</li>
+</ul>
+
+<p><strong>Best for:</strong> Adding new Stripe features to an existing integration. Your AI reads your current checkout session creation code and generates the new subscription upgrade flow in the same style — same error handling, same logging, same response shape.</p>
+
+<h2>3. GitHub MCP Server — PR Reviews with Payment Context</h2>
+
+<p>Stripe integration PRs are high-stakes — a missed webhook handler or incorrect idempotency key can mean duplicate charges or missed revenue. The GitHub MCP server lets your AI review payment-related PRs with awareness of your entire integration history, not just the diff.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Review PRs touching payment flows with full codebase context</li>
+<li>Check webhook handler completeness across all relevant events</li>
+<li>Verify idempotency key usage across payment mutations</li>
+<li>Search commit history for how similar payment issues were resolved</li>
+</ul>
+
+<p><strong>Best for:</strong> Teams shipping Stripe changes frequently. Your AI can flag "this webhook handler doesn't verify the Stripe-Signature header" or "this payment intent creation is missing idempotency_key" by comparing against your existing patterns.</p>
+
+<h2>4. PostgreSQL MCP Server — Your Payment Database Schema</h2>
+
+<p>Most Stripe integrations mirror key data to a local database — orders, subscriptions, customer records, invoice history. The PostgreSQL MCP server gives your AI access to your actual schema so it can generate queries that join Stripe-mirrored data with your application tables accurately.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Live schema introspection for Stripe-adjacent tables</li>
+<li>Generate accurate SQL for revenue reporting and reconciliation</li>
+<li>Debug data inconsistencies between Stripe and your local records</li>
+<li>Build subscription analytics queries against your real schema</li>
+</ul>
+
+<p><strong>Best for:</strong> Revenue reporting, subscription analytics, and reconciliation. Your AI can write a MRR calculation query against your actual subscriptions table schema — not a generic example that doesn't match your column names.</p>
+
+<h2>5. Brave Search MCP Server — Current Stripe Documentation</h2>
+
+<p>Stripe's API evolves rapidly — new payment methods, updated webhook event types, deprecations, and regional compliance requirements. The Brave Search server lets your AI find current Stripe documentation, community solutions, and recent API changes rather than relying on training data that may predate important updates.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Search Stripe docs for current API behavior and edge cases</li>
+<li>Find community solutions for Stripe-specific error codes</li>
+<li>Look up current SCA/3DS requirements for European payments</li>
+<li>Research new payment method integration requirements</li>
+</ul>
+
+<p><strong>Best for:</strong> International payment compliance and new feature integration. When adding SEPA Direct Debit or Klarna support, your AI can pull the current documentation rather than generating code based on potentially outdated training data.</p>
+
+<h2>Recommended Stripe Developer Stack</h2>
+
+<p>The core setup for Stripe development:</p>
+
+<ol>
+<li><strong>Stripe</strong> — live payment data, customer records, and webhook event history</li>
+<li><strong>Filesystem</strong> — your integration codebase for pattern-consistent code generation</li>
+<li><strong>GitHub</strong> — PR reviews with full payment flow context</li>
+<li><strong>PostgreSQL</strong> — your payment database schema for accurate reporting queries</li>
+</ol>
+
+<p>Add Brave Search for current Stripe documentation and compliance guidance. This stack turns your AI into a genuine Stripe integration partner — one that knows your actual customers, your current webhook configuration, your database schema, and your existing code patterns rather than working from generic Stripe API knowledge alone.</p>
+
+<p>Browse all MCP servers at <a href="/servers">MyMCPTools</a>. See also <a href="/blog/best-mcp-servers-for-backend-developers">Best MCP Servers for Backend Developers</a> and <a href="/blog/best-mcp-servers-for-api-development">Best MCP Servers for API Development</a>.</p>
+    `.trim(),
+  },
+  {
+    slug: "best-mcp-servers-for-graphql-developers",
+    title: "Best MCP Servers for GraphQL Developers in 2026",
+    description: "Top MCP servers for GraphQL developers — schema introspection, query optimization, and API documentation directly in your AI workflow. Build and debug GraphQL APIs faster with MCP.",
+    date: "2026-05-20",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "7 min read",
+    keywords: ["mcp servers for graphql developers", "graphql mcp server 2026", "graphql ai tools", "apollo graphql mcp", "graphql schema mcp"],
+    relatedServerSlugs: ["graphql-mcp", "apollo-graph", "filesystem", "github", "brave-search", "postgresql"],
+    content: `
+<p>GraphQL has become the API layer of choice for complex data requirements — flexible queries, type-safe schemas, real-time subscriptions, and federated graphs spanning multiple services. GraphQL developers work with schemas that encode your entire domain model, resolvers that map to your data sources, and clients that need precise query structures to avoid over-fetching. MCP servers give your AI direct access to your actual GraphQL schema, your resolver implementations, and your API documentation — not generic GraphQL knowledge. Here are the MCP servers that deliver the most value for GraphQL developers in 2026.</p>
+
+<h2>1. GraphQL MCP Server — Schema-Aware AI Assistance</h2>
+
+<p>The GraphQL MCP server gives your AI direct introspection access to your GraphQL API. Instead of describing your schema in text, your AI can query it directly — understanding your types, relationships, queries, mutations, and subscriptions as they actually exist in your running API.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Full schema introspection via the standard GraphQL introspection query</li>
+<li>Type exploration — fields, arguments, return types, deprecations</li>
+<li>Query and mutation discovery with argument documentation</li>
+<li>Execute GraphQL queries directly against your API for testing</li>
+</ul>
+
+<p><strong>Best for:</strong> Writing accurate queries and mutations. Your AI knows the exact field names, argument types, and nested relationships in your schema — no more hallucinated field names or incorrect argument structures. When you ask for "a query that fetches user orders with their line items," it generates a query that matches your actual type structure.</p>
+
+<h2>2. Apollo Graph MCP Server — Federation and Studio Integration</h2>
+
+<p>For teams using Apollo Federation or Apollo Studio, the Apollo Graph MCP server provides access to your federated graph's schema, subgraph configurations, operation performance data, and schema checks.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Access your Apollo Studio schema and operation metrics</li>
+<li>Inspect subgraph boundaries and entity definitions</li>
+<li>Review schema check results and breaking change detection</li>
+<li>Analyze operation performance and error rates</li>
+</ul>
+
+<p><strong>Best for:</strong> Federated GraphQL architectures. When designing a new subgraph or extending an entity, your AI understands the existing federation boundaries and entity ownership — avoiding conflicts with other subgraphs' schemas.</p>
+
+<h2>3. Filesystem MCP Server — Your Resolver and Schema Files</h2>
+
+<p>GraphQL schemas and resolvers live in your codebase. The Filesystem server gives your AI access to your schema definitions, resolver implementations, data loaders, and type generation configuration so new additions follow your actual conventions — your error handling pattern, your DataLoader setup, your authorization middleware approach.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read SDL schema files and generated types</li>
+<li>Navigate resolver directory structures (by type, by feature, etc.)</li>
+<li>Understand your DataLoader patterns and batch function implementations</li>
+<li>Reference existing test fixtures and mock implementations</li>
+</ul>
+
+<p><strong>Best for:</strong> Adding new types and resolvers. Your AI reads your existing User resolver, understands your context setup and DataLoader patterns, and generates a new Order resolver in the same style — same error handling, same authorization checks, same batch loading approach.</p>
+
+<h2>4. GitHub MCP Server — Schema Change Review</h2>
+
+<p>GraphQL schema changes are high-stakes — breaking changes to field types or removing fields can break clients. The GitHub MCP server lets your AI review schema-changing PRs with awareness of your full API history and which operations your clients actually use.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Review schema migration PRs with full type history context</li>
+<li>Check if removed fields are referenced in known client operations</li>
+<li>Validate resolver changes against the schema definition</li>
+<li>Search commit history for how similar schema changes were handled</li>
+</ul>
+
+<p><strong>Best for:</strong> Schema evolution and deprecation management. Your AI can flag "this removes the user.email field which appears in 3 client queries" or "this resolver change doesn't handle the null case the schema allows."</p>
+
+<h2>5. PostgreSQL MCP Server — Data Source Schema for Resolver Accuracy</h2>
+
+<p>GraphQL resolvers ultimately fetch from data sources — most commonly relational databases. The PostgreSQL MCP server gives your AI access to your actual database schema so resolver implementations generate accurate SQL or ORM queries that match your real column names, indexes, and relationships.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Introspect the database tables your resolvers map to</li>
+<li>Generate accurate DataLoader batch queries for N+1 prevention</li>
+<li>Understand join paths for nested GraphQL field resolution</li>
+<li>Optimize resolver queries based on real index availability</li>
+</ul>
+
+<p><strong>Best for:</strong> N+1 query optimization and resolver performance. Your AI can see both your GraphQL type relationships and your database foreign key structure, and generate a DataLoader implementation that batches database calls correctly for your actual schema.</p>
+
+<h2>Recommended GraphQL Developer Stack</h2>
+
+<p>The core setup for GraphQL development:</p>
+
+<ol>
+<li><strong>GraphQL MCP</strong> — live schema introspection for accurate query and mutation generation</li>
+<li><strong>Filesystem</strong> — resolver implementations and schema files for convention-consistent additions</li>
+<li><strong>GitHub</strong> — schema change review with full API history context</li>
+<li><strong>PostgreSQL</strong> — data source schema for accurate resolver and DataLoader implementations</li>
+</ol>
+
+<p>Add Apollo Graph MCP for federated architectures and Brave Search for current GraphQL ecosystem guidance. This stack turns your AI into a genuine GraphQL development partner — one that reads your actual running schema, understands your resolver patterns, and generates code that fits your real API rather than a generic GraphQL template.</p>
+
+<p>Browse all MCP servers at <a href="/servers">MyMCPTools</a>. See also <a href="/blog/best-mcp-servers-for-api-development">Best MCP Servers for API Development</a> and <a href="/blog/best-mcp-servers-for-backend-developers">Best MCP Servers for Backend Developers</a>.</p>
+    `.trim(),
+  },
+  {
+    slug: "best-mcp-servers-for-figma-users",
+    title: "Best MCP Servers for Figma Users in 2026",
+    description: "Top MCP servers for Figma users — design-to-code handoff, component documentation, and design system management directly in your AI workflow. Bridge design and development faster with MCP.",
+    date: "2026-05-20",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "7 min read",
+    keywords: ["mcp servers for figma users", "figma mcp server 2026", "figma ai tools", "design to code mcp", "figma design system mcp"],
+    relatedServerSlugs: ["figma", "filesystem", "github", "brave-search", "canva"],
+    content: `
+<p>Figma is the design hub for modern product teams — component libraries, design systems, prototypes, and the source of truth for what gets built. The design-to-code handoff remains one of the most friction-filled parts of the product development cycle: designers document specs, developers interpret them, and mismatches appear in review. MCP servers give your AI direct access to your actual Figma files, your codebase's existing component implementations, and your design system documentation — closing the gap between what's designed and what's built. Here are the MCP servers that deliver the most value for Figma users in 2026.</p>
+
+<h2>1. Figma MCP Server — Your Design Files in Your AI Workflow</h2>
+
+<p>The Figma MCP server gives your AI assistant direct access to your Figma files. Instead of exporting specs as PDFs or manually describing component properties, your AI can read the actual frame structure, component properties, auto-layout configurations, and design tokens from your Figma documents.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read frame and component structure from Figma files</li>
+<li>Access component properties, variants, and slot configurations</li>
+<li>Inspect auto-layout, spacing, and constraint settings</li>
+<li>Retrieve color styles and text styles as design token values</li>
+<li>Navigate component libraries and shared assets</li>
+</ul>
+
+<p><strong>Best for:</strong> Design-to-code handoff. Your AI reads the actual Figma component structure and generates React, Vue, or HTML/CSS that matches the real design — correct spacing values, accurate color tokens, proper layout logic. No more "this doesn't match the design" review comments for spec interpretation errors.</p>
+
+<h2>2. Filesystem MCP Server — Your Component Library Codebase</h2>
+
+<p>Design systems live in two places: Figma and code. The Filesystem server gives your AI access to your existing component implementations so new components generated from Figma designs follow your real coding conventions — your prop naming patterns, your styling approach (CSS modules, Tailwind, styled-components), your accessibility implementation, your test structure.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read existing component implementations for pattern consistency</li>
+<li>Navigate your design system package structure</li>
+<li>Understand your token implementation (CSS variables, Tailwind config, theme object)</li>
+<li>Reference existing Storybook stories for new component documentation</li>
+</ul>
+
+<p><strong>Best for:</strong> Extending your component library. Your AI reads your existing Button component, understands your prop interface patterns and variant implementation, and generates a new Badge component from the Figma spec that matches your library's conventions exactly — not a generic implementation that requires heavy rework.</p>
+
+<h2>3. GitHub MCP Server — Design Review and Component PR Workflow</h2>
+
+<p>Component PRs need design review: does the implementation match the spec? The GitHub MCP server lets your AI assist with component PRs by comparing implementation decisions against your design system history and flagging deviations from established patterns.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Review component implementation PRs against design system standards</li>
+<li>Check prop interface consistency with existing components</li>
+<li>Search commit history for how similar design decisions were resolved</li>
+<li>Identify missing variants or accessibility implementations</li>
+</ul>
+
+<p><strong>Best for:</strong> Design system teams doing code review. Your AI can flag "this Button variant doesn't include a focus-visible style like the existing variants" or "this spacing value doesn't map to a design token" — catching design system violations before they merge.</p>
+
+<h2>4. Brave Search MCP Server — Design System Research and Figma Resources</h2>
+
+<p>The Figma ecosystem evolves rapidly — new Dev Mode features, updated component APIs, community plugins, and design system best practices. The Brave Search server lets your AI find current Figma documentation, community resources, and design-to-code tooling updates.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Search for current Figma Dev Mode documentation and features</li>
+<li>Find community design system examples and inspiration</li>
+<li>Research accessibility guidelines for specific component types</li>
+<li>Look up Figma plugin capabilities for workflow automation</li>
+</ul>
+
+<p><strong>Best for:</strong> Researching component implementation approaches and accessibility requirements. When implementing a complex component like a date picker or data table, your AI can find current ARIA pattern guidance and Figma community examples rather than relying on potentially dated training data.</p>
+
+<h2>5. Canva MCP Server — Multi-Tool Design Workflow</h2>
+
+<p>For teams working across both Figma and Canva — Figma for product UI, Canva for marketing and brand assets — the Canva MCP server gives your AI access to your Canva design assets, templates, and brand kit so it can work consistently across both tools.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Access Canva design assets and brand kit elements</li>
+<li>Generate marketing materials using your brand colors and fonts</li>
+<li>Navigate Canva templates and design libraries</li>
+</ul>
+
+<p><strong>Best for:</strong> Teams maintaining brand consistency across product UI (Figma) and marketing assets (Canva). Your AI understands your brand tokens from both design tools and can verify consistency between product and marketing implementations.</p>
+
+<h2>Recommended Figma User Stack</h2>
+
+<p>The core setup for Figma-driven development:</p>
+
+<ol>
+<li><strong>Figma</strong> — direct file access for accurate design-to-code generation</li>
+<li><strong>Filesystem</strong> — component library codebase for pattern-consistent implementations</li>
+<li><strong>GitHub</strong> — design system PR review with full component history context</li>
+</ol>
+
+<p>Add Brave Search for current Figma Dev Mode documentation and accessibility pattern guidance. This stack eliminates the most common design-to-code friction points — your AI reads the actual Figma spec, understands your existing component conventions, and generates implementations that match both the design and your codebase patterns rather than requiring extensive manual correction.</p>
+
+<p>Browse all MCP servers at <a href="/servers">MyMCPTools</a>. See also <a href="/blog/best-mcp-servers-for-designers">Best MCP Servers for Designers</a> and <a href="/blog/best-mcp-servers-for-frontend-developers">Best MCP Servers for Frontend Developers</a>.</p>
+    `.trim(),
+  },
 ];
 
 export function getBlogPostBySlug(slug: string): BlogPost | undefined {
