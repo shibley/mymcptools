@@ -31686,6 +31686,325 @@ async with MCPServerStdio(
 </ul>
     `.trim(),
   },
+  {
+    slug: "best-mcp-servers-for-jupyter-notebook",
+    title: "Best MCP Servers for Jupyter Notebook Users in 2026",
+    description: "The top MCP servers for data scientists and analysts working in Jupyter Notebooks. Connect your AI assistant to databases, data warehouses, ML models, and file systems — and stop copying query results by hand.",
+    date: "2026-05-21",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "7 min read",
+    keywords: ["best mcp servers for jupyter", "jupyter notebook mcp", "mcp for data science", "jupyter mcp server", "data science mcp tools", "mcp server for python data analysis"],
+    relatedServerSlugs: ["jupyter", "filesystem", "github", "postgresql", "snowflake", "bigquery", "apache-spark", "dbt-mcp", "e2b", "huggingface"],
+    content: `
+<p>Jupyter Notebook is the default environment for data science, machine learning, and analytical workflows. But switching between your notebook, your database client, your data warehouse console, and your AI chat is a constant context tax. MCP servers eliminate that overhead by giving your AI assistant direct, structured access to every layer of your data stack — so you can stay in your notebook flow while your AI reads schemas, queries data, and validates code against real outputs.</p>
+
+<h2>Why Jupyter Users Need MCP Servers</h2>
+
+<p>Jupyter workflows touch multiple systems: a SQL database or data warehouse for raw data, a local filesystem for notebooks and parquet files, a GitHub repo for version control, and ML model registries or APIs for inference. Without MCP, you're describing your schema in prompts, pasting query results, and copying error messages. With MCP, your AI reads the actual state of each system and generates code that works with your real data.</p>
+
+<h2>1. Jupyter MCP Server — Live Kernel Access</h2>
+
+<p>The Jupyter MCP server is the most direct integration — it connects your AI assistant to a running Jupyter kernel. Your AI can read cell outputs, inspect in-memory variables, and understand the current state of your notebook without you describing it.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read cell outputs (DataFrames, plots, error tracebacks)</li>
+<li>Inspect variables and their types in the active kernel</li>
+<li>Execute code cells and capture results</li>
+<li>Navigate notebook structure and cell history</li>
+</ul>
+
+<p><strong>Best for:</strong> Anyone running Jupyter locally with Claude Desktop or Cursor. Your AI sees what your notebook currently shows rather than working from descriptions — reducing round-trips when debugging a failed transform or unexpected DataFrame shape.</p>
+
+<h2>2. Filesystem MCP Server — Notebook and Data File Access</h2>
+
+<p>Data science projects are full of local artifacts: <code>.ipynb</code> files, parquet files, CSVs, pickle files, config YAML files, and requirements.txt. The Filesystem MCP server gives your AI direct access to read and write all of them — so it can review your notebook structure, understand your data pipeline files, and locate the right parquet shard without you navigating manually.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read <code>.ipynb</code> notebook JSON to understand cell sequence and prior outputs</li>
+<li>List and inspect data directories (CSV samples, parquet schemas)</li>
+<li>Read <code>requirements.txt</code> and <code>environment.yml</code> to understand your installed packages</li>
+<li>Write helper scripts and config files</li>
+</ul>
+
+<p><strong>Best for:</strong> Local Jupyter environments. Your AI can read your notebook file, see which imports you're using, and generate new cells that are consistent with your established code style and package versions.</p>
+
+<h2>3. PostgreSQL MCP Server — Schema-Aware SQL Queries</h2>
+
+<p>PostgreSQL is a common source database for Jupyter analysis workflows. The PostgreSQL MCP server gives your AI direct access to your database schema — tables, columns, data types, indexes, and foreign keys — so it can write SQL queries and <code>pandas</code> read operations that match your actual schema rather than guessing.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Introspect schemas, tables, and column types</li>
+<li>Execute SELECT queries and return results your AI can analyze</li>
+<li>Explain query plans and suggest indexes for slow analytical queries</li>
+<li>Generate <code>pd.read_sql()</code> calls with correct column names and filter logic</li>
+</ul>
+
+<p><strong>Best for:</strong> Analysts and data engineers who pull data from PostgreSQL into Jupyter for analysis. Your AI generates correct SQL instead of asking you to describe the schema every time.</p>
+
+<h2>4. Snowflake MCP Server — Cloud Data Warehouse Queries</h2>
+
+<p>Snowflake is the dominant cloud data warehouse for analytical Jupyter work. The Snowflake MCP server gives your AI access to your Snowflake catalog — databases, schemas, tables, and warehouse metadata — so it can write complex analytical SQL that maps to your actual data model.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Browse Snowflake databases, schemas, and table structures</li>
+<li>Execute analytical queries with proper Snowflake SQL dialect</li>
+<li>Understand partitioning and clustering keys for query optimization</li>
+<li>Generate Python Snowpark or <code>snowflake-connector-python</code> integration code</li>
+</ul>
+
+<p><strong>Best for:</strong> Data scientists pulling large-scale datasets from Snowflake into pandas or Polars for analysis. Saves the constant schema lookup overhead.</p>
+
+<h2>5. BigQuery MCP Server — Google Cloud Analytics</h2>
+
+<p>For teams running on Google Cloud, BigQuery is the data warehouse equivalent of Snowflake. The BigQuery MCP server gives your AI access to your BigQuery datasets, tables, and schemas — enabling accurate SQL generation for BigQuery's standard SQL dialect and helping with partitioned table queries, wildcard tables, and cost-aware query patterns.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>List datasets, tables, and column schemas</li>
+<li>Execute queries and return results directly to your AI context</li>
+<li>Estimate query costs before execution</li>
+<li>Generate Python BigQuery client code with correct table references</li>
+</ul>
+
+<p><strong>Best for:</strong> GCP-based data science teams using Jupyter with BigQuery as the primary data source.</p>
+
+<h2>6. Apache Spark MCP Server — Distributed Data Processing</h2>
+
+<p>Spark powers large-scale data transformations that Jupyter notebooks orchestrate via PySpark. The Apache Spark MCP server gives your AI visibility into your Spark environment — available DataFrames, job status, and cluster configuration — so it can generate PySpark code that fits your actual processing context.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Inspect Spark session configuration and available DataFrames</li>
+<li>Generate PySpark transformation pipelines from schema-aware context</li>
+<li>Help debug Spark job failures with executor log context</li>
+<li>Optimize Spark jobs with appropriate partition and shuffle settings</li>
+</ul>
+
+<p><strong>Best for:</strong> Data engineers running PySpark workloads from Jupyter notebooks on clusters or locally via <code>pyspark</code>.</p>
+
+<h2>7. dbt MCP Server — Data Transformation Lineage</h2>
+
+<p>dbt models define the transformation logic that produces the datasets you analyze in Jupyter. The dbt MCP server gives your AI access to your dbt project — models, sources, tests, and data lineage — so it can help you write Jupyter analysis that correctly references dbt-produced tables and understands the upstream transformations.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Browse dbt models, sources, and their column definitions</li>
+<li>Understand data lineage (which tables feed which models)</li>
+<li>Read model SQL logic to understand transformations applied upstream</li>
+<li>Generate Jupyter queries that reference dbt-produced tables correctly</li>
+</ul>
+
+<p><strong>Best for:</strong> Analytics engineers who combine dbt-transformed data with Jupyter notebooks for ad-hoc analysis. Understanding the dbt model upstream is essential for interpreting what the data actually represents.</p>
+
+<h2>8. E2B MCP Server — Safe Code Execution and Validation</h2>
+
+<p>E2B provides isolated cloud sandboxes where your AI can execute Python code and verify the output before delivering it to you. For Jupyter workflows, this means your AI can test pandas transformations, validate ML preprocessing logic, and confirm that data manipulation code produces the expected shape — before you run it in your live notebook against real data.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Execute Python code in an isolated sandbox with numpy, pandas, and scikit-learn available</li>
+<li>Validate DataFrame operations and confirm column outputs</li>
+<li>Test data parsing and cleaning logic on sample data</li>
+<li>Run statistical calculations and confirm results</li>
+</ul>
+
+<p><strong>Best for:</strong> Any Jupyter user who wants AI-validated code rather than code that might silently produce wrong results. Especially useful for data cleaning and feature engineering where subtle errors compound.</p>
+
+<h2>9. Hugging Face MCP Server — ML Model Access</h2>
+
+<p>Hugging Face hosts the model registry that most data scientists pull from for NLP, computer vision, and ML tasks. The Hugging Face MCP server gives your AI access to the model hub — searching models, reading model cards, accessing dataset information — so it can recommend the right model for your Jupyter workflow and generate correct inference code.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Search Hugging Face models by task, framework, and license</li>
+<li>Read model cards and usage documentation</li>
+<li>Access dataset details and schema</li>
+<li>Generate correct <code>transformers</code> inference code for specific models</li>
+</ul>
+
+<p><strong>Best for:</strong> Data scientists doing NLP, classification, embedding, or generative AI work from Jupyter notebooks. Eliminates the need to tab-switch to Hugging Face Hub while searching for models.</p>
+
+<h2>The Jupyter Data Scientist's MCP Stack</h2>
+
+<ul>
+<li><strong>Notebook context:</strong> Jupyter MCP (live kernel), Filesystem MCP (files and notebooks)</li>
+<li><strong>Data access:</strong> PostgreSQL MCP, Snowflake MCP, or BigQuery MCP (your primary warehouse)</li>
+<li><strong>Data pipelines:</strong> dbt MCP (lineage context), Apache Spark MCP (distributed jobs)</li>
+<li><strong>Code validation:</strong> E2B MCP (test before you ship)</li>
+<li><strong>ML models:</strong> Hugging Face MCP (model discovery)</li>
+</ul>
+
+<p>With this stack, your AI reads your active kernel state, queries your data warehouse schema, understands your dbt lineage, and validates pandas code in a sandbox before it reaches your notebook. That's the difference between an AI that guesses about your data and one that knows your actual stack.</p>
+
+<p><strong>Related guides:</strong></p>
+<ul>
+<li><a href="/blog/best-mcp-servers-for-data-science">Best MCP Servers for Data Science</a></li>
+<li><a href="/blog/best-mcp-servers-for-data-engineering">Best MCP Servers for Data Engineering</a></li>
+<li><a href="/blog/best-mcp-servers-for-python-developers">Best MCP Servers for Python Developers</a></li>
+</ul>
+    `.trim(),
+  },
+  {
+    slug: "best-mcp-servers-for-snowflake-developers",
+    title: "Best MCP Servers for Snowflake Developers in 2026",
+    description: "The top MCP servers for Snowflake developers and data engineers. Give your AI direct access to your Snowflake catalog, dbt models, orchestration pipelines, and BI tools — and stop writing SQL from memory.",
+    date: "2026-05-21",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "7 min read",
+    keywords: ["best mcp servers for snowflake", "snowflake mcp server", "snowflake ai tools", "mcp for data warehouse", "snowflake developer tools 2026", "dbt snowflake mcp"],
+    relatedServerSlugs: ["snowflake", "dbt-mcp", "github", "filesystem", "apache-spark", "prefect", "databricks-sql", "metabase", "bigquery", "brave-search"],
+    content: `
+<p>Snowflake has become the standard cloud data warehouse for analytical engineering teams. But Snowflake development — writing accurate SQL against complex schemas, debugging dbt models, managing orchestration pipelines, and interpreting BI results — involves constant context-switching between tools. MCP servers give your AI assistant direct access to your Snowflake environment so it can write correct SQL, understand your data model, and help you ship faster without manual schema lookups.</p>
+
+<h2>Why Snowflake Developers Need MCP Servers</h2>
+
+<p>Snowflake projects typically span a layered stack: raw data lands in Snowflake via ingestion tools, dbt transforms it into clean models, orchestration tools like Prefect or Airflow schedule the pipelines, and BI tools like Metabase or Looker expose the results. AI assistants without MCP context generate generic SQL that doesn't match your schema, proposes transformations that conflict with your dbt models, and misses Snowflake-specific query optimization patterns. MCP servers fix this by giving your AI live access to each layer.</p>
+
+<h2>1. Snowflake MCP Server — Direct Catalog and Query Access</h2>
+
+<p>The Snowflake MCP server is the foundation of any Snowflake development workflow. It gives your AI assistant access to your Snowflake catalog — databases, schemas, tables, column types, clustering keys, and warehouse configurations — so it can generate SQL that is accurate for your actual data model rather than a generic template.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Browse Snowflake databases, schemas, tables, and views</li>
+<li>Inspect column names, data types, and nullable flags</li>
+<li>Execute analytical queries and return results to AI context</li>
+<li>Understand clustering keys and partitioning for query optimization</li>
+<li>Generate Snowpark Python integration code with correct table references</li>
+<li>Help write Snowflake-specific SQL: <code>QUALIFY</code>, <code>FLATTEN</code>, semi-structured JSON queries, VARIANT columns</li>
+</ul>
+
+<p><strong>Best for:</strong> All Snowflake developers. When your AI reads your actual schema, it generates SQL that uses your real column names, respects your data types, and leverages Snowflake-specific syntax rather than generic ANSI SQL that breaks on VARIANT columns or time-travel queries.</p>
+
+<h2>2. dbt MCP Server — Transformation Layer Context</h2>
+
+<p>dbt is the standard transformation layer in Snowflake stacks. The dbt MCP server gives your AI access to your entire dbt project — models, sources, seeds, tests, and documentation — so it can help you write new models that are consistent with your existing lineage, fix failing tests, and generate correct <code>ref()</code> and <code>source()</code> calls based on your actual model graph.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Browse dbt models, their SQL definitions, and column descriptions</li>
+<li>Understand data lineage — which sources feed which models</li>
+<li>Read test definitions to understand expected data quality constraints</li>
+<li>Generate new dbt model SQL that correctly uses existing <code>ref()</code> dependencies</li>
+<li>Debug failing dbt tests with context about the underlying model logic</li>
+<li>Help write <code>schema.yml</code> documentation and test configs</li>
+</ul>
+
+<p><strong>Best for:</strong> Analytics engineers building dbt models on top of Snowflake. Your AI understands your full model graph — not just the table you're querying, but all the upstream transformations that produced it — making model authoring significantly faster and more accurate.</p>
+
+<h2>3. GitHub MCP Server — Project and Code Context</h2>
+
+<p>Snowflake dbt projects live in GitHub. The GitHub MCP server gives your AI access to your entire dbt repository — SQL models, YAML configs, macros, seeds, and CI workflows — without requiring you to paste file contents manually. It also reads pull request history to understand how your data models have evolved.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read dbt model SQL, macros, and YAML config files</li>
+<li>Browse the full dbt project directory structure</li>
+<li>Search for specific model patterns, column names, or macro usages across the repo</li>
+<li>Review recent commits and PRs to understand recent schema changes</li>
+<li>Create branches and commit new models directly from your AI conversation</li>
+</ul>
+
+<p><strong>Best for:</strong> Teams using GitHub for dbt version control. Your AI reads the actual model code rather than a description, so it can write consistent SQL that follows your team's existing patterns and macro conventions.</p>
+
+<h2>4. Apache Spark MCP Server — Batch Processing Integration</h2>
+
+<p>Many Snowflake pipelines use Spark for large-scale preprocessing before loading data into Snowflake, or Spark SQL for transformations that run in parallel with Snowflake models. The Apache Spark MCP server gives your AI context about your Spark environment — available DataFrames, job status, cluster config — to help you write PySpark transformations that feed cleanly into Snowflake.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Inspect Spark DataFrames and their schemas</li>
+<li>Generate PySpark code that matches your DataFrame structure</li>
+<li>Debug Spark job failures with executor log context</li>
+<li>Help write efficient Spark-to-Snowflake write operations</li>
+</ul>
+
+<p><strong>Best for:</strong> Data engineers running hybrid Spark + Snowflake pipelines where large-scale transformations happen in Spark before loading to Snowflake.</p>
+
+<h2>5. Prefect MCP Server — Pipeline Orchestration Visibility</h2>
+
+<p>Prefect is a popular orchestration tool for Snowflake-centered data pipelines. The Prefect MCP server gives your AI visibility into your Prefect workspace — flows, deployments, run history, and failure logs — so it can help you debug pipeline failures, optimize flow schedules, and generate new Prefect task code that integrates with your existing flow structure.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>List flows, deployments, and recent run status</li>
+<li>Read task run logs and failure details</li>
+<li>Understand flow dependencies and trigger configurations</li>
+<li>Generate Prefect task code that connects to Snowflake correctly</li>
+<li>Help debug common failures (connection timeouts, schema drift, credential errors)</li>
+</ul>
+
+<p><strong>Best for:</strong> Data engineers using Prefect to orchestrate Snowflake-centered pipelines. When a pipeline fails, your AI can read the actual Prefect run logs and the dbt model code together to diagnose the root cause.</p>
+
+<h2>6. Databricks SQL MCP Server — Complementary Lakehouse Queries</h2>
+
+<p>Many modern data stacks use Databricks and Snowflake in parallel — Databricks for ML workloads and Spark transformations, Snowflake for analytical queries. The Databricks SQL MCP server gives your AI access to your Databricks workspace alongside Snowflake, enabling it to help you work across both platforms in the same conversation.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Query Databricks SQL warehouses and catalog metadata</li>
+<li>Inspect Delta tables and their schemas</li>
+<li>Write queries across both Databricks and Snowflake with correct syntax for each</li>
+<li>Help design data flows between Databricks and Snowflake</li>
+</ul>
+
+<p><strong>Best for:</strong> Teams running both Databricks and Snowflake — using Databricks for ML feature engineering and Snowflake for reporting and analytics.</p>
+
+<h2>7. Metabase MCP Server — BI and Reporting Context</h2>
+
+<p>Metabase is a popular BI tool that sits on top of Snowflake. The Metabase MCP server gives your AI access to your Metabase instance — dashboards, saved questions, and the underlying SQL queries — so it can help you understand what metrics your business users are tracking and how those queries relate to your dbt models.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Browse Metabase dashboards and saved questions</li>
+<li>Read the SQL behind Metabase questions (connect BI to your Snowflake schema)</li>
+<li>Identify which dbt models are queried most frequently via Metabase</li>
+<li>Help generate new Metabase-compatible queries that use your Snowflake tables</li>
+</ul>
+
+<p><strong>Best for:</strong> Analytics engineers who need to understand how their Snowflake models are actually consumed by business users in Metabase, and want their AI to bridge the gap between dbt models and BI queries.</p>
+
+<h2>8. Brave Search MCP Server — Documentation and Community Lookup</h2>
+
+<p>Snowflake SQL has unique syntax for semi-structured data, time-travel, Snowpark, and dynamic tables that isn't always in your AI's training data. The Brave Search MCP server gives your AI access to current Snowflake documentation, dbt discourse posts, and community examples — so it can look up specific syntax rather than hallucinating Snowflake-specific functions.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Search Snowflake documentation for specific functions and syntax</li>
+<li>Find dbt community solutions for complex transformation patterns</li>
+<li>Look up recent Snowflake feature releases and breaking changes</li>
+<li>Research third-party connector documentation (Fivetran, Airbyte, Stitch)</li>
+</ul>
+
+<p><strong>Best for:</strong> All Snowflake developers. Snowflake's syntax for VARIANT queries, Snowpark, and dynamic tables is specialized enough that having web search access prevents hallucinated function signatures.</p>
+
+<h2>The Snowflake Developer's MCP Stack</h2>
+
+<ul>
+<li><strong>Core access:</strong> Snowflake MCP (catalog + queries) + dbt MCP (transformation lineage)</li>
+<li><strong>Code context:</strong> GitHub MCP (dbt repo + model history)</li>
+<li><strong>Orchestration:</strong> Prefect MCP (pipeline visibility and debugging)</li>
+<li><strong>Batch processing:</strong> Apache Spark MCP (if running hybrid Spark + Snowflake)</li>
+<li><strong>BI layer:</strong> Metabase MCP (understand downstream consumption)</li>
+<li><strong>Documentation:</strong> Brave Search MCP (Snowflake-specific syntax lookup)</li>
+</ul>
+
+<p>With this stack, your AI reads your actual Snowflake schema, understands your dbt transformation logic, sees your pipeline run history, and looks up Snowflake-specific syntax when needed. That context is the difference between an AI that writes generic SQL and one that writes correct Snowflake SQL for your actual data model.</p>
+
+<p><strong>Related guides:</strong></p>
+<ul>
+<li><a href="/blog/best-mcp-servers-for-data-engineering">Best MCP Servers for Data Engineering</a></li>
+<li><a href="/blog/best-mcp-servers-for-dbt-developers">Best MCP Servers for dbt Developers</a></li>
+<li><a href="/blog/best-mcp-servers-for-data-analysts">Best MCP Servers for Data Analysts</a></li>
+</ul>
+    `.trim(),
+  },
 ];
 
 export function getBlogPostBySlug(slug: string): BlogPost | undefined {
