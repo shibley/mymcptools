@@ -32005,6 +32005,275 @@ async with MCPServerStdio(
 </ul>
     `.trim(),
   },
+  {
+    slug: "best-mcp-servers-for-kubernetes-developers",
+    title: "Best MCP Servers for Kubernetes Developers in 2026",
+    description: "The top MCP servers for Kubernetes developers and platform engineers. Give your AI assistant direct access to your cluster, Helm releases, GitOps pipelines, and observability stack — and stop copy-pasting kubectl output.",
+    date: "2026-05-21",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "7 min read",
+    keywords: ["best mcp servers for kubernetes", "kubernetes mcp server", "mcp for k8s", "kubernetes mcp", "k8s mcp server", "mcp server kubernetes developers"],
+    relatedServerSlugs: ["kubernetes", "helm", "argo-cd", "prometheus", "grafana", "docker", "terraform"],
+    content: `
+<p>Kubernetes is the operating system of cloud-native infrastructure — and debugging, deploying, and operating it requires constant context switching between <code>kubectl</code>, Helm, your GitOps dashboard, and your observability tools. MCP servers eliminate that overhead by giving your AI assistant direct, structured access to your cluster state, deployment history, metrics, and infrastructure definitions — so you can diagnose issues and ship changes without leaving your AI conversation.</p>
+
+<h2>Why Kubernetes Developers Need MCP Servers</h2>
+
+<p>Kubernetes workflows span multiple systems: cluster state in <code>kubectl</code>, releases managed by Helm, deployments tracked in Argo CD, metrics in Prometheus, and logs in Grafana Loki. Without MCP, you're describing pod status in prompts and pasting error logs manually. With MCP, your AI reads the actual cluster state, checks running deployments, and diagnoses OOMKilled containers directly — without you transcribing <code>kubectl describe</code> output.</p>
+
+<h2>1. Kubernetes MCP Server — Live Cluster Access</h2>
+
+<p>The Kubernetes MCP server is the foundation of AI-assisted K8s operations. It gives your AI assistant direct access to your cluster's control plane — listing resources, describing workloads, reading events, and checking pod status across namespaces — without requiring you to copy-paste <code>kubectl</code> output.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>List and describe pods, deployments, services, and namespaces</li>
+<li>Read events and recent cluster activity</li>
+<li>Check pod logs and container states (Running, CrashLoopBackOff, OOMKilled)</li>
+<li>Inspect ConfigMaps, Secrets (metadata), and resource quotas</li>
+</ul>
+
+<p><strong>Best for:</strong> Platform engineers and developers debugging cluster issues in real time. Your AI sees the actual pod status and events rather than working from your description of what you saw in the terminal — dramatically reducing the back-and-forth when diagnosing a failed rollout.</p>
+
+<h2>2. Helm MCP Server — Release Management with AI Context</h2>
+
+<p>Helm is how most teams package and deploy Kubernetes applications, and the Helm MCP server gives your AI visibility into your installed releases — their chart versions, values overrides, revision history, and current status. Your AI can suggest value changes, diagnose upgrade failures, and help you roll back without you manually running <code>helm history</code> and describing the output.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>List all Helm releases across namespaces with their status</li>
+<li>Read release values and computed chart configuration</li>
+<li>Browse revision history and compare release states</li>
+<li>Identify drift between chart defaults and your overrides</li>
+</ul>
+
+<p><strong>Best for:</strong> Teams managing complex Helm deployments with many releases and custom values files. Your AI understands what's deployed and with what configuration — so it can diagnose chart upgrade failures and suggest the right values diff to fix them.</p>
+
+<h2>3. Argo CD MCP Server — GitOps Pipeline Visibility</h2>
+
+<p>Argo CD is the GitOps controller that continuously reconciles your cluster state against your Git repository. The Argo CD MCP server gives your AI access to your application sync status, health checks, and deployment history — so it can identify sync failures, explain out-of-sync resources, and help you understand why a deployment stalled without you navigating the Argo CD UI.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>List Argo CD applications and their sync/health status</li>
+<li>Read resource diffs between desired (Git) and live (cluster) state</li>
+<li>Check deployment history and rollback points</li>
+<li>Identify sync errors and degraded resources</li>
+</ul>
+
+<p><strong>Best for:</strong> Platform teams running GitOps workflows. When a sync fails at 2 AM, your AI can read the Argo CD state directly, identify the conflicting resource, and suggest the remediation without you navigating the UI half-awake.</p>
+
+<h2>4. Prometheus MCP Server — Metrics and Alerting Context</h2>
+
+<p>Prometheus powers the metrics layer for most Kubernetes clusters. The Prometheus MCP server gives your AI access to your metrics store — running instant queries, inspecting alert rules, and checking the current state of firing alerts — so it can correlate cluster events with metrics without you writing PromQL from memory.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Execute PromQL queries and return results directly to AI context</li>
+<li>List and inspect alert rules and recording rules</li>
+<li>Check currently firing alerts and their labels</li>
+<li>Query target health and scrape status</li>
+</ul>
+
+<p><strong>Best for:</strong> SREs and platform engineers debugging performance issues. Your AI can query CPU throttling metrics, check memory usage trends, and correlate firing alerts with recent deployments — giving you root-cause analysis in a conversation rather than a PromQL tutorial.</p>
+
+<h2>5. Grafana MCP Server — Dashboard and Observability Access</h2>
+
+<p>Grafana is where most teams visualize their Kubernetes observability data. The Grafana MCP server gives your AI access to your dashboards, data sources, and annotations — so it can retrieve panel data, understand your existing alert thresholds, and help you build new dashboards based on your actual data source configuration.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>List dashboards and retrieve panel queries and configurations</li>
+<li>Query data sources and retrieve time-series data</li>
+<li>Read alert rule definitions and notification channels</li>
+<li>Create or update dashboard panels programmatically</li>
+</ul>
+
+<p><strong>Best for:</strong> Platform and operations teams building and maintaining observability dashboards. Your AI reads your existing dashboard structure and can suggest new panels that are consistent with your current data source and query patterns.</p>
+
+<h2>6. Docker MCP Server — Container Build and Local Dev Context</h2>
+
+<p>Before workloads reach Kubernetes, they run as Docker containers. The Docker MCP server gives your AI access to your local Docker environment — running containers, images, volumes, and compose services — making it easier to debug containerization issues that surface in local dev before they hit the cluster.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>List running containers and their status</li>
+<li>Read container logs and inspect environment variables</li>
+<li>Browse local images and their layer structure</li>
+<li>Inspect Docker Compose services and network topology</li>
+</ul>
+
+<p><strong>Best for:</strong> Developers building container images locally before deploying to Kubernetes. Your AI can read your Dockerfile, check your running container logs, and diagnose build failures in the context of your actual local environment.</p>
+
+<h2>7. Terraform MCP Server — Infrastructure-as-Code Context</h2>
+
+<p>Terraform manages the cloud infrastructure that Kubernetes clusters run on — VPCs, node pools, load balancers, and IAM roles. The Terraform MCP server gives your AI access to your Terraform state and configurations — so it can understand the infrastructure layer beneath your cluster and help you make changes that are consistent with your existing resource definitions.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read Terraform state and understand currently managed resources</li>
+<li>Inspect resource configurations and module dependencies</li>
+<li>Identify drift between state and real infrastructure</li>
+<li>Suggest plan outputs and changes consistent with existing patterns</li>
+</ul>
+
+<p><strong>Best for:</strong> Platform engineers who manage both the Kubernetes cluster and the underlying cloud infrastructure via Terraform. Your AI can reason about both layers simultaneously — understanding that a K8s node pool change requires a Terraform plan, not a <code>kubectl</code> command.</p>
+
+<h2>The Kubernetes Developer's MCP Stack</h2>
+
+<ul>
+<li><strong>Cluster operations:</strong> Kubernetes MCP (live cluster state), Helm MCP (releases), Argo CD MCP (GitOps)</li>
+<li><strong>Observability:</strong> Prometheus MCP (metrics and alerts), Grafana MCP (dashboards)</li>
+<li><strong>Local dev:</strong> Docker MCP (container builds)</li>
+<li><strong>Infrastructure:</strong> Terraform MCP (cloud resources under the cluster)</li>
+</ul>
+
+<p>With this stack, your AI reads your actual cluster state, understands your Helm releases, checks Argo CD sync status, queries Prometheus metrics, and reviews your Terraform infrastructure — all without you copy-pasting a single line of <code>kubectl</code> output. That's the difference between an AI that asks you to describe the problem and one that reads the cluster directly.</p>
+
+<p><strong>Related guides:</strong></p>
+<ul>
+<li><a href="/blog/best-mcp-servers-for-devops">Best MCP Servers for DevOps</a></li>
+<li><a href="/blog/best-mcp-servers-for-devops-engineers">Best MCP Servers for DevOps Engineers</a></li>
+<li><a href="/blog/best-mcp-servers-for-security">Best MCP Servers for Security</a></li>
+</ul>
+    `.trim(),
+  },
+  {
+    slug: "best-mcp-servers-for-aws-developers",
+    title: "Best MCP Servers for AWS Developers in 2026",
+    description: "The top MCP servers for AWS developers and cloud engineers. Give your AI direct access to your S3 buckets, Lambda functions, EC2 instances, and Bedrock models — and stop switching tabs to navigate the AWS console.",
+    date: "2026-05-21",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "8 min read",
+    keywords: ["best mcp servers for aws", "aws mcp server", "mcp for aws developers", "aws mcp", "amazon web services mcp", "mcp server aws cloud"],
+    relatedServerSlugs: ["aws", "aws-s3", "aws-lambda", "aws-ec2", "aws-bedrock", "awscli-mcp", "terraform"],
+    content: `
+<p>AWS is the dominant cloud platform — and building, debugging, and operating on it means constant context switching between S3 consoles, Lambda dashboards, CloudWatch logs, EC2 management, and IAM policies. MCP servers eliminate that overhead by giving your AI assistant direct, structured access to your AWS resources, so you can ship faster without tab-switching through the AWS console mid-conversation.</p>
+
+<h2>Why AWS Developers Need MCP Servers</h2>
+
+<p>AWS workflows touch dozens of services: S3 for object storage, Lambda for serverless functions, EC2 for compute, CloudWatch for logs and metrics, Bedrock for AI inference, and IAM for permissions. Without MCP, you're describing your bucket structure in prompts and pasting CloudWatch error logs manually. With MCP, your AI reads your actual Lambda error logs, lists your S3 buckets, checks your EC2 instance state, and generates IAM policies based on your real resource ARNs — all without leaving the conversation.</p>
+
+<h2>1. AWS MCP Server — Unified AWS API Access</h2>
+
+<p>The AWS MCP server is the broadest integration — it provides your AI assistant with access to the AWS API surface, enabling it to list and describe resources across services, read configurations, and understand your account structure without you navigating the AWS console.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>List and describe resources across S3, Lambda, EC2, RDS, and other services</li>
+<li>Read CloudFormation stacks and resource outputs</li>
+<li>Query CloudWatch logs and metrics</li>
+<li>Check service quotas and account limits</li>
+</ul>
+
+<p><strong>Best for:</strong> AWS developers who work across multiple services and want their AI to have broad account visibility. Your AI can browse your infrastructure landscape, identify resource relationships, and generate configuration that matches your actual AWS account setup.</p>
+
+<h2>2. AWS S3 MCP Server — Object Storage Access</h2>
+
+<p>S3 is the backbone of most AWS architectures — data pipelines, static sites, Lambda code packages, ML training data, and log archives all live there. The AWS S3 MCP server gives your AI direct access to list buckets, read objects, inspect bucket policies, and understand your storage structure.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>List buckets and browse object hierarchies</li>
+<li>Read file content from S3 objects (JSON configs, CSV data, logs)</li>
+<li>Inspect bucket policies, CORS configuration, and lifecycle rules</li>
+<li>Check object metadata, sizes, and storage classes</li>
+</ul>
+
+<p><strong>Best for:</strong> Data engineers and backend developers who use S3 as a data lake, artifact store, or configuration backend. Your AI can read your actual S3 object structure, review bucket policies for security issues, and generate SDK code that references your real bucket names and key patterns.</p>
+
+<h2>3. AWS Lambda MCP Server — Serverless Function Management</h2>
+
+<p>Lambda is the serverless compute layer for most modern AWS applications. The AWS Lambda MCP server gives your AI access to your function inventory — configurations, environment variables (non-sensitive), deployment packages, and invocation logs — so it can debug errors and suggest improvements based on your actual function setup.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>List Lambda functions with their runtimes, memory, and timeout settings</li>
+<li>Read function code and layer configurations</li>
+<li>Inspect event source mappings (SQS, Kinesis, DynamoDB triggers)</li>
+<li>Query CloudWatch logs for recent function invocations and errors</li>
+</ul>
+
+<p><strong>Best for:</strong> Serverless developers debugging Lambda cold starts, timeout errors, and permission issues. Your AI reads your actual function configuration — memory settings, timeout, layers, and trigger configuration — and generates fixes that match your real setup rather than generic Lambda boilerplate.</p>
+
+<h2>4. AWS EC2 MCP Server — Compute Instance Visibility</h2>
+
+<p>EC2 remains the foundation for workloads that need persistent compute — databases, long-running services, and GPU instances for ML training. The AWS EC2 MCP server gives your AI access to your instance inventory, security groups, AMI details, and network configuration — so it can help you reason about your compute architecture without you copying instance IDs from the console.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>List EC2 instances with their state, type, and tags</li>
+<li>Read security group rules and inbound/outbound configurations</li>
+<li>Inspect VPC, subnet, and network interface details</li>
+<li>Check Auto Scaling group configurations and policies</li>
+</ul>
+
+<p><strong>Best for:</strong> Infrastructure engineers managing EC2-based workloads. Your AI reads your actual security group rules, identifies overly permissive configurations, and generates Terraform or CloudFormation to tighten them — based on your real resource IDs and VPC structure.</p>
+
+<h2>5. AWS Bedrock MCP Server — AI Model Access on AWS</h2>
+
+<p>AWS Bedrock is Amazon's managed AI inference service, providing access to Claude, Llama, Mistral, and other foundation models via API. The AWS Bedrock MCP server gives your AI assistant access to Bedrock's model catalog and inference capabilities — useful for building AI features on top of Bedrock or comparing model outputs directly in your workflow.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>List available Bedrock models and their capabilities</li>
+<li>Invoke foundation models for inference tasks</li>
+<li>Access Bedrock Knowledge Bases for RAG workflows</li>
+<li>Monitor Bedrock usage and inference latency</li>
+</ul>
+
+<p><strong>Best for:</strong> AWS developers building AI-powered applications using Bedrock as the inference backend. Your AI can test model outputs, compare Bedrock model responses, and help you build prompts optimized for the specific foundation model you're deploying.</p>
+
+<h2>6. AWS CLI MCP Server — Direct CLI Command Execution</h2>
+
+<p>For AWS operations that need fine-grained CLI access, the AWS CLI MCP server provides a bridge between your AI assistant and the <code>aws</code> command-line tool. Your AI can construct and execute AWS CLI commands with the correct flags, region settings, and profile configurations — without you remembering the exact command syntax for every service.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Execute AWS CLI commands with correct syntax and region settings</li>
+<li>Chain multi-step CLI operations (query → filter → action)</li>
+<li>Use named profiles and role assumptions</li>
+<li>Generate CLI commands your team can run repeatedly</li>
+</ul>
+
+<p><strong>Best for:</strong> AWS power users and DevOps engineers who live in the terminal. Your AI knows the correct AWS CLI flags for every service and generates precise commands — eliminating the manual lookup of obscure <code>aws ec2 describe-*</code> subcommands.</p>
+
+<h2>7. Terraform MCP Server — Infrastructure-as-Code for AWS</h2>
+
+<p>Most production AWS infrastructure is defined in Terraform — VPCs, RDS instances, ECS clusters, IAM roles, and everything else. The Terraform MCP server gives your AI access to your Terraform state and configurations — so it can understand your existing AWS resource definitions and generate new Terraform modules that are consistent with your naming conventions, tagging standards, and module structure.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read Terraform state to understand current AWS resources</li>
+<li>Inspect resource configurations and module dependencies</li>
+<li>Identify state drift between Terraform and live AWS resources</li>
+<li>Generate new resources consistent with existing patterns</li>
+</ul>
+
+<p><strong>Best for:</strong> Cloud engineers managing AWS infrastructure with Terraform. Your AI reads your existing state file, understands your module structure, and generates new resources that follow your conventions — rather than generic Terraform examples that don't match your naming patterns.</p>
+
+<h2>The AWS Developer's MCP Stack</h2>
+
+<ul>
+<li><strong>Core AWS access:</strong> AWS MCP (broad API access), AWS CLI MCP (terminal-level control)</li>
+<li><strong>Compute:</strong> AWS Lambda MCP (serverless), AWS EC2 MCP (persistent compute)</li>
+<li><strong>Storage:</strong> AWS S3 MCP (object storage)</li>
+<li><strong>AI:</strong> AWS Bedrock MCP (foundation model access)</li>
+<li><strong>Infrastructure:</strong> Terraform MCP (IaC state and configs)</li>
+</ul>
+
+<p>With this stack, your AI reads your actual Lambda logs, browses your S3 bucket policies, checks your EC2 security groups, and understands your Terraform state — all without you copy-pasting console output. The result is an AI assistant that works with your real AWS environment rather than making assumptions about generic AWS configurations.</p>
+
+<p><strong>Related guides:</strong></p>
+<ul>
+<li><a href="/blog/best-mcp-servers-for-devops">Best MCP Servers for DevOps</a></li>
+<li><a href="/blog/best-mcp-servers-for-cloud">Best MCP Servers for Cloud</a></li>
+<li><a href="/blog/best-mcp-servers-for-security">Best MCP Servers for Security</a></li>
+</ul>
+    `.trim(),
+  },
 ];
 
 export function getBlogPostBySlug(slug: string): BlogPost | undefined {
