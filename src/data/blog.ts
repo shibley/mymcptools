@@ -31218,6 +31218,474 @@ async with MCPServerStdio(
 </ul>
     `.trim(),
   },
+  {
+    slug: "best-mcp-servers-for-devops-engineers",
+    title: "Best MCP Servers for DevOps Engineers in 2026",
+    description: "The top MCP servers for DevOps and platform engineers. From infrastructure management and container orchestration to observability and CI/CD pipelines, these servers make AI-assisted operations actually useful.",
+    date: "2026-05-20",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "8 min read",
+    keywords: ["best mcp servers for devops", "devops mcp server", "kubernetes mcp", "docker mcp", "terraform mcp", "datadog mcp server"],
+    relatedServerSlugs: ["github", "docker", "kubernetes", "terraform", "aws", "datadog", "grafana", "sentry", "circleci"],
+    content: `
+<p>DevOps engineers live at the intersection of infrastructure, automation, and observability. Every incident, every deployment, every config change involves hopping between terminals, dashboards, runbooks, and chat. MCP servers collapse this context switching by giving your AI direct access to your infrastructure tools — so it can read logs, check deployments, inspect Kubernetes state, and help you respond faster. Here are the MCP servers that deliver real leverage for DevOps teams.</p>
+
+<h2>Why DevOps Engineers Need MCP Servers</h2>
+
+<p>The typical DevOps workflow involves 10+ tools in a single incident: check Datadog alerts, pull Kubernetes pod logs, inspect Terraform state, review the GitHub diff that introduced the bug, check the CircleCI build, update the runbook in Notion. MCP servers don't replace these tools — they give your AI access to them, so you're coordinating through conversation rather than tab-switching through five dashboards.</p>
+
+<h2>1. GitHub MCP Server — Code and Change Context</h2>
+
+<p>Every infrastructure change starts in a pull request. The GitHub MCP server gives your AI access to your IaC repos, deployment workflows, Dockerfile changes, and Kubernetes manifests — correlating code changes with operational incidents and making root cause analysis faster.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read Terraform, Helm charts, Dockerfiles, and CI/CD configs</li>
+<li>Search recent commits and PRs for changes related to an incident</li>
+<li>Review GitHub Actions workflow logs and failure reasons</li>
+<li>Create issues for postmortem tracking and corrective actions</li>
+</ul>
+
+<p><strong>Best for:</strong> All DevOps engineers. When something breaks in production, GitHub is always the first place you look for what changed. Your AI can correlate incidents to specific commits automatically.</p>
+
+<h2>2. Docker MCP Server — Container Management</h2>
+
+<p>Docker is the foundation of modern application packaging. The Docker MCP server gives your AI direct access to your Docker daemon — listing containers, inspecting images, reading logs, and diagnosing container issues without dropping to a terminal.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>List running and stopped containers with status</li>
+<li>Read container logs with filtering and tail support</li>
+<li>Inspect container configuration, networking, and resource usage</li>
+<li>List images, check sizes, and identify dangling layers</li>
+<li>Execute commands inside containers for debugging</li>
+</ul>
+
+<p><strong>Best for:</strong> Engineers managing containerized workloads locally or on Docker hosts. Speeds up the "what is this container actually doing?" debugging loop that can otherwise take 10+ terminal commands.</p>
+
+<h2>3. Kubernetes MCP Server — Cluster State and Operations</h2>
+
+<p>Kubernetes is the dominant container orchestration platform, and its operational complexity is legendary. The Kubernetes MCP server gives your AI read access to cluster state — pods, deployments, services, events, and logs — making incident investigation conversational rather than requiring constant <code>kubectl</code> gymnastics.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>List pods, deployments, services, and nodes by namespace</li>
+<li>Read pod logs and recent events</li>
+<li>Inspect deployment rollout history and rollback options</li>
+<li>Check resource requests, limits, and actual usage</li>
+<li>Describe failing pods and surface CrashLoopBackOff diagnostics</li>
+</ul>
+
+<p><strong>Best for:</strong> Platform engineers and SREs managing Kubernetes clusters. When a pod is failing, your AI can read the events, check logs, inspect resource constraints, and suggest the fix — all in one conversation.</p>
+
+<h2>4. Terraform MCP Server — Infrastructure as Code</h2>
+
+<p>Terraform is the standard for declarative infrastructure management. The Terraform MCP server gives your AI access to your Terraform state, plan outputs, and module configurations — making it easier to reason about what infrastructure currently exists and what a planned change will do.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read Terraform state to understand current infrastructure</li>
+<li>Analyze plan output for risky changes (deletions, replacements)</li>
+<li>Inspect module configurations and variable definitions</li>
+<li>Help write and review Terraform resource blocks</li>
+<li>Debug state drift and import issues</li>
+</ul>
+
+<p><strong>Best for:</strong> DevOps engineers managing cloud infrastructure with Terraform. Your AI can review a plan and flag the <code>-/+</code> destroy-and-recreate lines that will cause downtime before you apply.</p>
+
+<h2>5. AWS MCP Server — Cloud Resource Access</h2>
+
+<p>AWS is the largest cloud provider, and its breadth means constant context switching between services. The AWS MCP server gives your AI structured access to your AWS resources — EC2 instances, S3 buckets, Lambda functions, RDS databases, and CloudWatch metrics — without requiring you to navigate the AWS console.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>List and describe EC2 instances, RDS databases, and S3 buckets</li>
+<li>Read CloudWatch logs and metrics for specific resources</li>
+<li>Check IAM policies and role assignments</li>
+<li>Inspect Lambda function configs and invocation logs</li>
+<li>Review ECS/EKS cluster and service status</li>
+</ul>
+
+<p><strong>Best for:</strong> Teams running workloads on AWS. During incidents, your AI can pull CloudWatch logs, check EC2 health, and inspect IAM permissions without you leaving your terminal or opening the console.</p>
+
+<h2>6. Datadog MCP Server — Observability and Alerting</h2>
+
+<p>Datadog is the leading observability platform for production infrastructure. The Datadog MCP server gives your AI access to metrics, logs, traces, and alert states — making it a genuine incident response partner that can read your dashboards and help you interpret what they're showing.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Query metrics and dashboards for specific services</li>
+<li>Search logs with Datadog query syntax</li>
+<li>Check alert states and monitor health</li>
+<li>Retrieve APM traces for specific requests</li>
+<li>List triggered incidents and their history</li>
+</ul>
+
+<p><strong>Best for:</strong> SREs and platform engineers using Datadog for production monitoring. Your AI can check if error rates spiked at the time of deployment, correlate logs across services, and surface the signals that matter during an incident.</p>
+
+<h2>7. Grafana MCP Server — Metrics and Dashboard Access</h2>
+
+<p>Grafana is the most widely deployed open-source observability platform. The Grafana MCP server gives your AI access to dashboard panels, metric queries, and alert rules — useful for teams running self-hosted Prometheus/Grafana stacks or those who prefer Grafana over Datadog.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>List dashboards and panels</li>
+<li>Execute Prometheus/InfluxDB queries through Grafana data sources</li>
+<li>Read alert rules and current alert states</li>
+<li>Access annotation history (deployment markers, incident events)</li>
+</ul>
+
+<p><strong>Best for:</strong> Teams running Grafana for infrastructure and application metrics. Particularly useful for correlating deployment annotations with metric changes during postmortem analysis.</p>
+
+<h2>8. Sentry MCP Server — Error Tracking and Debug Context</h2>
+
+<p>Sentry is the standard for application error tracking. The Sentry MCP server gives your AI access to error events, stack traces, release health, and performance data — so when an alert fires, your AI can immediately read the actual exception and help you trace it back to the source.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>List and search error events by project and environment</li>
+<li>Read full stack traces and breadcrumb context</li>
+<li>Check release health and error rates per deployment</li>
+<li>Access performance transaction data and slow queries</li>
+<li>Assign and resolve issues within conversation</li>
+</ul>
+
+<p><strong>Best for:</strong> Engineers on-call or triaging bugs. Your AI can read the Sentry error, inspect the stack trace, look up the relevant code in GitHub, and suggest a fix — without you manually copying exception details between tools.</p>
+
+<h2>The DevOps Engineer's MCP Stack</h2>
+
+<ul>
+<li><strong>Change context:</strong> GitHub MCP (commits, PRs, CI/CD)</li>
+<li><strong>Containers:</strong> Docker MCP + Kubernetes MCP</li>
+<li><strong>Infrastructure:</strong> Terraform MCP + AWS MCP</li>
+<li><strong>Observability:</strong> Datadog MCP or Grafana MCP</li>
+<li><strong>Error tracking:</strong> Sentry MCP</li>
+</ul>
+
+<p>With this stack, your AI can correlate a Sentry error to the GitHub commit that caused it, check Kubernetes pod logs, verify Datadog alert thresholds, and help you write the postmortem — all in a single conversation. That's the difference between AI as a search engine and AI as an operations partner.</p>
+
+<p><strong>Related guides:</strong></p>
+<ul>
+<li><a href="/blog/best-mcp-servers-for-developers">Best MCP Servers for Developers</a></li>
+<li><a href="/blog/best-mcp-servers-for-backend-developers">Best MCP Servers for Backend Developers</a></li>
+<li><a href="/blog/best-mcp-servers-for-cloud-infrastructure">Best MCP Servers for Cloud Infrastructure</a></li>
+</ul>
+    `.trim(),
+  },
+  {
+    slug: "best-mcp-servers-for-marketing-teams",
+    title: "Best MCP Servers for Marketing Teams in 2026",
+    description: "The top MCP servers for marketing professionals and growth teams. From CRM and analytics to content research and outreach automation, these servers turn your AI assistant into a genuine marketing productivity tool.",
+    date: "2026-05-20",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "7 min read",
+    keywords: ["best mcp servers for marketing", "marketing mcp server", "hubspot mcp marketing", "airtable mcp", "ai marketing tools mcp", "content marketing mcp"],
+    relatedServerSlugs: ["hubspot", "airtable", "notion", "slack", "sendgrid", "exa", "brave-search", "brightdata"],
+    content: `
+<p>Marketing teams juggle more tools than almost any function in a company — CRM, email platforms, analytics dashboards, social schedulers, content calendars, SEO tools, ad managers. The context switching is constant and expensive. MCP servers change this by giving your AI direct access to your marketing stack, so instead of manually pulling data and copying it into prompts, your AI assistant can read your actual campaigns, contacts, and analytics. Here are the MCP servers that deliver the most leverage for marketing teams.</p>
+
+<h2>Why Marketing Teams Need MCP Servers</h2>
+
+<p>Modern marketing is data-intensive: campaign performance, email open rates, lead quality, content traffic, conversion funnels. The bottleneck isn't generating ideas — it's getting relevant data to inform those ideas. MCP servers solve this by giving your AI assistant direct access to the data sources you actually work with, transforming it from a generic content generator into a context-aware marketing partner.</p>
+
+<h2>1. HubSpot MCP Server — CRM and Campaign Intelligence</h2>
+
+<p>HubSpot is the hub of most B2B marketing operations — contacts, email campaigns, landing pages, forms, workflows, and analytics all live there. The HubSpot MCP server gives your AI read and write access to your marketing data, so it can analyze campaign performance, segment lists, check lead quality, and draft follow-up sequences using your actual CRM data.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Query contacts, companies, and lists with filter criteria</li>
+<li>Read email campaign performance (open rates, clicks, unsubscribes)</li>
+<li>Access workflow logic and enrollment conditions</li>
+<li>Create and update contacts, deals, and marketing properties</li>
+<li>Pull funnel analytics and conversion data</li>
+</ul>
+
+<p><strong>Best for:</strong> B2B marketing teams running inbound and email campaigns through HubSpot. Your AI can analyze which email subject lines performed best, segment contacts by engagement, and draft the next nurture sequence — using real campaign data, not assumptions.</p>
+
+<h2>2. Airtable MCP Server — Content Calendar and Campaign Management</h2>
+
+<p>Airtable has become the default content operations tool for marketing teams — content calendars, campaign briefs, influencer lists, editorial workflows, and asset trackers all live in Airtable bases. The Airtable MCP server gives your AI access to this operational data, bridging strategy and execution.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read and write records in any Airtable base or view</li>
+<li>Query content calendars and filter by status, date, or channel</li>
+<li>Create new content briefs and campaign records</li>
+<li>Access linked records across tables (campaigns linked to assets and results)</li>
+<li>Update status fields as content moves through production</li>
+</ul>
+
+<p><strong>Best for:</strong> Content and campaign teams using Airtable to manage editorial and campaign workflows. Your AI can check what's scheduled for next week, identify gaps in the content calendar, and create new brief records directly.</p>
+
+<h2>3. Notion MCP Server — Strategy, Playbooks, and Brand Docs</h2>
+
+<p>Most marketing teams maintain brand guidelines, positioning documents, persona definitions, messaging frameworks, and competitive battlecards in Notion. The Notion MCP server gives your AI access to this institutional knowledge — so generated copy uses your actual brand voice, messaging hierarchy, and positioning, not generic marketing language.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read brand guidelines, voice and tone docs, and style guides</li>
+<li>Search competitor battlecards and positioning frameworks</li>
+<li>Access persona definitions and ICP documentation</li>
+<li>Read campaign briefs and creative direction docs</li>
+<li>Create meeting notes, campaign retrospectives, and strategy docs</li>
+</ul>
+
+<p><strong>Best for:</strong> Marketing teams with well-documented strategy in Notion. When writing copy or planning campaigns, your AI can reference your actual positioning, personas, and messaging hierarchy rather than inventing generic marketing language.</p>
+
+<h2>4. Slack MCP Server — Team Coordination and Campaign Context</h2>
+
+<p>Campaign decisions, approval threads, creative feedback, and launch coordination all happen in Slack. The Slack MCP server lets your AI search channel history for relevant campaign context, post updates to stakeholders, and surface decisions that inform current work — without requiring manual search through message history.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Search Slack channels and DMs for specific topics or campaigns</li>
+<li>Post updates to team channels or DMs</li>
+<li>Read approval threads and decision history</li>
+<li>Set reminders for campaign launch checkpoints</li>
+</ul>
+
+<p><strong>Best for:</strong> Marketing teams using Slack as their primary coordination tool. Useful for surfacing past decisions about campaign strategy, brand guidelines discussions, or creative feedback before starting new work.</p>
+
+<h2>5. SendGrid MCP Server — Email Deliverability and Performance</h2>
+
+<p>For teams managing transactional and marketing emails through SendGrid, the SendGrid MCP server provides access to delivery metrics, suppressions, and template management. Your AI can diagnose deliverability issues, check bounce and spam complaint rates, and help optimize email performance based on real data.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Check email delivery stats (bounces, opens, clicks, unsubscribes)</li>
+<li>Inspect suppression lists and bounce reasons</li>
+<li>Access and edit email templates and dynamic templates</li>
+<li>Review domain authentication status (SPF, DKIM, DMARC)</li>
+<li>Monitor sender reputation metrics</li>
+</ul>
+
+<p><strong>Best for:</strong> Email marketers and growth teams managing high-volume email campaigns. When deliverability drops, your AI can check SendGrid stats, identify the source of bounces or spam complaints, and help you fix authentication issues.</p>
+
+<h2>6. Exa MCP Server — Content Research and Competitive Intel</h2>
+
+<p>Exa is a semantically-powered web search engine optimized for AI research tasks. The Exa MCP server gives your AI access to high-quality content research — finding articles, competitor content, industry reports, and trending topics — without the noise of a generic search.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Semantic search for content by topic, angle, and format</li>
+<li>Find competitor blog posts, landing pages, and case studies</li>
+<li>Discover industry reports and authoritative sources</li>
+<li>Surface trending topics and emerging narratives in your niche</li>
+<li>Find high-quality backlink prospects and partnership opportunities</li>
+</ul>
+
+<p><strong>Best for:</strong> Content marketers doing topic research, SEO teams analyzing competitor content, and growth teams looking for partnership and distribution opportunities. Exa's semantic search finds genuinely relevant content rather than keyword-matched noise.</p>
+
+<h2>7. Bright Data MCP Server — Market Research and Data Collection</h2>
+
+<p>Bright Data provides web scraping and data collection infrastructure at scale. The Bright Data MCP server lets your AI collect structured data from websites — competitor pricing pages, review sites, job boards, social platforms — enabling market research that would take hours of manual work.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Scrape competitor pricing pages and feature lists</li>
+<li>Collect reviews from G2, Capterra, and app stores</li>
+<li>Monitor competitor content and messaging changes</li>
+<li>Extract structured data from LinkedIn company pages</li>
+<li>Gather social proof and testimonial data at scale</li>
+</ul>
+
+<p><strong>Best for:</strong> Growth and competitive intelligence teams. Your AI can pull competitor pricing pages, analyze G2 review themes, and track how competitors are changing their messaging — building competitive battlecards from live data rather than manual research.</p>
+
+<h2>8. Brave Search MCP Server — Trend and Keyword Research</h2>
+
+<p>Brave Search provides web search results without the SEO gaming and personalization bias of major search engines. The Brave Search MCP server gives your AI access to current search trends, news coverage, and keyword insights — useful for content planning, PR monitoring, and understanding what your audience is actively searching for.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Search for trending topics in your industry</li>
+<li>Find recent news coverage and press mentions</li>
+<li>Discover long-tail keyword opportunities for content</li>
+<li>Monitor brand and competitor mentions</li>
+</ul>
+
+<p><strong>Best for:</strong> Content marketing and SEO teams. Gives your AI access to current search landscape data for content strategy, rather than relying on training data from months or years ago.</p>
+
+<h2>The Marketing Team's MCP Stack</h2>
+
+<ul>
+<li><strong>CRM and campaigns:</strong> HubSpot MCP (contacts, campaigns, analytics)</li>
+<li><strong>Operations:</strong> Airtable MCP (content calendar, campaign management)</li>
+<li><strong>Brand knowledge:</strong> Notion MCP (voice, positioning, playbooks)</li>
+<li><strong>Coordination:</strong> Slack MCP (approvals, decisions, context)</li>
+<li><strong>Email:</strong> SendGrid MCP (deliverability, performance)</li>
+<li><strong>Research:</strong> Exa MCP + Brave Search MCP (content and competitive intel)</li>
+<li><strong>Market data:</strong> Bright Data MCP (competitor and review scraping)</li>
+</ul>
+
+<p>With this stack, your AI can pull real campaign data from HubSpot, check your content calendar in Airtable, reference your brand voice in Notion, research competitor messaging with Exa, and draft a campaign brief that actually fits your strategy — not a generic marketing template. That's the difference between AI as a writing tool and AI as a marketing operations partner.</p>
+
+<p><strong>Related guides:</strong></p>
+<ul>
+<li><a href="/blog/best-mcp-servers-for-sales-teams">Best MCP Servers for Sales Teams</a></li>
+<li><a href="/blog/best-mcp-servers-for-seo">Best MCP Servers for SEO</a></li>
+<li><a href="/blog/best-mcp-servers-for-content-creators">Best MCP Servers for Content Creators</a></li>
+</ul>
+    `.trim(),
+  },
+  {
+    slug: "best-mcp-servers-for-nodejs-developers",
+    title: "Best MCP Servers for Node.js Developers in 2026",
+    description: "The top MCP servers for Node.js and JavaScript backend developers. From database access and API testing to deployment and error tracking, these servers make AI-assisted Node.js development genuinely useful.",
+    date: "2026-05-20",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "7 min read",
+    keywords: ["best mcp servers for nodejs", "nodejs mcp server", "javascript backend mcp", "express mcp", "supabase mcp nodejs", "redis mcp nodejs"],
+    relatedServerSlugs: ["github", "filesystem", "postgresql", "redis", "supabase", "e2b", "hono-mcp", "brave-search", "sentry"],
+    content: `
+<p>Node.js powers the majority of JavaScript backend services — from REST APIs and real-time applications to serverless functions and CLI tools. MCP servers give your AI assistant the context it needs to write Node.js code that fits your actual project: your database schema, your package choices, your deployment environment. Here are the MCP servers that deliver the most value for Node.js developers.</p>
+
+<h2>Why Node.js Developers Need MCP Servers</h2>
+
+<p>Node.js projects typically touch multiple systems simultaneously: a PostgreSQL or MongoDB database, a Redis cache, a Stripe integration, maybe a Supabase backend, deployed to Vercel or Railway. Without context about which packages you're using, what your schema looks like, and how your services are configured, AI-generated Node.js code is generic at best and broken at worst. MCP servers fix this by giving your AI direct access to your stack.</p>
+
+<h2>1. GitHub MCP Server — Full Project Context</h2>
+
+<p>The GitHub MCP server is table stakes for any development workflow. It gives your AI access to your entire Node.js project — <code>package.json</code>, route handlers, middleware, database models, environment configs, and GitHub Actions workflows — without requiring you to paste code snippets manually.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read any file or directory in your Node.js repository</li>
+<li>Search across routes, controllers, and middleware</li>
+<li>Review recent commits and PRs for change context</li>
+<li>Create branches, commit changes, and open pull requests</li>
+<li>Check GitHub Actions CI build logs and failure reasons</li>
+</ul>
+
+<p><strong>Best for:</strong> All Node.js developers. Your AI can read your actual route structure, understand your middleware chain, and generate code that fits your project's conventions rather than a generic Express boilerplate.</p>
+
+<h2>2. Filesystem MCP Server — Local Development Access</h2>
+
+<p>For local development with Claude Desktop or Cursor, the Filesystem MCP server gives your AI direct access to your project files. It reads your <code>.env</code>, <code>package.json</code>, and source files to understand your setup before generating anything — critical for avoiding import errors, missing dependency suggestions, and config mismatches.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read and write files across your project directory</li>
+<li>Navigate directory structures (routes, controllers, services, utils)</li>
+<li>Understand your module resolution and path aliases</li>
+<li>Edit multiple files in a single pass</li>
+</ul>
+
+<p><strong>Best for:</strong> Local Node.js development. When your AI can read your actual project layout, it generates code that uses your real import paths, your actual middleware names, and your existing utility functions.</p>
+
+<h2>3. PostgreSQL MCP Server — Schema-Aware Database Queries</h2>
+
+<p>PostgreSQL is the most popular relational database for Node.js backends. The PostgreSQL MCP server gives your AI direct access to your database schema — tables, columns, indexes, constraints, and foreign keys — so it can write accurate queries for your actual data model without you describing the schema in your prompt.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Introspect tables, columns, types, and constraints</li>
+<li>Execute SELECT queries and return results</li>
+<li>Analyze query plans and suggest optimizations</li>
+<li>Help write complex joins, CTEs, and aggregations for your schema</li>
+<li>Validate migration scripts before applying</li>
+</ul>
+
+<p><strong>Best for:</strong> Node.js developers using PostgreSQL with Knex, Drizzle ORM, Prisma, or raw <code>pg</code>. Your AI can read your schema and write accurate queries rather than generating generic SQL that doesn't match your table structure.</p>
+
+<h2>4. Redis MCP Server — Cache and Queue Debugging</h2>
+
+<p>Redis is ubiquitous in Node.js backends for session storage, job queues (Bull/BullMQ), rate limiting, and caching. The Redis MCP server lets your AI inspect your Redis instance — reading keys, checking queue depths, analyzing data structures — without requiring you to run CLI commands manually.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>List and inspect Redis keys with pattern matching</li>
+<li>Read values for strings, hashes, lists, sets, and sorted sets</li>
+<li>Check BullMQ job queue lengths and failed job details</li>
+<li>Monitor TTL settings and memory usage patterns</li>
+<li>Debug cache invalidation and key namespace issues</li>
+</ul>
+
+<p><strong>Best for:</strong> Node.js developers using Redis for caching, sessions, or job queues. When a cache isn't behaving correctly or a BullMQ job is failing silently, your AI can inspect the actual Redis state rather than guessing.</p>
+
+<h2>5. Supabase MCP Server — Backend as a Service Integration</h2>
+
+<p>Supabase has become a popular backend choice for Node.js applications — providing PostgreSQL, auth, real-time subscriptions, and storage in one platform. The Supabase MCP server gives your AI access to your Supabase project: database schema, row-level security policies, edge functions, and storage buckets.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Introspect your Supabase PostgreSQL schema and RLS policies</li>
+<li>Query tables and test RLS behavior for specific user contexts</li>
+<li>Read and deploy edge functions</li>
+<li>Inspect storage buckets and file metadata</li>
+<li>Generate Supabase client code using your actual schema</li>
+</ul>
+
+<p><strong>Best for:</strong> Node.js and Next.js developers using Supabase as their backend. Particularly powerful for writing RLS policies correctly and generating typed Supabase queries that match your actual table structure.</p>
+
+<h2>6. E2B MCP Server — Code Execution and Testing</h2>
+
+<p>E2B provides secure cloud sandboxes for code execution. The E2B MCP server lets your AI actually run Node.js code to validate solutions, test utility functions, and verify package behavior — so instead of generating code and hoping it works, your AI can test it first.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Execute Node.js code in an isolated cloud sandbox</li>
+<li>Install npm packages and test library behavior</li>
+<li>Run test scripts and capture output</li>
+<li>Validate regex patterns, data transformations, and parsing logic</li>
+<li>Test async code with proper timeout handling</li>
+</ul>
+
+<p><strong>Best for:</strong> Node.js developers who want their AI to verify code before delivering it. Particularly useful for utility functions, data transformations, and any logic where correctness matters more than just style.</p>
+
+<h2>7. Hono MCP Server — API Framework Tooling</h2>
+
+<p>Hono has emerged as a leading lightweight web framework for Node.js, Bun, and edge environments. The Hono MCP server provides AI-native tooling for Hono-based APIs — helping your AI understand Hono's routing, middleware, and context patterns to generate framework-idiomatic code.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Understand Hono's routing and middleware composition patterns</li>
+<li>Generate route handlers with proper Hono context typing</li>
+<li>Help with Hono middleware chains and validator integration</li>
+<li>Generate OpenAPI specs from Hono route definitions</li>
+</ul>
+
+<p><strong>Best for:</strong> Node.js developers building APIs with Hono, especially for Cloudflare Workers, Vercel Edge, and Bun runtimes. Makes your AI generate code that fits Hono's patterns rather than applying Express patterns incorrectly.</p>
+
+<h2>8. Sentry MCP Server — Error Tracking and Production Debugging</h2>
+
+<p>Sentry is the standard for Node.js error tracking and performance monitoring. The Sentry MCP server gives your AI access to error events, stack traces, and release health data — making it possible to diagnose production bugs conversationally rather than manually copying exception details from Sentry into your AI chat.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>List and search error events by project and environment</li>
+<li>Read full stack traces with variable context</li>
+<li>Check release health and error rate changes per deployment</li>
+<li>Access performance data (slow DB queries, slow API endpoints)</li>
+<li>Mark issues as resolved or assign to team members</li>
+</ul>
+
+<p><strong>Best for:</strong> Node.js developers running production services. When an error fires, your AI can read the Sentry stack trace, look up the relevant code in GitHub, and suggest a fix — all in one conversation without tab switching.</p>
+
+<h2>The Node.js Developer's MCP Stack</h2>
+
+<ul>
+<li><strong>Code access:</strong> GitHub MCP + Filesystem MCP</li>
+<li><strong>Database:</strong> PostgreSQL MCP or Supabase MCP (schema-aware queries)</li>
+<li><strong>Cache/queues:</strong> Redis MCP (inspect and debug)</li>
+<li><strong>Code validation:</strong> E2B MCP (run before you ship)</li>
+<li><strong>Framework:</strong> Hono MCP (if using Hono)</li>
+<li><strong>Error tracking:</strong> Sentry MCP (production debugging)</li>
+</ul>
+
+<p>With this stack, your AI reads your actual Node.js codebase, queries your real database schema, inspects your Redis queues, runs validation code in a sandbox, and debugs production errors from Sentry — all in conversation, without terminal juggling or context pasting. That's genuine AI-assisted development, not just autocomplete with extra steps.</p>
+
+<p><strong>Related guides:</strong></p>
+<ul>
+<li><a href="/blog/best-mcp-servers-for-developers">Best MCP Servers for Developers</a></li>
+<li><a href="/blog/best-mcp-servers-for-backend-developers">Best MCP Servers for Backend Developers</a></li>
+<li><a href="/blog/best-mcp-servers-for-nextjs-developers">Best MCP Servers for Next.js Developers</a></li>
+</ul>
+    `.trim(),
+  },
 ];
 
 export function getBlogPostBySlug(slug: string): BlogPost | undefined {
