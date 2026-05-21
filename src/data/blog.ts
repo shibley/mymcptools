@@ -32274,6 +32274,346 @@ async with MCPServerStdio(
 </ul>
     `.trim(),
   },
+  {
+    slug: "best-mcp-servers-for-bolt-new",
+    title: "Best MCP Servers for Bolt.new in 2026: Supercharge Your AI App Builder",
+    description: "Discover the top MCP servers that pair with Bolt.new and StackBlitz to accelerate full-stack app development. Connect databases, APIs, and tools directly to your AI-generated apps.",
+    date: "2026-05-21",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "7 min read",
+    keywords: ["mcp servers for bolt new", "bolt.new mcp", "stackblitz mcp servers", "best mcp servers bolt", "bolt new ai builder mcp"],
+    relatedServerSlugs: ["github", "postgres", "brave-search", "filesystem", "puppeteer"],
+    content: `
+<p>Bolt.new has become one of the fastest ways to go from idea to deployed full-stack app — but the real power unlocks when you pair it with MCP servers. While Bolt.new handles scaffolding and code generation, MCP servers give your development workflow persistent access to databases, real-time search, repository context, and live API data.</p>
+
+<p>This guide covers the best MCP servers to use alongside Bolt.new in your Claude Desktop or Cursor setup — so you can build apps in Bolt and manage context, data, and infrastructure from your AI sidebar.</p>
+
+<h2>How Bolt.new + MCP Fits Together</h2>
+
+<p>Bolt.new runs in the browser and generates full-stack apps instantly. MCP servers run locally (or via remote endpoints) and give your AI assistant tools that Bolt.new's sandboxed environment can't access directly: your actual database schemas, Git history, live API responses, and file system state.</p>
+
+<p>The workflow: use Bolt.new for rapid scaffolding → switch to Claude Desktop or Cursor with MCP servers for the details that require real-world context (existing database structure, API response shapes, credential management, deployment configs).</p>
+
+<h2>1. GitHub MCP Server — Version Control for Bolt.new Projects</h2>
+
+<p>When you export a Bolt.new project to GitHub, the GitHub MCP server becomes your bridge between your AI assistant and the repository. Your AI can browse the exported code, track issues, and create pull requests without you switching contexts.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Browse repository structure and file contents after Bolt.new export</li>
+<li>Create issues for bugs or features identified during development</li>
+<li>Review pull requests and merge diffs</li>
+<li>Search code across your Bolt.new project history</li>
+</ul>
+
+<p><strong>Best for:</strong> Any Bolt.new project you intend to maintain long-term. GitHub MCP + Bolt.new export gives you the best of both worlds: AI-generated scaffolding with proper version control.</p>
+
+<h2>2. PostgreSQL MCP Server — Real Database Context for Generated Apps</h2>
+
+<p>Bolt.new generates database schemas from your description, but it can't inspect your existing database in real-time. The PostgreSQL MCP server fills this gap — letting your AI assistant see your actual table structures, foreign key relationships, and data before generating queries or migrations.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read live schema from your Supabase, Neon, or Railway PostgreSQL instance</li>
+<li>Execute read-only queries for data validation and testing</li>
+<li>Inspect indexes, constraints, and table relationships</li>
+<li>Generate migrations that match your actual database state (not assumed schemas)</li>
+</ul>
+
+<p><strong>Best for:</strong> Bolt.new apps that connect to an existing PostgreSQL database. Your AI knows your real column names, types, and relationships — not generic examples.</p>
+
+<h2>3. Brave Search MCP Server — Live Research While Building</h2>
+
+<p>Building with Bolt.new often surfaces questions about API documentation, library compatibility, or integration patterns. The Brave Search MCP server answers these without breaking your flow — your AI assistant searches the web and returns results directly in context.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Search for current API documentation and SDK examples</li>
+<li>Research package compatibility and version requirements</li>
+<li>Find real-world implementation examples for frameworks Bolt.new uses</li>
+<li>Check for breaking changes in dependencies</li>
+</ul>
+
+<p><strong>Best for:</strong> Any Bolt.new session where you're integrating third-party APIs or using less-common libraries. Keeps your AI current with live documentation rather than relying on training data.</p>
+
+<h2>4. Filesystem MCP Server — Local Project Management</h2>
+
+<p>After downloading your Bolt.new project, the filesystem MCP server gives your AI assistant full access to the local project directory — reading source files, checking configs, and making edits without copy-pasting code manually.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read and write project files post-download from Bolt.new</li>
+<li>Navigate the directory structure of exported projects</li>
+<li>Edit environment variables, config files, and package.json</li>
+<li>Inspect generated code for issues before deployment</li>
+</ul>
+
+<p><strong>Best for:</strong> The post-Bolt.new phase when you're polishing, customizing, or extending a generated app locally. Pairs with Claude Desktop for a full local development assistant.</p>
+
+<h2>5. Puppeteer MCP Server — Test Your Bolt.new App's UI</h2>
+
+<p>Once your Bolt.new app is running locally or on a preview URL, the Puppeteer MCP server lets your AI assistant interact with the UI directly — clicking buttons, filling forms, and taking screenshots to verify that the generated UI actually works as expected.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Navigate to your Bolt.new app's preview URL</li>
+<li>Click buttons, fill forms, and trigger UI interactions</li>
+<li>Take screenshots for visual verification</li>
+<li>Extract text content to validate rendered output</li>
+</ul>
+
+<p><strong>Best for:</strong> QA and validation of AI-generated UIs. Your AI assistant can navigate your Bolt.new app, confirm that routes work, forms submit, and data displays correctly — before you hand it off for review.</p>
+
+<h2>The Bolt.new Developer MCP Stack</h2>
+
+<ul>
+<li><strong>Version control:</strong> GitHub MCP (post-export repository management)</li>
+<li><strong>Database:</strong> PostgreSQL MCP (real schema access for generated apps)</li>
+<li><strong>Research:</strong> Brave Search MCP (live documentation lookup)</li>
+<li><strong>Local development:</strong> Filesystem MCP (post-download editing)</li>
+<li><strong>QA:</strong> Puppeteer MCP (UI testing on preview deployments)</li>
+</ul>
+
+<p>The pattern: Bolt.new for the 80% — scaffolding, boilerplate, initial UI. MCP servers for the 20% that requires real-world context: your actual database, your existing codebase, live API docs, and interactive testing. Together they form a complete AI-powered development workflow from idea to production.</p>
+
+<p><strong>Related guides:</strong></p>
+<ul>
+<li><a href="/blog/best-mcp-servers-for-developers">Best MCP Servers for Developers</a></li>
+<li><a href="/blog/best-mcp-servers-for-react-developers">Best MCP Servers for React Developers</a></li>
+<li><a href="/blog/best-mcp-servers-for-nextjs-developers">Best MCP Servers for Next.js Developers</a></li>
+</ul>
+    `.trim(),
+  },
+  {
+    slug: "best-mcp-servers-for-gemini-cli",
+    title: "Best MCP Servers for Gemini CLI in 2026: Extend Google's AI Agent",
+    description: "Gemini CLI supports MCP servers natively. Discover the best MCP servers to connect to Google's Gemini CLI for file access, web search, database queries, and more.",
+    date: "2026-05-21",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "7 min read",
+    keywords: ["mcp servers for gemini cli", "gemini cli mcp", "google gemini mcp servers", "gemini mcp setup", "gemini cli tools"],
+    relatedServerSlugs: ["filesystem", "brave-search", "github", "postgres", "memory"],
+    content: `
+<p>Google's Gemini CLI brings Gemini's long-context reasoning directly to your terminal — and it supports the Model Context Protocol (MCP) natively. This means you can extend Gemini CLI with the same ecosystem of MCP servers used by Claude Desktop, Cursor, and VS Code: filesystem access, database connections, web search, and hundreds more tools.</p>
+
+<p>This guide covers the best MCP servers to add to your Gemini CLI setup, with configuration instructions and use-case guidance for each.</p>
+
+<h2>Setting Up MCP Servers with Gemini CLI</h2>
+
+<p>Gemini CLI reads MCP server configurations from your <code>~/.gemini/settings.json</code> file. Add servers under the <code>mcpServers</code> key:</p>
+
+<pre><code>{
+  "mcpServers": {
+    "filesystem": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-filesystem", "/Users/yourname/projects"]
+    }
+  }
+}</code></pre>
+
+<p>After saving, restart Gemini CLI and your MCP tools appear automatically in the session.</p>
+
+<h2>1. Filesystem MCP Server — Local File Access for Gemini</h2>
+
+<p>The filesystem MCP server is the most essential addition for any Gemini CLI user. It gives Gemini read/write access to your local files — so you can ask it to analyze, edit, and navigate your project directory without copy-pasting file contents.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read source files and configuration directly</li>
+<li>Write and edit files with your AI's changes applied automatically</li>
+<li>List directory trees for project navigation</li>
+<li>Search file contents across your project</li>
+</ul>
+
+<p><strong>Best for:</strong> Any coding or writing task with Gemini CLI. Gemini's 1M+ token context window becomes truly useful when paired with filesystem access — it can read your entire codebase in a single context window and reason across it.</p>
+
+<h2>2. Brave Search MCP Server — Real-Time Web Access</h2>
+
+<p>Gemini CLI has a training knowledge cutoff, but with the Brave Search MCP server it gains live web search capabilities — returning current results for documentation lookups, news queries, and research tasks.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Search the web for current information</li>
+<li>Look up API documentation, changelogs, and release notes</li>
+<li>Research topics beyond training data cutoff</li>
+<li>Return web results structured for AI consumption</li>
+</ul>
+
+<p><strong>Best for:</strong> Research-heavy tasks where Gemini CLI's long context shines — it can take multiple search results, combine them with local files, and synthesize a comprehensive answer within its massive context window.</p>
+
+<h2>3. GitHub MCP Server — Repository Access for Code Tasks</h2>
+
+<p>The GitHub MCP server lets Gemini CLI browse repositories, read issues, and manage pull requests directly — making it ideal for code review, issue triage, and cross-repository analysis tasks that benefit from Gemini's long context.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Browse repository structure and file contents</li>
+<li>Read and create issues and pull request comments</li>
+<li>Search code across repositories</li>
+<li>Access commit history and diff views</li>
+</ul>
+
+<p><strong>Best for:</strong> Large-scale code review and analysis. Gemini CLI can load an entire repository into context via GitHub MCP, then reason across the full codebase to identify patterns, bugs, or architectural issues — a task where its 1M token window provides a genuine advantage over shorter-context models.</p>
+
+<h2>4. PostgreSQL MCP Server — Database Queries in Your Terminal</h2>
+
+<p>Ask Gemini CLI natural-language questions about your database and the PostgreSQL MCP server translates them to correct SQL — with knowledge of your actual schema, not a generic assumed one.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Inspect your live database schema (tables, columns, indexes)</li>
+<li>Execute read-only queries for data analysis</li>
+<li>Generate complex SQL that matches your actual table structure</li>
+<li>Explain query plans and suggest optimizations</li>
+</ul>
+
+<p><strong>Best for:</strong> Data analysis in the terminal. Gemini CLI can load your schema via PostgreSQL MCP, run several exploratory queries, and summarize findings — all in one session without switching to a GUI tool.</p>
+
+<h2>5. Memory MCP Server — Persistent Context Across Sessions</h2>
+
+<p>Gemini CLI sessions are ephemeral by default — context resets when you close the session. The Memory MCP server provides a persistent knowledge graph that survives between sessions, letting Gemini remember project details, decisions, and context across days of work.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Store entities, relationships, and observations persistently</li>
+<li>Recall project-specific context in future sessions</li>
+<li>Build a knowledge graph of your project over time</li>
+<li>Query stored memories for relevant context retrieval</li>
+</ul>
+
+<p><strong>Best for:</strong> Long-running projects where session memory matters. Even with Gemini's massive context window, not every session can reload gigabytes of project history — Memory MCP provides curated, queryable persistence.</p>
+
+<h2>The Gemini CLI Power User MCP Stack</h2>
+
+<ul>
+<li><strong>Files:</strong> Filesystem MCP (local project access)</li>
+<li><strong>Web:</strong> Brave Search MCP (live search and documentation)</li>
+<li><strong>Code:</strong> GitHub MCP (repository browsing and management)</li>
+<li><strong>Data:</strong> PostgreSQL MCP (database queries)</li>
+<li><strong>Memory:</strong> Memory MCP (persistent cross-session context)</li>
+</ul>
+
+<p>Gemini CLI's unique advantage — its extraordinary context length — combines with MCP servers to create an unusually capable local AI agent. Load your entire repository via filesystem MCP, pull live documentation via Brave Search, and query your database via PostgreSQL MCP, all in a single Gemini context window that can hold it all.</p>
+
+<p><strong>Related guides:</strong></p>
+<ul>
+<li><a href="/blog/getting-started-with-mcp">Getting Started with MCP</a></li>
+<li><a href="/blog/best-mcp-servers-for-developers">Best MCP Servers for Developers</a></li>
+<li><a href="/blog/mcp-vs-api-integrations">MCP vs Traditional API Integrations</a></li>
+</ul>
+    `.trim(),
+  },
+  {
+    slug: "best-mcp-servers-for-lovable",
+    title: "Best MCP Servers for Lovable in 2026: Extend Your AI App Builder",
+    description: "Lovable builds full-stack apps from prompts. MCP servers give your workflow the real-world context Lovable needs: live database schemas, GitHub repos, and API data. Here's how.",
+    date: "2026-05-21",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "6 min read",
+    keywords: ["mcp servers for lovable", "lovable.dev mcp", "lovable ai builder mcp", "lovable mcp setup", "lovable dev tools"],
+    relatedServerSlugs: ["github", "postgres", "brave-search", "filesystem", "puppeteer"],
+    content: `
+<p>Lovable is the fastest way to go from natural language prompt to a deployed full-stack web app — but the real power unlocks when you pair it with MCP servers in your local AI environment. While Lovable handles UI generation, routing, and initial backend scaffolding, MCP servers give your AI assistant the real-world context Lovable can't access from the browser: your existing database schemas, live API documentation, repository history, and file system state.</p>
+
+<p>This guide covers the best MCP servers to pair with Lovable in Claude Desktop, Cursor, or any MCP-compatible client — so you can build fast with Lovable and manage context with precision using your local AI setup.</p>
+
+<h2>The Lovable + MCP Developer Workflow</h2>
+
+<p>Think of Lovable as the scaffolding layer and your MCP-connected AI assistant as the precision layer. Lovable generates the app skeleton — components, routes, Supabase integration, basic CRUD. MCP servers let your AI assistant understand the real state of your project: actual database schema from Supabase, current file tree post-download, GitHub issue context, and live API documentation.</p>
+
+<h2>1. GitHub MCP Server — Connect Lovable Projects to Your Repos</h2>
+
+<p>Lovable exports projects directly to GitHub. The GitHub MCP server is the bridge that lets your AI assistant continue the work — browsing the exported code, creating issues, reviewing PRs, and tracking changes as you iterate beyond Lovable's initial generation.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Browse exported Lovable project files in your GitHub repository</li>
+<li>Create and manage issues for features or bugs</li>
+<li>Review pull requests and merge changes</li>
+<li>Search code across the generated project for specific patterns</li>
+</ul>
+
+<p><strong>Best for:</strong> Any Lovable project that transitions to a maintained codebase. GitHub MCP + Lovable export gives you AI-assisted development across the full lifecycle: generation → iteration → production maintenance.</p>
+
+<h2>2. PostgreSQL MCP Server — Real Schema Access for Supabase-Backed Apps</h2>
+
+<p>Lovable integrates tightly with Supabase for backend storage. The PostgreSQL MCP server connects directly to your Supabase PostgreSQL instance — giving your AI assistant the actual table structure, foreign key relationships, and row-level security policies that Lovable generated, plus any manual changes you've made since.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read your live Supabase schema (tables, columns, relationships, RLS policies)</li>
+<li>Run read-only queries for data validation</li>
+<li>Generate migrations that reflect your actual database state</li>
+<li>Debug Supabase query errors with real schema context</li>
+</ul>
+
+<p><strong>Best for:</strong> Lovable apps with complex data requirements. Your AI sees your real Supabase structure — not a guessed schema — so generated queries, migrations, and TypeScript types are accurate.</p>
+
+<h2>3. Brave Search MCP Server — Live Documentation for Third-Party Integrations</h2>
+
+<p>Lovable apps frequently integrate external APIs: Stripe for payments, Resend for email, Twilio for SMS, and more. The Brave Search MCP server gives your AI assistant access to current documentation for any integration — beyond its training data cutoff.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Search current API documentation for Stripe, Supabase, Resend, and others</li>
+<li>Find real-world implementation examples for Lovable-generated patterns</li>
+<li>Look up library changelogs and breaking changes</li>
+<li>Research error messages and SDK issues in real time</li>
+</ul>
+
+<p><strong>Best for:</strong> Any Lovable session involving third-party API integration. Your AI stays current with live documentation rather than relying on potentially stale training data.</p>
+
+<h2>4. Filesystem MCP Server — Local Development After Lovable Export</h2>
+
+<p>After cloning your Lovable project locally, the filesystem MCP server gives your AI assistant full access to the project directory — reading generated components, editing configs, and managing environment variables without constant copy-pasting.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read and write files in your cloned Lovable project</li>
+<li>Navigate the generated component structure</li>
+<li>Edit <code>.env</code> files, <code>package.json</code>, and Supabase client configuration</li>
+<li>Search file contents across the full generated codebase</li>
+</ul>
+
+<p><strong>Best for:</strong> The local development phase after Lovable export. Pairs with Claude Desktop for a complete local development assistant that knows your entire project structure.</p>
+
+<h2>5. Puppeteer MCP Server — UI Testing for Lovable-Generated Interfaces</h2>
+
+<p>Lovable generates working UIs, but visual validation still matters. The Puppeteer MCP server lets your AI assistant navigate your Lovable app's preview URL — clicking buttons, filling forms, and taking screenshots — to confirm that the generated UI behaves as expected before launch.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Navigate to your Lovable app preview or staging URL</li>
+<li>Click buttons, submit forms, and trigger UI events</li>
+<li>Take screenshots for visual comparison</li>
+<li>Extract text content to validate rendered output</li>
+</ul>
+
+<p><strong>Best for:</strong> Pre-launch validation of Lovable-generated user flows. Your AI can run through the critical paths — signup, payment, core feature — and flag issues before you share with users or stakeholders.</p>
+
+<h2>The Lovable Developer MCP Stack</h2>
+
+<ul>
+<li><strong>Version control:</strong> GitHub MCP (post-export repository management)</li>
+<li><strong>Database:</strong> PostgreSQL MCP (Supabase schema and query access)</li>
+<li><strong>Research:</strong> Brave Search MCP (live API documentation)</li>
+<li><strong>Local files:</strong> Filesystem MCP (post-clone development)</li>
+<li><strong>QA:</strong> Puppeteer MCP (UI validation on previews)</li>
+</ul>
+
+<p>The pattern: Lovable for speed, MCP servers for precision. Lovable generates 80% of your app in minutes — MCP servers give your AI assistant the real-world context to close the remaining 20% with accuracy. The result is an AI-powered full-stack development workflow that's faster than traditional development without sacrificing code quality or maintainability.</p>
+
+<p><strong>Related guides:</strong></p>
+<ul>
+<li><a href="/blog/best-mcp-servers-for-bolt-new">Best MCP Servers for Bolt.new</a></li>
+<li><a href="/blog/best-mcp-servers-for-developers">Best MCP Servers for Developers</a></li>
+<li><a href="/blog/best-mcp-servers-for-supabase">Best MCP Servers for Supabase Developers</a></li>
+</ul>
+    `.trim(),
+  },
 ];
 
 export function getBlogPostBySlug(slug: string): BlogPost | undefined {
