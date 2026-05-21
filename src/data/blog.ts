@@ -30778,6 +30778,446 @@ async with MCPServerStdio(
 <p>Browse all MCP servers at <a href="/servers">MyMCPTools</a>. See also <a href="/blog/best-mcp-servers-for-backend-developers">Best MCP Servers for Backend Developers</a> and <a href="/blog/best-mcp-servers-for-azure-microsoft">Best MCP Servers for Azure and Microsoft</a>.</p>
     `.trim(),
   },
+  {
+    slug: "best-mcp-servers-for-python-developers",
+    title: "Best MCP Servers for Python Developers in 2026",
+    description: "Supercharge your Python development with MCP. From GitHub and database access to code execution sandboxes and FastAPI tooling, these are the top MCP servers for Python developers using Claude or Cursor.",
+    date: "2026-05-20",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "7 min read",
+    keywords: ["best mcp servers for python", "python mcp server", "mcp for python development", "claude python coding", "cursor python mcp", "fastapi mcp server"],
+    relatedServerSlugs: ["github", "filesystem", "postgresql", "sqlite", "redis", "sequential-thinking", "brave-search", "fastapi-mcp", "e2b"],
+    content: `
+<p>Python is the most popular language for AI/ML, data science, backend development, and scripting. When you pair Python development with an MCP-enabled AI assistant like Claude or Cursor, you get an AI that can read your codebase, query your databases, run code, and search documentation — all in one conversation. Here are the MCP servers Python developers reach for most.</p>
+
+<h2>Why Python Developers Need MCP Servers</h2>
+
+<p>Python development spans so many domains: web APIs with FastAPI/Django, data pipelines, ML training loops, scripting, and more. MCP servers let your AI assistant actually interact with the systems your code touches — not just read static code, but query Postgres, execute snippets, browse library docs, and push to GitHub. That's the difference between autocomplete and a real development partner.</p>
+
+<h2>1. GitHub MCP Server — Your Entire Codebase in Context</h2>
+
+<p>Most Python projects live on GitHub. The GitHub MCP server gives your AI direct access to repos, issues, pull requests, and code search — without you having to paste snippets manually.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read files and directory structures from any repo</li>
+<li>Search code across your organization with code search</li>
+<li>Create branches, commits, and pull requests</li>
+<li>Read and triage issues and review comments</li>
+<li>Check CI/CD status and workflow runs</li>
+</ul>
+
+<p><strong>Best for:</strong> Any Python developer working with GitHub repositories. Essential for code review, refactoring, and issue triage workflows.</p>
+
+<h2>2. Filesystem MCP Server — Your Local Project Files</h2>
+
+<p>For local Python development, the Filesystem MCP server gives your AI access to your project directory — reading <code>requirements.txt</code>, <code>pyproject.toml</code>, source files, test files, and config files without copy-pasting.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read and write files in configured directories</li>
+<li>Navigate directory trees</li>
+<li>Search file contents with regex</li>
+<li>Create, move, and delete files</li>
+</ul>
+
+<p><strong>Best for:</strong> Local Python development with Claude Desktop or Cursor. Makes your AI aware of your full project structure, virtual environment config, and test suite.</p>
+
+<h2>3. PostgreSQL MCP Server — AI-Assisted Database Queries</h2>
+
+<p>PostgreSQL is the go-to database for Python backends (Django, FastAPI, SQLAlchemy). The PostgreSQL MCP server lets your AI query your database, inspect schemas, and help you write optimized SQL — with your actual data structure in context.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Connect to PostgreSQL databases and inspect schemas</li>
+<li>Execute SELECT queries and return results</li>
+<li>Describe table structures, indexes, and constraints</li>
+<li>Help write and debug complex SQL</li>
+</ul>
+
+<p><strong>Best for:</strong> Django and FastAPI developers, data engineers, and anyone debugging database performance issues. Your AI can write SQLAlchemy queries that match your actual schema.</p>
+
+<h2>4. SQLite MCP Server — Lightweight Local Database Access</h2>
+
+<p>For local development, testing, and scripting projects that use SQLite (including Django in development mode), the SQLite MCP server provides direct query access without a running database server.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Query SQLite files directly</li>
+<li>Inspect schema, tables, and relationships</li>
+<li>Run migrations and verify results</li>
+<li>Test data fixtures and seeding scripts</li>
+</ul>
+
+<p><strong>Best for:</strong> Python developers working with local SQLite databases, Django projects in development, and data science scripts that use SQLite as a lightweight store.</p>
+
+<h2>5. Redis MCP Server — Cache and Queue Inspection</h2>
+
+<p>Redis is ubiquitous in Python backends for caching, Celery task queues, and session storage. The Redis MCP server lets your AI inspect Redis state, debug cache issues, and help you design efficient data structures.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Get, set, and inspect Redis keys</li>
+<li>Explore data structure types (hashes, lists, sets, sorted sets)</li>
+<li>Monitor queue depths and Celery task state</li>
+<li>Analyze TTL and eviction policies</li>
+</ul>
+
+<p><strong>Best for:</strong> Python backend developers using Celery, Django caching, FastAPI with Redis, or any Redis-backed application.</p>
+
+<h2>6. E2B MCP Server — Safe Code Execution Sandbox</h2>
+
+<p>E2B provides secure cloud sandboxes for code execution. The E2B MCP server lets your AI actually run Python code to verify solutions, test functions, and produce output — not just suggest code, but validate it.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Execute Python code in an isolated cloud sandbox</li>
+<li>Install packages and test dependencies</li>
+<li>Run scripts and capture stdout/stderr</li>
+<li>Test data processing and ML code safely</li>
+</ul>
+
+<p><strong>Best for:</strong> Data scientists validating analysis scripts, developers testing utility functions, and anyone who wants AI that checks its own code before handing it over.</p>
+
+<h2>7. FastAPI MCP Server — API Tooling and Documentation</h2>
+
+<p>FastAPI has become the default Python web framework for new projects. The FastAPI MCP server provides AI-native tooling around FastAPI development — schema introspection, endpoint testing, and OpenAPI integration.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Introspect FastAPI OpenAPI schemas</li>
+<li>Generate type-safe request/response models</li>
+<li>Test endpoints and validate responses</li>
+<li>Help write dependency injection patterns</li>
+</ul>
+
+<p><strong>Best for:</strong> FastAPI developers building REST APIs who want their AI to understand their endpoint schema and help with Pydantic models, routers, and middleware.</p>
+
+<h2>8. Brave Search MCP Server — Library and Framework Docs</h2>
+
+<p>Python's ecosystem moves fast. Brave Search gives your AI access to current library documentation, PyPI package pages, Stack Overflow answers, and GitHub issues — keeping it up to date with the latest APIs.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Search Python documentation and library references</li>
+<li>Find Stack Overflow solutions for specific errors</li>
+<li>Discover PyPI packages by functionality</li>
+<li>Check for known bugs and workarounds in current library versions</li>
+</ul>
+
+<p><strong>Best for:</strong> Any Python developer. Makes your AI aware of current library behavior rather than relying solely on training data cutoffs.</p>
+
+<h2>The Python Developer's MCP Stack</h2>
+
+<ul>
+<li><strong>Core workflow:</strong> GitHub MCP + Filesystem MCP (code access)</li>
+<li><strong>Database:</strong> PostgreSQL MCP or SQLite MCP (schema-aware SQL help)</li>
+<li><strong>Runtime:</strong> Redis MCP (cache/queue debug)</li>
+<li><strong>Code execution:</strong> E2B MCP (validate before shipping)</li>
+<li><strong>Documentation:</strong> Brave Search MCP (live Python docs)</li>
+<li><strong>API layer:</strong> FastAPI MCP (if using FastAPI)</li>
+</ul>
+
+<p>With this stack, your AI assistant can read your Python codebase, query your databases, run test snippets, and check current library documentation — covering the full Python development loop from writing code to validating it in a real environment.</p>
+
+<p><strong>Related guides:</strong></p>
+<ul>
+<li><a href="/blog/best-mcp-servers-for-backend-developers">Best MCP Servers for Backend Developers</a></li>
+<li><a href="/blog/best-mcp-servers-for-data-science">Best MCP Servers for Data Science</a></li>
+<li><a href="/blog/best-mcp-servers-for-database">Best MCP Servers for Database</a></li>
+</ul>
+    `.trim(),
+  },
+  {
+    slug: "best-mcp-servers-for-react-developers",
+    title: "Best MCP Servers for React Developers in 2026",
+    description: "The top MCP servers for React and frontend developers. From component libraries and design tools to deployment platforms and browser automation, these servers make AI-assisted React development actually useful.",
+    date: "2026-05-20",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "7 min read",
+    keywords: ["best mcp servers for react", "react mcp server", "mcp for frontend development", "tailwind mcp", "vercel mcp", "shadcn mcp server"],
+    relatedServerSlugs: ["github", "filesystem", "vercel", "tailwind-css", "shadcn-ui", "21st-dev-magic", "brave-search", "browser"],
+    content: `
+<p>React remains the dominant frontend framework in 2026, powering everything from landing pages to complex SPAs. MCP servers give your AI assistant the context it needs to write React code that actually fits your project — your component library, your Tailwind config, your deployment target. Here are the MCP servers that make the biggest difference for React developers.</p>
+
+<h2>Why Frontend Developers Need MCP Servers</h2>
+
+<p>Frontend development has always been context-heavy: your component naming conventions, your design system, your CSS methodology, your state management choices. Without that context, AI-generated React code is generic at best. MCP servers bridge this gap by giving your AI access to your actual codebase, your component library, your deployment platform, and live browser feedback — so it can generate code that fits.</p>
+
+<h2>1. GitHub MCP Server — Full Codebase Context</h2>
+
+<p>Every React project lives in a git repository. The GitHub MCP server gives your AI access to your entire codebase — components, hooks, pages, utilities, and config files — without manually pasting code snippets into chat.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read any file or directory in your React project</li>
+<li>Search across components and utilities with code search</li>
+<li>Create branches, commit changes, and open pull requests</li>
+<li>Review diffs and pull request feedback</li>
+</ul>
+
+<p><strong>Best for:</strong> All React developers. The baseline for AI-assisted code review, refactoring, and new feature development on existing projects.</p>
+
+<h2>2. Filesystem MCP Server — Local Project Files</h2>
+
+<p>For local development with Claude Desktop or Cursor, the Filesystem MCP server gives your AI access to your project directory. It reads your <code>package.json</code>, component files, Tailwind config, and <code>tsconfig.json</code> — understanding your setup before generating any code.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read and write files in your project</li>
+<li>Navigate directory structures</li>
+<li>Understand your project layout (pages, components, hooks, utils)</li>
+<li>Edit multiple files in one pass</li>
+</ul>
+
+<p><strong>Best for:</strong> Local React development sessions. Makes your AI aware of your full project rather than just the snippet you paste.</p>
+
+<h2>3. Vercel MCP Server — Deployment and Preview Links</h2>
+
+<p>Vercel is the default deployment platform for Next.js and React apps. The Vercel MCP server gives your AI access to deployment status, environment variables, preview URLs, and build logs — closing the loop between writing code and seeing it deployed.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Check deployment status and build logs</li>
+<li>List projects, domains, and environment variables</li>
+<li>Trigger redeployments</li>
+<li>Access preview deployment URLs for review</li>
+</ul>
+
+<p><strong>Best for:</strong> React developers deploying to Vercel (especially Next.js projects). Your AI can debug deployment failures, check environment configs, and validate that changes shipped correctly.</p>
+
+<h2>4. Tailwind CSS MCP Server — Design System Awareness</h2>
+
+<p>Tailwind CSS is the default styling approach for modern React projects. The Tailwind MCP server gives your AI awareness of your Tailwind config — custom colors, spacing scales, breakpoints, and plugin configuration — so generated code uses your actual design tokens, not generic defaults.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read your <code>tailwind.config.ts</code> and understand custom theme values</li>
+<li>Generate component styles using your actual color palette and spacing</li>
+<li>Suggest class combinations that match your project's design system</li>
+<li>Validate class names against your installed Tailwind version</li>
+</ul>
+
+<p><strong>Best for:</strong> React projects using Tailwind CSS (the majority of new React projects in 2026). Critical for generating styles that actually match your design system.</p>
+
+<h2>5. shadcn/ui MCP Server — Component Library Integration</h2>
+
+<p>shadcn/ui has become the default component library for React + Tailwind projects. The shadcn MCP server gives your AI awareness of which components you've installed, their prop APIs, and how to use them in your project — generating code that uses your actual component library rather than building from scratch.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Know which shadcn components are installed in your project</li>
+<li>Generate code using correct component imports and props</li>
+<li>Understand component variants and customization patterns</li>
+<li>Help install new components with proper configuration</li>
+</ul>
+
+<p><strong>Best for:</strong> React developers using shadcn/ui (the fastest-growing React component system). Makes AI-generated component code fit your existing setup.</p>
+
+<h2>6. 21st.dev Magic MCP Server — AI-Native UI Components</h2>
+
+<p>21st.dev's Magic MCP server is purpose-built for AI-assisted UI development. It provides a library of production-ready React components optimized for AI generation — filling gaps when shadcn doesn't have what you need.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Access a curated library of React + Tailwind components</li>
+<li>Generate complex UI patterns (data tables, forms, dashboards)</li>
+<li>Retrieve component code with proper TypeScript types</li>
+<li>Adapt components to your project's style conventions</li>
+</ul>
+
+<p><strong>Best for:</strong> React developers building complex UI quickly. Especially useful for dashboard, admin, and data-heavy interfaces where component generation would otherwise require significant manual work.</p>
+
+<h2>7. Browser MCP Server — Live Frontend Testing</h2>
+
+<p>The Browser MCP server (Playwright-based) lets your AI actually open your development server, click through your UI, take screenshots, and report what it sees. This closes the feedback loop: write code, deploy to dev, browser opens, AI checks it works.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Open URLs in a browser instance and take screenshots</li>
+<li>Click elements, fill forms, and navigate pages</li>
+<li>Check console errors and network requests</li>
+<li>Validate responsive layouts at different viewports</li>
+</ul>
+
+<p><strong>Best for:</strong> React developers who want their AI to verify UI changes rather than just generating code. Essential for catching rendering bugs, layout issues, and interaction problems automatically.</p>
+
+<h2>8. Brave Search MCP Server — Framework and Library Docs</h2>
+
+<p>React's ecosystem evolves quickly — new React Server Components patterns, Next.js App Router conventions, Tailwind v4 changes. Brave Search keeps your AI current with live documentation, migration guides, and community solutions.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Search React and Next.js documentation</li>
+<li>Find Stack Overflow and GitHub issues for specific errors</li>
+<li>Discover npm packages for specific use cases</li>
+<li>Check for breaking changes in library updates</li>
+</ul>
+
+<p><strong>Best for:</strong> Any React developer. Prevents your AI from generating code based on outdated API patterns from its training data.</p>
+
+<h2>The React Developer's MCP Stack</h2>
+
+<ul>
+<li><strong>Code access:</strong> GitHub MCP + Filesystem MCP</li>
+<li><strong>Styling:</strong> Tailwind CSS MCP + shadcn/ui MCP</li>
+<li><strong>UI generation:</strong> 21st.dev Magic MCP (complex components)</li>
+<li><strong>Deployment:</strong> Vercel MCP (deploy/debug loop)</li>
+<li><strong>Validation:</strong> Browser MCP (see your UI, not just your code)</li>
+<li><strong>Documentation:</strong> Brave Search MCP (live framework docs)</li>
+</ul>
+
+<p>With this stack, your AI reads your codebase, understands your design system, generates components using your actual libraries, validates them in a browser, and keeps up with current React patterns — a genuine full-loop frontend development assistant.</p>
+
+<p><strong>Related guides:</strong></p>
+<ul>
+<li><a href="/blog/best-mcp-servers-for-developers">Best MCP Servers for Developers</a></li>
+<li><a href="/blog/best-mcp-servers-for-vs-code">Best MCP Servers for VS Code</a></li>
+<li><a href="/blog/best-mcp-servers-for-nextjs-developers">Best MCP Servers for Next.js Developers</a></li>
+</ul>
+    `.trim(),
+  },
+  {
+    slug: "best-mcp-servers-for-sales-teams",
+    title: "Best MCP Servers for Sales Teams in 2026",
+    description: "The top MCP servers for sales professionals using AI. From CRM access and prospect research to outreach tools and pipeline analytics, these servers turn your AI assistant into a genuine sales productivity tool.",
+    date: "2026-05-20",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "7 min read",
+    keywords: ["best mcp servers for sales", "sales mcp server", "hubspot mcp", "crm mcp server", "apollo mcp", "ai sales tools mcp"],
+    relatedServerSlugs: ["hubspot", "apollo-io", "slack", "notion", "stripe", "brave-search", "sequential-thinking"],
+    content: `
+<p>Sales teams live in CRMs, email inboxes, LinkedIn, and Slack — switching between tools constantly to research prospects, update records, and craft personalized outreach. MCP servers change this by giving your AI direct access to the systems you actually work in. Instead of summarizing what happened in HubSpot, your AI can read it, update it, and act on it. Here are the MCP servers that deliver real leverage for sales teams.</p>
+
+<h2>Why Sales Teams Need MCP Servers</h2>
+
+<p>The biggest productivity drain in sales isn't the selling — it's the admin. Updating CRM records, researching prospects, logging calls, drafting follow-up emails, building pipeline reports. These tasks take hours that should go to actual selling. MCP servers connect your AI to your sales tools so it can handle the busywork while you focus on conversations.</p>
+
+<h2>1. HubSpot MCP Server — CRM Access and Updates</h2>
+
+<p>HubSpot is one of the most popular CRMs for growth-stage teams. The HubSpot MCP server gives your AI read and write access to contacts, companies, deals, and activities — so it can log calls, update deal stages, and pull pipeline reports without you ever opening the CRM manually.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read and update contacts, companies, and deals</li>
+<li>Log activities (calls, meetings, emails) directly to records</li>
+<li>Create and update deal stages in your pipeline</li>
+<li>Pull reports on pipeline health, open deals, and activity history</li>
+<li>Search contacts by company, title, or custom property</li>
+</ul>
+
+<p><strong>Best for:</strong> HubSpot CRM users who want their AI to actually update records rather than just draft text that you then paste into HubSpot. The difference between AI as a writing tool and AI as a sales operations partner.</p>
+
+<h2>2. Apollo.io MCP Server — Prospect Research and Enrichment</h2>
+
+<p>Apollo.io is the leading B2B prospect database with 200M+ contacts. The Apollo MCP server lets your AI search for prospects by company size, industry, title, technology stack, and intent signals — turning your AI into a prospecting engine that can build targeted lead lists on demand.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Search 200M+ B2B contacts by title, company, industry, and location</li>
+<li>Enrich contact records with verified email and phone data</li>
+<li>Filter by technology stack (find companies using Salesforce, Shopify, etc.)</li>
+<li>Access intent data and buying signals</li>
+<li>Build and export targeted prospect lists</li>
+</ul>
+
+<p><strong>Best for:</strong> Outbound sales teams doing prospecting and account-based selling. Your AI can build a list of 50 ideal prospects matching your ICP in minutes instead of hours of manual search.</p>
+
+<h2>3. Slack MCP Server — Sales Team Coordination</h2>
+
+<p>Sales teams communicate in Slack — deal updates, competitive intel, prospect questions, celebration of closes. The Slack MCP server lets your AI read channel history, send updates, and surface deal-related conversations without switching context.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read and search Slack channels and DMs</li>
+<li>Post messages and threaded replies</li>
+<li>Search message history for prospect or company mentions</li>
+<li>Set reminders and schedule posts</li>
+</ul>
+
+<p><strong>Best for:</strong> Sales teams using Slack for deal room channels, competitive discussions, and manager-rep coordination. Useful for surfacing past conversations about a prospect before a call.</p>
+
+<h2>4. Notion MCP Server — Playbooks, Templates, and Deal Rooms</h2>
+
+<p>Many sales teams use Notion for battle cards, objection handling guides, email templates, and deal room documentation. The Notion MCP server gives your AI access to this institutional knowledge so it can reference the right playbook, pull the right template, and draft personalized outreach using your team's proven messaging.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read pages, databases, and templates in your Notion workspace</li>
+<li>Search across your sales playbook and knowledge base</li>
+<li>Create new pages (deal rooms, meeting notes, prospect summaries)</li>
+<li>Query databases (prospect pipeline, account lists)</li>
+</ul>
+
+<p><strong>Best for:</strong> Sales teams with documented playbooks and templates in Notion. Your AI can reference your actual ICP definition, proven subject lines, and objection responses rather than generating generic content.</p>
+
+<h2>5. Stripe MCP Server — Customer Revenue Context</h2>
+
+<p>For SaaS sales teams selling into an existing customer base, Stripe provides revenue history and subscription context. The Stripe MCP server lets your AI check a customer's billing history, current plan, usage, and expansion opportunities — giving you account intelligence before upgrade or renewal conversations.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Look up customer subscription status and plan details</li>
+<li>Check payment history and invoice status</li>
+<li>Identify accounts with usage near plan limits (expansion signals)</li>
+<li>Review discount and coupon history</li>
+</ul>
+
+<p><strong>Best for:</strong> SaaS account managers and expansion reps. Know before a call whether a customer is over plan limits, has paid consistently, and when their contract renews.</p>
+
+<h2>6. Sequential Thinking MCP Server — Complex Deal Strategy</h2>
+
+<p>Closing enterprise deals requires multi-step thinking: stakeholder mapping, objection anticipation, competitive positioning, negotiation sequencing. The Sequential Thinking MCP server helps your AI think through complex sales situations step-by-step rather than jumping to conclusions.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Break down complex sales situations into reasoning steps</li>
+<li>Map stakeholder networks and buying committee dynamics</li>
+<li>Sequence outreach strategies with logical dependencies</li>
+<li>Anticipate objections and prepare responses systematically</li>
+</ul>
+
+<p><strong>Best for:</strong> Enterprise sellers and SDRs working complex deals with multiple stakeholders. Forces your AI to reason carefully rather than generating surface-level sales advice.</p>
+
+<h2>7. Brave Search MCP Server — Real-Time Prospect Research</h2>
+
+<p>Before any important sales call, you need current intel: recent company news, executive changes, product launches, funding rounds, competitive moves. Brave Search gives your AI access to the live web so it can research prospects in real time rather than relying on stale training data.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Research companies and executives with live web results</li>
+<li>Find recent news, press releases, and funding announcements</li>
+<li>Check LinkedIn for recent role changes and executive moves</li>
+<li>Discover competitor announcements and market changes</li>
+</ul>
+
+<p><strong>Best for:</strong> Prep for any sales call or personalized outreach. A 5-minute AI-assisted pre-call research brief that includes yesterday's news about your prospect's company.</p>
+
+<h2>The Sales Team's MCP Stack</h2>
+
+<ul>
+<li><strong>CRM:</strong> HubSpot MCP (read/write CRM without leaving your AI chat)</li>
+<li><strong>Prospecting:</strong> Apollo MCP (build ICP-targeted lead lists on demand)</li>
+<li><strong>Research:</strong> Brave Search MCP (live company and exec intel)</li>
+<li><strong>Team comms:</strong> Slack MCP (surface past deal conversations)</li>
+<li><strong>Knowledge base:</strong> Notion MCP (playbooks, templates, deal rooms)</li>
+<li><strong>Revenue data:</strong> Stripe MCP (customer billing and expansion signals)</li>
+<li><strong>Strategy:</strong> Sequential Thinking MCP (complex multi-stakeholder deals)</li>
+</ul>
+
+<p>With this stack, your AI can research a prospect, pull their record from HubSpot, check if they're near their Stripe plan limit, draft a personalized email using your Notion templates, log the outreach to your CRM, and post an update to your Slack deal channel — all in one conversation. That's hours of admin replaced by a single prompt.</p>
+
+<p><strong>Related guides:</strong></p>
+<ul>
+<li><a href="/blog/best-mcp-servers-for-marketing">Best MCP Servers for Marketing</a></li>
+<li><a href="/blog/best-mcp-servers-for-customer-support">Best MCP Servers for Customer Support</a></li>
+<li><a href="/blog/best-mcp-servers-for-productivity">Best MCP Servers for Productivity</a></li>
+</ul>
+    `.trim(),
+  },
 ];
 
 export function getBlogPostBySlug(slug: string): BlogPost | undefined {
