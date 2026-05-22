@@ -33599,6 +33599,361 @@ async with MCPServerStdio(
 </ul>
     `.trim(),
   },
+  {
+    slug: "best-mcp-servers-for-rag-developers",
+    title: "Best MCP Servers for RAG Developers in 2026",
+    description: "Building retrieval-augmented generation pipelines? These MCP servers give your AI assistant direct access to vector databases, embedding APIs, document storage, and search tools — the full RAG stack in context.",
+    date: "2026-05-22",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "7 min read",
+    keywords: ["mcp servers for rag", "rag developer tools mcp", "vector database mcp server", "retrieval augmented generation mcp", "pinecone mcp server", "weaviate mcp server", "chroma mcp server"],
+    relatedServerSlugs: ["pinecone", "weaviate", "chroma", "qdrant", "brave-search", "filesystem", "github"],
+    content: `
+<p>Retrieval-augmented generation (RAG) is now a standard pattern for production AI apps — and building it well requires constant context-switching between vector databases, embedding APIs, chunking logic, document pipelines, and evaluation frameworks. MCP servers collapse that context-switching: instead of toggling between database dashboards, API docs, and your codebase, your AI assistant gets direct access to your entire RAG stack.</p>
+
+<p>This guide covers the best MCP servers for developers building RAG applications in 2026 — from vector store access to document pipelines.</p>
+
+<h2>Why RAG Development Needs MCP Context</h2>
+
+<p>RAG development is uniquely context-heavy. You're building across multiple layers simultaneously: ingestion (chunking, embedding, upsert), retrieval (similarity search, hybrid search, reranking), and generation (prompt assembly, context window management). An AI assistant helping you debug a retrieval accuracy problem needs to see your vector store schema, your chunking code, your embedding model configuration, and your test queries — all at once. MCP servers make this possible.</p>
+
+<h2>1. Pinecone MCP Server — Vector Store Access for Production RAG</h2>
+
+<p>Pinecone is the most widely deployed managed vector database for production RAG, and its MCP server gives your AI assistant direct access to your indexes, namespaces, and metadata schemas. When debugging retrieval quality, your AI can query your actual index rather than reasoning from abstract descriptions.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Query indexes with custom vectors and metadata filters</li>
+<li>Inspect index stats: dimension count, total vectors, fullness</li>
+<li>Browse namespaces and understand data partitioning</li>
+<li>Test retrieval queries and examine returned results with scores</li>
+</ul>
+
+<p><strong>Best for:</strong> Production RAG apps using Pinecone for vector storage. Direct index access lets your AI help you debug retrieval accuracy, metadata filter logic, and namespace organization without leaving your development workflow.</p>
+
+<h2>2. Chroma MCP Server — Local Vector Store for Development</h2>
+
+<p>Chroma is the default vector store for local RAG development — it ships as a Python package with zero infrastructure requirements, which makes it the first vector store most developers use when prototyping. The Chroma MCP server gives your AI assistant access to your local collections, embeddings, and metadata during development and testing.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>List and inspect Chroma collections and their metadata schemas</li>
+<li>Query collections with similarity search and metadata filtering</li>
+<li>View document contents alongside their embedding vectors</li>
+<li>Test retrieval before migrating to a production vector store</li>
+</ul>
+
+<p><strong>Best for:</strong> RAG developers in the prototyping phase. Chroma MCP server is particularly useful for debugging chunking strategies — your AI can see exactly what went into the vector store and query it to verify retrieval behavior before you scale to production.</p>
+
+<h2>3. Weaviate MCP Server — Hybrid Search and Multi-Modal RAG</h2>
+
+<p>Weaviate supports hybrid search (combining dense vectors and BM25 keyword search), multi-modal embeddings, and built-in generative AI modules — which makes it the vector database of choice for teams that need more than simple cosine similarity retrieval. The Weaviate MCP server exposes your schema, collections, and query capabilities directly to your AI assistant.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Inspect Weaviate schema: classes, properties, and data types</li>
+<li>Run GraphQL queries against your Weaviate instance</li>
+<li>Test hybrid search with custom alpha (dense/sparse weighting)</li>
+<li>Browse class hierarchies and cross-references</li>
+</ul>
+
+<p><strong>Best for:</strong> Teams building RAG with hybrid search requirements or multi-modal content (images + text). Weaviate's query language is complex — having your AI work directly against your instance schema makes query generation dramatically more accurate.</p>
+
+<h2>4. Qdrant MCP Server — High-Performance Vector Search</h2>
+
+<p>Qdrant is known for its performance at scale and its flexible filtering capabilities — you can apply complex payload filters during vector search without degrading recall. The Qdrant MCP server gives your AI access to your collections, point payloads, and search performance data.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>List collections with vector configuration and point counts</li>
+<li>Run similarity searches with payload filters</li>
+<li>Inspect point payloads and understand your data model</li>
+<li>Test scroll operations for full collection traversal</li>
+</ul>
+
+<p><strong>Best for:</strong> High-throughput RAG applications where filtering performance matters. Qdrant's payload filter system is powerful but complex — the MCP server helps your AI generate correct filter expressions by seeing your actual payload structure.</p>
+
+<h2>5. Filesystem MCP Server — Chunking Code and Ingestion Pipelines</h2>
+
+<p>Your RAG system's quality depends heavily on your ingestion pipeline: how you chunk documents, what metadata you extract, how you handle different file types, and how you batch embedding API calls. The Filesystem MCP server gives your AI access to this pipeline code — so when you're debugging low retrieval scores, it can review your chunking logic alongside the vector database results.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read your ingestion scripts, chunking functions, and embedding wrappers</li>
+<li>Navigate your document source directories and understand data shape</li>
+<li>Review evaluation harnesses and test query sets</li>
+<li>Edit chunking parameters and pipeline configuration</li>
+</ul>
+
+<p><strong>Best for:</strong> The entire RAG development loop. Most retrieval quality problems trace back to chunking decisions or metadata extraction — the Filesystem server lets your AI see the ingestion code and the vector store data simultaneously.</p>
+
+<h2>6. Brave Search MCP Server — Current RAG Framework Documentation</h2>
+
+<p>The RAG ecosystem moves fast: LangChain, LlamaIndex, Haystack, and DSPy all release breaking changes frequently, and new retrieval techniques (late chunking, contextual retrieval, ColBERT-style multi-vector search) are emerging constantly. Brave Search MCP gives your AI assistant access to current framework documentation and research that postdates its training cutoff.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Look up current LangChain and LlamaIndex retriever APIs</li>
+<li>Research new chunking strategies and embedding models</li>
+<li>Find migration guides for framework version upgrades</li>
+<li>Search for community solutions to specific RAG evaluation problems</li>
+</ul>
+
+<p><strong>Best for:</strong> Staying current with the rapidly evolving RAG toolchain. Retrieval techniques that were best practice six months ago may be outperformed by new approaches — Brave Search keeps your AI's recommendations current.</p>
+
+<h2>RAG Developer MCP Configuration</h2>
+
+<p>For a complete RAG development environment, configure these servers together:</p>
+<ul>
+<li><strong>Vector store:</strong> Pinecone (production) + Chroma (local dev)</li>
+<li><strong>Code access:</strong> Filesystem MCP (ingestion pipelines, evaluation code)</li>
+<li><strong>Documentation:</strong> Brave Search MCP (framework docs, research papers)</li>
+<li><strong>Version control:</strong> GitHub MCP (team code, PR reviews)</li>
+</ul>
+
+<p>The result is an AI assistant that understands your entire RAG stack — from the raw documents through the vector store to the retrieval logic — and can help you debug accuracy problems, optimize chunking strategies, and write evaluation code with full context.</p>
+
+<p><strong>Related guides:</strong></p>
+<ul>
+<li><a href="/blog/best-mcp-servers-for-llm-app-developers">Best MCP Servers for LLM App Developers</a></li>
+<li><a href="/blog/best-mcp-servers-for-ai-agents">Best MCP Servers for AI Agents</a></li>
+<li><a href="/blog/best-mcp-servers-for-python-developers">Best MCP Servers for Python Developers</a></li>
+</ul>
+    `.trim(),
+  },
+  {
+    slug: "best-mcp-servers-for-jetbrains",
+    title: "Best MCP Servers for JetBrains IDEs in 2026",
+    description: "IntelliJ IDEA, PyCharm, WebStorm, GoLand, Rider, CLion — all support MCP through JetBrains AI. Here are the MCP servers that work best with JetBrains IDEs and how to configure them for maximum AI context.",
+    date: "2026-05-22",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "6 min read",
+    keywords: ["mcp servers for jetbrains", "jetbrains mcp server", "intellij mcp", "pycharm mcp servers", "webstorm mcp", "jetbrains ai mcp", "best mcp servers jetbrains 2026"],
+    relatedServerSlugs: ["jetbrains", "filesystem", "github", "brave-search", "postgresql", "git"],
+    content: `
+<p>JetBrains IDEs — IntelliJ IDEA, PyCharm, WebStorm, GoLand, Rider, and CLion — power the workflows of millions of professional developers. With JetBrains AI's MCP support, you can extend your IDE's AI assistant with the same MCP servers used in Claude Desktop and Cursor. Here's which servers deliver the most value in a JetBrains workflow.</p>
+
+<h2>MCP in JetBrains IDEs</h2>
+
+<p>JetBrains AI integrates with MCP servers through the IDE's AI assistant panel. Once configured, MCP tools are available to the AI while you code — it can query your database, search documentation, browse GitHub issues, and read your project files without leaving the IDE. Configuration is handled through the JetBrains AI settings (Settings → Tools → AI Assistant → Model Context Protocol).</p>
+
+<h2>1. JetBrains MCP Server — Native IDE Integration</h2>
+
+<p>The official JetBrains MCP server provides deep integration with your open IDE instance — giving the AI assistant direct access to your project structure, open files, run configurations, debugger state, and IDE actions. This is the foundation for JetBrains-aware AI assistance.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Access the currently open project, files, and editor state</li>
+<li>Browse your project structure and module dependencies</li>
+<li>Read run/debug configurations and test results</li>
+<li>Execute IDE actions programmatically (refactorings, inspections)</li>
+</ul>
+
+<p><strong>Best for:</strong> All JetBrains IDE users. The native JetBrains server provides the IDE-aware context that makes AI suggestions accurate for your specific project structure and language-specific features.</p>
+
+<h2>2. Filesystem MCP Server — Project File Access</h2>
+
+<p>While the JetBrains MCP server provides IDE-level context, the Filesystem server gives the AI assistant raw file access across your project tree — useful for navigating large codebases, reading configuration files, and working with files outside the currently open editor tabs.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read any file in your project, including build scripts and config files</li>
+<li>Navigate multi-module projects and understand the directory structure</li>
+<li>Access project files outside the currently indexed source roots</li>
+<li>Read documentation, changelog, and specification files</li>
+</ul>
+
+<p><strong>Best for:</strong> Enterprise and multi-module projects where the AI assistant needs to understand complex project layouts. JetBrains IDEs often host large codebases — Filesystem MCP ensures the AI can navigate the full project context, not just the open file.</p>
+
+<h2>3. GitHub MCP Server — Repository and Code Review Context</h2>
+
+<p>Professional JetBrains users typically work in team environments with GitHub or GitLab as the central repository. The GitHub MCP server gives your AI assistant access to pull request context, issue details, CI status, and code review comments — so you can get accurate AI assistance while working on a specific PR without losing IDE context.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Browse open PRs, review comments, and requested changes</li>
+<li>Read GitHub issue descriptions while implementing fixes</li>
+<li>Check CI/CD run results from within the IDE</li>
+<li>Search code across all repositories in your organization</li>
+</ul>
+
+<p><strong>Best for:</strong> Teams using GitHub for code review. JetBrains IDE already has built-in Git integration, but the GitHub MCP server adds higher-level repository context — your AI can read the PR description and review comments alongside your code changes.</p>
+
+<h2>4. Git MCP Server — Local Branch and Commit History</h2>
+
+<p>The Git MCP server gives your AI access to your local repository state: commit history, branch structure, diffs, and blame information. In JetBrains IDEs, this complements the built-in VCS tools with AI-readable context — your assistant can reason about recent changes, understand what was modified in a commit, and help you write accurate commit messages.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read commit history with messages, authors, and timestamps</li>
+<li>View diffs between branches or commits</li>
+<li>Understand which files changed in recent commits</li>
+<li>Access blame information for any file line</li>
+</ul>
+
+<p><strong>Best for:</strong> Developers using JetBrains IDEs for complex refactoring or debugging regressions. The Git server lets your AI see the history of changes that led to the current state — crucial when debugging issues introduced by recent commits.</p>
+
+<h2>5. PostgreSQL / Database MCP Server — Schema-Aware SQL Assistance</h2>
+
+<p>JetBrains DataGrip and the database tools built into IntelliJ IDEA are among the best SQL development environments available. Adding a PostgreSQL (or MySQL, SQLite) MCP server gives your AI assistant the same schema introspection that DataGrip uses — so generated queries reference your actual table structure, column names, and relationships rather than generic SQL patterns.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read table schemas, column types, indexes, and foreign keys</li>
+<li>Execute read-only queries and explain results</li>
+<li>Understand stored procedures and database functions</li>
+<li>Generate accurate ORM models (Hibernate, Exposed, SQLAlchemy) from your schema</li>
+</ul>
+
+<p><strong>Best for:</strong> Backend developers working with databases in IntelliJ IDEA, DataGrip, or any JetBrains IDE with database tools. Schema access ensures the AI generates valid SQL and accurate ORM code for your specific database.</p>
+
+<h2>6. Brave Search MCP Server — Framework and Library Documentation</h2>
+
+<p>JetBrains IDEs support a wide range of languages and frameworks — Spring Boot, Django, React, .NET, Ruby on Rails, and more. Brave Search MCP gives your AI assistant access to current framework documentation, migration guides, and community solutions that may be newer than its training data.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Look up current Spring Boot, Django, or Next.js API documentation</li>
+<li>Find migration guides for framework major versions</li>
+<li>Research library changelogs and breaking changes</li>
+<li>Search for community solutions to framework-specific issues</li>
+</ul>
+
+<p><strong>Best for:</strong> Any JetBrains IDE user working with frameworks that release frequently. Spring Boot 3.x, Django 5.x, and .NET 9 all have significant changes from earlier versions — Brave Search keeps your AI's recommendations current.</p>
+
+<h2>JetBrains MCP Configuration</h2>
+
+<p>For a complete JetBrains AI setup, configure these servers in priority order:</p>
+<ul>
+<li><strong>IDE context:</strong> JetBrains MCP (native integration, project awareness)</li>
+<li><strong>File access:</strong> Filesystem MCP (full project navigation)</li>
+<li><strong>Version control:</strong> Git MCP (local history) + GitHub MCP (team repos)</li>
+<li><strong>Database:</strong> PostgreSQL MCP (schema-aware query generation)</li>
+<li><strong>Documentation:</strong> Brave Search MCP (current framework docs)</li>
+</ul>
+
+<p>JetBrains IDEs are built for professional developers who expect their tools to understand their codebase deeply. MCP servers bring that same depth to AI assistance — your AI assistant in IntelliJ or PyCharm can see your project structure, your database schema, your Git history, and your GitHub PRs, giving it the full context to provide accurate, project-specific suggestions.</p>
+
+<p><strong>Related guides:</strong></p>
+<ul>
+<li><a href="/blog/best-mcp-servers-for-vs-code">Best MCP Servers for VS Code</a></li>
+<li><a href="/blog/best-mcp-servers-for-cursor">Best MCP Servers for Cursor</a></li>
+<li><a href="/blog/mcp-servers-for-windsurf">Best MCP Servers for Windsurf</a></li>
+</ul>
+    `.trim(),
+  },
+  {
+    slug: "best-mcp-servers-for-openai-platform-developers",
+    title: "Best MCP Servers for OpenAI Platform Developers in 2026",
+    description: "Building with the OpenAI API, Assistants API, or Responses API? These MCP servers extend your AI development workflow with codebase access, live documentation, API monitoring, and vector store context.",
+    date: "2026-05-22",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "6 min read",
+    keywords: ["mcp servers for openai developers", "openai api mcp server", "openai platform mcp", "openai assistants api mcp", "best mcp for openai development 2026"],
+    relatedServerSlugs: ["filesystem", "brave-search", "github", "postgresql", "pinecone"],
+    content: `
+<p>OpenAI's platform — the Chat Completions API, Responses API, Assistants API, Batch API, and fine-tuning tooling — is the foundation of thousands of production AI applications. Developing on this platform means constant work across API documentation, codebase, vector stores, and testing infrastructure. MCP servers streamline this development loop by giving your own AI assistant the context it needs to help you build better.</p>
+
+<p>This guide covers the best MCP servers for developers building applications on the OpenAI platform in 2026.</p>
+
+<h2>Why OpenAI Platform Development Benefits From MCP</h2>
+
+<p>OpenAI's platform evolves quickly — new model versions, new API endpoints (Responses API replacing Chat Completions in some use cases), the Assistants v2 migration, structured outputs, and the shift toward native MCP support in the API itself. Staying current requires frequently consulting documentation while simultaneously working in your codebase. MCP servers give your AI assistant access to both, closing the gap between "what the API supports" and "what your code currently implements."</p>
+
+<h2>1. Filesystem MCP Server — Your API Integration Code</h2>
+
+<p>Your OpenAI integration lives in your codebase: the API client configuration, prompt templates, structured output schemas, tool definitions, and retry logic. The Filesystem MCP server gives your AI assistant access to this code — so when you ask it to add a new tool or migrate from Chat Completions to the Responses API, it generates code that matches your existing patterns and module structure.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read your OpenAI client configuration and API wrapper code</li>
+<li>Navigate prompt template files and system message definitions</li>
+<li>Inspect existing tool definitions and function schemas</li>
+<li>Review structured output Pydantic/Zod schemas</li>
+</ul>
+
+<p><strong>Best for:</strong> All OpenAI platform developers. Your AI assistant can only generate accurate integration code if it can see your existing integration. Filesystem MCP is the most important server for any codebase-centric AI assistance.</p>
+
+<h2>2. Brave Search MCP Server — Live OpenAI Documentation</h2>
+
+<p>OpenAI's API changes frequently: the Responses API introduced stateful conversation management, structured outputs replaced function calling in many patterns, and the Assistants v2 API changed streaming behavior and tool call handling. Brave Search MCP ensures your AI assistant works from current OpenAI documentation rather than training data that may reflect deprecated patterns.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Look up current OpenAI API reference for new endpoints and parameters</li>
+<li>Find migration guides for Assistants v1 → v2, or Chat Completions → Responses API</li>
+<li>Research model capability differences (GPT-4o vs o1 vs o3 vs o4-mini)</li>
+<li>Search for community solutions to OpenAI API integration issues</li>
+</ul>
+
+<p><strong>Best for:</strong> Staying current with the rapidly evolving OpenAI platform. The Responses API and native MCP support in the OpenAI API are both post-2024 additions that may postdate your AI assistant's training — Brave Search bridges that gap.</p>
+
+<h2>3. GitHub MCP Server — SDK Source and Issue Tracker</h2>
+
+<p>The OpenAI Python and Node.js SDKs are open source on GitHub. When you encounter unexpected behavior — streaming issues, rate limit handling, retry logic edge cases — the GitHub MCP server lets your AI assistant inspect the SDK source code and issue tracker directly. This is often faster than searching documentation for bugs that are actually SDK-level implementation details.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Browse the <code>openai-python</code> or <code>openai-node</code> SDK source code</li>
+<li>Search GitHub issues for known bugs and workarounds</li>
+<li>Check open PRs for upcoming SDK changes</li>
+<li>Read your own application's GitHub issues and deployment history</li>
+</ul>
+
+<p><strong>Best for:</strong> Debugging SDK behavior and staying ahead of SDK version changes. The OpenAI SDKs follow the API's evolution closely — checking the SDK changelog and open issues is essential when upgrading to new API features.</p>
+
+<h2>4. Pinecone MCP Server — Vector Store for OpenAI Embeddings</h2>
+
+<p>Many OpenAI-powered applications use the Embeddings API alongside a vector store for semantic search and RAG. Pinecone is the most common choice for production deployments. The Pinecone MCP server gives your AI assistant direct access to your vector index — so when you're debugging retrieval quality, it can query the actual index rather than reasoning abstractly about embedding similarity.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Query your Pinecone index with vectors generated from OpenAI text-embedding models</li>
+<li>Inspect index statistics: dimension count, total vectors, namespaces</li>
+<li>Test retrieval queries and examine results with similarity scores</li>
+<li>Debug metadata filter logic against your actual index structure</li>
+</ul>
+
+<p><strong>Best for:</strong> OpenAI developers building RAG applications. The combination of OpenAI Embeddings + Pinecone is one of the most common production patterns — MCP server access to both your embedding code (Filesystem) and your vector store (Pinecone) makes debugging retrieval issues dramatically faster.</p>
+
+<h2>5. PostgreSQL MCP Server — Application Data Alongside AI Context</h2>
+
+<p>Most OpenAI-powered applications manage user data, conversation history, and usage records in a relational database. The PostgreSQL MCP server gives your AI assistant access to your application schema — so generated code that integrates AI features with your user data is accurate and follows your existing data model.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Inspect your application database schema alongside AI integration code</li>
+<li>Read conversation history tables and understand your storage patterns</li>
+<li>Generate accurate database queries for AI usage tracking and analytics</li>
+<li>Debug data pipeline issues in AI-powered features</li>
+</ul>
+
+<p><strong>Best for:</strong> OpenAI developers building full-stack AI features. Your AI schema (thread IDs, run states, tool call logs) lives alongside your application schema — having database context ensures generated code is consistent with your actual data model.</p>
+
+<h2>OpenAI Developer MCP Configuration</h2>
+
+<p>For a complete OpenAI platform development environment:</p>
+<ul>
+<li><strong>Code access:</strong> Filesystem MCP (API integration code, prompt templates, schemas)</li>
+<li><strong>Live docs:</strong> Brave Search MCP (current OpenAI API reference, changelogs)</li>
+<li><strong>SDK issues:</strong> GitHub MCP (openai-python/openai-node source and issues)</li>
+<li><strong>Vector store:</strong> Pinecone MCP (embedding search and RAG debugging)</li>
+<li><strong>App data:</strong> PostgreSQL MCP (application schema and usage tracking)</li>
+</ul>
+
+<p>OpenAI's platform is expanding — native MCP support in the Responses API means the tools you use to build AI applications now speak the same protocol as the AI applications themselves. MCP server context is no longer just a developer convenience; it's becoming the standard way production AI systems communicate with their tools.</p>
+
+<p><strong>Related guides:</strong></p>
+<ul>
+<li><a href="/blog/mcp-servers-for-openai-agents-sdk">MCP Servers for OpenAI Agents SDK</a></li>
+<li><a href="/blog/best-mcp-servers-for-rag-developers">Best MCP Servers for RAG Developers</a></li>
+<li><a href="/blog/best-mcp-servers-for-llm-app-developers">Best MCP Servers for LLM App Developers</a></li>
+</ul>
+    `.trim(),
+  },
 ];
 
 export function getBlogPostBySlug(slug: string): BlogPost | undefined {
