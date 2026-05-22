@@ -32943,6 +32943,333 @@ async with MCPServerStdio(
 </ul>
     `.trim(),
   },
+  {
+    slug: "best-mcp-servers-for-deno-developers",
+    title: "Best MCP Servers for Deno Developers in 2026",
+    description: "Deno 2.0 brings native TypeScript, built-in security, and npm compatibility. These MCP servers fit the Deno workflow: secure file access, GitHub integration, web search, and database tools.",
+    date: "2026-05-22",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "6 min read",
+    keywords: ["deno mcp servers", "mcp servers for deno", "deno 2 mcp", "deno developer tools mcp", "deno model context protocol"],
+    relatedServerSlugs: ["filesystem", "github", "brave-search", "postgresql", "deno"],
+    content: `
+<p>Deno 2.0 changed the game for TypeScript developers — native TypeScript without configuration, a permission-based security model, npm compatibility, and a batteries-included standard library. If you're building with Deno 2, MCP servers are the natural extension: they give your AI assistant the same structured access to your tools and environment that Deno gives your runtime.</p>
+
+<p>This guide covers the best MCP servers for Deno developers — whether you're building web APIs with Hono, serverless functions on Deno Deploy, or CLI tools with the Deno standard library.</p>
+
+<h2>How MCP Fits the Deno Philosophy</h2>
+
+<p>Deno is built around security-by-default: programs only access what they're explicitly permitted to. MCP servers follow the same philosophy — they expose specific, scoped tools to your AI assistant rather than giving unrestricted access. A Deno developer using MCP servers in Claude Desktop gets an AI that can read specific project files, query a PostgreSQL database, and search the web — without broad, unconstrained access to your environment.</p>
+
+<h2>1. Filesystem MCP Server — Scoped File Access for Deno Projects</h2>
+
+<p>The filesystem MCP server mirrors Deno's <code>--allow-read</code> and <code>--allow-write</code> permission flags in spirit: you configure exactly which directories the AI assistant can access. For Deno projects, this means your AI can navigate your <code>src/</code>, read <code>deno.json</code> and <code>deno.lock</code>, edit source files, and search your codebase — without touching anything outside the configured scope.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read and write files in your Deno project directory</li>
+<li>Navigate the directory structure including <code>deno.json</code> task definitions</li>
+<li>Search file contents for patterns across your TypeScript source</li>
+<li>Edit import maps and dependency configurations</li>
+</ul>
+
+<p><strong>Best for:</strong> Day-to-day Deno development. Configure the MCP server to your project root and your AI assistant has the same file visibility you do in your terminal.</p>
+
+<h2>2. GitHub MCP Server — Repository and Dependency Context</h2>
+
+<p>Deno's module system pulls directly from GitHub URLs and JSR (the JavaScript Registry). The GitHub MCP server lets your AI assistant browse the repositories behind your Deno imports — reading source code, checking issues, reviewing changelogs, and understanding what the upstream module actually does before you integrate it.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Browse source code of Deno modules hosted on GitHub</li>
+<li>Check module issues and release notes before upgrading</li>
+<li>Search code examples of how others use a module</li>
+<li>Create issues or PRs for open-source Deno modules you contribute to</li>
+</ul>
+
+<p><strong>Best for:</strong> Evaluating Deno module dependencies. Before adding <code>import { serve } from "https://deno.land/std/http/server.ts"</code> or a third-party module, your AI can read the actual implementation and usage examples.</p>
+
+<h2>3. Brave Search MCP Server — Current Deno Documentation</h2>
+
+<p>Deno's ecosystem moves fast — Deno 2.0 introduced major changes to the standard library, npm compatibility, and the permission model. Brave Search MCP gives your AI assistant access to current Deno documentation, migration guides, and community examples that postdate its training data.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Search current Deno documentation and release notes</li>
+<li>Find migration guides for Deno 1.x → 2.x breaking changes</li>
+<li>Look up JSR package documentation and usage examples</li>
+<li>Research Deno Deploy configuration and edge function patterns</li>
+</ul>
+
+<p><strong>Best for:</strong> Any Deno 2.0 migration or new feature adoption. Deno's standard library stabilization and npm compatibility changes require up-to-date docs — Brave Search bridges the gap between your AI's training cutoff and current Deno 2.</p>
+
+<h2>4. PostgreSQL MCP Server — Database Access for Deno Backend Apps</h2>
+
+<p>Deno's <code>postgres</code> driver and Prisma integration make PostgreSQL a natural backend choice for Deno web apps. The PostgreSQL MCP server connects your AI assistant directly to your development database — giving it real schema context for generating migrations, writing queries, and debugging data issues.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read your PostgreSQL schema: tables, columns, foreign keys, indexes</li>
+<li>Run read-only queries to understand current data state</li>
+<li>Generate type-safe query code that matches your actual schema</li>
+<li>Debug Deno-postgres driver errors with real database context</li>
+</ul>
+
+<p><strong>Best for:</strong> Deno API developers using PostgreSQL as a backend. Pair with the Deno <code>postgres</code> module or Prisma for AI-assisted query generation that reflects your real schema.</p>
+
+<h2>5. Git MCP Server — Local Repository Operations</h2>
+
+<p>The Git MCP server gives your AI assistant access to your local repository history and status — useful for understanding recent changes, generating meaningful commit messages for Deno projects, and reviewing diffs before committing.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read git log, diffs, and branch status</li>
+<li>Understand what changed since the last commit</li>
+<li>Generate commit messages that accurately describe your Deno code changes</li>
+<li>Review staged changes before committing</li>
+</ul>
+
+<p><strong>Best for:</strong> Deno developers who want AI-assisted commit workflows. The Git MCP server knows your actual staged changes — not a guess — so generated commit messages are accurate.</p>
+
+<h2>The Deno Developer MCP Stack</h2>
+
+<ul>
+<li><strong>Local files:</strong> Filesystem MCP (scoped to your Deno project)</li>
+<li><strong>Module context:</strong> GitHub MCP (upstream source and issues)</li>
+<li><strong>Current docs:</strong> Brave Search MCP (Deno 2.0 documentation)</li>
+<li><strong>Database:</strong> PostgreSQL MCP (real schema for backend apps)</li>
+<li><strong>Version control:</strong> Git MCP (local repo history and diffs)</li>
+</ul>
+
+<p>Deno's philosophy is minimal surface area, maximal security. The same principle applies to your MCP setup: configure only what your workflow needs, scope it tightly, and your AI assistant becomes a precision tool rather than an unconstrained agent. Start with the Filesystem and Brave Search servers — you'll have the foundation for most Deno development workflows within minutes.</p>
+
+<p><strong>Related guides:</strong></p>
+<ul>
+<li><a href="/blog/best-mcp-servers-for-typescript">Best MCP Servers for TypeScript Developers</a></li>
+<li><a href="/blog/best-mcp-servers-for-bun-developers">Best MCP Servers for Bun Developers</a></li>
+<li><a href="/blog/best-mcp-servers-for-nodejs-developers">Best MCP Servers for Node.js Developers</a></li>
+</ul>
+    `.trim(),
+  },
+  {
+    slug: "best-mcp-servers-for-bun-developers",
+    title: "Best MCP Servers for Bun Developers in 2026",
+    description: "Bun is the fastest JavaScript runtime — package manager, bundler, and test runner in one. These MCP servers extend your AI assistant with the context Bun workflows need: file access, GitHub repos, database connections, and live docs.",
+    date: "2026-05-22",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "6 min read",
+    keywords: ["bun mcp servers", "mcp servers for bun", "bun.js mcp", "bun developer tools mcp", "bun model context protocol 2026"],
+    relatedServerSlugs: ["filesystem", "github", "brave-search", "postgresql", "sqlite"],
+    content: `
+<p>Bun is the fastest JavaScript runtime in production use — package manager, bundler, test runner, and Node.js-compatible runtime all in one. If you're building with Bun, your development velocity is already high. MCP servers push it further by giving your AI assistant structured access to your project, your repositories, and your databases — so it can reason about your actual code rather than hypothetical patterns.</p>
+
+<p>This guide covers the best MCP servers for Bun developers — from full-stack Bun + Elysia backends to Bun-native CLI tools and monorepos using Bun workspaces.</p>
+
+<h2>Why Bun Developers Benefit from MCP</h2>
+
+<p>Bun's speed advantage comes from native code and tight integration — but your AI assistant still has the same context limitations regardless of your runtime. MCP servers solve this: the Filesystem server gives your AI access to your project files without copy-paste, the GitHub server lets it browse package repositories, and the PostgreSQL server connects it to your database schema. The result is an AI that works at Bun's pace with your actual codebase context.</p>
+
+<h2>1. Filesystem MCP Server — Full Project Access</h2>
+
+<p>The filesystem MCP server is the entry point for any Bun workflow. Configure it to your project root and your AI assistant can read <code>package.json</code>, navigate your source tree, edit TypeScript files, and search your codebase — all without you pasting code into the chat window.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read and write files in your Bun project</li>
+<li>Navigate <code>bun.lockb</code>, <code>package.json</code>, and workspace configs</li>
+<li>Search file contents for patterns across TypeScript source</li>
+<li>Edit environment configs, tsconfig, and Bun-specific settings</li>
+</ul>
+
+<p><strong>Best for:</strong> All Bun development. This is the foundation — configure it to your project directory and every other MCP server builds on top of this file access layer.</p>
+
+<h2>2. GitHub MCP Server — Package Source and Issue Context</h2>
+
+<p>Bun's npm compatibility means you're pulling packages from the npm ecosystem — but the source lives on GitHub. The GitHub MCP server lets your AI browse the actual implementation of packages you use: reading source code, reviewing issues, checking changelogs, and understanding breaking changes before you <code>bun update</code>.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read source code of npm packages used in your Bun project</li>
+<li>Check package issues and open PRs for bugs you're encountering</li>
+<li>Review release notes and changelog before upgrading dependencies</li>
+<li>Search code examples and usage patterns across GitHub</li>
+</ul>
+
+<p><strong>Best for:</strong> Debugging third-party package issues in Bun. When a package behaves unexpectedly with Bun's Node.js compatibility layer, your AI can read the actual source and compare behavior — not just guess.</p>
+
+<h2>3. Brave Search MCP Server — Current Bun Documentation</h2>
+
+<p>Bun moves fast. Bun 1.x releases frequently include new APIs, stability improvements, and Node.js compatibility updates. Brave Search MCP gives your AI assistant access to current Bun documentation, community posts, and migration guides that may postdate its training data.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Search current Bun documentation and API references</li>
+<li>Find Bun-specific workarounds for Node.js compatibility edge cases</li>
+<li>Research Elysia, Hono, or other Bun-first framework patterns</li>
+<li>Look up Bun bundler configuration and plugin examples</li>
+</ul>
+
+<p><strong>Best for:</strong> Working with Bun-specific APIs (Bun.serve, Bun.file, Bun.spawn) and Bun-first frameworks. Your AI stays current with Bun's fast release cadence rather than reasoning from potentially stale training data.</p>
+
+<h2>4. PostgreSQL MCP Server — Database Access for Bun Backends</h2>
+
+<p>Bun's speed makes it a compelling choice for database-heavy backends. The PostgreSQL MCP server connects your AI assistant to your development database — giving it the actual table structure, indexes, and relationships needed to generate accurate queries, migrations, and TypeScript types.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read your PostgreSQL schema: tables, columns, constraints, indexes</li>
+<li>Run read-only queries to validate data or debug issues</li>
+<li>Generate type-safe database code that matches your actual schema</li>
+<li>Compare schema state across migrations</li>
+</ul>
+
+<p><strong>Best for:</strong> Bun + Drizzle ORM, Bun + Prisma, or raw <code>bun:sqlite</code> / postgres workflows. Your AI generates schema-accurate code rather than best-guess queries.</p>
+
+<h2>5. SQLite MCP Server — Bun's Native Database</h2>
+
+<p>Bun ships with a native SQLite driver (<code>bun:sqlite</code>) built on the same C++ foundation as Bun itself — zero dependencies, extremely fast. The SQLite MCP server connects your AI to local SQLite databases your Bun app uses: reading schema, running queries, and debugging data without switching tools.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read SQLite database schema (tables, columns, indexes)</li>
+<li>Run read-only queries against your Bun app's local database</li>
+<li>Inspect migration state and current data</li>
+<li>Generate Bun-native SQLite queries using the <code>bun:sqlite</code> API</li>
+</ul>
+
+<p><strong>Best for:</strong> Bun apps using the native <code>bun:sqlite</code> driver for local-first data storage, CLI tools with embedded databases, or development environments where PostgreSQL isn't needed yet.</p>
+
+<h2>The Bun Developer MCP Stack</h2>
+
+<ul>
+<li><strong>Project files:</strong> Filesystem MCP (scoped to your Bun project root)</li>
+<li><strong>Package context:</strong> GitHub MCP (source code and issues for npm dependencies)</li>
+<li><strong>Current docs:</strong> Brave Search MCP (Bun API docs and framework guides)</li>
+<li><strong>Backend DB:</strong> PostgreSQL MCP (production-equivalent schema access)</li>
+<li><strong>Local DB:</strong> SQLite MCP (bun:sqlite native driver workflows)</li>
+</ul>
+
+<p>Bun's promise is removing the friction between code and execution. MCP servers extend that promise to your AI assistant — removing the friction between your AI and your actual project state. Start with the Filesystem and Brave Search servers, add GitHub for dependency work, and layer in the database servers when you're building backend APIs. You'll have an AI-assisted Bun workflow that reflects your real codebase, not an approximation of it.</p>
+
+<p><strong>Related guides:</strong></p>
+<ul>
+<li><a href="/blog/best-mcp-servers-for-typescript">Best MCP Servers for TypeScript Developers</a></li>
+<li><a href="/blog/best-mcp-servers-for-deno-developers">Best MCP Servers for Deno Developers</a></li>
+<li><a href="/blog/best-mcp-servers-for-nodejs-developers">Best MCP Servers for Node.js Developers</a></li>
+</ul>
+    `.trim(),
+  },
+  {
+    slug: "best-mcp-servers-for-warp-terminal",
+    title: "Best MCP Servers for Warp Terminal in 2026",
+    description: "Warp is the AI-native terminal built for modern developers. Pair it with MCP servers in Claude Desktop or your MCP client to give your AI full project context: files, repos, databases, and live search.",
+    date: "2026-05-22",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "6 min read",
+    keywords: ["warp terminal mcp servers", "mcp servers for warp", "warp ai terminal mcp", "warp terminal model context protocol", "warp terminal developer tools"],
+    relatedServerSlugs: ["filesystem", "github", "brave-search", "postgresql", "git"],
+    content: `
+<p>Warp is the AI-native terminal that reimagines the command line: block-based output, AI-powered command generation, team sharing, and an AI assistant built directly into your shell. But Warp's AI assistant and MCP servers serve complementary roles — Warp's AI knows your terminal commands and shell context; MCP servers give your connected AI assistant (Claude Desktop, Cursor, etc.) deep access to your project files, repositories, and databases. Together, they form a complete AI-powered development environment.</p>
+
+<p>This guide covers the best MCP servers for Warp users — tools that extend your AI assistant's capabilities beyond what Warp provides natively, giving it the project context to answer questions and generate code that's accurate for your actual codebase.</p>
+
+<h2>Warp + MCP: Two Layers of AI Context</h2>
+
+<p>Think of Warp as the command-line intelligence layer and MCP servers as the project intelligence layer. Warp knows your terminal history, your shell environment, and what commands you've run. MCP servers know your file system, your GitHub repositories, your database schema, and the web. Running both simultaneously means your AI environment has complete context across all dimensions of your development workflow.</p>
+
+<h2>1. Filesystem MCP Server — Project Files for Your AI Assistant</h2>
+
+<p>Warp's AI already has terminal context — but it doesn't automatically know what's in your project files unless you paste them. The Filesystem MCP server fills this gap: configure it to your project directory, and your AI assistant in Claude Desktop or Cursor can read any file, navigate your project tree, and make edits — without manual copy-pasting.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read source files, configs, and documentation in your project</li>
+<li>Navigate your full directory structure</li>
+<li>Edit files and write new ones directly</li>
+<li>Search file contents across the entire project</li>
+</ul>
+
+<p><strong>Best for:</strong> Pairing with Warp for a complete development environment — Warp handles shell execution, MCP Filesystem handles file context for your AI assistant. They're complementary, not overlapping.</p>
+
+<h2>2. Git MCP Server — Repository History and Diffs</h2>
+
+<p>Warp surfaces your recent commands, but the Git MCP server gives your AI assistant access to your repository's full history: commits, diffs, branches, and current staging area. When you're in Warp debugging why something broke, your AI can read the last 10 commits and identify what changed — without you manually running <code>git log</code> and pasting output.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read git log, commit history, and branch status</li>
+<li>View diffs between commits or branches</li>
+<li>Understand what files changed in the last push</li>
+<li>Generate commit messages based on actual staged changes</li>
+</ul>
+
+<p><strong>Best for:</strong> Debugging sessions in Warp where recent changes caused a regression. Your AI can correlate what you're seeing in the terminal with what changed in the codebase — a powerful combination.</p>
+
+<h2>3. GitHub MCP Server — Remote Repository and Issue Context</h2>
+
+<p>The GitHub MCP server extends Git local context to the remote: your AI can browse pull requests, read issue threads, check CI status, and search code across your organization's repositories. When you're in Warp running a failing CI command, your AI can simultaneously read the GitHub Actions workflow file, the failing test output, and the relevant issue thread.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Browse pull requests, issues, and comments on your repositories</li>
+<li>Read GitHub Actions workflow definitions</li>
+<li>Search code across your organization on GitHub</li>
+<li>Create issues or PRs directly from your AI conversation</li>
+</ul>
+
+<p><strong>Best for:</strong> Code review and CI/CD debugging workflows. Warp shows you the terminal output; GitHub MCP shows your AI the workflow definition and issue context. Together: faster root-cause analysis.</p>
+
+<h2>4. Brave Search MCP Server — Real-Time Documentation</h2>
+
+<p>Warp's AI is great at generating shell commands — but for framework-specific code, current library documentation, and recent error message solutions, you need live web search. Brave Search MCP gives your AI assistant access to current documentation and community posts without leaving your workflow.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Search current documentation for any tool or framework</li>
+<li>Find solutions to error messages with context from recent posts</li>
+<li>Look up command-line tool options and flags</li>
+<li>Research infrastructure patterns and configuration examples</li>
+</ul>
+
+<p><strong>Best for:</strong> Supplementing Warp's command generation with documentation depth. When Warp suggests a command and you want to understand the flags, Brave Search MCP gives your AI the current docs to explain them accurately.</p>
+
+<h2>5. PostgreSQL MCP Server — Database Context for Backend Work</h2>
+
+<p>Database work often starts in the terminal — running migrations, checking query plans, inspecting table data. The PostgreSQL MCP server connects your AI assistant to your development database so it can see the actual schema you're working with. Combined with Warp for running psql commands, your AI can reason about your queries with real schema context.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read your PostgreSQL schema: tables, columns, indexes, constraints</li>
+<li>Run read-only queries to validate or debug data</li>
+<li>Generate accurate SQL and ORM queries matching your real schema</li>
+<li>Explain query plans with schema-aware reasoning</li>
+</ul>
+
+<p><strong>Best for:</strong> Backend developers using Warp for database work. Warp runs your psql commands; PostgreSQL MCP gives your AI the schema context to generate those commands accurately.</p>
+
+<h2>The Warp Developer MCP Stack</h2>
+
+<ul>
+<li><strong>Project files:</strong> Filesystem MCP (complete project context for AI assistant)</li>
+<li><strong>Local git:</strong> Git MCP (commits, diffs, staging area)</li>
+<li><strong>Remote repos:</strong> GitHub MCP (PRs, issues, CI workflows)</li>
+<li><strong>Live docs:</strong> Brave Search MCP (current documentation)</li>
+<li><strong>Database:</strong> PostgreSQL MCP (real schema for query generation)</li>
+</ul>
+
+<p>Warp makes the terminal intelligent at the command level. MCP servers make your AI assistant intelligent at the project level. Running both means you have an AI-powered development environment with context at every layer: shell history in Warp, file context via Filesystem MCP, repository history via Git and GitHub MCPs, and live web knowledge via Brave Search. It's the complete picture your AI needs to help you ship faster.</p>
+
+<p><strong>Related guides:</strong></p>
+<ul>
+<li><a href="/blog/best-mcp-servers-for-developers">Best MCP Servers for Developers</a></li>
+<li><a href="/blog/best-mcp-servers-for-zed">Best MCP Servers for Zed Editor</a></li>
+<li><a href="/blog/best-mcp-servers-for-cursor">Best MCP Servers for Cursor</a></li>
+</ul>
+    `.trim(),
+  },
 ];
 
 export function getBlogPostBySlug(slug: string): BlogPost | undefined {
