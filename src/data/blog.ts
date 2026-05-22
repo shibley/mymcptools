@@ -33270,6 +33270,335 @@ async with MCPServerStdio(
 </ul>
     `.trim(),
   },
+  {
+    slug: "best-mcp-servers-for-rust-developers",
+    title: "Best MCP Servers for Rust Developers in 2026",
+    description: "Rust's ownership model and zero-cost abstractions demand precision. These MCP servers give your AI assistant the context it needs: scoped file access, crates.io research, database connections, and live docs for the fast-moving Rust ecosystem.",
+    date: "2026-05-22",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "6 min read",
+    keywords: ["rust mcp servers", "mcp servers for rust", "rust developer tools mcp", "rust model context protocol 2026", "cargo mcp"],
+    relatedServerSlugs: ["filesystem", "github", "brave-search", "postgresql", "git"],
+    content: `
+<p>Rust is the language of precision. Memory safety without garbage collection, zero-cost abstractions, and a compiler that enforces correctness at compile time — Rust developers are used to working with tools that are exact and explicit. MCP servers bring that same precision to your AI assistant: instead of hallucinated Rust patterns or outdated crate APIs, your AI gets real file access, live crate documentation, and actual database schemas to work from.</p>
+
+<p>This guide covers the best MCP servers for Rust developers — whether you're building systems software, WebAssembly modules, async web services with Axum or Actix, or CLI tools with Clap.</p>
+
+<h2>Why Rust Development Benefits from MCP</h2>
+
+<p>Rust's type system is famously unforgiving — the compiler rejects code that doesn't satisfy the borrow checker, and generic bounds must be exactly right. AI assistants that generate Rust code from training data often produce patterns that look plausible but fail to compile. MCP servers fix the root cause: by giving your AI access to your actual <code>Cargo.toml</code>, your source files, and current crate documentation, it generates code that reflects your real dependency versions and project structure — not a generic approximation.</p>
+
+<h2>1. Filesystem MCP Server — Project and Cargo Context</h2>
+
+<p>The Filesystem MCP server is the foundation for any Rust workflow. Configure it to your workspace root and your AI assistant can read your <code>Cargo.toml</code>, navigate module trees, inspect trait implementations, and edit source files — without copy-pasting snippets into the chat window.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read and write files in your Rust workspace or crate</li>
+<li>Navigate <code>Cargo.toml</code>, <code>Cargo.lock</code>, and workspace member configurations</li>
+<li>Inspect module structure across <code>src/</code> directories</li>
+<li>Search file contents for trait implementations, struct definitions, and error handling patterns</li>
+</ul>
+
+<p><strong>Best for:</strong> All Rust development. Configure the server to your workspace root — in multi-crate workspaces your AI can see the relationships between crates and generate cross-crate code that respects your actual public API surface.</p>
+
+<h2>2. GitHub MCP Server — Crate Source and Upstream Context</h2>
+
+<p>Most Rust crates are open source on GitHub, and when your code fails to compile against a crate's API, reading the source is often faster than the documentation. The GitHub MCP server lets your AI assistant browse the actual implementation of crates you depend on — reading source, checking issues, reviewing changelogs for breaking changes, and understanding the exact trait signatures you need to implement.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read crate source code on GitHub before implementing trait bounds</li>
+<li>Check open issues for known bugs or breaking changes in your dependencies</li>
+<li>Review release notes before running <code>cargo update</code></li>
+<li>Search code examples of a crate being used in other projects</li>
+</ul>
+
+<p><strong>Best for:</strong> Implementing foreign traits, debugging crate compatibility issues, and evaluating new dependencies. When the Tokio or Serde documentation is ambiguous, your AI can read the crate's test suite to understand the intended usage pattern.</p>
+
+<h2>3. Brave Search MCP Server — Current Rust Documentation</h2>
+
+<p>The Rust ecosystem evolves quickly — async Rust stabilization, new editions, Axum API changes, and the constantly-updated standard library all mean that training data can become stale. Brave Search MCP gives your AI assistant access to current Rust documentation, RFCs, the Rust Reference, and community posts on current idioms.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Search current docs.rs documentation for any crate version</li>
+<li>Find current Rust edition migration guidance (2021 → future editions)</li>
+<li>Research async Rust patterns and executor-specific APIs (Tokio, async-std)</li>
+<li>Look up compiler error explanations and current borrow checker guidance</li>
+</ul>
+
+<p><strong>Best for:</strong> Working with rapidly evolving parts of the ecosystem — async Rust, WASM bindings, the new Cargo workspace features, or any crate that releases frequently. Your AI gets current documentation rather than potentially stale training data.</p>
+
+<h2>4. PostgreSQL MCP Server — Database Access for Rust Web Services</h2>
+
+<p>Rust web services often use sqlx, Diesel, or SeaORM for type-safe database access. The PostgreSQL MCP server connects your AI assistant to your development database, giving it the actual schema needed to generate correct sqlx queries, Diesel schema DSL, or SeaORM entity definitions — all of which must match your real table structure to compile.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read your PostgreSQL schema: tables, columns, types, constraints, indexes</li>
+<li>Run read-only queries to inspect data state during debugging</li>
+<li>Generate sqlx queries with the correct column types and null handling</li>
+<li>Produce Diesel schema DSL or SeaORM entity code from your actual tables</li>
+</ul>
+
+<p><strong>Best for:</strong> Rust backend developers using sqlx, Diesel, or SeaORM. Schema-accurate query generation is especially important in Rust because a type mismatch between your ORM types and the actual column type is a compile error — not a runtime surprise.</p>
+
+<h2>5. Git MCP Server — Local Repository History</h2>
+
+<p>The Git MCP server gives your AI assistant visibility into your repository's commit history, current diff, and branch state. For Rust development this is useful when tracing a regression — your AI can read the last five commits, identify what changed in a <code>mod.rs</code> or a trait implementation, and suggest a fix with full knowledge of the recent change history.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read git log, commit diffs, and branch status</li>
+<li>Identify what changed since the last working commit</li>
+<li>Generate accurate commit messages for Rust refactors and feature additions</li>
+<li>Understand staged changes before committing</li>
+</ul>
+
+<p><strong>Best for:</strong> Debugging regressions in Rust code where a recent refactor introduced a borrow checker error or a trait bound change broke downstream code. Your AI can correlate the compiler output with what actually changed.</p>
+
+<h2>The Rust Developer MCP Stack</h2>
+
+<ul>
+<li><strong>Project files:</strong> Filesystem MCP (workspace root, Cargo.toml, source tree)</li>
+<li><strong>Crate source:</strong> GitHub MCP (upstream implementations and issues)</li>
+<li><strong>Current docs:</strong> Brave Search MCP (docs.rs, RFCs, current idioms)</li>
+<li><strong>Database:</strong> PostgreSQL MCP (schema-accurate sqlx/Diesel/SeaORM generation)</li>
+<li><strong>Version control:</strong> Git MCP (regression tracing and commit history)</li>
+</ul>
+
+<p>Rust's promise is code that's correct by construction. MCP servers extend that promise to your AI assistant — instead of generating plausible-but-wrong Rust, your AI works from your actual <code>Cargo.toml</code> dependency versions, your real schema types, and current documentation. The borrow checker will still catch genuine errors, but you'll spend less time correcting your AI's hallucinated APIs and more time on the actual design decisions that make Rust code worth writing.</p>
+
+<p><strong>Related guides:</strong></p>
+<ul>
+<li><a href="/blog/best-mcp-servers-for-developers">Best MCP Servers for Developers</a></li>
+<li><a href="/blog/best-mcp-servers-for-database">Best Database MCP Servers</a></li>
+<li><a href="/blog/best-mcp-servers-for-devops-engineers">Best MCP Servers for DevOps Engineers</a></li>
+</ul>
+    `.trim(),
+  },
+  {
+    slug: "best-mcp-servers-for-supabase-developers",
+    title: "Best MCP Servers for Supabase Developers in 2026",
+    description: "Supabase gives you Postgres, Auth, Storage, and Edge Functions in one platform. These MCP servers extend your AI assistant with direct database context, real-time schema access, GitHub integration, and live Supabase documentation.",
+    date: "2026-05-22",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "6 min read",
+    keywords: ["supabase mcp servers", "mcp servers for supabase", "supabase developer tools mcp", "supabase model context protocol 2026", "supabase postgres mcp"],
+    relatedServerSlugs: ["filesystem", "github", "brave-search", "postgresql", "supabase"],
+    content: `
+<p>Supabase has become the default backend for solo developers and startup teams: PostgreSQL with a web UI, Auth with row-level security, Storage, Edge Functions, and Realtime — all in a platform that lets you move from zero to production in hours. MCP servers extend your AI assistant with the context that makes Supabase development faster: direct access to your database schema, your project files, current Supabase documentation, and your GitHub repositories.</p>
+
+<p>This guide covers the best MCP servers for Supabase developers — whether you're building Next.js apps with the Supabase client, writing RLS policies, or deploying Edge Functions.</p>
+
+<h2>Why Supabase Developers Need MCP Context</h2>
+
+<p>Supabase development is schema-driven. Your RLS policies reference column names, your client queries must match your table structure, and your TypeScript types should reflect your actual database schema. An AI assistant working without database context generates generic Supabase patterns that may not compile against your actual schema. MCP servers solve this: the PostgreSQL server connects your AI directly to your Supabase database, and the Filesystem server gives it your project code — so generated queries, policies, and types are accurate from the start.</p>
+
+<h2>1. PostgreSQL MCP Server — Direct Supabase Database Access</h2>
+
+<p>Supabase runs on PostgreSQL, which means the standard PostgreSQL MCP server connects directly to your Supabase database using the connection string from your project settings. With this server configured, your AI assistant can read your entire schema: tables, views, RLS policies, triggers, and functions — giving it the context to generate accurate queries, policy expressions, and TypeScript types.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read all tables, columns, data types, and foreign key relationships</li>
+<li>Inspect RLS policies and understand which roles can access which rows</li>
+<li>View database functions and triggers defined in your Supabase project</li>
+<li>Run read-only queries to validate data or debug access patterns</li>
+</ul>
+
+<p><strong>How to connect:</strong> Use your Supabase project's direct database connection string from Settings → Database → Connection string (direct, not pooled) with a read-only role for safety.</p>
+
+<p><strong>Best for:</strong> All Supabase development. Schema-aware AI assistance is especially powerful for RLS policy generation — your AI can see the table structure and generate policies that reference the actual column names and relationships in your schema.</p>
+
+<h2>2. Filesystem MCP Server — Project Files and Supabase Config</h2>
+
+<p>The Filesystem MCP server gives your AI access to your project codebase — your <code>supabase/</code> directory with migration files and seed data, your Next.js or React source, your Supabase client configuration, and your environment files. With this context, your AI can generate code that uses your actual table names, matches your TypeScript types, and follows the patterns already established in your codebase.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read your <code>supabase/migrations/</code> directory to understand schema evolution</li>
+<li>Navigate your client-side code using the Supabase JavaScript client</li>
+<li>Edit <code>supabase/config.toml</code> and project configuration</li>
+<li>Read existing queries, hooks, and data fetching patterns your team uses</li>
+</ul>
+
+<p><strong>Best for:</strong> Generating new features that integrate with your existing Supabase setup. Your AI sees how your team already queries the database and generates consistent code rather than introducing different patterns.</p>
+
+<h2>3. Brave Search MCP Server — Current Supabase Documentation</h2>
+
+<p>Supabase ships features frequently — the Supabase client v2, the new Auth helpers, Edge Functions updates, and changes to the CLI all affect how you write code. Brave Search MCP gives your AI assistant access to current Supabase documentation, migration guides, and community tutorials that may postdate its training cutoff.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Search current Supabase docs for client methods, Auth APIs, and Storage operations</li>
+<li>Find migration guides for Supabase client v1 → v2 breaking changes</li>
+<li>Research Edge Function patterns, CORS configuration, and deployment options</li>
+<li>Look up Realtime subscription examples and channel configuration</li>
+</ul>
+
+<p><strong>Best for:</strong> Working with Supabase's rapidly evolving feature set. The Supabase client API, Auth helpers, and Edge Function runtime have all changed significantly — Brave Search ensures your AI works from current documentation rather than outdated patterns.</p>
+
+<h2>4. GitHub MCP Server — Supabase Issues and Community Patterns</h2>
+
+<p>Supabase is open source, and many developer questions about edge cases in RLS, Auth behavior, or client library quirks are answered in the Supabase GitHub repositories. The GitHub MCP server lets your AI browse Supabase's issue tracker, read community-contributed examples, and check open bugs relevant to what you're building.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Search Supabase GitHub issues for known bugs or workarounds</li>
+<li>Browse community examples in the <code>supabase/supabase</code> repository</li>
+<li>Check open PRs for upcoming feature changes that affect your code</li>
+<li>Read your own project's GitHub issues and PRs while building</li>
+</ul>
+
+<p><strong>Best for:</strong> Debugging unexpected Supabase behavior. When RLS isn't working as expected or Auth session handling is inconsistent, checking GitHub issues often reveals a known edge case — your AI can surface these automatically.</p>
+
+<h2>5. Supabase MCP Server — Official Native Integration</h2>
+
+<p>Supabase ships an official MCP server that provides deeper integration beyond what the PostgreSQL MCP server covers — including project management APIs, Edge Function deployment context, and Auth configuration access. If you're using Claude Desktop or another MCP client, the official Supabase MCP server is worth adding alongside the PostgreSQL server for full-platform context.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Access Supabase project metadata and configuration</li>
+<li>Deeper integration with Supabase-specific features beyond raw SQL</li>
+<li>Edge Function and storage bucket context</li>
+<li>Auth configuration and policy management context</li>
+</ul>
+
+<p><strong>Best for:</strong> Full-platform Supabase development. Use it alongside the PostgreSQL MCP server — the PostgreSQL server gives you raw schema access, the Supabase MCP server gives you platform-level context.</p>
+
+<h2>The Supabase Developer MCP Stack</h2>
+
+<ul>
+<li><strong>Database schema:</strong> PostgreSQL MCP (direct connection to your Supabase Postgres instance)</li>
+<li><strong>Project files:</strong> Filesystem MCP (migrations, client code, config)</li>
+<li><strong>Current docs:</strong> Brave Search MCP (Supabase docs and migration guides)</li>
+<li><strong>Community context:</strong> GitHub MCP (Supabase issues, workarounds, examples)</li>
+<li><strong>Platform integration:</strong> Supabase MCP (official server for platform-level context)</li>
+</ul>
+
+<p>Supabase's power comes from how tightly PostgreSQL, Auth, and the client library integrate. MCP servers let your AI assistant understand that integration from your project's perspective — your actual schema, your migration history, and your client code patterns. The result is AI-generated Supabase code that compiles against your real database on the first try rather than requiring three rounds of schema corrections. Configure the PostgreSQL and Filesystem servers first — you'll see the difference immediately in the quality of generated RLS policies and client queries.</p>
+
+<p><strong>Related guides:</strong></p>
+<ul>
+<li><a href="/blog/best-mcp-servers-for-database">Best Database MCP Servers</a></li>
+<li><a href="/blog/best-mcp-servers-for-nextjs-developers">Best MCP Servers for Next.js Developers</a></li>
+<li><a href="/blog/best-mcp-servers-for-developers">Best MCP Servers for Developers</a></li>
+</ul>
+    `.trim(),
+  },
+  {
+    slug: "best-mcp-servers-for-neovim",
+    title: "Best MCP Servers for Neovim Users in 2026",
+    description: "Neovim users live in the terminal and expect their tools to be fast, composable, and precise. These MCP servers extend your AI assistant with the deep project context that Neovim workflows demand: file access, git history, live docs, and database connections.",
+    date: "2026-05-22",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "6 min read",
+    keywords: ["neovim mcp servers", "mcp servers for neovim", "neovim ai tools mcp", "neovim model context protocol 2026", "vim mcp servers"],
+    relatedServerSlugs: ["filesystem", "github", "git", "brave-search", "postgresql"],
+    content: `
+<p>Neovim users have strong opinions about their tools: fast, composable, and operating close to the metal. The move toward AI-assisted development hasn't changed that — Neovim developers adopting AI tools want the same precision and control they have in their editor. MCP servers are a natural fit: they're composable, explicitly configured, and give your AI assistant scoped access to exactly the context it needs — no more, no less.</p>
+
+<p>This guide covers the best MCP servers for Neovim users — tools that integrate with Claude Desktop, Cursor in terminal mode, or any MCP-compatible client to give your AI assistant the project context that makes it genuinely useful rather than generically approximate.</p>
+
+<h2>MCP for Neovim: The Context Problem</h2>
+
+<p>Most AI coding assistants work well with IDEs because the IDE already provides file context, LSP diagnostics, and project structure. Neovim's AI plugins (avante.nvim, codecompanion.nvim, etc.) can access your current buffer and cursor context — but MCP servers extend this to your entire project: all files, your git history, your database schema, and live documentation. The two layers complement each other: Neovim plugins handle in-buffer AI assistance; MCP servers handle project-wide and external context.</p>
+
+<h2>1. Filesystem MCP Server — Complete Project Access</h2>
+
+<p>The Filesystem MCP server is the foundation. Configure it to your project root and your AI assistant — whether in Claude Desktop alongside your Neovim session or an MCP-aware terminal tool — can read any file in your project, navigate your directory structure, and make edits. For Neovim users who often work across many files in complex projects, this removes the need to manually paste file contents into AI prompts.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read source files, configuration, and documentation</li>
+<li>Navigate the full directory tree including dotfiles and config directories</li>
+<li>Write and edit files across the project</li>
+<li>Search file contents for patterns, function definitions, and module exports</li>
+</ul>
+
+<p><strong>Best for:</strong> Large projects where context spans many files. When you're building a feature that touches multiple modules, your AI can read all relevant files rather than working from a single buffer snippet.</p>
+
+<h2>2. Git MCP Server — Local Repository Intelligence</h2>
+
+<p>Neovim users often use git from the command line or via plugins like fugitive.vim. The Git MCP server gives your AI assistant the same repository visibility: commit history, diffs, branch state, and staged changes. This is particularly useful for debugging sessions — your AI can read the last N commits, identify what changed, and reason about regressions without you manually running <code>git log</code> and pasting output.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read git log and commit diffs</li>
+<li>View staged changes before committing</li>
+<li>Understand what files changed between branches or tags</li>
+<li>Generate commit messages from actual staged diffs</li>
+</ul>
+
+<p><strong>Best for:</strong> Regression debugging and commit workflows. Your AI can read recent commits and correlate them with current compilation errors or test failures — a significant productivity gain over manually reconstructing the change history.</p>
+
+<h2>3. GitHub MCP Server — Remote Repositories and Issues</h2>
+
+<p>The GitHub MCP server extends local git context to the remote: pull requests, issue threads, CI status, and code search across your organization. For Neovim developers working on open source or team projects, this means your AI can read the GitHub issue you're fixing, check CI logs for a failing build, and browse related PRs — all without switching out of your terminal workflow.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Browse pull requests, issues, and review comments</li>
+<li>Read GitHub Actions workflow definitions and CI logs</li>
+<li>Search code across your GitHub organization</li>
+<li>Create issues or PRs from your AI conversation</li>
+</ul>
+
+<p><strong>Best for:</strong> Open source contributors and team developers. Your AI has the full issue context while you're writing the fix in Neovim — no context switching to a browser to re-read the bug report.</p>
+
+<h2>4. Brave Search MCP Server — Live Documentation</h2>
+
+<p>Neovim's plugin ecosystem moves fast — new Lua APIs, breaking changes in nvim-treesitter, updated LSP configurations. Brave Search MCP gives your AI access to current Neovim documentation, plugin changelogs, and community posts that may postdate its training data. It's also useful for any language or framework documentation you need while coding.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Search current Neovim documentation and Lua API references</li>
+<li>Find current configuration patterns for LSP, treesitter, and popular plugins</li>
+<li>Research language-specific documentation and library APIs</li>
+<li>Look up solutions to specific error messages from recent community posts</li>
+</ul>
+
+<p><strong>Best for:</strong> Neovim configuration work and any framework development. Neovim's Lua configuration API evolves with each release — Brave Search ensures your AI works from current documentation rather than outdated vimscript-era patterns.</p>
+
+<h2>5. PostgreSQL MCP Server — Database Access for Backend Development</h2>
+
+<p>Many Neovim developers work on backend services where database work is a core part of the workflow. The PostgreSQL MCP server connects your AI assistant to your development database — giving it real schema context for generating queries, migrations, and ORM code that matches your actual tables. Combined with Neovim's terminal integration, you can write database code in Neovim, ask your AI to validate it against the real schema, and run it without leaving your editor.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read your PostgreSQL schema: tables, columns, types, indexes</li>
+<li>Run read-only queries to inspect or validate data</li>
+<li>Generate accurate SQL and ORM queries from your real schema</li>
+<li>Debug data access issues with full schema context</li>
+</ul>
+
+<p><strong>Best for:</strong> Backend developers using Neovim for server-side code. Schema-accurate query generation means fewer compilation failures and fewer runtime surprises when your generated SQL hits the actual database.</p>
+
+<h2>The Neovim Developer MCP Stack</h2>
+
+<ul>
+<li><strong>Project files:</strong> Filesystem MCP (full project access, configured to your workspace)</li>
+<li><strong>Local git:</strong> Git MCP (commits, diffs, branch state)</li>
+<li><strong>Remote repos:</strong> GitHub MCP (issues, PRs, CI, code search)</li>
+<li><strong>Live docs:</strong> Brave Search MCP (Neovim docs, language references, framework guides)</li>
+<li><strong>Database:</strong> PostgreSQL MCP (real schema for backend work)</li>
+</ul>
+
+<p>Neovim's philosophy is that your editor should be a sharp, composable tool you control completely. MCP servers follow the same philosophy for AI assistance: explicit, scoped, composable context instead of an opaque AI that has access to everything and explains nothing. Configure the Filesystem and Git servers first — they'll handle 80% of coding workflows. Add Brave Search for documentation-heavy work and GitHub for team development. The result is an AI assistant that works the way Neovim users expect their tools to work: precisely, with exactly the context you've given it.</p>
+
+<p><strong>Related guides:</strong></p>
+<ul>
+<li><a href="/blog/best-mcp-servers-for-zed">Best MCP Servers for Zed Editor</a></li>
+<li><a href="/blog/best-mcp-servers-for-cursor">Best MCP Servers for Cursor</a></li>
+<li><a href="/blog/best-mcp-servers-for-developers">Best MCP Servers for Developers</a></li>
+</ul>
+    `.trim(),
+  },
 ];
 
 export function getBlogPostBySlug(slug: string): BlogPost | undefined {
