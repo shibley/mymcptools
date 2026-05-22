@@ -32614,6 +32614,335 @@ async with MCPServerStdio(
 </ul>
     `.trim(),
   },
+  {
+    slug: "best-mcp-servers-for-zed",
+    title: "Best MCP Servers for Zed in 2026: Supercharge the AI-Native Editor",
+    description: "Zed is the AI-native editor built for speed. MCP servers extend your AI assistant beyond the editor — giving it access to your database, repositories, web search, and terminal context. Here's what to add.",
+    date: "2026-05-21",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "6 min read",
+    keywords: ["mcp servers for zed", "zed editor mcp", "zed ai editor mcp servers", "zed mcp setup", "best mcp servers zed"],
+    relatedServerSlugs: ["filesystem", "github", "brave-search", "git", "postgresql", "zed"],
+    content: `
+<p>Zed is built from the ground up for AI-assisted development — collaborative, fast, and designed to integrate language models directly into the editing experience. With Zed's native AI assistant panel and extension ecosystem, adding MCP servers to your workflow is the natural next step: they give the AI behind Zed the real-world context it needs to reason precisely about your project.</p>
+
+<p>This guide covers the best MCP servers to pair with Zed — whether you're using Claude, GPT-4, or another provider through Zed's AI panel — to build a development environment where your AI assistant knows your codebase, your repositories, and your tools as well as you do.</p>
+
+<h2>How MCP Fits Into the Zed Workflow</h2>
+
+<p>Zed's AI assistant is powerful out of the box for code completion and inline editing — but MCP servers expand what the AI can know and do. Configure MCP servers in your Claude Desktop or any MCP-compatible client running alongside Zed, and your AI assistant gains structured access to file systems, databases, GitHub, and web search. The result: AI that can act on real project state, not just respond to what you paste into the chat.</p>
+
+<h2>1. Filesystem MCP Server — Your Project, AI-Accessible</h2>
+
+<p>The filesystem MCP server is the foundation. While Zed's editor already surfaces open files to the AI context window, the filesystem MCP server gives your AI assistant the ability to navigate your entire project — reading any file, searching directory structures, and writing changes — outside the constraints of what's currently open in Zed.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read any file in your project directory without manually opening it</li>
+<li>Search file contents across the full codebase</li>
+<li>Write and update files as part of multi-step AI workflows</li>
+<li>Respect configurable access boundaries to protect sensitive directories</li>
+</ul>
+
+<p><strong>Best for:</strong> Every Zed developer. The filesystem server extends Zed's AI context beyond the current buffer to the full project scope.</p>
+
+<h2>2. Git MCP Server — Commit History and Diff Context</h2>
+
+<p>Zed has built-in Git integration for staging and committing, but the Git MCP server gives your AI assistant access to the historical context that makes a difference: commit messages, blame output, branch history, and diff summaries. Your AI can explain why code was written a certain way — not just what it does.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read commit history, messages, and authorship</li>
+<li>Access diff output between branches or commits</li>
+<li>Query blame data to understand code provenance</li>
+<li>Navigate branches and tags programmatically</li>
+</ul>
+
+<p><strong>Best for:</strong> Debugging sessions where historical context matters, code reviews, and onboarding new contributors to existing Zed projects.</p>
+
+<h2>3. GitHub MCP Server — Issues, PRs, and Code Search</h2>
+
+<p>The GitHub MCP server takes Git context to the platform level. Your AI assistant can browse issues, review PRs, search across all your repositories, and manage GitHub workflows — all without leaving your AI chat context. This pairs well with Zed's collaborative editing for teams working on GitHub-hosted projects.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Browse and create issues and pull requests</li>
+<li>Search code across all repositories in your organization</li>
+<li>Review PR diffs and add comments</li>
+<li>Access repository metadata, tags, and releases</li>
+</ul>
+
+<p><strong>Best for:</strong> Teams using GitHub for collaboration alongside Zed. Gives your AI assistant the full project management context alongside the local development context.</p>
+
+<h2>4. PostgreSQL MCP Server — Real Database Context</h2>
+
+<p>When your Zed project connects to a PostgreSQL database, the PostgreSQL MCP server gives your AI assistant the actual schema — tables, columns, foreign keys, and constraints — rather than forcing it to guess from code. Queries, migrations, and ORM configurations generated with real schema context are accurate; those generated without it often aren't.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Introspect live database schema (tables, types, relationships)</li>
+<li>Run read-only queries for data validation and debugging</li>
+<li>Generate accurate migrations based on real schema state</li>
+<li>Support multiple database connections for multi-tenant projects</li>
+</ul>
+
+<p><strong>Best for:</strong> Backend development in Zed where database accuracy matters. Essential for any project using PostgreSQL, Supabase, or Neon.</p>
+
+<h2>5. Brave Search MCP Server — Documentation and Error Lookup</h2>
+
+<p>Zed's AI assistant has a training cutoff. The Brave Search MCP server closes that gap — giving your AI real-time access to documentation, Stack Overflow answers, GitHub issues, and release notes. When you hit a library error or need the latest API reference, your AI can look it up rather than hallucinating from stale training data.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Web search for current documentation and error messages</li>
+<li>Look up library changelogs and breaking changes</li>
+<li>Find real-world implementation examples</li>
+<li>Research unfamiliar APIs with current reference material</li>
+</ul>
+
+<p><strong>Best for:</strong> Any Zed development session involving third-party libraries, unfamiliar APIs, or recent framework updates. Eliminates the hallucination risk that comes from stale training data.</p>
+
+<h2>The Zed Developer MCP Stack</h2>
+
+<ul>
+<li><strong>Local files:</strong> Filesystem MCP (full project navigation)</li>
+<li><strong>Version control:</strong> Git MCP (history, blame, diffs)</li>
+<li><strong>Platform:</strong> GitHub MCP (issues, PRs, code search)</li>
+<li><strong>Database:</strong> PostgreSQL MCP (live schema access)</li>
+<li><strong>Research:</strong> Brave Search MCP (real-time documentation)</li>
+</ul>
+
+<p>Zed ships with excellent AI integration at the editor level. MCP servers complete the picture at the context level — giving your AI assistant structured, real-time access to everything that exists outside the current file. The combination produces an AI development environment where nothing gets lost in translation between what you know about your project and what your AI assistant can reason about.</p>
+
+<p><strong>Related guides:</strong></p>
+<ul>
+<li><a href="/blog/best-mcp-servers-for-cursor">Best MCP Servers for Cursor</a></li>
+<li><a href="/blog/mcp-servers-for-windsurf">Best MCP Servers for Windsurf</a></li>
+<li><a href="/blog/best-mcp-servers-for-developers">Best MCP Servers for Developers</a></li>
+</ul>
+    `.trim(),
+  },
+  {
+    slug: "best-mcp-servers-for-linear",
+    title: "Best MCP Servers for Linear in 2026: AI-Powered Project Management",
+    description: "Linear keeps your engineering team's issues, cycles, and roadmap moving fast. MCP servers connect your AI assistant to Linear's API — so it can triage issues, link PRs, and surface roadmap context automatically.",
+    date: "2026-05-21",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "6 min read",
+    keywords: ["mcp servers for linear", "linear app mcp", "linear project management mcp", "linear mcp server", "linear ai integration"],
+    relatedServerSlugs: ["linear", "github", "filesystem", "brave-search", "notion", "slack"],
+    content: `
+<p>Linear is the issue tracker built for engineering teams that move fast — opinionated, keyboard-driven, and designed around cycles, priorities, and team workflows. When you connect Linear to an AI assistant via MCP, you unlock a new kind of project intelligence: your AI can query open issues, understand cycle priorities, link pull requests to work items, and surface roadmap context in real time — without you having to switch tabs.</p>
+
+<p>This guide covers the best MCP servers to pair with Linear for an AI-assisted engineering workflow that keeps your project management as fast as your code.</p>
+
+<h2>Why MCP + Linear Is a Game Changer</h2>
+
+<p>Most AI assistants treat your issue tracker as a black box. They can't see what's in your backlog, which issues are in the current cycle, or what's been blocked for three weeks. MCP servers change that. The Linear MCP server gives your AI assistant direct API access — so when you ask "what's blocking the auth refactor?" or "which P1s are unassigned?", it can actually look it up rather than asking you to paste the context.</p>
+
+<h2>1. Linear MCP Server — Your Issue Tracker as AI Context</h2>
+
+<p>The Linear MCP server is the core of this stack. It connects your AI assistant directly to the Linear API — giving it read and write access to issues, projects, teams, cycles, and roadmap data. This is the server that turns your AI assistant from a general-purpose helper into a project-aware engineering partner.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Query issues by status, priority, assignee, label, or team</li>
+<li>Create and update issues with proper metadata</li>
+<li>Read cycle contents and priorities</li>
+<li>Access project roadmap and milestone data</li>
+<li>List team members and their assigned work</li>
+</ul>
+
+<p><strong>Best for:</strong> Engineering managers, team leads, and developers who want their AI assistant to understand the current sprint state. Eliminates the "copy-paste issue context into chat" workflow entirely.</p>
+
+<h2>2. GitHub MCP Server — Link Code Changes to Linear Issues</h2>
+
+<p>Linear's GitHub integration tracks PR-to-issue linkage automatically — but the GitHub MCP server lets your AI assistant work that connection in reverse. Ask your AI to find all open PRs related to a Linear issue, check which issues have no associated code yet, or review the PR for a specific issue — all in a single conversation.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Browse pull requests, commits, and branches by repository</li>
+<li>Search for PRs referencing specific Linear issue IDs</li>
+<li>Review PR diff content and comments</li>
+<li>Create PRs with properly formatted Linear issue references</li>
+</ul>
+
+<p><strong>Best for:</strong> Teams using Linear's GitHub integration. Your AI can bridge the gap between what's planned in Linear and what's actually in progress on GitHub — without you manually cross-referencing both tools.</p>
+
+<h2>3. Slack MCP Server — Standup and Status Updates</h2>
+
+<p>Engineering teams using Linear for planning often use Slack for daily standups and async status updates. The Slack MCP server lets your AI assistant pull Slack context into Linear-aware conversations: summarize relevant threads, draft status updates based on open issues, and surface blockers mentioned in Slack that haven't been captured as Linear issues.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read channel messages and thread history</li>
+<li>Search Slack for mentions of specific issues, features, or bugs</li>
+<li>Draft status update messages based on current Linear cycle state</li>
+<li>Surface untracked issues from Slack discussions</li>
+</ul>
+
+<p><strong>Best for:</strong> Engineering managers who run standups, teams doing async sprint planning, and anyone bridging the gap between Slack conversations and Linear tickets.</p>
+
+<h2>4. Notion MCP Server — Connect Roadmap to Specs</h2>
+
+<p>Many teams keep product specs, RFCs, and design documents in Notion while tracking implementation in Linear. The Notion MCP server lets your AI assistant read spec documents and cross-reference them with Linear issues — so it can answer questions like "does the auth refactor issue match the spec in Notion?" or "are there open Linear issues for every requirement in this RFC?"</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read pages, databases, and blocks from Notion workspaces</li>
+<li>Search Notion for specs, RFCs, and documentation</li>
+<li>Extract requirements from product documents</li>
+<li>Compare spec content against Linear issue descriptions</li>
+</ul>
+
+<p><strong>Best for:</strong> Product-engineering teams where specs live in Notion and work tracks in Linear. Closes the gap between "what we planned" and "what we're building."</p>
+
+<h2>5. Brave Search MCP Server — Research for Issue Triage</h2>
+
+<p>When triaging bugs or scoping new issues, your AI often needs external context: known library bugs, relevant Stack Overflow threads, or competitor feature announcements. The Brave Search MCP server gives your AI real-time web access for research during Linear triage and planning sessions.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Search for known bugs in libraries referenced in open issues</li>
+<li>Research error messages reported in bug reports</li>
+<li>Find relevant GitHub issues in upstream dependencies</li>
+<li>Look up competitive context for feature planning</li>
+</ul>
+
+<p><strong>Best for:</strong> Bug triage sessions where the root cause might be in an external dependency, and feature planning where market context informs prioritization.</p>
+
+<h2>The Linear Engineering MCP Stack</h2>
+
+<ul>
+<li><strong>Project tracking:</strong> Linear MCP (issues, cycles, roadmap)</li>
+<li><strong>Code:</strong> GitHub MCP (PRs, commits, review)</li>
+<li><strong>Communication:</strong> Slack MCP (threads, standups, blockers)</li>
+<li><strong>Documentation:</strong> Notion MCP (specs, RFCs, design docs)</li>
+<li><strong>Research:</strong> Brave Search MCP (bug research, triage context)</li>
+</ul>
+
+<p>The combination transforms your AI assistant from a general-purpose chatbot into a project-aware engineering partner. Instead of describing what's in Linear, you can just ask — and instead of maintaining separate context windows for code, communication, and planning, everything is unified in a single AI conversation that knows your actual project state.</p>
+
+<p><strong>Related guides:</strong></p>
+<ul>
+<li><a href="/blog/best-mcp-servers-for-product-managers">Best MCP Servers for Product Managers</a></li>
+<li><a href="/blog/best-mcp-servers-for-engineering-managers">Best MCP Servers for Engineering Managers</a></li>
+<li><a href="/blog/best-mcp-servers-for-github-copilot">Best MCP Servers for GitHub Copilot Users</a></li>
+</ul>
+    `.trim(),
+  },
+  {
+    slug: "best-mcp-servers-for-jira",
+    title: "Best MCP Servers for Jira in 2026: AI-Assisted Issue Tracking",
+    description: "Jira powers issue tracking for millions of engineering teams. MCP servers connect your AI assistant to Jira's API — so it can query sprints, triage backlogs, link issues to PRs, and surface blockers on command.",
+    date: "2026-05-21",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "6 min read",
+    keywords: ["mcp servers for jira", "jira mcp server", "jira ai integration", "jira mcp setup", "best mcp servers jira"],
+    relatedServerSlugs: ["jira", "github", "confluence", "slack", "brave-search", "filesystem"],
+    content: `
+<p>Jira is the enterprise standard for software project tracking — hundreds of millions of issues created, countless sprints completed, and enough customization to fit almost any engineering workflow. The challenge: all that richness lives behind a UI that requires constant tab-switching. MCP servers solve this by giving your AI assistant direct, structured access to the Jira API — so you can ask about your sprint, triage the backlog, and link code changes to issues without ever leaving your AI context.</p>
+
+<p>This guide covers the best MCP servers to pair with Jira for teams that want AI-assisted project management without abandoning the Jira workflows they've already built.</p>
+
+<h2>What MCP Unlocks for Jira Users</h2>
+
+<p>Without MCP, your AI assistant knows nothing about Jira. You copy-paste issue descriptions, sprint contents, and status updates into chat — and hope nothing gets lost in translation. With the Jira MCP server, your AI can query open issues, read sprint contents, check blockers, and create well-formatted tickets with the correct fields and priorities. The workflow becomes: ask your AI → it checks Jira → it acts on real data.</p>
+
+<h2>1. Jira MCP Server — Your Backlog as AI Context</h2>
+
+<p>The Jira MCP server is the center of this stack. It connects your AI assistant to the Jira REST API — giving it read and write access to issues, sprints, epics, comments, and project metadata. Every Jira workflow you've built — custom fields, priority levels, component assignments, sprint structures — is accessible to your AI without you having to explain it in every conversation.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Query issues by status, priority, sprint, epic, or assignee using JQL</li>
+<li>Create and update issues with proper field values</li>
+<li>Read sprint contents and velocity data</li>
+<li>Access epics, components, and project hierarchies</li>
+<li>Add comments and transition issue statuses</li>
+</ul>
+
+<p><strong>Best for:</strong> Engineering managers, scrum masters, and developers who spend significant time in Jira. Your AI becomes a project management assistant that actually knows your backlog state — not a general helper that needs everything explained.</p>
+
+<h2>2. GitHub MCP Server — Close the Code-to-Issue Gap</h2>
+
+<p>Jira and GitHub are often connected via webhooks and automation, but the connection is one-way: code changes reference Jira issues. The GitHub MCP server lets your AI assistant work this bidirectionally — finding all open PRs related to a Jira epic, identifying issues without associated branches, or reviewing the code change for a specific ticket — in a single conversation.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Browse pull requests, branches, and commits by repository</li>
+<li>Search for PRs and commits referencing specific Jira issue keys</li>
+<li>Review PR diff content for issues under review in Jira</li>
+<li>Create branches and PRs with Jira issue references in the naming convention</li>
+</ul>
+
+<p><strong>Best for:</strong> Development teams using both Jira and GitHub. Your AI can answer "what's the PR for PROJ-1234?" or "which PROJ issues have no associated code?" without you manually cross-referencing both tools.</p>
+
+<h2>3. Slack MCP Server — Surface Blockers Before Standup</h2>
+
+<p>Standup is more productive when blockers are already captured. The Slack MCP server lets your AI assistant scan relevant Slack channels for issues that should be in Jira but aren't — bug reports in the customer support channel, production incidents in the alerts channel, and architecture debates that imply new epics. Combine with Jira MCP to automatically create well-formatted tickets from Slack threads.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read and search Slack channel message history</li>
+<li>Identify threads describing potential bugs or feature requests</li>
+<li>Draft Jira ticket descriptions from Slack conversation content</li>
+<li>Post standup summaries based on current sprint state from Jira</li>
+</ul>
+
+<p><strong>Best for:</strong> Scrum masters and engineering managers who bridge Slack conversations and Jira tickets. Your AI becomes a triage assistant that catches issues before they fall through the cracks.</p>
+
+<h2>4. Filesystem MCP Server — Local Code Context for Issue Work</h2>
+
+<p>When working on a Jira issue locally, the filesystem MCP server gives your AI assistant access to the actual code files related to that ticket — without you having to paste code snippets into the chat. Your AI can read the relevant modules, understand the existing implementation, and provide specific guidance rather than generic suggestions.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read source files and test files related to the issue being worked</li>
+<li>Search the codebase for patterns relevant to the ticket</li>
+<li>Write updated files as part of implementing issue requirements</li>
+<li>Navigate project directory structure without manual copy-paste</li>
+</ul>
+
+<p><strong>Best for:</strong> Developers working Jira tickets locally. Your AI knows both the issue requirements (from Jira MCP) and the current implementation (from Filesystem MCP) — giving it the full context needed to generate accurate, non-generic code.</p>
+
+<h2>5. Brave Search MCP Server — Research for Bug Triage</h2>
+
+<p>Bug triage often requires external research: is this error message a known issue in the library? Is there a GitHub issue upstream? Has someone else solved this? The Brave Search MCP server gives your AI real-time web access during Jira triage sessions — so the ticket gets created with actual root cause analysis, not just a symptom description.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Search for known bugs and issues in third-party dependencies</li>
+<li>Look up error messages and stack traces for known solutions</li>
+<li>Research upstream GitHub issues for library bugs</li>
+<li>Find documentation for unfamiliar APIs referenced in tickets</li>
+</ul>
+
+<p><strong>Best for:</strong> Engineering teams with a high volume of bug reports involving third-party dependencies. Your AI adds research context to tickets automatically — making the backlog more actionable from the moment issues are created.</p>
+
+<h2>The Jira Engineering MCP Stack</h2>
+
+<ul>
+<li><strong>Issue tracking:</strong> Jira MCP (sprints, epics, backlogs)</li>
+<li><strong>Code:</strong> GitHub MCP (PRs, commits, branches)</li>
+<li><strong>Communication:</strong> Slack MCP (threads, blockers, triage)</li>
+<li><strong>Local dev:</strong> Filesystem MCP (code context for issue work)</li>
+<li><strong>Research:</strong> Brave Search MCP (bug research, dependency issues)</li>
+</ul>
+
+<p>Jira has earned its position as the enterprise standard through depth and flexibility. MCP servers make that depth accessible to your AI assistant — transforming it from a generic chatbot into a project-aware partner that understands your sprints, your backlog, and your team's actual workflow. The copy-paste era of AI project management is over.</p>
+
+<p><strong>Related guides:</strong></p>
+<ul>
+<li><a href="/blog/best-mcp-servers-for-product-managers">Best MCP Servers for Product Managers</a></li>
+<li><a href="/blog/best-mcp-servers-for-engineering-managers">Best MCP Servers for Engineering Managers</a></li>
+<li><a href="/blog/best-mcp-servers-for-linear">Best MCP Servers for Linear</a></li>
+</ul>
+    `.trim(),
+  },
 ];
 
 export function getBlogPostBySlug(slug: string): BlogPost | undefined {
