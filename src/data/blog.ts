@@ -33954,6 +33954,380 @@ async with MCPServerStdio(
 </ul>
     `.trim(),
   },
+  {
+    slug: "best-mcp-servers-for-svelte-developers",
+    title: "Best MCP Servers for Svelte and SvelteKit Developers in 2026",
+    description: "Building with Svelte or SvelteKit? These MCP servers give your AI assistant access to your project files, database schemas, component libraries, and deployment pipelines — designed for the Svelte ecosystem.",
+    date: "2026-05-22",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "6 min read",
+    keywords: ["mcp servers for svelte", "sveltekit mcp server", "svelte ai tools", "best mcp servers svelte 2026", "sveltekit development mcp"],
+    relatedServerSlugs: ["filesystem", "github", "postgresql", "supabase", "brave-search", "cloudflare"],
+    content: `
+<p>Svelte and SvelteKit have earned a reputation as the developer-experience framework of choice — minimal boilerplate, reactive by default, and a compiler that disappears at runtime. For developers building with Svelte, MCP servers extend that developer-experience philosophy into AI assistance: instead of explaining your project structure to an AI, you give it direct access.</p>
+
+<p>This guide covers the MCP servers that deliver the most value in a SvelteKit development workflow.</p>
+
+<h2>Why Svelte Developers Need MCP Context</h2>
+
+<p>SvelteKit applications have a specific file-based routing structure, server-side load functions, form actions, and endpoint patterns that generic AI assistants often get wrong. When your AI has direct access to your project's <code>src/routes/</code> structure, <code>+page.svelte</code> files, <code>+server.ts</code> endpoints, and <code>svelte.config.js</code>, its suggestions are accurate to your actual codebase — not approximations based on training data patterns.</p>
+
+<h2>1. Filesystem MCP Server — Route Structure and Component Access</h2>
+
+<p>The Filesystem MCP server is the foundation of AI-assisted SvelteKit development. SvelteKit's file-based routing means the directory structure is the routing contract — your AI needs to see that structure to give meaningful advice about page organization, layout nesting, route grouping, and server-side data loading.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Navigate <code>src/routes/</code> hierarchy and understand route grouping</li>
+<li>Read <code>+page.svelte</code>, <code>+page.server.ts</code>, <code>+layout.svelte</code>, and <code>+server.ts</code> files</li>
+<li>Access <code>$lib/</code> components and utilities</li>
+<li>Read <code>svelte.config.js</code>, <code>vite.config.ts</code>, and adapter configuration</li>
+</ul>
+
+<p><strong>Best for:</strong> All SvelteKit developers. SvelteKit's co-located file structure makes Filesystem access especially valuable — load functions, page components, and server endpoints live side by side, and your AI needs to read all of them to understand a route.</p>
+
+<h2>2. GitHub MCP Server — Component Libraries and Open Issues</h2>
+
+<p>Much of the SvelteKit ecosystem lives on GitHub — Svelte component libraries, adapter source code, official examples, and RFC discussions. The GitHub MCP server gives your AI assistant access to repository context while you code: check open issues for packages you're using, read adapter documentation, and review component library source code without leaving your AI conversation.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Browse Svelte component library repositories (Skeleton, shadcn-svelte, Flowbite Svelte)</li>
+<li>Read open issues and PRs in dependencies before upgrading</li>
+<li>Access official SvelteKit examples and starter templates</li>
+<li>Review your own team's code and PR feedback</li>
+</ul>
+
+<p><strong>Best for:</strong> SvelteKit developers working with third-party component libraries or contributing to open-source Svelte packages. The Svelte ecosystem is fast-moving — GitHub MCP keeps your AI's recommendations grounded in the actual current state of your dependencies.</p>
+
+<h2>3. PostgreSQL or Supabase MCP Server — Schema-Aware Database Access</h2>
+
+<p>SvelteKit's server-side rendering and load functions make it a natural fit for full-stack applications with real databases. When your AI can see your actual database schema alongside your <code>+page.server.ts</code> load functions, it can generate accurate database queries, suggest proper TypeScript types for your load function returns, and help you implement form actions that match your data model.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Inspect tables, columns, and relationships for accurate load function generation</li>
+<li>Read-only query execution to understand data shape before writing code</li>
+<li>For Supabase: access auth configuration, RLS policies, and storage buckets</li>
+<li>Generate TypeScript types that match your database schema</li>
+</ul>
+
+<p><strong>Best for:</strong> Full-stack SvelteKit developers. SvelteKit's <code>+page.server.ts</code> pattern puts database access close to the route — having your AI see both the schema and the route code simultaneously makes full-stack suggestions dramatically more accurate.</p>
+
+<h2>4. Brave Search MCP Server — SvelteKit Docs and Migration Guides</h2>
+
+<p>SvelteKit has shipped several significant API changes since 1.0 — form actions, the new routing conventions, Vite 5 migration, and ongoing changes to the adapter ecosystem. Brave Search MCP gives your AI assistant access to current SvelteKit documentation and community solutions that postdate its training cutoff, ensuring you get advice that applies to the version you're actually running.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Look up current SvelteKit load function and form action API documentation</li>
+<li>Find migration guides between SvelteKit versions</li>
+<li>Research Vite plugin compatibility with current SvelteKit releases</li>
+<li>Search for community solutions to adapter-specific deployment issues</li>
+</ul>
+
+<p><strong>Best for:</strong> Developers working on SvelteKit projects that span multiple framework versions. SvelteKit's breaking changes between minor versions have caught many developers off guard — Brave Search ensures your AI gives advice based on the actual current API.</p>
+
+<h2>5. Cloudflare MCP Server — Edge Deployment and Workers</h2>
+
+<p>SvelteKit's adapter ecosystem makes it a top choice for Cloudflare Workers and Pages deployments — the <code>adapter-cloudflare</code> and <code>adapter-cloudflare-workers</code> packages turn SvelteKit apps into edge-deployed Workers automatically. The Cloudflare MCP server gives your AI access to your deployment configuration, KV namespace setup, D1 database bindings, and Worker bindings — all of which appear in SvelteKit load functions via the <code>platform</code> object.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read Cloudflare Worker and Pages configuration</li>
+<li>Access KV namespace and D1 database binding details</li>
+<li>Debug edge-specific deployment issues with access to your actual config</li>
+<li>Review Cloudflare-specific SvelteKit patterns (platform.env access)</li>
+</ul>
+
+<p><strong>Best for:</strong> SvelteKit developers deploying to Cloudflare Pages or Workers. The Cloudflare adapter has unique patterns for accessing Workers features from SvelteKit load functions — the MCP server ensures your AI knows your actual binding configuration.</p>
+
+<h2>6. Neon MCP Server — Serverless Postgres for SvelteKit</h2>
+
+<p>Neon is serverless PostgreSQL that pairs naturally with SvelteKit's serverless deployment targets — both Vercel and Cloudflare deployments benefit from Neon's connection pooling and branch databases. The Neon MCP server gives your AI access to your database schema and branch configuration, enabling accurate <code>+page.server.ts</code> and <code>+server.ts</code> code generation.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Schema introspection for accurate TypeScript type generation</li>
+<li>Query execution against branch databases during development</li>
+<li>Understand connection pooling setup for serverless environments</li>
+<li>Review Neon branch structure (main, dev, feature branches)</li>
+</ul>
+
+<p><strong>Best for:</strong> SvelteKit developers using Neon for their database. Neon's branching model maps well to SvelteKit's development workflow — feature branch development with isolated database branches.</p>
+
+<h2>SvelteKit MCP Configuration</h2>
+
+<p>For a productive SvelteKit AI development environment, configure these servers together:</p>
+<ul>
+<li><strong>Project files:</strong> Filesystem MCP (routes, components, configuration)</li>
+<li><strong>Database:</strong> PostgreSQL / Supabase / Neon MCP (schema-aware load functions)</li>
+<li><strong>Version control:</strong> GitHub MCP (dependencies, team code, PRs)</li>
+<li><strong>Documentation:</strong> Brave Search MCP (current SvelteKit API docs)</li>
+<li><strong>Deployment:</strong> Cloudflare MCP (if deploying to Workers/Pages)</li>
+</ul>
+
+<p>SvelteKit's co-located full-stack patterns mean your AI benefits enormously from seeing multiple layers simultaneously — the route structure, the database schema, and the server-side code together. MCP servers make that possible without any manual context copying.</p>
+
+<p><strong>Related guides:</strong></p>
+<ul>
+<li><a href="/blog/best-mcp-servers-for-vue-developers">Best MCP Servers for Vue Developers</a></li>
+<li><a href="/blog/best-mcp-servers-for-react-developers">Best MCP Servers for React Developers</a></li>
+<li><a href="/blog/best-mcp-servers-for-nextjs-developers">Best MCP Servers for Next.js Developers</a></li>
+</ul>
+    `.trim(),
+  },
+  {
+    slug: "best-mcp-servers-for-langchain-developers",
+    title: "Best MCP Servers for LangChain and LangGraph Developers in 2026",
+    description: "Building AI applications with LangChain or LangGraph? These MCP servers give your AI assistant direct access to your chains, agents, vector stores, tool definitions, and graph state — essential context for LLM app development.",
+    date: "2026-05-22",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "7 min read",
+    keywords: ["mcp servers for langchain", "langchain mcp server", "langgraph mcp", "langchain development tools", "best mcp servers langchain 2026", "langchain ai workflow mcp"],
+    relatedServerSlugs: ["filesystem", "github", "postgresql", "brave-search", "redis", "neo4j"],
+    content: `
+<p>LangChain and LangGraph have become the dominant frameworks for building production AI applications — chains, agents, RAG pipelines, and multi-step graph-based workflows. Developing with these frameworks is inherently context-heavy: your AI assistant needs to understand your chain definitions, your tool schemas, your vector store configuration, and your graph state structure simultaneously. MCP servers provide that context directly.</p>
+
+<p>This guide covers the MCP servers that deliver the most value when building LangChain and LangGraph applications.</p>
+
+<h2>Why LangChain Development Needs MCP Context</h2>
+
+<p>LangChain applications are architecturally complex in ways that are hard to convey through conversation. A single agent might compose a retriever, a reranker, several tools with schemas, a memory store, and a model configuration. When debugging a LangGraph workflow, you need to trace state transitions across nodes. Without MCP context, your AI is guessing at your architecture — with it, the assistant sees your actual code.</p>
+
+<h2>1. Filesystem MCP Server — Chain and Agent Codebase Access</h2>
+
+<p>LangChain projects spread across multiple files — chain definitions, tool schemas, agent configurations, retriever setup, prompt templates, and evaluation harnesses. The Filesystem MCP server gives your AI direct access to this codebase structure, enabling it to understand how your components fit together rather than working from isolated code snippets.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read chain and graph definitions across your full project tree</li>
+<li>Access tool schema files and prompt template libraries</li>
+<li>Navigate evaluation scripts and test fixtures</li>
+<li>Read environment configuration and model provider setup</li>
+</ul>
+
+<p><strong>Best for:</strong> All LangChain and LangGraph developers. The multi-file nature of LangChain projects means isolated code snippets rarely tell the full story — Filesystem access lets your AI trace dependencies between chain components, tool registrations, and model configuration.</p>
+
+<h2>2. PostgreSQL MCP Server — Application Data and Chat History</h2>
+
+<p>LangChain applications that persist conversation history, user sessions, or agent state typically use PostgreSQL — either directly or via LangChain's <code>PostgresChatMessageHistory</code> and <code>PostgresSaver</code> checkpointer for LangGraph. When your AI can see your schema alongside your chain code, it generates accurate storage and retrieval patterns for persistent agent state.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Inspect conversation history tables and session schema</li>
+<li>Understand LangGraph checkpoint table structure</li>
+<li>Query application data tables that agents interact with</li>
+<li>Debug agent state persistence with actual stored values</li>
+</ul>
+
+<p><strong>Best for:</strong> LangGraph developers using PostgreSQL as a checkpointer for persistent agent workflows. LangGraph's state persistence requires specific schema setup — the PostgreSQL MCP server ensures your AI generates code that matches your actual checkpoint table structure.</p>
+
+<h2>3. Redis MCP Server — Cache, Rate Limiting, and Memory Store</h2>
+
+<p>Redis is widely used in LangChain applications for semantic caching (avoiding redundant LLM calls), rate limiting, and as a fast in-memory store for agent working memory. LangChain's built-in <code>RedisCache</code> and <code>RedisSemanticCache</code> integrate directly with your Redis instance. The Redis MCP server gives your AI access to your cache configuration and stored keys during development.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Inspect cache keys and TTL configuration</li>
+<li>Browse stored chat history and session data</li>
+<li>Understand rate limiting key patterns</li>
+<li>Debug semantic cache behavior and cache hit rates</li>
+</ul>
+
+<p><strong>Best for:</strong> LangChain developers using Redis for semantic caching or session management. Cache debugging is notoriously opaque — the Redis MCP server gives your AI visibility into what's actually stored and why cache hits or misses are happening.</p>
+
+<h2>4. Neo4j MCP Server — Knowledge Graphs and Graph RAG</h2>
+
+<p>LangChain's <code>Neo4jGraph</code> integration and LangGraph's graph-native architecture make Neo4j a natural fit for knowledge graph applications and GraphRAG patterns. Neo4j MCP gives your AI direct access to your graph schema — node labels, relationship types, properties — enabling accurate Cypher query generation without manually describing your graph model.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Inspect node labels, relationship types, and property keys</li>
+<li>Run Cypher queries to test graph traversal patterns</li>
+<li>Understand graph schema for accurate LangChain Neo4jGraph integration</li>
+<li>Debug GraphRAG retrieval with actual graph data</li>
+</ul>
+
+<p><strong>Best for:</strong> LangChain developers building knowledge graph applications or GraphRAG pipelines. Cypher query generation is notoriously tricky — having your AI work against your actual graph schema dramatically improves query accuracy.</p>
+
+<h2>5. GitHub MCP Server — LangChain Source Code and Issues</h2>
+
+<p>LangChain releases updates frequently, with significant API changes between minor versions. The GitHub MCP server gives your AI access to the LangChain and LangGraph repositories — reading source code, open issues, migration guides, and CHANGELOG files. When you hit an unexpected behavior, your AI can check the actual source rather than guessing from training data.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read LangChain and LangGraph source code and API definitions</li>
+<li>Browse open issues for the specific behavior you're debugging</li>
+<li>Access CHANGELOG and migration guides for version upgrades</li>
+<li>Review your own team's chain implementations and PR feedback</li>
+</ul>
+
+<p><strong>Best for:</strong> LangChain developers debugging framework behavior or planning version upgrades. LangChain's frequent releases include breaking changes — GitHub MCP keeps your AI grounded in the current state of the framework source code.</p>
+
+<h2>6. Brave Search MCP Server — LangSmith, LangServe, and Ecosystem Docs</h2>
+
+<p>The LangChain ecosystem — LangSmith for observability, LangServe for deployment, LCEL (LangChain Expression Language), and the new LangGraph Platform — evolves rapidly. Brave Search MCP ensures your AI gives advice based on the current documentation rather than outdated patterns from its training data.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Look up current LCEL patterns and LangGraph API documentation</li>
+<li>Research LangSmith tracing and evaluation configuration</li>
+<li>Find migration guides between LangChain 0.x and 0.1/0.2/0.3 APIs</li>
+<li>Search for community solutions to specific agent behavior problems</li>
+</ul>
+
+<p><strong>Best for:</strong> All LangChain developers. LangChain's documented patterns have changed significantly across versions — Brave Search prevents your AI from suggesting deprecated approaches.</p>
+
+<h2>LangChain Developer MCP Configuration</h2>
+
+<p>For a complete LangChain/LangGraph development environment:</p>
+<ul>
+<li><strong>Codebase:</strong> Filesystem MCP (chains, tools, prompts, evaluation code)</li>
+<li><strong>Persistence:</strong> PostgreSQL MCP (chat history, agent checkpoints)</li>
+<li><strong>Cache/memory:</strong> Redis MCP (semantic cache, session data)</li>
+<li><strong>Graph data:</strong> Neo4j MCP (knowledge graphs, GraphRAG)</li>
+<li><strong>Framework source:</strong> GitHub MCP (LangChain/LangGraph repos)</li>
+<li><strong>Documentation:</strong> Brave Search MCP (current API docs, migration guides)</li>
+</ul>
+
+<p>LangChain's strength is composability — but composability makes debugging hard when you can't see all the components at once. MCP servers give your AI assistant the full stack context it needs to reason accurately about chain behavior, state transitions, and retrieval quality.</p>
+
+<p><strong>Related guides:</strong></p>
+<ul>
+<li><a href="/blog/best-mcp-servers-for-rag-developers">Best MCP Servers for RAG Developers</a></li>
+<li><a href="/blog/best-mcp-servers-for-llm-app-developers">Best MCP Servers for LLM App Developers</a></li>
+<li><a href="/blog/best-mcp-servers-for-python-developers">Best MCP Servers for Python Developers</a></li>
+</ul>
+    `.trim(),
+  },
+  {
+    slug: "best-mcp-servers-for-terraform-developers",
+    title: "Best MCP Servers for Terraform Developers and DevOps Engineers in 2026",
+    description: "Writing Terraform, OpenTofu, or Pulumi infrastructure as code? These MCP servers give your AI assistant access to your modules, state files, cloud provider APIs, and documentation — for accurate IaC generation and debugging.",
+    date: "2026-05-22",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "7 min read",
+    keywords: ["mcp servers for terraform", "terraform mcp server", "infrastructure as code mcp", "terraform ai tools", "best mcp servers terraform 2026", "devops mcp server terraform"],
+    relatedServerSlugs: ["filesystem", "github", "aws", "cloudflare", "brave-search", "postgresql"],
+    content: `
+<p>Terraform and infrastructure as code (IaC) development is one of the highest-stakes contexts for AI assistance — a misplaced resource definition or wrong attribute value can provision unintended infrastructure or, worse, destroy what's already running. AI suggestions that lack context about your actual module structure, provider versions, and state are actively dangerous. MCP servers solve this by giving your AI direct access to your IaC codebase and cloud environment.</p>
+
+<p>This guide covers the MCP servers that deliver the most value for Terraform and OpenTofu developers.</p>
+
+<h2>Why Terraform Needs MCP Context</h2>
+
+<p>Terraform configurations are highly context-dependent. The same resource block means different things depending on your provider version, your module structure, your variable definitions, and your existing state. An AI generating a new resource block without seeing your existing modules and variable definitions will produce code that compiles but breaks your dependency graph. MCP context prevents this.</p>
+
+<h2>1. Filesystem MCP Server — Module Structure and Configuration Access</h2>
+
+<p>Terraform projects are organized around modules — root modules, reusable child modules, and environment-specific configurations. The Filesystem MCP server gives your AI the ability to read your full module tree, understand variable definitions and outputs, and see how modules compose together. This is essential for accurate resource block generation and refactoring.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read <code>.tf</code> files across your entire module tree</li>
+<li>Navigate environment configurations (dev, staging, prod workspaces)</li>
+<li>Access <code>variables.tf</code>, <code>outputs.tf</code>, and <code>locals.tf</code> definitions</li>
+<li>Read provider configuration and version constraints in <code>versions.tf</code></li>
+</ul>
+
+<p><strong>Best for:</strong> All Terraform developers. Module composition and variable passing are the most common sources of Terraform errors — your AI needs to see the full module tree to give accurate advice about resource dependencies and variable definitions.</p>
+
+<h2>2. AWS MCP Server — Live Resource Context</h2>
+
+<p>The AWS MCP server gives your AI direct access to your AWS environment — existing resources, IAM policies, VPC configurations, and service quotas. When writing Terraform code to provision or modify AWS resources, having access to the live state prevents common errors like referencing VPCs that don't exist in your account, using IAM role ARNs that haven't been created yet, or configuring security groups inconsistently with existing network rules.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>List existing VPCs, subnets, security groups, and networking resources</li>
+<li>Read IAM role and policy definitions for accurate ARN references</li>
+<li>Check service quotas before provisioning new resources</li>
+<li>Inspect existing resource tags and naming conventions</li>
+</ul>
+
+<p><strong>Best for:</strong> AWS Terraform developers. The gap between what Terraform plans to create and what already exists in your AWS account is where most configuration errors originate. AWS MCP closes that gap.</p>
+
+<h2>3. GitHub MCP Server — Module Registry and Team Code</h2>
+
+<p>Terraform module development is inherently collaborative — teams share modules via GitHub, reference public registry modules, and review infrastructure changes through PRs. The GitHub MCP server gives your AI access to your module repositories, open PRs with infrastructure changes, and the Terraform Registry source code for modules you're consuming.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read your organization's shared Terraform module repositories</li>
+<li>Review open PRs with proposed infrastructure changes before approving</li>
+<li>Access Terraform Registry module source code for advanced customization</li>
+<li>Check GitHub Actions CI/CD workflow configurations for plan/apply pipelines</li>
+</ul>
+
+<p><strong>Best for:</strong> Infrastructure teams using GitHub for Terraform code review. Terraform changes are high-risk — having your AI read the full PR diff alongside your existing module structure enables more accurate review and safer change assessment.</p>
+
+<h2>4. Brave Search MCP Server — Provider Documentation and Version Notes</h2>
+
+<p>Terraform provider documentation changes with every provider version — resource attributes get deprecated, new arguments appear, and provider-specific behaviors shift between releases. Brave Search MCP keeps your AI's recommendations current with the actual provider documentation for the versions you're running, rather than suggesting patterns from providers two major versions back.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Look up current AWS, GCP, Azure, and Cloudflare provider resource documentation</li>
+<li>Find provider upgrade guides and breaking changes between major versions</li>
+<li>Research Terraform and OpenTofu feature differences for migration planning</li>
+<li>Search for community solutions to specific provider behavior issues</li>
+</ul>
+
+<p><strong>Best for:</strong> All Terraform developers, especially teams managing provider version upgrades. Provider documentation drift is a constant problem — Brave Search ensures your AI gives advice for the provider version you're actually using.</p>
+
+<h2>5. PostgreSQL MCP Server — Terraform State Backend Context</h2>
+
+<p>Many teams use a PostgreSQL backend for Terraform state (via the <code>pg</code> backend) or store infrastructure metadata in PostgreSQL databases that their Terraform resources create. The PostgreSQL MCP server gives your AI access to your state backend schema and application database structure — enabling accurate data source definitions and resource lifecycle management.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Inspect Terraform state backend database structure</li>
+<li>Read application database schema for accurate <code>data</code> source definitions</li>
+<li>Understand database resource dependencies for correct provisioning order</li>
+<li>Verify database resource configurations match existing infrastructure</li>
+</ul>
+
+<p><strong>Best for:</strong> Teams using PostgreSQL as a Terraform state backend or provisioning PostgreSQL databases with Terraform. State backend context helps your AI understand workspace isolation and state locking patterns specific to your setup.</p>
+
+<h2>6. Cloudflare MCP Server — DNS and Edge Infrastructure</h2>
+
+<p>Cloudflare's Terraform provider covers DNS records, WAF rules, Workers, Pages, and zero-trust configuration — and many infrastructure teams manage their Cloudflare resources alongside their cloud provider resources in the same Terraform codebase. The Cloudflare MCP server gives your AI access to your live Cloudflare zone configuration, preventing DNS record conflicts and WAF rule duplication.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read existing DNS records to prevent conflicting record creation</li>
+<li>Inspect WAF rules and firewall configuration for accurate provider code</li>
+<li>Understand Workers and Pages resource structure for IaC generation</li>
+<li>Review zero-trust access policy configuration</li>
+</ul>
+
+<p><strong>Best for:</strong> Teams managing Cloudflare resources with Terraform. DNS misconfigurations propagate globally and are hard to debug — the Cloudflare MCP server ensures your Terraform-generated DNS records don't conflict with existing zone configuration.</p>
+
+<h2>Terraform Developer MCP Configuration</h2>
+
+<p>For a complete Terraform development environment, configure these servers together:</p>
+<ul>
+<li><strong>IaC files:</strong> Filesystem MCP (modules, variables, provider config)</li>
+<li><strong>Cloud context:</strong> AWS MCP (live resource state, IAM, networking)</li>
+<li><strong>Team code:</strong> GitHub MCP (shared modules, PR review, CI/CD workflows)</li>
+<li><strong>Documentation:</strong> Brave Search MCP (current provider docs, version guides)</li>
+<li><strong>State backend:</strong> PostgreSQL MCP (if using pg backend)</li>
+<li><strong>DNS/edge:</strong> Cloudflare MCP (if managing Cloudflare with Terraform)</li>
+</ul>
+
+<p>Infrastructure as code is one of the highest-value contexts for AI assistance — a well-configured AI can generate complex multi-resource configurations accurately. But it's also one of the highest-risk contexts for AI errors — incorrect IaC can destroy production infrastructure. MCP servers give your AI the context it needs to be a helpful, safe infrastructure partner rather than a confident generator of plausible-looking but broken configurations.</p>
+
+<p><strong>Related guides:</strong></p>
+<ul>
+<li><a href="/blog/best-mcp-servers-for-devops-engineers">Best MCP Servers for DevOps Engineers</a></li>
+<li><a href="/blog/best-mcp-servers-for-cloud-engineers">Best MCP Servers for Cloud Engineers</a></li>
+<li><a href="/blog/best-mcp-servers-for-kubernetes-developers">Best MCP Servers for Kubernetes Developers</a></li>
+</ul>
+    `.trim(),
+  },
 ];
 
 export function getBlogPostBySlug(slug: string): BlogPost | undefined {
