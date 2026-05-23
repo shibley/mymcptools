@@ -35590,6 +35590,360 @@ async with MCPServerStdio(
 </ul>
     `.trim(),
   },
+  {
+    slug: "best-mcp-servers-for-scala-developers",
+    title: "Best MCP Servers for Scala Developers in 2026",
+    description: "The top MCP servers for Scala development. From Spark data pipelines to Akka services and Play Framework apps — supercharge your Scala workflow with Model Context Protocol.",
+    date: "2026-05-23",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "7 min read",
+    keywords: ["best mcp servers for scala", "scala mcp servers", "mcp tools for scala developers", "model context protocol scala", "spark mcp servers"],
+    relatedServerSlugs: ["filesystem", "github", "git", "postgresql", "docker", "brave-search"],
+    content: `
+<p>Scala occupies a unique position in the developer landscape — it's the language of Apache Spark and big data pipelines, but also of high-throughput Akka services, Play Framework web apps, and functional programming with ZIO and Cats Effect. The right MCP servers give your AI the context it needs across this entire ecosystem.</p>
+
+<p>Here are the MCP servers that matter most for Scala development in 2026.</p>
+
+<h2>1. Filesystem MCP Server — Navigate Complex Scala Project Structures</h2>
+
+<p>Scala projects often span complex directory layouts — multi-module sbt builds, Spark job packages, and layered domain models with heavy use of implicits and type classes. The Filesystem MCP server gives your AI direct access to your entire codebase without manual copy-pasting.</p>
+
+<p><strong>Key use cases for Scala developers:</strong></p>
+<ul>
+<li>Read case class hierarchies, trait mixin structures, and companion objects across modules</li>
+<li>Navigate multi-module sbt builds where domain, infrastructure, and application layers are separate projects</li>
+<li>Inspect implicit resolution chains and typeclass instances without losing context between files</li>
+<li>Browse Spark job configurations alongside the data transformation logic they configure</li>
+</ul>
+
+<p><strong>Best for:</strong> All Scala developers — the foundational MCP server for any project.</p>
+
+<h2>2. Git MCP Server — Track Scala Refactoring History</h2>
+
+<p>Scala codebases evolve significantly as teams migrate from Scala 2 to Scala 3, adopt new effect systems, or refactor from mutable OOP patterns to purely functional ones. The Git MCP server gives your AI visibility into this evolution without you explaining every decision.</p>
+
+<p><strong>Key use cases for Scala developers:</strong></p>
+<ul>
+<li>Review commit history for a type class or implicit to understand why it was designed that way</li>
+<li>Inspect Scala 2 → Scala 3 migration commits to understand new syntax context</li>
+<li>Check blame on complex for-comprehension chains to find the original author's intent</li>
+<li>Review Spark job configuration changes correlated with performance incidents</li>
+</ul>
+
+<p><strong>Best for:</strong> Teams maintaining long-lived Scala codebases or executing major migrations.</p>
+
+<h2>3. GitHub MCP Server — Scala Ecosystem Research</h2>
+
+<p>The Scala ecosystem moves continuously — new ZIO versions, sbt plugin updates, Akka commercial licensing migrations, and Spark API changes. The GitHub MCP server lets your AI pull issue discussions and PR reviews from Typelevel, Lightbend, and Apache repos directly.</p>
+
+<p><strong>Key use cases for Scala developers:</strong></p>
+<ul>
+<li>Search Cats Effect and ZIO issue trackers for known performance quirks before writing async code</li>
+<li>Pull Akka migration guides from the official repo when working through the Pekko transition</li>
+<li>Review open PRs on Spark Scala APIs when debugging deprecated method warnings</li>
+<li>Check sbt plugin compatibility issues when upgrading build dependencies</li>
+</ul>
+
+<p><strong>Best for:</strong> Scala developers tracking ecosystem changes across Typelevel, Apache, and Lightbend stacks.</p>
+
+<h2>4. PostgreSQL MCP Server — Database-Backed Scala Services</h2>
+
+<p>Scala web services and microservices commonly use PostgreSQL via Doobie, Slick, or Quill. When your AI has live access to your schema, it can generate type-safe query code that actually matches your database — not an imagined version of it.</p>
+
+<p><strong>Key use cases for Scala developers:</strong></p>
+<ul>
+<li>Generate Doobie SQL fragments with correct column names from live table inspection</li>
+<li>Create Slick table definitions that exactly mirror your PostgreSQL schema</li>
+<li>Debug Quill query generation issues by cross-referencing actual constraint definitions</li>
+<li>Write complex Slick joins without guessing at foreign key relationships</li>
+</ul>
+
+<p><strong>Best for:</strong> Scala backend developers using Doobie, Slick, or Quill for type-safe database access.</p>
+
+<h2>5. Docker MCP Server — Spark and Akka Containerized Deployments</h2>
+
+<p>Scala services and Spark jobs increasingly run in Docker containers and Kubernetes pods. The Docker MCP server gives your AI visibility into your running containers — useful for debugging JVM memory issues, Spark executor configuration, and service mesh problems.</p>
+
+<p><strong>Key use cases for Scala developers:</strong></p>
+<ul>
+<li>Inspect container logs to correlate JVM GC pauses with Akka stream backpressure events</li>
+<li>Check Spark executor container environment variables against your job configuration</li>
+<li>Debug multi-container sbt test environments that spin up Kafka or PostgreSQL in Docker</li>
+<li>Review Play Framework application container memory settings when diagnosing OOM kills</li>
+</ul>
+
+<p><strong>Best for:</strong> Scala developers deploying JVM services and Spark jobs in containerized environments.</p>
+
+<h2>6. Brave Search MCP Server — Scala Ecosystem Research</h2>
+
+<p>Scala's ecosystem is large and sometimes fragmented — Scala 2 vs Scala 3 API differences, Akka Classic vs Typed, ZIO 1 vs ZIO 2 idioms. The Brave Search MCP server keeps your AI from confidently generating code for the wrong version.</p>
+
+<p><strong>Key use cases for Scala developers:</strong></p>
+<ul>
+<li>Look up current ZIO 2 fiber supervision patterns before writing concurrent code</li>
+<li>Find Scala 3 given/using syntax examples when migrating from Scala 2 implicits</li>
+<li>Research Akka Typed actor behavior patterns for your specific version</li>
+<li>Check Cats Effect 3 resource management idioms against current documentation</li>
+</ul>
+
+<p><strong>Best for:</strong> All Scala developers navigating rapid ecosystem evolution across major version boundaries.</p>
+
+<h2>Recommended MCP Stack for Scala Developers</h2>
+
+<ul>
+<li><strong>Always active:</strong> Filesystem, Brave Search, Git</li>
+<li><strong>Database work:</strong> PostgreSQL</li>
+<li><strong>Version control collaboration:</strong> GitHub</li>
+<li><strong>Deployed services:</strong> Docker</li>
+</ul>
+
+<p>Scala's power comes from its type system — but that same expressiveness means your AI needs rich context to generate code that actually compiles. When your AI has direct filesystem access to your implicits and type class instances, live schema access for your database queries, and the ability to search current documentation, it stops generating plausible-but-wrong Scala and starts contributing to your actual codebase.</p>
+
+<p><strong>Related guides:</strong></p>
+<ul>
+<li><a href="/blog/best-mcp-servers-for-developers">Best MCP Servers for Developers</a></li>
+<li><a href="/blog/best-mcp-servers-for-data-engineering">Best MCP Servers for Data Engineering</a></li>
+<li><a href="/blog/best-mcp-servers-for-backend-developers">Best MCP Servers for Backend Developers</a></li>
+</ul>
+    `.trim(),
+  },
+  {
+    slug: "best-mcp-servers-for-fastapi-developers",
+    title: "Best MCP Servers for FastAPI Developers in 2026",
+    description: "The top MCP servers for FastAPI development. Build faster Python APIs with AI assistants that have direct access to your schemas, database, and OpenAPI specs.",
+    date: "2026-05-23",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "7 min read",
+    keywords: ["best mcp servers for fastapi", "fastapi mcp servers", "mcp tools for fastapi developers", "model context protocol fastapi", "python api mcp servers"],
+    relatedServerSlugs: ["filesystem", "github", "git", "postgresql", "docker", "brave-search"],
+    content: `
+<p>FastAPI has become the go-to framework for Python API development — automatic OpenAPI docs, async support, Pydantic validation, and one of the fastest developer experiences in the Python ecosystem. MCP servers extend this advantage to your AI assistant, giving it the context it needs to generate accurate FastAPI code the first time.</p>
+
+<p>Here are the MCP servers that matter most for FastAPI development in 2026.</p>
+
+<h2>1. Filesystem MCP Server — Read Your FastAPI Project Structure</h2>
+
+<p>FastAPI projects grow quickly into complex structures — multiple routers, layered dependencies, Pydantic models, SQLAlchemy schemas, and Alembic migrations. The Filesystem MCP server gives your AI direct access to the full codebase so it can generate code that fits your actual structure.</p>
+
+<p><strong>Key use cases for FastAPI developers:</strong></p>
+<ul>
+<li>Read existing Pydantic models before generating new request/response schemas that share base classes</li>
+<li>Inspect router dependency injection chains to correctly extend authentication or permission logic</li>
+<li>Browse SQLAlchemy models alongside Pydantic schemas to generate correct ORM-to-response mappings</li>
+<li>Navigate Alembic migration history to understand current database state before writing new migrations</li>
+</ul>
+
+<p><strong>Best for:</strong> All FastAPI developers — the essential context server for any Python project.</p>
+
+<h2>2. PostgreSQL MCP Server — Live Schema Access for Accurate ORM Code</h2>
+
+<p>FastAPI apps almost always have a database layer — SQLAlchemy, Tortoise ORM, or raw asyncpg queries. When your AI has live access to your PostgreSQL schema, it can generate migrations, model definitions, and query code that matches your actual database rather than a guessed version.</p>
+
+<p><strong>Key use cases for FastAPI developers:</strong></p>
+<ul>
+<li>Generate SQLAlchemy model classes with correct column types pulled from live table inspection</li>
+<li>Write Alembic migration scripts that reference actual column names and foreign key constraints</li>
+<li>Debug async SQLAlchemy session issues by cross-referencing actual schema constraints</li>
+<li>Generate correct asyncpg query strings with proper parameter types from live schema data</li>
+</ul>
+
+<p><strong>Best for:</strong> FastAPI developers using SQLAlchemy, Tortoise, or asyncpg with PostgreSQL backends.</p>
+
+<h2>3. Git MCP Server — Track API Version and Schema Evolution</h2>
+
+<p>FastAPI projects evolve through breaking API changes, Pydantic v1 → v2 migrations, and authentication system overhauls. The Git MCP server gives your AI visibility into this history so it understands the current state without you explaining every design decision.</p>
+
+<p><strong>Key use cases for FastAPI developers:</strong></p>
+<ul>
+<li>Review commit history for a specific endpoint to understand why its response schema was shaped that way</li>
+<li>Inspect Pydantic v1 → v2 migration commits to understand new validator and field syntax context</li>
+<li>Check blame on dependency injection code to find the original intent behind a complex dependency tree</li>
+<li>Review authentication middleware evolution when debugging JWT or OAuth token handling</li>
+</ul>
+
+<p><strong>Best for:</strong> FastAPI teams maintaining versioned APIs through major library upgrades.</p>
+
+<h2>4. GitHub MCP Server — FastAPI and Pydantic Issue Tracker Access</h2>
+
+<p>FastAPI and Pydantic move quickly — new async features, Pydantic v2 validation changes, and Starlette middleware updates. The GitHub MCP server lets your AI pull information from the official repos directly, keeping it current with the actual API surface.</p>
+
+<p><strong>Key use cases for FastAPI developers:</strong></p>
+<ul>
+<li>Search FastAPI issues for known bugs before spending hours debugging a response model serialization edge case</li>
+<li>Pull Pydantic v2 validator migration examples directly from the Pydantic GitHub repo</li>
+<li>Review Starlette middleware PR discussions when building custom ASGI middleware</li>
+<li>Find SQLAlchemy async session management patterns from authoritative sources</li>
+</ul>
+
+<p><strong>Best for:</strong> FastAPI developers working with rapidly evolving Pydantic v2 and modern async patterns.</p>
+
+<h2>5. Docker MCP Server — FastAPI Container Debugging</h2>
+
+<p>FastAPI apps typically run as Docker containers behind nginx or a cloud load balancer. The Docker MCP server gives your AI visibility into running containers — useful for debugging async worker crashes, database connection pool exhaustion, and dependency injection failures in production-like environments.</p>
+
+<p><strong>Key use cases for FastAPI developers:</strong></p>
+<ul>
+<li>Inspect uvicorn worker container logs to correlate with specific endpoint latency spikes</li>
+<li>Check environment variable injection for database URLs and secret keys in running containers</li>
+<li>Debug multi-container compose setups with FastAPI app + PostgreSQL + Redis workers</li>
+<li>Review Celery worker container logs alongside FastAPI container logs for async task debugging</li>
+</ul>
+
+<p><strong>Best for:</strong> FastAPI developers running containerized apps with multiple dependent services.</p>
+
+<h2>6. Brave Search MCP Server — Current FastAPI Documentation</h2>
+
+<p>The FastAPI and Pydantic ecosystems evolve rapidly — v2 syntax changes, new async session management patterns, and updated dependency injection idioms can make older examples misleading. Brave Search lets your AI find current documentation without suggesting deprecated patterns.</p>
+
+<p><strong>Key use cases for FastAPI developers:</strong></p>
+<ul>
+<li>Look up current Pydantic v2 field_validator and model_validator syntax for your version</li>
+<li>Find FastAPI lifespan event patterns replacing the deprecated startup/shutdown events</li>
+<li>Research SQLAlchemy 2.0 async session management idioms for modern FastAPI apps</li>
+<li>Check current OAuth2 password bearer implementation patterns against FastAPI security docs</li>
+</ul>
+
+<p><strong>Best for:</strong> All FastAPI developers staying current across Pydantic v2, SQLAlchemy 2.0, and FastAPI's async patterns.</p>
+
+<h2>Recommended MCP Stack for FastAPI Developers</h2>
+
+<ul>
+<li><strong>Always active:</strong> Filesystem, Brave Search, Git</li>
+<li><strong>Database-backed APIs:</strong> PostgreSQL</li>
+<li><strong>Version control collaboration:</strong> GitHub</li>
+<li><strong>Containerized deployments:</strong> Docker</li>
+</ul>
+
+<p>FastAPI's defining feature is automatic validation and serialization — but that only works when your AI generates models that match your actual schema. With Filesystem giving it your full Pydantic model hierarchy, PostgreSQL giving it your live database schema, and Brave Search keeping it current on v2 syntax, your AI stops generating v1-style validators and starts writing code that passes your tests on the first try.</p>
+
+<p><strong>Related guides:</strong></p>
+<ul>
+<li><a href="/blog/best-mcp-servers-for-python-developers">Best MCP Servers for Python Developers</a></li>
+<li><a href="/blog/best-mcp-servers-for-api-development">Best MCP Servers for API Development</a></li>
+<li><a href="/blog/best-mcp-servers-for-backend-developers">Best MCP Servers for Backend Developers</a></li>
+</ul>
+    `.trim(),
+  },
+  {
+    slug: "best-mcp-servers-for-spring-boot-developers",
+    title: "Best MCP Servers for Spring Boot Developers in 2026",
+    description: "The top MCP servers for Spring Boot development. Build enterprise Java applications faster with AI assistants that have direct access to your beans, schemas, and service configs.",
+    date: "2026-05-23",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "7 min read",
+    keywords: ["best mcp servers for spring boot", "spring boot mcp servers", "mcp tools for spring boot developers", "model context protocol spring boot", "java spring mcp"],
+    relatedServerSlugs: ["filesystem", "github", "git", "postgresql", "docker", "brave-search"],
+    content: `
+<p>Spring Boot powers a massive share of enterprise Java development — REST APIs, microservices, batch jobs, and event-driven systems. Its convention-over-configuration design is powerful, but it means your AI needs deep context about your specific configuration to generate accurate code. MCP servers provide exactly that.</p>
+
+<p>Here are the MCP servers that matter most for Spring Boot development in 2026.</p>
+
+<h2>1. Filesystem MCP Server — Navigate Multi-Module Spring Projects</h2>
+
+<p>Spring Boot projects often span multiple Maven or Gradle modules with separate service, repository, and domain layers. The Filesystem MCP server gives your AI direct access to your full project structure — including configuration files, bean definitions, and integration test setups.</p>
+
+<p><strong>Key use cases for Spring Boot developers:</strong></p>
+<ul>
+<li>Read existing @Entity classes and @Repository interfaces before generating new ones that follow your conventions</li>
+<li>Inspect @Configuration classes to understand custom bean wiring before adding new components</li>
+<li>Browse application.yml and application-{profile}.yml files to generate environment-specific configurations</li>
+<li>Navigate multi-module Maven builds to correctly manage inter-module dependencies</li>
+</ul>
+
+<p><strong>Best for:</strong> All Spring Boot developers — the foundational MCP server for any Java enterprise project.</p>
+
+<h2>2. PostgreSQL MCP Server — JPA and Spring Data Access</h2>
+
+<p>Spring Boot applications almost always have a relational database layer via Spring Data JPA, JDBC, or jOOQ. When your AI has live access to your PostgreSQL schema, it can generate entity classes, repository queries, and Flyway migrations that match your actual database.</p>
+
+<p><strong>Key use cases for Spring Boot developers:</strong></p>
+<ul>
+<li>Generate @Entity classes with correct field types and constraint annotations from live table inspection</li>
+<li>Write Spring Data @Query annotations with JPQL that references actual entity field names</li>
+<li>Create Flyway migration scripts that correctly reference existing column names and foreign keys</li>
+<li>Debug lazy loading issues by cross-referencing actual table relationships with your JPA mappings</li>
+</ul>
+
+<p><strong>Best for:</strong> Spring Boot developers using Spring Data JPA, Hibernate, or jOOQ with PostgreSQL.</p>
+
+<h2>3. Git MCP Server — Track Spring Boot Configuration Evolution</h2>
+
+<p>Spring Boot projects accumulate configuration over time — security configurations, custom auto-configuration, bean overrides, and profile-specific property files. The Git MCP server gives your AI the history it needs to understand why things are configured the way they are.</p>
+
+<p><strong>Key use cases for Spring Boot developers:</strong></p>
+<ul>
+<li>Review commit history for a SecurityFilterChain to understand why specific endpoints were excluded</li>
+<li>Inspect Spring Boot 2.x → 3.x migration commits to understand Jakarta namespace and security API changes</li>
+<li>Check blame on complex @Conditional annotations to find the original environment constraint intent</li>
+<li>Review @Transactional boundary changes correlated with past performance or correctness issues</li>
+</ul>
+
+<p><strong>Best for:</strong> Spring Boot teams maintaining long-lived applications through major Spring version migrations.</p>
+
+<h2>4. GitHub MCP Server — Spring Ecosystem Issue Access</h2>
+
+<p>The Spring ecosystem — Spring Framework, Spring Security, Spring Data, Spring Cloud — releases frequently and deprecates APIs regularly. The GitHub MCP server lets your AI pull issue discussions and migration guides from the official Spring repos directly.</p>
+
+<p><strong>Key use cases for Spring Boot developers:</strong></p>
+<ul>
+<li>Search Spring Security issues for known bugs before debugging complex filter chain ordering problems</li>
+<li>Pull Spring Boot 3.x migration guide from the official GitHub repo for accurate upgrade steps</li>
+<li>Review Spring Data JPA open PRs when debugging derived query method edge cases</li>
+<li>Find Spring Cloud Gateway filter configuration examples from authoritative sources</li>
+</ul>
+
+<p><strong>Best for:</strong> Spring Boot developers navigating the Spring ecosystem's rapid deprecation cycle and major version migrations.</p>
+
+<h2>5. Docker MCP Server — Spring Boot Container Debugging</h2>
+
+<p>Spring Boot applications are frequently containerized with Docker and deployed to Kubernetes. The Docker MCP server gives your AI visibility into running containers — useful for debugging JVM memory settings, datasource connection pool exhaustion, and Spring profile loading in production environments.</p>
+
+<p><strong>Key use cases for Spring Boot developers:</strong></p>
+<ul>
+<li>Inspect container logs to correlate Spring application context startup failures with configuration issues</li>
+<li>Check environment variable injection for Spring datasource and secret property sources in running containers</li>
+<li>Debug multi-container compose setups with Spring Boot app + PostgreSQL + Redis + Kafka</li>
+<li>Review JVM container flag settings (UseContainerSupport, MaxRAMPercentage) for memory tuning</li>
+</ul>
+
+<p><strong>Best for:</strong> Spring Boot developers deploying containerized microservices with multiple dependent services.</p>
+
+<h2>6. Brave Search MCP Server — Current Spring Documentation</h2>
+
+<p>Spring Boot 3.x introduced significant changes — Jakarta EE namespace migrations, new security DSL, updated auto-configuration, and Observability API changes. Brave Search keeps your AI from generating Spring Boot 2.x code when you're running Spring Boot 3.x.</p>
+
+<p><strong>Key use cases for Spring Boot developers:</strong></p>
+<ul>
+<li>Look up current Spring Security 6.x SecurityFilterChain DSL syntax for your Spring Boot version</li>
+<li>Find Spring Boot 3 Actuator observability configuration patterns with Micrometer and OpenTelemetry</li>
+<li>Research Spring Data JPA 3.x specification and criteria API changes for complex dynamic queries</li>
+<li>Check Spring Cloud 2023.x compatibility matrix for your Spring Boot version before upgrading</li>
+</ul>
+
+<p><strong>Best for:</strong> All Spring Boot developers navigating the Spring Boot 2.x → 3.x migration and Jakarta EE transition.</p>
+
+<h2>Recommended MCP Stack for Spring Boot Developers</h2>
+
+<ul>
+<li><strong>Always active:</strong> Filesystem, Brave Search, Git</li>
+<li><strong>Database access:</strong> PostgreSQL</li>
+<li><strong>Version control collaboration:</strong> GitHub</li>
+<li><strong>Containerized deployments:</strong> Docker</li>
+</ul>
+
+<p>Spring Boot's value is its opinionated configuration — but that means context is everything. When your AI has direct filesystem access to your beans, configuration files, and JPA entities, live schema access for your database queries, and current documentation for Spring Boot 3.x APIs, it stops generating deprecated Spring Security WebSecurityConfigurerAdapter code and starts writing modern SecurityFilterChain configurations that actually match your project's architecture.</p>
+
+<p><strong>Related guides:</strong></p>
+<ul>
+<li><a href="/blog/best-mcp-servers-for-java-developers">Best MCP Servers for Java Developers</a></li>
+<li><a href="/blog/best-mcp-servers-for-backend-developers">Best MCP Servers for Backend Developers</a></li>
+<li><a href="/blog/best-mcp-servers-for-database">Best MCP Servers for Database Work</a></li>
+</ul>
+    `.trim(),
+  },
 ];
 
 export function getBlogPostBySlug(slug: string): BlogPost | undefined {
