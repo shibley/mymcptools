@@ -35225,6 +35225,371 @@ async with MCPServerStdio(
 </ul>
     `.trim(),
   },
+  {
+    slug: "best-mcp-servers-for-kotlin-developers",
+    title: "Best MCP Servers for Kotlin Developers in 2026",
+    description: "The top MCP servers for Kotlin development. From Android apps to Spring Boot backends — supercharge your Kotlin workflow with Model Context Protocol.",
+    date: "2026-05-23",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "7 min read",
+    keywords: ["best mcp servers for kotlin", "kotlin mcp servers", "mcp tools for kotlin developers", "model context protocol kotlin", "android mcp servers"],
+    relatedServerSlugs: ["filesystem", "github", "git", "postgresql", "gradle-mcp", "docker", "brave-search"],
+    content: `
+<p>Kotlin has grown from an Android-first language to a full-stack platform — backend APIs with Ktor and Spring Boot, multiplatform mobile targeting iOS and Android, and even web frontends with Kotlin/JS. The right MCP servers match this breadth, giving your AI direct access to the context it needs across your entire Kotlin stack.</p>
+
+<p>Here are the MCP servers that matter most for Kotlin development in 2026.</p>
+
+<h2>1. Filesystem MCP Server — Navigate Multi-Module Kotlin Projects</h2>
+
+<p>Kotlin projects — especially Android apps and multiplatform codebases — have complex directory layouts with multiple modules, build variants, and generated code. The Filesystem MCP server gives your AI direct access to your entire project tree without you copy-pasting source files.</p>
+
+<p><strong>Key use cases for Kotlin developers:</strong></p>
+<ul>
+<li>Read Kotlin data classes, sealed classes, and interface hierarchies across modules</li>
+<li>Inspect <code>build.gradle.kts</code> files to understand project configuration accurately</li>
+<li>Navigate multiplatform source sets (<code>commonMain</code>, <code>androidMain</code>, <code>iosMain</code>)</li>
+<li>Review generated Room database code alongside the DAO interfaces</li>
+</ul>
+
+<p><strong>Best for:</strong> All Kotlin developers — foundational for any AI-assisted Kotlin workflow.</p>
+
+<h2>2. Gradle MCP Server — Build System as Context</h2>
+
+<p>Kotlin's tight Gradle integration means build configuration is code. The Gradle MCP server gives your AI visibility into your build scripts, dependency declarations, and task definitions — so it can help you diagnose build failures and dependency conflicts accurately.</p>
+
+<p><strong>Key use cases for Kotlin developers:</strong></p>
+<ul>
+<li>Diagnose version catalog conflicts by reading your <code>libs.versions.toml</code></li>
+<li>Understand custom task dependencies and plugin configurations</li>
+<li>Debug Kotlin Multiplatform target configurations</li>
+<li>Review annotation processor setups (Kapt, KSP) that affect code generation</li>
+</ul>
+
+<p><strong>Best for:</strong> Kotlin developers dealing with complex multi-module or multiplatform builds.</p>
+
+<h2>3. Git MCP Server — Code History for Kotlin Codebases</h2>
+
+<p>Kotlin codebases often have significant refactoring history — Java-to-Kotlin migrations, architecture shifts from MVP to MVVM to MVI. The Git MCP server gives your AI access to that history so it understands why things are structured the way they are.</p>
+
+<p><strong>Key use cases for Kotlin developers:</strong></p>
+<ul>
+<li>Trace when a class was converted from Java and what changed in the migration</li>
+<li>Review recent coroutine or Flow refactors to understand async patterns in use</li>
+<li>Check blame on complex sealed class hierarchies to understand design intent</li>
+<li>Compare API surface changes across versions</li>
+</ul>
+
+<p><strong>Best for:</strong> Kotlin teams maintaining long-lived Android apps or backend services.</p>
+
+<h2>4. GitHub MCP Server — Issues and PRs for Kotlin Projects</h2>
+
+<p>Whether you're building Android apps or Kotlin backend services, the GitHub MCP server lets your AI create issues, review PRs, and search across your entire codebase. This is especially powerful for multiplatform projects spanning multiple repositories.</p>
+
+<p><strong>Key use cases for Kotlin developers:</strong></p>
+<ul>
+<li>Search for all usages of a coroutine scope pattern across a monorepo</li>
+<li>Create bug reports with stack traces and reproduction steps attached</li>
+<li>Review PR diffs for API changes across common and platform-specific code</li>
+<li>Find related issues when debugging Android-specific vs iOS-specific behavior</li>
+</ul>
+
+<p><strong>Best for:</strong> Kotlin teams or open-source Kotlin library maintainers.</p>
+
+<h2>5. PostgreSQL MCP Server — Schema-Aware Backend Queries</h2>
+
+<p>Kotlin backend developers using Exposed, JOOQ, or Spring Data JPA need precise schema knowledge. The PostgreSQL MCP server gives your AI live access to your database schema so it writes accurate queries and correct entity mappings against your actual tables.</p>
+
+<p><strong>Key use cases for Kotlin developers:</strong></p>
+<ul>
+<li>Generate correct Exposed table object definitions from real schemas</li>
+<li>Write type-safe JOOQ queries with accurate column name mappings</li>
+<li>Debug Hibernate mapping issues by inspecting current table structure</li>
+<li>Understand migration history via schema inspection</li>
+</ul>
+
+<p><strong>Best for:</strong> Ktor, Spring Boot, or Quarkus developers using PostgreSQL.</p>
+
+<h2>6. Docker MCP Server — Containerized Kotlin Services</h2>
+
+<p>Kotlin microservices almost always run in Docker, especially Spring Boot and Ktor services deployed to Kubernetes. The Docker MCP server gives your AI visibility into your running containers and logs — essential for debugging Kotlin backend services.</p>
+
+<p><strong>Key use cases for Kotlin developers:</strong></p>
+<ul>
+<li>Inspect container logs to correlate with Kotlin exceptions and stack traces</li>
+<li>Debug multi-service compose stacks for local Kotlin microservice development</li>
+<li>Review container resource usage to understand memory pressure in JVM services</li>
+<li>Check health endpoint responses alongside your Kotlin service code</li>
+</ul>
+
+<p><strong>Best for:</strong> Kotlin backend developers deploying containerized JVM services.</p>
+
+<h2>7. Brave Search MCP Server — Documentation and Library Research</h2>
+
+<p>Kotlin's ecosystem evolves fast — new Coroutines APIs, multiplatform libraries, and Compose Multiplatform updates land frequently. The Brave Search MCP server lets your AI look up current documentation and library changelogs without you leaving your development flow.</p>
+
+<p><strong>Key use cases for Kotlin developers:</strong></p>
+<ul>
+<li>Look up the correct Coroutines API for your Kotlin version</li>
+<li>Find Compose Multiplatform examples for specific platform targets</li>
+<li>Check if a library supports Kotlin Multiplatform before adding it as a dependency</li>
+<li>Research Kotlin Symbol Processing (KSP) processor documentation</li>
+</ul>
+
+<p><strong>Best for:</strong> All Kotlin developers staying current with the evolving ecosystem.</p>
+
+<h2>Recommended MCP Stack for Kotlin Developers</h2>
+
+<ul>
+<li><strong>Always active:</strong> Filesystem, Brave Search, Git</li>
+<li><strong>Android/Multiplatform:</strong> Gradle MCP, GitHub</li>
+<li><strong>Backend (Ktor/Spring Boot):</strong> PostgreSQL, Docker</li>
+</ul>
+
+<p>Kotlin's strengths — null safety, coroutines, and expressive type system — shine brightest when your AI has real context. With Filesystem for codebase navigation, Gradle for build awareness, and PostgreSQL for schema-accurate backend code, your AI writes idiomatic Kotlin that fits your architecture rather than generic snippets.</p>
+
+<p><strong>Related guides:</strong></p>
+<ul>
+<li><a href="/blog/best-mcp-servers-for-java-developers">Best MCP Servers for Java Developers</a></li>
+<li><a href="/blog/best-mcp-servers-for-android-developers">Best MCP Servers for Android Developers</a></li>
+<li><a href="/blog/best-mcp-servers-for-mobile-developers">Best MCP Servers for Mobile Developers</a></li>
+</ul>
+    `.trim(),
+  },
+  {
+    slug: "best-mcp-servers-for-databricks",
+    title: "Best MCP Servers for Databricks Developers in 2026",
+    description: "The top MCP servers for Databricks workflows. From Delta Lake queries to ML model management — supercharge your Databricks data engineering with Model Context Protocol.",
+    date: "2026-05-23",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "8 min read",
+    keywords: ["best mcp servers for databricks", "databricks mcp servers", "mcp tools for databricks", "model context protocol databricks", "delta lake mcp"],
+    relatedServerSlugs: ["databricks", "databricks-sql", "apache-spark", "filesystem", "github", "brave-search"],
+    content: `
+<p>Databricks sits at the intersection of data engineering, data science, and ML engineering. It's a platform where Python notebooks run Spark jobs, SQL analysts query Delta Lake tables, and ML engineers track experiments in MLflow — all in the same environment. The right MCP servers give your AI direct access to all three layers of that stack.</p>
+
+<p>Here are the MCP servers that matter most for Databricks development in 2026.</p>
+
+<h2>1. Databricks MCP Server — Direct Platform Access</h2>
+
+<p>The Databricks MCP server is the foundation for any Databricks-focused workflow. It gives your AI direct access to your Databricks workspace — clusters, notebooks, jobs, and Unity Catalog — without you having to describe your environment from scratch every time.</p>
+
+<p><strong>Key use cases for Databricks developers:</strong></p>
+<ul>
+<li>Query cluster configurations to understand compute resources available</li>
+<li>Inspect job definitions and schedule configurations for automation</li>
+<li>Navigate the Unity Catalog to understand table ownership and lineage</li>
+<li>Read notebook content for code review and refactoring assistance</li>
+</ul>
+
+<p><strong>Best for:</strong> All Databricks developers — the non-negotiable foundation of a Databricks MCP stack.</p>
+
+<h2>2. Databricks SQL MCP Server — Schema-Aware Query Generation</h2>
+
+<p>Writing Spark SQL and Delta Lake queries against the wrong schema is one of the most common errors in Databricks workflows. The Databricks SQL MCP server gives your AI live schema access — table names, column types, partition columns, and Delta table properties.</p>
+
+<p><strong>Key use cases for Databricks developers:</strong></p>
+<ul>
+<li>Generate accurate PySpark DataFrame operations with correct column names</li>
+<li>Write Delta Lake MERGE statements against actual table schemas</li>
+<li>Understand Z-ORDER columns and partition layouts for query optimization</li>
+<li>Inspect table history for time travel query generation</li>
+</ul>
+
+<p><strong>Best for:</strong> Data engineers writing ETL pipelines and SQL analysts querying Delta Lake.</p>
+
+<h2>3. Apache Spark MCP Server — Cluster-Aware Computation</h2>
+
+<p>Spark configuration mistakes — wrong executor memory, incorrect shuffle partitions, poorly tuned broadcast joins — are expensive in Databricks. The Apache Spark MCP server gives your AI visibility into your Spark application's execution plan and configuration so it can help you optimize rather than just generate boilerplate.</p>
+
+<p><strong>Key use cases for Databricks developers:</strong></p>
+<ul>
+<li>Analyze query execution plans to identify shuffle bottlenecks</li>
+<li>Tune Spark configurations for your specific cluster size and workload</li>
+<li>Debug partition skew issues by inspecting task-level metrics</li>
+<li>Generate optimized DataFrame transformations based on actual data size</li>
+</ul>
+
+<p><strong>Best for:</strong> Data engineers optimizing large-scale Spark jobs and pipelines.</p>
+
+<h2>4. Filesystem MCP Server — Local Notebooks and Scripts</h2>
+
+<p>Not all Databricks development happens in the browser. Many teams develop PySpark libraries, Delta Live Tables pipelines, and Databricks Asset Bundles locally before deploying. The Filesystem MCP server gives your AI access to your local project files alongside the cloud environment.</p>
+
+<p><strong>Key use cases for Databricks developers:</strong></p>
+<ul>
+<li>Read local Python library code that gets packaged and uploaded to Databricks</li>
+<li>Inspect Databricks Asset Bundle YAML configurations</li>
+<li>Review Delta Live Tables pipeline definitions in your local repo</li>
+<li>Access shared utility modules across multiple notebooks and jobs</li>
+</ul>
+
+<p><strong>Best for:</strong> Databricks developers using local development with Databricks CLI and Asset Bundles.</p>
+
+<h2>5. GitHub MCP Server — Version Control for Data Pipelines</h2>
+
+<p>Modern Databricks teams version-control their notebooks and pipeline definitions in Git. The GitHub MCP server lets your AI review PRs for pipeline changes, search across your data engineering codebase, and create issues — all within your AI conversation.</p>
+
+<p><strong>Key use cases for Databricks developers:</strong></p>
+<ul>
+<li>Review PR diffs for Delta Live Tables pipeline changes before deploying</li>
+<li>Search for all places a specific DataFrame transformation pattern is used</li>
+<li>Create issues with schema details and query plans attached</li>
+<li>Understand pipeline lineage by tracing code history across notebooks</li>
+</ul>
+
+<p><strong>Best for:</strong> Databricks teams using Git-backed workspace or Databricks Repos.</p>
+
+<h2>6. Brave Search MCP Server — Documentation and API Research</h2>
+
+<p>Databricks releases new features frequently — Unity Catalog updates, Delta Lake 4.x features, MLflow improvements. The Brave Search MCP server lets your AI look up current Databricks documentation and runtime release notes without breaking your development flow.</p>
+
+<p><strong>Key use cases for Databricks developers:</strong></p>
+<ul>
+<li>Look up Delta Lake API changes between runtime versions</li>
+<li>Find Unity Catalog privilege grant syntax for your specific catalog type</li>
+<li>Research MLflow experiment tracking APIs for your Databricks Runtime version</li>
+<li>Check Photon engine compatibility for specific SQL operations</li>
+</ul>
+
+<p><strong>Best for:</strong> All Databricks developers staying current with platform updates.</p>
+
+<h2>Recommended MCP Stack for Databricks Developers</h2>
+
+<ul>
+<li><strong>Always active:</strong> Databricks, Databricks SQL, Brave Search</li>
+<li><strong>Pipeline optimization:</strong> Apache Spark, Filesystem</li>
+<li><strong>Team collaboration:</strong> GitHub</li>
+</ul>
+
+<p>The Databricks platform is powerful precisely because it unifies data engineering, analytics, and ML — but that breadth makes context critical. When your AI has live Delta Lake schema access, cluster configuration visibility, and direct workspace connectivity, it shifts from writing generic PySpark patterns to generating queries and pipelines that match your actual data architecture.</p>
+
+<p><strong>Related guides:</strong></p>
+<ul>
+<li><a href="/blog/best-mcp-servers-for-data-engineering">Best MCP Servers for Data Engineering</a></li>
+<li><a href="/blog/best-mcp-servers-for-data-science">Best MCP Servers for Data Science</a></li>
+<li><a href="/blog/best-mcp-servers-for-machine-learning-engineers">Best MCP Servers for ML Engineers</a></li>
+</ul>
+    `.trim(),
+  },
+  {
+    slug: "best-mcp-servers-for-elixir-developers",
+    title: "Best MCP Servers for Elixir Developers in 2026",
+    description: "The top MCP servers for Elixir development. From Phoenix web apps to OTP supervision trees — supercharge your Elixir workflow with Model Context Protocol.",
+    date: "2026-05-23",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "7 min read",
+    keywords: ["best mcp servers for elixir", "elixir mcp servers", "mcp tools for elixir developers", "model context protocol elixir", "phoenix framework mcp"],
+    relatedServerSlugs: ["filesystem", "github", "git", "postgresql", "docker", "brave-search"],
+    content: `
+<p>Elixir developers deal with unique challenges: immutable data flows through OTP supervision trees, concurrent processes communicate via message passing, and Phoenix LiveView blurs the line between server and client. The right MCP servers understand this context — they don't just give your AI files, they give it the architectural awareness Elixir development demands.</p>
+
+<p>Here are the MCP servers that matter most for Elixir development in 2026.</p>
+
+<h2>1. Filesystem MCP Server — Navigate Elixir Project Structure</h2>
+
+<p>Elixir projects follow Mix conventions, and Phoenix apps have layered structures — contexts, schemas, LiveView modules, and PubSub channels spread across specific directories. The Filesystem MCP server gives your AI direct access to your entire project tree so it understands your actual code organization.</p>
+
+<p><strong>Key use cases for Elixir developers:</strong></p>
+<ul>
+<li>Read GenServer implementations alongside their supervisor tree configurations</li>
+<li>Inspect mix.exs and mix.lock for accurate dependency context</li>
+<li>Navigate Phoenix context boundaries and understand bounded domain logic</li>
+<li>Review Ecto schemas alongside their migration history</li>
+</ul>
+
+<p><strong>Best for:</strong> All Elixir developers — the foundation of any AI-assisted Elixir workflow.</p>
+
+<h2>2. Git MCP Server — OTP Architecture History</h2>
+
+<p>Elixir's OTP patterns — Supervisors, GenServers, Registry-based process groups — often encode complex architectural decisions. The Git MCP server gives your AI access to your project's history so it understands why your supervision tree is structured the way it is, not just what it looks like today.</p>
+
+<p><strong>Key use cases for Elixir developers:</strong></p>
+<ul>
+<li>Trace when a GenServer was refactored to use a Registry for process naming</li>
+<li>Review LiveView socket assign evolution across feature releases</li>
+<li>Understand historical context migration decisions in Ecto schema changes</li>
+<li>Check when a supervision strategy was changed from :one_for_one to :rest_for_one</li>
+</ul>
+
+<p><strong>Best for:</strong> Elixir teams maintaining long-lived Phoenix apps or distributed OTP systems.</p>
+
+<h2>3. GitHub MCP Server — Collaboration on Elixir Projects</h2>
+
+<p>The GitHub MCP server lets your AI create issues, review PRs, and search across your Elixir codebase — all within your AI conversation. This is especially useful for teams coordinating Phoenix context boundary changes or OTP architecture refactors.</p>
+
+<p><strong>Key use cases for Elixir developers:</strong></p>
+<ul>
+<li>Search for all modules that call a specific context function before refactoring</li>
+<li>Create detailed bug reports with process state and supervision tree structure</li>
+<li>Review PR diffs for LiveView hook changes and PubSub subscription updates</li>
+<li>Find related issues when debugging distributed Erlang node connectivity</li>
+</ul>
+
+<p><strong>Best for:</strong> Elixir teams or open-source Hex package maintainers.</p>
+
+<h2>4. PostgreSQL MCP Server — Ecto-Aware Database Development</h2>
+
+<p>Ecto's query API and schema definitions require precise knowledge of your actual database schema. The PostgreSQL MCP server gives your AI live access to your tables, constraints, and indexes — so it generates accurate Ecto schemas, migrations, and query compositions against your real data.</p>
+
+<p><strong>Key use cases for Elixir developers:</strong></p>
+<ul>
+<li>Generate correct Ecto schema module definitions from existing tables</li>
+<li>Write Ecto queries with accurate field names and association structures</li>
+<li>Debug complex Ecto query composition issues by inspecting the actual schema</li>
+<li>Review database constraint definitions before writing Ecto changeset validations</li>
+</ul>
+
+<p><strong>Best for:</strong> Phoenix developers and Elixir backend engineers using Ecto with PostgreSQL.</p>
+
+<h2>5. Docker MCP Server — Containerized Elixir Services</h2>
+
+<p>Elixir/OTP releases can run in Docker containers, and distributed Erlang clusters require careful network configuration. The Docker MCP server gives your AI visibility into your running containers and logs — useful for debugging Phoenix deployments and Erlang distribution issues.</p>
+
+<p><strong>Key use cases for Elixir developers:</strong></p>
+<ul>
+<li>Inspect container logs to correlate with Elixir process crashes and OTP restarts</li>
+<li>Check Erlang distribution port configuration in running containers</li>
+<li>Debug multi-node compose setups for local distributed Elixir development</li>
+<li>Review Phoenix endpoint configuration in production-like container environments</li>
+</ul>
+
+<p><strong>Best for:</strong> Elixir developers deploying Phoenix apps or distributed OTP releases in Docker.</p>
+
+<h2>6. Brave Search MCP Server — Elixir Ecosystem Research</h2>
+
+<p>The Elixir and Hex ecosystem evolves continuously — new Phoenix versions, Ecto query API improvements, LiveView hooks updates. The Brave Search MCP server lets your AI look up current documentation and library changelogs without breaking your development flow.</p>
+
+<p><strong>Key use cases for Elixir developers:</strong></p>
+<ul>
+<li>Look up current Phoenix LiveView socket assign patterns for your version</li>
+<li>Find Ecto query composition examples for complex multi-join scenarios</li>
+<li>Research OTP :gen_statem vs GenServer tradeoffs for your use case</li>
+<li>Check Hex package compatibility and recent deprecation notices</li>
+</ul>
+
+<p><strong>Best for:</strong> All Elixir developers staying current with the Phoenix and Hex ecosystem.</p>
+
+<h2>Recommended MCP Stack for Elixir Developers</h2>
+
+<ul>
+<li><strong>Always active:</strong> Filesystem, Brave Search, Git</li>
+<li><strong>Phoenix/Ecto apps:</strong> PostgreSQL, GitHub</li>
+<li><strong>Deployed services:</strong> Docker</li>
+</ul>
+
+<p>Elixir's power comes from the BEAM — processes, supervision, and concurrency that are invisible to your AI unless it has context. With Filesystem giving it your codebase, PostgreSQL giving it your data schema, and Git giving it your architectural history, your AI shifts from writing generic Elixir snippets to generating code that fits your actual OTP design and Phoenix context boundaries.</p>
+
+<p><strong>Related guides:</strong></p>
+<ul>
+<li><a href="/blog/best-mcp-servers-for-developers">Best MCP Servers for Developers</a></li>
+<li><a href="/blog/best-mcp-servers-for-database">Best MCP Servers for Database Work</a></li>
+<li><a href="/blog/best-mcp-servers-for-backend-developers">Best MCP Servers for Backend Developers</a></li>
+</ul>
+    `.trim(),
+  },
 ];
 
 export function getBlogPostBySlug(slug: string): BlogPost | undefined {
