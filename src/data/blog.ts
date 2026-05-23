@@ -34866,6 +34866,365 @@ async with MCPServerStdio(
 </ul>
     `.trim(),
   },
+  {
+    slug: "best-mcp-servers-for-golang-developers",
+    title: "Best MCP Servers for Go Developers in 2026",
+    description: "The top MCP servers every Go developer needs. From database access to testing and cloud deployments — supercharge your Golang workflow with Model Context Protocol.",
+    date: "2026-05-22",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "7 min read",
+    keywords: ["best mcp servers for go", "golang mcp servers", "mcp tools for golang developers", "model context protocol go"],
+    relatedServerSlugs: ["filesystem", "github", "postgres", "docker", "brave-search", "git"],
+    content: `
+<p>Go developers live in the terminal. They care about performance, simplicity, and tooling that doesn't get in the way. The right MCP servers extend that philosophy into AI-assisted development — giving your AI assistant direct access to your Go projects, databases, and infrastructure without breaking your flow.</p>
+
+<p>Here are the MCP servers that matter most for Go development in 2026.</p>
+
+<h2>1. Filesystem MCP Server — Navigate Go Modules Intelligently</h2>
+
+<p>Go's module system and workspace layout have specific conventions that generic file browsing misses. The Filesystem MCP server gives your AI direct access to your Go project tree — reading source files, <code>go.mod</code>, <code>go.sum</code>, and generated code without you having to copy-paste anything.</p>
+
+<p><strong>Key use cases for Go developers:</strong></p>
+<ul>
+<li>Read interface definitions across multiple packages before implementing them</li>
+<li>Inspect <code>go.mod</code> to answer dependency questions accurately</li>
+<li>Navigate workspace layouts with multiple modules (<code>go.work</code>)</li>
+<li>Read generated protobuf or OpenAPI code alongside the source definitions</li>
+</ul>
+
+<p><strong>Best for:</strong> All Go developers — this is the non-negotiable foundation of any MCP setup.</p>
+
+<h2>2. Git MCP Server — Commit History as Context</h2>
+
+<p>Go's simplicity means a lot of architectural decisions live in commit history, not in comments. The Git MCP server gives your AI access to your repo's history — diffs, blame, log, and branch structure — so it can understand why code was written a certain way, not just what it does.</p>
+
+<p><strong>Key use cases for Go developers:</strong></p>
+<ul>
+<li>Review recent changes to understand why an interface was redesigned</li>
+<li>Blame specific functions to understand authorship and change frequency</li>
+<li>Compare branches when reviewing performance optimizations</li>
+<li>Understand migration history for database schema changes</li>
+</ul>
+
+<p><strong>Best for:</strong> Go teams working on long-lived projects where context lives in history.</p>
+
+<h2>3. GitHub MCP Server — Issues and PRs Without Leaving Your Editor</h2>
+
+<p>Most Go projects are on GitHub. The GitHub MCP server lets your AI create issues, review PRs, and search the codebase across your entire organization — all within your AI conversation.</p>
+
+<p><strong>Key use cases for Go developers:</strong></p>
+<ul>
+<li>Search for how a function is used across a monorepo</li>
+<li>Create detailed bug reports with code snippets already attached</li>
+<li>Review PR diffs while discussing implementation approaches</li>
+<li>Find related issues before starting a new feature</li>
+</ul>
+
+<p><strong>Best for:</strong> Go developers working in teams or on open-source projects.</p>
+
+<h2>4. PostgreSQL MCP Server — Schema-Aware Database Queries</h2>
+
+<p>Go's <code>database/sql</code> and popular ORMs like GORM, sqlx, and Ent require precise schema knowledge. The PostgreSQL MCP server gives your AI live access to your database schema — so it writes accurate queries against your actual tables instead of guessing.</p>
+
+<p><strong>Key use cases for Go developers:</strong></p>
+<ul>
+<li>Generate correct GORM model structs from real table definitions</li>
+<li>Write sqlx queries that match your exact column names and types</li>
+<li>Debug migration issues by inspecting current schema state</li>
+<li>Understand foreign key constraints before writing join queries</li>
+</ul>
+
+<p><strong>Best for:</strong> Go backend developers and API engineers working with PostgreSQL.</p>
+
+<h2>5. Docker MCP Server — Container-Aware Development</h2>
+
+<p>Go microservices almost always run in Docker. The Docker MCP server gives your AI visibility into your running containers, images, compose stacks, and logs — essential for debugging distributed Go services.</p>
+
+<p><strong>Key use cases for Go developers:</strong></p>
+<ul>
+<li>Inspect running container logs when debugging service-to-service communication</li>
+<li>Check container health and resource usage alongside your code</li>
+<li>Manage multi-service compose stacks for local development</li>
+<li>Inspect network configuration for microservice connectivity issues</li>
+</ul>
+
+<p><strong>Best for:</strong> Go developers building containerized microservices.</p>
+
+<h2>6. Brave Search MCP Server — Docs and Standard Library Lookups</h2>
+
+<p>Go's standard library is expansive. The Brave Search MCP server lets your AI look up Go documentation, <code>pkg.go.dev</code> package details, and StackOverflow answers without leaving the conversation.</p>
+
+<p><strong>Key use cases for Go developers:</strong></p>
+<ul>
+<li>Look up standard library functions (<code>sync</code>, <code>context</code>, <code>net/http</code>) before using them</li>
+<li>Find pkg.go.dev documentation for third-party packages</li>
+<li>Search for Go-specific error patterns and solutions</li>
+<li>Research performance benchmarks and best practices</li>
+</ul>
+
+<p><strong>Best for:</strong> All Go developers, especially those working with unfamiliar packages.</p>
+
+<h2>The Recommended Go Developer MCP Stack</h2>
+
+<p>Start with this core setup:</p>
+
+<ul>
+<li><strong>Always active:</strong> Filesystem, Git, Brave Search</li>
+<li><strong>Database work:</strong> PostgreSQL (or SQLite for simpler projects)</li>
+<li><strong>Team/open source:</strong> GitHub</li>
+<li><strong>Microservices:</strong> Docker</li>
+</ul>
+
+<p>Go's explicit error handling and interface-based design make it an excellent fit for AI-assisted development — when your AI has MCP server access to your actual code and schema, it stops making assumptions and starts writing Go that compiles on the first try.</p>
+
+<p><strong>Related guides:</strong></p>
+<ul>
+<li><a href="/blog/best-mcp-servers-for-python-developers">Best MCP Servers for Python Developers</a></li>
+<li><a href="/blog/best-mcp-servers-for-typescript">Best MCP Servers for TypeScript Developers</a></li>
+<li><a href="/blog/best-mcp-servers-for-developers">Best MCP Servers for Developers</a></li>
+</ul>
+    `.trim(),
+  },
+  {
+    slug: "best-mcp-servers-for-mobile-developers",
+    title: "Best MCP Servers for Mobile Developers: iOS, Android & React Native",
+    description: "Top MCP servers for mobile app development. Supercharge iOS, Android, and React Native workflows with Model Context Protocol servers for databases, testing, and APIs.",
+    date: "2026-05-22",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "8 min read",
+    keywords: ["best mcp servers for mobile developers", "ios mcp servers", "android mcp servers", "react native mcp tools"],
+    relatedServerSlugs: ["filesystem", "github", "sqlite", "brave-search", "appium", "browserstack"],
+    content: `
+<p>Mobile development has always been tool-heavy — Xcode, Android Studio, Gradle, simulators, device farms. MCP servers extend your AI assistant's reach into all of these, giving it actual context about your project instead of just your open file.</p>
+
+<p>Whether you're building iOS, Android, or cross-platform React Native apps, here are the MCP servers that will have the biggest impact on your workflow.</p>
+
+<h2>1. Filesystem MCP Server — Read Your Entire Project</h2>
+
+<p>Mobile projects are sprawling. A typical React Native project has JS, native iOS code, native Android code, config files, and generated assets spread across a complex directory tree. The Filesystem MCP server gives your AI the full picture.</p>
+
+<p><strong>Key use cases for mobile developers:</strong></p>
+<ul>
+<li>Read native iOS (<code>AppDelegate.swift</code>, Info.plist, entitlements) alongside your JS logic</li>
+<li>Inspect Android's Gradle files to explain build configuration issues</li>
+<li>Navigate React Native's <code>android/</code> and <code>ios/</code> folders when debugging native modules</li>
+<li>Read Xcode project files to understand target and scheme configuration</li>
+</ul>
+
+<p><strong>Best for:</strong> All mobile developers — cross-platform and native alike.</p>
+
+<h2>2. SQLite MCP Server — Mobile's Favorite Database</h2>
+
+<p>SQLite is the native database for both iOS (via Core Data and FMDB) and Android (via Room and SQLiteOpenHelper). The SQLite MCP server lets your AI query your app's database directly — inspecting schemas and data without you having to extract the DB file manually.</p>
+
+<p><strong>Key use cases for mobile developers:</strong></p>
+<ul>
+<li>Inspect Room entity schemas to generate accurate migration scripts</li>
+<li>Query Core Data stores (exported as SQLite) to debug data persistence issues</li>
+<li>Validate AsyncStorage data for React Native debugging</li>
+<li>Check WatermelonDB and Realm database exports</li>
+</ul>
+
+<p><strong>Best for:</strong> Mobile developers using SQLite-backed local storage.</p>
+
+<h2>3. GitHub MCP Server — Code Search Across Native and JS</h2>
+
+<p>Mobile repos often span multiple languages in the same project. The GitHub MCP server lets your AI search across all of them — finding Swift, Kotlin, and JavaScript code that relates to the same feature, across the entire repository.</p>
+
+<p><strong>Key use cases for mobile developers:</strong></p>
+<ul>
+<li>Find all usages of a native module bridge across JS and native code</li>
+<li>Review PR diffs for dependency upgrades (especially React Native version bumps)</li>
+<li>Search for platform-specific implementations of the same feature</li>
+<li>Track issues related to device-specific bugs</li>
+</ul>
+
+<p><strong>Best for:</strong> React Native teams and any mobile developer on GitHub.</p>
+
+<h2>4. Appium MCP Server — Mobile Testing Integration</h2>
+
+<p>Appium is the standard for cross-platform mobile UI testing. The Appium MCP server allows your AI to understand and interact with your test suite — analyzing test failures, suggesting test cases, and helping debug flaky tests that depend on device state.</p>
+
+<p><strong>Key use cases for mobile developers:</strong></p>
+<ul>
+<li>Analyze test failure logs with full context of what the AI is looking at</li>
+<li>Generate new Appium test cases for untested user flows</li>
+<li>Debug element locator strategies that fail on specific device sizes</li>
+<li>Review test coverage across iOS and Android platforms</li>
+</ul>
+
+<p><strong>Best for:</strong> Mobile QA engineers and developers writing automated UI tests.</p>
+
+<h2>5. BrowserStack MCP Server — Real Device Testing</h2>
+
+<p>BrowserStack gives you access to thousands of real iOS and Android devices. The BrowserStack MCP server lets your AI interact with your BrowserStack test runs, session logs, and device matrix without you having to navigate the dashboard manually.</p>
+
+<p><strong>Key use cases for mobile developers:</strong></p>
+<ul>
+<li>Check test results across device configurations directly in your AI conversation</li>
+<li>Analyze screenshots from failed sessions to understand UI rendering issues</li>
+<li>Review device coverage gaps in your test matrix</li>
+<li>Debug crashes that only reproduce on specific OS versions</li>
+</ul>
+
+<p><strong>Best for:</strong> Teams doing cross-device testing on BrowserStack.</p>
+
+<h2>6. Brave Search MCP Server — Documentation for Every Platform</h2>
+
+<p>Mobile development means navigating multiple documentation sites — Apple Developer Docs, Android Developers, React Native docs, npm packages. The Brave Search MCP server handles all of them without tab-switching.</p>
+
+<p><strong>Key use cases for mobile developers:</strong></p>
+<ul>
+<li>Look up iOS API changes between Xcode versions</li>
+<li>Search Android Jetpack Compose documentation for composable APIs</li>
+<li>Find React Native community package compatibility tables</li>
+<li>Research App Store and Play Store policy updates</li>
+</ul>
+
+<p><strong>Best for:</strong> All mobile developers — platform documentation is too fragmented to memorize.</p>
+
+<h2>The Recommended Mobile Developer MCP Stack</h2>
+
+<p>Core setup for all mobile developers:</p>
+
+<ul>
+<li><strong>Always active:</strong> Filesystem, Brave Search</li>
+<li><strong>Database work:</strong> SQLite</li>
+<li><strong>Team workflow:</strong> GitHub</li>
+<li><strong>Testing:</strong> Appium (for test automation teams)</li>
+<li><strong>Device testing:</strong> BrowserStack (if you use their platform)</li>
+</ul>
+
+<p>Mobile development uniquely benefits from filesystem access — the multi-language, multi-platform nature of modern mobile apps means your AI can easily get confused without direct access to your actual project structure. With Filesystem + SQLite + GitHub, your AI stops guessing and starts giving you advice that actually applies to your codebase.</p>
+
+<p><strong>Related guides:</strong></p>
+<ul>
+<li><a href="/blog/best-mcp-servers-for-react-developers">Best MCP Servers for React Developers</a></li>
+<li><a href="/blog/best-mcp-servers-for-testing">Best MCP Servers for Testing</a></li>
+<li><a href="/blog/best-mcp-servers-for-developers">Best MCP Servers for Developers</a></li>
+</ul>
+    `.trim(),
+  },
+  {
+    slug: "best-mcp-servers-for-java-developers",
+    title: "Best MCP Servers for Java Developers in 2026",
+    description: "Top MCP servers for Java and Spring Boot developers. Connect your AI to databases, build tools, and APIs to supercharge your Java development workflow.",
+    date: "2026-05-22",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "7 min read",
+    keywords: ["best mcp servers for java", "java mcp servers", "spring boot mcp tools", "model context protocol java developers"],
+    relatedServerSlugs: ["filesystem", "github", "postgres", "docker", "brave-search", "git"],
+    content: `
+<p>Java development has always been enterprise-grade — complex project structures, verbose configuration, and deep integration with databases and infrastructure. MCP servers give your AI the context it needs to navigate this complexity — reading your Spring Boot configuration, querying your actual database schema, and understanding your multi-module Maven or Gradle project.</p>
+
+<h2>1. Filesystem MCP Server — Navigate Complex Project Structures</h2>
+
+<p>Java projects are notoriously file-heavy. Spring Boot alone generates or expects dozens of configuration files across <code>src/main/java</code>, <code>src/main/resources</code>, and test directories. The Filesystem MCP server gives your AI the full picture — reading across your entire Maven or Gradle project without you having to manually share files.</p>
+
+<p><strong>Key use cases for Java developers:</strong></p>
+<ul>
+<li>Read Spring Boot's <code>application.yml</code> and <code>application.properties</code> to understand configuration context</li>
+<li>Navigate multi-module Maven/Gradle projects and understand inter-module dependencies</li>
+<li>Access generated code (Lombok, MapStruct, Hibernate schema) alongside hand-written code</li>
+<li>Read <code>pom.xml</code> or <code>build.gradle</code> to understand the dependency tree</li>
+</ul>
+
+<p><strong>Best for:</strong> All Java developers — Spring Boot, Jakarta EE, Quarkus, and Micronaut.</p>
+
+<h2>2. PostgreSQL MCP Server — Schema-Aware Database Development</h2>
+
+<p>Java's JPA/Hibernate, Spring Data JPA, and MyBatis all require accurate schema knowledge to work correctly. The PostgreSQL MCP server gives your AI live access to your actual database schema — so it generates entity classes, repository interfaces, and queries that match your real tables.</p>
+
+<p><strong>Key use cases for Java developers:</strong></p>
+<ul>
+<li>Generate accurate JPA <code>@Entity</code> classes from live table definitions</li>
+<li>Write Spring Data JPA repository methods with correct field names</li>
+<li>Debug Hibernate mapping issues by inspecting actual column types and constraints</li>
+<li>Understand foreign key relationships before writing JPQL or Criteria API queries</li>
+</ul>
+
+<p><strong>Best for:</strong> Spring Boot and Jakarta EE developers working with PostgreSQL (and adaptable to MySQL).</p>
+
+<h2>3. GitHub MCP Server — Enterprise Codebase Navigation</h2>
+
+<p>Java enterprise projects are often large — thousands of classes, hundreds of packages, years of accumulated code. The GitHub MCP server lets your AI search across the entire codebase, not just the files you have open.</p>
+
+<p><strong>Key use cases for Java developers:</strong></p>
+<ul>
+<li>Find all implementations of a service interface across a large codebase</li>
+<li>Search for usage of deprecated APIs before migrating</li>
+<li>Review PR diffs for dependency version upgrades (especially Spring Boot major versions)</li>
+<li>Find examples of existing patterns before implementing new features</li>
+</ul>
+
+<p><strong>Best for:</strong> Java developers on teams working with large codebases on GitHub.</p>
+
+<h2>4. Docker MCP Server — Spring Boot in Containers</h2>
+
+<p>Modern Java applications run in Docker. The Docker MCP server gives your AI visibility into your running containers, compose stacks, and logs — critical for debugging Spring Boot microservices and their interactions.</p>
+
+<p><strong>Key use cases for Java developers:</strong></p>
+<ul>
+<li>Inspect Spring Boot application logs across a multi-container stack</li>
+<li>Check container health endpoints (<code>/actuator/health</code>) alongside the code that exposes them</li>
+<li>Debug networking between microservices in a compose environment</li>
+<li>Manage local Kafka, Redis, or PostgreSQL containers used in development</li>
+</ul>
+
+<p><strong>Best for:</strong> Java developers building Spring Boot microservices.</p>
+
+<h2>5. Git MCP Server — Understand Why Code Exists</h2>
+
+<p>Enterprise Java codebases accumulate years of decisions. The Git MCP server gives your AI access to commit history, blame data, and branch diffs — helping it understand why code was written a certain way, not just what it does today.</p>
+
+<p><strong>Key use cases for Java developers:</strong></p>
+<ul>
+<li>Understand why a workaround was added to a Hibernate mapping</li>
+<li>Review the history of a Spring Security configuration before modifying it</li>
+<li>Find when a performance regression was introduced using git bisect context</li>
+<li>Understand migration history for evolving database schemas</li>
+</ul>
+
+<p><strong>Best for:</strong> Java developers working on long-lived enterprise projects.</p>
+
+<h2>6. Brave Search MCP Server — Spring Docs and Stack Overflow</h2>
+
+<p>Spring's documentation ecosystem is vast — Spring Framework, Spring Boot, Spring Security, Spring Data, Spring Cloud. The Brave Search MCP server lets your AI look up the right documentation without breaking your flow.</p>
+
+<p><strong>Key use cases for Java developers:</strong></p>
+<ul>
+<li>Look up Spring Boot auto-configuration properties without memorizing them</li>
+<li>Find Spring Security 6.x migration guides when upgrading from 5.x</li>
+<li>Search Baeldung and Stack Overflow for Java-specific solutions</li>
+<li>Look up Maven Central package details before adding dependencies</li>
+</ul>
+
+<p><strong>Best for:</strong> All Java developers, especially those working with Spring's ever-evolving ecosystem.</p>
+
+<h2>The Recommended Java Developer MCP Stack</h2>
+
+<p>Core setup for Java development:</p>
+
+<ul>
+<li><strong>Always active:</strong> Filesystem, Brave Search</li>
+<li><strong>Database work:</strong> PostgreSQL</li>
+<li><strong>Version control:</strong> Git, GitHub</li>
+<li><strong>Containerized services:</strong> Docker</li>
+</ul>
+
+<p>Java's verbosity is a feature, not a bug — but it means context matters more than in any other language. When your AI has direct filesystem access to your multi-module project, live database schema access, and the ability to search your entire codebase, it shifts from writing generic Spring templates to writing code that actually fits your architecture.</p>
+
+<p><strong>Related guides:</strong></p>
+<ul>
+<li><a href="/blog/best-mcp-servers-for-developers">Best MCP Servers for Developers</a></li>
+<li><a href="/blog/best-mcp-servers-for-database">Best MCP Servers for Database Work</a></li>
+<li><a href="/blog/best-mcp-servers-for-devops">Best MCP Servers for DevOps</a></li>
+</ul>
+    `.trim(),
+  },
 ];
 
 export function getBlogPostBySlug(slug: string): BlogPost | undefined {
