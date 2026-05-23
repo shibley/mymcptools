@@ -34328,6 +34328,544 @@ async with MCPServerStdio(
 </ul>
     `.trim(),
   },
+  {
+    slug: "best-mcp-servers-for-python-developers",
+    title: "Best MCP Servers for Python Developers in 2026",
+    description: "The top MCP servers for Python developers — from database access and API integrations to data science, web scraping, and package management. Supercharge your Python AI workflow.",
+    date: "2026-05-22",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "8 min read",
+    keywords: ["mcp servers for python", "python mcp tools", "best python mcp servers 2026", "python ai workflow", "mcp python development"],
+    relatedServerSlugs: ["filesystem", "postgresql", "sqlite", "github", "brave-search", "fetch", "docker", "supabase", "redis", "e2b"],
+    content: `
+<p>Python is the lingua franca of AI development, data science, and automation. If you're building with Python and using an AI assistant, the right MCP servers can transform your workflow — giving your AI direct access to your databases, files, APIs, and execution environments.</p>
+
+<p>This guide covers the best MCP servers for Python developers in 2026, whether you're doing data engineering, web development, machine learning, or scripting.</p>
+
+<h2>Why Python Developers Need MCP</h2>
+
+<p>Python projects typically touch many systems at once — databases, APIs, cloud services, notebooks, virtual environments. MCP servers let your AI assistant navigate all of them without context-switching. Instead of copying stack traces and pasting code, your AI can directly inspect your data, run queries, and understand your environment.</p>
+
+<h2>1. Filesystem MCP Server — Your Project, Fully Accessible</h2>
+
+<p>Every Python project starts with files. The Filesystem MCP server gives your AI assistant direct read/write access to your project structure — no more copy-pasting code between your editor and your chat window.</p>
+
+<p><strong>Key use cases for Python:</strong></p>
+<ul>
+<li>Read and modify <code>.py</code> files, configs, and <code>requirements.txt</code></li>
+<li>Navigate virtual environment structures (<code>.venv</code>, <code>site-packages</code>)</li>
+<li>Process data files: CSV, JSON, Parquet, YAML</li>
+<li>Manage project configuration files (<code>pyproject.toml</code>, <code>setup.cfg</code>)</li>
+</ul>
+
+<p><strong>Best for:</strong> All Python developers. The foundation of any MCP-powered Python workflow.</p>
+
+<h2>2. PostgreSQL MCP Server — SQL at AI Speed</h2>
+
+<p>Python developers love SQLAlchemy and psycopg2 — but writing complex queries still requires deep schema knowledge. The PostgreSQL MCP server gives your AI assistant direct schema introspection, so it can write accurate queries for your actual tables.</p>
+
+<p><strong>Key use cases for Python:</strong></p>
+<ul>
+<li>Generate SQLAlchemy models from existing schemas</li>
+<li>Write Alembic migrations with schema awareness</li>
+<li>Debug slow queries with direct EXPLAIN access</li>
+<li>Generate Django ORM queries from natural language</li>
+<li>Audit and validate data quality across tables</li>
+</ul>
+
+<p><strong>Best for:</strong> Django, Flask, and FastAPI developers who work with PostgreSQL backends.</p>
+
+<h2>3. SQLite MCP Server — Local Data, Instantly Queryable</h2>
+
+<p>SQLite is everywhere in Python — it's the default Django development database, it powers many data pipelines, and it's used by countless scripts and tools. The SQLite MCP server provides the same schema-aware query generation for local databases.</p>
+
+<p><strong>Key use cases for Python:</strong></p>
+<ul>
+<li>Query and analyze local SQLite databases without writing SQL</li>
+<li>Debug Django development databases</li>
+<li>Inspect embedded databases in Python tools</li>
+<li>Prototype data models before migrating to PostgreSQL</li>
+</ul>
+
+<p><strong>Best for:</strong> Data scientists, Django developers, and anyone doing local-first Python development.</p>
+
+<h2>4. GitHub MCP Server — Repository Intelligence</h2>
+
+<p>Python projects on GitHub benefit enormously from the GitHub MCP server. Your AI can browse your repos, understand your issue backlog, and create pull requests directly from your conversation.</p>
+
+<p><strong>Key use cases for Python:</strong></p>
+<ul>
+<li>Search your codebase for all usages of a deprecated function</li>
+<li>Create GitHub Actions workflows for Python CI/CD</li>
+<li>Review open PRs with full diff context</li>
+<li>Track issues and milestones while coding</li>
+</ul>
+
+<p><strong>Best for:</strong> Python open source contributors and teams using GitHub for project management.</p>
+
+<h2>5. Brave Search MCP Server — Documentation on Demand</h2>
+
+<p>Python has thousands of packages, and documentation quality varies wildly. The Brave Search MCP server lets your AI look up PyPI packages, docs, Stack Overflow answers, and API references without you switching tabs.</p>
+
+<p><strong>Key use cases for Python:</strong></p>
+<ul>
+<li>Look up obscure library APIs and parameters</li>
+<li>Find solutions to Python error messages</li>
+<li>Compare library options (e.g., httpx vs requests vs aiohttp)</li>
+<li>Check if a package supports your Python version</li>
+</ul>
+
+<p><strong>Best for:</strong> All Python developers, especially those working with less-documented packages.</p>
+
+<h2>6. E2B MCP Server — Safe Code Execution</h2>
+
+<p>E2B provides sandboxed code execution environments — perfect for Python developers who want their AI to run and test Python code safely. Instead of running untrusted AI-generated code locally, E2B executes it in an isolated container.</p>
+
+<p><strong>Key use cases for Python:</strong></p>
+<ul>
+<li>Test AI-generated Python scripts before running locally</li>
+<li>Run data analysis code on sample datasets</li>
+<li>Validate algorithm implementations</li>
+<li>Execute one-off scripts without polluting your environment</li>
+</ul>
+
+<p><strong>Best for:</strong> Data scientists and developers who frequently prototype with AI-generated code.</p>
+
+<h2>7. Docker MCP Server — Containerized Python Environments</h2>
+
+<p>Containerizing Python applications is standard practice, but Docker commands require memorization. The Docker MCP server lets your AI manage containers, build images, and debug containerized Python apps.</p>
+
+<p><strong>Key use cases for Python:</strong></p>
+<ul>
+<li>Build and run Docker images for Python services</li>
+<li>Inspect container logs for debugging</li>
+<li>Manage Docker Compose stacks for multi-service Python apps</li>
+<li>Verify Python package installations in containers</li>
+</ul>
+
+<p><strong>Best for:</strong> Python backend developers and data engineers deploying containerized applications.</p>
+
+<h2>8. Redis MCP Server — Cache and Queue Management</h2>
+
+<p>Redis is a common dependency in Python web applications — used for caching, session storage, Celery task queues, and pub/sub. The Redis MCP server lets your AI query and manage Redis data without context-switching.</p>
+
+<p><strong>Key use cases for Python:</strong></p>
+<ul>
+<li>Debug Celery task queues and worker backlogs</li>
+<li>Inspect and clear cache entries</li>
+<li>Monitor Redis memory usage</li>
+<li>Prototype Redis data structures for your application</li>
+</ul>
+
+<p><strong>Best for:</strong> Python web developers using Django/Celery or FastAPI with Redis caching.</p>
+
+<h2>9. Fetch MCP Server — Web Data Extraction</h2>
+
+<p>Web scraping and HTTP requests are Python specialties. The Fetch MCP server gives your AI the ability to retrieve and parse web content — useful for research, data collection, and testing web integrations.</p>
+
+<p><strong>Key use cases for Python:</strong></p>
+<ul>
+<li>Fetch and parse HTML content for scraping prototypes</li>
+<li>Test REST API endpoints during development</li>
+<li>Extract content from documentation pages</li>
+<li>Verify webhook responses</li>
+</ul>
+
+<p><strong>Best for:</strong> Python developers building web scrapers, API clients, and data collection tools.</p>
+
+<h2>10. Supabase MCP Server — PostgreSQL + Auth in One</h2>
+
+<p>Supabase has become the go-to backend for Python developers building modern web apps and AI projects. The Supabase MCP server provides direct access to your database, storage, and auth configuration.</p>
+
+<p><strong>Key use cases for Python:</strong></p>
+<ul>
+<li>Query Supabase tables directly without writing SQL</li>
+<li>Manage RLS (Row Level Security) policies</li>
+<li>Inspect Edge Functions and database functions</li>
+<li>Debug auth flows and user sessions</li>
+</ul>
+
+<p><strong>Best for:</strong> Python developers building full-stack applications with Supabase as the backend.</p>
+
+<h2>Python-Specific MCP Workflow Tips</h2>
+
+<p>Getting the most from MCP in Python workflows:</p>
+
+<ul>
+<li><strong>Pin versions in your MCP config</strong> — Just like your <code>requirements.txt</code>, pin MCP server versions to avoid unexpected breakage</li>
+<li><strong>Use virtual environments</strong> — Some MCP servers require Python packages; install them in dedicated venvs</li>
+<li><strong>Start with read-only access</strong> — Configure database MCP servers with read-only users during development, switch to write access when needed</li>
+<li><strong>Combine filesystem + search</strong> — Pairing filesystem access with Brave Search gives your AI the ability to understand your code AND look up missing context</li>
+<li><strong>Use E2B for AI-generated code</strong> — Never run unreviewed AI-generated Python locally; use E2B's sandbox first</li>
+</ul>
+
+<h2>Getting Started</h2>
+
+<p>The fastest path to a useful Python MCP setup:</p>
+
+<ol>
+<li>Install <strong>Filesystem MCP</strong> — immediate value for any Python project</li>
+<li>Add <strong>PostgreSQL or SQLite MCP</strong> — if your project uses a database</li>
+<li>Add <strong>GitHub MCP</strong> — if your project is on GitHub</li>
+<li>Add <strong>Brave Search MCP</strong> — for documentation lookups</li>
+<li>Add <strong>E2B MCP</strong> — once you're regularly testing AI-generated code</li>
+</ol>
+
+<p>The combination of filesystem + database + search covers 80% of Python development workflows. Start there, then layer in tool-specific servers as your needs grow.</p>
+
+<p><strong>Related guides:</strong></p>
+<ul>
+<li><a href="/blog/best-mcp-servers-for-developers">Best MCP Servers for Developers</a></li>
+<li><a href="/blog/best-mcp-servers-for-data-engineering">Best MCP Servers for Data Engineering</a></li>
+<li><a href="/blog/best-mcp-servers-for-supabase-developers">Best MCP Servers for Supabase Developers</a></li>
+</ul>
+    `.trim(),
+  },
+  {
+    slug: "best-mcp-servers-for-react-developers",
+    title: "Best MCP Servers for React Developers in 2026",
+    description: "The top MCP servers for React and Next.js developers — component debugging, API integration, database access, and deployment tools that supercharge your frontend AI workflow.",
+    date: "2026-05-22",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "7 min read",
+    keywords: ["mcp servers for react", "react mcp tools", "best react mcp servers 2026", "next.js mcp", "frontend mcp servers"],
+    relatedServerSlugs: ["filesystem", "github", "brave-search", "fetch", "vercel", "supabase", "postgresql", "figma", "playwright"],
+    content: `
+<p>React is the most widely used frontend framework, and Next.js has become the default choice for production React applications. If you're building React or Next.js apps, MCP servers can dramatically accelerate your workflow — giving your AI direct access to your components, APIs, databases, and deployment pipelines.</p>
+
+<p>This guide covers the best MCP servers for React and Next.js developers in 2026.</p>
+
+<h2>Why React Developers Need MCP</h2>
+
+<p>React development involves constant context-switching — jumping between your editor, the browser, your backend API, design files, and deployment dashboards. MCP servers collapse this overhead. Your AI assistant can read your components, query your database, inspect your Figma designs, and check your Vercel deployment — all without leaving the conversation.</p>
+
+<h2>1. Filesystem MCP Server — Read Your Components, Write Better Code</h2>
+
+<p>React development lives in files. The Filesystem MCP server gives your AI direct access to your component library, hooks, utilities, and configuration — enabling code-aware suggestions that understand your actual codebase.</p>
+
+<p><strong>Key use cases for React:</strong></p>
+<ul>
+<li>Read existing components before writing new ones — no duplication</li>
+<li>Navigate and understand large component trees</li>
+<li>Modify <code>tailwind.config.js</code>, <code>next.config.ts</code>, and environment files</li>
+<li>Refactor imports across multiple files</li>
+<li>Audit component props and TypeScript interfaces</li>
+</ul>
+
+<p><strong>Best for:</strong> Every React developer. The foundation of MCP-assisted frontend development.</p>
+
+<h2>2. GitHub MCP Server — PR Reviews and Code Search</h2>
+
+<p>React teams live in GitHub — reviewing component PRs, tracking design system issues, and coordinating feature work. The GitHub MCP server brings all of that into your AI workflow.</p>
+
+<p><strong>Key use cases for React:</strong></p>
+<ul>
+<li>Search your component library for usage patterns</li>
+<li>Review open PRs with full diff context in your conversation</li>
+<li>Create issues for design system improvements</li>
+<li>Browse your repository structure to understand component dependencies</li>
+</ul>
+
+<p><strong>Best for:</strong> React teams using GitHub for code review and project management.</p>
+
+<h2>3. Vercel MCP Server — Deployment at Your Fingertips</h2>
+
+<p>Next.js was built by Vercel, and deploying to Vercel is the most common production setup for Next.js apps. The Vercel MCP server gives your AI access to deployment status, environment variables, and build logs.</p>
+
+<p><strong>Key use cases for React/Next.js:</strong></p>
+<ul>
+<li>Check deployment status and build logs without opening the dashboard</li>
+<li>Manage environment variables for preview and production deployments</li>
+<li>Inspect Edge Config and feature flag settings</li>
+<li>Diagnose failed builds from error messages in context</li>
+</ul>
+
+<p><strong>Best for:</strong> Next.js developers deploying to Vercel (which is most of them).</p>
+
+<h2>4. Figma MCP Server — Design to Code, Bridged</h2>
+
+<p>The gap between Figma designs and React components is a constant pain point. The Figma MCP server lets your AI read design specs, extract styles, and generate component code that matches your design system.</p>
+
+<p><strong>Key use cases for React:</strong></p>
+<ul>
+<li>Extract spacing, colors, and typography from Figma components</li>
+<li>Generate Tailwind or CSS-in-JS code matching design specs</li>
+<li>Compare implemented components against design files</li>
+<li>Understand component hierarchy from design structure</li>
+</ul>
+
+<p><strong>Best for:</strong> React developers working closely with Figma designs who want to reduce manual design-to-code translation.</p>
+
+<h2>5. Supabase MCP Server — Full-Stack React Backend</h2>
+
+<p>Supabase has become the default backend for React/Next.js applications. Its real-time capabilities, Row Level Security, and JavaScript client make it a natural pairing. The Supabase MCP server gives your AI direct access to your database, auth, and storage.</p>
+
+<p><strong>Key use cases for React/Next.js:</strong></p>
+<ul>
+<li>Query your database to understand data shape before building components</li>
+<li>Debug RLS policies affecting your frontend queries</li>
+<li>Inspect auth configuration for your Next.js app</li>
+<li>Manage storage buckets for image uploads</li>
+</ul>
+
+<p><strong>Best for:</strong> Next.js developers using Supabase as their backend (full-stack apps, SaaS products).</p>
+
+<h2>6. PostgreSQL MCP Server — Direct Database Access</h2>
+
+<p>For React apps with custom PostgreSQL backends (via Prisma, Drizzle, or raw SQL), the PostgreSQL MCP server gives your AI schema-aware query generation. No more guessing column names.</p>
+
+<p><strong>Key use cases for React:</strong></p>
+<ul>
+<li>Generate Prisma schema from existing databases</li>
+<li>Debug API routes that return unexpected query results</li>
+<li>Understand data relationships before building data-fetching hooks</li>
+<li>Optimize slow queries identified in production</li>
+</ul>
+
+<p><strong>Best for:</strong> Next.js API route developers and full-stack React developers with PostgreSQL backends.</p>
+
+<h2>7. Playwright MCP Server — End-to-End Testing</h2>
+
+<p>React apps need browser testing. Playwright has become the preferred E2E testing tool for modern React applications, and its MCP server brings AI-assisted test writing and debugging into your workflow.</p>
+
+<p><strong>Key use cases for React:</strong></p>
+<ul>
+<li>Write Playwright tests by describing user interactions in plain English</li>
+<li>Debug failing tests with visual context</li>
+<li>Generate test scenarios for complex UI flows</li>
+<li>Take screenshots for visual regression testing</li>
+</ul>
+
+<p><strong>Best for:</strong> React teams maintaining E2E test suites with Playwright.</p>
+
+<h2>8. Brave Search MCP Server — Package and API Documentation</h2>
+
+<p>React development involves constant documentation lookups — React hooks API, Next.js routing, Tailwind classes, shadcn/ui components. The Brave Search MCP server delivers documentation directly into your conversation.</p>
+
+<p><strong>Key use cases for React:</strong></p>
+<ul>
+<li>Look up React hook APIs without tab-switching</li>
+<li>Find Next.js App Router examples for complex patterns</li>
+<li>Search for Tailwind utility classes</li>
+<li>Research npm package compatibility and alternatives</li>
+</ul>
+
+<p><strong>Best for:</strong> All React developers who frequently reference documentation while coding.</p>
+
+<h2>9. Fetch MCP Server — API Prototyping and Testing</h2>
+
+<p>React developers constantly interact with APIs — both building them (Next.js API routes) and consuming them (third-party services). The Fetch MCP server lets your AI make real HTTP requests to test integrations.</p>
+
+<p><strong>Key use cases for React:</strong></p>
+<ul>
+<li>Test your Next.js API routes before wiring them to the frontend</li>
+<li>Fetch and inspect third-party API responses</li>
+<li>Verify webhook payloads and event shapes</li>
+<li>Debug CORS issues by inspecting actual responses</li>
+</ul>
+
+<p><strong>Best for:</strong> Full-stack React developers building and consuming APIs.</p>
+
+<h2>React-Specific MCP Workflow Tips</h2>
+
+<ul>
+<li><strong>Pair Filesystem + GitHub</strong> — Filesystem lets your AI read local code; GitHub lets it understand the full repo history and open PRs. Together they give complete project context.</li>
+<li><strong>Use Figma MCP during design handoffs</strong> — Don't just use it all the time; activate it specifically when implementing new designs to bridge the Figma-to-code gap.</li>
+<li><strong>Keep Vercel MCP active during deployments</strong> — Monitor build logs and deployment status without leaving your AI conversation.</li>
+<li><strong>Use Playwright for test-driven component development</strong> — Describe the behavior you want, let your AI write the Playwright test, then implement the component to pass it.</li>
+</ul>
+
+<h2>Getting Started</h2>
+
+<p>The essential React MCP stack:</p>
+
+<ol>
+<li><strong>Filesystem MCP</strong> — always-on, immediate value</li>
+<li><strong>GitHub MCP</strong> — for code search and PR workflows</li>
+<li><strong>Vercel MCP</strong> — if deploying to Vercel (most Next.js apps)</li>
+<li><strong>Supabase or PostgreSQL MCP</strong> — depending on your backend</li>
+<li><strong>Figma MCP</strong> — activate during design implementation phases</li>
+</ol>
+
+<p>This five-server stack covers the full React development lifecycle: coding, version control, database access, deployment, and design implementation.</p>
+
+<p><strong>Related guides:</strong></p>
+<ul>
+<li><a href="/blog/best-mcp-servers-for-developers">Best MCP Servers for Developers</a></li>
+<li><a href="/blog/best-mcp-servers-for-supabase-developers">Best MCP Servers for Supabase Developers</a></li>
+<li><a href="/blog/best-mcp-servers-for-cursor">Best MCP Servers for Cursor</a></li>
+</ul>
+    `.trim(),
+  },
+  {
+    slug: "best-mcp-servers-for-windsurf",
+    title: "Best MCP Servers for Windsurf in 2026",
+    description: "The top MCP servers to supercharge your Windsurf IDE workflow. From filesystem access to database queries and deployment tools, maximize Windsurf's AI capabilities with the right MCP servers.",
+    date: "2026-05-22",
+    author: "MyMCPTools Team",
+    category: "Tools",
+    readingTime: "6 min read",
+    keywords: ["mcp servers for windsurf", "windsurf mcp", "windsurf ide mcp servers", "best windsurf mcp tools 2026", "codeium windsurf mcp"],
+    relatedServerSlugs: ["filesystem", "github", "postgresql", "brave-search", "fetch", "docker", "playwright", "supabase"],
+    content: `
+<p>Windsurf by Codeium is one of the fastest-growing AI-powered IDEs, combining deep code intelligence with native MCP support. Unlike editor plugins, Windsurf is built from the ground up for AI-assisted development — which means MCP servers feel native rather than bolted on.</p>
+
+<p>This guide covers the best MCP servers to pair with Windsurf in 2026, whether you're doing web development, data engineering, or DevOps work.</p>
+
+<h2>Why Windsurf + MCP?</h2>
+
+<p>Windsurf's Cascade AI can already read your open files and understand your project structure. MCP servers extend that intelligence beyond your local filesystem — into your databases, APIs, deployment platforms, and external services. The combination makes Windsurf's AI considerably more capable for real-world development tasks.</p>
+
+<p>Windsurf supports MCP servers through its Cascade configuration, using the same JSON-based server config format as Claude Desktop and Cursor.</p>
+
+<h2>1. Filesystem MCP Server — Extended File Access</h2>
+
+<p>Windsurf can already read your open workspace, but the Filesystem MCP server extends that access to arbitrary directories — useful when your project spans multiple workspaces, references files outside the main repo, or needs access to system configuration.</p>
+
+<p><strong>Key use cases in Windsurf:</strong></p>
+<ul>
+<li>Access files across multiple project directories simultaneously</li>
+<li>Read configuration files outside your workspace (SSH configs, dotfiles)</li>
+<li>Process files in watched directories (data pipelines, build outputs)</li>
+<li>Navigate monorepo structures that span workspace boundaries</li>
+</ul>
+
+<p><strong>Best for:</strong> Developers with complex multi-repo or multi-directory project layouts.</p>
+
+<h2>2. GitHub MCP Server — Repository-Level Intelligence</h2>
+
+<p>Windsurf knows your open workspace, but the GitHub MCP server gives Cascade awareness of your full repository — commit history, open issues, PRs, and cross-repo code search.</p>
+
+<p><strong>Key use cases in Windsurf:</strong></p>
+<ul>
+<li>Ask Cascade "what issues are related to this function?" — searches your GitHub issues</li>
+<li>Review pull requests with full diff context in Cascade</li>
+<li>Search for similar patterns across all your repos</li>
+<li>Understand the history behind a confusing piece of code</li>
+</ul>
+
+<p><strong>Best for:</strong> Windsurf users on teams using GitHub for code review and project management.</p>
+
+<h2>3. PostgreSQL MCP Server — Database-Aware Code Generation</h2>
+
+<p>Writing queries and ORM code without schema access is guesswork. The PostgreSQL MCP server gives Cascade direct schema introspection, enabling accurate SQL generation and database-aware code suggestions.</p>
+
+<p><strong>Key use cases in Windsurf:</strong></p>
+<ul>
+<li>Ask Cascade to write a query joining three tables — it inspects the actual schema first</li>
+<li>Generate migration files that reflect current database state</li>
+<li>Debug query errors by letting Cascade inspect column types</li>
+<li>Understand foreign key relationships before writing joins</li>
+</ul>
+
+<p><strong>Best for:</strong> Backend developers working with PostgreSQL-backed applications.</p>
+
+<h2>4. Brave Search MCP Server — Documentation Without Tab-Switching</h2>
+
+<p>Even with Windsurf's built-in intelligence, you'll hit moments where you need current documentation — a new library, an obscure API, a recent deprecation. Brave Search brings that lookup directly into Cascade.</p>
+
+<p><strong>Key use cases in Windsurf:</strong></p>
+<ul>
+<li>Look up documentation for packages without leaving the IDE</li>
+<li>Search for solutions to error messages</li>
+<li>Compare library options with up-to-date information</li>
+<li>Check for breaking changes in recent package versions</li>
+</ul>
+
+<p><strong>Best for:</strong> All Windsurf users — this is the most universally useful MCP server after Filesystem.</p>
+
+<h2>5. Docker MCP Server — Container Management in Context</h2>
+
+<p>Most modern applications run in containers, and Windsurf developers frequently need to interact with Docker while coding — checking container status, inspecting logs, rebuilding images. The Docker MCP server brings this into your Cascade workflow.</p>
+
+<p><strong>Key use cases in Windsurf:</strong></p>
+<ul>
+<li>Ask Cascade to check if your development containers are running</li>
+<li>Inspect container logs when debugging application errors</li>
+<li>Rebuild and restart specific services in Docker Compose stacks</li>
+<li>Compare running container environment variables against expected config</li>
+</ul>
+
+<p><strong>Best for:</strong> Windsurf developers working on containerized applications.</p>
+
+<h2>6. Playwright MCP Server — Browser Testing from the IDE</h2>
+
+<p>Writing end-to-end tests is tedious. The Playwright MCP server lets Cascade write tests by understanding actual browser interactions — and gives it the ability to run tests and inspect failures without leaving your IDE.</p>
+
+<p><strong>Key use cases in Windsurf:</strong></p>
+<ul>
+<li>Describe a user flow; let Cascade write the Playwright test</li>
+<li>Debug failing tests with Cascade reading both the test output and your component code</li>
+<li>Generate screenshot tests for visual regression coverage</li>
+<li>Understand test failures in the context of recent code changes</li>
+</ul>
+
+<p><strong>Best for:</strong> Web developers maintaining E2E test suites alongside Windsurf development.</p>
+
+<h2>7. Fetch MCP Server — Live API Testing</h2>
+
+<p>When building or debugging API integrations, nothing beats checking a live response. The Fetch MCP server lets Cascade make real HTTP requests and reason about the responses in context of your code.</p>
+
+<p><strong>Key use cases in Windsurf:</strong></p>
+<ul>
+<li>Test your API endpoints immediately after implementing them</li>
+<li>Fetch a third-party API response and use it to generate type definitions</li>
+<li>Debug webhook handlers by inspecting real payloads</li>
+<li>Verify that refactored endpoints return the same shape as before</li>
+</ul>
+
+<p><strong>Best for:</strong> Full-stack developers building and integrating APIs in Windsurf.</p>
+
+<h2>8. Supabase MCP Server — Modern Backend Integration</h2>
+
+<p>Supabase is a popular backend choice for Windsurf projects, especially for developers building SaaS products and web applications. The Supabase MCP server gives Cascade full access to your Supabase project — database, auth, storage, and functions.</p>
+
+<p><strong>Key use cases in Windsurf:</strong></p>
+<ul>
+<li>Query your Supabase tables to understand data shape before writing frontend code</li>
+<li>Debug Row Level Security policies that affect your app's queries</li>
+<li>Manage database migrations with schema awareness</li>
+<li>Inspect Edge Functions alongside the code that calls them</li>
+</ul>
+
+<p><strong>Best for:</strong> Windsurf developers building full-stack applications with Supabase backends.</p>
+
+<h2>Setting Up MCP in Windsurf</h2>
+
+<p>Windsurf uses a standard MCP configuration format. To add MCP servers to Windsurf:</p>
+
+<ol>
+<li>Open Windsurf Settings → Cascade → MCP Servers</li>
+<li>Add your server configuration in JSON format</li>
+<li>Restart Cascade to load the new servers</li>
+<li>Verify the server is connected via the Cascade server status indicator</li>
+</ol>
+
+<p>The configuration format is compatible with Claude Desktop configs, so you can often reuse the same JSON across IDEs.</p>
+
+<h2>Recommended Windsurf MCP Stack</h2>
+
+<p>Start with this core stack, then add specialized servers based on your project:</p>
+
+<ul>
+<li><strong>Always active:</strong> Filesystem, GitHub, Brave Search</li>
+<li><strong>Backend projects:</strong> PostgreSQL or Supabase</li>
+<li><strong>Frontend projects:</strong> Playwright, Fetch</li>
+<li><strong>DevOps work:</strong> Docker</li>
+</ul>
+
+<p>Windsurf's Cascade is already one of the most capable AI coding assistants — the right MCP servers take it from "understands your open files" to "understands your entire development environment."</p>
+
+<p><strong>Related guides:</strong></p>
+<ul>
+<li><a href="/blog/best-mcp-servers-for-cursor">Best MCP Servers for Cursor</a></li>
+<li><a href="/blog/best-mcp-servers-for-vs-code">Best MCP Servers for VS Code</a></li>
+<li><a href="/blog/best-mcp-servers-for-developers">Best MCP Servers for Developers</a></li>
+</ul>
+    `.trim(),
+  },
 ];
 
 export function getBlogPostBySlug(slug: string): BlogPost | undefined {
