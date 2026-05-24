@@ -37059,6 +37059,240 @@ async with MCPServerStdio(
 </ul>
     `.trim(),
   },
+  {
+    slug: "best-mcp-servers-for-windows-developers",
+    title: "Best MCP Servers for Windows Developers in 2026",
+    description: "A Windows-specific guide to MCP servers: WSL2 setup, PowerShell integration, path handling, and the best servers for Windows-first development workflows.",
+    date: "2026-05-24",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "9 min read",
+    keywords: ["mcp servers windows", "mcp server windows setup", "best mcp servers windows developers", "model context protocol windows", "wsl2 mcp server"],
+    relatedServerSlugs: ["filesystem", "github", "postgres", "brave-search", "puppeteer", "everything"],
+    content: `
+<p>Most MCP tutorials assume you're on macOS or Linux. They tell you to run <code>npx @modelcontextprotocol/server-filesystem</code> and don't mention that Windows path separators, PowerShell, and WSL2 add several layers of setup complexity.</p>
+
+<p>This guide is written specifically for Windows developers. We'll cover the MCP servers that work best on Windows, how to configure them for both native Windows and WSL2 environments, and the quirks you need to know before you spend an hour debugging a path issue.</p>
+
+<h2>Windows + MCP: Two Setup Paths</h2>
+
+<p>Before picking servers, decide which environment you're running them in:</p>
+
+<ul>
+<li><strong>Native Windows (PowerShell / Command Prompt)</strong> — Simpler setup, but some servers have limited Windows support. Best for developers who prefer Windows-native tools.</li>
+<li><strong>WSL2 (Windows Subsystem for Linux)</strong> — Better compatibility, especially for servers with native Unix dependencies. Required for some servers. Claude Desktop and most MCP clients on Windows can connect to WSL2-hosted servers.</li>
+</ul>
+
+<p>Most Windows developers end up running <em>some</em> servers natively and others inside WSL2. The key is knowing which approach each server requires.</p>
+
+<h2>1. Filesystem MCP Server — Windows Path Handling Matters</h2>
+
+<p>The filesystem server is essential, but Windows developers need to handle one critical difference: path separators and drive letters.</p>
+
+<p><strong>Native Windows configuration (Claude Desktop config):</strong></p>
+
+<pre><code>{
+  "mcpServers": {
+    "filesystem": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-filesystem",
+        "C:\\\\Users\\\\YourName\\\\Projects"
+      ]
+    }
+  }
+}</code></pre>
+
+<p><strong>WSL2 configuration:</strong></p>
+
+<pre><code>{
+  "mcpServers": {
+    "filesystem": {
+      "command": "wsl",
+      "args": [
+        "npx",
+        "-y",
+        "@modelcontextprotocol/server-filesystem",
+        "/home/yourname/projects"
+      ]
+    }
+  }
+}</code></pre>
+
+<p><strong>Key Windows gotchas:</strong></p>
+<ul>
+<li>Escape backslashes in JSON configs: use <code>\\\\</code> for each backslash</li>
+<li>Avoid paths with spaces when possible — they require extra quoting</li>
+<li>If using WSL2, your Windows drives are at <code>/mnt/c/</code> inside WSL</li>
+<li>Restrict access to project directories, not entire drives</li>
+</ul>
+
+<p><strong>Best for:</strong> Every Windows developer — just configure it correctly for your environment.</p>
+
+<h2>2. GitHub MCP Server — Works Great on Windows</h2>
+
+<p>The GitHub MCP server is fully cross-platform and one of the most reliable servers on Windows. It communicates via HTTPS, so no Unix socket issues or path translation needed.</p>
+
+<p><strong>Setup:</strong> Create a GitHub Personal Access Token (classic) with <code>repo</code> scope. Add to your Claude Desktop config:</p>
+
+<pre><code>{
+  "mcpServers": {
+    "github": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-github"],
+      "env": {
+        "GITHUB_PERSONAL_ACCESS_TOKEN": "ghp_your_token_here"
+      }
+    }
+  }
+}</code></pre>
+
+<p><strong>Key capabilities on Windows:</strong></p>
+<ul>
+<li>Works identically to macOS/Linux — no platform-specific configuration</li>
+<li>Repository browsing, PR management, issue tracking</li>
+<li>Pairs well with GitHub Desktop for Windows</li>
+<li>Complements Visual Studio's Git integration with AI-powered code search</li>
+</ul>
+
+<p><strong>Best for:</strong> Windows developers on any stack — one of the smoothest MCP setups regardless of OS.</p>
+
+<h2>3. PostgreSQL MCP Server — Connect to Local or Remote Databases</h2>
+
+<p>Windows developers often run PostgreSQL either natively via the Windows installer or inside Docker Desktop (via WSL2 backend). Both setups work with the PostgreSQL MCP server.</p>
+
+<p><strong>For native Windows PostgreSQL:</strong></p>
+
+<pre><code>{
+  "mcpServers": {
+    "postgres": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-postgres",
+        "postgresql://postgres:password@localhost:5432/mydb"
+      ]
+    }
+  }
+}</code></pre>
+
+<p><strong>For Docker Desktop PostgreSQL:</strong> Use <code>localhost</code> or <code>host.docker.internal</code> depending on your Docker networking setup. Most Docker Desktop configurations expose PostgreSQL on <code>localhost:5432</code> to Windows host processes.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Schema introspection — your AI understands your tables before writing queries</li>
+<li>Read-only query execution by default (safe)</li>
+<li>Works with Azure SQL, Supabase, and other PostgreSQL-compatible databases via connection string</li>
+</ul>
+
+<p><strong>Best for:</strong> Backend Windows developers. Especially useful if you're using SQL Server for some projects — the Postgres MCP covers your other database needs where SQL Server MCP coverage is thinner.</p>
+
+<h2>4. Everything MCP Server — Windows Search Integration</h2>
+
+<p>This is a Windows-exclusive gem. The Everything MCP server integrates with <a href="https://www.voidtools.com/">Voidtools Everything</a>, the blazing-fast Windows file search tool that indexes your entire filesystem in seconds.</p>
+
+<p><strong>What it does:</strong> Lets your AI search across ALL your files and directories instantly — not just a specified project folder. If you have Everything installed (and most power-user Windows developers do), this server turns your entire filesystem into an AI-accessible search index.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Sub-second search across millions of files</li>
+<li>Regex and wildcard search patterns</li>
+<li>Filter by file type, date, size</li>
+<li>Find any file on any drive without knowing its exact path</li>
+</ul>
+
+<p><strong>Setup requirements:</strong> Install Voidtools Everything and enable the Everything HTTP server (Tools → Options → HTTP Server). Then configure the MCP server to connect to it.</p>
+
+<p><strong>Best for:</strong> Windows developers with large codebases spread across multiple projects and drives. Zero macOS/Linux equivalent — this is genuinely Windows-exclusive value.</p>
+
+<h2>5. Brave Search MCP Server — Cross-Platform, Zero Config</h2>
+
+<p>When you need current documentation — Windows API references, .NET SDK changes, NuGet package details — the Brave Search server gives your AI web search without leaving your workflow. No platform-specific setup required.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Search documentation for Windows-specific APIs and frameworks</li>
+<li>Find error codes and KB articles directly</li>
+<li>Look up NuGet package documentation</li>
+<li>Research Windows Subsystem for Linux compatibility issues in real time</li>
+</ul>
+
+<p><strong>Requires:</strong> A Brave Search API key (free tier available). Add <code>BRAVE_API_KEY</code> to your server config <code>env</code> block.</p>
+
+<p><strong>Best for:</strong> Any Windows developer who writes "how do I do X in Windows" into Google mid-coding session. This brings that search directly into your AI context.</p>
+
+<h2>6. Puppeteer / Playwright MCP Server — Browser Automation on Windows</h2>
+
+<p>Both Puppeteer and Playwright have strong Windows support. The Playwright MCP server is generally preferred for Windows because Playwright's Windows Chromium binary management is more reliable.</p>
+
+<p><strong>Native Windows setup:</strong></p>
+
+<pre><code>{
+  "mcpServers": {
+    "playwright": {
+      "command": "npx",
+      "args": ["-y", "@executeautomation/playwright-mcp-server"]
+    }
+  }
+}</code></pre>
+
+<p>On first use, Playwright will download Chromium to your user directory. On Windows, this is typically <code>%LOCALAPPDATA%\\ms-playwright\\</code>.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Browser automation — scraping, testing, screenshot capture</li>
+<li>Works with Windows-native Chrome, Edge, or downloaded Chromium</li>
+<li>Useful for automating Windows web apps that require Kerberos or NTLM auth (common in enterprise Windows environments)</li>
+</ul>
+
+<p><strong>WSL2 note:</strong> Playwright in WSL2 requires a display server for headed mode. For headless scraping it works fine. For visual browser automation, run natively on Windows.</p>
+
+<p><strong>Best for:</strong> Windows developers doing web scraping, e2e testing, or enterprise web automation.</p>
+
+<h2>Windows-Specific MCP Configuration Tips</h2>
+
+<h3>Claude Desktop Config Location</h3>
+
+<p>On Windows, the Claude Desktop config file is at:</p>
+<pre><code>%APPDATA%\\Claude\\claude_desktop_config.json</code></pre>
+<p>In File Explorer: <code>C:\\Users\\YourName\\AppData\\Roaming\\Claude\\</code></p>
+
+<h3>Environment Variables in Configs</h3>
+
+<p>You can reference Windows environment variables in some MCP client configurations using <code>%VARIABLE_NAME%</code> syntax. However, many MCP servers read <code>env</code> blocks from the JSON config directly — define your API keys there rather than relying on Windows environment variable expansion.</p>
+
+<h3>Node.js Version Manager</h3>
+
+<p>Most MCP servers require Node.js. On Windows, use <a href="https://github.com/nvm-sh/nvm">nvm-windows</a> (not the standard nvm, which is Unix-only) to manage Node versions. Node 18 LTS or 20 LTS works reliably for most MCP servers.</p>
+
+<h3>PowerShell Execution Policy</h3>
+
+<p>If <code>npx</code> fails with "scripts cannot be run because they are not digitally signed," run this in an elevated PowerShell:</p>
+<pre><code>Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser</code></pre>
+
+<h2>Recommended Windows MCP Stack</h2>
+
+<ul>
+<li><strong>Universal:</strong> Filesystem (native Windows paths), GitHub, Brave Search</li>
+<li><strong>Windows-exclusive:</strong> Everything (if you have Voidtools Everything installed)</li>
+<li><strong>Databases:</strong> PostgreSQL (native or Docker Desktop), SQLite for local file databases</li>
+<li><strong>Browser automation:</strong> Playwright (native Windows, headless or headed)</li>
+<li><strong>.NET/Azure developers:</strong> Add Azure MCP server + any relevant database servers</li>
+</ul>
+
+<p>Windows MCP setup has a steeper initial curve than macOS — path escaping, execution policy, and the WSL2 vs native decision all require upfront choices. But once configured correctly, the experience is identical. The Everything server is a genuine Windows advantage: fast whole-system file search with no macOS equivalent.</p>
+
+<p>If you're hitting issues, the most common Windows MCP problems are: incorrect backslash escaping in the JSON config, Node.js not in PATH for the process Claude Desktop spawns (use absolute paths to <code>node.exe</code> if needed), and PowerShell execution policy blocking npx. Fix those three and you're set.</p>
+
+<p><strong>Related guides:</strong></p>
+<ul>
+<li><a href="/blog/getting-started-with-mcp">Getting Started with MCP</a></li>
+<li><a href="/blog/best-mcp-servers-for-developers">Best MCP Servers for Developers</a></li>
+<li><a href="/blog/mcp-server-troubleshooting-guide">MCP Server Troubleshooting Guide</a></li>
+</ul>
+    `.trim(),
+  },
 ];
 
 export function getBlogPostBySlug(slug: string): BlogPost | undefined {
