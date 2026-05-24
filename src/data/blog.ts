@@ -36297,6 +36297,360 @@ async with MCPServerStdio(
 </ul>
     `.trim(),
   },
+  {
+    slug: "best-mcp-servers-for-laravel-developers",
+    title: "Best MCP Servers for Laravel Developers in 2026",
+    description: "The top MCP servers for Laravel development. Ship PHP applications faster with AI assistants that understand your Eloquent models, migrations, and Laravel conventions.",
+    date: "2026-05-23",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "7 min read",
+    keywords: ["best mcp servers for laravel", "laravel mcp servers", "mcp tools for laravel developers", "model context protocol laravel", "php mcp servers"],
+    relatedServerSlugs: ["filesystem", "github", "git", "mysql", "postgresql", "brave-search", "docker"],
+    content: `
+<p>Laravel is the most productive PHP framework ever built — Eloquent ORM, Artisan CLI, Queues, Events, and a package ecosystem that handles everything from auth to payments. MCP servers extend this productivity advantage to your AI assistant, giving it your database schema, codebase conventions, and the current Laravel documentation it needs to generate code that actually works in your app.</p>
+
+<p>Here are the MCP servers that matter most for Laravel development in 2026.</p>
+
+<h2>1. Filesystem MCP Server — Navigate Laravel's Convention-First Structure</h2>
+
+<p>Laravel's power comes from its directory conventions — app/Models/, app/Http/Controllers/, database/migrations/, routes/web.php, and config/ all carry specific meaning. The Filesystem MCP server gives your AI direct access to your project so it generates code that follows your existing patterns rather than blank-slate Laravel defaults.</p>
+
+<p><strong>Key use cases for Laravel developers:</strong></p>
+<ul>
+<li>Read existing Eloquent models before generating new ones — relationships, casts, fillable arrays, scopes, and accessors all affect how new models should be structured</li>
+<li>Inspect existing controllers to understand your team's HTTP layer conventions — resource controllers, form requests, API resources, and middleware patterns</li>
+<li>Browse service classes and repositories in app/ to understand how business logic is organized before generating new services</li>
+<li>Navigate routes/web.php and routes/api.php to correctly extend routing when adding new endpoints or middleware</li>
+</ul>
+
+<p><strong>Best for:</strong> All Laravel developers — the foundation for any AI-assisted Laravel codebase navigation.</p>
+
+<h2>2. MySQL MCP Server — Live Schema Access for Eloquent Code</h2>
+
+<p>Eloquent migrations define your schema, but your AI can't see what's actually in the database without direct access. The MySQL MCP server gives your AI live schema visibility to generate migrations, queries, and model code that references real column names and data types rather than guesses.</p>
+
+<p><strong>Key use cases for Laravel developers:</strong></p>
+<ul>
+<li>Generate Eloquent migrations that match actual column types, nullable constraints, and index configurations in your live database</li>
+<li>Write where() scopes and query builder calls with correct column names without manually checking migrations or schema.php</li>
+<li>Debug hasManyThrough and polymorphic relationship issues by inspecting actual pivot table and foreign key structure</li>
+<li>Generate raw DB::select() queries for complex reporting with accurate table and column references</li>
+</ul>
+
+<p><strong>Best for:</strong> Laravel developers who want AI-generated Eloquent models, migrations, and query builder logic that matches their live database structure.</p>
+
+<h2>3. Git MCP Server — Track Migration and Refactor History</h2>
+
+<p>Laravel codebases accumulate years of migration decisions — column renames, table splits, polymorphic refactors, and schema optimizations. The Git MCP server gives your AI commit history context to understand why your schema and code look the way they do.</p>
+
+<p><strong>Key use cases for Laravel developers:</strong></p>
+<ul>
+<li>Review migration history to understand why a column or relationship was structured a certain way before generating code that extends it</li>
+<li>Inspect service provider and event listener commits to understand how your application's boot process has evolved</li>
+<li>Check blame on authorization logic (Gates, Policies) when debugging permission behavior that changed across releases</li>
+<li>Review Artisan command commits to understand custom CLI tooling your team has built for maintenance and data operations</li>
+</ul>
+
+<p><strong>Best for:</strong> Laravel teams maintaining long-running applications through multiple major Laravel versions and significant schema evolution.</p>
+
+<h2>4. GitHub MCP Server — Laravel and Package Issue Access</h2>
+
+<p>The Laravel ecosystem — Livewire, Filament, Sanctum, Passport, Horizon, Telescope — ships updates and occasionally introduces breaking changes. The GitHub MCP server lets your AI pull issue discussions and changelogs from package repos directly, keeping suggestions current with your composer.json dependencies.</p>
+
+<p><strong>Key use cases for Laravel developers:</strong></p>
+<ul>
+<li>Search Livewire or Filament GitHub issues for known bugs before debugging component rendering or form submission edge cases</li>
+<li>Pull Laravel 11/12 upgrade guides when migrating from an older major version to understand breaking changes in routing, middleware, and bootstrapping</li>
+<li>Review Horizon GitHub discussions when debugging queue worker behavior, job batching, or Redis configuration issues</li>
+<li>Find Sanctum configuration examples from official discussions for SPA authentication and API token management</li>
+</ul>
+
+<p><strong>Best for:</strong> Laravel developers navigating package upgrades, Laravel major version migrations, and ecosystem API changes.</p>
+
+<h2>5. Docker MCP Server — Laravel Container Debugging</h2>
+
+<p>Modern Laravel development uses Docker — Laravel Sail or custom compose setups with PHP-FPM + Nginx + MySQL + Redis + Horizon. The Docker MCP server gives your AI visibility into running containers, useful for debugging queue worker failures, environment variable issues, and service connectivity problems.</p>
+
+<p><strong>Key use cases for Laravel developers:</strong></p>
+<ul>
+<li>Inspect Laravel application container logs to correlate database timeouts with specific route or job failures</li>
+<li>Debug Laravel Sail multi-container setups — PHP app + MySQL + Redis + Meilisearch</li>
+<li>Check environment variable injection for APP_KEY, database credentials, and queue connection strings across services</li>
+<li>Review Horizon worker container logs alongside Laravel app logs for background job debugging and queue monitoring</li>
+</ul>
+
+<p><strong>Best for:</strong> Laravel developers using Docker Compose or Laravel Sail for local development and production parity.</p>
+
+<h2>6. Brave Search MCP Server — Current Laravel Documentation</h2>
+
+<p>Laravel evolves fast — Laravel 11 restructured the application skeleton, new first-party packages like Folio and Volt, and evolving best practices around Pest PHP testing and Livewire 3. Brave Search keeps your AI's suggestions current with actual Laravel documentation rather than outdated patterns.</p>
+
+<p><strong>Key use cases for Laravel developers:</strong></p>
+<ul>
+<li>Look up current Laravel 11 bootstrap and middleware configuration syntax, which changed significantly from Laravel 10's app/Http/Kernel.php pattern</li>
+<li>Find current Livewire 3 component syntax vs deprecated Livewire 2 patterns for real-time UI components</li>
+<li>Research current Pest PHP assertion patterns vs PHPUnit for teams migrating their test suite</li>
+<li>Check current Laravel Folio and Volt documentation for page-based routing and single-file Livewire components</li>
+</ul>
+
+<p><strong>Best for:</strong> Laravel developers keeping current with Laravel 11/12, Livewire 3, and the evolving PHP tooling ecosystem.</p>
+
+<h2>Recommended MCP Stack for Laravel Developers</h2>
+
+<ul>
+<li><strong>Always active:</strong> Filesystem, MySQL (or PostgreSQL), Git</li>
+<li><strong>Package and framework questions:</strong> GitHub, Brave Search</li>
+<li><strong>Containerized local dev:</strong> Docker</li>
+</ul>
+
+<p>Laravel's biggest AI friction point is schema context — your AI doesn't know what your tables look like, what Eloquent relationships exist, or what your migration history implies about the data model. MySQL gives it your live schema. Filesystem gives it your code conventions. Git gives it the history of architectural decisions. That combination turns Laravel AI assistance from generic PHP generation into actual pair programming on your specific codebase.</p>
+
+<p><strong>Related guides:</strong></p>
+<ul>
+<li><a href="/blog/best-mcp-servers-for-php-developers">Best MCP Servers for PHP Developers</a></li>
+<li><a href="/blog/best-mcp-servers-for-backend-developers">Best MCP Servers for Backend Developers</a></li>
+<li><a href="/blog/best-mcp-servers-for-database">Best MCP Servers for Database Work</a></li>
+</ul>
+    `.trim(),
+  },
+  {
+    slug: "best-mcp-servers-for-nestjs-developers",
+    title: "Best MCP Servers for NestJS Developers in 2026",
+    description: "The top MCP servers for NestJS development. Build TypeScript APIs and microservices faster with AI that understands your modules, providers, decorators, and dependency injection patterns.",
+    date: "2026-05-23",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "7 min read",
+    keywords: ["best mcp servers for nestjs", "nestjs mcp servers", "mcp tools for nestjs developers", "model context protocol nestjs", "typescript api mcp servers"],
+    relatedServerSlugs: ["filesystem", "github", "git", "postgresql", "redis", "docker", "brave-search"],
+    content: `
+<p>NestJS brings Angular-inspired architecture to the Node.js backend — modules, providers, decorators, dependency injection, and a clear separation of concerns that makes large TypeScript APIs maintainable at scale. MCP servers extend this architectural clarity to your AI assistant, giving it the codebase structure, database schema, and framework context it needs to generate NestJS code that fits your module hierarchy rather than starting from scratch every time.</p>
+
+<p>Here are the MCP servers that matter most for NestJS development in 2026.</p>
+
+<h2>1. Filesystem MCP Server — Navigate NestJS's Module Architecture</h2>
+
+<p>NestJS apps are organized into feature modules — each with its own controller, service, repository, DTO, and guard. The Filesystem MCP server gives your AI direct access to your module structure so it generates code that follows your existing dependency injection patterns, naming conventions, and module organization rather than generic NestJS templates.</p>
+
+<p><strong>Key use cases for NestJS developers:</strong></p>
+<ul>
+<li>Read existing module files before generating new ones — understand which providers are exported, which modules are imported, and how your dependency graph is structured</li>
+<li>Inspect existing service and repository patterns to generate new services that follow your team's data access conventions (TypeORM repositories, Prisma clients, custom adapters)</li>
+<li>Browse DTO and validation pipe patterns to generate new DTOs with correct class-validator decorators that match your validation strategy</li>
+<li>Navigate guard and interceptor implementations to correctly extend authentication and logging behavior without breaking existing middleware chains</li>
+</ul>
+
+<p><strong>Best for:</strong> All NestJS developers — essential for generating code that fits your module hierarchy and DI container configuration.</p>
+
+<h2>2. PostgreSQL MCP Server — Database-First API Development</h2>
+
+<p>NestJS APIs typically connect to PostgreSQL via TypeORM or Prisma. Your AI needs live schema access to generate correct entity definitions, migration scripts, and repository query logic that matches your actual tables rather than guessed column names.</p>
+
+<p><strong>Key use cases for NestJS developers:</strong></p>
+<ul>
+<li>Generate TypeORM entity classes with correct column decorators, relation decorators, and index configurations that match your live database schema</li>
+<li>Write Prisma schema definitions from live table inspection for accurate TypeScript types across your API layer</li>
+<li>Debug QueryBuilder and createQueryBuilder logic with correct table aliases, join conditions, and column references</li>
+<li>Generate migration scripts that accurately reflect the diff between your current entity definitions and live database state</li>
+</ul>
+
+<p><strong>Best for:</strong> NestJS developers building data-heavy APIs where entity-database alignment is critical for TypeScript type safety and query correctness.</p>
+
+<h2>3. Git MCP Server — Module and Architecture History</h2>
+
+<p>NestJS codebases evolve through module refactors, DI graph changes, and architectural decisions that aren't always obvious from the current code. The Git MCP server gives your AI the commit context to understand why your modules are structured the way they are before generating code that extends them.</p>
+
+<p><strong>Key use cases for NestJS developers:</strong></p>
+<ul>
+<li>Review module refactor commits to understand why certain providers were moved between modules or why specific circular dependency resolutions exist</li>
+<li>Inspect authentication guard and strategy commits to understand why your Passport strategy is implemented the way it is before adding new OAuth providers</li>
+<li>Check microservices transport layer commits to understand why your team chose a specific message broker configuration for inter-service communication</li>
+<li>Review CQRS command and event handler commits to understand your domain event patterns before extending the command bus</li>
+</ul>
+
+<p><strong>Best for:</strong> NestJS teams maintaining large modular APIs where architectural decisions accumulated over time need context before modification.</p>
+
+<h2>4. Redis MCP Server — Cache and Queue Debugging</h2>
+
+<p>NestJS applications frequently use Redis for caching (cache-manager), queuing (BullMQ), and pub/sub (microservices transport). The Redis MCP server gives your AI visibility into your Redis state for debugging cache invalidation, queue processing, and event-driven communication issues.</p>
+
+<p><strong>Key use cases for NestJS developers:</strong></p>
+<ul>
+<li>Inspect BullMQ job queues to debug failed jobs, retry logic, and concurrency configuration in your NestJS Bull integration</li>
+<li>Check cache-manager Redis keys to debug TTL, serialization, and cache miss patterns in your @nestjs/cache-manager setup</li>
+<li>Debug Redis pub/sub channel configuration when using NestJS microservices with the Redis transport layer</li>
+<li>Inspect session storage keys when using Redis-backed session management in your NestJS authentication flow</li>
+</ul>
+
+<p><strong>Best for:</strong> NestJS developers using Redis for caching, background job queues with BullMQ, or microservices transport configuration.</p>
+
+<h2>5. Docker MCP Server — NestJS Container and Microservices Debugging</h2>
+
+<p>NestJS microservices architectures often run multiple services as Docker containers — each module as an independent service with its own container, database, and message queue. The Docker MCP server gives your AI visibility across your containerized services for debugging inter-service communication, environment configuration, and startup failures.</p>
+
+<p><strong>Key use cases for NestJS developers:</strong></p>
+<ul>
+<li>Inspect individual microservice container logs to trace request flows across service boundaries and debug serialization or transport failures</li>
+<li>Debug multi-container compose setups — API gateway + auth service + user service + PostgreSQL + Redis + RabbitMQ</li>
+<li>Check environment variable injection for database connection strings, JWT secrets, and message broker credentials across service containers</li>
+<li>Review container health checks and startup order for services with explicit dependency requirements</li>
+</ul>
+
+<p><strong>Best for:</strong> NestJS developers building microservices architectures with multiple independent services running as Docker containers.</p>
+
+<h2>6. Brave Search MCP Server — Current NestJS and Ecosystem Documentation</h2>
+
+<p>NestJS releases updates regularly — new decorator APIs, changes to module configuration patterns, and evolving best practices around OpenTelemetry, Swagger generation, and testing utilities. Brave Search keeps your AI's suggestions aligned with current NestJS documentation rather than outdated v8 or v9 patterns.</p>
+
+<p><strong>Key use cases for NestJS developers:</strong></p>
+<ul>
+<li>Look up current NestJS module configuration syntax and provider token patterns for your NestJS version</li>
+<li>Find current BullMQ integration patterns with @nestjs/bullmq vs the deprecated @nestjs/bull for queue configuration</li>
+<li>Research current NestJS testing utility patterns — TestingModule, createTestingModule, and MockFactory approaches</li>
+<li>Check current NestJS OpenAPI (Swagger) decorator usage and schema generation configuration for your API documentation setup</li>
+</ul>
+
+<p><strong>Best for:</strong> NestJS developers keeping up with framework version changes, new official packages, and evolving TypeScript decorator patterns.</p>
+
+<h2>Recommended MCP Stack for NestJS Developers</h2>
+
+<ul>
+<li><strong>Always active:</strong> Filesystem, PostgreSQL, Git</li>
+<li><strong>Cache and queue work:</strong> Redis</li>
+<li><strong>Microservices architectures:</strong> Docker</li>
+<li><strong>Framework and ecosystem questions:</strong> GitHub, Brave Search</li>
+</ul>
+
+<p>NestJS's biggest AI friction point is module graph understanding — your AI doesn't know which providers are available in which modules, how your DI container is configured, or what your existing service interfaces look like. Filesystem gives it your module architecture. PostgreSQL gives it your database schema for entity generation. Redis gives it queue and cache visibility. That combination makes AI assistance in a NestJS project feel like a senior TypeScript developer who's already read your codebase.</p>
+
+<p><strong>Related guides:</strong></p>
+<ul>
+<li><a href="/blog/best-mcp-servers-for-typescript-developers">Best MCP Servers for TypeScript Developers</a></li>
+<li><a href="/blog/best-mcp-servers-for-backend-developers">Best MCP Servers for Backend Developers</a></li>
+<li><a href="/blog/best-mcp-servers-for-nodejs-developers">Best MCP Servers for Node.js Developers</a></li>
+</ul>
+    `.trim(),
+  },
+  {
+    slug: "best-mcp-servers-for-flask-developers",
+    title: "Best MCP Servers for Flask Developers in 2026",
+    description: "The top MCP servers for Flask development. Build Python web applications and APIs faster with AI assistants that understand your routes, SQLAlchemy models, and Blueprints architecture.",
+    date: "2026-05-23",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "7 min read",
+    keywords: ["best mcp servers for flask", "flask mcp servers", "mcp tools for flask developers", "model context protocol flask", "python web mcp servers"],
+    relatedServerSlugs: ["filesystem", "github", "git", "postgresql", "sqlite", "docker", "brave-search"],
+    content: `
+<p>Flask's minimalist philosophy — give you routing, a request context, and get out of the way — makes it the preferred Python web framework when you want control over your application's architecture. MCP servers extend this flexibility to your AI assistant, giving it your project structure, database schema, and Python environment context so it generates Flask code that fits your conventions rather than a generic template.</p>
+
+<p>Here are the MCP servers that matter most for Flask development in 2026.</p>
+
+<h2>1. Filesystem MCP Server — Understand Your Flask Project Structure</h2>
+
+<p>Flask's minimal structure means every team organizes their project differently — application factory patterns, Blueprint hierarchies, service layers, and extension initialization all vary. The Filesystem MCP server gives your AI direct access to your specific structure so it generates code that follows your existing patterns rather than a default Flask layout that may not match your codebase.</p>
+
+<p><strong>Key use cases for Flask developers:</strong></p>
+<ul>
+<li>Read your application factory (create_app function) before generating new extensions or configuration to understand how your app is initialized and which extensions are registered</li>
+<li>Inspect existing Blueprint route handlers to match your error handling, authentication decoration, and response formatting conventions when adding new endpoints</li>
+<li>Browse your SQLAlchemy models before generating new ones — understand relationship patterns, column naming conventions, and which mixins or base classes your team uses</li>
+<li>Navigate your extension and configuration modules to correctly add new functionality without breaking existing initialization order</li>
+</ul>
+
+<p><strong>Best for:</strong> All Flask developers — the foundation for AI that understands your specific project layout and generates code accordingly.</p>
+
+<h2>2. PostgreSQL MCP Server — Live Schema Access for SQLAlchemy Models</h2>
+
+<p>Flask applications with SQLAlchemy connect to PostgreSQL for data persistence. Your AI needs live schema access to generate correct model definitions, migration scripts (via Flask-Migrate/Alembic), and query logic that references actual column names and relationships rather than guessed structures.</p>
+
+<p><strong>Key use cases for Flask developers:</strong></p>
+<ul>
+<li>Generate SQLAlchemy model classes with correct Column types, nullable constraints, and relationship backref configurations that match your live database</li>
+<li>Write complex Query API or SQLAlchemy 2.0 select() statements with correct table aliases, join conditions, and filter clauses referencing real column names</li>
+<li>Debug many-to-many relationship issues by inspecting actual association table structure and foreign key constraints</li>
+<li>Generate Alembic migration scripts that accurately reflect the diff between your current model definitions and live database state</li>
+</ul>
+
+<p><strong>Best for:</strong> Flask developers using Flask-SQLAlchemy or SQLAlchemy Core with PostgreSQL who want AI assistance on schema-dependent model and query code.</p>
+
+<h2>3. SQLite MCP Server — Local Development Database Inspection</h2>
+
+<p>Many Flask projects use SQLite for local development before switching to PostgreSQL in production. The SQLite MCP server lets your AI inspect your local development database directly, useful for generating test fixtures, debugging migration issues, and verifying schema state during development.</p>
+
+<p><strong>Key use cases for Flask developers:</strong></p>
+<ul>
+<li>Inspect your local SQLite development database to verify that Flask-Migrate migrations applied correctly before pushing to staging</li>
+<li>Generate test fixtures and factory data that matches your actual SQLite schema structure for pytest and Flask-Testing test suites</li>
+<li>Debug SQLite-specific behavior during development — AUTOINCREMENT, TEXT affinity, and other SQLite quirks that differ from PostgreSQL production</li>
+<li>Verify foreign key constraint enforcement (disabled by default in SQLite) when debugging relationship loading behavior</li>
+</ul>
+
+<p><strong>Best for:</strong> Flask developers who use SQLite for local development and need AI to understand their local schema state during active development and testing.</p>
+
+<h2>4. Git MCP Server — Track Route and Schema Evolution</h2>
+
+<p>Flask applications accumulate route changes, Blueprint reorganizations, and SQLAlchemy model refactors over time. The Git MCP server gives your AI commit context to understand why your application is structured the way it is before generating code that extends it.</p>
+
+<p><strong>Key use cases for Flask developers:</strong></p>
+<ul>
+<li>Review Blueprint refactor commits to understand why routes were reorganized and what authentication or middleware applies to each Blueprint</li>
+<li>Inspect SQLAlchemy model migration commits to understand why a column was renamed, a relationship was restructured, or a new mixin was introduced</li>
+<li>Check blame on authentication and authorization logic (Flask-Login, Flask-JWT-Extended) when debugging session or token behavior</li>
+<li>Review Celery task commits to understand your background job patterns and error handling conventions before adding new tasks</li>
+</ul>
+
+<p><strong>Best for:</strong> Flask teams maintaining applications through multiple architectural reorganizations and SQLAlchemy schema evolution.</p>
+
+<h2>5. Docker MCP Server — Flask App and Dependencies Debugging</h2>
+
+<p>Flask applications in production run containerized — Gunicorn or uWSGI behind Nginx, with PostgreSQL, Redis (for Celery or Flask-Caching), and often Celery workers as separate containers. The Docker MCP server gives your AI visibility into running containers for debugging application startup, worker failures, and environment configuration.</p>
+
+<p><strong>Key use cases for Flask developers:</strong></p>
+<ul>
+<li>Inspect Flask application container logs to correlate 500 errors with specific route handler exceptions or SQLAlchemy connection pool exhaustion</li>
+<li>Debug multi-container compose setups — Gunicorn + Nginx + PostgreSQL + Redis + Celery worker + Celery beat scheduler</li>
+<li>Check environment variable injection for FLASK_SECRET_KEY, DATABASE_URL, and Celery broker URLs across service containers</li>
+<li>Review Celery worker container logs alongside Flask app logs for background task debugging and retry behavior</li>
+</ul>
+
+<p><strong>Best for:</strong> Flask developers running containerized production deployments with Gunicorn, Celery workers, and multiple dependent services.</p>
+
+<h2>6. Brave Search MCP Server — Current Flask and Extension Documentation</h2>
+
+<p>The Flask ecosystem moves steadily — Flask 3.x async support, SQLAlchemy 2.0's new query API, Flask-Login updates, and evolving patterns around type annotations and async views. Brave Search keeps your AI's suggestions aligned with current Flask documentation rather than outdated patterns from Flask 1.x or SQLAlchemy 1.4.</p>
+
+<p><strong>Key use cases for Flask developers:</strong></p>
+<ul>
+<li>Look up current Flask 3.x async view function syntax and async extension patterns if you're migrating from synchronous Flask</li>
+<li>Find current SQLAlchemy 2.0 select() and Session patterns vs deprecated Query API that your AI may suggest from training data</li>
+<li>Research current Flask-Login and Flask-JWT-Extended configuration for your Flask version and security requirements</li>
+<li>Check current Flask-Migrate and Alembic configuration patterns for multi-database or schema-based tenant isolation setups</li>
+</ul>
+
+<p><strong>Best for:</strong> Flask developers keeping up with Flask 3.x changes, SQLAlchemy 2.0's new API, and the evolving Python async ecosystem.</p>
+
+<h2>Recommended MCP Stack for Flask Developers</h2>
+
+<ul>
+<li><strong>Always active:</strong> Filesystem, Git</li>
+<li><strong>Production database:</strong> PostgreSQL</li>
+<li><strong>Local development:</strong> SQLite</li>
+<li><strong>Containerized deployment:</strong> Docker</li>
+<li><strong>Framework questions:</strong> GitHub, Brave Search</li>
+</ul>
+
+<p>Flask's minimalism is its strength — but it means AI has no framework conventions to lean on. Your project structure IS the convention. Filesystem gives your AI that structure. PostgreSQL gives it your schema for SQLAlchemy model generation. Git gives it the history of why things are organized the way they are. That combination lets AI assistance in a Flask project feel like a Python developer who's actually read your code rather than generating generic Flask boilerplate.</p>
+
+<p><strong>Related guides:</strong></p>
+<ul>
+<li><a href="/blog/best-mcp-servers-for-python-developers">Best MCP Servers for Python Developers</a></li>
+<li><a href="/blog/best-mcp-servers-for-django-developers">Best MCP Servers for Django Developers</a></li>
+<li><a href="/blog/best-mcp-servers-for-backend-developers">Best MCP Servers for Backend Developers</a></li>
+</ul>
+    `.trim(),
+  },
 ];
 
 export function getBlogPostBySlug(slug: string): BlogPost | undefined {
