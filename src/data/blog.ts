@@ -36651,6 +36651,414 @@ async with MCPServerStdio(
 </ul>
     `.trim(),
   },
+  {
+    slug: "best-mcp-servers-for-aws-developers",
+    title: "Best MCP Servers for AWS Developers in 2026",
+    description: "Build smarter on AWS with MCP. These Model Context Protocol servers give your AI assistant direct access to your cloud infrastructure, IaC configs, and deployment pipelines.",
+    date: "2026-05-24",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "8 min read",
+    keywords: ["best mcp servers for aws", "aws mcp server", "aws developer tools ai", "mcp for cloud developers", "model context protocol aws"],
+    relatedServerSlugs: ["aws", "filesystem", "git", "github", "docker", "kubernetes", "terraform", "github-actions", "cloudflare", "brave-search"],
+    content: `
+<p>AWS developers juggle more context than almost any other engineering role: IAM policies, CloudFormation stacks, Lambda cold starts, VPC configurations, cost anomalies, and deployment pipelines — all at once. MCP servers give your AI assistant direct access to that context instead of making you paste it in manually.</p>
+
+<p>Here are the MCP servers that matter most for AWS-heavy workflows.</p>
+
+<h2>1. AWS MCP Server — Native Cloud Awareness</h2>
+
+<p>The official AWS MCP server from <code>awslabs/mcp</code> is a suite of specialized servers that bring AWS context directly into your AI conversations. Rather than a single monolithic server, it's a collection of purpose-built tools for specific AWS services.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>CDK and CloudFormation best practices and documentation lookup</li>
+<li>AWS Lambda function context and log access</li>
+<li>Cost analysis and optimization recommendations</li>
+<li>IAM policy generation and validation</li>
+<li>S3 bucket operations and configuration review</li>
+</ul>
+
+<p><strong>Why it matters for AWS devs:</strong> Your AI assistant stops guessing at resource ARNs and IAM policy syntax. It can inspect your actual infrastructure context and generate accurate configurations rather than generic boilerplate that breaks on deployment.</p>
+
+<p><strong>Best for:</strong> Any developer building on AWS. The CDK tooling alone saves hours of documentation lookup per week.</p>
+
+<h2>2. Terraform MCP Server — Infrastructure as Code Without the Context Switching</h2>
+
+<p>Most AWS production infrastructure is managed through Terraform. The Terraform MCP server lets your AI understand your existing HCL configurations, suggest resource definitions, and help debug plan outputs without you copying entire <code>.tf</code> files into the chat.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read and navigate Terraform configuration files</li>
+<li>Understand resource dependencies and variable definitions</li>
+<li>Generate new resource blocks consistent with your existing patterns</li>
+<li>Help debug <code>terraform plan</code> errors with full file context</li>
+</ul>
+
+<p><strong>Best for:</strong> Platform engineers and AWS architects managing multi-environment infrastructure at scale.</p>
+
+<h2>3. Filesystem MCP Server — Your Local AWS Configs, AI-Accessible</h2>
+
+<p>AWS development generates local files constantly: <code>~/.aws/config</code>, CloudFormation templates, Lambda deployment packages, CDK app code, Dockerfiles, and CI/CD YAML. The filesystem server makes all of this directly readable by your AI without copy-paste.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read AWS config and credential files (with path restrictions for security)</li>
+<li>Navigate CloudFormation template directories</li>
+<li>Access Lambda function source code for review and optimization</li>
+<li>Browse CDK app structure for architecture-aware suggestions</li>
+</ul>
+
+<p><strong>Best for:</strong> Every AWS developer. This is the foundation that makes other MCP servers more effective by providing full project context.</p>
+
+<h2>4. Docker MCP Server — Container Context for ECS and Lambda</h2>
+
+<p>Whether you're deploying Lambda container images, running ECS tasks, or testing locally with LocalStack, Docker is part of almost every AWS workflow. The Docker MCP server gives your AI visibility into your container configuration, Compose files, and running services.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Inspect Dockerfiles and docker-compose configurations</li>
+<li>Check running container status and logs</li>
+<li>Optimize image builds for Lambda deployment size limits</li>
+<li>Debug container startup failures with full log context</li>
+</ul>
+
+<p><strong>Best for:</strong> Teams using ECS Fargate, App Runner, or Lambda container images.</p>
+
+<h2>5. Kubernetes MCP Server — EKS and Container Orchestration</h2>
+
+<p>For teams running Amazon EKS, the Kubernetes MCP server provides live cluster awareness that transforms how your AI assists with workload management and debugging.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>List pods, services, deployments, and namespaces</li>
+<li>Read pod logs without leaving your AI conversation</li>
+<li>Inspect ConfigMaps and Secrets structure</li>
+<li>Generate Kubernetes manifests consistent with your existing resources</li>
+</ul>
+
+<p><strong>Best for:</strong> AWS developers running EKS clusters, especially for debugging deployment failures and generating accurate YAML configurations.</p>
+
+<h2>6. GitHub Actions MCP Server — CI/CD Pipeline Intelligence</h2>
+
+<p>AWS deployments typically flow through GitHub Actions pipelines. The GitHub Actions MCP server gives your AI access to workflow definitions, run history, and failure context — so it can help you fix failing deployments with the actual error logs, not hypotheticals.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read workflow YAML files and understand pipeline structure</li>
+<li>Check recent workflow run status and failure logs</li>
+<li>Generate new jobs and steps consistent with your existing patterns</li>
+<li>Debug OIDC authentication issues with AWS</li>
+</ul>
+
+<p><strong>Best for:</strong> Teams using GitHub Actions for CDK deploy, SAM deploy, or CloudFormation stack updates.</p>
+
+<h2>7. Git MCP Server — Infrastructure Change History</h2>
+
+<p>In AWS development, "why does this IAM policy look like this?" is often answered by git history. The Git MCP server lets your AI understand the evolution of your infrastructure code and cross-reference changes with the incidents they caused or solved.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Browse commit history for any file or directory</li>
+<li>Read diffs between versions</li>
+<li>Understand who changed what and when</li>
+<li>Correlate infrastructure changes with deployment timelines</li>
+</ul>
+
+<p><strong>Best for:</strong> Every team. Git context is what separates AI suggestions that understand your constraints from suggestions that ignore your history.</p>
+
+<h2>8. Cloudflare MCP Server — Edge and CDN Layer</h2>
+
+<p>Many AWS architectures use Cloudflare in front of CloudFront, API Gateway, or ALBs for additional WAF and DDoS protection. The Cloudflare MCP server gives your AI visibility into your edge configuration.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read DNS records and routing configurations</li>
+<li>Inspect WAF rules and firewall policies</li>
+<li>Check Worker scripts and Pages configurations</li>
+<li>Debug cache and rate limiting behavior</li>
+</ul>
+
+<p><strong>Best for:</strong> Teams running hybrid AWS + Cloudflare architectures for edge security.</p>
+
+<h2>Recommended MCP Stack for AWS Developers</h2>
+
+<ul>
+<li><strong>Core:</strong> Filesystem, Git, AWS</li>
+<li><strong>IaC:</strong> Terraform (or CDK via AWS server)</li>
+<li><strong>Containers:</strong> Docker + Kubernetes (if using EKS)</li>
+<li><strong>CI/CD:</strong> GitHub Actions</li>
+<li><strong>Edge:</strong> Cloudflare (if applicable)</li>
+<li><strong>Research:</strong> Brave Search (for AWS docs and re:Post answers)</li>
+</ul>
+
+<p>AWS development involves more configuration surfaces than almost any other platform. MCP servers close the gap between "your AI knows general AWS" and "your AI knows <em>your</em> AWS" — understanding your specific account structure, naming conventions, existing IAM patterns, and deployment workflows. That context difference is what separates a useful AI suggestion from one that sounds right but breaks in your environment.</p>
+
+<p><strong>Related guides:</strong></p>
+<ul>
+<li><a href="/blog/best-mcp-servers-for-devops">Best MCP Servers for DevOps Engineers</a></li>
+<li><a href="/blog/best-mcp-servers-for-developers">Best MCP Servers for Developers</a></li>
+<li><a href="/blog/best-mcp-servers-for-data-engineering">Best MCP Servers for Data Engineering</a></li>
+</ul>
+    `.trim(),
+  },
+  {
+    slug: "best-mcp-servers-for-wordpress-developers",
+    title: "Best MCP Servers for WordPress Developers in 2026",
+    description: "Supercharge your WordPress development with MCP. These servers give your AI assistant direct access to your theme code, plugin files, database schema, and content APIs.",
+    date: "2026-05-24",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "7 min read",
+    keywords: ["best mcp servers for wordpress", "wordpress mcp server", "wordpress ai development", "mcp for wordpress", "model context protocol wordpress"],
+    relatedServerSlugs: ["wordpress", "filesystem", "git", "github", "mysql", "redis", "cloudflare", "brave-search"],
+    content: `
+<p>WordPress powers 43% of the web — but WordPress development remains surprisingly manual. Navigating wp-content, debugging hook interactions, writing WP_Query arguments from memory, and managing multisite configurations is where AI assistance could save hours per week. MCP servers make that possible by giving your AI real access to your WordPress environment instead of generic CMS knowledge.</p>
+
+<h2>1. WordPress MCP Server — Native CMS Integration</h2>
+
+<p>The WordPress MCP server connects directly to your WordPress installation via the REST API, giving your AI assistant read and write access to your content, settings, and site structure.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read and create posts, pages, and custom post types</li>
+<li>Manage categories, tags, and custom taxonomies</li>
+<li>Access site settings and options</li>
+<li>Query users, comments, and media</li>
+<li>Retrieve plugin and theme information</li>
+</ul>
+
+<p><strong>Why it matters:</strong> Instead of writing WP_Query arguments from memory and hoping they're right, your AI can inspect your actual content structure and generate accurate queries. Instead of looking up the REST API endpoint for custom post types, it already knows your site's schema.</p>
+
+<p><strong>Best for:</strong> WordPress developers building custom themes, plugins, or headless WordPress setups. Essential for content-heavy editorial sites where querying and manipulating posts via AI saves significant time.</p>
+
+<h2>2. Filesystem MCP Server — Theme and Plugin Code Access</h2>
+
+<p>WordPress development lives in <code>wp-content/themes/</code> and <code>wp-content/plugins/</code>. The filesystem MCP server makes your theme and plugin code directly readable by your AI — so when you ask it to add a custom hook or debug a template, it's working with your actual files, not imagined ones.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Navigate theme directory structure (templates, template parts, assets)</li>
+<li>Read plugin source code for debugging and extension</li>
+<li>Access functions.php and custom post type registrations</li>
+<li>Review child theme overrides and parent theme files</li>
+</ul>
+
+<p><strong>Best for:</strong> All WordPress developers doing custom theme or plugin work. Combined with the WordPress server, this gives your AI both the site's data structure and the code that generates it.</p>
+
+<h2>3. MySQL MCP Server — Direct Database Access</h2>
+
+<p>WordPress runs on MySQL, and the WordPress database schema is notoriously complex: wp_posts, wp_postmeta, wp_options, wp_usermeta — with custom tables added by popular plugins. The MySQL MCP server gives your AI direct schema introspection so it generates accurate queries instead of guessing table names.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Inspect WordPress database schema including custom tables</li>
+<li>Write and test WP_Query equivalents as raw SQL for debugging</li>
+<li>Analyze slow queries and suggest index improvements</li>
+<li>Check post meta patterns and option table content</li>
+</ul>
+
+<p><strong>Best for:</strong> WordPress developers dealing with performance issues, complex WP_Query debugging, or plugins that add custom database tables (WooCommerce, Gravity Forms, etc.).</p>
+
+<h2>4. Git MCP Server — Version Control for Theme Development</h2>
+
+<p>Modern WordPress development uses Git for theme and plugin versioning. The Git MCP server gives your AI access to your commit history — useful when debugging "what changed that broke the header template" or understanding the evolution of a complex plugin.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Browse theme and plugin commit history</li>
+<li>Compare template changes between versions</li>
+<li>Identify the commit that introduced a bug</li>
+<li>Generate commit messages from staged WordPress changes</li>
+</ul>
+
+<p><strong>Best for:</strong> Development teams and agencies managing multiple WordPress client sites with version control.</p>
+
+<h2>5. Redis MCP Server — Object Cache Visibility</h2>
+
+<p>High-traffic WordPress sites use Redis for object caching via plugins like Redis Object Cache or W3 Total Cache. When cache behavior is causing stale content or performance issues, the Redis MCP server lets your AI inspect what's cached and help debug cache invalidation logic.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Inspect cached objects and their TTLs</li>
+<li>Debug cache key patterns for WordPress object cache</li>
+<li>Identify over-cached or under-cached content</li>
+<li>Monitor cache hit/miss patterns</li>
+</ul>
+
+<p><strong>Best for:</strong> WordPress developers optimizing high-traffic sites with object caching enabled.</p>
+
+<h2>6. Cloudflare MCP Server — CDN and Security Layer</h2>
+
+<p>Most production WordPress sites sit behind Cloudflare for caching, DDoS protection, and WAF. When content isn't updating after a post publish or WAF rules are blocking legitimate requests, the Cloudflare MCP server gives your AI visibility into what's happening at the edge.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Check cache rules and purge configurations</li>
+<li>Review WAF rules that might block WordPress admin or REST API</li>
+<li>Inspect Page Rules affecting WordPress behavior</li>
+<li>Debug content delivery issues for specific URLs</li>
+</ul>
+
+<p><strong>Best for:</strong> WordPress site owners managing Cloudflare in front of their hosting provider.</p>
+
+<h2>Recommended MCP Stack for WordPress Developers</h2>
+
+<ul>
+<li><strong>Core:</strong> WordPress, Filesystem, MySQL</li>
+<li><strong>Version control:</strong> Git, GitHub</li>
+<li><strong>Performance:</strong> Redis (if using object caching)</li>
+<li><strong>Infrastructure:</strong> Cloudflare (if using CDN)</li>
+<li><strong>Research:</strong> Brave Search (for WordPress documentation and plugin-specific answers)</li>
+</ul>
+
+<p>The WordPress ecosystem has decades of accumulated patterns, hooks, and conventions that AI assistants often get wrong without proper context. MCP servers close that gap — your AI can see your actual theme, inspect your real database schema, and understand your site's specific plugin configuration. That transforms it from a generic PHP assistant into something that actually knows your WordPress environment.</p>
+
+<p><strong>Related guides:</strong></p>
+<ul>
+<li><a href="/blog/best-mcp-servers-for-developers">Best MCP Servers for Developers</a></li>
+<li><a href="/blog/best-mcp-servers-for-php-developers">Best MCP Servers for PHP Developers</a></li>
+<li><a href="/blog/best-mcp-servers-for-content-creation">Best MCP Servers for Content Creation</a></li>
+</ul>
+    `.trim(),
+  },
+  {
+    slug: "best-mcp-servers-for-shopify-developers",
+    title: "Best MCP Servers for Shopify Developers in 2026",
+    description: "Build faster Shopify stores with MCP. These Model Context Protocol servers connect your AI assistant to your store data, theme code, payment flows, and customer data.",
+    date: "2026-05-24",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "8 min read",
+    keywords: ["best mcp servers for shopify", "shopify mcp server", "shopify developer tools ai", "mcp for ecommerce", "model context protocol shopify"],
+    relatedServerSlugs: ["shopify", "filesystem", "git", "github", "stripe", "sendgrid", "redis", "airtable", "brave-search"],
+    content: `
+<p>Shopify development has a steep learning curve: Liquid templating, the Admin API vs Storefront API distinction, metafields and metaobjects, app proxy setups, webhook management, and the complexities of custom checkout flows. MCP servers give your AI direct access to your store's actual data and code — turning generic Shopify knowledge into context-aware assistance.</p>
+
+<h2>1. Shopify MCP Server — Store Data and Admin API Access</h2>
+
+<p>The Shopify MCP server connects directly to your store via the Admin API, giving your AI assistant read access to your actual products, orders, customers, and store configuration.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Query products, variants, collections, and inventory levels</li>
+<li>Read order data, fulfillment status, and order notes</li>
+<li>Access customer data and purchase history</li>
+<li>Retrieve metafield definitions and values</li>
+<li>Check store settings, shipping zones, and payment gateways</li>
+</ul>
+
+<p><strong>Why it matters:</strong> When building a custom storefront feature or debugging a Liquid template, your AI can see your actual product catalog structure — real metafield names, actual variant IDs, your specific collection hierarchy — instead of guessing at the data shape. That's the difference between a suggestion that deploys and one that throws "metafield not found" errors.</p>
+
+<p><strong>Best for:</strong> Shopify theme developers, app developers, and merchants building custom functionality. Essential when your store has complex metafield schemas or custom data models.</p>
+
+<h2>2. Filesystem MCP Server — Theme Code and App Files</h2>
+
+<p>Shopify theme development happens in a structured directory: <code>templates/</code>, <code>sections/</code>, <code>snippets/</code>, <code>assets/</code>, <code>layout/</code>. The filesystem MCP server makes your entire theme directly accessible to your AI so Liquid suggestions are based on your actual code structure, not guesses.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Navigate Shopify theme directory structure</li>
+<li>Read Liquid templates, sections, and snippets</li>
+<li>Access schema definitions in JSON templates and section schemas</li>
+<li>Review theme settings (settings_schema.json and settings_data.json)</li>
+<li>Browse app code for custom Shopify app development</li>
+</ul>
+
+<p><strong>Best for:</strong> Shopify theme developers and Shopify app developers. If you're writing Liquid, you need filesystem access so your AI actually knows your template structure.</p>
+
+<h2>3. Stripe MCP Server — Payment and Subscription Intelligence</h2>
+
+<p>Many Shopify merchants use Stripe alongside or instead of Shopify Payments, especially for subscription products, B2B invoicing, or custom checkout flows. The Stripe MCP server gives your AI visibility into your payment configuration.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read product and price configurations in Stripe</li>
+<li>Inspect subscription plans and billing cycles</li>
+<li>Check webhook endpoint configurations</li>
+<li>Review customer payment method data</li>
+<li>Debug failed payment and subscription lifecycle issues</li>
+</ul>
+
+<p><strong>Best for:</strong> Shopify developers building subscription products (via ReCharge, Bold, or custom Stripe integration), custom checkout extensions, or B2B payment flows.</p>
+
+<h2>4. Git MCP Server — Theme and App Version History</h2>
+
+<p>Shopify theme development requires version control — theme updates can silently break sections, and custom app code evolves over many sprints. The Git MCP server lets your AI understand what changed and why, turning debugging from guesswork into evidence-based diagnosis.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Browse commit history for theme files and sections</li>
+<li>Compare Liquid template changes between versions</li>
+<li>Identify what changed before a reported storefront bug</li>
+<li>Generate accurate commit messages for theme and app changes</li>
+</ul>
+
+<p><strong>Best for:</strong> Shopify development teams, agencies managing multiple client themes, and any developer who's ever asked "what did I change that broke the product page?"</p>
+
+<h2>5. SendGrid MCP Server — Transactional Email Context</h2>
+
+<p>Shopify's native email is limited. Many merchants use SendGrid for transactional emails, abandoned cart sequences, and post-purchase flows. The SendGrid MCP server gives your AI access to your email template configurations and delivery settings.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read dynamic email templates and their versions</li>
+<li>Inspect unsubscribe groups and suppression lists</li>
+<li>Check API key permissions and sending domain authentication</li>
+<li>Debug template rendering with Handlebars variables</li>
+</ul>
+
+<p><strong>Best for:</strong> Shopify developers integrating SendGrid for custom email flows beyond what Shopify Email provides.</p>
+
+<h2>6. Redis MCP Server — Session and Cache Management</h2>
+
+<p>Custom Shopify apps that handle high request volumes often use Redis for session management, rate limiting, and caching API responses (especially for storefront API calls with strict rate limits). The Redis MCP server helps your AI understand your caching strategy.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Inspect cached data structures and TTLs</li>
+<li>Debug session storage for custom app authentication</li>
+<li>Monitor rate limiting key patterns for Shopify API calls</li>
+<li>Check Redis memory usage for app scaling decisions</li>
+</ul>
+
+<p><strong>Best for:</strong> Custom Shopify app developers dealing with Shopify's API rate limits and needing intelligent caching strategies.</p>
+
+<h2>7. Airtable MCP Server — Inventory and Product Data Management</h2>
+
+<p>Many Shopify merchants manage their product catalog, inventory, or vendor data in Airtable before syncing to Shopify. The Airtable MCP server lets your AI access that source-of-truth data and help automate the sync workflows.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read product data from Airtable bases</li>
+<li>Access vendor inventory tables and purchase order tracking</li>
+<li>Generate Shopify bulk import files from Airtable records</li>
+<li>Help build Airtable → Shopify sync automation logic</li>
+</ul>
+
+<p><strong>Best for:</strong> Merchants managing complex product catalogs or supplier relationships in Airtable before publishing to Shopify.</p>
+
+<h2>Recommended MCP Stack for Shopify Developers</h2>
+
+<ul>
+<li><strong>Core:</strong> Shopify, Filesystem, Git</li>
+<li><strong>Payments:</strong> Stripe (for subscription or custom payment flows)</li>
+<li><strong>Email:</strong> SendGrid (for transactional email beyond Shopify Email)</li>
+<li><strong>Performance:</strong> Redis (for high-traffic custom apps)</li>
+<li><strong>Data management:</strong> Airtable (for catalog management workflows)</li>
+<li><strong>Research:</strong> Brave Search (for Shopify changelog, API docs, Liquid filter references)</li>
+</ul>
+
+<p>Shopify development is fast-moving — the platform adds new APIs, deprecates old ones, and introduces Breaking changes in versioned API releases regularly. AI assistants without MCP context often suggest patterns from older Shopify API versions or make assumptions about your store's metafield schema that don't match reality. With the right MCP stack, your AI becomes Shopify-aware in your specific store's context: your product model, your payment setup, your email flows. That's where the time savings compound.</p>
+
+<p><strong>Related guides:</strong></p>
+<ul>
+<li><a href="/blog/best-mcp-servers-for-developers">Best MCP Servers for Developers</a></li>
+<li><a href="/blog/best-mcp-servers-for-react-developers">Best MCP Servers for React Developers</a></li>
+<li><a href="/blog/best-mcp-servers-for-finance">Best MCP Servers for Finance</a></li>
+</ul>
+    `.trim(),
+  },
 ];
 
 export function getBlogPostBySlug(slug: string): BlogPost | undefined {
