@@ -35944,6 +35944,359 @@ async with MCPServerStdio(
 </ul>
     `.trim(),
   },
+  {
+    slug: "best-mcp-servers-for-r-developers",
+    title: "Best MCP Servers for R Developers in 2026",
+    description: "The top MCP servers for R development. Build statistical models, data pipelines, and research workflows faster with AI assistants that have direct access to your data and scripts.",
+    date: "2026-05-23",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "7 min read",
+    keywords: ["best mcp servers for r", "r developers mcp servers", "mcp tools for r developers", "model context protocol r", "r statistical computing mcp"],
+    relatedServerSlugs: ["filesystem", "github", "git", "brave-search", "sqlite", "postgresql"],
+    content: `
+<p>R remains the dominant language for statistical computing, data analysis, and academic research. Its ecosystem — tidyverse, ggplot2, Shiny, Stan — is unmatched for statistical modeling. But AI assistants struggle with R when they lack context about your data structure, package versions, and analytical goals. MCP servers fix this by giving your AI direct access to what it needs.</p>
+
+<p>Here are the MCP servers that matter most for R development in 2026.</p>
+
+<h2>1. Filesystem MCP Server — Navigate R Projects and Package Structures</h2>
+
+<p>R projects in RStudio or Positron use a consistent directory structure — R/ scripts, data/ folders, analysis/ notebooks, and DESCRIPTION files for packages. The Filesystem MCP server gives your AI access to this structure so it can generate code that fits your actual project rather than a generic template.</p>
+
+<p><strong>Key use cases for R developers:</strong></p>
+<ul>
+<li>Read existing function definitions in R/ before generating new ones that follow your naming and documentation conventions</li>
+<li>Inspect data/ directory contents and .rds or .csv files to understand what's already loaded</li>
+<li>Browse DESCRIPTION and NAMESPACE files when building R packages with proper exports and imports</li>
+<li>Navigate analysis/ Quarto or R Markdown files to maintain consistent coding style across your project</li>
+</ul>
+
+<p><strong>Best for:</strong> All R developers — the essential foundation server for any R project or package.</p>
+
+<h2>2. SQLite MCP Server — Access Local R Data Files and Databases</h2>
+
+<p>R workflows frequently involve SQLite databases for local data storage, especially in reproducible research pipelines. The SQLite MCP server lets your AI inspect your database schema and run queries alongside your R code, eliminating the back-and-forth of explaining what's in each table.</p>
+
+<p><strong>Key use cases for R developers:</strong></p>
+<ul>
+<li>Inspect survey or experiment data stored in SQLite before writing dplyr-compatible SQL queries in R</li>
+<li>Generate RSQLite connection code that references actual column names from live schema inspection</li>
+<li>Debug DBI connection and query issues by cross-referencing actual table structure</li>
+<li>Build dbplyr queries that correctly reference table and column names in your local database</li>
+</ul>
+
+<p><strong>Best for:</strong> R developers using RSQLite, DBI, or dbplyr for local data pipelines and reproducible research.</p>
+
+<h2>3. PostgreSQL MCP Server — Production Data Access for R Analysis</h2>
+
+<p>Many R workflows pull data from a PostgreSQL production or analytics database using the RPostgres or odbc packages. With a PostgreSQL MCP server, your AI can see your live schema and generate accurate SQL queries, tidyverse pipelines, and dplyr code that references real column names.</p>
+
+<p><strong>Key use cases for R developers:</strong></p>
+<ul>
+<li>Generate RPostgres connection code and dbplyr pipelines that match your actual schema</li>
+<li>Write parameterized SQL queries from live table inspection without manually checking column types</li>
+<li>Debug join logic in dplyr::tbl() chains by cross-referencing actual foreign key relationships</li>
+<li>Pull sample data for local analysis using correct column references from production tables</li>
+</ul>
+
+<p><strong>Best for:</strong> R analysts and data scientists pulling from production PostgreSQL databases for modeling or reporting.</p>
+
+<h2>4. Git MCP Server — Track Analysis Versioning and Methodology Changes</h2>
+
+<p>Reproducible research in R depends on understanding how your analysis evolved — model specification changes, data cleaning decisions, and statistical assumption updates. The Git MCP server gives your AI the commit history it needs to understand why your analysis is structured the way it is.</p>
+
+<p><strong>Key use cases for R developers:</strong></p>
+<ul>
+<li>Review commit history for a statistical model to understand why certain covariates were included or excluded</li>
+<li>Inspect data cleaning script commits to trace where a transformation decision was introduced</li>
+<li>Check blame on Shiny UI code to find the original intent behind a complex reactive expression</li>
+<li>Review ggplot2 theme commits to maintain visual consistency when extending existing figures</li>
+</ul>
+
+<p><strong>Best for:</strong> R researchers and analysts maintaining long-running projects with evolving methodology.</p>
+
+<h2>5. GitHub MCP Server — CRAN Package Issue and Documentation Access</h2>
+
+<p>The R ecosystem moves quickly — tidyverse API changes, ggplot2 breaking changes, and new Quarto rendering behavior. The GitHub MCP server lets your AI pull issue discussions and migration guides from popular R package repos directly, keeping it current with what's actually shipped.</p>
+
+<p><strong>Key use cases for R developers:</strong></p>
+<ul>
+<li>Search tidyverse GitHub issues for known bugs before debugging a dplyr join or pivot_wider edge case</li>
+<li>Pull ggplot2 migration guides when upgrading to a new major version with breaking aesthetic changes</li>
+<li>Find Quarto rendering issue discussions when debugging PDF or HTML output formatting problems</li>
+<li>Review Stan or brms GitHub discussions when debugging Bayesian model convergence issues</li>
+</ul>
+
+<p><strong>Best for:</strong> R developers working with rapidly evolving packages like tidyverse, ggplot2, Quarto, or Stan.</p>
+
+<h2>6. Brave Search MCP Server — Current R Documentation and CRAN Updates</h2>
+
+<p>R and its packages update frequently — new tidyverse functions, deprecated base R behavior, and updated Quarto rendering options. Brave Search lets your AI find current documentation and Stack Overflow solutions without recommending deprecated patterns from older training data.</p>
+
+<p><strong>Key use cases for R developers:</strong></p>
+<ul>
+<li>Look up current tidyr pivot_longer and pivot_wider syntax when migrating from spread/gather</li>
+<li>Find ggplot2 scale and guide options for a specific version rather than deprecated aes mappings</li>
+<li>Research current Quarto YAML options for PDF, HTML, and Revealjs outputs</li>
+<li>Check current purrr map family function signatures vs the new 4.x syntax changes</li>
+</ul>
+
+<p><strong>Best for:</strong> All R developers keeping up with tidyverse API evolution and Quarto's rapidly expanding feature set.</p>
+
+<h2>Recommended MCP Stack for R Developers</h2>
+
+<ul>
+<li><strong>Always active:</strong> Filesystem, Brave Search, Git</li>
+<li><strong>Local data pipelines:</strong> SQLite</li>
+<li><strong>Production database access:</strong> PostgreSQL</li>
+<li><strong>Package development:</strong> GitHub</li>
+</ul>
+
+<p>R's biggest AI friction point is context — your AI doesn't know what's in your data frames, what your function signatures look like, or what version of tidyverse you're using. Filesystem fixes the code context problem. SQLite or PostgreSQL fixes the data context problem. Brave Search fixes the version-accuracy problem. Together they turn your AI assistant from a generic R template generator into something that actually understands your project.</p>
+
+<p><strong>Related guides:</strong></p>
+<ul>
+<li><a href="/blog/best-mcp-servers-for-data-science">Best MCP Servers for Data Science</a></li>
+<li><a href="/blog/best-mcp-servers-for-data-engineering">Best MCP Servers for Data Engineering</a></li>
+<li><a href="/blog/best-mcp-servers-for-python-developers">Best MCP Servers for Python Developers</a></li>
+</ul>
+    `.trim(),
+  },
+  {
+    slug: "best-mcp-servers-for-ruby-on-rails-developers",
+    title: "Best MCP Servers for Ruby on Rails Developers in 2026",
+    description: "The top MCP servers for Rails development. Ship features faster with AI assistants that understand your models, schema migrations, and Rails conventions.",
+    date: "2026-05-23",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "7 min read",
+    keywords: ["best mcp servers for rails", "ruby on rails mcp servers", "mcp tools for rails developers", "model context protocol rails", "ruby mcp servers"],
+    relatedServerSlugs: ["filesystem", "github", "git", "postgresql", "brave-search", "docker"],
+    content: `
+<p>Ruby on Rails remains one of the most productive web frameworks ever built — convention over configuration, ActiveRecord, and a mature ecosystem that lets small teams ship ambitious products. MCP servers extend this productivity advantage to your AI assistant, giving it the database schema, code history, and framework context it needs to generate Rails code that actually works.</p>
+
+<p>Here are the MCP servers that matter most for Rails development in 2026.</p>
+
+<h2>1. Filesystem MCP Server — Navigate Rails' Convention-Heavy Structure</h2>
+
+<p>Rails apps follow strict directory conventions — models, controllers, services, jobs, mailers, and a growing number of concerns. The Filesystem MCP server gives your AI direct access to your app structure so it generates code that follows your existing patterns rather than Rails defaults that may not match your project's conventions.</p>
+
+<p><strong>Key use cases for Rails developers:</strong></p>
+<ul>
+<li>Read existing ActiveRecord model definitions before generating new ones with the right associations, scopes, and validations</li>
+<li>Inspect controller patterns before adding new actions — strong params structure, before_action chains, respond_to blocks</li>
+<li>Browse service objects and concerns to understand how your team wraps complex business logic</li>
+<li>Navigate config/routes.rb to correctly extend routing when adding resources or namespaces</li>
+</ul>
+
+<p><strong>Best for:</strong> All Rails developers — the foundational MCP server for any Rails codebase.</p>
+
+<h2>2. PostgreSQL MCP Server — Live Schema Access for ActiveRecord Code</h2>
+
+<p>ActiveRecord migrations are Rails' core data layer, but your AI can't see what's actually in your database without direct access. The PostgreSQL MCP server lets your AI inspect your live schema and generate migrations, queries, and model code that matches your actual tables rather than guessed column names.</p>
+
+<p><strong>Key use cases for Rails developers:</strong></p>
+<ul>
+<li>Generate ActiveRecord migrations that reference actual column types and constraints in your live database</li>
+<li>Write named scopes and where clauses with correct column names without checking schema.rb manually</li>
+<li>Debug has_many :through and polymorphic association issues by inspecting actual join table structure</li>
+<li>Generate complex SQL for ActiveRecord.find_by_sql from live schema inspection rather than guessing</li>
+</ul>
+
+<p><strong>Best for:</strong> Rails developers who want AI assistance on schema-dependent queries, migrations, and ActiveRecord associations.</p>
+
+<h2>3. Git MCP Server — Track Rails Migration History and Design Decisions</h2>
+
+<p>Rails codebases accumulate years of migration decisions — column renames, polymorphic refactors, counter cache additions, and security-driven changes. The Git MCP server gives your AI the history it needs to understand why your schema and code look the way they do, without you explaining every architectural decision.</p>
+
+<p><strong>Key use cases for Rails developers:</strong></p>
+<ul>
+<li>Review migration history to understand why a column is named a certain way before generating code that references it</li>
+<li>Inspect STI or polymorphic association commits to understand the original modeling intent</li>
+<li>Check blame on authentication logic when debugging Devise or custom auth middleware</li>
+<li>Review Rails version upgrade commits to understand what deprecated APIs were replaced</li>
+</ul>
+
+<p><strong>Best for:</strong> Rails teams maintaining long-running applications through multiple Rails major versions.</p>
+
+<h2>4. GitHub MCP Server — Rails and Gem Issue Access</h2>
+
+<p>The Rails ecosystem — Devise, Sidekiq, Pundit, Active Storage, Action Cable — ships updates and breaking changes regularly. The GitHub MCP server lets your AI pull issue discussions and changelogs directly from gem repos, keeping its suggestions current with what's actually in your Gemfile.lock.</p>
+
+<p><strong>Key use cases for Rails developers:</strong></p>
+<ul>
+<li>Search Devise GitHub issues for known bugs before debugging authentication edge cases</li>
+<li>Pull Rails 7.x migration guides when upgrading from 6.x to understand breaking API changes</li>
+<li>Review Sidekiq GitHub discussions when debugging job retry and error handling behavior</li>
+<li>Find Active Storage configuration examples from official Rails repo discussions</li>
+</ul>
+
+<p><strong>Best for:</strong> Rails developers navigating gem upgrades, Rails version migrations, and Rails API deprecation cycles.</p>
+
+<h2>5. Docker MCP Server — Rails Container Debugging</h2>
+
+<p>Modern Rails development uses Docker for local parity with production — Rails app + PostgreSQL + Redis + Sidekiq. The Docker MCP server gives your AI visibility into running containers, useful for debugging database connection pool exhaustion, background job failures, and environment-specific configuration issues.</p>
+
+<p><strong>Key use cases for Rails developers:</strong></p>
+<ul>
+<li>Inspect Rails application container logs to correlate database timeouts with specific controller actions</li>
+<li>Debug multi-container compose setups — Rails app, PostgreSQL, Redis, Sidekiq worker</li>
+<li>Check environment variable injection for Rails credentials and secret_key_base in production-like containers</li>
+<li>Review Sidekiq worker container logs alongside Rails app logs for background job debugging</li>
+</ul>
+
+<p><strong>Best for:</strong> Rails developers using Docker Compose for local development with multiple dependent services.</p>
+
+<h2>6. Brave Search MCP Server — Current Rails and Gem Documentation</h2>
+
+<p>Rails evolves fast — Hotwire/Turbo replacing Turbolinks, Rails 8 authentication generator, import maps replacing Webpacker. Brave Search lets your AI find current Rails documentation and solutions rather than suggesting patterns from outdated versions.</p>
+
+<p><strong>Key use cases for Rails developers:</strong></p>
+<ul>
+<li>Look up current Rails 7 and 8 Hotwire and Turbo Stream syntax for real-time features</li>
+<li>Find current Stimulus controller patterns when migrating from jQuery or older JavaScript approaches</li>
+<li>Research Rails 8 authentication generator syntax vs older Devise-based patterns</li>
+<li>Check current Active Job adapter configuration for Sidekiq vs GoodJob vs Solid Queue</li>
+</ul>
+
+<p><strong>Best for:</strong> Rails developers keeping up with Rails 7/8 changes, Hotwire, and the evolving JavaScript layer.</p>
+
+<h2>Recommended MCP Stack for Rails Developers</h2>
+
+<ul>
+<li><strong>Always active:</strong> Filesystem, PostgreSQL, Git</li>
+<li><strong>Gem and framework questions:</strong> GitHub, Brave Search</li>
+<li><strong>Docker-based local dev:</strong> Docker</li>
+</ul>
+
+<p>Rails' biggest AI friction point is schema context — your AI doesn't know what your tables look like, what associations exist, or what your migration history implies. PostgreSQL gives it your live schema. Filesystem gives it your code conventions. Git gives it the history of why things are the way they are. That combination turns Rails AI assistance from generic template generation into actual pair programming on your codebase.</p>
+
+<p><strong>Related guides:</strong></p>
+<ul>
+<li><a href="/blog/best-mcp-servers-for-ruby-developers">Best MCP Servers for Ruby Developers</a></li>
+<li><a href="/blog/best-mcp-servers-for-backend-developers">Best MCP Servers for Backend Developers</a></li>
+<li><a href="/blog/best-mcp-servers-for-database">Best MCP Servers for Database Work</a></li>
+</ul>
+    `.trim(),
+  },
+  {
+    slug: "best-mcp-servers-for-nuxt-developers",
+    title: "Best MCP Servers for Nuxt Developers in 2026",
+    description: "The top MCP servers for Nuxt.js development. Build Vue-powered full-stack apps faster with AI assistants that understand your composables, server routes, and Nitro backend.",
+    date: "2026-05-23",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "7 min read",
+    keywords: ["best mcp servers for nuxt", "nuxt mcp servers", "mcp tools for nuxt developers", "model context protocol nuxt", "nuxt.js mcp servers"],
+    relatedServerSlugs: ["filesystem", "github", "git", "brave-search", "postgresql", "docker"],
+    content: `
+<p>Nuxt is Vue's answer to Next.js — full-stack rendering, file-based routing, server routes via Nitro, and a composable-first architecture that makes complex Vue apps manageable. MCP servers extend Nuxt's developer experience to your AI assistant, giving it the file structure, schema, and framework context it needs to generate Nuxt code that works with your conventions.</p>
+
+<p>Here are the MCP servers that matter most for Nuxt development in 2026.</p>
+
+<h2>1. Filesystem MCP Server — Navigate Nuxt's File-Based Architecture</h2>
+
+<p>Nuxt's power comes from its directory conventions — pages/, components/, composables/, server/api/, and middleware/ all have specific behaviors driven by file location. The Filesystem MCP server gives your AI direct access to your project structure so it places new files in the right place and follows your component naming and composable patterns.</p>
+
+<p><strong>Key use cases for Nuxt developers:</strong></p>
+<ul>
+<li>Read existing composables/ before generating new ones that follow your state management and API patterns</li>
+<li>Inspect server/api/ route handlers to understand your existing API conventions before adding new endpoints</li>
+<li>Browse pages/ and layouts/ to correctly extend routing and understand what data each page expects</li>
+<li>Navigate plugins/ and middleware/ to correctly wire new global behaviors without breaking existing ones</li>
+</ul>
+
+<p><strong>Best for:</strong> All Nuxt developers — the essential server for understanding file-based conventions across a growing app.</p>
+
+<h2>2. PostgreSQL MCP Server — Server Route and Nitro API Development</h2>
+
+<p>Nuxt's server routes (server/api/) and Nitro backend make it a full-stack framework. When those routes connect to a PostgreSQL database, your AI needs live schema access to generate correct database queries, Drizzle/Prisma models, and server-side data fetching logic.</p>
+
+<p><strong>Key use cases for Nuxt developers:</strong></p>
+<ul>
+<li>Generate Drizzle ORM schema definitions that match your actual PostgreSQL table structure</li>
+<li>Write Nitro server route handlers with correct column references and join logic</li>
+<li>Debug useAsyncData and useFetch data shape mismatches by inspecting actual database output schema</li>
+<li>Generate Prisma model definitions from live table inspection for accurate TypeScript types</li>
+</ul>
+
+<p><strong>Best for:</strong> Nuxt developers building full-stack apps with PostgreSQL via Drizzle, Prisma, or raw SQL in server routes.</p>
+
+<h2>3. Git MCP Server — Track Composable and API Evolution</h2>
+
+<p>Nuxt apps evolve through composable refactors, Nuxt 2 to Nuxt 3 migrations, and Nitro API changes. The Git MCP server gives your AI the commit history to understand why your composables are structured the way they are and what migration decisions shaped your current architecture.</p>
+
+<p><strong>Key use cases for Nuxt developers:</strong></p>
+<ul>
+<li>Review composable commit history to understand why a specific state management pattern was chosen over Pinia</li>
+<li>Inspect Nuxt 2 → Nuxt 3 migration commits to understand which patterns were updated vs left as-is</li>
+<li>Check blame on middleware logic when debugging authentication redirect behavior</li>
+<li>Review server route commits to understand API versioning decisions and breaking changes</li>
+</ul>
+
+<p><strong>Best for:</strong> Nuxt teams maintaining apps through major Nuxt version upgrades or large-scale composable refactors.</p>
+
+<h2>4. GitHub MCP Server — Nuxt and Vue Ecosystem Issue Access</h2>
+
+<p>The Nuxt and Vue ecosystem moves quickly — Nuxt 4 migration, Vue 3.4+ reactivity improvements, Nitro updates, and evolving module APIs. The GitHub MCP server lets your AI pull issue discussions and changelogs from nuxt/nuxt and vuejs/vue directly, keeping its suggestions accurate for your current version.</p>
+
+<p><strong>Key use cases for Nuxt developers:</strong></p>
+<ul>
+<li>Search Nuxt GitHub issues for known bugs before debugging SSR hydration mismatches or useAsyncData caching edge cases</li>
+<li>Pull Nuxt 4 migration guide when upgrading from Nuxt 3 to understand compatibility layer changes</li>
+<li>Review Nuxt module GitHub discussions when debugging @nuxt/image, @nuxtjs/i18n, or Pinia integration issues</li>
+<li>Find Nitro configuration examples from official discussions for edge runtime or serverless deployments</li>
+</ul>
+
+<p><strong>Best for:</strong> Nuxt developers navigating ecosystem changes, module upgrades, and Nuxt major version migrations.</p>
+
+<h2>5. Docker MCP Server — Nuxt Full-Stack Container Debugging</h2>
+
+<p>Full-stack Nuxt apps often run as Docker containers in production — Nuxt app + PostgreSQL + Redis. The Docker MCP server gives your AI visibility into running containers, useful for debugging SSR rendering failures, environment variable configuration, and server route connectivity issues.</p>
+
+<p><strong>Key use cases for Nuxt developers:</strong></p>
+<ul>
+<li>Inspect Nuxt server container logs to correlate SSR hydration errors with specific page or API route failures</li>
+<li>Debug multi-container compose setups with Nuxt app + PostgreSQL + Redis for session or cache layers</li>
+<li>Check environment variable injection for NUXT_PUBLIC_ and private Nitro environment variables</li>
+<li>Review server route container logs when debugging Nitro API endpoint behavior in production-like environments</li>
+</ul>
+
+<p><strong>Best for:</strong> Nuxt developers running containerized full-stack deployments with multiple dependent services.</p>
+
+<h2>6. Brave Search MCP Server — Current Nuxt and Vue Documentation</h2>
+
+<p>Nuxt's API surface changes with each major version — Nuxt 3 introduced composables, Nuxt 4 is changing the app directory structure, and Nitro's configuration options expand with each release. Brave Search lets your AI find current Nuxt documentation rather than suggesting deprecated Nuxt 2 patterns.</p>
+
+<p><strong>Key use cases for Nuxt developers:</strong></p>
+<ul>
+<li>Look up current useAsyncData and useFetch options for Nuxt 3/4 vs deprecated asyncData from Nuxt 2</li>
+<li>Find current Pinia store patterns alongside Nuxt's useState composable for different state management use cases</li>
+<li>Research current Nitro route handler syntax and H3 utility functions for your Nuxt version</li>
+<li>Check current @nuxt/image configuration options and provider setup for your deployment target</li>
+</ul>
+
+<p><strong>Best for:</strong> Nuxt developers keeping up with Nuxt 3/4 changes, Nitro updates, and the evolving Vue 3 ecosystem.</p>
+
+<h2>Recommended MCP Stack for Nuxt Developers</h2>
+
+<ul>
+<li><strong>Always active:</strong> Filesystem, Brave Search, Git</li>
+<li><strong>Full-stack with database:</strong> PostgreSQL</li>
+<li><strong>Ecosystem questions:</strong> GitHub</li>
+<li><strong>Containerized deployment:</strong> Docker</li>
+</ul>
+
+<p>Nuxt's file-based conventions are powerful but require AI to understand exactly where files live and what each directory implies about behavior. Filesystem gives your AI that map. PostgreSQL gives it your data schema for full-stack server route generation. Brave Search keeps it current with Nuxt's fast-moving API. That combination makes AI assistance in a Nuxt project feel like it actually knows your framework.</p>
+
+<p><strong>Related guides:</strong></p>
+<ul>
+<li><a href="/blog/best-mcp-servers-for-vue-developers">Best MCP Servers for Vue Developers</a></li>
+<li><a href="/blog/best-mcp-servers-for-nextjs-developers">Best MCP Servers for Next.js Developers</a></li>
+<li><a href="/blog/best-mcp-servers-for-frontend-developers">Best MCP Servers for Frontend Developers</a></li>
+</ul>
+    `.trim(),
+  },
 ];
 
 export function getBlogPostBySlug(slug: string): BlogPost | undefined {
