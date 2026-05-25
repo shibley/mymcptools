@@ -37293,6 +37293,410 @@ async with MCPServerStdio(
 </ul>
     `.trim(),
   },
+  {
+    slug: "best-mcp-servers-for-astro-developers",
+    title: "Best MCP Servers for Astro Developers in 2026",
+    description: "Top MCP servers to supercharge your Astro development workflow. From content management to deployment and testing, these tools make AI-assisted Astro development faster and smarter.",
+    date: "2026-05-25",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "7 min read",
+    keywords: ["mcp servers astro", "astro developer tools", "mcp for astro", "astro ai workflow", "model context protocol astro"],
+    relatedServerSlugs: ["filesystem", "github", "vercel", "cloudflare", "netlify", "playwright", "fetch", "brave-search", "notion", "google-drive"],
+    content: `
+<p>Astro has become one of the fastest-growing web frameworks — its islands architecture, zero-JS-by-default philosophy, and multi-framework support make it the go-to choice for content-heavy sites and documentation portals. With MCP servers, you can bring your AI assistant directly into the Astro workflow.</p>
+
+<p>Here are the MCP servers that work best with Astro projects in 2026.</p>
+
+<h2>Why MCP Matters for Astro Development</h2>
+
+<p>Astro projects typically involve a mix of Markdown/MDX content, component logic across multiple frameworks, and complex build configurations. MCP servers let your AI assistant:</p>
+
+<ul>
+<li>Read and generate <strong>Markdown/MDX content</strong> within your content collections</li>
+<li>Understand your <strong>project structure</strong> — layouts, components, pages, and config</li>
+<li>Test <strong>static and server-rendered routes</strong> via browser automation</li>
+<li>Deploy and monitor sites across your preferred <strong>hosting platform</strong></li>
+</ul>
+
+<h2>1. Filesystem MCP Server — Essential for Every Astro Project</h2>
+
+<p>Astro's file-based routing and content collections live in specific directories. The filesystem MCP server gives your AI assistant full awareness of your <code>src/pages/</code>, <code>src/content/</code>, and <code>src/components/</code> structure.</p>
+
+<p><strong>How Astro devs use it:</strong></p>
+<ul>
+<li>Generate new MDX content files that match your collection schema</li>
+<li>Create new page routes with proper frontmatter</li>
+<li>Bulk-update content frontmatter (dates, tags, authors)</li>
+<li>Audit your component usage across pages</li>
+</ul>
+
+<p>This is non-negotiable for any Astro developer using an AI assistant.</p>
+
+<h2>2. GitHub MCP Server — Source Control That Understands Your Repo</h2>
+
+<p>Astro sites frequently involve content contributors who aren't developers. The GitHub MCP server lets your AI help manage PRs, review content changes, and coordinate deployments without leaving the chat.</p>
+
+<p><strong>Standout features for Astro:</strong></p>
+<ul>
+<li>Review content PRs — check for schema violations, broken links, missing alt text</li>
+<li>Search across your repo for component usage and dependencies</li>
+<li>Manage issues for content requests and design system updates</li>
+</ul>
+
+<h2>3. Vercel MCP Server — Deploy and Monitor Astro Sites</h2>
+
+<p>Astro is one of Vercel's best-supported frameworks. The Vercel MCP server bridges your AI assistant with your deployment pipeline — view build logs, check deployment status, and roll back broken deploys conversationally.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>View deployment logs without leaving your AI session</li>
+<li>Check environment variable configuration</li>
+<li>Monitor Core Web Vitals for recent deploys</li>
+<li>Trigger preview deployments for staging review</li>
+</ul>
+
+<h2>4. Cloudflare MCP Server — Edge Deployments and Workers</h2>
+
+<p>If you're using Astro with the Cloudflare adapter (SSR on the edge), the Cloudflare MCP server gives your AI visibility into your Workers and Pages deployments.</p>
+
+<p><strong>Particularly useful for:</strong></p>
+<ul>
+<li>Configuring Cloudflare Pages deployments</li>
+<li>Managing Workers that back your Astro API routes</li>
+<li>Monitoring edge cache hit rates for static assets</li>
+<li>KV and R2 storage configuration for content delivery</li>
+</ul>
+
+<h2>5. Playwright MCP Server — Test Your Astro Routes</h2>
+
+<p>Astro's hybrid rendering model (static, SSR, and islands) creates testing complexity. The Playwright MCP server lets your AI write and run end-to-end tests that validate your routes, interactive islands, and form submissions.</p>
+
+<p><strong>Astro-specific uses:</strong></p>
+<ul>
+<li>Test that static routes load without JavaScript errors</li>
+<li>Validate interactive islands hydrate correctly</li>
+<li>Screenshot testing for visual regression</li>
+<li>Test form submissions in SSR routes</li>
+</ul>
+
+<h2>6. Fetch MCP Server — Pull External Content and APIs</h2>
+
+<p>Many Astro sites pull content from external APIs, CMSes, or data sources at build time. The Fetch MCP server lets your AI inspect API responses, debug data fetching logic, and validate external content without you copying JSON around.</p>
+
+<p><strong>Great for:</strong></p>
+<ul>
+<li>Debugging Contentful, Sanity, or Strapi API responses</li>
+<li>Validating headless CMS content structures</li>
+<li>Testing API integrations before writing the Astro data-fetching code</li>
+</ul>
+
+<h2>7. Brave Search MCP Server — Research While You Build</h2>
+
+<p>Need to check Astro documentation, look up a component API, or research a third-party integration? The Brave Search MCP server keeps web research inside your AI context so you never lose your flow.</p>
+
+<h2>Recommended Setup for Astro Developers</h2>
+
+<p>Start with this core stack and add as needed:</p>
+
+<ol>
+<li><strong>Filesystem</strong> — Always on, gives your AI project awareness</li>
+<li><strong>GitHub</strong> — If collaborating or managing content PRs</li>
+<li><strong>Vercel</strong> or <strong>Cloudflare</strong> — Whichever hosts your Astro site</li>
+<li><strong>Playwright</strong> — When you need end-to-end testing confidence</li>
+<li><strong>Fetch</strong> — If your Astro site pulls from external APIs or CMSes</li>
+</ol>
+
+<p>The combination of Filesystem + GitHub + Vercel covers 90% of day-to-day Astro development. Add Playwright when you're writing tests, and Fetch when you're debugging integrations.</p>
+
+<h2>Astro + MCP: The Content Creation Superpower</h2>
+
+<p>One underrated use case: letting your AI generate properly-structured MDX content directly into your content collections. With the Filesystem MCP server, you can tell your AI:</p>
+
+<blockquote>
+<p>"Create a new blog post at <code>src/content/blog/my-new-post.mdx</code> with the standard frontmatter schema, write a 1500-word piece about [topic], and make sure the slug matches the filename."</p>
+</blockquote>
+
+<p>Your AI sees the collection schema, generates valid frontmatter, writes the content, and saves it in the right place — all in one shot.</p>
+
+<p>This is the kind of workflow that MCP enables for Astro developers, and it's a genuine productivity multiplier.</p>
+
+<h2>Get Started</h2>
+
+<p>Browse all MCP servers on <a href="/">MyMCPTools</a> and filter by category to find the right tools for your Astro stack. Each server page includes installation instructions for Claude Desktop, Cursor, and other MCP clients.</p>
+    `.trim(),
+  },
+  {
+    slug: "best-mcp-servers-for-remix-developers",
+    title: "Best MCP Servers for Remix Developers in 2026",
+    description: "The top MCP servers for Remix developers. Supercharge your full-stack Remix workflow with AI-powered tools for databases, deployment, testing, and more.",
+    date: "2026-05-25",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "7 min read",
+    keywords: ["mcp servers remix", "remix developer tools", "mcp for remix", "remix ai workflow", "remix full-stack mcp"],
+    relatedServerSlugs: ["filesystem", "github", "vercel", "cloudflare", "stripe", "supabase", "postgresql", "redis", "playwright", "sentry"],
+    content: `
+<p>Remix has established itself as the premier full-stack React framework — its nested routing, loader/action model, and progressive enhancement philosophy make it powerful but occasionally complex to work with. MCP servers can bridge the gap, giving your AI assistant direct access to your database, deployments, and services.</p>
+
+<p>Here are the MCP servers that will have the biggest impact on your Remix development workflow.</p>
+
+<h2>The Remix Developer's MCP Toolkit</h2>
+
+<p>Remix apps are full-stack by nature — your loaders query databases, your actions handle mutations, and everything runs server-side before hydrating in the browser. This means your AI assistant needs access to multiple layers of your stack to be genuinely helpful. MCP servers make that possible.</p>
+
+<h2>1. Filesystem MCP Server — Your Remix Project in Context</h2>
+
+<p>Remix's file-based routing means your project structure <em>is</em> your route tree. The Filesystem MCP server gives your AI assistant full visibility into your <code>app/routes/</code> directory, components, utilities, and server-side code.</p>
+
+<p><strong>Remix-specific benefits:</strong></p>
+<ul>
+<li>Generate new route files with the correct naming convention (<code>app/routes/products.$id.tsx</code>)</li>
+<li>Create loader and action handlers with proper TypeScript types</li>
+<li>Audit route files for missing error boundaries and catch boundaries</li>
+<li>Generate reusable UI components that follow your project conventions</li>
+</ul>
+
+<h2>2. PostgreSQL or Supabase MCP Server — AI-Powered Database Work</h2>
+
+<p>Remix's loader pattern makes database queries central to the framework. With a database MCP server, your AI doesn't just help write SQL — it <em>understands your schema</em> and writes accurate queries the first time.</p>
+
+<p><strong>What this unlocks:</strong></p>
+<ul>
+<li>Write complex loaders without explaining your schema every time</li>
+<li>Generate Prisma/Drizzle migrations from natural language descriptions</li>
+<li>Debug slow queries with schema-aware analysis</li>
+<li>Create seed data scripts that respect your foreign key constraints</li>
+</ul>
+
+<p><strong>Recommended:</strong> Use the PostgreSQL server for self-hosted databases, Supabase MCP if you're on the Supabase platform.</p>
+
+<h2>3. Vercel or Cloudflare MCP Server — Deployment Control</h2>
+
+<p>Remix runs excellently on both Vercel and Cloudflare Workers. Whichever you use, the corresponding MCP server brings deployment management into your AI workflow.</p>
+
+<p><strong>For Vercel users:</strong></p>
+<ul>
+<li>Monitor deployment status and build logs</li>
+<li>Check environment variable configuration across environments</li>
+<li>Inspect serverless function performance metrics</li>
+</ul>
+
+<p><strong>For Cloudflare Workers users:</strong></p>
+<ul>
+<li>Manage KV namespaces used for session storage and caching</li>
+<li>Monitor Workers CPU usage and request counts</li>
+<li>Configure Durable Objects for real-time features</li>
+</ul>
+
+<h2>4. Playwright MCP Server — Test the Full Stack</h2>
+
+<p>Testing Remix apps is nuanced — you need to validate both the server-rendered HTML <em>and</em> the client-side hydration. Playwright MCP server lets your AI write and run tests that cover your entire request/response cycle.</p>
+
+<p><strong>Essential for Remix testing:</strong></p>
+<ul>
+<li>Test that loader data renders correctly on initial page load</li>
+<li>Validate form submissions trigger the right action handlers</li>
+<li>Test optimistic UI patterns actually optimistic</li>
+<li>End-to-end authentication flow testing</li>
+</ul>
+
+<h2>5. Stripe MCP Server — Payments in Context</h2>
+
+<p>Remix is popular for SaaS applications, and Stripe is the dominant payments platform. The Stripe MCP server gives your AI access to your payment configuration, subscription plans, and customer data for building and debugging payment flows.</p>
+
+<p><strong>Useful for:</strong></p>
+<ul>
+<li>Querying subscription status for implementing access control in loaders</li>
+<li>Debugging webhook events that drive your action handlers</li>
+<li>Building correct Stripe Checkout sessions in your Remix actions</li>
+</ul>
+
+<h2>6. Redis MCP Server — Session and Cache Management</h2>
+
+<p>Many Remix apps use Redis for session storage (via remix-auth or custom session backends) and for caching expensive loader computations. The Redis MCP server lets your AI inspect your session data and cache keys without you opening a Redis CLI.</p>
+
+<p><strong>Key uses:</strong></p>
+<ul>
+<li>Debug session structure and expiry configuration</li>
+<li>Inspect cached loader responses</li>
+<li>Clear specific cache keys when debugging stale data</li>
+</ul>
+
+<h2>7. Sentry MCP Server — Error Tracking That Your AI Understands</h2>
+
+<p>When Remix loaders or actions throw errors, Sentry captures them. The Sentry MCP server brings those error reports directly into your AI conversation, so you can go from "there's an error" to "here's the fix" without copying stack traces.</p>
+
+<p><strong>Workflow:</strong></p>
+<ol>
+<li>User reports an error in production</li>
+<li>Ask your AI: "What are the most recent errors in the checkout route?"</li>
+<li>Sentry MCP returns the full error context, breadcrumbs, and affected users</li>
+<li>Your AI helps diagnose and fix the issue in the same conversation</li>
+</ol>
+
+<h2>8. GitHub MCP Server — Code Review and Collaboration</h2>
+
+<p>For teams working on Remix apps, the GitHub MCP server streamlines code review and issue management. Your AI can review PRs for Remix anti-patterns (missing error boundaries, data mutations in loaders, etc.) without you explaining the patterns each time.</p>
+
+<h2>Recommended Starter Stack for Remix</h2>
+
+<p>Build up from this foundation:</p>
+
+<ol>
+<li><strong>Filesystem</strong> — Always. Gives AI awareness of your route tree and components.</li>
+<li><strong>PostgreSQL or Supabase</strong> — Your database is central to Remix loaders/actions.</li>
+<li><strong>Vercel or Cloudflare</strong> — Whichever deploys your app.</li>
+<li><strong>Playwright</strong> — Add when you start writing end-to-end tests.</li>
+<li><strong>Stripe</strong> — If you're building any payment functionality.</li>
+<li><strong>Sentry</strong> — Once you're in production and need error visibility.</li>
+</ol>
+
+<h2>Remix's Unique MCP Advantage</h2>
+
+<p>Because Remix keeps server and client code co-located in route files, an AI with filesystem access can see the full picture — the loader that fetches data, the action that mutates it, and the component that renders it — all in one file. Most MCP-assisted frameworks require context-switching between backend and frontend files. With Remix, your AI can reason about the complete request lifecycle in a single turn.</p>
+
+<p>This makes MCP-assisted Remix development unusually powerful for full-stack feature work.</p>
+
+<p>Browse all available MCP servers at <a href="/">MyMCPTools</a> to build your ideal Remix stack.</p>
+    `.trim(),
+  },
+  {
+    slug: "best-mcp-servers-for-lmstudio",
+    title: "Best MCP Servers to Use with LM Studio in 2026",
+    description: "Run local AI with LM Studio and supercharge it with MCP servers. The top Model Context Protocol servers for local LLM workflows — file access, web search, databases, and more.",
+    date: "2026-05-25",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "8 min read",
+    keywords: ["mcp servers lm studio", "lm studio mcp", "local llm mcp servers", "lmstudio model context protocol", "lm studio ai tools"],
+    relatedServerSlugs: ["lmstudio-mcp", "ollama", "filesystem", "memory", "brave-search", "fetch", "sqlite", "postgresql", "chroma", "huggingface"],
+    content: `
+<p>LM Studio has become the go-to desktop app for running large language models locally — it makes downloading, running, and chatting with open-source models as easy as a few clicks. With MCP server support, LM Studio can now connect your local AI to real tools: files, databases, web search, and more.</p>
+
+<p>Here are the best MCP servers to pair with your LM Studio setup in 2026.</p>
+
+<h2>Why LM Studio + MCP is a Game Changer</h2>
+
+<p>Running models locally via LM Studio means your conversations stay private — no data leaves your machine. But stock LLMs are limited to what's in their training data. MCP servers extend your local AI with:</p>
+
+<ul>
+<li><strong>File system access</strong> — read and write files on your machine</li>
+<li><strong>Local database queries</strong> — connect to SQLite, PostgreSQL running locally</li>
+<li><strong>Web search</strong> — get current information without sending your full context to a cloud API</li>
+<li><strong>Memory and knowledge graphs</strong> — give your local AI persistent memory across sessions</li>
+</ul>
+
+<p>All of this while keeping your model running 100% locally.</p>
+
+<h2>1. Filesystem MCP Server — Foundation for Any Local AI Setup</h2>
+
+<p>The filesystem server is essential for any LM Studio workflow. It gives your local model the ability to read documents, write files, and navigate your project directories — transforming it from a chatbot into a productive local assistant.</p>
+
+<p><strong>Popular use cases with LM Studio:</strong></p>
+<ul>
+<li>Summarize local documents (PDFs, notes, reports) without uploading to the cloud</li>
+<li>Review and edit code files in your local projects</li>
+<li>Generate new files based on existing templates in your directory</li>
+<li>Organize file collections (rename, sort, audit contents)</li>
+</ul>
+
+<p><strong>Privacy angle:</strong> Your documents never leave your machine — the local model reads them via MCP, and all processing stays on your hardware.</p>
+
+<h2>2. LM Studio MCP Server — Multi-Model Orchestration</h2>
+
+<p>The LM Studio MCP server (available for Claude Desktop and other clients) lets you use LM Studio as an AI backend from within other MCP-compatible clients. This enables multi-model workflows: use a cloud model as your primary assistant while routing specific tasks (private document analysis, local code execution) to your local LM Studio model.</p>
+
+<p><strong>Use cases:</strong></p>
+<ul>
+<li>Route sensitive tasks to your local model while using cloud for general chat</li>
+<li>Run multiple local models simultaneously for comparison</li>
+<li>Use LM Studio as a local inference backend for agentic workflows</li>
+</ul>
+
+<h2>3. Memory MCP Server — Persistent Memory for Your Local AI</h2>
+
+<p>LM Studio models start fresh each conversation. The Memory MCP server (from Anthropic's official MCP implementations) adds a persistent knowledge graph that your local AI can read and write across sessions.</p>
+
+<p><strong>This solves a major limitation:</strong></p>
+<ul>
+<li>Remember your preferences, project context, and past conversations</li>
+<li>Build up knowledge about your codebase over multiple sessions</li>
+<li>Store important facts, decisions, and task states persistently</li>
+</ul>
+
+<p>Think of it as giving your local LLM a brain that survives restarts.</p>
+
+<h2>4. SQLite MCP Server — Query Local Databases Conversationally</h2>
+
+<p>SQLite is ubiquitous — mobile apps, Electron apps, local analytics, and developer tools all use it. The SQLite MCP server lets your local AI query, explore, and write to SQLite databases on your machine without you writing SQL manually.</p>
+
+<p><strong>With LM Studio:</strong></p>
+<ul>
+<li>Explore data in local application databases</li>
+<li>Run analytics queries against exported datasets</li>
+<li>Generate reports from SQLite databases entirely offline</li>
+<li>Build and test SQLite-backed features with AI assistance</li>
+</ul>
+
+<h2>5. Brave Search MCP Server — Web Access Without Cloud Compromise</h2>
+
+<p>Running local models is great for privacy, but local models have knowledge cutoffs. The Brave Search MCP server adds web search capabilities through Brave's privacy-focused search API — you get current information without sending your full conversation to a cloud LLM provider.</p>
+
+<p><strong>The privacy-preserving research stack:</strong></p>
+<ul>
+<li>LM Studio model processes and reasons about results locally</li>
+<li>Only your search queries go to Brave's API (not your conversation context)</li>
+<li>Results come back into your local model's context for analysis</li>
+</ul>
+
+<h2>6. Chroma or Milvus MCP Server — Vector Search and RAG</h2>
+
+<p>For developers building Retrieval-Augmented Generation (RAG) systems with local models, a vector database MCP server is invaluable. Connect your local AI to Chroma or Milvus to build privacy-preserving document search and knowledge retrieval systems.</p>
+
+<p><strong>RAG + LM Studio workflow:</strong></p>
+<ol>
+<li>Embed your private documents locally using a local embedding model</li>
+<li>Store vectors in Chroma or Milvus on your machine</li>
+<li>Use MCP to let your LM Studio model query the vector database</li>
+<li>Get AI answers grounded in your private document collection — all offline</li>
+</ol>
+
+<h2>7. Fetch MCP Server — HTTP Requests Without Leaving the Chat</h2>
+
+<p>The Fetch MCP server lets your local AI make HTTP requests — query REST APIs, scrape web pages, or pull JSON data from local services. Particularly useful for developers running local services (API servers, local tools with HTTP interfaces) alongside LM Studio.</p>
+
+<h2>8. HuggingFace MCP Server — Model and Dataset Discovery</h2>
+
+<p>LM Studio users frequently browse HuggingFace for new models to download. The HuggingFace MCP server lets your AI assist with model discovery, dataset exploration, and model card review — right in your AI conversation.</p>
+
+<p><strong>Useful for:</strong></p>
+<ul>
+<li>Research which models are best for your specific task</li>
+<li>Compare model sizes, benchmarks, and licensing</li>
+<li>Explore datasets for fine-tuning projects</li>
+</ul>
+
+<h2>Building the Ultimate Privacy-First Local AI Stack</h2>
+
+<p>The ideal LM Studio + MCP setup for maximum privacy and capability:</p>
+
+<ol>
+<li><strong>Filesystem</strong> — Always. Your local AI needs to read and write files.</li>
+<li><strong>Memory</strong> — Essential for persistent context across sessions.</li>
+<li><strong>SQLite</strong> — If you work with local databases or data files.</li>
+<li><strong>Brave Search</strong> — For current web information without cloud exposure.</li>
+<li><strong>Chroma</strong> — If you're building RAG systems with local documents.</li>
+<li><strong>Fetch</strong> — For developers running local services.</li>
+</ol>
+
+<h2>Getting Started with MCP in LM Studio</h2>
+
+<p>LM Studio's MCP support lets you configure servers through its settings panel. Most servers install via <code>npx</code> or <code>pip</code> and are added to LM Studio's configuration JSON — the same format as Claude Desktop.</p>
+
+<p>Browse all available MCP servers at <a href="/">MyMCPTools</a> to find the right tools for your local AI workflow.</p>
+    `.trim(),
+  },
 ];
 
 export function getBlogPostBySlug(slug: string): BlogPost | undefined {
