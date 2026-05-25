@@ -37697,8 +37697,375 @@ async with MCPServerStdio(
 <p>Browse all available MCP servers at <a href="/">MyMCPTools</a> to find the right tools for your local AI workflow.</p>
     `.trim(),
   },
-];
+  {
+    slug: "best-mcp-servers-for-fintech-developers",
+    title: "Best MCP Servers for Fintech Developers in 2026",
+    description: "The top MCP servers for fintech developers — integrate Plaid, Stripe, Alpaca, and Coinbase into your AI workflows. Build and debug financial applications faster with Model Context Protocol.",
+    date: "2026-05-25",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "9 min read",
+    keywords: ["mcp servers fintech", "fintech developer mcp", "plaid mcp server", "stripe mcp", "financial api mcp", "alpaca trading mcp"],
+    relatedServerSlugs: ["plaid-mcp", "stripe", "alpaca-mcp", "coinbase-advanced-mcp", "postgresql", "filesystem", "memory", "fetch"],
+    content: `
+<p>Fintech applications demand accuracy, reliability, and regulatory compliance. Whether you're building a banking integration, a trading platform, or a payments product, MCP servers let your AI directly query financial APIs, inspect transaction data, and debug integration issues in real time.</p>
 
+<p>Here are the best MCP servers for fintech developers in 2026.</p>
+
+<h2>1. Plaid MCP Server — Banking Data Integrations</h2>
+
+<p>Plaid connects to thousands of financial institutions, providing access to account balances, transactions, identity, and payroll data. The Plaid MCP server lets your AI interact with the Plaid API directly during development — no manual API calls or Postman switching required.</p>
+
+<p><strong>Development workflows:</strong></p>
+<ul>
+<li>Test Plaid Link integration flows and inspect returned account/item objects</li>
+<li>Query transaction data for a sandbox user to verify your categorization logic</li>
+<li>Debug webhook payloads from Plaid without copying JSON into your editor</li>
+<li>Verify that your app correctly handles Plaid error codes (ITEM_LOGIN_REQUIRED, INVALID_CREDENTIALS, etc.)</li>
+</ul>
+
+<p><strong>Compliance use case:</strong> Ask your AI to cross-reference Plaid transaction categories against your product's spend classification logic — catching discrepancies before they reach production.</p>
+
+<h2>2. Stripe MCP Server — Payment Processing Development</h2>
+
+<p>Stripe is the payments backbone of thousands of fintech products. The Stripe MCP server connects your AI to the Stripe API, making it possible to inspect customers, subscriptions, invoices, and disputes conversationally during development.</p>
+
+<p><strong>Developer workflows:</strong></p>
+<ul>
+<li>Query a customer's payment history and subscription status without opening the Stripe dashboard</li>
+<li>Debug failed payment attempts by inspecting the charge object and decline codes</li>
+<li>Analyze refund patterns across a time period to identify fraud signals</li>
+<li>Test webhook event handling by simulating Stripe events via the API</li>
+<li>Verify that your Stripe metadata is being written correctly across customer and subscription objects</li>
+</ul>
+
+<p><strong>Subscription fintech example:</strong> "Show me all customers on the Pro plan who had a failed payment in the last 30 days" — a query that would normally require a dashboard export, done conversationally in seconds.</p>
+
+<h2>3. Alpaca Trading MCP Server — Algorithmic Trading Development</h2>
+
+<p>Alpaca provides commission-free stock trading APIs and is widely used for algorithmic trading, robo-advisors, and fintech applications. The Alpaca MCP server gives your AI access to market data, account positions, and order management.</p>
+
+<p><strong>Trading developer use cases:</strong></p>
+<ul>
+<li>Query real-time and historical price data for strategy backtesting analysis</li>
+<li>Inspect open positions and order status in paper trading accounts during development</li>
+<li>Debug order submission logic by reviewing fill prices and execution quality</li>
+<li>Analyze portfolio performance metrics against benchmark data</li>
+<li>Verify that your risk management rules are being applied correctly to order flows</li>
+</ul>
+
+<p><strong>Important:</strong> Always develop and test against Alpaca's paper trading environment before pointing your code at live accounts.</p>
+
+<h2>4. Coinbase Advanced MCP Server — Crypto Trading Integration</h2>
+
+<p>For fintech products operating in the crypto space, the Coinbase Advanced MCP server provides access to market data, account management, and order book information from Coinbase's institutional-grade API.</p>
+
+<p><strong>Use cases:</strong></p>
+<ul>
+<li>Query real-time order book depth and recent trades for liquidity analysis</li>
+<li>Inspect portfolio positions and historical fills during strategy review</li>
+<li>Debug API integration issues by inspecting raw response objects</li>
+<li>Monitor maker/taker fee structures across different volume tiers</li>
+</ul>
+
+<h2>5. PostgreSQL MCP Server — Financial Database Queries</h2>
+
+<p>Most fintech backends use PostgreSQL for transaction records, ledger entries, user accounts, and compliance logs. A PostgreSQL MCP server makes your financial database directly queryable by your AI — accelerating both development debugging and data analysis.</p>
+
+<p><strong>Fintech database workflows:</strong></p>
+<ul>
+<li>Query the double-entry ledger for a specific account and verify balance integrity</li>
+<li>Investigate a failed transaction by tracing it through multiple tables without writing JOIN queries manually</li>
+<li>Run compliance queries (e.g., find all transactions above reporting thresholds for a time period)</li>
+<li>Analyze fraud patterns across transaction metadata without exporting to a spreadsheet</li>
+<li>Audit audit log tables to verify that all state-changing operations are being captured</li>
+</ul>
+
+<h2>6. Filesystem MCP Server — Financial Code and Config Review</h2>
+
+<p>Fintech code demands careful security review. The Filesystem MCP server lets your AI read your local codebase to catch issues before they reach production.</p>
+
+<p><strong>Security-focused use cases:</strong></p>
+<ul>
+<li>Audit your Plaid or Stripe integration code for secret exposure or improper error handling</li>
+<li>Review transaction processing logic for edge cases (negative amounts, currency rounding, race conditions)</li>
+<li>Check that sensitive fields are being masked properly in logs</li>
+<li>Verify that your webhook signature validation is implemented correctly</li>
+</ul>
+
+<h2>7. Memory MCP Server — Integration Context Across Sessions</h2>
+
+<p>Fintech integrations are complex and evolve over time. The Memory MCP server maintains context about your integration architecture, known edge cases, and compliance requirements across AI sessions.</p>
+
+<p><strong>Fintech project memory:</strong></p>
+<ul>
+<li>Store your API version constraints and known API quirks per provider</li>
+<li>Maintain a running list of compliance requirements your product must satisfy</li>
+<li>Track ongoing debugging investigations and what you've already ruled out</li>
+<li>Remember your data model structure so your AI can give accurate query suggestions</li>
+</ul>
+
+<h2>Recommended Stack by Fintech Vertical</h2>
+
+<p><strong>Banking/lending app:</strong> Plaid + PostgreSQL + Stripe + Filesystem + Memory</p>
+<p><strong>Payments product:</strong> Stripe + PostgreSQL + Filesystem + Memory + Fetch</p>
+<p><strong>Algo trading / robo-advisor:</strong> Alpaca + PostgreSQL + Memory + Filesystem</p>
+<p><strong>Crypto fintech:</strong> Coinbase Advanced + PostgreSQL + Memory + Fetch</p>
+
+<h2>Key Considerations for Fintech AI Development</h2>
+
+<ul>
+<li><strong>Never use live credentials in development:</strong> All financial API testing should use sandbox/paper environments. Store live API keys in a secrets manager — never in MCP config files or environment variables on shared machines.</li>
+<li><strong>PCI DSS scoping:</strong> If your product handles cardholder data, understand which parts of your system are in-scope and ensure AI tools don't expand your PCI footprint unintentionally.</li>
+<li><strong>Audit logging:</strong> Ensure AI-assisted queries and operations on financial data are logged for compliance purposes, just as direct API calls would be.</li>
+<li><strong>Regulatory geography:</strong> Financial regulations vary significantly by jurisdiction. AI-generated code for financial systems should be reviewed by someone familiar with applicable regulatory requirements.</li>
+</ul>
+
+<p>Browse all available MCP servers — including the full finance and API category — at <a href="/">MyMCPTools</a>.</p>
+    `.trim(),
+  },
+  {
+    slug: "best-mcp-servers-for-game-streamers",
+    title: "Best MCP Servers for Game Streamers in 2026",
+    description: "The top MCP servers for Twitch streamers, content creators, and gaming influencers — manage your channel, query game databases, and automate your streaming workflow with AI.",
+    date: "2026-05-25",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "8 min read",
+    keywords: ["mcp servers twitch streaming", "game streamer mcp", "twitch mcp server", "steam mcp", "gaming content creator mcp", "streamer ai tools"],
+    relatedServerSlugs: ["twitch-mcp", "steam-mcp", "rawg-mcp", "filesystem", "memory", "brave-search", "fetch"],
+    content: `
+<p>Game streaming is a content creation business — and like any business, it benefits from good tooling. MCP servers give AI assistants the ability to interact with Twitch, Steam, and game databases directly, turning your AI into a streaming operations assistant.</p>
+
+<p>Here are the best MCP servers for game streamers and gaming content creators in 2026.</p>
+
+<h2>1. Twitch MCP Server — Channel Management and Analytics</h2>
+
+<p>The Twitch MCP server connects your AI to the Twitch API, giving it access to your channel data, stream status, follower metrics, and clip library without you opening the Twitch dashboard.</p>
+
+<p><strong>Streaming workflow use cases:</strong></p>
+<ul>
+<li>Query your most recent stream's average viewers, peak viewers, and follower gains</li>
+<li>Find your top-performing clips by view count for highlight reel creation</li>
+<li>Check your channel's subscription tiers and gifted sub statistics</li>
+<li>Monitor chat activity and top chatters from recent streams</li>
+<li>Look up category rankings to identify which games are trending on Twitch right now</li>
+</ul>
+
+<p><strong>Content strategy example:</strong></p>
+<ol>
+<li>Ask your AI: "What were my 5 most-viewed streams in the last 30 days and what games were I playing?"</li>
+<li>Twitch MCP retrieves your stream history and view counts</li>
+<li>AI identifies patterns — which games or stream types perform best for your channel</li>
+<li>You use this data to plan your upcoming content calendar</li>
+</ol>
+
+<h2>2. Steam MCP Server — Game Research and Library Management</h2>
+
+<p>The Steam MCP server provides access to Steam's vast game database, including game metadata, player counts, reviews, and your personal Steam library. For streamers deciding what to play, this is invaluable.</p>
+
+<p><strong>Use cases for streamers:</strong></p>
+<ul>
+<li>Find new releases in your favorite genres with current concurrent player counts</li>
+<li>Check a game's review score and player sentiment before committing to a stream series</li>
+<li>Look up how many people are currently playing a game to gauge competition on Twitch</li>
+<li>Search your Steam library for games you own but haven't played (and your audience might enjoy)</li>
+<li>Track trending games that might bring new viewers to your channel</li>
+</ul>
+
+<p><strong>Game selection workflow:</strong> "Find indie games released in the last 3 months with over 1,000 concurrent players and mostly positive reviews" — the kind of research that normally takes an hour of browsing, done in seconds.</p>
+
+<h2>3. RAWG Game Database MCP Server — Deep Game Research</h2>
+
+<p>RAWG is one of the world's largest game databases, covering games across all platforms. The RAWG MCP server lets your AI search and retrieve detailed game information — much broader than Steam alone.</p>
+
+<p><strong>Content research use cases:</strong></p>
+<ul>
+<li>Find all games in a series to plan a retrospective stream series (e.g., every Zelda game in chronological order)</li>
+<li>Research a game's storyline, mechanics, and community reception before streaming it</li>
+<li>Find similar games to ones your audience loves for variety stream ideas</li>
+<li>Look up games from specific years, genres, or platforms for nostalgia content</li>
+<li>Get accurate game details for stream overlays, thumbnails, and descriptions</li>
+</ul>
+
+<h2>4. Memory MCP Server — Stream Planning and Channel Context</h2>
+
+<p>Your streaming schedule, goals, sponsor commitments, and community preferences change over time. The Memory MCP server maintains a persistent knowledge base that your AI can reference across sessions.</p>
+
+<p><strong>Streaming business memory:</strong></p>
+<ul>
+<li>Store your content calendar and upcoming sponsor obligations</li>
+<li>Track your channel growth goals and current metrics progress</li>
+<li>Maintain a list of games your audience has requested</li>
+<li>Remember which games performed well and which underperformed for your channel</li>
+<li>Keep running notes on stream series storylines or gaming progress</li>
+</ul>
+
+<h2>5. Filesystem MCP Server — Overlay and Asset Management</h2>
+
+<p>Streaming production involves lots of files — stream overlays, alert sounds, intro videos, thumbnail templates, and chat bot configurations. The Filesystem MCP server gives your AI access to your local asset library.</p>
+
+<p><strong>Production use cases:</strong></p>
+<ul>
+<li>Organize and audit your OBS scene collection files</li>
+<li>Draft chatbot command lists and responses based on your existing commands file</li>
+<li>Review and edit your stream schedule graphics and overlay text</li>
+<li>Generate thumbnail text variations based on your thumbnail template structure</li>
+</ul>
+
+<h2>6. Brave Search MCP Server — Gaming Trends and News</h2>
+
+<p>Gaming moves fast — new releases, patches, esports events, and viral moments happen daily. Brave Search gives your AI current web access to track gaming trends relevant to your content.</p>
+
+<p><strong>Trend monitoring:</strong></p>
+<ul>
+<li>Find out what gaming topics are trending on social media right now</li>
+<li>Research a game's recent patch notes before streaming it</li>
+<li>Discover upcoming game releases in your niche for advance content planning</li>
+<li>Monitor competitor streamers' recent content for inspiration and differentiation</li>
+</ul>
+
+<h2>7. Fetch MCP Server — Gaming API Access</h2>
+
+<p>Many gaming services have public APIs beyond what dedicated MCP servers cover. The Fetch MCP server lets your AI access these directly.</p>
+
+<p><strong>Gaming API use cases:</strong></p>
+<ul>
+<li>Pull stats from game-specific APIs (Riot Games for League of Legends, the Halo API, etc.)</li>
+<li>Access public leaderboard data to track your rank progression</li>
+<li>Retrieve achievement or trophy data from platform APIs</li>
+</ul>
+
+<h2>Recommended Starter Stack by Creator Type</h2>
+
+<p><strong>Twitch growth-focused streamer:</strong> Twitch + Steam + RAWG + Memory + Brave Search</p>
+<p><strong>Gaming content creator (YouTube + Twitch):</strong> RAWG + Steam + Memory + Filesystem + Brave Search</p>
+<p><strong>Competitive gaming streamer:</strong> Twitch + Fetch (game-specific APIs) + Memory + Brave Search</p>
+<p><strong>Variety streamer:</strong> Twitch + Steam + RAWG + Memory + Brave Search</p>
+
+<p>Browse all available MCP servers — including the gaming and media categories — at <a href="/">MyMCPTools</a>.</p>
+    `.trim(),
+  },
+  {
+    slug: "best-mcp-servers-for-manufacturing",
+    title: "Best MCP Servers for Manufacturing and ERP in 2026",
+    description: "The top MCP servers for manufacturing operations, ERP systems, and supply chain teams — query SAP, Odoo, and QuickBooks with AI, automate production data workflows, and streamline reporting.",
+    date: "2026-05-25",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "8 min read",
+    keywords: ["mcp servers manufacturing", "erp mcp server", "sap mcp", "odoo mcp", "manufacturing ai tools mcp", "production planning mcp"],
+    relatedServerSlugs: ["sap-mcp", "odoo-mcp", "quickbooks-mcp", "postgresql", "filesystem", "memory", "fetch"],
+    content: `
+<p>Manufacturing operations generate enormous volumes of data across ERP systems, production floors, supply chains, and quality control systems. MCP servers bring AI-assisted access to this data — letting operations teams query production records, purchasing history, and inventory levels conversationally, without writing SQL or navigating complex ERP interfaces.</p>
+
+<p>Here are the best MCP servers for manufacturing and ERP workflows in 2026.</p>
+
+<h2>1. SAP MCP Server — Enterprise Manufacturing Intelligence</h2>
+
+<p>SAP is the dominant ERP platform for enterprise manufacturing. The SAP MCP server enables your AI to query SAP modules — production orders, material master data, purchasing records, and financial postings — using natural language instead of transaction codes.</p>
+
+<p><strong>Manufacturing use cases:</strong></p>
+<ul>
+<li>Query open production orders and their completion status without navigating COOIS or MD04</li>
+<li>Check material availability for a production run against current warehouse stock</li>
+<li>Review purchase order history for a vendor to support renegotiation</li>
+<li>Analyze production variance reports to identify cost overruns by work center</li>
+<li>Generate daily/weekly production summaries without manual report configuration</li>
+</ul>
+
+<p><strong>Operations example:</strong></p>
+<ol>
+<li>Ask your AI: "Which production orders are behind schedule this week and what's causing the delay?"</li>
+<li>SAP MCP queries the relevant modules (PP, PM, WM) for order status and material availability</li>
+<li>AI summarizes the bottlenecks by work center and material shortfall</li>
+<li>You take action — expediting materials or reallocating labor — without a 2-hour report run</li>
+</ol>
+
+<h2>2. Odoo MCP Server — Mid-Market Manufacturing ERP</h2>
+
+<p>Odoo is the leading open-source ERP for mid-market manufacturers, covering manufacturing, inventory, purchasing, and quality control in a single integrated platform. The Odoo MCP server makes all these modules accessible to your AI.</p>
+
+<p><strong>Production management use cases:</strong></p>
+<ul>
+<li>Query bill of materials (BoM) for a product and check component availability</li>
+<li>Review manufacturing orders and their routing steps for a production run</li>
+<li>Check inventory valuation by product category for financial reporting</li>
+<li>Analyze quality control records for a batch to identify defect patterns</li>
+<li>Generate purchase orders from reorder point rules without manual intervention</li>
+</ul>
+
+<p><strong>Why this matters:</strong> Odoo's interface is powerful but complex. Natural language access via MCP reduces training time for new staff and speeds up routine data lookups for experienced users.</p>
+
+<h2>3. QuickBooks MCP Server — Financial Manufacturing Integration</h2>
+
+<p>Manufacturing companies need to connect production data to financial systems. The QuickBooks MCP server lets your AI query your accounting records alongside production data — critical for job costing, profitability analysis, and cash flow management.</p>
+
+<p><strong>Financial-manufacturing integration use cases:</strong></p>
+<ul>
+<li>Query job costing records to compare actual vs. estimated costs on a production run</li>
+<li>Review accounts payable for materials vendors to identify past-due payments before ordering</li>
+<li>Analyze profitability by product line using sales and COGS data</li>
+<li>Generate cash flow projections based on upcoming purchase commitments and customer invoices</li>
+</ul>
+
+<h2>4. PostgreSQL MCP Server — Production Database Queries</h2>
+
+<p>Many manufacturing companies maintain custom databases for production tracking, quality data, equipment maintenance (CMMS), and MES (Manufacturing Execution System) data. A PostgreSQL MCP server makes these systems AI-accessible.</p>
+
+<p><strong>Manufacturing data workflows:</strong></p>
+<ul>
+<li>Query OEE (Overall Equipment Effectiveness) data by machine and shift</li>
+<li>Analyze defect rates by production line, operator, or material batch</li>
+<li>Review maintenance work order history for a piece of equipment</li>
+<li>Generate production throughput reports without writing SQL manually</li>
+<li>Cross-reference quality inspection results with production parameters to find root causes</li>
+</ul>
+
+<h2>5. Filesystem MCP Server — Engineering and Documentation Access</h2>
+
+<p>Manufacturing operations involve extensive documentation: work instructions, engineering drawings, SOPs, quality control procedures, and equipment manuals. The Filesystem MCP server makes this document library accessible to your AI.</p>
+
+<p><strong>Document management use cases:</strong></p>
+<ul>
+<li>Retrieve the current SOP for a specific manufacturing process when training new operators</li>
+<li>Find and review engineering change orders (ECOs) related to a product</li>
+<li>Draft new work instruction documents based on existing templates and process descriptions</li>
+<li>Audit document version control to ensure the production floor has current procedures</li>
+</ul>
+
+<h2>6. Memory MCP Server — Operations Context Across Sessions</h2>
+
+<p>Manufacturing operations are ongoing — a supplier issue today connects to a capacity constraint discussed last week. The Memory MCP server maintains continuity across AI sessions.</p>
+
+<p><strong>Operations continuity use cases:</strong></p>
+<ul>
+<li>Track ongoing supplier negotiations and their current status</li>
+<li>Maintain context on quality escapes and their root cause investigations</li>
+<li>Store production capacity data and key constraints for planning queries</li>
+<li>Remember key performance thresholds (OEE targets, defect rate limits) for each production line</li>
+</ul>
+
+<h2>Recommended Stack by Manufacturing Function</h2>
+
+<p><strong>Production planning:</strong> SAP or Odoo + PostgreSQL + Memory + Filesystem</p>
+<p><strong>Quality management:</strong> Odoo + PostgreSQL + Filesystem + Memory</p>
+<p><strong>Procurement/sourcing:</strong> SAP or Odoo + QuickBooks + Memory + Fetch</p>
+<p><strong>Operations finance:</strong> QuickBooks + PostgreSQL + Memory + Filesystem</p>
+
+<h2>Key Considerations for Manufacturing AI Deployments</h2>
+
+<ul>
+<li><strong>Data sensitivity:</strong> ERP systems contain proprietary production data, pricing, and trade secrets. Restrict MCP server access to read-only where possible, and log all AI-generated queries.</li>
+<li><strong>ERP access controls:</strong> Configure MCP servers to use ERP API credentials with the minimum required permissions — not admin accounts.</li>
+<li><strong>Change validation:</strong> AI-suggested ERP updates (purchase orders, production order changes) should be reviewed by authorized personnel before execution. Use AI for analysis and drafting, not autonomous ERP writes in production.</li>
+<li><strong>Network security:</strong> ERP systems should be on isolated network segments. Run MCP servers within your internal network; don't expose ERP APIs to the public internet.</li>
+</ul>
+
+<p>Browse all available MCP servers — including the full enterprise and ERP category — at <a href="/">MyMCPTools</a>.</p>
+    `.trim(),
+  },
+];
 export function getBlogPostBySlug(slug: string): BlogPost | undefined {
   return blogPosts.find((post) => post.slug === slug);
 }
