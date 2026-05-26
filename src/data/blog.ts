@@ -38065,6 +38065,419 @@ async with MCPServerStdio(
 <p>Browse all available MCP servers — including the full enterprise and ERP category — at <a href="/">MyMCPTools</a>.</p>
     `.trim(),
   },
+  {
+    slug: "best-mcp-servers-for-gcp",
+    title: "Best MCP Servers for Google Cloud Platform (GCP) in 2026",
+    description: "Top MCP servers for GCP developers. Connect your AI assistant to BigQuery, Google Cloud Storage, Google Drive, Google Sheets, and more to supercharge your GCP workflows.",
+    date: "2026-05-25",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "7 min read",
+    keywords: ["mcp servers for gcp", "google cloud mcp", "bigquery mcp server", "google drive mcp", "gcp ai assistant", "best mcp servers google cloud"],
+    relatedServerSlugs: ["gcp", "gcp-storage", "bigquery", "google-drive", "google-sheets", "google-analytics", "google-search-console"],
+    content: `
+<p>Google Cloud Platform powers millions of applications — and now your AI assistant can interact with it directly through MCP servers. Whether you're querying BigQuery datasets, managing Cloud Storage buckets, or working with Google Workspace data, this guide covers the essential MCP servers for GCP developers.</p>
+
+<h2>Why GCP Developers Need MCP</h2>
+
+<p>GCP spans dozens of services. Switching between the Cloud Console, bq CLI, gsutil, and your IDE fragments your focus and slows your workflow. MCP servers collapse these context switches: your AI can directly query BigQuery, inspect Cloud Storage, and pull from Google Drive — all within a single conversation.</p>
+
+<h2>Core GCP MCP Servers</h2>
+
+<h3>1. GCP MCP Server — Your Cloud Control Plane</h3>
+
+<p>The GCP MCP server provides broad access to Google Cloud APIs — compute, networking, IAM, and more. It's the Swiss Army knife for GCP platform engineers and cloud architects.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>List and inspect GCE instances, GKE clusters, and Cloud Run services</li>
+<li>Review IAM policies and role bindings</li>
+<li>Check quotas, billing data, and resource utilization</li>
+<li>Inspect VPC networks, firewall rules, and load balancers</li>
+<li>Trigger Cloud Functions and Cloud Run jobs</li>
+</ul>
+
+<p><strong>Best for:</strong> Platform engineers, cloud architects, and DevOps teams managing GCP infrastructure.</p>
+
+<h3>2. BigQuery MCP Server — Conversational Data Warehousing</h3>
+
+<p>BigQuery is where GCP analytics happen — petabyte-scale queries at millisecond speed. The BigQuery MCP server gives your AI direct access to your datasets, making data exploration conversational.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Schema introspection across datasets and tables</li>
+<li>Run SQL queries and return results in context</li>
+<li>Explain query plans and suggest optimizations</li>
+<li>Browse table previews and row counts</li>
+<li>Check job history and query costs</li>
+</ul>
+
+<p><strong>Real-world scenario:</strong> "What were our top 10 revenue-generating products last month?" — Your AI inspects the schema, writes the SQL, runs it against BigQuery, and returns formatted results. No context-switching to the Cloud Console query editor.</p>
+
+<p><strong>Best for:</strong> Data engineers, analysts, and anyone running analytics workloads on BigQuery.</p>
+
+<h3>3. Google Cloud Storage MCP Server</h3>
+
+<p>GCS is the backbone of most GCP data pipelines. The Cloud Storage MCP server lets your AI browse buckets, read objects, and understand your data lake structure without manual gsutil commands.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>List buckets and objects with metadata</li>
+<li>Read file contents (CSVs, JSONs, logs)</li>
+<li>Check bucket policies and lifecycle rules</li>
+<li>Inspect object versioning and ACLs</li>
+</ul>
+
+<p><strong>Best for:</strong> Data engineers working with GCS-backed pipelines, ETL workflows, and data lakes.</p>
+
+<h2>Google Workspace MCP Servers</h2>
+
+<p>For teams using Google Workspace alongside GCP, these servers bridge your cloud data with your productivity tools.</p>
+
+<h3>4. Google Drive MCP Server</h3>
+
+<p>Access documents, spreadsheets, and files stored in Google Drive — great for teams that manage runbooks, architecture docs, and project specifications in Drive.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Search and retrieve Drive files by name or content</li>
+<li>Read Google Docs and export as text</li>
+<li>List folder contents and navigate shared drives</li>
+<li>Check file permissions and sharing settings</li>
+</ul>
+
+<h3>5. Google Sheets MCP Server</h3>
+
+<p>Many GCP teams track operational data, budgets, and capacity plans in Sheets. The Google Sheets MCP server makes this data AI-accessible for analysis and cross-referencing.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read sheet data into AI context</li>
+<li>Update cells based on AI-generated analysis</li>
+<li>Cross-reference Sheets data with BigQuery results</li>
+<li>Generate summary statistics from spreadsheet data</li>
+</ul>
+
+<h3>6. Google Analytics MCP Server</h3>
+
+<p>Pull traffic and conversion data from Google Analytics directly into your AI workflow. Ideal for product teams that need to correlate feature releases with traffic patterns stored in BigQuery exports.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Query GA4 reports and dimension/metric combinations</li>
+<li>Check traffic trends, bounce rates, and conversions</li>
+<li>Compare date ranges and segment performance</li>
+<li>Export data for BigQuery cross-analysis</li>
+</ul>
+
+<h3>7. Google Search Console MCP Server</h3>
+
+<p>For GCP-hosted web applications, the Search Console MCP server surfaces SEO performance data — page rankings, impressions, clicks, and crawl errors — directly in your AI workflow.</p>
+
+<h2>The Recommended GCP AI Stack</h2>
+
+<p>Here's the stack that covers most GCP developer workflows:</p>
+
+<ol>
+<li><strong>GCP MCP</strong> — Infrastructure and platform management</li>
+<li><strong>BigQuery MCP</strong> — Analytics and data exploration</li>
+<li><strong>Cloud Storage MCP</strong> — Data lake and object storage access</li>
+<li><strong>Google Drive MCP</strong> — Documentation and runbooks</li>
+<li><strong>Google Sheets MCP</strong> — Operational tracking and reporting</li>
+<li><strong>Filesystem MCP</strong> — Local configs, Terraform files, and code</li>
+<li><strong>GitHub MCP</strong> — Source control and CI/CD pipelines</li>
+</ol>
+
+<h2>Security Best Practices for GCP MCP</h2>
+
+<ul>
+<li><strong>Use service accounts with minimal permissions</strong> — Don't connect MCP servers with your personal GCP credentials. Create dedicated service accounts with only the IAM roles each server needs.</li>
+<li><strong>Read-only for analytics workloads</strong> — BigQuery and GCS connections should be read-only unless you specifically need write access.</li>
+<li><strong>Audit with Cloud Logging</strong> — Enable Cloud Audit Logs on any APIs your MCP servers access. This creates a paper trail for all AI-triggered API calls.</li>
+<li><strong>VPC-restrict where possible</strong> — For production GCP environments, run your MCP servers inside a VPC with appropriate firewall rules.</li>
+</ul>
+
+<h2>Getting Started</h2>
+
+<p>The fastest way to get started is with the BigQuery and Cloud Storage servers — they cover the most common GCP data workflows immediately. Add the GCP platform server once you're comfortable with the pattern.</p>
+
+<p>Browse all <a href="/category/cloud">Cloud MCP servers</a> and <a href="/category/analytics">Analytics MCP servers</a> in our directory.</p>
+    `.trim(),
+  },
+  {
+    slug: "best-mcp-servers-for-vercel-developers",
+    title: "Best MCP Servers for Vercel Developers in 2026",
+    description: "The top MCP servers for developers building and deploying on Vercel. Connect your AI to GitHub, Vercel deployments, Neon/Supabase databases, and web analytics for faster shipping.",
+    date: "2026-05-25",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "6 min read",
+    keywords: ["mcp servers for vercel", "vercel mcp server", "best mcp vercel", "vercel ai development", "mcp servers nextjs vercel", "vercel deployment mcp"],
+    relatedServerSlugs: ["vercel", "github", "neon", "supabase", "filesystem", "cloudflare"],
+    content: `
+<p>Vercel is the go-to deployment platform for Next.js and frontend teams. Fast builds, instant previews, edge functions — and now, AI-powered development through MCP servers. This guide covers the essential MCP stack for Vercel developers to ship faster.</p>
+
+<h2>The Vercel Developer Workflow</h2>
+
+<p>A typical Vercel project involves: writing code locally → pushing to GitHub → Vercel auto-deploys → database queries → monitoring and iteration. MCP servers can accelerate every step of this cycle by giving your AI assistant live context across all these systems.</p>
+
+<h2>Essential MCP Servers for Vercel Developers</h2>
+
+<h3>1. Vercel MCP Server — Deployment Intelligence</h3>
+
+<p>The official Vercel MCP server connects your AI directly to your Vercel account. Instead of jumping to the Vercel dashboard to check deployment status or debug failures, get that context inline.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>List projects and recent deployments with status</li>
+<li>Inspect build logs for failed deployments</li>
+<li>Check environment variables (names, not values) across environments</li>
+<li>Review deployment domains and aliasing</li>
+<li>Trigger new deployments and check rollback options</li>
+</ul>
+
+<p><strong>Real-world scenario:</strong> "Why did the production deploy fail?" — Your AI pulls the build log, identifies the TypeScript error in the compile step, and suggests a fix — all without you opening a browser tab.</p>
+
+<h3>2. GitHub MCP Server — Source of Truth</h3>
+
+<p>Since Vercel deploys from GitHub, the GitHub MCP server is essential. Your AI can inspect your codebase, review PRs, check workflow runs, and understand commit history to connect code changes to deployment outcomes.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Browse repository files and recent commits</li>
+<li>Review pull requests and their CI status</li>
+<li>Inspect GitHub Actions workflow runs</li>
+<li>Search code across your repos</li>
+<li>Create issues and PR comments</li>
+</ul>
+
+<p><strong>Best workflow:</strong> Vercel MCP for deployment context + GitHub MCP for code context. Together, they give your AI the full picture from code to production.</p>
+
+<h3>3. Neon MCP Server — Serverless Postgres for Vercel</h3>
+
+<p>Neon is Vercel's recommended serverless Postgres solution — branching databases that match your Git branching workflow. The Neon MCP server brings your database into your AI workflow.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Schema introspection and table browsing</li>
+<li>Query execution and result analysis</li>
+<li>Branch management (create/delete database branches)</li>
+<li>Connection string management across environments</li>
+<li>Query performance analysis</li>
+</ul>
+
+<p><strong>Best for:</strong> Teams using Neon as their Vercel-integrated database. The branching model pairs perfectly with Vercel's preview deployment model.</p>
+
+<h3>4. Supabase MCP Server — Backend as a Service</h3>
+
+<p>If your Vercel project uses Supabase for its backend (auth, realtime, storage), the Supabase MCP server brings all of that into AI context.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Browse your Supabase database schema and run queries</li>
+<li>Inspect auth configuration and user data</li>
+<li>Review storage bucket contents</li>
+<li>Check Supabase edge function logs</li>
+<li>Manage database migrations</li>
+</ul>
+
+<h3>5. Filesystem MCP Server — Local Development</h3>
+
+<p>The filesystem server is essential for any local development workflow. For Vercel developers, it means your AI can read your <code>next.config.js</code>, <code>vercel.json</code>, environment files, and component code without you pasting it into the chat.</p>
+
+<p><strong>Configuration tip:</strong> Restrict the filesystem server to your project directory for security. Your AI doesn't need access to your entire home folder — just the workspace.</p>
+
+<h3>6. Cloudflare MCP Server — Edge Performance</h3>
+
+<p>For teams using Cloudflare in front of Vercel (common for custom caching, security rules, or DNS management), the Cloudflare MCP server bridges your edge configuration with your AI.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Review DNS records and zone settings</li>
+<li>Inspect firewall rules and rate limiting</li>
+<li>Check cache analytics and purge caches</li>
+<li>Review Workers deployments</li>
+</ul>
+
+<h2>Recommended Vercel Developer MCP Stack</h2>
+
+<p>For a typical Next.js/Vercel project:</p>
+
+<ol>
+<li><strong>Vercel MCP</strong> — Deployment and build log access</li>
+<li><strong>GitHub MCP</strong> — Code, PRs, and CI/CD pipelines</li>
+<li><strong>Neon or Supabase MCP</strong> — Database access (pick based on your stack)</li>
+<li><strong>Filesystem MCP</strong> — Local code and config files</li>
+<li><strong>Brave Search MCP</strong> — Documentation lookup and error research</li>
+</ol>
+
+<h2>Setting Up in Cursor or Claude Desktop</h2>
+
+<p>Vercel developers typically use Cursor or Claude Desktop for AI-assisted coding. Both support MCP natively.</p>
+
+<p>For <strong>Cursor</strong>: Add servers to <code>~/.cursor/mcp.json</code></p>
+<p>For <strong>Claude Desktop</strong>: Add servers to <code>~/Library/Application Support/Claude/claude_desktop_config.json</code> (macOS)</p>
+
+<p>Each MCP server ships with its own setup instructions — most install via <code>npx</code> in under 2 minutes.</p>
+
+<h2>The Compounding Benefit</h2>
+
+<p>The real power of MCP for Vercel developers isn't any single server — it's the combination. When your AI can simultaneously see your code (GitHub), your deployment status (Vercel), and your database schema (Neon), it can answer questions that would otherwise require you to context-switch across three dashboards.</p>
+
+<p>"Why is my preview deployment breaking for user ID 1234 but not others?" — With this stack, your AI can check the deployment logs, inspect the database for that user's data, review the code path, and identify the issue in one conversation.</p>
+
+<p>Browse all <a href="/category/devops">DevOps MCP servers</a> and <a href="/category/coding">Coding MCP servers</a> in our directory.</p>
+    `.trim(),
+  },
+  {
+    slug: "best-mcp-servers-for-vector-databases",
+    title: "Best MCP Servers for Vector Databases in 2026: Pinecone, Qdrant, Weaviate & More",
+    description: "Top MCP servers for vector database developers. Connect your AI to Pinecone, Qdrant, Weaviate, Chroma, and Milvus for semantic search, RAG pipelines, and embedding management.",
+    date: "2026-05-25",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "8 min read",
+    keywords: ["mcp servers vector database", "pinecone mcp server", "qdrant mcp", "weaviate mcp", "chroma mcp", "vector search mcp", "rag mcp servers"],
+    relatedServerSlugs: ["pinecone", "qdrant", "weaviate", "chroma", "milvus", "memory"],
+    content: `
+<p>Vector databases are the backbone of modern AI applications — powering semantic search, RAG (Retrieval-Augmented Generation) pipelines, recommendation engines, and memory systems. MCP servers bring these databases directly into your AI workflow, letting you query, inspect, and manage vector collections conversationally.</p>
+
+<h2>Why Vector Database Developers Need MCP</h2>
+
+<p>Working with vector databases typically means writing embedding pipelines, debugging similarity searches, and inspecting collection configurations — all through separate CLIs, dashboards, or API calls. MCP servers collapse this by giving your AI assistant direct access to your vector database, so you can explore data, debug retrieval quality, and iterate on your RAG pipeline in a single conversation.</p>
+
+<h2>Top Vector Database MCP Servers</h2>
+
+<h3>1. Pinecone MCP Server — Managed Vector Database</h3>
+
+<p>Pinecone is the most popular managed vector database for production AI applications. Its MCP server brings index management and querying into your AI assistant.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>List and inspect Pinecone indexes (dimensions, metric, pod type)</li>
+<li>Run similarity queries with natural language (your AI generates the query vector)</li>
+<li>Inspect vector metadata and filter by metadata fields</li>
+<li>Check index statistics (vector count, fill ratio)</li>
+<li>Upsert and delete vectors</li>
+</ul>
+
+<p><strong>Real-world scenario:</strong> "Why is my RAG pipeline returning irrelevant chunks?" — Your AI queries the Pinecone index with your test query, reviews the top-k results with their scores, and identifies that the embedding model mismatch is causing poor retrieval quality.</p>
+
+<p><strong>Best for:</strong> Teams running production RAG pipelines on managed infrastructure.</p>
+
+<h3>2. Qdrant MCP Server — Open-Source Powerhouse</h3>
+
+<p>Qdrant is a high-performance, open-source vector database with rich filtering capabilities. Its MCP server is particularly useful for developers who need to combine vector similarity with structured metadata filters.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Browse collections and their configurations</li>
+<li>Run vector similarity searches with payload filters</li>
+<li>Inspect individual points and their payloads</li>
+<li>Check collection statistics and segment info</li>
+<li>Scroll through collections for debugging</li>
+</ul>
+
+<p><strong>Best for:</strong> Developers who need fine-grained filtering alongside vector search — e-commerce, knowledge bases, and hybrid search applications.</p>
+
+<h3>3. Weaviate MCP Server — GraphQL-Native Vector Search</h3>
+
+<p>Weaviate combines vector search with a GraphQL interface and built-in vectorization modules. Its MCP server makes the GraphQL schema and class structure accessible to your AI.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Browse class schemas and property definitions</li>
+<li>Run nearText and nearVector queries</li>
+<li>Inspect objects and their vector representations</li>
+<li>Check module configurations (OpenAI, Cohere, HuggingFace)</li>
+<li>Aggregate and filter data across classes</li>
+</ul>
+
+<p><strong>Best for:</strong> Teams building knowledge graphs with vector capabilities, or applications that need both semantic and keyword search.</p>
+
+<h3>4. Chroma MCP Server — Embedded Vector DB for Prototyping</h3>
+
+<p>Chroma is the go-to vector database for local development and prototyping. It runs embedded in your application process — no external service required. Its MCP server makes local Chroma collections accessible to your AI.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>List collections and their embedding counts</li>
+<li>Query collections with text or embeddings</li>
+<li>Inspect documents and their metadata</li>
+<li>Add, update, and delete documents</li>
+<li>Debug distance calculations and similarity thresholds</li>
+</ul>
+
+<p><strong>Best for:</strong> Prototyping RAG pipelines locally before migrating to Pinecone or Qdrant for production.</p>
+
+<h3>5. Milvus MCP Server — Enterprise-Scale Vector Search</h3>
+
+<p>Milvus is built for billion-scale vector datasets. Its MCP server provides access to collections, indexes, and search capabilities at enterprise scale.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>List collections and inspect schemas</li>
+<li>Run ANN (Approximate Nearest Neighbor) searches</li>
+<li>Check index types (IVF_FLAT, HNSW, etc.) and build status</li>
+<li>Inspect partition and segment metadata</li>
+<li>Monitor query performance metrics</li>
+</ul>
+
+<p><strong>Best for:</strong> Large-scale production deployments handling millions to billions of vectors.</p>
+
+<h3>6. Memory MCP Server — AI-Native Knowledge Graph</h3>
+
+<p>The Memory MCP server from Anthropic is a semantic memory layer built specifically for AI assistants. It stores and retrieves information using vector similarity — a vector database purpose-built for AI memory.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Store facts, events, and knowledge semantically</li>
+<li>Retrieve relevant memories based on context</li>
+<li>Build persistent knowledge graphs across sessions</li>
+<li>Connect related concepts automatically</li>
+</ul>
+
+<p><strong>Best for:</strong> Building AI agents and assistants that need persistent, contextual memory.</p>
+
+<h2>Choosing the Right Vector Database MCP</h2>
+
+<p>Here's a quick decision framework:</p>
+
+<ul>
+<li><strong>Prototyping/local dev</strong> → Chroma MCP</li>
+<li><strong>Managed production, simple use case</strong> → Pinecone MCP</li>
+<li><strong>Rich filtering + open source</strong> → Qdrant MCP</li>
+<li><strong>Knowledge graphs + multi-modal</strong> → Weaviate MCP</li>
+<li><strong>Billion-scale enterprise</strong> → Milvus MCP</li>
+<li><strong>AI agent memory</strong> → Memory MCP</li>
+</ul>
+
+<h2>The RAG Developer Stack</h2>
+
+<p>For developers building RAG (Retrieval-Augmented Generation) pipelines, this is the recommended full stack:</p>
+
+<ol>
+<li><strong>Vector DB MCP</strong> (Pinecone/Qdrant/Chroma) — Core retrieval</li>
+<li><strong>Filesystem MCP</strong> — Source document access</li>
+<li><strong>PostgreSQL MCP</strong> — Structured metadata alongside vectors</li>
+<li><strong>GitHub MCP</strong> — Code and pipeline version control</li>
+<li><strong>Memory MCP</strong> — AI session continuity across debugging sessions</li>
+</ol>
+
+<h2>Debugging RAG Pipelines with MCP</h2>
+
+<p>MCP transforms RAG debugging from a painful manual process into a conversational one:</p>
+
+<ul>
+<li><strong>Retrieval quality issues</strong> — Query the vector DB directly to see what's being retrieved and at what similarity scores</li>
+<li><strong>Embedding mismatches</strong> — Compare vector dimensions and distance metrics between your retrieval and generation steps</li>
+<li><strong>Metadata filtering bugs</strong> — Inspect actual document payloads to verify filters are working correctly</li>
+<li><strong>Collection drift</strong> — Check vector counts, index health, and embedding consistency over time</li>
+</ul>
+
+<p>Browse all <a href="/category/ai">AI & ML MCP servers</a> and <a href="/category/database">Database MCP servers</a> in our directory.</p>
+    `.trim(),
+  },
 ];
 export function getBlogPostBySlug(slug: string): BlogPost | undefined {
   return blogPosts.find((post) => post.slug === slug);
