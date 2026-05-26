@@ -38478,6 +38478,406 @@ async with MCPServerStdio(
 <p>Browse all <a href="/category/ai">AI & ML MCP servers</a> and <a href="/category/database">Database MCP servers</a> in our directory.</p>
     `.trim(),
   },
+  {
+    slug: "best-mcp-servers-for-solopreneurs",
+    title: "Best MCP Servers for Solopreneurs in 2026: Run Your Business with AI",
+    description: "Top MCP servers for solopreneurs and one-person businesses. Connect your AI to email, CRM, invoicing, content, and automation tools to run a lean, AI-powered operation.",
+    date: "2026-05-26",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "9 min read",
+    keywords: ["mcp servers for solopreneurs", "best mcp servers one person business", "ai tools solopreneurs 2026", "mcp automation solo founder", "claude mcp business tools"],
+    relatedServerSlugs: ["notion", "gmail", "google-drive", "stripe", "hubspot", "resend", "zapier", "n8n", "google-sheets", "airtable", "todoist", "canva", "google-analytics"],
+    content: `
+<p>Solopreneurs run entire businesses from a single laptop. Every hour spent on admin, email triage, or manual reporting is an hour not spent on growth. MCP servers change this equation by connecting your AI assistant directly to the tools that power your business — no context switching, no copy-paste, no manual exports.</p>
+
+<p>This guide covers the best MCP servers for solopreneurs: the specific integrations that let you run operations, marketing, finance, and customer relationships from a single AI conversation.</p>
+
+<h2>Why MCP Is a Game-Changer for Solo Founders</h2>
+
+<p>The solopreneur's biggest constraint isn't capital — it's attention. Every tool you use demands context switching, and context switching kills deep work. MCP servers eliminate the gap between thinking and doing by giving your AI direct access to your business data:</p>
+
+<ul>
+<li>Ask "What's my MRR trend?" and get real data from your payment processor — not a dashboard you have to open</li>
+<li>Say "Draft a reply to the last 3 customer support emails" and it reads them directly from Gmail</li>
+<li>Query "Which content performed best last month?" and it pulls Google Analytics data in seconds</li>
+</ul>
+
+<p>This isn't just automation — it's having an AI that genuinely knows your business.</p>
+
+<h2>Top MCP Servers for Solopreneurs</h2>
+
+<h3>1. Notion MCP Server — Your Business Brain</h3>
+
+<p>Notion is where most solopreneurs keep their CRM, project tracker, content calendar, SOPs, and knowledge base. The Notion MCP server makes all of this accessible to your AI without leaving your conversation.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read and update databases (CRM, pipeline, content calendar)</li>
+<li>Create and edit pages (SOPs, proposals, meeting notes)</li>
+<li>Search across your entire workspace</li>
+<li>Query filtered views (e.g., "deals closing this month")</li>
+</ul>
+
+<p><strong>Solopreneur use case:</strong> "Update my content calendar for next week, schedule three LinkedIn posts based on my draft ideas in the ideas database, and mark last week's published posts as done."</p>
+
+<p><strong>Best for:</strong> Solopreneurs who use Notion as their central ops hub.</p>
+
+<h3>2. Gmail MCP Server — Zero-Inbox Without the Manual Work</h3>
+
+<p>Email is the solopreneur's biggest time sink. The Gmail MCP server lets your AI read, categorize, draft, and send emails — turning inbox management into a conversational task.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read and search emails with filters</li>
+<li>Draft context-aware replies</li>
+<li>Create and send emails</li>
+<li>Manage labels and archive</li>
+<li>Read attachments (PDFs, contracts)</li>
+</ul>
+
+<p><strong>Solopreneur use case:</strong> "Summarize all unread emails from clients this week, flag anything that needs a response today, and draft replies to the two most urgent ones."</p>
+
+<p><strong>Best for:</strong> Anyone whose inbox is their primary business communication channel.</p>
+
+<h3>3. Stripe MCP Server — Real-Time Revenue Intelligence</h3>
+
+<p>Stripe is the payment backbone for most solopreneur SaaS products and services. Its MCP server gives you real-time access to your revenue data without opening dashboards.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Query MRR, ARR, and churn metrics</li>
+<li>Look up customer payment history</li>
+<li>Check subscription status and upcoming renewals</li>
+<li>Handle refunds and disputes</li>
+<li>Review failed payment data</li>
+</ul>
+
+<p><strong>Solopreneur use case:</strong> "What's my MRR this month vs. last month? Which customers churned in the last 30 days? Draft a win-back email for each one."</p>
+
+<p><strong>Best for:</strong> SaaS solopreneurs or anyone with recurring revenue through Stripe.</p>
+
+<h3>4. Google Sheets MCP Server — The Solopreneur's Data Layer</h3>
+
+<p>Many solopreneurs run their finances, client tracking, and reporting in Google Sheets. The Sheets MCP server turns these spreadsheets into queryable databases your AI can read and update.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read cell ranges and entire sheets</li>
+<li>Write data, formulas, and values</li>
+<li>Create new sheets</li>
+<li>Query data for reports and summaries</li>
+</ul>
+
+<p><strong>Solopreneur use case:</strong> "Check my client revenue tracker — which clients haven't paid their invoice for October? Draft a polite follow-up for each."</p>
+
+<p><strong>Best for:</strong> Solopreneurs running ops out of Google Sheets rather than a full SaaS tool.</p>
+
+<h3>5. HubSpot MCP Server — CRM Without the Admin Overhead</h3>
+
+<p>HubSpot's free CRM is popular with solopreneurs for pipeline management and contact tracking. Its MCP server eliminates the manual data entry that makes CRMs painful.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read contacts, companies, and deals</li>
+<li>Create and update CRM records</li>
+<li>Log activities and notes</li>
+<li>Check pipeline status and deal stages</li>
+<li>Query contacts by segment or property</li>
+</ul>
+
+<p><strong>Solopreneur use case:</strong> "Show me all deals in the proposal stage. For each one, draft a personalized follow-up based on their last activity note."</p>
+
+<p><strong>Best for:</strong> Service-based solopreneurs managing a sales pipeline.</p>
+
+<h3>6. Google Analytics MCP Server — Marketing Clarity Without Dashboard Fatigue</h3>
+
+<p>Google Analytics data answers your most important marketing questions, but the interface takes time to navigate. The GA4 MCP server lets you query your traffic data conversationally.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Query sessions, pageviews, and user metrics</li>
+<li>Analyze traffic sources and campaigns</li>
+<li>Check conversion rates by channel</li>
+<li>Compare date ranges</li>
+<li>Identify top-performing pages</li>
+</ul>
+
+<p><strong>Solopreneur use case:</strong> "Which blog posts drove the most organic traffic last month? Which ones have high traffic but low conversion? Prioritize a list of content to optimize."</p>
+
+<h3>7. Zapier / n8n MCP Server — Your Automation Backbone</h3>
+
+<p>Solopreneurs live and die by automation. Zapier and n8n connect hundreds of tools; their MCP servers let you trigger, inspect, and manage workflows through AI.</p>
+
+<p><strong>Key capabilities (Zapier):</strong></p>
+<ul>
+<li>Trigger Zaps and workflows on command</li>
+<li>Check Zap run history and errors</li>
+<li>Manage Zap status (on/off)</li>
+</ul>
+
+<p><strong>Key capabilities (n8n):</strong></p>
+<ul>
+<li>Trigger workflow executions</li>
+<li>Inspect workflow runs and node outputs</li>
+<li>Create and update workflows programmatically</li>
+</ul>
+
+<p><strong>Solopreneur use case:</strong> "Trigger my onboarding sequence for the new customer I just added to Stripe. Then check if the welcome email Zap ran successfully."</p>
+
+<h3>8. Resend MCP Server — Email Without Leaving Your Workflow</h3>
+
+<p>For solopreneurs sending transactional emails, newsletters, or client updates, Resend is a developer-friendly alternative to Mailchimp. Its MCP server lets your AI send and track emails programmatically.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Send transactional and marketing emails</li>
+<li>Check email delivery status</li>
+<li>Manage contacts and audiences</li>
+<li>Access templates</li>
+</ul>
+
+<h3>9. Canva MCP Server — Visual Assets on Demand</h3>
+
+<p>Solopreneurs who create social content, presentations, or marketing materials will find value in the Canva MCP server, which can access your designs and brand assets.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Access and list your Canva designs</li>
+<li>Export designs in various formats</li>
+<li>Create designs from templates</li>
+<li>Access brand kit (colors, fonts, logos)</li>
+</ul>
+
+<h3>10. Todoist MCP Server — Task Management That Stays Current</h3>
+
+<p>The Todoist MCP server syncs your AI with your actual task list — no more re-explaining your priorities each conversation.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read and create tasks and projects</li>
+<li>Mark tasks complete</li>
+<li>Query by priority, due date, or project</li>
+<li>Add comments and metadata</li>
+</ul>
+
+<p><strong>Solopreneur use case:</strong> "Review my tasks due this week, identify the three highest-leverage items, and reschedule everything else to next week."</p>
+
+<h2>The Solopreneur MCP Stack</h2>
+
+<p>You don't need all of these at once. Here's a battle-tested starting stack:</p>
+
+<ul>
+<li><strong>Notion MCP</strong> — Operations hub (projects, content, SOPs)</li>
+<li><strong>Gmail MCP</strong> — Inbox management and client communication</li>
+<li><strong>Stripe MCP</strong> — Revenue tracking and customer data</li>
+<li><strong>Google Analytics MCP</strong> — Traffic and marketing performance</li>
+<li><strong>Zapier or n8n MCP</strong> — Workflow automation</li>
+</ul>
+
+<p>This five-server stack covers the core functions of a lean online business: operations, communication, revenue, marketing, and automation.</p>
+
+<h2>AI-Powered Morning Routine for Solopreneurs</h2>
+
+<p>With this stack, your morning briefing becomes a single conversation:</p>
+
+<ol>
+<li><em>"What emails need a response today?"</em> — Gmail MCP reads your inbox</li>
+<li><em>"What's my revenue vs. last week?"</em> — Stripe MCP pulls the numbers</li>
+<li><em>"What tasks are due today?"</em> — Todoist MCP checks your list</li>
+<li><em>"Did any Zaps fail overnight?"</em> — Zapier MCP checks run history</li>
+<li><em>"What's the highest-traffic content this week?"</em> — GA MCP reports</li>
+</ol>
+
+<p>Five questions. Five data sources. One conversation. That's the solopreneur advantage.</p>
+
+<p>Browse all <a href="/category/productivity">Productivity MCP servers</a> and <a href="/category/communication">Communication MCP servers</a> in our directory.</p>
+    `.trim(),
+  },
+  {
+    slug: "best-mcp-servers-for-make-com",
+    title: "Best MCP Servers to Use with Make.com in 2026: Supercharge Your Automations",
+    description: "Discover the best MCP servers that pair with Make.com for powerful AI-powered automation. Connect Claude and Cursor to your Make workflows, triggers, and data sources.",
+    date: "2026-05-26",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "8 min read",
+    keywords: ["mcp servers make com", "make.com mcp server", "make mcp integration", "ai automation make", "make mcp claude", "integromat mcp server"],
+    relatedServerSlugs: ["make", "make-com", "make-com-mcp", "n8n", "zapier", "notion", "airtable", "google-sheets", "slack", "hubspot", "stripe", "postgresql"],
+    content: `
+<p>Make.com (formerly Integromat) is one of the most powerful visual automation platforms available — connecting thousands of apps through complex multi-step workflows. MCP servers unlock a new dimension for Make users: letting your AI assistant directly trigger, inspect, and build automations, rather than navigating the visual builder for every change.</p>
+
+<p>This guide covers the Make MCP server itself, plus the best complementary MCP servers that dramatically expand what you can accomplish with Make-powered workflows.</p>
+
+<h2>Why Make.com Users Need MCP</h2>
+
+<p>Make is already powerful, but it has a fundamental constraint: you configure automations in a visual editor, not through natural language. MCP changes this by making AI a first-class participant in your automation stack:</p>
+
+<ul>
+<li><strong>Trigger scenarios on demand</strong> — Fire a Make workflow from an AI conversation without opening the browser</li>
+<li><strong>Debug failed runs</strong> — Ask your AI to inspect execution history and identify what broke</li>
+<li><strong>Access data that flows through Make</strong> — Combine Make automation with direct database/spreadsheet MCP servers to query results</li>
+<li><strong>Build automations conversationally</strong> — Describe what you want; the AI drafts the scenario structure</li>
+</ul>
+
+<h2>The Make.com MCP Server</h2>
+
+<p>The official Make MCP server provides direct access to your Make.com account, scenarios, and execution history from within your AI assistant (Claude, Cursor, VS Code, etc.).</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>List all scenarios in your Make account</li>
+<li>Trigger scenarios with custom input data</li>
+<li>Inspect execution history and run logs</li>
+<li>Check scenario status (active/inactive)</li>
+<li>Get module and connection details</li>
+<li>Create webhooks programmatically</li>
+</ul>
+
+<p><strong>Setup:</strong> Install via npm and configure with your Make API key from your account settings.</p>
+
+<p><strong>Real-world use case:</strong></p>
+<p>"My nightly lead sync from Typeform to HubSpot failed. Pull the last Make execution log for that scenario and tell me which module errored and why."</p>
+
+<p>Instead of logging into Make, clicking through the dashboard, and decoding the error — your AI does it in seconds.</p>
+
+<h2>Best Complementary MCP Servers for Make Users</h2>
+
+<p>The Make MCP server is most powerful when combined with MCP servers that access the data sources your automations interact with.</p>
+
+<h3>1. Airtable MCP Server — Database for Make Workflows</h3>
+
+<p>Airtable is one of Make's most popular integration targets — many automations push data into Airtable tables or trigger when records change. The Airtable MCP server lets your AI read and write to these tables directly.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Query Airtable tables and views</li>
+<li>Create, update, and delete records</li>
+<li>Search by field values</li>
+<li>List bases and tables</li>
+</ul>
+
+<p><strong>Combined Make + Airtable workflow:</strong> Your AI can trigger a Make scenario that processes incoming leads, then immediately query the Airtable destination to verify the records were created correctly — all in one conversation.</p>
+
+<h3>2. Google Sheets MCP Server — Spreadsheet Data Access</h3>
+
+<p>Google Sheets is ubiquitous in Make workflows — used for logging, data exports, and reporting pipelines. With the Sheets MCP server, your AI can directly query the outputs of your Make automations.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read and write spreadsheet data</li>
+<li>Query specific ranges</li>
+<li>Create new sheets and add rows</li>
+<li>Run bulk updates</li>
+</ul>
+
+<p><strong>Combined workflow:</strong> "Run the weekly sales report scenario in Make, then read the Google Sheet it populates and give me a summary of this week's top performers."</p>
+
+<h3>3. Notion MCP Server — Connected Documentation</h3>
+
+<p>Many Make users route data into Notion databases — CRM records, task lists, content calendars, and meeting notes. The Notion MCP server lets your AI read these outputs and take action.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Read and update Notion databases</li>
+<li>Create pages and database items</li>
+<li>Search workspace content</li>
+<li>Query filtered database views</li>
+</ul>
+
+<p><strong>Combined workflow:</strong> "Trigger the competitor monitoring scenario in Make, then read the Notion database it updates and tell me what changed since last week."</p>
+
+<h3>4. Slack MCP Server — Notification and Communication Layer</h3>
+
+<p>Slack is the most common output destination for Make alert scenarios. With the Slack MCP server, your AI can both send messages directly and read channel history to understand notification patterns.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Send messages to channels or DMs</li>
+<li>Read channel history</li>
+<li>Manage channels and members</li>
+<li>React to messages programmatically</li>
+</ul>
+
+<p><strong>Combined workflow:</strong> Build a Make scenario that watches for important events, then use the Slack MCP to send formatted summaries with AI-generated context.</p>
+
+<h3>5. HubSpot MCP Server — CRM Data Integration</h3>
+
+<p>HubSpot is a top Make integration target for lead management workflows. The HubSpot MCP server gives your AI read/write access to contacts, deals, and pipelines — letting you verify, audit, and extend what Make is automating.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Query contacts and companies</li>
+<li>Create and update deals</li>
+<li>Log activities and notes</li>
+<li>Check pipeline stage distribution</li>
+</ul>
+
+<p><strong>Combined workflow:</strong> "Run the lead enrichment scenario in Make for all contacts tagged 'new-this-week', then check HubSpot to confirm the enrichment data was applied correctly to each record."</p>
+
+<h3>6. PostgreSQL / MySQL MCP Server — Database-First Automation</h3>
+
+<p>Power users often use Make to populate or query databases directly. The PostgreSQL and MySQL MCP servers let your AI access these databases alongside your Make workflows.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Run SELECT queries against production or staging databases</li>
+<li>Insert and update records</li>
+<li>Inspect schema and table structure</li>
+<li>Debug data inconsistencies</li>
+</ul>
+
+<p><strong>Combined workflow:</strong> Trigger a Make data sync scenario, then immediately query the target database to validate row counts and data integrity.</p>
+
+<h3>7. Stripe MCP Server — Payment Event Automation</h3>
+
+<p>Many Make automations respond to Stripe events — new subscriptions, failed payments, cancellations. The Stripe MCP server lets your AI query payment data directly as part of debugging or monitoring these flows.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Look up customer and subscription data</li>
+<li>Check payment history</li>
+<li>Review dispute and refund details</li>
+<li>Query charge and invoice status</li>
+</ul>
+
+<p><strong>Combined workflow:</strong> "The failed payment retry scenario ran last night. Show me which customers it processed, then check Stripe to confirm which ones successfully retried."</p>
+
+<h2>Building an AI-First Make Workflow</h2>
+
+<p>The real power comes from treating Make and MCP as complementary layers:</p>
+
+<ul>
+<li><strong>Make handles event-driven automation</strong> — webhooks, scheduled triggers, multi-step data routing</li>
+<li><strong>MCP handles on-demand AI interaction</strong> — triggering, inspecting, querying, and extending those automations through conversation</li>
+</ul>
+
+<p>A practical example for an agency owner:</p>
+
+<ol>
+<li>New client form submitted → Make routes data to Airtable, creates a HubSpot deal, sends Slack notification</li>
+<li>AI conversation (via MCP): "Check if the new lead from this morning was properly added to HubSpot and Airtable. If HubSpot is missing any fields, fill them in from the Airtable record."</li>
+<li>AI uses HubSpot MCP + Airtable MCP to verify and reconcile — no manual checking required</li>
+</ol>
+
+<p>This pattern — Make for automated routing, MCP for intelligent inspection and correction — is how modern operators run their businesses at scale without full-time ops staff.</p>
+
+<h2>Getting Started</h2>
+
+<p>To set up the Make MCP server:</p>
+
+<ol>
+<li>Get your Make API key from <strong>Profile → API Access</strong> in your Make account</li>
+<li>Install the MCP server: <code>npm install -g @makehq/mcp-server</code></li>
+<li>Add it to your Claude Desktop or Cursor config with your API key</li>
+<li>Test with: "List all my active scenarios in Make"</li>
+</ol>
+
+<p>Then layer in the complementary servers for Airtable, Notion, or whatever data destinations your automations use.</p>
+
+<p>Browse all <a href="/category/automation">Automation MCP servers</a> and <a href="/category/productivity">Productivity MCP servers</a> in our directory.</p>
+    `.trim(),
+  },
 ];
 export function getBlogPostBySlug(slug: string): BlogPost | undefined {
   return blogPosts.find((post) => post.slug === slug);
