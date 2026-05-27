@@ -41085,6 +41085,124 @@ if (toolCallFailed) {
 <p>Browse all security-related MCP servers in the <a href="/category/security">Security category</a> of our directory.</p>
     `.trim(),
   },
+  {
+    slug: "what-is-agent-debt",
+    title: "What Is Agent Debt? (And 7 Ways to Avoid It)",
+    description: "Agent debt is the new technical debt — conflicting system prompts, polluted memory, overlapping tools. Here's how to spot it, fix it, and stop your agents from doing weird things 6 months in.",
+    date: "2026-05-27",
+    author: "MyMCPTools Team",
+    category: "Agents",
+    readingTime: "9 min read",
+    keywords: ["agent debt", "technical debt agents", "agent maintenance", "mcp agent design", "system prompt conflicts", "agent memory pollution", "tool overlap agents"],
+    relatedServerSlugs: ["memory", "sequential-thinking", "filesystem", "github"],
+    content: `
+<p>You hacked together an agent in an afternoon. It worked. You shipped it. Then you added another tool, tweaked the system prompt, plugged in a memory store, wired up a second model for cheap calls, gave it three more capabilities your boss asked for on Slack, and shipped that too.</p>
+
+<p>Six months later, the agent is doing weird things. Nobody can figure out why. Welcome to <strong>agent debt</strong>.</p>
+
+<h2>What Is Agent Debt?</h2>
+
+<p>Agent debt is the new technical debt — but instead of accumulating in code, it accumulates in the spaces between your prompts, memory, tools, and models. It's the slow buildup of:</p>
+
+<ul>
+<li><strong>System prompts that conflict with each other</strong> — added one at a time, never reconciled</li>
+<li><strong>Memory that gets polluted</strong> — every interaction writes something, almost nothing gets cleaned up</li>
+<li><strong>Tools that overlap</strong> — three different ways to read a file, the agent picks one randomly</li>
+<li><strong>Stale context</strong> — instructions referencing files, APIs, or workflows that no longer exist</li>
+<li><strong>Undocumented capability creep</strong> — the agent can do things nobody remembers giving it</li>
+</ul>
+
+<p>The result: an agent that worked great on day one, gets brittle around month three, and by month six is making decisions nobody can explain.</p>
+
+<h2>Why Agent Debt Is Worse Than Technical Debt</h2>
+
+<p>Traditional technical debt is at least <em>visible</em>. You can grep the codebase, read the diff, run the linter. Agent debt is invisible until it bites:</p>
+
+<ul>
+<li><strong>Non-deterministic surface area.</strong> The same input can produce different outputs depending on which tool the model chose, what was in memory, and which system prompt won the conflict.</li>
+<li><strong>Failures are silent.</strong> A bad function call throws an error. A bad agent decision just produces a confidently wrong answer.</li>
+<li><strong>It compounds faster.</strong> Code only changes when humans touch it. Agent state changes every single run.</li>
+<li><strong>Nobody owns it.</strong> Engineering owns the code. Ops owns the infra. Nobody owns the system prompt that's been edited by six people across two Slack threads and a Notion doc.</li>
+</ul>
+
+<h2>The 5 Most Common Sources of Agent Debt</h2>
+
+<h3>1. The Prompt Patchwork</h3>
+
+<p>Every time the agent does something wrong, someone adds a line to the system prompt: <em>"Never do X. Always do Y. If the user says Z, respond with W."</em></p>
+
+<p>Six months later, the system prompt is 4,000 tokens of contradictory instructions, the model is silently ignoring half of them, and the cost per call has doubled.</p>
+
+<h3>2. The Memory Landfill</h3>
+
+<p>You added a memory layer so the agent could remember the user's preferences. Now it remembers everything — including a thousand throwaway test runs, three abandoned experiments, and a user's typo from last March. Retrieval is slow, results are noisy, and the agent occasionally surfaces stale information as if it were fresh.</p>
+
+<h3>3. Tool Overlap</h3>
+
+<p>You wired up <code>read_file</code>. Then you added <code>get_file_contents</code> from a different package. Then you exposed <code>fs.read</code> through a wrapper. The agent picks one essentially at random, behavior shifts run to run, and your eval suite gives you false greens because you only tested one path.</p>
+
+<h3>4. Model Drift Without Versioning</h3>
+
+<p>You built against Claude 4.5. The provider quietly rolled out 4.6. Output style changed. Your downstream regex broke. There was no migration plan because you never pinned the model.</p>
+
+<h3>5. Untracked Capability Creep</h3>
+
+<p>Someone added a "just-in-case" tool that lets the agent send emails. Nobody documented it. Three months later, the agent emails a customer at 2am because a malformed input convinced it to. You only find out from the support ticket.</p>
+
+<h2>7 Ways to Avoid (or Pay Down) Agent Debt</h2>
+
+<h3>1. Treat the System Prompt Like Source Code</h3>
+
+<p>Version it in Git. Require a PR review for every change. Add a comment explaining <em>why</em> each instruction exists — and a date. If you can't justify why a line is there, delete it.</p>
+
+<h3>2. Set Memory TTLs by Default</h3>
+
+<p>Every memory write should have an expiration unless you explicitly mark it as permanent. Default to 30 days. The minority of memories worth keeping forever should require a deliberate decision.</p>
+
+<h3>3. Audit Tools Quarterly</h3>
+
+<p>List every tool the agent has access to. For each one: is it used? Is it the canonical way to do that thing? Is there an overlapping tool? Kill duplicates aggressively. A smaller tool surface produces more predictable agents.</p>
+
+<h3>4. Pin Your Models, Plan Your Upgrades</h3>
+
+<p>Never call <code>claude-opus-latest</code> in production. Pin the exact version. When the provider releases a new model, run your eval suite against both, diff the outputs, then upgrade deliberately.</p>
+
+<h3>5. Build an Eval Suite Before You Need One</h3>
+
+<p>20 to 50 input/output examples that represent your real use cases. Run them on every prompt change, every tool change, every model change. If you don't have evals, you don't have a system — you have a vibe.</p>
+
+<h3>6. Use MCP for Tool Boundaries</h3>
+
+<p>The <a href="/">Model Context Protocol</a> gives you a typed, documented interface between your agent and its capabilities. Instead of ad-hoc function wrappers, every tool is a contract. That contract is the thing you review, version, and test — not the messy code behind it. Explore servers in the <a href="/category/coding">Coding</a> and <a href="/category/memory">Memory</a> categories to replace bespoke tooling with battle-tested MCP equivalents.</p>
+
+<h3>7. Assign an Owner</h3>
+
+<p>One person owns the agent. They review every prompt change, every new tool, every memory schema update. Without an owner, agent debt accrues silently because no one is responsible for the whole picture.</p>
+
+<h2>How to Tell If You Already Have Agent Debt</h2>
+
+<p>Run this checklist on your most important agent. One "yes" is fine. Three or more means you're already in the hole:</p>
+
+<ul>
+<li>Your system prompt is more than 1,500 tokens and you can't remember why half of it is there</li>
+<li>You've added at least one instruction that contradicts an earlier instruction</li>
+<li>Your memory store has never been pruned</li>
+<li>You have at least two tools that do roughly the same thing</li>
+<li>You call the model with <code>-latest</code> or no version pin at all</li>
+<li>You don't have an eval suite, or your eval suite hasn't been updated in 60+ days</li>
+<li>Nobody owns the agent end-to-end</li>
+<li>You've shipped a "fix" by adding a line to the prompt rather than removing one</li>
+</ul>
+
+<h2>The Bottom Line</h2>
+
+<p>Agent debt is real, and it's accruing in every team that's shipped an agent in the last 18 months. The teams that win in 2026 aren't the ones that shipped first — they're the ones with clean prompts, pruned memory, versioned tools, and pinned models.</p>
+
+<p>Start with the audit. Pick your most important agent. Read its system prompt out loud. If you wince, you have work to do.</p>
+
+<p>Browse battle-tested MCP servers in our <a href="/">directory</a> to replace ad-hoc tooling with cleaner contracts — and avoid the next round of debt before it starts.</p>
+    `.trim(),
+  },
 ];
 export function getBlogPostBySlug(slug: string): BlogPost | undefined {
   return blogPosts.find((post) => post.slug === slug);
