@@ -39549,6 +39549,1542 @@ return { content: [{ type: "text", text: result }] };</code></pre>
 <p>Browse all <a href="/category/filesystem">Filesystem MCP servers</a> and <a href="/category/productivity">Productivity MCP servers</a> in our directory.</p>
     `.trim(),
   },
+  {
+    slug: "deploying-mcp-to-aws-lambda",
+    title: "Deploying MCP Servers to AWS Lambda: A Complete Guide for 2026",
+    description: "Learn how to deploy Model Context Protocol servers as serverless functions on AWS Lambda. Step-by-step guide covering packaging, API Gateway setup, authentication, and cold start optimization.",
+    date: "2026-05-27",
+    author: "MyMCPTools Team",
+    category: "Deployment",
+    readingTime: "10 min read",
+    keywords: ["mcp server aws lambda", "deploy mcp server serverless", "aws lambda mcp", "model context protocol aws", "serverless mcp deployment"],
+    relatedServerSlugs: ["aws", "filesystem", "postgresql", "redis", "github"],
+    content: `
+<p>AWS Lambda is one of the most powerful platforms for hosting MCP servers in production. Serverless deployment means zero infrastructure management, automatic scaling, and pay-per-invocation pricing — a natural fit for MCP servers that handle bursty, event-driven AI tool calls.</p>
+
+<p>This guide walks through everything you need to deploy a production-ready MCP server on AWS Lambda, from packaging to cold start optimization.</p>
+
+<h2>Why AWS Lambda for MCP Servers?</h2>
+
+<p>Before jumping into the how, it's worth understanding why Lambda makes sense for MCP deployment:</p>
+
+<ul>
+<li><strong>Auto-scaling</strong> — Lambda handles 1 request or 10,000 without any configuration. MCP traffic is inherently spiky (AI sessions create bursts of tool calls).</li>
+<li><strong>No idle cost</strong> — Traditional servers cost money even when nobody's using them. Lambda charges only for actual execution time.</li>
+<li><strong>Built-in security</strong> — IAM roles, VPC integration, and AWS Secrets Manager integrate natively.</li>
+<li><strong>Global deployment</strong> — Deploy to multiple regions for low-latency access anywhere.</li>
+</ul>
+
+<p>The tradeoff is cold starts — Lambda functions have initialization latency when scaling from zero. We'll cover how to minimize this.</p>
+
+<h2>Architecture Overview</h2>
+
+<p>A typical Lambda-deployed MCP server looks like this:</p>
+
+<pre><code>AI Client (Claude Desktop / Cursor)
+    ↓ HTTPS
+API Gateway (REST or HTTP API)
+    ↓
+Lambda Function (your MCP server)
+    ↓
+Backend Services (RDS, DynamoDB, S3, etc.)</code></pre>
+
+<p>The MCP client connects via HTTP to API Gateway, which triggers your Lambda function. The function processes the MCP protocol messages and returns results — no persistent connection needed.</p>
+
+<h2>Step 1: Set Up Your MCP Server for Lambda</h2>
+
+<p>Standard MCP servers use stdio transport, which doesn't work in Lambda. You need to use the HTTP/SSE transport instead.</p>
+
+<p>For a Node.js MCP server using the official SDK:</p>
+
+<pre><code>npm install @modelcontextprotocol/sdk
+npm install @aws-sdk/client-secrets-manager</code></pre>
+
+<p>Create your Lambda handler:</p>
+
+<pre><code>// handler.mjs
+import { Server } from '@modelcontextprotocol/sdk/server/index.js';
+import { StreamableHTTPServerTransport } from '@modelcontextprotocol/sdk/server/streamableHttp.js';
+
+const server = new Server(
+  { name: 'my-mcp-server', version: '1.0.0' },
+  { capabilities: { tools: {} } }
+);
+
+// Register your tools
+server.setRequestHandler(ListToolsRequestSchema, async () => ({
+  tools: [
+    {
+      name: 'get_data',
+      description: 'Fetch data from your backend',
+      inputSchema: {
+        type: 'object',
+        properties: {
+          query: { type: 'string', description: 'The data query' }
+        },
+        required: ['query']
+      }
+    }
+  ]
+}));
+
+server.setRequestHandler(CallToolRequestSchema, async (request) => {
+  if (request.params.name === 'get_data') {
+    // Your tool logic here
+    const result = await fetchData(request.params.arguments.query);
+    return { content: [{ type: 'text', text: JSON.stringify(result) }] };
+  }
+});
+
+export const handler = async (event, context) => {
+  const transport = new StreamableHTTPServerTransport({
+    sessionIdGenerator: () => context.awsRequestId,
+  });
+
+  await server.connect(transport);
+  return transport.handleRequest(event);
+};</code></pre>
+
+<h2>Step 2: Package for Lambda</h2>
+
+<p>Lambda deployment packages have a 50 MB compressed limit. Keep dependencies lean:</p>
+
+<pre><code># Create deployment package
+npm install --production
+zip -r function.zip . --exclude "*.test.*" --exclude ".git/*"
+
+# Or use esbuild for a single-file bundle (much smaller)
+npx esbuild handler.mjs --bundle --platform=node --target=node20 --outfile=dist/handler.js
+cd dist && zip -r ../function.zip handler.js</code></pre>
+
+<p>Using esbuild bundling typically reduces package size from 20-30 MB to under 1 MB, which dramatically improves cold start times.</p>
+
+<h2>Step 3: Create the Lambda Function</h2>
+
+<p>Via AWS CLI:</p>
+
+<pre><code># Create execution role
+aws iam create-role \
+  --role-name mcp-server-role \
+  --assume-role-policy-document '{
+    "Version": "2012-10-17",
+    "Statement": [{
+      "Effect": "Allow",
+      "Principal": {"Service": "lambda.amazonaws.com"},
+      "Action": "sts:AssumeRole"
+    }]
+  }'
+
+aws iam attach-role-policy \
+  --role-name mcp-server-role \
+  --policy-arn arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole
+
+# Deploy the function
+aws lambda create-function \
+  --function-name my-mcp-server \
+  --runtime nodejs20.x \
+  --handler dist/handler.handler \
+  --zip-file fileb://function.zip \
+  --role arn:aws:iam::YOUR_ACCOUNT:role/mcp-server-role \
+  --timeout 30 \
+  --memory-size 512</code></pre>
+
+<h2>Step 4: Set Up API Gateway</h2>
+
+<p>HTTP API (v2) is recommended over REST API for MCP servers — lower latency and cost:</p>
+
+<pre><code>aws apigatewayv2 create-api \
+  --name my-mcp-api \
+  --protocol-type HTTP \
+  --cors-configuration \
+    AllowOrigins="*",AllowMethods="POST,GET,OPTIONS",AllowHeaders="Content-Type,Authorization"
+
+aws apigatewayv2 create-integration \
+  --api-id YOUR_API_ID \
+  --integration-type AWS_PROXY \
+  --integration-uri arn:aws:lambda:us-east-1:YOUR_ACCOUNT:function:my-mcp-server \
+  --payload-format-version 2.0
+
+aws apigatewayv2 create-route \
+  --api-id YOUR_API_ID \
+  --route-key "POST /mcp"
+
+aws apigatewayv2 create-stage \
+  --api-id YOUR_API_ID \
+  --stage-name prod \
+  --auto-deploy</code></pre>
+
+<p>Your MCP server endpoint is now at: <code>https://YOUR_API_ID.execute-api.us-east-1.amazonaws.com/prod/mcp</code></p>
+
+<h2>Step 5: Configure Authentication</h2>
+
+<p>Never expose an MCP server without authentication. For Lambda, API Gateway's built-in authorizers are the cleanest option:</p>
+
+<h3>API Key Authentication (Simple)</h3>
+
+<pre><code>aws apigatewayv2 create-api-mapping \
+  --api-id YOUR_API_ID \
+  --domain-name api.yourdomain.com \
+  --stage prod</code></pre>
+
+<p>Then add a Lambda authorizer that validates a bearer token:</p>
+
+<pre><code>// authorizer.mjs
+export const handler = async (event) => {
+  const token = event.headers.authorization?.replace('Bearer ', '');
+  const validToken = process.env.MCP_API_KEY;
+
+  return {
+    isAuthorized: token === validToken,
+    context: { userId: 'mcp-client' }
+  };
+};</code></pre>
+
+<h3>Cognito JWT Authentication (Enterprise)</h3>
+
+<p>For multi-user deployments, use API Gateway's native Cognito authorizer:</p>
+
+<pre><code>aws apigatewayv2 create-authorizer \
+  --api-id YOUR_API_ID \
+  --authorizer-type JWT \
+  --identity-source '$request.header.Authorization' \
+  --jwt-configuration \
+    Audience=YOUR_CLIENT_ID,Issuer=https://cognito-idp.us-east-1.amazonaws.com/YOUR_POOL_ID</code></pre>
+
+<h2>Step 6: Reduce Cold Starts</h2>
+
+<p>Cold starts are the main performance concern for Lambda MCP servers. Here's how to minimize them:</p>
+
+<h3>Provisioned Concurrency</h3>
+
+<p>Keep a set number of instances warm at all times:</p>
+
+<pre><code>aws lambda put-provisioned-concurrency-config \
+  --function-name my-mcp-server \
+  --qualifier prod \
+  --provisioned-concurrent-executions 2</code></pre>
+
+<p>2 provisioned instances handle most MCP workloads. Each instance adds ~$30-40/month to your cost.</p>
+
+<h3>Lambda SnapStart (Java/Node.js)</h3>
+
+<p>For Node.js 20+, enable SnapStart to cache initialized state:</p>
+
+<pre><code>aws lambda update-function-configuration \
+  --function-name my-mcp-server \
+  --snap-start ApplyOn=PublishedVersions</code></pre>
+
+<h3>Bundle Optimization</h3>
+
+<p>Smaller bundles = faster cold starts. Key tactics:</p>
+<ul>
+<li>Use esbuild to create a single-file bundle</li>
+<li>Exclude development dependencies</li>
+<li>Use Lambda Layers for large shared dependencies (like AWS SDK — it's pre-installed)</li>
+<li>Enable Lambda ARM64 (Graviton) — often 20-30% faster than x86 at the same cost</li>
+</ul>
+
+<pre><code>aws lambda update-function-configuration \
+  --function-name my-mcp-server \
+  --architectures arm64</code></pre>
+
+<h2>Step 7: Connect to Your MCP Client</h2>
+
+<p>Add the deployed server to your MCP client configuration. For Claude Desktop:</p>
+
+<pre><code>{
+  "mcpServers": {
+    "my-lambda-mcp": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/client-http"],
+      "env": {
+        "MCP_SERVER_URL": "https://YOUR_API_ID.execute-api.us-east-1.amazonaws.com/prod/mcp",
+        "MCP_API_KEY": "your-api-key-here"
+      }
+    }
+  }
+}</code></pre>
+
+<h2>Monitoring and Observability</h2>
+
+<p>Lambda comes with CloudWatch built in. Key metrics to watch:</p>
+
+<ul>
+<li><strong>Duration</strong> — How long each invocation takes. MCP tool calls should complete in under 5 seconds.</li>
+<li><strong>ConcurrentExecutions</strong> — Peak concurrent usage. Alerts above 80% of your limit.</li>
+<li><strong>Errors</strong> — Any non-200 responses from your MCP server.</li>
+<li><strong>InitDuration</strong> — Cold start time. Target under 1 second with esbuild bundling.</li>
+</ul>
+
+<p>Set up a CloudWatch alarm for errors:</p>
+
+<pre><code>aws cloudwatch put-metric-alarm \
+  --alarm-name mcp-server-errors \
+  --metric-name Errors \
+  --namespace AWS/Lambda \
+  --dimensions Name=FunctionName,Value=my-mcp-server \
+  --statistic Sum \
+  --period 60 \
+  --threshold 5 \
+  --comparison-operator GreaterThanThreshold \
+  --evaluation-periods 1 \
+  --alarm-actions arn:aws:sns:us-east-1:YOUR_ACCOUNT:your-alert-topic</code></pre>
+
+<h2>Cost Estimate</h2>
+
+<p>For a typical MCP server handling 50,000 invocations/month with 500ms average duration at 512 MB memory:</p>
+
+<ul>
+<li>Compute: ~$0.42/month</li>
+<li>API Gateway: ~$0.18/month</li>
+<li>Provisioned concurrency (2 instances): ~$60-80/month (optional)</li>
+</ul>
+
+<p>For low-to-medium usage, Lambda is extremely cost-effective. Provisioned concurrency adds cost but eliminates cold start latency — worthwhile for production AI applications where speed matters.</p>
+
+<h2>What to Do Next</h2>
+
+<p>With your MCP server running on Lambda, consider these next steps:</p>
+
+<ul>
+<li><strong>Add more tools</strong> — Connect your Lambda to RDS, DynamoDB, S3, or any AWS service via IAM roles (no API keys needed)</li>
+<li><strong>Set up a custom domain</strong> — Use API Gateway custom domains with ACM certificates for a professional endpoint</li>
+<li><strong>Enable WAF</strong> — Add AWS WAF to API Gateway to block malicious requests before they hit your function</li>
+<li><strong>Multi-region deployment</strong> — Deploy the same function to multiple regions with Route 53 latency routing</li>
+</ul>
+
+<p>Browse the <a href="/category/cloud">Cloud MCP servers</a> in our directory for servers that complement a Lambda-based MCP stack.</p>
+    `.trim(),
+  },
+  {
+    slug: "mcp-server-secrets-management",
+    title: "MCP Server Secrets Management: How to Secure API Keys and Credentials",
+    description: "Learn how to securely manage API keys, credentials, and sensitive configuration in MCP servers. Covers AWS Secrets Manager, HashiCorp Vault, environment variable patterns, and runtime secret injection.",
+    date: "2026-05-27",
+    author: "MyMCPTools Team",
+    category: "Security",
+    readingTime: "9 min read",
+    keywords: ["mcp server security", "mcp server api keys", "mcp secrets management", "model context protocol security", "mcp server credentials"],
+    relatedServerSlugs: ["aws", "filesystem", "github", "postgresql", "fetch"],
+    content: `
+<p>MCP servers are powerful precisely because they have direct access to your tools, databases, and APIs. That access comes with a significant security responsibility: how you store and manage the credentials those servers use.</p>
+
+<p>Hardcoded API keys in configuration files, leaked environment variables, or improperly scoped credentials are among the most common causes of MCP-related security incidents. This guide covers the right patterns for secrets management at every level of your MCP deployment.</p>
+
+<h2>The Threat Model for MCP Server Secrets</h2>
+
+<p>Before choosing a secrets management approach, understand what you're protecting against:</p>
+
+<ul>
+<li><strong>Configuration file exposure</strong> — claude_desktop_config.json or .cursor/mcp.json files often contain plaintext API keys. These files can be accidentally committed to version control or synced to cloud storage.</li>
+<li><strong>Process environment leakage</strong> — Environment variables are readable by any process with the same permissions. On shared systems, this creates risk.</li>
+<li><strong>Overprivileged credentials</strong> — MCP servers often use admin API keys when read-only or scoped keys would suffice. A compromised server then has maximum blast radius.</li>
+<li><strong>Token persistence</strong> — MCP servers that cache credentials in memory or local storage extend the attack surface beyond the initial authentication event.</li>
+</ul>
+
+<h2>Tier 1: Basic Secrets Hygiene (Start Here)</h2>
+
+<p>If you're deploying MCP servers for the first time, these practices should be non-negotiable from day one.</p>
+
+<h3>Never Hardcode Credentials</h3>
+
+<p>This seems obvious, but MCP configuration files are a common exception people make. Avoid:</p>
+
+<pre><code>// ❌ NEVER do this in any config file
+{
+  "mcpServers": {
+    "github": {
+      "env": {
+        "GITHUB_TOKEN": "ghp_abc123yourrealtoken"
+      }
+    }
+  }
+}</code></pre>
+
+<p>Instead, reference environment variables that you inject at runtime:</p>
+
+<pre><code>// ✅ Reference an env var set separately
+{
+  "mcpServers": {
+    "github": {
+      "env": {
+        "GITHUB_TOKEN": "\${GITHUB_TOKEN}"
+      }
+    }
+  }
+}</code></pre>
+
+<h3>Scope Credentials to Minimum Required Access</h3>
+
+<p>For every MCP server, ask: "What's the minimum permission this server actually needs?"</p>
+
+<ul>
+<li><strong>GitHub MCP server</strong> — Read-only token for code browsing; write tokens only if the server creates PRs/issues</li>
+<li><strong>PostgreSQL MCP server</strong> — Read-only database user unless the server modifies data</li>
+<li><strong>AWS MCP server</strong> — IAM role with specific service permissions, not admin access</li>
+<li><strong>Notion MCP server</strong> — Integration token scoped to specific pages/databases</li>
+</ul>
+
+<h3>Add Config Files to .gitignore</h3>
+
+<p>MCP configuration files should never be committed:</p>
+
+<pre><code># .gitignore
+claude_desktop_config.json
+.cursor/mcp.json
+.mcp.json
+*.mcp-config.json
+.env.mcp</code></pre>
+
+<h2>Tier 2: Environment Variable Best Practices</h2>
+
+<p>Environment variables are the standard mechanism for injecting secrets into MCP servers. Here's how to use them safely.</p>
+
+<h3>Use a .env File with Strict Permissions</h3>
+
+<pre><code># Create the file with restricted permissions
+touch ~/.mcp-secrets
+chmod 600 ~/.mcp-secrets
+
+# Add your secrets
+echo 'GITHUB_TOKEN=ghp_your_token_here' >> ~/.mcp-secrets
+echo 'POSTGRES_PASSWORD=your_db_password' >> ~/.mcp-secrets
+echo 'OPENAI_API_KEY=sk-your_openai_key' >> ~/.mcp-secrets</code></pre>
+
+<p>Load before starting your MCP client:</p>
+
+<pre><code>source ~/.mcp-secrets && open -a "Claude"</code></pre>
+
+<h3>Separate Secrets by MCP Server</h3>
+
+<p>Use namespaced environment variables to avoid collisions and make auditing easier:</p>
+
+<pre><code>MCP_GITHUB_TOKEN=ghp_...
+MCP_POSTGRES_PASSWORD=...
+MCP_NOTION_KEY=secret_...
+MCP_STRIPE_KEY=sk_live_...</code></pre>
+
+<p>In your MCP configuration, map namespaced vars to what the server expects:</p>
+
+<pre><code>{
+  "mcpServers": {
+    "github": {
+      "env": {
+        "GITHUB_TOKEN": "\${MCP_GITHUB_TOKEN}"
+      }
+    }
+  }
+}</code></pre>
+
+<h3>Rotate Secrets Regularly</h3>
+
+<p>Set calendar reminders to rotate MCP server credentials every 90 days. For GitHub tokens: use fine-grained tokens with expiration dates. For database passwords: use tools like AWS Secrets Manager rotation or Vault dynamic secrets (covered below).</p>
+
+<h2>Tier 3: AWS Secrets Manager Integration</h2>
+
+<p>For production deployments, especially on AWS Lambda or ECS, AWS Secrets Manager is the gold standard. It handles rotation, audit logging, and cross-service access control via IAM.</p>
+
+<h3>Store Your MCP Server Secrets</h3>
+
+<pre><code>aws secretsmanager create-secret \
+  --name "mcp/github-server/token" \
+  --description "GitHub token for MCP server" \
+  --secret-string '{"token":"ghp_your_token_here"}'
+
+aws secretsmanager create-secret \
+  --name "mcp/postgres-server/credentials" \
+  --secret-string '{"username":"mcp_readonly","password":"your_password"}'</code></pre>
+
+<h3>Retrieve in Your MCP Server Code</h3>
+
+<pre><code>import { SecretsManagerClient, GetSecretValueCommand } from "@aws-sdk/client-secrets-manager";
+
+const client = new SecretsManagerClient({ region: "us-east-1" });
+
+async function getGitHubToken() {
+  const response = await client.send(
+    new GetSecretValueCommand({ SecretId: "mcp/github-server/token" })
+  );
+  const secret = JSON.parse(response.SecretString);
+  return secret.token;
+}
+
+// Use in your MCP server initialization
+const githubToken = await getGitHubToken();</code></pre>
+
+<h3>Enable Automatic Rotation</h3>
+
+<p>For database credentials, configure automatic rotation:</p>
+
+<pre><code>aws secretsmanager rotate-secret \
+  --secret-id "mcp/postgres-server/credentials" \
+  --rotation-lambda-arn arn:aws:lambda:us-east-1:ACCOUNT:function:SecretsManagerRDSRotation \
+  --rotation-rules AutomaticallyAfterDays=90</code></pre>
+
+<p>Your MCP server code should always fetch the current secret value at startup (or per request for high-security scenarios) rather than caching the value indefinitely.</p>
+
+<h2>Tier 4: HashiCorp Vault for Self-Hosted Deployments</h2>
+
+<p>If you're running MCP servers in a self-hosted environment, HashiCorp Vault provides enterprise-grade secrets management without cloud vendor lock-in.</p>
+
+<h3>Store MCP Secrets in Vault</h3>
+
+<pre><code># Enable KV secrets engine
+vault secrets enable -path=mcp kv-v2
+
+# Store GitHub token
+vault kv put mcp/github token="ghp_your_token_here"
+
+# Store database credentials
+vault kv put mcp/postgres \
+  username="mcp_readonly" \
+  password="your_password" \
+  host="db.internal" \
+  port="5432"</code></pre>
+
+<h3>Create a Policy for MCP Servers</h3>
+
+<pre><code># mcp-server-policy.hcl
+path "mcp/data/github" {
+  capabilities = ["read"]
+}
+
+path "mcp/data/postgres" {
+  capabilities = ["read"]
+}
+
+vault policy write mcp-server mcp-server-policy.hcl</code></pre>
+
+<h3>Retrieve Secrets at MCP Server Startup</h3>
+
+<pre><code>import Vault from 'node-vault';
+
+const vault = Vault({
+  apiVersion: 'v1',
+  endpoint: process.env.VAULT_ADDR,
+  token: process.env.VAULT_TOKEN
+});
+
+async function getMCPSecrets() {
+  const githubSecret = await vault.read('mcp/data/github');
+  const postgresSecret = await vault.read('mcp/data/postgres');
+
+  return {
+    githubToken: githubSecret.data.data.token,
+    dbPassword: postgresSecret.data.data.password
+  };
+}</code></pre>
+
+<h2>Tier 5: Dynamic Secrets with Short-Lived Credentials</h2>
+
+<p>The most secure approach is using credentials that expire automatically. Vault and AWS both support dynamic secrets that are generated on-demand and expire after a configured TTL.</p>
+
+<h3>Vault Dynamic Database Credentials</h3>
+
+<pre><code># Configure Vault database secrets engine
+vault secrets enable database
+
+vault write database/config/my-postgresql \
+  plugin_name=postgresql-database-plugin \
+  allowed_roles="mcp-server" \
+  connection_url="postgresql://{{username}}:{{password}}@postgres:5432/mydb" \
+  username="vault_admin" \
+  password="vault_admin_pass"
+
+vault write database/roles/mcp-server \
+  db_name=my-postgresql \
+  creation_statements="CREATE ROLE '{{name}}' WITH LOGIN PASSWORD '{{password}}' VALID UNTIL '{{expiration}}'; GRANT SELECT ON ALL TABLES IN SCHEMA public TO '{{name}}';" \
+  default_ttl="1h" \
+  max_ttl="24h"</code></pre>
+
+<p>Your MCP server requests fresh credentials each time it starts:</p>
+
+<pre><code>// Fetch a temporary database credential (expires in 1 hour)
+const creds = await vault.read('database/creds/mcp-server');
+const dbUrl = \`postgresql://\${creds.data.username}:\${creds.data.password}@postgres:5432/mydb\`;
+const pool = new Pool({ connectionString: dbUrl });</code></pre>
+
+<p>When the MCP server stops, those credentials automatically expire. Even if they're intercepted, they're only valid for a short window.</p>
+
+<h2>Auditing and Monitoring Secrets Access</h2>
+
+<p>Knowing when and how secrets are accessed is as important as securing them.</p>
+
+<h3>AWS CloudTrail for Secrets Manager</h3>
+
+<p>All Secrets Manager API calls are automatically logged in CloudTrail. Set up an alert for unusual access patterns:</p>
+
+<pre><code>aws cloudwatch put-metric-alarm \
+  --alarm-name mcp-secret-access-spike \
+  --metric-name CallCount \
+  --namespace AWS/SecretsManager \
+  --statistic Sum \
+  --period 300 \
+  --threshold 100 \
+  --comparison-operator GreaterThanThreshold</code></pre>
+
+<h3>Vault Audit Logging</h3>
+
+<pre><code># Enable file audit logging
+vault audit enable file file_path=/var/log/vault/audit.log
+
+# Enable syslog for centralized logging
+vault audit enable syslog tag="vault" facility="AUTH"</code></pre>
+
+<h2>Common Mistakes to Avoid</h2>
+
+<ul>
+<li><strong>Using the same credential for dev and production</strong> — Always use separate API keys and database users per environment. A leaked dev credential shouldn't compromise prod.</li>
+<li><strong>Logging secrets</strong> — Make sure your MCP server code never logs the actual credential values. Log "GitHub token loaded" not the token itself.</li>
+<li><strong>Skipping credential rotation after team changes</strong> — When someone leaves or a system is decommissioned, rotate all credentials that system had access to.</li>
+<li><strong>Ignoring transitive access</strong> — Your MCP server might have read access to a file system that contains other secrets. Map the full access graph, not just direct credentials.</li>
+</ul>
+
+<h2>Quick Reference: Secrets Management by Deployment Type</h2>
+
+<ul>
+<li><strong>Local development (personal)</strong> — Chmod 600 .env file, loaded before client startup</li>
+<li><strong>Team deployment (shared server)</strong> — HashiCorp Vault with per-server policies</li>
+<li><strong>Cloud deployment (AWS)</strong> — AWS Secrets Manager with IAM roles, no static credentials</li>
+<li><strong>Serverless (Lambda)</strong> — Secrets Manager + Lambda environment variables for non-rotating values</li>
+<li><strong>Kubernetes</strong> — External Secrets Operator syncing from Vault or AWS Secrets Manager into K8s Secrets</li>
+</ul>
+
+<p>Review the <a href="/mcp-server-security-best-practices">MCP Server Security Best Practices</a> guide for authentication and rate limiting patterns that complement secrets management.</p>
+    `.trim(),
+  },
+  {
+    slug: "mcp-servers-for-government",
+    title: "Best MCP Servers for Government Agencies and Public Sector Teams",
+    description: "Discover the top MCP servers for government agencies, federal teams, and public sector organizations. Covers compliance-friendly options, open data integration, document workflows, and secure collaboration tools.",
+    date: "2026-05-27",
+    author: "MyMCPTools Team",
+    category: "Use Cases",
+    readingTime: "8 min read",
+    keywords: ["mcp servers government", "federal mcp servers", "public sector mcp", "government ai tools mcp", "mcp model context protocol government"],
+    relatedServerSlugs: ["filesystem", "postgresql", "confluence", "fetch", "govinfo-mcp", "bls-mcp", "nih-reporter-mcp", "fdic-mcp", "google-drive"],
+    content: `
+<p>Government agencies and public sector organizations are increasingly adopting AI assistants to improve productivity — drafting documents, analyzing data, managing compliance workflows, and making sense of vast amounts of public information.</p>
+
+<p>MCP servers extend those AI capabilities dramatically, giving government teams AI access to the tools and data sources they use every day. This guide covers the most useful MCP servers for federal, state, and local government contexts, along with the compliance considerations that matter in public sector deployments.</p>
+
+<h2>Compliance Considerations First</h2>
+
+<p>Before deploying any MCP server in a government context, address these questions:</p>
+
+<ul>
+<li><strong>FedRAMP Authorization</strong> — Cloud-hosted MCP servers should use FedRAMP-authorized infrastructure. AWS GovCloud, Azure Government, and Google Cloud's FedRAMP-compliant regions are the standard choices.</li>
+<li><strong>Data classification</strong> — Ensure your MCP server configuration respects data handling requirements. CUI (Controlled Unclassified Information) requires specific access controls that most default MCP configurations don't enforce out of the box.</li>
+<li><strong>Audit logging</strong> — Many government compliance frameworks (FISMA, NIST 800-53) require comprehensive audit trails. Configure your MCP servers to log all tool invocations, not just errors.</li>
+<li><strong>Air-gapped deployments</strong> — Some government environments prohibit external network access. Verify which MCP servers can operate fully offline or within a government intranet.</li>
+</ul>
+
+<p>With those considerations in mind, here are the most valuable MCP servers for government use cases.</p>
+
+<h2>1. Public Government Data Servers</h2>
+
+<h3>GovInfo MCP Server</h3>
+
+<p>The GovInfo MCP server provides AI access to the U.S. Government Publishing Office's official publication database — Federal Register notices, Congressional bills, Code of Federal Regulations, and more. Instead of manually searching govinfo.gov, your AI assistant can retrieve and analyze regulatory text directly.</p>
+
+<p><strong>Key use cases:</strong></p>
+<ul>
+<li>Regulatory compliance research — "What does 40 CFR Part 122 say about permit conditions for industrial discharges?"</li>
+<li>Legislative tracking — "Find all bills introduced in the 119th Congress related to broadband infrastructure"</li>
+<li>Federal Register monitoring — "Show me all notices published this week by the EPA"</li>
+</ul>
+
+<h3>BLS Data MCP Server</h3>
+
+<p>The Bureau of Labor Statistics MCP server gives AI assistants access to official employment, wage, inflation, and economic data. For policy analysts, economists, and budget teams, this replaces manual data downloads from bls.gov.</p>
+
+<p><strong>Key use cases:</strong></p>
+<ul>
+<li>Policy analysis — "What's the current unemployment rate in rural counties vs. urban areas?"</li>
+<li>Budget forecasting — "Get CPI data for the last 5 years and project inflation for the next fiscal year"</li>
+<li>Grant program evaluation — "Show employment trends in manufacturing for counties where we have active workforce development grants"</li>
+</ul>
+
+<h3>NIH Reporter MCP Server</h3>
+
+<p>For health agencies and research institutions, the NIH Reporter MCP server provides access to the NIH's research funding database — active grants, principal investigators, research abstracts, and funding amounts.</p>
+
+<p><strong>Key use cases:</strong></p>
+<ul>
+<li>Competitive landscape analysis before submitting grant applications</li>
+<li>Tracking federally funded research in specific disease areas</li>
+<li>Program evaluation — identifying funded projects that overlap with your agency's mission</li>
+</ul>
+
+<h3>FDIC Bank Data MCP Server</h3>
+
+<p>The FDIC MCP server connects to the FDIC's public database of federally insured financial institutions. Useful for financial regulators, community development teams, and policy analysts working on banking access.</p>
+
+<p><strong>Key use cases:</strong></p>
+<ul>
+<li>"Which counties in our state have no physical bank branches within 10 miles?"</li>
+<li>"Show all bank failures in the last 24 months and their deposit amounts"</li>
+<li>CRA (Community Reinvestment Act) analysis by geographic area</li>
+</ul>
+
+<h2>2. Document Workflow MCP Servers</h2>
+
+<p>Government work is document-intensive. MCP servers that integrate with document management systems are high-value for most agencies.</p>
+
+<h3>Filesystem MCP Server</h3>
+
+<p>The foundational document access server. In government contexts, configure it with strict directory restrictions — limit access to specific project folders rather than the entire system. Most government document workflows start here.</p>
+
+<p><strong>Government-specific use cases:</strong></p>
+<ul>
+<li>FOIA request processing — read incoming FOIA requests and draft response letters</li>
+<li>Policy document drafting — provide context from existing regulations and policies</li>
+<li>Report compilation — pull data from multiple local reports into a single executive summary</li>
+</ul>
+
+<h3>Confluence MCP Server</h3>
+
+<p>Many government agencies use Confluence (on-premises or cloud) as their primary knowledge management system. The Confluence MCP server gives AI assistants access to your agency's documented procedures, policies, and institutional knowledge.</p>
+
+<p><strong>Government-specific use cases:</strong></p>
+<ul>
+<li>New employee onboarding — "What's our standard operating procedure for procurement over $100K?"</li>
+<li>Policy update tracking — "What pages in our Confluence site reference the old FY2024 travel policy?"</li>
+<li>Cross-agency collaboration — maintaining shared knowledge bases across departments</li>
+</ul>
+
+<h3>Google Drive MCP Server</h3>
+
+<p>For agencies that have adopted Google Workspace (which now has FedRAMP-authorized offerings), the Google Drive MCP server enables AI access to shared documents, spreadsheets, and presentations without manual copy-pasting.</p>
+
+<p><strong>Government-specific use cases:</strong></p>
+<ul>
+<li>Grant application review — read multiple applications and create comparative summaries</li>
+<li>Budget spreadsheet analysis — pull numbers from multiple sheets for consolidated reporting</li>
+<li>Meeting notes processing — convert raw meeting notes into action items and decision logs</li>
+</ul>
+
+<h2>3. Data Analysis MCP Servers</h2>
+
+<p>Government agencies manage enormous datasets. These MCP servers turn AI assistants into capable data analysts.</p>
+
+<h3>PostgreSQL MCP Server</h3>
+
+<p>For agencies running their own databases (permits, licensing, case management systems), the PostgreSQL MCP server is essential. Configure with a read-only database user to ensure your AI assistant can query but not modify production data.</p>
+
+<p><strong>Government-specific use cases:</strong></p>
+<ul>
+<li>Permit status queries — "How many building permits are pending review in District 4?"</li>
+<li>Case management reporting — "Show me all cases opened in Q1 that are still unresolved"</li>
+<li>Program performance metrics — pulling KPIs directly from operational databases</li>
+</ul>
+
+<h3>Fetch MCP Server</h3>
+
+<p>Government open data portals (data.gov, state data portals, city data APIs) publish data in publicly accessible formats. The Fetch MCP server lets your AI assistant retrieve and analyze this data on demand.</p>
+
+<p><strong>Government-specific use cases:</strong></p>
+<ul>
+<li>Cross-jurisdictional research — pull and compare data across multiple state or local portals</li>
+<li>Census data integration — retrieve American Community Survey data for demographic analysis</li>
+<li>Economic development — pull labor market information from regional workforce boards</li>
+</ul>
+
+<h2>4. Recommended Government MCP Stacks</h2>
+
+<p>Different government roles benefit from different server combinations:</p>
+
+<h3>Policy Analyst Stack</h3>
+<ul>
+<li>GovInfo MCP — regulatory text access</li>
+<li>BLS Data MCP — economic data</li>
+<li>Filesystem MCP — local document access</li>
+<li>Fetch MCP — web and open data access</li>
+</ul>
+
+<h3>Program Administrator Stack</h3>
+<ul>
+<li>PostgreSQL MCP — program database access (read-only)</li>
+<li>Confluence MCP — SOPs and policy documentation</li>
+<li>Filesystem MCP — local file management</li>
+<li>Google Drive MCP — shared team documents</li>
+</ul>
+
+<h3>Research Team Stack</h3>
+<ul>
+<li>NIH Reporter MCP — federal research funding data</li>
+<li>Fetch MCP — academic and government data portals</li>
+<li>Filesystem MCP — local research document access</li>
+<li>PostgreSQL MCP — research database access</li>
+</ul>
+
+<h3>Financial/Budget Team Stack</h3>
+<ul>
+<li>BLS Data MCP — economic indicators</li>
+<li>FDIC MCP — financial institution data</li>
+<li>Google Drive MCP — budget spreadsheets and financial reports</li>
+<li>PostgreSQL MCP — financial system database access</li>
+</ul>
+
+<h2>Security Hardening for Government Deployments</h2>
+
+<p>Standard MCP server configurations need additional hardening for government environments:</p>
+
+<h3>Network Isolation</h3>
+
+<p>Deploy MCP servers within a VPC or private network segment. Prohibit internet egress for servers handling sensitive data — they should only connect to approved internal or government cloud endpoints.</p>
+
+<h3>Audit Logging</h3>
+
+<p>Configure all MCP servers to log every tool invocation to a centralized audit system (Splunk, CloudWatch Logs, or similar). Log the tool name, parameters, timestamp, and user context. Retain logs per your agency's records retention policy.</p>
+
+<h3>Credential Scoping</h3>
+
+<p>Every MCP server should use credentials scoped to minimum necessary access. A policy analysis MCP server querying GovInfo doesn't need write access to your internal databases. Create separate service accounts for each MCP server.</p>
+
+<h3>Regular Security Reviews</h3>
+
+<p>Schedule quarterly reviews of which MCP servers are deployed, what credentials they use, and what data they can access. Remove servers that are no longer actively used — unused access is an unnecessary risk surface.</p>
+
+<h2>Getting Started</h2>
+
+<p>For government teams new to MCP, start with the lowest-risk, highest-value option: the Filesystem MCP server configured to access only a specific, non-sensitive project folder. This lets your team experience AI-powered document workflows without compliance risk, while you develop the security policies and review processes needed for broader MCP adoption.</p>
+
+<p>Once the basic workflow is established, add public data servers (GovInfo, BLS) that access only publicly available information — again, low risk with high analytical value.</p>
+
+<p>Reserve database and internal system MCP servers for after you've established audit logging, credential management, and security review processes.</p>
+
+<p>Browse all MCP servers in our <a href="/category/productivity">Productivity</a> and <a href="/category/database">Database</a> categories to find additional options for your agency's specific tools and workflows.</p>
+    `.trim(),
+  },
+  {
+    slug: "mcp-servers-for-ci-cd",
+    title: "MCP Servers for CI/CD: Automate Your Deployment Pipeline with AI",
+    description: "Connect your AI assistant directly to your CI/CD pipeline with MCP servers. Trigger builds, check deployment status, analyze test failures, and manage releases — all from a single AI conversation.",
+    date: "2026-05-27",
+    author: "MyMCPTools Team",
+    category: "Use Cases",
+    readingTime: "10 min read",
+    keywords: ["mcp servers for ci cd", "ci cd mcp server", "github actions mcp", "deployment automation mcp", "devops mcp server", "jenkins mcp server"],
+    relatedServerSlugs: ["github", "gitlab", "linear", "slack", "filesystem", "postgres"],
+    content: `
+<p>CI/CD pipelines are the heartbeat of modern software delivery. But navigating build logs, deployment statuses, and failing tests across multiple tools creates constant context switching — you're in GitHub, then your cloud console, then Slack, then your ticketing system.</p>
+
+<p>MCP servers collapse that complexity into a single AI conversation. Your assistant can check build status, investigate failures, trigger redeployments, and update tickets without you leaving your workflow.</p>
+
+<h2>What AI-Assisted CI/CD Actually Looks Like</h2>
+
+<p>Instead of manually navigating dashboards and copy-pasting error messages into a chat window, an MCP-powered CI/CD workflow looks like this:</p>
+
+<ul>
+<li>"Why did the staging deploy fail 30 minutes ago?" — AI reads the build logs, identifies the error, and explains the root cause</li>
+<li>"Are all services green in production?" — AI checks deployment status across your infrastructure and reports back</li>
+<li>"The integration tests keep failing on flaky network assertions — which tests and how often?" — AI analyzes historical test run data and surfaces the pattern</li>
+<li>"Create a GitHub issue for the failing database migration and assign it to the backend team" — AI creates a properly formatted ticket from the build log context</li>
+</ul>
+
+<p>This is the CI/CD workflow when your AI has structured access through MCP, not just clipboard access.</p>
+
+<h2>Best MCP Servers for CI/CD Workflows</h2>
+
+<h3>1. GitHub MCP Server — The Foundation of Most CI/CD Workflows</h3>
+
+<p>GitHub Actions powers CI/CD for the majority of modern engineering teams. The GitHub MCP server is the essential entry point for AI-assisted pipeline management.</p>
+
+<p><strong>Key capabilities for CI/CD:</strong></p>
+<ul>
+<li>List and query workflow runs — status, duration, logs</li>
+<li>Trigger workflow dispatches programmatically</li>
+<li>Read check runs and commit statuses on pull requests</li>
+<li>Access deployment environments and deployment history</li>
+<li>Create issues directly from failure context</li>
+<li>Review and merge pull requests after CI passes</li>
+</ul>
+
+<p><strong>Standout CI/CD prompts:</strong></p>
+<ul>
+<li>"List all failed workflow runs from the last 24 hours and show me the first error line from each build log"</li>
+<li>"Which PRs are blocked waiting on CI? Summarize what's failing on each one."</li>
+<li>"The deploy-production workflow failed 3 times today. Show me the error pattern across all 3 runs."</li>
+</ul>
+
+<p><strong>Setup:</strong> Requires a GitHub Personal Access Token with <code>repo</code> and <code>actions</code> scopes. Works with both GitHub.com and GitHub Enterprise Server.</p>
+
+<h3>2. GitLab MCP Server — For GitLab CI/CD Pipelines</h3>
+
+<p>GitLab's built-in CI/CD is deeply integrated with its repository platform. The GitLab MCP server exposes pipeline management alongside repository operations.</p>
+
+<p><strong>Key capabilities for CI/CD:</strong></p>
+<ul>
+<li>Query pipeline status, jobs, and artifacts</li>
+<li>Trigger pipeline runs on specific branches or with variable overrides</li>
+<li>Retry failed jobs individually or entire pipelines</li>
+<li>Access job logs for debugging</li>
+<li>Manage environments and deployments</li>
+</ul>
+
+<p><strong>Standout CI/CD prompts:</strong></p>
+<ul>
+<li>"The nightly pipeline failed on the security-scan job. Show me what it found."</li>
+<li>"Retry all failed jobs in the staging pipeline from this morning"</li>
+<li>"Which branches have pipelines that haven't passed in more than 3 days?"</li>
+</ul>
+
+<p><strong>Best for:</strong> Teams self-hosting GitLab or using GitLab.com where GitHub Actions isn't an option.</p>
+
+<h3>3. Linear MCP Server — Link Pipeline Failures to Engineering Issues</h3>
+
+<p>When a build fails, the next step is creating a ticket. The Linear MCP server automates the handoff between CI failure and issue tracking.</p>
+
+<p><strong>Key capabilities for CI/CD:</strong></p>
+<ul>
+<li>Create issues with full context from build failures</li>
+<li>Query existing issues related to a component or service</li>
+<li>Update issue status when deployments succeed</li>
+<li>Assign issues to the commit author automatically</li>
+<li>Link deployment incidents to active sprint cycles</li>
+</ul>
+
+<p><strong>Standout CI/CD prompts:</strong></p>
+<ul>
+<li>"Create a Linear bug for the failing payment service tests — include the error stack trace and assign to the payments team"</li>
+<li>"Are there any open Linear issues tagged 'deployment' that might explain today's pipeline failures?"</li>
+<li>"The hotfix was deployed successfully. Mark the related Linear incident as resolved."</li>
+</ul>
+
+<h3>4. Slack MCP Server — CI/CD Notifications and Incident Coordination</h3>
+
+<p>Most teams route CI/CD alerts to Slack. The Slack MCP server lets your AI both read those notifications and post updates back to the relevant channels.</p>
+
+<p><strong>Key capabilities for CI/CD:</strong></p>
+<ul>
+<li>Post deployment status updates to engineering channels</li>
+<li>Search message history for recent incident context</li>
+<li>Create incident threads with relevant build information</li>
+<li>Notify on-call engineers when critical deployments fail</li>
+<li>Summarize the incident thread for post-mortems</li>
+</ul>
+
+<p><strong>Standout CI/CD prompts:</strong></p>
+<ul>
+<li>"Post a deployment summary to #releases: what was shipped, what changed, who approved it"</li>
+<li>"Search #incidents for any mention of the auth service in the last 7 days and summarize what happened"</li>
+<li>"Alert @on-call that the production deploy is failing and include the error from the GitHub Actions log"</li>
+</ul>
+
+<h3>5. PostgreSQL MCP Server — Analyze Test and Deployment Metrics</h3>
+
+<p>If your team stores CI/CD metrics in a database (test run history, deployment frequency, MTTR), the PostgreSQL MCP server lets your AI query that data directly for engineering health analysis.</p>
+
+<p><strong>Key capabilities for CI/CD analytics:</strong></p>
+<ul>
+<li>Query test run history for flakiness patterns</li>
+<li>Calculate deployment frequency and lead time metrics</li>
+<li>Identify which services or components fail most often</li>
+<li>Track mean time to recovery across incidents</li>
+</ul>
+
+<p><strong>Standout CI/CD prompts:</strong></p>
+<ul>
+<li>"Which test suites have a failure rate above 10% over the last 30 days? Rank them."</li>
+<li>"What's our deployment frequency trend over the last 6 weeks, broken down by service?"</li>
+<li>"Calculate our MTTR for production incidents this quarter vs last quarter"</li>
+</ul>
+
+<h2>Combining MCP Servers for End-to-End CI/CD Automation</h2>
+
+<p>The real power of MCP in CI/CD comes from combining servers into coherent workflows. Here are three patterns that deliver the most value:</p>
+
+<h3>Pattern 1: Failure → Ticket → Notification</h3>
+
+<p>When a build fails: GitHub MCP identifies the failing job and extracts the error → Linear MCP creates a ticket with full context → Slack MCP notifies the relevant team. Your AI handles the entire paper trail from pipeline failure to engineering awareness in one prompt.</p>
+
+<h3>Pattern 2: PR Readiness Check</h3>
+
+<p>Before merging a PR: GitHub MCP checks that all required CI checks pass → queries open Linear issues linked to the PR → confirms deployment to staging succeeded → posts a merge-readiness summary to the PR comment. The AI acts as a release coordinator.</p>
+
+<h3>Pattern 3: Post-Deployment Verification</h3>
+
+<p>After a production deploy: GitHub MCP confirms the deployment completed → queries the application's health endpoint or Postgres metrics → Slack MCP posts a deployment confirmation to #releases with key metrics. Automated deployment verification without a human checking multiple dashboards.</p>
+
+<h2>Security Considerations for CI/CD MCP Access</h2>
+
+<p>CI/CD systems often have elevated permissions — they can trigger builds, merge code, and manage production deployments. Apply extra care when configuring MCP servers for pipeline access:</p>
+
+<ul>
+<li><strong>Use read-only tokens by default</strong> — Only escalate to write permissions (triggering workflows, merging PRs) when the use case explicitly requires it</li>
+<li><strong>Scope tokens to specific repositories</strong> — Avoid organization-wide tokens that grant access to every repo</li>
+<li><strong>Restrict deployment triggers</strong> — If your MCP setup allows triggering production deploys, require explicit confirmation prompts before execution</li>
+<li><strong>Audit log all AI-initiated pipeline actions</strong> — Ensure every workflow trigger or merge initiated by an AI assistant is attributable in your audit trail</li>
+<li><strong>Rotate tokens regularly</strong> — CI/CD tokens are high-value targets. Quarterly rotation is a minimum; monthly is better.</li>
+</ul>
+
+<h2>Getting Started</h2>
+
+<p>The fastest CI/CD value with MCP:</p>
+
+<ol>
+<li><strong>Install the GitHub MCP server</strong> — this covers 80% of CI/CD use cases if you're on GitHub Actions</li>
+<li><strong>Configure with a read-only token first</strong> — query build logs and deployment status before enabling write access</li>
+<li><strong>Test the failure analysis workflow</strong> — find a recent failed build and ask your AI to explain why it failed from the logs alone</li>
+<li><strong>Add Linear or Jira</strong> once you're comfortable with read-only access — the failure-to-ticket workflow is the highest-value addition</li>
+<li><strong>Add Slack last</strong> — notification workflows are powerful but noisy if set up without clear scope</li>
+</ol>
+
+<p>Browse all <a href="/category/devops">DevOps MCP servers</a> and <a href="/category/productivity">Productivity MCP servers</a> in our directory for the full list of CI/CD-relevant integrations.</p>
+    `.trim(),
+  },
+  {
+    slug: "deploying-mcp-to-vercel",
+    title: "Deploying MCP Servers to Vercel: A Complete Guide",
+    description: "Learn how to deploy MCP servers to Vercel using Edge Functions and serverless infrastructure. Covers project setup, transport configuration, authentication, and production deployment patterns.",
+    date: "2026-05-27",
+    author: "MyMCPTools Team",
+    category: "Deployment",
+    readingTime: "11 min read",
+    keywords: ["deploying mcp to vercel", "mcp server vercel", "vercel mcp deployment", "serverless mcp server", "mcp edge functions", "mcp server hosting"],
+    relatedServerSlugs: ["filesystem", "github", "postgres", "brave-search"],
+    content: `
+<p>Vercel is the default deployment platform for Next.js applications and a popular choice for serverless APIs. With the adoption of the Streamable HTTP transport in MCP 2025-03-26, deploying MCP servers to Vercel's serverless infrastructure is now practical and production-ready.</p>
+
+<p>This guide walks through the complete process: from scaffolding your MCP server locally to deploying it on Vercel with authentication, error handling, and observability.</p>
+
+<h2>Why Deploy an MCP Server to Vercel?</h2>
+
+<p>Running MCP servers as local processes (the default <code>stdio</code> transport) works well for individual developers using Claude Desktop or Cursor. But there are compelling reasons to deploy server-side:</p>
+
+<ul>
+<li><strong>Team access</strong> — A deployed MCP server is available to your entire team without individual setup</li>
+<li><strong>Always-on availability</strong> — No need for team members to run local server processes</li>
+<li><strong>Centralized credentials</strong> — Store API keys in Vercel environment variables instead of each developer's local config</li>
+<li><strong>Remote agents</strong> — AI agents running in cloud environments (not on a developer's laptop) need remote MCP endpoints</li>
+<li><strong>Custom tool hosting</strong> — If you're building custom MCP tools for your organization, a hosted endpoint is the right distribution model</li>
+</ul>
+
+<h2>Prerequisites</h2>
+
+<p>Before starting, you'll need:</p>
+<ul>
+<li>Node.js 18+ installed locally</li>
+<li>A Vercel account (free tier works)</li>
+<li>The Vercel CLI: <code>npm i -g vercel</code></li>
+<li>The MCP SDK: <code>npm install @modelcontextprotocol/sdk</code></li>
+</ul>
+
+<h2>Understanding MCP Transports on Vercel</h2>
+
+<p>MCP supports two primary transports:</p>
+
+<ul>
+<li><strong>stdio</strong> — Communicates over standard input/output. This is how local MCP servers work (Claude Desktop, Cursor). Not suitable for Vercel — Vercel functions handle HTTP requests, not stdin/stdout processes.</li>
+<li><strong>Streamable HTTP</strong> — The server-side transport. Accepts POST requests and streams responses. This is what you deploy to Vercel.</li>
+</ul>
+
+<p>Vercel's serverless functions handle HTTP natively, making Streamable HTTP the natural fit. Each function invocation handles one MCP request — tools are called, results are streamed back, and the function completes.</p>
+
+<h2>Project Structure</h2>
+
+<p>A minimal MCP server for Vercel follows this structure:</p>
+
+<pre><code>my-mcp-server/
+├── api/
+│   └── mcp.ts          # Main MCP endpoint
+├── lib/
+│   └── server.ts       # MCP server definition and tools
+├── package.json
+├── tsconfig.json
+└── vercel.json         # Vercel configuration</code></pre>
+
+<p>The <code>api/</code> directory is Vercel's convention for serverless functions. The <code>api/mcp.ts</code> file becomes the <code>/api/mcp</code> endpoint — the URL your AI clients connect to.</p>
+
+<h2>Building the MCP Server</h2>
+
+<h3>Step 1: Define Your Tools in lib/server.ts</h3>
+
+<pre><code>import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
+import { z } from "zod";
+
+export function createServer() {
+  const server = new McpServer({
+    name: "my-vercel-mcp-server",
+    version: "1.0.0",
+  });
+
+  server.tool(
+    "get-weather",
+    "Get current weather for a city",
+    { city: z.string().describe("City name") },
+    async ({ city }) => {
+      const response = await fetch(
+        \`https://api.openweathermap.org/data/2.5/weather?q=\${city}&appid=\${process.env.OPENWEATHER_API_KEY}\`
+      );
+      const data = await response.json();
+      return {
+        content: [{ type: "text", text: JSON.stringify(data, null, 2) }],
+      };
+    }
+  );
+
+  return server;
+}</code></pre>
+
+<h3>Step 2: Create the Vercel Handler in api/mcp.ts</h3>
+
+<pre><code>import { StreamableHTTPServerTransport } from "@modelcontextprotocol/sdk/server/streamableHttp.js";
+import { createServer } from "../lib/server";
+import type { VercelRequest, VercelResponse } from "@vercel/node";
+
+export default async function handler(req: VercelRequest, res: VercelResponse) {
+  if (req.method !== "POST") {
+    res.status(405).json({ error: "Method not allowed" });
+    return;
+  }
+
+  const server = createServer();
+  const transport = new StreamableHTTPServerTransport({
+    sessionIdGenerator: undefined, // Stateless — new session per request
+  });
+
+  await server.connect(transport);
+  await transport.handleRequest(req, res, req.body);
+}</code></pre>
+
+<h3>Step 3: Configure vercel.json</h3>
+
+<pre><code>{
+  "functions": {
+    "api/mcp.ts": {
+      "maxDuration": 30
+    }
+  }
+}</code></pre>
+
+<p>The <code>maxDuration</code> setting is important — complex MCP tool calls that interact with external APIs may take several seconds. The free Vercel plan supports up to 10 seconds; Pro supports up to 300 seconds.</p>
+
+<h2>Adding Authentication</h2>
+
+<p>A public MCP endpoint without authentication is a security risk. Anyone who discovers the URL can call your tools and consume your API quotas. Add authentication before deploying to production.</p>
+
+<h3>API Key Authentication (Simple)</h3>
+
+<p>For internal tools and team use, API key authentication is straightforward:</p>
+
+<pre><code>export default async function handler(req: VercelRequest, res: VercelResponse) {
+  // Validate API key
+  const apiKey = req.headers["x-api-key"];
+  if (!apiKey || apiKey !== process.env.MCP_API_KEY) {
+    res.status(401).json({ error: "Unauthorized" });
+    return;
+  }
+
+  // ... rest of handler
+}</code></pre>
+
+<p>Set <code>MCP_API_KEY</code> in your Vercel project's environment variables. Your clients pass the key via the <code>X-API-Key</code> header.</p>
+
+<h3>Bearer Token Authentication (Production)</h3>
+
+<p>For user-facing deployments, OAuth 2.0 Bearer tokens provide better security and revocability:</p>
+
+<pre><code>import jwt from "jsonwebtoken";
+
+function validateToken(authHeader: string | undefined): boolean {
+  if (!authHeader?.startsWith("Bearer ")) return false;
+  const token = authHeader.slice(7);
+  try {
+    jwt.verify(token, process.env.JWT_SECRET!);
+    return true;
+  } catch {
+    return false;
+  }
+}
+
+export default async function handler(req: VercelRequest, res: VercelResponse) {
+  if (!validateToken(req.headers.authorization as string)) {
+    res.status(401).json({ error: "Unauthorized" });
+    return;
+  }
+  // ... rest of handler
+}</code></pre>
+
+<h2>Handling Environment Variables</h2>
+
+<p>The primary advantage of deploying MCP servers to Vercel is centralized credential management. Your tool implementations can safely use <code>process.env</code> to access secrets that never touch a developer's local machine.</p>
+
+<p>Set environment variables via the Vercel dashboard (Settings → Environment Variables) or CLI:</p>
+
+<pre><code>vercel env add OPENWEATHER_API_KEY production
+vercel env add OPENWEATHER_API_KEY preview
+vercel env add MCP_API_KEY production</code></pre>
+
+<p>Vercel automatically injects these into your function runtime. Never commit secrets to your repository.</p>
+
+<h2>Deploying to Vercel</h2>
+
+<h3>Initial Deployment</h3>
+
+<pre><code># From your project root
+vercel
+
+# Follow prompts to link to your Vercel account
+# When asked about settings, accept defaults for a Node.js project
+
+# For production deployment
+vercel --prod</code></pre>
+
+<p>After deployment, Vercel provides your endpoint URL: <code>https://my-mcp-server.vercel.app/api/mcp</code></p>
+
+<h3>Configuring Claude Desktop to Use Your Remote Server</h3>
+
+<p>Update <code>~/.config/claude/claude_desktop_config.json</code>:</p>
+
+<pre><code>{
+  "mcpServers": {
+    "my-remote-server": {
+      "command": "npx",
+      "args": ["mcp-remote", "https://my-mcp-server.vercel.app/api/mcp"],
+      "env": {
+        "MCP_API_KEY": "your-api-key-here"
+      }
+    }
+  }
+}</code></pre>
+
+<p>The <code>mcp-remote</code> package bridges the local stdio transport Claude Desktop expects with the remote HTTP endpoint. Install it with <code>npm install -g mcp-remote</code>.</p>
+
+<h2>Production Considerations</h2>
+
+<h3>Stateless vs. Stateful Sessions</h3>
+
+<p>The example above uses stateless sessions (<code>sessionIdGenerator: undefined</code>). Each request is independent — there's no memory between tool calls in a conversation. This is the right default for Vercel because serverless functions don't maintain persistent connections.</p>
+
+<p>For stateful sessions (where context persists across multiple tool calls in a conversation), you'd need persistent storage like Redis or a database. Vercel KV (Redis-compatible) can serve this purpose, but adds complexity. Start stateless and add state only when your use case requires it.</p>
+
+<h3>Cold Start Latency</h3>
+
+<p>Vercel serverless functions experience cold starts after periods of inactivity — typically 200-500ms for Node.js functions. For latency-sensitive MCP tools:</p>
+<ul>
+<li>Enable Vercel's fluid compute option (Pro plan) which keeps functions warmer</li>
+<li>Use Vercel Edge Functions for global distribution if your tools don't require Node.js-specific APIs</li>
+<li>Consider Vercel's regional function settings to deploy closer to your users</li>
+</ul>
+
+<h3>Timeouts and Long-Running Tools</h3>
+
+<p>The free Vercel plan has a 10-second function timeout. If any of your MCP tools make slow external API calls (LLM APIs, web scraping, large database queries), upgrade to Vercel Pro for the 300-second limit.</p>
+
+<h3>Error Handling</h3>
+
+<p>Always return structured errors from your MCP tools — never let exceptions propagate to the HTTP response unhandled:</p>
+
+<pre><code>server.tool("my-tool", "Description", { input: z.string() }, async ({ input }) => {
+  try {
+    const result = await callExternalAPI(input);
+    return { content: [{ type: "text", text: result }] };
+  } catch (error) {
+    return {
+      content: [{ type: "text", text: \`Error: \${error.message}\` }],
+      isError: true,
+    };
+  }
+});</code></pre>
+
+<h2>Monitoring and Observability</h2>
+
+<p>Vercel provides built-in observability for deployed functions:</p>
+
+<ul>
+<li><strong>Function logs</strong> — Available in the Vercel dashboard under your deployment's Functions tab. Filter by function name and time range.</li>
+<li><strong>Runtime logs</strong> — Use <code>console.log</code> in your handler for structured logging. Vercel streams these in real-time during development (<code>vercel dev</code>).</li>
+<li><strong>Analytics</strong> — Vercel Analytics tracks function invocation counts and durations (Pro plan).</li>
+</ul>
+
+<p>For production MCP servers, add request logging to understand usage patterns:</p>
+
+<pre><code>console.log(JSON.stringify({
+  event: "mcp_request",
+  timestamp: new Date().toISOString(),
+  tool: req.body?.params?.name,
+  duration_ms: Date.now() - startTime,
+}));</code></pre>
+
+<h2>Next Steps</h2>
+
+<p>Once your MCP server is live on Vercel:</p>
+
+<ol>
+<li><strong>Test thoroughly</strong> — Use <code>vercel dev</code> locally with the same environment variables as production before promoting</li>
+<li><strong>Set up preview deployments</strong> — Vercel automatically deploys branches as preview URLs, letting you test MCP changes before production</li>
+<li><strong>Add rate limiting</strong> — Protect against abuse with Vercel's Edge Middleware for rate limiting by IP or API key</li>
+<li><strong>Consider caching</strong> — For tools that fetch stable data (API documentation, configuration), add response caching with <code>Cache-Control</code> headers</li>
+</ol>
+
+<p>For more deployment options, see our guides on <a href="/blog/deploying-mcp-to-cloudflare-workers">Deploying MCP to Cloudflare Workers</a> and <a href="/blog/deploying-mcp-to-aws-lambda">Deploying MCP to AWS Lambda</a>.</p>
+
+<p>Browse all <a href="/category/devops">DevOps MCP servers</a> in our directory for integrations that pair well with a Vercel-hosted MCP deployment.</p>
+    `.trim(),
+  },
+  {
+    slug: "mcp-server-rate-limiting",
+    title: "MCP Server Rate Limiting: Patterns for Production Safety",
+    description: "Protect your MCP servers from abuse, quota exhaustion, and runaway AI agents with proven rate limiting patterns. Covers token buckets, sliding windows, per-tool limits, and Vercel Edge Middleware.",
+    date: "2026-05-27",
+    author: "MyMCPTools Team",
+    category: "Security",
+    readingTime: "10 min read",
+    keywords: ["mcp server rate limiting", "mcp server security", "rate limit mcp tools", "mcp production safety", "mcp server abuse prevention", "mcp api quota management"],
+    relatedServerSlugs: ["filesystem", "github", "postgres", "brave-search", "puppeteer"],
+    content: `
+<p>AI agents can call tools far faster than humans type. An MCP server that works perfectly in development — where a developer manually prompts one tool call at a time — can catastrophically drain API quotas, exhaust database connection pools, or trigger external service rate limits when an autonomous agent runs a loop.</p>
+
+<p>Rate limiting is not optional for production MCP servers. This guide covers the patterns, implementations, and specific considerations unique to MCP deployments.</p>
+
+<h2>Why MCP Servers Need Special Rate Limiting Attention</h2>
+
+<p>Standard web API rate limiting is designed around human-initiated requests. MCP servers face a different threat model:</p>
+
+<ul>
+<li><strong>Agentic loops</strong> — An AI agent with access to your MCP server can call tools in a tight loop without human oversight, draining quotas in minutes</li>
+<li><strong>Compound tool chains</strong> — A single user prompt can trigger dozens of sequential tool calls (search → read → summarize → write × many items)</li>
+<li><strong>Credential exposure risk</strong> — MCP servers often hold production credentials. Rate limiting reduces the blast radius if a compromised API key is used to abuse your server</li>
+<li><strong>External API propagation</strong> — Your MCP server calls downstream APIs. Without rate limiting, your server can trigger external rate limits that affect all users</li>
+<li><strong>Cost amplification</strong> — MCP tools that call paid APIs (LLMs, search APIs, cloud services) can generate unexpected costs when called at machine speed</li>
+</ul>
+
+<h2>Rate Limiting Strategies</h2>
+
+<h3>1. Token Bucket Algorithm</h3>
+
+<p>The token bucket algorithm is well-suited for MCP tool calls because it allows short bursts (a user legitimately prompting a complex multi-tool analysis) while enforcing a sustained rate limit over time.</p>
+
+<p><strong>How it works:</strong></p>
+<ul>
+<li>Each client has a "bucket" that fills with tokens at a fixed rate (e.g., 10 tokens/minute)</li>
+<li>Each tool call consumes one token (or more, for expensive tools)</li>
+<li>If the bucket is empty, the request is rejected or queued</li>
+<li>Buckets have a maximum capacity, preventing hoarding of tokens during idle periods</li>
+</ul>
+
+<p><strong>Implementation with Upstash Redis:</strong></p>
+
+<pre><code>import { Ratelimit } from "@upstash/ratelimit";
+import { Redis } from "@upstash/redis";
+
+const ratelimit = new Ratelimit({
+  redis: Redis.fromEnv(),
+  limiter: Ratelimit.tokenBucket(
+    10,    // 10 tokens per window
+    "1 m", // refill every 1 minute
+    10     // max bucket size
+  ),
+});
+
+// In your MCP handler
+const identifier = req.headers["x-api-key"] as string;
+const { success, remaining } = await ratelimit.limit(identifier);
+
+if (!success) {
+  res.status(429).json({
+    error: "Rate limit exceeded",
+    retryAfter: 60,
+  });
+  return;
+}</code></pre>
+
+<p>Upstash Redis is particularly well-suited for Vercel deployments because it's serverless-native (no persistent connection required) and has a generous free tier.</p>
+
+<h3>2. Sliding Window Rate Limiting</h3>
+
+<p>Sliding window limits are simpler to reason about: "no more than N requests in the last X minutes." Unlike fixed windows (which reset sharply at clock boundaries), sliding windows prevent burst abuse at window edges.</p>
+
+<pre><code>const ratelimit = new Ratelimit({
+  redis: Redis.fromEnv(),
+  limiter: Ratelimit.slidingWindow(
+    50,    // max 50 requests
+    "5 m"  // in any 5-minute sliding window
+  ),
+});</code></pre>
+
+<p><strong>When to use sliding window vs token bucket:</strong></p>
+<ul>
+<li><strong>Token bucket</strong> for interactive workflows — allows bursts, appropriate when a user legitimately needs to call many tools quickly in a complex analysis</li>
+<li><strong>Sliding window</strong> for background agents — stricter enforcement appropriate for autonomous agents where sustained rate matters more than burst tolerance</li>
+</ul>
+
+<h3>3. Per-Tool Rate Limiting</h3>
+
+<p>Not all MCP tools are equal in cost. A <code>get-weather</code> tool call might be nearly free. A <code>run-browser-automation</code> tool call might spin up a Puppeteer instance and consume significant resources. Apply different limits per tool:</p>
+
+<pre><code>const toolLimits: Record&lt;string, Ratelimit&gt; = {
+  "search-web": new Ratelimit({
+    redis: Redis.fromEnv(),
+    limiter: Ratelimit.slidingWindow(20, "1 m"), // 20 searches/min
+  }),
+  "run-browser": new Ratelimit({
+    redis: Redis.fromEnv(),
+    limiter: Ratelimit.slidingWindow(5, "1 m"),  // 5 browser sessions/min
+  }),
+  "query-database": new Ratelimit({
+    redis: Redis.fromEnv(),
+    limiter: Ratelimit.slidingWindow(100, "1 m"), // 100 queries/min
+  }),
+};
+
+// In your tool execution wrapper
+const toolName = req.body?.params?.name;
+const limiter = toolLimits[toolName] ?? defaultLimiter;
+const { success } = await limiter.limit(\`\${apiKey}:\${toolName}\`);
+</code></pre>
+
+<p>The composite key (<code>apiKey:toolName</code>) ensures that heavy usage of one expensive tool doesn't count against a client's budget for cheap tools.</p>
+
+<h3>4. Concurrency Limiting</h3>
+
+<p>Some MCP tools have resource constraints that aren't about rate (requests per minute) but about concurrency (simultaneous requests). Database connection pools, browser instances, and file handles are typically concurrency-limited, not rate-limited.</p>
+
+<pre><code>import { Ratelimit } from "@upstash/ratelimit";
+
+// Allow max 3 concurrent browser sessions per API key
+const concurrencyLimiter = new Ratelimit({
+  redis: Redis.fromEnv(),
+  limiter: Ratelimit.fixedWindow(3, "30 s"), // Approximate concurrency via short windows
+});
+</code></pre>
+
+<p>For precise concurrency control in long-running tools, use a distributed semaphore pattern with Redis <code>INCR</code>/<code>DECR</code> and a TTL to handle crashed sessions.</p>
+
+<h2>Implementing Rate Limiting in Vercel Edge Middleware</h2>
+
+<p>For Vercel-hosted MCP servers, Edge Middleware is the most efficient place to apply rate limiting — it runs before your function, rejecting requests without consuming function invocation quota:</p>
+
+<pre><code>// middleware.ts (at project root)
+import { NextResponse } from "next/server";
+import type { NextRequest } from "next/server";
+import { Ratelimit } from "@upstash/ratelimit";
+import { Redis } from "@upstash/redis";
+
+const ratelimit = new Ratelimit({
+  redis: Redis.fromEnv(),
+  limiter: Ratelimit.slidingWindow(30, "1 m"),
+});
+
+export async function middleware(req: NextRequest) {
+  if (req.nextUrl.pathname.startsWith("/api/mcp")) {
+    const apiKey = req.headers.get("x-api-key") ?? req.ip ?? "anonymous";
+    const { success, remaining, reset } = await ratelimit.limit(apiKey);
+
+    if (!success) {
+      return NextResponse.json(
+        { error: "Too many requests" },
+        {
+          status: 429,
+          headers: {
+            "X-RateLimit-Remaining": "0",
+            "X-RateLimit-Reset": reset.toString(),
+            "Retry-After": Math.ceil((reset - Date.now()) / 1000).toString(),
+          },
+        }
+      );
+    }
+
+    const response = NextResponse.next();
+    response.headers.set("X-RateLimit-Remaining", remaining.toString());
+    return response;
+  }
+}
+
+export const config = {
+  matcher: "/api/mcp",
+};</code></pre>
+
+<h2>Rate Limit Headers and Client Behavior</h2>
+
+<p>MCP clients need to handle rate limiting gracefully. Always return standard rate limit headers so clients can implement appropriate backoff:</p>
+
+<ul>
+<li><code>X-RateLimit-Limit</code> — The maximum requests allowed in the window</li>
+<li><code>X-RateLimit-Remaining</code> — Requests remaining in the current window</li>
+<li><code>X-RateLimit-Reset</code> — Unix timestamp when the window resets</li>
+<li><code>Retry-After</code> — Seconds until the client can retry (RFC 7231)</li>
+</ul>
+
+<p>Return HTTP 429 (Too Many Requests) for rate-limited responses. Well-implemented MCP clients will automatically back off and retry after the <code>Retry-After</code> period.</p>
+
+<h2>Protecting Against Runaway Agents</h2>
+
+<p>Standard rate limiting handles accidental overuse. For deliberate protection against runaway autonomous agents, add a circuit breaker:</p>
+
+<pre><code>// Track consecutive errors per API key
+// If a client hits errors 10 times in 1 minute, block for 10 minutes
+const circuitBreaker = new Ratelimit({
+  redis: Redis.fromEnv(),
+  limiter: Ratelimit.fixedWindow(10, "1 m"),
+  prefix: "circuit_breaker",
+});
+
+// In your error handler
+if (toolCallFailed) {
+  const { success } = await circuitBreaker.limit(apiKey);
+  if (!success) {
+    // Client is stuck in an error loop — block for 10 minutes
+    await redis.setex(\`blocked:\${apiKey}\`, 600, "circuit_breaker");
+  }
+}</code></pre>
+
+<p>This prevents the scenario where an agent retries a failing tool call in a tight loop, hammering your server and its downstream dependencies.</p>
+
+<h2>Monitoring Rate Limit Patterns</h2>
+
+<p>Rate limiting is only valuable if you monitor it. Log rate limit events to understand:</p>
+
+<ul>
+<li><strong>Which clients hit limits most often</strong> — May indicate legitimate use cases that need higher limits, or abuse to investigate</li>
+<li><strong>Which tools trigger the most limit events</strong> — May indicate tools that need higher individual limits or better per-tool tuning</li>
+<li><strong>Time patterns</strong> — Batch jobs running at peak hours can be rescheduled; genuine agent loops need investigation</li>
+</ul>
+
+<pre><code>if (!rateLimitResult.success) {
+  console.log(JSON.stringify({
+    event: "rate_limit_exceeded",
+    timestamp: new Date().toISOString(),
+    apiKey: apiKey.slice(0, 8) + "...", // Log prefix only, not full key
+    tool: toolName,
+    remaining: rateLimitResult.remaining,
+  }));
+}</code></pre>
+
+<h2>Recommended Defaults for MCP Server Rate Limits</h2>
+
+<p>If you're unsure where to start, these defaults work well for most production MCP deployments:</p>
+
+<ul>
+<li><strong>Global per-key limit:</strong> 60 requests/minute (1/second average — generous for interactive use, restrictive enough to prevent abuse)</li>
+<li><strong>Expensive tool limit:</strong> 5-10 requests/minute for tools that call paid APIs, spawn processes, or execute long-running queries</li>
+<li><strong>Database tools:</strong> 100-200 queries/minute (matches typical connection pool capacity)</li>
+<li><strong>Search/web tools:</strong> 10-20 requests/minute (matches typical API plan limits)</li>
+<li><strong>Circuit breaker threshold:</strong> 10 consecutive errors in 60 seconds → 10-minute block</li>
+</ul>
+
+<p>Start conservative and loosen limits based on actual usage patterns you observe in production.</p>
+
+<h2>Summary</h2>
+
+<p>Rate limiting is a fundamental safety layer for any production MCP server. The key patterns:</p>
+
+<ol>
+<li><strong>Apply global limits</strong> at the API key level to prevent credential abuse</li>
+<li><strong>Apply per-tool limits</strong> proportional to each tool's resource cost</li>
+<li><strong>Use token buckets</strong> for interactive workflows, sliding windows for autonomous agents</li>
+<li><strong>Add circuit breakers</strong> to block runaway error loops automatically</li>
+<li><strong>Return standard headers</strong> so clients can implement graceful backoff</li>
+<li><strong>Monitor rate limit events</strong> to tune limits based on real traffic</li>
+</ol>
+
+<p>For more on securing MCP server deployments, see our guide on <a href="/blog/mcp-server-secrets-management">MCP Server Secrets Management</a>.</p>
+
+<p>Browse all security-related MCP servers in the <a href="/category/security">Security category</a> of our directory.</p>
+    `.trim(),
+  },
 ];
 export function getBlogPostBySlug(slug: string): BlogPost | undefined {
   return blogPosts.find((post) => post.slug === slug);
