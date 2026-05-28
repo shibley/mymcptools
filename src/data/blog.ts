@@ -41843,6 +41843,660 @@ npx -y @modelcontextprotocol/server-filesystem /tmp
 <p>Browse the <a href="/">MCP server directory</a> to find tools worth adding to your VS Code workflow — from <a href="/category/coding">coding assistants</a> to <a href="/category/database">database connectors</a> and <a href="/category/search">web search</a> tools.</p>
     `.trim(),
   },
+  {
+    slug: "mcp-servers-for-education",
+    title: "Best MCP Servers for Education in 2026: EdTech, LMS & Learning Tools",
+    description: "Discover the top MCP servers transforming education in 2026. From LMS integrations and curriculum generation to research tools and student progress tracking — the complete guide for educators and EdTech teams.",
+    date: "2026-05-28",
+    author: "MyMCPTools Team",
+    category: "Industries",
+    readingTime: "9 min read",
+    keywords: ["mcp servers for education", "mcp edtech", "model context protocol education", "ai tools for educators", "mcp lms integration"],
+    relatedServerSlugs: ["notion", "google-drive", "brave-search", "memory", "filesystem", "fetch", "github"],
+    content: `
+<p>Education is one of the most promising frontiers for AI augmentation — and Model Context Protocol servers are opening up new possibilities for educators, instructional designers, edtech developers, and students alike. Instead of AI assistants that only know what you paste into a chat window, MCP gives your AI live access to course content, student data, research databases, and institutional tools.</p>
+
+<p>This guide covers the MCP servers most valuable in educational contexts: from K-12 to higher education to corporate learning and development.</p>
+
+<h2>Why MCP Matters for Education</h2>
+
+<p>The education sector has a data problem: learning management systems, research repositories, assessment tools, and content libraries all live in silos. MCP bridges these silos, letting AI assistants work across your entire educational ecosystem without manual copy-paste workflows.</p>
+
+<p>Key use cases where MCP adds immediate value:</p>
+<ul>
+<li><strong>Curriculum development</strong> — AI can access existing course materials and generate new content that matches your learning objectives and institutional standards</li>
+<li><strong>Research assistance</strong> — Connect AI to academic databases, citation tools, and document repositories for literature reviews and research synthesis</li>
+<li><strong>Personalized learning</strong> — AI with access to student progress data can generate tailored exercises, explanations, and feedback</li>
+<li><strong>Administrative automation</strong> — Grading rubrics, progress reports, and institutional documentation generated from live data</li>
+</ul>
+
+<h2>1. Notion MCP Server — Course Design and Knowledge Management</h2>
+
+<p>Most educators use Notion or similar tools for lesson planning, curriculum mapping, and content repositories. The Notion MCP server gives your AI assistant direct read/write access to these databases — so you can ask it to draft new lessons that follow your existing formatting conventions, or pull specific learning objectives for a new module.</p>
+
+<p><strong>Education use cases:</strong></p>
+<ul>
+<li>Generate new lesson plans that match your existing curriculum structure</li>
+<li>Create assessment rubrics from learning objectives stored in your Notion workspace</li>
+<li>Build student-facing study guides from instructor-facing notes</li>
+<li>Maintain course wikis with AI-assisted updates</li>
+</ul>
+
+<p><strong>Setup tip:</strong> Create a dedicated Notion integration with read access to your course database and write access only to a "drafts" database — keeps your live curriculum safe while letting AI generate new content freely.</p>
+
+<h2>2. Google Drive MCP Server — Document Access and Content Generation</h2>
+
+<p>Educational institutions run on Google Workspace. The Google Drive MCP server gives your AI access to slide decks, syllabi, rubrics, and assessments already stored in Drive — enabling content generation that's genuinely grounded in your existing materials rather than generic templates.</p>
+
+<p><strong>Education use cases:</strong></p>
+<ul>
+<li>Generate new slide decks that match your existing presentation style and branding</li>
+<li>Adapt existing course materials for different reading levels or learning contexts</li>
+<li>Create differentiated instruction versions of existing lesson documents</li>
+<li>Pull assessment questions from existing question banks and remix them</li>
+</ul>
+
+<p><strong>Best for:</strong> K-12 teachers, instructional designers, and university faculty who use Google Workspace as their primary content repository.</p>
+
+<h2>3. Brave Search MCP Server — Research and Current Information</h2>
+
+<p>Educational content has a freshness problem — textbooks go out of date, and AI training data has cutoffs. The Brave Search MCP server gives your AI access to current information: recent research, updated statistics, contemporary examples for case studies, and breaking developments in your field.</p>
+
+<p><strong>Education use cases:</strong></p>
+<ul>
+<li>Update course content with current statistics and recent examples</li>
+<li>Find recent research papers to supplement existing reading lists</li>
+<li>Identify contemporary case studies for business, law, or science courses</li>
+<li>Check factual accuracy of AI-generated content against current sources</li>
+</ul>
+
+<p><strong>Academic integrity note:</strong> When using web search in educational AI workflows, build in source citation — always ask your AI to include URLs and publication dates for any facts sourced from the web.</p>
+
+<h2>4. Memory MCP Server — Student Context and Personalization</h2>
+
+<p>The Memory MCP server gives your AI assistant persistent, structured memory across sessions. In an educational context, this is transformative: instead of re-explaining a student's background every session, the AI remembers their learning history, misconceptions they've struggled with, and topics where they've excelled.</p>
+
+<p><strong>Education use cases:</strong></p>
+<ul>
+<li>Maintain a persistent student profile: learning goals, mastered concepts, areas needing review</li>
+<li>Track misconceptions across tutoring sessions and tailor explanations accordingly</li>
+<li>Build an evolving understanding of a student's preferred learning modalities</li>
+<li>Remember institutional context: school year, curriculum standards, upcoming assessments</li>
+</ul>
+
+<p><strong>Privacy consideration:</strong> Student data requires careful handling. Run Memory MCP locally and never sync student records to cloud services without appropriate data governance agreements in place.</p>
+
+<h2>5. Filesystem MCP Server — Local Content and Repository Access</h2>
+
+<p>For developers building educational tools, or instructors managing large content libraries locally, the Filesystem MCP server provides direct AI access to your files. This is particularly valuable for edtech developers who work with large codebases, instructional content stored as Markdown, or assessment data in structured file formats.</p>
+
+<p><strong>Education use cases:</strong></p>
+<ul>
+<li>Generate new content that matches existing file structure and formatting conventions</li>
+<li>Batch-process large libraries of existing content for translation, simplification, or reformatting</li>
+<li>Review and improve existing assessment banks stored as structured files</li>
+<li>Build courseware repositories with AI-assisted content generation and organization</li>
+</ul>
+
+<h2>6. Fetch MCP Server — LMS API Integration</h2>
+
+<p>Most LMS platforms (Canvas, Moodle, Blackboard) expose REST APIs. The Fetch MCP server lets your AI make HTTP requests directly to these APIs — pulling student grades, assignment submissions, course enrollment data, and more without manual exports.</p>
+
+<p><strong>Education use cases:</strong></p>
+<ul>
+<li>Pull grade data from Canvas API to generate personalized student feedback reports</li>
+<li>Query enrollment data to understand course demographics for differentiated instruction planning</li>
+<li>Access assignment submissions for AI-assisted preliminary review before instructor grading</li>
+<li>Integrate with learning analytics platforms for progress dashboards</li>
+</ul>
+
+<p><strong>Important:</strong> LMS APIs contain sensitive student data. Use read-only API tokens scoped to the minimum necessary data, and comply with FERPA (US), GDPR (EU), and your institution's data governance policies.</p>
+
+<h2>7. GitHub MCP Server — EdTech Development and CS Education</h2>
+
+<p>For computer science educators and edtech developers, the GitHub MCP server is essential. It enables AI-assisted curriculum development for programming courses, automated code review for student assignments, and development of educational software with proper context about the codebase.</p>
+
+<p><strong>CS education use cases:</strong></p>
+<ul>
+<li>Generate progressive programming assignments that build on each other logically</li>
+<li>Review student code submissions and generate constructive feedback with specific line references</li>
+<li>Maintain course repositories with AI-assisted documentation and README updates</li>
+<li>Build and iterate on edtech tools with AI that understands your full codebase</li>
+</ul>
+
+<h2>Building an MCP Education Stack</h2>
+
+<p>The most effective educational AI setups combine 2-3 MCP servers based on your specific context:</p>
+
+<p><strong>For K-12 curriculum development:</strong> Notion (or Google Drive) + Brave Search + Memory</p>
+
+<p><strong>For university research support:</strong> Brave Search + Fetch (research database APIs) + Filesystem</p>
+
+<p><strong>For edtech development:</strong> GitHub + Filesystem + Fetch (LMS APIs)</p>
+
+<p><strong>For corporate L&D:</strong> Notion + Google Drive + Memory (learner profiles)</p>
+
+<h2>Getting Started</h2>
+
+<p>The quickest path to MCP in an educational context depends on your tools:</p>
+
+<ol>
+<li><strong>Install Claude Desktop</strong> or another MCP-compatible client (Cursor, VS Code with appropriate extensions)</li>
+<li><strong>Start with Notion or Google Drive MCP</strong> — connect AI to your existing content library first before building outward</li>
+<li><strong>Add Brave Search</strong> to ground content generation in current information</li>
+<li><strong>Add Memory</strong> once you have a workflow you want to persist across sessions</li>
+</ol>
+
+<p>The goal isn't maximum server count — it's the right servers for your specific educational workflow. Start small, validate that each server genuinely accelerates your work, then expand.</p>
+
+<p>Browse the <a href="/">MCP server directory</a> to find education-relevant tools — from <a href="/category/database">database connectors</a> for student data to <a href="/category/search">research tools</a> for academic workflows.</p>
+    `.trim(),
+  },
+  {
+    slug: "deploying-mcp-to-supabase",
+    title: "Deploying MCP Servers to Supabase: Edge Functions, Postgres & Realtime",
+    description: "Learn how to deploy MCP servers to Supabase using Edge Functions. Complete guide covering Deno runtime, Postgres tool exposure, realtime subscriptions, and production deployment patterns for Supabase-hosted MCP infrastructure.",
+    date: "2026-05-28",
+    author: "MyMCPTools Team",
+    category: "Deployment",
+    readingTime: "11 min read",
+    keywords: ["deploying mcp to supabase", "supabase mcp server", "mcp edge functions", "supabase mcp deployment", "model context protocol supabase"],
+    relatedServerSlugs: ["supabase", "supabase-realtime", "postgresql", "fetch", "filesystem"],
+    content: `
+<p>Supabase has become the default backend-as-a-service for full-stack developers — and its Edge Functions, Postgres database, and Realtime system make it a compelling deployment target for MCP servers. Running your MCP server on Supabase means zero server management, built-in Postgres integration, and global edge deployment close to your users.</p>
+
+<p>This guide walks through everything you need to deploy a production-ready MCP server on Supabase, from initial setup to handling authentication and database access.</p>
+
+<h2>Why Deploy MCP to Supabase?</h2>
+
+<p>Supabase offers several advantages over traditional hosting for MCP servers:</p>
+
+<ul>
+<li><strong>Edge Functions with Deno</strong> — Supabase Edge Functions run on Deno, which has excellent TypeScript support and fast cold starts</li>
+<li><strong>Native Postgres integration</strong> — your MCP server can query the same Postgres database your app uses, with zero additional setup</li>
+<li><strong>Realtime support</strong> — Supabase Realtime lets your MCP server subscribe to database changes and push live data to AI clients</li>
+<li><strong>Built-in auth</strong> — Supabase Auth handles user authentication, so you can scope MCP server access per user without building auth from scratch</li>
+<li><strong>Free tier available</strong> — for development and low-volume production use</li>
+</ul>
+
+<h2>Architecture Overview</h2>
+
+<p>A Supabase-hosted MCP server typically looks like this:</p>
+
+<pre><code>AI Client (Claude Desktop / Cursor)
+    ↓ HTTP (SSE or streamable HTTP)
+Supabase Edge Function (MCP Server)
+    ↓
+Supabase Postgres (data layer)
+Supabase Storage (file layer)
+Supabase Realtime (subscriptions)</code></pre>
+
+<p>The Edge Function acts as the MCP transport layer — it receives MCP protocol messages, executes tools against your Supabase backend, and returns results to the AI client.</p>
+
+<h2>Step 1: Install the Supabase CLI</h2>
+
+<pre><code># Install Supabase CLI
+npm install -g supabase
+
+# Initialize a new Supabase project (if starting fresh)
+supabase init
+
+# Link to existing project
+supabase link --project-ref your-project-ref</code></pre>
+
+<h2>Step 2: Create Your Edge Function</h2>
+
+<pre><code>supabase functions new mcp-server</code></pre>
+
+<p>This creates <code>supabase/functions/mcp-server/index.ts</code>. Here's a starter MCP server for Supabase:</p>
+
+<pre><code>// supabase/functions/mcp-server/index.ts
+import { createClient } from 'https://esm.sh/@supabase/supabase-js@2'
+import { Server } from 'https://esm.sh/@modelcontextprotocol/sdk/server/index.js'
+import { StreamableHTTPServerTransport } from 'https://esm.sh/@modelcontextprotocol/sdk/server/streamableHttp.js'
+
+const supabase = createClient(
+  Deno.env.get('SUPABASE_URL')!,
+  Deno.env.get('SUPABASE_SERVICE_ROLE_KEY')!
+)
+
+const server = new Server(
+  { name: 'supabase-mcp', version: '1.0.0' },
+  { capabilities: { tools: {} } }
+)
+
+server.setRequestHandler('tools/list', async () => ({
+  tools: [
+    {
+      name: 'query_table',
+      description: 'Query any table in the Supabase database',
+      inputSchema: {
+        type: 'object',
+        properties: {
+          table: { type: 'string', description: 'Table name to query' },
+          filter: { type: 'object', description: 'Optional filter object' },
+          limit: { type: 'number', description: 'Max rows to return', default: 50 }
+        },
+        required: ['table']
+      }
+    },
+    {
+      name: 'insert_row',
+      description: 'Insert a row into a Supabase table',
+      inputSchema: {
+        type: 'object',
+        properties: {
+          table: { type: 'string' },
+          data: { type: 'object', description: 'Row data to insert' }
+        },
+        required: ['table', 'data']
+      }
+    }
+  ]
+}))
+
+server.setRequestHandler('tools/call', async (request) => {
+  const { name, arguments: args } = request.params
+
+  if (name === 'query_table') {
+    let query = supabase.from(args.table).select('*')
+    if (args.filter) {
+      Object.entries(args.filter).forEach(([key, val]) => {
+        query = query.eq(key, val)
+      })
+    }
+    const { data, error } = await query.limit(args.limit ?? 50)
+    if (error) throw new Error(error.message)
+    return { content: [{ type: 'text', text: JSON.stringify(data, null, 2) }] }
+  }
+
+  if (name === 'insert_row') {
+    const { data, error } = await supabase.from(args.table).insert(args.data).select()
+    if (error) throw new Error(error.message)
+    return { content: [{ type: 'text', text: JSON.stringify(data, null, 2) }] }
+  }
+
+  throw new Error(\`Unknown tool: \${name}\`)
+})
+
+Deno.serve(async (req) => {
+  const transport = new StreamableHTTPServerTransport({ sessionIdGenerator: undefined })
+  await server.connect(transport)
+  return transport.handleRequest(req)
+})</code></pre>
+
+<h2>Step 3: Configure Environment Variables</h2>
+
+<p>Supabase Edge Functions automatically inject <code>SUPABASE_URL</code> and <code>SUPABASE_SERVICE_ROLE_KEY</code> — no manual configuration needed for database access. For additional secrets:</p>
+
+<pre><code># Set a custom secret
+supabase secrets set MY_CUSTOM_KEY=your-value
+
+# List existing secrets
+supabase secrets list</code></pre>
+
+<p><strong>Security note:</strong> Never use the <code>service_role</code> key in client-side code. In Edge Functions, it's safe because Edge Functions run server-side — but still apply Row Level Security (RLS) policies to limit what data each function can access.</p>
+
+<h2>Step 4: Deploy the Edge Function</h2>
+
+<pre><code># Deploy to Supabase cloud
+supabase functions deploy mcp-server
+
+# Test locally first
+supabase functions serve mcp-server</code></pre>
+
+<p>Your MCP server will be available at:</p>
+<pre><code>https://your-project-ref.supabase.co/functions/v1/mcp-server</code></pre>
+
+<h2>Step 5: Configure Your MCP Client</h2>
+
+<p>Add the deployed Edge Function as an MCP server in Claude Desktop:</p>
+
+<pre><code>// claude_desktop_config.json
+{
+  "mcpServers": {
+    "supabase": {
+      "command": "npx",
+      "args": ["-y", "mcp-remote", "https://your-project-ref.supabase.co/functions/v1/mcp-server"],
+      "env": {
+        "MCP_AUTH_TOKEN": "your-anon-or-user-jwt"
+      }
+    }
+  }
+}</code></pre>
+
+<p><strong>Note:</strong> Use <code>mcp-remote</code> to proxy HTTP-based MCP servers into the stdio format expected by Claude Desktop. Cursor and other clients with native HTTP transport can connect directly.</p>
+
+<h2>Step 6: Add Row-Level Security</h2>
+
+<p>If your MCP server will be accessed by multiple users, RLS ensures each user only sees their own data:</p>
+
+<pre><code>-- Enable RLS on your table
+ALTER TABLE your_table ENABLE ROW LEVEL SECURITY;
+
+-- Policy: users can only read their own rows
+CREATE POLICY "Users can read own rows"
+ON your_table FOR SELECT
+USING (auth.uid() = user_id);
+
+-- Policy: users can only insert their own rows
+CREATE POLICY "Users can insert own rows"
+ON your_table FOR INSERT
+WITH CHECK (auth.uid() = user_id);</code></pre>
+
+<p>In your Edge Function, use the user's JWT (passed via Authorization header) instead of the service role key:</p>
+
+<pre><code>const authHeader = req.headers.get('Authorization')
+const userClient = createClient(
+  Deno.env.get('SUPABASE_URL')!,
+  Deno.env.get('SUPABASE_ANON_KEY')!,
+  { global: { headers: { Authorization: authHeader ?? '' } } }
+)</code></pre>
+
+<h2>Adding Realtime Subscriptions</h2>
+
+<p>Supabase Realtime enables your MCP server to push live database updates to the AI client — useful for dashboards, monitoring tools, and collaborative workflows.</p>
+
+<pre><code>// Add a 'subscribe_to_changes' tool
+server.setRequestHandler('tools/call', async (request) => {
+  if (request.params.name === 'subscribe_to_changes') {
+    const { table } = request.params.arguments
+
+    return new Promise((resolve) => {
+      const channel = supabase.channel('db-changes')
+        .on('postgres_changes', { event: '*', schema: 'public', table }, (payload) => {
+          resolve({
+            content: [{
+              type: 'text',
+              text: \`Change detected: \${JSON.stringify(payload, null, 2)}\`
+            }]
+          })
+          supabase.removeChannel(channel)
+        })
+        .subscribe()
+
+      // Timeout after 30 seconds
+      setTimeout(() => {
+        supabase.removeChannel(channel)
+        resolve({ content: [{ type: 'text', text: 'No changes detected within 30 seconds' }] })
+      }, 30000)
+    })
+  }
+})</code></pre>
+
+<h2>Production Considerations</h2>
+
+<p><strong>Rate limiting:</strong> Supabase Edge Functions are subject to rate limits on the free tier. For production, upgrade to a paid plan and implement your own rate limiting within the function to protect against AI client loops.</p>
+
+<p><strong>Cold starts:</strong> Deno-based Edge Functions have cold starts of 200-500ms. For latency-sensitive MCP tools, consider keeping functions warm with periodic health check pings.</p>
+
+<p><strong>Error handling:</strong> Always return proper MCP error responses rather than letting exceptions propagate — unhandled errors will crash the MCP session:</p>
+
+<pre><code>try {
+  // your tool logic
+} catch (err) {
+  return {
+    content: [{ type: 'text', text: \`Error: \${err.message}\` }],
+    isError: true
+  }
+}</code></pre>
+
+<p><strong>Logging:</strong> Use Supabase's built-in log viewer (Dashboard → Edge Functions → Logs) to debug production issues without adding a separate logging service.</p>
+
+<h2>Full Deployment Checklist</h2>
+
+<ol>
+<li>✅ Edge Function deployed to Supabase cloud</li>
+<li>✅ RLS policies applied to all accessed tables</li>
+<li>✅ Secrets set via <code>supabase secrets set</code> (not hardcoded)</li>
+<li>✅ Error handling returns proper MCP error format</li>
+<li>✅ Auth validated on every request (not just tools that write)</li>
+<li>✅ Rate limiting implemented at the function level</li>
+<li>✅ MCP client configured with correct endpoint URL and auth token</li>
+</ol>
+
+<p>Browse the <a href="/">MCP server directory</a> to find more <a href="/category/database">database connectors</a> and <a href="/servers/supabase">Supabase-specific MCP tools</a> for your stack.</p>
+    `.trim(),
+  },
+  {
+    slug: "mcp-integration-guide-n8n",
+    title: "MCP Integration Guide: n8n — Connect AI Agents to Your Workflow Automations",
+    description: "Complete guide to integrating MCP servers with n8n. Learn how to call MCP tools from n8n workflows, expose n8n as an MCP server, and build AI-powered automations that connect to hundreds of services.",
+    date: "2026-05-28",
+    author: "MyMCPTools Team",
+    category: "Integrations",
+    readingTime: "10 min read",
+    keywords: ["mcp n8n integration", "n8n mcp server", "n8n model context protocol", "ai agents n8n", "mcp workflow automation"],
+    relatedServerSlugs: ["n8n", "n8n-mcp", "zapier", "zapier-nla", "fetch", "github", "slack"],
+    content: `
+<p>n8n is the most developer-friendly workflow automation platform available — open source, self-hostable, and with 400+ native integrations. Combining n8n with Model Context Protocol creates a powerful pattern: your AI assistant can trigger complex multi-step automations, retrieve data from services that don't have dedicated MCP servers, and build workflows on the fly using natural language.</p>
+
+<p>This guide covers two complementary integration patterns: using an MCP server to call n8n workflows from AI clients, and using n8n to orchestrate multiple MCP tools as part of larger automation pipelines.</p>
+
+<h2>Two Integration Patterns</h2>
+
+<p>There are two ways to combine MCP and n8n:</p>
+
+<p><strong>Pattern 1: MCP → n8n (AI calls workflows)</strong><br>
+Your AI assistant uses an MCP server to trigger n8n workflows via webhook. This is useful when you want AI to initiate complex automations — sending emails, updating CRMs, posting to Slack, creating tickets — using n8n's 400+ integrations as the execution layer.</p>
+
+<p><strong>Pattern 2: n8n → MCP (workflows call AI tools)</strong><br>
+n8n workflows call MCP tools as part of larger automation pipelines. This is useful when you want to add AI capabilities (code generation, text summarization, data extraction) to existing n8n automations without building separate API integrations.</p>
+
+<p>Most sophisticated setups use both patterns together.</p>
+
+<h2>Pattern 1: Building an MCP Server for n8n</h2>
+
+<h3>Step 1: Set Up n8n Webhook Triggers</h3>
+
+<p>In n8n, create workflows with Webhook trigger nodes. Each workflow becomes an "MCP tool" your AI can call:</p>
+
+<pre><code>// Example n8n workflow structure
+Webhook Trigger (POST /send-slack-message)
+  → Set node (format message)
+  → Slack node (send to #general)
+  → Respond to Webhook (return result)</code></pre>
+
+<p>Key settings for the webhook node:</p>
+<ul>
+<li>Method: POST</li>
+<li>Authentication: Header Auth (set a secret token)</li>
+<li>Response Mode: "Respond to Webhook" (wait for workflow completion before responding)</li>
+</ul>
+
+<h3>Step 2: Create the MCP Server</h3>
+
+<pre><code>// n8n-mcp-server.ts
+import { Server } from '@modelcontextprotocol/sdk/server/index.js'
+import { StdioServerTransport } from '@modelcontextprotocol/sdk/server/stdio.js'
+
+const N8N_BASE_URL = process.env.N8N_BASE_URL // e.g., https://your-n8n.example.com
+const N8N_WEBHOOK_SECRET = process.env.N8N_WEBHOOK_SECRET
+
+async function callN8nWorkflow(webhookPath: string, data: object) {
+  const response = await fetch(\`\${N8N_BASE_URL}/webhook/\${webhookPath}\`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': \`Bearer \${N8N_WEBHOOK_SECRET}\`
+    },
+    body: JSON.stringify(data)
+  })
+  if (!response.ok) throw new Error(\`n8n webhook failed: \${response.status}\`)
+  return response.json()
+}
+
+const server = new Server(
+  { name: 'n8n-automation', version: '1.0.0' },
+  { capabilities: { tools: {} } }
+)
+
+server.setRequestHandler('tools/list', async () => ({
+  tools: [
+    {
+      name: 'send_slack_message',
+      description: 'Send a message to a Slack channel via n8n',
+      inputSchema: {
+        type: 'object',
+        properties: {
+          channel: { type: 'string', description: 'Slack channel name (without #)' },
+          message: { type: 'string', description: 'Message text to send' }
+        },
+        required: ['channel', 'message']
+      }
+    },
+    {
+      name: 'create_github_issue',
+      description: 'Create a GitHub issue via n8n automation',
+      inputSchema: {
+        type: 'object',
+        properties: {
+          repo: { type: 'string', description: 'Repository in owner/repo format' },
+          title: { type: 'string' },
+          body: { type: 'string' },
+          labels: { type: 'array', items: { type: 'string' } }
+        },
+        required: ['repo', 'title']
+      }
+    },
+    {
+      name: 'add_crm_contact',
+      description: 'Add a contact to your CRM via n8n',
+      inputSchema: {
+        type: 'object',
+        properties: {
+          name: { type: 'string' },
+          email: { type: 'string' },
+          company: { type: 'string' },
+          notes: { type: 'string' }
+        },
+        required: ['name', 'email']
+      }
+    }
+  ]
+}))
+
+server.setRequestHandler('tools/call', async (request) => {
+  const { name, arguments: args } = request.params
+
+  const toolToWebhook: Record<string, string> = {
+    send_slack_message: 'send-slack-message',
+    create_github_issue: 'create-github-issue',
+    add_crm_contact: 'add-crm-contact'
+  }
+
+  const webhookPath = toolToWebhook[name]
+  if (!webhookPath) throw new Error(\`Unknown tool: \${name}\`)
+
+  const result = await callN8nWorkflow(webhookPath, args)
+  return {
+    content: [{ type: 'text', text: JSON.stringify(result, null, 2) }]
+  }
+})
+
+const transport = new StdioServerTransport()
+await server.connect(transport)</code></pre>
+
+<h3>Step 3: Configure in Claude Desktop</h3>
+
+<pre><code>// claude_desktop_config.json
+{
+  "mcpServers": {
+    "n8n-automation": {
+      "command": "node",
+      "args": ["/path/to/n8n-mcp-server.js"],
+      "env": {
+        "N8N_BASE_URL": "https://your-n8n.example.com",
+        "N8N_WEBHOOK_SECRET": "your-secret-token"
+      }
+    }
+  }
+}</code></pre>
+
+<p>Once configured, you can ask Claude: "Send a Slack message to #engineering saying the deploy is complete" and it will trigger your n8n workflow directly.</p>
+
+<h2>Pattern 2: Calling MCP Tools from n8n Workflows</h2>
+
+<p>n8n's HTTP Request node can call MCP servers that expose HTTP endpoints (SSE or streamable HTTP transport):</p>
+
+<pre><code>// n8n HTTP Request node configuration
+{
+  "method": "POST",
+  "url": "http://localhost:3000/mcp",
+  "headers": {
+    "Content-Type": "application/json"
+  },
+  "body": {
+    "jsonrpc": "2.0",
+    "id": 1,
+    "method": "tools/call",
+    "params": {
+      "name": "your_tool_name",
+      "arguments": {
+        "param1": "{{ $json.value }}"
+      }
+    }
+  }
+}</code></pre>
+
+<p>This lets n8n workflows call any MCP tool — including tools that access databases, file systems, external APIs, or AI capabilities — as part of larger automation pipelines.</p>
+
+<h2>Advanced Pattern: AI Agent Node + MCP</h2>
+
+<p>n8n's AI Agent node (powered by LangChain) supports tool use natively. You can register MCP-style tools directly in n8n's agent framework:</p>
+
+<ol>
+<li>Add an <strong>AI Agent node</strong> to your workflow</li>
+<li>Add <strong>Tool nodes</strong> connected to the Agent (HTTP Request tools, Code tools, or built-in integrations)</li>
+<li>The agent will autonomously decide which tools to call based on the user prompt and available tools</li>
+</ol>
+
+<p>This creates an n8n-native agentic pattern that doesn't require an external MCP client — useful when you want AI reasoning embedded directly in your workflow automation.</p>
+
+<h2>Practical n8n + MCP Use Cases</h2>
+
+<p><strong>Customer support triage:</strong> Incoming support tickets trigger an n8n workflow → AI tool analyzes sentiment and category → routes to appropriate queue in Zendesk/Freshdesk → sends acknowledgment email via SendGrid</p>
+
+<p><strong>Content publishing pipeline:</strong> Claude generates a blog post draft → n8n workflow creates a WordPress draft → notifies editor in Slack → schedules social posts via Buffer when approved</p>
+
+<p><strong>Lead enrichment:</strong> New CRM lead triggers n8n → AI tool researches company via web search MCP → enrichment data posted back to HubSpot/Salesforce → personalized outreach email drafted and queued</p>
+
+<p><strong>Code review automation:</strong> GitHub PR opened → n8n triggers → AI reviews code via MCP → n8n posts review comment to PR → Slack notification to engineering channel</p>
+
+<h2>Security Best Practices</h2>
+
+<p><strong>Webhook authentication:</strong> Always use header-based auth on n8n webhook nodes. Never expose unauthenticated webhooks, even on internal networks.</p>
+
+<pre><code>// In your n8n webhook node header auth config
+Authorization: Bearer {{ $env.WEBHOOK_SECRET }}</code></pre>
+
+<p><strong>Input validation:</strong> Validate all MCP tool inputs before passing to n8n. Malformed inputs can trigger unexpected workflow behavior.</p>
+
+<p><strong>Rate limiting:</strong> Implement rate limiting on MCP tools that trigger n8n workflows to prevent AI client loops from overwhelming your n8n instance.</p>
+
+<p><strong>Audit logging:</strong> Log every MCP-triggered n8n execution with the AI client context. n8n's execution history provides this automatically — ensure you retain logs long enough for compliance.</p>
+
+<h2>Self-Hosted vs. Cloud n8n</h2>
+
+<p>For MCP integration, self-hosted n8n (running locally or on your infrastructure) offers several advantages:</p>
+<ul>
+<li>Lower latency for MCP tool calls (no round-trip to cloud)</li>
+<li>No webhook URL exposure — MCP server can call n8n directly on localhost</li>
+<li>Full control over execution environment and data privacy</li>
+<li>No usage-based pricing on workflow executions</li>
+</ul>
+
+<p>n8n's Docker image makes self-hosting straightforward:</p>
+
+<pre><code>docker run -it --rm \
+  --name n8n \
+  -p 5678:5678 \
+  -v ~/.n8n:/home/node/.n8n \
+  n8nio/n8n</code></pre>
+
+<p>Browse the <a href="/">MCP server directory</a> for <a href="/servers/n8n">n8n MCP tools</a> and <a href="/category/automation">automation servers</a> that pair well with n8n-based workflows.</p>
+    `.trim(),
+  },
 ];
 export function getBlogPostBySlug(slug: string): BlogPost | undefined {
   return blogPosts.find((post) => post.slug === slug);
