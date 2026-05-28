@@ -41203,6 +41203,646 @@ if (toolCallFailed) {
 <p>Browse battle-tested MCP servers in our <a href="/">directory</a> to replace ad-hoc tooling with cleaner contracts — and avoid the next round of debt before it starts.</p>
     `.trim(),
   },
+  {
+    slug: "deploying-mcp-to-railway",
+    title: "Deploying MCP Servers to Railway: A Complete Guide",
+    description: "Step-by-step guide to deploying MCP servers on Railway. Covers project setup, persistent transport, environment secrets, auto-deploy from GitHub, and production best practices.",
+    date: "2026-05-27",
+    author: "MyMCPTools Team",
+    category: "Deployment",
+    readingTime: "10 min read",
+    keywords: ["deploy mcp server railway", "mcp server railway deployment", "railway mcp guide", "persistent mcp server", "mcp server hosting"],
+    relatedServerSlugs: ["filesystem", "github", "postgres", "redis"],
+    content: `
+<p>Cloudflare Workers and AWS Lambda are great for stateless MCP tools, but some tools need to stay alive between requests — maintaining a database connection, caching results in memory, or holding an authenticated session. Railway is purpose-built for exactly this kind of always-on, persistent workload.</p>
+
+<p>Railway deploys your code as a long-running process (not a Lambda function), gives you a private network for your databases, and auto-deploys from GitHub with zero configuration. It's the fastest way to get a production-grade MCP server running in under 30 minutes.</p>
+
+<h2>Why Railway for MCP Servers</h2>
+
+<p>Railway's model fits MCP servers better than serverless platforms when you need:</p>
+
+<ul>
+<li><strong>Persistent connections</strong> — keep a database connection pool alive, maintain WebSocket state, hold authenticated sessions across tool calls</li>
+<li><strong>Long-running operations</strong> — no 30-second function timeout; your tools can run for minutes</li>
+<li><strong>Private networking</strong> — your MCP server and its Postgres/Redis databases communicate over Railway's private network, never the public internet</li>
+<li><strong>Faster cold starts</strong> — your process is already running, no cold start penalty on the first tool call</li>
+</ul>
+
+<h2>Step 1: Create Your MCP Server</h2>
+
+<p>Start with a Node.js MCP server using the official SDK. Create a new project:</p>
+
+<pre><code>mkdir my-mcp-railway && cd my-mcp-railway
+npm init -y
+npm install @modelcontextprotocol/sdk express</code></pre>
+
+<p>Create <code>server.js</code>:</p>
+
+<pre><code>import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
+import { SSEServerTransport } from "@modelcontextprotocol/sdk/server/sse.js";
+import express from "express";
+
+const app = express();
+const server = new McpServer({
+  name: "My Railway MCP Server",
+  version: "1.0.0",
+});
+
+// Register your tools
+server.tool(
+  "get_timestamp",
+  "Get the current server timestamp",
+  {},
+  async () => ({
+    content: [{ type: "text", text: new Date().toISOString() }],
+  })
+);
+
+// SSE transport endpoint
+app.get("/sse", async (req, res) => {
+  const transport = new SSEServerTransport("/message", res);
+  await server.connect(transport);
+});
+
+app.post("/message", express.json(), async (req, res) => {
+  res.json({ status: "ok" });
+});
+
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  console.log(\`MCP server running on port \${PORT}\`);
+});</code></pre>
+
+<p>Add <code>"type": "module"</code> to your <code>package.json</code> and a start script:</p>
+
+<pre><code>{
+  "type": "module",
+  "scripts": {
+    "start": "node server.js"
+  }
+}</code></pre>
+
+<h2>Step 2: Deploy to Railway</h2>
+
+<p>The fastest path is GitHub-connected deployment:</p>
+
+<ol>
+<li>Push your project to a GitHub repository</li>
+<li>Go to railway.app and create a new project</li>
+<li>Select <strong>Deploy from GitHub repo</strong> and choose your repository</li>
+<li>Railway auto-detects Node.js and configures the build — click <strong>Deploy Now</strong></li>
+</ol>
+
+<p>Within 2 minutes, your server is live. Railway assigns a public URL in the format <code>https://your-project.up.railway.app</code>.</p>
+
+<p>For CLI-based deployment:</p>
+
+<pre><code>npm install -g @railway/cli
+railway login
+railway init
+railway up</code></pre>
+
+<h2>Step 3: Environment Variables and Secrets</h2>
+
+<p>Set secrets through the Railway dashboard (Variables tab) or CLI — never commit them to your repo:</p>
+
+<pre><code># Via CLI
+railway variables set DATABASE_URL=postgresql://...
+railway variables set API_KEY=sk-...
+railway variables set MCP_AUTH_TOKEN=your-secret-token</code></pre>
+
+<p>Access them in your server code via <code>process.env.VARIABLE_NAME</code>. Railway injects them at deploy time and restarts your service automatically when variables change.</p>
+
+<h2>Step 4: Add a Postgres Database</h2>
+
+<p>One of Railway's killer features is one-click databases that live on the same private network as your server:</p>
+
+<ol>
+<li>In your project, click <strong>+ New</strong> → <strong>Database</strong> → <strong>Add PostgreSQL</strong></li>
+<li>Railway provisions the database and automatically sets <code>DATABASE_URL</code> in your service's environment</li>
+<li>Your MCP server can now connect without exposing the database to the public internet</li>
+</ol>
+
+<pre><code>import pg from "pg";
+
+const pool = new pg.Pool({
+  connectionString: process.env.DATABASE_URL,
+  ssl: process.env.NODE_ENV === "production" ? { rejectUnauthorized: false } : false,
+});
+
+server.tool(
+  "query_database",
+  "Run a read-only SQL query",
+  { sql: { type: "string", description: "SELECT query to run" } },
+  async ({ sql }) => {
+    if (!sql.trim().toLowerCase().startsWith("select")) {
+      return { content: [{ type: "text", text: "Only SELECT queries are allowed" }] };
+    }
+    const result = await pool.query(sql);
+    return {
+      content: [{ type: "text", text: JSON.stringify(result.rows, null, 2) }],
+    };
+  }
+);</code></pre>
+
+<h2>Step 5: Authentication</h2>
+
+<p>Protect your Railway MCP server with a bearer token check before processing any request:</p>
+
+<pre><code>app.use((req, res, next) => {
+  const token = req.headers.authorization?.replace("Bearer ", "");
+  if (token !== process.env.MCP_AUTH_TOKEN) {
+    return res.status(401).json({ error: "Unauthorized" });
+  }
+  next();
+});</code></pre>
+
+<p>In your MCP client configuration (e.g., Claude Desktop's <code>claude_desktop_config.json</code>), pass the token as a header:</p>
+
+<pre><code>{
+  "mcpServers": {
+    "my-railway-server": {
+      "url": "https://your-project.up.railway.app/sse",
+      "headers": {
+        "Authorization": "Bearer your-secret-token"
+      }
+    }
+  }
+}</code></pre>
+
+<h2>Step 6: Auto-Deploy on Push</h2>
+
+<p>Railway redeploys automatically on every push to your connected GitHub branch. For production servers, create a deployment rule that only triggers on pushes to <code>main</code>:</p>
+
+<ol>
+<li>Go to your service settings → Deployments</li>
+<li>Set the <strong>Watch Paths</strong> to trigger only on relevant file changes</li>
+<li>Enable <strong>Deployment Protection</strong> for your production environment</li>
+</ol>
+
+<p>Zero-downtime deploys are enabled by default — Railway keeps your old container running until the new one passes its health check.</p>
+
+<h2>Health Checks and Monitoring</h2>
+
+<p>Add a health endpoint so Railway knows when your server is ready:</p>
+
+<pre><code>app.get("/health", (req, res) => {
+  res.json({ status: "ok", uptime: process.uptime() });
+});</code></pre>
+
+<p>In your Railway service settings, set the health check path to <code>/health</code>. Railway will route traffic to your new deploy only after this endpoint returns 200.</p>
+
+<h2>Pricing and Scaling</h2>
+
+<p>Railway's free tier gives you $5 of compute credits per month — enough to run a lightweight MCP server continuously for most personal projects. The Hobby plan ($5/month) removes the credit limit and adds persistent volumes.</p>
+
+<p>For teams, the Pro plan adds shared environments, team permissions, and priority support. Most MCP servers — even ones serving 10-20 users — run comfortably on a single $5/month service.</p>
+
+<h2>Railway vs. Other MCP Hosting Options</h2>
+
+<ul>
+<li><strong>Railway vs. Cloudflare Workers</strong> — Railway wins for stateful tools (DB connections, sessions, caching). Cloudflare wins for globally distributed, stateless tools.</li>
+<li><strong>Railway vs. AWS Lambda</strong> — Railway is significantly simpler to set up and debug; Lambda has more ecosystem depth for enterprise workloads.</li>
+<li><strong>Railway vs. Vercel</strong> — Vercel's serverless functions time out at 300s max; Railway processes run indefinitely, making it better for long-running MCP operations.</li>
+</ul>
+
+<p>For most MCP servers that need a database, Railway is the fastest path from code to production. Browse the <a href="/category/database">database MCP servers</a> in our directory for tools you can pair with your Railway deployment.</p>
+    `.trim(),
+  },
+  {
+    slug: "mcp-server-auth-patterns",
+    title: "MCP Server Authentication Patterns: A Security Guide",
+    description: "A practical guide to authentication patterns for MCP servers — from API key auth to OAuth 2.0, per-user tokens, and enterprise SSO integration. Secure your tools without blocking developers.",
+    date: "2026-05-27",
+    author: "MyMCPTools Team",
+    category: "Security",
+    readingTime: "12 min read",
+    keywords: ["mcp server authentication", "mcp server security auth", "mcp oauth", "mcp api key auth", "secure mcp server"],
+    relatedServerSlugs: ["github", "postgres", "filesystem", "fetch"],
+    content: `
+<p>An MCP server without authentication is a liability. It gives anyone who discovers your endpoint — or your configuration files — full access to every tool you've built: your filesystem, your database queries, your API calls, your internal services.</p>
+
+<p>But overly complex auth is its own problem. If connecting to your MCP server requires a 20-step OAuth dance, developers stop using it. The goal is authentication that's strong enough to be secure and simple enough that nobody routes around it.</p>
+
+<p>This guide covers the four most practical auth patterns for MCP servers, from simplest to most sophisticated, with implementation examples for each.</p>
+
+<h2>Pattern 1: Shared API Key (Bearer Token)</h2>
+
+<p>The simplest viable auth pattern. Generate a random secret, require it as a Bearer token on every request. Right for: personal servers, small teams, internal tools.</p>
+
+<pre><code>// Generate a secure key once
+const token = require('crypto').randomBytes(32).toString('hex');
+console.log('MCP_AUTH_TOKEN=' + token);
+
+// In your MCP server (Express)
+app.use((req, res, next) => {
+  const authHeader = req.headers.authorization;
+  if (!authHeader?.startsWith('Bearer ')) {
+    return res.status(401).json({ error: 'Missing authorization header' });
+  }
+  const provided = authHeader.slice(7);
+  // Constant-time comparison to prevent timing attacks
+  const valid = require('crypto').timingSafeEqual(
+    Buffer.from(provided),
+    Buffer.from(process.env.MCP_AUTH_TOKEN)
+  );
+  if (!valid) {
+    return res.status(401).json({ error: 'Invalid token' });
+  }
+  next();
+});</code></pre>
+
+<p><strong>Client configuration</strong> (Claude Desktop <code>claude_desktop_config.json</code>):</p>
+
+<pre><code>{
+  "mcpServers": {
+    "my-server": {
+      "url": "https://your-server.example.com/sse",
+      "headers": {
+        "Authorization": "Bearer your-secret-token-here"
+      }
+    }
+  }
+}</code></pre>
+
+<p><strong>Key security rules for API key auth:</strong></p>
+<ul>
+<li>Use <code>crypto.timingSafeEqual</code> — never <code>===</code> — to prevent timing attacks</li>
+<li>Store the token in an environment variable, never in code or config files</li>
+<li>Rotate the key immediately if you suspect it has been exposed</li>
+<li>Use HTTPS — a token over plain HTTP is worthless</li>
+</ul>
+
+<h2>Pattern 2: Per-User API Keys with Key Management</h2>
+
+<p>When multiple users or services need access, shared keys become a single point of failure — rotate one and you break everyone. Per-user keys let you revoke access selectively and track which key is responsible for which actions.</p>
+
+<pre><code>import Redis from 'ioredis';
+const redis = new Redis(process.env.REDIS_URL);
+
+async function createApiKey(userId: string, label: string): Promise&lt;string&gt; {
+  const key = 'mcp_' + require('crypto').randomBytes(24).toString('base64url');
+  await redis.hset(\`mcp:keys:\${key}\`, {
+    userId,
+    label,
+    createdAt: Date.now(),
+    lastUsed: '',
+  });
+  return key;
+}
+
+app.use(async (req, res, next) => {
+  const key = req.headers.authorization?.replace('Bearer ', '');
+  if (!key?.startsWith('mcp_')) {
+    return res.status(401).json({ error: 'Invalid key format' });
+  }
+  const keyData = await redis.hgetall(\`mcp:keys:\${key}\`);
+  if (!keyData?.userId) {
+    return res.status(401).json({ error: 'Key not found or revoked' });
+  }
+  await redis.hset(\`mcp:keys:\${key}\`, 'lastUsed', Date.now());
+  req.mcpUser = { userId: keyData.userId, keyLabel: keyData.label };
+  next();
+});</code></pre>
+
+<p>Revoking a key is a single Redis delete: <code>await redis.del('mcp:keys:' + key)</code>. The user loses access immediately without affecting anyone else.</p>
+
+<h2>Pattern 3: JWT Authentication</h2>
+
+<p>JWTs (JSON Web Tokens) are self-contained: the server validates them without a database lookup, making them ideal for stateless deployments (Cloudflare Workers, Lambda). They can also carry claims — user ID, roles, permissions — that your tools can act on.</p>
+
+<pre><code>import jwt from 'jsonwebtoken';
+
+app.use((req, res, next) => {
+  const token = req.headers.authorization?.replace('Bearer ', '');
+  if (!token) return res.status(401).json({ error: 'No token' });
+
+  try {
+    const payload = jwt.verify(token, process.env.JWT_SECRET) as {
+      sub: string;
+      roles: string[];
+      exp: number;
+    };
+    req.mcpUser = { userId: payload.sub, roles: payload.roles };
+    next();
+  } catch (err) {
+    return res.status(401).json({ error: 'Invalid or expired token' });
+  }
+});
+
+// Enforce role-based access inside a tool
+server.tool(
+  "delete_record",
+  "Delete a database record",
+  { table: { type: "string" }, id: { type: "string" } },
+  async ({ table, id }, { req }) => {
+    if (!req.mcpUser?.roles.includes('admin')) {
+      return { content: [{ type: "text", text: "Permission denied: admin role required" }] };
+    }
+    // perform deletion
+  }
+);</code></pre>
+
+<p><strong>Important JWT security rules:</strong></p>
+<ul>
+<li>Set short expiry times (<code>expiresIn: '1h'</code>) — tokens cannot be revoked, only expired</li>
+<li>Use RS256 (asymmetric) for tokens issued by an external auth provider; HS256 only when your server is both issuer and validator</li>
+<li>Validate <code>iss</code> (issuer) and <code>aud</code> (audience) claims to prevent token reuse across services</li>
+<li>Never put sensitive data in the JWT payload — it is base64-encoded, not encrypted</li>
+</ul>
+
+<h2>Pattern 4: OAuth 2.0 / OIDC Integration</h2>
+
+<p>For enterprise environments or any MCP server where end users authenticate with their own credentials, OAuth 2.0 is the right pattern. Users authorize via their existing identity provider (Google, GitHub, Okta, Auth0) — your server never touches their password.</p>
+
+<pre><code>import { createRemoteJWKSet, jwtVerify } from 'jose';
+
+const JWKS = createRemoteJWKSet(
+  new URL('https://your-provider.com/.well-known/jwks.json')
+);
+
+app.use(async (req, res, next) => {
+  const token = req.headers.authorization?.replace('Bearer ', '');
+  if (!token) return res.status(401).json({ error: 'No token' });
+
+  try {
+    const { payload } = await jwtVerify(token, JWKS, {
+      issuer: 'https://your-provider.com',
+      audience: 'your-mcp-server-audience',
+    });
+    req.mcpUser = {
+      userId: payload.sub,
+      email: payload.email as string,
+      scopes: (payload.scope as string)?.split(' ') ?? [],
+    };
+    next();
+  } catch (err) {
+    return res.status(401).json({ error: 'Token validation failed' });
+  }
+});</code></pre>
+
+<p>For Cloudflare Access integration (protecting an entire MCP server behind SSO):</p>
+
+<pre><code>const CF_TEAM_DOMAIN = process.env.CF_TEAM_DOMAIN;
+
+app.use(async (req, res, next) => {
+  const cfToken = req.headers['cf-access-jwt-assertion'] as string;
+  if (!cfToken) return res.status(401).json({ error: 'Cloudflare Access token required' });
+
+  const JWKS = createRemoteJWKSet(
+    new URL(\`https://\${CF_TEAM_DOMAIN}/cdn-cgi/access/certs\`)
+  );
+
+  try {
+    const { payload } = await jwtVerify(cfToken, JWKS);
+    req.mcpUser = { email: payload.email as string };
+    next();
+  } catch {
+    return res.status(401).json({ error: 'Invalid Cloudflare Access token' });
+  }
+});</code></pre>
+
+<h2>Choosing the Right Pattern</h2>
+
+<p>A quick decision guide:</p>
+
+<ul>
+<li><strong>Shared API key</strong> — personal servers, prototyping, minimal complexity, rotate key to revoke</li>
+<li><strong>Per-user API keys</strong> — small teams, SaaS tools, low complexity, instant per-key revocation</li>
+<li><strong>JWT</strong> — stateless deployments, microservices, medium complexity, wait for expiry to revoke</li>
+<li><strong>OAuth 2.0 / OIDC</strong> — enterprise, end-user access, high complexity, provider-side revocation</li>
+</ul>
+
+<h2>Universal Security Rules (Apply to All Patterns)</h2>
+
+<ul>
+<li><strong>HTTPS only.</strong> Never run an authenticated MCP server over plain HTTP. Use a reverse proxy (Nginx, Caddy, Cloudflare) to terminate TLS if your runtime does not do it natively.</li>
+<li><strong>Log auth failures.</strong> Every 401 should write a log entry with the IP address and timestamp. Patterns of failure can indicate credential stuffing or misconfigured clients.</li>
+<li><strong>Rate limit unauthenticated endpoints.</strong> Your <code>/health</code> and auth endpoints should be rate-limited to prevent brute-force attacks.</li>
+<li><strong>Scope your tokens.</strong> If a token only needs read access, do not issue it write permissions. Least privilege applies to MCP tools too.</li>
+<li><strong>Audit sensitive tools.</strong> Any tool that modifies data, sends messages, or makes financial transactions should log who called it, when, and with what parameters.</li>
+</ul>
+
+<p>Start with the simplest pattern that solves your actual threat model. A solo developer's personal MCP server needs a shared API key, not OAuth. A multi-tenant SaaS product needs per-user keys and scoped permissions. Match the auth complexity to the actual risk.</p>
+
+<p>Browse our <a href="/category/security">security MCP servers</a> for tools that can augment your authentication stack — from secret rotation to access audit logging.</p>
+    `.trim(),
+  },
+  {
+    slug: "mcp-integration-guide-vs-code",
+    title: "MCP Integration Guide: VS Code (GitHub Copilot, Continue, Cline)",
+    description: "How to connect MCP servers to VS Code via GitHub Copilot agent mode, the Continue extension, and Cline. Covers configuration, tool access, and debugging tips for each approach.",
+    date: "2026-05-27",
+    author: "MyMCPTools Team",
+    category: "Integration",
+    readingTime: "10 min read",
+    keywords: ["mcp servers vs code", "vs code mcp integration", "github copilot mcp", "continue extension mcp", "cline mcp server"],
+    relatedServerSlugs: ["filesystem", "github", "postgres", "brave-search", "puppeteer"],
+    content: `
+<p>VS Code is the most popular editor in the world, and in 2025 it became one of the best MCP client environments available. Three distinct integrations now let you wire MCP servers directly into your VS Code workflow: GitHub Copilot's agent mode, the Continue extension, and Cline. Each has different strengths — here's how to set up all three and when to use which.</p>
+
+<h2>Option 1: GitHub Copilot Agent Mode (Built-in)</h2>
+
+<p>GitHub Copilot added MCP support in VS Code 1.99 (April 2025). If you already pay for Copilot, this is the zero-friction path — no additional extensions needed.</p>
+
+<h3>Setup</h3>
+
+<p>MCP servers for Copilot are configured in VS Code's <code>settings.json</code> under the <code>mcp</code> key. Open the command palette (<code>Cmd/Ctrl + Shift + P</code>), search for <strong>Open User Settings (JSON)</strong>, and add:</p>
+
+<pre><code>{
+  "mcp": {
+    "servers": {
+      "filesystem": {
+        "command": "npx",
+        "args": ["-y", "@modelcontextprotocol/server-filesystem", "/Users/yourname/projects"],
+        "type": "stdio"
+      },
+      "github": {
+        "command": "npx",
+        "args": ["-y", "@modelcontextprotocol/server-github"],
+        "type": "stdio",
+        "env": {
+          "GITHUB_TOKEN": "your-github-token"
+        }
+      },
+      "postgres": {
+        "command": "npx",
+        "args": ["-y", "@modelcontextprotocol/server-postgres", "postgresql://localhost/mydb"],
+        "type": "stdio"
+      }
+    }
+  }
+}</code></pre>
+
+<p>For remote (HTTP/SSE) MCP servers:</p>
+
+<pre><code>{
+  "mcp": {
+    "servers": {
+      "my-remote-server": {
+        "type": "sse",
+        "url": "https://your-mcp-server.railway.app/sse",
+        "headers": {
+          "Authorization": "Bearer your-token"
+        }
+      }
+    }
+  }
+}</code></pre>
+
+<h3>Using MCP Tools in Copilot</h3>
+
+<p>Open the Copilot Chat panel (<code>Ctrl/Cmd + Shift + I</code>) and switch to <strong>Agent</strong> mode (not Ask or Edit). MCP tools are only available in agent mode.</p>
+
+<p>Type a request that requires a tool — Copilot will show a "using tool" indicator and ask for confirmation before executing anything that modifies files or makes external calls. You can approve once, always, or deny tool calls individually.</p>
+
+<h3>Workspace vs. User-level MCP Config</h3>
+
+<p>You can also configure MCP servers per-workspace by creating <code>.vscode/mcp.json</code> in your project root:</p>
+
+<pre><code>{
+  "servers": {
+    "project-db": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-postgres", "\${env:DATABASE_URL}"],
+      "type": "stdio"
+    }
+  }
+}</code></pre>
+
+<p>Workspace configs override user settings and let you commit MCP server definitions with the repo — useful for team standardization without sharing secrets.</p>
+
+<h2>Option 2: Continue Extension</h2>
+
+<p>Continue is an open-source Copilot alternative that supports multiple AI providers (Claude, GPT-4, local models via Ollama) and has been one of the earliest and most polished MCP clients in the VS Code ecosystem.</p>
+
+<h3>Setup</h3>
+
+<ol>
+<li>Install the Continue extension from the VS Code marketplace</li>
+<li>Open the Continue config file: <code>Cmd/Ctrl + Shift + P</code> → <strong>Continue: Open config.json</strong></li>
+<li>Add your MCP servers under the <code>mcpServers</code> key:</li>
+</ol>
+
+<pre><code>{
+  "models": [
+    {
+      "title": "Claude Sonnet",
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "apiKey": "your-anthropic-key"
+    }
+  ],
+  "mcpServers": [
+    {
+      "name": "filesystem",
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-filesystem", "/Users/yourname"],
+      "env": {}
+    },
+    {
+      "name": "brave-search",
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-brave-search"],
+      "env": {
+        "BRAVE_API_KEY": "your-brave-api-key"
+      }
+    },
+    {
+      "name": "remote-db",
+      "transport": {
+        "type": "sse",
+        "url": "https://your-mcp-server.example.com/sse",
+        "requestOptions": {
+          "headers": {
+            "Authorization": "Bearer your-token"
+          }
+        }
+      }
+    }
+  ]
+}</code></pre>
+
+<h3>Using MCP Tools in Continue</h3>
+
+<p>Open the Continue sidebar and start a chat. Continue will automatically use MCP tools when the context suggests it — or you can explicitly invoke a tool by describing what you need. Continue shows tool calls inline in the chat and lets you expand them to see inputs and outputs.</p>
+
+<p>One Continue feature that stands out: slash commands that map to MCP tool calls, letting you quickly trigger common operations without typing a full prompt.</p>
+
+<h2>Option 3: Cline</h2>
+
+<p>Cline (formerly Claude Dev) is a VS Code extension built specifically for autonomous coding agents. It's the most powerful MCP client in the VS Code ecosystem — tools are first-class citizens, and Cline will chain multiple tool calls to complete complex multi-step tasks.</p>
+
+<h3>Setup</h3>
+
+<ol>
+<li>Install the Cline extension from the VS Code marketplace</li>
+<li>Open Cline settings via the extension's gear icon or <code>Cmd/Ctrl + Shift + P</code> → <strong>Cline: MCP Settings</strong></li>
+<li>Add MCP servers in the settings UI or edit <code>cline_mcp_settings.json</code> directly:</li>
+</ol>
+
+<pre><code>{
+  "mcpServers": {
+    "filesystem": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-filesystem", "/Users/yourname/projects"],
+      "disabled": false,
+      "alwaysAllow": []
+    },
+    "github": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-github"],
+      "env": {
+        "GITHUB_TOKEN": "your-token"
+      },
+      "disabled": false,
+      "alwaysAllow": ["get_file_contents", "list_issues"]
+    },
+    "puppeteer": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-puppeteer"],
+      "disabled": false,
+      "alwaysAllow": []
+    }
+  }
+}</code></pre>
+
+<p>The <code>alwaysAllow</code> array lets you whitelist specific tools that run without a confirmation prompt — useful for read-only tools you trust completely.</p>
+
+<h3>Using MCP Tools in Cline</h3>
+
+<p>Open the Cline sidebar and give it a high-level task ("refactor this module to use the new API and update all the tests"). Cline will plan and execute steps autonomously, using MCP tools to read files, make web requests, query databases, and more.</p>
+
+<p>Cline shows every tool call in the chat, color-coded by type (read vs. write vs. network), with approve/deny controls on each step. For autonomous work with trusted tools, you can switch to auto-approve mode.</p>
+
+<h2>Comparing the Three Options</h2>
+
+<ul>
+<li><strong>GitHub Copilot agent mode</strong> — best if you are already paying for Copilot and want zero-friction setup. Tighter VS Code integration, official Microsoft support. Requires Copilot subscription.</li>
+<li><strong>Continue</strong> — best for multi-model workflows (switch between Claude, GPT-4, and local models on the same chat). Open source, free. Excellent for teams that want to choose their own AI backend.</li>
+<li><strong>Cline</strong> — best for autonomous, multi-step coding tasks. The most capable MCP client of the three, with fine-grained tool permission controls. Open source, free.</li>
+</ul>
+
+<h2>Debugging MCP Connections in VS Code</h2>
+
+<p>When an MCP server is not connecting, check these in order:</p>
+
+<ol>
+<li><strong>Test the server directly</strong> — run the server command in a terminal manually and verify it starts without errors</li>
+<li><strong>Check the MCP output channel</strong> — in VS Code, open the Output panel (<code>Cmd/Ctrl + Shift + U</code>) and select the MCP-related channel for your extension</li>
+<li><strong>Verify Node.js is in PATH</strong> — stdio servers launched by VS Code inherit a minimal environment; <code>npx</code> may not be found if Node.js is not in the system PATH</li>
+<li><strong>Check env variable injection</strong> — secrets passed via <code>env</code> in config do not have access to your shell environment unless you reference them with <code>\${env:VARIABLE}</code> syntax</li>
+</ol>
+
+<pre><code># Quick test: run your MCP server manually
+npx -y @modelcontextprotocol/server-filesystem /tmp
+# Should print: "Filesystem MCP Server running on stdio"
+# If this fails, VS Code will also fail to launch it</code></pre>
+
+<p>Browse the <a href="/">MCP server directory</a> to find tools worth adding to your VS Code workflow — from <a href="/category/coding">coding assistants</a> to <a href="/category/database">database connectors</a> and <a href="/category/search">web search</a> tools.</p>
+    `.trim(),
+  },
 ];
 export function getBlogPostBySlug(slug: string): BlogPost | undefined {
   return blogPosts.find((post) => post.slug === slug);
