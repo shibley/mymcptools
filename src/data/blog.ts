@@ -42497,6 +42497,843 @@ Authorization: Bearer {{ $env.WEBHOOK_SECRET }}</code></pre>
 <p>Browse the <a href="/">MCP server directory</a> for <a href="/servers/n8n">n8n MCP tools</a> and <a href="/category/automation">automation servers</a> that pair well with n8n-based workflows.</p>
     `.trim(),
   },
+  {
+    slug: "mcp-integration-guide-zapier",
+    title: "MCP Integration Guide: Zapier — Connect AI Agents to 7,000+ Apps",
+    description: "Complete guide to integrating MCP servers with Zapier. Learn how to trigger Zaps from AI assistants, expose Zapier actions as MCP tools, and automate workflows across 7,000+ apps using natural language.",
+    date: "2026-05-28",
+    author: "MyMCPTools Team",
+    category: "Integrations",
+    readingTime: "10 min read",
+    keywords: ["mcp zapier integration", "zapier mcp server", "zapier model context protocol", "ai agents zapier", "mcp automation zapier"],
+    relatedServerSlugs: ["zapier", "zapier-nla", "n8n", "make-com", "fetch", "github", "slack"],
+    content: `
+<p>Zapier connects 7,000+ apps through a no-code automation platform trusted by millions of teams. When you pair Zapier with Model Context Protocol, your AI assistant gains access to this entire ecosystem — able to trigger any Zap, query data from connected apps, and execute multi-step automations through natural language commands.</p>
+
+<p>This guide covers two approaches: using Zapier's Natural Language Actions (NLA) API as an MCP server, and building a custom MCP server that calls Zapier webhooks directly.</p>
+
+<h2>Approach 1: Zapier NLA MCP Server</h2>
+
+<p>Zapier's Natural Language Actions API is purpose-built for AI integration. It exposes your configured Zapier actions as an API endpoint designed for LLM tool use — making it the fastest path to MCP + Zapier integration.</p>
+
+<h3>Step 1: Enable Zapier AI Actions</h3>
+
+<ol>
+<li>Go to <strong>zapier.com/l/natural-language-actions</strong> and sign in</li>
+<li>Click <strong>Add an AI Action</strong></li>
+<li>Search for and configure actions you want available to AI (e.g., "Send Slack message", "Create Trello card", "Add row to Google Sheet")</li>
+<li>For each action, configure the <strong>default values</strong> and mark which fields should be <strong>AI-guessable</strong></li>
+<li>Copy your <strong>NLA API Key</strong> from the Settings page</li>
+</ol>
+
+<h3>Step 2: Install and Configure the NLA MCP Server</h3>
+
+<pre><code>npm install -g zapier-nla-mcp</code></pre>
+
+<p>Or use it directly with npx in your Claude Desktop config:</p>
+
+<pre><code>// claude_desktop_config.json
+{
+  "mcpServers": {
+    "zapier-nla": {
+      "command": "npx",
+      "args": ["-y", "zapier-nla-mcp"],
+      "env": {
+        "ZAPIER_NLA_API_KEY": "your-nla-api-key"
+      }
+    }
+  }
+}</code></pre>
+
+<p>The NLA MCP server automatically discovers all actions you've enabled in the Zapier AI Actions interface and exposes them as MCP tools.</p>
+
+<h3>Step 3: Test Your Integration</h3>
+
+<p>Open Claude Desktop and try natural language commands:</p>
+<ul>
+<li>"Send a Slack message to #general: deployment complete"</li>
+<li>"Create a Trello card in the Backlog list: 'Review Q3 metrics'"</li>
+<li>"Add a row to my leads spreadsheet: name=John Smith, email=john@example.com, source=website"</li>
+</ul>
+
+<p>Claude will identify the appropriate Zapier action, fill in the parameters from your request, and execute the action through the NLA API.</p>
+
+<h2>Approach 2: Custom Webhook-Based MCP Server</h2>
+
+<p>For more control — custom error handling, input validation, or complex multi-step logic — build an MCP server that calls Zapier webhooks directly.</p>
+
+<h3>Step 1: Create Webhook-Triggered Zaps</h3>
+
+<p>In Zapier, create Zaps with <strong>Webhooks by Zapier</strong> as the trigger:</p>
+<ol>
+<li>New Zap → Trigger: Webhooks by Zapier → Catch Hook</li>
+<li>Copy the webhook URL</li>
+<li>Add your action steps (Slack, Gmail, HubSpot, etc.)</li>
+<li>Turn on the Zap</li>
+</ol>
+
+<h3>Step 2: Build the MCP Server</h3>
+
+<pre><code>// zapier-mcp-server.ts
+import { Server } from '@modelcontextprotocol/sdk/server/index.js'
+import { StdioServerTransport } from '@modelcontextprotocol/sdk/server/stdio.js'
+
+const WEBHOOKS: Record<string, string> = {
+  send_slack_notification: process.env.ZAPIER_WEBHOOK_SLACK!,
+  create_hubspot_contact: process.env.ZAPIER_WEBHOOK_HUBSPOT!,
+  send_email: process.env.ZAPIER_WEBHOOK_EMAIL!,
+  create_calendar_event: process.env.ZAPIER_WEBHOOK_CALENDAR!,
+}
+
+async function triggerZap(webhookUrl: string, data: object) {
+  const response = await fetch(webhookUrl, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(data),
+  })
+  if (!response.ok) throw new Error(\`Zapier webhook failed: \${response.status}\`)
+  return { success: true, status: response.status }
+}
+
+const server = new Server(
+  { name: 'zapier-automations', version: '1.0.0' },
+  { capabilities: { tools: {} } }
+)
+
+server.setRequestHandler('tools/list', async () => ({
+  tools: [
+    {
+      name: 'send_slack_notification',
+      description: 'Send a Slack notification via Zapier',
+      inputSchema: {
+        type: 'object',
+        properties: {
+          channel: { type: 'string', description: 'Slack channel (without #)' },
+          message: { type: 'string', description: 'Message to send' },
+          mention: { type: 'string', description: 'Optional user to mention' }
+        },
+        required: ['channel', 'message']
+      }
+    },
+    {
+      name: 'create_hubspot_contact',
+      description: 'Create a new contact in HubSpot CRM via Zapier',
+      inputSchema: {
+        type: 'object',
+        properties: {
+          firstname: { type: 'string' },
+          lastname: { type: 'string' },
+          email: { type: 'string' },
+          company: { type: 'string' },
+          phone: { type: 'string' },
+          notes: { type: 'string' }
+        },
+        required: ['email']
+      }
+    },
+    {
+      name: 'send_email',
+      description: 'Send an email via Zapier (Gmail/Outlook)',
+      inputSchema: {
+        type: 'object',
+        properties: {
+          to: { type: 'string', description: 'Recipient email address' },
+          subject: { type: 'string' },
+          body: { type: 'string', description: 'Email body (plain text or HTML)' }
+        },
+        required: ['to', 'subject', 'body']
+      }
+    },
+    {
+      name: 'create_calendar_event',
+      description: 'Create a Google Calendar event via Zapier',
+      inputSchema: {
+        type: 'object',
+        properties: {
+          title: { type: 'string' },
+          start_time: { type: 'string', description: 'ISO 8601 datetime' },
+          end_time: { type: 'string', description: 'ISO 8601 datetime' },
+          description: { type: 'string' },
+          attendees: { type: 'string', description: 'Comma-separated email addresses' }
+        },
+        required: ['title', 'start_time', 'end_time']
+      }
+    }
+  ]
+}))
+
+server.setRequestHandler('tools/call', async (request) => {
+  const { name, arguments: args } = request.params
+  const webhookUrl = WEBHOOKS[name]
+  if (!webhookUrl) throw new Error(\`Unknown tool: \${name}\`)
+
+  const result = await triggerZap(webhookUrl, args)
+  return {
+    content: [{ type: 'text', text: \`Action completed: \${JSON.stringify(result)}\` }]
+  }
+})
+
+const transport = new StdioServerTransport()
+await server.connect(transport)</code></pre>
+
+<h3>Step 3: Configure Environment Variables</h3>
+
+<pre><code>// claude_desktop_config.json
+{
+  "mcpServers": {
+    "zapier-automations": {
+      "command": "node",
+      "args": ["/path/to/zapier-mcp-server.js"],
+      "env": {
+        "ZAPIER_WEBHOOK_SLACK": "https://hooks.zapier.com/hooks/catch/123/abc/",
+        "ZAPIER_WEBHOOK_HUBSPOT": "https://hooks.zapier.com/hooks/catch/123/def/",
+        "ZAPIER_WEBHOOK_EMAIL": "https://hooks.zapier.com/hooks/catch/123/ghi/",
+        "ZAPIER_WEBHOOK_CALENDAR": "https://hooks.zapier.com/hooks/catch/123/jkl/"
+      }
+    }
+  }
+}</code></pre>
+
+<h2>Comparing NLA vs. Webhooks</h2>
+
+<p><strong>Zapier NLA (Natural Language Actions)</strong> is best when:</p>
+<ul>
+<li>You want fast setup with minimal code</li>
+<li>You trust Zapier's AI to infer parameters from natural language</li>
+<li>You want to expose many actions without writing individual tool schemas</li>
+<li>You're prototyping or building personal automations</li>
+</ul>
+
+<p><strong>Webhook-based MCP server</strong> is best when:</p>
+<ul>
+<li>You need strict input validation before triggering Zaps</li>
+<li>You want custom error messages and retry logic</li>
+<li>You need to transform data between AI output and Zapier input</li>
+<li>You're building for production or enterprise deployments</li>
+</ul>
+
+<h2>High-Value Zapier + MCP Use Cases</h2>
+
+<p><strong>Sales workflow automation:</strong> Claude researches a prospect → creates HubSpot contact → schedules follow-up task → drafts and queues outreach email — all triggered by a single "research and prep outreach for john@company.com" command.</p>
+
+<p><strong>Content publishing pipeline:</strong> "Publish this blog post" triggers Zapier to create a WordPress draft, post a preview to Slack for approval, schedule social shares in Buffer, and add a row to your content tracking sheet.</p>
+
+<p><strong>Support ticket triage:</strong> New support email arrives → Zapier triggers Claude analysis via MCP → AI classifies urgency and extracts issue details → creates Zendesk ticket with proper tags → notifies on-call via PagerDuty if P0.</p>
+
+<p><strong>Meeting follow-up:</strong> "Send follow-up for today's meeting with Acme Corp" → Claude drafts personalized email → Zapier sends via Gmail → logs sent email in HubSpot → creates follow-up reminder in Asana.</p>
+
+<h2>Security Considerations</h2>
+
+<p><strong>Webhook URL secrecy:</strong> Zapier webhook URLs are effectively shared secrets — anyone with the URL can trigger your Zap. Store them in environment variables, never in code. Rotate them if compromised.</p>
+
+<p><strong>Action scope limiting:</strong> In Zapier NLA, only enable the specific actions your AI assistant needs. Avoid enabling high-risk actions (delete operations, financial transactions) unless explicitly required.</p>
+
+<p><strong>Rate limit awareness:</strong> Zapier's free plan limits to 100 tasks/month; paid plans vary. Implement rate limiting in your MCP server to prevent AI loops from burning through your Zapier task quota.</p>
+
+<p><strong>Audit trail:</strong> Zapier's Zap history logs every execution with input data and timestamps. Review regularly for unexpected or unauthorized triggers.</p>
+
+<p>Explore the <a href="/servers/zapier">Zapier MCP server</a> and browse <a href="/category/automation">automation MCP servers</a> in our directory to find tools that work alongside Zapier in your AI workflows.</p>
+    `.trim(),
+  },
+  {
+    slug: "mcp-server-enterprise-compliance",
+    title: "MCP Server Enterprise Compliance: HIPAA, SOC 2, and GDPR Patterns",
+    description: "How to build MCP servers that meet enterprise compliance requirements. Covers HIPAA data handling, SOC 2 audit logging, GDPR consent and data residency, and practical implementation patterns for regulated industries.",
+    date: "2026-05-28",
+    author: "MyMCPTools Team",
+    category: "Security",
+    readingTime: "12 min read",
+    keywords: ["mcp server compliance", "mcp hipaa", "mcp soc2", "mcp gdpr", "enterprise mcp security", "mcp regulated industries"],
+    relatedServerSlugs: ["fetch", "github", "postgres", "redis", "filesystem"],
+    content: `
+<p>As MCP servers move from developer experiments into enterprise production environments, compliance requirements become non-negotiable. Healthcare organizations face HIPAA. SaaS companies pursuing enterprise deals need SOC 2. Any company serving EU customers must address GDPR. This guide covers the patterns that make MCP servers compliant across these major frameworks.</p>
+
+<h2>The Compliance Challenge with MCP</h2>
+
+<p>MCP servers introduce unique compliance challenges compared to traditional APIs:</p>
+<ul>
+<li><strong>Unbounded input:</strong> AI clients send natural language that may inadvertently include PHI, PII, or regulated data</li>
+<li><strong>Tool chaining:</strong> An AI agent may call multiple MCP tools in sequence, creating complex data flows that are hard to audit</li>
+<li><strong>LLM context:</strong> Sensitive data passed to MCP tools may be retained in the AI model's context window</li>
+<li><strong>Audit granularity:</strong> Standard logs may not capture enough detail to satisfy compliance auditors</li>
+</ul>
+
+<p>The patterns below address these challenges at the MCP server layer — creating a compliance boundary that protects regulated data regardless of what the AI client does.</p>
+
+<h2>HIPAA Compliance Patterns</h2>
+
+<p>HIPAA's Security Rule requires technical safeguards for Protected Health Information (PHI). For MCP servers that access or process healthcare data:</p>
+
+<h3>PHI Detection and Redaction</h3>
+
+<p>Before logging any MCP tool input or output, scan for PHI patterns and redact:</p>
+
+<pre><code>// phi-redactor.ts
+const PHI_PATTERNS = [
+  { name: 'SSN', pattern: /\b\d{3}-\d{2}-\d{4}\b/g, replacement: '[SSN REDACTED]' },
+  { name: 'MRN', pattern: /\bMRN[:\s]*\d{6,10}\b/gi, replacement: '[MRN REDACTED]' },
+  { name: 'DOB', pattern: /\b(0?[1-9]|1[0-2])\/(0?[1-9]|[12]\d|3[01])\/(\d{4})\b/g, replacement: '[DOB REDACTED]' },
+  { name: 'Phone', pattern: /\b\+?1?\s*\(?\d{3}\)?[-.\s]?\d{3}[-.\s]?\d{4}\b/g, replacement: '[PHONE REDACTED]' },
+  { name: 'Email', pattern: /\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}\b/gi, replacement: '[EMAIL REDACTED]' },
+  { name: 'NPI', pattern: /\bNPI[:\s]*\d{10}\b/gi, replacement: '[NPI REDACTED]' },
+]
+
+export function redactPHI(text: string): { redacted: string; foundTypes: string[] } {
+  let redacted = text
+  const foundTypes: string[] = []
+
+  for (const { name, pattern, replacement } of PHI_PATTERNS) {
+    if (pattern.test(redacted)) {
+      foundTypes.push(name)
+      redacted = redacted.replace(pattern, replacement)
+    }
+  }
+
+  return { redacted, foundTypes }
+}
+
+// Wrap your MCP tool handler with PHI-safe logging
+async function hipaaAuditLog(entry: {
+  toolName: string
+  userId: string
+  organizationId: string
+  inputSummary: string // Already redacted
+  outputSummary: string // Already redacted
+  timestamp: Date
+  success: boolean
+}) {
+  await auditLogStore.write({
+    ...entry,
+    retention: '6-years', // HIPAA minimum
+    encrypted: true,
+    immutable: true
+  })
+}</code></pre>
+
+<h3>Minimum Necessary Standard</h3>
+
+<p>HIPAA's "minimum necessary" rule requires limiting PHI access to only what's needed for the task. Implement this at the MCP tool level:</p>
+
+<pre><code>// Field-level PHI minimization
+server.setRequestHandler('tools/call', async (request) => {
+  const { name, arguments: args } = request.params
+
+  // Before executing, check if the requesting user's role
+  // permits the PHI fields this tool would access
+  const userRole = await getUserRole(args.user_id)
+  const requiredPermissions = TOOL_PHI_REQUIREMENTS[name]
+
+  if (!hasPermission(userRole, requiredPermissions)) {
+    throw new Error(\`Insufficient permissions: role '\${userRole}' cannot access \${requiredPermissions.join(', ')}\`)
+  }
+
+  // Execute with PHI field filtering based on role
+  const result = await executeToolWithFieldFilter(name, args, userRole)
+
+  // Return only fields permitted for this role
+  return {
+    content: [{
+      type: 'text',
+      text: JSON.stringify(filterPHIFields(result, userRole))
+    }]
+  }
+})</code></pre>
+
+<h3>Business Associate Agreement (BAA)</h3>
+
+<p>Before deploying MCP servers that handle PHI on any cloud provider, ensure you have a signed BAA. AWS, Azure, and GCP all offer BAAs for HIPAA-eligible services. Your MCP server's hosting infrastructure must run on BAA-covered services only.</p>
+
+<p>Key services that typically require BAA coverage: the compute layer (EC2/App Service/Cloud Run), any database where PHI is stored, logging services (CloudWatch/Azure Monitor/Cloud Logging), and any third-party APIs your MCP server calls.</p>
+
+<h2>SOC 2 Compliance Patterns</h2>
+
+<p>SOC 2 Type II audits evaluate your security controls over a period of time (typically 6-12 months). For MCP servers, the most relevant Trust Service Criteria are Security (CC), Availability (A), and Confidentiality (C).</p>
+
+<h3>Comprehensive Audit Logging</h3>
+
+<p>SOC 2 requires evidence of who did what, when, and from where. MCP servers need structured audit logs that satisfy this:</p>
+
+<pre><code>// soc2-audit-logger.ts
+interface AuditLogEntry {
+  timestamp: string          // ISO 8601
+  eventType: string          // 'tool_call' | 'auth_failure' | 'permission_denied'
+  userId: string             // Authenticated user identifier
+  sessionId: string          // MCP session identifier
+  toolName: string           // Which MCP tool was called
+  inputHash: string          // SHA-256 of input (not raw input — preserves privacy)
+  outputSize: number         // Bytes, not content
+  durationMs: number
+  success: boolean
+  errorCode?: string
+  ipAddress: string
+  userAgent: string
+  resourcesAccessed: string[] // Which data sources were touched
+}
+
+export class SOC2AuditLogger {
+  private writeStream: fs.WriteStream
+
+  constructor(private logPath: string) {
+    this.writeStream = fs.createWriteStream(logPath, { flags: 'a' })
+  }
+
+  async log(entry: AuditLogEntry) {
+    const line = JSON.stringify(entry) + '\n'
+    this.writeStream.write(line)
+
+    // Also write to append-only external log sink
+    await this.forwardToSIEM(entry)
+  }
+
+  private async forwardToSIEM(entry: AuditLogEntry) {
+    // Forward to Splunk, Datadog, or AWS CloudTrail
+    // SIEM provides tamper-evident storage auditors can query
+    await fetch(process.env.SIEM_ENDPOINT!, {
+      method: 'POST',
+      headers: { 'Authorization': \`Bearer \${process.env.SIEM_API_KEY}\` },
+      body: JSON.stringify(entry)
+    })
+  }
+}</code></pre>
+
+<h3>Change Management Evidence</h3>
+
+<p>SOC 2 auditors want evidence that code changes go through a controlled process. For MCP servers:</p>
+<ul>
+<li>All changes via pull requests with required review</li>
+<li>Automated security scanning (SAST) in CI/CD pipeline</li>
+<li>Signed commits and tags for production deployments</li>
+<li>Deployment logs with approver identity and timestamp</li>
+<li>Automated testing gates before production promotion</li>
+</ul>
+
+<h3>Availability Monitoring</h3>
+
+<p>SOC 2 Availability criteria require evidence of uptime monitoring and incident response. Instrument your MCP server with health endpoints:</p>
+
+<pre><code>// health-check-endpoint.ts (for HTTP transport MCP servers)
+app.get('/health', (req, res) => {
+  res.json({
+    status: 'healthy',
+    timestamp: new Date().toISOString(),
+    version: process.env.APP_VERSION,
+    uptime: process.uptime(),
+    checks: {
+      database: dbHealthCheck(),
+      externalApis: externalApiHealthCheck()
+    }
+  })
+})
+
+// Expose metrics for uptime monitoring integration
+app.get('/metrics', (req, res) => {
+  res.set('Content-Type', 'text/plain')
+  res.send(prometheusMetrics.export())
+})</code></pre>
+
+<h2>GDPR Compliance Patterns</h2>
+
+<p>GDPR applies to any MCP server processing personal data of EU residents — regardless of where your company is based.</p>
+
+<h3>Lawful Basis and Purpose Limitation</h3>
+
+<p>Each MCP tool that processes personal data needs a documented lawful basis. Implement purpose limitation at the tool level:</p>
+
+<pre><code>// gdpr-tool-registry.ts
+const TOOL_GDPR_CONFIG: Record<string, {
+  lawfulBasis: 'consent' | 'contract' | 'legitimate_interest' | 'vital_interest' | 'public_task' | 'legal_obligation'
+  dataCategories: string[]
+  retentionDays: number
+  transferMechanisms: string[] // For cross-border transfers
+}> = {
+  'search_customer_records': {
+    lawfulBasis: 'contract',
+    dataCategories: ['contact_info', 'purchase_history'],
+    retentionDays: 730,
+    transferMechanisms: ['standard_contractual_clauses']
+  },
+  'send_marketing_email': {
+    lawfulBasis: 'consent',
+    dataCategories: ['email_address', 'name', 'preferences'],
+    retentionDays: 365,
+    transferMechanisms: []
+  }
+}
+
+// Check consent before executing consent-based tools
+async function checkGDPRConsent(toolName: string, userId: string): Promise<boolean> {
+  const config = TOOL_GDPR_CONFIG[toolName]
+  if (!config) return false
+
+  if (config.lawfulBasis === 'consent') {
+    return await consentStore.hasValidConsent(userId, toolName)
+  }
+  return true // Other lawful bases don't require consent check
+}</code></pre>
+
+<h3>Data Subject Rights</h3>
+
+<p>GDPR grants data subjects the right to access, rectify, erase, and port their data. Expose these as MCP tools with strong authentication requirements:</p>
+
+<pre><code>// GDPR rights MCP tools (restricted to authenticated data subjects only)
+{
+  name: 'export_my_data',
+  description: 'Export all personal data associated with authenticated user',
+  inputSchema: {
+    type: 'object',
+    properties: {
+      format: { type: 'string', enum: ['json', 'csv'], description: 'Export format' }
+    }
+  }
+},
+{
+  name: 'delete_my_data',
+  description: 'Submit GDPR erasure request for authenticated user data',
+  inputSchema: {
+    type: 'object',
+    properties: {
+      reason: { type: 'string', description: 'Reason for erasure request' },
+      confirm: { type: 'boolean', description: 'Must be true to confirm deletion' }
+    },
+    required: ['confirm']
+  }
+}</code></pre>
+
+<h3>Data Residency Controls</h3>
+
+<p>For MCP servers that must keep EU data within EU borders:</p>
+
+<pre><code>// data-residency.ts
+export function getRegionalMCPEndpoint(userId: string): string {
+  const userRegion = getUserRegion(userId)
+
+  const endpoints: Record<string, string> = {
+    'EU': process.env.MCP_ENDPOINT_EU!,      // e.g., eu-west-1 deployment
+    'US': process.env.MCP_ENDPOINT_US!,       // e.g., us-east-1 deployment
+    'APAC': process.env.MCP_ENDPOINT_APAC!,
+  }
+
+  return endpoints[userRegion] ?? endpoints['US']
+}
+
+// At the MCP server level, enforce no cross-region data flows
+server.setRequestHandler('tools/call', async (request) => {
+  const userRegion = await getUserRegion(request.params.arguments?.user_id)
+  const serverRegion = process.env.DEPLOYMENT_REGION
+
+  if (userRegion === 'EU' && serverRegion !== 'EU') {
+    throw new Error('EU data cannot be processed outside EU region. Route to EU endpoint.')
+  }
+
+  // Proceed with tool execution
+})</code></pre>
+
+<h2>Cross-Framework Controls</h2>
+
+<p>Several security controls satisfy requirements across HIPAA, SOC 2, and GDPR simultaneously:</p>
+
+<p><strong>Encryption in transit and at rest:</strong> TLS 1.2+ for all MCP connections (all three frameworks). AES-256 for stored data. Key management via AWS KMS, Azure Key Vault, or HashiCorp Vault.</p>
+
+<p><strong>Access control and authentication:</strong> Implement OAuth 2.0 or API key authentication at the MCP server level. All three frameworks require evidence that only authorized parties access regulated data.</p>
+
+<p><strong>Incident response plan:</strong> HIPAA requires breach notification within 60 days. GDPR requires 72 hours for high-risk breaches. SOC 2 auditors want documented incident response. Build alerting into your MCP server that triggers your IR process on anomalous access patterns.</p>
+
+<p><strong>Vendor management:</strong> Any third-party service your MCP server calls (databases, APIs, AI providers) must have appropriate compliance certifications and contracts. Maintain a registry of all data processors.</p>
+
+<h2>Implementation Checklist</h2>
+
+<p>Before deploying an enterprise-grade MCP server in a regulated environment:</p>
+
+<ul>
+<li>☐ PHI/PII detected and redacted from all logs</li>
+<li>☐ Structured audit logs shipped to tamper-evident SIEM</li>
+<li>☐ Authentication required for all MCP connections (no anonymous access)</li>
+<li>☐ Role-based access control with documented permission matrix</li>
+<li>☐ Encryption at rest for all data stores the MCP server touches</li>
+<li>☐ TLS for all external connections, including to the AI client</li>
+<li>☐ Data residency routing implemented for EU users</li>
+<li>☐ Incident detection alerting configured</li>
+<li>☐ BAAs in place with cloud providers (HIPAA)</li>
+<li>☐ Consent management integrated (GDPR consent-basis tools)</li>
+<li>☐ Retention and deletion policies implemented with automated enforcement</li>
+<li>☐ Change management process documented with CI/CD evidence capture</li>
+</ul>
+
+<p>Browse our directory for <a href="/category/security">security-focused MCP servers</a> and read our guides on <a href="/blog/mcp-server-auth-patterns">MCP auth patterns</a>, <a href="/blog/mcp-server-secrets-management">secrets management</a>, and <a href="/blog/mcp-server-rate-limiting">rate limiting</a> to build a complete enterprise security posture.</p>
+    `.trim(),
+  },
+  {
+    slug: "deploying-mcp-to-fly-io",
+    title: "Deploying MCP Servers to Fly.io — Global Edge Deployment Guide",
+    description: "Step-by-step guide to deploying MCP servers on Fly.io. Covers Docker configuration, persistent volumes, secrets management, multi-region deployment, and connecting remote MCP servers to Claude Desktop and Cursor.",
+    date: "2026-05-28",
+    author: "MyMCPTools Team",
+    category: "Deployment",
+    readingTime: "11 min read",
+    keywords: ["deploy mcp server fly.io", "mcp server deployment", "fly.io mcp", "remote mcp server", "mcp server hosting"],
+    relatedServerSlugs: ["fetch", "filesystem", "postgres", "redis", "github"],
+    content: `
+<p>Fly.io is one of the best platforms for deploying MCP servers that need to be accessible remotely. Its global anycast network, built-in persistent volumes, native secret management, and fast cold starts make it well-suited for MCP workloads — and the free tier covers most development and low-traffic use cases.</p>
+
+<p>This guide walks you through deploying an MCP server to Fly.io with production-ready configuration: Docker containerization, secrets management, persistent storage, and connecting the deployed server to Claude Desktop, Cursor, or other MCP clients.</p>
+
+<h2>Prerequisites</h2>
+
+<ul>
+<li>A working MCP server (Node.js or Python)</li>
+<li>Docker installed locally</li>
+<li>Fly CLI installed: <code>curl -L https://fly.io/install.sh | sh</code></li>
+<li>Fly.io account (free tier available at fly.io)</li>
+</ul>
+
+<h2>Step 1: Prepare Your MCP Server for HTTP Transport</h2>
+
+<p>Most MCP tutorials use stdio transport, which works for local development but not for remote deployment. For Fly.io, you need either <strong>SSE (Server-Sent Events)</strong> or <strong>Streamable HTTP</strong> transport.</p>
+
+<pre><code>// server.ts — HTTP transport setup for Fly.io deployment
+import { Server } from '@modelcontextprotocol/sdk/server/index.js'
+import { SSEServerTransport } from '@modelcontextprotocol/sdk/server/sse.js'
+import express from 'express'
+
+const app = express()
+app.use(express.json())
+
+const server = new Server(
+  { name: 'my-mcp-server', version: '1.0.0' },
+  { capabilities: { tools: {}, resources: {} } }
+)
+
+// Register your tools here
+server.setRequestHandler('tools/list', async () => ({
+  tools: [
+    {
+      name: 'example_tool',
+      description: 'An example tool',
+      inputSchema: {
+        type: 'object',
+        properties: {
+          query: { type: 'string', description: 'Query to process' }
+        },
+        required: ['query']
+      }
+    }
+  ]
+}))
+
+server.setRequestHandler('tools/call', async (request) => {
+  const { name, arguments: args } = request.params
+  // Your tool implementation here
+  return {
+    content: [{ type: 'text', text: \`Processed: \${args.query}\` }]
+  }
+})
+
+// SSE endpoint for MCP connections
+app.get('/sse', async (req, res) => {
+  // Optional: verify API key for security
+  const apiKey = req.headers['x-api-key']
+  if (process.env.MCP_API_KEY && apiKey !== process.env.MCP_API_KEY) {
+    res.status(401).json({ error: 'Unauthorized' })
+    return
+  }
+
+  const transport = new SSEServerTransport('/messages', res)
+  await server.connect(transport)
+})
+
+app.post('/messages', async (req, res) => {
+  // Handle incoming MCP messages
+  res.json({ received: true })
+})
+
+// Health check for Fly.io
+app.get('/health', (req, res) => {
+  res.json({ status: 'ok', timestamp: new Date().toISOString() })
+})
+
+const PORT = process.env.PORT || 3000
+app.listen(PORT, () => {
+  console.log(\`MCP server listening on port \${PORT}\`)
+})</code></pre>
+
+<h2>Step 2: Dockerize Your MCP Server</h2>
+
+<pre><code># Dockerfile
+FROM node:20-alpine
+
+WORKDIR /app
+
+# Copy dependency files first (layer caching)
+COPY package*.json ./
+RUN npm ci --production
+
+# Copy source
+COPY . .
+
+# Build TypeScript if needed
+RUN npm run build 2>/dev/null || true
+
+# Fly.io sets PORT automatically — default to 3000 for local dev
+ENV PORT=3000
+
+EXPOSE 3000
+
+# Health check — Fly.io uses this to determine readiness
+HEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=3 \
+  CMD wget -q -O - http://localhost:3000/health || exit 1
+
+CMD ["node", "dist/server.js"]</code></pre>
+
+<p>Test your Docker build locally before deploying:</p>
+
+<pre><code>docker build -t my-mcp-server .
+docker run -p 3000:3000 -e MCP_API_KEY=testkey my-mcp-server</code></pre>
+
+<h2>Step 3: Initialize Your Fly.io App</h2>
+
+<pre><code># Log in to Fly.io
+fly auth login
+
+# Initialize app (from your project directory)
+fly launch --name my-mcp-server --region iad --no-deploy</code></pre>
+
+<p>Fly will generate a <code>fly.toml</code> configuration file. Edit it for MCP server requirements:</p>
+
+<pre><code># fly.toml
+app = 'my-mcp-server'
+primary_region = 'iad'
+
+[build]
+  dockerfile = 'Dockerfile'
+
+[http_service]
+  internal_port = 3000
+  force_https = true
+  auto_stop_machines = 'stop'
+  auto_start_machines = true
+  min_machines_running = 0  # 0 = scale to zero (free tier friendly)
+  processes = ['app']
+
+[[http_service.checks]]
+  grace_period = '10s'
+  interval = '30s'
+  method = 'GET'
+  path = '/health'
+  protocol = 'http'
+  timeout = '5s'
+
+[vm]
+  memory = '256mb'
+  cpu_kind = 'shared'
+  cpus = 1</code></pre>
+
+<p>For MCP servers that need to be always-on (no cold start latency), change <code>min_machines_running = 1</code>. Note this incurs cost beyond the free tier.</p>
+
+<h2>Step 4: Set Secrets</h2>
+
+<p>Never put API keys or credentials in your Dockerfile or fly.toml. Use Fly's secrets manager:</p>
+
+<pre><code># Set secrets for your MCP server
+fly secrets set MCP_API_KEY=your-secure-api-key
+fly secrets set DATABASE_URL=postgresql://user:pass@host/db
+fly secrets set OPENAI_API_KEY=sk-...
+fly secrets set GITHUB_TOKEN=ghp_...
+
+# Verify secrets are set (values are hidden)
+fly secrets list</code></pre>
+
+<p>Secrets are injected as environment variables at runtime and encrypted at rest in Fly's infrastructure.</p>
+
+<h2>Step 5: Add Persistent Storage (If Needed)</h2>
+
+<p>For MCP servers that need to persist data between restarts (SQLite databases, cached files, uploaded content):</p>
+
+<pre><code># Create a persistent volume
+fly volumes create mcp_data --size 1 --region iad
+
+# Update fly.toml to mount the volume
+[mounts]
+  source = 'mcp_data'
+  destination = '/app/data'</code></pre>
+
+<p>In your MCP server, store persistent data under <code>/app/data/</code> to survive machine restarts and redeployments.</p>
+
+<h2>Step 6: Deploy</h2>
+
+<pre><code># Deploy to Fly.io
+fly deploy
+
+# Monitor deployment logs
+fly logs
+
+# Check app status
+fly status</code></pre>
+
+<p>Fly builds your Docker image, pushes it to their registry, and deploys across their global network. First deploy typically takes 2-3 minutes.</p>
+
+<p>Your MCP server is now accessible at:</p>
+<pre><code>https://my-mcp-server.fly.dev/sse</code></pre>
+
+<h2>Step 7: Connect to Claude Desktop</h2>
+
+<p>Update your <code>claude_desktop_config.json</code> to use the remote MCP server. Since it's now HTTP-based, you use a URL instead of a command:</p>
+
+<pre><code>// claude_desktop_config.json
+{
+  "mcpServers": {
+    "my-remote-server": {
+      "url": "https://my-mcp-server.fly.dev/sse",
+      "headers": {
+        "x-api-key": "your-secure-api-key"
+      }
+    }
+  }
+}</code></pre>
+
+<p>For Cursor, add it via Settings → Features → MCP → Add Server, selecting "SSE" as the transport type and entering your Fly.io URL.</p>
+
+<h2>Multi-Region Deployment</h2>
+
+<p>One of Fly.io's key advantages is easy multi-region deployment. For MCP servers that need low latency worldwide:</p>
+
+<pre><code># Add regions
+fly regions add lhr  # London
+fly regions add nrt  # Tokyo
+fly regions add syd  # Sydney
+
+# Scale to 1 machine per region
+fly scale count 1 --region iad,lhr,nrt,syd</code></pre>
+
+<p>Fly's anycast routing automatically directs each MCP client to the nearest region, reducing latency from 150-300ms (single region) to 10-50ms globally.</p>
+
+<h2>Monitoring and Scaling</h2>
+
+<pre><code># View real-time logs
+fly logs --instance [instance-id]
+
+# Check metrics (CPU, memory, request rate)
+fly dashboard
+
+# Scale vertically if needed
+fly scale vm shared-cpu-2x  # Double CPU
+fly scale memory 512         # More RAM for heavy workloads
+
+# SSH into a running machine for debugging
+fly ssh console</code></pre>
+
+<h2>Cost Optimization</h2>
+
+<p><strong>Free tier:</strong> Fly's free tier includes 3 shared VMs with 256MB RAM and 3GB of persistent storage. A lightweight MCP server fits comfortably within free limits if you use <code>auto_stop_machines = 'stop'</code> and <code>min_machines_running = 0</code>.</p>
+
+<p><strong>Scale to zero:</strong> With auto-stop enabled, Fly hibernates your machine when no requests arrive. Cold start from hibernate is typically 1-3 seconds — acceptable for most MCP use cases where the client doesn't require sub-second response.</p>
+
+<p><strong>Dedicated machines:</strong> For production MCP servers with consistent traffic, a dedicated shared-cpu-1x machine at $1.94/month is often cheaper than paying for cold-start overhead on serverless alternatives.</p>
+
+<p><strong>Compare to alternatives:</strong> Fly.io's pricing and persistent volume support make it competitive with Vercel for MCP servers that need long-running connections or stateful storage. Railway and Render are also solid options — see our guides on <a href="/blog/deploying-mcp-to-railway">deploying to Railway</a> and <a href="/blog/deploying-mcp-to-vercel">deploying to Vercel</a> for comparison.</p>
+
+<p>Browse the <a href="/">MCP server directory</a> to find pre-built servers you can deploy to Fly.io, and explore our <a href="/category/deployment">deployment guides</a> for other hosting platforms.</p>
+    `.trim(),
+  },
 ];
 export function getBlogPostBySlug(slug: string): BlogPost | undefined {
   return blogPosts.find((post) => post.slug === slug);
