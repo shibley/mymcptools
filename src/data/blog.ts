@@ -43911,6 +43911,729 @@ fly ssh console</code></pre>
 <p>Browse the <a href="/">MCP server directory</a> to find additional servers for your specific tech stack, and check our <a href="/blog/mcp-server-troubleshooting-guide">troubleshooting guide</a> for more detailed debugging steps.</p>
     `.trim(),
   },
+  {
+    slug: "mcp-servers-for-logistics",
+    title: "Best MCP Servers for Logistics and Supply Chain in 2026",
+    description: "Discover the top MCP servers powering logistics operations: shipment tracking, inventory management, carrier APIs, warehouse automation, and real-time supply chain visibility.",
+    date: "2026-05-29",
+    author: "MyMCPTools Team",
+    category: "Industries",
+    readingTime: "9 min read",
+    keywords: ["mcp servers logistics", "mcp supply chain automation", "logistics ai tools mcp", "shipment tracking mcp", "warehouse automation mcp server"],
+    relatedServerSlugs: ["postgres", "sqlite", "redis", "filesystem", "brave-search", "fetch"],
+    content: `
+<p>Logistics operations run on data — shipment statuses, inventory levels, carrier ETAs, customs documents, warehouse slot assignments. But that data lives scattered across a dozen systems: TMS platforms, WMS databases, carrier APIs, ERPs, spreadsheets. Getting your AI assistant to work across all of it used to require custom integrations. MCP changes that.</p>
+
+<p>The right MCP server stack lets your AI query your warehouse database, check carrier status APIs, read shipment documents, and generate dispatch reports — all in a single conversation. Here are the MCP servers that matter most for logistics teams.</p>
+
+<h2>1. PostgreSQL MCP Server — Your TMS and WMS Database</h2>
+
+<p>Most transportation management systems and warehouse management systems run on relational databases. The PostgreSQL MCP server gives your AI direct, read-safe access to shipment records, order status, carrier performance data, and inventory tables.</p>
+
+<p><strong>Logistics use cases:</strong></p>
+<ul>
+<li>Query open purchase orders by supplier and expected delivery date</li>
+<li>Pull carrier on-time performance by lane for quarterly reviews</li>
+<li>Identify slow-moving SKUs by warehouse zone and age</li>
+<li>Generate exception reports: overdue shipments, understock alerts, dwell time outliers</li>
+</ul>
+
+<pre><code>"postgres": {
+  "command": "npx",
+  "args": ["-y", "@modelcontextprotocol/server-postgres",
+           "postgresql://readonly:password@your-tms-host:5432/logistics_db"]
+}</code></pre>
+
+<p><strong>Security note:</strong> Always use a read-only database user for MCP server access. Your AI assistant should never have write access to production shipment records.</p>
+
+<h2>2. Fetch MCP Server — Carrier APIs and Tracking Endpoints</h2>
+
+<p>The Fetch MCP server allows your AI to query live web APIs and URLs — including carrier tracking APIs, port status feeds, and customs broker portals. This turns your AI into a real-time logistics dashboard that can pull data from any carrier with an accessible endpoint.</p>
+
+<p><strong>What you can query:</strong></p>
+<ul>
+<li>UPS, FedEx, USPS, DHL tracking endpoints for live shipment status</li>
+<li>Port congestion dashboards (Port of Los Angeles, Rotterdam status feeds)</li>
+<li>Customs clearance status from broker portals</li>
+<li>Freight rate APIs for spot market pricing</li>
+<li>Fuel surcharge tables from carrier websites</li>
+</ul>
+
+<pre><code>"fetch": {
+  "command": "npx",
+  "args": ["-y", "@modelcontextprotocol/server-fetch"]
+}</code></pre>
+
+<p><strong>Pro tip:</strong> Combine Fetch with a structured prompt: "Check the tracking API at [URL] for shipment [tracking number] and summarize the current status, last scan location, and estimated delivery." Your AI handles the API response parsing automatically.</p>
+
+<h2>3. Filesystem MCP Server — Shipment Documents and Reports</h2>
+
+<p>Logistics runs on documents: bills of lading, commercial invoices, packing lists, customs declarations, proof of delivery. The Filesystem MCP server lets your AI read, search, and summarize documents from your local storage or network drives.</p>
+
+<p><strong>Document workflows you can automate:</strong></p>
+<ul>
+<li>Extract key data from scanned BOLs (origin, destination, commodity, weight)</li>
+<li>Summarize a folder of carrier invoices and flag billing discrepancies</li>
+<li>Search all PODs from Q1 for a specific customer's shipments</li>
+<li>Generate a customs checklist from a commercial invoice</li>
+</ul>
+
+<pre><code>"filesystem": {
+  "command": "npx",
+  "args": ["-y", "@modelcontextprotocol/server-filesystem",
+           "/Users/yourname/logistics/documents",
+           "/Users/yourname/logistics/reports"]
+}</code></pre>
+
+<h2>4. Redis MCP Server — Real-Time Shipment State</h2>
+
+<p>For high-velocity logistics operations — e-commerce fulfillment centers, last-mile delivery networks, cross-docking facilities — Redis is often used to track real-time shipment and package state. The Redis MCP server lets your AI query and monitor that live operational data.</p>
+
+<p><strong>Real-time logistics queries:</strong></p>
+<ul>
+<li>Current truck locations from live position feeds stored in Redis</li>
+<li>Package scan events for last-mile visibility</li>
+<li>Active exceptions: damage reports, address correction queues, delivery failures</li>
+<li>Carrier capacity utilization: current load vs available capacity</li>
+</ul>
+
+<pre><code>"redis": {
+  "command": "npx",
+  "args": ["-y", "mcp-server-redis"],
+  "env": {
+    "REDIS_URL": "redis://your-redis-host:6379"
+  }
+}</code></pre>
+
+<h2>5. SQLite MCP Server — Offline and Edge Logistics Data</h2>
+
+<p>Many logistics applications — driver apps, handheld scanners, warehouse management tablets — use SQLite for local data storage. The SQLite MCP server enables your AI to analyze that edge data: driver activity logs, scan event histories, delivery attempt records.</p>
+
+<p><strong>Useful for:</strong></p>
+<ul>
+<li>Analyzing driver productivity from exported delivery app databases</li>
+<li>Reviewing scan event sequences to debug package routing errors</li>
+<li>Auditing warehouse pick/pack performance from handheld scanner logs</li>
+</ul>
+
+<pre><code>"sqlite": {
+  "command": "npx",
+  "args": ["-y", "@modelcontextprotocol/server-sqlite",
+           "/path/to/logistics-data.db"]
+}</code></pre>
+
+<h2>6. Brave Search MCP Server — Carrier News and Disruption Intelligence</h2>
+
+<p>Supply chain disruptions — labor strikes, weather events, port closures, carrier bankruptcies — have immediate operational impact. The Brave Search MCP server lets your AI monitor current events for logistics-relevant disruptions and answer questions with up-to-date information.</p>
+
+<p><strong>Disruption intelligence use cases:</strong></p>
+<ul>
+<li>"Are there any port disruptions at the Port of Rotterdam this week?"</li>
+<li>"What's the current situation with [carrier] labor negotiations?"</li>
+<li>"Are there weather-related road closures affecting shipments from Chicago to Detroit?"</li>
+<li>"What are current ocean freight rates on the Trans-Pacific eastbound lane?"</li>
+</ul>
+
+<pre><code>"brave-search": {
+  "command": "npx",
+  "args": ["-y", "@modelcontextprotocol/server-brave-search"],
+  "env": {
+    "BRAVE_API_KEY": "your_brave_api_key"
+  }
+}</code></pre>
+
+<h2>Sample Logistics MCP Configuration</h2>
+
+<pre><code>{
+  "mcpServers": {
+    "tms-db": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-postgres",
+               "postgresql://readonly:pass@tms-host:5432/logistics"],
+    },
+    "fetch": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-fetch"]
+    },
+    "documents": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-filesystem",
+               "/logistics/documents"]
+    },
+    "brave-search": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-brave-search"],
+      "env": { "BRAVE_API_KEY": "your_key" }
+    }
+  }
+}</code></pre>
+
+<h2>Example Logistics Prompts That Work Well</h2>
+
+<p>Once your MCP stack is configured, these prompts deliver high-value logistics analysis:</p>
+
+<ul>
+<li>"Query the TMS database and show me all shipments that departed more than 48 hours ago but haven't been delivered yet, grouped by carrier."</li>
+<li>"Fetch the tracking status for these 5 tracking numbers and tell me which ones are on-time vs delayed."</li>
+<li>"Read the invoices in the /documents/carrier-invoices folder and flag any charges that don't match our rate agreements in the database."</li>
+<li>"Search for any current news about Port of Long Beach congestion and summarize operational impact."</li>
+<li>"Generate a week-over-week on-time delivery performance summary by carrier from the TMS database."</li>
+</ul>
+
+<h2>Building a Custom Logistics MCP Server</h2>
+
+<p>If you use a proprietary TMS, WMS, or carrier API that doesn't have an existing MCP server, building a custom one takes less time than you'd expect. The MCP SDK wraps your existing API calls:</p>
+
+<pre><code>import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
+import { z } from "zod";
+
+const server = new McpServer({ name: "Logistics MCP", version: "1.0.0" });
+
+server.tool(
+  "get_shipment_status",
+  "Get real-time status for a shipment by tracking number",
+  { trackingNumber: z.string(), carrier: z.enum(["UPS", "FedEx", "DHL"]) },
+  async ({ trackingNumber, carrier }) => {
+    // Call your internal TMS or carrier API
+    const status = await fetchShipmentStatus(trackingNumber, carrier);
+    return {
+      content: [{ type: "text", text: JSON.stringify(status, null, 2) }],
+    };
+  }
+);</code></pre>
+
+<p>Browse the <a href="/">MCP server directory</a> for more logistics-adjacent servers, or see our guide on <a href="/blog/how-to-build-an-mcp-server">how to build a custom MCP server</a> for your specific TMS or WMS integration.</p>
+    `.trim(),
+  },
+  {
+    slug: "deploying-mcp-to-azure-functions",
+    title: "Deploying MCP Servers to Azure Functions: A Complete Guide",
+    description: "Step-by-step guide to deploying MCP servers on Azure Functions. Covers HTTP trigger setup, managed identity auth, Key Vault secrets, staging slots, and production best practices.",
+    date: "2026-05-29",
+    author: "MyMCPTools Team",
+    category: "Deployment",
+    readingTime: "11 min read",
+    keywords: ["deploy mcp server azure functions", "azure functions mcp server", "mcp server azure deployment", "serverless mcp azure", "azure mcp guide"],
+    relatedServerSlugs: ["filesystem", "github", "postgres", "brave-search"],
+    content: `
+<p>Azure Functions is Microsoft's serverless platform — and for organizations already in the Microsoft ecosystem, it's a natural home for MCP servers. You get automatic scaling, pay-per-execution pricing, deep Azure AD integration, Key Vault for secrets, and deployment slots for blue/green releases. If your team uses Azure, deploying MCP servers to Functions is the path of least resistance.</p>
+
+<p>This guide covers everything from a working local MCP server to a production-grade Azure Functions deployment with managed identity, Key Vault secrets, and CI/CD from GitHub Actions.</p>
+
+<h2>Prerequisites</h2>
+
+<ul>
+<li>Azure account with an active subscription</li>
+<li>Azure CLI installed (<code>az --version</code> to verify)</li>
+<li>Azure Functions Core Tools v4+ (<code>func --version</code> to verify)</li>
+<li>Node.js 18+ and npm</li>
+</ul>
+
+<h2>Step 1: Create Your MCP Server</h2>
+
+<p>Initialize a new Azure Functions project with a Node.js HTTP trigger:</p>
+
+<pre><code>mkdir my-mcp-azure && cd my-mcp-azure
+func init --worker-runtime node --language typescript
+func new --name mcp --template "HTTP trigger" --authlevel anonymous</code></pre>
+
+<p>Install the MCP SDK:</p>
+
+<pre><code>npm install @modelcontextprotocol/sdk</code></pre>
+
+<p>Replace the contents of <code>src/functions/mcp.ts</code> with your MCP server implementation:</p>
+
+<pre><code>import { app, HttpRequest, HttpResponseInit, InvocationContext } from "@azure/functions";
+import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
+import { StreamableHTTPServerTransport } from "@modelcontextprotocol/sdk/server/streamableHttp.js";
+import { z } from "zod";
+
+function createMcpServer(): McpServer {
+  const server = new McpServer({
+    name: "Azure MCP Server",
+    version: "1.0.0",
+  });
+
+  server.tool(
+    "get_environment",
+    "Get the current Azure Functions environment information",
+    {},
+    async () => ({
+      content: [{
+        type: "text",
+        text: JSON.stringify({
+          region: process.env.REGION_NAME || "unknown",
+          functionApp: process.env.WEBSITE_SITE_NAME || "local",
+          timestamp: new Date().toISOString(),
+        }, null, 2),
+      }],
+    })
+  );
+
+  server.tool(
+    "query_data",
+    "Query data from your Azure data source",
+    { query: z.string().describe("The query or question to answer") },
+    async ({ query }) => {
+      // Add your data source logic here
+      return {
+        content: [{ type: "text", text: \`Processing query: \${query}\` }],
+      };
+    }
+  );
+
+  return server;
+}
+
+export async function mcpHandler(
+  request: HttpRequest,
+  context: InvocationContext
+): Promise<HttpResponseInit> {
+  const server = createMcpServer();
+  const transport = new StreamableHTTPServerTransport({
+    sessionIdGenerator: undefined,
+  });
+
+  await server.connect(transport);
+
+  const body = await request.text();
+  const headers: Record<string, string> = {};
+  request.headers.forEach((value, key) => { headers[key] = value; });
+
+  const response = await transport.handleRequest(
+    { method: request.method, headers, body },
+    context
+  );
+
+  return {
+    status: response.status,
+    headers: response.headers as Record<string, string>,
+    body: response.body,
+  };
+}
+
+app.http("mcp", {
+  methods: ["GET", "POST"],
+  authLevel: "anonymous",
+  handler: mcpHandler,
+});</code></pre>
+
+<h2>Step 2: Test Locally</h2>
+
+<p>Run the Functions host locally to verify your server works before deploying:</p>
+
+<pre><code>npm run build
+func start</code></pre>
+
+<p>Your MCP server will be available at <code>http://localhost:7071/api/mcp</code>. Test it with a quick curl:</p>
+
+<pre><code>curl -X POST http://localhost:7071/api/mcp \\
+  -H "Content-Type: application/json" \\
+  -d '{"jsonrpc":"2.0","method":"tools/list","id":1}'</code></pre>
+
+<p>You should see a JSON response listing your registered tools.</p>
+
+<h2>Step 3: Create Azure Resources</h2>
+
+<p>Create the required Azure resources using the CLI:</p>
+
+<pre><code># Create a resource group
+az group create --name mcp-servers-rg --location eastus
+
+# Create a storage account (required for Functions)
+az storage account create \\
+  --name mcpserverstorage \\
+  --resource-group mcp-servers-rg \\
+  --sku Standard_LRS
+
+# Create the Function App
+az functionapp create \\
+  --name my-mcp-server \\
+  --resource-group mcp-servers-rg \\
+  --consumption-plan-location eastus \\
+  --runtime node \\
+  --runtime-version 18 \\
+  --functions-version 4 \\
+  --storage-account mcpserverstorage \\
+  --os-type linux</code></pre>
+
+<h2>Step 4: Configure Environment Variables</h2>
+
+<p>Set your application settings (environment variables) in the Function App:</p>
+
+<pre><code>az functionapp config appsettings set \\
+  --name my-mcp-server \\
+  --resource-group mcp-servers-rg \\
+  --settings \\
+    NODE_ENV=production \\
+    DATABASE_URL=@Microsoft.KeyVault(SecretUri=https://your-vault.vault.azure.net/secrets/db-url/)</code></pre>
+
+<p>The <code>@Microsoft.KeyVault()</code> syntax references Key Vault secrets directly — no secret values ever appear in your app settings.</p>
+
+<h2>Step 5: Enable Managed Identity for Key Vault Access</h2>
+
+<p>Managed Identity eliminates the need for stored credentials. Enable it and grant Key Vault access:</p>
+
+<pre><code># Enable system-assigned managed identity
+az functionapp identity assign \\
+  --name my-mcp-server \\
+  --resource-group mcp-servers-rg
+
+# Get the principal ID (you'll need this for the Key Vault policy)
+az functionapp identity show \\
+  --name my-mcp-server \\
+  --resource-group mcp-servers-rg \\
+  --query principalId -o tsv
+
+# Create a Key Vault
+az keyvault create \\
+  --name my-mcp-keyvault \\
+  --resource-group mcp-servers-rg \\
+  --location eastus
+
+# Grant the Function App's identity access to secrets
+az keyvault set-policy \\
+  --name my-mcp-keyvault \\
+  --object-id <principal-id-from-above> \\
+  --secret-permissions get list
+
+# Add your secrets
+az keyvault secret set \\
+  --vault-name my-mcp-keyvault \\
+  --name db-url \\
+  --value "postgresql://user:password@host:5432/db"</code></pre>
+
+<h2>Step 6: Deploy to Azure</h2>
+
+<p>Deploy your built application:</p>
+
+<pre><code>npm run build
+func azure functionapp publish my-mcp-server</code></pre>
+
+<p>After deployment completes, your MCP server is live at:</p>
+<pre><code>https://my-mcp-server.azurewebsites.net/api/mcp</code></pre>
+
+<h2>Step 7: Configure Your MCP Client</h2>
+
+<p>Add the Azure Functions endpoint to your MCP client configuration (Claude Desktop, Cursor, etc.):</p>
+
+<pre><code>{
+  "mcpServers": {
+    "azure-mcp": {
+      "command": "npx",
+      "args": ["-y", "mcp-remote",
+               "https://my-mcp-server.azurewebsites.net/api/mcp"]
+    }
+  }
+}</code></pre>
+
+<p>Use <code>mcp-remote</code> as the transport layer for HTTP-based MCP servers.</p>
+
+<h2>Step 8: Add GitHub Actions CI/CD</h2>
+
+<p>Automate deployments with GitHub Actions. Create <code>.github/workflows/deploy.yml</code>:</p>
+
+<pre><code>name: Deploy MCP Server to Azure Functions
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - name: Install and build
+        run: |
+          npm ci
+          npm run build
+
+      - name: Login to Azure
+        uses: azure/login@v1
+        with:
+          creds: \${{ secrets.AZURE_CREDENTIALS }}
+
+      - name: Deploy to Azure Functions
+        uses: azure/functions-action@v1
+        with:
+          app-name: my-mcp-server
+          package: '.'</code></pre>
+
+<p>Add your <code>AZURE_CREDENTIALS</code> secret to your GitHub repository settings. Generate the credentials with:</p>
+
+<pre><code>az ad sp create-for-rbac \\
+  --name my-mcp-deploy-sp \\
+  --role contributor \\
+  --scopes /subscriptions/YOUR_SUB_ID/resourceGroups/mcp-servers-rg \\
+  --sdk-auth</code></pre>
+
+<h2>Deployment Slots for Zero-Downtime Updates</h2>
+
+<p>Azure Functions Premium and Dedicated plans support deployment slots. Use them for staging/production swaps:</p>
+
+<pre><code># Create a staging slot
+az functionapp deployment slot create \\
+  --name my-mcp-server \\
+  --resource-group mcp-servers-rg \\
+  --slot staging
+
+# Deploy to staging first
+func azure functionapp publish my-mcp-server --slot staging
+
+# Verify staging works, then swap to production
+az functionapp deployment slot swap \\
+  --name my-mcp-server \\
+  --resource-group mcp-servers-rg \\
+  --slot staging \\
+  --target-slot production</code></pre>
+
+<h2>Cold Starts and Performance Considerations</h2>
+
+<p>Azure Functions Consumption plan has cold starts (typically 1-3 seconds for Node.js). For latency-sensitive MCP operations:</p>
+
+<ul>
+<li><strong>Premium plan</strong> — always-warm instances, no cold starts, VNET integration for private database access</li>
+<li><strong>Keep-alive pings</strong> — schedule a timer trigger to ping your MCP endpoint every 5 minutes on Consumption plan</li>
+<li><strong>Durable Functions</strong> — for long-running MCP tools that exceed the 10-minute Consumption timeout</li>
+</ul>
+
+<h2>Cost Estimate</h2>
+
+<p>Azure Functions Consumption plan pricing for a typical MCP server:</p>
+
+<ul>
+<li><strong>Light usage</strong> (10K tool calls/month): ~$0.20/month</li>
+<li><strong>Medium usage</strong> (500K tool calls/month): ~$1/month</li>
+<li><strong>Heavy usage</strong> (5M+ tool calls/month): consider Premium plan (~$180/month for always-on)</li>
+</ul>
+
+<p>The free tier includes 1 million executions and 400,000 GB-seconds per month — most development and low-traffic production MCP servers run entirely within the free tier.</p>
+
+<p>Browse the <a href="/">MCP server directory</a> to find servers to deploy, or compare to our guides on <a href="/blog/deploying-mcp-to-cloudflare-workers">deploying to Cloudflare Workers</a> and <a href="/blog/deploying-mcp-to-aws-lambda">deploying to AWS Lambda</a>.</p>
+    `.trim(),
+  },
+  {
+    slug: "mcp-integration-guide-make-com",
+    title: "MCP Integration Guide: Make.com (Integromat)",
+    description: "Step-by-step guide to integrating MCP servers with Make.com workflows. Connect AI context to your automation scenarios, trigger MCP tool calls from Make, and build powerful no-code AI pipelines.",
+    date: "2026-05-29",
+    author: "MyMCPTools Team",
+    category: "Integrations",
+    readingTime: "10 min read",
+    keywords: ["mcp make.com integration", "make.com mcp server", "make integromat mcp", "mcp automation make", "ai automation make.com"],
+    relatedServerSlugs: ["filesystem", "postgres", "brave-search", "fetch", "github"],
+    content: `
+<p>Make.com (formerly Integromat) is one of the most powerful no-code automation platforms — and it's increasingly the backbone of AI-powered workflows. MCP servers and Make.com are a natural pair: Make handles the trigger logic, scheduling, and multi-app orchestration while MCP servers give your AI assistant live context from databases, files, and APIs.</p>
+
+<p>This guide covers three integration patterns: calling MCP tools from Make scenarios, using Make as an event source for MCP-driven AI agents, and building hybrid workflows that combine Make's 2,000+ app integrations with MCP's contextual intelligence.</p>
+
+<h2>Why Combine MCP with Make.com</h2>
+
+<p>Make.com alone automates workflow steps between apps. MCP servers alone give AI assistants contextual access to data. Together, they unlock a new category of workflow:</p>
+
+<ul>
+<li><strong>Context-aware automation</strong> — trigger Make workflows based on what your AI discovers via MCP (e.g., "when MCP finds a database anomaly, trigger a Make Slack alert")</li>
+<li><strong>AI-enriched data pipelines</strong> — pass data through an MCP-enabled AI step before routing it to downstream apps in Make</li>
+<li><strong>Natural language operations</strong> — use Claude or GPT as a Make module that can query your MCP servers to make intelligent routing decisions</li>
+<li><strong>Scheduled AI briefings</strong> — use Make's scheduling to run AI analysis (via MCP) on a cron schedule and deliver results to Slack, email, or your CRM</li>
+</ul>
+
+<h2>Pattern 1: HTTP Module → MCP Server → Make Processing</h2>
+
+<p>The most direct integration: Make sends an HTTP request to your deployed MCP server, gets a structured response, and processes it in subsequent modules.</p>
+
+<h3>Step 1: Deploy Your MCP Server with an HTTP Endpoint</h3>
+
+<p>Your MCP server needs a publicly accessible HTTP endpoint. Deploy to Cloudflare Workers, Vercel, or Azure Functions (see our deployment guides). Your endpoint should accept POST requests at <code>/mcp</code>.</p>
+
+<h3>Step 2: Create the Make Scenario</h3>
+
+<ol>
+<li>Open Make.com and create a new scenario</li>
+<li>Add a trigger (Schedule, Webhook, Gmail — whatever fits your use case)</li>
+<li>Add an <strong>HTTP → Make a Request</strong> module</li>
+<li>Configure the HTTP module:
+  <ul>
+    <li><strong>URL:</strong> <code>https://your-mcp-server.workers.dev/mcp</code></li>
+    <li><strong>Method:</strong> POST</li>
+    <li><strong>Headers:</strong> <code>Content-Type: application/json</code></li>
+    <li><strong>Body type:</strong> Raw</li>
+    <li><strong>Content type:</strong> JSON (application/json)</li>
+  </ul>
+</li>
+<li>Set the <strong>Request content</strong> to a JSON-RPC call to your MCP tool:</li>
+</ol>
+
+<pre><code>{
+  "jsonrpc": "2.0",
+  "method": "tools/call",
+  "id": 1,
+  "params": {
+    "name": "query_database",
+    "arguments": {
+      "query": "SELECT COUNT(*) as open_orders FROM orders WHERE status = 'pending'"
+    }
+  }
+}</code></pre>
+
+<ol start="6">
+<li>Add a <strong>JSON → Parse JSON</strong> module to extract the result</li>
+<li>Route the extracted data to your target app (Slack, Google Sheets, email, etc.)</li>
+</ol>
+
+<h3>Step 3: Map MCP Response to Make Variables</h3>
+
+<p>The MCP response follows this structure:</p>
+
+<pre><code>{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\\"open_orders\\": 142}"
+      }
+    ]
+  }
+}</code></pre>
+
+<p>In Make's JSON parser, access the text content at: <code>result.content[0].text</code> — then parse that as a second JSON step to get your actual data values.</p>
+
+<h2>Pattern 2: Claude AI Module + MCP Context</h2>
+
+<p>Make.com has an Anthropic Claude module. Combine it with an MCP server to give Claude live data context before it generates a response or makes a decision.</p>
+
+<h3>The Pattern</h3>
+
+<ol>
+<li><strong>Trigger:</strong> New Typeform submission, Gmail message, Slack mention, or schedule</li>
+<li><strong>HTTP module:</strong> Call your MCP server to get relevant context (e.g., customer record, order history, relevant documentation)</li>
+<li><strong>Claude module:</strong> Inject the MCP context into Claude's system prompt, ask it to classify/analyze/respond</li>
+<li><strong>Router:</strong> Route based on Claude's structured output (e.g., sentiment score, priority level, recommended action)</li>
+<li><strong>Action modules:</strong> Update CRM, send Slack notification, create Jira ticket, send email</li>
+</ol>
+
+<h3>Example: Support Ticket Triage with MCP Customer Context</h3>
+
+<p>The scenario:</p>
+<ul>
+<li>Trigger: New Zendesk ticket created</li>
+<li>MCP call: Query your customer database for account tier, open orders, past issues, contract value</li>
+<li>Claude: "Given this customer context [MCP data], classify this ticket as P1/P2/P3 and suggest the best routing"</li>
+<li>Route: P1 → PagerDuty alert + Slack DM to account manager; P2 → Zendesk assignment; P3 → auto-reply template</li>
+</ul>
+
+<p>The Make scenario configuration for the Claude module:</p>
+
+<pre><code>System prompt:
+You are a support triage assistant with access to customer data.
+
+Customer context from our CRM:
+{{2.result.content[0].text}}
+
+Classify the support ticket priority (P1/P2/P3) and provide a routing recommendation.
+Respond in JSON: {"priority": "P1", "reasoning": "...", "routing": "escalate_to_account_manager"}
+
+User message: {{1.subject}} - {{1.description}}</code></pre>
+
+<h2>Pattern 3: Make Webhook → MCP Agent → Make Callback</h2>
+
+<p>For async workflows where your AI needs to do extended research before returning results, use Make's webhook wait feature:</p>
+
+<ol>
+<li>Make triggers, sends data to your MCP-enabled agent endpoint, and waits for a webhook callback</li>
+<li>Your agent uses MCP servers to gather context (search web, query database, read documents)</li>
+<li>Agent completes analysis and POSTs results back to Make's webhook URL</li>
+<li>Make resumes the scenario with the enriched data</li>
+</ol>
+
+<p>This pattern works well for research-heavy tasks: competitive analysis, document summarization, data enrichment — anything that takes more than a few seconds.</p>
+
+<h2>Connecting Make.com to Popular MCP Servers</h2>
+
+<h3>PostgreSQL MCP via Make</h3>
+
+<p>Call your PostgreSQL MCP server to pull live database data into Make scenarios:</p>
+
+<pre><code>{
+  "jsonrpc": "2.0",
+  "method": "tools/call",
+  "id": 1,
+  "params": {
+    "name": "query",
+    "arguments": {
+      "sql": "SELECT customer_name, total_value FROM customers WHERE created_at > NOW() - INTERVAL '7 days' ORDER BY total_value DESC LIMIT 10"
+    }
+  }
+}</code></pre>
+
+<h3>Brave Search MCP via Make</h3>
+
+<p>Pull real-time web search results into your Make automation for competitive monitoring, news tracking, or current events enrichment:</p>
+
+<pre><code>{
+  "jsonrpc": "2.0",
+  "method": "tools/call",
+  "id": 1,
+  "params": {
+    "name": "brave_web_search",
+    "arguments": {
+      "query": "{{trigger.company_name}} funding news 2026",
+      "count": 5
+    }
+  }
+}</code></pre>
+
+<h3>GitHub MCP via Make</h3>
+
+<p>Trigger Make scenarios based on code changes, then use GitHub MCP to fetch PR context for AI review:</p>
+
+<pre><code>{
+  "jsonrpc": "2.0",
+  "method": "tools/call",
+  "id": 1,
+  "params": {
+    "name": "get_pull_request",
+    "arguments": {
+      "owner": "{{trigger.repository.owner.login}}",
+      "repo": "{{trigger.repository.name}}",
+      "pull_number": {{trigger.pull_request.number}}
+    }
+  }
+}</code></pre>
+
+<h2>Authentication and Security</h2>
+
+<p>When calling MCP servers from Make.com:</p>
+
+<ul>
+<li><strong>API key headers:</strong> Add your MCP server's auth token in the HTTP module headers: <code>Authorization: Bearer your_token</code></li>
+<li><strong>Make's Data Stores:</strong> Store MCP server URLs and API keys in Make's built-in encrypted Data Stores rather than hardcoding them in scenarios</li>
+<li><strong>IP allowlisting:</strong> Make.com publishes its egress IP ranges — configure your MCP server to only accept requests from those IPs</li>
+<li><strong>Webhook secrets:</strong> If your MCP triggers callback to Make, verify the webhook secret to prevent unauthorized scenario triggers</li>
+</ul>
+
+<h2>Practical Make + MCP Scenarios to Build Today</h2>
+
+<ul>
+<li><strong>Daily sales briefing:</strong> Schedule → PostgreSQL MCP (yesterday's revenue, top deals) → Claude (write summary) → Slack</li>
+<li><strong>Competitor monitor:</strong> Schedule (daily) → Brave Search MCP (competitor news) → Claude (extract key insights) → Notion database</li>
+<li><strong>Support enrichment:</strong> Zendesk webhook → PostgreSQL MCP (customer data) → Claude (triage) → Zendesk tag + Slack alert</li>
+<li><strong>PR review assistant:</strong> GitHub webhook (PR opened) → GitHub MCP (fetch diff + context) → Claude (review) → GitHub comment</li>
+<li><strong>Lead research:</strong> HubSpot webhook (new contact) → Brave Search MCP (company research) → Claude (ICP score) → HubSpot property update</li>
+</ul>
+
+<p>Browse the <a href="/">MCP server directory</a> to find servers that match your Make.com workflow needs, or see our guides on <a href="/blog/mcp-integration-guide-n8n">integrating with n8n</a> and <a href="/blog/mcp-integration-guide-zapier">integrating with Zapier</a> for more automation platform options.</p>
+    `.trim(),
+  },
 ];
 export function getBlogPostBySlug(slug: string): BlogPost | undefined {
   return blogPosts.find((post) => post.slug === slug);
