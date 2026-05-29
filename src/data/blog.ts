@@ -43334,6 +43334,583 @@ fly ssh console</code></pre>
 <p>Browse the <a href="/">MCP server directory</a> to find pre-built servers you can deploy to Fly.io, and explore our <a href="/category/deployment">deployment guides</a> for other hosting platforms.</p>
     `.trim(),
   },
+  {
+    slug: "mcp-servers-for-data-pipelines",
+    title: "MCP Servers for Data Pipelines: Orchestrate ETL and Data Flows with AI",
+    description: "Use MCP servers to build AI-assisted data pipelines. Query databases, trigger ETL jobs, monitor pipeline health, and transform data — all from a single AI conversation without switching between tools.",
+    date: "2026-05-29",
+    author: "MyMCPTools Team",
+    category: "Use Cases",
+    readingTime: "10 min read",
+    keywords: ["mcp servers for data pipelines", "etl mcp server", "data pipeline ai", "airbyte mcp", "dbt mcp server", "data engineering mcp"],
+    relatedServerSlugs: ["airbyte", "postgresql", "mongodb", "redis", "clickhouse", "apache-spark", "filesystem", "github"],
+    content: `
+<p>Data pipelines are essential infrastructure — and also some of the most painful systems to debug and manage. When an ETL job fails at 3am, you're navigating dashboards, querying logs, checking data quality metrics, and cross-referencing with your warehouse — all while juggling five browser tabs.</p>
+
+<p>MCP servers change this. By giving your AI direct access to your databases, orchestration tools, and monitoring systems, you can investigate failures, inspect data quality, and trigger corrective actions in a single conversation.</p>
+
+<h2>What AI-Assisted Data Pipelines Actually Look Like</h2>
+
+<p>With MCP servers wired into your data stack, conversations look like this:</p>
+
+<ul>
+<li>"The nightly customer sync failed. What did the last successful run load and what's different about tonight's source data?" — AI queries both your orchestrator logs and source database to find the discrepancy</li>
+<li>"Check the orders table for nulls in payment_method for records loaded in the last 24 hours" — AI runs the quality check directly</li>
+<li>"The staging pipeline has been running for 90 minutes. Is it stuck or just slow?" — AI checks job status, resource utilization, and compares to historical run times</li>
+<li>"Show me which dbt models failed in today's run and what the error message was for each" — AI reads your dbt run artifacts and surfaces the root cause</li>
+</ul>
+
+<p>This is the pipeline debugging workflow when your AI has structured access through MCP, not just a log file you paste in manually.</p>
+
+<h2>Best MCP Servers for Data Pipeline Workflows</h2>
+
+<h3>1. PostgreSQL MCP Server — Query Your Warehouse and Source Databases</h3>
+
+<p>Most data pipelines ultimately write to or read from a relational database. The PostgreSQL MCP server is the cornerstone of AI-assisted pipeline management — it lets your AI inspect schema, run quality checks, and validate that data landed correctly.</p>
+
+<p><strong>Key capabilities for data pipelines:</strong></p>
+<ul>
+<li>Schema introspection — understand table structure without context-switching to a GUI</li>
+<li>Row count and data quality queries — validate records loaded, check for nulls, find duplicates</li>
+<li>Historical comparison queries — compare today's load against yesterday's baseline</li>
+<li>Index analysis — identify why downstream queries are slow after a load</li>
+<li>Connection to both source and target databases simultaneously (via multiple MCP server instances)</li>
+</ul>
+
+<p><strong>Standout pipeline prompts:</strong></p>
+<ul>
+<li>"How many rows were loaded into orders today vs. yesterday? Flag any day where the delta was greater than 20%."</li>
+<li>"Find all records in the customers table where email is null or not a valid email format."</li>
+<li>"Show me the 10 tables with the most storage in the analytics schema — I need to identify candidates for partitioning."</li>
+</ul>
+
+<h3>2. Airbyte MCP Server — Control Your ELT Orchestration</h3>
+
+<p>Airbyte is one of the most widely deployed open-source ELT platforms. The Airbyte MCP server gives your AI direct access to connection management, sync triggers, and job status — the operations that normally require navigating a web UI.</p>
+
+<p><strong>Key capabilities for data pipelines:</strong></p>
+<ul>
+<li>List and inspect connections between source and destination</li>
+<li>Trigger manual sync runs on specific connections</li>
+<li>Query sync job history — status, records synced, duration</li>
+<li>Identify connections that haven't synced recently or are in error state</li>
+<li>Read sync logs to diagnose failures without opening the Airbyte UI</li>
+</ul>
+
+<p><strong>Standout pipeline prompts:</strong></p>
+<ul>
+<li>"Which Airbyte connections failed in the last 24 hours? Show me the error summary for each."</li>
+<li>"Trigger a full refresh sync for the Salesforce accounts connection."</li>
+<li>"Show me the connections that haven't run successfully in more than 48 hours — I want to check if any are stuck."</li>
+</ul>
+
+<p><strong>Setup:</strong> Requires Airbyte API credentials. Works with both Airbyte Cloud and self-hosted Airbyte Community/Enterprise.</p>
+
+<h3>3. ClickHouse MCP Server — Analytical Queries at Scale</h3>
+
+<p>ClickHouse has become the default OLAP database for teams that need sub-second analytical queries over billions of rows. The ClickHouse MCP server exposes the same query interface to your AI assistant, making it possible to run ad-hoc investigations on your data warehouse without writing SQL from memory.</p>
+
+<p><strong>Key capabilities for data pipelines:</strong></p>
+<ul>
+<li>Schema exploration across databases and tables</li>
+<li>Aggregation queries — row counts, min/max timestamps, cardinality checks</li>
+<li>Partition inspection — verify data landed in the correct date partitions</li>
+<li>Query performance analysis — EXPLAIN PIPELINE output interpretation</li>
+<li>System table queries — check merge queue depth, mutation status, replication lag</li>
+</ul>
+
+<p><strong>Standout pipeline prompts:</strong></p>
+<ul>
+<li>"Check the events table — did records for today arrive in the correct date partition? Show me the row count by date for the last 7 days."</li>
+<li>"The merge queue on the orders table is backing up. Show me the current queue depth and any long-running merges."</li>
+<li>"Run a cardinality check on user_id in the sessions table — I want to verify deduplication is working."</li>
+</ul>
+
+<h3>4. MongoDB MCP Server — Document Store Inspection and Aggregation</h3>
+
+<p>When your pipeline sources or sinks to MongoDB, the MongoDB MCP server gives your AI the ability to run aggregation pipelines, inspect document structure, and validate data quality without writing complex Mongo query syntax from scratch.</p>
+
+<p><strong>Key capabilities for data pipelines:</strong></p>
+<ul>
+<li>Collection schema sampling — understand the shape of documents without a predefined schema</li>
+<li>Aggregation pipeline execution — group, filter, and transform document data</li>
+<li>Index usage analysis — identify collections with missing or underused indexes</li>
+<li>Document count and timestamp queries for freshness validation</li>
+<li>Cross-collection joins via $lookup for data integrity checks</li>
+</ul>
+
+<p><strong>Standout pipeline prompts:</strong></p>
+<ul>
+<li>"Sample 20 documents from the raw_events collection and tell me what fields appear inconsistently across them."</li>
+<li>"Count documents in the processed_orders collection by status field — I want to see if 'pending' records are piling up."</li>
+<li>"Find all documents in user_profiles where the last_updated field is older than 90 days."</li>
+</ul>
+
+<h3>5. Redis MCP Server — Cache Invalidation and Pipeline State</h3>
+
+<p>Many data pipelines use Redis for rate limiting, deduplication, or tracking pipeline state (last processed record, cursor position, job locks). The Redis MCP server lets your AI inspect and manipulate this state directly.</p>
+
+<p><strong>Key capabilities for data pipelines:</strong></p>
+<ul>
+<li>Key inspection and pattern scanning — find all keys matching a pipeline's naming convention</li>
+<li>TTL analysis — identify keys expiring unexpectedly or not expiring at all</li>
+<li>Lock inspection — check if a distributed lock is stuck (preventing a job from running)</li>
+<li>Queue depth monitoring — count items in Redis-backed queues (BullMQ, Sidekiq, etc.)</li>
+<li>Cursor reset — delete a pipeline's position key to force a full re-process</li>
+</ul>
+
+<p><strong>Standout pipeline prompts:</strong></p>
+<ul>
+<li>"Check if there's a distributed lock key for the nightly export job — it might be stuck from a crashed process."</li>
+<li>"Show me the depth of the email-processing queue and flag if any items have been in the queue for more than 1 hour."</li>
+<li>"What's the current cursor position for the orders CDC pipeline? I want to know where it will resume after the restart."</li>
+</ul>
+
+<h3>6. Filesystem MCP Server — Read Pipeline Artifacts and Config</h3>
+
+<p>Pipeline configuration files, dbt project files, data contracts, and run artifacts live on disk. The Filesystem MCP server lets your AI read and write these files directly — no more copy-pasting YAML into a chat window.</p>
+
+<p><strong>Key capabilities for data pipelines:</strong></p>
+<ul>
+<li>Read dbt model files, schema.yml definitions, and source YAML</li>
+<li>Inspect pipeline config files (Airbyte connection JSON, orchestrator DAG files)</li>
+<li>Read run artifact files — dbt manifest.json, run_results.json for failure analysis</li>
+<li>Write corrected transformation SQL directly to your dbt project</li>
+<li>Grep across pipeline logs stored locally</li>
+</ul>
+
+<p><strong>Standout pipeline prompts:</strong></p>
+<ul>
+<li>"Read the dbt run_results.json from today's production run and tell me which models failed and why."</li>
+<li>"Show me the schema.yml definition for the orders source — I want to understand what tests are currently configured."</li>
+<li>"Find all dbt models that reference the deprecated customer_v1 table across the entire project."</li>
+</ul>
+
+<h3>7. GitHub MCP Server — Pipeline Code Management</h3>
+
+<p>Data pipeline code — dbt transformations, orchestration DAGs, custom connectors — lives in Git. The GitHub MCP server connects your AI to the code review and deployment workflow for pipeline changes.</p>
+
+<p><strong>Key capabilities for data pipelines:</strong></p>
+<ul>
+<li>Browse pipeline repository — find transformation files, orchestration DAGs, connector configs</li>
+<li>Create issues from pipeline failures — link the failing model to a bug ticket automatically</li>
+<li>Review pull requests for dbt model changes — flag breaking changes to downstream dependencies</li>
+<li>Check deployment history — which PRs went out before the pipeline started failing</li>
+<li>Trigger GitHub Actions workflows for pipeline deployment</li>
+</ul>
+
+<h2>Workflow Pattern: Full Pipeline Failure Investigation</h2>
+
+<p>Here's how a complete MCP-assisted failure investigation works in practice:</p>
+
+<ol>
+<li><strong>Identify the failure</strong> — Ask the Airbyte MCP server which connections failed. Get the job ID and timestamp.</li>
+<li><strong>Read the error</strong> — Ask the Filesystem MCP server (or Airbyte API) for the sync log. Identify the specific error message.</li>
+<li><strong>Validate the source</strong> — Query the source database (PostgreSQL or MongoDB MCP) to check if the upstream data structure changed — new column, missing field, schema drift.</li>
+<li><strong>Check the target</strong> — Query the destination (ClickHouse or PostgreSQL MCP) to confirm what data landed before the failure and what's missing.</li>
+<li><strong>Fix and verify</strong> — Update the pipeline configuration (Filesystem MCP), commit the fix (GitHub MCP), and trigger a new sync (Airbyte MCP).</li>
+<li><strong>Validate the fix</strong> — Query the destination again to confirm correct data landed.</li>
+</ol>
+
+<p>Every step of this investigation and remediation workflow happens in a single AI conversation — no tab-switching, no manual log searching, no copy-pasting error messages.</p>
+
+<h2>Getting Started</h2>
+
+<p>The most impactful first step for data pipeline teams is connecting both ends of your most critical pipeline: the source database and the destination warehouse. Add the PostgreSQL (or MongoDB) MCP server for your source, and the ClickHouse (or PostgreSQL) MCP server for your destination. With those two connected, your AI can immediately answer "did the data arrive, and does it look correct?" without manual querying.</p>
+
+<p>Browse the <a href="/">MCP server directory</a> to find connectors for your specific databases and orchestration tools.</p>
+    `.trim(),
+  },
+  {
+    slug: "mcp-servers-for-code-review",
+    title: "MCP Servers for Code Review: AI-Assisted PR Reviews and Code Quality",
+    description: "Use MCP servers to supercharge your code review workflow. Connect Claude to GitHub, GitLab, Linear, and your codebase to get context-aware PR reviews, catch security issues, and ship better code faster.",
+    date: "2026-05-29",
+    author: "MyMCPTools Team",
+    category: "Use Cases",
+    readingTime: "9 min read",
+    keywords: ["mcp servers for code review", "ai code review mcp", "github mcp pr review", "code quality mcp", "ai pull request review", "gitlab mcp code review"],
+    relatedServerSlugs: ["github", "gitlab", "filesystem", "linear", "postgres", "sequential-thinking"],
+    content: `
+<p>Code review is one of the highest-leverage engineering activities — and one of the most time-consuming. A senior engineer reviewing PRs is both the quality gate and the bottleneck. AI-assisted review, when it has proper context through MCP, changes that equation.</p>
+
+<p>The difference between paste-a-diff-into-Claude and MCP-assisted code review is access. With MCP, your AI can read the full repository, check how the changed code is used elsewhere, query the database schema the code touches, and look up the ticket that motivated the change — all without you providing any of that context manually.</p>
+
+<h2>What AI Code Review Actually Looks Like With MCP</h2>
+
+<p>Here's the difference in practice:</p>
+
+<p><strong>Without MCP:</strong> "Review this diff." The AI sees 50 lines of code with no understanding of what the function is for, what schema it queries, what tests exist for it, or whether similar code exists elsewhere in the codebase.</p>
+
+<p><strong>With MCP:</strong></p>
+<ul>
+<li>"Review PR #847 — check if the schema change is backwards-compatible with the queries that currently read this table." AI reads the PR diff, then queries the PostgreSQL MCP server to understand the current schema, then searches the filesystem MCP for all existing queries that use this table.</li>
+<li>"Does this new authentication middleware handle the edge cases our existing auth middleware handles?" AI reads both the new code and the existing implementation via Filesystem MCP.</li>
+<li>"Is there an existing utility function that does what this new function implements? Flag if we're adding duplication." AI searches the entire codebase via GitHub MCP.</li>
+</ul>
+
+<p>This is code review with actual codebase context — not just reviewing a diff in isolation.</p>
+
+<h2>Best MCP Servers for Code Review Workflows</h2>
+
+<h3>1. GitHub MCP Server — The Core of AI-Assisted PR Review</h3>
+
+<p>The GitHub MCP server is the foundation of any AI code review workflow. It exposes PR diffs, review comments, CI status, and the full repository — giving your AI the complete context needed for meaningful review.</p>
+
+<p><strong>Key capabilities for code review:</strong></p>
+<ul>
+<li>Read full PR diffs — all changed files, additions, and deletions</li>
+<li>Browse the repository to understand how changed code fits into the larger codebase</li>
+<li>Read existing test files to assess whether the PR adequately covers its changes</li>
+<li>Post review comments on specific lines — structured feedback, not just a chat summary</li>
+<li>Check CI/CD status — is the test suite passing before you invest review time?</li>
+<li>Read PR description and linked issues for the context behind the change</li>
+<li>Search code across the entire repo to identify similar patterns or potential duplication</li>
+</ul>
+
+<p><strong>Standout code review prompts:</strong></p>
+<ul>
+<li>"Review PR #847. Focus on: security implications of the input handling changes, whether the new API endpoints have proper authorization checks, and whether the tests cover error cases."</li>
+<li>"Search the repo for all other places we use the deprecated pattern this PR introduces. Flag them."</li>
+<li>"Does this PR break any of the existing contract tests? Show me which test files are relevant to the changed code."</li>
+<li>"The CI failed on PR #901. Read the test output and tell me if this is a flaky test or a real regression introduced by this PR."</li>
+</ul>
+
+<p><strong>Setup:</strong> Personal Access Token with <code>repo</code> scope. For posting review comments, add <code>pull_requests:write</code>.</p>
+
+<h3>2. GitLab MCP Server — Full MR Context for GitLab Teams</h3>
+
+<p>For teams using GitLab, the GitLab MCP server provides the same deep integration for merge requests — diffs, pipeline status, repository browsing, and the ability to post review comments programmatically.</p>
+
+<p><strong>Key capabilities for code review:</strong></p>
+<ul>
+<li>Read merge request diffs and file-level changes</li>
+<li>Query pipeline status — all jobs, which passed/failed, test coverage reports</li>
+<li>Browse repository structure and file content for full-codebase context</li>
+<li>List open MRs by author, reviewer, or milestone for review queue management</li>
+<li>Post inline comments on MR changes</li>
+<li>Check code quality and SAST findings from GitLab CI integration</li>
+</ul>
+
+<p><strong>Standout code review prompts:</strong></p>
+<ul>
+<li>"List all open MRs assigned to me for review that have passing pipelines — I want to prioritize reviewable code."</li>
+<li>"Review MR !203. The author is a junior engineer — please be thorough about explaining why each suggestion matters, not just flagging the issue."</li>
+<li>"Show me all SAST findings from the security-scan job in MR !198."</li>
+</ul>
+
+<h3>3. Filesystem MCP Server — Full Codebase Access for Context-Aware Review</h3>
+
+<p>A diff alone isn't enough context for a thorough review. The Filesystem MCP server gives your AI access to the entire codebase — interfaces, types, existing tests, related modules, documentation — so it can review with the context a senior engineer would naturally have.</p>
+
+<p><strong>Key capabilities for code review:</strong></p>
+<ul>
+<li>Read related files not included in the PR diff (interfaces, types, existing implementations)</li>
+<li>Search for similar patterns across the codebase — catch duplication before it ships</li>
+<li>Read existing test suites to assess coverage completeness</li>
+<li>Inspect configuration files that the changed code depends on</li>
+<li>Browse documentation to verify changes match documented behavior</li>
+</ul>
+
+<p><strong>Standout code review prompts:</strong></p>
+<ul>
+<li>"Read the interface definition for PaymentProcessor, then review whether this new StripePaymentProcessor implementation correctly satisfies the contract."</li>
+<li>"Find all other services that call the endpoint this PR is changing — I want to know if any of them will break."</li>
+<li>"This PR adds a new database query. Find all existing queries in the codebase that touch the same tables and tell me if this one is consistent with our established patterns."</li>
+</ul>
+
+<h3>4. PostgreSQL MCP Server — Schema-Aware Review for Database Changes</h3>
+
+<p>When a PR includes database migrations or changes query logic, schema context is critical. The PostgreSQL MCP server lets your AI query the actual schema — not just read migration files — to assess backward compatibility, index implications, and query correctness.</p>
+
+<p><strong>Key capabilities for code review:</strong></p>
+<ul>
+<li>Introspect the current production schema — tables, columns, types, constraints, indexes</li>
+<li>Verify that new queries reference existing columns correctly</li>
+<li>Assess whether new columns need indexes based on how they'll be queried</li>
+<li>Check if a migration's rollback is safe given current data</li>
+<li>Identify N+1 query patterns by understanding the relationship structure</li>
+</ul>
+
+<p><strong>Standout code review prompts:</strong></p>
+<ul>
+<li>"This PR adds a NOT NULL column to the users table. Check if the migration handles existing rows correctly and whether any application code will break during the migration window."</li>
+<li>"The new query in this PR joins orders to order_items on customer_id. Show me the foreign key constraints and indexes on that join — will this query be fast at scale?"</li>
+<li>"This migration drops the legacy_status column. Are there any views or functions that still reference it?"</li>
+</ul>
+
+<h3>5. Linear MCP Server — Connect Code Changes to Their Purpose</h3>
+
+<p>Understanding WHY code is being changed is as important as understanding HOW. The Linear MCP server lets your AI read the ticket that motivated a PR, check acceptance criteria, and flag when implementation doesn't match requirements.</p>
+
+<p><strong>Key capabilities for code review:</strong></p>
+<ul>
+<li>Read the linked Linear issue — requirements, acceptance criteria, design decisions</li>
+<li>Check if the PR addresses all criteria listed in the ticket</li>
+<li>Identify scope creep — changes that go beyond the ticket's stated purpose</li>
+<li>Find related tickets that might be affected by this change</li>
+<li>Update ticket status when a review is complete</li>
+</ul>
+
+<p><strong>Standout code review prompts:</strong></p>
+<ul>
+<li>"Read the Linear ticket linked in PR #847 and check whether the implementation matches all the acceptance criteria."</li>
+<li>"Are there any open bugs in Linear related to the authentication module this PR is changing? I want to know if this PR might inadvertently affect them."</li>
+<li>"The PR fixes LIN-2041. Mark it as 'In Review' in Linear and add a comment that review has started."</li>
+</ul>
+
+<h3>6. Sequential Thinking MCP Server — Systematic Review Checklists</h3>
+
+<p>The Sequential Thinking MCP server helps your AI approach complex reviews methodically — working through a checklist of security concerns, performance implications, test coverage, and correctness issues rather than producing an unstructured narrative.</p>
+
+<p><strong>Best use for code review:</strong> Pair with GitHub or GitLab MCP to produce structured, systematic reviews. Ask the AI to "use sequential thinking to work through: correctness, security, performance, tests, and maintainability" for a thorough, organized review output.</p>
+
+<h2>Workflow Pattern: Complete AI-Assisted PR Review</h2>
+
+<ol>
+<li><strong>Load context</strong> — GitHub MCP reads the PR diff, CI status, and PR description. Filesystem MCP reads related files. Linear MCP reads the linked ticket.</li>
+<li><strong>Correctness check</strong> — Does the implementation match the requirements? Does it handle edge cases? Are error paths covered?</li>
+<li><strong>Security scan</strong> — Input validation, SQL injection, auth checks, secrets handling, dependency vulnerabilities.</li>
+<li><strong>Database review</strong> — If schema changes or new queries exist, PostgreSQL MCP validates them against the live schema.</li>
+<li><strong>Test coverage</strong> — Filesystem MCP reads existing tests. GitHub MCP checks CI test results. AI flags untested code paths.</li>
+<li><strong>Post review</strong> — GitHub MCP posts structured inline comments on specific lines. No copy-pasting into GitHub UI.</li>
+</ol>
+
+<h2>Getting Started</h2>
+
+<p>Start with just two servers: GitHub MCP (for the PR itself) and Filesystem MCP (for full codebase context). This combination immediately gives your AI enough context to produce useful, codebase-aware reviews rather than generic diff feedback. Add PostgreSQL MCP when reviewing database changes and Linear MCP when your team uses it for ticketing.</p>
+
+<p>Browse the <a href="/">MCP server directory</a> to explore all available integrations for your code review stack.</p>
+    `.trim(),
+  },
+  {
+    slug: "mcp-integration-guide-cursor",
+    title: "MCP Integration Guide: Cursor — Supercharge Your AI Code Editor",
+    description: "Complete guide to setting up MCP servers in Cursor. Learn how to connect Claude to your databases, GitHub, file systems, and custom tools directly inside the Cursor IDE for context-aware AI coding.",
+    date: "2026-05-29",
+    author: "MyMCPTools Team",
+    category: "Integrations",
+    readingTime: "9 min read",
+    keywords: ["cursor mcp server", "cursor model context protocol", "mcp cursor setup", "cursor ai tools", "cursor database mcp", "cursor github mcp"],
+    relatedServerSlugs: ["cursor", "github", "filesystem", "postgres", "sqlite", "brave-search", "linear", "memory"],
+    content: `
+<p>Cursor is the fastest-growing AI code editor — and MCP support makes it dramatically more powerful. Instead of pasting database schemas, file contents, or documentation into the chat window, you connect MCP servers once and Cursor's AI gains persistent, structured access to your entire development context.</p>
+
+<p>This guide covers everything: how MCP works in Cursor, which servers give you the highest ROI, and the exact configuration steps to get running in under 10 minutes.</p>
+
+<h2>How MCP Works in Cursor</h2>
+
+<p>Cursor uses the Model Context Protocol to give its AI assistant access to external tools and data sources. When you chat with Cursor's AI (using Cmd+L or Cmd+K), it can call MCP servers to retrieve real data — querying your database, reading files, checking GitHub — rather than relying solely on what you've pasted into the conversation.</p>
+
+<p>MCP servers run as local processes alongside Cursor. They communicate via stdio or HTTP, and Cursor manages the lifecycle automatically once you add them to the configuration file.</p>
+
+<p><strong>What this means in practice:</strong> You can say "explain why this function is slow given our current database schema" and Cursor will actually query your database schema, not guess at it. You can say "create a Linear ticket for this bug" and it creates the real ticket. The AI becomes context-aware, not context-dependent.</p>
+
+<h2>Setting Up MCP in Cursor</h2>
+
+<h3>Step 1: Open the MCP Configuration</h3>
+
+<p>In Cursor, open the settings panel:</p>
+<ul>
+<li>Mac: <code>Cmd + ,</code> → search for "MCP"</li>
+<li>Or navigate to: <strong>Cursor Settings → Features → MCP Servers</strong></li>
+</ul>
+
+<p>Cursor stores MCP configuration in <code>~/.cursor/mcp.json</code>. You can edit this file directly or through the UI.</p>
+
+<h3>Step 2: Add Your First MCP Server</h3>
+
+<p>The configuration file uses the standard MCP JSON format:</p>
+
+<pre><code>{
+  "mcpServers": {
+    "filesystem": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-filesystem", "/Users/yourname/projects"]
+    },
+    "github": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-github"],
+      "env": {
+        "GITHUB_PERSONAL_ACCESS_TOKEN": "your_token_here"
+      }
+    }
+  }
+}</code></pre>
+
+<p>After saving, Cursor automatically restarts the MCP servers. You'll see a green status indicator when servers are connected.</p>
+
+<h3>Step 3: Verify Connection</h3>
+
+<p>Open a new Cursor chat (Cmd+L) and ask: "What MCP tools do you have available?" Cursor's AI will list all connected servers and their capabilities. If a server fails to connect, check the Cursor Output panel for error messages.</p>
+
+<h2>The Essential MCP Stack for Cursor</h2>
+
+<h3>1. Filesystem MCP Server — Your Codebase, Fully Accessible</h3>
+
+<p>The filesystem server is the most immediately impactful addition. It gives Cursor's AI the ability to read any file in your project without you copying and pasting it in — and to write files directly when you accept suggestions.</p>
+
+<pre><code>"filesystem": {
+  "command": "npx",
+  "args": [
+    "-y",
+    "@modelcontextprotocol/server-filesystem",
+    "/Users/yourname/projects/my-app"
+  ]
+}</code></pre>
+
+<p><strong>What changes with this server:</strong></p>
+<ul>
+<li>"Refactor this function to match the pattern used in utils/auth.ts" — Cursor reads auth.ts directly</li>
+<li>"Find all places in the codebase that import from this deprecated module" — Cursor searches your project</li>
+<li>"Is there an existing test for this component?" — Cursor checks your test files without you specifying where they are</li>
+</ul>
+
+<p><strong>Tip:</strong> Set the allowed path to your projects root, not your entire home directory. This both limits exposure and keeps the AI focused on relevant code.</p>
+
+<h3>2. GitHub MCP Server — Repository and PR Integration</h3>
+
+<p>Connect Cursor's AI directly to your GitHub repositories for PR review, issue management, and code search across your entire organization's codebase — not just the files currently open.</p>
+
+<pre><code>"github": {
+  "command": "npx",
+  "args": ["-y", "@modelcontextprotocol/server-github"],
+  "env": {
+    "GITHUB_PERSONAL_ACCESS_TOKEN": "ghp_your_token_here"
+  }
+}</code></pre>
+
+<p>Required token scopes: <code>repo</code> for private repository access, <code>read:org</code> for organization repos.</p>
+
+<p><strong>High-value Cursor + GitHub combos:</strong></p>
+<ul>
+<li>"Review the open PR for this file — what did the reviewer ask for?" — Cursor reads PR comments in context with the code you have open</li>
+<li>"Search our org's repos for how others have implemented pagination — use that pattern here" — Cursor finds real examples from your codebase</li>
+<li>"Create a GitHub issue for the bug I just found, with the relevant code context" — Cursor creates a real issue with proper formatting</li>
+</ul>
+
+<h3>3. PostgreSQL MCP Server — Schema-Aware Database Work</h3>
+
+<p>When writing code that touches your database, having the actual schema in context eliminates an entire category of bugs — wrong column names, incorrect types, missing foreign key relationships.</p>
+
+<pre><code>"postgres": {
+  "command": "npx",
+  "args": ["-y", "@modelcontextprotocol/server-postgres",
+           "postgresql://user:password@localhost:5432/mydb"]
+}</code></pre>
+
+<p><strong>What this changes in your Cursor workflow:</strong></p>
+<ul>
+<li>"Write a query to find all orders from last month" — Cursor queries your actual schema first, then writes correct SQL</li>
+<li>"Generate TypeScript types for the users table" — Cursor introspects the table definition directly</li>
+<li>"This ORM query is slow — suggest indexes" — Cursor understands your actual table structure</li>
+<li>"Does this migration safely add a NOT NULL column given existing data?" — Cursor can validate the question</li>
+</ul>
+
+<p><strong>Security note:</strong> Use a read-only database user for development. Reserve write access for production-write scenarios you explicitly control.</p>
+
+<h3>4. SQLite MCP Server — Local Database Access</h3>
+
+<p>For projects using SQLite (Electron apps, mobile app companions, local development databases), the SQLite server provides the same schema-aware assistance without requiring a running database server.</p>
+
+<pre><code>"sqlite": {
+  "command": "npx",
+  "args": ["-y", "@modelcontextprotocol/server-sqlite",
+           "--db-path", "/path/to/your/database.db"]
+}</code></pre>
+
+<h3>5. Linear MCP Server — Code Tied to Tickets</h3>
+
+<p>When you're working on a feature or bug fix, having the ticket in context helps Cursor understand the intent behind the code — not just what to write, but why.</p>
+
+<pre><code>"linear": {
+  "command": "npx",
+  "args": ["-y", "linear-mcp-server"],
+  "env": {
+    "LINEAR_API_KEY": "lin_api_your_key_here"
+  }
+}</code></pre>
+
+<p><strong>High-value Cursor + Linear combos:</strong></p>
+<ul>
+<li>"Implement the feature described in LIN-2041" — Cursor reads the full ticket, acceptance criteria, and any design notes before writing code</li>
+<li>"Write unit tests that cover the acceptance criteria for LIN-2041" — Cursor generates tests aligned with the actual requirements</li>
+<li>"This PR is ready. Create a summary comment on the Linear ticket." — Cursor updates your project management without tab-switching</li>
+</ul>
+
+<h3>6. Memory MCP Server — Persistent Project Context</h3>
+
+<p>The Memory MCP server gives Cursor's AI a persistent knowledge graph across sessions. Instead of re-explaining your codebase conventions every time you open Cursor, you store them once and the AI retrieves them automatically.</p>
+
+<pre><code>"memory": {
+  "command": "npx",
+  "args": ["-y", "@modelcontextprotocol/server-memory"]
+}</code></pre>
+
+<p><strong>What to store:</strong></p>
+<ul>
+<li>Architectural decisions — "We use repository pattern, not active record"</li>
+<li>Team conventions — "All API errors return {error: string, code: string} format"</li>
+<li>Project-specific patterns — "Auth tokens are stored in httpOnly cookies, never localStorage"</li>
+<li>In-progress context — "Working on the checkout refactor — don't touch legacy OrderProcessor"</li>
+</ul>
+
+<h2>Complete Cursor MCP Configuration Example</h2>
+
+<pre><code>{
+  "mcpServers": {
+    "filesystem": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-filesystem",
+               "/Users/yourname/projects"]
+    },
+    "github": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-github"],
+      "env": {
+        "GITHUB_PERSONAL_ACCESS_TOKEN": "ghp_..."
+      }
+    },
+    "postgres": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-postgres",
+               "postgresql://readonly:password@localhost:5432/mydb"]
+    },
+    "linear": {
+      "command": "npx",
+      "args": ["-y", "linear-mcp-server"],
+      "env": {
+        "LINEAR_API_KEY": "lin_api_..."
+      }
+    },
+    "memory": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-memory"]
+    }
+  }
+}</code></pre>
+
+<h2>Cursor-Specific Tips</h2>
+
+<p><strong>Use Cmd+L for MCP-heavy queries</strong> — The Chat panel (Cmd+L) has more context budget than the inline Cmd+K prompt. Complex MCP operations (browsing repos, multi-table schema queries) work better in Chat.</p>
+
+<p><strong>Name your servers descriptively</strong> — If you're connecting to multiple databases, use names like <code>postgres-production-readonly</code> and <code>postgres-local</code> rather than generic names. Cursor's AI will reference these names when confirming which database it's querying.</p>
+
+<p><strong>Restart after config changes</strong> — Cursor picks up new MCP servers after you save <code>~/.cursor/mcp.json</code>, but a full Cursor restart ensures clean state if you're troubleshooting connection issues.</p>
+
+<p><strong>Check MCP status in Output panel</strong> — View → Output → select "MCP" from the dropdown to see server connection logs, errors, and tool calls in real time.</p>
+
+<h2>Troubleshooting Common Issues</h2>
+
+<p><strong>Server shows as disconnected:</strong> Run the server command manually in Terminal to see the raw error. Most failures are missing <code>npx</code> packages (run <code>npm install -g</code> for the package) or incorrect credentials.</p>
+
+<p><strong>AI doesn't use MCP tools:</strong> Be explicit in your prompt — say "use the filesystem MCP to read..." rather than assuming the AI will reach for tools. For complex queries, start with "What MCP tools are available?"</p>
+
+<p><strong>Slow responses:</strong> MCP tool calls add latency. For quick edits, use Cmd+K without MCP-heavy prompts. Reserve MCP-powered queries for Chat where latency is more acceptable.</p>
+
+<p>Browse the <a href="/">MCP server directory</a> to find additional servers for your specific tech stack, and check our <a href="/blog/mcp-server-troubleshooting-guide">troubleshooting guide</a> for more detailed debugging steps.</p>
+    `.trim(),
+  },
 ];
 export function getBlogPostBySlug(slug: string): BlogPost | undefined {
   return blogPosts.find((post) => post.slug === slug);
