@@ -44634,6 +44634,562 @@ User message: {{1.subject}} - {{1.description}}</code></pre>
 <p>Browse the <a href="/">MCP server directory</a> to find servers that match your Make.com workflow needs, or see our guides on <a href="/blog/mcp-integration-guide-n8n">integrating with n8n</a> and <a href="/blog/mcp-integration-guide-zapier">integrating with Zapier</a> for more automation platform options.</p>
     `.trim(),
   },
+  {
+    slug: "mcp-servers-for-customer-support",
+    title: "MCP Servers for Customer Support: AI-Powered Ticket Triage and Resolution",
+    description: "The best MCP servers for customer support teams. Connect your AI to Zendesk, Intercom, HubSpot, and your customer database to automate triage, draft responses, and surface insights.",
+    date: "2026-05-29",
+    author: "MyMCPTools Team",
+    category: "Use Cases",
+    readingTime: "10 min read",
+    keywords: ["mcp servers customer support", "zendesk mcp server", "intercom mcp integration", "ai customer support mcp", "helpdesk mcp server"],
+    relatedServerSlugs: ["zendesk", "intercom", "freshdesk", "hubspot", "slack", "postgresql", "notion"],
+    content: `
+<p>Customer support teams face a relentless volume of tickets, repetitive questions, and pressure to resolve issues faster. MCP servers change the equation: instead of AI assistants working from static prompts, they get live access to your ticketing system, customer database, knowledge base, and conversation history — giving them the context to actually help rather than just generate plausible-sounding text.</p>
+
+<p>This guide covers the most effective MCP servers for customer support workflows, from initial triage through resolution and reporting.</p>
+
+<h2>Why MCP Changes Customer Support AI</h2>
+
+<p>Generic AI assistants struggle with support work because they don't know your customers. They can't look up order #47821, check if a user is on a Pro plan, or see that someone filed the same complaint three times last month. MCP solves this by giving your AI direct access to the systems that hold that context.</p>
+
+<p>The result: AI that can say "I see you're on the Business plan, your last three tickets were about billing, and your account was renewed 12 days ago — let me check if this is related" instead of asking the customer to explain the situation from scratch.</p>
+
+<h2>1. Zendesk MCP Server — Your Ticketing System, AI-Accessible</h2>
+
+<p>The Zendesk MCP server gives your AI assistant read and write access to your Zendesk instance: tickets, users, organizations, macros, and views.</p>
+
+<p><strong>What it enables:</strong></p>
+<ul>
+<li>Fetch ticket history for a customer before drafting a response</li>
+<li>Auto-tag incoming tickets based on content analysis</li>
+<li>Apply macros and canned responses contextually</li>
+<li>Escalate tickets by updating priority and assignee fields</li>
+<li>Pull satisfaction (CSAT) scores alongside ticket context for QA</li>
+</ul>
+
+<p><strong>Key workflow:</strong> New ticket arrives → MCP fetches user's full ticket history + org tier → AI drafts a personalized response with relevant next steps → agent reviews and sends in one click.</p>
+
+<p><strong>Best for:</strong> Teams running Zendesk as their primary support platform. The combination of ticket history, user data, and AI-generated draft responses cuts average handle time dramatically.</p>
+
+<h2>2. Intercom MCP Server — Conversations with Full Customer Context</h2>
+
+<p>Intercom blends live chat with helpdesk functionality, making its MCP integration particularly powerful for real-time support use cases.</p>
+
+<p><strong>What it enables:</strong></p>
+<ul>
+<li>Access conversation history and user attributes mid-chat</li>
+<li>Look up custom data attributes (plan, usage, account age) during a live conversation</li>
+<li>Trigger automated workflows based on conversation content analysis</li>
+<li>Surface relevant help articles from your Intercom knowledge base</li>
+<li>Tag and route conversations based on intent detected via MCP tool calls</li>
+</ul>
+
+<p><strong>Key workflow:</strong> Customer starts live chat → MCP pulls their account data and past conversations → AI suggests the most likely issue and relevant resolution path → agent sees a pre-populated summary before typing a single word.</p>
+
+<p><strong>Best for:</strong> SaaS companies with chat-first support models. Intercom's custom attributes make it the richest context source in the support MCP ecosystem.</p>
+
+<h2>3. Freshdesk MCP Server — Multi-Channel Support Intelligence</h2>
+
+<p>Freshdesk's MCP server covers the full support stack: tickets from email, chat, phone, and social, plus your knowledge base and agent performance data.</p>
+
+<p><strong>What it enables:</strong></p>
+<ul>
+<li>Unified ticket view across all channels (email, chat, Twitter, WhatsApp)</li>
+<li>Knowledge base search to surface relevant articles for ticket resolution</li>
+<li>Agent workload visibility for intelligent routing</li>
+<li>SLA breach prediction based on ticket age and priority</li>
+<li>Reporting queries: "Which tickets are at risk of breaching SLA today?"</li>
+</ul>
+
+<p><strong>Best for:</strong> Teams managing support across multiple channels who need a unified AI view rather than per-channel tools.</p>
+
+<h2>4. PostgreSQL MCP Server — Your Customer Database in Context</h2>
+
+<p>Most support tools don't hold the full customer record — that lives in your database. The PostgreSQL MCP server bridges the gap, letting your AI query your actual customer data during support interactions.</p>
+
+<p><strong>What it enables:</strong></p>
+<ul>
+<li>Look up subscription status, plan limits, and feature flags for any user</li>
+<li>Check order history, payment status, and account creation date</li>
+<li>Identify related accounts (shared billing, team members, org hierarchy)</li>
+<li>Verify reported bugs against actual database state ("Is this user's record actually corrupted?")</li>
+<li>Surface usage metrics to personalize upgrade or retention messaging</li>
+</ul>
+
+<p><strong>Example query your AI can run:</strong></p>
+<pre><code>SELECT u.email, s.plan_name, s.mrr,
+       COUNT(t.id) as lifetime_tickets,
+       MAX(t.created_at) as last_ticket_date
+FROM users u
+JOIN subscriptions s ON s.user_id = u.id
+LEFT JOIN tickets t ON t.user_id = u.id
+WHERE u.email = 'customer@example.com'
+GROUP BY u.email, s.plan_name, s.mrr;</code></pre>
+
+<p><strong>Best for:</strong> Teams where the support tool and the product database are separate systems. This is the single highest-leverage MCP server for reducing "let me check with the engineering team" escalations.</p>
+
+<h2>5. HubSpot MCP Server — CRM Context for Support Teams</h2>
+
+<p>When support and sales share a HubSpot CRM, the HubSpot MCP server lets support agents see the full customer relationship — deals, contacts, notes, and communication history — without tab-switching.</p>
+
+<p><strong>What it enables:</strong></p>
+<ul>
+<li>Pull contact and company records during ticket resolution</li>
+<li>See deal stage and contract value to calibrate escalation urgency</li>
+<li>Log support interactions back to CRM contact records</li>
+<li>Identify at-risk accounts (high ticket volume + low engagement scores)</li>
+<li>Trigger sales alerts when support conversations surface expansion opportunities</li>
+</ul>
+
+<p><strong>Best for:</strong> B2B SaaS companies where customer success and support overlap — knowing a customer's deal size changes how a ticket gets prioritized.</p>
+
+<h2>6. Slack MCP Server — Team Coordination and Escalations</h2>
+
+<p>Complex support issues often require looping in engineering, product, or account management. The Slack MCP server lets your AI assistant coordinate escalations and surface relevant Slack conversations for context.</p>
+
+<p><strong>What it enables:</strong></p>
+<ul>
+<li>Post to escalation channels when tickets meet threshold criteria</li>
+<li>Search Slack history for similar past issues ("has this bug been reported in #eng before?")</li>
+<li>Tag the right team member based on expertise and current availability</li>
+<li>Create Slack threads directly from ticket context for async collaboration</li>
+</ul>
+
+<p><strong>Best for:</strong> Teams with cross-functional escalation paths. The Slack MCP server closes the loop between the support tool and where engineering discussions actually happen.</p>
+
+<h2>7. Notion MCP Server — Knowledge Base and Runbooks</h2>
+
+<p>Support teams maintain runbooks, escalation procedures, and internal knowledge bases that aren't always in the helpdesk system itself. The Notion MCP server makes this institutional knowledge searchable by your AI during ticket resolution.</p>
+
+<p><strong>What it enables:</strong></p>
+<ul>
+<li>Search internal runbooks for resolution steps matching ticket keywords</li>
+<li>Pull product documentation to verify customer claims against official specs</li>
+<li>Access known issue lists and planned fixes to set accurate expectations</li>
+<li>Update incident logs and post-mortems with AI-assisted summaries</li>
+</ul>
+
+<h2>Building a Complete Customer Support MCP Stack</h2>
+
+<p>The highest-impact setup combines these servers for a complete context picture:</p>
+
+<ol>
+<li><strong>Ticketing:</strong> Zendesk or Intercom MCP (ticket history, conversation context)</li>
+<li><strong>Product data:</strong> PostgreSQL MCP (account status, usage metrics)</li>
+<li><strong>CRM:</strong> HubSpot MCP (relationship and deal context)</li>
+<li><strong>Knowledge:</strong> Notion MCP (runbooks, known issues)</li>
+<li><strong>Escalation:</strong> Slack MCP (team coordination)</li>
+</ol>
+
+<p>With this stack, an AI assistant working a ticket has access to everything a senior support engineer would check manually — without the tab-switching, copy-pasting, or tribal knowledge requirements.</p>
+
+<h2>Getting Started</h2>
+
+<p>Start with the two servers that will have the most immediate impact for your team — typically your ticketing MCP and your customer database MCP. Run them in your Claude Desktop or Cursor environment for a few days to understand what queries you're actually running most often, then add additional servers based on the gaps.</p>
+
+<p>Each server page on <a href="/">MyMCPTools</a> includes installation instructions and configuration examples for all major MCP clients.</p>
+    `.trim(),
+  },
+  {
+    slug: "mcp-servers-for-healthcare",
+    title: "MCP Servers for Healthcare: AI Workflows for Clinical and Admin Teams",
+    description: "How healthcare organizations are using MCP servers to build HIPAA-aware AI workflows for clinical documentation, patient data access, scheduling, and administrative automation.",
+    date: "2026-05-29",
+    author: "MyMCPTools Team",
+    category: "Industries",
+    readingTime: "11 min read",
+    keywords: ["mcp servers healthcare", "healthcare ai workflow", "hipaa mcp server", "clinical documentation mcp", "medical ai mcp"],
+    relatedServerSlugs: ["postgresql", "filesystem", "fetch", "notion", "slack", "github"],
+    content: `
+<p>Healthcare AI adoption has been slower than other industries — not because the use cases aren't there, but because the compliance requirements are real and the stakes for errors are high. MCP servers change the calculus by enabling structured, auditable AI access to clinical and administrative systems rather than the free-form prompt injection that makes compliance teams nervous.</p>
+
+<p>This guide covers MCP server patterns for healthcare workflows, with HIPAA considerations threaded throughout.</p>
+
+<h2>The Healthcare MCP Opportunity</h2>
+
+<p>Healthcare knowledge workers spend enormous time on tasks that are fundamentally information retrieval and documentation: finding relevant patient history before a visit, summarizing clinical notes, filling out prior authorization forms, coding encounters, and updating care coordination records. These tasks are high-volume, high-context, and exactly what AI assistants with MCP access can accelerate.</p>
+
+<p>The key is structuring MCP access correctly: read access to the right systems, audit logging on every query, and clear human review steps before any AI output touches a patient record.</p>
+
+<h2>HIPAA Considerations for MCP Deployments</h2>
+
+<p>Before covering specific servers, the compliance foundation:</p>
+
+<ul>
+<li><strong>Business Associate Agreements (BAAs):</strong> Any MCP server that touches PHI requires a BAA with the AI platform (Anthropic offers BAAs for Claude). Verify BAA coverage before deploying.</li>
+<li><strong>Minimum necessary access:</strong> Configure MCP servers to expose only the data fields required for the specific workflow. A scheduling assistant doesn't need diagnosis codes.</li>
+<li><strong>Audit logging:</strong> Every MCP tool call should be logged with user identity, timestamp, and data accessed. Most production MCP deployments add a logging middleware layer.</li>
+<li><strong>De-identification for development:</strong> Use de-identified or synthetic data when developing and testing MCP integrations. Never use real PHI in dev environments.</li>
+<li><strong>Local vs. cloud deployment:</strong> Consider deploying MCP servers on-premises or in your own HIPAA-compliant cloud environment rather than third-party infrastructure for PHI workloads.</li>
+</ul>
+
+<h2>Clinical Documentation Workflows</h2>
+
+<h3>Filesystem MCP — Structured Clinical Note Access</h3>
+
+<p>For organizations with EHR exports or document management systems that store structured clinical notes as files, the filesystem MCP server provides the foundation for documentation AI workflows.</p>
+
+<p><strong>Use cases:</strong></p>
+<ul>
+<li>Summarize prior visit notes before a scheduled appointment</li>
+<li>Extract relevant history sections (medications, allergies, diagnoses) from lengthy notes</li>
+<li>Identify documentation gaps in discharge summaries</li>
+<li>Assist with clinical note drafting by surfacing relevant prior documentation</li>
+</ul>
+
+<p><strong>Configuration note:</strong> Restrict filesystem access to specific directories (e.g., <code>/ehr-exports/de-identified/</code>) rather than giving broad system access. Set the MCP server's <code>allowedPaths</code> to your controlled document store only.</p>
+
+<h3>PostgreSQL MCP — Clinical Database Queries</h3>
+
+<p>Most EHR systems expose underlying databases or provide FHIR-compliant API exports that can be loaded into a PostgreSQL instance. A read-only PostgreSQL MCP connection enables powerful clinical decision support queries.</p>
+
+<p><strong>Example queries your AI assistant can run:</strong></p>
+
+<pre><code>-- Find all patients with diabetes on the panel scheduled this week
+SELECT p.mrn, p.name, a.appointment_date,
+       dm.hba1c_last_value, dm.hba1c_date
+FROM patients p
+JOIN appointments a ON a.patient_id = p.id
+JOIN diabetes_monitoring dm ON dm.patient_id = p.id
+WHERE a.appointment_date BETWEEN NOW() AND NOW() + INTERVAL '7 days'
+  AND dm.hba1c_last_value > 7.0
+ORDER BY a.appointment_date;
+
+-- Prior authorization: check medication history for step therapy requirements
+SELECT m.drug_name, m.start_date, m.end_date, m.prescriber
+FROM medication_history m
+WHERE m.patient_id = $1
+  AND m.drug_class = 'GLP-1 agonist'
+ORDER BY m.start_date DESC;</code></pre>
+
+<p><strong>Access pattern:</strong> Deploy as read-only with row-level security — the MCP connection should only access data for patients in the querying provider's panel, not the entire patient population.</p>
+
+<h2>Administrative Workflow Acceleration</h2>
+
+<h3>Prior Authorization Documentation</h3>
+
+<p>Prior authorization is one of healthcare's biggest administrative burdens. An MCP-enabled AI assistant can dramatically accelerate it:</p>
+
+<ol>
+<li>MCP queries the patient's relevant clinical history (diagnoses, previous treatments, labs)</li>
+<li>MCP fetches the payer's prior auth criteria from a structured knowledge base</li>
+<li>AI drafts the clinical justification letter with patient-specific supporting evidence</li>
+<li>Physician reviews, edits, and signs — the last step before submission</li>
+</ol>
+
+<p>The time savings come from steps 1 and 2 being automated. Gathering this information manually typically takes 15-45 minutes per prior auth request.</p>
+
+<h3>Scheduling and Care Coordination</h3>
+
+<p>The Fetch MCP server can pull structured data from scheduling APIs that expose REST endpoints, enabling AI assistants to query appointment availability, referral status, and care gaps without direct EHR integration.</p>
+
+<p><strong>Patterns:</strong></p>
+<ul>
+<li>Query referring provider portals for specialist availability</li>
+<li>Check care gap lists (patients overdue for annual wellness visits, mammograms, colorectal screenings)</li>
+<li>Coordinate multi-specialist appointments for complex cases</li>
+<li>Pull prescription drug monitoring program (PDMP) data for controlled substance queries</li>
+</ul>
+
+<h2>Research and Population Health</h2>
+
+<h3>De-identified Data for Research Workflows</h3>
+
+<p>For research teams working with de-identified datasets, MCP servers dramatically accelerate literature review, cohort building, and analysis workflows.</p>
+
+<p><strong>Notion MCP for research knowledge management:</strong></p>
+<ul>
+<li>Search protocol library for relevant study designs</li>
+<li>Pull IRB-approved data dictionaries during analysis</li>
+<li>Access shared team notes on ongoing studies</li>
+<li>Maintain living reviews of relevant literature</li>
+</ul>
+
+<p><strong>PostgreSQL MCP for cohort queries:</strong></p>
+<ul>
+<li>Build patient cohorts from de-identified research databases</li>
+<li>Run eligibility screens for clinical trial enrollment</li>
+<li>Generate summary statistics for grant applications</li>
+<li>Track outcome measures across intervention and control groups</li>
+</ul>
+
+<h2>Workflow Examples by Role</h2>
+
+<h3>Primary Care Physician</h3>
+<p>Before each appointment: AI assistant queries patient's last 3 visit notes, current medication list, outstanding care gaps, and relevant lab trends — generates a 2-minute pre-visit summary. Typical prep time drops from 8 minutes to under 60 seconds.</p>
+
+<h3>Medical Coder</h3>
+<p>After each encounter: AI assistant reads the clinical note, suggests ICD-10 and CPT codes with confidence levels and supporting documentation quotes, flags potential documentation gaps that could trigger claim denial. Human coder reviews and confirms — coding time drops 40-60%.</p>
+
+<h3>Care Coordinator</h3>
+<p>Daily panel management: AI assistant queries the population health database for patients with uncontrolled chronic conditions, generates prioritized outreach list with recommended interventions, drafts outreach messages personalized to each patient's history.</p>
+
+<h3>Hospital Administrator</h3>
+<p>Operational reporting: AI assistant queries bed management, staffing, and throughput data to generate daily situation reports, flag capacity risks, and surface patterns in length-of-stay or readmission data.</p>
+
+<h2>Deployment Recommendations</h2>
+
+<p>For healthcare MCP deployments:</p>
+
+<ol>
+<li><strong>Start with de-identified data</strong> — validate workflows before adding PHI access</li>
+<li><strong>Deploy on-prem or in your own cloud</strong> — don't send PHI to third-party MCP hosting</li>
+<li><strong>Implement audit logging at the MCP layer</strong> — every tool call should be logged</li>
+<li><strong>Use read-only connections where possible</strong> — AI assistants should retrieve, not write, to clinical systems</li>
+<li><strong>Human review gates</strong> — no AI output should directly update patient records without provider review</li>
+</ol>
+
+<p>Browse the <a href="/servers">MCP server directory</a> to find servers that match your healthcare workflow needs, and see our <a href="/blog/mcp-server-enterprise-compliance">enterprise compliance guide</a> for detailed governance frameworks applicable to regulated industries.</p>
+    `.trim(),
+  },
+  {
+    slug: "mcp-integration-guide-claude-desktop",
+    title: "MCP Integration Guide: Claude Desktop",
+    description: "Step-by-step guide to setting up MCP servers in Claude Desktop. Configure filesystem, database, web search, and custom MCP servers to give Claude live access to your tools and data.",
+    date: "2026-05-29",
+    author: "MyMCPTools Team",
+    category: "Integrations",
+    readingTime: "9 min read",
+    keywords: ["claude desktop mcp servers", "mcp claude desktop setup", "claude desktop configuration", "anthropic mcp desktop", "claude mcp config"],
+    relatedServerSlugs: ["filesystem", "github", "postgresql", "brave-search", "fetch", "memory"],
+    content: `
+<p>Claude Desktop is Anthropic's native application for macOS and Windows, and it's the easiest way to get started with MCP servers. Unlike browser-based AI, Claude Desktop runs locally and can connect to MCP servers running on your machine — giving you direct, low-latency access to your files, databases, and local tools.</p>
+
+<p>This guide covers everything from installing your first MCP server through advanced multi-server configurations.</p>
+
+<h2>Prerequisites</h2>
+
+<ul>
+<li>Claude Desktop installed (download from <strong>claude.ai/desktop</strong>)</li>
+<li>Node.js 18+ installed (for most MCP servers) — verify with <code>node --version</code></li>
+<li>Python 3.10+ for Python-based MCP servers (optional)</li>
+</ul>
+
+<h2>Understanding the Configuration File</h2>
+
+<p>Claude Desktop reads MCP server configurations from a JSON file. The location depends on your operating system:</p>
+
+<p><strong>macOS:</strong></p>
+<pre><code>~/Library/Application Support/Claude/claude_desktop_config.json</code></pre>
+
+<p><strong>Windows:</strong></p>
+<pre><code>%APPDATA%\\Claude\\claude_desktop_config.json</code></pre>
+
+<p>If this file doesn't exist yet, create it. The basic structure is:</p>
+
+<pre><code>{
+  "mcpServers": {
+    "server-name": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-name"],
+      "env": {
+        "OPTIONAL_ENV_VAR": "value"
+      }
+    }
+  }
+}</code></pre>
+
+<p>After any change to this file, restart Claude Desktop for the changes to take effect.</p>
+
+<h2>Adding Your First MCP Server: Filesystem</h2>
+
+<p>The filesystem MCP server is the ideal starting point — it gives Claude direct access to read and write files on your machine, with configurable directory restrictions.</p>
+
+<h3>Installation</h3>
+
+<p>Edit your <code>claude_desktop_config.json</code> to add:</p>
+
+<pre><code>{
+  "mcpServers": {
+    "filesystem": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-filesystem",
+        "/Users/yourname/Documents",
+        "/Users/yourname/Projects"
+      ]
+    }
+  }
+}</code></pre>
+
+<p>The paths after the server name are the directories Claude is allowed to access. You can list multiple paths — Claude will only be able to read and write within those boundaries.</p>
+
+<h3>Verify It's Working</h3>
+
+<ol>
+<li>Restart Claude Desktop</li>
+<li>Open a new conversation</li>
+<li>Ask Claude: <em>"What files are in my Documents folder?"</em></li>
+<li>You should see Claude call a filesystem tool and return actual file listings</li>
+</ol>
+
+<p>If you see a tool icon appear in the conversation, MCP is working.</p>
+
+<h2>Adding GitHub MCP Server</h2>
+
+<p>Give Claude access to your repositories — browse code, create issues, review PRs:</p>
+
+<pre><code>{
+  "mcpServers": {
+    "filesystem": { ... },
+    "github": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-github"],
+      "env": {
+        "GITHUB_PERSONAL_ACCESS_TOKEN": "ghp_your_token_here"
+      }
+    }
+  }
+}</code></pre>
+
+<p>Generate a GitHub personal access token at <strong>github.com/settings/tokens</strong> — for read-only repo access, the <code>repo</code> scope is sufficient. For issue and PR creation, you'll also need <code>write:issues</code>.</p>
+
+<p><strong>What you can do once connected:</strong></p>
+<ul>
+<li>"Summarize the open PRs in my-repo that have been waiting for review over a week"</li>
+<li>"Find all TODO comments in the src/ directory of my project"</li>
+<li>"Create an issue for the authentication bug we discussed"</li>
+<li>"What changed in the last 10 commits to main?"</li>
+</ul>
+
+<h2>Adding PostgreSQL MCP Server</h2>
+
+<p>Connect Claude to a local or remote PostgreSQL database:</p>
+
+<pre><code>{
+  "mcpServers": {
+    "postgres": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-postgres",
+        "postgresql://username:password@localhost:5432/dbname"
+      ]
+    }
+  }
+}</code></pre>
+
+<p>By default, this server is read-only — Claude can query your database but cannot modify it. This is the safe default for most workflows.</p>
+
+<p><strong>What you can do:</strong></p>
+<ul>
+<li>"Show me the schema for the users table"</li>
+<li>"How many new signups happened this week vs last week?"</li>
+<li>"Write a query to find all orders that shipped more than 5 days after being placed"</li>
+<li>"What are the top 10 most common error messages in the logs table?"</li>
+</ul>
+
+<h2>Adding Brave Search MCP Server</h2>
+
+<p>Give Claude the ability to search the web for current information:</p>
+
+<pre><code>{
+  "mcpServers": {
+    "brave-search": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-brave-search"],
+      "env": {
+        "BRAVE_API_KEY": "your_brave_api_key"
+      }
+    }
+  }
+}</code></pre>
+
+<p>Get a free Brave Search API key at <strong>brave.com/search/api</strong> — the free tier covers 2,000 queries/month, which is plenty for personal use.</p>
+
+<h2>Adding Memory MCP Server</h2>
+
+<p>The Memory MCP server gives Claude a persistent knowledge graph that persists across conversations — Claude can remember facts, relationships, and context between sessions:</p>
+
+<pre><code>{
+  "mcpServers": {
+    "memory": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-memory"]
+    }
+  }
+}</code></pre>
+
+<p>Once active, you can tell Claude to remember things: "Remember that our database server is at 10.0.0.1" or "Note that the API requires auth tokens to be Base64-encoded." Claude will store these as entities in the knowledge graph and retrieve them in future conversations.</p>
+
+<h2>A Complete Multi-Server Configuration</h2>
+
+<p>Here's a full configuration for a developer's Claude Desktop setup:</p>
+
+<pre><code>{
+  "mcpServers": {
+    "filesystem": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-filesystem",
+        "/Users/yourname/Projects",
+        "/Users/yourname/Documents"
+      ]
+    },
+    "github": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-github"],
+      "env": {
+        "GITHUB_PERSONAL_ACCESS_TOKEN": "ghp_your_token"
+      }
+    },
+    "postgres": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-postgres",
+        "postgresql://localhost:5432/myapp_development"
+      ]
+    },
+    "brave-search": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-brave-search"],
+      "env": {
+        "BRAVE_API_KEY": "BSA_your_key"
+      }
+    },
+    "memory": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-memory"]
+    }
+  }
+}</code></pre>
+
+<h2>Troubleshooting</h2>
+
+<h3>MCP server not appearing in Claude</h3>
+<ul>
+<li>Check that you restarted Claude Desktop after editing the config file</li>
+<li>Validate your JSON syntax — a single missing comma breaks the entire config</li>
+<li>Verify Node.js is in your PATH: open Terminal and run <code>which node</code></li>
+</ul>
+
+<h3>Server starts but tools don't work</h3>
+<ul>
+<li>Check that required environment variables are set correctly</li>
+<li>For filesystem server, verify the paths you specified actually exist</li>
+<li>For GitHub, verify your token has the necessary scopes</li>
+</ul>
+
+<h3>Viewing MCP logs</h3>
+<p>Claude Desktop writes MCP server logs to:</p>
+<ul>
+<li><strong>macOS:</strong> <code>~/Library/Logs/Claude/mcp*.log</code></li>
+<li><strong>Windows:</strong> <code>%APPDATA%\\Claude\\logs\\mcp*.log</code></li>
+</ul>
+
+<p>Open these in Console.app (macOS) or a text editor to see detailed error output from your MCP servers.</p>
+
+<h2>Next Steps</h2>
+
+<p>Once you have the basics running, explore the full <a href="/servers">MCP server directory</a> for servers that match your specific workflow. Popular additions for Claude Desktop users include <a href="/servers/notion">Notion</a> for knowledge management, <a href="/servers/slack">Slack</a> for team communication access, and <a href="/servers/fetch">Fetch</a> for scraping web pages into context.</p>
+
+<p>For editor-based workflows, see our guides on <a href="/blog/mcp-integration-guide-cursor">Cursor</a> and <a href="/blog/mcp-integration-guide-vs-code">VS Code</a> MCP integration — the configuration patterns are similar but with editor-specific nuances.</p>
+    `.trim(),
+  },
 ];
 export function getBlogPostBySlug(slug: string): BlogPost | undefined {
   return blogPosts.find((post) => post.slug === slug);
