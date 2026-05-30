@@ -45190,6 +45190,538 @@ ORDER BY m.start_date DESC;</code></pre>
 <p>For editor-based workflows, see our guides on <a href="/blog/mcp-integration-guide-cursor">Cursor</a> and <a href="/blog/mcp-integration-guide-vs-code">VS Code</a> MCP integration — the configuration patterns are similar but with editor-specific nuances.</p>
     `.trim(),
   },
+  {
+    slug: "mcp-servers-for-insurance",
+    title: "MCP Servers for Insurance: Automate Claims, Underwriting & Policy Workflows in 2026",
+    description: "Discover how insurance carriers, MGAs, and brokers use MCP servers to automate claims processing, underwriting decisions, policy management, and compliance workflows with AI.",
+    date: "2026-05-30",
+    author: "MyMCPTools Team",
+    category: "Industries",
+    readingTime: "10 min read",
+    keywords: ["mcp servers for insurance", "insurance ai automation", "claims processing mcp", "underwriting automation", "policy management mcp", "insurance workflow automation"],
+    relatedServerSlugs: ["salesforce", "postgresql", "docusign", "slack", "gmail", "jira", "filesystem", "airtable"],
+    content: `
+<p>The insurance industry runs on data — policy data, claims data, actuarial tables, compliance records. But most of that data is locked in siloed systems, requiring manual effort to bridge. MCP servers change this by giving AI assistants direct, structured access to the tools and databases that power insurance operations.</p>
+
+<p>This guide covers the most impactful MCP server use cases for insurance carriers, managing general agents (MGAs), and independent agencies in 2026.</p>
+
+<h2>Why Insurance Is a Strong Fit for MCP Automation</h2>
+
+<p>Insurance workflows are document-heavy, data-intensive, and highly repetitive — exactly the profile where MCP-connected AI delivers the most value. The key advantages:</p>
+
+<ul>
+<li><strong>Structured data everywhere</strong> — Policy terms, coverage limits, claims history, and actuarial data have clear schemas that AI can reason over directly.</li>
+<li><strong>High-volume repetitive tasks</strong> — First notice of loss (FNOL) intake, policy renewals, endorsement requests, and coverage verification follow predictable patterns.</li>
+<li><strong>Compliance requirements create audit trails</strong> — MCP servers can log every AI action, giving compliance teams the traceability they require.</li>
+<li><strong>Customer communication volume</strong> — Insurers handle thousands of inbound inquiries; AI with context access can respond accurately without human review on routine questions.</li>
+</ul>
+
+<h2>Key MCP Servers for Insurance Operations</h2>
+
+<h3>1. Salesforce MCP Server — Policy & Customer Relationship Data</h3>
+
+<p>Most carriers and brokers run their book of business on Salesforce Financial Services Cloud or custom Salesforce CRM instances. The Salesforce MCP server gives your AI real-time access to policyholder records, renewal pipelines, producer relationships, and claim histories.</p>
+
+<p><strong>Key capabilities for insurance:</strong></p>
+<ul>
+<li>Query policyholder accounts, coverage details, and premium history</li>
+<li>Create and update claims records directly from FNOL intake conversations</li>
+<li>Generate renewal opportunity reports and flag at-risk accounts</li>
+<li>Update producer commission records and agency relationships</li>
+</ul>
+
+<p><strong>Insurance use case:</strong> An AI-powered renewal assistant reads the policyholder's Salesforce record, identifies upcoming expiring policies, pulls prior loss runs, and drafts personalized renewal proposals — all in a single conversation.</p>
+
+<h3>2. PostgreSQL MCP Server — Core Policy Administration</h3>
+
+<p>Many carriers run custom policy administration systems (PAS) on PostgreSQL or expose their PAS data via read replicas. The PostgreSQL MCP server lets AI query policy tables, endorsement records, and claims data directly.</p>
+
+<p><strong>Key capabilities for insurance:</strong></p>
+<ul>
+<li>Schema introspection to understand policy, coverage, and endorsement table structures</li>
+<li>Read-only query execution for actuarial and underwriting analysis</li>
+<li>Claims status lookups without logging into the PAS UI</li>
+<li>Coverage verification against policy terms in real time</li>
+</ul>
+
+<p><strong>Insurance use case:</strong> An underwriter asks the AI to compare loss ratios across a book segment for a specific class of business. The AI queries the policy and claims tables directly, performs the calculation, and surfaces the analysis — no data extraction or spreadsheet work needed.</p>
+
+<h3>3. DocuSign MCP Server — Policy Execution & E-Signatures</h3>
+
+<p>Policy issuance, endorsements, and claims settlements all require signatures. The DocuSign MCP server enables AI to initiate, track, and complete signature workflows without leaving the AI conversation.</p>
+
+<p><strong>Key capabilities for insurance:</strong></p>
+<ul>
+<li>Send policy documents for e-signature directly from AI-generated workflows</li>
+<li>Check envelope status and surface pending signature bottlenecks</li>
+<li>Trigger automated reminders for unsigned documents</li>
+<li>Download completed, signed documents to policy filing systems</li>
+</ul>
+
+<p><strong>Insurance use case:</strong> During a renewal conversation, the AI generates the updated policy documents, sends them for e-signature via DocuSign, and logs the issuance date in the CRM — all in one automated workflow triggered by a single prompt.</p>
+
+<h3>4. Filesystem MCP Server — Document Intake & Processing</h3>
+
+<p>Claims adjusters receive photos, police reports, medical records, repair estimates, and correspondence as files. The filesystem MCP server enables AI to read, organize, and extract data from these documents as part of structured claims workflows.</p>
+
+<p><strong>Key capabilities for insurance:</strong></p>
+<ul>
+<li>Read incoming claims documents (PDFs, images, text files) for content extraction</li>
+<li>Organize documents into structured folder hierarchies by claim number or policy</li>
+<li>Generate claims summaries from multi-document sets</li>
+<li>Flag documents requiring human adjuster review</li>
+</ul>
+
+<p><strong>Insurance use case:</strong> An AI claims intake assistant reads an uploaded police report and damage photos, extracts key facts (incident date, parties involved, estimated damage), populates the FNOL record in the claims system, and routes the claim to the appropriate adjuster queue.</p>
+
+<h3>5. Gmail / Slack MCP Servers — Customer & Producer Communication</h3>
+
+<p>Insurance is a high-touch business. Brokers, producers, and insureds communicate via email and messaging constantly. Gmail and Slack MCP servers give AI assistants access to these communication channels for drafting, routing, and triaging.</p>
+
+<p><strong>Key capabilities for insurance:</strong></p>
+<ul>
+<li>Read inbound coverage inquiries and draft accurate responses using policy data</li>
+<li>Triage claims status emails and route to the correct adjuster</li>
+<li>Draft producer bulletins and coverage change notifications</li>
+<li>Alert claims teams in Slack when new FNOLs are submitted</li>
+</ul>
+
+<h3>6. Jira MCP Server — Claims Workflow Tracking</h3>
+
+<p>Complex claims often involve multiple departments — adjusting, legal, subrogation, recovery. Jira (or similar project trackers) map these workflows, and the Jira MCP server lets AI query and update claims tasks across teams.</p>
+
+<p><strong>Key capabilities for insurance:</strong></p>
+<ul>
+<li>Check claims status across multi-department workflows</li>
+<li>Create tasks for adjuster follow-ups, inspection scheduling, or legal review</li>
+<li>Identify claims exceeding SLA thresholds and escalate automatically</li>
+</ul>
+
+<h2>High-Value Insurance Workflows for MCP</h2>
+
+<h3>Automated FNOL Intake</h3>
+<p>First Notice of Loss is the first bottleneck in claims. An MCP-connected AI can intake FNOL via email, web form, or phone transcript, extract structured data, verify policy coverage via the PostgreSQL server, create the claims record in Salesforce, route the Jira task to the appropriate adjuster, and confirm receipt to the insured via Gmail — all without human data entry.</p>
+
+<h3>Renewal Propensity Scoring</h3>
+<p>By querying loss history, payment history, and engagement data from Salesforce and the policy database, an AI can score renewal propensity for every account in a book. Agents receive a prioritized list of accounts to contact, with draft outreach already written.</p>
+
+<h3>Underwriting Data Clearance</h3>
+<p>New commercial submissions often require pulling data from multiple sources — prior carrier loss runs, property databases, financial statements. An MCP-connected AI can retrieve and synthesize these data points into a structured underwriting memo, cutting clearance time from days to hours.</p>
+
+<h3>Compliance Audit Preparation</h3>
+<p>Regulatory exams require assembling policy records, claims files, and communication logs. The filesystem and database MCP servers let AI compile these records systematically, while DocuSign confirms signature dates and audit trail completeness.</p>
+
+<h2>Security Considerations for Insurance MCP Deployments</h2>
+
+<p>Insurance data is heavily regulated (GDPR, CCPA, NYDFS, state insurance regulations). Before deploying MCP servers in production:</p>
+
+<ul>
+<li><strong>Scope access to read-only where possible</strong> — Use read replicas for database MCP servers; restrict filesystem servers to specific claim folders.</li>
+<li><strong>Implement PII redaction</strong> — Configure AI to never include SSNs, driver's license numbers, or medical information in logs or outputs.</li>
+<li><strong>Audit logging</strong> — Every MCP tool call should be logged with user identity, timestamp, and query for regulatory compliance.</li>
+<li><strong>Role-based access</strong> — Underwriters should not have MCP access to claims adjuster data and vice versa; configure separate MCP server instances per role.</li>
+</ul>
+
+<p>For a comprehensive guide to securing your MCP deployment, see our <a href="/blog/mcp-server-enterprise-compliance">enterprise compliance guide</a> and <a href="/blog/mcp-server-auth-patterns">authentication patterns</a>.</p>
+
+<h2>Getting Started</h2>
+
+<p>The fastest path for an insurance operation is usually starting with the Salesforce MCP server — it requires minimal infrastructure change and immediately surfaces the most value for producers and service teams. Add the PostgreSQL server once you've validated the workflow patterns, then layer in DocuSign and Gmail automation for end-to-end policy execution.</p>
+
+<p>Browse the full <a href="/servers">MCP server directory</a> for insurance-relevant integrations including payment processing, document management, and regulatory data providers.</p>
+    `.trim(),
+  },
+  {
+    slug: "mcp-servers-for-procurement",
+    title: "MCP Servers for Procurement: Automate Purchase Orders, Vendor Management & Approvals",
+    description: "Learn how procurement and supply chain teams use MCP servers to automate PO creation, vendor onboarding, approval workflows, spend analysis, and contract management with AI.",
+    date: "2026-05-30",
+    author: "MyMCPTools Team",
+    category: "Use Cases",
+    readingTime: "9 min read",
+    keywords: ["mcp servers for procurement", "procurement automation mcp", "purchase order automation", "vendor management mcp", "spend analysis mcp", "procurement ai workflow"],
+    relatedServerSlugs: ["salesforce", "postgresql", "airtable", "docusign", "slack", "gmail", "jira", "filesystem"],
+    content: `
+<p>Procurement teams are drowning in manual work — chasing approvals, entering PO data, onboarding vendors, reconciling invoices, and enforcing policy compliance. MCP servers give AI assistants the direct system access needed to automate these workflows end to end, without requiring a multi-year ERP customization project.</p>
+
+<p>This guide covers the most impactful MCP server configurations for procurement teams in 2026.</p>
+
+<h2>The Procurement Automation Gap</h2>
+
+<p>Most procurement teams use a patchwork of tools: an ERP for POs, a spreadsheet for vendor contacts, email for approvals, a folder share for contracts. Data moves between these systems manually, creating delays and errors.</p>
+
+<p>MCP bridges this gap by giving a single AI assistant access to all of these systems simultaneously. Instead of logging into three tools to approve a purchase request, a procurement manager can handle it in one AI conversation that reads the PO details, checks the budget, gets vendor risk data, and routes the approval — all through connected MCP servers.</p>
+
+<h2>Core MCP Servers for Procurement</h2>
+
+<h3>1. PostgreSQL MCP Server — ERP & Spend Database</h3>
+
+<p>Most enterprise ERPs (SAP, Oracle, NetSuite, Dynamics) expose their data through a PostgreSQL or SQL-compatible database layer. The PostgreSQL MCP server lets your AI query PO history, vendor records, budget allocations, and spend analytics without custom API development.</p>
+
+<p><strong>Key procurement capabilities:</strong></p>
+<ul>
+<li>Query open purchase orders by vendor, category, or cost center</li>
+<li>Run spend analysis by supplier, department, or GL code</li>
+<li>Check budget remaining for any cost center before approving requests</li>
+<li>Pull vendor performance history (on-time delivery, defect rates)</li>
+<li>Identify maverick spend — purchases made outside approved vendors</li>
+</ul>
+
+<p><strong>Use case:</strong> A category manager asks the AI to identify all tail spend vendors in the facilities category over the last 12 months. The AI queries the spend database, groups by vendor, calculates total spend and transaction count, and recommends consolidation candidates — in seconds.</p>
+
+<h3>2. Airtable MCP Server — Vendor Master & Intake Forms</h3>
+
+<p>Many mid-market procurement teams use Airtable as a flexible vendor management database and intake form system. The Airtable MCP server lets AI query vendor records, update statuses, and process new vendor submissions.</p>
+
+<p><strong>Key procurement capabilities:</strong></p>
+<ul>
+<li>Look up vendor qualification status, certifications, and risk tier</li>
+<li>Add new vendor submissions from intake form data</li>
+<li>Update vendor onboarding workflow stages as steps complete</li>
+<li>Query preferred vendor lists by category for PO routing</li>
+</ul>
+
+<p><strong>Use case:</strong> When a new vendor is submitted through the intake form, an AI assistant reads the submission, checks for duplicate vendors in the master, queries sanctions and debarment lists via web search, assigns a risk tier, and creates the Airtable record — turning a 2-day onboarding task into a 10-minute automated review.</p>
+
+<h3>3. DocuSign MCP Server — Contract Execution & PO Acknowledgment</h3>
+
+<p>Purchase agreements, master service agreements, and vendor acknowledgments all require signatures. The DocuSign MCP server enables AI to initiate and track contract execution as part of automated procurement workflows.</p>
+
+<p><strong>Key procurement capabilities:</strong></p>
+<ul>
+<li>Send vendor agreements for e-signature as part of onboarding workflows</li>
+<li>Check pending contract signatures and escalate overdue items</li>
+<li>Retrieve signed contract metadata (effective date, terms, auto-renewal clauses)</li>
+<li>Trigger PO acknowledgment requests for high-value orders</li>
+</ul>
+
+<p><strong>Use case:</strong> When a PO over $50K is approved, the AI automatically sends a vendor acknowledgment via DocuSign, logs the acknowledgment date in the ERP, and alerts the procurement coordinator via Slack — closing the loop on PO confirmation without any manual action.</p>
+
+<h3>4. Slack MCP Server — Approval Routing & Alerts</h3>
+
+<p>Approval workflows are one of the biggest friction points in procurement. The Slack MCP server lets AI route approvals, send reminders, and surface escalations directly in the communication tool your team already uses.</p>
+
+<p><strong>Key procurement capabilities:</strong></p>
+<ul>
+<li>Post approval requests to the appropriate approver's Slack DM or channel</li>
+<li>Send budget overrun alerts to finance and procurement managers</li>
+<li>Notify buyers when POs are acknowledged or shipped</li>
+<li>Escalate stalled approvals after configurable SLA windows</li>
+</ul>
+
+<h3>5. Gmail MCP Server — Vendor Communication & Invoice Intake</h3>
+
+<p>Procurement teams receive invoices, quotes, vendor communications, and shipping confirmations via email. Gmail MCP enables AI to read, classify, and act on this volume systematically.</p>
+
+<p><strong>Key procurement capabilities:</strong></p>
+<ul>
+<li>Read incoming vendor invoices and extract line-item data for 3-way matching</li>
+<li>Draft RFQ (request for quote) emails to multiple vendors simultaneously</li>
+<li>Triage vendor inquiries and route to the appropriate buyer</li>
+<li>Flag invoices that don't match PO terms for human review</li>
+</ul>
+
+<h3>6. Jira MCP Server — Procurement Workflow Tracking</h3>
+
+<p>Complex sourcing events — RFPs, contract renewals, vendor audits — involve multiple stakeholders and long timelines. Jira provides the workflow engine, and the Jira MCP server lets AI query and update sourcing project status in real time.</p>
+
+<p><strong>Key procurement capabilities:</strong></p>
+<ul>
+<li>Check status of open sourcing events across categories</li>
+<li>Create tasks for vendor evaluation, reference checks, and legal review</li>
+<li>Track contract renewal milestones and send advance notice alerts</li>
+<li>Generate sourcing project status reports for stakeholders</li>
+</ul>
+
+<h2>High-Impact Procurement Workflows</h2>
+
+<h3>Purchase Requisition to PO Automation</h3>
+<p>The AI reads a submitted purchase requisition, verifies the requestor is within their spend authority, checks budget availability in the ERP database, looks up the preferred vendor for the category in Airtable, creates a draft PO, and routes the approval to the appropriate manager via Slack — all triggered by a single form submission.</p>
+
+<h3>Vendor Onboarding Workflow</h3>
+<p>New vendor intake triggers an AI workflow that checks for duplicates in the vendor master, runs basic due diligence, assigns a risk tier, creates the Airtable record, sends the vendor agreement via DocuSign, and notifies the requesting buyer — turning a week-long onboarding into same-day completion for low-risk vendors.</p>
+
+<h3>Invoice 3-Way Match</h3>
+<p>When an invoice arrives via email, the AI reads the invoice data, queries the ERP for the matching PO and receiving record, checks that quantities and prices align, and either approves the invoice for payment or flags discrepancies with specific line-item details — cutting AP processing time dramatically.</p>
+
+<h3>Spend Analysis & Category Review</h3>
+<p>A category manager asks for a quarterly spend review. The AI queries the ERP database across all POs in the period, groups spend by vendor and subcategory, calculates savings vs. contract rates, identifies unauthorized vendor usage, and generates a structured analysis — work that previously took days of spreadsheet manipulation.</p>
+
+<h3>Contract Renewal Management</h3>
+<p>The AI queries the contract database for agreements expiring in the next 90 days, surfaces those with auto-renewal clauses that need action, checks vendor performance data for renewal decisions, and creates Jira tasks for the relevant category managers — ensuring no renewal is missed.</p>
+
+<h2>Implementation Considerations</h2>
+
+<p>When deploying MCP servers for procurement:</p>
+
+<ul>
+<li><strong>Start with read-only access</strong> — Connect to your ERP's read replica first. Validate AI outputs before granting write access to production systems.</li>
+<li><strong>Budget data is sensitive</strong> — Limit financial database access to procurement and finance roles; use separate MCP server instances with role-appropriate credentials.</li>
+<li><strong>Approval audit trails are non-negotiable</strong> — Log every AI approval action with the prompt, data accessed, and decision made for SOX and procurement policy compliance.</li>
+<li><strong>Vendor data hygiene</strong> — MCP automation will surface data quality issues in your vendor master quickly. Budget time for remediation when deploying vendor management workflows.</li>
+</ul>
+
+<p>For security configuration guidance, see our <a href="/blog/mcp-server-auth-patterns">authentication patterns guide</a> and <a href="/blog/mcp-server-secrets-management">secrets management best practices</a>.</p>
+
+<h2>Getting Started</h2>
+
+<p>The fastest procurement win is usually spend visibility. Connect the PostgreSQL or database MCP server to your ERP's reporting layer and give your category managers AI-powered spend analysis. This requires no write access, no approval workflow changes, and delivers immediate value — making it the ideal starting point for proving out MCP in a procurement context.</p>
+
+<p>From there, the natural second step is approval routing via Slack, which reduces the manual email-chasing that frustrates every procurement team. Add DocuSign and Gmail automation once you've established confidence in the AI's accuracy.</p>
+
+<p>Browse the full <a href="/servers">MCP server directory</a> for additional procurement-relevant integrations including ERP connectors, payment processors, and supplier data providers.</p>
+    `.trim(),
+  },
+  {
+    slug: "mcp-integration-guide-jetbrains",
+    title: "MCP Integration Guide: JetBrains IDEs (IntelliJ, PyCharm, WebStorm) in 2026",
+    description: "Step-by-step guide to configuring MCP servers in JetBrains IDEs. Learn how to set up Model Context Protocol in IntelliJ IDEA, PyCharm, WebStorm, and other JetBrains tools for AI-powered development.",
+    date: "2026-05-30",
+    author: "MyMCPTools Team",
+    category: "Integration Guides",
+    readingTime: "8 min read",
+    keywords: ["jetbrains mcp", "mcp integration jetbrains", "intellij mcp server", "pycharm mcp", "webstorm mcp setup", "jetbrains ai mcp configuration"],
+    relatedServerSlugs: ["jetbrains", "github", "git", "filesystem", "postgresql", "jira", "linear"],
+    content: `
+<p>JetBrains IDEs — IntelliJ IDEA, PyCharm, WebStorm, GoLand, Rider, and others — are the tools of choice for millions of professional developers. With JetBrains' native MCP support, you can connect these IDEs to any MCP server, giving your AI coding assistant access to databases, repositories, issue trackers, and more directly inside your development environment.</p>
+
+<p>This guide walks through the complete setup process for MCP in JetBrains IDEs, from installation to advanced configuration.</p>
+
+<h2>Prerequisites</h2>
+
+<ul>
+<li>JetBrains IDE version 2024.2 or later (MCP support requires the AI Assistant plugin)</li>
+<li>JetBrains AI Assistant subscription (available via JetBrains Toolbox or IDE settings)</li>
+<li>Node.js 18+ or Python 3.10+ installed (required for most MCP servers)</li>
+</ul>
+
+<h2>Step 1: Enable the AI Assistant Plugin</h2>
+
+<p>MCP support in JetBrains IDEs is provided through the AI Assistant plugin. To enable it:</p>
+
+<ol>
+<li>Open your JetBrains IDE (IntelliJ, PyCharm, WebStorm, etc.)</li>
+<li>Go to <strong>Settings / Preferences → Plugins</strong></li>
+<li>Search for "AI Assistant" in the Marketplace tab</li>
+<li>Click Install, then restart the IDE</li>
+<li>After restart, sign in to your JetBrains account when prompted</li>
+</ol>
+
+<p>If you already have the AI Assistant plugin installed, verify you're running version 2.0 or later — MCP support was added in this release.</p>
+
+<h2>Step 2: Access MCP Server Configuration</h2>
+
+<p>JetBrains stores MCP server configuration in the AI Assistant settings:</p>
+
+<ol>
+<li>Open <strong>Settings / Preferences</strong> (Ctrl+Alt+S on Windows/Linux, ⌘, on macOS)</li>
+<li>Navigate to <strong>Tools → AI Assistant → Model Context Protocol (MCP)</strong></li>
+<li>You'll see the MCP server configuration panel with an "Add Server" button</li>
+</ol>
+
+<p>Alternatively, MCP servers can be configured via the <code>mcp.json</code> configuration file, which JetBrains IDEs read from the same location as Claude Desktop:</p>
+
+<ul>
+<li><strong>macOS:</strong> <code>~/Library/Application Support/JetBrains/AIAssistant/mcp.json</code></li>
+<li><strong>Windows:</strong> <code>%APPDATA%\\JetBrains\\AIAssistant\\mcp.json</code></li>
+<li><strong>Linux:</strong> <code>~/.config/JetBrains/AIAssistant/mcp.json</code></li>
+</ul>
+
+<h2>Step 3: Configure Your First MCP Server</h2>
+
+<p>The filesystem MCP server is the recommended starting point — it gives the AI Assistant access to your project files beyond what's already indexed by the IDE.</p>
+
+<p>In the MCP configuration panel, click <strong>Add Server</strong> and enter:</p>
+
+<pre><code>{
+  "mcpServers": {
+    "filesystem": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-filesystem",
+        "/path/to/your/projects"
+      ]
+    }
+  }
+}</code></pre>
+
+<p>Replace <code>/path/to/your/projects</code> with the root directory of your project workspace. You can specify multiple directories:</p>
+
+<pre><code>{
+  "mcpServers": {
+    "filesystem": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-filesystem",
+        "/Users/yourname/projects",
+        "/Users/yourname/documents"
+      ]
+    }
+  }
+}</code></pre>
+
+<h2>Step 4: Add the GitHub MCP Server</h2>
+
+<p>For developers using GitHub, the GitHub MCP server dramatically improves the AI Assistant's ability to reason about issues, PRs, and code changes across your repositories.</p>
+
+<p>First, create a GitHub Personal Access Token with <code>repo</code> and <code>read:org</code> scopes at <strong>github.com/settings/tokens</strong>.</p>
+
+<p>Then add to your MCP configuration:</p>
+
+<pre><code>{
+  "mcpServers": {
+    "filesystem": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-filesystem", "/your/projects"]
+    },
+    "github": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-github"],
+      "env": {
+        "GITHUB_PERSONAL_ACCESS_TOKEN": "ghp_your_token_here"
+      }
+    }
+  }
+}</code></pre>
+
+<p>With this configured, you can ask the AI Assistant things like "What's the status of PR #847?" or "Create an issue for the bug I just found" directly from the IDE chat.</p>
+
+<h2>Step 5: Add a Database MCP Server</h2>
+
+<p>JetBrains IDEs already have excellent database tooling (DataGrip integration is built in), but the PostgreSQL MCP server gives the AI Assistant the ability to reason about your database schema when writing queries, generating migrations, or debugging data issues.</p>
+
+<pre><code>{
+  "mcpServers": {
+    "postgres": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-postgres"],
+      "env": {
+        "POSTGRES_CONNECTION_STRING": "postgresql://user:password@localhost:5432/mydb"
+      }
+    }
+  }
+}</code></pre>
+
+<p><strong>Security note:</strong> The MCP PostgreSQL server defaults to read-only mode. Never use a superuser or write-access account for MCP — create a dedicated read-only database user for AI access.</p>
+
+<h2>Step 6: Add Jira or Linear for Issue Context</h2>
+
+<p>One of the most powerful JetBrains MCP configurations is connecting your issue tracker, so the AI Assistant can reference ticket requirements when you're implementing features or fixing bugs.</p>
+
+<p>For Jira (requires API token from <strong>id.atlassian.com/manage-profile/security/api-tokens</strong>):</p>
+
+<pre><code>{
+  "mcpServers": {
+    "jira": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-jira"],
+      "env": {
+        "JIRA_HOST": "https://yourcompany.atlassian.net",
+        "JIRA_EMAIL": "you@yourcompany.com",
+        "JIRA_API_TOKEN": "your_api_token"
+      }
+    }
+  }
+}</code></pre>
+
+<p>For Linear (requires API key from <strong>linear.app/settings/api</strong>):</p>
+
+<pre><code>{
+  "mcpServers": {
+    "linear": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-linear"],
+      "env": {
+        "LINEAR_API_KEY": "your_api_key"
+      }
+    }
+  }
+}</code></pre>
+
+<p>With an issue tracker connected, you can say "Implement the requirements from PROJ-1234" and the AI will pull the ticket description, acceptance criteria, and linked design specs directly into its context.</p>
+
+<h2>Complete Configuration Example</h2>
+
+<p>A typical professional developer setup with JetBrains MCP:</p>
+
+<pre><code>{
+  "mcpServers": {
+    "filesystem": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-filesystem",
+        "/Users/dev/projects"
+      ]
+    },
+    "github": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-github"],
+      "env": {
+        "GITHUB_PERSONAL_ACCESS_TOKEN": "ghp_..."
+      }
+    },
+    "postgres": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-postgres"],
+      "env": {
+        "POSTGRES_CONNECTION_STRING": "postgresql://readonly:pass@localhost:5432/appdb"
+      }
+    },
+    "linear": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-linear"],
+      "env": {
+        "LINEAR_API_KEY": "lin_api_..."
+      }
+    }
+  }
+}</code></pre>
+
+<h2>Using MCP in the AI Assistant Chat</h2>
+
+<p>Once configured, MCP servers appear as available tools in the AI Assistant chat panel (View → Tool Windows → AI Assistant). The AI automatically selects relevant MCP tools based on your prompts — you don't need to specify which server to use.</p>
+
+<p><strong>Effective prompts for JetBrains MCP workflows:</strong></p>
+
+<ul>
+<li><em>"What issues are assigned to me in Linear right now?"</em> — Pulls your current sprint tasks</li>
+<li><em>"Implement the feature described in LINEAR-456"</em> — Reads the issue and generates code</li>
+<li><em>"This query is slow — can you check the schema and suggest optimizations?"</em> — Reads database schema to inform suggestions</li>
+<li><em>"What changed in this repo since last week?"</em> — Uses Git/GitHub MCP to summarize recent activity</li>
+<li><em>"Write a migration for adding the columns described in this PR"</em> — Combines GitHub + database schema context</li>
+</ul>
+
+<h2>IDE-Specific Notes</h2>
+
+<h3>IntelliJ IDEA (Java/Kotlin)</h3>
+<p>The Maven and Gradle build tool integrations in IntelliJ work well alongside MCP — the AI can read your <code>pom.xml</code> or <code>build.gradle</code> via filesystem MCP to understand dependencies when answering questions about library versions or upgrade paths.</p>
+
+<h3>PyCharm (Python)</h3>
+<p>PyCharm users benefit most from combining filesystem MCP with the PostgreSQL server for data science and web development workflows. The AI can read your <code>requirements.txt</code> and cross-reference it with database schema when generating SQLAlchemy models.</p>
+
+<h3>WebStorm (JavaScript/TypeScript)</h3>
+<p>WebStorm's Node.js debugging integration pairs well with MCP — use the GitHub server to pull PR context and the filesystem server to navigate your component library when writing new features.</p>
+
+<h2>Troubleshooting</h2>
+
+<p><strong>MCP server not appearing in AI Assistant:</strong> Restart the IDE after changing the MCP configuration file. JetBrains reads MCP config on startup.</p>
+
+<p><strong>"Command not found" errors:</strong> Ensure Node.js is installed and available in the system PATH. On macOS, if you installed Node via nvm, you may need to add the full path to the <code>command</code> field: <code>/Users/yourname/.nvm/versions/node/v20.0.0/bin/node</code>.</p>
+
+<p><strong>Database connection refused:</strong> Verify your PostgreSQL connection string is correct and that the database server allows connections from localhost. Check that SSL mode settings match your database configuration.</p>
+
+<p><strong>Token authentication failures:</strong> GitHub tokens expire. Regenerate at github.com/settings/tokens and update your MCP config. Jira API tokens don't expire but require the correct email-token pair.</p>
+
+<h2>Next Steps</h2>
+
+<p>With the core MCP servers running in JetBrains, explore the full <a href="/servers">MCP server directory</a> for additional integrations relevant to your stack. Popular additions for JetBrains users include <a href="/servers/jira">Jira</a> for project management, <a href="/servers/slack">Slack</a> for team communication, and specialized language-server MCP tools for framework-specific assistance.</p>
+
+<p>For other editor setups, see our guides on <a href="/blog/mcp-integration-guide-cursor">Cursor</a>, <a href="/blog/mcp-integration-guide-vs-code">VS Code</a>, and <a href="/blog/mcp-integration-guide-claude-desktop">Claude Desktop</a> MCP integration.</p>
+    `.trim(),
+  },
 ];
 export function getBlogPostBySlug(slug: string): BlogPost | undefined {
   return blogPosts.find((post) => post.slug === slug);
