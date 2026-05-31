@@ -45722,6 +45722,452 @@ ORDER BY m.start_date DESC;</code></pre>
 <p>For other editor setups, see our guides on <a href="/blog/mcp-integration-guide-cursor">Cursor</a>, <a href="/blog/mcp-integration-guide-vs-code">VS Code</a>, and <a href="/blog/mcp-integration-guide-claude-desktop">Claude Desktop</a> MCP integration.</p>
     `.trim(),
   },
+  {
+    slug: "mcp-servers-for-legal",
+    title: "Best MCP Servers for Legal Teams in 2026",
+    description: "Discover how law firms and in-house legal teams use MCP servers to automate contract review, legal research, document drafting, and compliance monitoring with AI.",
+    date: "2026-05-30",
+    author: "MyMCPTools Team",
+    category: "Industries",
+    readingTime: "9 min read",
+    keywords: ["mcp servers for legal", "mcp servers for law firms", "legal ai tools mcp", "contract review mcp", "legal research mcp server"],
+    relatedServerSlugs: ["filesystem", "postgres", "brave-search", "github", "slack"],
+    content: `
+<p>Legal work is information-dense, deadline-driven, and high-stakes. MCP servers are changing how law firms and in-house legal teams handle everything from contract review to regulatory research — giving AI assistants the structured access they need to actually be useful in legal workflows.</p>
+
+<p>This guide covers the most valuable MCP server configurations for legal professionals, with practical setup advice for each.</p>
+
+<h2>Why MCP Matters for Legal Teams</h2>
+
+<p>Traditional AI tools require you to paste context manually — a painful workflow when you're dealing with hundred-page contracts or sprawling regulatory databases. MCP servers give your AI assistant direct, controlled access to your document repositories, databases, and research tools.</p>
+
+<p>The result: AI that can actually navigate your matter files, cross-reference precedents, and draft with your firm's specific templates — without you manually feeding it context every session.</p>
+
+<h2>1. Filesystem MCP Server — Document and Matter Management</h2>
+
+<p>Legal work revolves around documents. The filesystem MCP server gives your AI assistant direct read/write access to your matter folders, contract libraries, and template repositories.</p>
+
+<p><strong>Key legal use cases:</strong></p>
+<ul>
+<li>Navigate matter folders and pull relevant agreements automatically</li>
+<li>Compare contract versions and flag changed clauses</li>
+<li>Access template libraries for first-draft generation</li>
+<li>Search across a portfolio of agreements for specific provisions</li>
+</ul>
+
+<p><strong>Setup recommendation:</strong> Restrict access to specific directories. Never give your AI assistant unrestricted filesystem access. A well-configured setup might look like:</p>
+
+<pre><code>{
+  "mcpServers": {
+    "filesystem": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-filesystem",
+               "/matters/active", "/templates/contracts", "/research/memos"]
+    }
+  }
+}</code></pre>
+
+<p>This limits access to active matters, contract templates, and research memos — nothing else.</p>
+
+<h2>2. PostgreSQL MCP Server — Matter and Client Database</h2>
+
+<p>Many law firms run matter management systems on PostgreSQL or expose their data through Postgres-compatible APIs. The PostgreSQL MCP server lets your AI query matter status, billing records, deadline calendars, and conflict checks directly.</p>
+
+<p><strong>Legal queries you can automate:</strong></p>
+<ul>
+<li>"Show all active matters for client X with upcoming deadlines"</li>
+<li>"Which matters involve counterparty Y?" (conflict check)</li>
+<li>"List all agreements expiring in the next 90 days"</li>
+<li>"What's the total WIP for partner Z this month?"</li>
+</ul>
+
+<p>Connect to a read-only replica in production environments. Giving AI write access to billing or matter databases requires careful evaluation of your malpractice insurance terms and firm policies.</p>
+
+<h2>3. Brave Search MCP Server — Legal Research and Regulatory Monitoring</h2>
+
+<p>Legal research requires current information — case law, regulatory changes, agency guidance. The Brave Search MCP server gives your AI access to live web search for up-to-date legal information.</p>
+
+<p><strong>Effective legal research prompts with Brave Search:</strong></p>
+<ul>
+<li>Recent circuit court decisions on specific legal standards</li>
+<li>New agency guidance or rulemaking on regulatory topics</li>
+<li>State-specific variations in commercial law provisions</li>
+<li>Enforcement trends and recent case outcomes</li>
+</ul>
+
+<p>Pair this with your AI's ability to synthesize across documents and the filesystem MCP for a research workflow that can draft memos grounded in both your matter files and current law.</p>
+
+<h2>4. Slack MCP Server — Internal Legal Operations</h2>
+
+<p>Legal operations teams increasingly rely on Slack for internal coordination. The Slack MCP server lets your AI search Slack history, find relevant discussions about past matters, and draft updates to internal channels.</p>
+
+<p><strong>Legal ops use cases:</strong></p>
+<ul>
+<li>Find prior discussions about a specific counterparty or matter type</li>
+<li>Draft matter status updates for internal channels</li>
+<li>Search for prior guidance from GC on specific issue types</li>
+<li>Alert relevant teams about urgent deadline updates</li>
+</ul>
+
+<h2>5. GitHub MCP Server — Contract Clause Libraries and Playbooks</h2>
+
+<p>Forward-thinking legal teams version-control their contract playbooks, standard clause libraries, and negotiation positions in Git repositories. The GitHub MCP server gives your AI direct access to this institutional knowledge.</p>
+
+<p><strong>What to version-control:</strong></p>
+<ul>
+<li>Standard NDA, MSA, and SOW templates</li>
+<li>Approved and fallback positions for key clauses (limitation of liability, IP ownership, data protection)</li>
+<li>Playbooks for common negotiation scenarios</li>
+<li>Regulatory compliance checklists by jurisdiction</li>
+</ul>
+
+<p>With your playbook in GitHub and the MCP server connected, your AI can draft contract responses that actually reflect your firm's negotiation positions — not generic boilerplate.</p>
+
+<h2>Recommended Legal MCP Stack</h2>
+
+<p>For most legal teams, start with this configuration:</p>
+
+<pre><code>{
+  "mcpServers": {
+    "filesystem": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-filesystem",
+               "/matters/active", "/templates"]
+    },
+    "brave-search": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-brave-search"],
+      "env": {
+        "BRAVE_API_KEY": "your-api-key"
+      }
+    },
+    "github": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-github"],
+      "env": {
+        "GITHUB_TOKEN": "your-token"
+      }
+    }
+  }
+}</code></pre>
+
+<h2>Data Privacy and Privilege Considerations</h2>
+
+<p>Before deploying MCP servers in legal environments, address these critical issues:</p>
+
+<ul>
+<li><strong>Attorney-client privilege:</strong> Understand how your AI provider's data handling affects privilege. Review terms of service for training data opt-outs.</li>
+<li><strong>Client confidentiality:</strong> Configure filesystem access to prevent cross-matter data exposure. Separate MCP configurations per matter or client are worth the setup overhead for sensitive matters.</li>
+<li><strong>Bar rules on AI use:</strong> Several jurisdictions have issued guidance on AI use in legal practice. Review your state bar's current position before deployment.</li>
+<li><strong>Data residency:</strong> For international matters, verify where your AI provider processes data relative to applicable regulations.</li>
+</ul>
+
+<h2>Getting Started</h2>
+
+<p>Start with the filesystem and Brave Search servers — they provide immediate value for document work and legal research without requiring database access or complex integrations. Once you've validated the workflow, add the GitHub server for playbook integration and evaluate database access based on your matter management system's architecture.</p>
+
+<p>Explore the <a href="/servers">full MCP server directory</a> for additional legal-relevant integrations, including calendar servers for deadline management and document signing integrations.</p>
+    `.trim(),
+  },
+  {
+    slug: "mcp-servers-for-sales-automation",
+    title: "MCP Servers for Sales Automation: Close More Deals with AI",
+    description: "Learn how sales teams use MCP servers to automate CRM updates, prospect research, email outreach, and pipeline reporting — with practical setup guides for each integration.",
+    date: "2026-05-30",
+    author: "MyMCPTools Team",
+    category: "Use Cases",
+    readingTime: "8 min read",
+    keywords: ["mcp servers for sales", "sales automation mcp", "crm mcp server", "sales ai tools", "mcp server for outreach"],
+    relatedServerSlugs: ["brave-search", "postgres", "slack", "filesystem", "github"],
+    content: `
+<p>Sales teams spend more time on administrative work than selling — logging CRM updates, researching prospects, crafting personalized outreach, and generating pipeline reports. MCP servers change this equation by giving AI assistants direct, structured access to your sales stack.</p>
+
+<p>The result: AI that can actually read your CRM, research a prospect's recent news, and draft a personalized email — without you copying data between five browser tabs.</p>
+
+<h2>The Sales Automation MCP Stack</h2>
+
+<p>Modern sales automation with MCP works best as a layered system: prospect research, CRM integration, outreach, and reporting each handled by purpose-built servers.</p>
+
+<h2>1. Brave Search MCP Server — Prospect Research at Scale</h2>
+
+<p>Personalized outreach requires research. The Brave Search MCP server gives your AI assistant real-time web access for prospect intelligence — funding announcements, leadership changes, product launches, earnings reports.</p>
+
+<p><strong>Research prompts that work:</strong></p>
+<ul>
+<li>"Find recent news about [company] — funding, hiring, product launches"</li>
+<li>"What technology stack does [company] use based on their job postings?"</li>
+<li>"Find [prospect name]'s recent LinkedIn activity and public statements"</li>
+<li>"What are [company]'s main competitors and how do they position against them?"</li>
+</ul>
+
+<p>Combined with a template-aware AI, this research feeds directly into personalized outreach without manual copy-paste.</p>
+
+<h2>2. PostgreSQL MCP Server — CRM Data Access</h2>
+
+<p>Most modern CRMs expose their data through PostgreSQL-compatible APIs or can be synced to a Postgres database. The PostgreSQL MCP server lets your AI query deal stage, contact history, and account data directly.</p>
+
+<p><strong>Sales queries you can automate:</strong></p>
+<ul>
+<li>"Show all deals that haven't had activity in 14+ days"</li>
+<li>"Which accounts in enterprise segment have no open opportunity?"</li>
+<li>"List contacts at companies that opened our last email campaign"</li>
+<li>"What's our win rate on deals involving [specific pain point]?"</li>
+</ul>
+
+<p>Use a read-only database user for CRM queries. For CRM writes (updating deal stages, logging calls), evaluate your CRM's native API or dedicated MCP integrations.</p>
+
+<h2>3. Filesystem MCP Server — Outreach Templates and Playbooks</h2>
+
+<p>Your best-performing email sequences, call scripts, and objection handling playbooks live somewhere — usually scattered across Google Drive, Notion, or someone's laptop. The filesystem MCP server makes these accessible to your AI for template-aware generation.</p>
+
+<p><strong>What to organize for AI access:</strong></p>
+<ul>
+<li>Email sequences by persona, vertical, and deal stage</li>
+<li>Objection handling scripts with approved responses</li>
+<li>Case studies and proof points by industry</li>
+<li>Competitive battlecards</li>
+</ul>
+
+<p>With this library accessible, your AI can draft emails that match your voice, reference relevant case studies, and handle expected objections — not generic pitches.</p>
+
+<h2>4. Slack MCP Server — Deal Intelligence and Team Coordination</h2>
+
+<p>Critical deal context lives in Slack — conversations with champions, internal discussion about deal risks, engineering assessments of custom requests. The Slack MCP server makes this searchable.</p>
+
+<p><strong>Sales use cases for Slack MCP:</strong></p>
+<ul>
+<li>Search Slack for all internal context on a specific account before a renewal call</li>
+<li>Find prior promises made to a customer (feature commitments, pricing discussions)</li>
+<li>Draft deal review summaries for your sales channel</li>
+<li>Alert your team when a prospect triggers a buying signal (website visit, email open)</li>
+</ul>
+
+<h2>5. GitHub MCP Server — Competitive Intelligence Repository</h2>
+
+<p>Sales teams that maintain version-controlled competitive intelligence get a real advantage. The GitHub MCP server gives your AI access to your battlecards, ICP definitions, and win/loss analysis repositories.</p>
+
+<p><strong>What to version-control in your sales repo:</strong></p>
+<ul>
+<li>Competitive battlecards updated after each loss</li>
+<li>Ideal Customer Profile (ICP) criteria by segment</li>
+<li>Win/loss interview summaries</li>
+<li>Pricing and packaging decision trees</li>
+</ul>
+
+<h2>Example Sales Automation Workflow</h2>
+
+<p>Here's how these servers combine into a prospect outreach workflow:</p>
+
+<ol>
+<li><strong>Research:</strong> AI uses Brave Search to pull recent news, funding, and job postings for your target account</li>
+<li><strong>CRM check:</strong> AI queries PostgreSQL to see if there's prior contact history, past opportunities, or relevant company attributes</li>
+<li><strong>Template selection:</strong> AI reads your filesystem templates to find the right sequence for this persona and stage</li>
+<li><strong>Competitive context:</strong> AI checks GitHub for relevant battlecard if the prospect uses a competitor</li>
+<li><strong>Draft:</strong> AI generates a personalized email combining all of the above</li>
+</ol>
+
+<p>What used to take 15-20 minutes of manual research per prospect takes seconds.</p>
+
+<h2>Configuration</h2>
+
+<pre><code>{
+  "mcpServers": {
+    "brave-search": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-brave-search"],
+      "env": {
+        "BRAVE_API_KEY": "your-api-key"
+      }
+    },
+    "filesystem": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-filesystem",
+               "/sales/templates", "/sales/playbooks", "/sales/battlecards"]
+    },
+    "postgres": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-postgres",
+               "postgresql://readonly_user:password@crm-db:5432/crm"]
+    }
+  }
+}</code></pre>
+
+<h2>Measuring the Impact</h2>
+
+<p>Track these metrics before and after deploying your sales MCP stack:</p>
+
+<ul>
+<li><strong>Outreach personalization rate:</strong> % of emails with prospect-specific references</li>
+<li><strong>Time to first draft:</strong> How long it takes to generate a prospecting email</li>
+<li><strong>CRM hygiene score:</strong> % of deals with updated activities (easier when AI can query and flag)</li>
+<li><strong>Reply rate:</strong> The ultimate measure — better research should drive better engagement</li>
+</ul>
+
+<p>Browse the <a href="/servers">MCP server directory</a> for additional integrations including calendar scheduling, LinkedIn, and email sending servers that extend this stack further.</p>
+    `.trim(),
+  },
+  {
+    slug: "mcp-integration-guide-windsurf",
+    title: "MCP Integration Guide: Windsurf IDE (2026)",
+    description: "Step-by-step guide to setting up MCP servers in Windsurf IDE. Connect filesystem, databases, GitHub, and web search to supercharge Cascade AI with structured tool access.",
+    date: "2026-05-30",
+    author: "MyMCPTools Team",
+    category: "Integration Guides",
+    readingTime: "7 min read",
+    keywords: ["mcp windsurf", "windsurf mcp servers", "windsurf ide mcp setup", "cascade mcp integration", "windsurf ai tools"],
+    relatedServerSlugs: ["filesystem", "github", "postgres", "brave-search", "puppeteer"],
+    content: `
+<p>Windsurf IDE's Cascade AI is one of the most capable agentic coding assistants available — and MCP servers extend it significantly. With the right MCP configuration, Cascade can read your databases, search the web, manage GitHub issues, and navigate your entire codebase with structured tool access.</p>
+
+<p>This guide walks through setting up MCP servers in Windsurf, from installation to advanced configuration.</p>
+
+<h2>MCP Support in Windsurf</h2>
+
+<p>Windsurf added MCP server support through its AI plugin system. Cascade can invoke MCP tools natively during its agentic flows — meaning your AI assistant can use these tools proactively while working on tasks, not just when you explicitly ask.</p>
+
+<p>This is different from some editors where MCP is purely prompt-driven. Windsurf's Cascade integration allows the AI to decide when to query a database or search the web as part of solving your problem.</p>
+
+<h2>Finding the MCP Configuration File</h2>
+
+<p>Windsurf stores MCP configuration in:</p>
+
+<ul>
+<li><strong>macOS:</strong> <code>~/.codeium/windsurf/mcp_config.json</code></li>
+<li><strong>Windows:</strong> <code>%APPDATA%\Codeium\windsurf\mcp_config.json</code></li>
+<li><strong>Linux:</strong> <code>~/.codeium/windsurf/mcp_config.json</code></li>
+</ul>
+
+<p>If the file doesn't exist, create it. Windsurf reads this configuration on startup.</p>
+
+<h2>Prerequisites</h2>
+
+<p>Before configuring MCP servers, ensure:</p>
+
+<ul>
+<li>Node.js 18+ installed (<code>node --version</code> to verify)</li>
+<li>npm available (<code>npm --version</code>)</li>
+<li>Windsurf version 1.0+ (MCP support requires a recent release)</li>
+</ul>
+
+<h2>Step 1: Install Core MCP Servers</h2>
+
+<p>Start with the three most useful MCP servers for development workflows:</p>
+
+<pre><code># Install globally for reliable PATH resolution
+npm install -g @modelcontextprotocol/server-filesystem
+npm install -g @modelcontextprotocol/server-github
+npm install -g @modelcontextprotocol/server-brave-search</code></pre>
+
+<h2>Step 2: Create the Configuration File</h2>
+
+<p>Create or edit <code>~/.codeium/windsurf/mcp_config.json</code>:</p>
+
+<pre><code>{
+  "mcpServers": {
+    "filesystem": {
+      "command": "node",
+      "args": [
+        "/usr/local/lib/node_modules/@modelcontextprotocol/server-filesystem/dist/index.js",
+        "/path/to/your/projects"
+      ]
+    },
+    "github": {
+      "command": "node",
+      "args": [
+        "/usr/local/lib/node_modules/@modelcontextprotocol/server-github/dist/index.js"
+      ],
+      "env": {
+        "GITHUB_TOKEN": "ghp_your_token_here"
+      }
+    },
+    "brave-search": {
+      "command": "node",
+      "args": [
+        "/usr/local/lib/node_modules/@modelcontextprotocol/server-brave-search/dist/index.js"
+      ],
+      "env": {
+        "BRAVE_API_KEY": "your_brave_api_key"
+      }
+    }
+  }
+}</code></pre>
+
+<p><strong>Important:</strong> Use absolute paths to the installed modules. Windsurf may not resolve <code>npx</code> the same way your terminal does.</p>
+
+<h2>Step 3: Restart Windsurf</h2>
+
+<p>Close and reopen Windsurf completely (not just the window — quit the application). MCP servers initialize on startup.</p>
+
+<p>To verify servers loaded, open the Windsurf command palette and search for "MCP" — you should see your configured servers listed as available tools.</p>
+
+<h2>Adding Database Access</h2>
+
+<p>For projects with database dependencies, the PostgreSQL MCP server is particularly valuable. Cascade can query your schema, check data, and generate migrations with actual knowledge of your database structure.</p>
+
+<pre><code>npm install -g @modelcontextprotocol/server-postgres</code></pre>
+
+<p>Add to your config:</p>
+
+<pre><code>"postgres": {
+  "command": "node",
+  "args": [
+    "/usr/local/lib/node_modules/@modelcontextprotocol/server-postgres/dist/index.js",
+    "postgresql://user:password@localhost:5432/your_database"
+  ]
+}</code></pre>
+
+<p>Use a read-only database user unless you specifically need write access. For development databases, a full-access user is generally fine.</p>
+
+<h2>Adding Browser Automation</h2>
+
+<p>The Puppeteer MCP server lets Cascade test UI changes, scrape reference data, or verify that your code actually works in a browser — without leaving the IDE.</p>
+
+<pre><code>npm install -g @modelcontextprotocol/server-puppeteer</code></pre>
+
+<pre><code>"puppeteer": {
+  "command": "node",
+  "args": [
+    "/usr/local/lib/node_modules/@modelcontextprotocol/server-puppeteer/dist/index.js"
+  ]
+}</code></pre>
+
+<h2>Using MCP Tools in Cascade</h2>
+
+<p>Once configured, Cascade uses MCP tools automatically in agentic mode. You can also invoke them explicitly:</p>
+
+<ul>
+<li><strong>Implicit:</strong> "Fix the bug in the auth module" — Cascade reads relevant files, queries the database schema if needed, and searches for error patterns</li>
+<li><strong>Explicit:</strong> "Search GitHub issues for any open bugs related to this error" — Cascade invokes the GitHub MCP server directly</li>
+</ul>
+
+<p>Cascade will show you which MCP tools it's using in its action trace, so you can see exactly what it's accessing.</p>
+
+<h2>Troubleshooting</h2>
+
+<p><strong>MCP servers not appearing in Windsurf:</strong> Check that the config file path is exactly right for your OS. Verify Node.js is installed system-wide (not just via nvm). Try running the server command directly in your terminal to catch any errors.</p>
+
+<p><strong>"Module not found" errors:</strong> Use the full absolute path to the installed module. On macOS with Homebrew Node, the path might be <code>/opt/homebrew/lib/node_modules/...</code> instead of <code>/usr/local/lib/node_modules/...</code>. Run <code>npm root -g</code> to find your actual global modules directory.</p>
+
+<p><strong>GitHub authentication errors:</strong> Ensure your GitHub token has the right scopes: <code>repo</code> for private repos, <code>read:org</code> for organization repos. Generate a fine-grained token scoped to specific repositories for better security.</p>
+
+<p><strong>Cascade doesn't use MCP tools:</strong> Make sure you're in Cascade's agentic mode (not chat mode). Some MCP tools are only invoked in agentic flows. Try explicitly asking Cascade to use a specific tool: "Use the filesystem MCP to read the config file."</p>
+
+<h2>Recommended Windsurf MCP Stack</h2>
+
+<p>For most development workflows, this configuration covers the majority of use cases:</p>
+
+<ul>
+<li><strong>Filesystem</strong> — Navigate and edit your project files</li>
+<li><strong>GitHub</strong> — Issue tracking, PR context, code search across repos</li>
+<li><strong>Brave Search</strong> — Documentation lookup, error research, library comparisons</li>
+<li><strong>PostgreSQL</strong> — Database schema awareness and query generation</li>
+</ul>
+
+<p>Add Puppeteer when you need browser-based testing, and Slack when you want Cascade to have context from team discussions.</p>
+
+<p>Explore the <a href="/servers">full MCP server directory</a> for additional integrations, and see our guides for other editors: <a href="/blog/mcp-integration-guide-cursor">Cursor</a>, <a href="/blog/mcp-integration-guide-vs-code">VS Code</a>, and <a href="/blog/mcp-integration-guide-claude-desktop">Claude Desktop</a>.</p>
+    `.trim(),
+  },
 ];
 export function getBlogPostBySlug(slug: string): BlogPost | undefined {
   return blogPosts.find((post) => post.slug === slug);
