@@ -46168,6 +46168,569 @@ npm install -g @modelcontextprotocol/server-brave-search</code></pre>
 <p>Explore the <a href="/servers">full MCP server directory</a> for additional integrations, and see our guides for other editors: <a href="/blog/mcp-integration-guide-cursor">Cursor</a>, <a href="/blog/mcp-integration-guide-vs-code">VS Code</a>, and <a href="/blog/mcp-integration-guide-claude-desktop">Claude Desktop</a>.</p>
     `.trim(),
   },
+  {
+    slug: "deploying-mcp-to-render",
+    title: "Deploying MCP Servers to Render — Zero-Config Deployment Guide (2026)",
+    description: "Step-by-step guide to deploying MCP servers on Render. Use Web Services or Background Workers for persistent, auto-scaling MCP infrastructure with zero DevOps overhead.",
+    date: "2026-05-31",
+    author: "MyMCPTools Team",
+    category: "Deployment Guides",
+    readingTime: "8 min read",
+    keywords: ["deploy mcp server render", "render mcp server", "mcp server hosting", "render web service mcp", "mcp deployment guide"],
+    relatedServerSlugs: ["filesystem", "postgres", "github", "brave-search"],
+    content: `
+<p>Render is one of the fastest paths to production for MCP servers — no Dockerfile required, automatic SSL, built-in secret management, and Git-based deploys that just work. If you've been running MCP servers locally and want persistent, team-accessible infrastructure, Render gets you there in under 30 minutes.</p>
+
+<p>This guide covers deploying both stdio-based and HTTP-based MCP servers to Render, with environment variable management, health checks, and scaling considerations.</p>
+
+<h2>Choosing the Right Render Service Type</h2>
+
+<p>Render offers two service types relevant to MCP hosting:</p>
+
+<ul>
+<li><strong>Web Service</strong> — For HTTP-based MCP servers. Gets a public URL, handles HTTPS automatically, and supports horizontal scaling. Use this if you're building a custom MCP server with an HTTP transport.</li>
+<li><strong>Background Worker</strong> — For stdio-based or daemon-style MCP servers that process queued work without exposing an HTTP endpoint. Ideal for internal AI pipelines.</li>
+</ul>
+
+<p>Most MCP servers from the official registry use stdio transport. For connecting them to Claude Desktop or Cursor remotely, you'll want to wrap them in an HTTP adapter or use a proxy like <code>mcp-remote</code>.</p>
+
+<h2>Prerequisites</h2>
+
+<ul>
+<li>Render account (free tier works for testing)</li>
+<li>GitHub or GitLab repository with your MCP server code</li>
+<li>Node.js 18+ (or Python 3.11+ for Python-based servers)</li>
+</ul>
+
+<h2>Option 1: Deploy a Custom HTTP MCP Server</h2>
+
+<p>If you've built a custom MCP server with HTTP transport, deploying to Render is straightforward.</p>
+
+<h3>Step 1: Prepare your server</h3>
+
+<p>Ensure your server reads the port from environment variables — Render injects <code>PORT</code> automatically:</p>
+
+<pre><code>import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
+import express from "express";
+
+const app = express();
+const server = new McpServer({ name: "my-mcp-server", version: "1.0.0" });
+
+server.tool("hello", async () => ({
+  content: [{ type: "text", text: "Hello from Render!" }]
+}));
+
+const port = parseInt(process.env.PORT || "3000");
+app.listen(port, () => console.log(\`MCP server running on port \${port}\`));</code></pre>
+
+<h3>Step 2: Add a render.yaml</h3>
+
+<p>For infrastructure-as-code, add a <code>render.yaml</code> to your repo root:</p>
+
+<pre><code>services:
+  - type: web
+    name: my-mcp-server
+    env: node
+    plan: starter
+    buildCommand: npm install && npm run build
+    startCommand: npm start
+    healthCheckPath: /health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: DATABASE_URL
+        sync: false</code></pre>
+
+<h3>Step 3: Deploy via Render Dashboard</h3>
+
+<ol>
+<li>Go to <strong>render.com</strong> → New → Web Service</li>
+<li>Connect your GitHub repository</li>
+<li>Render auto-detects Node.js and suggests build/start commands</li>
+<li>Add your environment variables in the dashboard</li>
+<li>Click <strong>Deploy</strong></li>
+</ol>
+
+<p>Render builds your service, assigns a <code>*.onrender.com</code> subdomain, and provisions SSL. First deploy typically takes 2-3 minutes.</p>
+
+<h2>Option 2: Deploy stdio MCP Servers via mcp-remote</h2>
+
+<p>Standard MCP servers (filesystem, postgres, github, etc.) use stdio transport and aren't directly HTTP-accessible. You can expose them remotely using a proxy pattern.</p>
+
+<pre><code>npm install -g mcp-remote</code></pre>
+
+<p>Create a wrapper server that bridges HTTP to stdio:</p>
+
+<pre><code>// server.js
+import { spawn } from "child_process";
+import express from "express";
+
+const app = express();
+
+app.post("/mcp", async (req, res) => {
+  const mcpProcess = spawn("npx", [
+    "-y", "@modelcontextprotocol/server-postgres",
+    process.env.DATABASE_URL
+  ]);
+
+  req.pipe(mcpProcess.stdin);
+  mcpProcess.stdout.pipe(res);
+});</code></pre>
+
+<h2>Environment Variable Management</h2>
+
+<p>Render's secret management is straightforward and superior to committed <code>.env</code> files:</p>
+
+<ol>
+<li>In your Render service settings, go to <strong>Environment</strong></li>
+<li>Add key-value pairs — they're encrypted at rest</li>
+<li>For shared secrets across services, use <strong>Environment Groups</strong></li>
+</ol>
+
+<p>Common MCP server environment variables to configure:</p>
+
+<pre><code>DATABASE_URL=postgresql://user:pass@host:5432/db
+GITHUB_TOKEN=ghp_your_token
+BRAVE_API_KEY=your_key
+MCP_AUTH_TOKEN=your_secret_token</code></pre>
+
+<h2>Health Checks and Auto-Restart</h2>
+
+<p>Add a health check endpoint to your MCP server so Render knows when to restart it:</p>
+
+<pre><code>app.get("/health", (req, res) => {
+  res.json({ status: "ok", uptime: process.uptime() });
+});</code></pre>
+
+<p>In your Render service settings, set the <strong>Health Check Path</strong> to <code>/health</code>. Render polls this endpoint and automatically restarts the service if it becomes unhealthy.</p>
+
+<h2>Scaling Considerations</h2>
+
+<ul>
+<li><strong>Free tier:</strong> Services spin down after 15 minutes of inactivity. Add a keep-alive ping or use a cron job to prevent cold starts.</li>
+<li><strong>Starter tier ($7/mo):</strong> Always-on, suitable for small teams with 2-5 AI users.</li>
+<li><strong>Standard tier:</strong> Horizontal scaling — Render auto-scales based on CPU/memory. Good for high-traffic MCP deployments serving dozens of concurrent AI sessions.</li>
+</ul>
+
+<h2>Connecting Clients to Your Render MCP Server</h2>
+
+<p>Once deployed, connect Claude Desktop or Cursor using your Render URL:</p>
+
+<pre><code>{
+  "mcpServers": {
+    "my-remote-server": {
+      "command": "npx",
+      "args": [
+        "mcp-remote",
+        "https://my-mcp-server.onrender.com/mcp",
+        "--header",
+        "Authorization: Bearer YOUR_TOKEN"
+      ]
+    }
+  }
+}</code></pre>
+
+<h2>Monitoring and Logs</h2>
+
+<p>Render provides real-time logs in the dashboard. For production MCP servers, add structured logging:</p>
+
+<pre><code>console.log(JSON.stringify({
+  level: "info",
+  event: "tool_called",
+  tool: toolName,
+  duration_ms: elapsed,
+  timestamp: new Date().toISOString()
+}));</code></pre>
+
+<p>Render forwards all stdout/stderr to its log viewer, searchable in the dashboard with 7-day retention on free tier and 30 days on paid plans.</p>
+
+<p>Browse the <a href="/servers">MCP server directory</a> for servers to deploy, and check our guides for other platforms: <a href="/blog/deploying-mcp-to-cloudflare-workers">Cloudflare Workers</a>, <a href="/blog/deploying-mcp-to-railway">Railway</a>, and <a href="/blog/deploying-mcp-to-aws-lambda">AWS Lambda</a>.</p>
+    `.trim(),
+  },
+  {
+    slug: "mcp-servers-for-retail",
+    title: "MCP Servers for Retail: AI-Powered Inventory, POS, and Customer Experience",
+    description: "Best MCP servers for retail operations in 2026. Connect AI assistants to inventory systems, point-of-sale data, supplier APIs, and customer analytics for smarter retail workflows.",
+    date: "2026-05-31",
+    author: "MyMCPTools Team",
+    category: "Industry Guides",
+    readingTime: "9 min read",
+    keywords: ["mcp servers retail", "retail ai automation", "mcp server inventory management", "ai retail tools 2026", "mcp pos integration"],
+    relatedServerSlugs: ["postgres", "filesystem", "brave-search", "puppeteer", "github"],
+    content: `
+<p>Retail operations run on data — inventory levels, sales velocity, supplier lead times, customer purchase history, and real-time POS feeds. MCP servers bridge the gap between that data and AI assistants, giving teams a single interface to query, analyze, and act across all of it.</p>
+
+<p>Here are the most valuable MCP servers for retail teams in 2026, organized by workflow.</p>
+
+<h2>Inventory Management</h2>
+
+<h3>PostgreSQL MCP Server</h3>
+
+<p>Most retail inventory systems ultimately write to a SQL database — whether it's a custom ERP, a Shopify backend, or a warehouse management system. The PostgreSQL MCP server gives AI assistants direct read access to inventory tables.</p>
+
+<pre><code>{
+  "mcpServers": {
+    "inventory-db": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-postgres",
+               "postgresql://readonly_user:password@warehouse-db:5432/inventory"]
+    }
+  }
+}</code></pre>
+
+<p>With this connected, buyers and planners can ask natural language questions:</p>
+
+<ul>
+<li>"Which SKUs have less than 7 days of stock at current sell-through rate?"</li>
+<li>"Show me the top 20 products by margin contribution last quarter"</li>
+<li>"What's the inventory position for category X across all locations?"</li>
+</ul>
+
+<h3>Filesystem MCP Server</h3>
+
+<p>Retail teams often work with CSV exports from legacy systems, EDI files from suppliers, and Excel-based forecasting models. The filesystem MCP server lets AI read and analyze these files directly.</p>
+
+<pre><code>"filesystem": {
+  "command": "npx",
+  "args": ["-y", "@modelcontextprotocol/server-filesystem",
+           "/retail/exports", "/retail/forecasts", "/retail/supplier-files"]
+}</code></pre>
+
+<h2>Customer Analytics and Market Research</h2>
+
+<h3>Brave Search MCP</h3>
+
+<p>For market context alongside your internal data — competitor pricing research, trend identification, and category intelligence — web search MCP fills the gaps that internal databases can't.</p>
+
+<pre><code>"brave-search": {
+  "command": "npx",
+  "args": ["-y", "@modelcontextprotocol/server-brave-search"],
+  "env": { "BRAVE_API_KEY": "your_key" }
+}</code></pre>
+
+<p>Retail use cases: monitoring competitor promotions, researching category trends before buying season, checking supplier news before renewals.</p>
+
+<h2>E-Commerce Operations</h2>
+
+<h3>Shopify MCP Server</h3>
+
+<p>For retailers on Shopify, several community MCP servers provide direct API access to products, orders, customers, and inventory:</p>
+
+<pre><code>"shopify": {
+  "command": "npx",
+  "args": ["-y", "mcp-server-shopify"],
+  "env": {
+    "SHOPIFY_SHOP_DOMAIN": "your-store.myshopify.com",
+    "SHOPIFY_ACCESS_TOKEN": "your_admin_api_token"
+  }
+}</code></pre>
+
+<p>This enables AI workflows like: drafting product descriptions and pushing them directly, querying order status for customer service, or bulk updating prices for promotional events.</p>
+
+<h3>Puppeteer MCP Server</h3>
+
+<p>For competitor price monitoring and UI-based data extraction from systems without APIs:</p>
+
+<pre><code>"puppeteer": {
+  "command": "npx",
+  "args": ["-y", "@modelcontextprotocol/server-puppeteer"]
+}</code></pre>
+
+<h2>Supply Chain and Procurement</h2>
+
+<h3>Slack MCP Server</h3>
+
+<p>For teams using Slack to coordinate between buying, logistics, and store operations:</p>
+
+<pre><code>"slack": {
+  "command": "npx",
+  "args": ["-y", "@modelcontextprotocol/server-slack"],
+  "env": { "SLACK_BOT_TOKEN": "xoxb-your-token" }
+}</code></pre>
+
+<p>AI can retrieve context from channel history, post inventory alerts to buying channels, and surface relevant discussions when analyzing a supplier issue.</p>
+
+<h2>Sample Retail MCP Configuration</h2>
+
+<p>Here's a complete MCP configuration for a mid-market retailer with Shopify frontend and PostgreSQL backend:</p>
+
+<pre><code>{
+  "mcpServers": {
+    "inventory-db": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-postgres",
+               "postgresql://readonly:pass@warehouse-db:5432/retail"]
+    },
+    "shopify": {
+      "command": "npx",
+      "args": ["-y", "mcp-server-shopify"],
+      "env": {
+        "SHOPIFY_SHOP_DOMAIN": "your-store.myshopify.com",
+        "SHOPIFY_ACCESS_TOKEN": "shpat_xxxxx"
+      }
+    },
+    "reports": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-filesystem",
+               "/retail/reports", "/retail/forecasts"]
+    },
+    "market-research": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-brave-search"],
+      "env": { "BRAVE_API_KEY": "your_key" }
+    },
+    "team-comms": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-slack"],
+      "env": { "SLACK_BOT_TOKEN": "xoxb-your-token" }
+    }
+  }
+}</code></pre>
+
+<h2>High-Value AI Workflows for Retail</h2>
+
+<p>With this stack configured, retail teams unlock workflows that typically required custom software:</p>
+
+<ul>
+<li><strong>Weekly buy analysis:</strong> Query sell-through rates, stock levels, and supplier availability in one conversation — then draft purchase orders</li>
+<li><strong>Promotional planning:</strong> Pull sales history for a category, research competitor promotions, and draft a markdown strategy</li>
+<li><strong>Supplier performance review:</strong> Query on-time delivery rates from your database, pull email history with the supplier, and generate a performance summary</li>
+<li><strong>New product research:</strong> Search trending products in your category, check if similar items exist in your catalog, and draft a sourcing brief</li>
+<li><strong>Store ops escalations:</strong> Query inventory for a specific SKU across locations, check recent sales, and draft a transfer recommendation</li>
+</ul>
+
+<p>Browse the <a href="/servers">MCP server directory</a> for additional retail integrations including payment processors, loyalty platforms, and ERP connectors.</p>
+    `.trim(),
+  },
+  {
+    slug: "mcp-integration-guide-github-actions",
+    title: "MCP Integration Guide: GitHub Actions — AI-Powered CI/CD Workflows (2026)",
+    description: "How to use MCP servers in GitHub Actions CI/CD pipelines. Run AI-powered code review, automated documentation, and smart test analysis directly in your GitHub workflows.",
+    date: "2026-05-31",
+    author: "MyMCPTools Team",
+    category: "Integration Guides",
+    readingTime: "10 min read",
+    keywords: ["mcp github actions", "github actions mcp server", "ai ci/cd pipeline", "mcp server automation", "claude github actions"],
+    relatedServerSlugs: ["github", "filesystem", "postgres", "brave-search"],
+    content: `
+<p>GitHub Actions and MCP servers are a powerful combination — Actions provides the event-driven triggers (push, PR, issue, schedule) while MCP servers provide AI assistants with structured access to your code, databases, and APIs. Together they enable AI-powered CI/CD workflows that go far beyond simple linting and testing.</p>
+
+<p>This guide covers practical patterns for using MCP servers inside GitHub Actions workflows.</p>
+
+<h2>Architecture Overview</h2>
+
+<p>There are two main integration patterns:</p>
+
+<ol>
+<li><strong>MCP-enabled scripts in Actions:</strong> Your workflow runs a Node.js or Python script that uses the MCP SDK to connect to servers and perform AI-assisted analysis, then posts results back to GitHub.</li>
+<li><strong>Claude CLI in Actions:</strong> Use the Claude CLI with MCP configuration to run AI workflows directly from shell steps, with MCP servers providing context.</li>
+</ol>
+
+<h2>Prerequisites</h2>
+
+<ul>
+<li>GitHub repository with Actions enabled</li>
+<li>Anthropic API key (add as a GitHub secret: <code>ANTHROPIC_API_KEY</code>)</li>
+<li>Any service-specific tokens (<code>GITHUB_TOKEN</code> is automatically available)</li>
+</ul>
+
+<h2>Pattern 1: AI Code Review on Pull Requests</h2>
+
+<p>This workflow runs an AI code review whenever a PR is opened or updated, then posts a review comment.</p>
+
+<pre><code># .github/workflows/ai-code-review.yml
+name: AI Code Review
+
+on:
+  pull_request:
+    types: [opened, synchronize]
+
+jobs:
+  review:
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
+      contents: read
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: npm install @anthropic-ai/sdk
+
+      - name: Run AI Review
+        env:
+          ANTHROPIC_API_KEY: \${{ secrets.ANTHROPIC_API_KEY }}
+          GITHUB_TOKEN: \${{ secrets.GITHUB_TOKEN }}
+          PR_NUMBER: \${{ github.event.pull_request.number }}
+          REPO: \${{ github.repository }}
+        run: node .github/scripts/ai-review.mjs</code></pre>
+
+<p>The review script:</p>
+
+<pre><code>// .github/scripts/ai-review.mjs
+import Anthropic from "@anthropic-ai/sdk";
+import { execSync } from "child_process";
+
+const client = new Anthropic();
+
+const diff = execSync(
+  \`git diff origin/\${process.env.GITHUB_BASE_REF}...HEAD\`
+).toString();
+
+const response = await client.messages.create({
+  model: "claude-sonnet-4-6",
+  max_tokens: 2048,
+  messages: [{
+    role: "user",
+    content: \`Review this PR diff for bugs, security issues, and missing error handling. Be concise.
+
+Diff:
+\${diff.slice(0, 8000)}\`
+  }]
+});
+
+await fetch(
+  \`https://api.github.com/repos/\${process.env.REPO}/issues/\${process.env.PR_NUMBER}/comments\`,
+  {
+    method: "POST",
+    headers: {
+      Authorization: \`Bearer \${process.env.GITHUB_TOKEN}\`,
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({ body: \`## AI Code Review\\n\\n\${response.content[0].text}\` })
+  }
+);</code></pre>
+
+<h2>Pattern 2: Smart Test Failure Analysis</h2>
+
+<p>When tests fail, this workflow uses AI to analyze the failure and post a diagnosis:</p>
+
+<pre><code># .github/workflows/smart-test-analysis.yml
+name: Smart Test Analysis
+
+on:
+  workflow_run:
+    workflows: ["CI Tests"]
+    types: [completed]
+
+jobs:
+  analyze-failures:
+    if: \${{ github.event.workflow_run.conclusion == 'failure' }}
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Download test artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: test-results
+          run-id: \${{ github.event.workflow_run.id }}
+          github-token: \${{ secrets.GITHUB_TOKEN }}
+
+      - name: Analyze failures with AI
+        env:
+          ANTHROPIC_API_KEY: \${{ secrets.ANTHROPIC_API_KEY }}
+          GITHUB_TOKEN: \${{ secrets.GITHUB_TOKEN }}
+        run: node .github/scripts/analyze-failures.mjs</code></pre>
+
+<h2>Pattern 3: Automated Documentation Updates</h2>
+
+<p>Trigger documentation generation whenever API code changes:</p>
+
+<pre><code># .github/workflows/auto-docs.yml
+name: Auto Documentation
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'src/api/**'
+      - 'src/types/**'
+
+jobs:
+  update-docs:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Generate API docs with AI
+        env:
+          ANTHROPIC_API_KEY: \${{ secrets.ANTHROPIC_API_KEY }}
+        run: |
+          npm install @anthropic-ai/sdk
+          node .github/scripts/generate-docs.mjs
+
+      - name: Commit updated docs
+        run: |
+          git config --local user.email "actions@github.com"
+          git config --local user.name "GitHub Actions"
+          git add docs/
+          git diff --staged --quiet || git commit -m "docs: auto-update API docs [skip ci]"
+          git push</code></pre>
+
+<h2>Using the GitHub MCP Server for Rich Context</h2>
+
+<p>For workflows that need to query GitHub data (issues, PRs, repo metadata), install the GitHub MCP server in your Action:</p>
+
+<pre><code>- name: Setup GitHub MCP Server
+  run: npm install -g @modelcontextprotocol/server-github
+
+- name: Run MCP-powered workflow
+  env:
+    GITHUB_TOKEN: \${{ secrets.GITHUB_TOKEN }}
+    ANTHROPIC_API_KEY: \${{ secrets.ANTHROPIC_API_KEY }}
+  run: node .github/scripts/mcp-workflow.mjs</code></pre>
+
+<h2>Caching MCP Dependencies</h2>
+
+<pre><code>- uses: actions/cache@v4
+  with:
+    path: ~/.npm
+    key: \${{ runner.os }}-node-mcp-\${{ hashFiles('**/package-lock.json') }}
+    restore-keys: |
+      \${{ runner.os }}-node-mcp-</code></pre>
+
+<h2>Security Considerations</h2>
+
+<ul>
+<li><strong>Use read-only database credentials</strong> — CI workflows should query, not modify, production databases</li>
+<li><strong>Scope GitHub tokens tightly</strong> — use <code>permissions:</code> in your workflow YAML to grant only what's needed</li>
+<li><strong>Never log MCP tool responses</strong> that might contain secrets or sensitive data</li>
+<li><strong>Pin MCP server versions</strong> — use <code>@modelcontextprotocol/server-github@0.6.2</code> instead of <code>@latest</code> to prevent supply chain issues</li>
+<li><strong>Review AI output before auto-merging</strong> — AI-generated code changes should require human approval</li>
+</ul>
+
+<h2>Cost Management</h2>
+
+<ul>
+<li>Add <code>paths:</code> filters to limit when workflows trigger</li>
+<li>Set <code>max_tokens</code> limits appropriate to each task</li>
+<li>Cache AI responses for identical inputs using Actions cache</li>
+<li>Use <code>claude-haiku-4-5</code> for high-frequency simple tasks; reserve Sonnet for complex analysis</li>
+</ul>
+
+<p>Browse the <a href="/servers">MCP server directory</a> for additional servers to use in your CI/CD pipelines, and see our guides: <a href="/blog/mcp-servers-for-ci-cd">MCP Servers for CI/CD</a> and <a href="/blog/mcp-servers-for-code-review">MCP Servers for Code Review</a>.</p>
+    `.trim(),
+  },
 ];
 export function getBlogPostBySlug(slug: string): BlogPost | undefined {
   return blogPosts.find((post) => post.slug === slug);
