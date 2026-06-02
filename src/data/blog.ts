@@ -46731,6 +46731,661 @@ jobs:
 <p>Browse the <a href="/servers">MCP server directory</a> for additional servers to use in your CI/CD pipelines, and see our guides: <a href="/blog/mcp-servers-for-ci-cd">MCP Servers for CI/CD</a> and <a href="/blog/mcp-servers-for-code-review">MCP Servers for Code Review</a>.</p>
     `.trim(),
   },
+  {
+    slug: "mcp-servers-for-media-entertainment",
+    title: "Best MCP Servers for Media & Entertainment in 2026",
+    description: "Discover the top MCP servers for media and entertainment workflows — video production, content distribution, rights management, audience analytics, and streaming platform integrations.",
+    date: "2026-06-02",
+    author: "MyMCPTools Team",
+    category: "Industries",
+    readingTime: "9 min read",
+    keywords: ["mcp servers media entertainment", "mcp servers video production", "mcp servers content distribution", "model context protocol media industry"],
+    relatedServerSlugs: ["filesystem", "youtube", "brave-search", "puppeteer", "sqlite", "postgres"],
+    content: `
+<p>The media and entertainment industry runs on content — creating it, distributing it, protecting it, and monetizing it at scale. Model Context Protocol servers are transforming how production teams, distributors, and platform operators work with AI, giving their tools structured access to asset libraries, analytics dashboards, rights databases, and delivery pipelines.</p>
+
+<p>This guide covers the best MCP servers for media and entertainment workflows, from pre-production research to post-release analytics.</p>
+
+<h2>Why MCP Matters for Media & Entertainment</h2>
+
+<p>Traditional media workflows are fragmented: edit suites, MAM systems, rights databases, CDNs, and analytics platforms rarely talk to each other cleanly. MCP servers act as a universal translation layer — your AI assistant can query your asset management system, check rights clearances, and pull performance data from streaming platforms all in one conversation.</p>
+
+<h2>1. Filesystem MCP Server — The Asset Management Foundation</h2>
+
+<p>Media production generates enormous file volumes: raw footage, proxies, audio stems, graphics, subtitle files. The filesystem MCP server gives your AI assistant direct, structured access to project directories without manual file hunting.</p>
+
+<p><strong>Key use cases:</strong></p>
+<ul>
+<li>Locate specific footage takes by scene/shot number across sprawling project hierarchies</li>
+<li>Audit deliverable completeness before deadline (all language dubs present? all resolution variants exported?)</li>
+<li>Automate metadata file generation for MAM ingest</li>
+<li>Track version history of edit files and graphics packages</li>
+</ul>
+
+<p><strong>Setup note:</strong> Configure access boundaries to your project storage paths. For shared post-production environments, use read-only mode to prevent accidental writes to final exports.</p>
+
+<h2>2. YouTube MCP Server — Platform Analytics and Management</h2>
+
+<p>For digital-first media companies and content networks, YouTube is a primary distribution channel. The YouTube MCP server connects your AI workflow to channel analytics, upload management, and audience data.</p>
+
+<p><strong>Key use cases:</strong></p>
+<ul>
+<li>Query performance data for recent uploads (views, watch time, CTR, audience retention)</li>
+<li>Compare performance across titles in a franchise or series</li>
+<li>Draft and update video descriptions, tags, and end screen configurations</li>
+<li>Pull comment data for audience sentiment analysis</li>
+<li>Generate performance summaries for weekly editorial reports</li>
+</ul>
+
+<p><strong>Real workflow:</strong> A digital media team uses the YouTube MCP server to ask their AI: "Compare watch time retention for episodes 1-8 of our documentary series. Which episode had the highest drop-off point?" The AI pulls the data directly and returns a structured comparison — no Sheets export required.</p>
+
+<h2>3. Brave Search MCP Server — Research and Rights Clearance</h2>
+
+<p>Content development requires constant research: talent backgrounds, location permits, music rights history, competitive title analysis. The Brave Search MCP server gives your AI real-time web research capabilities without leaving your workflow.</p>
+
+<p><strong>Key use cases:</strong></p>
+<ul>
+<li>Research talent availability and recent projects during pre-production</li>
+<li>Investigate music licensing status and PRO registration for clearance decisions</li>
+<li>Monitor competitor release calendars for scheduling strategy</li>
+<li>Fact-check scripts and documentary claims in real time</li>
+<li>Track press coverage after release for PR analysis</li>
+</ul>
+
+<h2>4. PostgreSQL MCP Server — Rights and Licensing Database</h2>
+
+<p>Rights management is one of the most database-intensive functions in media. Whether you're tracking territorial rights windows, talent residuals, or music sync licenses, a PostgreSQL MCP server turns your rights database into a conversational interface.</p>
+
+<p><strong>Key use cases:</strong></p>
+<ul>
+<li>"Which titles have rights expiring in the next 90 days in the EMEA territory?"</li>
+<li>"Show me all talent deals with backend participation points over 5%"</li>
+<li>"Find all music cues in our library licensed for digital but not broadcast"</li>
+<li>Generate rights availability reports for sales team pitches</li>
+</ul>
+
+<p><strong>Security note:</strong> Deploy the PostgreSQL MCP server in read-only mode for rights queries. Writes to rights databases should always go through your rights management application with proper audit trails.</p>
+
+<h2>5. Puppeteer / Playwright MCP Server — Streaming Platform Automation</h2>
+
+<p>Streaming platforms like Netflix partner portals, Vimeo OTT, and distributor dashboards often lack APIs. Puppeteer and Playwright MCP servers enable browser-based automation for platforms where you can't get programmatic access.</p>
+
+<p><strong>Key use cases:</strong></p>
+<ul>
+<li>Scrape performance dashboards on platforms without public APIs</li>
+<li>Automate content metadata entry across multiple distributor portals</li>
+<li>Pull royalty statements from aggregator dashboards</li>
+<li>Monitor availability status of titles across distribution platforms</li>
+</ul>
+
+<h2>6. SQLite MCP Server — Production Tracking and Scheduling</h2>
+
+<p>Many production companies run their shoot schedules, call sheets, and budget tracking in SQLite-backed tools (or can export to SQLite easily). The SQLite MCP server makes this data conversationally accessible.</p>
+
+<p><strong>Key use cases:</strong></p>
+<ul>
+<li>Query shoot day summaries: pages shot, scenes completed, overtime hours</li>
+<li>Budget variance analysis: actual vs. budgeted by department</li>
+<li>Cast and crew availability lookups during scheduling changes</li>
+</ul>
+
+<h2>7. Slack MCP Server — Production Communications Hub</h2>
+
+<p>Large productions run on Slack — crew channels, department coordination, executive approvals. The Slack MCP server gives your AI assistant access to production communications without tab-switching.</p>
+
+<p><strong>Key use cases:</strong></p>
+<ul>
+<li>Summarize overnight messages across department channels before morning stand-up</li>
+<li>Find approval messages in executive threads for contract reference</li>
+<li>Search historical conversations for decisions on specific creative elements</li>
+<li>Draft production updates and broadcast to relevant channels</li>
+</ul>
+
+<h2>8. Google Drive / Sheets MCP Server — Editorial and Finance Documents</h2>
+
+<p>Scripts, clearance logs, music cue sheets, and budget actuals often live in Google Drive. The Google Drive/Sheets MCP server brings these documents into your AI workflow.</p>
+
+<p><strong>Key use cases:</strong></p>
+<ul>
+<li>Query clearance log spreadsheets for outstanding approvals</li>
+<li>Compare budget actuals across production periods</li>
+<li>Review script drafts and track revision history</li>
+<li>Generate formatted music cue sheet exports for delivery</li>
+</ul>
+
+<h2>Recommended Stack by Role</h2>
+
+<p><strong>Post-Production Supervisor:</strong> Filesystem + PostgreSQL (rights) + SQLite (scheduling) + Slack</p>
+
+<p><strong>Digital Distribution Manager:</strong> YouTube + Brave Search + PostgreSQL (rights windows) + Puppeteer</p>
+
+<p><strong>Content Development Executive:</strong> Brave Search + Google Drive + Slack + YouTube (competitive research)</p>
+
+<p><strong>Production Accountant:</strong> SQLite + Google Sheets + PostgreSQL (vendor contracts)</p>
+
+<h2>Getting Started</h2>
+
+<p>For most media workflows, start with the Filesystem MCP server to get AI access to your project assets, then layer in the data sources that match your daily bottlenecks. Rights teams should prioritize the PostgreSQL server. Distribution teams should add YouTube and Brave Search.</p>
+
+<p>Browse the full <a href="/servers">MCP server directory</a> or explore related guides: <a href="/blog/mcp-servers-for-data-pipelines">MCP Servers for Data Pipelines</a> and <a href="/blog/mcp-servers-for-document-processing">MCP Servers for Document Processing</a>.</p>
+    `.trim(),
+  },
+  {
+    slug: "deploying-mcp-to-docker",
+    title: "Deploying MCP Servers with Docker: The Complete Guide",
+    description: "Learn how to containerize and deploy MCP servers using Docker. Covers Dockerfile setup, multi-stage builds, compose configurations, networking, security hardening, and production deployment patterns.",
+    date: "2026-06-02",
+    author: "MyMCPTools Team",
+    category: "Deployment",
+    readingTime: "11 min read",
+    keywords: ["deploying mcp server docker", "mcp server containerization", "docker mcp server", "model context protocol docker deployment"],
+    relatedServerSlugs: ["filesystem", "postgres", "redis", "brave-search"],
+    content: `
+<p>Docker is the most common deployment target for MCP servers in team and production environments. Containerizing your MCP server gives you consistent environments, easy scaling, and clean isolation from the host system — critical when your server has access to sensitive tools and data.</p>
+
+<p>This guide walks through everything from a basic Dockerfile to production-ready multi-service deployments with Docker Compose.</p>
+
+<h2>Why Docker for MCP Servers?</h2>
+
+<p>MCP servers have specific reasons to containerize beyond the usual "it works on my machine" benefits:</p>
+
+<ul>
+<li><strong>Security isolation</strong> — MCP servers often have elevated access (filesystem, database, APIs). Docker namespacing and capabilities restrictions limit blast radius if a server is compromised.</li>
+<li><strong>Consistent tool versions</strong> — Node.js and Python MCP servers depend on specific SDK versions. Docker locks this in for every team member and deployment environment.</li>
+<li><strong>Multi-server orchestration</strong> — Running 5+ MCP servers? Docker Compose manages them as a unit with shared networking and volume mounts.</li>
+<li><strong>Resource limits</strong> — Prevent a runaway MCP process from consuming host resources with container CPU/memory limits.</li>
+</ul>
+
+<h2>Basic Dockerfile for a Node.js MCP Server</h2>
+
+<p>Most official MCP servers are Node.js packages. Here's a production-ready Dockerfile for a typical Node.js MCP server:</p>
+
+<pre><code># Multi-stage build for smaller final image
+FROM node:20-alpine AS builder
+
+WORKDIR /app
+
+# Copy package files first for layer caching
+COPY package*.json ./
+RUN npm ci --only=production
+
+# Final stage
+FROM node:20-alpine
+
+# Run as non-root user (critical for security)
+RUN addgroup -g 1001 -S mcpuser &amp;&amp; \\
+    adduser -S mcpuser -u 1001
+
+WORKDIR /app
+
+# Copy only production dependencies
+COPY --from=builder /app/node_modules ./node_modules
+COPY --chown=mcpuser:mcpuser . .
+
+USER mcpuser
+
+# MCP servers communicate over stdio by default
+CMD ["node", "dist/index.js"]</code></pre>
+
+<h2>Dockerfile for the Official Filesystem MCP Server</h2>
+
+<p>The filesystem server needs a mounted volume to access your files. Here's a Dockerfile that exposes a configurable mount point:</p>
+
+<pre><code>FROM node:20-alpine
+
+RUN addgroup -g 1001 -S mcpuser &amp;&amp; \\
+    adduser -S mcpuser -u 1001
+
+# Install the official server globally
+RUN npm install -g @modelcontextprotocol/server-filesystem
+
+# Create a workspace directory the container user can read
+RUN mkdir -p /workspace &amp;&amp; chown mcpuser:mcpuser /workspace
+
+USER mcpuser
+
+WORKDIR /workspace
+
+ENTRYPOINT ["npx", "@modelcontextprotocol/server-filesystem"]
+CMD ["/workspace"]</code></pre>
+
+<p>Run it with a volume mount:</p>
+
+<pre><code>docker run -v /your/project/path:/workspace \\
+  --read-only \\
+  --tmpfs /tmp \\
+  mcp-filesystem /workspace</code></pre>
+
+<h2>Docker Compose for Multiple MCP Servers</h2>
+
+<p>In practice, you'll run multiple MCP servers simultaneously. Docker Compose is the right tool for this:</p>
+
+<pre><code># docker-compose.yml
+version: '3.9'
+
+services:
+  mcp-filesystem:
+    image: mcp-filesystem:latest
+    build:
+      context: ./servers/filesystem
+    volumes:
+      - ./workspace:/workspace:ro
+    environment:
+      - NODE_ENV=production
+    restart: unless-stopped
+    read_only: true
+    tmpfs:
+      - /tmp
+    cap_drop:
+      - ALL
+
+  mcp-postgres:
+    image: mcp-postgres:latest
+    build:
+      context: ./servers/postgres
+    environment:
+      - DATABASE_URL=postgresql://user:pass@db:5432/mydb
+    networks:
+      - mcp-internal
+      - db-network
+    depends_on:
+      - postgres
+    restart: unless-stopped
+
+  mcp-brave-search:
+    image: mcp-brave-search:latest
+    build:
+      context: ./servers/brave-search
+    environment:
+      - BRAVE_API_KEY=\${BRAVE_API_KEY}
+    restart: unless-stopped
+
+  postgres:
+    image: postgres:16-alpine
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_DB=mydb
+      - POSTGRES_USER=user
+      - POSTGRES_PASSWORD=\${POSTGRES_PASSWORD}
+    networks:
+      - db-network
+
+networks:
+  mcp-internal:
+    driver: bridge
+    internal: true
+  db-network:
+    driver: bridge
+
+volumes:
+  postgres_data:</code></pre>
+
+<h2>Connecting Containerized MCP Servers to Claude Desktop</h2>
+
+<p>Claude Desktop and other MCP clients communicate with MCP servers over stdio. For containerized servers, you need to wrap the docker run command:</p>
+
+<pre><code>// claude_desktop_config.json
+{
+  "mcpServers": {
+    "filesystem": {
+      "command": "docker",
+      "args": [
+        "run", "--rm", "-i",
+        "-v", "/Users/you/projects:/workspace:ro",
+        "mcp-filesystem:latest",
+        "/workspace"
+      ]
+    },
+    "postgres": {
+      "command": "docker",
+      "args": [
+        "run", "--rm", "-i",
+        "--network", "mcp-compose_mcp-internal",
+        "-e", "DATABASE_URL=postgresql://user:pass@postgres:5432/mydb",
+        "mcp-postgres:latest"
+      ]
+    }
+  }
+}</code></pre>
+
+<p>The <code>-i</code> flag keeps stdin open, which is required for stdio-based MCP communication. The <code>--rm</code> flag removes the container after each session.</p>
+
+<h2>Security Hardening for Production</h2>
+
+<p>MCP servers with sensitive access need hardened containers:</p>
+
+<pre><code># docker-compose.yml (security-hardened service)
+services:
+  mcp-sensitive:
+    image: mcp-sensitive:latest
+    read_only: true
+    tmpfs:
+      - /tmp:size=50m
+    cap_drop:
+      - ALL
+    cap_add:
+      - NET_BIND_SERVICE
+    security_opt:
+      - no-new-privileges:true
+    mem_limit: 256m
+    cpus: '0.5'
+    user: "1001:1001"
+    networks:
+      - mcp-isolated
+
+networks:
+  mcp-isolated:
+    driver: bridge
+    internal: true</code></pre>
+
+<h2>Environment Variable Management</h2>
+
+<p>Never bake API keys into Docker images. Use environment files with Docker Compose:</p>
+
+<pre><code># .env (never commit this file)
+BRAVE_API_KEY=BSA...
+POSTGRES_PASSWORD=secure_password_here
+GITHUB_TOKEN=ghp_...
+
+# .env.example (commit this)
+BRAVE_API_KEY=your_brave_api_key
+POSTGRES_PASSWORD=your_db_password
+GITHUB_TOKEN=your_github_token</code></pre>
+
+<p>For production deployments, use Docker secrets instead of environment variables for sensitive values:</p>
+
+<pre><code># docker-compose.yml with secrets
+services:
+  mcp-postgres:
+    secrets:
+      - db_password
+    environment:
+      - DATABASE_PASSWORD_FILE=/run/secrets/db_password
+
+secrets:
+  db_password:
+    external: true</code></pre>
+
+<h2>Health Checks and Restart Policies</h2>
+
+<p>MCP servers can hang silently. Add health checks and appropriate restart policies:</p>
+
+<pre><code>services:
+  mcp-filesystem:
+    healthcheck:
+      test: ["CMD", "node", "-e", "require('fs').accessSync('/workspace')"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+    restart: unless-stopped
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"</code></pre>
+
+<h2>Multi-Architecture Builds for Team Environments</h2>
+
+<p>If your team mixes Apple Silicon and x86 machines, build multi-arch images:</p>
+
+<pre><code># Build for both arm64 and amd64
+docker buildx build \\
+  --platform linux/amd64,linux/arm64 \\
+  --tag yourregistry/mcp-filesystem:latest \\
+  --push \\
+  ./servers/filesystem</code></pre>
+
+<h2>Debugging Containerized MCP Servers</h2>
+
+<p>When an MCP server behaves unexpectedly in a container:</p>
+
+<pre><code># Run interactively to test stdio communication
+docker run --rm -it \\
+  -v /your/project:/workspace:ro \\
+  mcp-filesystem:latest \\
+  /workspace
+
+# Check logs for a running compose service
+docker compose logs -f mcp-filesystem
+
+# Inspect the running container
+docker exec -it mcp-filesystem-container sh</code></pre>
+
+<h2>Next Steps</h2>
+
+<p>Once you're comfortable with Docker deployments, consider moving to a managed container platform for zero-downtime restarts and auto-scaling. See our guides: <a href="/blog/deploying-mcp-to-aws-lambda">Deploying MCP to AWS Lambda</a>, <a href="/blog/deploying-mcp-to-railway">Deploying MCP to Railway</a>, and <a href="/blog/mcp-server-security-best-practices">MCP Server Security Best Practices</a>.</p>
+
+<p>Browse the full <a href="/servers">MCP server directory</a> to find servers ready for Docker deployment.</p>
+    `.trim(),
+  },
+  {
+    slug: "mcp-integration-guide-lmstudio",
+    title: "MCP Integration Guide for LM Studio: Local AI with MCP Servers",
+    description: "Step-by-step guide to connecting MCP servers to LM Studio for fully local AI workflows. Configure tool use with local models, set up server proxies, and build private AI assistants with no cloud dependency.",
+    date: "2026-06-02",
+    author: "MyMCPTools Team",
+    category: "Integration Guides",
+    readingTime: "10 min read",
+    keywords: ["lm studio mcp servers", "lm studio model context protocol", "local ai mcp integration", "lm studio mcp setup guide"],
+    relatedServerSlugs: ["filesystem", "sqlite", "postgres", "brave-search", "memory"],
+    content: `
+<p>LM Studio lets you run powerful language models completely locally — Llama, Mistral, Qwen, Gemma, and dozens more. Combined with MCP servers, you get a fully local AI assistant with structured tool access to your files, databases, and APIs. No cloud, no data leaving your machine, no per-token costs.</p>
+
+<p>This guide walks through connecting MCP servers to LM Studio, from initial setup to a production-quality local AI workflow.</p>
+
+<h2>Why LM Studio + MCP?</h2>
+
+<p>The combination is compelling for specific use cases:</p>
+
+<ul>
+<li><strong>Privacy-sensitive work</strong> — Legal, medical, financial, or confidential business data that can't leave your network</li>
+<li><strong>Air-gapped environments</strong> — Security research, government, or industrial systems without internet access</li>
+<li><strong>Cost at scale</strong> — High-volume automated tasks where cloud API costs are prohibitive</li>
+<li><strong>Low-latency local tools</strong> — Filesystem and local database operations don't need a round-trip to a cloud API</li>
+</ul>
+
+<h2>Prerequisites</h2>
+
+<ul>
+<li>LM Studio 0.3.6 or later (with the local API server and tool call support)</li>
+<li>A model with function/tool calling support (see recommended models below)</li>
+<li>Node.js 18+ for running MCP servers</li>
+<li>The MCP servers you want to connect</li>
+</ul>
+
+<h2>Choosing the Right Local Model</h2>
+
+<p>Not all local models handle tool use equally well. For MCP integration, prioritize models with strong function-calling performance:</p>
+
+<p><strong>Top choices (as of mid-2026):</strong></p>
+<ul>
+<li><strong>Qwen2.5-72B-Instruct</strong> — Best tool-use performance among open models; excellent instruction following</li>
+<li><strong>Llama-3.1-70B-Instruct</strong> — Strong function calling, widely tested with MCP</li>
+<li><strong>Mistral-Nemo-Instruct</strong> — Faster, lower memory; good for simpler tool use on GPU-limited machines</li>
+<li><strong>Hermes-3-Llama-3.1-8B</strong> — The best 8B option for tool use; runs on 8GB VRAM</li>
+</ul>
+
+<p><strong>Avoid for tool use:</strong> Base models (not instruct variants), heavily quantized Q2/Q3 models, and models not trained with function-calling data.</p>
+
+<h2>Step 1: Enable the LM Studio API Server</h2>
+
+<p>LM Studio includes a local OpenAI-compatible API server:</p>
+
+<ol>
+<li>Open LM Studio and click the <strong>Developer</strong> tab (arrow icon in the sidebar)</li>
+<li>Toggle <strong>Start Server</strong> — the server starts on <code>http://localhost:1234</code> by default</li>
+<li>Load your chosen model in the main window</li>
+<li>Verify the server is running: <code>curl http://localhost:1234/v1/models</code></li>
+</ol>
+
+<h2>Step 2: Install the MCP-to-OpenAI Bridge</h2>
+
+<p>LM Studio's API is OpenAI-compatible, but MCP servers communicate over stdio. You need a bridge that:</p>
+<ol>
+<li>Manages your MCP server processes</li>
+<li>Translates MCP tool schemas to OpenAI function-calling format</li>
+<li>Routes tool calls between LM Studio and the appropriate MCP server</li>
+</ol>
+
+<p><strong>Option A: mcp-bridge (recommended)</strong></p>
+
+<pre><code>npm install -g @modelcontextprotocol/mcp-bridge
+
+# Create a config file
+mkdir -p ~/.mcp-bridge
+cat &gt; ~/.mcp-bridge/config.json &lt;&lt; 'EOF'
+{
+  "llm": {
+    "baseUrl": "http://localhost:1234/v1",
+    "apiKey": "lm-studio",
+    "model": "your-loaded-model-id"
+  },
+  "servers": {
+    "filesystem": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-filesystem", "/Users/you/projects"]
+    },
+    "sqlite": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-sqlite", "--db-path", "/Users/you/data.db"]
+    }
+  }
+}
+EOF
+
+mcp-bridge start</code></pre>
+
+<p><strong>Option B: LM Studio's native MCP support</strong></p>
+
+<p>LM Studio 0.3.9+ includes native MCP configuration in the Developer settings. If your version supports it:</p>
+
+<ol>
+<li>Open Developer settings and navigate to the MCP Servers tab</li>
+<li>Click <strong>Add Server</strong></li>
+<li>Enter the server command and arguments</li>
+<li>LM Studio manages the process lifecycle automatically</li>
+</ol>
+
+<h2>Step 3: Configure Core MCP Servers</h2>
+
+<p><strong>Filesystem Server (essential for local workflows)</strong></p>
+
+<pre><code>npm install -g @modelcontextprotocol/server-filesystem</code></pre>
+
+<pre><code>{
+  "filesystem": {
+    "command": "npx",
+    "args": ["-y", "@modelcontextprotocol/server-filesystem", "/Users/you/projects", "/Users/you/documents"],
+    "description": "Read and write files in your projects and documents directories"
+  }
+}</code></pre>
+
+<p><strong>SQLite Server (local databases)</strong></p>
+
+<pre><code>npm install -g @modelcontextprotocol/server-sqlite</code></pre>
+
+<pre><code>{
+  "sqlite": {
+    "command": "npx",
+    "args": ["-y", "@modelcontextprotocol/server-sqlite", "--db-path", "/Users/you/data/local.db"]
+  }
+}</code></pre>
+
+<p><strong>Memory Server (persistent context between sessions)</strong></p>
+
+<pre><code>npm install -g @modelcontextprotocol/server-memory</code></pre>
+
+<pre><code>{
+  "memory": {
+    "command": "npx",
+    "args": ["-y", "@modelcontextprotocol/server-memory"]
+  }
+}</code></pre>
+
+<p>The memory server is especially valuable with local models — it gives your AI a persistent knowledge graph that survives session restarts, compensating for shorter context windows in smaller local models.</p>
+
+<h2>Step 4: Test the Connection</h2>
+
+<p>With the bridge running and LM Studio serving your model, send a test request through the bridge:</p>
+
+<pre><code>curl http://localhost:11434/v1/chat/completions \\
+  -H "Content-Type: application/json" \\
+  -d '{
+    "model": "your-model-id",
+    "messages": [{"role": "user", "content": "List the files in my projects directory"}]
+  }'</code></pre>
+
+<p>If the model correctly calls the <code>list_directory</code> tool and returns results, your setup is working.</p>
+
+<h2>Recommended MCP Server Stack for Local LM Studio Workflows</h2>
+
+<p><strong>For developers:</strong></p>
+<ul>
+<li>Filesystem — code navigation and editing</li>
+<li>SQLite or PostgreSQL — local database queries</li>
+<li>Git — repository context (if your version supports multi-turn tool use)</li>
+</ul>
+
+<p><strong>For researchers and knowledge workers:</strong></p>
+<ul>
+<li>Filesystem — document access</li>
+<li>Memory — persistent knowledge accumulation</li>
+<li>Brave Search — web research (requires internet; skip for air-gapped setups)</li>
+</ul>
+
+<p><strong>For data analysts:</strong></p>
+<ul>
+<li>SQLite — local data files and analysis databases</li>
+<li>Filesystem — CSV and data file access</li>
+<li>PostgreSQL — larger local or network databases</li>
+</ul>
+
+<h2>Performance Tuning for Local Tool Use</h2>
+
+<p>Tool-using sessions with local models are more computationally intensive than simple chat. Tips to keep things responsive:</p>
+
+<ul>
+<li><strong>Use Q4_K_M quantization</strong> — Best balance of quality and speed for tool-use models</li>
+<li><strong>Limit the number of active MCP servers</strong> — Each server's tools are included in every request context. 5-6 servers is the practical limit for most local models.</li>
+<li><strong>Use a model with a large context window</strong> — Tool responses eat tokens. Prefer models with 32K+ context for multi-turn tool sessions.</li>
+<li><strong>Enable GPU offloading fully</strong> — In LM Studio's model settings, set GPU layers to maximum for your VRAM.</li>
+<li><strong>Reduce system prompt length</strong> — With smaller local models, a shorter system prompt leaves more room for tool schemas and results.</li>
+</ul>
+
+<h2>Troubleshooting Common Issues</h2>
+
+<p><strong>"Tool not found" errors</strong></p>
+<p>The model tried to call a tool that wasn't registered. Check that your MCP server started successfully: <code>mcp-bridge status</code>. Verify the server process is running: <code>ps aux | grep mcp</code>.</p>
+
+<p><strong>Model calls wrong arguments</strong></p>
+<p>Smaller local models sometimes hallucinate argument names. Switch to a model with stronger function-calling training (Qwen2.5-72B or Hermes-3-Llama-3.1-8B).</p>
+
+<p><strong>LM Studio crashes under load</strong></p>
+<p>Tool-use sessions generate long contexts. In LM Studio settings, reduce <code>Max Tokens</code> to prevent context overflow crashes, and enable <code>Flash Attention</code> if your model supports it.</p>
+
+<p><strong>Slow responses on tool calls</strong></p>
+<p>Tool calls require the model to generate a structured JSON response before the tool can execute. This is slower than regular chat. For latency-sensitive workflows, use a smaller model (8B-14B range) or enable speculative decoding in LM Studio if available.</p>
+
+<h2>Privacy Considerations</h2>
+
+<p>The main appeal of LM Studio + MCP is full local operation. To keep it truly private:</p>
+
+<ul>
+<li>Don't use the Brave Search server for sensitive queries — it makes external API calls</li>
+<li>Disable any LM Studio telemetry in Settings and Privacy</li>
+<li>Use local SQLite instead of PostgreSQL when your database can be stored locally</li>
+<li>Audit your MCP server configs: any server connecting to an external API breaks the local-only guarantee</li>
+</ul>
+
+<p>For fully air-gapped setups, use only servers that operate on local resources: Filesystem, SQLite, Memory, and any internally-hosted services.</p>
+
+<h2>Next Steps</h2>
+
+<p>Once your LM Studio + MCP setup is running, explore the <a href="/servers">full MCP server directory</a> for additional capabilities. For deployment when you need to move beyond a single machine, see <a href="/blog/deploying-mcp-to-docker">Deploying MCP Servers with Docker</a>. For cloud-hosted model alternatives, see our <a href="/blog/mcp-integration-guide-cursor">Cursor MCP Integration Guide</a> and <a href="/blog/claude-desktop-mcp-setup-guide">Claude Desktop MCP Setup Guide</a>.</p>
+    `.trim(),
+  },
 ];
 export function getBlogPostBySlug(slug: string): BlogPost | undefined {
   return blogPosts.find((post) => post.slug === slug);
