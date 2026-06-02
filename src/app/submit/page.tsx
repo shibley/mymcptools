@@ -3,7 +3,10 @@
 import { useState, FormEvent } from "react";
 import Link from "next/link";
 
+type ListingTier = "free" | "featured";
+
 export default function SubmitPage() {
+  const [tier, setTier] = useState<ListingTier>("free");
   const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
   const [errorMsg, setErrorMsg] = useState("");
 
@@ -21,10 +24,38 @@ export default function SubmitPage() {
       category: (form.elements.namedItem("category") as HTMLSelectElement).value,
       installType: (form.elements.namedItem("install") as HTMLSelectElement).value,
       email: (form.elements.namedItem("email") as HTMLInputElement).value,
-      // honeypot
       website_url: (form.elements.namedItem("website_url") as HTMLInputElement)?.value || "",
     };
 
+    // Honeypot check
+    if (data.website_url) {
+      setStatus("success");
+      return;
+    }
+
+    if (tier === "featured") {
+      // Stripe checkout flow
+      try {
+        const res = await fetch("/api/checkout", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(data),
+        });
+        const json = await res.json();
+        if (!res.ok) {
+          setErrorMsg(json.error || "Checkout failed. Please try again.");
+          setStatus("error");
+        } else if (json.url) {
+          window.location.href = json.url;
+        }
+      } catch {
+        setErrorMsg("Network error. Please try again.");
+        setStatus("error");
+      }
+      return;
+    }
+
+    // Free submission
     try {
       const res = await fetch("/api/submit", {
         method: "POST",
@@ -64,17 +95,68 @@ export default function SubmitPage() {
   return (
     <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
       {/* Header */}
-      <div className="text-center mb-12">
+      <div className="text-center mb-10">
         <h1 className="text-3xl font-bold text-white mb-4">Submit Your MCP Server</h1>
         <p className="text-gray-400">
           Get your server listed in the directory and reach thousands of developers.
         </p>
       </div>
 
+      {/* Tier Selector */}
+      <div className="grid grid-cols-2 gap-4 mb-8">
+        <button
+          type="button"
+          onClick={() => setTier("free")}
+          className={`rounded-xl border p-5 text-left transition ${
+            tier === "free"
+              ? "border-blue-500 bg-blue-950/40"
+              : "border-gray-700 bg-gray-900 hover:border-gray-500"
+          }`}
+        >
+          <div className="text-lg font-semibold text-white mb-1">Free</div>
+          <div className="text-2xl font-bold text-white mb-2">$0</div>
+          <ul className="space-y-1 text-sm text-gray-400">
+            <li>✓ Standard directory listing</li>
+            <li>✓ Reviewed within 24–48 hrs</li>
+            <li>✓ Category + search indexed</li>
+          </ul>
+        </button>
+
+        <button
+          type="button"
+          onClick={() => setTier("featured")}
+          className={`rounded-xl border p-5 text-left transition relative ${
+            tier === "featured"
+              ? "border-yellow-500 bg-yellow-950/30"
+              : "border-gray-700 bg-gray-900 hover:border-yellow-700"
+          }`}
+        >
+          <div className="absolute top-3 right-3 text-xs font-semibold px-2 py-0.5 rounded-full bg-yellow-600/30 text-yellow-300 border border-yellow-700">
+            RECOMMENDED
+          </div>
+          <div className="text-lg font-semibold text-white mb-1">Featured</div>
+          <div className="text-2xl font-bold text-white mb-2">
+            $9 <span className="text-base font-normal text-gray-400">one-time</span>
+          </div>
+          <ul className="space-y-1 text-sm text-gray-400">
+            <li>⭐ Featured badge on listing</li>
+            <li>✓ Top of category placement</li>
+            <li>✓ Priority review within 24 hrs</li>
+            <li>✓ Highlighted in search results</li>
+          </ul>
+        </button>
+      </div>
+
       {/* Submission Form */}
-      <div className="bg-gray-900 border border-gray-800 rounded-xl p-8">
+      <div className={`rounded-xl border p-8 ${tier === "featured" ? "bg-gray-900 border-yellow-800/50" : "bg-gray-900 border-gray-800"}`}>
+        {tier === "featured" && (
+          <div className="mb-6 flex items-center gap-2 text-sm text-yellow-300 bg-yellow-900/20 border border-yellow-800/50 rounded-lg px-4 py-3">
+            ⭐ Featured listing — you&apos;ll be redirected to secure checkout after filling out this form.
+          </div>
+        )}
+
         <form className="space-y-6" onSubmit={handleSubmit}>
-          {/* Honeypot - hidden from real users */}
+          {/* Honeypot */}
           <input type="text" name="website_url" style={{ display: "none" }} tabIndex={-1} autoComplete="off" />
 
           {/* Server Name */}
@@ -187,7 +269,7 @@ export default function SubmitPage() {
             </select>
           </div>
 
-          {/* Your Email */}
+          {/* Email */}
           <div>
             <label htmlFor="email" className="block text-sm font-medium text-gray-300 mb-2">
               Your Email *
@@ -203,20 +285,28 @@ export default function SubmitPage() {
             <p className="mt-1 text-xs text-gray-500">We&apos;ll notify you when your server is listed.</p>
           </div>
 
-          {/* Error message */}
+          {/* Error */}
           {status === "error" && (
             <div className="px-4 py-3 bg-red-900/40 border border-red-700 rounded-lg text-red-300 text-sm">
               {errorMsg}
             </div>
           )}
 
-          {/* Submit Button */}
+          {/* Submit */}
           <button
             type="submit"
             disabled={status === "submitting"}
-            className="w-full px-6 py-3 bg-blue-600 hover:bg-blue-700 disabled:opacity-60 disabled:cursor-not-allowed text-white font-medium rounded-lg transition"
+            className={`w-full px-6 py-3 disabled:opacity-60 disabled:cursor-not-allowed text-white font-medium rounded-lg transition ${
+              tier === "featured"
+                ? "bg-yellow-600 hover:bg-yellow-500"
+                : "bg-blue-600 hover:bg-blue-700"
+            }`}
           >
-            {status === "submitting" ? "Submitting…" : "Submit Server"}
+            {status === "submitting"
+              ? "Processing…"
+              : tier === "featured"
+              ? "Continue to Checkout — $9"
+              : "Submit Server — Free"}
           </button>
         </form>
       </div>
@@ -244,7 +334,6 @@ export default function SubmitPage() {
         </ul>
       </div>
 
-      {/* Back Link */}
       <div className="mt-8 text-center">
         <Link href="/" className="text-blue-400 hover:text-blue-300 transition">
           ← Back to directory
