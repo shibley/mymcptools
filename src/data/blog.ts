@@ -48126,6 +48126,589 @@ const result = await withTrace('mcp-agent-run', async () => {
 <p>Browse the <a href="/servers">MCP server directory</a> for tools to add to your OpenAI agents, and see our <a href="/blog/mcp-server-security-best-practices">MCP Server Security Best Practices</a> guide for hardening your production deployment.</p>
     `.trim(),
   },
+  {
+    slug: "deploying-mcp-to-kubernetes",
+    title: "Deploying MCP Servers to Kubernetes — Production-Grade Container Orchestration",
+    description: "Step-by-step guide to deploying MCP servers on Kubernetes. Covers Deployments, Services, ConfigMaps, health checks, horizontal pod autoscaling, and zero-downtime rollouts for production MCP infrastructure.",
+    date: "2026-06-03",
+    author: "MyMCPTools Team",
+    category: "Deployment",
+    readingTime: "12 min read",
+    keywords: ["deploy mcp server kubernetes", "mcp kubernetes deployment", "mcp server k8s", "kubernetes mcp server production", "mcp server container orchestration"],
+    relatedServerSlugs: ["docker", "kubernetes", "github", "fetch", "postgres"],
+    content: `
+<p>Kubernetes is the standard for running containerized workloads at scale. If your team already runs services on Kubernetes, deploying MCP servers as first-class workloads gives you the same operational benefits — autoscaling, rolling updates, health-based restarts, and centralized observability — that you get for every other service in your cluster.</p>
+
+<p>This guide covers the complete path from a Dockerized MCP server to a production Kubernetes deployment: manifests, configuration management, health probes, autoscaling, and ingress for HTTP-transport servers.</p>
+
+<h2>Prerequisites</h2>
+
+<ul>
+<li>A containerized MCP server (see <a href="/blog/deploying-mcp-to-docker">Deploying MCP to Docker</a> for the base image)</li>
+<li>A Kubernetes cluster (EKS, GKE, AKS, or local via kind/minikube)</li>
+<li><code>kubectl</code> configured to talk to your cluster</li>
+<li>A container registry (ECR, GCR, Docker Hub, or GHCR)</li>
+</ul>
+
+<h2>Step 1: Build and Push Your MCP Server Image</h2>
+
+<p>Start with a minimal production Dockerfile. MCP servers are typically lightweight Node.js or Python processes:</p>
+
+<pre><code># Dockerfile
+FROM node:22-alpine AS builder
+WORKDIR /app
+COPY package*.json ./
+RUN npm ci --production
+
+FROM node:22-alpine
+WORKDIR /app
+COPY --from=builder /app/node_modules ./node_modules
+COPY . .
+EXPOSE 8080
+ENV PORT=8080
+CMD ["node", "dist/server.js"]</code></pre>
+
+<p>Build and push to your registry:</p>
+
+<pre><code>docker build -t your-registry/mcp-server:v1.0.0 .
+docker push your-registry/mcp-server:v1.0.0</code></pre>
+
+<h2>Step 2: Create the Deployment Manifest</h2>
+
+<p>A Kubernetes Deployment manages your MCP server pods, handles restarts on failure, and coordinates rolling updates:</p>
+
+<pre><code>apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mcp-server
+  namespace: mcp
+  labels:
+    app: mcp-server
+    version: v1.0.0
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: mcp-server
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0   # Zero-downtime rollouts
+  template:
+    metadata:
+      labels:
+        app: mcp-server
+    spec:
+      containers:
+      - name: mcp-server
+        image: your-registry/mcp-server:v1.0.0
+        ports:
+        - containerPort: 8080
+        env:
+        - name: NODE_ENV
+          value: production
+        - name: DATABASE_URL
+          valueFrom:
+            secretKeyRef:
+              name: mcp-server-secrets
+              key: database-url
+        - name: API_KEY
+          valueFrom:
+            secretKeyRef:
+              name: mcp-server-secrets
+              key: api-key
+        resources:
+          requests:
+            cpu: 100m
+            memory: 128Mi
+          limits:
+            cpu: 500m
+            memory: 512Mi
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: 8080
+          initialDelaySeconds: 10
+          periodSeconds: 30
+          failureThreshold: 3
+        readinessProbe:
+          httpGet:
+            path: /ready
+            port: 8080
+          initialDelaySeconds: 5
+          periodSeconds: 10
+          failureThreshold: 3</code></pre>
+
+<h2>Step 3: Expose with a Service</h2>
+
+<p>A ClusterIP Service makes your MCP server reachable within the cluster. Use a LoadBalancer or Ingress for external access:</p>
+
+<pre><code>apiVersion: v1
+kind: Service
+metadata:
+  name: mcp-server
+  namespace: mcp
+spec:
+  selector:
+    app: mcp-server
+  ports:
+  - name: http
+    protocol: TCP
+    port: 80
+    targetPort: 8080
+  type: ClusterIP</code></pre>
+
+<h2>Step 4: Manage Configuration with ConfigMaps and Secrets</h2>
+
+<p>Never bake credentials into your container image. Use Kubernetes-native secrets management:</p>
+
+<pre><code># ConfigMap for non-sensitive config
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: mcp-server-config
+  namespace: mcp
+data:
+  LOG_LEVEL: "info"
+  MAX_CONNECTIONS: "100"
+  RATE_LIMIT_RPM: "60"
+---
+# Secret for credentials (base64-encoded values)
+apiVersion: v1
+kind: Secret
+metadata:
+  name: mcp-server-secrets
+  namespace: mcp
+type: Opaque
+stringData:
+  database-url: "postgresql://user:pass@postgres:5432/mcpdb"
+  api-key: "sk-your-api-key-here"</code></pre>
+
+<p>Reference the ConfigMap in your Deployment:</p>
+
+<pre><code>envFrom:
+- configMapRef:
+    name: mcp-server-config
+- secretRef:
+    name: mcp-server-secrets</code></pre>
+
+<h2>Step 5: Add Health Check Endpoints</h2>
+
+<p>Kubernetes relies on your health probes to route traffic and restart unhealthy pods. Add both liveness and readiness endpoints to your MCP server:</p>
+
+<pre><code>import express from 'express'
+
+const app = express()
+
+// Liveness: is the process running?
+app.get('/health', (req, res) => {
+  res.json({ status: 'ok', uptime: process.uptime() })
+})
+
+// Readiness: is the server ready to handle MCP connections?
+app.get('/ready', async (req, res) => {
+  try {
+    // Check dependencies (DB connection, external APIs)
+    await db.query('SELECT 1')
+    res.json({ status: 'ready' })
+  } catch (err) {
+    res.status(503).json({ status: 'not ready', error: err.message })
+  }
+})</code></pre>
+
+<h2>Step 6: Horizontal Pod Autoscaling</h2>
+
+<p>HPA automatically scales your MCP server pods based on CPU or memory utilization:</p>
+
+<pre><code>apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: mcp-server-hpa
+  namespace: mcp
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: mcp-server
+  minReplicas: 2
+  maxReplicas: 10
+  metrics:
+  - type: Resource
+    resource:
+      name: cpu
+      target:
+        type: Utilization
+        averageUtilization: 70
+  - type: Resource
+    resource:
+      name: memory
+      target:
+        type: Utilization
+        averageUtilization: 80</code></pre>
+
+<h2>Step 7: Ingress for HTTP-Transport MCP Servers</h2>
+
+<p>For MCP servers using SSE or HTTP transport (vs. stdio), expose them through an Ingress controller:</p>
+
+<pre><code>apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: mcp-server-ingress
+  namespace: mcp
+  annotations:
+    nginx.ingress.kubernetes.io/proxy-read-timeout: "3600"
+    nginx.ingress.kubernetes.io/proxy-send-timeout: "3600"
+    nginx.ingress.kubernetes.io/proxy-buffering: "off"   # Required for SSE
+    cert-manager.io/cluster-issuer: "letsencrypt-prod"
+spec:
+  ingressClassName: nginx
+  tls:
+  - hosts:
+    - mcp.yourdomain.com
+    secretName: mcp-server-tls
+  rules:
+  - host: mcp.yourdomain.com
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: mcp-server
+            port:
+              number: 80</code></pre>
+
+<p>The <code>proxy-buffering: off</code> annotation is critical for SSE transport — nginx must not buffer the event stream or SSE clients will hang.</p>
+
+<h2>Apply Everything</h2>
+
+<pre><code>kubectl create namespace mcp
+kubectl apply -f configmap.yaml
+kubectl apply -f secret.yaml
+kubectl apply -f deployment.yaml
+kubectl apply -f service.yaml
+kubectl apply -f hpa.yaml
+kubectl apply -f ingress.yaml
+
+# Verify pods are running
+kubectl get pods -n mcp
+
+# Check rollout status
+kubectl rollout status deployment/mcp-server -n mcp</code></pre>
+
+<h2>Rolling Updates</h2>
+
+<p>Update your MCP server with zero downtime by bumping the image tag:</p>
+
+<pre><code>kubectl set image deployment/mcp-server \
+  mcp-server=your-registry/mcp-server:v1.1.0 \
+  -n mcp
+
+# Watch the rollout
+kubectl rollout status deployment/mcp-server -n mcp
+
+# Roll back if needed
+kubectl rollout undo deployment/mcp-server -n mcp</code></pre>
+
+<h2>Production Tips</h2>
+
+<p><strong>Pod Disruption Budgets:</strong> Ensure at least one pod stays available during node maintenance:</p>
+
+<pre><code>apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: mcp-server-pdb
+  namespace: mcp
+spec:
+  minAvailable: 1
+  selector:
+    matchLabels:
+      app: mcp-server</code></pre>
+
+<p><strong>Resource tuning:</strong> MCP servers handling many concurrent tool calls benefit from higher memory limits. Profile your server under load before setting production limits.</p>
+
+<p><strong>Namespace isolation:</strong> Run MCP servers in a dedicated namespace with NetworkPolicies restricting egress to only the external APIs they actually need.</p>
+
+<p>Browse the <a href="/servers">MCP server directory</a> to find production-ready MCP servers to deploy on your Kubernetes cluster, and check our guides for other platforms: <a href="/blog/deploying-mcp-to-aws-lambda">AWS Lambda</a>, <a href="/blog/deploying-mcp-to-cloudflare-workers">Cloudflare Workers</a>, and <a href="/blog/deploying-mcp-to-google-cloud-run">Google Cloud Run</a>.</p>
+    `.trim(),
+  },
+  {
+    slug: "mcp-integration-guide-continue-dev",
+    title: "MCP Integration Guide: Continue.dev — Add MCP Tools to Your AI Coding Assistant",
+    description: "Complete guide to connecting MCP servers with Continue.dev, the open-source AI coding assistant. Configure MCP tools in Continue, use context providers, and build a custom AI coding workflow with your own tool ecosystem.",
+    date: "2026-06-03",
+    author: "MyMCPTools Team",
+    category: "Integrations",
+    readingTime: "10 min read",
+    keywords: ["continue dev mcp", "continue.dev mcp servers", "continue mcp integration", "continue ai coding assistant mcp", "continue dev model context protocol"],
+    relatedServerSlugs: ["github", "fetch", "postgres", "filesystem", "docker"],
+    content: `
+<p>Continue.dev is an open-source AI coding assistant that runs inside VS Code and JetBrains IDEs. Unlike Copilot or Cursor, Continue gives you complete control over which models and tools your coding AI uses — including MCP servers. Connecting MCP servers to Continue lets your coding assistant query databases, read documentation, check GitHub issues, and run shell commands directly from your editor.</p>
+
+<h2>What Continue.dev's MCP Support Enables</h2>
+
+<p>Continue.dev added native MCP support as a first-class feature. MCP servers appear as <strong>context providers</strong> and <strong>tools</strong> in Continue's interface, which means you can:</p>
+
+<ul>
+<li>Use <code>@mcp-tool</code> mentions to pull context from any MCP server into your chat</li>
+<li>Let the AI call MCP tools autonomously during agentic coding sessions</li>
+<li>Mix MCP-sourced context with file context (<code>@file</code>), codebase search (<code>@codebase</code>), and docs (<code>@docs</code>)</li>
+</ul>
+
+<h2>Step 1: Install Continue.dev</h2>
+
+<p>Install the Continue extension from the VS Code Marketplace or JetBrains Plugin Marketplace. The extension creates a <code>~/.continue/config.json</code> file where all configuration lives.</p>
+
+<h2>Step 2: Configure MCP Servers in Continue</h2>
+
+<p>Open <code>~/.continue/config.json</code> and add an <code>mcpServers</code> section:</p>
+
+<pre><code>{
+  "models": [...],
+  "mcpServers": [
+    {
+      "name": "GitHub",
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-github"],
+      "env": {
+        "GITHUB_PERSONAL_ACCESS_TOKEN": "ghp_your_token_here"
+      }
+    },
+    {
+      "name": "Postgres",
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-postgres", "postgresql://localhost/mydb"]
+    },
+    {
+      "name": "Filesystem",
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-filesystem",
+        "/Users/you/projects"
+      ]
+    },
+    {
+      "name": "Fetch",
+      "command": "uvx",
+      "args": ["mcp-server-fetch"]
+    }
+  ]
+}</code></pre>
+
+<p>After saving, Continue automatically starts each MCP server as a subprocess. Tools from all configured servers are available in the chat interface.</p>
+
+<h2>Step 3: Use MCP Tools in Chat</h2>
+
+<p>Continue exposes MCP tools in two ways:</p>
+
+<p><strong>As context providers (@mentions):</strong> Type <code>@</code> in the chat to see available context providers. MCP servers that expose resource-type tools appear here. For example, with the GitHub MCP server, you might see <code>@GitHub Issues</code> or <code>@GitHub PR</code>.</p>
+
+<p><strong>As tools (autonomous use):</strong> In agent mode, Continue's AI can call MCP tools automatically. When you ask "Fix the bug mentioned in GitHub issue #234," Continue can fetch the issue via the GitHub MCP server, read the relevant code, apply a fix, and run tests — all without leaving your editor.</p>
+
+<h2>Step 4: Configure Per-Project MCP Servers</h2>
+
+<p>For project-specific MCP servers (like a database or API specific to one project), use a local Continue config that extends your global one. Create <code>.continue/config.json</code> in your project root:</p>
+
+<pre><code>{
+  "mcpServers": [
+    {
+      "name": "Project DB",
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-postgres",
+        "postgresql://localhost/project_db"
+      ]
+    },
+    {
+      "name": "Project Docs",
+      "command": "node",
+      "args": ["./scripts/mcp-docs-server.js"]
+    }
+  ]
+}</code></pre>
+
+<p>Continue merges the project config with your global config, so project-specific servers are available only when you're working in that directory.</p>
+
+<h2>Step 5: Build a Coding Workflow with MCP Context</h2>
+
+<p>Here's a practical workflow combining multiple MCP servers for a full-stack feature:</p>
+
+<ol>
+<li><strong>Fetch requirements from GitHub</strong> — ask Continue to read the issue and linked PR comments via the GitHub MCP server</li>
+<li><strong>Query the schema</strong> — "Show me the current users table structure" pulls from the Postgres MCP server</li>
+<li><strong>Generate the migration</strong> — Continue writes the SQL migration based on the issue requirements and current schema</li>
+<li><strong>Apply and verify</strong> — use a shell MCP server to run <code>psql</code> and verify the migration applied correctly</li>
+<li><strong>Write the endpoint</strong> — Continue generates the API handler with full context of the schema change</li>
+</ol>
+
+<h2>Using HTTP-Based MCP Servers</h2>
+
+<p>For MCP servers running remotely (team-shared servers, cloud-deployed instances), Continue supports SSE transport:</p>
+
+<pre><code>{
+  "mcpServers": [
+    {
+      "name": "Team Knowledge Base",
+      "url": "https://mcp.yourteam.com/sse",
+      "headers": {
+        "Authorization": "Bearer your-token"
+      }
+    }
+  ]
+}</code></pre>
+
+<p>This is particularly useful for sharing a single MCP server instance (like an internal documentation server or a company-wide database proxy) across your entire engineering team.</p>
+
+<h2>Recommended MCP Servers for Coding Workflows</h2>
+
+<ul>
+<li><strong>GitHub MCP server</strong> — issue context, PR reviews, code search</li>
+<li><strong>Filesystem MCP server</strong> — read/write project files outside the current editor view</li>
+<li><strong>Postgres/SQLite MCP server</strong> — live schema context for SQL generation</li>
+<li><strong>Fetch MCP server</strong> — pull documentation, API specs, or Stack Overflow answers</li>
+<li><strong>Git MCP server</strong> — commit history, diff context, branch information</li>
+<li><strong>Shell/Exec MCP server</strong> — run tests, linters, and build commands inline</li>
+</ul>
+
+<h2>Troubleshooting</h2>
+
+<p><strong>Server not starting:</strong> Check Continue's output panel (<em>View → Output → Continue</em>) for MCP server startup errors. Common cause: missing environment variables or incorrect path to the MCP server binary.</p>
+
+<p><strong>Tools not appearing:</strong> MCP servers must be running and healthy for their tools to appear. Restart Continue after adding new servers. Check that <code>npx</code> or <code>uvx</code> can reach the package registry from your environment.</p>
+
+<p><strong>Rate limits:</strong> MCP servers calling external APIs can hit rate limits during intensive coding sessions. Add caching at the MCP server level or configure rate limits in the server's environment variables.</p>
+
+<p>Explore the <a href="/servers">MCP server directory</a> for tools to add to your Continue.dev setup, and check our <a href="/blog/mcp-integration-guide-cursor">Cursor MCP integration guide</a> and <a href="/blog/mcp-integration-guide-vs-code">VS Code MCP guide</a> for comparison.</p>
+    `.trim(),
+  },
+  {
+    slug: "mcp-servers-for-hospitality",
+    title: "Best MCP Servers for Hospitality — Hotel, Restaurant, and Travel AI Automation",
+    description: "Discover the top MCP servers for hospitality businesses. Automate reservations, guest communications, property management, F&B operations, and review management using AI with Model Context Protocol tools.",
+    date: "2026-06-03",
+    author: "MyMCPTools Team",
+    category: "Industry",
+    readingTime: "10 min read",
+    keywords: ["mcp servers hospitality", "hotel mcp server", "restaurant mcp server", "hospitality ai automation mcp", "travel mcp model context protocol"],
+    relatedServerSlugs: ["google-calendar", "fetch", "postgres", "slack", "stripe"],
+    content: `
+<p>The hospitality industry runs on dozens of fragmented systems: property management software (PMS), point-of-sale terminals, channel managers, review platforms, and booking engines. AI models connected via MCP can act as an integration layer — pulling guest data from your PMS, responding to reviews, managing reservations across OTAs, and analyzing F&B performance — without requiring a multi-year system integration project.</p>
+
+<p>Here are the most valuable MCP servers for hotels, restaurants, and travel businesses.</p>
+
+<h2>1. Reservation and Booking Management</h2>
+
+<p>Most modern PMS and reservation systems expose REST APIs. A custom MCP server wrapping your PMS API gives AI assistants real-time access to room availability, guest profiles, and reservation history.</p>
+
+<p><strong>What to build:</strong></p>
+<ul>
+<li><code>get_availability(check_in, check_out, room_type)</code> — real-time room availability for AI-assisted booking</li>
+<li><code>get_guest_profile(email)</code> — preferences, stay history, loyalty tier</li>
+<li><code>modify_reservation(reservation_id, changes)</code> — room upgrades, date changes, add-ons</li>
+<li><code>get_housekeeping_status(room_number)</code> — clean/dirty/inspected status for front desk AI</li>
+</ul>
+
+<p><strong>Compatible PMS platforms:</strong> Opera Cloud, Cloudbeds, Mews, Apaleo, Little Hotelier, and any PMS with a REST API can be wrapped as an MCP server using the <a href="/servers/fetch">Fetch MCP server</a> or a custom adapter.</p>
+
+<h2>2. Google Calendar and Google Workspace MCP</h2>
+
+<p>Restaurants and event venues live and die by their booking calendar. The <strong><a href="/servers/google-calendar">Google Calendar MCP server</a></strong> lets AI assistants:</p>
+
+<ul>
+<li>Check private dining and event space availability</li>
+<li>Create bookings directly from guest inquiries</li>
+<li>Send calendar invites to guests and internal staff</li>
+<li>Manage recurring events (weekly staff meetings, monthly wine dinners)</li>
+</ul>
+
+<pre><code>// Example: AI checks event space availability
+const availability = await mcp.call('google-calendar', 'list_events', {
+  calendarId: 'events@yourhotel.com',
+  timeMin: '2026-07-01T00:00:00Z',
+  timeMax: '2026-07-31T23:59:59Z',
+})
+// AI can now answer: "Is the Grand Ballroom free on July 15th for a 200-person dinner?"</code></pre>
+
+<h2>3. Stripe MCP Server</h2>
+
+<p>The <strong><a href="/servers/stripe">Stripe MCP server</a></strong> enables payment-related workflows that typically require developer intervention:</p>
+
+<ul>
+<li>Issue refunds for cancellations within your policy window</li>
+<li>Look up charge history for guest disputes</li>
+<li>Process incidental charges (minibar, room service, late checkout fees)</li>
+<li>Generate revenue reports by room type, rate plan, or date range</li>
+</ul>
+
+<p>A front desk AI that can look up a payment, explain a charge, and issue a partial refund — all within a single guest conversation — dramatically reduces service friction.</p>
+
+<h2>4. Review Management via Fetch MCP</h2>
+
+<p>Online reviews drive bookings. The <strong><a href="/servers/fetch">Fetch MCP server</a></strong> combined with your review management platform's API enables:</p>
+
+<ul>
+<li>Pulling new TripAdvisor, Google, and Booking.com reviews as they arrive</li>
+<li>Drafting management responses that reference specific guest feedback</li>
+<li>Analyzing sentiment trends across review platforms</li>
+<li>Flagging reviews that mention specific staff, amenities, or incidents for follow-up</li>
+</ul>
+
+<h2>5. Slack MCP Server for Operations</h2>
+
+<p>The <strong><a href="/servers/slack">Slack MCP server</a></strong> connects your AI to hotel operations channels:</p>
+
+<ul>
+<li>Post maintenance requests to the engineering Slack channel when guests report issues</li>
+<li>Alert F&B management when inventory drops below par levels</li>
+<li>Send daily occupancy and RevPAR reports to the GM channel automatically</li>
+<li>Escalate VIP arrival notifications to the concierge team</li>
+</ul>
+
+<h2>6. Database MCP for POS and F&B Analytics</h2>
+
+<p>If your POS system (Toast, Square, Lightspeed) stores data in a database you control, the <strong><a href="/servers/postgres">Postgres MCP server</a></strong> opens powerful analytics workflows:</p>
+
+<ul>
+<li>"What were our top 10 selling menu items last quarter by margin?"</li>
+<li>"Which tables turn fastest on Friday nights?"</li>
+<li>"Show me labor cost as a percentage of revenue by day of week for the last 90 days"</li>
+<li>"Which servers have the highest average check size?"</li>
+</ul>
+
+<p>Questions that previously required a data analyst or BI tool can be answered conversationally.</p>
+
+<h2>7. Channel Manager Integration</h2>
+
+<p>OTA channel managers (SiteMinder, Cloudbeds Channel Manager, RateGain) manage room rate parity across Booking.com, Expedia, and direct channels. A custom MCP server wrapping your channel manager API gives AI assistants the ability to:</p>
+
+<ul>
+<li>Check rate parity violations ("Is our BAR rate consistent across all channels tonight?")</li>
+<li>Identify last-minute inventory gaps and suggest flash promotions</li>
+<li>Pull pickup reports showing bookings made in the last 24/48/72 hours</li>
+</ul>
+
+<h2>Building a Hospitality AI Assistant</h2>
+
+<p>Combining these MCP servers enables a genuinely useful hospitality AI — one that a front desk agent, GM, or revenue manager can query in natural language:</p>
+
+<ul>
+<li><em>"Mrs. Johnson in room 412 is asking about her bill — pull up her stay charges and check if the spa charge from yesterday was authorized."</em></li>
+<li><em>"We're at 87% occupancy tonight. What's our ADR vs. last Tuesday and should we close out any remaining OTA inventory?"</em></li>
+<li><em>"Draft a response to the negative TripAdvisor review we got this morning about the pool being closed."</em></li>
+</ul>
+
+<p>Each of these workflows requires context from multiple systems — PMS, Stripe, review platform, channel manager. MCP servers make it possible to give an AI model access to all of them through a single interface, without custom integrations between each pair of systems.</p>
+
+<h2>Getting Started</h2>
+
+<p>Start with the MCP servers that cover your most frequent pain points. For most hotels, that's review management (immediate ROI from faster responses) and reservation lookups (front desk efficiency). For restaurants, POS analytics and reservations via Google Calendar deliver the fastest value.</p>
+
+<p>Browse the <a href="/servers">full MCP server directory</a> for hospitality-relevant integrations, and check our guides for other industries: <a href="/blog/mcp-servers-for-healthcare">Healthcare</a>, <a href="/blog/mcp-servers-for-legal">Legal</a>, and <a href="/blog/mcp-servers-for-retail">Retail</a>.</p>
+    `.trim(),
+  },
 ];
 export function getBlogPostBySlug(slug: string): BlogPost | undefined {
   return blogPosts.find((post) => post.slug === slug);
