@@ -47386,6 +47386,746 @@ mcp-bridge start</code></pre>
 <p>Once your LM Studio + MCP setup is running, explore the <a href="/servers">full MCP server directory</a> for additional capabilities. For deployment when you need to move beyond a single machine, see <a href="/blog/deploying-mcp-to-docker">Deploying MCP Servers with Docker</a>. For cloud-hosted model alternatives, see our <a href="/blog/mcp-integration-guide-cursor">Cursor MCP Integration Guide</a> and <a href="/blog/claude-desktop-mcp-setup-guide">Claude Desktop MCP Setup Guide</a>.</p>
     `.trim(),
   },
+  {
+    slug: "mcp-servers-for-banking",
+    title: "MCP Servers for Banking & Financial Services: The Complete Guide",
+    description: "Discover the best MCP servers for banking, fintech, and financial services teams. From open banking APIs to payment processing and accounting automation — connect your AI to your financial stack.",
+    date: "2026-06-02",
+    author: "MyMCPTools Team",
+    category: "Guides",
+    readingTime: "9 min read",
+    keywords: ["mcp servers banking", "mcp financial services", "mcp servers fintech", "mcp open banking", "ai banking tools", "mcp plaid stripe"],
+    relatedServerSlugs: ["plaid", "stripe", "xero", "quickbooks", "alpha-vantage", "yfinance-mcp"],
+    content: `
+<p>Banking and financial services have some of the richest data in any enterprise — transactions, account balances, market feeds, invoices, reconciliation records. The challenge has always been that this data lives in locked silos: core banking systems, payment processors, ERP platforms, and trading APIs that resist integration.</p>
+
+<p>Model Context Protocol changes the equation. MCP servers bring your financial data into direct reach of AI assistants, letting compliance teams, analysts, and developers query accounts, reconcile transactions, and automate reporting workflows through natural language — without building custom integrations for every system.</p>
+
+<h2>Why Financial Services is a Strong MCP Use Case</h2>
+
+<p>Three properties make banking and finance ideal for MCP integration:</p>
+
+<ul>
+<li><strong>Structured data</strong> — Financial records follow strict schemas. MCP servers can expose exactly the right read-only tools without risk of ambiguity.</li>
+<li><strong>High query volume</strong> — Finance teams answer the same questions repeatedly: "What's the current cash position?" "Show all transactions over $10k this quarter." MCP makes these conversational.</li>
+<li><strong>Audit requirements</strong> — Every query and AI-generated report needs a traceable source. MCP's tool-call architecture creates a natural audit log: which tool was called, with what parameters, returning what data.</li>
+</ul>
+
+<h2>Essential MCP Servers for Banking & Finance</h2>
+
+<h3>1. Plaid MCP Server — Open Banking Data</h3>
+
+<p>Plaid connects to thousands of financial institutions and is the backbone of most fintech applications. The Plaid MCP server gives your AI assistant real-time access to account balances, transaction histories, and identity verification across your users' linked accounts.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Transaction retrieval across all linked accounts with merchant categorization</li>
+<li>Real-time balance queries (available, current, limit)</li>
+<li>Account identity and ownership verification</li>
+<li>Income verification and asset confirmation workflows</li>
+</ul>
+
+<p><strong>Best for:</strong> Fintech developers building lending platforms, expense management tools, or personal finance applications. Also valuable for financial advisors who want to analyze client account data through AI.</p>
+
+<p><strong>Security note:</strong> Configure Plaid MCP with read-only access tokens. Never expose write-capable tokens through an MCP server connected to an AI client.</p>
+
+<h3>2. Stripe MCP Server — Payment and Revenue Intelligence</h3>
+
+<p>If your business runs on Stripe, the Stripe MCP server is among the highest-value integrations available. It gives your AI direct access to your revenue data — customers, charges, subscriptions, refunds, disputes, and payout schedules.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Customer and subscription querying (MRR, churn, cohort analysis)</li>
+<li>Transaction and charge history with filter support</li>
+<li>Dispute and refund status tracking</li>
+<li>Payout schedule and balance reconciliation</li>
+</ul>
+
+<p><strong>Best for:</strong> SaaS companies, e-commerce businesses, and finance teams who need conversational access to revenue data. "What's our MRR trend over the last 6 months?" becomes a one-sentence query.</p>
+
+<h3>3. Xero MCP Server — Accounting and Financial Reporting</h3>
+
+<p>Xero is the accounting platform of choice for small and mid-market businesses in most English-speaking markets. The Xero MCP server exposes your chart of accounts, invoices, bills, bank reconciliation, and financial reports to your AI assistant.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>P&L, balance sheet, and cash flow report generation</li>
+<li>Outstanding invoice and accounts receivable queries</li>
+<li>Bank reconciliation status and unreconciled transaction lists</li>
+<li>Contact and supplier management</li>
+</ul>
+
+<p><strong>Best for:</strong> Finance teams and accountants who want to generate reports and answer ad-hoc financial questions without exporting to spreadsheets.</p>
+
+<h3>4. QuickBooks MCP Server — SMB Accounting</h3>
+
+<p>For businesses running on QuickBooks Online or Desktop, this MCP server provides similar accounting access to the Xero server but optimized for the QuickBooks API surface and terminology.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Customer, vendor, and employee record access</li>
+<li>Invoice, bill, and payment queries</li>
+<li>Class and department-level reporting</li>
+<li>Payroll summary data (QuickBooks Payroll integration)</li>
+</ul>
+
+<p><strong>Best for:</strong> US-based SMBs where QuickBooks is the default accounting platform. Pairs well with AI agents that help with month-end close workflows.</p>
+
+<h3>5. Alpha Vantage MCP Server — Market Data</h3>
+
+<p>For investment teams, trading desks, and quantitative researchers, Alpha Vantage provides real-time and historical market data across equities, forex, commodities, and crypto. The MCP server makes this data conversationally accessible.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Real-time and historical equity prices (intraday, daily, weekly)</li>
+<li>Fundamental data: earnings, income statements, balance sheets</li>
+<li>Technical indicators (RSI, MACD, Bollinger Bands) on demand</li>
+<li>Forex and commodity spot rates</li>
+</ul>
+
+<p><strong>Best for:</strong> Financial analysts, portfolio managers, and quant researchers who want to ask questions like "Show me AAPL's P/E ratio vs. sector average" without writing a Python script.</p>
+
+<h3>6. yFinance MCP Server — Yahoo Finance Data</h3>
+
+<p>Yahoo Finance data via the yFinance Python library is widely used in academic and research contexts. The MCP server wraps it for AI assistant access with no API key required — making it the fastest way to get market data into your AI workflow.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Stock, ETF, and mutual fund price history</li>
+<li>Options chain data</li>
+<li>Company financials and key statistics</li>
+<li>Currency exchange rates</li>
+</ul>
+
+<p><strong>Best for:</strong> Researchers, students, and anyone who needs market data access without an API subscription. Good for prototyping before connecting to a production data vendor.</p>
+
+<h2>Banking-Specific MCP Patterns</h2>
+
+<h3>Read-Only Enforcement is Non-Negotiable</h3>
+
+<p>Every financial MCP server must operate in read-only mode. Configure your Plaid access tokens as read-only, your Stripe restricted keys with no write permissions, and your accounting API credentials with viewer roles only.</p>
+
+<p>The value of these servers comes entirely from data access and analysis — there is no legitimate AI workflow that requires writing transactions through an MCP server, and the risk of unintended writes in a financial context is catastrophic.</p>
+
+<h3>Audit Logging</h3>
+
+<p>Log every MCP tool call in your financial servers with timestamp, tool name, parameters, and the identity of the AI client session. This creates the audit trail your compliance team needs and helps you detect anomalous query patterns.</p>
+
+<pre><code>// Example audit middleware for financial MCP servers
+server.setRequestHandler('tools/call', async (request, context) => {
+  const logEntry = {
+    timestamp: new Date().toISOString(),
+    tool: request.params.name,
+    args: request.params.arguments,
+    sessionId: context?.sessionId ?? 'unknown'
+  }
+  await auditLog.write(logEntry) // Write to append-only audit store
+  return originalHandler(request, context)
+})</code></pre>
+
+<h3>Data Masking for Sensitive Fields</h3>
+
+<p>Even in read-only mode, you may not want your AI assistant seeing full account numbers, SSNs, or routing numbers. Implement response post-processing to mask or redact sensitive fields before they reach the AI context:</p>
+
+<pre><code>// Mask account numbers in Plaid responses
+function maskAccountNumber(number: string): string {
+  return '*'.repeat(number.length - 4) + number.slice(-4)
+}</code></pre>
+
+<h3>Rate Limiting for API-Cost APIs</h3>
+
+<p>Plaid, Stripe, and Alpha Vantage all charge per API call. Implement caching and rate limiting in your MCP servers to prevent AI clients from generating excessive API costs through repeated queries. Cache responses for static data (account metadata, company fundamentals) with appropriate TTLs.</p>
+
+<h2>Compliance Considerations</h2>
+
+<p><strong>PCI DSS:</strong> If your MCP server accesses cardholder data through Stripe or similar, ensure the server runs in your PCI-compliant environment. Do not route raw card data through an MCP server — use tokenized references only.</p>
+
+<p><strong>GLBA / SOX:</strong> For regulated financial institutions, document your MCP integrations as part of your IT controls inventory. The tool-call architecture provides natural evidence for access control reviews.</p>
+
+<p><strong>Open Banking / PSD2:</strong> European teams using Open Banking APIs must ensure their MCP server's data access is covered by the customer's original consent scope. Don't use MCP to access data beyond the purpose for which consent was granted.</p>
+
+<h2>Getting Started</h2>
+
+<p>The fastest path to financial AI integration:</p>
+
+<ol>
+<li>Start with <strong>Stripe or Xero</strong> — they have the most mature MCP server implementations and well-documented read-only API scopes</li>
+<li>Configure read-only credentials and test with a sandbox/test environment before connecting to production</li>
+<li>Add audit logging middleware before your first production query</li>
+<li>Expand to Plaid for multi-institution account aggregation once your security controls are in place</li>
+</ol>
+
+<p>Browse the <a href="/category/finance">Finance MCP servers directory</a> for the full list of available financial data integrations, or see our <a href="/blog/mcp-server-security-best-practices">MCP Server Security Best Practices</a> guide for hardening your financial MCP setup.</p>
+    `.trim(),
+  },
+  {
+    slug: "deploying-mcp-to-google-cloud-run",
+    title: "Deploying MCP Servers to Google Cloud Run: A Complete Guide",
+    description: "Step-by-step guide to deploying MCP servers on Google Cloud Run. Covers containerization, IAM auth, environment secrets via Secret Manager, auto-scaling, and production best practices.",
+    date: "2026-06-02",
+    author: "MyMCPTools Team",
+    category: "Deployment",
+    readingTime: "10 min read",
+    keywords: ["deploy mcp server google cloud run", "mcp server gcp deployment", "cloud run mcp guide", "google cloud mcp server", "mcp server hosting gcp"],
+    relatedServerSlugs: ["gcp", "docker", "kubernetes", "gcp-storage", "github"],
+    content: `
+<p>Google Cloud Run is a fully managed container platform that runs your code without you managing servers — and it's an excellent fit for MCP server deployment. Cloud Run scales to zero when idle (no idle cost), scales up instantly under load, and integrates natively with Google Cloud's security, secrets, and observability stack.</p>
+
+<p>If your infrastructure already lives on GCP — BigQuery, Cloud SQL, GCS, Vertex AI — deploying your MCP server to Cloud Run keeps everything in one network perimeter and avoids cross-cloud latency.</p>
+
+<h2>Why Cloud Run for MCP Servers</h2>
+
+<p>Cloud Run hits a sweet spot for MCP workloads:</p>
+
+<ul>
+<li><strong>Scale to zero</strong> — Unlike always-on VMs, Cloud Run only costs money when processing requests. Light-use MCP servers (personal, dev team) can run nearly free.</li>
+<li><strong>No cold start problem for MCP</strong> — Unlike AWS Lambda's tight timeout limits, Cloud Run supports minimum instance configuration to keep at least one container warm, eliminating cold starts for production workloads.</li>
+<li><strong>Native GCP integrations</strong> — Secret Manager for credentials, Cloud Logging for structured logs, IAM for access control, and VPC connectors for private Cloud SQL/BigQuery access.</li>
+<li><strong>HTTP/SSE transport ready</strong> — Cloud Run serves HTTP natively, making it perfect for MCP's streamable HTTP and SSE transport modes.</li>
+</ul>
+
+<h2>Step 1: Create Your MCP Server</h2>
+
+<p>Create a simple MCP server with HTTP transport. Cloud Run expects an HTTP server, so we'll use the SSE or streamable HTTP transport rather than stdio:</p>
+
+<pre><code>// src/server.ts
+import { Server } from '@modelcontextprotocol/sdk/server/index.js'
+import { SSEServerTransport } from '@modelcontextprotocol/sdk/server/sse.js'
+import express from 'express'
+
+const app = express()
+const PORT = parseInt(process.env.PORT || '8080') // Cloud Run injects PORT
+
+const server = new Server(
+  { name: 'my-mcp-server', version: '1.0.0' },
+  { capabilities: { tools: {} } }
+)
+
+server.setRequestHandler('tools/list', async () => ({
+  tools: [
+    {
+      name: 'hello_world',
+      description: 'A simple test tool',
+      inputSchema: {
+        type: 'object',
+        properties: {
+          name: { type: 'string', description: 'Name to greet' }
+        },
+        required: ['name']
+      }
+    }
+  ]
+}))
+
+server.setRequestHandler('tools/call', async (request) => {
+  if (request.params.name === 'hello_world') {
+    const { name } = request.params.arguments as { name: string }
+    return {
+      content: [{ type: 'text', text: \`Hello, \${name}! From Cloud Run.\` }]
+    }
+  }
+  throw new Error(\`Unknown tool: \${request.params.name}\`)
+})
+
+// SSE endpoint for MCP clients
+app.get('/sse', async (req, res) => {
+  const transport = new SSEServerTransport('/messages', res)
+  await server.connect(transport)
+})
+
+app.post('/messages', express.json(), async (req, res) => {
+  // Handle incoming messages from SSE transport
+  res.json({ ok: true })
+})
+
+// Health check for Cloud Run
+app.get('/health', (req, res) => res.json({ status: 'ok' }))
+
+app.listen(PORT, () => {
+  console.log(\`MCP server running on port \${PORT}\`)
+})</code></pre>
+
+<h2>Step 2: Containerize with Docker</h2>
+
+<p>Create a <code>Dockerfile</code> in your project root:</p>
+
+<pre><code>FROM node:20-slim
+
+WORKDIR /app
+
+COPY package*.json ./
+RUN npm ci --only=production
+
+COPY dist/ ./dist/
+
+# Cloud Run runs as non-root by default
+USER node
+
+# Cloud Run injects PORT — your app must listen on it
+ENV PORT=8080
+EXPOSE 8080
+
+CMD ["node", "dist/server.js"]</code></pre>
+
+<p>Build and test locally:</p>
+
+<pre><code>npm run build
+docker build -t mcp-server .
+docker run -p 8080:8080 mcp-server
+# Test: curl http://localhost:8080/health</code></pre>
+
+<h2>Step 3: Push to Artifact Registry</h2>
+
+<p>Google Cloud Run pulls images from Artifact Registry (Google's container registry):</p>
+
+<pre><code># Authenticate Docker with GCP
+gcloud auth configure-docker us-central1-docker.pkg.dev
+
+# Create a repository (one-time)
+gcloud artifacts repositories create mcp-servers \
+  --repository-format=docker \
+  --location=us-central1 \
+  --description="MCP server images"
+
+# Tag and push
+docker tag mcp-server \
+  us-central1-docker.pkg.dev/YOUR_PROJECT_ID/mcp-servers/my-mcp-server:latest
+
+docker push \
+  us-central1-docker.pkg.dev/YOUR_PROJECT_ID/mcp-servers/my-mcp-server:latest</code></pre>
+
+<h2>Step 4: Store Secrets in Secret Manager</h2>
+
+<p>Never bake credentials into your container image. Use Google Cloud Secret Manager:</p>
+
+<pre><code># Create a secret
+echo -n "your-api-key-value" | gcloud secrets create MY_API_KEY \
+  --data-file=-
+
+# Grant Cloud Run's service account access
+gcloud secrets add-iam-policy-binding MY_API_KEY \
+  --member="serviceAccount:YOUR_PROJECT_NUMBER-compute@developer.gserviceaccount.com" \
+  --role="roles/secretmanager.secretAccessor"</code></pre>
+
+<p>Your MCP server reads the secret at runtime via the Secret Manager API or by mounting it as an environment variable in the Cloud Run configuration.</p>
+
+<h2>Step 5: Deploy to Cloud Run</h2>
+
+<pre><code>gcloud run deploy my-mcp-server \
+  --image us-central1-docker.pkg.dev/YOUR_PROJECT_ID/mcp-servers/my-mcp-server:latest \
+  --region us-central1 \
+  --platform managed \
+  --port 8080 \
+  --memory 512Mi \
+  --cpu 1 \
+  --min-instances 1 \
+  --max-instances 10 \
+  --set-secrets "MY_API_KEY=MY_API_KEY:latest" \
+  --no-allow-unauthenticated</code></pre>
+
+<p>Key flags explained:</p>
+<ul>
+<li><code>--min-instances 1</code> — Keep one instance warm to eliminate cold starts. Set to 0 for dev/staging to save cost.</li>
+<li><code>--no-allow-unauthenticated</code> — Require Google IAM authentication. Remove this only if you implement your own auth in the MCP server.</li>
+<li><code>--set-secrets</code> — Mounts the secret as an environment variable in the container.</li>
+</ul>
+
+<h2>Step 6: Configure IAM Authentication</h2>
+
+<p>With <code>--no-allow-unauthenticated</code>, callers need a valid Google identity token. Generate one for testing:</p>
+
+<pre><code># Get the service URL
+gcloud run services describe my-mcp-server \
+  --region us-central1 \
+  --format 'value(status.url)'
+
+# Get an identity token for testing
+TOKEN=$(gcloud auth print-identity-token)
+
+# Test the health endpoint
+curl -H "Authorization: Bearer $TOKEN" \
+  https://MY-SERVICE-URL.run.app/health</code></pre>
+
+<p>For MCP clients connecting to your server, you'll need to configure them to include the identity token as a bearer token in the Authorization header. Alternatively, grant specific service accounts the <code>roles/run.invoker</code> role for server-to-server authentication.</p>
+
+<h2>Step 7: Connect Private GCP Services</h2>
+
+<p>If your MCP server needs to access Cloud SQL, Cloud Memorystore, or other private GCP resources, connect to your VPC:</p>
+
+<pre><code>gcloud run services update my-mcp-server \
+  --region us-central1 \
+  --vpc-connector my-vpc-connector \
+  --vpc-egress all-traffic</code></pre>
+
+<p>This routes all egress from your MCP server through your VPC, giving it access to private Cloud SQL instances via their internal IP addresses without exposing them to the public internet.</p>
+
+<h2>Monitoring and Logging</h2>
+
+<p>Cloud Run automatically forwards stdout/stderr to Cloud Logging. Use structured JSON logging to make queries easier:</p>
+
+<pre><code>// Structured logging for Cloud Run
+function log(severity: 'INFO' | 'WARNING' | 'ERROR', message: string, data?: object) {
+  console.log(JSON.stringify({
+    severity,
+    message,
+    timestamp: new Date().toISOString(),
+    ...data
+  }))
+}</code></pre>
+
+<p>View logs in the Google Cloud Console under <strong>Cloud Run → your service → Logs</strong>, or query with:</p>
+
+<pre><code>gcloud logging read \
+  'resource.type="cloud_run_revision" AND resource.labels.service_name="my-mcp-server"' \
+  --limit 50 \
+  --format json</code></pre>
+
+<h2>CI/CD with Cloud Build</h2>
+
+<p>Automate deployments from GitHub with Cloud Build:</p>
+
+<pre><code># cloudbuild.yaml
+steps:
+  - name: 'node:20'
+    entrypoint: 'npm'
+    args: ['ci']
+  - name: 'node:20'
+    entrypoint: 'npm'
+    args: ['run', 'build']
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['build', '-t', 'us-central1-docker.pkg.dev/$PROJECT_ID/mcp-servers/my-mcp-server:$COMMIT_SHA', '.']
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['push', 'us-central1-docker.pkg.dev/$PROJECT_ID/mcp-servers/my-mcp-server:$COMMIT_SHA']
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+    args:
+      - 'run'
+      - 'deploy'
+      - 'my-mcp-server'
+      - '--image'
+      - 'us-central1-docker.pkg.dev/$PROJECT_ID/mcp-servers/my-mcp-server:$COMMIT_SHA'
+      - '--region'
+      - 'us-central1'</code></pre>
+
+<h2>Cost Optimization</h2>
+
+<p>Cloud Run's per-request pricing makes it economical for MCP workloads:</p>
+
+<ul>
+<li><strong>Dev/personal servers:</strong> Set <code>--min-instances 0</code> and accept cold starts. Cost is near-zero for low traffic.</li>
+<li><strong>Team servers:</strong> Use <code>--min-instances 1</code> to eliminate cold starts. The cost of one always-warm instance is ~$5-15/month at 1 vCPU/512MB.</li>
+<li><strong>Production:</strong> Set min instances based on your p95 concurrency. Cloud Run's automatic scaling handles burst traffic.</li>
+</ul>
+
+<p>Browse the <a href="/servers">MCP server directory</a> for servers to deploy, and check our guides for other platforms: <a href="/blog/deploying-mcp-to-aws-lambda">AWS Lambda</a>, <a href="/blog/deploying-mcp-to-cloudflare-workers">Cloudflare Workers</a>, and <a href="/blog/deploying-mcp-to-railway">Railway</a>.</p>
+    `.trim(),
+  },
+  {
+    slug: "mcp-integration-guide-openai-agents",
+    title: "MCP Integration Guide: OpenAI Agents SDK — Connect MCP Tools to OpenAI Agents",
+    description: "Complete guide to integrating MCP servers with the OpenAI Agents SDK. Use MCP tools in OpenAI agent workflows, bridge MCP and OpenAI tool schemas, and build production-grade agentic AI pipelines.",
+    date: "2026-06-02",
+    author: "MyMCPTools Team",
+    category: "Integrations",
+    readingTime: "11 min read",
+    keywords: ["mcp openai agents sdk", "openai agents mcp integration", "openai agents model context protocol", "mcp tools openai", "openai agent framework mcp"],
+    relatedServerSlugs: ["openai", "openai-api", "anthropic-claude", "langchain", "github", "fetch"],
+    content: `
+<p>OpenAI's Agents SDK (formerly Swarm, now the production-ready framework for building multi-agent AI systems) has built-in support for tool use — but its native tools are defined in OpenAI's function-calling format. Integrating MCP servers with the OpenAI Agents SDK lets you reuse your existing MCP tool ecosystem inside OpenAI-powered agents without rewriting tool definitions.</p>
+
+<p>This guide covers the full integration: bridging MCP tool schemas to OpenAI function format, calling MCP tools from agent workflows, and building multi-agent pipelines that combine OpenAI orchestration with MCP's rich tool ecosystem.</p>
+
+<h2>Why Connect MCP to the OpenAI Agents SDK</h2>
+
+<p>The MCP ecosystem has hundreds of production-ready servers covering databases, APIs, file systems, and SaaS integrations. The OpenAI Agents SDK provides the orchestration layer — handoffs between agents, guardrails, tracing, and multi-agent coordination. Combining them gives you:</p>
+
+<ul>
+<li><strong>Reuse existing MCP servers</strong> — Any MCP server becomes available as an OpenAI agent tool without rewriting the integration</li>
+<li><strong>Multi-agent + multi-tool</strong> — Specialized agents can each have access to different MCP server subsets, keeping context focused</li>
+<li><strong>Vendor flexibility</strong> — Your tool layer (MCP) stays independent of your model/orchestration layer (OpenAI Agents SDK)</li>
+<li><strong>Rich tool catalog</strong> — Filesystem, GitHub, databases, Slack, Notion — all immediately available to your OpenAI agents</li>
+</ul>
+
+<h2>How the Bridge Works</h2>
+
+<p>MCP and OpenAI function calling use similar but incompatible schemas. An MCP tool looks like:</p>
+
+<pre><code>// MCP tool definition
+{
+  name: "search_database",
+  description: "Search the customer database",
+  inputSchema: {
+    type: "object",
+    properties: {
+      query: { type: "string" },
+      limit: { type: "number" }
+    },
+    required: ["query"]
+  }
+}</code></pre>
+
+<p>An OpenAI function tool looks like:</p>
+
+<pre><code>// OpenAI function definition
+{
+  type: "function",
+  function: {
+    name: "search_database",
+    description: "Search the customer database",
+    parameters: {
+      type: "object",
+      properties: {
+        query: { type: "string" },
+        limit: { type: "number" }
+      },
+      required: ["query"]
+    }
+  }
+}</code></pre>
+
+<p>The schemas are nearly identical — the main difference is nesting. Converting between them is straightforward.</p>
+
+<h2>Step 1: Install Dependencies</h2>
+
+<pre><code>npm install openai @openai/agents @modelcontextprotocol/sdk</code></pre>
+
+<h2>Step 2: Build the MCP-to-OpenAI Bridge</h2>
+
+<pre><code>// mcp-bridge.ts
+import { Client } from '@modelcontextprotocol/sdk/client/index.js'
+import { StdioClientTransport } from '@modelcontextprotocol/sdk/client/stdio.js'
+import { tool } from '@openai/agents'
+
+export interface MCPServerConfig {
+  name: string
+  command: string
+  args?: string[]
+  env?: Record<string, string>
+}
+
+export async function mcpToAgentTools(config: MCPServerConfig) {
+  // Connect to the MCP server
+  const client = new Client(
+    { name: 'openai-agents-bridge', version: '1.0.0' },
+    { capabilities: {} }
+  )
+
+  const transport = new StdioClientTransport({
+    command: config.command,
+    args: config.args ?? [],
+    env: { ...process.env, ...config.env }
+  })
+
+  await client.connect(transport)
+
+  // Fetch available tools from the MCP server
+  const { tools: mcpTools } = await client.listTools()
+
+  // Convert each MCP tool to an OpenAI Agents SDK tool
+  const agentTools = mcpTools.map((mcpTool) =>
+    tool({
+      name: mcpTool.name,
+      description: mcpTool.description ?? '',
+      parameters: mcpTool.inputSchema as any,
+      execute: async (args) => {
+        const result = await client.callTool({
+          name: mcpTool.name,
+          arguments: args
+        })
+        // Extract text content from MCP result
+        const textContent = result.content
+          .filter((c: any) => c.type === 'text')
+          .map((c: any) => c.text)
+          .join('\n')
+        return textContent
+      }
+    })
+  )
+
+  return { tools: agentTools, client }
+}</code></pre>
+
+<h2>Step 3: Build an Agent with MCP Tools</h2>
+
+<pre><code>// agent.ts
+import { Agent, run } from '@openai/agents'
+import { mcpToAgentTools } from './mcp-bridge.js'
+
+async function main() {
+  // Load tools from multiple MCP servers
+  const { tools: filesystemTools } = await mcpToAgentTools({
+    name: 'filesystem',
+    command: 'npx',
+    args: ['-y', '@modelcontextprotocol/server-filesystem', '/path/to/workspace']
+  })
+
+  const { tools: githubTools } = await mcpToAgentTools({
+    name: 'github',
+    command: 'npx',
+    args: ['-y', '@modelcontextprotocol/server-github'],
+    env: { GITHUB_PERSONAL_ACCESS_TOKEN: process.env.GITHUB_TOKEN! }
+  })
+
+  const { tools: searchTools } = await mcpToAgentTools({
+    name: 'brave-search',
+    command: 'npx',
+    args: ['-y', '@modelcontextprotocol/server-brave-search'],
+    env: { BRAVE_API_KEY: process.env.BRAVE_API_KEY! }
+  })
+
+  // Create a research agent with all three tool sets
+  const researchAgent = new Agent({
+    name: 'Research Assistant',
+    instructions: \`You are a research assistant with access to the filesystem,
+    GitHub repositories, and web search. Use these tools to help users
+    find information, analyze code, and research topics.\`,
+    tools: [...filesystemTools, ...githubTools, ...searchTools],
+  })
+
+  // Run the agent
+  const result = await run(researchAgent, 'Search for recent MCP server implementations on GitHub and summarize what you find')
+  console.log(result.finalOutput)
+}
+
+main().catch(console.error)</code></pre>
+
+<h2>Step 4: Multi-Agent Architecture with Specialized MCP Tools</h2>
+
+<p>One of the Agents SDK's strengths is agent handoffs — the ability for one agent to delegate to a specialized agent. Combine this with MCP to create focused agents with tool subsets:</p>
+
+<pre><code>import { Agent, run } from '@openai/agents'
+import { mcpToAgentTools } from './mcp-bridge.js'
+
+async function buildMultiAgentSystem() {
+  const { tools: dbTools } = await mcpToAgentTools({
+    name: 'postgres',
+    command: 'npx',
+    args: ['-y', '@modelcontextprotocol/server-postgres', process.env.DATABASE_URL!]
+  })
+
+  const { tools: codeTools } = await mcpToAgentTools({
+    name: 'filesystem',
+    command: 'npx',
+    args: ['-y', '@modelcontextprotocol/server-filesystem', './src']
+  })
+
+  const { tools: commTools } = await mcpToAgentTools({
+    name: 'slack',
+    command: 'npx',
+    args: ['-y', '@modelcontextprotocol/server-slack'],
+    env: { SLACK_BOT_TOKEN: process.env.SLACK_BOT_TOKEN! }
+  })
+
+  // Specialized sub-agents
+  const dataAgent = new Agent({
+    name: 'Data Analyst',
+    instructions: 'You analyze database data and generate insights.',
+    tools: dbTools,
+  })
+
+  const codeAgent = new Agent({
+    name: 'Code Reviewer',
+    instructions: 'You review code files and identify issues.',
+    tools: codeTools,
+  })
+
+  const commsAgent = new Agent({
+    name: 'Communications Agent',
+    instructions: 'You send notifications and updates via Slack.',
+    tools: commTools,
+  })
+
+  // Orchestrator agent that delegates to specialists
+  const orchestrator = new Agent({
+    name: 'Orchestrator',
+    instructions: \`You coordinate between specialized agents.
+    Delegate data analysis to the Data Analyst,
+    code review to the Code Reviewer,
+    and communications to the Communications Agent.\`,
+    tools: [
+      dataAgent.asTool({ description: 'Analyze database data' }),
+      codeAgent.asTool({ description: 'Review source code files' }),
+      commsAgent.asTool({ description: 'Send Slack messages and notifications' }),
+    ],
+  })
+
+  return orchestrator
+}</code></pre>
+
+<h2>Step 5: Handle MCP Server Lifecycle</h2>
+
+<p>MCP servers are separate processes. Manage their lifecycle properly in long-running agent deployments:</p>
+
+<pre><code>// Graceful shutdown of MCP clients
+const clients: Client[] = []
+
+process.on('SIGTERM', async () => {
+  console.log('Shutting down MCP connections...')
+  await Promise.all(clients.map(c => c.close()))
+  process.exit(0)
+})
+
+// Keep MCP servers alive across multiple agent runs
+// (reconnect logic for production deployments)
+async function withRetry<T>(fn: () => Promise<T>, retries = 3): Promise<T> {
+  try {
+    return await fn()
+  } catch (err) {
+    if (retries > 0) {
+      await new Promise(resolve => setTimeout(resolve, 1000))
+      return withRetry(fn, retries - 1)
+    }
+    throw err
+  }
+}</code></pre>
+
+<h2>Using HTTP-Based MCP Servers</h2>
+
+<p>For MCP servers deployed on Cloud Run, Railway, or other platforms with SSE transport, use the HTTP client instead of stdio:</p>
+
+<pre><code>import { SSEClientTransport } from '@modelcontextprotocol/sdk/client/sse.js'
+
+async function connectHTTPMCPServer(serverUrl: string, apiKey?: string) {
+  const client = new Client(
+    { name: 'openai-agents-bridge', version: '1.0.0' },
+    { capabilities: {} }
+  )
+
+  const transport = new SSEClientTransport(
+    new URL(\`\${serverUrl}/sse\`),
+    apiKey ? {
+      requestInit: {
+        headers: { Authorization: \`Bearer \${apiKey}\` }
+      }
+    } : undefined
+  )
+
+  await client.connect(transport)
+  return client
+}</code></pre>
+
+<h2>Tracing and Observability</h2>
+
+<p>The OpenAI Agents SDK has built-in tracing support. MCP tool calls appear as tool call spans in your traces, giving you end-to-end visibility into which MCP tools each agent called:</p>
+
+<pre><code>import { withTrace } from '@openai/agents'
+
+const result = await withTrace('mcp-agent-run', async () => {
+  return run(researchAgent, userQuery)
+})</code></pre>
+
+<p>View traces in the OpenAI dashboard under <strong>Traces</strong> to see the full reasoning chain including MCP tool invocations.</p>
+
+<h2>Production Considerations</h2>
+
+<p><strong>Connection pooling:</strong> Creating a new MCP client per agent run is expensive. Maintain a pool of connected MCP clients for frequently-used servers.</p>
+
+<p><strong>Tool selection:</strong> Large tool counts degrade agent performance. Expose only the MCP tools relevant to each agent's domain rather than all available tools.</p>
+
+<p><strong>Error handling:</strong> MCP tool calls can fail if the underlying server is down. Implement fallback behavior in your agent instructions: "If a tool returns an error, acknowledge the limitation and work with available information."</p>
+
+<p>Browse the <a href="/servers">MCP server directory</a> for tools to add to your OpenAI agents, and see our <a href="/blog/mcp-server-security-best-practices">MCP Server Security Best Practices</a> guide for hardening your production deployment.</p>
+    `.trim(),
+  },
 ];
 export function getBlogPostBySlug(slug: string): BlogPost | undefined {
   return blogPosts.find((post) => post.slug === slug);
