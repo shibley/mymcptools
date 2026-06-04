@@ -43,6 +43,9 @@ export function Header() {
             <Link href="/blog" className="text-gray-400 hover:text-white transition text-sm">
               Blog
             </Link>
+            <Link href="/advertise" className="text-yellow-400 hover:text-yellow-300 transition text-sm font-medium">
+              Advertise
+            </Link>
           </nav>
 
           <form onSubmit={handleSearch} className="hidden lg:flex items-center">
@@ -99,6 +102,7 @@ export function Header() {
               <Link href="/compare" className="text-gray-400 hover:text-white transition py-2" onClick={() => setMobileMenuOpen(false)}>Compare</Link>
               <Link href="/pricing" className="text-gray-400 hover:text-white transition py-2" onClick={() => setMobileMenuOpen(false)}>Pricing</Link>
               <Link href="/blog" className="text-gray-400 hover:text-white transition py-2" onClick={() => setMobileMenuOpen(false)}>Blog</Link>
+              <Link href="/advertise" className="text-yellow-400 hover:text-yellow-300 transition py-2 font-medium" onClick={() => setMobileMenuOpen(false)}>Advertise</Link>
               <Link href="/submit" className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition text-center" onClick={() => setMobileMenuOpen(false)}>Submit Server</Link>
             </nav>
           </div>

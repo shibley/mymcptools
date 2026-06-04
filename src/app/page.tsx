@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { ServerCard } from "@/components/ServerCard";
-import { servers, getCategoriesWithCounts, getIntegrationsWithCounts, getFeaturedServers, getOfficialServers } from "@/data/servers";
+import { servers, getCategoriesWithCounts, getIntegrationsWithCounts, getFeaturedServers, getOfficialServers, getSponsoredServers } from "@/data/servers";
 import { getServerPricing, getPricingBadge } from "@/data/pricing";
 
 export default function Home() {
@@ -8,6 +8,7 @@ export default function Home() {
   const integrationsWithCounts = getIntegrationsWithCounts();
   const featuredServers = getFeaturedServers().slice(0, 8);
   const officialServers = getOfficialServers().slice(0, 8);
+  const sponsoredServers = getSponsoredServers();
 
   const websiteJsonLd = {
     "@context": "https://schema.org",
@@ -94,6 +95,36 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* Sponsored — compact horizontal strip (TAAFT-style) */}
+      {sponsoredServers.length > 0 && (
+        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-2 pb-2">
+          <div className="flex items-center gap-2 mb-3">
+            <span className="text-[11px] font-semibold text-yellow-400/80 uppercase tracking-wider">⭐ Sponsored</span>
+            <span className="text-[10px] text-gray-600 uppercase tracking-wider">Paid placement</span>
+          </div>
+          <div className="flex flex-wrap gap-3">
+            {sponsoredServers.map((server) => (
+              <Link
+                key={server.slug}
+                href={`/servers/${server.slug}`}
+                className="relative flex items-center gap-3 bg-gradient-to-r from-yellow-500/[0.06] to-transparent border border-yellow-500/30 rounded-lg pl-3 pr-4 py-2.5 hover:border-yellow-400/60 hover:bg-yellow-500/[0.1] transition group w-full sm:w-auto sm:min-w-[280px] sm:max-w-[360px]"
+              >
+                <div className="w-8 h-8 rounded-lg bg-gray-800 border border-gray-700 flex items-center justify-center shrink-0 text-sm font-bold text-gray-300">
+                  {server.name.charAt(0).toUpperCase()}
+                </div>
+                <div className="flex-1 min-w-0">
+                  <div className="flex items-center gap-2">
+                    <h3 className="font-semibold text-sm group-hover:text-yellow-300 transition truncate">{server.name}</h3>
+                    <span className="text-[9px] font-bold bg-yellow-500/20 text-yellow-300 px-1.5 py-0.5 rounded uppercase tracking-wide shrink-0">Ad</span>
+                  </div>
+                  <p className="text-gray-400 text-xs mt-0.5 truncate">{server.description}</p>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </section>
+      )}
 
       {/* Featured Servers */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">

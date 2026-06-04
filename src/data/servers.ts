@@ -10,6 +10,8 @@ export interface MCPServer {
   install_type: 'npm' | 'pip' | 'binary' | 'docker' | 'source';
   install_command?: string;
   featured?: boolean;
+  /** Paid sponsored placement — renders in homepage sponsored strip with gold accent */
+  sponsored?: boolean;
   official?: boolean;
   stars?: number;
   isNew?: boolean;
@@ -30437,6 +30439,10 @@ export function getFeaturedServers(): MCPServer[] {
 
 export function getOfficialServers(): MCPServer[] {
   return servers.filter(s => s.official);
+}
+
+export function getSponsoredServers(): MCPServer[] {
+  return servers.filter(s => s.sponsored);
 }
 
 export function searchServers(query: string): MCPServer[] {
