@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { CopyButton } from "@/components/CopyButton";
 import { ServerCardCompact } from "@/components/ServerCard";
+import { AffiliateServerCTA } from "@/components/AffiliateServerCTA";
 import { servers, getServerBySlug, getRelatedServers, categories, integrations } from "@/data/servers";
 import { getBlogPostsForServer } from "@/data/blog";
 
@@ -331,10 +332,8 @@ export default async function ServerPage({ params }: Props) {
                 </div>
               )}
 
-              {/* Ad Placeholder */}
-              <div className="bg-gray-900/50 border border-dashed border-gray-800 rounded-xl p-6 text-center">
-                <p className="text-xs text-gray-600">Ad Placeholder</p>
-              </div>
+              {/* Contextual Affiliate CTA */}
+              <AffiliateServerCTA serverCategories={server.categories} />
             </div>
           </div>
         </div>
