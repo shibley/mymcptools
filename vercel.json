@@ -1,9 +1,11 @@
 {
-  "ignoreCommand": "git log -1 --pretty=%B | grep -qE '(\\[skip ci\\]|cycle [0-9]+ slot [0-9]+|aiso-taaft-gaps|new blog posts?|^content:|chore\\(monitor\\):|auto-refresh status)' && exit 0 || exit 1",
+  "ignoreCommand": "LAST=$(git log -1 --pretty=%B); echo \"$LAST\" | grep -qE '(\\[skip ci\\]|chore\\(monitor\\)|chore\\(rotation\\)|chore\\(strategy\\)|chore\\(sprint\\)|auto-refresh|cycle [0-9]+ slot|aiso-taaft-gaps|new blog posts?|^content:|^docs:|^memory:|^security:)' && exit 0; git diff --name-only HEAD^ HEAD 2>/dev/null | grep -qE '^(src/|app/|components/|lib/|data/|public/|supabase/migrations/|package(-lock)?\\.json|next\\.config|tsconfig|tailwind|vercel\\.json|eslint\\.config|postcss\\.config)' && exit 1; exit 0",
   "buildCommand": "npm run build",
   "outputDirectory": ".next",
   "framework": "nextjs",
-  "regions": ["sfo1"],
+  "regions": [
+    "sfo1"
+  ],
   "headers": [
     {
       "source": "/(.*)",
