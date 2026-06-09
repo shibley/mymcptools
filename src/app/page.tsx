@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { ServerCard } from "@/components/ServerCard";
+import { AffiliateServerCTA } from "@/components/AffiliateServerCTA";
 import { servers, getCategoriesWithCounts, getIntegrationsWithCounts, getFeaturedServers, getOfficialServers, getSponsoredServers } from "@/data/servers";
 import { getServerPricing, getPricingBadge } from "@/data/pricing";
 
@@ -270,6 +271,19 @@ export default function Home() {
               </Link>
             );
           })}
+        </div>
+      </section>
+
+      {/* Sponsored Tools */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div className="flex items-center gap-3 mb-4">
+          <span className="text-xs font-medium text-gray-500 uppercase tracking-wider">Sponsored Tools</span>
+          <div className="flex-1 border-t border-gray-800" />
+        </div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          <AffiliateServerCTA serverCategories={["devops", "api"]} />
+          <AffiliateServerCTA serverCategories={["security"]} />
+          <AffiliateServerCTA serverCategories={["media"]} />
         </div>
       </section>
 

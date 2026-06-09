@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ServerCard } from "@/components/ServerCard";
+import { AffiliateServerCTA } from "@/components/AffiliateServerCTA";
 import { categories, getServersByCategory } from "@/data/servers";
 
 interface Props {
@@ -93,6 +94,13 @@ export default async function CategoryPage({ params }: Props) {
           <ServerCard key={server.slug} server={server} showCategory={false} />
         ))}
       </div>
+
+      {/* Affiliate CTA */}
+      {categoryServers.length > 0 && (
+        <div className="mt-12 max-w-sm">
+          <AffiliateServerCTA serverCategories={[slug]} />
+        </div>
+      )}
 
       {/* Other Categories */}
       <div className="mt-16">
