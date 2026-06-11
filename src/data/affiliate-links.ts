@@ -116,6 +116,18 @@ export const AFFILIATE_CTAS: AffiliateCTA[] = [
     badge: "Free Trial",
   },
   {
+    slug: "activecampaign",
+    name: "ActiveCampaign",
+    tagline: "Automate email & CRM from your agents",
+    description: "Connect your MCP agents to ActiveCampaign's email automation and CRM. Trigger campaigns, update contacts, and personalize outreach at scale.",
+    url: "https://try.activecampaign.com/vw1jw6s8z6qi?utm_source=mymcptools&utm_medium=affiliate&utm_campaign=sidebar",
+    program: "PartnerStack",
+    commission: "30% recurring for 12 months",
+    categories: ["communication", "marketing", "productivity"],
+    cta: "Try ActiveCampaign free →",
+    badge: "14-day Free Trial",
+  },
+  {
     slug: "consensus",
     name: "Consensus",
     tagline: "AI-powered research over 200M papers",
