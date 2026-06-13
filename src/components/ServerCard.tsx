@@ -24,13 +24,15 @@ export function ServerCard({ server, showCategory = true }: ServerCardProps) {
           </div>
           <div className="flex items-center space-x-1.5">
             {server.featured && (
-              <span className="px-2 py-0.5 bg-amber-500/10 border border-amber-500/30 text-amber-400 text-xs font-medium rounded-full">
-                ⭐ Featured
+              <span className="inline-flex items-center gap-1 leading-none px-2 py-1 bg-amber-500/10 border border-amber-500/30 text-amber-400 text-xs font-medium rounded-full">
+                <span aria-hidden="true">⭐</span>
+                <span>Featured</span>
               </span>
             )}
             {server.official && (
-              <span className="px-2 py-0.5 bg-blue-500/10 border border-blue-500/30 text-blue-400 text-xs font-medium rounded-full">
-                ✓ Official
+              <span className="inline-flex items-center gap-1 leading-none px-2 py-1 bg-blue-500/10 border border-blue-500/30 text-blue-400 text-xs font-medium rounded-full">
+                <span aria-hidden="true">✓</span>
+                <span>Official</span>
               </span>
             )}
           </div>

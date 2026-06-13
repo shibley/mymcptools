@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { blogPosts, getBlogPostBySlug } from "@/data/blog";
 import { getServerBySlug } from "@/data/servers";
 import { ServerCardCompact } from "@/components/ServerCard";
+import { AFFILIATE_CTAS } from "@/data/affiliate-links";
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -176,6 +177,34 @@ export default async function BlogPostPage({ params }: Props) {
             prose-ol:text-gray-300 prose-ul:text-gray-300"
           dangerouslySetInnerHTML={{ __html: post.content }}
         />
+
+        {/* Affiliate CTA */}
+        <section className="mt-12 pt-10 border-t border-gray-800">
+          <p className="text-xs font-medium text-gray-600 uppercase tracking-wider mb-4">Recommended Tools</p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            {AFFILIATE_CTAS.slice(0, 2).map((cta) => (
+              <div key={cta.slug} className="bg-gray-900 border border-gray-800 rounded-xl p-5">
+                <div className="flex items-center justify-between gap-2 mb-2">
+                  <h3 className="text-sm font-semibold text-white">{cta.name}</h3>
+                  {cta.badge && (
+                    <span className="text-xs bg-emerald-900/60 text-emerald-400 border border-emerald-700/50 px-2 py-0.5 rounded-full whitespace-nowrap">
+                      {cta.badge}
+                    </span>
+                  )}
+                </div>
+                <p className="text-xs text-gray-400 leading-relaxed mb-3">{cta.description}</p>
+                <a
+                  href={cta.url}
+                  target="_blank"
+                  rel="noopener noreferrer sponsored"
+                  className="block w-full text-center text-xs font-medium text-white bg-blue-600 hover:bg-blue-500 rounded-lg px-4 py-2 transition-colors"
+                >
+                  {cta.cta}
+                </a>
+              </div>
+            ))}
+          </div>
+        </section>
 
         {/* Related MCP Servers */}
         {relatedServers.length > 0 && (
