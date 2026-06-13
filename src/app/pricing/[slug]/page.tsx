@@ -8,6 +8,14 @@ interface Props {
   params: Promise<{ slug: string }>;
 }
 
+function FreshnessBadge() {
+  return (
+    <span className="inline-flex items-center px-2.5 py-1 bg-amber-500/10 border border-amber-500/30 text-amber-300 text-xs font-medium rounded-full">
+      Updated June 2026
+    </span>
+  );
+}
+
 export async function generateStaticParams() {
   return servers.map((server) => ({ slug: server.slug }));
 }
@@ -149,7 +157,7 @@ export default async function PricingPage({ params }: Props) {
         <script
           key={i}
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(schema).replace(/</g, "\\u003c") }}
         />
       ))}
 
@@ -168,9 +176,12 @@ export default async function PricingPage({ params }: Props) {
           <div className="flex items-start gap-4 mb-4">
             {category && <span className="text-4xl">{category.emoji}</span>}
             <div>
-              <h1 className="text-3xl sm:text-4xl font-bold text-white">
-                {server.name} MCP Server Pricing {year}
-              </h1>
+              <div className="flex flex-wrap items-center gap-3">
+                <h1 className="text-3xl sm:text-4xl font-bold text-white">
+                  {server.name} MCP Server Pricing {year}
+                </h1>
+                <FreshnessBadge />
+              </div>
               <p className="text-xl text-gray-400 mt-2">
                 Complete pricing guide for the {server.name} MCP server — costs, free options, and what you&apos;ll pay.
               </p>
@@ -185,7 +196,7 @@ export default async function PricingPage({ params }: Props) {
             {server.official && (
               <span className="px-2 py-0.5 bg-blue-500/10 text-blue-400 text-xs rounded-full">✓ Official</span>
             )}
-            <span className="text-gray-600 text-xs">Updated {lastUpdated}</span>
+            <span className="text-gray-600 text-xs">Last checked {lastUpdated}</span>
           </div>
         </div>
 

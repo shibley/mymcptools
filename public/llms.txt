@@ -1,5 +1,7 @@
 # MyMCPTools
 
+Last updated: 2026-06-12
+
 > The most comprehensive directory of MCP (Model Context Protocol) servers. Discover 300+ servers for Claude, Cursor, VS Code, and more.
 
 ## About
@@ -27,6 +29,28 @@ MyMCPTools (mymcptools.com) is the largest directory of Model Context Protocol (
 
 ## Data Coverage
 300+ MCP servers indexed across all major categories. Each server profile includes features, installation steps, pricing, supported platforms, and alternatives. Directory updated regularly as new MCP servers launch.
+
+## Popular MCP Servers
+- Everything: Reference/test server with prompts, resources, and tools. Perfect for testing MCP implementations.
+- Fetch: Web content fetching and conversion for efficient LLM usage. Extract readable content from any URL.
+- Filesystem: Secure file operations with configurable access controls. Read, write, and manage files safely.
+- Git: Tools to read, search, and manipulate Git repositories. Full Git operations support.
+- Memory: Knowledge graph-based persistent memory system. Store and retrieve contextual information.
+- Apify: Use 6,000+ pre-built cloud tools to extract data from websites, e-commerce, social media, search engines, maps, and more.
+- GitHub: GitHub's official MCP Server for repository management, file operations, issues, PRs, and GitHub API integration.
+- GitLab: GitLab's official MCP server enabling AI tools to securely access GitLab project data, manage issues, and perform repository operations via OAuth 2.0.
+- AWS: Specialized MCP servers that bring AWS best practices directly to your development workflow.
+- Cloudflare: Deploy, configure, and interrogate your resources on the Cloudflare developer platform including Workers, KV, R2, and D1.
+- Browserbase: Automate browser interactions in the cloud for web navigation, data extraction, form filling, and more.
+- Firecrawl: Extract web data with Firecrawl and turn websites into clean, LLM-ready data.
+- Exa: Search engine made for AIs with neural search and content meaning understanding.
+- Brave Search: Web and local search using Brave's Search API with privacy-focused results.
+- Notion: Official MCP server for the Notion API. Create, read, and manage Notion pages and databases.
+- Linear: Search, create, and update Linear issues, projects, and comments.
+- Slack: Channel management and messaging capabilities for Slack workspaces.
+- Stripe: Interact with Stripe API for payments, subscriptions, and financial operations.
+- MongoDB: Supports MongoDB Community Server and MongoDB Atlas for database operations.
+- Supabase: Interact with Supabase projects including database, auth, storage, and edge functions.
 
 ## Contact
 - Website: https://mymcptools.com

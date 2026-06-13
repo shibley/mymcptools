@@ -23,12 +23,28 @@ export default function Home() {
       "query-input": "required name=search_term_string",
     },
   };
+
+  const featuredServersItemListJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "Featured MCP Servers",
+    "itemListElement": featuredServers.map((server, index) => ({
+      "@type": "ListItem",
+      "position": index + 1,
+      "name": server.name,
+      "url": `https://mymcptools.com/servers/${server.slug}`,
+    })),
+  };
   
   return (
     <>
     <script
       type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }}
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd).replace(/</g, "\\u003c") }}
+    />
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(featuredServersItemListJsonLd).replace(/</g, "\\u003c") }}
     />
     <div>
       {/* Hero */}

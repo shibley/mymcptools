@@ -7,6 +7,14 @@ interface Props {
   params: Promise<{ slug: string }>;
 }
 
+function FreshnessBadge() {
+  return (
+    <span className="inline-flex items-center px-2.5 py-1 bg-blue-500/10 border border-blue-500/30 text-blue-300 text-xs font-medium rounded-full">
+      Updated June 2026
+    </span>
+  );
+}
+
 export async function generateStaticParams() {
   const comparisons = generateComparisons();
   return comparisons.map((comp) => ({
@@ -144,19 +152,19 @@ export default async function ComparisonPage({ params }: Props) {
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd).replace(/</g, "\\u003c") }}
       />
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd).replace(/</g, "\\u003c") }}
       />
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(softwareAJsonLd) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(softwareAJsonLd).replace(/</g, "\\u003c") }}
       />
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(softwareBJsonLd) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(softwareBJsonLd).replace(/</g, "\\u003c") }}
       />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
       {/* Breadcrumb */}
@@ -172,9 +180,12 @@ export default async function ComparisonPage({ params }: Props) {
 
       {/* Header */}
       <div className="text-center mb-12">
-        <h1 className="text-3xl font-bold text-white mb-4">
-          {serverA.name} <span className="text-gray-600">vs</span> {serverB.name}
-        </h1>
+        <div className="flex flex-wrap items-center justify-center gap-3 mb-4">
+          <h1 className="text-3xl font-bold text-white">
+            {serverA.name} <span className="text-gray-600">vs</span> {serverB.name}
+          </h1>
+          <FreshnessBadge />
+        </div>
         <p className="text-gray-400">
           Compare these two MCP servers to find which one fits your needs best.
         </p>

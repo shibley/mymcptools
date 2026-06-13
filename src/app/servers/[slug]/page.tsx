@@ -5,10 +5,23 @@ import { CopyButton } from "@/components/CopyButton";
 import { ServerCardCompact } from "@/components/ServerCard";
 import { AffiliateServerCTA } from "@/components/AffiliateServerCTA";
 import { servers, getServerBySlug, getRelatedServers, categories, integrations } from "@/data/servers";
+import { getServerPricing, hasFreeOption } from "@/data/pricing";
 import { getBlogPostsForServer } from "@/data/blog";
 
 interface Props {
   params: Promise<{ slug: string }>;
+}
+
+function FreshnessBadge() {
+  return (
+    <span className="inline-flex items-center px-2.5 py-1 bg-amber-500/10 border border-amber-500/30 text-amber-300 text-xs font-medium rounded-full">
+      Updated June 2026
+    </span>
+  );
+}
+
+function getFirstSentence(text: string) {
+  return text.split(/(?<=\.)\s+/)[0]?.replace(/\.$/, "") || text;
 }
 
 export async function generateStaticParams() {
@@ -48,6 +61,39 @@ export default async function ServerPage({ params }: Props) {
   const serverCategories = categories.filter(c => server.categories.includes(c.slug));
   const serverIntegrations = integrations.filter(i => server.integrations.includes(i.slug));
   const relatedBlogPosts = getBlogPostsForServer(server.slug);
+  const pricing = getServerPricing(server.slug);
+  const primaryCategory = serverCategories[0]?.name || server.categories[0] || "MCP workflows";
+  const capability = getFirstSentence(server.description);
+  const installAnswer = server.install_command
+    ? `Install ${server.name} with ${server.install_type}: ${server.install_command}`
+    : `Install ${server.name} from its GitHub repository: ${server.github_url}`;
+  const integrationsAnswer = serverIntegrations.length > 0
+    ? `${server.name} integrates with ${serverIntegrations.map(i => i.name).join(", ")}.`
+    : `${server.name} works with MCP-compatible clients such as Claude Desktop, Cursor, and VS Code.`;
+  const faqItems = [
+    {
+      question: `What is ${server.name}?`,
+      answer: `${server.name} is an MCP server built by ${server.author}. ${server.description}`,
+    },
+    {
+      question: `Who built ${server.name}?`,
+      answer: `${server.name} was built by ${server.author}.`,
+    },
+    {
+      question: `Is ${server.name} free?`,
+      answer: hasFreeOption(pricing.pricing_model)
+        ? `Yes, ${server.name} has a free option. ${pricing.pricing_details}`
+        : `${server.name} is free to install as an MCP server, but the underlying service may require payment. ${pricing.pricing_details}`,
+    },
+    {
+      question: `How do I install ${server.name}?`,
+      answer: installAnswer,
+    },
+    {
+      question: `What does ${server.name} integrate with?`,
+      answer: integrationsAnswer,
+    },
+  ];
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -67,47 +113,25 @@ export default async function ServerPage({ params }: Props) {
   const faqJsonLd = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
-    "mainEntity": [
-      {
-        "@type": "Question",
-        "name": `What is the ${server.name} MCP server?`,
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": server.description,
-        },
+    "mainEntity": faqItems.map((faq) => ({
+      "@type": "Question",
+      "name": faq.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": faq.answer,
       },
-      {
-        "@type": "Question",
-        "name": `How do I install ${server.name}?`,
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": server.install_command
-            ? `Install via ${server.install_type}: ${server.install_command}`
-            : `Visit the GitHub repository at ${server.github_url} for installation instructions.`,
-        },
-      },
-      {
-        "@type": "Question",
-        "name": `What AI clients work with ${server.name}?`,
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": serverIntegrations.length > 0
-            ? `${server.name} works with ${serverIntegrations.map(i => i.name).join(', ')}.`
-            : `${server.name} is compatible with MCP-enabled AI clients including Claude Desktop, Cursor, and VS Code.`,
-        },
-      },
-    ],
+    })),
   };
 
   return (
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }}
       />
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd).replace(/</g, "\\u003c") }}
       />
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
@@ -131,8 +155,9 @@ export default async function ServerPage({ params }: Props) {
                 {serverCategories[0]?.emoji || "🔧"}
               </span>
               <div>
-                <div className="flex items-center space-x-3 mb-2">
+                <div className="flex flex-wrap items-center gap-3 mb-2">
                   <h1 className="text-3xl font-bold text-white">{server.name}</h1>
+                  <FreshnessBadge />
                   {server.official && (
                     <span className="px-2 py-1 bg-blue-500/10 border border-blue-500/30 text-blue-400 text-xs font-medium rounded-full">
                       ✓ Official
@@ -144,6 +169,9 @@ export default async function ServerPage({ params }: Props) {
                     </span>
                   )}
                 </div>
+                <p className="text-gray-300 leading-relaxed mb-2">
+                  The {server.name} MCP server, built by {server.author}, provides {capability.charAt(0).toLowerCase() + capability.slice(1)}. It is {server.official ? "officially maintained" : "community-built"} and best for {primaryCategory}.
+                </p>
                 <p className="text-gray-500">by {server.author}</p>
               </div>
             </div>
@@ -210,39 +238,14 @@ export default async function ServerPage({ params }: Props) {
             <div className="mb-8">
               <h2 className="text-xl font-semibold text-white mb-4">Frequently Asked Questions</h2>
               <div className="space-y-4">
-                <details className="bg-gray-900 border border-gray-800 rounded-xl overflow-hidden group" open>
-                  <summary className="px-6 py-4 cursor-pointer text-white font-medium hover:bg-gray-800/50 transition">
-                    What is the {server.name} MCP server?
-                  </summary>
-                  <div className="px-6 pb-4 text-gray-400">{server.description}</div>
-                </details>
-                <details className="bg-gray-900 border border-gray-800 rounded-xl overflow-hidden group">
-                  <summary className="px-6 py-4 cursor-pointer text-white font-medium hover:bg-gray-800/50 transition">
-                    How do I install {server.name}?
-                  </summary>
-                  <div className="px-6 pb-4 text-gray-400">
-                    {server.install_command
-                      ? <>Install via {server.install_type}: <code className="text-green-400 bg-gray-800 px-2 py-0.5 rounded">{server.install_command}</code></>
-                      : <>Visit the <a href={server.github_url} target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:text-blue-300">GitHub repository</a> for installation instructions.</>
-                    }
-                  </div>
-                </details>
-                <details className="bg-gray-900 border border-gray-800 rounded-xl overflow-hidden group">
-                  <summary className="px-6 py-4 cursor-pointer text-white font-medium hover:bg-gray-800/50 transition">
-                    What AI clients work with {server.name}?
-                  </summary>
-                  <div className="px-6 pb-4 text-gray-400">
-                    {serverIntegrations.length > 0
-                      ? <>{server.name} works with {serverIntegrations.map((int, i) => (
-                          <span key={int.slug}>
-                            <Link href={`/integration/${int.slug}`} className="text-blue-400 hover:text-blue-300">{int.name}</Link>
-                            {i < serverIntegrations.length - 1 ? ', ' : ''}
-                          </span>
-                        ))}.</>
-                      : <>{server.name} is compatible with MCP-enabled AI clients including Claude Desktop, Cursor, and VS Code.</>
-                    }
-                  </div>
-                </details>
+                {faqItems.map((faq, index) => (
+                  <details key={faq.question} className="bg-gray-900 border border-gray-800 rounded-xl overflow-hidden group" open={index === 0}>
+                    <summary className="px-6 py-4 cursor-pointer text-white font-medium hover:bg-gray-800/50 transition">
+                      {faq.question}
+                    </summary>
+                    <div className="px-6 pb-4 text-gray-400">{faq.answer}</div>
+                  </details>
+                ))}
               </div>
             </div>
 

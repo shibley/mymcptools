@@ -8,6 +8,14 @@ interface Props {
   params: Promise<{ slug: string }>;
 }
 
+function FreshnessBadge() {
+  return (
+    <span className="inline-flex items-center px-2.5 py-1 bg-blue-500/10 border border-blue-500/30 text-blue-300 text-xs font-medium rounded-full">
+      Updated June 2026
+    </span>
+  );
+}
+
 export async function generateStaticParams() {
   return servers.map((server) => ({ slug: server.slug }));
 }
@@ -110,7 +118,7 @@ export default async function AlternativesPage({ params }: Props) {
         <script
           key={i}
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(schema).replace(/</g, "\\u003c") }}
         />
       ))}
 
@@ -126,9 +134,12 @@ export default async function AlternativesPage({ params }: Props) {
 
         {/* Hero */}
         <div className="mb-10">
-          <h1 className="text-3xl sm:text-4xl font-bold text-white mb-3">
-            Best {server.name} MCP Server Alternatives {year}
-          </h1>
+          <div className="flex flex-wrap items-center gap-3 mb-3">
+            <h1 className="text-3xl sm:text-4xl font-bold text-white">
+              Best {server.name} MCP Server Alternatives {year}
+            </h1>
+            <FreshnessBadge />
+          </div>
           <p className="text-xl text-gray-400">
             {alternatives.length} alternatives to {server.name} for your AI workflow. Compare features, pricing, and compatibility.
           </p>
