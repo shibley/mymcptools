@@ -1644,6 +1644,18 @@ const _serversPart1: MCPServer[] = [
     install_type: 'npm',
   },
   {
+    slug: 'xquik',
+    name: 'Xquik',
+    description: 'X and Twitter automation MCP server for tweet search, profile tweets, follower export, media workflows, webhooks, and confirmation-gated posting.',
+    author: 'Xquik-dev',
+    github_url: 'https://github.com/Xquik-dev/x-twitter-scraper',
+    website_url: 'https://xquik.com',
+    categories: ['communication', 'api'],
+    integrations: ['claude-desktop', 'cursor', 'vs-code', 'windsurf', 'cline'],
+    install_type: 'npm',
+    install_command: 'npx -y mcp-remote@0.1.38 https://xquik.com/mcp',
+  },
+  {
     slug: 'reddit',
     name: 'Reddit',
     description: 'Search and interact with Reddit.',
