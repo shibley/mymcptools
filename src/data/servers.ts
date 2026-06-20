@@ -907,6 +907,18 @@ const _serversPart1: MCPServer[] = [
     install_type: 'npm',
   },
   {
+    slug: 'packrift',
+    name: 'Packrift',
+    description: 'Search Packrift packaging supplies, check product and inventory context, and create ecommerce cart URLs.',
+    author: 'Packrift',
+    github_url: 'https://github.com/Packrift/packrift-mcp',
+    website_url: 'https://packrift.com/pages/agents',
+    categories: ['api', 'search'],
+    integrations: ['claude-desktop', 'cursor', 'vs-code', 'windsurf', 'cline'],
+    install_type: 'docker',
+    install_command: 'docker pull ghcr.io/packrift/packrift-mcp:latest',
+  },
+  {
     slug: 'youtube',
     name: 'YouTube',
     description: 'Search YouTube videos, get transcripts, and interact with YouTube content.',
