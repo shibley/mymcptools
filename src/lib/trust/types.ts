@@ -67,6 +67,44 @@ export interface ProbeResult {
   failure_reason?: string;
   /** ISO-8601 timestamp the probe completed. */
   checked_at: string;
+  /**
+   * Per-tool input-schema hashes (tool name -> sha256) captured from
+   * tools/list, present only when a list succeeded (GOOD/WARN-with-list).
+   * Carried so the next run can diff added/removed/changed tools (PRD P0-4).
+   */
+  tool_hashes?: Record<string, string>;
+  /** Order-independent sha256 over the whole tool-set; null when no list. */
+  tool_schema_hash?: string | null;
+}
+
+/**
+ * Difference between two tool-sets (PRD P0-4). `changed` = same tool name but a
+ * different input-schema hash. Name arrays are sorted for stable output.
+ */
+export interface ToolSetDiff {
+  added: string[];
+  removed: string[];
+  changed: string[];
+}
+
+/**
+ * Drift detected between two successive successful probes of a server (PRD
+ * P0-4). Append-only alongside ProbeResult in probe_events; the `type`
+ * discriminator distinguishes it from plain probe rows (which carry no type).
+ */
+export interface DriftEvent {
+  type: 'drift';
+  slug: string;
+  /** ISO-8601 timestamp the drift was observed. */
+  changed_at: string;
+  schema_changed: boolean;
+  prev_schema_hash: string | null;
+  schema_hash: string | null;
+  /** Tool-level diff; null when only the protocol version changed. */
+  tool_diff: ToolSetDiff | null;
+  protocol_version_changed: boolean;
+  prev_protocol_version: string | null;
+  negotiated_protocol_version: string | null;
 }
 
 /**
@@ -88,6 +126,18 @@ export interface CurrentStatus {
   checked_at: string;
   failure_reason?: string;
   auth_server_url?: string;
+  /** Order-independent sha256 of the latest tools/list schema (PRD P0-4). */
+  schema_hash?: string | null;
+  /** True when the latest probe's schema_hash differs from the prior one. */
+  schema_changed?: boolean;
+  /** ISO-8601 timestamp the tool-schema last changed; null if never. */
+  schema_changed_at?: string | null;
+  /** Per-tool input-schema hashes; carried to diff the next run. */
+  tool_hashes?: Record<string, string>;
+  /** Protocol version observed on the latest successful probe. */
+  last_protocol_version?: string | null;
+  /** True when last_protocol_version differs from the prior probe. */
+  protocol_version_changed?: boolean;
 }
 
 /** Top-level shape of the committed probe-status.json store. */

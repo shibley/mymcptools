@@ -36,7 +36,14 @@ import type {
   StatusStore,
   Verdict,
   Transport,
+  DriftEvent,
 } from '../src/lib/trust/types.ts';
+import {
+  toolHashes,
+  schemaSetHash,
+  diffToolSets,
+  isEmptyDiff,
+} from '../src/lib/trust/drift.ts';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const DATA = join(__dirname, '..', 'src', 'data');
@@ -190,9 +197,17 @@ async function probeOne(entry: ProbeInput): Promise<ProbeResult> {
 
     let tool_count: number | null = null;
     let listErr: string | undefined;
+    let tool_hashes: Record<string, string> | undefined;
+    let tool_schema_hash: string | null = null;
     try {
       const tl = await withTimeout(client.listTools(), LIST_TIMEOUT_MS, 'tools/list');
       tool_count = tl.tools.length;
+      // Untrusted server metadata: only read name/inputSchema for hashing;
+      // nothing from the tool list is ever executed.
+      tool_hashes = toolHashes(
+        tl.tools.map((t) => ({ name: t.name, inputSchema: t.inputSchema })),
+      );
+      tool_schema_hash = schemaSetHash(tool_hashes);
     } catch (e) {
       listErr = e instanceof Error ? e.message : String(e);
     }
@@ -219,6 +234,8 @@ async function probeOne(entry: ProbeInput): Promise<ProbeResult> {
       server_name: proto?.name,
       server_version: proto?.version,
       failure_reason,
+      tool_hashes,
+      tool_schema_hash,
     };
   } catch (connectErr) {
     const errMsg = connectErr instanceof Error ? connectErr.message : String(connectErr);
@@ -274,8 +291,19 @@ async function runPool<T, R>(items: T[], n: number, fn: (item: T) => Promise<R>)
 }
 
 // ---- main -----------------------------------------------------------------
+/** Prior current_status, keyed by slug, for drift comparison. Empty on first run. */
+function loadPrevStatus(): Map<string, CurrentStatus> {
+  try {
+    const prev: StatusStore = JSON.parse(readFileSync(STATUS_OUT, 'utf8'));
+    return new Map(prev.statuses.map((s) => [s.slug, s]));
+  } catch {
+    return new Map();
+  }
+}
+
 async function main() {
   const inventory: InventoryEntry[] = JSON.parse(readFileSync(INVENTORY, 'utf8'));
+  const prevStatus = loadPrevStatus();
 
   let remote = inventory.filter(
     (e): e is InventoryEntry & { remote_endpoint: string; transport: Transport } =>
@@ -304,12 +332,73 @@ async function main() {
     GOOD: 0, WARN: 0, AUTH_REQUIRED: 0, DOWN: 0, UNPROBEABLE: 0,
   };
 
+  const driftEvents: DriftEvent[] = [];
+
   // Build current_status for ALL inventory entries: probed ones get their
   // verdict, local ones are recorded UNPROBEABLE so the store is complete.
   const statuses: CurrentStatus[] = inventory.map((e) => {
     const r = bySlug.get(e.slug);
     if (r) {
       summary[r.verdict]++;
+      const prev = prevStatus.get(r.slug);
+
+      // Drift only applies to probes that actually returned a tools/list.
+      let schema_hash: string | null = null;
+      let schema_changed = false;
+      let schema_changed_at: string | null = prev?.schema_changed_at ?? null;
+      const tool_hashes = r.tool_hashes;
+      let protocol_version_changed = false;
+      const last_protocol_version = r.negotiated_protocol_version;
+
+      if (r.tool_hashes) {
+        schema_hash = r.tool_schema_hash ?? null;
+        const prevHash = prev?.schema_hash ?? null;
+        const prevToolHashes = prev?.tool_hashes;
+        // First baseline (no prior hash) records the hash WITHOUT flagging
+        // drift, so initial population never emits spurious events.
+        if (prevHash !== null && prevHash !== schema_hash) {
+          const tool_diff = diffToolSets(prevToolHashes ?? {}, r.tool_hashes);
+          if (!isEmptyDiff(tool_diff)) {
+            schema_changed = true;
+            schema_changed_at = r.checked_at;
+            driftEvents.push({
+              type: 'drift',
+              slug: r.slug,
+              changed_at: r.checked_at,
+              schema_changed: true,
+              prev_schema_hash: prevHash,
+              schema_hash,
+              tool_diff,
+              protocol_version_changed: false,
+              prev_protocol_version: prev?.last_protocol_version ?? null,
+              negotiated_protocol_version: r.negotiated_protocol_version,
+            });
+          }
+        }
+      }
+
+      // Protocol-version drift is tracked independently of tool-schema drift.
+      const prevProto = prev?.last_protocol_version ?? null;
+      if (
+        prevProto !== null &&
+        last_protocol_version !== null &&
+        prevProto !== last_protocol_version
+      ) {
+        protocol_version_changed = true;
+        driftEvents.push({
+          type: 'drift',
+          slug: r.slug,
+          changed_at: r.checked_at,
+          schema_changed: false,
+          prev_schema_hash: prev?.schema_hash ?? null,
+          schema_hash,
+          tool_diff: null,
+          protocol_version_changed: true,
+          prev_protocol_version: prevProto,
+          negotiated_protocol_version: last_protocol_version,
+        });
+      }
+
       return {
         slug: r.slug,
         verdict: r.verdict,
@@ -322,6 +411,12 @@ async function main() {
         checked_at: r.checked_at,
         failure_reason: r.failure_reason,
         auth_server_url: r.auth_server_url,
+        schema_hash,
+        schema_changed,
+        schema_changed_at,
+        tool_hashes,
+        last_protocol_version,
+        protocol_version_changed,
       };
     }
     summary.UNPROBEABLE++;
@@ -337,6 +432,9 @@ async function main() {
     };
   });
 
+  // Append drift events to the same append-only history (PRD P0-4 / P0-5).
+  for (const d of driftEvents) appendFileSync(EVENTS_OUT, JSON.stringify(d) + '\n');
+
   const store: StatusStore = { generated_at, summary, statuses };
   writeFileSync(STATUS_OUT, JSON.stringify(store, null, 2) + '\n');
 
@@ -350,8 +448,25 @@ async function main() {
     );
   }
   console.log('[probe] summary:', JSON.stringify(summary));
+  if (driftEvents.length) {
+    console.log(`[probe] ${driftEvents.length} drift event(s):`);
+    for (const d of driftEvents) {
+      if (d.protocol_version_changed) {
+        console.log(
+          `  DRIFT(proto) ${d.slug}: ${d.prev_protocol_version} -> ${d.negotiated_protocol_version}`,
+        );
+      } else if (d.tool_diff) {
+        const { added, removed, changed } = d.tool_diff;
+        console.log(
+          `  DRIFT(tools) ${d.slug}: +[${added.join(',')}] -[${removed.join(',')}] ~[${changed.join(',')}]`,
+        );
+      }
+    }
+  } else {
+    console.log('[probe] no drift detected');
+  }
   console.log(`[probe] wrote ${STATUS_OUT}`);
-  console.log(`[probe] appended ${probeResults.length} events to ${EVENTS_OUT}`);
+  console.log(`[probe] appended ${probeResults.length} probe + ${driftEvents.length} drift events to ${EVENTS_OUT}`);
 }
 
 main().catch((e) => {
