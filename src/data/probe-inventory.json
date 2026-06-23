@@ -3,31 +3,36 @@
     "slug": "everything",
     "name": "Everything",
     "delivery": "local",
-    "unprobeable_reason": "local stdio install (npm) — no published remote endpoint"
+    "unprobeable_reason": "local stdio install (npm) — no published remote endpoint",
+    "featured": true
   },
   {
     "slug": "fetch",
     "name": "Fetch",
     "delivery": "local",
-    "unprobeable_reason": "local stdio install (npm) — no published remote endpoint"
+    "unprobeable_reason": "local stdio install (npm) — no published remote endpoint",
+    "featured": true
   },
   {
     "slug": "filesystem",
     "name": "Filesystem",
     "delivery": "local",
-    "unprobeable_reason": "local stdio install (npm) — no published remote endpoint"
+    "unprobeable_reason": "local stdio install (npm) — no published remote endpoint",
+    "featured": true
   },
   {
     "slug": "git",
     "name": "Git",
     "delivery": "local",
-    "unprobeable_reason": "local stdio install (npm) — no published remote endpoint"
+    "unprobeable_reason": "local stdio install (npm) — no published remote endpoint",
+    "featured": true
   },
   {
     "slug": "memory",
     "name": "Memory",
     "delivery": "local",
-    "unprobeable_reason": "local stdio install (npm) — no published remote endpoint"
+    "unprobeable_reason": "local stdio install (npm) — no published remote endpoint",
+    "featured": true
   },
   {
     "slug": "sequential-thinking",
@@ -51,7 +56,8 @@
     "slug": "apify",
     "name": "Apify",
     "delivery": "local",
-    "unprobeable_reason": "local stdio install (npm) — no published remote endpoint"
+    "unprobeable_reason": "local stdio install (npm) — no published remote endpoint",
+    "featured": true
   },
   {
     "slug": "github",
@@ -59,49 +65,57 @@
     "delivery": "remote",
     "remote_endpoint": "https://api.githubcopilot.com/mcp/",
     "transport": "streamable-http",
-    "endpoint_source": "github.com/github/github-mcp-server (remote)"
+    "endpoint_source": "github.com/github/github-mcp-server (remote)",
+    "featured": true
   },
   {
     "slug": "gitlab",
     "name": "GitLab",
     "delivery": "local",
-    "unprobeable_reason": "local stdio install (npm) — no published remote endpoint"
+    "unprobeable_reason": "local stdio install (npm) — no published remote endpoint",
+    "featured": true
   },
   {
     "slug": "aws",
     "name": "AWS",
     "delivery": "local",
-    "unprobeable_reason": "local stdio install (npm) — no published remote endpoint"
+    "unprobeable_reason": "local stdio install (npm) — no published remote endpoint",
+    "featured": true
   },
   {
     "slug": "cloudflare",
     "name": "Cloudflare",
     "delivery": "local",
-    "unprobeable_reason": "local stdio install (npm) — no published remote endpoint"
+    "unprobeable_reason": "local stdio install (npm) — no published remote endpoint",
+    "featured": true
   },
   {
     "slug": "browserbase",
     "name": "Browserbase",
     "delivery": "local",
-    "unprobeable_reason": "local stdio install (npm) — no published remote endpoint"
+    "unprobeable_reason": "local stdio install (npm) — no published remote endpoint",
+    "featured": true
   },
   {
     "slug": "firecrawl",
     "name": "Firecrawl",
     "delivery": "local",
-    "unprobeable_reason": "local stdio install (npm) — no published remote endpoint"
+    "unprobeable_reason": "local stdio install (npm) — no published remote endpoint",
+    "featured": true
   },
   {
     "slug": "exa",
     "name": "Exa",
     "delivery": "local",
-    "unprobeable_reason": "local stdio install (npm) — no published remote endpoint"
+    "unprobeable_reason": "local stdio install (npm) — no published remote endpoint",
+    "featured": true
   },
   {
     "slug": "brave-search",
     "name": "Brave Search",
     "delivery": "local",
-    "unprobeable_reason": "local stdio install (npm) — no published remote endpoint"
+    "unprobeable_reason": "local stdio install (npm) — no published remote endpoint",
+    "featured": true
   },
   {
     "slug": "notion",
@@ -109,7 +123,8 @@
     "delivery": "remote",
     "remote_endpoint": "https://mcp.notion.com/mcp",
     "transport": "streamable-http",
-    "endpoint_source": "developers.notion.com/docs/mcp"
+    "endpoint_source": "developers.notion.com/docs/mcp",
+    "featured": true
   },
   {
     "slug": "linear",
@@ -117,13 +132,15 @@
     "delivery": "remote",
     "remote_endpoint": "https://mcp.linear.app/mcp",
     "transport": "streamable-http",
-    "endpoint_source": "linear.app/docs/mcp"
+    "endpoint_source": "linear.app/docs/mcp",
+    "featured": true
   },
   {
     "slug": "slack",
     "name": "Slack",
     "delivery": "local",
-    "unprobeable_reason": "local stdio install (npm) — no published remote endpoint"
+    "unprobeable_reason": "local stdio install (npm) — no published remote endpoint",
+    "featured": true
   },
   {
     "slug": "hubspot",
@@ -137,13 +154,15 @@
     "delivery": "remote",
     "remote_endpoint": "https://mcp.stripe.com",
     "transport": "streamable-http",
-    "endpoint_source": "docs.stripe.com/mcp"
+    "endpoint_source": "docs.stripe.com/mcp",
+    "featured": true
   },
   {
     "slug": "mongodb",
     "name": "MongoDB",
     "delivery": "local",
-    "unprobeable_reason": "local stdio install (npm) — no published remote endpoint"
+    "unprobeable_reason": "local stdio install (npm) — no published remote endpoint",
+    "featured": true
   },
   {
     "slug": "postgresql",
@@ -167,7 +186,8 @@
     "slug": "supabase",
     "name": "Supabase",
     "delivery": "local",
-    "unprobeable_reason": "local stdio install (npm) — no published remote endpoint"
+    "unprobeable_reason": "local stdio install (npm) — no published remote endpoint",
+    "featured": true
   },
   {
     "slug": "neon",
@@ -199,7 +219,8 @@
     "slug": "chroma",
     "name": "Chroma",
     "delivery": "local",
-    "unprobeable_reason": "local stdio install (pip) — no published remote endpoint"
+    "unprobeable_reason": "local stdio install (pip) — no published remote endpoint",
+    "featured": true
   },
   {
     "slug": "vercel",
@@ -207,7 +228,8 @@
     "delivery": "remote",
     "remote_endpoint": "https://mcp.vercel.com",
     "transport": "streamable-http",
-    "endpoint_source": "vercel.com/docs/mcp"
+    "endpoint_source": "vercel.com/docs/mcp",
+    "featured": true
   },
   {
     "slug": "netlify",
@@ -219,7 +241,8 @@
     "slug": "docker",
     "name": "Docker",
     "delivery": "local",
-    "unprobeable_reason": "local stdio install (npm) — no published remote endpoint"
+    "unprobeable_reason": "local stdio install (npm) — no published remote endpoint",
+    "featured": true
   },
   {
     "slug": "puppeteer",
@@ -231,7 +254,8 @@
     "slug": "playwright",
     "name": "Playwright",
     "delivery": "local",
-    "unprobeable_reason": "local stdio install (npm) — no published remote endpoint"
+    "unprobeable_reason": "local stdio install (npm) — no published remote endpoint",
+    "featured": true
   },
   {
     "slug": "sentry",
@@ -271,7 +295,8 @@
     "delivery": "remote",
     "remote_endpoint": "https://huggingface.co/mcp",
     "transport": "streamable-http",
-    "endpoint_source": "huggingface.co/settings/mcp"
+    "endpoint_source": "huggingface.co/settings/mcp",
+    "featured": true
   },
   {
     "slug": "langfuse",
@@ -283,13 +308,15 @@
     "slug": "e2b",
     "name": "E2B",
     "delivery": "local",
-    "unprobeable_reason": "local stdio install (npm) — no published remote endpoint"
+    "unprobeable_reason": "local stdio install (npm) — no published remote endpoint",
+    "featured": true
   },
   {
     "slug": "figma",
     "name": "Figma",
     "delivery": "local",
-    "unprobeable_reason": "local stdio install (npm) — no published remote endpoint"
+    "unprobeable_reason": "local stdio install (npm) — no published remote endpoint",
+    "featured": true
   },
   {
     "slug": "twilio",
@@ -345,7 +372,8 @@
     "slug": "jira",
     "name": "Jira",
     "delivery": "local",
-    "unprobeable_reason": "local stdio install (npm) — no published remote endpoint"
+    "unprobeable_reason": "local stdio install (npm) — no published remote endpoint",
+    "featured": true
   },
   {
     "slug": "confluence",
@@ -381,7 +409,8 @@
     "slug": "kubernetes",
     "name": "Kubernetes",
     "delivery": "local",
-    "unprobeable_reason": "local binary — no published remote endpoint"
+    "unprobeable_reason": "local binary — no published remote endpoint",
+    "featured": true
   },
   {
     "slug": "terraform",
@@ -1111,7 +1140,8 @@
     "slug": "composio",
     "name": "Composio",
     "delivery": "local",
-    "unprobeable_reason": "local stdio install (npm) — no published remote endpoint"
+    "unprobeable_reason": "local stdio install (npm) — no published remote endpoint",
+    "featured": true
   },
   {
     "slug": "nango",
@@ -2007,7 +2037,8 @@
     "slug": "ollama",
     "name": "Ollama",
     "delivery": "local",
-    "unprobeable_reason": "local binary — no published remote endpoint"
+    "unprobeable_reason": "local binary — no published remote endpoint",
+    "featured": true
   },
   {
     "slug": "llamacpp",
@@ -2031,7 +2062,8 @@
     "slug": "litellm",
     "name": "LiteLLM",
     "delivery": "local",
-    "unprobeable_reason": "local stdio install (pip) — no published remote endpoint"
+    "unprobeable_reason": "local stdio install (pip) — no published remote endpoint",
+    "featured": true
   },
   {
     "slug": "llamaindex",
@@ -2085,7 +2117,8 @@
     "slug": "gmail",
     "name": "Gmail",
     "delivery": "local",
-    "unprobeable_reason": "local stdio install (npm) — no published remote endpoint"
+    "unprobeable_reason": "local stdio install (npm) — no published remote endpoint",
+    "featured": true
   },
   {
     "slug": "outlook",
@@ -2249,7 +2282,8 @@
     "slug": "1password",
     "name": "1Password",
     "delivery": "local",
-    "unprobeable_reason": "local binary — no published remote endpoint"
+    "unprobeable_reason": "local binary — no published remote endpoint",
+    "featured": true
   },
   {
     "slug": "bitwarden",
@@ -2309,7 +2343,8 @@
     "slug": "google-analytics",
     "name": "Google Analytics",
     "delivery": "local",
-    "unprobeable_reason": "local stdio install (npm) — no published remote endpoint"
+    "unprobeable_reason": "local stdio install (npm) — no published remote endpoint",
+    "featured": true
   },
   {
     "slug": "heap",
@@ -2405,13 +2440,15 @@
     "slug": "zep",
     "name": "Zep Memory",
     "delivery": "local",
-    "unprobeable_reason": "local stdio install (npm) — no published remote endpoint"
+    "unprobeable_reason": "local stdio install (npm) — no published remote endpoint",
+    "featured": true
   },
   {
     "slug": "mem0",
     "name": "Mem0",
     "delivery": "local",
-    "unprobeable_reason": "local stdio install (npm) — no published remote endpoint"
+    "unprobeable_reason": "local stdio install (npm) — no published remote endpoint",
+    "featured": true
   },
   {
     "slug": "cognee",
@@ -2459,7 +2496,8 @@
     "slug": "postman",
     "name": "Postman",
     "delivery": "local",
-    "unprobeable_reason": "local stdio install (npm) — no published remote endpoint"
+    "unprobeable_reason": "local stdio install (npm) — no published remote endpoint",
+    "featured": true
   },
   {
     "slug": "rapidapi",
@@ -2663,7 +2701,8 @@
     "slug": "stagehand",
     "name": "Stagehand",
     "delivery": "local",
-    "unprobeable_reason": "local stdio install (npm) — no published remote endpoint"
+    "unprobeable_reason": "local stdio install (npm) — no published remote endpoint",
+    "featured": true
   },
   {
     "slug": "adobe-firefly",
@@ -2767,7 +2806,8 @@
     "slug": "google-search-console",
     "name": "Google Search Console",
     "delivery": "local",
-    "unprobeable_reason": "local stdio install (npm) — no published remote endpoint"
+    "unprobeable_reason": "local stdio install (npm) — no published remote endpoint",
+    "featured": true
   },
   {
     "slug": "ethereum",
@@ -2803,7 +2843,8 @@
     "slug": "google-sheets",
     "name": "Google Sheets",
     "delivery": "local",
-    "unprobeable_reason": "local stdio install (npm) — no published remote endpoint"
+    "unprobeable_reason": "local stdio install (npm) — no published remote endpoint",
+    "featured": true
   },
   {
     "slug": "google-docs",
@@ -2863,7 +2904,8 @@
     "slug": "cal-mcp",
     "name": "Google Calendar",
     "delivery": "local",
-    "unprobeable_reason": "local stdio install (npm) — no published remote endpoint"
+    "unprobeable_reason": "local stdio install (npm) — no published remote endpoint",
+    "featured": true
   },
   {
     "slug": "apple-notes",
@@ -3013,7 +3055,8 @@
     "slug": "openapi-spec",
     "name": "OpenAPI / Swagger",
     "delivery": "local",
-    "unprobeable_reason": "local stdio install (npm) — no published remote endpoint"
+    "unprobeable_reason": "local stdio install (npm) — no published remote endpoint",
+    "featured": true
   },
   {
     "slug": "graphql-mcp",
@@ -3193,7 +3236,8 @@
     "slug": "blender-mcp",
     "name": "Blender MCP",
     "delivery": "local",
-    "unprobeable_reason": "local stdio install (pip) — no published remote endpoint"
+    "unprobeable_reason": "local stdio install (pip) — no published remote endpoint",
+    "featured": true
   },
   {
     "slug": "manim-mcp",
@@ -3349,7 +3393,8 @@
     "slug": "qdrant-mcp",
     "name": "Qdrant MCP",
     "delivery": "local",
-    "unprobeable_reason": "local stdio install (pip) — no published remote endpoint"
+    "unprobeable_reason": "local stdio install (pip) — no published remote endpoint",
+    "featured": true
   },
   {
     "slug": "weaviate-mcp",
@@ -3529,7 +3574,8 @@
     "slug": "home-assistant-mcp",
     "name": "Home Assistant MCP",
     "delivery": "local",
-    "unprobeable_reason": "local stdio install (pip) — no published remote endpoint"
+    "unprobeable_reason": "local stdio install (pip) — no published remote endpoint",
+    "featured": true
   },
   {
     "slug": "arduino-mcp",
@@ -3889,13 +3935,15 @@
     "slug": "firecrawl-mcp",
     "name": "Firecrawl MCP",
     "delivery": "local",
-    "unprobeable_reason": "local stdio install (npm) — no published remote endpoint"
+    "unprobeable_reason": "local stdio install (npm) — no published remote endpoint",
+    "featured": true
   },
   {
     "slug": "e2b-mcp",
     "name": "E2B Code Interpreter MCP",
     "delivery": "local",
-    "unprobeable_reason": "local stdio install (npm) — no published remote endpoint"
+    "unprobeable_reason": "local stdio install (npm) — no published remote endpoint",
+    "featured": true
   },
   {
     "slug": "openrouter-mcp",
@@ -7441,7 +7489,8 @@
     "slug": "ha-mcp-community",
     "name": "Home Assistant MCP (Community)",
     "delivery": "local",
-    "unprobeable_reason": "build-from-source — no published remote endpoint"
+    "unprobeable_reason": "build-from-source — no published remote endpoint",
+    "featured": true
   },
   {
     "slug": "esp-rainmaker-mcp",
@@ -7555,7 +7604,8 @@
     "slug": "google-mcp-toolbox",
     "name": "Google MCP Toolbox for Databases",
     "delivery": "local",
-    "unprobeable_reason": "local binary — no published remote endpoint"
+    "unprobeable_reason": "local binary — no published remote endpoint",
+    "featured": true
   },
   {
     "slug": "ccxt-crypto-mcp",
@@ -7843,7 +7893,8 @@
     "slug": "elevenlabs-mcp",
     "name": "ElevenLabs",
     "delivery": "local",
-    "unprobeable_reason": "local stdio install (npm) — no published remote endpoint"
+    "unprobeable_reason": "local stdio install (npm) — no published remote endpoint",
+    "featured": true
   },
   {
     "slug": "ideogram-mcp",
@@ -8341,7 +8392,8 @@
     "slug": "cloudflare-api-mcp",
     "name": "Cloudflare Full API",
     "delivery": "local",
-    "unprobeable_reason": "local stdio install (npm) — no published remote endpoint"
+    "unprobeable_reason": "local stdio install (npm) — no published remote endpoint",
+    "featured": true
   },
   {
     "slug": "cloudflare-bindings-mcp",
@@ -8353,19 +8405,22 @@
     "slug": "microsoft-playwright-mcp",
     "name": "Microsoft Playwright MCP",
     "delivery": "local",
-    "unprobeable_reason": "local stdio install (npm) — no published remote endpoint"
+    "unprobeable_reason": "local stdio install (npm) — no published remote endpoint",
+    "featured": true
   },
   {
     "slug": "markitdown-mcp",
     "name": "Microsoft MarkItDown",
     "delivery": "local",
-    "unprobeable_reason": "local stdio install (pip) — no published remote endpoint"
+    "unprobeable_reason": "local stdio install (pip) — no published remote endpoint",
+    "featured": true
   },
   {
     "slug": "adobe-creative-cloud-mcp",
     "name": "Adobe Creative Cloud",
     "delivery": "local",
-    "unprobeable_reason": "build-from-source — no published remote endpoint"
+    "unprobeable_reason": "build-from-source — no published remote endpoint",
+    "featured": true
   },
   {
     "slug": "autodesk-fusion-mcp",

@@ -39,6 +39,12 @@ function reasonForLocal(installType: string): string {
 }
 
 const inventory: InventoryEntry[] = servers.map((s) => {
+  // Popularity signals carried through so the hot-set probe (P0-3) can target
+  // featured/sponsored servers without re-reading the catalog at probe time.
+  const popularity = {
+    ...(s.featured ? { featured: true } : {}),
+    ...(s.sponsored ? { sponsored: true } : {}),
+  };
   const remote = remoteEndpointBySlug.get(s.slug);
   if (remote) {
     return {
@@ -48,6 +54,7 @@ const inventory: InventoryEntry[] = servers.map((s) => {
       remote_endpoint: remote.url,
       transport: remote.transport,
       endpoint_source: remote.source,
+      ...popularity,
     };
   }
   return {
@@ -55,6 +62,7 @@ const inventory: InventoryEntry[] = servers.map((s) => {
     name: s.name,
     delivery: 'local',
     unprobeable_reason: reasonForLocal(s.install_type),
+    ...popularity,
   };
 });
 

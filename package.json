@@ -6,7 +6,13 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "inventory": "node scripts/build-inventory.mts",
+    "probe": "node scripts/mcp-probe.mts",
+    "probe:full": "node scripts/mcp-probe.mts --mode full",
+    "probe:hot": "node scripts/mcp-probe.mts --mode hot",
+    "drift:selfcheck": "node scripts/drift-selfcheck.mts",
+    "probe:selfcheck": "node scripts/rolling-window-selfcheck.mts"
   },
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.29.0",

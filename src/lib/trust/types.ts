@@ -41,6 +41,10 @@ export interface InventoryEntry {
   unprobeable_reason?: string;
   /** Provenance of the endpoint mapping, for auditability. */
   endpoint_source?: string;
+  /** Editorially featured in the catalog — part of the hot-set probe (P0-3). */
+  featured?: boolean;
+  /** Paid sponsored placement — part of the hot-set probe (P0-3). */
+  sponsored?: boolean;
 }
 
 /**
@@ -126,6 +130,19 @@ export interface CurrentStatus {
   checked_at: string;
   failure_reason?: string;
   auth_server_url?: string;
+  /**
+   * Raw verdict observed on the latest probe, before rolling-window smoothing
+   * (PRD P0-3). May differ from `verdict` while a server is inside the failure
+   * window (e.g. raw_verdict DOWN but verdict still GOOD until N fails).
+   */
+  raw_verdict?: Verdict;
+  /**
+   * Consecutive failed (DOWN) probes observed (PRD P0-3). Persisted so the
+   * rolling window survives across runs; reset to 0 on any passing probe.
+   */
+  consecutive_failures?: number;
+  /** ISO-8601 timestamp the effective `verdict` last changed (PRD P0-3). */
+  status_changed_at?: string | null;
   /** Order-independent sha256 of the latest tools/list schema (PRD P0-4). */
   schema_hash?: string | null;
   /** True when the latest probe's schema_hash differs from the prior one. */

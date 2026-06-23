@@ -21,7 +21,17 @@
  *   src/data/probe-status.json   (derived current_status store, overwritten)
  *   src/data/probe-events.jsonl  (append-only ProbeResult history)
  *
- * Run: node scripts/mcp-probe.mts [--limit N] [--slug s1,s2]
+ * Scheduling modes (PRD P0-3):
+ *   --mode full  probe the entire remote population (intended nightly)
+ *   --mode hot   probe only the hot set — featured/sponsored servers plus any
+ *                whose last verdict was non-GOOD (intended every few hours)
+ *
+ * Rolling-window failure logic (PRD P0-3): a server only flips to DOWN after
+ * N consecutive failed probes (--fail-threshold / PROBE_FAIL_THRESHOLD,
+ * default 3). See src/lib/trust/rolling-window.ts.
+ *
+ * Run: node scripts/mcp-probe.mts [--mode full|hot] [--limit N] [--slug s1,s2]
+ *      [--fail-threshold N]
  */
 import { readFileSync, writeFileSync, appendFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
@@ -44,6 +54,10 @@ import {
   diffToolSets,
   isEmptyDiff,
 } from '../src/lib/trust/drift.ts';
+import {
+  applyRollingWindow,
+  DEFAULT_FAIL_THRESHOLD,
+} from '../src/lib/trust/rolling-window.ts';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const DATA = join(__dirname, '..', 'src', 'data');
@@ -64,6 +78,18 @@ function argVal(flag: string): string | undefined {
 }
 const limit = argVal('--limit') ? Number(argVal('--limit')) : undefined;
 const slugFilter = argVal('--slug')?.split(',').map((s) => s.trim());
+const mode = (argVal('--mode') ?? 'full') as 'full' | 'hot';
+if (mode !== 'full' && mode !== 'hot') {
+  console.error(`[probe] invalid --mode "${mode}" (expected full|hot)`);
+  process.exit(1);
+}
+const failThreshold = Number(
+  argVal('--fail-threshold') ?? process.env.PROBE_FAIL_THRESHOLD ?? DEFAULT_FAIL_THRESHOLD,
+);
+if (!Number.isInteger(failThreshold) || failThreshold < 1) {
+  console.error(`[probe] invalid --fail-threshold "${failThreshold}" (expected integer >= 1)`);
+  process.exit(1);
+}
 
 // ---- helpers --------------------------------------------------------------
 function withTimeout<T>(p: Promise<T>, ms: number, label: string): Promise<T> {
@@ -309,10 +335,28 @@ async function main() {
     (e): e is InventoryEntry & { remote_endpoint: string; transport: Transport } =>
       e.delivery === 'remote' && !!e.remote_endpoint && !!e.transport,
   );
+
+  // Hot-set selection (PRD P0-3): every few hours we re-probe only the servers
+  // that matter most to keep fresh — featured/sponsored placements plus any
+  // server whose last verdict was not GOOD (failing, warning, auth-gated, or
+  // never-yet-probed). The full population is reserved for the nightly run.
+  // TODO: when richer popularity signals (traffic/install counts) exist in the
+  // catalog, fold them into the hot set here.
+  if (mode === 'hot') {
+    remote = remote.filter((e) => {
+      if (e.featured || e.sponsored) return true;
+      const prev = prevStatus.get(e.slug);
+      return !prev || prev.verdict !== 'GOOD';
+    });
+  }
+
   if (slugFilter) remote = remote.filter((e) => slugFilter.includes(e.slug));
   if (limit) remote = remote.slice(0, limit);
 
-  console.log(`[probe] probing ${remote.length} remote endpoints (concurrency ${CONCURRENCY})`);
+  console.log(
+    `[probe] mode=${mode} fail-threshold=${failThreshold} — probing ` +
+    `${remote.length} remote endpoints (concurrency ${CONCURRENCY})`,
+  );
 
   const probeInputs: ProbeInput[] = remote.map((e) => ({
     slug: e.slug,
@@ -339,8 +383,13 @@ async function main() {
   const statuses: CurrentStatus[] = inventory.map((e) => {
     const r = bySlug.get(e.slug);
     if (r) {
-      summary[r.verdict]++;
       const prev = prevStatus.get(r.slug);
+
+      // Rolling-window failure logic (PRD P0-3): r.verdict is the RAW observed
+      // verdict; `effective` is the sticky verdict that only flips to DOWN
+      // after `failThreshold` consecutive failures.
+      const rw = applyRollingWindow(prev, r.verdict, r.checked_at, failThreshold);
+      summary[rw.verdict]++;
 
       // Drift only applies to probes that actually returned a tools/list.
       let schema_hash: string | null = null;
@@ -401,13 +450,19 @@ async function main() {
 
       return {
         slug: r.slug,
-        verdict: r.verdict,
+        verdict: rw.verdict,
+        raw_verdict: r.verdict,
+        consecutive_failures: rw.consecutive_failures,
+        status_changed_at: rw.status_changed_at,
         tool_count: r.tool_count,
         latency_ms: r.latency_ms,
         negotiated_protocol_version: r.negotiated_protocol_version,
         remote_endpoint: r.remote_endpoint,
         transport: r.transport,
-        last_seen_good_at: r.verdict === 'GOOD' ? r.checked_at : null,
+        // Preserve the last-good timestamp across runs so a transient failure
+        // (or a recovery still inside the window) never erases history.
+        last_seen_good_at:
+          r.verdict === 'GOOD' ? r.checked_at : (prev?.last_seen_good_at ?? null),
         checked_at: r.checked_at,
         failure_reason: r.failure_reason,
         auth_server_url: r.auth_server_url,
@@ -418,6 +473,15 @@ async function main() {
         last_protocol_version,
         protocol_version_changed,
       };
+    }
+
+    // Not probed this run. In hot mode the full remote population isn't
+    // touched, so carry forward a remote server's prior derived status intact
+    // rather than wrongly resetting it to UNPROBEABLE.
+    const prevRemote = prevStatus.get(e.slug);
+    if (prevRemote && e.delivery === 'remote') {
+      summary[prevRemote.verdict]++;
+      return prevRemote;
     }
     summary.UNPROBEABLE++;
     return {
