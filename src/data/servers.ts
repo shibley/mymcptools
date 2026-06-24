@@ -171,15 +171,18 @@ const _serversPart1: MCPServer[] = [
   },
   {
     slug: 'apify',
-    name: 'Apify',
-    description: 'Use 6,000+ pre-built cloud tools to extract data from websites, e-commerce, social media, search engines, maps, and more.',
+    name: 'Apify MCP Server',
+    description: 'The Apify MCP server gives AI agents access to 6,000+ ready-made cloud scrapers, crawlers, and automation tools on the Apify Store — no infrastructure required. Connect to Apify Actors that extract data from social media platforms (Instagram, TikTok, LinkedIn), search engines (Google, Bing), e-commerce sites (Amazon, eBay), maps (Google Maps), and virtually any website. Each Actor runs in the cloud with managed proxies, browser fingerprinting, and anti-bot bypass built in. Use the Apify MCP server to query Actors by task, stream results directly into your AI context, run custom scraping Actors from your Apify account, and chain multiple data extraction steps in a single workflow. Supports tool filtering to expose only the Actors you need, and integrates with Apify\'s RAG web browser Actor for retrieval-augmented generation use cases.',
     author: 'Apify',
     github_url: 'https://github.com/apify/apify-mcp-server',
     website_url: 'https://apify.com',
-    categories: ['browser', 'api'],
+    categories: ['browser', 'api', 'search'],
     integrations: ['claude-desktop', 'cursor', 'vs-code', 'windsurf', 'cline'],
     install_type: 'npm',
+    install_command: 'npx @apify/actors-mcp-server',
+    official: true,
     featured: true,
+    stars: 1378,
   },
   {
     slug: 'github',
@@ -6504,13 +6507,14 @@ const _serversPart1: MCPServer[] = [
   },
   {
     slug: 'monarch-mcp',
-    name: 'Monarch Money MCP',
-    description: 'Read-only access to your Monarch Money financial data. Analyze transactions, budgets, accounts, and cashflow. Get AI-powered insights into your personal finance.',
+    name: 'Monarch Money MCP Server',
+    description: 'The Monarch Money MCP server gives AI assistants read-only access to your Monarch Money personal finance data via the Monarch GraphQL API. Query your linked bank accounts, credit cards, and investment balances; pull categorized transaction history with merchant names and amounts; analyze monthly spending by category against your budget targets; review cashflow summaries across any date range; and surface recurring subscriptions and unusual charges. Built for Claude Desktop and other MCP-compatible clients, this server lets you ask natural-language questions about your finances — "how much did I spend on restaurants last month?" or "am I on track with my savings goal?" — without exposing credentials to a third party. Requires a Monarch Money account and API token configured as an environment variable. Install with pip and configure via the standard MCP JSON config.',
     author: 'carsol',
     github_url: 'https://github.com/carsol/monarch-mcp-server',
-    categories: ['finance'],
+    categories: ['finance', 'productivity'],
     integrations: ['claude-desktop'],
     install_type: 'pip',
+    install_command: 'pip install monarch-mcp-server',
     stars: 190,
   },
   {
@@ -37449,7 +37453,54 @@ const _serversPart30: MCPServer[] = [
   },
 ];
 
-export const servers: MCPServer[] = [..._serversPart1, ..._serversPart2, ..._serversPart3, ..._serversPart4, ..._serversPart5, ..._serversPart6, ..._serversPart7, ..._serversPart8, ..._serversPart9, ..._serversPart10, ..._serversPart11, ..._serversPart12, ..._serversPart13, ..._serversPart14, ..._serversPart15, ..._serversPart16, ..._serversPart17, ..._serversPart18, ..._serversPart19, ..._serversPart20, ..._serversPart21, ..._serversPart22, ..._serversPart23, ..._serversPart24, ..._serversPart25, ..._serversPart26, ..._serversPart27, ..._serversPart28, ..._serversPart29, ..._serversPart30];
+// ── Keyword-targeted server additions (mcp-keyword-pages sprint) ─────────────
+const _serversPart31: MCPServer[] = [
+  // DuckDuckGo MCP — SD 18, 260 SV — "duckduckgo mcp"
+  {
+    slug: 'duckduckgo-mcp',
+    name: 'DuckDuckGo Search MCP Server',
+    description: 'The DuckDuckGo Search MCP server brings privacy-focused web search into Claude Desktop, Cursor, VS Code, and any MCP-compatible AI client without sending your queries to Google. Built on the DuckDuckGo search API, it lets AI assistants search the open web and return clean, LLM-formatted results with titles, snippets, and URLs — no API key or account required. Beyond raw search, the server includes a content-fetching tool that retrieves and parses webpage text, strips boilerplate, and extracts the meaningful body for your AI to reason over. Rate limiting is built in to prevent blocking. You can configure SafeSearch level (STRICT / MODERATE / OFF) and a default region code via environment variables, making it suitable for both personal and enterprise deployments. Install with a single uvx command; configure in Claude Desktop\'s JSON config or add via the claude mcp add command. With 1,280+ GitHub stars and PyPI package support, it is the most popular open-source DuckDuckGo MCP server available.',
+    author: 'nickclyde',
+    github_url: 'https://github.com/nickclyde/duckduckgo-mcp-server',
+    categories: ['search', 'api'],
+    integrations: ['claude-desktop', 'cursor', 'vs-code', 'cline'],
+    install_type: 'pip',
+    install_command: 'uvx duckduckgo-mcp-server',
+    stars: 1280,
+    isNew: true,
+  },
+  // Memory Bank MCP — SD 18, 320 SV — "memory bank mcp"
+  {
+    slug: 'memory-bank-mcp',
+    name: 'Memory Bank MCP Server',
+    description: 'The Memory Bank MCP server turns the Cline Memory Bank pattern into a centralized remote service accessible from any MCP client. Instead of storing project context in local files that get lost between sessions, this server exposes a structured multi-project memory system over the MCP protocol — read, write, update, and list memory bank files across isolated project directories. It enforces consistent file structure (projectBrief, activeContext, progress, systemPatterns, techContext, codebaseContext), prevents path traversal with strict validation, and keeps each project\'s context cleanly separated. Works seamlessly with Cline, Roo Code, Cursor, Windsurf, and Claude Desktop. Configure via the MEMORY_BANK_ROOT environment variable pointing to your central storage directory. Install with a single npx command; no backend infrastructure required beyond a shared filesystem. With 900+ GitHub stars and active community adoption, Memory Bank MCP is the standard for persistent AI coding context across sessions and IDE switches.',
+    author: 'alioshr',
+    github_url: 'https://github.com/alioshr/memory-bank-mcp',
+    categories: ['memory', 'productivity', 'coding'],
+    integrations: ['claude-desktop', 'cursor', 'vs-code', 'cline', 'windsurf'],
+    install_type: 'npm',
+    install_command: 'npx -y @allpepper/memory-bank-mcp',
+    stars: 911,
+    isNew: true,
+  },
+  // MCP Shrimp Task Manager — SD 14, 50 SV — "mcp shrimp task manager"
+  {
+    slug: 'mcp-shrimp-task-manager',
+    name: 'Shrimp Task Manager MCP',
+    description: 'MCP Shrimp Task Manager is an intelligent task management server built specifically for AI coding agents — emphasizing chain-of-thought planning, reflection, and style consistency across development sessions. It converts natural language project descriptions into structured, dependency-tracked development tasks with iterative refinement built in. Rather than treating tasks as a flat to-do list, Shrimp models tasks with explicit dependencies, execution state, and reasoning traces so the AI agent can pick up exactly where it left off across sessions. Supports Cursor, Roo Code, Windsurf, Claude Code, and any MCP-compatible client. Features include an optional GUI for visualizing task graphs, multi-language template support (English, Chinese, and more), configurable data directory, and a demo video showing end-to-end agent-driven development. With 2,100+ GitHub stars and a dedicated documentation site, Shrimp Task Manager is one of the most-starred agentic task management MCP servers available. Install by cloning the repo, running npm install + npm run build, and pointing your MCP client at the built index.js.',
+    author: 'cjo4m06',
+    github_url: 'https://github.com/cjo4m06/mcp-shrimp-task-manager',
+    website_url: 'https://cjo4m06.github.io/mcp-shrimp-task-manager/',
+    categories: ['productivity', 'coding', 'ai'],
+    integrations: ['claude-desktop', 'cursor', 'cline', 'windsurf'],
+    install_type: 'source',
+    install_command: 'git clone https://github.com/cjo4m06/mcp-shrimp-task-manager.git && cd mcp-shrimp-task-manager && npm install && npm run build',
+    stars: 2122,
+    isNew: true,
+  },
+];
+
+export const servers: MCPServer[] = [..._serversPart1, ..._serversPart2, ..._serversPart3, ..._serversPart4, ..._serversPart5, ..._serversPart6, ..._serversPart7, ..._serversPart8, ..._serversPart9, ..._serversPart10, ..._serversPart11, ..._serversPart12, ..._serversPart13, ..._serversPart14, ..._serversPart15, ..._serversPart16, ..._serversPart17, ..._serversPart18, ..._serversPart19, ..._serversPart20, ..._serversPart21, ..._serversPart22, ..._serversPart23, ..._serversPart24, ..._serversPart25, ..._serversPart26, ..._serversPart27, ..._serversPart28, ..._serversPart29, ..._serversPart30, ..._serversPart31];
 
 // Helper functions
 export function getServerBySlug(slug: string): MCPServer | undefined {
