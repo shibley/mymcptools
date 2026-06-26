@@ -1,5 +1,7 @@
 import Link from "next/link";
 import { MCPServer, categories } from "@/data/servers";
+import { getStatus } from "@/lib/trust/status-store";
+import { StatusPill, StatusLine } from "@/components/StatusBadge";
 
 interface ServerCardProps {
   server: MCPServer;
@@ -8,7 +10,8 @@ interface ServerCardProps {
 
 export function ServerCard({ server, showCategory = true }: ServerCardProps) {
   const category = categories.find(c => c.slug === server.categories[0]);
-  
+  const status = getStatus(server.slug);
+
   return (
     <Link href={`/servers/${server.slug}`}>
       <div className="group bg-gray-900 border border-gray-800 rounded-xl p-5 hover:border-blue-500/50 transition-all duration-200 h-full flex flex-col">
@@ -23,6 +26,7 @@ export function ServerCard({ server, showCategory = true }: ServerCardProps) {
             </div>
           </div>
           <div className="flex items-center space-x-1.5">
+            <StatusPill status={status} showChecked={false} />
             {server.featured && (
               <span className="inline-flex items-center gap-1 leading-none px-2 py-1 bg-amber-500/10 border border-amber-500/30 text-amber-400 text-xs font-medium rounded-full">
                 <span aria-hidden="true">⭐</span>
@@ -43,9 +47,9 @@ export function ServerCard({ server, showCategory = true }: ServerCardProps) {
         </p>
         
         {showCategory && (
-          <div className="flex flex-wrap gap-1.5">
+          <div className="flex flex-wrap gap-1.5 mb-3">
             {server.categories.slice(0, 3).map(cat => (
-              <span 
+              <span
                 key={cat}
                 className="px-2 py-0.5 bg-gray-800 text-gray-400 text-xs rounded"
               >
@@ -54,6 +58,10 @@ export function ServerCard({ server, showCategory = true }: ServerCardProps) {
             ))}
           </div>
         )}
+
+        <div className="mt-auto pt-1">
+          <StatusLine status={status} />
+        </div>
       </div>
     </Link>
   );
@@ -61,6 +69,7 @@ export function ServerCard({ server, showCategory = true }: ServerCardProps) {
 
 export function ServerCardCompact({ server }: { server: MCPServer }) {
   const category = categories.find(c => c.slug === server.categories[0]);
+  const status = getStatus(server.slug);
   
   return (
     <Link href={`/servers/${server.slug}`}>
@@ -72,6 +81,7 @@ export function ServerCardCompact({ server }: { server: MCPServer }) {
           </h4>
           <p className="text-xs text-gray-500 truncate">{server.description}</p>
         </div>
+        <StatusPill status={status} showChecked={false} />
         {server.official && (
           <span className="text-blue-400 text-xs font-medium">✓</span>
         )}

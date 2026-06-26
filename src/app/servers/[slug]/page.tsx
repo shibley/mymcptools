@@ -3,6 +3,8 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { CopyButton } from "@/components/CopyButton";
 import { ServerCardCompact } from "@/components/ServerCard";
+import { StatusBadge } from "@/components/StatusBadge";
+import { getStatus } from "@/lib/trust/status-store";
 import { AffiliateServerCTA } from "@/components/AffiliateServerCTA";
 import { servers, getServerBySlug, getRelatedServers, categories, integrations } from "@/data/servers";
 import { getServerPricing, hasFreeOption } from "@/data/pricing";
@@ -62,6 +64,7 @@ export default async function ServerPage({ params }: Props) {
   const serverIntegrations = integrations.filter(i => server.integrations.includes(i.slug));
   const relatedBlogPosts = getBlogPostsForServer(server.slug);
   const pricing = getServerPricing(server.slug);
+  const status = getStatus(server.slug);
   const primaryCategory = serverCategories[0]?.name || server.categories[0] || "MCP workflows";
   const capability = getFirstSentence(server.description);
   const installAnswer = server.install_command
@@ -300,6 +303,12 @@ export default async function ServerPage({ params }: Props) {
           {/* Sidebar */}
           <div className="lg:col-span-1">
             <div className="sticky top-24 space-y-6">
+              {/* Live Trust Status */}
+              <div>
+                <h3 className="text-lg font-semibold text-white mb-4">Live Status</h3>
+                <StatusBadge status={status} />
+              </div>
+
               {/* Quick Info */}
               <div className="bg-gray-900 border border-gray-800 rounded-xl p-6">
                 <h3 className="text-lg font-semibold text-white mb-4">Quick Info</h3>
