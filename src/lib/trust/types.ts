@@ -164,3 +164,66 @@ export interface StatusStore {
   summary: Record<Verdict, number>;
   statuses: CurrentStatus[];
 }
+
+/**
+ * One server's appearance in a digest bucket (PRD P1-1 "daily digest →
+ * content engine"). Flat + JSON-serializable like the rest of the schema so it
+ * can be handed straight to the content engine or persisted.
+ */
+export interface DigestEntry {
+  slug: string;
+  /** Verdict before the transition (null for first-ever observation). */
+  from_verdict: Verdict | null;
+  /** Verdict after the transition. */
+  to_verdict: Verdict;
+  /** ISO-8601 timestamp the transition was observed (within the window). */
+  changed_at: string;
+  /** Human-readable failure reason carried from the probe, when present. */
+  failure_reason?: string;
+  /** Last time this server was observed GOOD before going DOWN; null if never. */
+  last_seen_good_at?: string | null;
+}
+
+/**
+ * One server's drift appearance in a digest (PRD P1-1). Summarizes the
+ * underlying DriftEvent(s) for content-engine consumption.
+ */
+export interface DigestDriftEntry {
+  slug: string;
+  /** ISO-8601 timestamp the drift was observed (within the window). */
+  changed_at: string;
+  schema_changed: boolean;
+  protocol_version_changed: boolean;
+  /** Tool-level diff summary; null when only the protocol version changed. */
+  tool_diff: ToolSetDiff | null;
+  prev_protocol_version: string | null;
+  negotiated_protocol_version: string | null;
+}
+
+/**
+ * A computed daily digest over a lookback window (PRD P1-1). Three buckets:
+ * servers that newly went DOWN, servers that drifted, and servers that
+ * recovered from DOWN — pure and JSON-serializable for the content engine.
+ */
+export interface DigestDay {
+  /** ISO-8601 timestamp the digest was generated. */
+  generated_at: string;
+  /** Lookback window in hours used to compute the buckets. */
+  window_hours: number;
+  /** Inclusive lower bound of the window (ISO-8601). */
+  window_start: string;
+  /** Upper bound of the window (ISO-8601) — typically generated_at. */
+  window_end: string;
+  /** Servers whose verdict transitioned GOOD/WARN/AUTH → DOWN in the window. */
+  newly_dead: DigestEntry[];
+  /** Servers with schema/protocol drift events in the window. */
+  drifted: DigestDriftEntry[];
+  /** Servers whose verdict transitioned DOWN → GOOD in the window. */
+  recovered: DigestEntry[];
+  /** Per-bucket counts, for quick consumption. */
+  counts: {
+    newly_dead: number;
+    drifted: number;
+    recovered: number;
+  };
+}

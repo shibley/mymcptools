@@ -12,7 +12,9 @@
     "probe:full": "node scripts/mcp-probe.mts --mode full",
     "probe:hot": "node scripts/mcp-probe.mts --mode hot",
     "drift:selfcheck": "node scripts/drift-selfcheck.mts",
-    "probe:selfcheck": "node scripts/rolling-window-selfcheck.mts"
+    "probe:selfcheck": "node scripts/rolling-window-selfcheck.mts",
+    "digest": "node scripts/digest.mts",
+    "digest:selfcheck": "node scripts/digest-selfcheck.mts"
   },
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.29.0",
