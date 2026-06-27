@@ -4,7 +4,9 @@ import { notFound } from "next/navigation";
 import { CopyButton } from "@/components/CopyButton";
 import { ServerCardCompact } from "@/components/ServerCard";
 import { StatusBadge } from "@/components/StatusBadge";
+import { UptimeSparkline } from "@/components/UptimeSparkline";
 import { getStatus } from "@/lib/trust/status-store";
+import { getHistory } from "@/lib/trust/history-store";
 import { AffiliateServerCTA } from "@/components/AffiliateServerCTA";
 import { servers, getServerBySlug, getRelatedServers, categories, integrations } from "@/data/servers";
 import { getServerPricing, hasFreeOption } from "@/data/pricing";
@@ -65,6 +67,8 @@ export default async function ServerPage({ params }: Props) {
   const relatedBlogPosts = getBlogPostsForServer(server.slug);
   const pricing = getServerPricing(server.slug);
   const status = getStatus(server.slug);
+  const history = getHistory(server.slug);
+  const hasUptimeHistory = history.some((p) => p.verdict !== "UNPROBEABLE");
   const primaryCategory = serverCategories[0]?.name || server.categories[0] || "MCP workflows";
   const capability = getFirstSentence(server.description);
   const installAnswer = server.install_command
@@ -307,6 +311,14 @@ export default async function ServerPage({ params }: Props) {
               <div>
                 <h3 className="text-lg font-semibold text-white mb-4">Live Status</h3>
                 <StatusBadge status={status} />
+                {hasUptimeHistory && (
+                  <div className="mt-3 flex items-center gap-3 px-1">
+                    <UptimeSparkline history={history} />
+                    <span className="text-xs text-gray-500">
+                      Recent uptime
+                    </span>
+                  </div>
+                )}
               </div>
 
               {/* Quick Info */}
