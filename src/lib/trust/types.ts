@@ -166,6 +166,59 @@ export interface StatusStore {
 }
 
 /**
+ * Static (non-handshake) health signal for a local/stdio server (PRD P1-3).
+ *
+ * Local servers (npm/pip/binary/source/container) carry no remote endpoint and
+ * cannot be MCP-probed, so instead of a live verdict they surface *static*
+ * freshness derived from their GitHub repo: last commit (push) and last
+ * release. This is a best-effort signal from untrusted external data — every
+ * field is nullable and a fetch error degrades to `error` without crashing.
+ * Persisted in src/data/static-signals.json and read at build time alongside
+ * the probe-status store.
+ */
+export interface StaticSignal {
+  slug: string;
+  /** Canonical repo URL the signal was derived from. */
+  repo_url: string;
+  /** Parsed GitHub owner / repo, when the URL was a github.com repo. */
+  owner: string | null;
+  repo: string | null;
+  /** ISO-8601 of the repo's last push (proxy for last commit); null if unknown. */
+  last_commit_at: string | null;
+  /** ISO-8601 of the latest GitHub release; null when none / unknown. */
+  last_release_at: string | null;
+  /** Tag of the latest release (e.g. "v1.2.3"); null when none. */
+  last_release_tag: string | null;
+  /** Package registry the server installs from (npm/pip/docker/binary/source). */
+  package_registry?: string;
+  /** Best-effort package/image name parsed from the install command. */
+  package_name?: string;
+  /** ISO-8601 timestamp this signal was last refreshed. */
+  checked_at: string;
+  /**
+   * Coarse freshness derived from last_commit_at/last_release_at, computed at
+   * build time for badge styling: `active` (<6mo), `aging` (6–18mo),
+   * `stale` (>18mo), `unknown` (no date). Not persisted — derived on read.
+   */
+  freshness?: 'active' | 'aging' | 'stale' | 'unknown';
+  /** Human-readable reason the fetch could not complete; absent on success. */
+  error?: string;
+}
+
+/** Top-level shape of the committed static-signals.json store (PRD P1-3). */
+export interface StaticSignalStore {
+  generated_at: string;
+  summary: {
+    total: number;
+    with_repo: number;
+    with_commit: number;
+    with_release: number;
+    errors: number;
+  };
+  signals: StaticSignal[];
+}
+
+/**
  * One server's appearance in a digest bucket (PRD P1-1 "daily digest →
  * content engine"). Flat + JSON-serializable like the rest of the schema so it
  * can be handed straight to the content engine or persisted.

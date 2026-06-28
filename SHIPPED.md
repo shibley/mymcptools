@@ -105,5 +105,39 @@ survives across runs. Logic lives in `src/lib/trust/rolling-window.ts`;
 
 ---
 
+### Phase 4 P1-3 — local/stdio static signals
+
+~2700 of the catalog's servers are local/stdio installs (npm/pip/binary/source/
+container) with **no remote endpoint** — the handshake prober can't verify them,
+so they showed only a neutral "Local install" with no real signal. P1-3 gives
+them a **static** trust signal derived from their source repo instead:
+
+- **`npm run static:signals`** — for every local inventory entry with a GitHub
+  repo, fetches **last commit (push)** + **latest release** from the GitHub REST
+  API. Strictly read-only (GET repo + releases only; never installs/runs a
+  server or its tools). Uses `GITHUB_TOKEN` when present (5000 req/h) and
+  **degrades gracefully** unauthenticated (60 req/h): on rate-limit it stops and
+  **preserves prior data** rather than wiping it. Idempotent — merges onto the
+  existing `src/data/static-signals.json`, skips repos refreshed within
+  `--max-age-hours` (default 72), and processes featured/sponsored first so a
+  bounded run spends its budget on the most valuable listings. Flags:
+  `--limit N`, `--slug a,b`, `--force`, `--max-age-hours H`.
+- **Surfacing:** listing cards (`ServerCard`) and the server detail page show a
+  freshness badge distinct from the live GOOD/WARN/AUTH/DOWN palette —
+  *Actively maintained* (<6mo) / *Maintained* (6–18mo) / *Quiet repo* (>18mo) /
+  *Local install* (unknown) — plus last commit, last release (tag + date), and
+  package registry/name. Raw fetch errors are never shown to users. The
+  "healthy only" filter is unaffected: local servers stay `UNPROBEABLE` (not
+  GOOD, never DOWN), so they're excluded from healthy-only without being
+  mislabelled dead.
+
+Read path: `src/lib/trust/static-signals-store.ts` (`getStaticSignal(slug)`,
+freshness derived at read time). Types in `src/lib/trust/types.ts`
+(`StaticSignal` / `StaticSignalStore`). Wire `static:signals` into OpenClaw cron
+(daily, after `inventory`); with a `GITHUB_TOKEN` it backfills the full local
+population over successive runs.
+
+---
+
 **Deployed:** March 28, 2026
 **Build Time:** ~45 minutes from concept to live

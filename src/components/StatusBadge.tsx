@@ -2,7 +2,7 @@
 // server component fetches CurrentStatus via getStatus(slug) and passes it in.
 // They render only fields CurrentStatus actually carries — no invented uptime.
 
-import type { CurrentStatus, Verdict } from "@/lib/trust/types";
+import type { CurrentStatus, StaticSignal, Verdict } from "@/lib/trust/types";
 
 interface VerdictMeta {
   label: string;
@@ -41,6 +41,37 @@ const VERDICT_META: Record<Verdict, VerdictMeta> = {
     dot: "bg-gray-500",
     pill: "bg-gray-800/60 border-gray-700 text-gray-400",
     icon: "",
+  },
+};
+
+/**
+ * Static-signal freshness styling (PRD P1-3). Distinct from the live verdict
+ * palette: local servers are not "down", they're just more or less recently
+ * maintained. `unknown` reuses the neutral UNPROBEABLE gray.
+ */
+const FRESHNESS_META: Record<
+  NonNullable<StaticSignal["freshness"]>,
+  { label: string; dot: string; pill: string }
+> = {
+  active: {
+    label: "Actively maintained",
+    dot: "bg-emerald-400",
+    pill: "bg-emerald-500/10 border-emerald-500/30 text-emerald-300",
+  },
+  aging: {
+    label: "Maintained",
+    dot: "bg-yellow-400",
+    pill: "bg-yellow-500/10 border-yellow-500/30 text-yellow-300",
+  },
+  stale: {
+    label: "Quiet repo",
+    dot: "bg-orange-400/80",
+    pill: "bg-orange-500/10 border-orange-500/30 text-orange-300/90",
+  },
+  unknown: {
+    label: "Local install",
+    dot: "bg-gray-500",
+    pill: "bg-gray-800/60 border-gray-700 text-gray-400",
   },
 };
 
@@ -108,6 +139,124 @@ export function StatusLine({ status }: { status: CurrentStatus | null | undefine
         <span className="text-gray-600"> · last healthy {lastGood}</span>
       )}
     </p>
+  );
+}
+
+/** Most-recent of commit/release date for a static signal; null if neither. */
+function latestStaticDate(signal: StaticSignal): string | null {
+  const c = signal.last_commit_at;
+  const r = signal.last_release_at;
+  if (c && r) return c > r ? c : r;
+  return c ?? r ?? null;
+}
+
+/**
+ * Compact local-install pill for list/search cards (PRD P1-3). Shown in place
+ * of the live StatusPill for local/stdio servers: surfaces repo freshness
+ * instead of a verdict they can never have. Falls back to a neutral "Local
+ * install" pill when no static signal exists yet.
+ */
+export function LocalSignalPill({ signal }: { signal: StaticSignal | null | undefined }) {
+  const freshness = signal?.freshness ?? "unknown";
+  const meta = FRESHNESS_META[freshness];
+  const updated = signal ? relativeTime(latestStaticDate(signal)) : null;
+
+  return (
+    <span
+      className={`inline-flex items-center gap-1.5 leading-none px-2 py-1 border text-xs font-medium rounded-full ${meta.pill}`}
+      title={updated ? `${meta.label} · updated ${updated}` : meta.label}
+    >
+      <span className={`w-1.5 h-1.5 rounded-full ${meta.dot}`} aria-hidden="true" />
+      <span>Local</span>
+    </span>
+  );
+}
+
+/**
+ * One-line static-signal footer for local-server cards (PRD P1-3). Mirrors
+ * StatusLine but reads repo recency instead of a probe verdict. Renders nothing
+ * when there is no usable signal.
+ */
+export function LocalSignalLine({ signal }: { signal: StaticSignal | null | undefined }) {
+  if (!signal) return null;
+  const updated = relativeTime(latestStaticDate(signal));
+  if (!updated) return null;
+  return (
+    <p className="text-xs text-gray-500">
+      Local install · updated {updated}
+      {signal.last_release_tag && (
+        <span className="text-gray-600"> · {signal.last_release_tag}</span>
+      )}
+    </p>
+  );
+}
+
+/**
+ * Full static-signal panel for the detail page of a local/stdio server (PRD
+ * P1-3). Replaces the live StatusBadge — these servers have no remote endpoint
+ * to handshake, so we surface repo recency (last commit / last release) and
+ * package info as the trust signal instead. Never shows raw fetch errors.
+ */
+export function LocalSignalBadge({ signal }: { signal: StaticSignal | null | undefined }) {
+  const freshness = signal?.freshness ?? "unknown";
+  const meta = FRESHNESS_META[freshness];
+  const lastCommit = relativeTime(signal?.last_commit_at);
+  const lastRelease = relativeTime(signal?.last_release_at);
+
+  return (
+    <div className="bg-gray-900 border border-gray-800 rounded-xl p-5">
+      <div className="flex flex-wrap items-center justify-between gap-3 mb-4">
+        <span
+          className={`inline-flex items-center gap-2 leading-none px-3 py-1.5 border text-sm font-semibold rounded-full ${meta.pill}`}
+        >
+          <span className={`w-2 h-2 rounded-full ${meta.dot}`} aria-hidden="true" />
+          <span>{meta.label}</span>
+        </span>
+      </div>
+
+      <p className="text-sm text-gray-500 mb-4">
+        Local/stdio install — runs on your machine, so there is no remote
+        endpoint to verify live. Trust signal below is from the source repo.
+      </p>
+
+      <dl className="grid grid-cols-2 gap-x-4 gap-y-3 text-sm">
+        {lastCommit && (
+          <div>
+            <dt className="text-xs text-gray-500">Last commit</dt>
+            <dd className="text-gray-200">{lastCommit}</dd>
+          </div>
+        )}
+        {lastRelease && (
+          <div>
+            <dt className="text-xs text-gray-500">Last release</dt>
+            <dd className="text-gray-200">
+              {signal?.last_release_tag ? `${signal.last_release_tag} · ` : ""}
+              {lastRelease}
+            </dd>
+          </div>
+        )}
+        {signal?.package_registry && (
+          <div>
+            <dt className="text-xs text-gray-500">Install</dt>
+            <dd className="text-gray-200 capitalize">{signal.package_registry}</dd>
+          </div>
+        )}
+        {signal?.package_name && (
+          <div className="min-w-0">
+            <dt className="text-xs text-gray-500">Package</dt>
+            <dd className="text-gray-200 truncate" title={signal.package_name}>
+              {signal.package_name}
+            </dd>
+          </div>
+        )}
+      </dl>
+
+      {!lastCommit && !lastRelease && (
+        <p className="text-sm text-gray-500">
+          Repo recency not yet available for this server.
+        </p>
+      )}
+    </div>
   );
 }
 

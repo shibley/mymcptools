@@ -1,7 +1,18 @@
 import Link from "next/link";
 import { MCPServer, categories } from "@/data/servers";
 import { getStatus } from "@/lib/trust/status-store";
-import { StatusPill, StatusLine } from "@/components/StatusBadge";
+import { getStaticSignal } from "@/lib/trust/static-signals-store";
+import {
+  StatusPill,
+  StatusLine,
+  LocalSignalPill,
+  LocalSignalLine,
+} from "@/components/StatusBadge";
+
+/** Local/stdio servers have no live verdict — show the static repo signal. */
+function isLocal(status: { verdict: string } | null | undefined): boolean {
+  return !status || status.verdict === "UNPROBEABLE";
+}
 
 interface ServerCardProps {
   server: MCPServer;
@@ -11,6 +22,8 @@ interface ServerCardProps {
 export function ServerCard({ server, showCategory = true }: ServerCardProps) {
   const category = categories.find(c => c.slug === server.categories[0]);
   const status = getStatus(server.slug);
+  const local = isLocal(status);
+  const signal = local ? getStaticSignal(server.slug) : undefined;
 
   return (
     <Link href={`/servers/${server.slug}`}>
@@ -26,7 +39,11 @@ export function ServerCard({ server, showCategory = true }: ServerCardProps) {
             </div>
           </div>
           <div className="flex items-center space-x-1.5">
-            <StatusPill status={status} showChecked={false} />
+            {local ? (
+              <LocalSignalPill signal={signal} />
+            ) : (
+              <StatusPill status={status} showChecked={false} />
+            )}
             {server.featured && (
               <span className="inline-flex items-center gap-1 leading-none px-2 py-1 bg-amber-500/10 border border-amber-500/30 text-amber-400 text-xs font-medium rounded-full">
                 <span aria-hidden="true">⭐</span>
@@ -60,7 +77,11 @@ export function ServerCard({ server, showCategory = true }: ServerCardProps) {
         )}
 
         <div className="mt-auto pt-1">
-          <StatusLine status={status} />
+          {local ? (
+            <LocalSignalLine signal={signal} />
+          ) : (
+            <StatusLine status={status} />
+          )}
         </div>
       </div>
     </Link>
@@ -70,7 +91,9 @@ export function ServerCard({ server, showCategory = true }: ServerCardProps) {
 export function ServerCardCompact({ server }: { server: MCPServer }) {
   const category = categories.find(c => c.slug === server.categories[0]);
   const status = getStatus(server.slug);
-  
+  const local = isLocal(status);
+  const signal = local ? getStaticSignal(server.slug) : undefined;
+
   return (
     <Link href={`/servers/${server.slug}`}>
       <div className="group flex items-center space-x-3 p-3 bg-gray-900 border border-gray-800 rounded-lg hover:border-blue-500/50 hover:bg-gray-800/50 transition-all">
@@ -81,7 +104,11 @@ export function ServerCardCompact({ server }: { server: MCPServer }) {
           </h4>
           <p className="text-xs text-gray-500 truncate">{server.description}</p>
         </div>
-        <StatusPill status={status} showChecked={false} />
+        {local ? (
+          <LocalSignalPill signal={signal} />
+        ) : (
+          <StatusPill status={status} showChecked={false} />
+        )}
         {server.official && (
           <span className="text-blue-400 text-xs font-medium">✓</span>
         )}

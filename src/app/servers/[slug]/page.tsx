@@ -3,9 +3,10 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { CopyButton } from "@/components/CopyButton";
 import { ServerCardCompact } from "@/components/ServerCard";
-import { StatusBadge } from "@/components/StatusBadge";
+import { StatusBadge, LocalSignalBadge } from "@/components/StatusBadge";
 import { UptimeSparkline } from "@/components/UptimeSparkline";
 import { getStatus } from "@/lib/trust/status-store";
+import { getStaticSignal } from "@/lib/trust/static-signals-store";
 import { getHistory } from "@/lib/trust/history-store";
 import { AffiliateServerCTA } from "@/components/AffiliateServerCTA";
 import { servers, getServerBySlug, getRelatedServers, categories, integrations } from "@/data/servers";
@@ -67,6 +68,8 @@ export default async function ServerPage({ params }: Props) {
   const relatedBlogPosts = getBlogPostsForServer(server.slug);
   const pricing = getServerPricing(server.slug);
   const status = getStatus(server.slug);
+  const isLocal = !status || status.verdict === "UNPROBEABLE";
+  const staticSignal = isLocal ? getStaticSignal(server.slug) : undefined;
   const history = getHistory(server.slug);
   const hasUptimeHistory = history.some((p) => p.verdict !== "UNPROBEABLE");
   const primaryCategory = serverCategories[0]?.name || server.categories[0] || "MCP workflows";
@@ -309,8 +312,14 @@ export default async function ServerPage({ params }: Props) {
             <div className="sticky top-24 space-y-6">
               {/* Live Trust Status */}
               <div>
-                <h3 className="text-lg font-semibold text-white mb-4">Live Status</h3>
-                <StatusBadge status={status} />
+                <h3 className="text-lg font-semibold text-white mb-4">
+                  {isLocal ? "Repo Health" : "Live Status"}
+                </h3>
+                {isLocal ? (
+                  <LocalSignalBadge signal={staticSignal} />
+                ) : (
+                  <StatusBadge status={status} />
+                )}
                 {hasUptimeHistory && (
                   <div className="mt-3 flex items-center gap-3 px-1">
                     <UptimeSparkline history={history} />
