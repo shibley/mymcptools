@@ -15,7 +15,8 @@
     "probe:selfcheck": "node scripts/rolling-window-selfcheck.mts",
     "digest": "node scripts/digest.mts",
     "digest:selfcheck": "node scripts/digest-selfcheck.mts",
-    "static:signals": "node scripts/static-signals.mts"
+    "static:signals": "node scripts/static-signals.mts",
+    "webhooks:selfcheck": "node scripts/webhooks-selfcheck.mts"
   },
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.29.0",

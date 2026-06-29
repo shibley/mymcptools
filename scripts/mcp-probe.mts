@@ -58,12 +58,19 @@ import {
   applyRollingWindow,
   DEFAULT_FAIL_THRESHOLD,
 } from '../src/lib/trust/rolling-window.ts';
+import {
+  loadSubscriptions,
+  dispatchNotices,
+  type StatusChangeNotice,
+  type DriftNotice,
+} from '../src/lib/trust/webhooks.ts';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const DATA = join(__dirname, '..', 'src', 'data');
 const INVENTORY = join(DATA, 'probe-inventory.json');
 const STATUS_OUT = join(DATA, 'probe-status.json');
 const EVENTS_OUT = join(DATA, 'probe-events.jsonl');
+const WEBHOOK_SUBS = join(DATA, 'webhook-subscriptions.json');
 
 const CONNECT_TIMEOUT_MS = 15_000;
 const LIST_TIMEOUT_MS = 12_000;
@@ -377,6 +384,11 @@ async function main() {
   };
 
   const driftEvents: DriftEvent[] = [];
+  // Status flips observed this run, to fan out to webhook subscribers (P1-4).
+  // Only ACTUAL transitions are collected — steady state is never recorded.
+  const statusChangeNotices: StatusChangeNotice[] = [];
+  // Inventory display names by slug, for richer webhook payloads.
+  const nameBySlug = new Map<string, string>(inventory.map((e) => [e.slug, e.name]));
 
   // Build current_status for ALL inventory entries: probed ones get their
   // verdict, local ones are recorded UNPROBEABLE so the store is complete.
@@ -448,7 +460,7 @@ async function main() {
         });
       }
 
-      return {
+      const status: CurrentStatus = {
         slug: r.slug,
         verdict: rw.verdict,
         raw_verdict: r.verdict,
@@ -473,6 +485,20 @@ async function main() {
         last_protocol_version,
         protocol_version_changed,
       };
+
+      // Webhook fan-out (P1-4): record a status-change notice only on a real
+      // flip with a known prior verdict — a first-ever observation establishes
+      // a baseline and is not a "change". Steady state is never recorded.
+      const prevVerdict = prev?.verdict;
+      if (rw.flipped && prevVerdict !== undefined && prevVerdict !== rw.verdict) {
+        statusChangeNotices.push({
+          status,
+          old_verdict: prevVerdict,
+          name: nameBySlug.get(r.slug),
+        });
+      }
+
+      return status;
     }
 
     // Not probed this run. In hot mode the full remote population isn't
@@ -501,6 +527,28 @@ async function main() {
 
   const store: StatusStore = { generated_at, summary, statuses };
   writeFileSync(STATUS_OUT, JSON.stringify(store, null, 2) + '\n');
+
+  // Webhook dispatch (PRD P1-4). Fully opt-in: with no subscriptions this is a
+  // no-op. Best-effort and isolated — dispatchNotices never throws, so a
+  // failing/timeout webhook target cannot break probing or drift recording.
+  const statusBySlug = new Map<string, CurrentStatus>(statuses.map((s) => [s.slug, s]));
+  const driftNotices: DriftNotice[] = driftEvents.map((d) => ({
+    drift: d,
+    current_status: statusBySlug.get(d.slug),
+    name: nameBySlug.get(d.slug),
+  }));
+  const subscriptions = loadSubscriptions(WEBHOOK_SUBS);
+  if (subscriptions.length > 0) {
+    const deliveries = await dispatchNotices(subscriptions, statusChangeNotices, driftNotices);
+    const ok = deliveries.filter((d) => d.ok).length;
+    console.log(
+      `[probe] webhooks: ${statusChangeNotices.length} status-change + ` +
+      `${driftNotices.length} drift notice(s), ${subscriptions.length} subscription(s), ` +
+      `${ok}/${deliveries.length} delivered`,
+    );
+  } else if (statusChangeNotices.length || driftNotices.length) {
+    console.log('[probe] webhooks: no subscriptions configured — skipping dispatch');
+  }
 
   console.log('[probe] verdict breakdown (probed):');
   for (const r of probeResults) {

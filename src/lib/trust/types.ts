@@ -157,6 +157,102 @@ export interface CurrentStatus {
   protocol_version_changed?: boolean;
 }
 
+/**
+ * Which events a webhook subscription cares about (PRD P1-4). `status_change`
+ * fires when a server's effective verdict flips; `drift` fires when a
+ * tool-schema or protocol-version drift event is recorded; `both` covers both.
+ */
+export type WebhookEventFilter = 'status_change' | 'drift' | 'both';
+
+/**
+ * A single webhook subscription (PRD P1-4 "Webhook on status change/drift").
+ * Stored as a flat JSON list in src/data/webhook-subscriptions.json; an absent
+ * file is treated as an empty list (the feature is fully opt-in). Every field
+ * is validated before dispatch — subscriptions are untrusted config.
+ */
+export interface WebhookSubscription {
+  /** Stable identifier, surfaced in delivery logs. */
+  id: string;
+  /** Target URL the POST is delivered to (must be http(s)). */
+  url: string;
+  /** Optional shared secret; when present, requests carry an HMAC signature. */
+  secret?: string;
+  /** Which event kinds to deliver (default 'both' when omitted). */
+  events?: WebhookEventFilter;
+  /**
+   * Server slug scope: 'all' (or omitted) delivers every server; otherwise an
+   * allow-list of slugs this subscription is interested in.
+   */
+  scope?: 'all' | string[];
+  /** Disabled subscriptions are skipped entirely (default enabled). */
+  enabled?: boolean;
+}
+
+/** Discriminator for the two webhook payload shapes (PRD P1-4). */
+export type WebhookEventType = 'status_change' | 'drift';
+
+/**
+ * Payload delivered when a server's effective verdict transitions (PRD P1-4).
+ * Carries the old + new verdict and the full current_status snapshot so a
+ * consumer can act without a follow-up read.
+ */
+export interface StatusChangeWebhookPayload {
+  event: 'status_change';
+  slug: string;
+  name?: string;
+  /** Verdict before the flip; null on the first-ever observation. */
+  old_verdict: Verdict | null;
+  /** Verdict after the flip. */
+  new_verdict: Verdict;
+  /** ISO-8601 timestamp the effective verdict changed. */
+  status_changed_at: string;
+  /** ISO-8601 timestamp of the probe that drove the change. */
+  checked_at: string;
+  /** The current_status row as of this change. */
+  current_status: CurrentStatus;
+}
+
+/**
+ * Payload delivered when a drift event is recorded (PRD P1-4). Summarizes the
+ * underlying DriftEvent (tool diff and/or protocol-version change).
+ */
+export interface DriftWebhookPayload {
+  event: 'drift';
+  slug: string;
+  name?: string;
+  /** ISO-8601 timestamp the drift was observed. */
+  changed_at: string;
+  schema_changed: boolean;
+  protocol_version_changed: boolean;
+  /** Tool-level diff; null when only the protocol version changed. */
+  tool_diff: ToolSetDiff | null;
+  prev_schema_hash: string | null;
+  schema_hash: string | null;
+  prev_protocol_version: string | null;
+  negotiated_protocol_version: string | null;
+  /** The current_status row as of this drift, when available. */
+  current_status?: CurrentStatus;
+}
+
+/** Either webhook payload shape, distinguished by `event` (PRD P1-4). */
+export type WebhookPayload = StatusChangeWebhookPayload | DriftWebhookPayload;
+
+/** Outcome of one delivery attempt to one subscription (PRD P1-4). */
+export interface WebhookDeliveryResult {
+  subscription_id: string;
+  url: string;
+  event: WebhookEventType;
+  slug: string;
+  /** True when the target returned a 2xx within the retry budget. */
+  ok: boolean;
+  /** Final HTTP status, or null on a network/timeout failure. */
+  status: number | null;
+  /** Number of attempts made (1 + retries). */
+  attempts: number;
+  /** Human-readable failure reason when !ok. */
+  error?: string;
+}
+
 /** Top-level shape of the committed probe-status.json store. */
 export interface StatusStore {
   generated_at: string;

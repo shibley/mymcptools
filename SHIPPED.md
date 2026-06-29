@@ -139,5 +139,45 @@ population over successive runs.
 
 ---
 
+### Phase 4 P1-4 — status/drift webhooks
+
+Operators (and, later, claimed authors) want a **push** signal the moment a
+server breaks, recovers, or drifts — not a poll. P1-4 fires a signed HTTP POST
+to subscribed URLs whenever a server's effective verdict **flips**
+(GOOD↔DOWN, →AUTH_REQUIRED, →WARN, recovered) or a **drift event** is recorded
+(tool-schema or protocol-version change).
+
+- **Dispatch module:** `src/lib/trust/webhooks.ts`. Wired into the prober at the
+  two real transition points — where the rolling window finalizes a status flip
+  and where a drift event is recorded — so a webhook only fires on an **actual
+  change** (a first-ever baseline observation and steady state never fire).
+- **Subscriptions:** `src/data/webhook-subscriptions.json` — a flat JSON list,
+  each entry `{ id, url, secret?, events: status_change|drift|both,
+  scope: 'all'|[slugs], enabled }`. **Fully opt-in:** an absent/empty/invalid
+  file means no-op; untrusted config is validated/sanitized (http(s) only,
+  scope membership, enabled flag) before any request.
+- **Payload:** JSON carrying the event type, slug/name, old + new verdict (for
+  status) or tool diff / prev↔current protocol version (for drift), timestamps,
+  and the relevant `current_status` snapshot so a consumer can act without a
+  follow-up read.
+- **Security:** each request is signed `X-Signature: sha256=<hex>` — HMAC-SHA256
+  over the raw body using the subscription secret. **Strictly read-only toward
+  MCP servers** — only operator-configured webhook URLs are ever contacted.
+- **Reliability:** bounded concurrency, per-request timeout, retries with
+  backoff on 5xx/network errors (4xx not retried), and **graceful
+  degradation** — `dispatchNotices` never throws, so a failing/timeout webhook
+  can never break probing or drift recording. Every delivery outcome is logged.
+- **`npm run webhooks:selfcheck`** (`scripts/webhooks-selfcheck.mts`) asserts
+  the acceptance criteria with **no real network calls**: a flip + a drift fire
+  with a valid HMAC against a local loopback sink; steady state fires nothing;
+  failing/timeout/garbage targets don't throw to the caller; scope/event
+  filters and subscription loading behave. Exits non-zero on failure.
+
+Types in `src/lib/trust/types.ts` (`WebhookSubscription`, `WebhookPayload`,
+`WebhookDeliveryResult`, …). Configure subscriptions and the existing
+`probe:full` / `probe:hot` cron jobs deliver them automatically.
+
+---
+
 **Deployed:** March 28, 2026
 **Build Time:** ~45 minutes from concept to live
