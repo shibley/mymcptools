@@ -54,14 +54,16 @@
   },
   {
     "slug": "apify",
-    "name": "Apify",
-    "delivery": "local",
-    "unprobeable_reason": "local stdio install (npm) — no published remote endpoint",
+    "name": "Apify MCP Server",
+    "delivery": "remote",
+    "remote_endpoint": "https://mcp.apify.com/",
+    "transport": "streamable-http",
+    "endpoint_source": "docs.apify.com/platform/integrations/mcp",
     "featured": true
   },
   {
     "slug": "github",
-    "name": "GitHub",
+    "name": "GitHub MCP Server",
     "delivery": "remote",
     "remote_endpoint": "https://api.githubcopilot.com/mcp/",
     "transport": "streamable-http",
@@ -85,8 +87,10 @@
   {
     "slug": "cloudflare",
     "name": "Cloudflare",
-    "delivery": "local",
-    "unprobeable_reason": "local stdio install (npm) — no published remote endpoint",
+    "delivery": "remote",
+    "remote_endpoint": "https://docs.mcp.cloudflare.com/mcp",
+    "transport": "streamable-http",
+    "endpoint_source": "developers.cloudflare.com/agents/model-context-protocol (docs server)",
     "featured": true
   },
   {
@@ -98,7 +102,7 @@
   },
   {
     "slug": "firecrawl",
-    "name": "Firecrawl",
+    "name": "Firecrawl MCP Server",
     "delivery": "local",
     "unprobeable_reason": "local stdio install (npm) — no published remote endpoint",
     "featured": true
@@ -106,8 +110,10 @@
   {
     "slug": "exa",
     "name": "Exa",
-    "delivery": "local",
-    "unprobeable_reason": "local stdio install (npm) — no published remote endpoint",
+    "delivery": "remote",
+    "remote_endpoint": "https://mcp.exa.ai/mcp",
+    "transport": "streamable-http",
+    "endpoint_source": "docs.exa.ai MCP (ai.exa/exa)",
     "featured": true
   },
   {
@@ -119,7 +125,7 @@
   },
   {
     "slug": "notion",
-    "name": "Notion",
+    "name": "Notion MCP Server",
     "delivery": "remote",
     "remote_endpoint": "https://mcp.notion.com/mcp",
     "transport": "streamable-http",
@@ -128,7 +134,7 @@
   },
   {
     "slug": "linear",
-    "name": "Linear",
+    "name": "Linear MCP Server",
     "delivery": "remote",
     "remote_endpoint": "https://mcp.linear.app/mcp",
     "transport": "streamable-http",
@@ -137,20 +143,20 @@
   },
   {
     "slug": "slack",
-    "name": "Slack",
+    "name": "Slack MCP Server",
     "delivery": "local",
     "unprobeable_reason": "local stdio install (npm) — no published remote endpoint",
     "featured": true
   },
   {
     "slug": "hubspot",
-    "name": "HubSpot",
+    "name": "HubSpot MCP Server",
     "delivery": "local",
     "unprobeable_reason": "local stdio install (npm) — no published remote endpoint"
   },
   {
     "slug": "stripe",
-    "name": "Stripe",
+    "name": "Stripe MCP Server",
     "delivery": "remote",
     "remote_endpoint": "https://mcp.stripe.com",
     "transport": "streamable-http",
@@ -159,34 +165,36 @@
   },
   {
     "slug": "mongodb",
-    "name": "MongoDB",
+    "name": "MongoDB MCP Server",
     "delivery": "local",
     "unprobeable_reason": "local stdio install (npm) — no published remote endpoint",
     "featured": true
   },
   {
     "slug": "postgresql",
-    "name": "PostgreSQL",
+    "name": "PostgreSQL MCP Server",
     "delivery": "local",
     "unprobeable_reason": "local stdio install (npm) — no published remote endpoint"
   },
   {
     "slug": "sqlite",
-    "name": "SQLite",
+    "name": "SQLite MCP Server",
     "delivery": "local",
     "unprobeable_reason": "local stdio install (npm) — no published remote endpoint"
   },
   {
     "slug": "redis",
-    "name": "Redis",
+    "name": "Redis MCP Server",
     "delivery": "local",
     "unprobeable_reason": "local stdio install (npm) — no published remote endpoint"
   },
   {
     "slug": "supabase",
-    "name": "Supabase",
-    "delivery": "local",
-    "unprobeable_reason": "local stdio install (npm) — no published remote endpoint",
+    "name": "Supabase MCP Server",
+    "delivery": "remote",
+    "remote_endpoint": "https://mcp.supabase.com/mcp",
+    "transport": "streamable-http",
+    "endpoint_source": "supabase.com/docs/guides/getting-started/mcp",
     "featured": true
   },
   {
@@ -224,7 +232,7 @@
   },
   {
     "slug": "vercel",
-    "name": "Vercel",
+    "name": "Vercel MCP Server",
     "delivery": "remote",
     "remote_endpoint": "https://mcp.vercel.com",
     "transport": "streamable-http",
@@ -239,7 +247,7 @@
   },
   {
     "slug": "docker",
-    "name": "Docker",
+    "name": "Docker MCP Server",
     "delivery": "local",
     "unprobeable_reason": "local stdio install (npm) — no published remote endpoint",
     "featured": true
@@ -259,7 +267,7 @@
   },
   {
     "slug": "sentry",
-    "name": "Sentry",
+    "name": "Sentry MCP Server",
     "delivery": "remote",
     "remote_endpoint": "https://mcp.sentry.dev/mcp",
     "transport": "streamable-http",
@@ -267,7 +275,7 @@
   },
   {
     "slug": "datadog",
-    "name": "Datadog",
+    "name": "Datadog MCP Server",
     "delivery": "local",
     "unprobeable_reason": "local stdio install (npm) — no published remote endpoint"
   },
@@ -313,9 +321,11 @@
   },
   {
     "slug": "figma",
-    "name": "Figma",
-    "delivery": "local",
-    "unprobeable_reason": "local stdio install (npm) — no published remote endpoint",
+    "name": "Figma MCP Server",
+    "delivery": "remote",
+    "remote_endpoint": "https://mcp.figma.com/mcp",
+    "transport": "streamable-http",
+    "endpoint_source": "official MCP registry (com.figma.mcp/mcp)",
     "featured": true
   },
   {
@@ -338,7 +348,7 @@
   },
   {
     "slug": "google-drive",
-    "name": "Google Drive",
+    "name": "Google Drive MCP Server",
     "delivery": "local",
     "unprobeable_reason": "local stdio install (npm) — no published remote endpoint"
   },
@@ -351,18 +361,22 @@
   {
     "slug": "dropbox",
     "name": "Dropbox",
-    "delivery": "local",
-    "unprobeable_reason": "local stdio install (npm) — no published remote endpoint"
+    "delivery": "remote",
+    "remote_endpoint": "https://mcp.dropbox.com/mcp",
+    "transport": "streamable-http",
+    "endpoint_source": "help.dropbox.com/integrations/connect-dropbox-mcp-server"
   },
   {
     "slug": "airtable",
-    "name": "Airtable",
-    "delivery": "local",
-    "unprobeable_reason": "local stdio install (npm) — no published remote endpoint"
+    "name": "Airtable MCP Server",
+    "delivery": "remote",
+    "remote_endpoint": "https://mcp.airtable.com/mcp",
+    "transport": "streamable-http",
+    "endpoint_source": "official MCP registry (com.airtable/mcp)"
   },
   {
     "slug": "asana",
-    "name": "Asana",
+    "name": "Asana MCP Server",
     "delivery": "remote",
     "remote_endpoint": "https://mcp.asana.com/sse",
     "transport": "sse",
@@ -370,14 +384,16 @@
   },
   {
     "slug": "jira",
-    "name": "Jira",
-    "delivery": "local",
-    "unprobeable_reason": "local stdio install (npm) — no published remote endpoint",
+    "name": "Jira MCP Server",
+    "delivery": "remote",
+    "remote_endpoint": "https://mcp.atlassian.com/v1/mcp",
+    "transport": "streamable-http",
+    "endpoint_source": "support.atlassian.com Rovo MCP (com.atlassian/atlassian-mcp-server)",
     "featured": true
   },
   {
     "slug": "confluence",
-    "name": "Confluence",
+    "name": "Confluence MCP Server",
     "delivery": "local",
     "unprobeable_reason": "local stdio install (npm) — no published remote endpoint"
   },
@@ -407,16 +423,16 @@
   },
   {
     "slug": "kubernetes",
-    "name": "Kubernetes",
+    "name": "Kubernetes MCP Server",
     "delivery": "local",
-    "unprobeable_reason": "local binary — no published remote endpoint",
+    "unprobeable_reason": "local stdio install (npm) — no published remote endpoint",
     "featured": true
   },
   {
     "slug": "terraform",
-    "name": "Terraform",
+    "name": "Terraform MCP Server",
     "delivery": "local",
-    "unprobeable_reason": "local binary — no published remote endpoint"
+    "unprobeable_reason": "local stdio install (npm) — no published remote endpoint"
   },
   {
     "slug": "brightdata",
@@ -528,9 +544,9 @@
   },
   {
     "slug": "obsidian",
-    "name": "Obsidian",
+    "name": "Obsidian MCP Server",
     "delivery": "local",
-    "unprobeable_reason": "local stdio install (npm) — no published remote endpoint"
+    "unprobeable_reason": "local stdio install (pip) — no published remote endpoint"
   },
   {
     "slug": "roam",
@@ -637,12 +653,14 @@
   {
     "slug": "make",
     "name": "Make",
-    "delivery": "local",
-    "unprobeable_reason": "local stdio install (npm) — no published remote endpoint"
+    "delivery": "remote",
+    "remote_endpoint": "https://mcp.make.com",
+    "transport": "streamable-http",
+    "endpoint_source": "developers.make.com MCP (com.make/mcp-server)"
   },
   {
     "slug": "n8n",
-    "name": "n8n",
+    "name": "n8n MCP Server",
     "delivery": "local",
     "unprobeable_reason": "local stdio install (npm) — no published remote endpoint"
   },
@@ -800,7 +818,7 @@
   },
   {
     "slug": "salesforce",
-    "name": "Salesforce",
+    "name": "Salesforce MCP Server",
     "delivery": "local",
     "unprobeable_reason": "local stdio install (npm) — no published remote endpoint"
   },
@@ -818,9 +836,11 @@
   },
   {
     "slug": "monday",
-    "name": "Monday.com",
-    "delivery": "local",
-    "unprobeable_reason": "local stdio install (npm) — no published remote endpoint"
+    "name": "Monday.com MCP Server",
+    "delivery": "remote",
+    "remote_endpoint": "https://mcp.monday.com/mcp",
+    "transport": "streamable-http",
+    "endpoint_source": "developer.monday.com MCP (com.monday/monday.com)"
   },
   {
     "slug": "clickup",
@@ -1218,8 +1238,10 @@
   {
     "slug": "canva",
     "name": "Canva",
-    "delivery": "local",
-    "unprobeable_reason": "local stdio install (npm) — no published remote endpoint"
+    "delivery": "remote",
+    "remote_endpoint": "https://mcp.canva.com/mcp",
+    "transport": "streamable-http",
+    "endpoint_source": "canva.dev/docs/mcp"
   },
   {
     "slug": "appium",
@@ -1747,7 +1769,7 @@
   },
   {
     "slug": "mysql",
-    "name": "MySQL",
+    "name": "MySQL MCP Server",
     "delivery": "local",
     "unprobeable_reason": "local stdio install (npm) — no published remote endpoint"
   },
@@ -2115,7 +2137,7 @@
   },
   {
     "slug": "gmail",
-    "name": "Gmail",
+    "name": "Gmail MCP Server",
     "delivery": "local",
     "unprobeable_reason": "local stdio install (npm) — no published remote endpoint",
     "featured": true
@@ -2245,8 +2267,10 @@
   {
     "slug": "square",
     "name": "Square",
-    "delivery": "local",
-    "unprobeable_reason": "local stdio install (npm) — no published remote endpoint"
+    "delivery": "remote",
+    "remote_endpoint": "https://mcp.squareup.com/sse",
+    "transport": "sse",
+    "endpoint_source": "developer.squareup.com/docs/mcp"
   },
   {
     "slug": "brex",
@@ -2835,15 +2859,15 @@
   },
   {
     "slug": "excel-mcp",
-    "name": "Excel / Spreadsheets",
+    "name": "Excel MCP Server",
     "delivery": "local",
-    "unprobeable_reason": "local stdio install (npm) — no published remote endpoint"
+    "unprobeable_reason": "local stdio install (pip) — no published remote endpoint"
   },
   {
     "slug": "google-sheets",
-    "name": "Google Sheets",
+    "name": "Google Sheets MCP Server",
     "delivery": "local",
-    "unprobeable_reason": "local stdio install (npm) — no published remote endpoint",
+    "unprobeable_reason": "local stdio install (pip) — no published remote endpoint",
     "featured": true
   },
   {
@@ -3210,7 +3234,7 @@
   },
   {
     "slug": "monarch-mcp",
-    "name": "Monarch Money MCP",
+    "name": "Monarch Money MCP Server",
     "delivery": "local",
     "unprobeable_reason": "local stdio install (pip) — no published remote endpoint"
   },
@@ -16425,5 +16449,29 @@
     "name": "GitLab Issues & CI MCP",
     "delivery": "local",
     "unprobeable_reason": "local stdio install (npm) — no published remote endpoint"
+  },
+  {
+    "slug": "duckduckgo-mcp",
+    "name": "DuckDuckGo Search MCP Server",
+    "delivery": "local",
+    "unprobeable_reason": "local stdio install (pip) — no published remote endpoint"
+  },
+  {
+    "slug": "memory-bank-mcp",
+    "name": "Memory Bank MCP Server",
+    "delivery": "local",
+    "unprobeable_reason": "local stdio install (npm) — no published remote endpoint"
+  },
+  {
+    "slug": "task-master-ai",
+    "name": "Task Master AI MCP",
+    "delivery": "local",
+    "unprobeable_reason": "local stdio install (npm) — no published remote endpoint"
+  },
+  {
+    "slug": "mcp-shrimp-task-manager",
+    "name": "Shrimp Task Manager MCP",
+    "delivery": "local",
+    "unprobeable_reason": "build-from-source — no published remote endpoint"
   }
 ]
