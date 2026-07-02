@@ -44,7 +44,13 @@ export function ServerCard({ server, showCategory = true }: ServerCardProps) {
             ) : (
               <StatusPill status={status} showChecked={false} />
             )}
-            {server.featured && (
+            {server.sponsored && (
+              <span className="inline-flex items-center gap-1 leading-none px-2 py-1 bg-yellow-500/10 border border-yellow-500/30 text-yellow-400 text-xs font-medium rounded-full">
+                <span aria-hidden="true">💰</span>
+                <span>Sponsored</span>
+              </span>
+            )}
+            {server.featured && !server.sponsored && (
               <span className="inline-flex items-center gap-1 leading-none px-2 py-1 bg-amber-500/10 border border-amber-500/30 text-amber-400 text-xs font-medium rounded-full">
                 <span aria-hidden="true">⭐</span>
                 <span>Featured</span>
@@ -108,6 +114,9 @@ export function ServerCardCompact({ server }: { server: MCPServer }) {
           <LocalSignalPill signal={signal} />
         ) : (
           <StatusPill status={status} showChecked={false} />
+        )}
+        {server.sponsored && (
+          <span className="text-yellow-400 text-xs font-medium">💰</span>
         )}
         {server.official && (
           <span className="text-blue-400 text-xs font-medium">✓</span>

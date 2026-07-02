@@ -37561,8 +37561,17 @@ export function getServerBySlug(slug: string): MCPServer | undefined {
   return servers.find(s => s.slug === slug);
 }
 
+/** Sponsored (Pro/Premium) sort above Featured (Basic) sort above everything else — delivers the "priority placement" / "top of category" tiers sold on /advertise. Array.prototype.sort is stable, so within each tier original order is preserved. */
+function rankForPlacement(s: MCPServer): number {
+  if (s.sponsored) return 0;
+  if (s.featured) return 1;
+  return 2;
+}
+
 export function getServersByCategory(categorySlug: string): MCPServer[] {
-  return servers.filter(s => s.categories.includes(categorySlug));
+  return servers
+    .filter(s => s.categories.includes(categorySlug))
+    .sort((a, b) => rankForPlacement(a) - rankForPlacement(b));
 }
 
 export function getServersByIntegration(integrationSlug: string): MCPServer[] {
