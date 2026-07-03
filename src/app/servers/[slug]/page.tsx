@@ -43,11 +43,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     return { title: "Server Not Found | MyMCPTools" };
   }
 
+  const baseName = server.name.replace(/\s+MCP\s+Servers?$/i, "").trim();
+
   return {
-    title: `${server.name} MCP Server — Setup, Features & Alternatives | MyMCPTools`,
-    description: `${server.description} Learn how to install and configure the ${server.name} MCP server for Claude, Cursor, VS Code, and more.`,
+    title: `${baseName} MCP Server — Setup, Features & Alternatives | MyMCPTools`,
+    description: `${server.description} Learn how to install and configure the ${baseName} MCP server for Claude, Cursor, VS Code, and more.`,
     openGraph: {
-      title: `${server.name} MCP Server | MyMCPTools`,
+      title: `${baseName} MCP Server | MyMCPTools`,
       description: server.description,
       type: "article",
     },
@@ -73,6 +75,7 @@ export default async function ServerPage({ params }: Props) {
   const history = getHistory(server.slug);
   const hasUptimeHistory = history.some((p) => p.verdict !== "UNPROBEABLE");
   const primaryCategory = serverCategories[0]?.name || server.categories[0] || "MCP workflows";
+  const baseName = server.name.replace(/\s+MCP\s+Servers?$/i, "").trim();
   const capability = getFirstSentence(server.description);
   const installAnswer = server.install_command
     ? `Install ${server.name} with ${server.install_type}: ${server.install_command}`
@@ -83,7 +86,7 @@ export default async function ServerPage({ params }: Props) {
   const faqItems = [
     {
       question: `What is ${server.name}?`,
-      answer: `${server.name} is an MCP server built by ${server.author}. ${server.description}`,
+      answer: `${baseName} is an MCP server built by ${server.author}. ${server.description}`,
     },
     {
       question: `Who built ${server.name}?`,
@@ -93,7 +96,7 @@ export default async function ServerPage({ params }: Props) {
       question: `Is ${server.name} free?`,
       answer: hasFreeOption(pricing.pricing_model)
         ? `Yes, ${server.name} has a free option. ${pricing.pricing_details}`
-        : `${server.name} is free to install as an MCP server, but the underlying service may require payment. ${pricing.pricing_details}`,
+        : `${baseName} is free to install as an MCP server, but the underlying service may require payment. ${pricing.pricing_details}`,
     },
     {
       question: `How do I install ${server.name}?`,
@@ -180,7 +183,7 @@ export default async function ServerPage({ params }: Props) {
                   )}
                 </div>
                 <p className="text-gray-300 leading-relaxed mb-2">
-                  The {server.name} MCP server, built by {server.author}, provides {capability.charAt(0).toLowerCase() + capability.slice(1)}. It is {server.official ? "officially maintained" : "community-built"} and best for {primaryCategory}.
+                  The {baseName} MCP server, built by {server.author}, provides {capability.charAt(0).toLowerCase() + capability.slice(1)}. It is {server.official ? "officially maintained" : "community-built"} and best for {primaryCategory}.
                 </p>
                 <p className="text-gray-500">by {server.author}</p>
               </div>
