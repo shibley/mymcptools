@@ -79,14 +79,14 @@
   },
   {
     "slug": "aws",
-    "name": "AWS",
+    "name": "AWS MCP Servers",
     "delivery": "local",
-    "unprobeable_reason": "local stdio install (npm) — no published remote endpoint",
+    "unprobeable_reason": "local stdio install (pip) — no published remote endpoint",
     "featured": true
   },
   {
     "slug": "cloudflare",
-    "name": "Cloudflare",
+    "name": "Cloudflare MCP Server",
     "delivery": "remote",
     "remote_endpoint": "https://docs.mcp.cloudflare.com/mcp",
     "transport": "streamable-http",
@@ -103,8 +103,10 @@
   {
     "slug": "firecrawl",
     "name": "Firecrawl MCP Server",
-    "delivery": "local",
-    "unprobeable_reason": "local stdio install (npm) — no published remote endpoint",
+    "delivery": "remote",
+    "remote_endpoint": "https://mcp.firecrawl.dev/v2/mcp",
+    "transport": "streamable-http",
+    "endpoint_source": "docs.firecrawl.dev/use-cases/developers-mcp (keyless free tier)",
     "featured": true
   },
   {
@@ -118,7 +120,7 @@
   },
   {
     "slug": "brave-search",
-    "name": "Brave Search",
+    "name": "Brave Search MCP Server",
     "delivery": "local",
     "unprobeable_reason": "local stdio install (npm) — no published remote endpoint",
     "featured": true
@@ -260,7 +262,7 @@
   },
   {
     "slug": "playwright",
-    "name": "Playwright",
+    "name": "Playwright MCP Server (ExecuteAutomation)",
     "delivery": "local",
     "unprobeable_reason": "local stdio install (npm) — no published remote endpoint",
     "featured": true
@@ -330,7 +332,7 @@
   },
   {
     "slug": "twilio",
-    "name": "Twilio",
+    "name": "Twilio MCP Server",
     "delivery": "local",
     "unprobeable_reason": "local stdio install (npm) — no published remote endpoint"
   },
@@ -394,8 +396,10 @@
   {
     "slug": "confluence",
     "name": "Confluence MCP Server",
-    "delivery": "local",
-    "unprobeable_reason": "local stdio install (npm) — no published remote endpoint"
+    "delivery": "remote",
+    "remote_endpoint": "https://mcp.atlassian.com/v1/mcp",
+    "transport": "streamable-http",
+    "endpoint_source": "support.atlassian.com Rovo MCP (com.atlassian, serves Confluence)"
   },
   {
     "slug": "todoist",
@@ -437,8 +441,10 @@
   {
     "slug": "brightdata",
     "name": "BrightData",
-    "delivery": "local",
-    "unprobeable_reason": "local stdio install (npm) — no published remote endpoint"
+    "delivery": "remote",
+    "remote_endpoint": "https://mcp.brightdata.com/mcp",
+    "transport": "streamable-http",
+    "endpoint_source": "docs.brightdata.com/ai/mcp-server (token-gated hosted endpoint)"
   },
   {
     "slug": "algolia",
@@ -467,8 +473,10 @@
   {
     "slug": "coingecko",
     "name": "CoinGecko",
-    "delivery": "local",
-    "unprobeable_reason": "local stdio install (npm) — no published remote endpoint"
+    "delivery": "remote",
+    "remote_endpoint": "https://mcp.api.coingecko.com/mcp",
+    "transport": "streamable-http",
+    "endpoint_source": "docs.coingecko.com/docs/ai-agent-hub/mcp-server (public, no key)"
   },
   {
     "slug": "plaid",
@@ -478,7 +486,7 @@
   },
   {
     "slug": "shopify",
-    "name": "Shopify",
+    "name": "Shopify MCP Server",
     "delivery": "local",
     "unprobeable_reason": "local stdio install (npm) — no published remote endpoint"
   },
@@ -490,7 +498,7 @@
   },
   {
     "slug": "youtube",
-    "name": "YouTube",
+    "name": "YouTube MCP Server",
     "delivery": "local",
     "unprobeable_reason": "local stdio install (npm) — no published remote endpoint"
   },
@@ -503,8 +511,10 @@
   {
     "slug": "cloudinary",
     "name": "Cloudinary",
-    "delivery": "local",
-    "unprobeable_reason": "local stdio install (npm) — no published remote endpoint"
+    "delivery": "remote",
+    "remote_endpoint": "https://asset-management.mcp.cloudinary.com/mcp",
+    "transport": "streamable-http",
+    "endpoint_source": "cloudinary.com/documentation/cloudinary_llm_mcp (asset-management server)"
   },
   {
     "slug": "elevenlabs",
@@ -514,9 +524,9 @@
   },
   {
     "slug": "discord",
-    "name": "Discord",
+    "name": "Discord MCP Server",
     "delivery": "local",
-    "unprobeable_reason": "local stdio install (npm) — no published remote endpoint"
+    "unprobeable_reason": "self-hosted container — no published remote endpoint"
   },
   {
     "slug": "telegram",
@@ -646,7 +656,7 @@
   },
   {
     "slug": "zapier",
-    "name": "Zapier",
+    "name": "Zapier MCP Server",
     "delivery": "local",
     "unprobeable_reason": "local stdio install (npm) — no published remote endpoint"
   },
@@ -672,9 +682,9 @@
   },
   {
     "slug": "snowflake",
-    "name": "Snowflake",
+    "name": "Snowflake MCP Server",
     "delivery": "local",
-    "unprobeable_reason": "local stdio install (pip) — no published remote endpoint"
+    "unprobeable_reason": "local binary — no published remote endpoint"
   },
   {
     "slug": "databricks",
@@ -862,7 +872,7 @@
   },
   {
     "slug": "trello",
-    "name": "Trello",
+    "name": "Trello MCP Server",
     "delivery": "local",
     "unprobeable_reason": "local stdio install (npm) — no published remote endpoint"
   },
@@ -982,7 +992,7 @@
   },
   {
     "slug": "perplexity",
-    "name": "Perplexity",
+    "name": "Perplexity MCP Server",
     "delivery": "local",
     "unprobeable_reason": "local stdio install (npm) — no published remote endpoint"
   },
@@ -1722,8 +1732,10 @@
   {
     "slug": "prisma",
     "name": "Prisma MCP",
-    "delivery": "local",
-    "unprobeable_reason": "local stdio install (npm) — no published remote endpoint"
+    "delivery": "remote",
+    "remote_endpoint": "https://mcp.prisma.io/mcp",
+    "transport": "streamable-http",
+    "endpoint_source": "prisma.io/docs/postgres/integrations/mcp-server (remote)"
   },
   {
     "slug": "openai-api",
@@ -1925,13 +1937,13 @@
   },
   {
     "slug": "railway",
-    "name": "Railway",
+    "name": "Railway MCP Server",
     "delivery": "local",
-    "unprobeable_reason": "local stdio install (npm) — no published remote endpoint"
+    "unprobeable_reason": "local binary — no published remote endpoint"
   },
   {
     "slug": "render",
-    "name": "Render",
+    "name": "Render MCP Server",
     "delivery": "local",
     "unprobeable_reason": "local stdio install (npm) — no published remote endpoint"
   },
@@ -2519,8 +2531,10 @@
   {
     "slug": "postman",
     "name": "Postman",
-    "delivery": "local",
-    "unprobeable_reason": "local stdio install (npm) — no published remote endpoint",
+    "delivery": "remote",
+    "remote_endpoint": "https://mcp.postman.com/mcp",
+    "transport": "streamable-http",
+    "endpoint_source": "learning.postman.com/docs/reference/postman-api/postman-mcp-server/postman-mcp-remote-server",
     "featured": true
   },
   {
@@ -2742,7 +2756,7 @@
   },
   {
     "slug": "webflow",
-    "name": "Webflow",
+    "name": "Webflow MCP Server",
     "delivery": "remote",
     "remote_endpoint": "https://mcp.webflow.com/sse",
     "transport": "sse",
@@ -2751,8 +2765,10 @@
   {
     "slug": "sanity",
     "name": "Sanity CMS",
-    "delivery": "local",
-    "unprobeable_reason": "local stdio install (npm) — no published remote endpoint"
+    "delivery": "remote",
+    "remote_endpoint": "https://mcp.sanity.io",
+    "transport": "streamable-http",
+    "endpoint_source": "sanity.io/docs/ai/mcp-server (remote)"
   },
   {
     "slug": "contentful",
@@ -8515,8 +8531,10 @@
   {
     "slug": "wix-mcp",
     "name": "Wix Studio",
-    "delivery": "local",
-    "unprobeable_reason": "local stdio install (npm) — no published remote endpoint"
+    "delivery": "remote",
+    "remote_endpoint": "https://mcp.wix.com/mcp",
+    "transport": "streamable-http",
+    "endpoint_source": "dev.wix.com/docs/sdk/articles/use-the-wix-mcp/about-the-wix-mcp"
   },
   {
     "slug": "adobe-illustrator-mcp",
