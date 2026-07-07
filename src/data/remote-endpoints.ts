@@ -275,6 +275,41 @@ export const remoteEndpoints: RemoteEndpoint[] = [
     expected_auth: true,
     source: 'support.atlassian.com Rovo MCP (com.atlassian, serves Confluence)',
   },
+  {
+    slug: 'hubspot',
+    url: 'https://mcp.hubspot.com/anthropic',
+    transport: 'streamable-http',
+    expected_auth: true,
+    source: 'developers.hubspot.com/mcp (remote hosted, OAuth)',
+  },
+  {
+    slug: 'posthog',
+    url: 'https://mcp.posthog.com/mcp',
+    transport: 'streamable-http',
+    expected_auth: true,
+    source: 'posthog.com/docs/model-context-protocol (remote hosted)',
+  },
+  {
+    slug: 'box',
+    url: 'https://mcp.box.com/',
+    transport: 'streamable-http',
+    expected_auth: true,
+    source: 'developer.box.com Box MCP (remote hosted, OAuth)',
+  },
+  {
+    slug: 'pipedrive',
+    url: 'https://mcp.pipedrive.com/mcp',
+    transport: 'streamable-http',
+    expected_auth: true,
+    source: 'developers.pipedrive.com MCP (remote hosted)',
+  },
+  {
+    slug: 'render',
+    url: 'https://mcp.render.com/mcp',
+    transport: 'streamable-http',
+    expected_auth: true,
+    source: 'render.com/docs/mcp-server (remote hosted)',
+  },
 ];
 
 export const remoteEndpointBySlug: Map<string, RemoteEndpoint> = new Map(

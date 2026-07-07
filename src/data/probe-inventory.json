@@ -153,8 +153,10 @@
   {
     "slug": "hubspot",
     "name": "HubSpot MCP Server",
-    "delivery": "local",
-    "unprobeable_reason": "local stdio install (npm) — no published remote endpoint"
+    "delivery": "remote",
+    "remote_endpoint": "https://mcp.hubspot.com/anthropic",
+    "transport": "streamable-http",
+    "endpoint_source": "developers.hubspot.com/mcp (remote hosted, OAuth)"
   },
   {
     "slug": "stripe",
@@ -243,7 +245,7 @@
   },
   {
     "slug": "netlify",
-    "name": "Netlify",
+    "name": "Netlify MCP Server",
     "delivery": "local",
     "unprobeable_reason": "local stdio install (npm) — no published remote endpoint"
   },
@@ -344,7 +346,7 @@
   },
   {
     "slug": "resend",
-    "name": "Resend",
+    "name": "Resend MCP Server",
     "delivery": "local",
     "unprobeable_reason": "local stdio install (npm) — no published remote endpoint"
   },
@@ -362,7 +364,7 @@
   },
   {
     "slug": "dropbox",
-    "name": "Dropbox",
+    "name": "Dropbox MCP Server",
     "delivery": "remote",
     "remote_endpoint": "https://mcp.dropbox.com/mcp",
     "transport": "streamable-http",
@@ -466,7 +468,7 @@
   },
   {
     "slug": "coinbase",
-    "name": "Coinbase",
+    "name": "Coinbase Payments MCP",
     "delivery": "local",
     "unprobeable_reason": "local stdio install (npm) — no published remote endpoint"
   },
@@ -480,9 +482,9 @@
   },
   {
     "slug": "plaid",
-    "name": "Plaid",
+    "name": "Plaid AI Coding Toolkit",
     "delivery": "local",
-    "unprobeable_reason": "local stdio install (npm) — no published remote endpoint"
+    "unprobeable_reason": "build-from-source — no published remote endpoint"
   },
   {
     "slug": "shopify",
@@ -504,7 +506,7 @@
   },
   {
     "slug": "spotify",
-    "name": "Spotify",
+    "name": "Spotify MCP Server",
     "delivery": "local",
     "unprobeable_reason": "local stdio install (npm) — no published remote endpoint"
   },
@@ -518,9 +520,9 @@
   },
   {
     "slug": "elevenlabs",
-    "name": "ElevenLabs",
+    "name": "ElevenLabs MCP Server",
     "delivery": "local",
-    "unprobeable_reason": "local stdio install (npm) — no published remote endpoint"
+    "unprobeable_reason": "local stdio install (pip) — no published remote endpoint"
   },
   {
     "slug": "discord",
@@ -548,7 +550,7 @@
   },
   {
     "slug": "calendly",
-    "name": "Calendly",
+    "name": "Calendly MCP Server",
     "delivery": "local",
     "unprobeable_reason": "local stdio install (npm) — no published remote endpoint"
   },
@@ -620,9 +622,9 @@
   },
   {
     "slug": "digitalocean",
-    "name": "DigitalOcean",
+    "name": "DigitalOcean MCP Server",
     "delivery": "local",
-    "unprobeable_reason": "local stdio install (npm) — no published remote endpoint"
+    "unprobeable_reason": "build-from-source — no published remote endpoint"
   },
   {
     "slug": "datadog-rum",
@@ -644,9 +646,11 @@
   },
   {
     "slug": "posthog",
-    "name": "PostHog",
-    "delivery": "local",
-    "unprobeable_reason": "local stdio install (npm) — no published remote endpoint"
+    "name": "PostHog MCP Server",
+    "delivery": "remote",
+    "remote_endpoint": "https://mcp.posthog.com/mcp",
+    "transport": "streamable-http",
+    "endpoint_source": "posthog.com/docs/model-context-protocol (remote hosted)"
   },
   {
     "slug": "segment",
@@ -694,9 +698,9 @@
   },
   {
     "slug": "bigquery",
-    "name": "BigQuery",
+    "name": "BigQuery MCP Server",
     "delivery": "local",
-    "unprobeable_reason": "local stdio install (pip) — no published remote endpoint"
+    "unprobeable_reason": "local stdio install (npm) — no published remote endpoint"
   },
   {
     "slug": "duckdb",
@@ -706,9 +710,9 @@
   },
   {
     "slug": "pinecone",
-    "name": "Pinecone",
+    "name": "Pinecone MCP Server",
     "delivery": "local",
-    "unprobeable_reason": "local stdio install (pip) — no published remote endpoint"
+    "unprobeable_reason": "local stdio install (npm) — no published remote endpoint"
   },
   {
     "slug": "weaviate",
@@ -718,7 +722,7 @@
   },
   {
     "slug": "qdrant",
-    "name": "Qdrant",
+    "name": "Qdrant MCP Server",
     "delivery": "local",
     "unprobeable_reason": "local stdio install (pip) — no published remote endpoint"
   },
@@ -730,7 +734,7 @@
   },
   {
     "slug": "planetscale",
-    "name": "PlanetScale",
+    "name": "PlanetScale MCP Server",
     "delivery": "local",
     "unprobeable_reason": "local stdio install (npm) — no published remote endpoint"
   },
@@ -742,7 +746,7 @@
   },
   {
     "slug": "upstash",
-    "name": "Upstash",
+    "name": "Upstash MCP Server",
     "delivery": "local",
     "unprobeable_reason": "local stdio install (npm) — no published remote endpoint"
   },
@@ -754,9 +758,9 @@
   },
   {
     "slug": "pagerduty",
-    "name": "PagerDuty",
+    "name": "PagerDuty MCP Server",
     "delivery": "local",
-    "unprobeable_reason": "local stdio install (npm) — no published remote endpoint"
+    "unprobeable_reason": "local stdio install (pip) — no published remote endpoint"
   },
   {
     "slug": "opsgenie",
@@ -808,7 +812,7 @@
   },
   {
     "slug": "intercom",
-    "name": "Intercom",
+    "name": "Intercom MCP Server",
     "delivery": "remote",
     "remote_endpoint": "https://mcp.intercom.com/mcp",
     "transport": "streamable-http",
@@ -816,9 +820,9 @@
   },
   {
     "slug": "zendesk",
-    "name": "Zendesk",
+    "name": "Zendesk MCP Server",
     "delivery": "local",
-    "unprobeable_reason": "local stdio install (npm) — no published remote endpoint"
+    "unprobeable_reason": "local stdio install (pip) — no published remote endpoint"
   },
   {
     "slug": "freshdesk",
@@ -835,8 +839,10 @@
   {
     "slug": "pipedrive",
     "name": "Pipedrive",
-    "delivery": "local",
-    "unprobeable_reason": "local stdio install (npm) — no published remote endpoint"
+    "delivery": "remote",
+    "remote_endpoint": "https://mcp.pipedrive.com/mcp",
+    "transport": "streamable-http",
+    "endpoint_source": "developers.pipedrive.com MCP (remote hosted)"
   },
   {
     "slug": "close",
@@ -854,7 +860,7 @@
   },
   {
     "slug": "clickup",
-    "name": "ClickUp",
+    "name": "ClickUp MCP Server",
     "delivery": "local",
     "unprobeable_reason": "local stdio install (npm) — no published remote endpoint"
   },
@@ -878,9 +884,9 @@
   },
   {
     "slug": "coda",
-    "name": "Coda",
+    "name": "Coda MCP Server",
     "delivery": "local",
-    "unprobeable_reason": "local stdio install (npm) — no published remote endpoint"
+    "unprobeable_reason": "local stdio install (pip) — no published remote endpoint"
   },
   {
     "slug": "fibery",
@@ -962,7 +968,7 @@
   },
   {
     "slug": "replicate",
-    "name": "Replicate",
+    "name": "Replicate Flux MCP",
     "delivery": "local",
     "unprobeable_reason": "local stdio install (npm) — no published remote endpoint"
   },
@@ -1106,9 +1112,9 @@
   },
   {
     "slug": "sourcegraph",
-    "name": "Sourcegraph",
+    "name": "Sourcegraph MCP Server",
     "delivery": "local",
-    "unprobeable_reason": "local stdio install (npm) — no published remote endpoint"
+    "unprobeable_reason": "build-from-source — no published remote endpoint"
   },
   {
     "slug": "semgrep",
@@ -1145,8 +1151,10 @@
   {
     "slug": "box",
     "name": "Box",
-    "delivery": "local",
-    "unprobeable_reason": "local stdio install (pip) — no published remote endpoint"
+    "delivery": "remote",
+    "remote_endpoint": "https://mcp.box.com/",
+    "transport": "streamable-http",
+    "endpoint_source": "developer.box.com Box MCP (remote hosted, OAuth)"
   },
   {
     "slug": "graphlit",
@@ -1944,8 +1952,10 @@
   {
     "slug": "render",
     "name": "Render MCP Server",
-    "delivery": "local",
-    "unprobeable_reason": "local stdio install (npm) — no published remote endpoint"
+    "delivery": "remote",
+    "remote_endpoint": "https://mcp.render.com/mcp",
+    "transport": "streamable-http",
+    "endpoint_source": "render.com/docs/mcp-server (remote hosted)"
   },
   {
     "slug": "aws-s3",
@@ -2192,9 +2202,9 @@
   },
   {
     "slug": "miro",
-    "name": "Miro",
+    "name": "Miro MCP Server",
     "delivery": "local",
-    "unprobeable_reason": "local stdio install (npm) — no published remote endpoint"
+    "unprobeable_reason": "local binary — no published remote endpoint"
   },
   {
     "slug": "excalidraw",
@@ -7931,9 +7941,9 @@
   },
   {
     "slug": "elevenlabs-mcp",
-    "name": "ElevenLabs",
+    "name": "ElevenLabs Voice Agents MCP",
     "delivery": "local",
-    "unprobeable_reason": "local stdio install (npm) — no published remote endpoint",
+    "unprobeable_reason": "local stdio install (pip) — no published remote endpoint",
     "featured": true
   },
   {
@@ -7944,7 +7954,7 @@
   },
   {
     "slug": "pinecone-mcp",
-    "name": "Pinecone",
+    "name": "Pinecone RAG Pipeline MCP",
     "delivery": "local",
     "unprobeable_reason": "local stdio install (npm) — no published remote endpoint"
   },
@@ -13655,12 +13665,6 @@
     "unprobeable_reason": "local stdio install (npm) — no published remote endpoint"
   },
   {
-    "slug": "sourcegraph-mcp",
-    "name": "Sourcegraph Code Search MCP",
-    "delivery": "local",
-    "unprobeable_reason": "local stdio install (npm) — no published remote endpoint"
-  },
-  {
     "slug": "launchdarkly-mcp",
     "name": "LaunchDarkly Feature Management MCP",
     "delivery": "local",
@@ -15867,12 +15871,6 @@
     "name": "ExplainDev",
     "delivery": "local",
     "unprobeable_reason": "local stdio install (npm) — no published remote endpoint"
-  },
-  {
-    "slug": "sourcegraph-mcp",
-    "name": "Sourcegraph",
-    "delivery": "local",
-    "unprobeable_reason": "local binary — no published remote endpoint"
   },
   {
     "slug": "home-assistant-mcp",
