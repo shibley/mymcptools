@@ -53,6 +53,47 @@ export async function POST(req: NextRequest) {
     const session = event.data.object as Stripe.Checkout.Session;
     const meta = session.metadata || {};
 
+    if (meta.plan && meta.server_name) {
+      // Sponsored/advertise listing checkout (/api/advertise/checkout) —
+      // distinct metadata schema from the $9 Featured Listing flow below.
+      const { plan, server_name, server_url, contact_email } = meta;
+
+      await sendEmail(
+        ADMIN_EMAIL,
+        `💰 Sponsored Listing Payment (${plan}): ${server_name}`,
+        `
+          <h2>New Sponsored Listing — PAID ✅</h2>
+          <p><strong>Plan:</strong> ${plan}</p>
+          <p><strong>Server:</strong> ${server_name}</p>
+          <p><strong>URL:</strong> <a href="${server_url}">${server_url}</a></p>
+          <p><strong>Contact:</strong> ${contact_email}</p>
+          <p><strong>Stripe Session:</strong> ${session.id}</p>
+          <p><strong>Amount:</strong> $${((session.amount_total || 0) / 100).toFixed(2)}</p>
+          <hr/>
+          <p>Set <code>sponsored: true</code> for this server in <code>src/data/probe-inventory.json</code>.</p>
+        `
+      );
+
+      if (contact_email) {
+        await sendEmail(
+          contact_email,
+          `Your Sponsored Listing is confirmed — ${server_name}`,
+          `
+            <h2>Payment received — you're sponsored! 💰</h2>
+            <p>Hi,</p>
+            <p>We've received your payment for a <strong>${plan}</strong> Sponsored Listing on MyMCPTools.</p>
+            <p><strong>Server:</strong> ${server_name}<br/>
+            <strong>URL:</strong> <a href="${server_url}">${server_url}</a></p>
+            <p>Your sponsored placement will be live within <strong>24 hours</strong>.</p>
+            <p>Questions? Reply to this email.</p>
+            <p>— MyMCPTools Team</p>
+          `
+        );
+      }
+      return NextResponse.json({ received: true });
+    }
+
+    // Featured Listing checkout (/api/checkout, $9 one-time)
     const { toolName, email, description, github, website, category, installType } = meta;
 
     // Notify admin
