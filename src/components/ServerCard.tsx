@@ -28,17 +28,17 @@ export function ServerCard({ server, showCategory = true }: ServerCardProps) {
   return (
     <Link href={`/servers/${server.slug}`}>
       <div className="group bg-gray-900 border border-gray-800 rounded-xl p-5 hover:border-blue-500/50 transition-all duration-200 h-full flex flex-col">
-        <div className="flex items-start justify-between mb-3">
-          <div className="flex items-center space-x-3">
-            {category && <span className="text-xl">{category.emoji}</span>}
-            <div>
-              <h3 className="font-semibold text-white group-hover:text-blue-400 transition-colors text-sm">
+        <div className="flex flex-wrap items-start justify-between gap-2 mb-3">
+          <div className="flex items-center space-x-3 min-w-0">
+            {category && <span className="text-xl shrink-0">{category.emoji}</span>}
+            <div className="min-w-0">
+              <h3 className="font-semibold text-white group-hover:text-blue-400 transition-colors text-sm truncate">
                 {server.name}
               </h3>
-              <p className="text-xs text-gray-500">by {server.author}</p>
+              <p className="text-xs text-gray-500 truncate">by {server.author}</p>
             </div>
           </div>
-          <div className="flex items-center space-x-1.5">
+          <div className="flex items-center flex-wrap gap-1.5">
             {local ? (
               <LocalSignalPill signal={signal} />
             ) : (
