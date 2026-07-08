@@ -310,6 +310,34 @@ export const remoteEndpoints: RemoteEndpoint[] = [
     expected_auth: true,
     source: 'render.com/docs/mcp-server (remote hosted)',
   },
+  {
+    slug: 'zapier',
+    url: 'https://mcp.zapier.com/api/mcp/mcp',
+    transport: 'streamable-http',
+    expected_auth: true,
+    source: 'mcp.zapier.com (per-account hosted MCP; base endpoint, OAuth/token-gated)',
+  },
+  {
+    slug: 'needle',
+    url: 'https://mcp.needle.app/mcp',
+    transport: 'streamable-http',
+    expected_auth: true,
+    source: 'docs.needle-ai.com MCP (remote hosted, API-key gated)',
+  },
+  {
+    slug: 'gitlab',
+    url: 'https://gitlab.com/api/v4/mcp',
+    transport: 'streamable-http',
+    expected_auth: true,
+    source: 'docs.gitlab.com/user/gitlab_duo/model_context_protocol (hosted MCP on gitlab.com)',
+  },
+  {
+    slug: 'buildkite',
+    url: 'https://mcp.buildkite.com/mcp',
+    transport: 'streamable-http',
+    expected_auth: true,
+    source: 'buildkite.com/docs/apis/mcp-server (remote hosted, OAuth)',
+  },
 ];
 
 export const remoteEndpointBySlug: Map<string, RemoteEndpoint> = new Map(

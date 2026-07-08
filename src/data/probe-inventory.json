@@ -73,8 +73,10 @@
   {
     "slug": "gitlab",
     "name": "GitLab",
-    "delivery": "local",
-    "unprobeable_reason": "local stdio install (npm) — no published remote endpoint",
+    "delivery": "remote",
+    "remote_endpoint": "https://gitlab.com/api/v4/mcp",
+    "transport": "streamable-http",
+    "endpoint_source": "docs.gitlab.com/user/gitlab_duo/model_context_protocol (hosted MCP on gitlab.com)",
     "featured": true
   },
   {
@@ -253,7 +255,7 @@
     "slug": "docker",
     "name": "Docker MCP Server",
     "delivery": "local",
-    "unprobeable_reason": "local stdio install (npm) — no published remote endpoint",
+    "unprobeable_reason": "local binary — no published remote endpoint",
     "featured": true
   },
   {
@@ -418,8 +420,10 @@
   {
     "slug": "buildkite",
     "name": "Buildkite",
-    "delivery": "local",
-    "unprobeable_reason": "local stdio install (npm) — no published remote endpoint"
+    "delivery": "remote",
+    "remote_endpoint": "https://mcp.buildkite.com/mcp",
+    "transport": "streamable-http",
+    "endpoint_source": "buildkite.com/docs/apis/mcp-server (remote hosted, OAuth)"
   },
   {
     "slug": "jenkins",
@@ -568,15 +572,15 @@
   },
   {
     "slug": "snyk",
-    "name": "Snyk",
+    "name": "Snyk MCP Server (Community)",
     "delivery": "local",
     "unprobeable_reason": "local stdio install (npm) — no published remote endpoint"
   },
   {
     "slug": "sonarqube",
-    "name": "SonarQube",
+    "name": "SonarQube MCP Server",
     "delivery": "local",
-    "unprobeable_reason": "local stdio install (npm) — no published remote endpoint"
+    "unprobeable_reason": "self-hosted container — no published remote endpoint"
   },
   {
     "slug": "crowdstrike",
@@ -661,8 +665,10 @@
   {
     "slug": "zapier",
     "name": "Zapier MCP Server",
-    "delivery": "local",
-    "unprobeable_reason": "local stdio install (npm) — no published remote endpoint"
+    "delivery": "remote",
+    "remote_endpoint": "https://mcp.zapier.com/api/mcp/mcp",
+    "transport": "streamable-http",
+    "endpoint_source": "mcp.zapier.com (per-account hosted MCP; base endpoint, OAuth/token-gated)"
   },
   {
     "slug": "make",
@@ -680,9 +686,9 @@
   },
   {
     "slug": "retool",
-    "name": "Retool",
+    "name": "Retool MCP Server (Community)",
     "delivery": "local",
-    "unprobeable_reason": "local stdio install (npm) — no published remote endpoint"
+    "unprobeable_reason": "build-from-source — no published remote endpoint"
   },
   {
     "slug": "snowflake",
@@ -716,9 +722,9 @@
   },
   {
     "slug": "weaviate",
-    "name": "Weaviate",
+    "name": "Weaviate MCP Server",
     "delivery": "local",
-    "unprobeable_reason": "local stdio install (pip) — no published remote endpoint"
+    "unprobeable_reason": "local binary — no published remote endpoint"
   },
   {
     "slug": "qdrant",
@@ -740,7 +746,7 @@
   },
   {
     "slug": "turso",
-    "name": "Turso",
+    "name": "Turso MCP Server",
     "delivery": "local",
     "unprobeable_reason": "local stdio install (npm) — no published remote endpoint"
   },
@@ -838,7 +844,7 @@
   },
   {
     "slug": "pipedrive",
-    "name": "Pipedrive",
+    "name": "Pipedrive MCP Server",
     "delivery": "remote",
     "remote_endpoint": "https://mcp.pipedrive.com/mcp",
     "transport": "streamable-http",
@@ -974,7 +980,7 @@
   },
   {
     "slug": "stability-ai",
-    "name": "Stability AI",
+    "name": "Stability AI MCP Server (Community)",
     "delivery": "local",
     "unprobeable_reason": "local stdio install (npm) — no published remote endpoint"
   },
@@ -992,7 +998,7 @@
   },
   {
     "slug": "mistral",
-    "name": "Mistral AI",
+    "name": "Mistral MCP Server (Community)",
     "delivery": "local",
     "unprobeable_reason": "local stdio install (npm) — no published remote endpoint"
   },
@@ -1004,13 +1010,13 @@
   },
   {
     "slug": "tavily",
-    "name": "Tavily",
+    "name": "Tavily MCP Server",
     "delivery": "local",
     "unprobeable_reason": "local stdio install (npm) — no published remote endpoint"
   },
   {
     "slug": "serper",
-    "name": "Serper",
+    "name": "Serper MCP Server",
     "delivery": "local",
     "unprobeable_reason": "local stdio install (npm) — no published remote endpoint"
   },
@@ -1046,9 +1052,9 @@
   },
   {
     "slug": "oxylabs",
-    "name": "Oxylabs",
+    "name": "Oxylabs MCP Server",
     "delivery": "local",
-    "unprobeable_reason": "local stdio install (npm) — no published remote endpoint"
+    "unprobeable_reason": "local stdio install (pip) — no published remote endpoint"
   },
   {
     "slug": "agentql",
@@ -1118,7 +1124,7 @@
   },
   {
     "slug": "semgrep",
-    "name": "Semgrep",
+    "name": "Semgrep MCP Server",
     "delivery": "remote",
     "remote_endpoint": "https://mcp.semgrep.ai/mcp",
     "transport": "streamable-http",
@@ -1165,8 +1171,10 @@
   {
     "slug": "needle",
     "name": "Needle",
-    "delivery": "local",
-    "unprobeable_reason": "local stdio install (pip) — no published remote endpoint"
+    "delivery": "remote",
+    "remote_endpoint": "https://mcp.needle.app/mcp",
+    "transport": "streamable-http",
+    "endpoint_source": "docs.needle-ai.com MCP (remote hosted, API-key gated)"
   },
   {
     "slug": "inkeep",
@@ -1269,7 +1277,7 @@
   },
   {
     "slug": "browserstack",
-    "name": "BrowserStack",
+    "name": "BrowserStack MCP Server",
     "delivery": "local",
     "unprobeable_reason": "local stdio install (npm) — no published remote endpoint"
   },
@@ -1493,7 +1501,7 @@
   },
   {
     "slug": "mapbox",
-    "name": "Mapbox",
+    "name": "Mapbox MCP Server",
     "delivery": "local",
     "unprobeable_reason": "local stdio install (npm) — no published remote endpoint"
   },
