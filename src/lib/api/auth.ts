@@ -1,6 +1,9 @@
 // Shared API-key auth + per-key rate limiting for the public v1 trust API
-// (PRD P0-7). Read-only endpoints; keys come from the MCPTOOLS_API_KEYS env var
-// (comma-separated). No Stripe/paywall here — that's P2.
+// (PRD P0-7 + P2-1 self-serve paid tier). Keys are valid if they appear in
+// either the MCPTOOLS_API_KEYS env var (comma-separated, hand-issued) or the
+// committed self-serve store (src/data/api-keys.json, issued via Stripe
+// checkout — see src/lib/api/key-store.ts for why it's a committed file
+// rather than a live DB).
 //
 // Rate limiting is a simple in-memory token bucket keyed by API key. This is
 // per-server-instance only; on serverless it bounds burst per warm instance,
@@ -8,6 +11,7 @@
 // can replace this without changing call sites.
 
 import { NextRequest, NextResponse } from "next/server";
+import { isActiveStoredKey } from "./key-store";
 
 /** Requests allowed per window, per key. */
 const RATE_LIMIT_MAX = 120;
@@ -32,14 +36,17 @@ interface Bucket {
 
 const buckets = new Map<string, Bucket>();
 
-/** Comma-separated allow-list from MCPTOOLS_API_KEYS, trimmed + de-empty'd. */
+/** Hand-issued keys (MCPTOOLS_API_KEYS env var) plus committed self-serve keys. */
 function allowedKeys(): Set<string> {
-  return new Set(
-    (process.env.MCPTOOLS_API_KEYS ?? "")
-      .split(",")
-      .map((k) => k.trim())
-      .filter(Boolean)
-  );
+  const envKeys = (process.env.MCPTOOLS_API_KEYS ?? "")
+    .split(",")
+    .map((k) => k.trim())
+    .filter(Boolean);
+  return new Set(envKeys);
+}
+
+function isAllowed(key: string): boolean {
+  return allowedKeys().has(key) || isActiveStoredKey(key);
 }
 
 /** Extract the API key from `Authorization: Bearer` or `x-api-key`. */
@@ -95,7 +102,7 @@ export type AuthResult =
 export function authenticate(req: NextRequest): AuthResult {
   const key = extractKey(req);
 
-  if (!key || !allowedKeys().has(key)) {
+  if (!key || !isAllowed(key)) {
     const res = NextResponse.json(
       {
         error: "unauthorized",

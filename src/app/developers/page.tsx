@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import TrustApiCheckoutButton from "./TrustApiCheckoutButton";
 
 export const metadata: Metadata = {
   title: "MCP Server Status API — Live Uptime & Drift Data | MyMCPTools",
@@ -449,16 +450,19 @@ docker,DOWN,,,,...`}
           <div className="relative">
             <h2 className="mb-4 text-3xl font-bold sm:text-4xl">Get API access</h2>
             <p className="mx-auto mb-8 max-w-2xl text-lg text-gray-400">
-              Keys are issued by request while the v1 API is in early access. Tell us what
-              you&apos;re building and we&apos;ll get you a key. Need the whole dataset on a
-              schedule? Join the data-feed waitlist.
+              Subscribe for instant self-serve access, or tell us what you&apos;re building
+              and we&apos;ll get you a key by hand. Need the whole dataset on a schedule?
+              Join the data-feed waitlist.
             </p>
+            <div className="mx-auto mb-6 flex max-w-md justify-center">
+              <TrustApiCheckoutButton />
+            </div>
             <div className="flex flex-col justify-center gap-4 sm:flex-row">
               <a
                 href={accessMailto}
-                className="inline-flex items-center justify-center gap-2 rounded-xl bg-blue-600 px-8 py-4 text-lg font-semibold text-white shadow-lg shadow-blue-600/25 transition hover:bg-blue-700"
+                className="inline-flex items-center justify-center gap-2 rounded-xl bg-gray-800 px-8 py-4 font-semibold text-white transition hover:bg-gray-700"
               >
-                Request an API key
+                Request a free key instead
               </a>
               <a
                 href={waitlistMailto}

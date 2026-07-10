@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import Stripe from "stripe";
+import { randomBytes } from "node:crypto";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -9,6 +10,11 @@ const STRIPE_WEBHOOK_SECRET = process.env.STRIPE_WEBHOOK_SECRET;
 const RESEND_API_KEY = process.env.RESEND_API_KEY;
 const FROM_EMAIL = "shibley@apistatuscheck.com";
 const ADMIN_EMAIL = "shibley@gmail.com";
+
+/** mcpt_live_<48 hex chars> — generated per Trust API subscription purchase. */
+function generateApiKey(): string {
+  return `mcpt_live_${randomBytes(24).toString("hex")}`;
+}
 
 async function sendEmail(to: string, subject: string, html: string) {
   if (!RESEND_API_KEY) return;
@@ -52,6 +58,57 @@ export async function POST(req: NextRequest) {
   if (event.type === "checkout.session.completed") {
     const session = event.data.object as Stripe.Checkout.Session;
     const meta = session.metadata || {};
+
+    if (meta.product === "trust-api") {
+      // Trust Data API self-serve checkout (/api/trust-api/checkout, PRD
+      // P2-1). No live DB — generate the key now, email it to the customer,
+      // and tell admin the exact record to commit to src/data/api-keys.json
+      // (same async-fulfillment pattern as Featured/Sponsored listings below).
+      const { plan, email, use_case } = meta;
+      const apiKey = generateApiKey();
+      const record = {
+        key: apiKey,
+        email,
+        plan: plan || "pro",
+        created_at: new Date().toISOString(),
+        status: "active",
+      };
+
+      await sendEmail(
+        ADMIN_EMAIL,
+        `🔑 Trust API Pro subscription: ${email}`,
+        `
+          <h2>New Trust Data API subscriber — PAID ✅</h2>
+          <p><strong>Email:</strong> ${email}</p>
+          <p><strong>Plan:</strong> ${plan}</p>
+          ${use_case ? `<p><strong>Use case:</strong> ${use_case}</p>` : ""}
+          <p><strong>Generated key:</strong> <code>${apiKey}</code></p>
+          <p><strong>Stripe Session:</strong> ${session.id}</p>
+          <p><strong>Amount:</strong> $${((session.amount_total || 0) / 100).toFixed(2)}/mo</p>
+          <hr/>
+          <p>Append this record to <code>src/data/api-keys.json</code> and redeploy to activate:</p>
+          <pre>${JSON.stringify(record, null, 2)}</pre>
+        `
+      );
+
+      if (email) {
+        await sendEmail(
+          email,
+          "Your MyMCPTools Trust Data API key",
+          `
+            <h2>Payment received — welcome to the Trust Data API 🔑</h2>
+            <p>Hi,</p>
+            <p>Your key: <code>${apiKey}</code></p>
+            <p>It will be <strong>active within 24 hours</strong>. Once live, authenticate with:</p>
+            <pre>curl https://mymcptools.com/api/v1/status -H "Authorization: Bearer ${apiKey}"</pre>
+            <p>Docs: <a href="https://mymcptools.com/developers">mymcptools.com/developers</a></p>
+            <p>Questions? Reply to this email.</p>
+            <p>— MyMCPTools Team</p>
+          `
+        );
+      }
+      return NextResponse.json({ received: true });
+    }
 
     if (meta.plan && meta.server_name) {
       // Sponsored/advertise listing checkout (/api/advertise/checkout) —
