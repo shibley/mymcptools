@@ -7,6 +7,11 @@ const nextConfig: NextConfig = {
     // 2026-07-08 build-cost investigation, same fix applied here).
     ignoreBuildErrors: true,
   },
+  async redirects() {
+    return [
+      { source: "/sponsor", destination: "/advertise", permanent: false },
+    ];
+  },
 };
 
 export default nextConfig;
