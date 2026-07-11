@@ -118,6 +118,48 @@ Query params:
 
 - **400** `{ "error": "bad_request" }` when `updated_since` is not a valid date.
 
+### `GET /api/v1/drift`
+
+Paginated feed of tool-schema / protocol-version drift events (PRD P0-4),
+newest-first. Use it to answer "did this server's contract change?" — the
+signal an agent platform routes on before trusting a cached tool schema.
+
+Query params:
+
+| Param    | Default | Notes                                                       |
+| -------- | ------- | ----------------------------------------------------------- |
+| `since`  | —       | ISO-8601; keep events with `changed_at >=` this             |
+| `slug`   | —       | Only events for one server                                  |
+| `filter` | —       | `schema` (schema-changed only) or `protocol` (version only) |
+| `limit`  | 50      | Max **200**                                                 |
+| `cursor` | 0       | Opaque offset; use `next_cursor` from the previous response |
+| `offset` | 0       | Alias for `cursor`                                          |
+
+```json
+{
+  "generated_at": "2026-07-08T22:53:00.000Z",
+  "latest_drift_at": "2026-07-08T15:00:00.000Z",
+  "pagination": { "total": 12, "limit": 50, "offset": 0, "next_cursor": null },
+  "drift_events": [
+    {
+      "type": "drift",
+      "slug": "example-server",
+      "changed_at": "2026-07-08T15:00:00.000Z",
+      "schema_changed": true,
+      "prev_schema_hash": "…",
+      "schema_hash": "…",
+      "tool_diff": { "added": ["new_tool"], "removed": [], "changed": [] },
+      "protocol_version_changed": false,
+      "prev_protocol_version": "2025-06-18",
+      "negotiated_protocol_version": "2025-06-18"
+    }
+  ]
+}
+```
+
+- **400** `{ "error": "bad_request" }` when `since` is not a valid date or
+  `filter` is not `schema`/`protocol`.
+
 ### `GET /api/v1/export`
 
 Full dataset bulk export (intended for a daily pull).
