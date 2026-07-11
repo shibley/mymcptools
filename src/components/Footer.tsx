@@ -4,7 +4,7 @@ export function Footer() {
   return (
     <footer className="border-t border-gray-800 mt-20 py-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8">
           <div>
             <Link href="/" className="flex items-center space-x-2">
               <span className="text-xl font-bold bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
@@ -49,6 +49,27 @@ export function Footer() {
               <li>
                 <a href="https://modelcontextprotocol.io" target="_blank" rel="noopener noreferrer" className="hover:text-white transition">
                   MCP Docs ↗
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 className="font-semibold text-white mb-3">Our Tools</h3>
+            <ul className="space-y-2 text-sm text-gray-400">
+              <li>
+                <a href="https://aidataparser.com" target="_blank" rel="noopener noreferrer" className="hover:text-white transition">
+                  AI Data Parser
+                </a>
+              </li>
+              <li>
+                <a href="https://aisotools.com" target="_blank" rel="noopener noreferrer" className="hover:text-white transition">
+                  AISO Tools
+                </a>
+              </li>
+              <li>
+                <a href="https://apistatuscheck.com" target="_blank" rel="noopener noreferrer" className="hover:text-white transition">
+                  API Status Check
                 </a>
               </li>
             </ul>

@@ -37695,6 +37695,20 @@ const _serversPart31: MCPServer[] = [
     stars: 2122,
     isNew: true,
   },
+  // AI Data Parser API — document parsing API for AI agents, MCP server coming
+  {
+    slug: 'ai-data-parser',
+    name: 'AI Data Parser',
+    description: 'AI Data Parser is a credit-based document-parsing API that converts PDFs, images, invoices, receipts, resumes, and unstructured forms into schema-guaranteed JSON via a single POST request. Designed for AI agents and automation pipelines, it accepts your target JSON schema and guarantees the response validates against it — eliminating the fragile post-processing step that breaks most extraction workflows. Free tier ships 50 credits with no card required. Paid packs ($9/500 credits up to $99/10,000) mean you pay per document, not per month — ideal for agent workflows with variable volume. The API ships with OpenAPI spec, llms.txt, and copy-paste tool definitions for OpenAI and Anthropic tool use, so integration into Claude or GPT-4o agents takes minutes. An MCP server is on the roadmap (planned Q3 2026), which will let Claude Desktop, Cursor, Windsurf, and any MCP-compatible coding agent call the parser as a native tool — ask it to "parse this invoice" and get back clean JSON without any boilerplate. Use cases: invoice data extraction, receipt parsing, resume screening, bank statement normalization, contract field extraction, and form digitization.',
+    author: 'aidataparser',
+    github_url: 'https://github.com/shibley/aidataparser',
+    website_url: 'https://aidataparser.com',
+    categories: ['api', 'ai', 'coding'],
+    integrations: ['claude-desktop', 'cursor', 'vs-code', 'cline'],
+    install_type: 'npm',
+    install_command: 'npm install aidataparser',
+    isNew: true,
+  },
 ];
 
 export const servers: MCPServer[] = [..._serversPart1, ..._serversPart2, ..._serversPart3, ..._serversPart4, ..._serversPart5, ..._serversPart6, ..._serversPart7, ..._serversPart8, ..._serversPart9, ..._serversPart10, ..._serversPart11, ..._serversPart12, ..._serversPart13, ..._serversPart14, ..._serversPart15, ..._serversPart16, ..._serversPart17, ..._serversPart18, ..._serversPart19, ..._serversPart20, ..._serversPart21, ..._serversPart22, ..._serversPart23, ..._serversPart24, ..._serversPart25, ..._serversPart26, ..._serversPart27, ..._serversPart28, ..._serversPart29, ..._serversPart30, ..._serversPart31];
