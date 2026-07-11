@@ -56,8 +56,21 @@ export async function POST(req: NextRequest) {
   }
 
   if (event.type === "checkout.session.completed") {
-    const session = event.data.object as Stripe.Checkout.Session;
+    const eventSession = event.data.object as Stripe.Checkout.Session;
+
+    // Idempotency guard against Stripe redelivery of this event (slow
+    // handler, transient error, etc). No DB exists in this project to key a
+    // dedup table on, so — same pattern as keyseo's research-agent webhook —
+    // use the Checkout Session's own metadata as the dedup store. Re-fetch
+    // the live session rather than trusting the event payload, since the
+    // payload is a stale creation-time snapshot and won't reflect a flag set
+    // by an earlier delivery.
+    const session = await stripe.checkout.sessions.retrieve(eventSession.id);
     const meta = session.metadata || {};
+
+    if (meta.fulfilled === "true") {
+      return NextResponse.json({ received: true, alreadyFulfilled: true });
+    }
 
     if (meta.product === "trust-api") {
       // Trust Data API self-serve checkout (/api/trust-api/checkout, PRD
@@ -107,6 +120,9 @@ export async function POST(req: NextRequest) {
           `
         );
       }
+      await stripe.checkout.sessions.update(session.id, {
+        metadata: { ...meta, fulfilled: "true" },
+      });
       return NextResponse.json({ received: true });
     }
 
@@ -147,6 +163,9 @@ export async function POST(req: NextRequest) {
           `
         );
       }
+      await stripe.checkout.sessions.update(session.id, {
+        metadata: { ...meta, fulfilled: "true" },
+      });
       return NextResponse.json({ received: true });
     }
 
@@ -190,6 +209,10 @@ export async function POST(req: NextRequest) {
         `
       );
     }
+
+    await stripe.checkout.sessions.update(session.id, {
+      metadata: { ...meta, fulfilled: "true" },
+    });
   }
 
   return NextResponse.json({ received: true });
