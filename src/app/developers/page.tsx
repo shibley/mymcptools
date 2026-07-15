@@ -221,7 +221,7 @@ curl https://mymcptools.com/api/v1/status \\
       <section id="endpoints" className="mx-auto max-w-5xl px-4 py-12 sm:px-6 lg:px-8">
         <h2 className="mb-2 text-3xl font-bold">Endpoints</h2>
         <p className="mb-10 max-w-3xl leading-relaxed text-gray-400">
-          Three read-only endpoints. All responses are JSON unless you request CSV from
+          Four read-only endpoints. All responses are JSON unless you request CSV from
           the export endpoint.
         </p>
 
@@ -359,6 +359,81 @@ curl https://mymcptools.com/api/v1/status \\
     "schema_changed_at": null,
     "consecutive_failures": 0
   }
+}`}
+            />
+          </div>
+        </div>
+
+        {/* GET /api/v1/servers/{slug}/history */}
+        <div className="mb-12 border-t border-gray-800 pt-12">
+          <div className="mb-4 flex flex-wrap items-center gap-3">
+            <span className="rounded-md bg-emerald-500/15 px-2.5 py-1 text-xs font-bold uppercase tracking-wide text-emerald-400">
+              GET
+            </span>
+            <code className="font-mono text-lg text-gray-100">
+              /api/v1/servers/{"{slug}"}/history
+            </code>
+          </div>
+          <p className="mb-4 max-w-3xl text-gray-400">
+            The trailing probe time-series for one server — the same data that powers the
+            on-listing uptime sparkline — plus a derived uptime/latency summary. Use it to
+            render your own trend view or compute a custom SLA window. A known server with
+            no probes yet returns <Code>200</Code> with an empty <Code>history</Code> and{" "}
+            <Code>summary.checks</Code> of <Code>0</Code>; an unknown slug returns{" "}
+            <Code>404</Code>.
+          </p>
+
+          <h4 className="mb-2 mt-6 text-sm font-semibold uppercase tracking-wide text-gray-500">
+            Query parameters
+          </h4>
+          <div className="mb-6 overflow-hidden rounded-xl border border-gray-800">
+            <table className="w-full text-left text-sm">
+              <thead className="bg-gray-900/60 text-gray-400">
+                <tr>
+                  <th className="px-4 py-3 font-medium">Param</th>
+                  <th className="px-4 py-3 font-medium">Description</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-gray-800 text-gray-300">
+                <tr>
+                  <td className="px-4 py-3 font-mono text-blue-300">limit</td>
+                  <td className="px-4 py-3">
+                    Number of most-recent probe points to return, oldest&rarr;newest.
+                    Defaults to <Code>30</Code>, capped at <Code>200</Code>. The summary is
+                    computed over the returned window.
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
+            <CodeBlock
+              label="Request"
+              code={`curl "https://mymcptools.com/api/v1/servers/supabase/history?limit=5" \\
+  -H "x-api-key: $MCPTOOLS_API_KEY"`}
+            />
+            <CodeBlock
+              label="200 Response (truncated)"
+              code={`{
+  "generated_at": "2026-06-30T11:00:00.000Z",
+  "slug": "supabase",
+  "summary": {
+    "checks": 5,
+    "uptime_pct": 80,
+    "verdict_counts": { "GOOD": 4, "DOWN": 1 },
+    "latency_p50_ms": 412,
+    "latency_p95_ms": 611,
+    "first_checked_at": "2026-06-26T11:00:00.000Z",
+    "last_checked_at": "2026-06-30T11:00:00.000Z"
+  },
+  "history": [
+    {
+      "checked_at": "2026-06-30T11:00:00.000Z",
+      "verdict": "GOOD",
+      "latency_ms": 412
+    }
+  ]
 }`}
             />
           </div>
