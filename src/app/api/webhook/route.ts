@@ -172,6 +172,23 @@ export async function POST(req: NextRequest) {
     // Featured Listing checkout (/api/checkout, $9 one-time)
     const { toolName, email, description, github, website, category, installType } = meta;
 
+    if (!toolName) {
+      // This Stripe account is shared across the whole Bity portfolio, and a
+      // Stripe webhook endpoint receives every event on the account — not just
+      // ones from this app. checkout.session.completed events from other
+      // properties (e.g. an ASC Alert Pro trial) have no toolName metadata and
+      // would otherwise fall through here and send a garbled "Featured Listing
+      // PAID: undefined, $0.00" alert (real incident: cs_live_...lqNrBZMI8,
+      // 2026-07-17, actually an ASC trial signup already handled by ASC's own
+      // webhook). Ack and skip instead of alerting on someone else's event.
+      // Don't mutate this session's metadata — it isn't ours, and another
+      // property's own webhook may use metadata.fulfilled for its own
+      // idempotency (mutating it here could cause that property to skip
+      // processing its own legitimate event).
+      console.log(`[webhook] Ignoring checkout.session.completed with no toolName metadata (session ${session.id}, likely a different property's event on this shared Stripe account)`);
+      return NextResponse.json({ received: true, ignored: "not a featured listing" });
+    }
+
     // Notify admin
     await sendEmail(
       ADMIN_EMAIL,
