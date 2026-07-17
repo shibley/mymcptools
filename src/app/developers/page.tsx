@@ -481,6 +481,48 @@ docker,DOWN,,,,...`}
         </div>
       </section>
 
+      {/* Status badges */}
+      <section id="badges" className="mx-auto max-w-5xl px-4 py-12 sm:px-6 lg:px-8">
+        <h2 className="mb-2 text-3xl font-bold">Status badges</h2>
+        <p className="mb-6 max-w-3xl text-gray-400">
+          Embed a live health badge for your MCP server in a README or docs page. Unlike
+          the JSON endpoints, the badge is <strong>public — no API key required</strong>,
+          because it renders inside an <Code>&lt;img&gt;</Code> tag. It always returns a
+          valid SVG (an unknown slug renders a gray <Code>unknown</Code> badge), so it
+          never leaves a broken image, and it self-updates on the probe cadence.
+        </p>
+
+        <div className="mb-6 flex flex-wrap items-center gap-3">
+          <span className="rounded-md bg-emerald-500/15 px-2.5 py-1 text-xs font-bold uppercase tracking-wide text-emerald-400">
+            GET
+          </span>
+          <code className="font-mono text-lg text-gray-100">
+            /api/v1/servers/{"{slug}"}/badge
+          </code>
+        </div>
+
+        <p className="mb-6 max-w-3xl text-sm text-gray-500">
+          Optional query params: <Code>label</Code> overrides the left-hand text (default{" "}
+          <Code>mcp</Code>) and <Code>message</Code> overrides the right-hand text. The
+          badge colour tracks the verdict: green <Code>live</Code>, amber{" "}
+          <Code>limited</Code>, blue <Code>auth required</Code>, red <Code>down</Code>.
+        </p>
+
+        <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
+          <CodeBlock
+            label="Markdown (README)"
+            code={`[![MCP status](https://mymcptools.com/api/v1/servers/supabase/badge)](https://mymcptools.com/servers/supabase)`}
+          />
+          <CodeBlock
+            label="HTML"
+            code={`<a href="https://mymcptools.com/servers/supabase">
+  <img src="https://mymcptools.com/api/v1/servers/supabase/badge"
+       alt="MCP server status" />
+</a>`}
+          />
+        </div>
+      </section>
+
       {/* Verdicts reference */}
       <section className="mx-auto max-w-5xl px-4 py-12 sm:px-6 lg:px-8">
         <h2 className="mb-4 text-3xl font-bold">Verdict values</h2>
