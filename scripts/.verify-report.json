@@ -1,0 +1,240 @@
+{
+  "generatedAt": "2026-07-17T21:22:57.830Z",
+  "authenticated": false,
+  "progress": {
+    "total": 2444,
+    "checked": 63,
+    "remaining": 2381,
+    "percent": 2.6
+  },
+  "countsByStatus": {
+    "mismatch": 7,
+    "ok": 39,
+    "bad_url": 6,
+    "archived": 8,
+    "not_found": 3
+  },
+  "failureCounts": {
+    "mismatch": 7,
+    "bad_url": 6,
+    "archived": 8,
+    "not_found": 3
+  },
+  "failures": {
+    "mismatch": [
+      {
+        "slug": "everything",
+        "name": "Everything",
+        "author": "Anthropic",
+        "github_url": "https://github.com/modelcontextprotocol/servers/tree/main/src/everything",
+        "ownerRepo": "modelcontextprotocol/servers",
+        "overlapScore": 0,
+        "reason": "no name/desc overlap with claim and owner \"modelcontextprotocol\" != author \"Anthropic\""
+      },
+      {
+        "slug": "fetch",
+        "name": "Fetch",
+        "author": "Anthropic",
+        "github_url": "https://github.com/modelcontextprotocol/servers/tree/main/src/fetch",
+        "ownerRepo": "modelcontextprotocol/servers",
+        "overlapScore": 0,
+        "reason": "no name/desc overlap with claim and owner \"modelcontextprotocol\" != author \"Anthropic\""
+      },
+      {
+        "slug": "filesystem",
+        "name": "Filesystem",
+        "author": "Anthropic",
+        "github_url": "https://github.com/modelcontextprotocol/servers/tree/main/src/filesystem",
+        "ownerRepo": "modelcontextprotocol/servers",
+        "overlapScore": 0,
+        "reason": "no name/desc overlap with claim and owner \"modelcontextprotocol\" != author \"Anthropic\""
+      },
+      {
+        "slug": "git",
+        "name": "Git",
+        "author": "Anthropic",
+        "github_url": "https://github.com/modelcontextprotocol/servers/tree/main/src/git",
+        "ownerRepo": "modelcontextprotocol/servers",
+        "overlapScore": 0,
+        "reason": "no name/desc overlap with claim and owner \"modelcontextprotocol\" != author \"Anthropic\""
+      },
+      {
+        "slug": "memory",
+        "name": "Memory",
+        "author": "Anthropic",
+        "github_url": "https://github.com/modelcontextprotocol/servers/tree/main/src/memory",
+        "ownerRepo": "modelcontextprotocol/servers",
+        "overlapScore": 0,
+        "reason": "no name/desc overlap with claim and owner \"modelcontextprotocol\" != author \"Anthropic\""
+      },
+      {
+        "slug": "sequential-thinking",
+        "name": "Sequential Thinking",
+        "author": "Anthropic",
+        "github_url": "https://github.com/modelcontextprotocol/servers/tree/main/src/sequentialthinking",
+        "ownerRepo": "modelcontextprotocol/servers",
+        "overlapScore": 0,
+        "reason": "no name/desc overlap with claim and owner \"modelcontextprotocol\" != author \"Anthropic\""
+      },
+      {
+        "slug": "time",
+        "name": "Time",
+        "author": "Anthropic",
+        "github_url": "https://github.com/modelcontextprotocol/servers/tree/main/src/time",
+        "ownerRepo": "modelcontextprotocol/servers",
+        "overlapScore": 0,
+        "reason": "no name/desc overlap with claim and owner \"modelcontextprotocol\" != author \"Anthropic\""
+      }
+    ],
+    "bad_url": [
+      {
+        "slug": "confluence",
+        "name": "Confluence MCP Server",
+        "author": "Atlassian",
+        "github_url": "https://www.atlassian.com/platform/remote-mcp-server",
+        "ownerRepo": null,
+        "reason": "github_url not parseable to owner/repo: https://www.atlassian.com/platform/remote-mcp-server"
+      },
+      {
+        "slug": "gitlab",
+        "name": "GitLab",
+        "author": "GitLab",
+        "github_url": "https://docs.gitlab.com/user/gitlab_duo/model_context_protocol/mcp_server/",
+        "ownerRepo": null,
+        "reason": "github_url not parseable to owner/repo: https://docs.gitlab.com/user/gitlab_duo/model_context_protocol/mcp_server/"
+      },
+      {
+        "slug": "hubspot",
+        "name": "HubSpot MCP Server",
+        "author": "HubSpot",
+        "github_url": "https://developer.hubspot.com/mcp",
+        "ownerRepo": null,
+        "reason": "github_url not parseable to owner/repo: https://developer.hubspot.com/mcp"
+      },
+      {
+        "slug": "jenkins",
+        "name": "Jenkins",
+        "author": "Jenkins",
+        "github_url": "https://plugins.jenkins.io/mcp-server/",
+        "ownerRepo": null,
+        "reason": "github_url not parseable to owner/repo: https://plugins.jenkins.io/mcp-server/"
+      },
+      {
+        "slug": "jira",
+        "name": "Jira MCP Server",
+        "author": "Atlassian",
+        "github_url": "https://www.atlassian.com/platform/remote-mcp-server",
+        "ownerRepo": null,
+        "reason": "github_url not parseable to owner/repo: https://www.atlassian.com/platform/remote-mcp-server"
+      },
+      {
+        "slug": "linear",
+        "name": "Linear MCP Server",
+        "author": "Linear",
+        "github_url": "https://linear.app/docs/mcp",
+        "ownerRepo": null,
+        "reason": "github_url not parseable to owner/repo: https://linear.app/docs/mcp"
+      }
+    ],
+    "archived": [
+      {
+        "slug": "axiom",
+        "name": "Axiom",
+        "author": "Axiom",
+        "github_url": "https://github.com/axiomhq/mcp-server-axiom",
+        "ownerRepo": "axiomhq/mcp-server-axiom",
+        "overlapScore": 0.08,
+        "reason": "repo exists but is archived"
+      },
+      {
+        "slug": "circleci",
+        "name": "CircleCI",
+        "author": "CircleCI",
+        "github_url": "https://github.com/CircleCI-Public/mcp-server-circleci",
+        "ownerRepo": "CircleCI-Public/mcp-server-circleci",
+        "overlapScore": 0.14,
+        "reason": "repo exists but is archived"
+      },
+      {
+        "slug": "e2b",
+        "name": "E2B",
+        "author": "E2B",
+        "github_url": "https://github.com/e2b-dev/mcp-server",
+        "ownerRepo": "e2b-dev/mcp-server",
+        "overlapScore": 0.38,
+        "reason": "repo exists but is archived"
+      },
+      {
+        "slug": "google-drive",
+        "name": "Google Drive MCP Server",
+        "author": "Anthropic",
+        "github_url": "https://github.com/modelcontextprotocol/servers-archived/tree/main/src/gdrive",
+        "ownerRepo": "modelcontextprotocol/servers-archived",
+        "overlapScore": 0.01,
+        "reason": "repo exists but is archived"
+      },
+      {
+        "slug": "postgresql",
+        "name": "PostgreSQL MCP Server",
+        "author": "Anthropic",
+        "github_url": "https://github.com/modelcontextprotocol/servers-archived/tree/main/src/postgres",
+        "ownerRepo": "modelcontextprotocol/servers-archived",
+        "overlapScore": 0.03,
+        "reason": "repo exists but is archived"
+      },
+      {
+        "slug": "puppeteer",
+        "name": "Puppeteer",
+        "author": "Anthropic",
+        "github_url": "https://github.com/modelcontextprotocol/servers-archived/tree/main/src/puppeteer",
+        "ownerRepo": "modelcontextprotocol/servers-archived",
+        "overlapScore": 0,
+        "reason": "repo exists but is archived"
+      },
+      {
+        "slug": "redis",
+        "name": "Redis MCP Server",
+        "author": "Anthropic",
+        "github_url": "https://github.com/modelcontextprotocol/servers-archived/tree/main/src/redis",
+        "ownerRepo": "modelcontextprotocol/servers-archived",
+        "overlapScore": 0.03,
+        "reason": "repo exists but is archived"
+      },
+      {
+        "slug": "sqlite",
+        "name": "SQLite MCP Server",
+        "author": "Anthropic",
+        "github_url": "https://github.com/modelcontextprotocol/servers-archived/tree/main/src/sqlite",
+        "ownerRepo": "modelcontextprotocol/servers-archived",
+        "overlapScore": 0.03,
+        "reason": "repo exists but is archived"
+      }
+    ],
+    "not_found": [
+      {
+        "slug": "datadog",
+        "name": "Datadog MCP Server",
+        "author": "Datadog",
+        "github_url": "https://github.com/DataDog/mcp-server-datadog",
+        "ownerRepo": "DataDog/mcp-server-datadog",
+        "reason": "GitHub returned 404 — repo does not exist"
+      },
+      {
+        "slug": "sendgrid",
+        "name": "SendGrid",
+        "author": "Twilio",
+        "github_url": "https://github.com/twilio/sendgrid-mcp",
+        "ownerRepo": "twilio/sendgrid-mcp",
+        "reason": "GitHub returned 404 — repo does not exist"
+      },
+      {
+        "slug": "supabase",
+        "name": "Supabase MCP Server",
+        "author": "Supabase",
+        "github_url": "https://github.com/supabase/supabase-mcp",
+        "ownerRepo": "supabase/supabase-mcp",
+        "reason": "GitHub returned 404 — repo does not exist"
+      }
+    ]
+  }
+}

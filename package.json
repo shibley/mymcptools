@@ -16,7 +16,8 @@
     "digest": "node scripts/digest.mts",
     "digest:selfcheck": "node scripts/digest-selfcheck.mts",
     "static:signals": "node scripts/static-signals.mts",
-    "webhooks:selfcheck": "node scripts/webhooks-selfcheck.mts"
+    "webhooks:selfcheck": "node scripts/webhooks-selfcheck.mts",
+    "verify:github": "node scripts/verify-github-entries.mts"
   },
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.29.0",
