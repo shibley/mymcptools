@@ -221,7 +221,7 @@ curl https://mymcptools.com/api/v1/status \\
       <section id="endpoints" className="mx-auto max-w-5xl px-4 py-12 sm:px-6 lg:px-8">
         <h2 className="mb-2 text-3xl font-bold">Endpoints</h2>
         <p className="mb-10 max-w-3xl leading-relaxed text-gray-400">
-          Four read-only endpoints. All responses are JSON unless you request CSV from
+          Five read-only endpoints. All responses are JSON unless you request CSV from
           the export endpoint.
         </p>
 
@@ -476,6 +476,58 @@ curl https://mymcptools.com/api/v1/status \\
 supabase,GOOD,23,412,2025-06-18,...
 vercel,WARN,0,883,2025-06-18,...
 docker,DOWN,,,,...`}
+            />
+          </div>
+        </div>
+
+        {/* GET /api/v1/stats */}
+        <div className="border-t border-gray-800 pt-12">
+          <div className="mb-4 flex flex-wrap items-center gap-3">
+            <span className="rounded-md bg-emerald-500/15 px-2.5 py-1 text-xs font-bold uppercase tracking-wide text-emerald-400">
+              GET
+            </span>
+            <code className="font-mono text-lg text-gray-100">/api/v1/stats</code>
+          </div>
+          <p className="mb-4 max-w-3xl text-gray-400">
+            Catalog-wide health in a single object — the population headline without
+            paginating every server. Verdict mix and percentages, the serving share of
+            the probeable pool (the &ldquo;how many listed MCP servers actually work&rdquo;
+            number), transport mix, drift counts, handshake latency{" "}
+            <Code>p50</Code>/<Code>p95</Code>, tool totals, and probe freshness. No query
+            parameters.
+          </p>
+
+          <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
+            <CodeBlock
+              label="Request"
+              code={`curl https://mymcptools.com/api/v1/stats \\
+  -H "Authorization: Bearer $MCPTOOLS_API_KEY"`}
+            />
+            <CodeBlock
+              label="200 Response (truncated)"
+              code={`{
+  "generated_at": "2026-06-30T11:00:00.000Z",
+  "total": 207,
+  "verdicts": {
+    "GOOD": 142, "WARN": 11, "AUTH_REQUIRED": 7,
+    "DOWN": 9, "UNPROBEABLE": 38
+  },
+  "verdict_percent": { "GOOD": 68.6, "DOWN": 4.3, ... },
+  "probeable": {
+    "count": 169, "serving": 153, "serving_percent": 90.5
+  },
+  "transports": {
+    "streamable-http": 148, "sse": 21, "none": 38
+  },
+  "drift": { "schema_changed": 2, "protocol_changed": 0 },
+  "latency_ms": { "sampled": 153, "p50": 412, "p95": 1240 },
+  "tools": { "total": 3184, "avg_per_serving": 20.8 },
+  "freshness": {
+    "probed_last_24h": 165,
+    "oldest_checked_at": "2026-06-30T05:00:00.000Z",
+    "newest_checked_at": "2026-06-30T11:00:00.000Z"
+  }
+}`}
             />
           </div>
         </div>

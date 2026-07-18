@@ -262,6 +262,66 @@ export interface StatusStore {
 }
 
 /**
+ * Catalog-wide aggregate health, derived on read from the committed
+ * current_status store and served by GET /api/v1/stats (PRD P0-7 data layer).
+ * A single headline object so a buyer/dashboard can answer "how healthy is the
+ * MCP population right now?" without paginating every status row. All figures
+ * are computed relative to `generated_at` (the dataset timestamp), so the
+ * response is deterministic for a given committed store.
+ */
+export interface CatalogStats {
+  /** When the underlying probe-status dataset was generated. */
+  generated_at: string;
+  /** Total inventory entries (probeable + unprobeable). */
+  total: number;
+  /** Raw verdict counts across the whole inventory. */
+  verdicts: Record<Verdict, number>;
+  /** Verdict counts as a share of `total`, rounded to 0.1%. */
+  verdict_percent: Record<Verdict, number>;
+  /**
+   * Remotely probeable servers (everything except UNPROBEABLE) and how many of
+   * those are currently serving (GOOD or WARN), with the serving share of the
+   * probeable pool — the headline "X% of live MCP servers actually work" number.
+   */
+  probeable: {
+    count: number;
+    serving: number;
+    /** serving / count as a percent (0 when nothing is probeable), 0.1% steps. */
+    serving_percent: number;
+  };
+  /** Transport mix across servers that carry one (remote entries). */
+  transports: Record<Transport | 'none', number>;
+  /** Tool-schema / protocol drift observed on the latest probe. */
+  drift: {
+    /** Servers whose tool schema changed on the latest probe. */
+    schema_changed: number;
+    /** Servers whose negotiated protocol version changed on the latest probe. */
+    protocol_changed: number;
+  };
+  /** Handshake latency percentiles (ms) over servers with a measured latency. */
+  latency_ms: {
+    sampled: number;
+    p50: number | null;
+    p95: number | null;
+  };
+  /** Tool-count aggregates over servers that returned a tools/list. */
+  tools: {
+    /** Sum of exposed tools across all servers with a tool_count. */
+    total: number;
+    /** Mean tools per server that exposed at least one, or null when none. */
+    avg_per_serving: number | null;
+  };
+  /** Probe recency relative to `generated_at`. */
+  freshness: {
+    /** Servers probed within 24h of `generated_at`. */
+    probed_last_24h: number;
+    /** Oldest / newest `checked_at` across the inventory (null when empty). */
+    oldest_checked_at: string | null;
+    newest_checked_at: string | null;
+  };
+}
+
+/**
  * Static (non-handshake) health signal for a local/stdio server (PRD P1-3).
  *
  * Local servers (npm/pip/binary/source/container) carry no remote endpoint and
