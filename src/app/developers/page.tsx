@@ -221,8 +221,8 @@ curl https://mymcptools.com/api/v1/status \\
       <section id="endpoints" className="mx-auto max-w-5xl px-4 py-12 sm:px-6 lg:px-8">
         <h2 className="mb-2 text-3xl font-bold">Endpoints</h2>
         <p className="mb-10 max-w-3xl leading-relaxed text-gray-400">
-          Five read-only endpoints. All responses are JSON unless you request CSV from
-          the export endpoint.
+          Six read-only endpoints. All responses are JSON unless you request CSV from
+          the export endpoint or Markdown from the digest endpoint.
         </p>
 
         {/* GET /api/v1/status */}
@@ -527,6 +527,101 @@ docker,DOWN,,,,...`}
     "oldest_checked_at": "2026-06-30T05:00:00.000Z",
     "newest_checked_at": "2026-06-30T11:00:00.000Z"
   }
+}`}
+            />
+          </div>
+        </div>
+
+        {/* GET /api/v1/digest */}
+        <div className="border-t border-gray-800 pt-12">
+          <div className="mb-4 flex flex-wrap items-center gap-3">
+            <span className="rounded-md bg-emerald-500/15 px-2.5 py-1 text-xs font-bold uppercase tracking-wide text-emerald-400">
+              GET
+            </span>
+            <code className="font-mono text-lg text-gray-100">/api/v1/digest</code>
+          </div>
+          <p className="mb-4 max-w-3xl text-gray-400">
+            The &ldquo;what changed&rdquo; feed. Replays the probe-events history over a
+            lookback window and returns three buckets &mdash; servers that{" "}
+            <strong>newly went down</strong>, servers that <strong>drifted</strong>{" "}
+            (tool-schema or protocol version), and servers that{" "}
+            <strong>recovered</strong> &mdash; the change stream to alert on, distinct from{" "}
+            <Code>/status</Code> (current snapshot) and <Code>/drift</Code> (drift rows
+            only). Add <Code>format=md</Code> for a ready-to-publish Markdown summary.
+          </p>
+
+          <h4 className="mb-2 mt-6 text-sm font-semibold uppercase tracking-wide text-gray-500">
+            Query parameters
+          </h4>
+          <div className="mb-6 overflow-hidden rounded-xl border border-gray-800">
+            <table className="w-full text-left text-sm">
+              <thead className="bg-gray-900/60 text-gray-400">
+                <tr>
+                  <th className="px-4 py-3 font-medium">Param</th>
+                  <th className="px-4 py-3 font-medium">Description</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-gray-800 text-gray-300">
+                <tr>
+                  <td className="px-4 py-3 font-mono text-blue-300">window_hours</td>
+                  <td className="px-4 py-3">
+                    Lookback window in hours. Default <Code>24</Code>, max{" "}
+                    <Code>720</Code> (30 days).
+                  </td>
+                </tr>
+                <tr>
+                  <td className="px-4 py-3 font-mono text-blue-300">as_of</td>
+                  <td className="px-4 py-3">
+                    ISO-8601 timestamp anchoring the window&apos;s end. Defaults to the
+                    dataset&apos;s <Code>generated_at</Code>. A malformed value returns{" "}
+                    <Code>400</Code>.
+                  </td>
+                </tr>
+                <tr>
+                  <td className="px-4 py-3 font-mono text-blue-300">format</td>
+                  <td className="px-4 py-3">
+                    <Code>json</Code> (default) or <Code>md</Code> for a{" "}
+                    <Code>text/markdown</Code> summary.
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
+            <CodeBlock
+              label="Request"
+              code={`curl "https://mymcptools.com/api/v1/digest?window_hours=168" \\
+  -H "Authorization: Bearer $MCPTOOLS_API_KEY"`}
+            />
+            <CodeBlock
+              label="200 Response (truncated)"
+              code={`{
+  "dataset_generated_at": "2026-07-08T22:53:57.049Z",
+  "latest_event_at": "2026-07-08T22:53:56.576Z",
+  "window_hours": 168,
+  "window_start": "2026-07-01T22:53:57.049Z",
+  "window_end": "2026-07-08T22:53:57.049Z",
+  "newly_dead": [
+    {
+      "slug": "example-server",
+      "from_verdict": "GOOD", "to_verdict": "DOWN",
+      "changed_at": "2026-07-08T05:12:00.000Z",
+      "failure_reason": "connect ETIMEDOUT",
+      "last_seen_good_at": "2026-07-07T05:00:00.000Z"
+    }
+  ],
+  "drifted": [
+    {
+      "slug": "huggingface",
+      "changed_at": "2026-07-08T22:52:34.058Z",
+      "schema_changed": true,
+      "protocol_version_changed": false,
+      "tool_diff": { "added": [], "removed": ["hf_nav"], "changed": ["hf_fs"] }
+    }
+  ],
+  "recovered": [],
+  "counts": { "newly_dead": 1, "drifted": 1, "recovered": 0 }
 }`}
             />
           </div>

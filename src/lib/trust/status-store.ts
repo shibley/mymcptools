@@ -17,6 +17,12 @@ export function generatedAt(): string {
   return store.generated_at;
 }
 
+/** The whole committed status store (do not mutate) — e.g. as a corroborating
+ * input to the digest for last_seen_good_at. */
+export function statusStore(): StatusStore {
+  return store;
+}
+
 /** Verdict counts across the whole inventory. */
 export function summary(): Record<Verdict, number> {
   return store.summary;
