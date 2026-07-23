@@ -221,7 +221,7 @@ curl https://mymcptools.com/api/v1/status \\
       <section id="endpoints" className="mx-auto max-w-5xl px-4 py-12 sm:px-6 lg:px-8">
         <h2 className="mb-2 text-3xl font-bold">Endpoints</h2>
         <p className="mb-10 max-w-3xl leading-relaxed text-gray-400">
-          Six read-only endpoints. All responses are JSON unless you request CSV from
+          Seven read-only endpoints. All responses are JSON unless you request CSV from
           the export endpoint or Markdown from the digest endpoint.
         </p>
 
@@ -622,6 +622,115 @@ docker,DOWN,,,,...`}
   ],
   "recovered": [],
   "counts": { "newly_dead": 1, "drifted": 1, "recovered": 0 }
+}`}
+            />
+          </div>
+        </div>
+
+        {/* GET /api/v1/incidents */}
+        <div className="border-t border-gray-800 pt-12">
+          <div className="mb-4 flex flex-wrap items-center gap-3">
+            <span className="rounded-md bg-emerald-500/15 px-2.5 py-1 text-xs font-bold uppercase tracking-wide text-emerald-400">
+              GET
+            </span>
+            <code className="font-mono text-lg text-gray-100">/api/v1/incidents</code>
+          </div>
+          <p className="mb-4 max-w-3xl text-gray-400">
+            The status-page &ldquo;past incidents&rdquo; view. Replays the probe-events
+            history and collapses each contiguous run of <Code>DOWN</Code> probes into a
+            discrete <strong>outage incident</strong> with a{" "}
+            <Code>started_at</Code>, an <Code>ended_at</Code> (or ongoing),{" "}
+            <Code>duration_seconds</Code>, the verdict it recovered into, and the failure
+            reason &mdash; plus a portfolio <Code>summary</Code> (total downtime, mean time
+            to recovery). Distinct from <Code>/digest</Code> (last-N-hours transition
+            buckets) and <Code>/servers/{"{slug}"}/history</Code> (raw probe points).
+            Newest-first.
+          </p>
+
+          <h4 className="mb-2 mt-6 text-sm font-semibold uppercase tracking-wide text-gray-500">
+            Query parameters
+          </h4>
+          <div className="mb-6 overflow-hidden rounded-xl border border-gray-800">
+            <table className="w-full text-left text-sm">
+              <thead className="bg-gray-900/60 text-gray-400">
+                <tr>
+                  <th className="px-4 py-3 font-medium">Param</th>
+                  <th className="px-4 py-3 font-medium">Description</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-gray-800 text-gray-300">
+                <tr>
+                  <td className="px-4 py-3 font-mono text-blue-300">slug</td>
+                  <td className="px-4 py-3">Only incidents for one server.</td>
+                </tr>
+                <tr>
+                  <td className="px-4 py-3 font-mono text-blue-300">since</td>
+                  <td className="px-4 py-3">
+                    ISO-8601 &mdash; only incidents that <em>started</em> at/after this
+                    time. A malformed value returns <Code>400</Code>.
+                  </td>
+                </tr>
+                <tr>
+                  <td className="px-4 py-3 font-mono text-blue-300">status</td>
+                  <td className="px-4 py-3">
+                    <Code>ongoing</Code> or <Code>resolved</Code> &mdash; restrict by
+                    resolution state.
+                  </td>
+                </tr>
+                <tr>
+                  <td className="px-4 py-3 font-mono text-blue-300">
+                    min_duration_seconds
+                  </td>
+                  <td className="px-4 py-3">
+                    Drop resolved incidents shorter than this (noise floor). Ongoing
+                    incidents are never filtered out.
+                  </td>
+                </tr>
+                <tr>
+                  <td className="px-4 py-3 font-mono text-blue-300">limit</td>
+                  <td className="px-4 py-3">
+                    Page size. Default <Code>50</Code>, max <Code>200</Code>. Paginate with{" "}
+                    <Code>cursor</Code> (or <Code>offset</Code>).
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
+            <CodeBlock
+              label="Request"
+              code={`curl "https://mymcptools.com/api/v1/incidents?status=resolved&limit=20" \\
+  -H "Authorization: Bearer $MCPTOOLS_API_KEY"`}
+            />
+            <CodeBlock
+              label="200 Response (truncated)"
+              code={`{
+  "generated_at": "2026-07-23T18:00:00.000Z",
+  "latest_event_at": "2026-07-23T17:59:41.204Z",
+  "summary": {
+    "total": 12, "ongoing": 2, "resolved": 10,
+    "total_downtime_seconds": 184920,
+    "mean_time_to_recovery_seconds": 18492,
+    "longest_downtime_seconds": 86400
+  },
+  "pagination": {
+    "total": 12, "limit": 20, "offset": 0, "next_cursor": null
+  },
+  "incidents": [
+    {
+      "slug": "example-server",
+      "started_at": "2026-07-22T05:12:00.000Z",
+      "ended_at": "2026-07-22T08:39:00.000Z",
+      "duration_seconds": 12420,
+      "resolved": true,
+      "recovery_verdict": "GOOD",
+      "probe_count": 4,
+      "first_failure_reason": "connect ETIMEDOUT",
+      "last_failure_reason": "connect ETIMEDOUT",
+      "last_seen_good_at": "2026-07-22T05:00:00.000Z"
+    }
+  ]
 }`}
             />
           </div>
