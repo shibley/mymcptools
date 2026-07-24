@@ -779,6 +779,53 @@ docker,DOWN,,,,...`}
         </div>
       </section>
 
+      {/* Uptime sparkline */}
+      <section id="sparkline" className="mx-auto max-w-5xl px-4 py-12 sm:px-6 lg:px-8">
+        <h2 className="mb-2 text-3xl font-bold">Uptime sparkline</h2>
+        <p className="mb-6 max-w-3xl text-gray-400">
+          Where the badge shows the <strong>current</strong> verdict, the sparkline shows
+          the <strong>history</strong>: one colored bar per day of uptime, plus an overall
+          uptime % for the window. Like the badge it is{" "}
+          <strong>public — no API key required</strong>, renders inside an{" "}
+          <Code>&lt;img&gt;</Code> tag, and always returns a valid SVG (an unknown or
+          never-probed slug renders an all-gray “no data” sparkline), so it never leaves a
+          broken image and self-updates on the probe cadence.
+        </p>
+
+        <div className="mb-6 flex flex-wrap items-center gap-3">
+          <span className="rounded-md bg-emerald-500/15 px-2.5 py-1 text-xs font-bold uppercase tracking-wide text-emerald-400">
+            GET
+          </span>
+          <code className="font-mono text-lg text-gray-100">
+            /api/v1/servers/{"{slug}"}/sparkline
+          </code>
+        </div>
+
+        <p className="mb-6 max-w-3xl text-sm text-gray-500">
+          Optional query params: <Code>days</Code> sets the window width (default{" "}
+          <Code>14</Code>, clamped <Code>1–90</Code>) and <Code>label</Code> overrides the
+          left-hand chip text (default <Code>uptime</Code>). Each bar’s color tracks that
+          day’s uptime: green <Code>≥99%</Code>, amber <Code>90–99%</Code>, red{" "}
+          <Code>&lt;90%</Code>, faint gray for days with no probes. A probe counts as “up”
+          unless it hard-failed (<Code>DOWN</Code>); <Code>GOOD</Code>, <Code>WARN</Code>{" "}
+          and <Code>AUTH_REQUIRED</Code> all mean the server answered.
+        </p>
+
+        <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
+          <CodeBlock
+            label="Markdown (README)"
+            code={`[![MCP uptime](https://mymcptools.com/api/v1/servers/supabase/sparkline?days=30)](https://mymcptools.com/servers/supabase)`}
+          />
+          <CodeBlock
+            label="HTML"
+            code={`<a href="https://mymcptools.com/servers/supabase">
+  <img src="https://mymcptools.com/api/v1/servers/supabase/sparkline?days=30"
+       alt="MCP server uptime, last 30 days" />
+</a>`}
+          />
+        </div>
+      </section>
+
       {/* Verdicts reference */}
       <section className="mx-auto max-w-5xl px-4 py-12 sm:px-6 lg:px-8">
         <h2 className="mb-4 text-3xl font-bold">Verdict values</h2>
