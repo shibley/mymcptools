@@ -79,7 +79,9 @@ export default async function ServerPage({ params }: Props) {
   const capability = getFirstSentence(server.description);
   const installAnswer = server.install_command
     ? `Install ${server.name} with ${server.install_type}: ${server.install_command}`
-    : `Install ${server.name} from its GitHub repository: ${server.github_url}`;
+    : server.github_url
+      ? `Install ${server.name} from its GitHub repository: ${server.github_url}`
+      : `${server.name} has no verified public repository, so there is no confirmed install command for it.`;
   const integrationsAnswer = serverIntegrations.length > 0
     ? `${server.name} integrates with ${serverIntegrations.map(i => i.name).join(", ")}.`
     : `${server.name} works with MCP-compatible clients such as Claude Desktop, Cursor, and VS Code.`;
@@ -119,8 +121,8 @@ export default async function ServerPage({ params }: Props) {
       "@type": "Organization",
       "name": server.author
     },
-    "url": server.website_url || server.github_url,
-    "downloadUrl": server.github_url,
+    "url": server.website_url || server.github_url || undefined,
+    "downloadUrl": server.github_url || undefined,
   };
 
   const faqJsonLd = {
@@ -283,6 +285,7 @@ export default async function ServerPage({ params }: Props) {
 
             {/* Links */}
             <div className="flex flex-wrap gap-4">
+              {server.github_url ? (
               <a
                 href={server.github_url}
                 target="_blank"
@@ -294,6 +297,13 @@ export default async function ServerPage({ params }: Props) {
                 </svg>
                 View on GitHub
               </a>
+              ) : (
+                /* No repository we could confirm exists. Showing a dead link
+                   would be worse than showing none — say so plainly instead. */
+                <span className="inline-flex items-center px-6 py-3 bg-gray-900/60 text-gray-400 text-sm rounded-lg border border-gray-800">
+                  No verified public repository
+                </span>
+              )}
               {server.website_url && (
                 <a
                   href={server.website_url}

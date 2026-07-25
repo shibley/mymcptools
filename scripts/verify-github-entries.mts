@@ -54,7 +54,11 @@ const REPORT_FILE = join(__dirname, '.verify-report.json');
 const GITHUB_TOKEN = process.env.GITHUB_TOKEN || process.env.GH_TOKEN || '';
 const USER_AGENT = 'mymcptools-verify-github/0.1.0';
 const FETCH_TIMEOUT_MS = 12_000;
-const REQUEST_GAP_MS = GITHUB_TOKEN ? 80 : 1500; // polite throttle
+// 1 req/s even when authenticated. An earlier run used 80ms and tripped
+// GitHub's SECONDARY rate limit (which is about burst concurrency, not the
+// 5,000/hr primary quota) — it started returning 403s that this script read as
+// generic errors and abandoned ~2,238 repos. 1/s stays well under it.
+const REQUEST_GAP_MS = GITHUB_TOKEN ? 1000 : 1500; // polite throttle
 
 // ---- CLI ------------------------------------------------------------------
 const args = process.argv.slice(2);
@@ -84,7 +88,7 @@ interface VerifyResult {
   slug: string;
   name: string;
   author: string;
-  github_url: string;
+  github_url: string | null;
   ownerRepo: string | null;
   status: Status;
   httpStatus?: number;
@@ -116,7 +120,8 @@ function saveState(state: State): void {
 
 // ---- Helpers --------------------------------------------------------------
 /** Parse an owner/repo pair out of a github_url. Returns null if not a repo URL. */
-function parseOwnerRepo(url: string): string | null {
+function parseOwnerRepo(url: string | null): string | null {
+  if (!url) return null;
   try {
     const u = new URL(url);
     if (u.hostname !== 'github.com' && u.hostname !== 'www.github.com') return null;
@@ -155,6 +160,27 @@ function overlap(claim: Set<string>, repo: Set<string>): number {
   let hit = 0;
   for (const t of claim) if (repo.has(t)) hit++;
   return hit / claim.size;
+}
+
+/**
+ * A 403/429 from GitHub is ambiguous: it can be the PRIMARY quota (remaining=0,
+ * fatal for this run) or the SECONDARY/abuse limit (burst too fast — transient,
+ * retryable after a pause). We distinguish them by X-RateLimit-Remaining and
+ * back off + retry the secondary case rather than mis-recording it as an error.
+ */
+async function ghGetWithRetry(ownerRepo: string, attempts = 4) {
+  let wait = 5_000;
+  for (let i = 0; ; i++) {
+    const res = await ghGet(ownerRepo);
+    const secondary =
+      (res.httpStatus === 403 || res.httpStatus === 429) &&
+      res.remaining != null &&
+      res.remaining > 0;
+    if (!secondary || i >= attempts - 1) return res;
+    console.warn(`  [backoff] secondary rate limit on ${ownerRepo}; sleeping ${wait / 1000}s`);
+    await new Promise((r) => setTimeout(r, wait));
+    wait *= 2;
+  }
 }
 
 async function ghGet(ownerRepo: string): Promise<{
@@ -231,7 +257,7 @@ function classify(
   // name alone ("servers") won't overlap the claim, but the subpath ("fetch")
   // is the real identifier — fold it into the repo signal to avoid flagging
   // official reference servers as mismatches.
-  const subpath = s.github_url.replace(/^.*\/(?:tree|blob)\/[^/]+\//, ' ');
+  const subpath = (s.github_url ?? '').replace(/^.*\/(?:tree|blob)\/[^/]+\//, ' ');
   const repoTokens = tokenize(`${repoFullName} ${repoDescription} ${repoTopics} ${subpath}`);
   const overlapScore = Number(overlap(claimTokens, repoTokens).toFixed(2));
 
@@ -313,6 +339,9 @@ async function main() {
 
   let pool = servers.filter((s) => {
     if (slugFilter && !slugFilter.includes(s.slug)) return false;
+    // github_url:null is an already-adjudicated "no verified repo" — there is
+    // nothing to check, and it must not be re-flagged as a failure.
+    if (s.github_url == null) return false;
     const prior = state[s.slug];
     if (!prior) return true;
     if (recheckAll) return true;
@@ -348,7 +377,7 @@ async function main() {
 
     let res;
     try {
-      res = await ghGet(ownerRepo);
+      res = await ghGetWithRetry(ownerRepo);
     } catch (e) {
       state[s.slug] = {
         slug: s.slug, name: s.name, author: s.author, github_url: s.github_url,

@@ -129,8 +129,8 @@ export default async function ComparisonPage({ params }: Props) {
       "@type": "Organization",
       "name": serverA.author
     },
-    "url": serverA.website_url || serverA.github_url,
-    "downloadUrl": serverA.github_url,
+    "url": serverA.website_url || serverA.github_url || undefined,
+    "downloadUrl": serverA.github_url || undefined,
   };
 
   const softwareBJsonLd = {
@@ -144,8 +144,8 @@ export default async function ComparisonPage({ params }: Props) {
       "@type": "Organization",
       "name": serverB.author
     },
-    "url": serverB.website_url || serverB.github_url,
-    "downloadUrl": serverB.github_url,
+    "url": serverB.website_url || serverB.github_url || undefined,
+    "downloadUrl": serverB.github_url || undefined,
   };
 
   return (
@@ -283,14 +283,22 @@ export default async function ComparisonPage({ params }: Props) {
         <div className="grid grid-cols-3">
           <div className="p-4 bg-gray-800/50 text-sm font-medium text-gray-400">Links</div>
           <div className="p-4 border-l border-gray-800">
-            <a href={serverA.github_url} target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:text-blue-300 text-sm transition">
-              View on GitHub →
-            </a>
+            {serverA.github_url ? (
+              <a href={serverA.github_url} target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:text-blue-300 text-sm transition">
+                View on GitHub →
+              </a>
+            ) : (
+              <span className="text-gray-500 text-sm">No verified repository</span>
+            )}
           </div>
           <div className="p-4 border-l border-gray-800">
-            <a href={serverB.github_url} target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:text-blue-300 text-sm transition">
-              View on GitHub →
-            </a>
+            {serverB.github_url ? (
+              <a href={serverB.github_url} target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:text-blue-300 text-sm transition">
+                View on GitHub →
+              </a>
+            ) : (
+              <span className="text-gray-500 text-sm">No verified repository</span>
+            )}
           </div>
         </div>
       </div>

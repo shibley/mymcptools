@@ -70,6 +70,11 @@ function projectServer(s: MCPServer) {
     install_type: s.install_type,
     install_command: s.install_command ?? null,
     github_url: s.github_url,
+    // Whether that github_url was confirmed live against the GitHub API. API
+    // consumers (and the Trust Registry) must not treat a null/unverified
+    // source as a scoreable repo.
+    source_verified: s.source_verified ?? false,
+    verification: s.verification ?? 'unresolved',
     website_url: s.website_url ?? null,
     official: s.official ?? false,
     featured: s.featured ?? false,

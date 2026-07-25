@@ -3,7 +3,22 @@ export interface MCPServer {
   name: string;
   description: string;
   author: string;
-  github_url: string;
+  /**
+   * Repository URL, or null when no real repository could be confirmed.
+   * Null is deliberate and load-bearing: the catalog previously carried
+   * thousands of github_url values that 404'd, and anything presented as a
+   * link has to be one the GitHub API confirmed. See `verification`.
+   */
+  github_url: string | null;
+  /** True only if github_url was confirmed to resolve against the live GitHub API. */
+  source_verified?: boolean;
+  /**
+   * live       — repo confirmed to exist and be active
+   * archived   — repo exists but is archived (link works, project is not maintained)
+   * unresolved — no real repository found; github_url is null. Trust scoring
+   *              must exclude these rather than score a repo that isn't there.
+   */
+  verification?: 'live' | 'archived' | 'unresolved';
   website_url?: string;
   categories: string[];
   integrations: string[];
