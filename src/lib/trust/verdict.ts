@@ -681,7 +681,9 @@ export function computeTrustVerdict(input: TrustInputs): TrustVerdict {
           label: 'Source verification',
           detail:
             'No repository for this entry resolves against the live GitHub API. Without a confirmed source there is nothing to inspect, so this entry is excluded from trust scoring entirely rather than scored on catalog metadata alone.',
-          polarity: 'negative',
+          // Unknown, not negative: we found nothing to look at, which is not
+          // the same as having looked and found a problem.
+          polarity: 'unknown',
           score: null,
           weight: 0,
           measured: false,

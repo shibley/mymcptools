@@ -8,6 +8,9 @@ import { UptimeSparkline } from "@/components/UptimeSparkline";
 import { getStatus } from "@/lib/trust/status-store";
 import { getStaticSignal } from "@/lib/trust/static-signals-store";
 import { getHistory } from "@/lib/trust/history-store";
+import { getTrustVerdict } from "@/lib/trust/verdict-store";
+import { TrustGradeSummary } from "@/components/TrustGrade";
+import { TrustSignalList } from "@/components/TrustSignals";
 import { AffiliateServerCTA } from "@/components/AffiliateServerCTA";
 import { servers, getServerBySlug, getRelatedServers, categories, integrations } from "@/data/servers";
 import { getServerPricing, hasFreeOption } from "@/data/pricing";
@@ -73,6 +76,7 @@ export default async function ServerPage({ params }: Props) {
   const isLocal = !status || status.verdict === "UNPROBEABLE";
   const staticSignal = isLocal ? getStaticSignal(server.slug) : undefined;
   const history = getHistory(server.slug);
+  const trust = getTrustVerdict(server.slug);
   const hasUptimeHistory = history.some((p) => p.verdict !== "UNPROBEABLE");
   const primaryCategory = serverCategories[0]?.name || server.categories[0] || "MCP workflows";
   const baseName = server.name.replace(/\s+MCP\s+Servers?$/i, "").trim();
@@ -183,6 +187,15 @@ export default async function ServerPage({ params }: Props) {
                       ⭐ Featured
                     </span>
                   )}
+                  {trust && trust.score !== null && (
+                    <a
+                      href="#trust"
+                      className="inline-flex items-center gap-1.5 rounded-full border border-gray-700 bg-gray-900 px-2.5 py-1 text-xs font-medium text-gray-300 transition hover:border-gray-600"
+                    >
+                      Trust grade <span className="font-bold text-white">{trust.tier}</span>
+                      <span className="text-gray-500">{trust.score}/100</span>
+                    </a>
+                  )}
                 </div>
                 <p className="text-gray-300 leading-relaxed mb-2">
                   The {baseName} MCP server, built by {server.author}, provides {capability.charAt(0).toLowerCase() + capability.slice(1)}. It is {server.official ? "officially maintained" : "community-built"} and best for {primaryCategory}.
@@ -196,6 +209,35 @@ export default async function ServerPage({ params }: Props) {
               <h2 className="text-xl font-semibold text-white mb-4">About</h2>
               <p className="text-gray-400 leading-relaxed">{server.description}</p>
             </div>
+
+            {/* Trust verdict — the score plus, always, the reasons behind it.
+                A grade with no working shown is just an opinion with a number
+                attached, so the full signal list renders inline rather than
+                behind a link. */}
+            {trust && (
+              <div className="mb-8" id="trust">
+                <div className="mb-4 flex flex-wrap items-baseline justify-between gap-2">
+                  <h2 className="text-xl font-semibold text-white">Trust verdict</h2>
+                  <Link href="/trust" className="text-sm text-blue-400 transition hover:text-blue-300">
+                    How grades are computed →
+                  </Link>
+                </div>
+                <div className="rounded-xl border border-gray-800 bg-gray-900/60 p-6">
+                  <TrustGradeSummary
+                    tier={trust.tier}
+                    score={trust.score}
+                    confidence={trust.confidence}
+                    evidenceCount={trust.evidenceCount}
+                    size="lg"
+                  />
+                  <p className="mt-4 text-sm leading-relaxed text-gray-400">{trust.summary}</p>
+
+                  <div className="mt-6 border-t border-gray-800 pt-5">
+                    <TrustSignalList signals={trust.signals} />
+                  </div>
+                </div>
+              </div>
+            )}
 
             {/* Installation */}
             {server.install_command && (

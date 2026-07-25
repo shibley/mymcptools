@@ -31,6 +31,9 @@ export function Header() {
             <Link href="/category" className="text-gray-400 hover:text-white transition text-sm">
               Categories
             </Link>
+            <Link href="/trust" className="text-emerald-400 hover:text-emerald-300 transition text-sm font-medium">
+              Trust
+            </Link>
             <Link href="/integration" className="text-gray-400 hover:text-white transition text-sm">
               Integrations
             </Link>
@@ -101,6 +104,7 @@ export function Header() {
             </form>
             <nav className="flex flex-col space-y-3">
               <Link href="/category" className="text-gray-400 hover:text-white transition py-2" onClick={() => setMobileMenuOpen(false)}>Categories</Link>
+              <Link href="/trust" className="text-emerald-400 hover:text-emerald-300 transition py-2 font-medium" onClick={() => setMobileMenuOpen(false)}>Trust</Link>
               <Link href="/integration" className="text-gray-400 hover:text-white transition py-2" onClick={() => setMobileMenuOpen(false)}>Integrations</Link>
               <Link href="/compare" className="text-gray-400 hover:text-white transition py-2" onClick={() => setMobileMenuOpen(false)}>Compare</Link>
               <Link href="/pricing" className="text-gray-400 hover:text-white transition py-2" onClick={() => setMobileMenuOpen(false)}>Pricing</Link>

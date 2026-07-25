@@ -45,6 +45,7 @@ export function Footer() {
               <li><Link href="/blog" className="hover:text-white transition">Blog</Link></li>
               <li><Link href="/submit" className="hover:text-white transition">Submit Server</Link></li>
               <li><Link href="/compare" className="hover:text-white transition">Compare Servers</Link></li>
+              <li><Link href="/trust" className="hover:text-white transition">MCP Trust Registry</Link></li>
               <li><Link href="/status" className="hover:text-white transition">MCP Server Status</Link></li>
               <li><Link href="/developers" className="hover:text-white transition">Status API</Link></li>
               <li><Link href="/mcp-server" className="hover:text-white transition">Our MCP Server</Link></li>
