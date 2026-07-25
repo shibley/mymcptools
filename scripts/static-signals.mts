@@ -45,7 +45,12 @@ const OUT = join(DATA, 'static-signals.json');
 const GITHUB_TOKEN = process.env.GITHUB_TOKEN || process.env.GH_TOKEN || '';
 const USER_AGENT = 'mymcptools-static-signals/0.1.0';
 const FETCH_TIMEOUT_MS = 12_000;
-const REQUEST_GAP_MS = GITHUB_TOKEN ? 80 : 1200; // polite throttle; slower unauth
+// Polite throttle. 80ms (12 req/s) tripped GitHub's *secondary* rate limit on a
+// full-catalog run even with a token, so the authenticated default is now 1 req/s
+// — GitHub's own guidance for serial requests. Override with STATIC_SIGNALS_GAP_MS.
+const REQUEST_GAP_MS = Number(
+  process.env.STATIC_SIGNALS_GAP_MS ?? (GITHUB_TOKEN ? 1000 : 1200),
+);
 
 // ---- CLI args -------------------------------------------------------------
 const args = process.argv.slice(2);
@@ -114,7 +119,10 @@ interface GhResult {
   rateLimited?: boolean;
 }
 
-async function ghFetch(path: string): Promise<{ ok: boolean; status: number; json: unknown; rateLimited: boolean }> {
+async function ghFetch(path: string, depth = 0): Promise<{ ok: boolean; status: number; json: unknown; rateLimited: boolean }> {
+  if (depth > 2) {
+    return { ok: false, status: 429, json: null, rateLimited: true };
+  }
   const ctrl = new AbortController();
   const t = setTimeout(() => ctrl.abort(), FETCH_TIMEOUT_MS);
   try {
@@ -128,9 +136,17 @@ async function ghFetch(path: string): Promise<{ ok: boolean; status: number; jso
       signal: ctrl.signal,
     });
     const remaining = res.headers.get('x-ratelimit-remaining');
+    const retryAfter = Number(res.headers.get('retry-after') ?? 0);
+    const json = await res.json().catch(() => null);
+    // A 403/429 carrying retry-after (or without an exhausted primary quota) is
+    // GitHub's secondary/abuse limit: transient, so back off once and retry
+    // rather than abandoning the rest of the catalog.
+    if ((res.status === 403 || res.status === 429) && remaining !== '0') {
+      await sleep(Math.min(Math.max(retryAfter, 60), 120) * 1000);
+      return ghFetch(path, depth + 1);
+    }
     const rateLimited =
       (res.status === 403 || res.status === 429) && remaining === '0';
-    const json = await res.json().catch(() => null);
     return { ok: res.ok, status: res.status, json, rateLimited };
   } catch (e) {
     return { ok: false, status: 0, json: { message: e instanceof Error ? e.message : String(e) }, rateLimited: false };
