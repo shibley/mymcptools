@@ -532,6 +532,73 @@ docker,DOWN,,,,...`}
           </div>
         </div>
 
+        {/* POST /api/v1/firewall/check */}
+        <div className="border-t border-gray-800 pt-12">
+          <div className="mb-4 flex flex-wrap items-center gap-3">
+            <span className="rounded-md bg-red-500/15 px-2.5 py-1 text-xs font-bold uppercase tracking-wide text-red-400">
+              POST
+            </span>
+            <code className="font-mono text-lg text-gray-100">/api/v1/firewall/check</code>
+          </div>
+          <p className="mb-4 max-w-3xl text-gray-400">
+            Agent Dependency Firewall. POST a list of package names and an ecosystem
+            (<Code>npm</Code> or <Code>pypi</Code>) and get a verdict per name, so a CI job
+            can fail a build on a dependency an AI coding agent invented. Verdicts are{" "}
+            <Code>EXISTS</Code>, <Code>NONEXISTENT</Code> (registry returned 404),{" "}
+            <Code>SLOPSQUAT_RISK</Code> (resolves, but to something unestablished) and{" "}
+            <Code>UNKNOWN</Code> (no trustworthy answer — never guessed). Every result
+            carries the registry URL and HTTP status it was derived from. Answers come from
+            the committed corpus when fresh and from a live registry request otherwise;{" "}
+            <Code>from_corpus</Code> says which. Max 100 names per request. See{" "}
+            <Link href="/firewall" className="text-blue-400 underline underline-offset-4 hover:text-blue-300">the firewall page</Link>{" "}
+            for the corpus and the verdict rules.
+          </p>
+
+          <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
+            <CodeBlock
+              label="Request"
+              code={`curl -X POST https://mymcptools.com/api/v1/firewall/check \\
+  -H "Authorization: Bearer $MCPTOOLS_API_KEY" \\
+  -H "Content-Type: application/json" \\
+  -d '{"ecosystem":"npm","packages":["express","react-codeshift"]}'`}
+            />
+            <CodeBlock
+              label="200 Response (truncated)"
+              code={`{
+  "ecosystem": "npm",
+  "summary": {
+    "total": 2, "exists": 1, "nonexistent": 0,
+    "slopsquat_risk": 1, "unknown": 0, "blocked": true
+  },
+  "results": [
+    {
+      "name": "express",
+      "verdict": "EXISTS",
+      "markers": [],
+      "evidence": {
+        "registry_url": "https://registry.npmjs.org/express",
+        "http_status": 200, "version_count": 283,
+        "weekly_downloads": 122913839
+      },
+      "from_corpus": false
+    },
+    {
+      "name": "react-codeshift",
+      "verdict": "SLOPSQUAT_RISK",
+      "markers": [
+        { "id": "self_declared_placeholder",
+          "detail": "...self-identifies as a placeholder..." }
+      ],
+      "evidence": { "http_status": 200, "weekly_downloads": 1 },
+      "from_corpus": true
+    }
+  ],
+  "corpus": { "size": 1153, "generated_at": "2026-07-25T..." }
+}`}
+            />
+          </div>
+        </div>
+
         {/* GET /api/v1/digest */}
         <div className="border-t border-gray-800 pt-12">
           <div className="mb-4 flex flex-wrap items-center gap-3">

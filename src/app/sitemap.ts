@@ -68,6 +68,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'daily',
       priority: 0.9,
     },
+    {
+      url: `${baseUrl}/firewall`,
+      lastModified: now,
+      changeFrequency: 'daily',
+      priority: 0.9,
+    },
   ];
 
   // Server pages

@@ -18,6 +18,8 @@
     "static:signals": "node scripts/static-signals.mts",
     "webhooks:selfcheck": "node scripts/webhooks-selfcheck.mts",
     "trust:selfcheck": "node scripts/trust-verdict-selfcheck.mts",
+    "firewall:sweep": "node scripts/firewall-sweep.mts",
+    "firewall:selfcheck": "node scripts/firewall-selfcheck.mts",
     "verify:github": "node scripts/verify-github-entries.mts"
   },
   "dependencies": {
