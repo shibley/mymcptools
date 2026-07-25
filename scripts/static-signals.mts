@@ -20,6 +20,9 @@
  *     and preserves prior data rather than wiping it.
  *   - Idempotent: merges onto the existing static-signals.json, so a partial
  *     run (limit/sample/rate-limit) keeps previously-fetched signals intact.
+ *   - Checkpointed: the store is flushed to disk every CHECKPOINT_EVERY fetches,
+ *     so a killed run costs at most one batch. Re-running resumes automatically
+ *     because the checkpointed rows are `isFresh` and get skipped.
  *   - A single repo's fetch failure is recorded as `error` and never aborts.
  *
  * Output: src/data/static-signals.json (StaticSignalStore).
@@ -27,7 +30,7 @@
  * Run: node scripts/static-signals.mts [--limit N] [--slug s1,s2] [--force]
  *      [--max-age-hours H]
  */
-import { readFileSync, writeFileSync } from 'node:fs';
+import { readFileSync, renameSync, writeFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
 import { servers } from '../src/data/servers.ts';
@@ -51,6 +54,9 @@ const FETCH_TIMEOUT_MS = 12_000;
 const REQUEST_GAP_MS = Number(
   process.env.STATIC_SIGNALS_GAP_MS ?? (GITHUB_TOKEN ? 1000 : 1200),
 );
+// Flush partial results this often so an interrupted full-catalog run (which
+// takes ~30min) loses at most one batch instead of everything.
+const CHECKPOINT_EVERY = Number(process.env.STATIC_SIGNALS_CHECKPOINT ?? 100);
 
 // ---- CLI args -------------------------------------------------------------
 const args = process.argv.slice(2);
@@ -206,6 +212,38 @@ function isFresh(prev: StaticSignal | undefined): boolean {
   return Date.now() - t < maxAgeHours * 3600_000;
 }
 
+/**
+ * Compose the full store (this run's rows + any prior rows we haven't emitted)
+ * and write it. Safe to call mid-run: slugs still queued keep their prior data.
+ */
+function writeStore(signals: StaticSignal[], prev: Map<string, StaticSignal>): StaticSignalStore['summary'] {
+  const emitted = new Set(signals.map((s) => s.slug));
+  const all = signals.slice();
+  for (const [slug, sig] of prev) {
+    if (!emitted.has(slug)) all.push(sig);
+  }
+  all.sort((a, b) => a.slug.localeCompare(b.slug));
+
+  const summary = {
+    total: all.length,
+    with_repo: all.filter((s) => s.owner != null).length,
+    with_commit: all.filter((s) => s.last_commit_at != null).length,
+    with_release: all.filter((s) => s.last_release_at != null).length,
+    errors: all.filter((s) => s.error != null).length,
+  };
+
+  const store: StaticSignalStore = {
+    generated_at: new Date().toISOString(),
+    summary,
+    signals: all,
+  };
+  // Atomic: a checkpoint can be interrupted mid-run, and a half-written store
+  // would be unparseable — costing exactly what checkpointing exists to avoid.
+  writeFileSync(OUT + '.tmp', JSON.stringify(store, null, 2) + '\n');
+  renameSync(OUT + '.tmp', OUT);
+  return summary;
+}
+
 async function main() {
   const inventory: InventoryEntry[] = JSON.parse(readFileSync(INVENTORY, 'utf8'));
   const serverBySlug = new Map(servers.map((s) => [s.slug, s]));
@@ -312,31 +350,17 @@ async function main() {
       ...(res.error ? { error: res.error } : {}),
     });
 
+    if (fetched % CHECKPOINT_EVERY === 0) {
+      writeStore(signals, prev);
+      console.log(`[static] checkpoint · fetched=${fetched}/${locals.length}`);
+    }
+
     await sleep(REQUEST_GAP_MS);
   }
 
   // Carry forward signals for any local slugs not in this run's selection
   // (e.g. when --limit/--slug was used) so the committed store stays complete.
-  const selected = new Set(locals.map((e) => e.slug));
-  for (const [slug, sig] of prev) {
-    if (!selected.has(slug)) signals.push(sig);
-  }
-  signals.sort((a, b) => a.slug.localeCompare(b.slug));
-
-  const summary = {
-    total: signals.length,
-    with_repo: signals.filter((s) => s.owner != null).length,
-    with_commit: signals.filter((s) => s.last_commit_at != null).length,
-    with_release: signals.filter((s) => s.last_release_at != null).length,
-    errors: signals.filter((s) => s.error != null).length,
-  };
-
-  const store: StaticSignalStore = {
-    generated_at: new Date().toISOString(),
-    summary,
-    signals,
-  };
-  writeFileSync(OUT, JSON.stringify(store, null, 2) + '\n');
+  const summary = writeStore(signals, prev);
 
   console.log(
     `[static] fetched=${fetched} skipped(fresh)=${skipped} ` +
