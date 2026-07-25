@@ -47,6 +47,7 @@ export function Footer() {
               <li><Link href="/compare" className="hover:text-white transition">Compare Servers</Link></li>
               <li><Link href="/status" className="hover:text-white transition">MCP Server Status</Link></li>
               <li><Link href="/developers" className="hover:text-white transition">Status API</Link></li>
+              <li><Link href="/mcp-server" className="hover:text-white transition">Our MCP Server</Link></li>
               <li>
                 <a href="https://modelcontextprotocol.io" target="_blank" rel="noopener noreferrer" className="hover:text-white transition">
                   MCP Docs ↗

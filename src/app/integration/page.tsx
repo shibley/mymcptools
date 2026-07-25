@@ -60,6 +60,22 @@ export default function IntegrationsPage() {
           Learn more about MCP →
         </a>
       </div>
+
+      {/* This directory is itself an MCP server — the most direct integration. */}
+      <div className="mt-8 bg-gray-900 border border-gray-800 rounded-xl p-8">
+        <h2 className="text-xl font-semibold text-white mb-4">Integrate this directory</h2>
+        <p className="text-gray-400 mb-4">
+          MyMCPTools speaks MCP too. Connect your client to{" "}
+          <code className="rounded bg-gray-800/80 px-1.5 py-0.5 text-[0.85em] text-blue-300 font-mono">
+            https://mymcptools.com/api/mcp
+          </code>{" "}
+          and your assistant can search every server listed here — and check whether it is actually
+          up — without leaving the conversation.
+        </p>
+        <Link href="/mcp-server" className="text-blue-400 hover:text-blue-300 transition">
+          Set up the MyMCPTools MCP server →
+        </Link>
+      </div>
     </div>
   );
 }

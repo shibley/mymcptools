@@ -12,6 +12,62 @@ The most comprehensive directory of MCP (Model Context Protocol) servers.
 - **Search** - Find servers by name, description, or category
 - **Full SEO** - Dynamic sitemap, robots.txt, JSON-LD schema
 
+## 🔌 MyMCPTools is itself an MCP server
+
+The directory is queryable over the Model Context Protocol, not just over HTTP. The endpoint is
+remote, read-only and needs no authentication:
+
+```
+https://mymcptools.com/api/mcp
+```
+
+Transport is **streamable HTTP**, running **stateless** (no session IDs, POST only) so it works on
+Vercel's serverless runtime. `GET` returns 405 by design — there is no server-initiated SSE stream
+to subscribe to.
+
+**Claude Code:**
+
+```bash
+claude mcp add --transport http mymcptools https://mymcptools.com/api/mcp
+```
+
+**Claude Desktop / Cursor / Windsurf** (`mcpServers` config block):
+
+```json
+{
+  "mcpServers": {
+    "mymcptools": {
+      "type": "http",
+      "url": "https://mymcptools.com/api/mcp"
+    }
+  }
+}
+```
+
+### Tools
+
+| Tool | What it answers |
+| --- | --- |
+| `search_mcp_servers` | Catalog search by query, category, integration, install type; `only_verified` restricts to servers that passed a live handshake |
+| `get_mcp_server` | Full entry for one slug — install command, repo, clients, verdict, repo freshness, related servers |
+| `get_server_status` | Current probe verdict, tool count, latency, protocol version (omit slug for the catalog rollup) |
+| `get_server_history` | Trailing probe series plus a daily uptime sparkline |
+| `list_server_incidents` | Reconstructed outage windows with duration and failure reason |
+| `list_schema_drift` | Tool-schema / protocol-version changes between probes |
+| `list_categories` | Categories and client integrations with counts |
+| `get_catalog_stats` | Catalog-wide health aggregates |
+
+### Resources
+
+- `mymcptools://catalog/categories`
+- `mymcptools://catalog/stats`
+- `mymcptools://server/{slug}` — any catalog slug is readable; `resources/list` advertises the
+  featured subset because the full catalog is too large to enumerate
+
+Implementation: `src/app/api/mcp/route.ts` (transport) and `src/lib/mcp/server.ts` (tool +
+resource definitions). Every handler reads the same modules the REST API uses — `src/data/servers.ts`
+and `src/lib/trust/*` — so there is no second copy of the business logic. Docs page: `/mcp-server`.
+
 ## 🛠️ Tech Stack
 
 - **Framework**: Next.js 14+ (App Router)
