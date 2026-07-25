@@ -9641,15 +9641,15 @@
     "slug": "jan-ai-mcp",
     "name": "Jan.ai",
     "oldUrl": "https://github.com/janhq/jan-mcp",
-    "verdict": "repaired",
+    "verdict": "unresolved",
     "candidatesTried": [
       "search"
     ],
     "resolvedAt": "2026-07-25T14:28:37.779Z",
     "method": "search",
     "repoFullName": "maurik77/mcp-janus",
-    "newUrl": "https://github.com/maurik77/mcp-janus",
-    "evidence": "GitHub search \"jan mcp in:name\": maurik77/mcp-janus is an MCP server repo covering 1/1 name tokens; entry author is generic (\"community\") so a community repo is an acceptable match; confirmed live via GitHub API"
+    "evidence": "GitHub search \"jan mcp in:name\": maurik77/mcp-janus is an MCP server repo covering 1/1 name tokens; entry author is generic (\"community\") so a community repo is an acceptable match; confirmed live via GitHub API",
+    "auditNote": "demoted by hand: maurik77/mcp-janus is an MCP server for a different product with a similar name"
   },
   "gitbook-mcp": {
     "slug": "gitbook-mcp",
@@ -10241,15 +10241,15 @@
     "slug": "lago-mcp",
     "name": "Lago",
     "oldUrl": "https://github.com/getlago/lago-mcp",
-    "verdict": "repaired",
+    "verdict": "unresolved",
     "candidatesTried": [
       "search"
     ],
     "resolvedAt": "2026-07-25T14:30:56.456Z",
     "method": "search",
     "repoFullName": "Joseph-Heirendt-CC/LAGOS-MCP",
-    "newUrl": "https://github.com/Joseph-Heirendt-CC/LAGOS-MCP",
-    "evidence": "GitHub search \"lago mcp in:name\": Joseph-Heirendt-CC/LAGOS-MCP is an MCP server repo covering 1/1 name tokens; entry author is generic (\"community\") so a community repo is an acceptable match; confirmed live via GitHub API"
+    "evidence": "GitHub search \"lago mcp in:name\": Joseph-Heirendt-CC/LAGOS-MCP is an MCP server repo covering 1/1 name tokens; entry author is generic (\"community\") so a community repo is an acceptable match; confirmed live via GitHub API",
+    "auditNote": "demoted by hand: Joseph-Heirendt-CC/LAGOS-MCP is an MCP server for a different product with a similar name"
   },
   "ordway-mcp": {
     "slug": "ordway-mcp",
@@ -16840,15 +16840,15 @@
     "slug": "canva-api-mcp",
     "name": "Canva Connect API MCP",
     "oldUrl": "https://github.com/mcp-servers/canva-api-mcp",
-    "verdict": "repaired",
+    "verdict": "unresolved",
     "candidatesTried": [
       "search"
     ],
     "resolvedAt": "2026-07-25T14:56:47.912Z",
     "method": "search",
     "repoFullName": "Jylebum/mcp-canvas-connector",
-    "newUrl": "https://github.com/Jylebum/mcp-canvas-connector",
-    "evidence": "GitHub search \"canva connect mcp in:name\": Jylebum/mcp-canvas-connector is an MCP server repo covering 2/2 name tokens; entry author is generic (\"community\") so a community repo is an acceptable match; confirmed live via GitHub API"
+    "evidence": "GitHub search \"canva connect mcp in:name\": Jylebum/mcp-canvas-connector is an MCP server repo covering 2/2 name tokens; entry author is generic (\"community\") so a community repo is an acceptable match; confirmed live via GitHub API",
+    "auditNote": "demoted by hand: Jylebum/mcp-canvas-connector is an MCP server for a different product with a similar name"
   },
   "runway-mcp": {
     "slug": "runway-mcp",
@@ -17879,15 +17879,15 @@
     "slug": "evidently-ai-mcp",
     "name": "Evidently AI MCP",
     "oldUrl": "https://github.com/mcp-servers/evidently-ai-mcp",
-    "verdict": "repaired",
+    "verdict": "unresolved",
     "candidatesTried": [
       "search"
     ],
     "resolvedAt": "2026-07-25T15:01:28.068Z",
     "method": "search",
     "repoFullName": "vikasmalikst/evidentlyaeo-mcp-server",
-    "newUrl": "https://github.com/vikasmalikst/evidentlyaeo-mcp-server",
-    "evidence": "GitHub search \"evidently mcp in:name\": vikasmalikst/evidentlyaeo-mcp-server is an MCP server repo covering 1/1 name tokens; entry author is generic (\"community\") so a community repo is an acceptable match; confirmed live via GitHub API"
+    "evidence": "GitHub search \"evidently mcp in:name\": vikasmalikst/evidentlyaeo-mcp-server is an MCP server repo covering 1/1 name tokens; entry author is generic (\"community\") so a community repo is an acceptable match; confirmed live via GitHub API",
+    "auditNote": "demoted by hand: vikasmalikst/evidentlyaeo-mcp-server is an MCP server for a different product with a similar name"
   },
   "kubeflow-pipelines-mcp": {
     "slug": "kubeflow-pipelines-mcp",

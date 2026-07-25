@@ -111,9 +111,17 @@ for (const line of lines) {
   const slugMatch = line.match(/^\s*slug: '([^']+)',/);
   if (slugMatch) currentSlug = slugMatch[1];
 
-  const ghMatch = line.match(/^(\s*)github_url: '([^']*)',\s*$/);
+  // Idempotence: drop verdict fields from a previous run and re-emit them
+  // below. Without this, re-running on an already-applied file appends a
+  // second copy of each key instead of updating it.
+  if (/^\s*(source_verified|verification): /.test(line)) continue;
+
+  // Matches both a quoted URL and an already-nulled entry, so a re-run
+  // re-emits the verdict fields it stripped above for BOTH shapes.
+  const ghMatch = line.match(/^(\s*)github_url: (?:'([^']*)'|null),\s*$/);
   if (ghMatch && currentSlug) {
-    const [, indent, url] = ghMatch;
+    const [, indent] = ghMatch;
+    const url = ghMatch[2] ?? '';
     const d = decide(currentSlug, url);
     if (!d) {
       stats.untouched++;
