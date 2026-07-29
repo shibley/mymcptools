@@ -109,11 +109,52 @@ const curlExample = `curl -s -X POST ${ENDPOINT} \\
     }
   }'`;
 
+const faqs = [
+  {
+    q: "What is an MCP server?",
+    a: "An MCP server is a program that exposes tools, resources and prompts to an AI client over the Model Context Protocol. The client (Claude Desktop, Claude Code, Cursor, VS Code, Cline and others) discovers what the server offers with a tools/list call and then invokes those tools with tools/call. Servers run either locally over stdio, launched by the client as a subprocess, or remotely over Streamable HTTP at a URL like the one on this page.",
+  },
+  {
+    q: "What is the MyMCPTools MCP server for?",
+    a: "It turns this directory into something an agent can query mid-task. Instead of a human browsing the catalog, the model calls search_mcp_servers to find candidates, get_mcp_server for the install command and repo, and get_server_status to confirm the server actually answered a live handshake before it recommends installing it.",
+  },
+  {
+    q: "Do I need an API key or account?",
+    a: "No. The endpoint is open and read-only, with no authentication and no session state — every call is a plain HTTP POST. The keyed REST API on the developers page is a separate product for the same uptime, incident and drift data.",
+  },
+  {
+    q: "How do I add it to Claude Code?",
+    a: "Run claude mcp add --transport http mymcptools https://mymcptools.com/api/mcp. For config-file clients such as Claude Desktop, Cursor and Windsurf, add an entry under mcpServers with type set to http and url set to the same endpoint.",
+  },
+  {
+    q: "Why does a GET request return 405?",
+    a: "The server is stateless and POST-only. It opens no server-initiated SSE stream, so there is no long-lived channel for a GET to subscribe to. Send JSON-RPC over POST with an Accept header of application/json, text/event-stream.",
+  },
+  {
+    q: "How is this different from a static MCP directory listing?",
+    a: "Most listings are a snapshot of a README. This catalog is continuously probed, so the same tools that return an entry also return its current verdict, handshake latency, negotiated protocol version, reconstructed outage windows and any tool-schema drift detected between probes — the signals that tell you whether a server is still worth depending on.",
+  },
+];
+
 export default function McpServerPage() {
   const probed = allStatuses().length;
 
   return (
     <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            mainEntity: faqs.map((faq) => ({
+              "@type": "Question",
+              name: faq.q,
+              acceptedAnswer: { "@type": "Answer", text: faq.a },
+            })),
+          }),
+        }}
+      />
       <div className="mb-12">
         <span className="inline-block rounded-full border border-blue-500/40 bg-blue-500/10 px-3 py-1 text-xs font-medium uppercase tracking-wide text-blue-300">
           Remote MCP endpoint
@@ -199,6 +240,25 @@ export default function McpServerPage() {
           GET returns 405 by design — the endpoint is stateless and offers no server-initiated SSE
           stream, so there is nothing to subscribe to.
         </p>
+      </section>
+
+      <section className="mb-12">
+        <h2 className="mb-4 text-2xl font-semibold text-white">
+          MCP server FAQ
+        </h2>
+        <div className="space-y-3">
+          {faqs.map((faq) => (
+            <details
+              key={faq.q}
+              className="group rounded-xl border border-gray-800 bg-gray-900 p-5"
+            >
+              <summary className="cursor-pointer list-none font-medium text-white marker:hidden">
+                {faq.q}
+              </summary>
+              <p className="mt-3 text-sm leading-relaxed text-gray-400">{faq.a}</p>
+            </details>
+          ))}
+        </div>
       </section>
 
       <section className="rounded-xl border border-gray-800 bg-gray-900 p-6">
