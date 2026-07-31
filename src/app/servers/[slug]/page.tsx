@@ -32,6 +32,22 @@ function getFirstSentence(text: string) {
   return text.split(/(?<=\.)\s+/)[0]?.replace(/\.$/, "") || text;
 }
 
+/**
+ * Lower-cases the first character so a description can be injected mid-sentence.
+ * Left alone when the second character is also upper-case, so acronyms and
+ * product names that lead a description ("AI-powered…", "API access…",
+ * "GitHub…") aren't mangled into "aI-powered".
+ */
+function uncapitalize(text: string) {
+  if (/^[A-Z][A-Z]/.test(text)) return text;
+  return text.charAt(0).toLowerCase() + text.slice(1);
+}
+
+/** Upper-cases the first character so a description can start a sentence. */
+function capitalize(text: string) {
+  return text.charAt(0).toUpperCase() + text.slice(1);
+}
+
 export async function generateStaticParams() {
   return servers.map((server) => ({
     slug: server.slug,
@@ -47,13 +63,17 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 
   const baseName = server.name.replace(/\s+MCP\s+Servers?$/i, "").trim();
+  // Descriptions are authored as lowercase-safe noun phrases so they read as
+  // grammar when injected mid-sentence (see the intro line below). Anywhere a
+  // description *starts* a sentence it has to be re-capitalised first.
+  const sentenceDescription = `${baseName} MCP Server provides ${uncapitalize(server.description)}`;
 
   return {
     title: `${baseName} MCP Server — Setup, Features & Alternatives | MyMCPTools`,
-    description: `${server.description} Learn how to install and configure the ${baseName} MCP server for Claude, Cursor, VS Code, and more.`,
+    description: `${sentenceDescription} Learn how to install and configure the ${baseName} MCP server for Claude, Cursor, VS Code, and more.`,
     openGraph: {
       title: `${baseName} MCP Server | MyMCPTools`,
-      description: server.description,
+      description: sentenceDescription,
       type: "article",
     },
   };
@@ -92,7 +112,7 @@ export default async function ServerPage({ params }: Props) {
   const faqItems = [
     {
       question: `What is ${server.name}?`,
-      answer: `${baseName} is an MCP server built by ${server.author}. ${server.description}`,
+      answer: `${baseName} is an MCP server built by ${server.author}. ${capitalize(server.description)}`,
     },
     {
       question: `Who built ${server.name}?`,
@@ -198,7 +218,7 @@ export default async function ServerPage({ params }: Props) {
                   )}
                 </div>
                 <p className="text-gray-300 leading-relaxed mb-2">
-                  The {baseName} MCP server, built by {server.author}, provides {capability.charAt(0).toLowerCase() + capability.slice(1)}. It is {server.official ? "officially maintained" : "community-built"} and best for {primaryCategory}.
+                  The {baseName} MCP server, built by {server.author}, provides {uncapitalize(capability)}. It is {server.official ? "officially maintained" : "community-built"} and best for {primaryCategory}.
                 </p>
                 <p className="text-gray-500">by {server.author}</p>
               </div>
