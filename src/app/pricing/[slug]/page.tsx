@@ -312,9 +312,14 @@ export default async function PricingPage({ params }: Props) {
                   <span className="px-2 py-0.5 bg-gray-800 text-gray-300 text-xs rounded capitalize">{server.install_type}</span>
                 </div>
                 {server.install_command && (
-                  <code className="block bg-gray-950 text-green-400 p-3 rounded-lg text-sm font-mono overflow-x-auto">
+                  <code className={`block bg-gray-950 p-3 rounded-lg text-sm font-mono overflow-x-auto ${server.install_verified === false ? 'text-gray-500 line-through' : 'text-green-400'}`}>
                     {server.install_command}
                   </code>
+                )}
+                {server.install_command && server.install_verified === false && (
+                  <p className="mt-2 text-xs text-amber-300/90">
+                    ⚠️ This command fails — the package is not published to {server.install_type === 'pip' ? 'PyPI' : 'npm'} (checked {server.install_checked}). Install from source.
+                  </p>
                 )}
                 <p className="text-gray-500 text-xs mt-3">
                   Compatible with: {server.integrations.map(i => {

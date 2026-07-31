@@ -101,8 +101,10 @@ export default async function ServerPage({ params }: Props) {
   const primaryCategory = serverCategories[0]?.name || server.categories[0] || "MCP workflows";
   const baseName = server.name.replace(/\s+MCP\s+Servers?$/i, "").trim();
   const capability = getFirstSentence(server.description);
-  const installAnswer = server.install_command
+  const installAnswer = server.install_command && server.install_verified !== false
     ? `Install ${server.name} with ${server.install_type}: ${server.install_command}`
+    : server.install_command && server.install_verified === false
+      ? `The install command commonly listed for ${server.name} (${server.install_command}) points at a package that is not published to the ${server.install_type === 'pip' ? 'PyPI' : 'npm'} registry, so it will fail. Install it from source instead${server.github_url ? `: ${server.github_url}` : '.'}`
     : server.github_url
       ? `Install ${server.name} from its GitHub repository: ${server.github_url}`
       : `${server.name} has no verified public repository, so there is no confirmed install command for it.`;
@@ -263,16 +265,36 @@ export default async function ServerPage({ params }: Props) {
             {server.install_command && (
               <div className="mb-8">
                 <h2 className="text-xl font-semibold text-white mb-4">Installation</h2>
-                <div className="bg-gray-900 border border-gray-800 rounded-xl overflow-hidden">
+                <div className={`bg-gray-900 border rounded-xl overflow-hidden ${server.install_verified === false ? 'border-amber-500/40' : 'border-gray-800'}`}>
                   <div className="flex items-center justify-between px-4 py-2 bg-gray-800/50">
                     <span className="text-sm text-gray-400">
                       {server.install_type === 'npm' ? 'npm / npx' : server.install_type}
                     </span>
-                    <CopyButton text={server.install_command} />
+                    {server.install_verified === false ? (
+                      <span className="text-xs font-medium text-amber-400">⚠️ Not on the registry</span>
+                    ) : (
+                      <CopyButton text={server.install_command} />
+                    )}
                   </div>
-                  <pre className="p-4 overflow-x-auto text-sm text-green-400">
+                  <pre className={`p-4 overflow-x-auto text-sm ${server.install_verified === false ? 'text-gray-500 line-through decoration-amber-500/60' : 'text-green-400'}`}>
                     <code>{server.install_command}</code>
                   </pre>
+                  {/* An install command that 404s on the registry is worse than no
+                      command at all — it sends people to a terminal error. Say so
+                      instead of offering a copy button. */}
+                  {server.install_verified === false && (
+                    <p className="border-t border-amber-500/20 bg-amber-500/5 px-4 py-3 text-sm text-amber-200/90">
+                      This command will fail: <code className="text-amber-100">{server.install_command?.split(/\s+/).find(t => !t.startsWith('-') && !['npx', 'uvx', 'pip', 'install', 'npm'].includes(t))}</code> is not published to {server.install_type === 'pip' ? 'PyPI' : 'the npm registry'} (checked {server.install_checked}).
+                      {server.github_url
+                        ? ' Install from the repository below instead.'
+                        : ' No verified repository is on file for this server either, so treat it as unconfirmed.'}
+                    </p>
+                  )}
+                  {server.install_verified === true && (
+                    <p className="border-t border-gray-800 px-4 py-2 text-xs text-gray-500">
+                      Package confirmed live on {server.install_type === 'pip' ? 'PyPI' : 'npm'} — checked {server.install_checked}.
+                    </p>
+                  )}
                 </div>
               </div>
             )}
