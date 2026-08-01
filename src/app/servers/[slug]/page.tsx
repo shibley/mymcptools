@@ -12,7 +12,7 @@ import { getTrustVerdict } from "@/lib/trust/verdict-store";
 import { TrustGradeSummary } from "@/components/TrustGrade";
 import { TrustSignalList } from "@/components/TrustSignals";
 import { AffiliateServerCTA } from "@/components/AffiliateServerCTA";
-import { servers, getServerBySlug, getRelatedServers, categories, integrations } from "@/data/servers";
+import { servers, getServerBySlug, getRelatedServers, categories, integrations, registryLabel } from "@/data/servers";
 import { getServerPricing, hasFreeOption } from "@/data/pricing";
 import { getBlogPostsForServer } from "@/data/blog";
 
@@ -104,7 +104,7 @@ export default async function ServerPage({ params }: Props) {
   const installAnswer = server.install_command && server.install_verified !== false
     ? `Install ${server.name} with ${server.install_type}: ${server.install_command}`
     : server.install_command && server.install_verified === false
-      ? `The install command commonly listed for ${server.name} (${server.install_command}) points at a package that is not published to the ${server.install_type === 'pip' ? 'PyPI' : 'npm'} registry, so it will fail. Install it from source instead${server.github_url ? `: ${server.github_url}` : '.'}`
+      ? `The install command commonly listed for ${server.name} (${server.install_command}) points at a package that is not published to ${registryLabel(server.install_type)}, so it will fail. Install it from source instead${server.github_url ? `: ${server.github_url}` : '.'}`
     : server.github_url
       ? `Install ${server.name} from its GitHub repository: ${server.github_url}`
       : `${server.name} has no verified public repository, so there is no confirmed install command for it.`;
@@ -284,7 +284,7 @@ export default async function ServerPage({ params }: Props) {
                       instead of offering a copy button. */}
                   {server.install_verified === false && (
                     <p className="border-t border-amber-500/20 bg-amber-500/5 px-4 py-3 text-sm text-amber-200/90">
-                      This command will fail: <code className="text-amber-100">{server.install_command?.split(/\s+/).find(t => !t.startsWith('-') && !['npx', 'uvx', 'pip', 'install', 'npm'].includes(t))}</code> is not published to {server.install_type === 'pip' ? 'PyPI' : 'the npm registry'} (checked {server.install_checked}).
+                      This command will fail: <code className="text-amber-100">{server.install_command?.split(/\s+/).find(t => !t.startsWith('-') && !['npx', 'uvx', 'pip', 'install', 'npm', 'docker', 'run'].includes(t))}</code> is not published to {registryLabel(server.install_type)} (checked {server.install_checked}).
                       {server.github_url
                         ? ' Install from the repository below instead.'
                         : ' No verified repository is on file for this server either, so treat it as unconfirmed.'}
@@ -292,7 +292,7 @@ export default async function ServerPage({ params }: Props) {
                   )}
                   {server.install_verified === true && (
                     <p className="border-t border-gray-800 px-4 py-2 text-xs text-gray-500">
-                      Package confirmed live on {server.install_type === 'pip' ? 'PyPI' : 'npm'} — checked {server.install_checked}.
+                      Package confirmed live on {registryLabel(server.install_type)} — checked {server.install_checked}.
                     </p>
                   )}
                 </div>

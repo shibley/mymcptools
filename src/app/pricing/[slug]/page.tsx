@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { servers, categories, getRelatedServers } from "@/data/servers";
+import { servers, categories, getRelatedServers, registryLabel } from "@/data/servers";
 import { getServerPricing, getPricingBadge, hasFreeOption } from "@/data/pricing";
 
 interface Props {
@@ -318,7 +318,7 @@ export default async function PricingPage({ params }: Props) {
                 )}
                 {server.install_command && server.install_verified === false && (
                   <p className="mt-2 text-xs text-amber-300/90">
-                    ⚠️ This command fails — the package is not published to {server.install_type === 'pip' ? 'PyPI' : 'npm'} (checked {server.install_checked}). Install from source.
+                    ⚠️ This command fails — the package is not published to {registryLabel(server.install_type)} (checked {server.install_checked}). Install from source.
                   </p>
                 )}
                 <p className="text-gray-500 text-xs mt-3">

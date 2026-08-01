@@ -25,10 +25,13 @@ export interface MCPServer {
   install_type: 'npm' | 'pip' | 'binary' | 'docker' | 'source';
   install_command?: string;
   /**
-   * Whether install_command's package was confirmed to exist in its registry
-   * (npm / PyPI) on install_checked. False means the registry returned 404 —
-   * the command is kept for reference but must never be presented as a
-   * working copy-paste. Same principle as `source_verified` for github_url.
+   * Whether install_command's artifact was confirmed to exist on install_checked:
+   * npm / PyPI for package installs, and — since 2026-08-01 — the container
+   * registry for `docker` installs and the release page for `binary` ones.
+   * False means the lookup 404'd; the command is kept for reference but must
+   * never be presented as a working copy-paste. Same principle as
+   * `source_verified` for github_url. See `registryLabel()` for the user-facing
+   * name of the place that was checked.
    */
   install_verified?: boolean;
   /** ISO date the registry check behind install_verified was run. */
@@ -55,6 +58,27 @@ export interface Integration {
   description: string;
   icon: string;
   count?: number;
+}
+
+/**
+ * Where an install_command's artifact lives, for the verified / unverified copy
+ * on server and pricing pages. This started as an npm-vs-PyPI ternary inlined in
+ * four places, which silently mislabelled every `docker` and `binary` entry as
+ * npm the moment those install types started carrying install_verified.
+ */
+export function registryLabel(installType: MCPServer['install_type']): string {
+  switch (installType) {
+    case 'pip':
+      return 'PyPI';
+    case 'npm':
+      return 'the npm registry';
+    case 'docker':
+      return 'the container registry';
+    case 'binary':
+      return 'the project release page';
+    default:
+      return 'its registry';
+  }
 }
 
 export const categories: Category[] = [
@@ -247,7 +271,7 @@ const _serversPart1: MCPServer[] = [
   {
     slug: 'github',
     name: 'GitHub MCP Server',
-    description: 'The GitHub MCP server is GitHub\'s official Model Context Protocol integration, giving AI assistants like Claude and Cursor direct, authenticated access to the GitHub platform and its full developer surface. With this MCP server, you can ask your AI to read and write repository files, create and merge branches, open and review pull requests, comment on and close issues, trigger GitHub Actions workflows, search across code repositories with GitHub\'s code search, and inspect commit history — all through natural-language prompts in your AI interface. Developers use it to supercharge code review workflows, automate issue triage, generate PR descriptions from diffs, bulk-update repository settings, and wire AI agents into CI/CD pipelines. The GitHub MCP server connects via a GITHUB_PERSONAL_ACCESS_TOKEN environment variable with scopes for the operations you need, keeping authentication clean and auditable. Install with Docker: `docker run -e GITHUB_PERSONAL_ACCESS_TOKEN=<token> ghcr.io/github/github-mcp-server` — or configure it as a remote MCP server in Claude Desktop, Cursor, VS Code, Windsurf, and Cline. With over 8,000 GitHub stars, it is the most widely deployed official code-platform MCP server and the reference implementation for AI-native GitHub automation.',
+    description: 'authenticated access to the whole GitHub platform — repositories, files, branches, issues, pull requests, Actions runs, security alerts, discussions and notifications — from Claude, Cursor, VS Code, Copilot CLI and any other MCP host. There is no npm package for this server, and that trips up most people who try to install it: `@github/mcp-server` is not published to the npm registry, so any `npx` line you find for it will fail. GitHub ships it three other ways. The easiest is the hosted remote server at https://api.githubcopilot.com/mcp/, which needs no install at all — point an HTTP-transport MCP client at that URL and log in with OAuth (VS Code 1.101+, Claude Desktop, Claude Code, Cursor and Windsurf all support this). The second is the official Docker image ghcr.io/github/github-mcp-server, which is what the copy-paste command on this page runs; on github.com it now performs a browser-based OAuth login on first use and keeps the token in memory only, which is why the published Docker configs map a fixed loopback callback port (-p 127.0.0.1:8085:8085 with GITHUB_OAUTH_CALLBACK_PORT=8085) so the container can receive the callback. Prefer a token? Set GITHUB_PERSONAL_ACCESS_TOKEN instead — it takes precedence over OAuth, and the minimum useful scopes are repo, read:org and read:packages. The third is the native Go binary from the repository\'s releases, which needs no fixed port for the OAuth flow. GitHub Enterprise Server has no hosted option: use the local server with --gh-host or GITHUB_HOST set to your instance (include the https:// scheme — it defaults to http://, which GHES rejects). Toolsets can be narrowed with GITHUB_TOOLSETS, and an insiders channel is available at /mcp/insiders or via the X-MCP-Insiders header.',
     author: 'GitHub',
     github_url: 'https://github.com/github/github-mcp-server',
     source_verified: true,
@@ -255,11 +279,11 @@ const _serversPart1: MCPServer[] = [
     website_url: 'https://github.com',
     categories: ['coding', 'devops'],
     integrations: ['claude-desktop', 'cursor', 'vs-code', 'windsurf', 'cline'],
-    install_type: 'npm',
-    install_command: 'npx @github/mcp-server',
-    install_verified: false,
-    install_checked: '2026-07-31',
-    stars: 8200,
+    install_type: 'docker',
+    install_command: 'docker run -i --rm -e GITHUB_PERSONAL_ACCESS_TOKEN ghcr.io/github/github-mcp-server',
+    install_verified: true,
+    install_checked: '2026-08-01',
+    stars: 31881,
     featured: true,
     official: true,
   },
@@ -561,17 +585,17 @@ const _serversPart1: MCPServer[] = [
   {
     slug: 'sqlite',
     name: 'SQLite MCP Server',
-    description: 'The SQLite MCP server is an official Anthropic reference implementation that gives AI assistants direct, conversational access to SQLite databases — the world\'s most widely deployed database engine. Through natural language, you can ask Claude or Cursor to run SELECT queries, insert and update rows, inspect table schemas, create new tables, and generate business intelligence reports without writing a single SQL statement manually. Common use cases include exploring local data files, prototyping application schemas, auditing CSV imports, running ad-hoc analytics on app databases, and letting AI agents manage lightweight structured storage during agentic workflows. The server exposes tools for query execution, schema introspection, and memo-style business insights that synthesize query results into readable summaries. It requires a path to an existing .db file as a startup argument. Install with: npx @modelcontextprotocol/server-sqlite /path/to/your-database.db. Works with Claude Desktop, Cursor, VS Code, and all MCP-compatible clients. For developers who want AI to reason directly over structured data stored locally, the SQLite MCP server is the fastest path from question to answer without leaving your AI chat interface.',
+    description: 'conversational read and write access to any SQLite database file, plus a running business-insights memo that accumulates what the analysis turns up. It is a Python server on PyPI, not a Node one, and the difference is the single most common reason setups fail here: `@modelcontextprotocol/server-sqlite` does not exist on npm, so every npx line for it 404s. The working invocation is `uvx mcp-server-sqlite --db-path /path/to/database.db` (PyPI package mcp-server-sqlite, v2025.4.25), or the equivalent `mcp/sqlite` Docker image with a volume mounted at /mcp. The --db-path argument is required and points at the .db file; the server will create it if it is not there yet. Six tools are exposed, deliberately split by risk: read_query for SELECT only, write_query for INSERT/UPDATE/DELETE, create_table for DDL, list_tables and describe-table for schema introspection, and append_insight, which writes into a memo://insights resource that updates live as findings accumulate — that resource, not the SQL tools, is what makes this server different from a generic database connector. It also ships an mcp-demo prompt that takes a business topic, generates a plausible schema and sample data, and walks through an analysis end to end, which is the fastest way to see the memo behaviour without wiring up real data. One caveat to weigh before adopting it: this is an Anthropic reference implementation that now lives in modelcontextprotocol/servers-archived, archived on 2025-05-28. The published package still installs and runs, but it is frozen — no new features, no dependency updates, and no security patches.',
     author: 'Anthropic',
     github_url: 'https://github.com/modelcontextprotocol/servers-archived/tree/main/src/sqlite',
     source_verified: true,
     verification: 'archived',
     categories: ['database'],
     integrations: ['claude-desktop', 'cursor', 'vs-code', 'windsurf', 'cline'],
-    install_type: 'npm',
-    install_command: 'npx @modelcontextprotocol/server-sqlite /path/to/database.db',
-    install_verified: false,
-    install_checked: '2026-07-31',
+    install_type: 'pip',
+    install_command: 'uvx mcp-server-sqlite --db-path /path/to/database.db',
+    install_verified: true,
+    install_checked: '2026-08-01',
     official: true,
   },
   {
@@ -1176,7 +1200,7 @@ const _serversPart1: MCPServer[] = [
   {
     slug: 'terraform',
     name: 'Terraform MCP Server',
-    description: 'The Terraform MCP Server is HashiCorp\'s official integration that brings Terraform\'s infrastructure-as-code capabilities into AI assistants via the Model Context Protocol. It connects Claude Desktop, Cursor, VS Code, and other MCP clients to the Terraform ecosystem — letting you explore providers, look up module schemas, validate configurations, and work with HCP Terraform (Terraform Cloud) all through natural-language conversation. Core tools include: search the Terraform Registry for modules and providers by keyword, retrieve full provider schema documentation including resource arguments and attribute types, look up specific module input/output variables and their defaults, resolve provider version constraints and compatibility matrices, and run Terraform operations against HCP Terraform workspaces including plan, apply, and state inspection. A key use case is AI-assisted IaC authoring: ask Claude to "generate a Terraform module for an AWS VPC with public and private subnets using the latest aws provider schema" and the server fetches the live provider schema to ensure accurate attribute names and types rather than hallucinating outdated syntax. For HCP Terraform users, workspace integration supports listing workspaces, triggering runs, and checking plan output. HashiCorp maintains the server at hashicorp/terraform-mcp-server and distributes it as a pre-built binary for Linux, macOS (arm64 + amd64), and Windows. Install via: `npx @hashicorp/terraform-mcp-server`. Pairs well with GitHub MCP for full IaC PR review workflows.',
+    description: 'live Terraform Registry data — provider schemas, module inputs and outputs, policy libraries — plus full HCP Terraform and Terraform Enterprise workspace management, so an AI assistant writes HCL against the real resource arguments instead of inventing attribute names from memory. HashiCorp distributes it as a Go binary and a Docker image, not as an npm package: `@hashicorp/terraform-mcp-server` returns 404 on the npm registry, so npx configurations copied from older write-ups cannot work. The supported install is the hashicorp/terraform-mcp-server image on Docker Hub (v1.1.0, released 2026-07-14), run with `docker run -i --rm hashicorp/terraform-mcp-server:1.1.0`, or the release binary invoked as `terraform-mcp-server stdio`. Both transports are supported: stdio for local clients, and streamable-http via `terraform-mcp-server streamable-http --transport-port 8080 --mcp-endpoint /mcp` for shared deployments. Registry lookups need no credentials at all — only the HCP Terraform and Terraform Enterprise tools do, via TFE_TOKEN plus TFE_ADDRESS (which must include the protocol, e.g. https://app.terraform.io, and in streamable-http mode can only be set as an environment variable, never supplied by a client header). Two flags matter before you expose it to a team: ENABLE_TF_OPERATIONS is false by default and gates the tools that mutate infrastructure, and the HTTP server defaults to strict CORS with 10:20 global and 5:10 per-session rate limits, an MCP_ORGANIZATION_ALLOWLIST for restricting which HCP organisations can connect, and required MCP_TLS_CERT_FILE / MCP_TLS_KEY_FILE for any non-localhost bind. Server instructions live in cmd/terraform-mcp-server/instructions.md and are meant to be replaced with your own conventions if the default answers do not match how your organisation writes Terraform.',
     author: 'HashiCorp',
     github_url: 'https://github.com/hashicorp/terraform-mcp-server',
     source_verified: true,
@@ -1184,11 +1208,11 @@ const _serversPart1: MCPServer[] = [
     website_url: 'https://terraform.io',
     categories: ['devops', 'cloud'],
     integrations: ['claude-desktop', 'cursor', 'vs-code', 'windsurf', 'cline'],
-    install_type: 'npm',
-    install_command: 'npx @hashicorp/terraform-mcp-server',
-    install_verified: false,
-    install_checked: '2026-07-31',
-    stars: 680,
+    install_type: 'docker',
+    install_command: 'docker run -i --rm hashicorp/terraform-mcp-server:1.1.0',
+    install_verified: true,
+    install_checked: '2026-08-01',
+    stars: 1492,
     official: true,
   },
   {
@@ -6919,22 +6943,22 @@ const _serversPart1: MCPServer[] = [
   },
   {
     slug: 'stagehand',
-    name: 'Stagehand',
-    description: 'AI-native browser automation MCP from Browserbase. Extract structured data, automate complex web interactions, and test websites with natural language instructions.',
-    author: 'browserbase',
-    github_url: null,
-    source_verified: false,
-    verification: 'unresolved',
+    name: 'Stagehand (Browserbase) MCP Server',
+    description: 'cloud browser automation driven by natural-language instructions rather than CSS selectors, running on Browserbase\'s hosted browsers via the Stagehand framework. The package name has changed and the old one is gone: `@browserbasehq/mcp-stagehand` is not on the npm registry, and the server that replaced it is published as @browserbasehq/mcp-server-browserbase (v2.4.3). Browserbase\'s own recommendation is to skip the local install entirely and use the hosted server at https://mcp.browserbase.com/mcp over streamable HTTP — they run it and cover the Gemini inference costs that Stagehand\'s instruction-following needs. Clients without HTTP transport can reach the same endpoint through `npx mcp-remote https://mcp.browserbase.com/mcp`. Six tools are exposed, and they map onto Stagehand\'s model rather than a raw browser API: start and end open and close a Browserbase session, navigate takes a URL, act performs an action described in plain language, observe returns the actionable elements on the current page so an agent can plan before it clicks, and extract pulls structured data out according to an instruction. The observe-then-act split is the reason this holds up better than selector-based automation on pages that change layout between runs. Worth knowing before you self-host: the browserbase/mcp-server-browserbase repository was archived on 2026-07-20 and its README now states it is retained for historical purposes and should not be treated as representative of Browserbase\'s current production service. The npm package still installs, but the hosted endpoint is the maintained path.',
+    author: 'Browserbase',
+    github_url: 'https://github.com/browserbase/mcp-server-browserbase',
+    source_verified: true,
+    verification: 'archived',
     website_url: 'https://stagehand.dev',
     categories: ['browser', 'ai'],
     integrations: ['claude-desktop', 'cursor', 'vs-code', 'windsurf', 'cline'],
     install_type: 'npm',
-    install_command: 'npx @browserbasehq/mcp-stagehand',
-    install_verified: false,
-    install_checked: '2026-07-31',
+    install_command: 'npx @browserbasehq/mcp-server-browserbase',
+    install_verified: true,
+    install_checked: '2026-08-01',
     official: true,
     featured: true,
-    stars: 920,
+    stars: 3417,
   },
 
   // --- Design & Creative ---
