@@ -48,6 +48,24 @@ function capitalize(text: string) {
   return text.charAt(0).toUpperCase() + text.slice(1);
 }
 
+/**
+ * True when a description already opens by naming the server itself — either
+ * "Supabase MCP Server connects…" or "The Brave Search MCP server is…".
+ *
+ * The mid-sentence templates below ("X MCP Server provides …") assume the
+ * description is a bare noun phrase. Roughly 80 of the deepest, most-enriched
+ * entries are not: they open with a full self-naming sentence, which rendered
+ * as "Supabase MCP Server provides supabase MCP Server connects…" — a
+ * duplicated name plus a lower-cased proper noun, in the <title>-adjacent meta
+ * description and OpenGraph copy of exactly the pages we most want ranking.
+ * When the description names itself, let it stand as its own sentence instead
+ * of forcing it into the template.
+ */
+function isSelfNaming(text: string, baseName: string) {
+  const escaped = baseName.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  return new RegExp(`^(the\\s+)?${escaped}\\b`, "i").test(text.trim());
+}
+
 export async function generateStaticParams() {
   return servers.map((server) => ({
     slug: server.slug,
@@ -66,7 +84,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   // Descriptions are authored as lowercase-safe noun phrases so they read as
   // grammar when injected mid-sentence (see the intro line below). Anywhere a
   // description *starts* a sentence it has to be re-capitalised first.
-  const sentenceDescription = `${baseName} MCP Server provides ${uncapitalize(server.description)}`;
+  const sentenceDescription = isSelfNaming(server.description, baseName)
+    ? capitalize(server.description)
+    : `${baseName} MCP Server provides ${uncapitalize(server.description)}`;
 
   return {
     title: `${baseName} MCP Server — Setup, Features & Alternatives | MyMCPTools`,
@@ -220,7 +240,17 @@ export default async function ServerPage({ params }: Props) {
                   )}
                 </div>
                 <p className="text-gray-300 leading-relaxed mb-2">
-                  The {baseName} MCP server, built by {server.author}, provides {uncapitalize(capability)}. It is {server.official ? "officially maintained" : "community-built"} and best for {primaryCategory}.
+                  {isSelfNaming(capability, baseName) ? (
+                    <>
+                      {capitalize(capability)}. Built by {server.author}, it is{" "}
+                      {server.official ? "officially maintained" : "community-built"} and best for {primaryCategory}.
+                    </>
+                  ) : (
+                    <>
+                      The {baseName} MCP server, built by {server.author}, provides {uncapitalize(capability)}. It is{" "}
+                      {server.official ? "officially maintained" : "community-built"} and best for {primaryCategory}.
+                    </>
+                  )}
                 </p>
                 <p className="text-gray-500">by {server.author}</p>
               </div>
