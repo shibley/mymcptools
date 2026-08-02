@@ -61,6 +61,22 @@ function capitalize(text: string) {
  * When the description names itself, let it stand as its own sentence instead
  * of forcing it into the template.
  */
+/**
+ * The display phrase for a server, avoiding "MCP Inspector MCP Server".
+ *
+ * Every title, meta description and intro line here appends "MCP Server" to
+ * the base name, which is right for "Supabase" and wrong for the handful of
+ * entries whose own name already leads with "MCP" — the MCP Inspector, MCP
+ * Sports, MCP Provenance Monitor. Those rendered a doubled acronym in the
+ * <title>, which is the one string a searcher reads before clicking.
+ * `mcpPhrase("MCP Inspector")` → "MCP Inspector"; `mcpPhrase("Supabase")` →
+ * "Supabase MCP Server". The lower-cased variant is for mid-sentence use.
+ */
+function mcpPhrase(baseName: string, lower = false) {
+  if (/^MCP\b/i.test(baseName)) return baseName;
+  return `${baseName} MCP ${lower ? "server" : "Server"}`;
+}
+
 function isSelfNaming(text: string, baseName: string) {
   const escaped = baseName.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
   return new RegExp(`^(the\\s+)?${escaped}\\b`, "i").test(text.trim());
@@ -86,13 +102,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   // description *starts* a sentence it has to be re-capitalised first.
   const sentenceDescription = isSelfNaming(server.description, baseName)
     ? capitalize(server.description)
-    : `${baseName} MCP Server provides ${uncapitalize(server.description)}`;
+    : `${mcpPhrase(baseName)} provides ${uncapitalize(server.description)}`;
 
   return {
-    title: `${baseName} MCP Server — Setup, Features & Alternatives | MyMCPTools`,
-    description: `${sentenceDescription} Learn how to install and configure the ${baseName} MCP server for Claude, Cursor, VS Code, and more.`,
+    title: `${mcpPhrase(baseName)} — Setup, Features & Alternatives | MyMCPTools`,
+    description: `${sentenceDescription} Learn how to install and configure the ${mcpPhrase(baseName, true)} for Claude, Cursor, VS Code, and more.`,
     openGraph: {
-      title: `${baseName} MCP Server | MyMCPTools`,
+      title: `${mcpPhrase(baseName)} | MyMCPTools`,
       description: sentenceDescription,
       type: "article",
     },
@@ -247,7 +263,7 @@ export default async function ServerPage({ params }: Props) {
                     </>
                   ) : (
                     <>
-                      The {baseName} MCP server, built by {server.author}, provides {uncapitalize(capability)}. It is{" "}
+                      The {mcpPhrase(baseName, true)}, built by {server.author}, provides {uncapitalize(capability)}. It is{" "}
                       {server.official ? "officially maintained" : "community-built"} and best for {primaryCategory}.
                     </>
                   )}
