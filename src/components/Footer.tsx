@@ -43,6 +43,9 @@ export function Footer() {
             <h3 className="font-semibold text-white mb-3">Resources</h3>
             <ul className="space-y-2 text-sm text-gray-400">
               <li><Link href="/blog" className="hover:text-white transition">Blog</Link></li>
+              <li><Link href="/mcp-gateway" className="hover:text-white transition">MCP Gateway</Link></li>
+              <li><Link href="/mcp-marketplace" className="hover:text-white transition">MCP Marketplace</Link></li>
+              <li><Link href="/claude-mcp-servers" className="hover:text-white transition">Claude MCP Servers</Link></li>
               <li><Link href="/submit" className="hover:text-white transition">Submit Server</Link></li>
               <li><Link href="/compare" className="hover:text-white transition">Compare Servers</Link></li>
               <li><Link href="/trust" className="hover:text-white transition">MCP Trust Registry</Link></li>

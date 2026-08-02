@@ -71,9 +71,17 @@ function capitalize(text: string) {
  * <title>, which is the one string a searcher reads before clicking.
  * `mcpPhrase("MCP Inspector")` → "MCP Inspector"; `mcpPhrase("Supabase")` →
  * "Supabase MCP Server". The lower-cased variant is for mid-sentence use.
+ *
+ * The leading-MCP check is not enough on its own: the gateway entries added
+ * 2026-08-02 are named "ContextForge MCP Gateway" / "Docker MCP Gateway", where
+ * the acronym sits mid-name, and those rendered "… MCP Gateway MCP Server".
+ * The general rule is simply that a name already carrying "MCP" as a word does
+ * not need the phrase appended — `\s+MCP\s+Servers?$` is stripped from the base
+ * name upstream, so anything reaching here with an "MCP" in it is a name like
+ * "MCP Inspector" or "Docker MCP Gateway" that already reads correctly.
  */
 function mcpPhrase(baseName: string, lower = false) {
-  if (/^MCP\b/i.test(baseName)) return baseName;
+  if (/\bMCP\b/i.test(baseName)) return baseName;
   return `${baseName} MCP ${lower ? "server" : "Server"}`;
 }
 

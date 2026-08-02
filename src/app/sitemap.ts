@@ -74,6 +74,33 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'daily',
       priority: 0.9,
     },
+    // Hub / head-term landing pages. These shipped 2026-06-29 (marketplace, claude-mcp-servers)
+    // and 2026-08-02 (gateway) but were never listed here, so they were orphaned from the
+    // sitemap entirely — which is the likeliest reason none of them ever ranked.
+    {
+      url: `${baseUrl}/mcp-gateway`,
+      lastModified: now,
+      changeFrequency: 'weekly',
+      priority: 0.9,
+    },
+    {
+      url: `${baseUrl}/mcp-marketplace`,
+      lastModified: now,
+      changeFrequency: 'weekly',
+      priority: 0.9,
+    },
+    {
+      url: `${baseUrl}/claude-mcp-servers`,
+      lastModified: now,
+      changeFrequency: 'weekly',
+      priority: 0.9,
+    },
+    {
+      url: `${baseUrl}/mcp-server`,
+      lastModified: now,
+      changeFrequency: 'weekly',
+      priority: 0.8,
+    },
   ];
 
   // Server pages
