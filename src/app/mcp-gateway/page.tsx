@@ -3,14 +3,14 @@ import Link from "next/link";
 import { getServerBySlug } from "@/data/servers";
 
 export const metadata: Metadata = {
-  title: "MCP Gateway — Compare the 6 Options for Proxying MCP Servers | MyMCPTools",
+  title: "MCP Gateway — Compare the 10 Options for Proxying MCP Servers | MyMCPTools",
   description:
-    "What an MCP gateway is, when you need one, and how ContextForge, Docker MCP Gateway, agentgateway, LiteLLM, Composio and Kong compare on federation, auth, guardrails and deployment.",
+    "What an MCP gateway is, when you need one, and how ContextForge, Docker MCP Gateway, agentgateway, Obot, MetaMCP, LiteLLM, Composio, mcpo, MCP Proxy and Kong compare on federation, auth, guardrails and deployment.",
   alternates: {
     canonical: "https://mymcptools.com/mcp-gateway",
   },
   openGraph: {
-    title: "MCP Gateway — Compare the 6 Options | MyMCPTools",
+    title: "MCP Gateway — Compare the 10 Options | MyMCPTools",
     description:
       "An MCP gateway federates many MCP servers behind one endpoint and adds auth, rate limiting and observability. Compare the real options side by side.",
     type: "website",
@@ -82,6 +82,46 @@ const gateways: GatewayRow[] = [
     strength: "Fronts MCP traffic with an existing API gateway estate; agent-side Konnect analytics",
     deploy: "Hosted remote server",
     license: "Commercial",
+  },
+  {
+    slug: "obot",
+    label: "Obot",
+    vendor: "Obot AI",
+    shape: "Governance platform",
+    strength:
+      "Composite servers exposing selected tools from many upstreams; per-user and per-group tool access, plus device-side audit via Sentry",
+    deploy: "Container for evaluation, Kubernetes for production",
+    license: "MIT",
+  },
+  {
+    slug: "metamcp",
+    label: "MetaMCP",
+    vendor: "MetaTool AI",
+    shape: "Aggregator + namespaces",
+    strength:
+      "Namespaces you can repoint an endpoint at in one click; tool overrides and annotations to disambiguate duplicate tool names",
+    deploy: "Single Docker Compose stack",
+    license: "MIT",
+  },
+  {
+    slug: "tbxark-mcp-proxy",
+    label: "MCP Proxy (TBXark)",
+    vendor: "Community (Go)",
+    shape: "Minimal proxy",
+    strength:
+      "One binary, one JSON file, no control plane; authorizes OAuth downstreams once and refreshes the token for every caller",
+    deploy: "Go install, source build, or container",
+    license: "MIT",
+  },
+  {
+    slug: "mcpo",
+    label: "mcpo",
+    vendor: "Open WebUI",
+    shape: "MCP-to-OpenAPI proxy",
+    strength:
+      "Turns MCP servers into plain REST with generated OpenAPI docs — for stacks that consume OpenAPI, not MCP",
+    deploy: "uvx, pip, or container",
+    license: "MIT",
   },
 ];
 
@@ -280,9 +320,10 @@ export default function MCPGatewayPage() {
         <section id="compare" className="mb-12 scroll-mt-8">
           <h2 className="text-2xl font-bold text-white mb-3">MCP gateway comparison</h2>
           <p className="text-gray-400 mb-6 max-w-3xl text-sm">
-            These are not six versions of the same product. The &quot;shape&quot; column is the one to read first — a local
-            container runtime, a Kubernetes data plane, and a hosted multi-tenant service solve genuinely different
-            problems.
+            These are not ten versions of the same product. The &quot;shape&quot; column is the one to read first — a
+            local container runtime, a Kubernetes data plane, a governance platform, a single aggregating binary and a
+            hosted multi-tenant service solve genuinely different problems. One entry, mcpo, is not an MCP endpoint at
+            all: it points the other way, turning MCP servers into OpenAPI services.
           </p>
           <div className="overflow-x-auto border border-gray-800 rounded-xl">
             <table className="w-full text-sm">
@@ -317,7 +358,7 @@ export default function MCPGatewayPage() {
             </table>
           </div>
           <p className="text-gray-600 text-xs mt-3">
-            Star counts and repository status verified against the GitHub API on 2 August 2026. Each name links to its
+            Star counts and repository status verified against the GitHub API on 3 August 2026. Each name links to its
             full listing with install commands and setup detail.
           </p>
         </section>
@@ -357,6 +398,26 @@ export default function MCPGatewayPage() {
                 h: "Kong — API gateway adjacent",
                 d: "Kong appears on both sides of this conversation. Kong Gateway is a general API gateway that can front MCP traffic as part of an existing estate, and Kong publishes AI-gateway guidance for that pattern. Separately, the Konnect MCP server lets an agent read Konnect analytics and configuration. Worth flagging because most directories get it wrong: the community Kong/mcp-konnect repository is deprecated and headed for archive — Kong's supported path is the hosted remote Konnect MCP server.",
               },
+              {
+                slug: "obot",
+                h: "Obot — governance rather than plumbing",
+                d: "The option that treats the gateway as one piece of an access-control system rather than the whole product. Alongside proxying hosted and external servers, it composes virtual servers exposing selected tools from several upstreams, gates server and tool access by user or identity-provider group, and holds MCP OAuth tokens, shared credentials and Kubernetes secret bindings centrally. A second LLM gateway covers model access with per-user model policies and recorded token cost. Obot Sentry extends the audit trail onto laptops by hooking Claude Code, Codex, Cursor and VS Code directly, so local tool calls land in the same log as gateway traffic — device management is beta. The Docker quick start mounts the host Docker socket and is explicitly evaluation-only; production means the Kubernetes deployment.",
+              },
+              {
+                slug: "metamcp",
+                h: "MetaMCP — namespaces and tool curation",
+                d: "The most direct answer to the tool-count problem. Servers are grouped into namespaces, each namespace is hosted as one aggregate MCP server on a public SSE or streamable-HTTP endpoint, and you pick which tools that namespace surfaces instead of inheriting every upstream tool. Repointing an endpoint at a different namespace is one click, so client configs stay untouched. Tool overrides and annotations let you rename or re-describe a tool, which matters when two upstream servers both ship a generic search. Two operational gotchas: CORS is enforced against APP_URL, so changing that variable makes the app unreachable from anywhere else, and the Postgres volume name is global and will collide with another Postgres container unless renamed. The maintainer has flagged review delays and now merges AI-assisted changes on an ai-dev branch — test images built from it.",
+              },
+              {
+                slug: "tbxark-mcp-proxy",
+                h: "MCP Proxy (TBXark) — the minimal one",
+                d: "The right pick when you want plumbing and explicitly not governance: a single Go binary and one JSON config file, no database, UI or control plane. It merges tools, prompts and resources from stdio, SSE and streamable-HTTP downstreams onto one HTTP entrypoint, which is also the simplest way to put a stdio-only server on the network. Its standout feature is OAuth client support — authorize once against a downstream that needs an interactive flow, and the proxy holds and refreshes that token for every caller, removing the per-user browser step that blocks headless deployments. The container image bundles npx and uvx so it can launch Node and Python servers itself, and accepts a remote config URL, letting a fleet of proxies read one hosted file. An online converter turns an existing Claude Desktop config into its format.",
+              },
+              {
+                slug: "mcpo",
+                h: "mcpo — the one that is not an MCP endpoint",
+                d: "Included because it is the answer for a question the rest of this page cannot address: what if the thing consuming your tools speaks OpenAPI, not MCP? mcpo wraps an MCP server and exposes its tools as REST endpoints with a generated OpenAPI schema and interactive docs, so agent frameworks, SDK codegen and existing API gateways can call MCP tools without implementing the protocol. A Claude-Desktop-format config file serves many servers at once, each on its own route with its own docs page, and --hot-reload picks up changes without downtime. It handles OAuth 2.1 upstreams via dynamic client registration, and --root-path lets it sit behind a reverse proxy. Note the repository's last push was May 2026 — stable rather than actively evolving.",
+              },
             ].map((n) => (
               <div key={n.slug} className="bg-gray-900 border border-gray-800 rounded-xl p-6">
                 <h3 className="text-white font-semibold mb-2">{n.h}</h3>
@@ -392,6 +453,23 @@ export default function MCPGatewayPage() {
             <li>
               <strong className="text-gray-200">Your end users each connect their own accounts</strong> — Composio, for
               per-user server URLs and managed third-party OAuth.
+            </li>
+            <li>
+              <strong className="text-gray-200">Access has to be provable per person, not per team</strong> — Obot, for
+              per-user and per-group tool access, centrally held credentials, and an audit trail that reaches onto
+              laptops.
+            </li>
+            <li>
+              <strong className="text-gray-200">Your client is drowning in tools</strong> — MetaMCP, because namespaces
+              exist to expose a curated subset and can be swapped without touching client config.
+            </li>
+            <li>
+              <strong className="text-gray-200">You want one binary and no control plane</strong> — MCP Proxy, which
+              aggregates and handles downstream OAuth without asking you to run a platform.
+            </li>
+            <li>
+              <strong className="text-gray-200">The consumer speaks OpenAPI, not MCP</strong> — mcpo, which is not an
+              MCP endpoint at all: it turns servers into documented REST APIs.
             </li>
           </ul>
         </section>
