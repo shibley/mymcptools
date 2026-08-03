@@ -139,7 +139,7 @@ const faqItems = [
   {
     question: "What is the difference between an MCP gateway and an MCP server?",
     answer:
-      "An MCP server exposes a specific capability — querying Postgres, creating a GitHub pull request, searching the web. An MCP gateway exposes other MCP servers. Confusingly, most gateways are themselves fully compliant MCP servers, because that is how the client talks to them: your client sees one server offering a merged tool list, and the gateway fans each call out to the real backend. That is why you configure a gateway in exactly the same place in claude_desktop_config.json as any other server.",
+      "An MCP server exposes a specific capability — querying Postgres, creating a GitHub pull request, searching the web. A plain MCP proxy sits between one client and one server and only translates the transport between them, adding no policy of its own. An MCP gateway exposes other MCP servers. Confusingly, most gateways are themselves fully compliant MCP servers, because that is how the client talks to them: your client sees one server offering a merged tool list, and the gateway fans each call out to the real backend. That is why you configure a gateway in exactly the same place in claude_desktop_config.json as any other server.",
   },
   {
     question: "What is the difference between an MCP gateway and an LLM gateway?",
@@ -245,6 +245,9 @@ export default function MCPGatewayPage() {
             </a>
             <Link href="/servers" className="bg-gray-800 hover:bg-gray-700 text-white px-5 py-2.5 rounded-lg font-medium transition text-sm">
               Browse all MCP servers
+            </Link>
+            <Link href="/mcp-proxy" className="bg-gray-800 hover:bg-gray-700 text-white px-5 py-2.5 rounded-lg font-medium transition text-sm">
+              MCP proxies
             </Link>
             <Link href="/mcp-marketplace" className="bg-gray-800 hover:bg-gray-700 text-white px-5 py-2.5 rounded-lg font-medium transition text-sm">
               MCP marketplace
