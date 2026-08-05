@@ -1,8 +1,8 @@
 {
-  "generatedAt": "2026-08-05T09:34:20.983Z",
+  "generatedAt": "2026-08-05T21:36:10.134Z",
   "totalEntries": 2467,
-  "scanned": 1031,
-  "withoutGithubUrl": 1436,
+  "scanned": 1032,
+  "withoutGithubUrl": 1435,
   "unparseableUrl": 0,
   "counts": {
     "critical": 9,
@@ -95,21 +95,6 @@
       "reason": "repo path \"nrwl/nx-console\" shares no token with \"nx-mcp\"/\"Nx Monorepo\" but matches other catalog entries: google-search-console"
     },
     {
-      "slug": "opc-ua-mcp",
-      "name": "OPC-UA MCP",
-      "author": "community",
-      "github_url": "https://github.com/kukapay/opcua-mcp",
-      "ownerRepo": "kukapay/opcua-mcp",
-      "severity": "critical",
-      "overlap": 0,
-      "authorMatchesOwner": false,
-      "looksLike": [
-        "opcua-mcp"
-      ],
-      "stars": 234,
-      "reason": "repo path \"kukapay/opcua-mcp\" shares no token with \"opc-ua-mcp\"/\"OPC-UA MCP\" but matches other catalog entries: opcua-mcp"
-    },
-    {
       "slug": "us-court-mcp",
       "name": "US Court MCP",
       "author": "Mahender22",
@@ -141,6 +126,21 @@
       ],
       "stars": 61,
       "reason": "repo path \"cmer81/open-meteo-mcp\" shares no token with \"weather\"/\"Weather MCP Server\" but matches other catalog entries: open-meteo-mcp"
+    },
+    {
+      "slug": "opc-ua-mcp",
+      "name": "OPC-UA MCP Server",
+      "author": "kukapay (Community)",
+      "github_url": "https://github.com/kukapay/opcua-mcp",
+      "ownerRepo": "kukapay/opcua-mcp",
+      "severity": "critical",
+      "overlap": 0,
+      "authorMatchesOwner": true,
+      "looksLike": [
+        "opcua-mcp"
+      ],
+      "stars": 29,
+      "reason": "repo path \"kukapay/opcua-mcp\" shares no token with \"opc-ua-mcp\"/\"OPC-UA MCP Server\" but matches other catalog entries: opcua-mcp"
     },
     {
       "slug": "azure",
