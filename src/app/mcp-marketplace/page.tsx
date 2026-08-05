@@ -155,6 +155,9 @@ export default function MCPMarketplacePage() {
             <Link href="/category" className="bg-gray-800 hover:bg-gray-700 text-white px-5 py-2.5 rounded-lg font-medium transition text-sm">
               Browse by Category
             </Link>
+            <Link href="/mcp-registry" className="bg-gray-800 hover:bg-gray-700 text-white px-5 py-2.5 rounded-lg font-medium transition text-sm">
+              MCP Registry Guide
+            </Link>
           </div>
         </div>
 
