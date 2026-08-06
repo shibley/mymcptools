@@ -1,0 +1,1631 @@
+{
+  "scanned": 327,
+  "counts": {
+    "critical": 4,
+    "high": 7,
+    "medium": 138,
+    "low": 31
+  },
+  "findings": [
+    {
+      "slug": "easypost-mcp",
+      "name": "EasyPost MCP",
+      "severity": "critical",
+      "pkg": "easypost-mcp",
+      "entryRepo": "pipeworx-io/mcp-easypost",
+      "pkgRepo": "your-org/easypost-mcp",
+      "reason": "package points at a DIFFERENT owner AND repo than the page links — a reader following the install command gets other software"
+    },
+    {
+      "slug": "lightdash-mcp",
+      "name": "Lightdash",
+      "severity": "critical",
+      "pkg": "lightdash-mcp",
+      "entryRepo": "syucream/lightdash-mcp-server",
+      "pkgRepo": "timeleft-dev/lightdash-mcp",
+      "reason": "package points at a DIFFERENT owner AND repo than the page links — a reader following the install command gets other software"
+    },
+    {
+      "slug": "make-com",
+      "name": "Make (Integromat)",
+      "severity": "critical",
+      "pkg": "make-mcp-server",
+      "entryRepo": "integromat/make-mcp-server",
+      "pkgRepo": "danishashko/make-mcp",
+      "reason": "package points at a DIFFERENT owner AND repo than the page links — a reader following the install command gets other software"
+    },
+    {
+      "slug": "repomix-mcp",
+      "name": "Repomix",
+      "severity": "critical",
+      "pkg": "repomix-mcp",
+      "entryRepo": "yamadashy/repomix",
+      "pkgRepo": "lotarcc/repomix-mcp",
+      "reason": "package points at a DIFFERENT owner AND repo than the page links — a reader following the install command gets other software"
+    },
+    {
+      "slug": "capacities-mcp",
+      "name": "Capacities",
+      "severity": "high",
+      "pkg": "capacities-mcp",
+      "entryRepo": "jem-computer/capacities-mcp",
+      "pkgRepo": "jemgold/capacities-mcp",
+      "reason": "SAME repo name, DIFFERENT owner — classic package-name collision (the `sendgrid` shape)"
+    },
+    {
+      "slug": "greenhouse-mcp",
+      "name": "Greenhouse MCP",
+      "severity": "high",
+      "pkg": "greenhouse-mcp",
+      "entryRepo": "alexmeckes/greenhouse-mcp",
+      "pkgRepo": "bhanuprakashd/greenhouse-mcp",
+      "reason": "SAME repo name, DIFFERENT owner — classic package-name collision (the `sendgrid` shape)"
+    },
+    {
+      "slug": "huggingface",
+      "name": "Hugging Face MCP Server",
+      "severity": "high",
+      "pkg": "@llmindset/hf-mcp-server",
+      "entryRepo": "huggingface/hf-mcp-server",
+      "pkgRepo": "evalstate/hf-mcp-server",
+      "reason": "SAME repo name, DIFFERENT owner — classic package-name collision (the `sendgrid` shape)"
+    },
+    {
+      "slug": "huggingface-mcp",
+      "name": "HuggingFace Hub MCP Server",
+      "severity": "high",
+      "pkg": "@llmindset/hf-mcp-server",
+      "entryRepo": "huggingface/hf-mcp-server",
+      "pkgRepo": "evalstate/hf-mcp-server",
+      "reason": "SAME repo name, DIFFERENT owner — classic package-name collision (the `sendgrid` shape)"
+    },
+    {
+      "slug": "payload-cms-mcp",
+      "name": "Payload CMS",
+      "severity": "high",
+      "pkg": "payload-cms-mcp",
+      "entryRepo": "disruption-hub/payloadcmsmcp",
+      "pkgRepo": "matmax-worldwide/payloadcmsmcp",
+      "reason": "SAME repo name, DIFFERENT owner — classic package-name collision (the `sendgrid` shape)"
+    },
+    {
+      "slug": "sap-abap-adt-mcp",
+      "name": "SAP ABAP ADT",
+      "severity": "high",
+      "pkg": "mcp-abap-adt",
+      "entryRepo": "fr0ster/mcp-abap-adt",
+      "pkgRepo": "mario-andreschak/mcp-abap-adt",
+      "reason": "SAME repo name, DIFFERENT owner — classic package-name collision (the `sendgrid` shape)"
+    },
+    {
+      "slug": "spotdraft-mcp",
+      "name": "SpotDraft MCP Server",
+      "severity": "high",
+      "pkg": "@spotdraft/spotdraft-mcp",
+      "entryRepo": "mattdavisrv/spotdraft-mcp",
+      "pkgRepo": "spotdraft/spotdraft-mcp",
+      "reason": "SAME repo name, DIFFERENT owner — classic package-name collision (the `sendgrid` shape)"
+    },
+    {
+      "slug": "adyen-mcp",
+      "name": "Adyen MCP",
+      "severity": "medium",
+      "pkg": "@adyen/mcp-server",
+      "entryRepo": "adyen/adyen-mcp",
+      "pkgRepo": null,
+      "reason": "npm package `@adyen/mcp-server` does not exist (404) — install_command is not copy-pasteable"
+    },
+    {
+      "slug": "ai-data-parser",
+      "name": "AI Data Parser",
+      "severity": "medium",
+      "pkg": "aidataparser",
+      "entryRepo": "shibley/aidataparser",
+      "pkgRepo": null,
+      "reason": "npm package `aidataparser` does not exist (404) — install_command is not copy-pasteable"
+    },
+    {
+      "slug": "alchemy-mcp",
+      "name": "Alchemy MCP",
+      "severity": "medium",
+      "pkg": "alchemy-mcp",
+      "entryRepo": "alchemyplatform/alchemy-mcp",
+      "pkgRepo": null,
+      "reason": "npm package `alchemy-mcp` does not exist (404) — install_command is not copy-pasteable"
+    },
+    {
+      "slug": "alienvaul-otx-mcp",
+      "name": "AlienVault OTX",
+      "severity": "medium",
+      "pkg": "alienvault-otx-mcp",
+      "entryRepo": "pipeworx-io/mcp-alienvault-otx",
+      "pkgRepo": null,
+      "reason": "npm package `alienvault-otx-mcp` does not exist (404) — install_command is not copy-pasteable"
+    },
+    {
+      "slug": "amplitude-mcp",
+      "name": "Amplitude Analytics MCP",
+      "severity": "medium",
+      "pkg": "mcp-amplitude",
+      "entryRepo": "amplitude/amplitude-mcp-analytics-node",
+      "pkgRepo": null,
+      "reason": "npm package `mcp-amplitude` does not exist (404) — install_command is not copy-pasteable"
+    },
+    {
+      "slug": "anythingllm-mcp",
+      "name": "AnythingLLM",
+      "severity": "medium",
+      "pkg": "anythingllm-mcp",
+      "entryRepo": "raqueljezweb/anythingllm-mcp-server",
+      "pkgRepo": null,
+      "reason": "npm package `anythingllm-mcp` does not exist (404) — install_command is not copy-pasteable"
+    },
+    {
+      "slug": "atlan-mcp",
+      "name": "Atlan",
+      "severity": "medium",
+      "pkg": "atlan-mcp",
+      "entryRepo": "projectatlantis-dev/atlantis-mcp-server",
+      "pkgRepo": null,
+      "reason": "npm package `atlan-mcp` does not exist (404) — install_command is not copy-pasteable"
+    },
+    {
+      "slug": "aweber-mcp",
+      "name": "AWeber MCP",
+      "severity": "medium",
+      "pkg": "aweber-mcp-server",
+      "entryRepo": "aweber/aweber-mcp",
+      "pkgRepo": null,
+      "reason": "npm package `aweber-mcp-server` does not exist (404) — install_command is not copy-pasteable"
+    },
+    {
+      "slug": "azure-foundry-mcp",
+      "name": "Azure AI Foundry",
+      "severity": "medium",
+      "pkg": "@microsoft/foundry-mcp",
+      "entryRepo": "microsoft/mcp",
+      "pkgRepo": null,
+      "reason": "npm package `@microsoft/foundry-mcp` does not exist (404) — install_command is not copy-pasteable"
+    },
+    {
+      "slug": "azure-resource-graph-mcp",
+      "name": "Azure Resource Graph",
+      "severity": "medium",
+      "pkg": "@microsoft/resource-graph-mcp",
+      "entryRepo": "microsoft/mcp",
+      "pkgRepo": null,
+      "reason": "npm package `@microsoft/resource-graph-mcp` does not exist (404) — install_command is not copy-pasteable"
+    },
+    {
+      "slug": "azure-service-bus-mcp",
+      "name": "Azure Service Bus MCP",
+      "severity": "medium",
+      "pkg": "azure-service-bus-mcp",
+      "entryRepo": "hitenpratap/azure-service-bus-mcp",
+      "pkgRepo": null,
+      "reason": "npm package `azure-service-bus-mcp` does not exist (404) — install_command is not copy-pasteable"
+    },
+    {
+      "slug": "backstage-mcp",
+      "name": "Backstage",
+      "severity": "medium",
+      "pkg": "backstage-mcp",
+      "entryRepo": "iocanel/backstage-mcp",
+      "pkgRepo": null,
+      "reason": "npm package `backstage-mcp` does not exist (404) — install_command is not copy-pasteable"
+    },
+    {
+      "slug": "bitstamp-mcp",
+      "name": "Bitstamp",
+      "severity": "medium",
+      "pkg": "bitstamp-mcp",
+      "entryRepo": "pipeworx-io/mcp-bitstamp",
+      "pkgRepo": null,
+      "reason": "npm package `bitstamp-mcp` does not exist (404) — install_command is not copy-pasteable"
+    },
+    {
+      "slug": "builder-io-mcp",
+      "name": "Builder.io",
+      "severity": "medium",
+      "pkg": "builder-io-mcp",
+      "entryRepo": "salacoste/mcp-n8n-workflow-builder",
+      "pkgRepo": null,
+      "reason": "npm package `builder-io-mcp` does not exist (404) — install_command is not copy-pasteable"
+    },
+    {
+      "slug": "chess-com-mcp",
+      "name": "Chess.com MCP",
+      "severity": "medium",
+      "pkg": "mcp-server-chesscom",
+      "entryRepo": "pab1it0/chess-mcp",
+      "pkgRepo": null,
+      "reason": "npm package `mcp-server-chesscom` does not exist (404) — install_command is not copy-pasteable"
+    },
+    {
+      "slug": "chorus-ai-mcp",
+      "name": "Chorus.ai",
+      "severity": "medium",
+      "pkg": "chorus-ai-mcp",
+      "entryRepo": "opensourceops/chorus-mcp-server",
+      "pkgRepo": null,
+      "reason": "npm package `chorus-ai-mcp` does not exist (404) — install_command is not copy-pasteable"
+    },
+    {
+      "slug": "cloudflare-api-mcp",
+      "name": "Cloudflare Full API",
+      "severity": "medium",
+      "pkg": "@cloudflare/mcp-server",
+      "entryRepo": "cloudflare/mcp",
+      "pkgRepo": null,
+      "reason": "npm package `@cloudflare/mcp-server` does not exist (404) — install_command is not copy-pasteable"
+    },
+    {
+      "slug": "cloudflare-d1-mcp",
+      "name": "Cloudflare D1 MCP",
+      "severity": "medium",
+      "pkg": "cloudflare-d1-mcp",
+      "entryRepo": "cloudflare/workers-mcp",
+      "pkgRepo": null,
+      "reason": "npm package `cloudflare-d1-mcp` does not exist (404) — install_command is not copy-pasteable"
+    },
+    {
+      "slug": "cloudinary-mcp",
+      "name": "Cloudinary MCP",
+      "severity": "medium",
+      "pkg": "@cloudinary/mcp-server",
+      "entryRepo": "cloudinary/cloudinary-mcp",
+      "pkgRepo": null,
+      "reason": "npm package `@cloudinary/mcp-server` does not exist (404) — install_command is not copy-pasteable"
+    },
+    {
+      "slug": "codesignal-mcp",
+      "name": "CodeSignal",
+      "severity": "medium",
+      "pkg": "codesignal-mcp",
+      "entryRepo": "codesignal/codesignal-mcp-server",
+      "pkgRepo": null,
+      "reason": "npm package `codesignal-mcp` does not exist (404) — install_command is not copy-pasteable"
+    },
+    {
+      "slug": "cognito-mcp",
+      "name": "AWS Cognito MCP",
+      "severity": "medium",
+      "pkg": "cognito-mcp-server",
+      "entryRepo": "empires-security/mcp-oauth2-aws-cognito",
+      "pkgRepo": null,
+      "reason": "npm package `cognito-mcp-server` does not exist (404) — install_command is not copy-pasteable"
+    },
+    {
+      "slug": "constant-contact-mcp",
+      "name": "Constant Contact MCP",
+      "severity": "medium",
+      "pkg": "constant-contact-mcp-server",
+      "entryRepo": "busybee3333/constant-contact-mcp-2026-complete",
+      "pkgRepo": null,
+      "reason": "npm package `constant-contact-mcp-server` does not exist (404) — install_command is not copy-pasteable"
+    },
+    {
+      "slug": "crossplane-mcp",
+      "name": "Crossplane MCP",
+      "severity": "medium",
+      "pkg": "crossplane-mcp",
+      "entryRepo": "vfarcic/crossplane-mcp",
+      "pkgRepo": null,
+      "reason": "npm package `crossplane-mcp` does not exist (404) — install_command is not copy-pasteable"
+    },
+    {
+      "slug": "dendron-mcp",
+      "name": "Dendron",
+      "severity": "medium",
+      "pkg": "dendron-mcp",
+      "entryRepo": "hedronite/dendronous-mcp",
+      "pkgRepo": null,
+      "reason": "npm package `dendron-mcp` does not exist (404) — install_command is not copy-pasteable"
+    },
+    {
+      "slug": "descope-mcp",
+      "name": "Descope MCP",
+      "severity": "medium",
+      "pkg": "descope-mcp-server",
+      "entryRepo": "descope-sample-apps/descope-mcp-server-stdio",
+      "pkgRepo": null,
+      "reason": "npm package `descope-mcp-server` does not exist (404) — install_command is not copy-pasteable"
+    },
+    {
+      "slug": "dialogflow-mcp",
+      "name": "Dialogflow CX MCP",
+      "severity": "medium",
+      "pkg": "dialogflow-mcp-server",
+      "entryRepo": "yogeshrpdigital/dialogflow-mcp",
+      "pkgRepo": null,
+      "reason": "npm package `dialogflow-mcp-server` does not exist (404) — install_command is not copy-pasteable"
+    },
+    {
+      "slug": "discourse-mcp",
+      "name": "Discourse",
+      "severity": "medium",
+      "pkg": "discourse-mcp",
+      "entryRepo": "discourse/discourse-mcp",
+      "pkgRepo": null,
+      "reason": "npm package `discourse-mcp` does not exist (404) — install_command is not copy-pasteable"
+    },
+    {
+      "slug": "domo-mcp",
+      "name": "Domo",
+      "severity": "medium",
+      "pkg": "domo-mcp",
+      "entryRepo": "jacedomotz/domotz-mcp-server",
+      "pkgRepo": null,
+      "reason": "npm package `domo-mcp` does not exist (404) — install_command is not copy-pasteable"
+    },
+    {
+      "slug": "dwolla-mcp",
+      "name": "Dwolla ACH Payments",
+      "severity": "medium",
+      "pkg": "dwolla-mcp",
+      "entryRepo": "dwolla/dwolla-mcp",
+      "pkgRepo": null,
+      "reason": "npm package `dwolla-mcp` does not exist (404) — install_command is not copy-pasteable"
+    },
+    {
+      "slug": "dynamics-365-mcp",
+      "name": "Microsoft Dynamics 365 MCP",
+      "severity": "medium",
+      "pkg": "mcp-server-dynamics365",
+      "entryRepo": "microsoft/powerapps-samples",
+      "pkgRepo": null,
+      "reason": "npm package `mcp-server-dynamics365` does not exist (404) — install_command is not copy-pasteable"
+    },
+    {
+      "slug": "epic-games-mcp",
+      "name": "Epic Games MCP",
+      "severity": "medium",
+      "pkg": "epic-games-mcp-server",
+      "entryRepo": "iflow-mcp/mcp-epic-free-games",
+      "pkgRepo": null,
+      "reason": "npm package `epic-games-mcp-server` does not exist (404) — install_command is not copy-pasteable"
+    },
+    {
+      "slug": "estuary-flow-mcp",
+      "name": "Estuary Flow",
+      "severity": "medium",
+      "pkg": "estuary-flow-mcp",
+      "entryRepo": "danthelion/estuary-flow-mcp",
+      "pkgRepo": null,
+      "reason": "npm package `estuary-flow-mcp` does not exist (404) — install_command is not copy-pasteable"
+    },
+    {
+      "slug": "eventbrite-mcp",
+      "name": "Eventbrite",
+      "severity": "medium",
+      "pkg": "eventbrite-mcp",
+      "entryRepo": "vishalsachdev/eventbrite-mcp",
+      "pkgRepo": null,
+      "reason": "npm package `eventbrite-mcp` does not exist (404) — install_command is not copy-pasteable"
+    },
+    {
+      "slug": "expedia-mcp",
+      "name": "Expedia",
+      "severity": "medium",
+      "pkg": "expedia-mcp",
+      "entryRepo": "expediagroup/expedia-travel-recommendations-mcp",
+      "pkgRepo": null,
+      "reason": "npm package `expedia-mcp` does not exist (404) — install_command is not copy-pasteable"
+    },
+    {
+      "slug": "fda-open-mcp",
+      "name": "FDA OpenFDA",
+      "severity": "medium",
+      "pkg": "openfda-mcp",
+      "entryRepo": "augmented-nature/openfda-mcp-server",
+      "pkgRepo": null,
+      "reason": "npm package `openfda-mcp` does not exist (404) — install_command is not copy-pasteable"
+    },
+    {
+      "slug": "financekit-mcp",
+      "name": "FinanceKit",
+      "severity": "medium",
+      "pkg": "financekit-mcp",
+      "entryRepo": "vdalhambra/financekit-mcp",
+      "pkgRepo": null,
+      "reason": "npm package `financekit-mcp` does not exist (404) — install_command is not copy-pasteable"
+    },
+    {
+      "slug": "financial-datasets-mcp",
+      "name": "Financial Datasets",
+      "severity": "medium",
+      "pkg": "@financial-datasets/mcp-server",
+      "entryRepo": "financial-datasets/mcp-server",
+      "pkgRepo": null,
+      "reason": "npm package `@financial-datasets/mcp-server` does not exist (404) — install_command is not copy-pasteable"
+    },
+    {
+      "slug": "fivetran-mcp",
+      "name": "Fivetran",
+      "severity": "medium",
+      "pkg": "fivetran-mcp",
+      "entryRepo": "fivetran/fivetran-mcp",
+      "pkgRepo": null,
+      "reason": "npm package `fivetran-mcp` does not exist (404) — install_command is not copy-pasteable"
+    },
+    {
+      "slug": "fluxcd-mcp",
+      "name": "Flux CD MCP",
+      "severity": "medium",
+      "pkg": "fluxcd-mcp-server",
+      "entryRepo": "awkoy/replicate-flux-mcp",
+      "pkgRepo": null,
+      "reason": "npm package `fluxcd-mcp-server` does not exist (404) — install_command is not copy-pasteable"
+    },
+    {
+      "slug": "frame-io-mcp",
+      "name": "Frame.io",
+      "severity": "medium",
+      "pkg": "frame-io-mcp",
+      "entryRepo": "f/mcp-startup-framework",
+      "pkgRepo": null,
+      "reason": "npm package `frame-io-mcp` does not exist (404) — install_command is not copy-pasteable"
+    },
+    {
+      "slug": "fred-economic-mcp",
+      "name": "FRED MCP Server",
+      "severity": "medium",
+      "pkg": "@stefanoamorelli/fred-mcp-server",
+      "entryRepo": "stefanoamorelli/fred-mcp-server",
+      "pkgRepo": null,
+      "reason": "npm package `@stefanoamorelli/fred-mcp-server` does not exist (404) — install_command is not copy-pasteable"
+    },
+    {
+      "slug": "freshbooks-mcp",
+      "name": "FreshBooks MCP",
+      "severity": "medium",
+      "pkg": "mcp-freshbooks",
+      "entryRepo": "devolasvegas/freshbooks-mcp",
+      "pkgRepo": null,
+      "reason": "npm package `mcp-freshbooks` does not exist (404) — install_command is not copy-pasteable"
+    },
+    {
+      "slug": "getresponse-mcp",
+      "name": "GetResponse MCP",
+      "severity": "medium",
+      "pkg": "getresponse-mcp-server",
+      "entryRepo": "mateuszkami/getresponse-mcp",
+      "pkgRepo": null,
+      "reason": "npm package `getresponse-mcp-server` does not exist (404) — install_command is not copy-pasteable"
+    },
+    {
+      "slug": "godaddy-mcp",
+      "name": "GoDaddy MCP",
+      "severity": "medium",
+      "pkg": "godaddy-mcp-server",
+      "entryRepo": "harshalkatakiya/godaddy-mcp",
+      "pkgRepo": null,
+      "reason": "npm package `godaddy-mcp-server` does not exist (404) — install_command is not copy-pasteable"
+    },
+    {
+      "slug": "gradient-ai-mcp",
+      "name": "Gradient AI",
+      "severity": "medium",
+      "pkg": "gradient-ai-mcp",
+      "entryRepo": "vincentmcleese/beautiful-gradient-mcp",
+      "pkgRepo": null,
+      "reason": "npm package `gradient-ai-mcp` does not exist (404) — install_command is not copy-pasteable"
+    },
+    {
+      "slug": "grants-gov-mcp",
+      "name": "Grants.gov",
+      "severity": "medium",
+      "pkg": "grantsgov-mcp",
+      "entryRepo": "pipeworx-io/mcp-grants-gov",
+      "pkgRepo": null,
+      "reason": "npm package `grantsgov-mcp` does not exist (404) — install_command is not copy-pasteable"
+    },
+    {
+      "slug": "graphite-dev-mcp",
+      "name": "Graphite",
+      "severity": "medium",
+      "pkg": "graphite-dev-mcp",
+      "entryRepo": "graphiteai/graphite-mcp",
+      "pkgRepo": null,
+      "reason": "npm package `graphite-dev-mcp` does not exist (404) — install_command is not copy-pasteable"
+    },
+    {
+      "slug": "greynoise-mcp",
+      "name": "GreyNoise",
+      "severity": "medium",
+      "pkg": "greynoise-mcp",
+      "entryRepo": "pipeworx-io/mcp-greynoise",
+      "pkgRepo": null,
+      "reason": "npm package `greynoise-mcp` does not exist (404) — install_command is not copy-pasteable"
+    },
+    {
+      "slug": "grubhub-mcp",
+      "name": "GrubHub API",
+      "severity": "medium",
+      "pkg": "grubhub-mcp",
+      "entryRepo": "sawyershoemaker/grubhub-mcp",
+      "pkgRepo": null,
+      "reason": "npm package `grubhub-mcp` does not exist (404) — install_command is not copy-pasteable"
+    },
+    {
+      "slug": "guru-mcp",
+      "name": "Guru",
+      "severity": "medium",
+      "pkg": "guru-mcp",
+      "entryRepo": "gurupdf/gurupdf-mcp",
+      "pkgRepo": null,
+      "reason": "npm package `guru-mcp` does not exist (404) — install_command is not copy-pasteable"
+    },
+    {
+      "slug": "highlight-io-mcp",
+      "name": "Highlight.io MCP",
+      "severity": "medium",
+      "pkg": "highlight-io-mcp",
+      "entryRepo": "highlight-ing/highlight-youtube-mcp",
+      "pkgRepo": null,
+      "reason": "npm package `highlight-io-mcp` does not exist (404) — install_command is not copy-pasteable"
+    },
+    {
+      "slug": "holistics-mcp",
+      "name": "Holistics",
+      "severity": "medium",
+      "pkg": "holistics-mcp",
+      "entryRepo": "trungnguyenda/claude-to-holistics-mcp",
+      "pkgRepo": null,
+      "reason": "npm package `holistics-mcp` does not exist (404) — install_command is not copy-pasteable"
+    },
+    {
+      "slug": "homeassistant-tevonsb-mcp",
+      "name": "Home Assistant MCP (Extended)",
+      "severity": "medium",
+      "pkg": "homeassistant-mcp",
+      "entryRepo": "tevonsb/homeassistant-mcp",
+      "pkgRepo": null,
+      "reason": "npm package `homeassistant-mcp` does not exist (404) — install_command is not copy-pasteable"
+    },
+    {
+      "slug": "hopper-mcp",
+      "name": "Hopper MCP",
+      "severity": "medium",
+      "pkg": "hopper-mcp",
+      "entryRepo": "neverrend/hopper_mcp",
+      "pkgRepo": null,
+      "reason": "npm package `hopper-mcp` does not exist (404) — install_command is not copy-pasteable"
+    },
+    {
+      "slug": "hume-ai-mcp",
+      "name": "Hume AI",
+      "severity": "medium",
+      "pkg": "hume-ai-mcp",
+      "entryRepo": "humeai/mcp-server-hume",
+      "pkgRepo": null,
+      "reason": "npm package `hume-ai-mcp` does not exist (404) — install_command is not copy-pasteable"
+    },
+    {
+      "slug": "ibm-baw-mcp",
+      "name": "IBM Business Automation Workflow",
+      "severity": "medium",
+      "pkg": "@ibm-baw/mcp-server",
+      "entryRepo": "ibmbpm/ibm-baw-mcp-server",
+      "pkgRepo": null,
+      "reason": "npm package `@ibm-baw/mcp-server` does not exist (404) — install_command is not copy-pasteable"
+    },
+    {
+      "slug": "ibm-content-services-mcp",
+      "name": "IBM Content Services (FileNet)",
+      "severity": "medium",
+      "pkg": "@ibm-ecm/content-services-mcp",
+      "entryRepo": "ibm-ecm/ibm-content-services-mcp-server",
+      "pkgRepo": null,
+      "reason": "npm package `@ibm-ecm/content-services-mcp` does not exist (404) — install_command is not copy-pasteable"
+    },
+    {
+      "slug": "ibm-data-intelligence-mcp",
+      "name": "IBM Data Intelligence",
+      "severity": "medium",
+      "pkg": "@ibm/data-intelligence-mcp",
+      "entryRepo": "ibm/data-intelligence-mcp-server",
+      "pkgRepo": null,
+      "reason": "npm package `@ibm/data-intelligence-mcp` does not exist (404) — install_command is not copy-pasteable"
+    },
+    {
+      "slug": "ibm-mdm-mcp",
+      "name": "IBM Master Data Management",
+      "severity": "medium",
+      "pkg": "@ibm/mdm-mcp-server",
+      "entryRepo": "ibm/mcp",
+      "pkgRepo": null,
+      "reason": "npm package `@ibm/mdm-mcp-server` does not exist (404) — install_command is not copy-pasteable"
+    },
+    {
+      "slug": "ibm-openpages-mcp",
+      "name": "IBM OpenPages GRC",
+      "severity": "medium",
+      "pkg": "@ibm/openpages-mcp-server",
+      "entryRepo": "ibm/mcp",
+      "pkgRepo": null,
+      "reason": "npm package `@ibm/openpages-mcp-server` does not exist (404) — install_command is not copy-pasteable"
+    },
+    {
+      "slug": "incident-io-mcp",
+      "name": "Incident.io",
+      "severity": "medium",
+      "pkg": "incident-io-mcp",
+      "entryRepo": "laurierhodes/mcp-graphsecurityincidents",
+      "pkgRepo": null,
+      "reason": "npm package `incident-io-mcp` does not exist (404) — install_command is not copy-pasteable"
+    },
+    {
+      "slug": "itchio-mcp",
+      "name": "itch.io MCP",
+      "severity": "medium",
+      "pkg": "itchio-mcp-server",
+      "entryRepo": "z27fang/itch-io-mcp-ts",
+      "pkgRepo": null,
+      "reason": "npm package `itchio-mcp-server` does not exist (404) — install_command is not copy-pasteable"
+    },
+    {
+      "slug": "june-analytics-mcp",
+      "name": "June",
+      "severity": "medium",
+      "pkg": "june-analytics-mcp",
+      "entryRepo": "junemind/june-mcp",
+      "pkgRepo": null,
+      "reason": "npm package `june-analytics-mcp` does not exist (404) — install_command is not copy-pasteable"
+    },
+    {
+      "slug": "k3s-mcp",
+      "name": "K3s MCP",
+      "severity": "medium",
+      "pkg": "k3s-mcp-server",
+      "entryRepo": "ry-ops/k3s-mcp-server",
+      "pkgRepo": null,
+      "reason": "npm package `k3s-mcp-server` does not exist (404) — install_command is not copy-pasteable"
+    },
+    {
+      "slug": "kajabi-mcp",
+      "name": "Kajabi",
+      "severity": "medium",
+      "pkg": "kajabi-mcp",
+      "entryRepo": "nerraaiassistantbot/kajabi-mcp",
+      "pkgRepo": null,
+      "reason": "npm package `kajabi-mcp` does not exist (404) — install_command is not copy-pasteable"
+    },
+    {
+      "slug": "keda-mcp",
+      "name": "KEDA MCP",
+      "severity": "medium",
+      "pkg": "keda-mcp",
+      "entryRepo": "martoc/mcp-keda-documentation",
+      "pkgRepo": null,
+      "reason": "npm package `keda-mcp` does not exist (404) — install_command is not copy-pasteable"
+    },
+    {
+      "slug": "kintone-mcp",
+      "name": "Kintone",
+      "severity": "medium",
+      "pkg": "kintone-mcp",
+      "entryRepo": "r3-yamauchi/kintone-mcp-server",
+      "pkgRepo": null,
+      "reason": "npm package `kintone-mcp` does not exist (404) — install_command is not copy-pasteable"
+    },
+    {
+      "slug": "kiwi-mcp",
+      "name": "Kiwi.com",
+      "severity": "medium",
+      "pkg": "kiwi-mcp",
+      "entryRepo": "file-kiwi/filekiwi-mcp-server",
+      "pkgRepo": null,
+      "reason": "npm package `kiwi-mcp` does not exist (404) — install_command is not copy-pasteable"
+    },
+    {
+      "slug": "kling-ai-mcp",
+      "name": "Kling AI MCP",
+      "severity": "medium",
+      "pkg": "kling-ai-mcp",
+      "entryRepo": "199-mcp/mcp-kling",
+      "pkgRepo": null,
+      "reason": "npm package `kling-ai-mcp` does not exist (404) — install_command is not copy-pasteable"
+    },
+    {
+      "slug": "kong-mcp",
+      "name": "Kong Konnect MCP Server",
+      "severity": "medium",
+      "pkg": "@kong/mcp-server",
+      "entryRepo": "kong/mcp-konnect",
+      "pkgRepo": null,
+      "reason": "npm package `@kong/mcp-server` does not exist (404) — install_command is not copy-pasteable"
+    },
+    {
+      "slug": "langsmith",
+      "name": "LangSmith",
+      "severity": "medium",
+      "pkg": "langsmith-mcp",
+      "entryRepo": "langchain-ai/langsmith-mcp-server",
+      "pkgRepo": null,
+      "reason": "npm package `langsmith-mcp` does not exist (404) — install_command is not copy-pasteable"
+    },
+    {
+      "slug": "learnworlds-mcp",
+      "name": "LearnWorlds",
+      "severity": "medium",
+      "pkg": "learnworlds-mcp",
+      "entryRepo": "ohneben/learnworlds-mcp",
+      "pkgRepo": null,
+      "reason": "npm package `learnworlds-mcp` does not exist (404) — install_command is not copy-pasteable"
+    },
+    {
+      "slug": "lottie-mcp",
+      "name": "Lottie Animation MCP",
+      "severity": "medium",
+      "pkg": "lottie-mcp-server",
+      "entryRepo": "rolaxxx3/lottie-animation-mcp",
+      "pkgRepo": null,
+      "reason": "npm package `lottie-mcp-server` does not exist (404) — install_command is not copy-pasteable"
+    },
+    {
+      "slug": "lovable-mcp",
+      "name": "Lovable",
+      "severity": "medium",
+      "pkg": "lovable-mcp",
+      "entryRepo": "gabspereiradev/mcp-lovable",
+      "pkgRepo": null,
+      "reason": "npm package `lovable-mcp` does not exist (404) — install_command is not copy-pasteable"
+    },
+    {
+      "slug": "luma-ai-mcp",
+      "name": "Luma AI (Dream Machine) MCP",
+      "severity": "medium",
+      "pkg": "@lumalabs/mcp-server",
+      "entryRepo": "lumalabs/luma-mcp",
+      "pkgRepo": null,
+      "reason": "npm package `@lumalabs/mcp-server` does not exist (404) — install_command is not copy-pasteable"
+    },
+    {
+      "slug": "manageengine-mcp",
+      "name": "ManageEngine",
+      "severity": "medium",
+      "pkg": "manageengine-mcp",
+      "entryRepo": "vamsitejeswar/manageengine-custom-mcp-server",
+      "pkgRepo": null,
+      "reason": "npm package `manageengine-mcp` does not exist (404) — install_command is not copy-pasteable"
+    },
+    {
+      "slug": "marqeta-mcp",
+      "name": "Marqeta Card Issuing",
+      "severity": "medium",
+      "pkg": "marqeta-mcp",
+      "entryRepo": "marqeta/marqeta-mcp",
+      "pkgRepo": null,
+      "reason": "npm package `marqeta-mcp` does not exist (404) — install_command is not copy-pasteable"
+    },
+    {
+      "slug": "medplum-mcp",
+      "name": "Medplum MCP",
+      "severity": "medium",
+      "pkg": "@medplum/mcp-server",
+      "entryRepo": "medplum/medplum-mcp-server",
+      "pkgRepo": null,
+      "reason": "npm package `@medplum/mcp-server` does not exist (404) — install_command is not copy-pasteable"
+    },
+    {
+      "slug": "mem0",
+      "name": "Mem0",
+      "severity": "medium",
+      "pkg": "@mem0ai/mcp-server",
+      "entryRepo": "mem0ai/mem0-mcp",
+      "pkgRepo": null,
+      "reason": "npm package `@mem0ai/mcp-server` does not exist (404) — install_command is not copy-pasteable"
+    },
+    {
+      "slug": "mercury-bank-mcp",
+      "name": "Mercury Bank",
+      "severity": "medium",
+      "pkg": "mercury-bank-mcp",
+      "entryRepo": "jbdamask/mcp-mercury-banking",
+      "pkgRepo": null,
+      "reason": "npm package `mercury-bank-mcp` does not exist (404) — install_command is not copy-pasteable"
+    },
+    {
+      "slug": "microsoft-sentinel-mcp",
+      "name": "Microsoft Sentinel",
+      "severity": "medium",
+      "pkg": "@microsoft/sentinel-mcp",
+      "entryRepo": "microsoft/mcp",
+      "pkgRepo": null,
+      "reason": "npm package `@microsoft/sentinel-mcp` does not exist (404) — install_command is not copy-pasteable"
+    },
+    {
+      "slug": "motherduck-mcp",
+      "name": "MotherDuck",
+      "severity": "medium",
+      "pkg": "mcp-server-motherduck",
+      "entryRepo": "motherduckdb/mcp-server-motherduck",
+      "pkgRepo": null,
+      "reason": "npm package `mcp-server-motherduck` does not exist (404) — install_command is not copy-pasteable"
+    },
+    {
+      "slug": "ms-365-mcp",
+      "name": "Microsoft 365 MCP",
+      "severity": "medium",
+      "pkg": "ms-365-mcp-server",
+      "entryRepo": "softeria/ms-365-mcp-server",
+      "pkgRepo": null,
+      "reason": "npm package `ms-365-mcp-server` does not exist (404) — install_command is not copy-pasteable"
+    },
+    {
+      "slug": "observable-mcp",
+      "name": "Observable MCP",
+      "severity": "medium",
+      "pkg": "observable-mcp-server",
+      "entryRepo": "rreusser/mcp-observable-notebookkit-debug",
+      "pkgRepo": null,
+      "reason": "npm package `observable-mcp-server` does not exist (404) — install_command is not copy-pasteable"
+    },
+    {
+      "slug": "openaq-mcp",
+      "name": "OpenAQ",
+      "severity": "medium",
+      "pkg": "openaq-mcp",
+      "entryRepo": "cyanheads/openaq-mcp-server",
+      "pkgRepo": null,
+      "reason": "npm package `openaq-mcp` does not exist (404) — install_command is not copy-pasteable"
+    },
+    {
+      "slug": "opslevel-mcp",
+      "name": "OpsLevel",
+      "severity": "medium",
+      "pkg": "opslevel-mcp",
+      "entryRepo": "opslevel/opslevel-mcp",
+      "pkgRepo": null,
+      "reason": "npm package `opslevel-mcp` does not exist (404) — install_command is not copy-pasteable"
+    },
+    {
+      "slug": "oracle-hcm-cloud-mcp",
+      "name": "Oracle HCM Cloud",
+      "severity": "medium",
+      "pkg": "oracle-hcm-cloud-mcp",
+      "entryRepo": "cdatasoftware/oracle-hcm-cloud-mcp-server-by-cdata",
+      "pkgRepo": null,
+      "reason": "npm package `oracle-hcm-cloud-mcp` does not exist (404) — install_command is not copy-pasteable"
+    },
+    {
+      "slug": "outreach-io-mcp",
+      "name": "Outreach",
+      "severity": "medium",
+      "pkg": "outreach-io-mcp",
+      "entryRepo": "hfarazul/linkedin-outreach-mcp",
+      "pkgRepo": null,
+      "reason": "npm package `outreach-io-mcp` does not exist (404) — install_command is not copy-pasteable"
+    },
+    {
+      "slug": "paddle-mcp",
+      "name": "Paddle MCP",
+      "severity": "medium",
+      "pkg": "paddle-mcp",
+      "entryRepo": "paddlehq/paddle-mcp-server",
+      "pkgRepo": null,
+      "reason": "npm package `paddle-mcp` does not exist (404) — install_command is not copy-pasteable"
+    },
+    {
+      "slug": "payware-mcp",
+      "name": "Payware",
+      "severity": "medium",
+      "pkg": "payware-mcp",
+      "entryRepo": "payware/mcp-server",
+      "pkgRepo": null,
+      "reason": "npm package `payware-mcp` does not exist (404) — install_command is not copy-pasteable"
+    },
+    {
+      "slug": "permit-io-mcp",
+      "name": "Permit.io",
+      "severity": "medium",
+      "pkg": "permit-mcp",
+      "entryRepo": "permitio/permit-mcp",
+      "pkgRepo": null,
+      "reason": "npm package `permit-mcp` does not exist (404) — install_command is not copy-pasteable"
+    },
+    {
+      "slug": "plane-mcp",
+      "name": "Plane",
+      "severity": "medium",
+      "pkg": "plane-mcp",
+      "entryRepo": "makeplane/plane-mcp-server",
+      "pkgRepo": null,
+      "reason": "npm package `plane-mcp` does not exist (404) — install_command is not copy-pasteable"
+    },
+    {
+      "slug": "pleo-mcp",
+      "name": "Pleo",
+      "severity": "medium",
+      "pkg": "pleo-mcp",
+      "entryRepo": "borgels/mcp-server-pleo",
+      "pkgRepo": null,
+      "reason": "npm package `pleo-mcp` does not exist (404) — install_command is not copy-pasteable"
+    },
+    {
+      "slug": "portainer-mcp",
+      "name": "Portainer MCP",
+      "severity": "medium",
+      "pkg": "portainer-mcp",
+      "entryRepo": "portainer/portainer-mcp",
+      "pkgRepo": null,
+      "reason": "npm package `portainer-mcp` does not exist (404) — install_command is not copy-pasteable"
+    },
+    {
+      "slug": "redis-cloud-mcp",
+      "name": "Redis Cloud MCP",
+      "severity": "medium",
+      "pkg": "@redis/mcp-redis-cloud",
+      "entryRepo": "redis/mcp-redis-cloud",
+      "pkgRepo": null,
+      "reason": "npm package `@redis/mcp-redis-cloud` does not exist (404) — install_command is not copy-pasteable"
+    },
+    {
+      "slug": "reflect-app-mcp",
+      "name": "Reflect",
+      "severity": "medium",
+      "pkg": "reflect-app-mcp",
+      "entryRepo": "adstastic/reflect-mcp",
+      "pkgRepo": null,
+      "reason": "npm package `reflect-app-mcp` does not exist (404) — install_command is not copy-pasteable"
+    },
+    {
+      "slug": "riot-games-mcp",
+      "name": "Riot Games MCP",
+      "severity": "medium",
+      "pkg": "riot-games-mcp-server",
+      "entryRepo": "pipeworx-io/mcp-riot-games",
+      "pkgRepo": null,
+      "reason": "npm package `riot-games-mcp-server` does not exist (404) — install_command is not copy-pasteable"
+    },
+    {
+      "slug": "rippling-mcp",
+      "name": "Rippling MCP",
+      "severity": "medium",
+      "pkg": "rippling-mcp",
+      "entryRepo": "bifrost-mcp/rippling-mcp",
+      "pkgRepo": null,
+      "reason": "npm package `rippling-mcp` does not exist (404) — install_command is not copy-pasteable"
+    },
+    {
+      "slug": "runpod-mcp",
+      "name": "RunPod",
+      "severity": "medium",
+      "pkg": "runpod-mcp",
+      "entryRepo": "runpod/runpod-mcp",
+      "pkgRepo": null,
+      "reason": "npm package `runpod-mcp` does not exist (404) — install_command is not copy-pasteable"
+    },
+    {
+      "slug": "runway-ml-mcp",
+      "name": "Runway ML",
+      "severity": "medium",
+      "pkg": "runway-mcp",
+      "entryRepo": "runwayml/runway-api-mcp-server",
+      "pkgRepo": null,
+      "reason": "npm package `runway-mcp` does not exist (404) — install_command is not copy-pasteable"
+    },
+    {
+      "slug": "salesloft-mcp",
+      "name": "Salesloft",
+      "severity": "medium",
+      "pkg": "salesloft-mcp",
+      "entryRepo": "spread-out/salesloft-mcp-server",
+      "pkgRepo": null,
+      "reason": "npm package `salesloft-mcp` does not exist (404) — install_command is not copy-pasteable"
+    },
+    {
+      "slug": "secedgar-xbrl-mcp",
+      "name": "SEC EDGAR XBRL MCP",
+      "severity": "medium",
+      "pkg": "secedgar-mcp-server",
+      "entryRepo": "cyanheads/secedgar-mcp-server",
+      "pkgRepo": null,
+      "reason": "npm package `secedgar-mcp-server` does not exist (404) — install_command is not copy-pasteable"
+    },
+    {
+      "slug": "shipstation-mcp",
+      "name": "ShipStation MCP",
+      "severity": "medium",
+      "pkg": "shipstation-mcp",
+      "entryRepo": "shipstation/mcp-shipstation-api",
+      "pkgRepo": null,
+      "reason": "npm package `shipstation-mcp` does not exist (404) — install_command is not copy-pasteable"
+    },
+    {
+      "slug": "singlestore-mcp",
+      "name": "SingleStore",
+      "severity": "medium",
+      "pkg": "singlestore-mcp",
+      "entryRepo": "singlestore-labs/mcp-server-singlestore",
+      "pkgRepo": null,
+      "reason": "npm package `singlestore-mcp` does not exist (404) — install_command is not copy-pasteable"
+    },
+    {
+      "slug": "sisense-mcp",
+      "name": "Sisense",
+      "severity": "medium",
+      "pkg": "sisense-mcp",
+      "entryRepo": "sisense/sisense-mcp-server",
+      "pkgRepo": null,
+      "reason": "npm package `sisense-mcp` does not exist (404) — install_command is not copy-pasteable"
+    },
+    {
+      "slug": "slite-mcp",
+      "name": "Slite",
+      "severity": "medium",
+      "pkg": "slite-mcp",
+      "entryRepo": "fajarmf/slite-mcp",
+      "pkgRepo": null,
+      "reason": "npm package `slite-mcp` does not exist (404) — install_command is not copy-pasteable"
+    },
+    {
+      "slug": "smartsheet-mcp",
+      "name": "Smartsheet",
+      "severity": "medium",
+      "pkg": "smartsheet-mcp",
+      "entryRepo": "smartsheet/smartsheet-mcp-community",
+      "pkgRepo": null,
+      "reason": "npm package `smartsheet-mcp` does not exist (404) — install_command is not copy-pasteable"
+    },
+    {
+      "slug": "smartthings-api-mcp",
+      "name": "Samsung SmartThings",
+      "severity": "medium",
+      "pkg": "smartthings-api-mcp",
+      "entryRepo": "paulaadelkamal/samsung_smartthings-mcp",
+      "pkgRepo": null,
+      "reason": "npm package `smartthings-api-mcp` does not exist (404) — install_command is not copy-pasteable"
+    },
+    {
+      "slug": "smokeball-mcp",
+      "name": "Smokeball",
+      "severity": "medium",
+      "pkg": "smokeball-mcp",
+      "entryRepo": "rosenadvertising/smokeball-mcp",
+      "pkgRepo": null,
+      "reason": "npm package `smokeball-mcp` does not exist (404) — install_command is not copy-pasteable"
+    },
+    {
+      "slug": "sperax-crypto-mcp",
+      "name": "Sperax Protocol",
+      "severity": "medium",
+      "pkg": "sperax-crypto-mcp",
+      "entryRepo": "sperax/sperax-crypto-mcp",
+      "pkgRepo": null,
+      "reason": "npm package `sperax-crypto-mcp` does not exist (404) — install_command is not copy-pasteable"
+    },
+    {
+      "slug": "spreedly-mcp",
+      "name": "Spreedly MCP",
+      "severity": "medium",
+      "pkg": "spreedly-mcp",
+      "entryRepo": "spreedly/spreedly-mcp",
+      "pkgRepo": null,
+      "reason": "npm package `spreedly-mcp` does not exist (404) — install_command is not copy-pasteable"
+    },
+    {
+      "slug": "squadcast-mcp",
+      "name": "Squadcast",
+      "severity": "medium",
+      "pkg": "squadcast-mcp",
+      "entryRepo": "deej4y/squadcast-mcp-server",
+      "pkgRepo": null,
+      "reason": "npm package `squadcast-mcp` does not exist (404) — install_command is not copy-pasteable"
+    },
+    {
+      "slug": "square-mcp",
+      "name": "Square MCP",
+      "severity": "medium",
+      "pkg": "@square/mcp-server",
+      "entryRepo": "square/square-mcp-server",
+      "pkgRepo": null,
+      "reason": "npm package `@square/mcp-server` does not exist (404) — install_command is not copy-pasteable"
+    },
+    {
+      "slug": "stytch-mcp",
+      "name": "Stytch MCP",
+      "severity": "medium",
+      "pkg": "stytch-mcp",
+      "entryRepo": "stytchauth/mcp-stytch-consumer-todo-list",
+      "pkgRepo": null,
+      "reason": "npm package `stytch-mcp` does not exist (404) — install_command is not copy-pasteable"
+    },
+    {
+      "slug": "supernotes-mcp",
+      "name": "Supernotes",
+      "severity": "medium",
+      "pkg": "supernotes-mcp",
+      "entryRepo": "silvancodes/supernotes-mcp",
+      "pkgRepo": null,
+      "reason": "npm package `supernotes-mcp` does not exist (404) — install_command is not copy-pasteable"
+    },
+    {
+      "slug": "tally-forms-mcp",
+      "name": "Tally",
+      "severity": "medium",
+      "pkg": "tally-forms-mcp",
+      "entryRepo": "dhananjay1405/tally-mcp-server",
+      "pkgRepo": null,
+      "reason": "npm package `tally-forms-mcp` does not exist (404) — install_command is not copy-pasteable"
+    },
+    {
+      "slug": "teachable-mcp",
+      "name": "Teachable",
+      "severity": "medium",
+      "pkg": "teachable-mcp",
+      "entryRepo": "ahmedrowaihi/teachable-mcp-server",
+      "pkgRepo": null,
+      "reason": "npm package `teachable-mcp` does not exist (404) — install_command is not copy-pasteable"
+    },
+    {
+      "slug": "terraform-cloud-mcp",
+      "name": "Terraform Cloud MCP",
+      "severity": "medium",
+      "pkg": "mcp-server-terraform-cloud",
+      "entryRepo": "hashicorp/terraform",
+      "pkgRepo": null,
+      "reason": "npm package `mcp-server-terraform-cloud` does not exist (404) — install_command is not copy-pasteable"
+    },
+    {
+      "slug": "thinkific-mcp",
+      "name": "Thinkific",
+      "severity": "medium",
+      "pkg": "thinkific-mcp",
+      "entryRepo": "ackbarguppi-ai/thinkific-mcp",
+      "pkgRepo": null,
+      "reason": "npm package `thinkific-mcp` does not exist (404) — install_command is not copy-pasteable"
+    },
+    {
+      "slug": "threads-api-mcp",
+      "name": "Meta Threads API",
+      "severity": "medium",
+      "pkg": "threads-api-mcp",
+      "entryRepo": "metathreads/meta-threads-mcp",
+      "pkgRepo": null,
+      "reason": "npm package `threads-api-mcp` does not exist (404) — install_command is not copy-pasteable"
+    },
+    {
+      "slug": "threejs-mcp",
+      "name": "Three.js MCP",
+      "severity": "medium",
+      "pkg": "threejs-mcp-server",
+      "entryRepo": "dmitriygolub/threejs-devtools-mcp",
+      "pkgRepo": null,
+      "reason": "npm package `threejs-mcp-server` does not exist (404) — install_command is not copy-pasteable"
+    },
+    {
+      "slug": "ticketlens-mcp",
+      "name": "TicketLens",
+      "severity": "medium",
+      "pkg": "ticketlens-mcp",
+      "entryRepo": "ticketlens/ticketlens-experiences-mcp",
+      "pkgRepo": null,
+      "reason": "npm package `ticketlens-mcp` does not exist (404) — install_command is not copy-pasteable"
+    },
+    {
+      "slug": "tinybird-mcp",
+      "name": "Tinybird",
+      "severity": "medium",
+      "pkg": "@tinybird/mcp-server",
+      "entryRepo": "tinybirdco/mcp-tinybird",
+      "pkgRepo": null,
+      "reason": "npm package `@tinybird/mcp-server` does not exist (404) — install_command is not copy-pasteable"
+    },
+    {
+      "slug": "tomtom-maps-mcp",
+      "name": "TomTom Maps",
+      "severity": "medium",
+      "pkg": "tomtom-maps-mcp",
+      "entryRepo": "tomtom-international/tomtom-mcp",
+      "pkgRepo": null,
+      "reason": "npm package `tomtom-maps-mcp` does not exist (404) — install_command is not copy-pasteable"
+    },
+    {
+      "slug": "tooljet-mcp",
+      "name": "ToolJet MCP",
+      "severity": "medium",
+      "pkg": "tooljet-mcp",
+      "entryRepo": "tooljet/tooljet-mcp",
+      "pkgRepo": null,
+      "reason": "npm package `tooljet-mcp` does not exist (404) — install_command is not copy-pasteable"
+    },
+    {
+      "slug": "trainline-mcp",
+      "name": "Trainline MCP",
+      "severity": "medium",
+      "pkg": "trainline-mcp",
+      "entryRepo": "emelgoog/trainline-mcp",
+      "pkgRepo": null,
+      "reason": "npm package `trainline-mcp` does not exist (404) — install_command is not copy-pasteable"
+    },
+    {
+      "slug": "udemy-instructor-mcp",
+      "name": "Udemy Instructor API",
+      "severity": "medium",
+      "pkg": "udemy-instructor-mcp",
+      "entryRepo": "laughall-miyake/udemy-instructor-mcp",
+      "pkgRepo": null,
+      "reason": "npm package `udemy-instructor-mcp` does not exist (404) — install_command is not copy-pasteable"
+    },
+    {
+      "slug": "umbraco-mcp",
+      "name": "Umbraco CMS",
+      "severity": "medium",
+      "pkg": "umbraco-mcp",
+      "entryRepo": "umbraco/umbraco-cms-mcp-dev",
+      "pkgRepo": null,
+      "reason": "npm package `umbraco-mcp` does not exist (404) — install_command is not copy-pasteable"
+    },
+    {
+      "slug": "us-court-mcp",
+      "name": "US Court MCP",
+      "severity": "medium",
+      "pkg": "us-court-mcp",
+      "entryRepo": "mahender22/legal-mcp",
+      "pkgRepo": null,
+      "reason": "npm package `us-court-mcp` does not exist (404) — install_command is not copy-pasteable"
+    },
+    {
+      "slug": "vanta-mcp",
+      "name": "Vanta MCP",
+      "severity": "medium",
+      "pkg": "vanta-mcp",
+      "entryRepo": "alphavantage/alpha_vantage_mcp",
+      "pkgRepo": null,
+      "reason": "npm package `vanta-mcp` does not exist (404) — install_command is not copy-pasteable"
+    },
+    {
+      "slug": "vectara-mcp",
+      "name": "Vectara",
+      "severity": "medium",
+      "pkg": "vectara-mcp",
+      "entryRepo": "vectara/vectara-mcp",
+      "pkgRepo": null,
+      "reason": "npm package `vectara-mcp` does not exist (404) — install_command is not copy-pasteable"
+    },
+    {
+      "slug": "vercel-ai-sdk-mcp",
+      "name": "Vercel AI SDK MCP",
+      "severity": "medium",
+      "pkg": "vercel-ai-sdk-mcp",
+      "entryRepo": "m2-sakai/vercel-ai-sdk-mcp",
+      "pkgRepo": null,
+      "reason": "npm package `vercel-ai-sdk-mcp` does not exist (404) — install_command is not copy-pasteable"
+    },
+    {
+      "slug": "wix-mcp",
+      "name": "Wix Studio",
+      "severity": "medium",
+      "pkg": "@wix/mcp-server",
+      "entryRepo": "wix/wix-mcp",
+      "pkgRepo": null,
+      "reason": "npm package `@wix/mcp-server` does not exist (404) — install_command is not copy-pasteable"
+    },
+    {
+      "slug": "workable-mcp",
+      "name": "Workable",
+      "severity": "medium",
+      "pkg": "workable-mcp",
+      "entryRepo": "ct-workable/workable-mcp",
+      "pkgRepo": null,
+      "reason": "npm package `workable-mcp` does not exist (404) — install_command is not copy-pasteable"
+    },
+    {
+      "slug": "xai-grok-mcp",
+      "name": "xAI Grok MCP",
+      "severity": "medium",
+      "pkg": "xai-grok-mcp-server",
+      "entryRepo": "cenblueone/grok-xai-mcp",
+      "pkgRepo": null,
+      "reason": "npm package `xai-grok-mcp-server` does not exist (404) — install_command is not copy-pasteable"
+    },
+    {
+      "slug": "yelp-mcp",
+      "name": "Yelp",
+      "severity": "medium",
+      "pkg": "yelp-mcp",
+      "entryRepo": "yelp/yelp-mcp",
+      "pkgRepo": null,
+      "reason": "npm package `yelp-mcp` does not exist (404) — install_command is not copy-pasteable"
+    },
+    {
+      "slug": "yotpo-mcp",
+      "name": "Yotpo",
+      "severity": "medium",
+      "pkg": "yotpo-mcp",
+      "entryRepo": "yotpoltd/yotpo-mcp",
+      "pkgRepo": null,
+      "reason": "npm package `yotpo-mcp` does not exist (404) — install_command is not copy-pasteable"
+    },
+    {
+      "slug": "yugabytedb-mcp",
+      "name": "YugabyteDB",
+      "severity": "medium",
+      "pkg": "yugabytedb-mcp",
+      "entryRepo": "yugabyte/yugabytedb-mcp-server",
+      "pkgRepo": null,
+      "reason": "npm package `yugabytedb-mcp` does not exist (404) — install_command is not copy-pasteable"
+    },
+    {
+      "slug": "azure-devbox-mcp",
+      "name": "Microsoft Dev Box",
+      "severity": "low",
+      "pkg": "@microsoft/devbox-mcp",
+      "entryRepo": "microsoft/mcp",
+      "pkgRepo": null,
+      "reason": "npm package `@microsoft/devbox-mcp` declares no GitHub repository — link cannot be corroborated from the registry side"
+    },
+    {
+      "slug": "close",
+      "name": "Close MCP Server (Community)",
+      "severity": "low",
+      "pkg": "close-crm-cli",
+      "entryRepo": "bcharleson/close-crm-cli",
+      "pkgRepo": null,
+      "reason": "npm package `close-crm-cli` declares no GitHub repository — link cannot be corroborated from the registry side"
+    },
+    {
+      "slug": "cockroachdb-mcp",
+      "name": "CockroachDB MCP",
+      "severity": "low",
+      "pkg": "cockroachdb-mcp",
+      "entryRepo": "cockroachdb/cockroachdb-mcp-server",
+      "pkgRepo": null,
+      "reason": "npm package `cockroachdb-mcp` declares no GitHub repository — link cannot be corroborated from the registry side"
+    },
+    {
+      "slug": "codesandbox",
+      "name": "CodeSandbox MCP Server",
+      "severity": "low",
+      "pkg": "@techlibs/codesandbox-mcp",
+      "entryRepo": "techlibs/codesandbox-mcp",
+      "pkgRepo": null,
+      "reason": "npm package `@techlibs/codesandbox-mcp` declares no GitHub repository — link cannot be corroborated from the registry side"
+    },
+    {
+      "slug": "composio",
+      "name": "Composio MCP Server",
+      "severity": "low",
+      "pkg": "@composio/mcp",
+      "entryRepo": "composiohq/composio",
+      "pkgRepo": null,
+      "reason": "npm package `@composio/mcp` declares no GitHub repository — link cannot be corroborated from the registry side"
+    },
+    {
+      "slug": "flagsmith",
+      "name": "Flagsmith MCP Server",
+      "severity": "low",
+      "pkg": "flagsmith",
+      "entryRepo": "flagsmith/flagsmith-mcp",
+      "pkgRepo": "flagsmith/flagsmith-js-client",
+      "reason": "same owner, different repo — likely a monorepo/sibling package, verify only if the page claims otherwise"
+    },
+    {
+      "slug": "google-drive",
+      "name": "Google Drive MCP Server",
+      "severity": "low",
+      "pkg": "@modelcontextprotocol/server-gdrive",
+      "entryRepo": "modelcontextprotocol/servers-archived",
+      "pkgRepo": null,
+      "reason": "npm package `@modelcontextprotocol/server-gdrive` declares no GitHub repository — link cannot be corroborated from the registry side"
+    },
+    {
+      "slug": "groq-mcp",
+      "name": "Groq",
+      "severity": "low",
+      "pkg": "groq-mcp-server",
+      "entryRepo": "groq/groq-mcp-server",
+      "pkgRepo": null,
+      "reason": "npm package `groq-mcp-server` declares no GitHub repository — link cannot be corroborated from the registry side"
+    },
+    {
+      "slug": "jotform-mcp",
+      "name": "JotForm",
+      "severity": "low",
+      "pkg": "jotform-mcp",
+      "entryRepo": "the-ai-workshops/jotform-mcp-server",
+      "pkgRepo": null,
+      "reason": "npm package `jotform-mcp` declares no GitHub repository — link cannot be corroborated from the registry side"
+    },
+    {
+      "slug": "lemlist-mcp",
+      "name": "Lemlist",
+      "severity": "low",
+      "pkg": "lemlist-mcp",
+      "entryRepo": "raphaelberrebi1-del/lemlist-mcp",
+      "pkgRepo": null,
+      "reason": "npm package `lemlist-mcp` declares no GitHub repository — link cannot be corroborated from the registry side"
+    },
+    {
+      "slug": "librechat-mcp",
+      "name": "LibreChat",
+      "severity": "low",
+      "pkg": "librechat-mcp",
+      "entryRepo": "jerome3o/mcp-librechat",
+      "pkgRepo": null,
+      "reason": "npm package `librechat-mcp` declares no GitHub repository — link cannot be corroborated from the registry side"
+    },
+    {
+      "slug": "mqtt-mcp",
+      "name": "MQTT MCP",
+      "severity": "low",
+      "pkg": "mqtt-mcp",
+      "entryRepo": "mqtt-ai/mcp-over-mqtt",
+      "pkgRepo": null,
+      "reason": "npm package `mqtt-mcp` declares no GitHub repository — link cannot be corroborated from the registry side"
+    },
+    {
+      "slug": "namecheap-mcp",
+      "name": "Namecheap MCP",
+      "severity": "low",
+      "pkg": "namecheap-mcp",
+      "entryRepo": "johnsorrentino/mcp-namecheap",
+      "pkgRepo": null,
+      "reason": "npm package `namecheap-mcp` declares no GitHub repository — link cannot be corroborated from the registry side"
+    },
+    {
+      "slug": "netlify",
+      "name": "Netlify MCP Server",
+      "severity": "low",
+      "pkg": "@netlify/mcp",
+      "entryRepo": "netlify/netlify-mcp",
+      "pkgRepo": null,
+      "reason": "npm package `@netlify/mcp` declares no GitHub repository — link cannot be corroborated from the registry side"
+    },
+    {
+      "slug": "open-meteo-mcp",
+      "name": "Open-Meteo Weather",
+      "severity": "low",
+      "pkg": "open-meteo-mcp",
+      "entryRepo": "adrianr84/weather-open-meteo-mcp",
+      "pkgRepo": null,
+      "reason": "npm package `open-meteo-mcp` declares no GitHub repository — link cannot be corroborated from the registry side"
+    },
+    {
+      "slug": "plaid-mcp",
+      "name": "Plaid MCP",
+      "severity": "low",
+      "pkg": "plaid-mcp",
+      "entryRepo": "plaid-lib/plaid-mcp-server",
+      "pkgRepo": null,
+      "reason": "npm package `plaid-mcp` declares no GitHub repository — link cannot be corroborated from the registry side"
+    },
+    {
+      "slug": "postgresql",
+      "name": "PostgreSQL MCP Server",
+      "severity": "low",
+      "pkg": "@modelcontextprotocol/server-postgres",
+      "entryRepo": "modelcontextprotocol/servers-archived",
+      "pkgRepo": null,
+      "reason": "npm package `@modelcontextprotocol/server-postgres` declares no GitHub repository — link cannot be corroborated from the registry side"
+    },
+    {
+      "slug": "posthog",
+      "name": "PostHog MCP Server",
+      "severity": "low",
+      "pkg": "@posthog/wizard",
+      "entryRepo": "posthog/mcp",
+      "pkgRepo": "posthog/wizard",
+      "reason": "same owner, different repo — likely a monorepo/sibling package, verify only if the page claims otherwise"
+    },
+    {
+      "slug": "puppeteer",
+      "name": "Puppeteer MCP Server",
+      "severity": "low",
+      "pkg": "@modelcontextprotocol/server-puppeteer",
+      "entryRepo": "modelcontextprotocol/servers-archived",
+      "pkgRepo": null,
+      "reason": "npm package `@modelcontextprotocol/server-puppeteer` declares no GitHub repository — link cannot be corroborated from the registry side"
+    },
+    {
+      "slug": "redis",
+      "name": "Redis MCP Server",
+      "severity": "low",
+      "pkg": "@modelcontextprotocol/server-redis",
+      "entryRepo": "modelcontextprotocol/servers-archived",
+      "pkgRepo": null,
+      "reason": "npm package `@modelcontextprotocol/server-redis` declares no GitHub repository — link cannot be corroborated from the registry side"
+    },
+    {
+      "slug": "roblox-mcp",
+      "name": "Roblox MCP",
+      "severity": "low",
+      "pkg": "roblox-mcp-server",
+      "entryRepo": "notpoiu/roblox-executor-mcp",
+      "pkgRepo": null,
+      "reason": "npm package `roblox-mcp-server` declares no GitHub repository — link cannot be corroborated from the registry side"
+    },
+    {
+      "slug": "sinch-mcp",
+      "name": "Sinch MCP Server",
+      "severity": "low",
+      "pkg": "@sinch/mcp",
+      "entryRepo": "sinch/sinch-mcp-server",
+      "pkgRepo": null,
+      "reason": "npm package `@sinch/mcp` declares no GitHub repository — link cannot be corroborated from the registry side"
+    },
+    {
+      "slug": "stability-ai",
+      "name": "Stability AI MCP Server (Community)",
+      "severity": "low",
+      "pkg": "mcp-stability-ai",
+      "entryRepo": "alesurli/mcp-stability-ai",
+      "pkgRepo": "alesurli/mcp-server-stability",
+      "reason": "same owner, different repo — likely a monorepo/sibling package, verify only if the page claims otherwise"
+    },
+    {
+      "slug": "stagehand",
+      "name": "Stagehand (Browserbase) MCP Server",
+      "severity": "low",
+      "pkg": "@browserbasehq/mcp-server-browserbase",
+      "entryRepo": "browserbase/mcp-server-browserbase",
+      "pkgRepo": null,
+      "reason": "npm package `@browserbasehq/mcp-server-browserbase` declares no GitHub repository — link cannot be corroborated from the registry side"
+    },
+    {
+      "slug": "stripe",
+      "name": "Stripe MCP Server",
+      "severity": "low",
+      "pkg": "@stripe/agent-toolkit",
+      "entryRepo": "stripe/agent-toolkit",
+      "pkgRepo": "stripe/ai",
+      "reason": "same owner, different repo — likely a monorepo/sibling package, verify only if the page claims otherwise"
+    },
+    {
+      "slug": "tursodb",
+      "name": "Turso",
+      "severity": "low",
+      "pkg": "turso-mcp-server",
+      "entryRepo": "tursodatabase/turso-mcp",
+      "pkgRepo": null,
+      "reason": "npm package `turso-mcp-server` declares no GitHub repository — link cannot be corroborated from the registry side"
+    },
+    {
+      "slug": "twilio",
+      "name": "Twilio MCP Server",
+      "severity": "low",
+      "pkg": "@twilio-alpha/mcp",
+      "entryRepo": "twilio-labs/mcp",
+      "pkgRepo": null,
+      "reason": "npm package `@twilio-alpha/mcp` declares no GitHub repository — link cannot be corroborated from the registry side"
+    },
+    {
+      "slug": "us-legal-mcp",
+      "name": "US Legal MCP",
+      "severity": "low",
+      "pkg": "us-legal-mcp",
+      "entryRepo": "jamesanz/us-legal-mcp",
+      "pkgRepo": null,
+      "reason": "npm package `us-legal-mcp` declares no GitHub repository — link cannot be corroborated from the registry side"
+    },
+    {
+      "slug": "webflow",
+      "name": "Webflow MCP Server",
+      "severity": "low",
+      "pkg": "webflow-mcp-server",
+      "entryRepo": "webflow/mcp-server",
+      "pkgRepo": null,
+      "reason": "npm package `webflow-mcp-server` declares no GitHub repository — link cannot be corroborated from the registry side"
+    },
+    {
+      "slug": "woocommerce-mcp",
+      "name": "WooCommerce MCP",
+      "severity": "low",
+      "pkg": "woocommerce-mcp",
+      "entryRepo": "iosdevsk/mcp-for-woocommerce",
+      "pkgRepo": null,
+      "reason": "npm package `woocommerce-mcp` declares no GitHub repository — link cannot be corroborated from the registry side"
+    },
+    {
+      "slug": "youtube-studio-mcp",
+      "name": "YouTube Studio Analytics",
+      "severity": "low",
+      "pkg": "youtube-studio-mcp",
+      "entryRepo": "adityaarsharma/youtube-marketing-skills",
+      "pkgRepo": "adityaarsharma/youtube-mcp-server",
+      "reason": "same owner, different repo — likely a monorepo/sibling package, verify only if the page claims otherwise"
+    }
+  ]
+}
