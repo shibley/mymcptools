@@ -1,0 +1,762 @@
+{
+  "pipScanned": 132,
+  "dockerScanned": 12,
+  "counts": {
+    "critical": 0,
+    "high": 0,
+    "medium": 41,
+    "low": 34
+  },
+  "findings": [
+    {
+      "slug": "assemblyai-mcp",
+      "name": "AssemblyAI",
+      "kind": "pip",
+      "severity": "medium",
+      "ref": "assemblyai-mcp",
+      "entryRepo": "assemblyai-community/assemblyai-mcp",
+      "declaredRepo": null,
+      "reason": "PyPI package `assemblyai-mcp` does not exist (404) — install_command is not copy-pasteable"
+    },
+    {
+      "slug": "aws-iot-core-mcp",
+      "name": "AWS IoT Core",
+      "kind": "pip",
+      "severity": "medium",
+      "ref": "aws-iot-core-mcp",
+      "entryRepo": "aws-samples/sample-mcp_server-for-amazon_iot_core",
+      "declaredRepo": null,
+      "reason": "PyPI package `aws-iot-core-mcp` does not exist (404) — install_command is not copy-pasteable"
+    },
+    {
+      "slug": "crypto-indicators-mcp",
+      "name": "Crypto Technical Indicators MCP",
+      "kind": "pip",
+      "severity": "medium",
+      "ref": "crypto-indicators-mcp",
+      "entryRepo": "kukapay/crypto-indicators-mcp",
+      "declaredRepo": null,
+      "reason": "PyPI package `crypto-indicators-mcp` does not exist (404) — install_command is not copy-pasteable"
+    },
+    {
+      "slug": "crypto-orderbook-mcp",
+      "name": "Crypto Orderbook MCP",
+      "kind": "pip",
+      "severity": "medium",
+      "ref": "crypto-orderbook-mcp",
+      "entryRepo": "kukapay/crypto-orderbook-mcp",
+      "declaredRepo": null,
+      "reason": "PyPI package `crypto-orderbook-mcp` does not exist (404) — install_command is not copy-pasteable"
+    },
+    {
+      "slug": "ebay-mcp",
+      "name": "eBay MCP",
+      "kind": "pip",
+      "severity": "medium",
+      "ref": "mcp-server-ebay",
+      "entryRepo": "yosefhayim/ebay-mcp",
+      "declaredRepo": null,
+      "reason": "PyPI package `mcp-server-ebay` does not exist (404) — install_command is not copy-pasteable"
+    },
+    {
+      "slug": "esp-rainmaker-mcp",
+      "name": "ESP RainMaker MCP",
+      "kind": "pip",
+      "severity": "medium",
+      "ref": "esp-rainmaker-mcp",
+      "entryRepo": "espressif/esp-rainmaker-mcp",
+      "declaredRepo": null,
+      "reason": "PyPI package `esp-rainmaker-mcp` does not exist (404) — install_command is not copy-pasteable"
+    },
+    {
+      "slug": "eu-open-data-mcp",
+      "name": "EU Open Data Portal MCP",
+      "kind": "pip",
+      "severity": "medium",
+      "ref": "mcp-server-eu-opendata",
+      "entryRepo": "kerrybackapps/data-portal-mcp",
+      "declaredRepo": null,
+      "reason": "PyPI package `mcp-server-eu-opendata` does not exist (404) — install_command is not copy-pasteable"
+    },
+    {
+      "slug": "fibaro-mcp",
+      "name": "Fibaro",
+      "kind": "pip",
+      "severity": "medium",
+      "ref": "fibaro-mcp",
+      "entryRepo": "ikari-software/fibaro-mcp",
+      "declaredRepo": null,
+      "reason": "PyPI package `fibaro-mcp` does not exist (404) — install_command is not copy-pasteable"
+    },
+    {
+      "slug": "finviz-mcp",
+      "name": "FinViz MCP",
+      "kind": "pip",
+      "severity": "medium",
+      "ref": "finviz-mcp-server",
+      "entryRepo": "tradermonty/finviz-mcp-server",
+      "declaredRepo": null,
+      "reason": "PyPI package `finviz-mcp-server` does not exist (404) — install_command is not copy-pasteable"
+    },
+    {
+      "slug": "gbif-mcp",
+      "name": "GBIF Biodiversity",
+      "kind": "pip",
+      "severity": "medium",
+      "ref": "gbif-mcp",
+      "entryRepo": "cyanheads/gbif-biodiversity-mcp-server",
+      "declaredRepo": null,
+      "reason": "PyPI package `gbif-mcp` does not exist (404) — install_command is not copy-pasteable"
+    },
+    {
+      "slug": "healthcare-mcp",
+      "name": "Healthcare MCP",
+      "kind": "pip",
+      "severity": "medium",
+      "ref": "healthcare-mcp",
+      "entryRepo": "cicatriiz/healthcare-mcp-public",
+      "declaredRepo": null,
+      "reason": "PyPI package `healthcare-mcp` does not exist (404) — install_command is not copy-pasteable"
+    },
+    {
+      "slug": "ibm-mq-mcp",
+      "name": "IBM MQ",
+      "kind": "pip",
+      "severity": "medium",
+      "ref": "mq-mcp-server",
+      "entryRepo": "ibm-messaging/mq-mcp-server",
+      "declaredRepo": null,
+      "reason": "PyPI package `mq-mcp-server` does not exist (404) — install_command is not copy-pasteable"
+    },
+    {
+      "slug": "ibm-watsonxdata-mcp",
+      "name": "IBM watsonx.data",
+      "kind": "pip",
+      "severity": "medium",
+      "ref": "ibm-watsonxdata-mcp",
+      "entryRepo": "ibm/ibm-watsonxdata-dl-retrieval-mcp-server",
+      "declaredRepo": null,
+      "reason": "PyPI package `ibm-watsonxdata-mcp` does not exist (404) — install_command is not copy-pasteable"
+    },
+    {
+      "slug": "icinga-mcp",
+      "name": "Icinga",
+      "kind": "pip",
+      "severity": "medium",
+      "ref": "icinga-mcp",
+      "entryRepo": "icinga/icinga-mcp",
+      "declaredRepo": null,
+      "reason": "PyPI package `icinga-mcp` does not exist (404) — install_command is not copy-pasteable"
+    },
+    {
+      "slug": "imf-data-mcp",
+      "name": "IMF Data MCP",
+      "kind": "pip",
+      "severity": "medium",
+      "ref": "imf-data-mcp",
+      "entryRepo": "c-cf/imf-data-mcp",
+      "declaredRepo": null,
+      "reason": "PyPI package `imf-data-mcp` does not exist (404) — install_command is not copy-pasteable"
+    },
+    {
+      "slug": "llamaparse-mcp",
+      "name": "LlamaParse",
+      "kind": "pip",
+      "severity": "medium",
+      "ref": "llamaparse-mcp",
+      "entryRepo": "joey-bellwetherco/llamaparse-mcp-server",
+      "declaredRepo": null,
+      "reason": "PyPI package `llamaparse-mcp` does not exist (404) — install_command is not copy-pasteable"
+    },
+    {
+      "slug": "magento-mcp",
+      "name": "Magento MCP",
+      "kind": "pip",
+      "severity": "medium",
+      "ref": "magento-mcp",
+      "entryRepo": "magebitcom/magento2-mcp-module",
+      "declaredRepo": null,
+      "reason": "PyPI package `magento-mcp` does not exist (404) — install_command is not copy-pasteable"
+    },
+    {
+      "slug": "mcp-fredapi",
+      "name": "FRED Economic Data API MCP",
+      "kind": "pip",
+      "severity": "medium",
+      "ref": "mcp-fredapi",
+      "entryRepo": "jaldekoa/mcp-fredapi",
+      "declaredRepo": null,
+      "reason": "PyPI package `mcp-fredapi` does not exist (404) — install_command is not copy-pasteable"
+    },
+    {
+      "slug": "meltano-mcp",
+      "name": "Meltano",
+      "kind": "pip",
+      "severity": "medium",
+      "ref": "meltano-mcp",
+      "entryRepo": "butkeraites/meltano-mcp-server",
+      "declaredRepo": null,
+      "reason": "PyPI package `meltano-mcp` does not exist (404) — install_command is not copy-pasteable"
+    },
+    {
+      "slug": "mem0-mcp",
+      "name": "Mem0",
+      "kind": "pip",
+      "severity": "medium",
+      "ref": "mem0-mcp",
+      "entryRepo": "mem0ai/mem0-mcp",
+      "declaredRepo": null,
+      "reason": "PyPI package `mem0-mcp` does not exist (404) — install_command is not copy-pasteable"
+    },
+    {
+      "slug": "monarch-mcp",
+      "name": "Monarch Money MCP Server",
+      "kind": "pip",
+      "severity": "medium",
+      "ref": "monarch-mcp-server",
+      "entryRepo": "carsol/monarch-mcp-server",
+      "declaredRepo": null,
+      "reason": "PyPI package `monarch-mcp-server` does not exist (404) — install_command is not copy-pasteable"
+    },
+    {
+      "slug": "nagios-mcp",
+      "name": "Nagios MCP",
+      "kind": "pip",
+      "severity": "medium",
+      "ref": "nagios-mcp-server",
+      "entryRepo": "prospire-technology-services/nagios-mcp",
+      "declaredRepo": null,
+      "reason": "PyPI package `nagios-mcp-server` does not exist (404) — install_command is not copy-pasteable"
+    },
+    {
+      "slug": "neptune-ai-mcp",
+      "name": "Neptune.ai",
+      "kind": "pip",
+      "severity": "medium",
+      "ref": "neptune-mcp",
+      "entryRepo": "shuttle-hq/neptune-mcp",
+      "declaredRepo": null,
+      "reason": "PyPI package `neptune-mcp` does not exist (404) — install_command is not copy-pasteable"
+    },
+    {
+      "slug": "netbox-mcp",
+      "name": "NetBox MCP",
+      "kind": "pip",
+      "severity": "medium",
+      "ref": "netbox-mcp",
+      "entryRepo": "netboxlabs/netbox-mcp-server",
+      "declaredRepo": null,
+      "reason": "PyPI package `netbox-mcp` does not exist (404) — install_command is not copy-pasteable"
+    },
+    {
+      "slug": "odoo-mcp-pro",
+      "name": "Odoo MCP Pro",
+      "kind": "pip",
+      "severity": "medium",
+      "ref": "odoo-mcp-pro",
+      "entryRepo": "pantalytics/odoo-mcp-pro",
+      "declaredRepo": null,
+      "reason": "PyPI package `odoo-mcp-pro` does not exist (404) — install_command is not copy-pasteable"
+    },
+    {
+      "slug": "open-webui-mcp",
+      "name": "Open WebUI",
+      "kind": "pip",
+      "severity": "medium",
+      "ref": "open-webui-mcp",
+      "entryRepo": "troylar/open-webui-mcp-server",
+      "declaredRepo": null,
+      "reason": "PyPI package `open-webui-mcp` does not exist (404) — install_command is not copy-pasteable"
+    },
+    {
+      "slug": "owasp-zap-mcp",
+      "name": "OWASP ZAP MCP",
+      "kind": "pip",
+      "severity": "medium",
+      "ref": "owasp-zap-mcp",
+      "entryRepo": "ashmere/owasp-zap-mcp",
+      "declaredRepo": null,
+      "reason": "PyPI package `owasp-zap-mcp` does not exist (404) — install_command is not copy-pasteable"
+    },
+    {
+      "slug": "plivo-mcp",
+      "name": "Plivo MCP",
+      "kind": "pip",
+      "severity": "medium",
+      "ref": "plivo-mcp",
+      "entryRepo": "varunwahi-plivo/plivo-mcp-server",
+      "declaredRepo": null,
+      "reason": "PyPI package `plivo-mcp` does not exist (404) — install_command is not copy-pasteable"
+    },
+    {
+      "slug": "plotly-mcp",
+      "name": "Plotly MCP",
+      "kind": "pip",
+      "severity": "medium",
+      "ref": "plotly-mcp-server",
+      "entryRepo": "arshlibruh/plotly-mcp-cursor",
+      "declaredRepo": null,
+      "reason": "PyPI package `plotly-mcp-server` does not exist (404) — install_command is not copy-pasteable"
+    },
+    {
+      "slug": "ros-mcp-server",
+      "name": "ROS MCP Server",
+      "kind": "pip",
+      "severity": "medium",
+      "ref": "ros-mcp-server",
+      "entryRepo": "robotmcp/ros-mcp-server",
+      "declaredRepo": null,
+      "reason": "PyPI package `ros-mcp-server` does not exist (404) — install_command is not copy-pasteable"
+    },
+    {
+      "slug": "signoz-mcp",
+      "name": "SigNoz",
+      "kind": "pip",
+      "severity": "medium",
+      "ref": "signoz-mcp",
+      "entryRepo": "signoz/signoz-mcp-server",
+      "declaredRepo": null,
+      "reason": "PyPI package `signoz-mcp` does not exist (404) — install_command is not copy-pasteable"
+    },
+    {
+      "slug": "snmp-mcp",
+      "name": "SNMP MCP",
+      "kind": "pip",
+      "severity": "medium",
+      "ref": "snmp-mcp-server",
+      "entryRepo": "acato/snmp-mcp",
+      "declaredRepo": null,
+      "reason": "PyPI package `snmp-mcp-server` does not exist (404) — install_command is not copy-pasteable"
+    },
+    {
+      "slug": "splunk-mcp",
+      "name": "Splunk",
+      "kind": "pip",
+      "severity": "medium",
+      "ref": "splunk-mcp",
+      "entryRepo": "splunk/splunk-mcp-server2",
+      "declaredRepo": null,
+      "reason": "PyPI package `splunk-mcp` does not exist (404) — install_command is not copy-pasteable"
+    },
+    {
+      "slug": "starrocks-mcp",
+      "name": "StarRocks",
+      "kind": "pip",
+      "severity": "medium",
+      "ref": "starrocks-mcp",
+      "entryRepo": "starrocks/mcp-server-starrocks",
+      "declaredRepo": null,
+      "reason": "PyPI package `starrocks-mcp` does not exist (404) — install_command is not copy-pasteable"
+    },
+    {
+      "slug": "tableau-mcp",
+      "name": "Tableau",
+      "kind": "pip",
+      "severity": "medium",
+      "ref": "tableau-mcp",
+      "entryRepo": "tableau/tableau-mcp",
+      "declaredRepo": null,
+      "reason": "PyPI package `tableau-mcp` does not exist (404) — install_command is not copy-pasteable"
+    },
+    {
+      "slug": "thingsboard-mcp",
+      "name": "ThingsBoard",
+      "kind": "pip",
+      "severity": "medium",
+      "ref": "thingsboard-mcp",
+      "entryRepo": "thingsboard/thingsboard-mcp",
+      "declaredRepo": null,
+      "reason": "PyPI package `thingsboard-mcp` does not exist (404) — install_command is not copy-pasteable"
+    },
+    {
+      "slug": "unstructured-mcp",
+      "name": "Unstructured",
+      "kind": "pip",
+      "severity": "medium",
+      "ref": "unstructured-mcp",
+      "entryRepo": "mkhalusova/unstructured-mcp",
+      "declaredRepo": null,
+      "reason": "PyPI package `unstructured-mcp` does not exist (404) — install_command is not copy-pasteable"
+    },
+    {
+      "slug": "us-gov-data-mcp",
+      "name": "US Government Data",
+      "kind": "pip",
+      "severity": "medium",
+      "ref": "gov-mcp-servers",
+      "entryRepo": "martc03/gov-mcp-servers",
+      "declaredRepo": null,
+      "reason": "PyPI package `gov-mcp-servers` does not exist (404) — install_command is not copy-pasteable"
+    },
+    {
+      "slug": "vultr-mcp",
+      "name": "Vultr",
+      "kind": "pip",
+      "severity": "medium",
+      "ref": "vultr-mcp",
+      "entryRepo": "vultr/vultr-mcp",
+      "declaredRepo": null,
+      "reason": "PyPI package `vultr-mcp` does not exist (404) — install_command is not copy-pasteable"
+    },
+    {
+      "slug": "wellsaid-mcp",
+      "name": "WellSaid MCP Server",
+      "kind": "pip",
+      "severity": "medium",
+      "ref": "wellsaid-mcp-setup-claude-desktop",
+      "entryRepo": "wellsaid-labs/wellsaid-mcp",
+      "declaredRepo": null,
+      "reason": "PyPI package `wellsaid-mcp-setup-claude-desktop` does not exist (404) — install_command is not copy-pasteable"
+    },
+    {
+      "slug": "zendesk",
+      "name": "Zendesk MCP Server",
+      "kind": "pip",
+      "severity": "medium",
+      "ref": "venv",
+      "entryRepo": "reminia/zendesk-mcp-server",
+      "declaredRepo": null,
+      "reason": "PyPI package `venv` does not exist (404) — install_command is not copy-pasteable"
+    },
+    {
+      "slug": "elasticsearch",
+      "name": "Elasticsearch MCP Server",
+      "kind": "docker",
+      "severity": "low",
+      "ref": "docker.elastic.co/mcp/elasticsearch",
+      "entryRepo": "elastic/mcp-server-elasticsearch",
+      "declaredRepo": null,
+      "reason": "image `docker.elastic.co/mcp/elasticsearch` exposes no org.opencontainers.image.source label — link cannot be corroborated from the registry side"
+    },
+    {
+      "slug": "senzing-mcp",
+      "name": "Senzing",
+      "kind": "docker",
+      "severity": "low",
+      "ref": "senzing/senzing-mcp",
+      "entryRepo": "senzing/senzing-mcp-skill",
+      "declaredRepo": null,
+      "reason": "image `senzing/senzing-mcp` exposes no org.opencontainers.image.source label — link cannot be corroborated from the registry side"
+    },
+    {
+      "slug": "sonarqube",
+      "name": "SonarQube MCP Server",
+      "kind": "docker",
+      "severity": "low",
+      "ref": "sonarsource/sonarqube-mcp",
+      "entryRepo": "sonarsource/sonarqube-mcp-server",
+      "declaredRepo": null,
+      "reason": "image `sonarsource/sonarqube-mcp` exposes no org.opencontainers.image.source label — link cannot be corroborated from the registry side"
+    },
+    {
+      "slug": "terraform",
+      "name": "Terraform MCP Server",
+      "kind": "docker",
+      "severity": "low",
+      "ref": "hashicorp/terraform-mcp-server:1.1.0",
+      "entryRepo": "hashicorp/terraform-mcp-server",
+      "declaredRepo": null,
+      "reason": "image `hashicorp/terraform-mcp-server:1.1.0` exposes no org.opencontainers.image.source label — link cannot be corroborated from the registry side"
+    },
+    {
+      "slug": "tesla-powerwall-mcp",
+      "name": "Tesla Powerwall MCP (via tesla-powerwall-service bridge)",
+      "kind": "docker",
+      "severity": "low",
+      "ref": "ghcr.io/x10send/powerwall-bridge:latest",
+      "entryRepo": "x10send/tesla-powerwall-service",
+      "declaredRepo": "x10send/powerwall-bridge",
+      "reason": "same owner, different repo — likely a monorepo/sibling package, verify only if the page claims otherwise"
+    },
+    {
+      "slug": "alpha-vantage-mcp",
+      "name": "Alpha Vantage MCP Server",
+      "kind": "pip",
+      "severity": "low",
+      "ref": "marketdata-mcp-server",
+      "entryRepo": "alphavantage/alpha_vantage_mcp",
+      "declaredRepo": null,
+      "reason": "PyPI package `marketdata-mcp-server` declares no GitHub source URL — link cannot be corroborated from the registry side"
+    },
+    {
+      "slug": "ansible",
+      "name": "Ansible",
+      "kind": "pip",
+      "severity": "low",
+      "ref": "ansible-mcp-server",
+      "entryRepo": "ansible-collections/ansible.mcp",
+      "declaredRepo": null,
+      "reason": "PyPI package `ansible-mcp-server` declares no GitHub source URL — link cannot be corroborated from the registry side"
+    },
+    {
+      "slug": "baidu-map",
+      "name": "Baidu Map MCP Server",
+      "kind": "pip",
+      "severity": "low",
+      "ref": "mcp-server-baidu-maps",
+      "entryRepo": "baidu-maps/mcp",
+      "declaredRepo": null,
+      "reason": "PyPI package `mcp-server-baidu-maps` declares no GitHub source URL — link cannot be corroborated from the registry side"
+    },
+    {
+      "slug": "binance-mcp-server",
+      "name": "Binance MCP Server",
+      "kind": "pip",
+      "severity": "low",
+      "ref": "binance-mcp-server",
+      "entryRepo": "ethancod1ng/binance-mcp-server",
+      "declaredRepo": null,
+      "reason": "PyPI package `binance-mcp-server` declares no GitHub source URL — link cannot be corroborated from the registry side"
+    },
+    {
+      "slug": "biomcp",
+      "name": "BioMCP",
+      "kind": "pip",
+      "severity": "low",
+      "ref": "biomcp",
+      "entryRepo": "genomoncology/biomcp",
+      "declaredRepo": null,
+      "reason": "PyPI package `biomcp` declares no GitHub source URL — link cannot be corroborated from the registry side"
+    },
+    {
+      "slug": "blender-mcp",
+      "name": "Blender MCP",
+      "kind": "pip",
+      "severity": "low",
+      "ref": "blender-mcp",
+      "entryRepo": "ahujasid/blender-mcp",
+      "declaredRepo": null,
+      "reason": "PyPI package `blender-mcp` declares no GitHub source URL — link cannot be corroborated from the registry side"
+    },
+    {
+      "slug": "django-mcp",
+      "name": "Django MCP",
+      "kind": "pip",
+      "severity": "low",
+      "ref": "django-mcp-server",
+      "entryRepo": "gts360/django-mcp-server",
+      "declaredRepo": null,
+      "reason": "PyPI package `django-mcp-server` declares no GitHub source URL — link cannot be corroborated from the registry side"
+    },
+    {
+      "slug": "elevenlabs",
+      "name": "ElevenLabs MCP Server",
+      "kind": "pip",
+      "severity": "low",
+      "ref": "elevenlabs-mcp",
+      "entryRepo": "elevenlabs/elevenlabs-mcp",
+      "declaredRepo": null,
+      "reason": "PyPI package `elevenlabs-mcp` declares no GitHub source URL — link cannot be corroborated from the registry side"
+    },
+    {
+      "slug": "elevenlabs-mcp",
+      "name": "ElevenLabs Voice Agents MCP",
+      "kind": "pip",
+      "severity": "low",
+      "ref": "elevenlabs-mcp",
+      "entryRepo": "elevenlabs/elevenlabs-mcp",
+      "declaredRepo": null,
+      "reason": "PyPI package `elevenlabs-mcp` declares no GitHub source URL — link cannot be corroborated from the registry side"
+    },
+    {
+      "slug": "excel-mcp",
+      "name": "Excel MCP Server",
+      "kind": "pip",
+      "severity": "low",
+      "ref": "excel-mcp-server",
+      "entryRepo": "haris-musa/excel-mcp-server",
+      "declaredRepo": null,
+      "reason": "PyPI package `excel-mcp-server` declares no GitHub source URL — link cannot be corroborated from the registry side"
+    },
+    {
+      "slug": "freshdesk",
+      "name": "Freshdesk MCP Server",
+      "kind": "pip",
+      "severity": "low",
+      "ref": "freshdesk-mcp",
+      "entryRepo": "effytech/freshdesk_mcp",
+      "declaredRepo": null,
+      "reason": "PyPI package `freshdesk-mcp` declares no GitHub source URL — link cannot be corroborated from the registry side"
+    },
+    {
+      "slug": "fronius-solar-mcp",
+      "name": "Fronius Solar MCP",
+      "kind": "pip",
+      "severity": "low",
+      "ref": "fronius-mcp",
+      "entryRepo": "flowiesner/fronius-mcp",
+      "declaredRepo": null,
+      "reason": "PyPI package `fronius-mcp` declares no GitHub source URL — link cannot be corroborated from the registry side"
+    },
+    {
+      "slug": "hubstaff-mcp",
+      "name": "Hubstaff MCP Server",
+      "kind": "pip",
+      "severity": "low",
+      "ref": "hubstaff-mcp",
+      "entryRepo": "cdmx-in/hubstaff-mcp",
+      "declaredRepo": null,
+      "reason": "PyPI package `hubstaff-mcp` declares no GitHub source URL — link cannot be corroborated from the registry side"
+    },
+    {
+      "slug": "image-generation",
+      "name": "MiniMax MCP (Image, Video & Audio Generation)",
+      "kind": "pip",
+      "severity": "low",
+      "ref": "minimax-mcp",
+      "entryRepo": "minimax-ai/minimax-mcp",
+      "declaredRepo": null,
+      "reason": "PyPI package `minimax-mcp` declares no GitHub source URL — link cannot be corroborated from the registry side"
+    },
+    {
+      "slug": "influxdb-mcp",
+      "name": "InfluxDB MCP",
+      "kind": "pip",
+      "severity": "low",
+      "ref": "influxdb-mcp",
+      "entryRepo": "influxdata/influxdb3_mcp_server",
+      "declaredRepo": null,
+      "reason": "PyPI package `influxdb-mcp` declares no GitHub source URL — link cannot be corroborated from the registry side"
+    },
+    {
+      "slug": "langsmith-mcp",
+      "name": "LangSmith MCP",
+      "kind": "pip",
+      "severity": "low",
+      "ref": "langsmith-mcp",
+      "entryRepo": "langchain-ai/langsmith-mcp-server",
+      "declaredRepo": null,
+      "reason": "PyPI package `langsmith-mcp` declares no GitHub source URL — link cannot be corroborated from the registry side"
+    },
+    {
+      "slug": "murf-ai-mcp",
+      "name": "Murf AI MCP Server",
+      "kind": "pip",
+      "severity": "low",
+      "ref": "murf-mcp",
+      "entryRepo": "murf-ai/murf-mcp",
+      "declaredRepo": null,
+      "reason": "PyPI package `murf-mcp` declares no GitHub source URL — link cannot be corroborated from the registry side"
+    },
+    {
+      "slug": "obsidian",
+      "name": "Obsidian MCP Server",
+      "kind": "pip",
+      "severity": "low",
+      "ref": "mcp-obsidian",
+      "entryRepo": "markuspfundstein/mcp-obsidian",
+      "declaredRepo": null,
+      "reason": "PyPI package `mcp-obsidian` declares no GitHub source URL — link cannot be corroborated from the registry side"
+    },
+    {
+      "slug": "opc-ua-mcp",
+      "name": "OPC-UA MCP Server",
+      "kind": "pip",
+      "severity": "low",
+      "ref": "opcua-mcp",
+      "entryRepo": "kukapay/opcua-mcp",
+      "declaredRepo": null,
+      "reason": "PyPI package `opcua-mcp` declares no GitHub source URL — link cannot be corroborated from the registry side"
+    },
+    {
+      "slug": "openfda-augmented-mcp",
+      "name": "OpenFDA MCP Server",
+      "kind": "pip",
+      "severity": "low",
+      "ref": "openfda-mcp-server",
+      "entryRepo": "augmented-nature/openfda-mcp-server",
+      "declaredRepo": null,
+      "reason": "PyPI package `openfda-mcp-server` declares no GitHub source URL — link cannot be corroborated from the registry side"
+    },
+    {
+      "slug": "openstreetmap-mcp",
+      "name": "OpenStreetMap MCP Server",
+      "kind": "pip",
+      "severity": "low",
+      "ref": "osm-mcp-server",
+      "entryRepo": "jagan-shanmugam/open-streetmap-mcp",
+      "declaredRepo": null,
+      "reason": "PyPI package `osm-mcp-server` declares no GitHub source URL — link cannot be corroborated from the registry side"
+    },
+    {
+      "slug": "pagerduty",
+      "name": "PagerDuty MCP Server",
+      "kind": "pip",
+      "severity": "low",
+      "ref": "pagerduty-mcp",
+      "entryRepo": "pagerduty/pagerduty-mcp-server",
+      "declaredRepo": null,
+      "reason": "PyPI package `pagerduty-mcp` declares no GitHub source URL — link cannot be corroborated from the registry side"
+    },
+    {
+      "slug": "podman-mcp",
+      "name": "Podman MCP",
+      "kind": "pip",
+      "severity": "low",
+      "ref": "podman-mcp",
+      "entryRepo": "manusa/podman-mcp-server",
+      "declaredRepo": null,
+      "reason": "PyPI package `podman-mcp` declares no GitHub source URL — link cannot be corroborated from the registry side"
+    },
+    {
+      "slug": "prefect-mcp",
+      "name": "Prefect",
+      "kind": "pip",
+      "severity": "low",
+      "ref": "prefect-mcp",
+      "entryRepo": "prefecthq/prefect-mcp-server",
+      "declaredRepo": null,
+      "reason": "PyPI package `prefect-mcp` declares no GitHub source URL — link cannot be corroborated from the registry side"
+    },
+    {
+      "slug": "qdrant",
+      "name": "Qdrant MCP Server",
+      "kind": "pip",
+      "severity": "low",
+      "ref": "mcp-server-qdrant",
+      "entryRepo": "qdrant/mcp-server-qdrant",
+      "declaredRepo": null,
+      "reason": "PyPI package `mcp-server-qdrant` declares no GitHub source URL — link cannot be corroborated from the registry side"
+    },
+    {
+      "slug": "shodan-mcp",
+      "name": "Shodan MCP",
+      "kind": "pip",
+      "severity": "low",
+      "ref": "shodan-mcp",
+      "entryRepo": "w0h1v/mcp-shodan",
+      "declaredRepo": null,
+      "reason": "PyPI package `shodan-mcp` declares no GitHub source URL — link cannot be corroborated from the registry side"
+    },
+    {
+      "slug": "sqlite",
+      "name": "SQLite MCP Server",
+      "kind": "pip",
+      "severity": "low",
+      "ref": "mcp-server-sqlite",
+      "entryRepo": "modelcontextprotocol/servers-archived",
+      "declaredRepo": null,
+      "reason": "PyPI package `mcp-server-sqlite` declares no GitHub source URL — link cannot be corroborated from the registry side"
+    },
+    {
+      "slug": "superset-mcp",
+      "name": "Apache Superset MCP",
+      "kind": "pip",
+      "severity": "low",
+      "ref": "superset-mcp",
+      "entryRepo": "dguerrar/mcp-apache-superset",
+      "declaredRepo": null,
+      "reason": "PyPI package `superset-mcp` declares no GitHub source URL — link cannot be corroborated from the registry side"
+    },
+    {
+      "slug": "world-bank-api-mcp",
+      "name": "World Bank Data MCP",
+      "kind": "pip",
+      "severity": "low",
+      "ref": "world-bank-mcp-server",
+      "entryRepo": "anshumax/world_bank_mcp_server",
+      "declaredRepo": null,
+      "reason": "PyPI package `world-bank-mcp-server` declares no GitHub source URL — link cannot be corroborated from the registry side"
+    }
+  ]
+}
