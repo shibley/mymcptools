@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-07T10:38:51.980Z",
+  "generatedAt": "2026-08-07T22:39:33.553Z",
   "totalEntries": 2467,
   "scanned": 1032,
   "withoutGithubUrl": 1435,
@@ -408,19 +408,6 @@
       "reason": "no identity overlap with \"PortSwigger/mcp-server\"; owner matches author \"PortSwigger\" — vendor-owned but possibly the WRONG repo of that vendor (the aws-s3 shape)"
     },
     {
-      "slug": "kafka-mcp",
-      "name": "Apache Kafka MCP",
-      "author": "confluentinc",
-      "github_url": "https://github.com/confluentinc/mcp-confluent",
-      "ownerRepo": "confluentinc/mcp-confluent",
-      "severity": "medium",
-      "overlap": 0,
-      "authorMatchesOwner": true,
-      "looksLike": [],
-      "stars": 720,
-      "reason": "no identity overlap with \"confluentinc/mcp-confluent\"; owner matches author \"confluentinc\" — vendor-owned but possibly the WRONG repo of that vendor (the aws-s3 shape)"
-    },
-    {
       "slug": "gopls",
       "name": "Go Language Server",
       "author": "golang",
@@ -445,6 +432,19 @@
       "looksLike": [],
       "stars": 360,
       "reason": "no identity overlap with \"python-lsp/python-lsp-server\"; owner matches author \"python-lsp\" — vendor-owned but possibly the WRONG repo of that vendor (the aws-s3 shape)"
+    },
+    {
+      "slug": "kafka-mcp",
+      "name": "Apache Kafka MCP",
+      "author": "confluentinc",
+      "github_url": "https://github.com/confluentinc/mcp-confluent",
+      "ownerRepo": "confluentinc/mcp-confluent",
+      "severity": "medium",
+      "overlap": 0,
+      "authorMatchesOwner": true,
+      "looksLike": [],
+      "stars": 164,
+      "reason": "no identity overlap with \"confluentinc/mcp-confluent\"; owner matches author \"confluentinc\" — vendor-owned but possibly the WRONG repo of that vendor (the aws-s3 shape)"
     },
     {
       "slug": "boardgamegeek-mcp",
