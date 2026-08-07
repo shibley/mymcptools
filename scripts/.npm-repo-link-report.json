@@ -1,110 +1,20 @@
 {
-  "scanned": 327,
+  "scanned": 326,
   "counts": {
-    "critical": 4,
-    "high": 7,
-    "medium": 138,
-    "low": 31
+    "critical": 1,
+    "high": 0,
+    "medium": 137,
+    "low": 28
   },
   "findings": [
     {
-      "slug": "easypost-mcp",
-      "name": "EasyPost MCP",
+      "slug": "plane-mcp",
+      "name": "Plane",
       "severity": "critical",
-      "pkg": "easypost-mcp",
-      "entryRepo": "pipeworx-io/mcp-easypost",
-      "pkgRepo": "your-org/easypost-mcp",
+      "pkg": "plane-mcp",
+      "entryRepo": "makeplane/plane-mcp-server",
+      "pkgRepo": "rajusudhar/plane-mcp",
       "reason": "package points at a DIFFERENT owner AND repo than the page links — a reader following the install command gets other software"
-    },
-    {
-      "slug": "lightdash-mcp",
-      "name": "Lightdash",
-      "severity": "critical",
-      "pkg": "lightdash-mcp",
-      "entryRepo": "syucream/lightdash-mcp-server",
-      "pkgRepo": "timeleft-dev/lightdash-mcp",
-      "reason": "package points at a DIFFERENT owner AND repo than the page links — a reader following the install command gets other software"
-    },
-    {
-      "slug": "make-com",
-      "name": "Make (Integromat)",
-      "severity": "critical",
-      "pkg": "make-mcp-server",
-      "entryRepo": "integromat/make-mcp-server",
-      "pkgRepo": "danishashko/make-mcp",
-      "reason": "package points at a DIFFERENT owner AND repo than the page links — a reader following the install command gets other software"
-    },
-    {
-      "slug": "repomix-mcp",
-      "name": "Repomix",
-      "severity": "critical",
-      "pkg": "repomix-mcp",
-      "entryRepo": "yamadashy/repomix",
-      "pkgRepo": "lotarcc/repomix-mcp",
-      "reason": "package points at a DIFFERENT owner AND repo than the page links — a reader following the install command gets other software"
-    },
-    {
-      "slug": "capacities-mcp",
-      "name": "Capacities",
-      "severity": "high",
-      "pkg": "capacities-mcp",
-      "entryRepo": "jem-computer/capacities-mcp",
-      "pkgRepo": "jemgold/capacities-mcp",
-      "reason": "SAME repo name, DIFFERENT owner — classic package-name collision (the `sendgrid` shape)"
-    },
-    {
-      "slug": "greenhouse-mcp",
-      "name": "Greenhouse MCP",
-      "severity": "high",
-      "pkg": "greenhouse-mcp",
-      "entryRepo": "alexmeckes/greenhouse-mcp",
-      "pkgRepo": "bhanuprakashd/greenhouse-mcp",
-      "reason": "SAME repo name, DIFFERENT owner — classic package-name collision (the `sendgrid` shape)"
-    },
-    {
-      "slug": "huggingface",
-      "name": "Hugging Face MCP Server",
-      "severity": "high",
-      "pkg": "@llmindset/hf-mcp-server",
-      "entryRepo": "huggingface/hf-mcp-server",
-      "pkgRepo": "evalstate/hf-mcp-server",
-      "reason": "SAME repo name, DIFFERENT owner — classic package-name collision (the `sendgrid` shape)"
-    },
-    {
-      "slug": "huggingface-mcp",
-      "name": "HuggingFace Hub MCP Server",
-      "severity": "high",
-      "pkg": "@llmindset/hf-mcp-server",
-      "entryRepo": "huggingface/hf-mcp-server",
-      "pkgRepo": "evalstate/hf-mcp-server",
-      "reason": "SAME repo name, DIFFERENT owner — classic package-name collision (the `sendgrid` shape)"
-    },
-    {
-      "slug": "payload-cms-mcp",
-      "name": "Payload CMS",
-      "severity": "high",
-      "pkg": "payload-cms-mcp",
-      "entryRepo": "disruption-hub/payloadcmsmcp",
-      "pkgRepo": "matmax-worldwide/payloadcmsmcp",
-      "reason": "SAME repo name, DIFFERENT owner — classic package-name collision (the `sendgrid` shape)"
-    },
-    {
-      "slug": "sap-abap-adt-mcp",
-      "name": "SAP ABAP ADT",
-      "severity": "high",
-      "pkg": "mcp-abap-adt",
-      "entryRepo": "fr0ster/mcp-abap-adt",
-      "pkgRepo": "mario-andreschak/mcp-abap-adt",
-      "reason": "SAME repo name, DIFFERENT owner — classic package-name collision (the `sendgrid` shape)"
-    },
-    {
-      "slug": "spotdraft-mcp",
-      "name": "SpotDraft MCP Server",
-      "severity": "high",
-      "pkg": "@spotdraft/spotdraft-mcp",
-      "entryRepo": "mattdavisrv/spotdraft-mcp",
-      "pkgRepo": "spotdraft/spotdraft-mcp",
-      "reason": "SAME repo name, DIFFERENT owner — classic package-name collision (the `sendgrid` shape)"
     },
     {
       "slug": "adyen-mcp",
@@ -926,15 +836,6 @@
       "reason": "npm package `permit-mcp` does not exist (404) — install_command is not copy-pasteable"
     },
     {
-      "slug": "plane-mcp",
-      "name": "Plane",
-      "severity": "medium",
-      "pkg": "plane-mcp",
-      "entryRepo": "makeplane/plane-mcp-server",
-      "pkgRepo": null,
-      "reason": "npm package `plane-mcp` does not exist (404) — install_command is not copy-pasteable"
-    },
-    {
       "slug": "pleo-mcp",
       "name": "Pleo",
       "severity": "medium",
@@ -1547,15 +1448,6 @@
       "reason": "npm package `@sinch/mcp` declares no GitHub repository — link cannot be corroborated from the registry side"
     },
     {
-      "slug": "stability-ai",
-      "name": "Stability AI MCP Server (Community)",
-      "severity": "low",
-      "pkg": "mcp-stability-ai",
-      "entryRepo": "alesurli/mcp-stability-ai",
-      "pkgRepo": "alesurli/mcp-server-stability",
-      "reason": "same owner, different repo — likely a monorepo/sibling package, verify only if the page claims otherwise"
-    },
-    {
       "slug": "stagehand",
       "name": "Stagehand (Browserbase) MCP Server",
       "severity": "low",
@@ -1563,15 +1455,6 @@
       "entryRepo": "browserbase/mcp-server-browserbase",
       "pkgRepo": null,
       "reason": "npm package `@browserbasehq/mcp-server-browserbase` declares no GitHub repository — link cannot be corroborated from the registry side"
-    },
-    {
-      "slug": "stripe",
-      "name": "Stripe MCP Server",
-      "severity": "low",
-      "pkg": "@stripe/agent-toolkit",
-      "entryRepo": "stripe/agent-toolkit",
-      "pkgRepo": "stripe/ai",
-      "reason": "same owner, different repo — likely a monorepo/sibling package, verify only if the page claims otherwise"
     },
     {
       "slug": "tursodb",
@@ -1617,15 +1500,6 @@
       "entryRepo": "iosdevsk/mcp-for-woocommerce",
       "pkgRepo": null,
       "reason": "npm package `woocommerce-mcp` declares no GitHub repository — link cannot be corroborated from the registry side"
-    },
-    {
-      "slug": "youtube-studio-mcp",
-      "name": "YouTube Studio Analytics",
-      "severity": "low",
-      "pkg": "youtube-studio-mcp",
-      "entryRepo": "adityaarsharma/youtube-marketing-skills",
-      "pkgRepo": "adityaarsharma/youtube-mcp-server",
-      "reason": "same owner, different repo — likely a monorepo/sibling package, verify only if the page claims otherwise"
     }
   ]
 }
