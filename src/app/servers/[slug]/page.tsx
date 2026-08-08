@@ -33,6 +33,26 @@ function getFirstSentence(text: string) {
 }
 
 /**
+ * True when the catalog holds no public artifact for this server at all — no
+ * repository it could confirm, no install command, no website.
+ *
+ * 427 entries (17% of the catalog) are in this state. Every other page here
+ * ends with something a reader can act on; these end with nothing, while the
+ * meta description still promises "learn how to install and configure" it and
+ * the body still narrates the server as an established thing. That gap is the
+ * problem: the page reads as a listing for working software and then, silently,
+ * offers no way to get it.
+ *
+ * The fix is not to hide the page — the name is a real search query and the
+ * description is real information. It is to say the missing part out loud, in
+ * the slot where the Installation block would otherwise be, and to stop the
+ * metadata promising steps that do not exist.
+ */
+function hasNoPublicArtifact(server: { github_url: string | null; install_command?: string; website_url?: string }) {
+  return !server.github_url && !server.install_command?.trim() && !server.website_url;
+}
+
+/**
  * Lower-cases the first character so a description can be injected mid-sentence.
  * Left alone when the second character is also upper-case, so acronyms and
  * product names that lead a description ("AI-powered…", "API access…",
@@ -112,9 +132,18 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     ? capitalize(server.description)
     : `${mcpPhrase(baseName)} provides ${uncapitalize(server.description)}`;
 
+  // Promising install steps on a page that has none is the single clearest way
+  // to lose a click twice: once to the bounce, once to the search engine noting
+  // the mismatch between the snippet and the page.
+  const unverified = hasNoPublicArtifact(server);
+
   return {
-    title: `${mcpPhrase(baseName)} — Setup, Features & Alternatives | MyMCPTools`,
-    description: `${sentenceDescription} Learn how to install and configure the ${mcpPhrase(baseName, true)} for Claude, Cursor, VS Code, and more.`,
+    title: unverified
+      ? `${mcpPhrase(baseName)} — What We Could Verify | MyMCPTools`
+      : `${mcpPhrase(baseName)} — Setup, Features & Alternatives | MyMCPTools`,
+    description: unverified
+      ? `${sentenceDescription} No public repository or published package has been confirmed for the ${mcpPhrase(baseName, true)} — here is what the catalog can and cannot verify.`
+      : `${sentenceDescription} Learn how to install and configure the ${mcpPhrase(baseName, true)} for Claude, Cursor, VS Code, and more.`,
     openGraph: {
       title: `${mcpPhrase(baseName)} | MyMCPTools`,
       description: sentenceDescription,
@@ -310,6 +339,45 @@ export default async function ServerPage({ params }: Props) {
 
                   <div className="mt-6 border-t border-gray-800 pt-5">
                     <TrustSignalList signals={trust.signals} />
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {/* Nothing to install, nothing to read, nothing to visit. Rather than
+                end the page in silence — which reads as "we just didn't fill this
+                in" — state the gap in the slot the Installation block would have
+                occupied, and point at the places a reader can check for themselves. */}
+            {hasNoPublicArtifact(server) && (
+              <div className="mb-8">
+                <h2 className="text-xl font-semibold text-white mb-4">What we could verify</h2>
+                <div className="rounded-xl border border-amber-500/30 bg-amber-500/5 p-5">
+                  <p className="text-sm leading-relaxed text-amber-100/90">
+                    No public repository, published package, or project website has been
+                    confirmed for {server.name}. The description above reflects what the
+                    server is reported to do; we have not been able to verify an
+                    implementation behind it, so there is no install command to give you
+                    and no star count worth quoting.
+                  </p>
+                  <p className="mt-3 text-sm leading-relaxed text-gray-400">
+                    If you maintain it, or you know the repository, the fastest way to fix
+                    this listing is to point us at the source.
+                  </p>
+                  <div className="mt-4 flex flex-wrap gap-3">
+                    <a
+                      href={`https://github.com/search?q=${encodeURIComponent(`${baseName} mcp server`)}&type=repositories`}
+                      target="_blank"
+                      rel="noopener noreferrer nofollow"
+                      className="inline-flex items-center rounded-lg border border-gray-700 bg-gray-900 px-4 py-2 text-sm text-gray-300 transition hover:border-blue-500/50"
+                    >
+                      Search GitHub for it
+                    </a>
+                    <Link
+                      href={`/category/${serverCategories[0]?.slug || "developer-tools"}`}
+                      className="inline-flex items-center rounded-lg border border-gray-700 bg-gray-900 px-4 py-2 text-sm text-gray-300 transition hover:border-blue-500/50"
+                    >
+                      Browse verified {primaryCategory} servers
+                    </Link>
                   </div>
                 </div>
               </div>

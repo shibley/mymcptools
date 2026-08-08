@@ -1,0 +1,3903 @@
+{
+  "generated_at": "2026-08-08T22:41:46.768Z",
+  "catalog_entries": 2467,
+  "phantom_listings": 427,
+  "phantom_pct": 17.3,
+  "resolve_attempted": 12,
+  "repairable": 7,
+  "fabricated_star_counts": 415,
+  "findings": [
+    {
+      "slug": "newrelic-mcp",
+      "name": "New Relic MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 876,
+      "severity": "critical",
+      "repaired": {
+        "github_url": "https://github.com/cloudbring/newrelic-mcp",
+        "stars": 14,
+        "archived": false,
+        "via": "github-search",
+        "evidence": "GitHub repo cloudbring/newrelic-mcp names this entry and describes an MCP server (\"Model Context Protocol server for New Relic observability platform integration\")"
+      },
+      "note": "REPAIRABLE — GitHub repo cloudbring/newrelic-mcp names this entry and describes an MCP server (\"Model Context Protocol server for New Relic observability platform integration\"). Real star count is 14 (catalog claims 876)."
+    },
+    {
+      "slug": "appwrite-mcp",
+      "name": "Appwrite MCP",
+      "author": "appwrite",
+      "install_type": "npm",
+      "claimedStars": 860,
+      "severity": "critical",
+      "repaired": {
+        "github_url": "https://github.com/appwrite/mcp",
+        "stars": 71,
+        "archived": false,
+        "via": "github-search",
+        "evidence": "GitHub repo appwrite/mcp names this entry and describes an MCP server (\"Appwrite’s MCP server. Operating your backend has never been easier.\")"
+      },
+      "note": "REPAIRABLE — GitHub repo appwrite/mcp names this entry and describes an MCP server (\"Appwrite’s MCP server. Operating your backend has never been easier.\"). Real star count is 71 (catalog claims 860)."
+    },
+    {
+      "slug": "posthog-mcp",
+      "name": "PostHog MCP",
+      "author": "PostHog",
+      "install_type": "npm",
+      "claimedStars": 740,
+      "severity": "critical",
+      "repaired": {
+        "github_url": "https://github.com/PostHog/mcp",
+        "stars": 151,
+        "archived": true,
+        "via": "github-search",
+        "evidence": "GitHub repo PostHog/mcp names this entry and describes an MCP server (\"Official PostHog MCP Server 🦔\")"
+      },
+      "note": "REPAIRABLE — GitHub repo PostHog/mcp names this entry and describes an MCP server (\"Official PostHog MCP Server 🦔\"). Real star count is 151 (catalog claims 740)."
+    },
+    {
+      "slug": "cloudfront-mcp",
+      "name": "AWS CloudFront MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 567,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 567 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "neon-mcp",
+      "name": "Neon Serverless Postgres MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 512,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 512 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "tesla-vehicle-api-mcp",
+      "name": "Tesla Vehicle API MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 512,
+      "severity": "critical",
+      "repaired": {
+        "github_url": "https://github.com/tylergibbs1/tesla-mcp-server",
+        "stars": 1,
+        "archived": false,
+        "via": "github-search",
+        "evidence": "GitHub repo tylergibbs1/tesla-mcp-server names this entry and describes an MCP server (\"MCP server for Tesla vehicle control via the Fleet API\")"
+      },
+      "note": "REPAIRABLE — GitHub repo tylergibbs1/tesla-mcp-server names this entry and describes an MCP server (\"MCP server for Tesla vehicle control via the Fleet API\"). Real star count is 1 (catalog claims 512)."
+    },
+    {
+      "slug": "midjourney-proxy-mcp",
+      "name": "Midjourney Image Gen MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 512,
+      "severity": "critical",
+      "repaired": {
+        "github_url": "https://github.com/runapi-ai/midjourney-mcp",
+        "stars": 1,
+        "archived": false,
+        "via": "npm-search",
+        "evidence": "npm package \"@runapi.ai/midjourney-mcp\" mentions MCP and declares runapi-ai/midjourney-mcp, confirmed live on the GitHub API"
+      },
+      "note": "REPAIRABLE — npm package \"@runapi.ai/midjourney-mcp\" mentions MCP and declares runapi-ai/midjourney-mcp, confirmed live on the GitHub API. Real star count is 1 (catalog claims 512)."
+    },
+    {
+      "slug": "storyblok-mcp",
+      "name": "Storyblok MCP",
+      "author": "storyblok",
+      "install_type": "npm",
+      "claimedStars": 510,
+      "severity": "critical",
+      "repaired": {
+        "github_url": "https://github.com/storyblok/mcp-server",
+        "stars": 8,
+        "archived": true,
+        "via": "github-search",
+        "evidence": "GitHub repo storyblok/mcp-server names this entry and describes an MCP server (\"Storyblok's Management MCP Server (currently in Innovation phase)\")"
+      },
+      "note": "REPAIRABLE — GitHub repo storyblok/mcp-server names this entry and describes an MCP server (\"Storyblok's Management MCP Server (currently in Innovation phase)\"). Real star count is 8 (catalog claims 510)."
+    },
+    {
+      "slug": "apache-pulsar-mcp",
+      "name": "Apache Pulsar MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 498,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 498 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "xata-mcp",
+      "name": "Xata MCP",
+      "author": "xataio",
+      "install_type": "npm",
+      "claimedStars": 480,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 480 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "huggingface-hub-mcp",
+      "name": "Hugging Face Hub MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 467,
+      "severity": "critical",
+      "repaired": {
+        "github_url": "https://github.com/pipeworx-io/mcp-huggingface",
+        "stars": 0,
+        "archived": false,
+        "via": "npm-search",
+        "evidence": "npm package \"@pipeworx/mcp-huggingface\" mentions MCP and declares pipeworx-io/mcp-huggingface, confirmed live on the GitHub API"
+      },
+      "note": "REPAIRABLE — npm package \"@pipeworx/mcp-huggingface\" mentions MCP and declares pipeworx-io/mcp-huggingface, confirmed live on the GitHub API. Real star count is 0 (catalog claims 467)."
+    },
+    {
+      "slug": "vector-dev",
+      "name": "Vector (Datadog)",
+      "author": "vectordotdev",
+      "install_type": "binary",
+      "claimedStars": 445,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 445 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "fastly-mcp",
+      "name": "Fastly MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 423,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 423 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "google-home-mcp",
+      "name": "Google Home MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 412,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 412 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "keeper-mcp",
+      "name": "Keeper Security MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 412,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 412 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "databricks-lakehouse-mcp",
+      "name": "Databricks Lakehouse MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 398,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 398 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "weights-biases-mcp",
+      "name": "Weights & Biases MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 389,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 389 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "anthropic-bedrock-mcp",
+      "name": "Anthropic Bedrock MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 389,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 389 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "alexa-smart-home-mcp",
+      "name": "Alexa Smart Home MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 389,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 389 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "azure-cdn-mcp",
+      "name": "Azure CDN MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 389,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 389 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "hunter-io-mcp",
+      "name": "Hunter.io MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 389,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 389 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "td-ameritrade-mcp",
+      "name": "TD Ameritrade (Schwab) MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 389,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 389 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "aws-textract-mcp",
+      "name": "AWS Textract Document AI MCP",
+      "author": "community",
+      "install_type": "pip",
+      "claimedStars": 387,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 387 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "benthos",
+      "name": "Benthos / Redpanda Connect",
+      "author": "redpandadata",
+      "install_type": "binary",
+      "claimedStars": 378,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 378 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "apple-homekit-mcp",
+      "name": "Apple HomeKit MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 356,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 356 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "ynab-mcp",
+      "name": "YNAB (You Need A Budget) MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 356,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 356 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "ansible-mcp",
+      "name": "Ansible / AWX MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 345,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 345 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "temporal-mcp",
+      "name": "Temporal Workflow MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 345,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 345 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "walmart-seller-mcp",
+      "name": "Walmart Seller Center MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 342,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 342 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "harvey-ai-mcp",
+      "name": "Harvey AI MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 341,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 341 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "phind-mcp",
+      "name": "Phind Developer Search MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 341,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 341 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "faunadb-mcp",
+      "name": "FaunaDB MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 340,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 340 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "lucidchart-mcp",
+      "name": "Lucidchart MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 334,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 334 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "overpass-api-mcp",
+      "name": "OpenStreetMap Overpass MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 334,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 334 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "flightaware-mcp",
+      "name": "FlightAware AeroAPI MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 318,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 318 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "quicknode-mcp",
+      "name": "QuickNode Blockchain MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 312,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 312 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "upstash-mcp",
+      "name": "Upstash Serverless Redis & Kafka MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 312,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 312 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "hellosign-mcp",
+      "name": "HelloSign (Dropbox Sign) MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 312,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 312 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "dremio-mcp",
+      "name": "Dremio Data Lake MCP",
+      "author": "community",
+      "install_type": "pip",
+      "claimedStars": 312,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 312 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "moz-mcp",
+      "name": "Moz SEO MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 312,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 312 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "gitlab-issues-mcp",
+      "name": "GitLab Issues & CI MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 312,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 312 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "logstash",
+      "name": "Logstash",
+      "author": "elastic-community",
+      "install_type": "binary",
+      "claimedStars": 289,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 289 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "unit-mcp",
+      "name": "Unit Banking-as-a-Service MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 289,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 289 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "qwen-mcp",
+      "name": "Qwen (Alibaba Cloud) MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 287,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 287 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "luminance-mcp",
+      "name": "Luminance MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 278,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 278 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "twilio-flex-mcp",
+      "name": "Twilio Flex MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 276,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 276 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "continue-dev-mcp",
+      "name": "Continue Dev MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 276,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 276 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "mural-mcp",
+      "name": "MURAL Whiteboard MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 276,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 276 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "linkerd-mcp",
+      "name": "Linkerd Service Mesh MCP",
+      "author": "community",
+      "install_type": "binary",
+      "claimedStars": 276,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 276 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "elastic-mcp",
+      "name": "Elastic Stack MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 267,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 267 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "sec-edgar-full-text-mcp",
+      "name": "SEC EDGAR Full-Text Search MCP",
+      "author": "community",
+      "install_type": "pip",
+      "claimedStars": 267,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 267 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "jasper-ai-mcp",
+      "name": "Jasper AI MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 267,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 267 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "cyberark-mcp",
+      "name": "CyberArk PAM MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 267,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 267 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "irs-mcp",
+      "name": "IRS MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 267,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 267 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "wix-stores-mcp",
+      "name": "Wix Stores MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 267,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 267 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "sailpoint-mcp",
+      "name": "SailPoint IdentityNow MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 267,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 267 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "matillion-mcp",
+      "name": "Matillion MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 267,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 267 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "opensky-network-mcp",
+      "name": "OpenSky Network MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 267,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 267 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "apache-nifi-mcp",
+      "name": "Apache NiFi MCP",
+      "author": "community",
+      "install_type": "pip",
+      "claimedStars": 267,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 267 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "majestic-seo-mcp",
+      "name": "Majestic SEO Backlinks MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 267,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 267 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "hrworks-mcp",
+      "name": "HR WORKS MCP",
+      "author": "AnythingMCP",
+      "install_type": "binary",
+      "claimedStars": 250,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 250 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "huggingface-inference-mcp",
+      "name": "Hugging Face Inference API MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 248,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 248 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "starburst-mcp",
+      "name": "Starburst Galaxy MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 245,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 245 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "bazel-mcp",
+      "name": "Bazel Build MCP",
+      "author": "community",
+      "install_type": "pip",
+      "claimedStars": 245,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 245 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "justia-mcp",
+      "name": "Justia MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 243,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 243 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "whimsical-mcp",
+      "name": "Whimsical Flowcharts MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 243,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 243 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "opentelemetry-collector-mcp",
+      "name": "OpenTelemetry Collector MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 241,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 241 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "azure-ad-mcp",
+      "name": "Microsoft Entra ID (Azure AD) MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 234,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 234 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "digitalocean-mcp",
+      "name": "DigitalOcean Cloud MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 234,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 234 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "scale-ai-mcp",
+      "name": "Scale AI MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 234,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 234 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "redpanda-mcp",
+      "name": "Redpanda MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 234,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 234 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "textract-mcp",
+      "name": "Amazon Textract MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 234,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 234 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "ankr-mcp",
+      "name": "Ankr Advanced APIs MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 234,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 234 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "writesonic-mcp",
+      "name": "Writesonic MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 234,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 234 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "beyondtrust-mcp",
+      "name": "BeyondTrust MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 234,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 234 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "contentsquare-mcp",
+      "name": "Contentsquare MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 234,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 234 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "envoy-proxy-mcp",
+      "name": "Envoy Proxy Admin MCP",
+      "author": "community",
+      "install_type": "binary",
+      "claimedStars": 234,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 234 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "docusign-notary-mcp",
+      "name": "DocuSign Notary MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 231,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 231 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "chargify-mcp",
+      "name": "Chargify (Maxio) MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 231,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 231 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "speechify-mcp",
+      "name": "Speechify TTS MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 228,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 228 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "oddsjam-mcp",
+      "name": "OddsJam MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 224,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 224 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "kubeflow-pipelines-mcp",
+      "name": "Kubeflow Pipelines MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 223,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 223 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "mercury-banking-mcp",
+      "name": "Mercury Business Banking MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 223,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 223 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "palo-alto-panorama-mcp",
+      "name": "Palo Alto Panorama MCP",
+      "author": "community",
+      "install_type": "pip",
+      "claimedStars": 223,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 223 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "lemonsqueezy-mcp",
+      "name": "Lemon Squeezy MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 221,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 221 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "docparser-mcp",
+      "name": "Docparser Document Extraction MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 221,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 221 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "spellbook-mcp",
+      "name": "Spellbook MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 219,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 219 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "personal-capital-mcp",
+      "name": "Empower Personal Dashboard MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 213,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 213 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "benchling-mcp",
+      "name": "Benchling R&D Cloud MCP",
+      "author": "community",
+      "install_type": "pip",
+      "claimedStars": 212,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 212 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "autodesk-acc-mcp",
+      "name": "Autodesk Construction Cloud MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 212,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 212 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "launchdarkly-mcp",
+      "name": "LaunchDarkly Feature Management MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 209,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 209 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "ros2-mcp",
+      "name": "ROS 2 MCP",
+      "author": "community",
+      "install_type": "pip",
+      "claimedStars": 204,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 204 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "aws-iot-greengrass-mcp",
+      "name": "AWS IoT Greengrass MCP",
+      "author": "community",
+      "install_type": "pip",
+      "claimedStars": 203,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 203 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "ford-pass-mcp",
+      "name": "FordPass Connect MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 203,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 203 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "us-compliance-mcp",
+      "name": "US Compliance MCP",
+      "author": "Ansvar-Systems",
+      "install_type": "source",
+      "claimedStars": 200,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 200 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "grafana-mcp",
+      "name": "Grafana Dashboards MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 198,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 198 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "canva-api-mcp",
+      "name": "Canva Connect API MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 198,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 198 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "auth0-mcp",
+      "name": "Auth0 Management MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 198,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 198 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "moonshot-mcp",
+      "name": "Moonshot AI (Kimi) MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 198,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 198 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "evidently-ai-mcp",
+      "name": "Evidently AI MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 198,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 198 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "usgs-earthquake-mcp",
+      "name": "USGS Earthquake & Geology MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 198,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 198 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "kafka-connect-mcp",
+      "name": "Kafka Connect MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 198,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 198 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "materialize-mcp",
+      "name": "Materialize Streaming SQL MCP",
+      "author": "community",
+      "install_type": "pip",
+      "claimedStars": 198,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 198 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "toast-mcp",
+      "name": "Toast Restaurant POS MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 198,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 198 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "prtg-mcp",
+      "name": "PRTG Network Monitor MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 198,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 198 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "legalzoom-mcp",
+      "name": "LegalZoom MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 198,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 198 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "doximity-mcp",
+      "name": "Doximity MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 198,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 198 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "synapse-mcp",
+      "name": "Synapse Financial MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 198,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 198 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "smartlook-mcp",
+      "name": "Smartlook MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 198,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 198 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "target-seller-mcp",
+      "name": "Target Plus Seller MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 198,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 198 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "dotenv-vault-mcp",
+      "name": ".env Vault MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 198,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 198 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "sweep-ai-mcp",
+      "name": "Sweep AI MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 198,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 198 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "currencylayer-mcp",
+      "name": "CurrencyLayer Exchange Rates MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 198,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 198 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "apache-beam-mcp",
+      "name": "Apache Beam MCP",
+      "author": "community",
+      "install_type": "pip",
+      "claimedStars": 198,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 198 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "livechat-mcp",
+      "name": "LiveChat MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 198,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 198 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "vagrant-mcp",
+      "name": "Vagrant Dev Environments MCP",
+      "author": "community",
+      "install_type": "binary",
+      "claimedStars": 198,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 198 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "pika-labs-mcp",
+      "name": "Pika Video Generation MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 189,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 189 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "fly-io-mcp",
+      "name": "Fly.io Platform MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 189,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 189 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "celery-mcp",
+      "name": "Celery Task Queue MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 189,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 189 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "remote-com-mcp",
+      "name": "Remote.com Global HR MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 189,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 189 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "momento-mcp",
+      "name": "Momento Serverless Cache MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 189,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 189 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "checkpoint-mcp",
+      "name": "Check Point SmartConsole MCP",
+      "author": "community",
+      "install_type": "pip",
+      "claimedStars": 189,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 189 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "nice-cxone-mcp",
+      "name": "NICE CXone MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 189,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 189 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "stitch-mcp",
+      "name": "Stitch Data MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 189,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 189 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "draftkings-mcp",
+      "name": "DraftKings MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 189,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 189 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "vector-dev-mcp",
+      "name": "Vector.dev MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 189,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 189 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "uptrace-mcp",
+      "name": "Uptrace OpenTelemetry MCP",
+      "author": "community",
+      "install_type": "pip",
+      "claimedStars": 189,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 189 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "influxdb-iot-mcp",
+      "name": "InfluxDB IoT Time Series MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 187,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 187 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "plaid-transfer-mcp",
+      "name": "Plaid Transfer & Identity MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 187,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 187 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "azure-form-recognizer-mcp",
+      "name": "Azure Form Recognizer MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 187,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 187 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "goto-webinar-mcp",
+      "name": "GoTo Webinar MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 187,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 187 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "logikcull-mcp",
+      "name": "Logikcull MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 187,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 187 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "logdna-mcp",
+      "name": "LogDNA (Mezmo) MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 187,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 187 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "autotrader-mcp",
+      "name": "AutoTrader MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 187,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 187 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "commonroom-mcp",
+      "name": "Common Room MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 187,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 187 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "lark-mcp",
+      "name": "Lark (Feishu) Suite MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 178,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 178 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "playwright-cloud-mcp",
+      "name": "Playwright Cloud (Microsoft) MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 178,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 178 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "slurm-mcp",
+      "name": "Slurm HPC Scheduler MCP",
+      "author": "community",
+      "install_type": "pip",
+      "claimedStars": 178,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 178 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "acronis-mcp",
+      "name": "Acronis Cyber Protect MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 178,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 178 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "stats-perform-mcp",
+      "name": "Stats Perform (Opta) MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 178,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 178 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "leviton-mcp",
+      "name": "Leviton Decora Smart MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 178,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 178 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "tiller-mcp",
+      "name": "Tiller Money MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 178,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 178 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "onstar-mcp",
+      "name": "OnStar MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 178,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 178 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "apache-kafka-mcp",
+      "name": "Apache Kafka Streaming MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 176,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 176 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "yapily-mcp",
+      "name": "Yapily Open Banking MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 176,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 176 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "fauna-mcp",
+      "name": "Fauna Serverless Database MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 172,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 172 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "nasa-earthdata-mcp",
+      "name": "NASA Earthdata MCP",
+      "author": "community",
+      "install_type": "pip",
+      "claimedStars": 167,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 167 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "okta-mcp",
+      "name": "Okta Identity MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 167,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 167 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "railway-mcp",
+      "name": "Railway Platform MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 167,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 167 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "twilio-verify-mcp",
+      "name": "Twilio Verify & Authy MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 167,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 167 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "veriff-mcp",
+      "name": "Veriff MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 167,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 167 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "conductor-mcp",
+      "name": "Netflix Conductor MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 167,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 167 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "azure-quantum-mcp",
+      "name": "Azure Quantum MCP",
+      "author": "community",
+      "install_type": "pip",
+      "claimedStars": 167,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 167 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "dotmatics-mcp",
+      "name": "Dotmatics Scientific Informatics MCP",
+      "author": "community",
+      "install_type": "pip",
+      "claimedStars": 167,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 167 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "ukg-mcp",
+      "name": "UKG Pro Workforce MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 167,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 167 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "risingwave-mcp",
+      "name": "RisingWave Streaming Database MCP",
+      "author": "community",
+      "install_type": "pip",
+      "claimedStars": 167,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 167 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "bynder-mcp",
+      "name": "Bynder DAM MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 167,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 167 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "bluebeam-mcp",
+      "name": "Bluebeam Studio MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 167,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 167 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "verizon-connect-mcp",
+      "name": "Verizon Connect MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 167,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 167 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "rocket-lawyer-mcp",
+      "name": "Rocket Lawyer MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 167,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 167 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "wayfair-seller-mcp",
+      "name": "Wayfair Supplier MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 167,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 167 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "litmos-mcp",
+      "name": "SAP Litmos MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 167,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 167 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "fanduel-mcp",
+      "name": "FanDuel MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 167,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 167 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "affirm-mcp",
+      "name": "Affirm Buy Now Pay Later MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 167,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 167 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "prometheus-mcp",
+      "name": "Prometheus Metrics MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 163,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 163 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "truelayer-mcp",
+      "name": "TrueLayer Open Banking MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 162,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 162 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "open-banking-uk-mcp",
+      "name": "UK Open Banking (PSD2) MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 158,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 158 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "hex-data-mcp",
+      "name": "Hex Data MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 157,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 157 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "spacelift-mcp",
+      "name": "Spacelift MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 156,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 156 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "rockset-mcp",
+      "name": "Rockset MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 156,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 156 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "docusign-clm-mcp",
+      "name": "DocuSign CLM MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 156,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 156 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "mindee-mcp",
+      "name": "Mindee Document Parsing MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 156,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 156 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "oracle-hospitality-mcp",
+      "name": "Oracle MICROS Hospitality MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 156,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 156 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "barracuda-mcp",
+      "name": "Barracuda Networks MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 156,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 156 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "trustarc-mcp",
+      "name": "TrustArc Privacy MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 156,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 156 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "law360-mcp",
+      "name": "Law360 MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 156,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 156 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "modmed-mcp",
+      "name": "ModMed MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 156,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 156 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "healthgrades-mcp",
+      "name": "Healthgrades MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 156,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 156 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "afterpay-mcp",
+      "name": "Afterpay / Clearpay MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 154,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 154 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "moov-mcp",
+      "name": "Moov Financial MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 147,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 147 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "vault-mcp",
+      "name": "HashiCorp Vault Secrets MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 145,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 145 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "talend-cloud-mcp",
+      "name": "Talend Cloud MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 145,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 145 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "demio-mcp",
+      "name": "Demio MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 145,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 145 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "smartcar-mcp",
+      "name": "Smartcar Connected Vehicle MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 143,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 143 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "stripe-billing-mcp",
+      "name": "Stripe Billing & Subscriptions MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 143,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 143 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "square-pos-mcp",
+      "name": "Square POS & Commerce MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 143,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 143 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "dynatrace-mcp",
+      "name": "Dynatrace Observability MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 143,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 143 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "zyte-mcp",
+      "name": "Zyte (Scrapy Cloud) MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 143,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 143 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "persona-mcp",
+      "name": "Persona Identity MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 143,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 143 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "microsoft-dynamics-bc-mcp",
+      "name": "Microsoft Dynamics 365 Business Central MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 143,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 143 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "ionq-mcp",
+      "name": "IonQ Quantum MCP",
+      "author": "community",
+      "install_type": "pip",
+      "claimedStars": 143,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 143 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "abbyy-mcp",
+      "name": "ABBYY Vantage MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 143,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 143 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "labvantage-mcp",
+      "name": "LabVantage LIMS MCP",
+      "author": "community",
+      "install_type": "pip",
+      "claimedStars": 143,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 143 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "kronos-mcp",
+      "name": "Kronos Workforce Central MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 143,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 143 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "ignite-mcp",
+      "name": "Apache Ignite MCP",
+      "author": "community",
+      "install_type": "pip",
+      "claimedStars": 143,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 143 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "lawtrades-mcp",
+      "name": "LawTrades MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 143,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 143 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "chewy-mcp",
+      "name": "Chewy Marketplace MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 143,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 143 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "warmly-mcp",
+      "name": "Warmly MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 143,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 143 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "open-fec-mcp",
+      "name": "FEC Campaign Finance MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 143,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 143 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "tawk-to-mcp",
+      "name": "Tawk.to Live Chat MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 143,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 143 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "courier-mcp",
+      "name": "Courier Notification MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 142,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 142 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "nrel-mcp",
+      "name": "NREL Energy Data MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 142,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 142 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "clientsuccess-mcp",
+      "name": "ClientSuccess MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 142,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 142 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "mode-analytics-mcp",
+      "name": "Mode Analytics MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 136,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 136 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "nih-pubmed-mcp",
+      "name": "NIH PubMed Research MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 134,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 134 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "browserstack-mcp",
+      "name": "BrowserStack Testing MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 134,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 134 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "vidyard-mcp",
+      "name": "Vidyard MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 134,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 134 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "firebolt-mcp",
+      "name": "Firebolt MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 134,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 134 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "tray-io-mcp",
+      "name": "Tray.io MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 134,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 134 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "talend-mcp",
+      "name": "Talend Open Studio MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 134,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 134 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "atlantis-mcp",
+      "name": "Atlantis Terraform MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 134,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 134 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "rxnorm-mcp",
+      "name": "RxNorm Drug Database MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 134,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 134 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "nanonets-mcp",
+      "name": "Nanonets OCR & Document AI MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 134,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 134 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "pbs-hpc-mcp",
+      "name": "PBS Pro HPC Scheduler MCP",
+      "author": "community",
+      "install_type": "pip",
+      "claimedStars": 134,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 134 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "papaya-global-mcp",
+      "name": "Papaya Global Payroll MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 134,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 134 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "trinet-mcp",
+      "name": "TriNet PEO HR MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 134,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 134 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "phrase-tms-mcp",
+      "name": "Phrase TMS MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 134,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 134 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "acquia-dam-mcp",
+      "name": "Acquia DAM (Widen) MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 134,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 134 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "fleetcomplete-mcp",
+      "name": "FleetComplete MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 134,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 134 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "findlaw-mcp",
+      "name": "FindLaw MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 134,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 134 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "webmd-health-mcp",
+      "name": "WebMD Health Services MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 134,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 134 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "abas-mcp",
+      "name": "abas ERP MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 134,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 134 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "saba-mcp",
+      "name": "Saba LMS MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 134,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 134 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "lemonade-insurance-mcp",
+      "name": "Lemonade Insurance MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 134,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 134 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "faa-drizzle-mcp",
+      "name": "FAA Aviation Data MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 134,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 134 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "dailymotion-mcp",
+      "name": "Dailymotion Video MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 134,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 134 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "bigmarker-mcp",
+      "name": "BigMarker MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 132,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 132 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "git-server-mcp",
+      "name": "Git Server MCP",
+      "author": "python-stdlib",
+      "install_type": "pip",
+      "claimedStars": 130,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 130 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "knock-mcp",
+      "name": "Knock Notifications MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 129,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 129 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "cdc-wonder-mcp",
+      "name": "CDC WONDER Public Health MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 127,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 127 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "crossref-mcp",
+      "name": "Crossref Scholarly MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 124,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 124 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "absorblms-mcp",
+      "name": "Absorb LMS MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 124,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 124 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "trulia-mcp",
+      "name": "Trulia MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 123,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 123 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "informatica-idmc-mcp",
+      "name": "Informatica IDMC MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 123,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 123 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "bushelFarm-mcp",
+      "name": "Bushel Farm (FarmLogs) MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 123,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 123 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "canto-dam-mcp",
+      "name": "Canto DAM MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 122,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 122 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "dwave-mcp",
+      "name": "D-Wave Quantum MCP",
+      "author": "community",
+      "install_type": "pip",
+      "claimedStars": 121,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 121 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "oyster-hr-mcp",
+      "name": "Oyster HR Global Employment MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 121,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 121 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "revel-mcp",
+      "name": "Revel Systems POS MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 121,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 121 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "multiplier-mcp",
+      "name": "Multiplier Global Employment MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 121,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 121 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "unit-banking-mcp",
+      "name": "Unit Banking-as-a-Service MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 119,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 119 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "redcap-mcp",
+      "name": "REDCap Research Database MCP",
+      "author": "community",
+      "install_type": "pip",
+      "claimedStars": 119,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 119 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "shelly-cloud-mcp",
+      "name": "Shelly Cloud MCP",
+      "author": "community",
+      "install_type": "pip",
+      "claimedStars": 118,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 118 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "openfema-mcp",
+      "name": "OpenFEMA Disaster Data MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 117,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 117 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "vehicle-vin-mcp",
+      "name": "Vehicle VIN Decoder MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 112,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 112 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "socure-mcp",
+      "name": "Socure MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 112,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 112 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "chargify-maxio-mcp",
+      "name": "Chargify / Maxio MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 112,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 112 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "kaleyra-mcp",
+      "name": "Kaleyra MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 112,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 112 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "matillion-dpc-mcp",
+      "name": "Matillion MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 112,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 112 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "informatica-mcp",
+      "name": "Informatica PowerCenter MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 112,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 112 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "cdktf-mcp",
+      "name": "CDK for Terraform MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 112,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 112 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "particle-iot-mcp",
+      "name": "Particle IoT MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 112,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 112 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "checkr-mcp",
+      "name": "Checkr Background Checks MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 112,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 112 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "coverhound-mcp",
+      "name": "CoverHound Insurance MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 112,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 112 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "insperity-mcp",
+      "name": "Insperity Workforce Solutions MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 112,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 112 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "nolo-mcp",
+      "name": "Nolo MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 112,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 112 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "healthsparq-mcp",
+      "name": "HealthSparq MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 112,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 112 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "priority-erp-mcp",
+      "name": "Priority ERP MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 112,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 112 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "billsby-mcp",
+      "name": "Billsby MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 112,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 112 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "recharge-subscriptions-mcp",
+      "name": "Recharge Subscriptions MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 108,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 108 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "lens-protocol-mcp",
+      "name": "Lens Protocol Social MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 107,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 107 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "modal-mcp",
+      "name": "Modal Labs Serverless GPU MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 107,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 107 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "coupa-sourcing-mcp",
+      "name": "Coupa Business Spend MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 102,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 102 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "zendesk-sunshine-mcp",
+      "name": "Zendesk Sunshine CRM MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 98,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 98 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "sauce-labs-mcp",
+      "name": "Sauce Labs Testing Cloud MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 98,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 98 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "sendbird-mcp",
+      "name": "Sendbird Chat & Messaging MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 98,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 98 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "alfresco-mcp",
+      "name": "Alfresco ECM MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 98,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 98 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "stitch-data-mcp",
+      "name": "Stitch Data MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 98,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 98 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "veeva-vault-clinical-mcp",
+      "name": "Veeva Vault Clinical MCP",
+      "author": "community",
+      "install_type": "pip",
+      "claimedStars": 98,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 98 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "policygenius-mcp",
+      "name": "Policygenius Insurance Marketplace MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 98,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 98 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "skuad-mcp",
+      "name": "Skuad Global Employment MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 98,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 98 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "visibility-erp-mcp",
+      "name": "Visibility ERP MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 98,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 98 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "empower-finance-mcp",
+      "name": "Empower Finance MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 98,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 98 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "disco-legal-mcp",
+      "name": "DISCO eDiscovery MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 97,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 97 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "arduino-iot-cloud-mcp",
+      "name": "Arduino IoT Cloud MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 97,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 97 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "split-io-mcp",
+      "name": "Split.io Feature Flags MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 96,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 96 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "victron-energy-mcp",
+      "name": "Victron Energy VRM MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 94,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 94 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "progressive-api-mcp",
+      "name": "Progressive Insurance MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 94,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 94 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "lora-wan-mcp",
+      "name": "LoRaWAN MCP",
+      "author": "community",
+      "install_type": "pip",
+      "claimedStars": 93,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 93 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "galileo-financial-mcp",
+      "name": "Galileo Financial Technologies MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 93,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 93 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "databricks-unity-mcp",
+      "name": "Databricks Unity Catalog MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 91,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 91 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "typo3-mcp",
+      "name": "TYPO3 CMS MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 91,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 91 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "chargebee-mcp",
+      "name": "Chargebee Subscription Management MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 89,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 89 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "opendoor-mcp",
+      "name": "Opendoor MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 89,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 89 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "jitterbit-mcp",
+      "name": "Jitterbit MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 89,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 89 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "deltek-mcp",
+      "name": "Deltek Costpoint MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 89,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 89 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "oscar-health-mcp",
+      "name": "Oscar Health MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 89,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 89 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "filevine-mcp",
+      "name": "Filevine Legal Case Management MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 88,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 88 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "sardine-mcp",
+      "name": "Sardine Fraud Detection MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 88,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 88 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "uscreen-mcp",
+      "name": "Uscreen MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 87,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 87 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "vagaro-mcp",
+      "name": "Vagaro MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 87,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 87 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "ko-fi-mcp",
+      "name": "Ko-fi MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 87,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 87 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "drip-email-mcp",
+      "name": "Drip Email Marketing MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 87,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 87 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "talkspace-mcp",
+      "name": "Talkspace MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 87,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 87 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "chembl-mcp",
+      "name": "ChEMBL Drug Database MCP",
+      "author": "community",
+      "install_type": "pip",
+      "claimedStars": 86,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 86 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "court-listener-mcp",
+      "name": "CourtListener Free Law MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 84,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 84 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "sila-mcp",
+      "name": "Sila Money Fintech MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 84,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 84 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "sellfy-mcp",
+      "name": "Sellfy Digital Products MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 83,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 83 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "greenhouse-ats-mcp",
+      "name": "Greenhouse ATS MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 82,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 82 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "noom-mcp",
+      "name": "Noom MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 81,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 81 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "climatiq-mcp",
+      "name": "Climatiq Emissions MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 78,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 78 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "sage-x3-mcp",
+      "name": "Sage X3 ERP MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 78,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 78 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "carfax-mcp",
+      "name": "CARFAX Vehicle History MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 76,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 76 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "yellowfin-mcp",
+      "name": "Yellowfin BI MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 76,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 76 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "practice-fusion-mcp",
+      "name": "Practice Fusion EHR MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 76,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 76 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "hippo-insurance-mcp",
+      "name": "Hippo Insurance MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 76,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 76 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "mouseflow-mcp",
+      "name": "Mouseflow MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 74,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 74 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "john-deere-ops-center-mcp",
+      "name": "John Deere Operations Center MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 73,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 73 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "earthly-mcp",
+      "name": "Earthly Build Automation MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 73,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 73 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "autodesk-construction-mcp",
+      "name": "Autodesk Construction Cloud MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 72,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 72 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "docusign-admin-mcp",
+      "name": "DocuSign Admin & Analytics MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 72,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 72 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "wag-mcp",
+      "name": "Wag! MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 72,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 72 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "jaggaer-mcp",
+      "name": "JAGGAER Procurement MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 71,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 71 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "esri-arcgis-mcp",
+      "name": "Esri ArcGIS MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 69,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 69 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "drata-mcp",
+      "name": "Drata GRC MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 68,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 68 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "lucky-orange-mcp",
+      "name": "Lucky Orange MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 68,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 68 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "spring-health-mcp",
+      "name": "Spring Health MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 68,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 68 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "feishu-lark-mcp",
+      "name": "Feishu/Lark MCP",
+      "author": "community",
+      "install_type": "pip",
+      "claimedStars": 67,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 67 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "igdb-mcp",
+      "name": "IGDB Game Database MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 67,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 67 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "helium-network-mcp",
+      "name": "Helium Network MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 67,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 67 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "stax-payments-mcp",
+      "name": "Stax Payments MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 67,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 67 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "sage-300-mcp",
+      "name": "Sage 300 ERP MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 67,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 67 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "shift4shop-mcp",
+      "name": "Shift4Shop (3dcart) MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 67,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 67 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "kirby-cms-mcp",
+      "name": "Kirby CMS MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 63,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 63 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "modernizing-medicine-mcp",
+      "name": "Modernizing Medicine EHR MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 63,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 63 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "depot-mcp",
+      "name": "Depot Build Acceleration MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 62,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 62 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "crazy-egg-mcp",
+      "name": "Crazy Egg MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 62,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 62 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "ifs-erp-mcp",
+      "name": "IFS Cloud ERP MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 62,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 62 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "ignition-gateway-mcp",
+      "name": "Ignition Gateway MCP",
+      "author": "inductiveautomation-community",
+      "install_type": "source",
+      "claimedStars": 61,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 61 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "lever-ats-mcp",
+      "name": "Lever Recruiting MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 61,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 61 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "chartmogul-mcp",
+      "name": "ChartMogul SaaS Analytics MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 61,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 61 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "churnzero-mcp",
+      "name": "ChurnZero Customer Success MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 61,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 61 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "clearcover-mcp",
+      "name": "Clearcover Insurance MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 61,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 61 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "rhapsody-mcp",
+      "name": "Rhapsody Health Integration MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 59,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 59 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "zigbee-mcp",
+      "name": "Zigbee2MQTT Extended MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 58,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 58 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "tilt-mcp",
+      "name": "Tilt Dev Environments MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 58,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 58 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "ivalua-mcp",
+      "name": "Ivalua Source-to-Pay MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 58,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 58 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "idexx-mcp",
+      "name": "IDEXX Laboratories MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 58,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 58 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "clio-legal-mcp",
+      "name": "Clio Legal MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 57,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 57 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "checkmarx-mcp",
+      "name": "Checkmarx SAST MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 57,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 57 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "vero-mcp",
+      "name": "Vero MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 57,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 57 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "adobe-sign-mcp",
+      "name": "Adobe Acrobat Sign MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 56,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 56 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "z-wave-mcp",
+      "name": "Z-Wave Smart Home MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 56,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 56 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "trunk-mcp",
+      "name": "Trunk Check MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 55,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 55 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "totango-mcp",
+      "name": "Totango Customer Success MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 54,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 54 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "syspro-mcp",
+      "name": "SYSPRO ERP MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 54,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 54 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "woebot-mcp",
+      "name": "Woebot MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 54,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 54 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "john-deere-operations-mcp",
+      "name": "John Deere Operations Center MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 53,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 53 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "epa-enviropython-mcp",
+      "name": "EPA Environmental Data MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 53,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 53 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "bloomberg-law-mcp",
+      "name": "Bloomberg Law MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 52,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 52 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "aqua-security-mcp",
+      "name": "Aqua Security MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 52,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 52 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "assembly-neos-mcp",
+      "name": "Assembly Neos Legal Practice MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 52,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 52 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "darktrace-mcp",
+      "name": "Darktrace AI Security MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 49,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 49 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "propublica-mcp",
+      "name": "ProPublica APIs MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 48,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 48 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "veracode-mcp",
+      "name": "Veracode Security MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 48,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 48 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "square-restaurants-mcp",
+      "name": "Square for Restaurants MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 47,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 47 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "codeclimate-mcp",
+      "name": "Code Climate MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 47,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 47 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "brex-mcp",
+      "name": "Brex Corporate Cards MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 46,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 46 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "plasmic-mcp",
+      "name": "Plasmic Visual CMS MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 46,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 46 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "oracle-health-mcp",
+      "name": "Oracle Health (Cerner) MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 46,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 46 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "oracle-erp-mcp",
+      "name": "Oracle ERP Cloud MCP",
+      "author": "community",
+      "install_type": "pip",
+      "claimedStars": 45,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 45 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "usps-shipping-mcp",
+      "name": "USPS Shipping MCP",
+      "author": "community",
+      "install_type": "pip",
+      "claimedStars": 45,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 45 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "sysdig-mcp",
+      "name": "Sysdig Secure MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 45,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 45 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "twist-mcp",
+      "name": "Twist Async Communication MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 45,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 45 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "health-gorilla-mcp",
+      "name": "Health Gorilla MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 44,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 44 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "onestream-mcp",
+      "name": "OneStream XF MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 44,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 44 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "grype-mcp",
+      "name": "Grype Vulnerability Scanner MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 44,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 44 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "chirpstack-mcp",
+      "name": "ChirpStack LoRaWAN MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 44,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 44 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "osisoft-pi-mcp",
+      "name": "OSIsoft PI System MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 44,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 44 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "mls-rets-mcp",
+      "name": "MLS RETS Real Estate MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 44,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 44 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "vitally-mcp",
+      "name": "Vitally Customer Success MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 43,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 43 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "abbott-libre-mcp",
+      "name": "Abbott LibreView MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 42,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 42 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "veeva-mcp",
+      "name": "Veeva CRM MCP",
+      "author": "community",
+      "install_type": "source",
+      "claimedStars": 41,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 41 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "firehydrant-mcp",
+      "name": "FireHydrant Incident MCP",
+      "author": "community",
+      "install_type": "source",
+      "claimedStars": 41,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 41 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "persefoni-mcp",
+      "name": "Persefoni Climate MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 41,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 41 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "fourkites-mcp",
+      "name": "FourKites Supply Chain MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 41,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 41 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "carbon-black-mcp",
+      "name": "VMware Carbon Black MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 41,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 41 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "mx-technologies-mcp",
+      "name": "MX Technologies MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 39,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 39 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "egnyte-mcp",
+      "name": "Egnyte Content Platform MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 39,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 39 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "tradestation-mcp",
+      "name": "TradeStation Algo Trading MCP",
+      "author": "community",
+      "install_type": "pip",
+      "claimedStars": 38,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 38 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "time-doctor-mcp",
+      "name": "Time Doctor MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 38,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 38 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "acord-mcp",
+      "name": "ACORD Standards MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 38,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 38 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "icertis-mcp",
+      "name": "Icertis CLM MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 38,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 38 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "syft-sbom-mcp",
+      "name": "Syft SBOM Generator MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 38,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 38 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "coveralls-mcp",
+      "name": "Coveralls Code Coverage MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 38,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 38 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "watershed-mcp",
+      "name": "Watershed Carbon Accounting MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 38,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 38 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "onesignal-mcp",
+      "name": "OneSignal Push Notifications MCP",
+      "author": "community",
+      "install_type": "pip",
+      "claimedStars": 37,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 37 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "exabeam-mcp",
+      "name": "Exabeam SIEM MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 37,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 37 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "goodwe-solar-mcp",
+      "name": "GoodWe Solar Inverter MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 36,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 36 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "losant-mcp",
+      "name": "Losant IoT Platform MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 36,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 36 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "e2open-mcp",
+      "name": "E2open Supply Chain MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 35,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 35 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "sam-gov-mcp",
+      "name": "SAM.gov Contracts MCP",
+      "author": "community",
+      "install_type": "pip",
+      "claimedStars": 34,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 34 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "cnh-afs-mcp",
+      "name": "CNH AFS Connect MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 34,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 34 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "medidata-mcp",
+      "name": "Medidata Rave Clinical MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 34,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 34 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "prophix-mcp",
+      "name": "Prophix FP&A MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 33,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 33 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "cybereason-mcp",
+      "name": "Cybereason EDR MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 33,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 33 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "conga-mcp",
+      "name": "Conga Revenue Lifecycle MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 32,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 32 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "realtor-com-mcp",
+      "name": "Realtor.com MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 31,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 31 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "fieldwire-mcp",
+      "name": "Fieldwire Construction MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 31,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 31 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "schoology-mcp",
+      "name": "Schoology LMS MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 31,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 31 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "planful-mcp",
+      "name": "Planful FP&A MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 29,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 29 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "pricefx-mcp",
+      "name": "Pricefx Pricing MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 29,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 29 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "microsoft-sustainability-mcp",
+      "name": "Microsoft Sustainability Manager MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 29,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 29 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "manhattan-active-mcp",
+      "name": "Manhattan Active WMS MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 28,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 28 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "trimble-ag-mcp",
+      "name": "Trimble Agriculture MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 27,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 27 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "agiloft-mcp",
+      "name": "Agiloft CLM MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 26,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 26 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "vena-solutions-mcp",
+      "name": "Vena Solutions MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 24,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 24 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "vend-lightspeed-mcp",
+      "name": "Vend/Lightspeed POS MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 23,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 23 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "vendavo-mcp",
+      "name": "Vendavo Profit Intelligence MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 23,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 23 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "usajobs-mcp",
+      "name": "USAJobs.gov MCP",
+      "author": "community",
+      "install_type": "pip",
+      "claimedStars": 22,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 22 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "majesco-mcp",
+      "name": "Majesco Insurance Cloud MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 22,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 22 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "openadr-mcp",
+      "name": "OpenADR Demand Response MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 22,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 22 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "appsflyer-mcp",
+      "name": "AppsFlyer Mobile Attribution MCP",
+      "author": "community",
+      "install_type": "pip",
+      "claimedStars": 21,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 21 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "contractpodai-mcp",
+      "name": "ContractPodAi MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 21,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 21 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "hibob-mcp",
+      "name": "HiBob HRIS MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 19,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 19 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "mls-real-estate-mcp",
+      "name": "MLS Real Estate MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 19,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 19 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "waystar-mcp",
+      "name": "Waystar Healthcare RCM MCP",
+      "author": "community",
+      "install_type": "source",
+      "claimedStars": 18,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 18 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "adjust-mcp",
+      "name": "Adjust Mobile Analytics MCP",
+      "author": "community",
+      "install_type": "pip",
+      "claimedStars": 18,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 18 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "ethercat-mcp",
+      "name": "EtherCAT MCP",
+      "author": "ethercat-tools",
+      "install_type": "source",
+      "claimedStars": 17,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 17 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "practice-panther-mcp",
+      "name": "PracticePanther Legal MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 17,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 17 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "branch-io-mcp",
+      "name": "Branch.io Deep Linking MCP",
+      "author": "community",
+      "install_type": "pip",
+      "claimedStars": 14,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 14 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "spoton-pos-mcp",
+      "name": "SpotOn POS MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 12,
+      "severity": "critical",
+      "note": "Phantom listing: no repo, no install command, no website — yet the entry asserts 12 GitHub stars, a number that cannot have been read from anywhere. Served as fact over the MCP API."
+    },
+    {
+      "slug": "esp32-mcp",
+      "name": "ESP32 MCP Server",
+      "author": "community",
+      "install_type": "source",
+      "claimedStars": 0,
+      "severity": "high",
+      "note": "Phantom listing: no repo, no install command, no website. The page gives a reader no path to any artifact."
+    },
+    {
+      "slug": "hbase-mcp",
+      "name": "Apache HBase MCP",
+      "author": "community",
+      "install_type": "source",
+      "claimedStars": 0,
+      "severity": "high",
+      "note": "Phantom listing: no repo, no install command, no website. The page gives a reader no path to any artifact."
+    },
+    {
+      "slug": "nhl-stats-mcp",
+      "name": "NHL Stats MCP",
+      "author": "community",
+      "install_type": "source",
+      "claimedStars": 0,
+      "severity": "high",
+      "note": "Phantom listing: no repo, no install command, no website. The page gives a reader no path to any artifact."
+    },
+    {
+      "slug": "remote-mcp",
+      "name": "Remote.com HR MCP",
+      "author": "community",
+      "install_type": "npm",
+      "claimedStars": 0,
+      "severity": "high",
+      "note": "Phantom listing: no repo, no install command, no website. The page gives a reader no path to any artifact."
+    },
+    {
+      "slug": "bridge-lms-mcp",
+      "name": "Bridge LMS MCP",
+      "author": "community",
+      "install_type": "source",
+      "claimedStars": 0,
+      "severity": "high",
+      "note": "Phantom listing: no repo, no install command, no website. The page gives a reader no path to any artifact."
+    }
+  ]
+}

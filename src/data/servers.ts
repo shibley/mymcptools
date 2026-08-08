@@ -8526,7 +8526,6 @@ const _serversPart1: MCPServer[] = [
     integrations: ['claude-desktop', 'cursor', 'vs-code', 'cline'],
     install_type: 'npm',
     official: true,
-    stars: 480,
   },
   {
     slug: 'faunadb-mcp',
@@ -8539,7 +8538,6 @@ const _serversPart1: MCPServer[] = [
     categories: ['database', 'api'],
     integrations: ['claude-desktop', 'cursor', 'cline'],
     install_type: 'npm',
-    stars: 340,
   },
   // CMS (new)
   {
@@ -8560,14 +8558,14 @@ const _serversPart1: MCPServer[] = [
     name: 'Storyblok MCP',
     description: 'Manage Storyblok headless CMS content with your AI assistant. Query stories, components, and assets. Create and update content entries, manage spaces, and handle content versioning.',
     author: 'storyblok',
-    github_url: null,
-    source_verified: false,
-    verification: 'unresolved',
+    github_url: 'https://github.com/storyblok/mcp-server',
+    source_verified: true,
+    verification: 'archived',
     categories: ['api', 'productivity'],
     integrations: ['claude-desktop', 'cursor', 'vs-code'],
     install_type: 'npm',
     official: true,
-    stars: 510,
+    stars: 8,
   },
   // API Testing
   {
@@ -8645,14 +8643,14 @@ const _serversPart1: MCPServer[] = [
     name: 'PostHog MCP',
     description: 'Access PostHog product analytics and feature flags from your AI assistant. Query events, funnels, cohorts, and A/B test results. Manage feature flag targeting and rollout percentages.',
     author: 'PostHog',
-    github_url: null,
-    source_verified: false,
-    verification: 'unresolved',
+    github_url: 'https://github.com/PostHog/mcp',
+    source_verified: true,
+    verification: 'archived',
     categories: ['analytics', 'api'],
     integrations: ['claude-desktop', 'cursor', 'vs-code', 'cline'],
     install_type: 'npm',
     official: true,
-    stars: 740,
+    stars: 151,
   },
   // Backend-as-a-Service
   {
@@ -8660,14 +8658,14 @@ const _serversPart1: MCPServer[] = [
     name: 'Appwrite MCP',
     description: 'Full-stack backend platform MCP server. Manage Appwrite databases, authentication, storage, and functions from your AI assistant. Create documents, manage users, and trigger serverless functions.',
     author: 'appwrite',
-    github_url: null,
-    source_verified: false,
-    verification: 'unresolved',
+    github_url: 'https://github.com/appwrite/mcp',
+    source_verified: true,
+    verification: 'live',
     categories: ['api', 'database', 'cloud'],
     integrations: ['claude-desktop', 'cursor', 'vs-code', 'cline'],
     install_type: 'npm',
     official: true,
-    stars: 860,
+    stars: 71,
   },
   {
     slug: 'pocketbase-mcp',
@@ -12134,7 +12132,6 @@ const _serversPart2: MCPServer[] = [
     integrations: ['claude-desktop', 'cursor', 'cline'],
     install_type: 'binary',
     official: false,
-    stars: 378,
     featured: false,
   },
   {
@@ -12149,7 +12146,6 @@ const _serversPart2: MCPServer[] = [
     integrations: ['claude-desktop', 'cursor', 'cline'],
     install_type: 'binary',
     official: false,
-    stars: 445,
     featured: false,
   },
   {
@@ -12257,7 +12253,6 @@ const _serversPart2: MCPServer[] = [
     integrations: ['claude-desktop', 'cursor', 'cline'],
     install_type: 'binary',
     official: false,
-    stars: 289,
     featured: false,
   },
 
@@ -24924,7 +24919,6 @@ const _serversPart4: MCPServer[] = [
     install_type: 'source',
     install_command: '',
     official: false,
-    stars: 17,
     featured: false,
     isNew: true,
   },
@@ -24941,7 +24935,6 @@ const _serversPart4: MCPServer[] = [
     install_type: 'source',
     install_command: '',
     official: false,
-    stars: 61,
     featured: false,
     isNew: true,
   },
@@ -30359,7 +30352,6 @@ const _serversPart9: MCPServer[] = [
     categories: ['security', 'api'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'source',
-    stars: 200,
     isNew: true,
   },
   {
@@ -30584,7 +30576,6 @@ const _serversPart9: MCPServer[] = [
     categories: ['productivity', 'api'],
     integrations: ['claude-desktop', 'cursor', 'vs-code'],
     install_type: 'binary',
-    stars: 250,
     isNew: true,
   },
   {
@@ -30672,7 +30663,6 @@ const _serversPart9: MCPServer[] = [
     categories: ['coding', 'filesystem'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'pip',
-    stars: 130,
     isNew: true,
   },
 ];
@@ -30689,7 +30679,6 @@ const _serversPart10: MCPServer[] = [
     categories: ['api', 'finance'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'pip',
-    stars: 45,
     isNew: true,
   },
   {
@@ -30773,7 +30762,6 @@ const _serversPart10: MCPServer[] = [
     categories: ['api', 'productivity'],
     integrations: ['claude-desktop', 'cursor', 'cline'],
     install_type: 'npm',
-    stars: 56,
     isNew: true,
   },
   {
@@ -30787,7 +30775,6 @@ const _serversPart10: MCPServer[] = [
     categories: ['api', 'database'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'source',
-    stars: 41,
     isNew: true,
   },
   {
@@ -30857,7 +30844,6 @@ const _serversPart10: MCPServer[] = [
     categories: ['api', 'productivity'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 19,
     isNew: true,
   },
   {
@@ -30871,7 +30857,6 @@ const _serversPart10: MCPServer[] = [
     categories: ['search', 'api'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 52,
     isNew: true,
   },
   {
@@ -30885,7 +30870,6 @@ const _serversPart10: MCPServer[] = [
     categories: ['api', 'productivity'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 17,
     isNew: true,
   },
   {
@@ -30913,7 +30897,6 @@ const _serversPart10: MCPServer[] = [
     categories: ['api', 'analytics'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 48,
     isNew: true,
   },
   {
@@ -31001,7 +30984,6 @@ const _serversPart10: MCPServer[] = [
     categories: ['api'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 58,
     isNew: true,
   },
   {
@@ -31127,7 +31109,6 @@ const _serversPart10: MCPServer[] = [
     categories: ['finance', 'api'],
     integrations: ['claude-desktop', 'cursor', 'cline'],
     install_type: 'npm',
-    stars: 46,
     isNew: true,
   },
   {
@@ -31211,7 +31192,6 @@ const _serversPart10: MCPServer[] = [
     categories: ['devops', 'api'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'source',
-    stars: 41,
     isNew: true,
   },
 ];
@@ -31256,7 +31236,6 @@ const _serversPart11: MCPServer[] = [
     categories: ['api', 'finance'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'source',
-    stars: 18,
     isNew: true,
   },
   {
@@ -31270,7 +31249,6 @@ const _serversPart11: MCPServer[] = [
     categories: ['search', 'api'],
     integrations: ['claude-desktop', 'cursor', 'cline'],
     install_type: 'pip',
-    stars: 34,
     isNew: true,
   },
   {
@@ -31284,7 +31262,6 @@ const _serversPart11: MCPServer[] = [
     categories: ['search', 'api'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'pip',
-    stars: 22,
     isNew: true,
   },
   {
@@ -31326,7 +31303,6 @@ const _serversPart11: MCPServer[] = [
     categories: ['finance', 'api'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'pip',
-    stars: 38,
     isNew: true,
   },
   {
@@ -31357,7 +31333,6 @@ const _serversPart11: MCPServer[] = [
     categories: ['search', 'api'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 31,
     isNew: true,
   },
   {
@@ -31371,7 +31346,6 @@ const _serversPart11: MCPServer[] = [
     categories: ['search', 'api'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 19,
     isNew: true,
   },
   {
@@ -31385,7 +31359,6 @@ const _serversPart11: MCPServer[] = [
     categories: ['api', 'productivity'],
     integrations: ['claude-desktop', 'cursor', 'cline'],
     install_type: 'pip',
-    stars: 45,
     isNew: true,
   },
   {
@@ -31399,7 +31372,6 @@ const _serversPart11: MCPServer[] = [
     categories: ['api', 'finance'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 12,
     isNew: true,
   },
   {
@@ -31413,7 +31385,6 @@ const _serversPart11: MCPServer[] = [
     categories: ['api', 'finance', 'productivity'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 23,
     isNew: true,
   },
   {
@@ -31526,7 +31497,6 @@ const _serversPart11: MCPServer[] = [
     categories: ['communication', 'productivity'],
     integrations: ['claude-desktop', 'cursor', 'cline'],
     install_type: 'pip',
-    stars: 67,
     isNew: true,
   },
   {
@@ -31642,7 +31612,6 @@ const _serversPart11: MCPServer[] = [
     categories: ['communication', 'marketing', 'api'],
     integrations: ['claude-desktop', 'cursor', 'cline'],
     install_type: 'pip',
-    stars: 37,
     isNew: true,
   },
   {
@@ -31656,7 +31625,6 @@ const _serversPart11: MCPServer[] = [
     categories: ['analytics', 'marketing', 'api'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'pip',
-    stars: 21,
     isNew: true,
   },
   {
@@ -31670,7 +31638,6 @@ const _serversPart11: MCPServer[] = [
     categories: ['analytics', 'marketing', 'api'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'pip',
-    stars: 18,
     isNew: true,
   },
   {
@@ -31684,7 +31651,6 @@ const _serversPart11: MCPServer[] = [
     categories: ['marketing', 'api'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'pip',
-    stars: 14,
     isNew: true,
   },
   {
@@ -32185,7 +32151,6 @@ const _serversPart12: MCPServer[] = [
     categories: ['api', 'productivity'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 46,
     isNew: true,
   },
   {
@@ -32216,7 +32181,6 @@ const _serversPart12: MCPServer[] = [
     categories: ['api', 'productivity', 'analytics'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 38,
     isNew: true,
   },
   {
@@ -32282,7 +32246,6 @@ const _serversPart12: MCPServer[] = [
     categories: ['api', 'analytics'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 36,
     isNew: true,
   },
   {
@@ -32359,7 +32322,6 @@ const _serversPart13: MCPServer[] = [
     categories: ['api', 'analytics'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 44,
     isNew: true,
   },
   // Legal Tech
@@ -32374,7 +32336,6 @@ const _serversPart13: MCPServer[] = [
     categories: ['api', 'productivity'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 57,
     isNew: true,
   },
   {
@@ -32402,7 +32363,6 @@ const _serversPart13: MCPServer[] = [
     categories: ['api', 'finance'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 39,
     isNew: true,
   },
   // Enterprise ERP
@@ -32540,7 +32500,6 @@ const _serversPart13: MCPServer[] = [
     categories: ['gaming', 'api'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 67,
     isNew: true,
   },
 ];
@@ -32558,7 +32517,6 @@ const _serversPart14: MCPServer[] = [
     categories: ['api', 'finance'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 38,
     isNew: true,
   },
   {
@@ -32572,7 +32530,6 @@ const _serversPart14: MCPServer[] = [
     categories: ['api', 'finance'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 22,
     isNew: true,
   },
   {
@@ -32586,7 +32543,6 @@ const _serversPart14: MCPServer[] = [
     categories: ['api', 'analytics'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 73,
     isNew: true,
   },
   {
@@ -32600,7 +32556,6 @@ const _serversPart14: MCPServer[] = [
     categories: ['api', 'analytics'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 34,
     isNew: true,
   },
   {
@@ -32614,7 +32569,6 @@ const _serversPart14: MCPServer[] = [
     categories: ['api', 'productivity'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 27,
     isNew: true,
   },
   {
@@ -32671,7 +32625,6 @@ const _serversPart14: MCPServer[] = [
     categories: ['api', 'analytics'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 78,
     isNew: true,
   },
   {
@@ -32685,7 +32638,6 @@ const _serversPart14: MCPServer[] = [
     categories: ['api', 'analytics'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 41,
     isNew: true,
   },
   // Automotive & Transportation
@@ -32700,7 +32652,6 @@ const _serversPart14: MCPServer[] = [
     categories: ['api', 'search'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 112,
     isNew: true,
   },
   {
@@ -32714,7 +32665,6 @@ const _serversPart14: MCPServer[] = [
     categories: ['api', 'search'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 76,
     isNew: true,
   },
   {
@@ -32728,7 +32678,6 @@ const _serversPart14: MCPServer[] = [
     categories: ['api', 'productivity'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 143,
     isNew: true,
   },
   // Scientific & Research
@@ -32743,7 +32692,6 @@ const _serversPart14: MCPServer[] = [
     categories: ['api', 'search'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'pip',
-    stars: 167,
     isNew: true,
   },
   {
@@ -32757,7 +32705,6 @@ const _serversPart14: MCPServer[] = [
     categories: ['api', 'search'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 124,
     isNew: true,
   },
   {
@@ -32771,7 +32718,6 @@ const _serversPart14: MCPServer[] = [
     categories: ['api', 'search'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'pip',
-    stars: 86,
     isNew: true,
   },
   // Media & Streaming
@@ -32800,7 +32746,6 @@ const _serversPart14: MCPServer[] = [
     categories: ['api', 'finance'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 47,
     isNew: true,
   },
   {
@@ -32829,7 +32774,6 @@ const _serversPart14: MCPServer[] = [
     categories: ['api', 'communication'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 107,
     isNew: true,
   },
   // HR & Talent
@@ -32844,7 +32788,6 @@ const _serversPart14: MCPServer[] = [
     categories: ['api', 'productivity'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 82,
     isNew: true,
   },
   {
@@ -32858,7 +32801,6 @@ const _serversPart14: MCPServer[] = [
     categories: ['api', 'productivity'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 61,
     isNew: true,
   },
   {
@@ -32872,7 +32814,6 @@ const _serversPart14: MCPServer[] = [
     categories: ['api', 'security'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 68,
     isNew: true,
   },
 ];
@@ -32890,7 +32831,6 @@ const _serversPart15: MCPServer[] = [
     categories: ['api', 'productivity'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 41,
     isNew: true,
   },
   {
@@ -32904,7 +32844,6 @@ const _serversPart15: MCPServer[] = [
     categories: ['api', 'productivity'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 35,
     isNew: true,
   },
   {
@@ -32918,7 +32857,6 @@ const _serversPart15: MCPServer[] = [
     categories: ['api', 'productivity'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 28,
     isNew: true,
   },
   // Enterprise Financial Planning
@@ -32933,7 +32871,6 @@ const _serversPart15: MCPServer[] = [
     categories: ['finance', 'analytics'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 33,
     isNew: true,
   },
   {
@@ -32947,7 +32884,6 @@ const _serversPart15: MCPServer[] = [
     categories: ['finance', 'analytics'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 44,
     isNew: true,
   },
   {
@@ -32961,7 +32897,6 @@ const _serversPart15: MCPServer[] = [
     categories: ['finance', 'analytics'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 29,
     isNew: true,
   },
   {
@@ -32975,7 +32910,6 @@ const _serversPart15: MCPServer[] = [
     categories: ['finance', 'productivity'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 24,
     isNew: true,
   },
   // Contract & Legal Tech
@@ -32990,7 +32924,6 @@ const _serversPart15: MCPServer[] = [
     categories: ['api', 'productivity'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 38,
     isNew: true,
   },
   {
@@ -33004,7 +32937,6 @@ const _serversPart15: MCPServer[] = [
     categories: ['api', 'productivity'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 26,
     isNew: true,
   },
   {
@@ -33018,7 +32950,6 @@ const _serversPart15: MCPServer[] = [
     categories: ['api', 'productivity'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 21,
     isNew: true,
   },
   {
@@ -33032,7 +32963,6 @@ const _serversPart15: MCPServer[] = [
     categories: ['api', 'productivity'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 32,
     isNew: true,
   },
   // Security DevSecOps
@@ -33047,7 +32977,6 @@ const _serversPart15: MCPServer[] = [
     categories: ['security', 'coding'],
     integrations: ['claude-desktop', 'cursor', 'vscode'],
     install_type: 'npm',
-    stars: 57,
     isNew: true,
   },
   {
@@ -33061,7 +32990,6 @@ const _serversPart15: MCPServer[] = [
     categories: ['security', 'coding'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 48,
     isNew: true,
   },
   {
@@ -33104,7 +33032,6 @@ const _serversPart15: MCPServer[] = [
     categories: ['security', 'devops'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 44,
     isNew: true,
   },
   {
@@ -33118,7 +33045,6 @@ const _serversPart15: MCPServer[] = [
     categories: ['security', 'devops'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 38,
     isNew: true,
   },
   {
@@ -33132,7 +33058,6 @@ const _serversPart15: MCPServer[] = [
     categories: ['security', 'devops'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 52,
     isNew: true,
   },
   {
@@ -33146,7 +33071,6 @@ const _serversPart15: MCPServer[] = [
     categories: ['security', 'devops'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 45,
     isNew: true,
   },
   {
@@ -33160,7 +33084,6 @@ const _serversPart15: MCPServer[] = [
     categories: ['security', 'api'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 33,
     isNew: true,
   },
   {
@@ -33174,7 +33097,6 @@ const _serversPart15: MCPServer[] = [
     categories: ['security', 'api'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 41,
     isNew: true,
   },
   {
@@ -33188,7 +33110,6 @@ const _serversPart15: MCPServer[] = [
     categories: ['security', 'analytics'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 37,
     isNew: true,
   },
   {
@@ -33202,7 +33123,6 @@ const _serversPart15: MCPServer[] = [
     categories: ['security', 'ai'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 49,
     isNew: true,
   },
   // Healthcare / Life Sciences
@@ -33217,7 +33137,6 @@ const _serversPart15: MCPServer[] = [
     categories: ['api', 'database'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 46,
     isNew: true,
   },
   {
@@ -33231,7 +33150,6 @@ const _serversPart15: MCPServer[] = [
     categories: ['api', 'database'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 34,
     isNew: true,
   },
   {
@@ -33259,7 +33177,6 @@ const _serversPart15: MCPServer[] = [
     categories: ['api', 'analytics'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 42,
     isNew: true,
   },
   {
@@ -33273,7 +33190,6 @@ const _serversPart15: MCPServer[] = [
     categories: ['api', 'analytics'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 53,
     isNew: true,
   },
   // IoT / Connectivity Platforms
@@ -33288,7 +33204,6 @@ const _serversPart15: MCPServer[] = [
     categories: ['api', 'devops'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 36,
     isNew: true,
   },
   {
@@ -33302,7 +33217,6 @@ const _serversPart15: MCPServer[] = [
     categories: ['api', 'devops'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 44,
     isNew: true,
   },
   {
@@ -33316,7 +33230,6 @@ const _serversPart15: MCPServer[] = [
     categories: ['api', 'devops'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 67,
     isNew: true,
   },
   // Construction Tech
@@ -33331,7 +33244,6 @@ const _serversPart15: MCPServer[] = [
     categories: ['api', 'productivity'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 72,
     isNew: true,
   },
   {
@@ -33345,7 +33257,6 @@ const _serversPart15: MCPServer[] = [
     categories: ['api', 'productivity'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 31,
     isNew: true,
   },
   {
@@ -33359,7 +33270,6 @@ const _serversPart15: MCPServer[] = [
     categories: ['api', 'productivity'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 39,
     isNew: true,
   },
   // Revenue Intelligence & Pricing
@@ -33374,7 +33284,6 @@ const _serversPart15: MCPServer[] = [
     categories: ['finance', 'analytics'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 29,
     isNew: true,
   },
   {
@@ -33388,7 +33297,6 @@ const _serversPart15: MCPServer[] = [
     categories: ['finance', 'analytics'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 23,
     isNew: true,
   },
   {
@@ -33402,7 +33310,6 @@ const _serversPart15: MCPServer[] = [
     categories: ['analytics', 'finance'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 61,
     isNew: true,
   },
   {
@@ -33431,7 +33338,6 @@ const _serversPart15: MCPServer[] = [
     categories: ['coding', 'analytics'],
     integrations: ['claude-desktop', 'cursor', 'vscode'],
     install_type: 'npm',
-    stars: 47,
     isNew: true,
   },
   {
@@ -33445,7 +33351,6 @@ const _serversPart15: MCPServer[] = [
     categories: ['coding', 'devops'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 38,
     isNew: true,
   },
   {
@@ -33459,7 +33364,6 @@ const _serversPart15: MCPServer[] = [
     categories: ['coding', 'devops'],
     integrations: ['claude-desktop', 'cursor', 'vscode'],
     install_type: 'npm',
-    stars: 55,
     isNew: true,
   },
   {
@@ -33473,7 +33377,6 @@ const _serversPart15: MCPServer[] = [
     categories: ['devops', 'coding'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 62,
     isNew: true,
   },
   {
@@ -33487,7 +33390,6 @@ const _serversPart15: MCPServer[] = [
     categories: ['devops', 'coding'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 73,
     isNew: true,
   },
   {
@@ -33501,7 +33403,6 @@ const _serversPart15: MCPServer[] = [
     categories: ['devops', 'coding'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 58,
     isNew: true,
   },
   // Energy & Utilities
@@ -33516,7 +33417,6 @@ const _serversPart15: MCPServer[] = [
     categories: ['api', 'devops'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 22,
     isNew: true,
   },
   {
@@ -33530,7 +33430,6 @@ const _serversPart15: MCPServer[] = [
     categories: ['database', 'analytics'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 44,
     isNew: true,
   },
   {
@@ -33544,7 +33443,6 @@ const _serversPart15: MCPServer[] = [
     categories: ['api', 'analytics'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 69,
     isNew: true,
   },
   {
@@ -33558,7 +33456,6 @@ const _serversPart15: MCPServer[] = [
     categories: ['api', 'productivity'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 31,
     isNew: true,
   },
 ];
@@ -33575,7 +33472,6 @@ const _serversPart16: MCPServer[] = [
     categories: ['api', 'productivity'],
     integrations: ['claude-desktop', 'cursor', 'vscode'],
     install_type: 'npm',
-    stars: 143,
     isNew: true,
   },
   {
@@ -33589,7 +33485,6 @@ const _serversPart16: MCPServer[] = [
     categories: ['search', 'api'],
     integrations: ['claude-desktop', 'cursor', 'vscode'],
     install_type: 'npm',
-    stars: 134,
     isNew: true,
   },
   {
@@ -33617,7 +33512,6 @@ const _serversPart16: MCPServer[] = [
     categories: ['api', 'database'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 44,
     isNew: true,
   },
   {
@@ -33631,7 +33525,6 @@ const _serversPart16: MCPServer[] = [
     categories: ['api', 'productivity'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 56,
     isNew: true,
   },
   {
@@ -33645,7 +33538,6 @@ const _serversPart16: MCPServer[] = [
     categories: ['search', 'api'],
     integrations: ['claude-desktop', 'cursor', 'vscode'],
     install_type: 'npm',
-    stars: 84,
     isNew: true,
   },
   {
@@ -33659,7 +33551,6 @@ const _serversPart16: MCPServer[] = [
     categories: ['api', 'productivity'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 72,
     isNew: true,
   },
   // Sustainability & ESG
@@ -33674,7 +33565,6 @@ const _serversPart16: MCPServer[] = [
     categories: ['api', 'analytics'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 53,
     isNew: true,
   },
   {
@@ -33688,7 +33578,6 @@ const _serversPart16: MCPServer[] = [
     categories: ['api', 'analytics'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 38,
     isNew: true,
   },
   {
@@ -33702,7 +33591,6 @@ const _serversPart16: MCPServer[] = [
     categories: ['api', 'analytics'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 29,
     isNew: true,
   },
   // AI / ML Platforms
@@ -33717,7 +33605,6 @@ const _serversPart16: MCPServer[] = [
     categories: ['api', 'coding'],
     integrations: ['claude-desktop', 'cursor', 'vscode'],
     install_type: 'npm',
-    stars: 248,
     isNew: true,
   },
   {
@@ -33731,7 +33618,6 @@ const _serversPart16: MCPServer[] = [
     categories: ['cloud', 'coding'],
     integrations: ['claude-desktop', 'cursor', 'vscode'],
     install_type: 'npm',
-    stars: 107,
     isNew: true,
   },
   // Data Engineering & Warehousing
@@ -33746,7 +33632,6 @@ const _serversPart16: MCPServer[] = [
     categories: ['database', 'devops'],
     integrations: ['claude-desktop', 'cursor', 'vscode'],
     install_type: 'npm',
-    stars: 176,
     isNew: true,
   },
   {
@@ -33774,7 +33659,6 @@ const _serversPart16: MCPServer[] = [
     categories: ['database', 'analytics'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 91,
     isNew: true,
   },
   // DevOps & SRE
@@ -33789,7 +33673,6 @@ const _serversPart16: MCPServer[] = [
     categories: ['devops', 'analytics'],
     integrations: ['claude-desktop', 'cursor', 'vscode'],
     install_type: 'npm',
-    stars: 163,
     isNew: true,
   },
   {
@@ -33803,7 +33686,6 @@ const _serversPart16: MCPServer[] = [
     categories: ['devops', 'analytics'],
     integrations: ['claude-desktop', 'cursor', 'vscode'],
     install_type: 'npm',
-    stars: 198,
     isNew: true,
   },
   {
@@ -33817,7 +33699,6 @@ const _serversPart16: MCPServer[] = [
     categories: ['devops', 'cloud'],
     integrations: ['claude-desktop', 'cursor', 'vscode'],
     install_type: 'npm',
-    stars: 145,
     isNew: true,
   },
   // Education & Learning
@@ -33864,7 +33745,6 @@ const _serversPart17: MCPServer[] = [
     categories: ['productivity', 'api'],
     integrations: ['claude-desktop', 'cursor', 'vscode'],
     install_type: 'npm',
-    stars: 198,
     isNew: true,
   },
   {
@@ -33893,7 +33773,6 @@ const _serversPart17: MCPServer[] = [
     categories: ['api', 'productivity'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 189,
     isNew: true,
   },
   {
@@ -33907,7 +33786,6 @@ const _serversPart17: MCPServer[] = [
     categories: ['productivity', 'analytics'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 54,
     isNew: true,
   },
   {
@@ -33921,7 +33799,6 @@ const _serversPart17: MCPServer[] = [
     categories: ['productivity', 'analytics'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 61,
     isNew: true,
   },
   {
@@ -33935,7 +33812,6 @@ const _serversPart17: MCPServer[] = [
     categories: ['productivity', 'analytics'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 43,
     isNew: true,
   },
   // Communication & Collaboration
@@ -33950,7 +33826,6 @@ const _serversPart17: MCPServer[] = [
     categories: ['productivity', 'api'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 45,
     isNew: true,
   },
   {
@@ -33964,7 +33839,6 @@ const _serversPart17: MCPServer[] = [
     categories: ['productivity', 'api'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 178,
     isNew: true,
   },
   {
@@ -34007,7 +33881,6 @@ const _serversPart17: MCPServer[] = [
     categories: ['api', 'productivity'],
     integrations: ['claude-desktop', 'cursor', 'vscode'],
     install_type: 'npm',
-    stars: 167,
     isNew: true,
   },
   {
@@ -34021,7 +33894,6 @@ const _serversPart17: MCPServer[] = [
     categories: ['api', 'productivity'],
     integrations: ['claude-desktop', 'cursor', 'vscode'],
     install_type: 'npm',
-    stars: 198,
     isNew: true,
   },
   {
@@ -34035,7 +33907,6 @@ const _serversPart17: MCPServer[] = [
     categories: ['api', 'productivity'],
     integrations: ['claude-desktop', 'cursor', 'vscode'],
     install_type: 'npm',
-    stars: 234,
     isNew: true,
   },
   // Document & Knowledge Management
@@ -34080,7 +33951,6 @@ const _serversPart17: MCPServer[] = [
     categories: ['productivity', 'api'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 98,
     isNew: true,
   },
   // Infrastructure & Cloud
@@ -34095,7 +33965,6 @@ const _serversPart17: MCPServer[] = [
     categories: ['api', 'productivity'],
     integrations: ['claude-desktop', 'cursor', 'vscode'],
     install_type: 'npm',
-    stars: 234,
     isNew: true,
   },
   {
@@ -34109,7 +33978,6 @@ const _serversPart17: MCPServer[] = [
     categories: ['api', 'productivity'],
     integrations: ['claude-desktop', 'cursor', 'vscode'],
     install_type: 'npm',
-    stars: 189,
     isNew: true,
   },
   {
@@ -34123,7 +33991,6 @@ const _serversPart17: MCPServer[] = [
     categories: ['api', 'productivity'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 167,
     isNew: true,
   },
   // Testing & QA
@@ -34138,7 +34005,6 @@ const _serversPart17: MCPServer[] = [
     categories: ['productivity', 'api'],
     integrations: ['claude-desktop', 'cursor', 'vscode'],
     install_type: 'npm',
-    stars: 178,
     isNew: true,
   },
   {
@@ -34152,7 +34018,6 @@ const _serversPart17: MCPServer[] = [
     categories: ['productivity', 'api'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 134,
     isNew: true,
   },
   {
@@ -34166,7 +34031,6 @@ const _serversPart17: MCPServer[] = [
     categories: ['productivity', 'api'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 98,
     isNew: true,
   },
   // E-commerce & Payments (extended)
@@ -34181,7 +34045,6 @@ const _serversPart17: MCPServer[] = [
     categories: ['api', 'productivity'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 143,
     isNew: true,
   },
   {
@@ -34195,7 +34058,6 @@ const _serversPart17: MCPServer[] = [
     categories: ['api', 'productivity'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 89,
     isNew: true,
   },
   // Monitoring & Observability (extended)
@@ -34210,7 +34072,6 @@ const _serversPart17: MCPServer[] = [
     categories: ['analytics', 'database'],
     integrations: ['claude-desktop', 'cursor', 'vscode'],
     install_type: 'npm',
-    stars: 267,
     isNew: true,
   },
   {
@@ -34224,7 +34085,6 @@ const _serversPart17: MCPServer[] = [
     categories: ['analytics', 'api'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 143,
     isNew: true,
   },
   // Specialized APIs
@@ -34239,7 +34099,6 @@ const _serversPart17: MCPServer[] = [
     categories: ['api', 'productivity'],
     integrations: ['claude-desktop', 'cursor', 'vscode'],
     install_type: 'npm',
-    stars: 167,
     isNew: true,
   },
   {
@@ -34253,7 +34112,6 @@ const _serversPart17: MCPServer[] = [
     categories: ['api', 'productivity'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 98,
     isNew: true,
   },
 ];
@@ -34402,7 +34260,6 @@ const _serversPart18: MCPServer[] = [
     categories: ['api', 'analytics'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 143,
     isNew: true,
   },
   // Next-Gen AI Model Providers
@@ -34434,7 +34291,6 @@ const _serversPart18: MCPServer[] = [
     categories: ['api', 'developer-tools'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 287,
     isNew: true,
   },
   {
@@ -34448,7 +34304,6 @@ const _serversPart18: MCPServer[] = [
     categories: ['api', 'developer-tools'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 198,
     isNew: true,
   },
   {
@@ -34480,7 +34335,6 @@ const _serversPart18: MCPServer[] = [
     categories: ['api', 'security'],
     integrations: ['claude-desktop', 'cursor', 'vscode'],
     install_type: 'npm',
-    stars: 167,
     isNew: true,
   },
   {
@@ -34494,7 +34348,6 @@ const _serversPart18: MCPServer[] = [
     categories: ['api', 'security'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 143,
     isNew: true,
   },
   {
@@ -34508,7 +34361,6 @@ const _serversPart18: MCPServer[] = [
     categories: ['api', 'security'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 112,
     isNew: true,
   },
   // CI/CD & DevOps Pipelines
@@ -34580,7 +34432,6 @@ const _serversPart18: MCPServer[] = [
     categories: ['developer-tools', 'api'],
     integrations: ['claude-desktop', 'cursor', 'vscode'],
     install_type: 'npm',
-    stars: 156,
     isNew: true,
   },
   {
@@ -34594,7 +34445,6 @@ const _serversPart18: MCPServer[] = [
     categories: ['developer-tools', 'api'],
     integrations: ['claude-desktop', 'cursor', 'vscode'],
     install_type: 'npm',
-    stars: 345,
     isNew: true,
   },
   // Document & File Management
@@ -34638,7 +34488,6 @@ const _serversPart18: MCPServer[] = [
     categories: ['productivity', 'api'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 98,
     isNew: true,
   },
   // Video Platforms & Async Communication
@@ -34667,7 +34516,6 @@ const _serversPart18: MCPServer[] = [
     categories: ['productivity', 'api'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 134,
     isNew: true,
   },
   {
@@ -34681,7 +34529,6 @@ const _serversPart18: MCPServer[] = [
     categories: ['productivity', 'api'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 87,
     isNew: true,
   },
   // Business Intelligence
@@ -34710,7 +34557,6 @@ const _serversPart18: MCPServer[] = [
     categories: ['analytics', 'api'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 76,
     isNew: true,
   },
   // Real Estate
@@ -34725,7 +34571,6 @@ const _serversPart18: MCPServer[] = [
     categories: ['api', 'analytics'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 123,
     isNew: true,
   },
   {
@@ -34739,7 +34584,6 @@ const _serversPart18: MCPServer[] = [
     categories: ['api', 'analytics'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 89,
     isNew: true,
   },
   // Subscription & Revenue Management
@@ -34754,7 +34598,6 @@ const _serversPart18: MCPServer[] = [
     categories: ['api', 'analytics'],
     integrations: ['claude-desktop', 'cursor', 'vscode'],
     install_type: 'npm',
-    stars: 112,
     isNew: true,
   },
   {
@@ -34768,7 +34611,6 @@ const _serversPart18: MCPServer[] = [
     categories: ['api', 'analytics'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 67,
     isNew: true,
   },
   // Telecom & Messaging
@@ -34797,7 +34639,6 @@ const _serversPart18: MCPServer[] = [
     categories: ['api', 'productivity'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 112,
     isNew: true,
   },
   {
@@ -34841,7 +34682,6 @@ const _serversPart18: MCPServer[] = [
     categories: ['api', 'productivity'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 87,
     isNew: true,
   },
   {
@@ -34944,7 +34784,6 @@ const _serversPart19: MCPServer[] = [
     categories: ['database', 'analytics'],
     integrations: ['claude-desktop', 'cursor', 'vscode'],
     install_type: 'npm',
-    stars: 398,
     isNew: true,
   },
   {
@@ -35000,7 +34839,6 @@ const _serversPart19: MCPServer[] = [
     categories: ['ai-ml', 'developer-tools'],
     integrations: ['claude-desktop', 'cursor', 'vscode'],
     install_type: 'npm',
-    stars: 389,
     isNew: true,
   },
   {
@@ -35028,7 +34866,6 @@ const _serversPart19: MCPServer[] = [
     categories: ['ai-ml', 'developer-tools'],
     integrations: ['claude-desktop', 'cursor', 'vscode'],
     install_type: 'npm',
-    stars: 234,
     isNew: true,
   },
   {
@@ -35070,7 +34907,6 @@ const _serversPart19: MCPServer[] = [
     categories: ['ai-ml', 'analytics'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 198,
     isNew: true,
   },
   {
@@ -35084,7 +34920,6 @@ const _serversPart19: MCPServer[] = [
     categories: ['ai-ml', 'developer-tools'],
     integrations: ['claude-desktop', 'cursor', 'vscode'],
     install_type: 'npm',
-    stars: 223,
     isNew: true,
   },
   {
@@ -35112,7 +34947,6 @@ const _serversPart19: MCPServer[] = [
     categories: ['ai-ml', 'developer-tools'],
     integrations: ['claude-desktop', 'cursor', 'vscode'],
     install_type: 'npm',
-    stars: 389,
     isNew: true,
   },
   {
@@ -35134,13 +34968,13 @@ const _serversPart19: MCPServer[] = [
     name: 'Hugging Face Hub MCP',
     description: 'Browse and interact with Hugging Face Hub — search models and datasets, load model cards, run inference via Serverless Inference API, and manage Spaces and model repositories.',
     author: 'community',
-    github_url: null,
-    source_verified: false,
-    verification: 'unresolved',
+    github_url: 'https://github.com/pipeworx-io/mcp-huggingface',
+    source_verified: true,
+    verification: 'live',
     categories: ['ai-ml', 'developer-tools'],
     integrations: ['claude-desktop', 'cursor', 'vscode'],
     install_type: 'npm',
-    stars: 467,
+    stars: 0,
     isNew: true,
   },
   {
@@ -35154,7 +34988,6 @@ const _serversPart19: MCPServer[] = [
     categories: ['database', 'developer-tools'],
     integrations: ['claude-desktop', 'cursor', 'vscode'],
     install_type: 'npm',
-    stars: 512,
     isNew: true,
   },
   {
@@ -35196,7 +35029,6 @@ const _serversPart19: MCPServer[] = [
     categories: ['database', 'analytics'],
     integrations: ['claude-desktop', 'cursor', 'vscode'],
     install_type: 'npm',
-    stars: 245,
     isNew: true,
   },
   {
@@ -35224,7 +35056,6 @@ const _serversPart19: MCPServer[] = [
     categories: ['database', 'analytics'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 156,
     isNew: true,
   },
   {
@@ -35238,7 +35069,6 @@ const _serversPart19: MCPServer[] = [
     categories: ['database', 'analytics'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 134,
     isNew: true,
   },
   {
@@ -35266,7 +35096,6 @@ const _serversPart19: MCPServer[] = [
     categories: ['developer-tools', 'api'],
     integrations: ['claude-desktop', 'cursor', 'vscode'],
     install_type: 'npm',
-    stars: 234,
     isNew: true,
   },
   {
@@ -35280,7 +35109,6 @@ const _serversPart19: MCPServer[] = [
     categories: ['developer-tools', 'api'],
     integrations: ['claude-desktop', 'cursor', 'vscode'],
     install_type: 'npm',
-    stars: 345,
     isNew: true,
   },
   {
@@ -35294,7 +35122,6 @@ const _serversPart19: MCPServer[] = [
     categories: ['developer-tools', 'api'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 189,
     isNew: true,
   },
   {
@@ -35308,7 +35135,6 @@ const _serversPart19: MCPServer[] = [
     categories: ['developer-tools', 'api'],
     integrations: ['claude-desktop', 'cursor', 'vscode'],
     install_type: 'npm',
-    stars: 167,
     isNew: true,
   },
   {
@@ -35322,7 +35148,6 @@ const _serversPart19: MCPServer[] = [
     categories: ['analytics', 'developer-tools'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 145,
     isNew: true,
   },
   {
@@ -35336,7 +35161,6 @@ const _serversPart19: MCPServer[] = [
     categories: ['analytics', 'database'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 123,
     isNew: true,
   },
   {
@@ -35350,7 +35174,6 @@ const _serversPart19: MCPServer[] = [
     categories: ['analytics', 'database'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 98,
     isNew: true,
   },
   {
@@ -35364,7 +35187,6 @@ const _serversPart19: MCPServer[] = [
     categories: ['analytics', 'developer-tools'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 112,
     isNew: true,
   },
   {
@@ -35392,7 +35214,6 @@ const _serversPart19: MCPServer[] = [
     categories: ['api', 'developer-tools'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 134,
     isNew: true,
   },
   {
@@ -35406,7 +35227,6 @@ const _serversPart19: MCPServer[] = [
     categories: ['api', 'developer-tools'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 89,
     isNew: true,
   },
   {
@@ -35449,7 +35269,6 @@ const _serversPart19: MCPServer[] = [
     categories: ['analytics', 'developer-tools'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 134,
     isNew: true,
   },
   {
@@ -35463,7 +35282,6 @@ const _serversPart19: MCPServer[] = [
     categories: ['analytics', 'database'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 112,
     isNew: true,
   },
 ];
@@ -35494,7 +35312,6 @@ const _serversPart20: MCPServer[] = [
     categories: ['api', 'filesystem'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 63,
     isNew: true,
   },
   {
@@ -35634,7 +35451,6 @@ const _serversPart20: MCPServer[] = [
     categories: ['devops', 'cloud'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 134,
     isNew: true,
   },
   {
@@ -35648,7 +35464,6 @@ const _serversPart20: MCPServer[] = [
     categories: ['devops', 'cloud'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 112,
     isNew: true,
   },
   {
@@ -35761,7 +35576,6 @@ const _serversPart20: MCPServer[] = [
     categories: ['marketing', 'communication'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 57,
     isNew: true,
   },
   {
@@ -35775,7 +35589,6 @@ const _serversPart20: MCPServer[] = [
     categories: ['analytics', 'browser'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 74,
     isNew: true,
   },
   {
@@ -35789,7 +35602,6 @@ const _serversPart20: MCPServer[] = [
     categories: ['analytics', 'browser'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 68,
     isNew: true,
   },
   {
@@ -35817,7 +35629,6 @@ const _serversPart20: MCPServer[] = [
     categories: ['analytics', 'database'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 136,
     isNew: true,
   },
   {
@@ -35831,7 +35642,6 @@ const _serversPart20: MCPServer[] = [
     categories: ['analytics', 'database'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 157,
     isNew: true,
   },
   {
@@ -35845,7 +35655,6 @@ const _serversPart20: MCPServer[] = [
     categories: ['api', 'developer-tools'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'pip',
-    stars: 93,
     isNew: true,
   },
   {
@@ -35873,7 +35682,6 @@ const _serversPart20: MCPServer[] = [
     categories: ['api', 'developer-tools'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'pip',
-    stars: 204,
     isNew: true,
   },
   {
@@ -35901,7 +35709,6 @@ const _serversPart20: MCPServer[] = [
     categories: ['developer-tools', 'analytics'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 96,
     isNew: true,
   },
   {
@@ -35915,7 +35722,6 @@ const _serversPart20: MCPServer[] = [
     categories: ['communication', 'api'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 142,
     isNew: true,
   },
   {
@@ -35929,7 +35735,6 @@ const _serversPart20: MCPServer[] = [
     categories: ['communication', 'api'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 129,
     isNew: true,
   },
   {
@@ -35971,7 +35776,6 @@ const _serversPart20: MCPServer[] = [
     categories: ['finance', 'api'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 87,
     isNew: true,
   },
   {
@@ -35985,7 +35789,6 @@ const _serversPart20: MCPServer[] = [
     categories: ['api', 'productivity'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 91,
     isNew: true,
   },
   {
@@ -35999,7 +35802,6 @@ const _serversPart20: MCPServer[] = [
     categories: ['analytics', 'browser'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 62,
     isNew: true,
   },
   {
@@ -36013,7 +35815,6 @@ const _serversPart20: MCPServer[] = [
     categories: ['developer-tools', 'devops'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 209,
     isNew: true,
   },
   {
@@ -36045,7 +35846,6 @@ const _serversPart21: MCPServer[] = [
     categories: ['api', 'finance'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 143,
     isNew: true,
   },
   {
@@ -36059,7 +35859,6 @@ const _serversPart21: MCPServer[] = [
     categories: ['api', 'finance'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 78,
     isNew: true,
   },
   {
@@ -36073,7 +35872,6 @@ const _serversPart21: MCPServer[] = [
     categories: ['api', 'productivity'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 62,
     isNew: true,
   },
   {
@@ -36087,7 +35885,6 @@ const _serversPart21: MCPServer[] = [
     categories: ['api', 'finance'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 54,
     isNew: true,
   },
   {
@@ -36101,7 +35898,6 @@ const _serversPart21: MCPServer[] = [
     categories: ['api', 'finance'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 89,
     isNew: true,
   },
   {
@@ -36115,7 +35911,6 @@ const _serversPart21: MCPServer[] = [
     categories: ['api', 'finance'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 67,
     isNew: true,
   },
   {
@@ -36129,7 +35924,6 @@ const _serversPart21: MCPServer[] = [
     categories: ['api', 'productivity'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 71,
     isNew: true,
   },
   {
@@ -36143,7 +35937,6 @@ const _serversPart21: MCPServer[] = [
     categories: ['api', 'finance'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 58,
     isNew: true,
   },
   // IoT / Hardware
@@ -36158,7 +35951,6 @@ const _serversPart21: MCPServer[] = [
     categories: ['api', 'analytics'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 112,
     isNew: true,
   },
   {
@@ -36172,7 +35964,6 @@ const _serversPart21: MCPServer[] = [
     categories: ['api', 'analytics'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 94,
     isNew: true,
   },
   {
@@ -36200,7 +35991,6 @@ const _serversPart21: MCPServer[] = [
     categories: ['database', 'analytics'],
     integrations: ['claude-desktop', 'cursor', 'vs-code'],
     install_type: 'npm',
-    stars: 187,
     isNew: true,
   },
   // Healthcare / HIPAA
@@ -36215,7 +36005,6 @@ const _serversPart21: MCPServer[] = [
     categories: ['api', 'productivity'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 76,
     isNew: true,
   },
   {
@@ -36229,7 +36018,6 @@ const _serversPart21: MCPServer[] = [
     categories: ['api', 'search'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 134,
     isNew: true,
   },
   {
@@ -36257,7 +36045,6 @@ const _serversPart21: MCPServer[] = [
     categories: ['api', 'communication'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 59,
     isNew: true,
   },
   {
@@ -36271,7 +36058,6 @@ const _serversPart21: MCPServer[] = [
     categories: ['api', 'productivity'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 63,
     isNew: true,
   },
   // Legal
@@ -36286,7 +36072,6 @@ const _serversPart21: MCPServer[] = [
     categories: ['api', 'productivity'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 88,
     isNew: true,
   },
   {
@@ -36300,7 +36085,6 @@ const _serversPart21: MCPServer[] = [
     categories: ['api', 'search'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 97,
     isNew: true,
   },
   {
@@ -36314,7 +36098,6 @@ const _serversPart21: MCPServer[] = [
     categories: ['api', 'finance'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 52,
     isNew: true,
   },
   // Government Data
@@ -36329,7 +36112,6 @@ const _serversPart21: MCPServer[] = [
     categories: ['api', 'search'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 117,
     isNew: true,
   },
   {
@@ -36343,7 +36125,6 @@ const _serversPart21: MCPServer[] = [
     categories: ['api', 'analytics'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 142,
     isNew: true,
   },
   {
@@ -36357,7 +36138,6 @@ const _serversPart21: MCPServer[] = [
     categories: ['api', 'search'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 198,
     isNew: true,
   },
   {
@@ -36385,7 +36165,6 @@ const _serversPart21: MCPServer[] = [
     categories: ['api', 'analytics'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 127,
     isNew: true,
   },
   // Fintech / Open Banking
@@ -36400,7 +36179,6 @@ const _serversPart21: MCPServer[] = [
     categories: ['api', 'finance'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 176,
     isNew: true,
   },
   {
@@ -36414,7 +36192,6 @@ const _serversPart21: MCPServer[] = [
     categories: ['api', 'finance'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 162,
     isNew: true,
   },
   {
@@ -36428,7 +36205,6 @@ const _serversPart21: MCPServer[] = [
     categories: ['api', 'finance'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 93,
     isNew: true,
   },
   {
@@ -36442,7 +36218,6 @@ const _serversPart21: MCPServer[] = [
     categories: ['api', 'finance'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 84,
     isNew: true,
   },
   {
@@ -36456,7 +36231,6 @@ const _serversPart21: MCPServer[] = [
     categories: ['api', 'finance'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 147,
     isNew: true,
   },
   {
@@ -36470,7 +36244,6 @@ const _serversPart21: MCPServer[] = [
     categories: ['api', 'finance'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 119,
     isNew: true,
   },
   {
@@ -36484,7 +36257,6 @@ const _serversPart21: MCPServer[] = [
     categories: ['api', 'security'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 88,
     isNew: true,
   },
   {
@@ -36513,7 +36285,6 @@ const _serversPart21: MCPServer[] = [
     categories: ['api', 'finance'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 221,
     isNew: true,
   },
   {
@@ -36527,7 +36298,6 @@ const _serversPart21: MCPServer[] = [
     categories: ['api', 'finance'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 83,
     isNew: true,
   },
   {
@@ -36541,7 +36311,6 @@ const _serversPart21: MCPServer[] = [
     categories: ['api', 'finance'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 67,
     isNew: true,
   },
   // Database / Backend
@@ -36556,7 +36325,6 @@ const _serversPart21: MCPServer[] = [
     categories: ['database', 'api'],
     integrations: ['claude-desktop', 'cursor', 'vs-code'],
     install_type: 'npm',
-    stars: 172,
     isNew: true,
   },
   {
@@ -36599,7 +36367,6 @@ const _serversPart21: MCPServer[] = [
     categories: ['api', 'finance'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 102,
     isNew: true,
   },
   // Open Banking (UK)
@@ -36614,7 +36381,6 @@ const _serversPart21: MCPServer[] = [
     categories: ['api', 'finance'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 158,
     isNew: true,
   },
   // Additional high-value servers
@@ -36629,7 +36395,6 @@ const _serversPart21: MCPServer[] = [
     categories: ['api', 'finance'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 187,
     isNew: true,
   },
 ];
@@ -36647,7 +36412,6 @@ const _serversPart22: MCPServer[] = [
     categories: ['api'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'pip',
-    stars: 118,
     isNew: true,
   },
   // AWS IoT Greengrass
@@ -36662,7 +36426,6 @@ const _serversPart22: MCPServer[] = [
     categories: ['cloud', 'api'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'pip',
-    stars: 203,
     isNew: true,
   },
   // Arduino IoT Cloud
@@ -36677,7 +36440,6 @@ const _serversPart22: MCPServer[] = [
     categories: ['api'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 97,
     isNew: true,
   },
   // commercetools
@@ -36707,7 +36469,6 @@ const _serversPart22: MCPServer[] = [
     categories: ['api'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'pip',
-    stars: 98,
     isNew: true,
   },
   // REDCap
@@ -36722,7 +36483,6 @@ const _serversPart22: MCPServer[] = [
     categories: ['database', 'api'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'pip',
-    stars: 119,
     isNew: true,
   },
   // DocuSign CLM
@@ -36737,7 +36497,6 @@ const _serversPart22: MCPServer[] = [
     categories: ['api', 'productivity'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 156,
     isNew: true,
   },
   // ── Government Data ──────────────────────────────────────────────────────
@@ -36753,7 +36512,6 @@ const _serversPart22: MCPServer[] = [
     categories: ['finance', 'search'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'pip',
-    stars: 267,
     isNew: true,
   },
   // Google Patents
@@ -36784,7 +36542,6 @@ const _serversPart22: MCPServer[] = [
     categories: ['finance', 'api'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 223,
     isNew: true,
   },
   // Recharge Subscriptions
@@ -36799,7 +36556,6 @@ const _serversPart22: MCPServer[] = [
     categories: ['api', 'finance'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 108,
     isNew: true,
   },
   // Drip Email Marketing
@@ -36814,7 +36570,6 @@ const _serversPart22: MCPServer[] = [
     categories: ['marketing', 'api'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 87,
     isNew: true,
   },
   // Checkr Background Checks
@@ -36829,7 +36584,6 @@ const _serversPart22: MCPServer[] = [
     categories: ['api', 'security'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 112,
     isNew: true,
   },
 ];
@@ -36863,7 +36617,6 @@ const _serversPart23: MCPServer[] = [
     categories: ['api', 'developer-tools'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'pip',
-    stars: 143,
     isNew: true,
   },
   // D-Wave
@@ -36878,7 +36631,6 @@ const _serversPart23: MCPServer[] = [
     categories: ['api', 'developer-tools'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'pip',
-    stars: 121,
     isNew: true,
   },
   // Azure Quantum
@@ -36893,7 +36645,6 @@ const _serversPart23: MCPServer[] = [
     categories: ['api', 'cloud'],
     integrations: ['claude-desktop', 'cursor', 'vscode'],
     install_type: 'pip',
-    stars: 167,
     isNew: true,
   },
   // ── Document AI / OCR ────────────────────────────────────────────────────
@@ -36909,7 +36660,6 @@ const _serversPart23: MCPServer[] = [
     categories: ['api', 'developer-tools'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 234,
     isNew: true,
   },
   // Google Document AI
@@ -36939,7 +36689,6 @@ const _serversPart23: MCPServer[] = [
     categories: ['api', 'cloud'],
     integrations: ['claude-desktop', 'cursor', 'vscode'],
     install_type: 'npm',
-    stars: 187,
     isNew: true,
   },
   // Unstructured.io
@@ -36969,7 +36718,6 @@ const _serversPart23: MCPServer[] = [
     categories: ['api', 'developer-tools'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 156,
     isNew: true,
   },
   // Nanonets
@@ -36984,7 +36732,6 @@ const _serversPart23: MCPServer[] = [
     categories: ['api', 'developer-tools'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 134,
     isNew: true,
   },
   // ABBYY
@@ -36999,7 +36746,6 @@ const _serversPart23: MCPServer[] = [
     categories: ['api', 'developer-tools'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 143,
     isNew: true,
   },
   // ── Decentralized Social / Web3 ──────────────────────────────────────────
@@ -37046,7 +36792,6 @@ const _serversPart23: MCPServer[] = [
     categories: ['api', 'developer-tools'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 312,
     isNew: true,
   },
   // Ankr
@@ -37061,7 +36806,6 @@ const _serversPart23: MCPServer[] = [
     categories: ['api', 'developer-tools'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 234,
     isNew: true,
   },
   // ── HPC / Job Schedulers ──────────────────────────────────────────────────
@@ -37077,7 +36821,6 @@ const _serversPart23: MCPServer[] = [
     categories: ['developer-tools', 'api'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'pip',
-    stars: 178,
     isNew: true,
   },
   // PBS/Torque
@@ -37092,7 +36835,6 @@ const _serversPart23: MCPServer[] = [
     categories: ['developer-tools', 'api'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'pip',
-    stars: 134,
     isNew: true,
   },
   // ── Life Sciences / Biotech ───────────────────────────────────────────────
@@ -37108,7 +36850,6 @@ const _serversPart23: MCPServer[] = [
     categories: ['api', 'data'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'pip',
-    stars: 212,
     isNew: true,
   },
   // Dotmatics
@@ -37123,7 +36864,6 @@ const _serversPart23: MCPServer[] = [
     categories: ['api', 'data'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'pip',
-    stars: 167,
     isNew: true,
   },
   // LabVantage
@@ -37138,7 +36878,6 @@ const _serversPart23: MCPServer[] = [
     categories: ['api', 'data'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'pip',
-    stars: 143,
     isNew: true,
   },
   // ── Global Employment Platforms ───────────────────────────────────────────
@@ -37154,7 +36893,6 @@ const _serversPart23: MCPServer[] = [
     categories: ['api', 'productivity'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 189,
     isNew: true,
   },
   // Papaya Global
@@ -37169,7 +36907,6 @@ const _serversPart23: MCPServer[] = [
     categories: ['api', 'finance'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 134,
     isNew: true,
   },
   // Oyster HR
@@ -37184,7 +36921,6 @@ const _serversPart23: MCPServer[] = [
     categories: ['api', 'productivity'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 121,
     isNew: true,
   },
   // UKG (Ultimate Kronos Group)
@@ -37199,7 +36935,6 @@ const _serversPart23: MCPServer[] = [
     categories: ['api', 'productivity'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 167,
     isNew: true,
   },
   // Kronos Workforce
@@ -37214,7 +36949,6 @@ const _serversPart23: MCPServer[] = [
     categories: ['api', 'productivity'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 143,
     isNew: true,
   },
   // ── Streaming / Event Streaming ───────────────────────────────────────────
@@ -37261,7 +36995,6 @@ const _serversPart23: MCPServer[] = [
     categories: ['data', 'developer-tools'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 198,
     isNew: true,
   },
   // Solace PubSub+
@@ -37307,7 +37040,6 @@ const _serversPart23: MCPServer[] = [
     categories: ['database', 'developer-tools'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'pip',
-    stars: 143,
     isNew: true,
   },
   // Momento Cache
@@ -37322,7 +37054,6 @@ const _serversPart23: MCPServer[] = [
     categories: ['database', 'developer-tools'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 189,
     isNew: true,
   },
   // Upstash
@@ -37337,7 +37068,6 @@ const _serversPart23: MCPServer[] = [
     categories: ['database', 'developer-tools'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 312,
     isNew: true,
   },
   // Databricks
@@ -37367,7 +37097,6 @@ const _serversPart23: MCPServer[] = [
     categories: ['database', 'data'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'pip',
-    stars: 198,
     isNew: true,
   },
   // RisingWave
@@ -37382,7 +37111,6 @@ const _serversPart23: MCPServer[] = [
     categories: ['database', 'data'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'pip',
-    stars: 167,
     isNew: true,
   },
   // ── Hospitality POS ────────────────────────────────────────────────────────
@@ -37398,7 +37126,6 @@ const _serversPart23: MCPServer[] = [
     categories: ['api', 'finance'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 198,
     isNew: true,
   },
   // Oracle MICROS
@@ -37413,7 +37140,6 @@ const _serversPart23: MCPServer[] = [
     categories: ['api', 'finance'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 156,
     isNew: true,
   },
   // Revel Systems POS
@@ -37428,7 +37154,6 @@ const _serversPart23: MCPServer[] = [
     categories: ['api', 'finance'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 121,
     isNew: true,
   },
   // ── Insurance Tech ─────────────────────────────────────────────────────────
@@ -37444,7 +37169,6 @@ const _serversPart23: MCPServer[] = [
     categories: ['api', 'finance'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 112,
     isNew: true,
   },
   // Policygenius
@@ -37459,7 +37183,6 @@ const _serversPart23: MCPServer[] = [
     categories: ['api', 'finance'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 98,
     isNew: true,
   },
   // TriNet PEO
@@ -37474,7 +37197,6 @@ const _serversPart23: MCPServer[] = [
     categories: ['api', 'productivity'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 134,
     isNew: true,
   },
   // Insperity PEO
@@ -37489,7 +37211,6 @@ const _serversPart23: MCPServer[] = [
     categories: ['api', 'productivity'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 112,
     isNew: true,
   },
   // Multiplier Global HR
@@ -37504,7 +37225,6 @@ const _serversPart23: MCPServer[] = [
     categories: ['api', 'productivity'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 121,
     isNew: true,
   },
   // Skuad
@@ -37519,7 +37239,6 @@ const _serversPart23: MCPServer[] = [
     categories: ['api', 'productivity'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 98,
     isNew: true,
   },
 ];
@@ -37584,7 +37303,6 @@ const _serversPart24: MCPServer[] = [
     categories: ['productivity', 'api'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 134,
     isNew: true,
   },
   // Weblate
@@ -37630,7 +37348,6 @@ const _serversPart24: MCPServer[] = [
     categories: ['media', 'productivity'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 167,
     isNew: true,
   },
   // Canto DAM
@@ -37645,7 +37362,6 @@ const _serversPart24: MCPServer[] = [
     categories: ['media', 'productivity'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 122,
     isNew: true,
   },
   // Brandfolder
@@ -37675,7 +37391,6 @@ const _serversPart24: MCPServer[] = [
     categories: ['media', 'productivity'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 134,
     isNew: true,
   },
   // ── Network Security / Firewall Management ───────────────────────────────
@@ -37691,7 +37406,6 @@ const _serversPart24: MCPServer[] = [
     categories: ['security', 'devops'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'pip',
-    stars: 223,
     isNew: true,
   },
   // Check Point
@@ -37706,7 +37420,6 @@ const _serversPart24: MCPServer[] = [
     categories: ['security', 'devops'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'pip',
-    stars: 189,
     isNew: true,
   },
   // Barracuda Networks
@@ -37721,7 +37434,6 @@ const _serversPart24: MCPServer[] = [
     categories: ['security', 'communication'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 156,
     isNew: true,
   },
   // SonicWall
@@ -37752,7 +37464,6 @@ const _serversPart24: MCPServer[] = [
     categories: ['devops', 'analytics'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 198,
     isNew: true,
   },
   // ── Contact Center / CCaaS ────────────────────────────────────────────────
@@ -37783,7 +37494,6 @@ const _serversPart24: MCPServer[] = [
     categories: ['communication', 'analytics'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 189,
     isNew: true,
   },
   // ── Backup & Disaster Recovery ────────────────────────────────────────────
@@ -37814,7 +37524,6 @@ const _serversPart24: MCPServer[] = [
     categories: ['security', 'devops'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 178,
     isNew: true,
   },
   // Commvault
@@ -37860,7 +37569,6 @@ const _serversPart24: MCPServer[] = [
     categories: ['ai', 'marketing'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 267,
     isNew: true,
   },
   // Copy.ai
@@ -37890,7 +37598,6 @@ const _serversPart24: MCPServer[] = [
     categories: ['ai', 'marketing'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 234,
     isNew: true,
   },
   // ── Privacy & Compliance Management ──────────────────────────────────────
@@ -37906,7 +37613,6 @@ const _serversPart24: MCPServer[] = [
     categories: ['security', 'productivity'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 156,
     isNew: true,
   },
   // ── Webinar & Event Platforms ─────────────────────────────────────────────
@@ -37922,7 +37628,6 @@ const _serversPart24: MCPServer[] = [
     categories: ['communication', 'marketing'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 187,
     isNew: true,
   },
   // Demio
@@ -37937,7 +37642,6 @@ const _serversPart24: MCPServer[] = [
     categories: ['communication', 'marketing'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 145,
     isNew: true,
   },
   // BigMarker
@@ -37952,7 +37656,6 @@ const _serversPart24: MCPServer[] = [
     categories: ['communication', 'marketing'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 132,
     isNew: true,
   },
   // ── Construction Technology ───────────────────────────────────────────────
@@ -37968,7 +37671,6 @@ const _serversPart24: MCPServer[] = [
     categories: ['productivity', 'filesystem'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 167,
     isNew: true,
   },
   // Autodesk Construction Cloud
@@ -37983,7 +37685,6 @@ const _serversPart24: MCPServer[] = [
     categories: ['productivity', 'cloud'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 212,
     isNew: true,
   },
   // ── Fleet Management ──────────────────────────────────────────────────────
@@ -37999,7 +37700,6 @@ const _serversPart24: MCPServer[] = [
     categories: ['analytics', 'api'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 167,
     isNew: true,
   },
   // FleetComplete
@@ -38014,7 +37714,6 @@ const _serversPart24: MCPServer[] = [
     categories: ['analytics', 'api'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 134,
     isNew: true,
   },
   // ── AgriTech ──────────────────────────────────────────────────────────────
@@ -38030,7 +37729,6 @@ const _serversPart24: MCPServer[] = [
     categories: ['analytics', 'api'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 123,
     isNew: true,
   },
   // ── Scientific / Research Data ─────────────────────────────────────────────
@@ -38061,7 +37759,6 @@ const _serversPart24: MCPServer[] = [
     categories: ['api', 'analytics'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 178,
     isNew: true,
   },
   // Bazel
@@ -38076,7 +37773,6 @@ const _serversPart24: MCPServer[] = [
     categories: ['coding', 'devops'],
     integrations: ['claude-desktop', 'cursor', 'vs-code'],
     install_type: 'pip',
-    stars: 245,
     isNew: true,
   },
   // ── Identity & Access Management ──────────────────────────────────────────
@@ -38092,7 +37788,6 @@ const _serversPart24: MCPServer[] = [
     categories: ['security', 'devops'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 267,
     isNew: true,
   },
   // BeyondTrust
@@ -38107,7 +37802,6 @@ const _serversPart24: MCPServer[] = [
     categories: ['security', 'devops'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 234,
     isNew: true,
   },
   // ── Financial Services APIs ────────────────────────────────────────────────
@@ -38142,7 +37836,6 @@ const _serversPart25: MCPServer[] = [
     categories: ['ai', 'productivity'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 341,
     isNew: true,
   },
   // Luminance
@@ -38157,7 +37850,6 @@ const _serversPart25: MCPServer[] = [
     categories: ['ai', 'productivity'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 278,
     isNew: true,
   },
   // Spellbook
@@ -38172,7 +37864,6 @@ const _serversPart25: MCPServer[] = [
     categories: ['ai', 'productivity'],
     integrations: ['claude-desktop', 'cursor', 'vs-code'],
     install_type: 'npm',
-    stars: 219,
     isNew: true,
   },
   // Logikcull
@@ -38187,7 +37878,6 @@ const _serversPart25: MCPServer[] = [
     categories: ['productivity', 'data'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 187,
     isNew: true,
   },
   // Law360
@@ -38202,7 +37892,6 @@ const _serversPart25: MCPServer[] = [
     categories: ['search', 'data'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 156,
     isNew: true,
   },
   // Justia
@@ -38217,7 +37906,6 @@ const _serversPart25: MCPServer[] = [
     categories: ['search', 'data'],
     integrations: ['claude-desktop', 'cursor', 'vs-code'],
     install_type: 'npm',
-    stars: 243,
     isNew: true,
   },
   // FindLaw
@@ -38232,7 +37920,6 @@ const _serversPart25: MCPServer[] = [
     categories: ['search', 'data'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 134,
     isNew: true,
   },
   // LegalZoom
@@ -38247,7 +37934,6 @@ const _serversPart25: MCPServer[] = [
     categories: ['productivity', 'api'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 198,
     isNew: true,
   },
   // Rocket Lawyer
@@ -38262,7 +37948,6 @@ const _serversPart25: MCPServer[] = [
     categories: ['productivity', 'api'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 167,
     isNew: true,
   },
   // Nolo
@@ -38277,7 +37962,6 @@ const _serversPart25: MCPServer[] = [
     categories: ['search', 'data'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 112,
     isNew: true,
   },
   // LawTrades
@@ -38292,7 +37976,6 @@ const _serversPart25: MCPServer[] = [
     categories: ['productivity', 'api'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 143,
     isNew: true,
   },
   // DocuSign Notary
@@ -38307,7 +37990,6 @@ const _serversPart25: MCPServer[] = [
     categories: ['productivity', 'security'],
     integrations: ['claude-desktop', 'cursor', 'vs-code'],
     install_type: 'npm',
-    stars: 231,
     isNew: true,
   },
   // ── Government & Open Data ────────────────────────────────────────────────
@@ -38357,7 +38039,6 @@ const _serversPart25: MCPServer[] = [
     categories: ['finance', 'data'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 267,
     isNew: true,
   },
   // ── Healthcare & Clinical ─────────────────────────────────────────────────
@@ -38373,7 +38054,6 @@ const _serversPart25: MCPServer[] = [
     categories: ['data', 'communication'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 198,
     isNew: true,
   },
   // ModMed
@@ -38388,7 +38068,6 @@ const _serversPart25: MCPServer[] = [
     categories: ['data', 'productivity'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 156,
     isNew: true,
   },
   // WebMD Health Services
@@ -38403,7 +38082,6 @@ const _serversPart25: MCPServer[] = [
     categories: ['data', 'productivity'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 134,
     isNew: true,
   },
   // SNOMED CT
@@ -38448,7 +38126,6 @@ const _serversPart25: MCPServer[] = [
     categories: ['data', 'search'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 156,
     isNew: true,
   },
   // HealthSparq
@@ -38463,7 +38140,6 @@ const _serversPart25: MCPServer[] = [
     categories: ['data', 'api'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 112,
     isNew: true,
   },
   // ── Smart Home & IoT ──────────────────────────────────────────────────────
@@ -38479,7 +38155,6 @@ const _serversPart25: MCPServer[] = [
     categories: ['api', 'productivity'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 356,
     isNew: true,
   },
   // Google Home API
@@ -38494,7 +38169,6 @@ const _serversPart25: MCPServer[] = [
     categories: ['api', 'productivity'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 412,
     isNew: true,
   },
   // Leviton
@@ -38509,7 +38183,6 @@ const _serversPart25: MCPServer[] = [
     categories: ['api', 'productivity'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 178,
     isNew: true,
   },
   // Alexa Smart Home
@@ -38524,7 +38197,6 @@ const _serversPart25: MCPServer[] = [
     categories: ['api', 'productivity'],
     integrations: ['claude-desktop', 'cursor', 'vs-code'],
     install_type: 'npm',
-    stars: 389,
     isNew: true,
   },
   // Aqara
@@ -38600,7 +38272,6 @@ const _serversPart25: MCPServer[] = [
     categories: ['productivity', 'data'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 134,
     isNew: true,
   },
   // Priority ERP
@@ -38615,7 +38286,6 @@ const _serversPart25: MCPServer[] = [
     categories: ['productivity', 'api'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 112,
     isNew: true,
   },
   // Visibility ERP
@@ -38630,7 +38300,6 @@ const _serversPart25: MCPServer[] = [
     categories: ['productivity', 'data'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 98,
     isNew: true,
   },
   // ── Fintech & Payments ────────────────────────────────────────────────────
@@ -38661,7 +38330,6 @@ const _serversPart25: MCPServer[] = [
     categories: ['finance', 'api'],
     integrations: ['claude-desktop', 'cursor', 'vs-code'],
     install_type: 'npm',
-    stars: 289,
     isNew: true,
   },
   // Payrix
@@ -38691,7 +38359,6 @@ const _serversPart25: MCPServer[] = [
     categories: ['finance', 'api'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 198,
     isNew: true,
   },
   // ── eCommerce ─────────────────────────────────────────────────────────────
@@ -38722,7 +38389,6 @@ const _serversPart25: MCPServer[] = [
     categories: ['ecommerce', 'api'],
     integrations: ['claude-desktop', 'cursor', 'vs-code'],
     install_type: 'npm',
-    stars: 267,
     isNew: true,
   },
   // ── Analytics & UX Research ───────────────────────────────────────────────
@@ -38768,7 +38434,6 @@ const _serversPart25: MCPServer[] = [
     categories: ['analytics', 'data'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 234,
     isNew: true,
   },
   // Microsoft Clarity
@@ -38798,7 +38463,6 @@ const _serversPart25: MCPServer[] = [
     categories: ['analytics', 'data'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 198,
     isNew: true,
   },
 ];
@@ -38858,7 +38522,6 @@ const _serversPart26: MCPServer[] = [
     categories: ['productivity', 'analytics', 'api'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 142,
     isNew: true,
   },
   // ── Scheduling & Time Tracking ────────────────────────────────────────────
@@ -38917,7 +38580,6 @@ const _serversPart26: MCPServer[] = [
     categories: ['productivity', 'api'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 312,
     isNew: true,
   },
   {
@@ -38946,7 +38608,6 @@ const _serversPart26: MCPServer[] = [
     categories: ['security', 'cloud', 'api'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 267,
     isNew: true,
   },
   {
@@ -39002,7 +38663,6 @@ const _serversPart26: MCPServer[] = [
     categories: ['security', 'api'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 412,
     isNew: true,
   },
   // ── Email Marketing ───────────────────────────────────────────────────────
@@ -39046,7 +38706,6 @@ const _serversPart26: MCPServer[] = [
     categories: ['communication', 'api'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 276,
     isNew: true,
   },
   // ── Billing & Subscriptions ───────────────────────────────────────────────
@@ -39061,7 +38720,6 @@ const _serversPart26: MCPServer[] = [
     categories: ['finance', 'api'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 231,
     isNew: true,
   },
   {
@@ -39075,7 +38733,6 @@ const _serversPart26: MCPServer[] = [
     categories: ['finance', 'api'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 112,
     isNew: true,
   },
   {
@@ -39118,7 +38775,6 @@ const _serversPart26: MCPServer[] = [
     categories: ['database', 'api', 'analytics'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 189,
     isNew: true,
   },
   {
@@ -39132,7 +38788,6 @@ const _serversPart26: MCPServer[] = [
     categories: ['database', 'cloud', 'analytics'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 267,
     isNew: true,
   },
   // ── Messaging Infrastructure ──────────────────────────────────────────────
@@ -39147,7 +38802,6 @@ const _serversPart26: MCPServer[] = [
     categories: ['api', 'devops', 'cloud'],
     integrations: ['claude-desktop', 'cursor', 'vs-code'],
     install_type: 'npm',
-    stars: 498,
     isNew: true,
   },
   {
@@ -39170,13 +38824,13 @@ const _serversPart26: MCPServer[] = [
     name: 'New Relic MCP',
     description: 'Query observability data via the New Relic NRQL API — run NRQL queries across APM metrics, distributed traces, and logs, access application performance baselines, query error rates and response times, manage alert policies and conditions, pull infrastructure metrics for hosts and containers, access synthetic monitor results, and build dashboards and SLO compliance reports.',
     author: 'community',
-    github_url: null,
-    source_verified: false,
-    verification: 'unresolved',
+    github_url: 'https://github.com/cloudbring/newrelic-mcp',
+    source_verified: true,
+    verification: 'live',
     categories: ['analytics', 'devops', 'cloud'],
     integrations: ['claude-desktop', 'cursor', 'vs-code'],
     install_type: 'npm',
-    stars: 876,
+    stars: 14,
     isNew: true,
   },
   {
@@ -39232,7 +38886,6 @@ const _serversPart26: MCPServer[] = [
     categories: ['analytics', 'devops'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 187,
     isNew: true,
   },
   // ── Infrastructure as Code ────────────────────────────────────────────────
@@ -39322,7 +38975,6 @@ const _serversPart26: MCPServer[] = [
     categories: ['cloud', 'api'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 423,
     isNew: true,
   },
   {
@@ -39350,7 +39002,6 @@ const _serversPart26: MCPServer[] = [
     categories: ['cloud', 'api'],
     integrations: ['claude-desktop', 'cursor', 'vs-code'],
     install_type: 'npm',
-    stars: 567,
     isNew: true,
   },
   {
@@ -39364,7 +39015,6 @@ const _serversPart26: MCPServer[] = [
     categories: ['cloud', 'api'],
     integrations: ['claude-desktop', 'cursor', 'vs-code'],
     install_type: 'npm',
-    stars: 389,
     isNew: true,
   },
   // ── E-commerce & Retail ───────────────────────────────────────────────────
@@ -39379,7 +39029,6 @@ const _serversPart26: MCPServer[] = [
     categories: ['api', 'productivity'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 342,
     isNew: true,
   },
   {
@@ -39393,7 +39042,6 @@ const _serversPart26: MCPServer[] = [
     categories: ['api', 'productivity'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 198,
     isNew: true,
   },
   {
@@ -39407,7 +39055,6 @@ const _serversPart26: MCPServer[] = [
     categories: ['api', 'productivity'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 167,
     isNew: true,
   },
   {
@@ -39421,7 +39068,6 @@ const _serversPart26: MCPServer[] = [
     categories: ['api', 'productivity'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 143,
     isNew: true,
   },
   // ── Accounting & Finance ──────────────────────────────────────────────────
@@ -39479,7 +39125,6 @@ const _serversPart26: MCPServer[] = [
     categories: ['productivity', 'api'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 134,
     isNew: true,
   },
   {
@@ -39493,7 +39138,6 @@ const _serversPart26: MCPServer[] = [
     categories: ['productivity', 'api'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 167,
     isNew: true,
   },
   {
@@ -39522,7 +39166,6 @@ const _serversPart26: MCPServer[] = [
     categories: ['productivity', 'api'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 124,
     isNew: true,
   },
 ];
@@ -39540,7 +39183,6 @@ const _serversPart27: MCPServer[] = [
     categories: ['productivity', 'api'],
     integrations: ['claude-desktop', 'cursor', 'vs-code'],
     install_type: 'npm',
-    stars: 87,
     isNew: true,
   },
   {
@@ -39596,7 +39238,6 @@ const _serversPart27: MCPServer[] = [
     categories: ['productivity', 'api'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 54,
     isNew: true,
   },
   {
@@ -39610,7 +39251,6 @@ const _serversPart27: MCPServer[] = [
     categories: ['productivity', 'api'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 68,
     isNew: true,
   },
   {
@@ -39624,7 +39264,6 @@ const _serversPart27: MCPServer[] = [
     categories: ['productivity', 'api'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 81,
     isNew: true,
   },
 
@@ -39668,7 +39307,6 @@ const _serversPart27: MCPServer[] = [
     categories: ['api', 'productivity'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 72,
     isNew: true,
   },
   {
@@ -39682,7 +39320,6 @@ const _serversPart27: MCPServer[] = [
     categories: ['api', 'database'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 58,
     isNew: true,
   },
 
@@ -39726,7 +39363,6 @@ const _serversPart27: MCPServer[] = [
     categories: ['devops', 'security', 'coding'],
     integrations: ['claude-desktop', 'cursor', 'vs-code'],
     install_type: 'npm',
-    stars: 198,
     isNew: true,
   },
 
@@ -39742,7 +39378,6 @@ const _serversPart27: MCPServer[] = [
     categories: ['finance', 'api'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 134,
     isNew: true,
   },
   {
@@ -39756,7 +39391,6 @@ const _serversPart27: MCPServer[] = [
     categories: ['finance', 'api'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 76,
     isNew: true,
   },
   {
@@ -39770,7 +39404,6 @@ const _serversPart27: MCPServer[] = [
     categories: ['finance', 'api'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 89,
     isNew: true,
   },
   {
@@ -39784,7 +39417,6 @@ const _serversPart27: MCPServer[] = [
     categories: ['finance', 'api'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 94,
     isNew: true,
   },
   {
@@ -39798,7 +39430,6 @@ const _serversPart27: MCPServer[] = [
     categories: ['finance', 'api'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 61,
     isNew: true,
   },
 
@@ -39814,7 +39445,6 @@ const _serversPart27: MCPServer[] = [
     categories: ['finance', 'productivity'],
     integrations: ['claude-desktop', 'cursor', 'vs-code'],
     install_type: 'npm',
-    stars: 356,
     isNew: true,
   },
   {
@@ -39828,7 +39458,6 @@ const _serversPart27: MCPServer[] = [
     categories: ['finance', 'analytics'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 213,
     isNew: true,
   },
   {
@@ -39842,7 +39471,6 @@ const _serversPart27: MCPServer[] = [
     categories: ['finance', 'productivity'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 178,
     isNew: true,
   },
   {
@@ -39871,7 +39499,6 @@ const _serversPart27: MCPServer[] = [
     categories: ['finance', 'productivity'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 98,
     isNew: true,
   },
 
@@ -39887,7 +39514,6 @@ const _serversPart27: MCPServer[] = [
     categories: ['gaming', 'api', 'analytics'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 189,
     isNew: true,
   },
   {
@@ -39901,7 +39527,6 @@ const _serversPart27: MCPServer[] = [
     categories: ['gaming', 'api', 'analytics'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 167,
     isNew: true,
   },
   {
@@ -39915,7 +39540,6 @@ const _serversPart27: MCPServer[] = [
     categories: ['gaming', 'api', 'analytics'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 224,
     isNew: true,
   },
 
@@ -39931,7 +39555,6 @@ const _serversPart27: MCPServer[] = [
     categories: ['api', 'productivity'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 203,
     isNew: true,
   },
   {
@@ -39945,7 +39568,6 @@ const _serversPart27: MCPServer[] = [
     categories: ['api', 'productivity'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 178,
     isNew: true,
   },
   {
@@ -39953,13 +39575,13 @@ const _serversPart27: MCPServer[] = [
     name: 'Tesla Vehicle API MCP',
     description: 'Access Tesla vehicle data and controls via the Tesla Fleet API — retrieve real-time battery state, range estimate, charging status, climate settings, and GPS location; send commands to lock/unlock, honk horn, flash lights, open frunk/trunk, control climate, and manage charging schedules; pull trip history and energy usage reports; access Autopilot engagement stats; manage vehicle software update schedules; and build Tesla fleet analytics.',
     author: 'community',
-    github_url: null,
-    source_verified: false,
-    verification: 'unresolved',
+    github_url: 'https://github.com/tylergibbs1/tesla-mcp-server',
+    source_verified: true,
+    verification: 'live',
     categories: ['api', 'productivity'],
     integrations: ['claude-desktop', 'cursor', 'vs-code'],
     install_type: 'npm',
-    stars: 512,
+    stars: 1,
     isNew: true,
   },
   {
@@ -39987,7 +39609,6 @@ const _serversPart27: MCPServer[] = [
     categories: ['api', 'search'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 187,
     isNew: true,
   },
 
@@ -40003,7 +39624,6 @@ const _serversPart27: MCPServer[] = [
     categories: ['api', 'analytics'],
     integrations: ['claude-desktop', 'cursor', 'vs-code'],
     install_type: 'npm',
-    stars: 267,
     isNew: true,
   },
   {
@@ -40017,7 +39637,6 @@ const _serversPart27: MCPServer[] = [
     categories: ['api', 'search'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 134,
     isNew: true,
   },
   {
@@ -40031,7 +39650,6 @@ const _serversPart27: MCPServer[] = [
     categories: ['api', 'analytics'],
     integrations: ['claude-desktop', 'cursor', 'vs-code'],
     install_type: 'npm',
-    stars: 318,
     isNew: true,
   },
 
@@ -40075,7 +39693,6 @@ const _serversPart27: MCPServer[] = [
     categories: ['coding', 'ai'],
     integrations: ['claude-desktop', 'cursor', 'vs-code', 'cline'],
     install_type: 'npm',
-    stars: 276,
     isNew: true,
   },
   {
@@ -40089,7 +39706,6 @@ const _serversPart27: MCPServer[] = [
     categories: ['coding', 'ai', 'devops'],
     integrations: ['claude-desktop', 'cursor', 'vs-code'],
     install_type: 'npm',
-    stars: 198,
     isNew: true,
   },
 
@@ -40133,7 +39749,6 @@ const _serversPart27: MCPServer[] = [
     categories: ['devops', 'analytics', 'cloud'],
     integrations: ['claude-desktop', 'cursor', 'vs-code'],
     install_type: 'npm',
-    stars: 241,
     isNew: true,
   },
   {
@@ -40147,7 +39762,6 @@ const _serversPart27: MCPServer[] = [
     categories: ['devops', 'analytics', 'cloud'],
     integrations: ['claude-desktop', 'cursor', 'vs-code'],
     install_type: 'npm',
-    stars: 189,
     isNew: true,
   },
 
@@ -40192,7 +39806,6 @@ const _serversPart27: MCPServer[] = [
     categories: ['marketing', 'analytics', 'api'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 187,
     isNew: true,
   },
   {
@@ -40206,7 +39819,6 @@ const _serversPart27: MCPServer[] = [
     categories: ['marketing', 'analytics', 'api'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 143,
     isNew: true,
   },
   {
@@ -40248,7 +39860,6 @@ const _serversPart27: MCPServer[] = [
     categories: ['marketing', 'api'],
     integrations: ['claude-desktop', 'cursor', 'vs-code'],
     install_type: 'npm',
-    stars: 389,
     isNew: true,
   },
 ];
@@ -41133,7 +40744,6 @@ const _serversPart30: MCPServer[] = [
     categories: ['api', 'analytics'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 143,
     isNew: true,
   },
   {
@@ -41147,7 +40757,6 @@ const _serversPart30: MCPServer[] = [
     categories: ['finance', 'api'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 198,
     isNew: true,
   },
   {
@@ -41161,7 +40770,6 @@ const _serversPart30: MCPServer[] = [
     categories: ['finance', 'api'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 389,
     isNew: true,
   },
   {
@@ -41175,7 +40783,6 @@ const _serversPart30: MCPServer[] = [
     categories: ['finance', 'api'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 167,
     isNew: true,
   },
   {
@@ -41189,7 +40796,6 @@ const _serversPart30: MCPServer[] = [
     categories: ['finance', 'api'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 154,
     isNew: true,
   },
   // ── Diagramming & Visual Collaboration ────────────────────────────────
@@ -41204,7 +40810,6 @@ const _serversPart30: MCPServer[] = [
     categories: ['productivity', 'coding'],
     integrations: ['claude-desktop', 'cursor', 'vs-code'],
     install_type: 'npm',
-    stars: 334,
     isNew: true,
   },
   {
@@ -41218,7 +40823,6 @@ const _serversPart30: MCPServer[] = [
     categories: ['productivity', 'communication'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 276,
     isNew: true,
   },
   {
@@ -41232,7 +40836,6 @@ const _serversPart30: MCPServer[] = [
     categories: ['productivity', 'coding'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 243,
     isNew: true,
   },
   // ── AI & Speech ───────────────────────────────────────────────────────
@@ -41247,7 +40850,6 @@ const _serversPart30: MCPServer[] = [
     categories: ['ai', 'media'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 228,
     isNew: true,
   },
   {
@@ -41255,13 +40857,13 @@ const _serversPart30: MCPServer[] = [
     name: 'Midjourney Image Gen MCP',
     description: 'Generate images with Midjourney via the unofficial Midjourney proxy API — submit /imagine prompts, retrieve generated images, use variation and upscale commands, manage job queues, access image URLs and seeds, apply style parameters (aspect ratio, version, quality), and integrate AI image generation into creative and marketing automation workflows.',
     author: 'community',
-    github_url: null,
-    source_verified: false,
-    verification: 'unresolved',
+    github_url: 'https://github.com/runapi-ai/midjourney-mcp',
+    source_verified: true,
+    verification: 'live',
     categories: ['ai', 'media'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 512,
+    stars: 1,
     isNew: true,
   },
   {
@@ -41275,7 +40877,6 @@ const _serversPart30: MCPServer[] = [
     categories: ['search', 'coding'],
     integrations: ['claude-desktop', 'cursor', 'vs-code'],
     install_type: 'npm',
-    stars: 341,
     isNew: true,
   },
   // ── Data Engineering & Pipelines ──────────────────────────────────────
@@ -41290,7 +40891,6 @@ const _serversPart30: MCPServer[] = [
     categories: ['devops', 'database'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'pip',
-    stars: 267,
     isNew: true,
   },
   {
@@ -41304,7 +40904,6 @@ const _serversPart30: MCPServer[] = [
     categories: ['devops', 'database'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'pip',
-    stars: 198,
     isNew: true,
   },
   {
@@ -41318,7 +40917,6 @@ const _serversPart30: MCPServer[] = [
     categories: ['database', 'cloud'],
     integrations: ['claude-desktop', 'cursor', 'vs-code'],
     install_type: 'pip',
-    stars: 312,
     isNew: true,
   },
   {
@@ -41332,7 +40930,6 @@ const _serversPart30: MCPServer[] = [
     categories: ['devops', 'analytics'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'pip',
-    stars: 189,
     isNew: true,
   },
   // ── SEO & Marketing Tools ─────────────────────────────────────────────
@@ -41347,7 +40944,6 @@ const _serversPart30: MCPServer[] = [
     categories: ['marketing', 'analytics'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 312,
     isNew: true,
   },
   {
@@ -41361,7 +40957,6 @@ const _serversPart30: MCPServer[] = [
     categories: ['marketing', 'analytics'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 267,
     isNew: true,
   },
   // ── Live Chat & Customer Support ──────────────────────────────────────
@@ -41376,7 +40971,6 @@ const _serversPart30: MCPServer[] = [
     categories: ['communication', 'productivity'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 198,
     isNew: true,
   },
   {
@@ -41390,7 +40984,6 @@ const _serversPart30: MCPServer[] = [
     categories: ['communication', 'productivity'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 143,
     isNew: true,
   },
   // ── Infrastructure & Service Mesh ─────────────────────────────────────
@@ -41405,7 +40998,6 @@ const _serversPart30: MCPServer[] = [
     categories: ['devops', 'cloud'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'binary',
-    stars: 276,
     isNew: true,
   },
   {
@@ -41419,7 +41011,6 @@ const _serversPart30: MCPServer[] = [
     categories: ['devops', 'cloud'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'binary',
-    stars: 234,
     isNew: true,
   },
   {
@@ -41433,7 +41024,6 @@ const _serversPart30: MCPServer[] = [
     categories: ['devops', 'coding'],
     integrations: ['claude-desktop', 'cursor', 'vs-code'],
     install_type: 'binary',
-    stars: 198,
     isNew: true,
   },
   // ── Document Intelligence ─────────────────────────────────────────────
@@ -41448,7 +41038,6 @@ const _serversPart30: MCPServer[] = [
     categories: ['productivity', 'ai'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 221,
     isNew: true,
   },
   {
@@ -41462,7 +41051,6 @@ const _serversPart30: MCPServer[] = [
     categories: ['ai', 'cloud'],
     integrations: ['claude-desktop', 'cursor', 'vs-code'],
     install_type: 'pip',
-    stars: 387,
     isNew: true,
   },
   // ── Geo / Mapping ─────────────────────────────────────────────────────
@@ -41477,7 +41065,6 @@ const _serversPart30: MCPServer[] = [
     categories: ['api', 'search'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 334,
     isNew: true,
   },
   // ── Video & Media ─────────────────────────────────────────────────────
@@ -41492,7 +41079,6 @@ const _serversPart30: MCPServer[] = [
     categories: ['media', 'api'],
     integrations: ['claude-desktop', 'cursor'],
     install_type: 'npm',
-    stars: 134,
     isNew: true,
   },
   {
@@ -41535,7 +41121,6 @@ const _serversPart30: MCPServer[] = [
     categories: ['coding', 'devops'],
     integrations: ['claude-desktop', 'cursor', 'vs-code'],
     install_type: 'npm',
-    stars: 312,
     isNew: true,
   },
 ];

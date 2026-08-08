@@ -1,0 +1,1047 @@
+{
+  "newrelic-mcp": {
+    "github_url": "https://github.com/cloudbring/newrelic-mcp",
+    "stars": 14,
+    "archived": false,
+    "via": "github-search",
+    "evidence": "GitHub repo cloudbring/newrelic-mcp names this entry and describes an MCP server (\"Model Context Protocol server for New Relic observability platform integration\")"
+  },
+  "appwrite-mcp": {
+    "github_url": "https://github.com/appwrite/mcp",
+    "stars": 71,
+    "archived": false,
+    "via": "github-search",
+    "evidence": "GitHub repo appwrite/mcp names this entry and describes an MCP server (\"Appwrite’s MCP server. Operating your backend has never been easier.\")"
+  },
+  "posthog-mcp": {
+    "github_url": "https://github.com/PostHog/mcp",
+    "stars": 151,
+    "archived": true,
+    "via": "github-search",
+    "evidence": "GitHub repo PostHog/mcp names this entry and describes an MCP server (\"Official PostHog MCP Server 🦔\")"
+  },
+  "cloudfront-mcp": {
+    "unresolved": true
+  },
+  "neon-mcp": {
+    "unresolved": true
+  },
+  "tesla-vehicle-api-mcp": {
+    "github_url": "https://github.com/tylergibbs1/tesla-mcp-server",
+    "stars": 1,
+    "archived": false,
+    "via": "github-search",
+    "evidence": "GitHub repo tylergibbs1/tesla-mcp-server names this entry and describes an MCP server (\"MCP server for Tesla vehicle control via the Fleet API\")"
+  },
+  "midjourney-proxy-mcp": {
+    "github_url": "https://github.com/runapi-ai/midjourney-mcp",
+    "stars": 1,
+    "archived": false,
+    "via": "npm-search",
+    "evidence": "npm package \"@runapi.ai/midjourney-mcp\" mentions MCP and declares runapi-ai/midjourney-mcp, confirmed live on the GitHub API"
+  },
+  "storyblok-mcp": {
+    "github_url": "https://github.com/storyblok/mcp-server",
+    "stars": 8,
+    "archived": true,
+    "via": "github-search",
+    "evidence": "GitHub repo storyblok/mcp-server names this entry and describes an MCP server (\"Storyblok's Management MCP Server (currently in Innovation phase)\")"
+  },
+  "apache-pulsar-mcp": {
+    "unresolved": true
+  },
+  "xata-mcp": {
+    "unresolved": true
+  },
+  "huggingface-hub-mcp": {
+    "github_url": "https://github.com/pipeworx-io/mcp-huggingface",
+    "stars": 0,
+    "archived": false,
+    "via": "npm-search",
+    "evidence": "npm package \"@pipeworx/mcp-huggingface\" mentions MCP and declares pipeworx-io/mcp-huggingface, confirmed live on the GitHub API"
+  },
+  "vector-dev": {
+    "unresolved": true
+  },
+  "fastly-mcp": {
+    "github_url": "https://github.com/fastly/mcp",
+    "stars": 38,
+    "archived": false,
+    "via": "npm-search",
+    "evidence": "npm package \"@fastly/mcp\" mentions MCP and declares fastly/mcp, confirmed live on the GitHub API"
+  },
+  "google-home-mcp": {
+    "github_url": "https://github.com/googleapis/gcloud-mcp",
+    "stars": 883,
+    "archived": false,
+    "via": "npm-search",
+    "evidence": "npm package \"@google-cloud/gcloud-mcp\" mentions MCP and declares googleapis/gcloud-mcp, confirmed live on the GitHub API"
+  },
+  "keeper-mcp": {
+    "github_url": "https://github.com/mkreyman/mcp-memory-keeper",
+    "stars": 131,
+    "archived": false,
+    "via": "npm-search",
+    "evidence": "npm package \"mcp-memory-keeper\" mentions MCP and declares mkreyman/mcp-memory-keeper, confirmed live on the GitHub API"
+  },
+  "databricks-lakehouse-mcp": {
+    "unresolved": true
+  },
+  "weights-biases-mcp": {
+    "unresolved": true
+  },
+  "anthropic-bedrock-mcp": {
+    "unresolved": true
+  },
+  "alexa-smart-home-mcp": {
+    "github_url": "https://github.com/GraysonCAdams/alexa-mcp",
+    "stars": 0,
+    "archived": false,
+    "via": "github-search",
+    "evidence": "GitHub repo GraysonCAdams/alexa-mcp names this entry and describes an MCP server (\"MCP server for Amazon Alexa — shopping lists and smart home control\")"
+  },
+  "azure-cdn-mcp": {
+    "github_url": "https://github.com/microsoft/azure-devops-mcp",
+    "stars": 1949,
+    "archived": false,
+    "via": "npm-search",
+    "evidence": "npm package \"@azure-devops/mcp\" mentions MCP and declares microsoft/azure-devops-mcp, confirmed live on the GitHub API"
+  },
+  "hunter-io-mcp": {
+    "github_url": "https://github.com/pipeworx-io/mcp-hunter",
+    "stars": 0,
+    "archived": false,
+    "via": "npm-search",
+    "evidence": "npm package \"@pipeworx/mcp-hunter\" mentions MCP and declares pipeworx-io/mcp-hunter, confirmed live on the GitHub API"
+  },
+  "td-ameritrade-mcp": {
+    "unresolved": true
+  },
+  "aws-textract-mcp": {
+    "unresolved": true
+  },
+  "benthos": {
+    "unresolved": true
+  },
+  "apple-homekit-mcp": {
+    "github_url": "https://github.com/sweetrb/apple-notes-mcp",
+    "stars": 91,
+    "archived": false,
+    "via": "npm-search",
+    "evidence": "npm package \"apple-notes-mcp\" mentions MCP and declares sweetrb/apple-notes-mcp, confirmed live on the GitHub API"
+  },
+  "ynab-mcp": {
+    "github_url": "https://github.com/oliverames/ynab-mcp-server",
+    "stars": 14,
+    "archived": false,
+    "via": "npm-search",
+    "evidence": "npm package \"@oliverames/mcp-server-for-ynab\" mentions MCP and declares oliverames/ynab-mcp-server, confirmed live on the GitHub API"
+  },
+  "ansible-mcp": {
+    "unresolved": true
+  },
+  "temporal-mcp": {
+    "github_url": "https://github.com/brief-hq/temporal-mcp",
+    "stars": 60,
+    "archived": true,
+    "via": "github-search",
+    "evidence": "GitHub repo brief-hq/temporal-mcp names this entry and describes an MCP server (\"Empowering AI with Workflow Orchestration\")"
+  },
+  "walmart-seller-mcp": {
+    "unresolved": true
+  },
+  "harvey-ai-mcp": {
+    "unresolved": true
+  },
+  "phind-mcp": {
+    "unresolved": true
+  },
+  "faunadb-mcp": {
+    "unresolved": true
+  },
+  "lucidchart-mcp": {
+    "unresolved": true
+  },
+  "overpass-api-mcp": {
+    "github_url": "https://github.com/pipeworx-io/mcp-overpass",
+    "stars": 0,
+    "archived": false,
+    "via": "npm-search",
+    "evidence": "npm package \"@pipeworx/mcp-overpass\" mentions MCP and declares pipeworx-io/mcp-overpass, confirmed live on the GitHub API"
+  },
+  "flightaware-mcp": {
+    "github_url": "https://github.com/chrischall/flightaware-mcp",
+    "stars": 0,
+    "archived": false,
+    "via": "npm-search",
+    "evidence": "npm package \"@chrischall/flightaware-mcp\" mentions MCP and declares chrischall/flightaware-mcp, confirmed live on the GitHub API"
+  },
+  "quicknode-mcp": {
+    "unresolved": true
+  },
+  "upstash-mcp": {
+    "unresolved": true
+  },
+  "hellosign-mcp": {
+    "unresolved": true
+  },
+  "dremio-mcp": {
+    "unresolved": true
+  },
+  "moz-mcp": {
+    "github_url": "https://github.com/metehan777/moz-mcp",
+    "stars": 15,
+    "archived": false,
+    "via": "github-search",
+    "evidence": "GitHub repo metehan777/moz-mcp names this entry and describes an MCP server (\"Moz SEO Tool MCP\")"
+  },
+  "gitlab-issues-mcp": {
+    "github_url": "https://github.com/zereight/gitlab-mcp",
+    "stars": 1882,
+    "archived": false,
+    "via": "npm-search",
+    "evidence": "npm package \"@zereight/mcp-gitlab\" mentions MCP and declares zereight/gitlab-mcp, confirmed live on the GitHub API"
+  },
+  "logstash": {
+    "unresolved": true
+  },
+  "unit-mcp": {
+    "unresolved": true
+  },
+  "qwen-mcp": {
+    "github_url": "https://github.com/yingcaihuang/qwen-image-mcp",
+    "stars": 0,
+    "archived": false,
+    "via": "github-search",
+    "evidence": "GitHub repo yingcaihuang/qwen-image-mcp names this entry and describes an MCP server (\"MCP Server for Alibaba Cloud DashScope Qwen-Image models - sync & async image generation\")"
+  },
+  "luminance-mcp": {
+    "unresolved": true
+  },
+  "twilio-flex-mcp": {
+    "unresolved": true
+  },
+  "continue-dev-mcp": {
+    "unresolved": true
+  },
+  "mural-mcp": {
+    "unresolved": true
+  },
+  "linkerd-mcp": {
+    "github_url": "https://github.com/christianhuening/linkerd-mcp",
+    "stars": 2,
+    "archived": false,
+    "via": "github-search",
+    "evidence": "GitHub repo christianhuening/linkerd-mcp names this entry and describes an MCP server (\"A MCP Server for the linkerd service mesh\")"
+  },
+  "elastic-mcp": {
+    "github_url": "https://github.com/renatogroffe/dotnet10-agentframework-foundry-otel-elasticapm-mcp-mslearn-apisix_chat",
+    "stars": 3,
+    "archived": false,
+    "via": "github-search",
+    "evidence": "GitHub repo renatogroffe/dotnet10-agentframework-foundry-otel-elasticapm-mcp-mslearn-apisix_chat names this entry and describes an MCP server (\"Exemplo em .NET 10 de Console Application que faz uso do Microsoft Agent Framework, com in\")"
+  },
+  "sec-edgar-full-text-mcp": {
+    "github_url": "https://github.com/kevinkda/sec-edgar-mcp",
+    "stars": 1,
+    "archived": false,
+    "via": "github-search",
+    "evidence": "GitHub repo kevinkda/sec-edgar-mcp names this entry and describes an MCP server (\"Read-only MCP server for the public SEC EDGAR API (filings, Form 4 insider trades, full-te\")"
+  },
+  "jasper-ai-mcp": {
+    "github_url": "https://github.com/mr-wolf-gb/jasperreports-mcp-server",
+    "stars": 8,
+    "archived": false,
+    "via": "github-search",
+    "evidence": "GitHub repo mr-wolf-gb/jasperreports-mcp-server names this entry and describes an MCP server (\"A comprehensive Node.js Model Context Protocol (MCP) server for JasperReports Server REST \")"
+  },
+  "cyberark-mcp": {
+    "unresolved": true
+  },
+  "irs-mcp": {
+    "github_url": "https://github.com/dma9527/irs-taxpayer-mcp",
+    "stars": 8,
+    "archived": false,
+    "via": "npm-search",
+    "evidence": "npm package \"irs-taxpayer-mcp\" mentions MCP and declares dma9527/irs-taxpayer-mcp, confirmed live on the GitHub API"
+  },
+  "wix-stores-mcp": {
+    "unresolved": true
+  },
+  "sailpoint-mcp": {
+    "unresolved": true
+  },
+  "matillion-mcp": {
+    "unresolved": true
+  },
+  "opensky-network-mcp": {
+    "github_url": "https://github.com/pipeworx-io/mcp-opensky",
+    "stars": 0,
+    "archived": false,
+    "via": "github-search",
+    "evidence": "GitHub repo pipeworx-io/mcp-opensky names this entry and describes an MCP server (\"OpenSky MCP — OpenSky Network API (free, no auth for anonymous access)\")"
+  },
+  "apache-nifi-mcp": {
+    "unresolved": true
+  },
+  "majestic-seo-mcp": {
+    "github_url": "https://github.com/MattiooFR/majestic-mcp",
+    "stars": 0,
+    "archived": false,
+    "via": "github-search",
+    "evidence": "GitHub repo MattiooFR/majestic-mcp names this entry and describes an MCP server (\"MCP Server for Majestic SEO API - Trust Flow, Citation Flow, backlinks and more\")"
+  },
+  "hrworks-mcp": {
+    "unresolved": true
+  },
+  "huggingface-inference-mcp": {
+    "unresolved": true
+  },
+  "starburst-mcp": {
+    "unresolved": true
+  },
+  "bazel-mcp": {
+    "github_url": "https://github.com/aaomidi/mcp-bazel",
+    "stars": 11,
+    "archived": false,
+    "via": "github-search",
+    "evidence": "GitHub repo aaomidi/mcp-bazel names this entry and describes an MCP server (\"An MCP server providing common Bazel actions like build, test, and dependency analysis.\")"
+  },
+  "justia-mcp": {
+    "unresolved": true
+  },
+  "whimsical-mcp": {
+    "unresolved": true
+  },
+  "opentelemetry-collector-mcp": {
+    "unresolved": true
+  },
+  "azure-ad-mcp": {
+    "unresolved": true
+  },
+  "digitalocean-mcp": {
+    "github_url": "https://github.com/digitalocean-labs/mcp-digitalocean",
+    "stars": 124,
+    "archived": false,
+    "via": "npm-search",
+    "evidence": "npm package \"@digitalocean/mcp\" mentions MCP and declares digitalocean-labs/mcp-digitalocean, confirmed live on the GitHub API"
+  },
+  "scale-ai-mcp": {
+    "unresolved": true
+  },
+  "redpanda-mcp": {
+    "github_url": "https://github.com/redpanda-data/protoc-gen-go-mcp",
+    "stars": 218,
+    "archived": false,
+    "via": "github-search",
+    "evidence": "GitHub repo redpanda-data/protoc-gen-go-mcp names this entry and describes an MCP server (\"Go protobuf compiler extension to turn any gRPC service into an MCP server\")"
+  },
+  "textract-mcp": {
+    "unresolved": true
+  },
+  "ankr-mcp": {
+    "unresolved": true
+  },
+  "writesonic-mcp": {
+    "unresolved": true
+  },
+  "beyondtrust-mcp": {
+    "unresolved": true
+  },
+  "contentsquare-mcp": {
+    "unresolved": true
+  },
+  "envoy-proxy-mcp": {
+    "unresolved": true
+  },
+  "docusign-notary-mcp": {
+    "unresolved": true
+  },
+  "chargify-mcp": {
+    "unresolved": true
+  },
+  "speechify-mcp": {
+    "unresolved": true
+  },
+  "oddsjam-mcp": {
+    "unresolved": true
+  },
+  "kubeflow-pipelines-mcp": {
+    "unresolved": true
+  },
+  "mercury-banking-mcp": {
+    "github_url": "https://github.com/klodr/mercury-invoicing-mcp",
+    "stars": 11,
+    "archived": false,
+    "via": "npm-search",
+    "evidence": "npm package \"mercury-invoicing-mcp\" mentions MCP and declares klodr/mercury-invoicing-mcp, confirmed live on the GitHub API"
+  },
+  "palo-alto-panorama-mcp": {
+    "unresolved": true
+  },
+  "lemonsqueezy-mcp": {
+    "github_url": "https://github.com/heysash/lemonsqueezy-mcp",
+    "stars": 0,
+    "archived": false,
+    "via": "npm-search",
+    "evidence": "npm package \"@heysash/lemonsqueezy-mcp\" mentions MCP and declares heysash/lemonsqueezy-mcp, confirmed live on the GitHub API"
+  },
+  "docparser-mcp": {
+    "unresolved": true
+  },
+  "spellbook-mcp": {
+    "github_url": "https://github.com/apkasten906/spellbook-mcp",
+    "stars": 0,
+    "archived": false,
+    "via": "github-search",
+    "evidence": "GitHub repo apkasten906/spellbook-mcp names this entry and describes an MCP server (\"MCP Server for ready-made Prompts to drive you through a solid SDLC with added focus on ai\")"
+  },
+  "personal-capital-mcp": {
+    "unresolved": true
+  },
+  "benchling-mcp": {
+    "unresolved": true
+  },
+  "autodesk-acc-mcp": {
+    "unresolved": true
+  },
+  "launchdarkly-mcp": {
+    "unresolved": true
+  },
+  "ros2-mcp": {
+    "github_url": "https://github.com/kakimochi/ros2-mcp-server",
+    "stars": 84,
+    "archived": false,
+    "via": "github-search",
+    "evidence": "GitHub repo kakimochi/ros2-mcp-server names this entry and describes an MCP server (\"\")"
+  },
+  "aws-iot-greengrass-mcp": {
+    "unresolved": true
+  },
+  "ford-pass-mcp": {
+    "unresolved": true
+  },
+  "us-compliance-mcp": {
+    "unresolved": true
+  },
+  "grafana-mcp": {
+    "github_url": "https://github.com/0xteamhq/mcp-grafana",
+    "stars": 3,
+    "archived": false,
+    "via": "npm-search",
+    "evidence": "npm package \"@leval/mcp-grafana\" mentions MCP and declares 0xteamhq/mcp-grafana, confirmed live on the GitHub API"
+  },
+  "canva-api-mcp": {
+    "github_url": "https://github.com/hemichaeli/canva-mcp-server",
+    "stars": 0,
+    "archived": false,
+    "via": "github-search",
+    "evidence": "GitHub repo hemichaeli/canva-mcp-server names this entry and describes an MCP server (\"MCP server for the Canva Connect API - full coverage of all endpoints (44 tools)\")"
+  },
+  "auth0-mcp": {
+    "github_url": "https://github.com/auth0/auth0-mcp-server",
+    "stars": 112,
+    "archived": false,
+    "via": "npm-search",
+    "evidence": "npm package \"@auth0/auth0-mcp-server\" mentions MCP and declares auth0/auth0-mcp-server, confirmed live on the GitHub API"
+  },
+  "moonshot-mcp": {
+    "unresolved": true
+  },
+  "evidently-ai-mcp": {
+    "unresolved": true
+  },
+  "usgs-earthquake-mcp": {
+    "github_url": "https://github.com/cyanheads/usgs-water-mcp-server",
+    "stars": 1,
+    "archived": false,
+    "via": "npm-search",
+    "evidence": "npm package \"@cyanheads/usgs-water-mcp-server\" mentions MCP and declares cyanheads/usgs-water-mcp-server, confirmed live on the GitHub API"
+  },
+  "kafka-connect-mcp": {
+    "github_url": "https://github.com/lawrencemq/kafka-connect-mcp",
+    "stars": 0,
+    "archived": false,
+    "via": "github-search",
+    "evidence": "GitHub repo lawrencemq/kafka-connect-mcp names this entry and describes an MCP server (\"MCP \")"
+  },
+  "materialize-mcp": {
+    "unresolved": true
+  },
+  "toast-mcp": {
+    "github_url": "https://github.com/NoBanks/toast-mcp",
+    "stars": 0,
+    "archived": false,
+    "via": "github-search",
+    "evidence": "GitHub repo NoBanks/toast-mcp names this entry and describes an MCP server (\"MCP server for Toast, the restaurant management + POS platform. 5 tools for AI agents to f\")"
+  },
+  "prtg-mcp": {
+    "unresolved": true
+  },
+  "legalzoom-mcp": {
+    "unresolved": true
+  },
+  "doximity-mcp": {
+    "unresolved": true
+  },
+  "synapse-mcp": {
+    "github_url": "https://github.com/myelixlabs/synapse-mcp",
+    "stars": 0,
+    "archived": false,
+    "via": "npm-search",
+    "evidence": "npm package \"@myelixlabs/synapse-mcp\" mentions MCP and declares myelixlabs/synapse-mcp, confirmed live on the GitHub API"
+  },
+  "smartlook-mcp": {
+    "unresolved": true
+  },
+  "target-seller-mcp": {
+    "unresolved": true
+  },
+  "dotenv-vault-mcp": {
+    "unresolved": true
+  },
+  "sweep-ai-mcp": {
+    "unresolved": true
+  },
+  "currencylayer-mcp": {
+    "unresolved": true
+  },
+  "apache-beam-mcp": {
+    "unresolved": true
+  },
+  "livechat-mcp": {
+    "github_url": "https://github.com/brunocramos/livechat-mcp",
+    "stars": 1,
+    "archived": false,
+    "via": "github-search",
+    "evidence": "GitHub repo brunocramos/livechat-mcp names this entry and describes an MCP server (\"Speak to your AI coding assistant instead of typing. Continuous voice input that just list\")"
+  },
+  "vagrant-mcp": {
+    "unresolved": true
+  },
+  "pika-labs-mcp": {
+    "unresolved": true
+  },
+  "fly-io-mcp": {
+    "github_url": "https://github.com/NakulRajan/mcp-fly-deployer",
+    "stars": 3,
+    "archived": false,
+    "via": "github-search",
+    "evidence": "GitHub repo NakulRajan/mcp-fly-deployer names this entry and describes an MCP server (\"MCP server that provides docker files for stdio based MCP server to be deployed on platfor\")"
+  },
+  "celery-mcp": {
+    "github_url": "https://github.com/Darius1223/celery-flower-mcp",
+    "stars": 3,
+    "archived": false,
+    "via": "github-search",
+    "evidence": "GitHub repo Darius1223/celery-flower-mcp names this entry and describes an MCP server (\"MCP server for Celery Flower — monitor workers, manage tasks and queues from any AI assist\")"
+  },
+  "remote-com-mcp": {
+    "unresolved": true
+  },
+  "momento-mcp": {
+    "unresolved": true
+  },
+  "checkpoint-mcp": {
+    "unresolved": true
+  },
+  "nice-cxone-mcp": {
+    "unresolved": true
+  },
+  "stitch-mcp": {
+    "github_url": "https://github.com/Kargatharaakash/stitch-mcp",
+    "stars": 120,
+    "archived": false,
+    "via": "npm-search",
+    "evidence": "npm package \"stitch-mcp\" mentions MCP and declares Kargatharaakash/stitch-mcp, confirmed live on the GitHub API"
+  },
+  "draftkings-mcp": {
+    "unresolved": true
+  },
+  "vector-dev-mcp": {
+    "unresolved": true
+  },
+  "uptrace-mcp": {
+    "unresolved": true
+  },
+  "influxdb-iot-mcp": {
+    "github_url": "https://github.com/idoru/influxdb-mcp-server",
+    "stars": 44,
+    "archived": false,
+    "via": "npm-search",
+    "evidence": "npm package \"influxdb-mcp-server\" mentions MCP and declares idoru/influxdb-mcp-server, confirmed live on the GitHub API"
+  },
+  "plaid-transfer-mcp": {
+    "unresolved": true
+  },
+  "azure-form-recognizer-mcp": {
+    "github_url": "https://github.com/microsoft/azure-devops-mcp",
+    "stars": 1949,
+    "archived": false,
+    "via": "npm-search",
+    "evidence": "npm package \"@azure-devops/mcp\" mentions MCP and declares microsoft/azure-devops-mcp, confirmed live on the GitHub API"
+  },
+  "goto-webinar-mcp": {
+    "unresolved": true
+  },
+  "logikcull-mcp": {
+    "unresolved": true
+  },
+  "logdna-mcp": {
+    "unresolved": true
+  },
+  "autotrader-mcp": {
+    "github_url": "https://github.com/juiceb7597/kis-mcp-autotrader",
+    "stars": 0,
+    "archived": false,
+    "via": "github-search",
+    "evidence": "GitHub repo juiceb7597/kis-mcp-autotrader names this entry and describes an MCP server (\"한국투자증권 MCP와 n8n 워크플로우를 활용한 AI 기반 주식 자동 매매 시스템\")"
+  },
+  "commonroom-mcp": {
+    "github_url": "https://github.com/chris-trag/commonroom-mcp",
+    "stars": 2,
+    "archived": false,
+    "via": "github-search",
+    "evidence": "GitHub repo chris-trag/commonroom-mcp names this entry and describes an MCP server (\"Unofficial MCP server for Common Room API integration with Q CLI and Claude Code\")"
+  },
+  "lark-mcp": {
+    "unresolved": true
+  },
+  "playwright-cloud-mcp": {
+    "github_url": "https://github.com/microsoft/playwright-mcp",
+    "stars": 35918,
+    "archived": false,
+    "via": "npm-search",
+    "evidence": "npm package \"@playwright/mcp\" mentions MCP and declares microsoft/playwright-mcp, confirmed live on the GitHub API"
+  },
+  "slurm-mcp": {
+    "github_url": "https://github.com/Charlie-Z-work/slurm-mcp-server",
+    "stars": 5,
+    "archived": false,
+    "via": "npm-search",
+    "evidence": "npm package \"slurm-mcp-server\" mentions MCP and declares Charlie-Z-work/slurm-mcp-server, confirmed live on the GitHub API"
+  },
+  "acronis-mcp": {
+    "unresolved": true
+  },
+  "stats-perform-mcp": {
+    "unresolved": true
+  },
+  "leviton-mcp": {
+    "unresolved": true
+  },
+  "tiller-mcp": {
+    "github_url": "https://github.com/jackstein21/tiller-mcp-server",
+    "stars": 10,
+    "archived": false,
+    "via": "github-search",
+    "evidence": "GitHub repo jackstein21/tiller-mcp-server names this entry and describes an MCP server (\"MCP server for Tiller Money - query financial data via Google Sheets\")"
+  },
+  "onstar-mcp": {
+    "unresolved": true
+  },
+  "apache-kafka-mcp": {
+    "unresolved": true
+  },
+  "yapily-mcp": {
+    "unresolved": true
+  },
+  "fauna-mcp": {
+    "unresolved": true
+  },
+  "nasa-earthdata-mcp": {
+    "github_url": "https://github.com/nasa/earthdata-mcp",
+    "stars": 20,
+    "archived": false,
+    "via": "github-search",
+    "evidence": "GitHub repo nasa/earthdata-mcp names this entry and describes an MCP server (\"\")"
+  },
+  "okta-mcp": {
+    "github_url": "https://github.com/fctr-identity/fctr-okta-mcp-server",
+    "stars": 5,
+    "archived": false,
+    "via": "github-search",
+    "evidence": "GitHub repo fctr-identity/fctr-okta-mcp-server names this entry and describes an MCP server (\"MCP server for Okta with agentic API discovery and guided code execution\")"
+  },
+  "railway-mcp": {
+    "github_url": "https://github.com/jason-tan-swe/railway-mcp",
+    "stars": 73,
+    "archived": false,
+    "via": "npm-search",
+    "evidence": "npm package \"@jasontanswe/railway-mcp\" mentions MCP and declares jason-tan-swe/railway-mcp, confirmed live on the GitHub API"
+  },
+  "twilio-verify-mcp": {
+    "unresolved": true
+  },
+  "veriff-mcp": {
+    "unresolved": true
+  },
+  "conductor-mcp": {
+    "unresolved": true
+  },
+  "azure-quantum-mcp": {
+    "github_url": "https://github.com/microsoft/azure-devops-mcp",
+    "stars": 1949,
+    "archived": false,
+    "via": "npm-search",
+    "evidence": "npm package \"@azure-devops/mcp\" mentions MCP and declares microsoft/azure-devops-mcp, confirmed live on the GitHub API"
+  },
+  "dotmatics-mcp": {
+    "unresolved": true
+  },
+  "ukg-mcp": {
+    "unresolved": true
+  },
+  "risingwave-mcp": {
+    "unresolved": true
+  },
+  "bynder-mcp": {
+    "unresolved": true
+  },
+  "bluebeam-mcp": {
+    "unresolved": true
+  },
+  "verizon-connect-mcp": {
+    "github_url": "https://github.com/markswendsen-code/mcp-verizon",
+    "stars": 0,
+    "archived": false,
+    "via": "github-search",
+    "evidence": "GitHub repo markswendsen-code/mcp-verizon names this entry and describes an MCP server (\"MCP connector for Verizon Wireless account management\")"
+  },
+  "rocket-lawyer-mcp": {
+    "unresolved": true
+  },
+  "wayfair-seller-mcp": {
+    "unresolved": true
+  },
+  "litmos-mcp": {
+    "unresolved": true
+  },
+  "fanduel-mcp": {
+    "unresolved": true
+  },
+  "affirm-mcp": {
+    "unresolved": true
+  },
+  "prometheus-mcp": {
+    "github_url": "https://github.com/pab1it0/prometheus-mcp-server",
+    "stars": 512,
+    "archived": false,
+    "via": "github-search",
+    "evidence": "GitHub repo pab1it0/prometheus-mcp-server names this entry and describes an MCP server (\"A Model Context Protocol (MCP) server that enables AI agents and LLMs to query and analyze\")"
+  },
+  "truelayer-mcp": {
+    "unresolved": true
+  },
+  "open-banking-uk-mcp": {
+    "unresolved": true
+  },
+  "hex-data-mcp": {
+    "unresolved": true
+  },
+  "spacelift-mcp": {
+    "unresolved": true
+  },
+  "rockset-mcp": {
+    "unresolved": true
+  },
+  "docusign-clm-mcp": {
+    "unresolved": true
+  },
+  "mindee-mcp": {
+    "unresolved": true
+  },
+  "oracle-hospitality-mcp": {
+    "github_url": "https://github.com/tannerpace/mcp-oracle-database",
+    "stars": 5,
+    "archived": false,
+    "via": "npm-search",
+    "evidence": "npm package \"mcp-oracle-database\" mentions MCP and declares tannerpace/mcp-oracle-database, confirmed live on the GitHub API"
+  },
+  "barracuda-mcp": {
+    "unresolved": true
+  },
+  "trustarc-mcp": {
+    "unresolved": true
+  },
+  "law360-mcp": {
+    "unresolved": true
+  },
+  "modmed-mcp": {
+    "unresolved": true
+  },
+  "healthgrades-mcp": {
+    "unresolved": true
+  },
+  "afterpay-mcp": {
+    "unresolved": true
+  },
+  "moov-mcp": {
+    "unresolved": true
+  },
+  "vault-mcp": {
+    "github_url": "https://github.com/iflow-mcp/ashgw-vault-mcp",
+    "stars": 0,
+    "archived": false,
+    "via": "github-search",
+    "evidence": "GitHub repo iflow-mcp/ashgw-vault-mcp names this entry and describes an MCP server (\"Model Context Protocol (MCP) Server for HashiCorp Vault secret management\")"
+  },
+  "talend-cloud-mcp": {
+    "unresolved": true
+  },
+  "demio-mcp": {
+    "unresolved": true
+  },
+  "smartcar-mcp": {
+    "unresolved": true
+  },
+  "stripe-billing-mcp": {
+    "unresolved": true
+  },
+  "square-pos-mcp": {
+    "unresolved": true
+  },
+  "dynatrace-mcp": {
+    "github_url": "https://github.com/dynatrace-oss/dynatrace-mcp",
+    "stars": 133,
+    "archived": false,
+    "via": "npm-search",
+    "evidence": "npm package \"@dynatrace-wwse/dynatrace-mcp-server-otel\" mentions MCP and declares dynatrace-oss/dynatrace-mcp, confirmed live on the GitHub API"
+  },
+  "zyte-mcp": {
+    "unresolved": true
+  },
+  "persona-mcp": {
+    "github_url": "https://github.com/januarsyah901/personal-mcp-context",
+    "stars": 0,
+    "archived": false,
+    "via": "github-search",
+    "evidence": "GitHub repo januarsyah901/personal-mcp-context names this entry and describes an MCP server (\"Personal MCP Context Registry — serve your personal context (identity, devices, servers, p\")"
+  },
+  "microsoft-dynamics-bc-mcp": {
+    "unresolved": true
+  },
+  "ionq-mcp": {
+    "unresolved": true
+  },
+  "abbyy-mcp": {
+    "unresolved": true
+  },
+  "labvantage-mcp": {
+    "unresolved": true
+  },
+  "kronos-mcp": {
+    "unresolved": true
+  },
+  "ignite-mcp": {
+    "unresolved": true
+  },
+  "lawtrades-mcp": {
+    "unresolved": true
+  },
+  "chewy-mcp": {
+    "unresolved": true
+  },
+  "warmly-mcp": {
+    "unresolved": true
+  },
+  "open-fec-mcp": {
+    "github_url": "https://github.com/pipeworx-io/mcp-open-fec",
+    "stars": 0,
+    "archived": false,
+    "via": "github-search",
+    "evidence": "GitHub repo pipeworx-io/mcp-open-fec names this entry and describes an MCP server (\"OpenFEC MCP — Federal Election Commission campaign finance data\")"
+  },
+  "tawk-to-mcp": {
+    "unresolved": true
+  },
+  "courier-mcp": {
+    "unresolved": true
+  },
+  "nrel-mcp": {
+    "unresolved": true
+  },
+  "clientsuccess-mcp": {
+    "github_url": "https://github.com/aosmcleod/clientsuccess-mcp",
+    "stars": 0,
+    "archived": true,
+    "via": "github-search",
+    "evidence": "GitHub repo aosmcleod/clientsuccess-mcp names this entry and describes an MCP server (\"MCP server for ClientSuccess: client health, interactions, tasks, contracts, and portfolio\")"
+  },
+  "mode-analytics-mcp": {
+    "unresolved": true
+  },
+  "nih-pubmed-mcp": {
+    "unresolved": true
+  },
+  "browserstack-mcp": {
+    "github_url": "https://github.com/browserstack/mcp-server",
+    "stars": 148,
+    "archived": false,
+    "via": "npm-search",
+    "evidence": "npm package \"@browserstack/mcp-server\" mentions MCP and declares browserstack/mcp-server, confirmed live on the GitHub API"
+  },
+  "vidyard-mcp": {
+    "unresolved": true
+  },
+  "firebolt-mcp": {
+    "github_url": "https://github.com/firebolt-db/mcp-server",
+    "stars": 15,
+    "archived": false,
+    "via": "github-search",
+    "evidence": "GitHub repo firebolt-db/mcp-server names this entry and describes an MCP server (\"Model Context Protocol implementation that connects your LLM to Firebolt\")"
+  },
+  "tray-io-mcp": {
+    "unresolved": true
+  },
+  "talend-mcp": {
+    "unresolved": true
+  },
+  "atlantis-mcp": {
+    "unresolved": true
+  },
+  "rxnorm-mcp": {
+    "unresolved": true
+  },
+  "nanonets-mcp": {
+    "unresolved": true
+  },
+  "pbs-hpc-mcp": {
+    "unresolved": true
+  },
+  "papaya-global-mcp": {
+    "unresolved": true
+  },
+  "trinet-mcp": {
+    "unresolved": true
+  },
+  "phrase-tms-mcp": {
+    "unresolved": true
+  },
+  "acquia-dam-mcp": {
+    "unresolved": true
+  },
+  "fleetcomplete-mcp": {
+    "unresolved": true
+  },
+  "findlaw-mcp": {
+    "unresolved": true
+  },
+  "webmd-health-mcp": {
+    "unresolved": true
+  },
+  "abas-mcp": {
+    "unresolved": true
+  },
+  "saba-mcp": {
+    "unresolved": true
+  },
+  "lemonade-insurance-mcp": {
+    "github_url": "https://github.com/markswendsen-code/mcp-lemonade",
+    "stars": 0,
+    "archived": false,
+    "via": "github-search",
+    "evidence": "GitHub repo markswendsen-code/mcp-lemonade names this entry and describes an MCP server (\"MCP connector for Lemonade insurance (renters, homeowners, pet, car)\")"
+  },
+  "faa-drizzle-mcp": {
+    "github_url": "https://github.com/cyanheads/faa-aircraft-registry-mcp-server",
+    "stars": 1,
+    "archived": false,
+    "via": "npm-search",
+    "evidence": "npm package \"@cyanheads/faa-aircraft-registry-mcp-server\" mentions MCP and declares cyanheads/faa-aircraft-registry-mcp-server, confirmed live on the GitHub API"
+  },
+  "dailymotion-mcp": {
+    "unresolved": true
+  },
+  "bigmarker-mcp": {
+    "unresolved": true
+  },
+  "git-server-mcp": {
+    "unresolved": true
+  },
+  "knock-mcp": {
+    "unresolved": true
+  },
+  "cdc-wonder-mcp": {
+    "github_url": "https://github.com/cyanheads/cdc-health-mcp-server",
+    "stars": 3,
+    "archived": false,
+    "via": "npm-search",
+    "evidence": "npm package \"@cyanheads/cdc-health-mcp-server\" mentions MCP and declares cyanheads/cdc-health-mcp-server, confirmed live on the GitHub API"
+  },
+  "crossref-mcp": {
+    "github_url": "https://github.com/cyanheads/crossref-mcp-server",
+    "stars": 2,
+    "archived": false,
+    "via": "npm-search",
+    "evidence": "npm package \"@cyanheads/crossref-mcp-server\" mentions MCP and declares cyanheads/crossref-mcp-server, confirmed live on the GitHub API"
+  },
+  "absorblms-mcp": {
+    "unresolved": true
+  },
+  "trulia-mcp": {
+    "unresolved": true
+  },
+  "informatica-idmc-mcp": {
+    "unresolved": true
+  },
+  "bushelFarm-mcp": {
+    "unresolved": true
+  },
+  "canto-dam-mcp": {
+    "unresolved": true
+  },
+  "dwave-mcp": {
+    "unresolved": true
+  },
+  "oyster-hr-mcp": {
+    "unresolved": true
+  },
+  "revel-mcp": {
+    "unresolved": true
+  },
+  "multiplier-mcp": {
+    "unresolved": true
+  },
+  "unit-banking-mcp": {
+    "unresolved": true
+  },
+  "redcap-mcp": {
+    "unresolved": true
+  },
+  "shelly-cloud-mcp": {
+    "github_url": "https://github.com/Buggy1111/shelly-mcp",
+    "stars": 0,
+    "archived": false,
+    "via": "github-search",
+    "evidence": "GitHub repo Buggy1111/shelly-mcp names this entry and describes an MCP server (\"Unofficial community MCP server for the entire Shelly smart-home ecosystem (Gen1-Gen4 + BL\")"
+  },
+  "openfema-mcp": {
+    "unresolved": true
+  },
+  "vehicle-vin-mcp": {
+    "github_url": "https://github.com/cyanheads/nhtsa-vehicle-safety-mcp-server",
+    "stars": 1,
+    "archived": false,
+    "via": "github-search",
+    "evidence": "GitHub repo cyanheads/nhtsa-vehicle-safety-mcp-server names this entry and describes an MCP server (\"Vehicle safety data from NHTSA — recalls, complaints, crash ratings, investigations, VIN d\")"
+  },
+  "socure-mcp": {
+    "unresolved": true
+  },
+  "chargify-maxio-mcp": {
+    "unresolved": true
+  },
+  "kaleyra-mcp": {
+    "unresolved": true
+  },
+  "matillion-dpc-mcp": {
+    "unresolved": true
+  },
+  "informatica-mcp": {
+    "unresolved": true
+  },
+  "cdktf-mcp": {
+    "unresolved": true
+  }
+}
