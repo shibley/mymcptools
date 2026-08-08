@@ -53,11 +53,22 @@
  *   So a candidate must also clear an entry-point check:
  *     npm  — the packument version must declare a `bin`. Hard, automatic, and
  *            exactly what decides whether `npx pkg` runs or errors.
- *     PyPI — the JSON API does not expose console_scripts, so no automatic
- *            check is possible. Those candidates are reported as
- *            `entrypoint_unconfirmed` and deliberately NOT emitted as ready
- *            fixes; `uvx X` on a library package fails, and shipping a command
- *            that fails is worse than shipping none.
+ *     PyPI — the JSON API does not expose console_scripts, so the 2026-08-07
+ *            run could not check pip at all and held back EVERY pip candidate.
+ *            That was a coverage hole, not a real limit: the console_scripts
+ *            table is shipped inside the wheel itself, at
+ *            `<dist-info>/entry_points.txt`. This sweep now downloads the
+ *            latest wheel (size-capped) and reads that file directly, which is
+ *            the same table `uvx` consults at run time. No entry_points.txt or
+ *            no `[console_scripts]` section => library => still held back.
+ *
+ * WHY THE PyPI GATE ALSO CHANGES THE COMMAND
+ *   `uvx foo` does not run "the package foo"; it runs the console script NAMED
+ *   foo. A package whose only script is `mcp-server-foo` fails under `uvx foo`
+ *   with "executable not found". Reading entry_points.txt gives the actual
+ *   script names, so the emitted command is `uvx <pkg>` only when a script
+ *   matches the package name, and `uvx --from <pkg> <script>` otherwise. A
+ *   registry lookup could never have known which of the two to write.
  *
  * SEVERITIES
  *   critical — blank command AND `github_url` is null: the page offers a reader
@@ -73,9 +84,11 @@
  * candidates as a patch plan for a human to apply one at a time.
  *
  * Usage: node --experimental-strip-types scripts/install-command-completeness-sweep.mts
- *          [--min critical|high|medium|low] [--limit N] [--resolve] [--fixes] [--json]
+ *          [--min critical|high|medium|low] [--limit N] [--budget N]
+ *          [--resolve] [--fixes] [--json]
  */
 import { writeFileSync } from 'node:fs';
+import { inflateRawSync } from 'node:zlib';
 import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
 import { servers, type MCPServer } from '../src/data/servers.ts';
@@ -213,7 +226,104 @@ async function resolveNpm(pkg: string): Promise<{ declaredRepo: string | null; e
   return { declaredRepo: repo ? String(repo) : null, executable };
 }
 
-async function resolvePypi(pkg: string): Promise<{ declaredRepo: string | null } | null> {
+/* ------------------------------------------------------------------ *
+ * MINIMAL ZIP READER
+ * A wheel is a zip. We need exactly one member out of it
+ * (`*.dist-info/entry_points.txt`), so rather than take a dependency we
+ * walk the central directory and inflate that one entry. Only the two
+ * compression methods wheels actually use are supported: 0 (stored) and
+ * 8 (deflate). Anything else is treated as unreadable, which degrades to
+ * "unconfirmed" — never to a false positive.
+ * ------------------------------------------------------------------ */
+function readZipMember(buf: Buffer, match: (name: string) => boolean): string | null {
+  // End of Central Directory: scan back from the tail for the signature.
+  let eocd = -1;
+  for (let i = buf.length - 22; i >= 0 && i > buf.length - 66_000; i--) {
+    if (buf.readUInt32LE(i) === 0x06054b50) { eocd = i; break; }
+  }
+  if (eocd < 0) return null;
+  const count = buf.readUInt16LE(eocd + 10);
+  let p = buf.readUInt32LE(eocd + 16);
+
+  for (let i = 0; i < count; i++) {
+    if (p + 46 > buf.length || buf.readUInt32LE(p) !== 0x02014b50) return null;
+    const method = buf.readUInt16LE(p + 10);
+    const compSize = buf.readUInt32LE(p + 20);
+    const nameLen = buf.readUInt16LE(p + 28);
+    const extraLen = buf.readUInt16LE(p + 30);
+    const commentLen = buf.readUInt16LE(p + 32);
+    const localOff = buf.readUInt32LE(p + 42);
+    const name = buf.subarray(p + 46, p + 46 + nameLen).toString('utf8');
+
+    if (match(name)) {
+      // The central directory's name/extra lengths are not necessarily the
+      // local header's, so re-read them from the local header before slicing.
+      if (buf.readUInt32LE(localOff) !== 0x04034b50) return null;
+      const lNameLen = buf.readUInt16LE(localOff + 26);
+      const lExtraLen = buf.readUInt16LE(localOff + 28);
+      const start = localOff + 30 + lNameLen + lExtraLen;
+      const raw = buf.subarray(start, start + compSize);
+      try {
+        if (method === 0) return raw.toString('utf8');
+        if (method === 8) return inflateRawSync(raw).toString('utf8');
+      } catch { return null; }
+      return null;
+    }
+    p += 46 + nameLen + extraLen + commentLen;
+  }
+  return null;
+}
+
+/** console_scripts declared by the wheel — the exact table `uvx` resolves against. */
+function parseConsoleScripts(entryPoints: string): string[] {
+  const out: string[] = [];
+  let inSection = false;
+  for (const line of entryPoints.split(/\r?\n/)) {
+    const t = line.trim();
+    if (!t || t.startsWith('#')) continue;
+    if (t.startsWith('[')) { inSection = /^\[console_scripts\]$/i.test(t); continue; }
+    if (!inSection) continue;
+    const eq = t.indexOf('=');
+    if (eq > 0) out.push(t.slice(0, eq).trim());
+  }
+  return out;
+}
+
+/** Hard cap: a wheel this big is a compiled/data package, not an MCP server CLI. */
+const MAX_WHEEL_BYTES = 12 * 1024 * 1024;
+
+async function pypiConsoleScripts(doc: any): Promise<string[] | null> {
+  const files: any[] = Array.isArray(doc?.urls) ? doc.urls : [];
+  // Prefer a pure-python wheel; they are small and always carry the same
+  // entry_points.txt as the platform wheels for the same version.
+  const wheels = files
+    .filter((f) => f?.packagetype === 'bdist_wheel' && typeof f.url === 'string')
+    .filter((f) => typeof f.size !== 'number' || f.size <= MAX_WHEEL_BYTES)
+    .sort((a, b) => {
+      const pa = /-py3-none-any\.whl$/i.test(a.filename ?? '') ? 0 : 1;
+      const pb = /-py3-none-any\.whl$/i.test(b.filename ?? '') ? 0 : 1;
+      return pa - pb || (a.size ?? 0) - (b.size ?? 0);
+    });
+  if (!wheels.length) return null; // sdist-only: no built metadata to read.
+  try {
+    const res = await fetch(wheels[0].url, {
+      headers: { 'user-agent': 'mymcptools-install-completeness-sweep' },
+      signal: AbortSignal.timeout(30000),
+    });
+    if (!res.ok) return null;
+    const buf = Buffer.from(await res.arrayBuffer());
+    if (buf.length > MAX_WHEEL_BYTES) return null;
+    const txt = readZipMember(buf, (n) => /(^|\/)[^/]+\.dist-info\/entry_points\.txt$/i.test(n));
+    if (txt === null) return []; // wheel read fine, no entry_points => library
+    return parseConsoleScripts(txt);
+  } catch {
+    return null;
+  }
+}
+
+async function resolvePypi(
+  pkg: string,
+): Promise<{ declaredRepo: string | null; doc: any } | null> {
   const doc = await fetchJSON(`https://pypi.org/pypi/${encodeURIComponent(pkg)}/json`);
   if (!doc) return null;
   const urls = doc.info?.project_urls ?? {};
@@ -222,7 +332,7 @@ async function resolvePypi(pkg: string): Promise<{ declaredRepo: string | null }
     (typeof doc.info?.home_page === 'string' && /github\.com/i.test(doc.info.home_page)
       ? doc.info.home_page
       : null);
-  return { declaredRepo: candidate ? String(candidate) : null };
+  return { declaredRepo: candidate ? String(candidate) : null, doc };
 }
 
 async function main() {
@@ -232,7 +342,10 @@ async function main() {
   // Highest-star first: these are the pages with the most inbound interest,
   // and the resolver's network budget should go to them before the long tail.
   const ordered = [...blanks].sort((a, b) => (b.stars ?? 0) - (a.stars ?? 0));
-  const resolveBudget = RESOLVE ? (LIMIT || 40) : 0;
+  // `--limit` caps DISPLAY; the resolver gets its own budget so a short report
+  // no longer silently shrinks coverage (the 2026-08-07 run resolved 40 of 403
+  // resolvable entries for exactly that reason).
+  const resolveBudget = RESOLVE ? (Number(val('budget') ?? '0') || 1000) : 0;
   let resolved = 0;
 
   for (const s of ordered) {
@@ -277,11 +390,28 @@ async function main() {
       const meta = s.install_type === 'npm' ? await resolveNpm(pkg) : await resolvePypi(pkg);
       if (!meta) continue; // 404 on the registry — the guess was simply wrong.
       if (sameRepo(ghIdentity(meta.declaredRepo), id)) {
-        const executable = s.install_type === 'npm' ? (meta as { executable: boolean }).executable : false;
+        let executable: boolean;
+        let command: string;
+        if (s.install_type === 'npm') {
+          executable = (meta as { executable: boolean }).executable;
+          command = `npx -y ${pkg}`;
+        } else {
+          // Read the wheel's own console_scripts table. null = could not read
+          // (sdist-only, oversized, unparseable zip) => unconfirmed, held back.
+          const scripts = await pypiConsoleScripts((meta as { doc: any }).doc);
+          executable = Array.isArray(scripts) && scripts.length > 0;
+          // `uvx X` runs the script named X, not the package named X.
+          const direct = scripts?.includes(pkg) || scripts?.includes(pkg.replace(/-/g, '_'));
+          command = !executable
+            ? `uvx ${pkg}`
+            : direct
+              ? `uvx ${pkg}`
+              : `uvx --from ${pkg} ${scripts![0]}`;
+        }
         hit = {
           package: pkg,
           registry: registry as 'npm' | 'PyPI',
-          command: s.install_type === 'npm' ? `npx -y ${pkg}` : `uvx ${pkg}`,
+          command,
           declaredRepo: meta.declaredRepo ?? '',
           executable,
           entrypoint_unconfirmed: !executable,
@@ -307,7 +437,7 @@ async function main() {
       note: hit?.executable
         ? `${registry} package "${hit.package}" declares ${hit.declaredRepo} AND ships a bin — the command is derived and runnable, not guessed.`
         : hit
-          ? `${registry} package "${hit.package}" belongs to this repo but ${registry === 'npm' ? 'declares no bin — it is a library, `npx` would error' : 'PyPI exposes no console_scripts via its API — runnability unconfirmed'}. NOT written.`
+          ? `${registry} package "${hit.package}" belongs to this repo but ${registry === 'npm' ? 'declares no bin — it is a library, `npx` would error' : 'its wheel declares no [console_scripts] (or no readable wheel exists) — `uvx` would error'}. NOT written.`
         : nearMisses.length
           ? `No ${registry} package declares this repo. ${nearMisses.length} name(s) exist but belong elsewhere — do NOT write them.`
           : `No ${registry} package found under any name derived from the repo path; read the README.`,

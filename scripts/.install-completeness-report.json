@@ -1,12 +1,13 @@
 {
-  "generated_at": "2026-08-07T22:39:19.342Z",
+  "generated_at": "2026-08-08T10:40:20.963Z",
   "catalog_entries": 2467,
-  "blank_install_command": 1135,
+  "blank_install_command": 1134,
   "blank_pct": 46,
-  "resolve_attempted": 0,
+  "resolve_attempted": 402,
   "counts": {
     "critical": 692,
-    "medium": 403,
+    "high": 41,
+    "medium": 361,
     "low": 40
   },
   "findings": [
@@ -6931,6 +6932,774 @@
       "note": "No install command AND no repository — the page gives a reader no path to the software at all."
     },
     {
+      "slug": "meta-ads-mcp",
+      "name": "Meta Ads MCP",
+      "severity": "high",
+      "install_type": "pip",
+      "github_url": "https://github.com/pipeboard-co/meta-ads-mcp",
+      "stars": 680,
+      "descriptionWords": 21,
+      "resolved": {
+        "package": "meta-ads-mcp",
+        "registry": "PyPI",
+        "command": "uvx meta-ads-mcp",
+        "declaredRepo": "https://github.com/pipeboard-co/meta-ads-mcp/issues",
+        "executable": true,
+        "entrypoint_unconfirmed": false
+      },
+      "note": "PyPI package \"meta-ads-mcp\" declares https://github.com/pipeboard-co/meta-ads-mcp/issues AND ships a bin — the command is derived and runnable, not guessed."
+    },
+    {
+      "slug": "rabbitmq-mcp",
+      "name": "RabbitMQ MCP",
+      "severity": "high",
+      "install_type": "pip",
+      "github_url": "https://github.com/kenliao94/mcp-server-rabbitmq",
+      "stars": 410,
+      "descriptionWords": 27,
+      "resolved": {
+        "package": "mcp-server-rabbitmq",
+        "registry": "PyPI",
+        "command": "uvx mcp-server-rabbitmq",
+        "declaredRepo": "https://github.com/kenliao94/mcp-server-rabbitmq",
+        "executable": true,
+        "entrypoint_unconfirmed": false
+      },
+      "note": "PyPI package \"mcp-server-rabbitmq\" declares https://github.com/kenliao94/mcp-server-rabbitmq AND ships a bin — the command is derived and runnable, not guessed."
+    },
+    {
+      "slug": "instantly-ai-mcp",
+      "name": "Instantly.ai MCP",
+      "severity": "high",
+      "install_type": "npm",
+      "github_url": "https://github.com/bcharleson/instantly-mcp",
+      "stars": 267,
+      "descriptionWords": 63,
+      "resolved": {
+        "package": "instantly-mcp",
+        "registry": "npm",
+        "command": "npx -y instantly-mcp",
+        "declaredRepo": "git+https://github.com/bcharleson/Instantly-MCP.git",
+        "executable": true,
+        "entrypoint_unconfirmed": false
+      },
+      "note": "npm package \"instantly-mcp\" declares git+https://github.com/bcharleson/Instantly-MCP.git AND ships a bin — the command is derived and runnable, not guessed."
+    },
+    {
+      "slug": "confluence-cloud-mcp",
+      "name": "Confluence Cloud MCP",
+      "severity": "high",
+      "install_type": "npm",
+      "github_url": "https://github.com/phuc-nt/confluence-cloud-mcp-server",
+      "stars": 243,
+      "descriptionWords": 23,
+      "resolved": {
+        "package": "confluence-cloud-mcp-server",
+        "registry": "npm",
+        "command": "npx -y confluence-cloud-mcp-server",
+        "declaredRepo": "git+https://github.com/phuc-nt/confluence-cloud-mcp-server.git",
+        "executable": true,
+        "entrypoint_unconfirmed": false
+      },
+      "note": "npm package \"confluence-cloud-mcp-server\" declares git+https://github.com/phuc-nt/confluence-cloud-mcp-server.git AND ships a bin — the command is derived and runnable, not guessed."
+    },
+    {
+      "slug": "box-mcp",
+      "name": "Box MCP",
+      "severity": "high",
+      "install_type": "npm",
+      "github_url": "https://github.com/hmk/box-mcp-server",
+      "stars": 234,
+      "descriptionWords": 31,
+      "resolved": {
+        "package": "box-mcp-server",
+        "registry": "npm",
+        "command": "npx -y box-mcp-server",
+        "declaredRepo": "git+https://github.com/hmk/box-mcp-server.git",
+        "executable": true,
+        "entrypoint_unconfirmed": false
+      },
+      "note": "npm package \"box-mcp-server\" declares git+https://github.com/hmk/box-mcp-server.git AND ships a bin — the command is derived and runnable, not guessed."
+    },
+    {
+      "slug": "national-parks-mcp",
+      "name": "National Parks MCP",
+      "severity": "high",
+      "install_type": "npm",
+      "github_url": "https://github.com/KyrieTangSheng/mcp-server-nationalparks",
+      "stars": 210,
+      "descriptionWords": 23,
+      "resolved": {
+        "package": "mcp-server-nationalparks",
+        "registry": "npm",
+        "command": "npx -y mcp-server-nationalparks",
+        "declaredRepo": "git+https://github.com/KyrieTangSheng/mcp-server-nationalparks.git",
+        "executable": true,
+        "entrypoint_unconfirmed": false
+      },
+      "note": "npm package \"mcp-server-nationalparks\" declares git+https://github.com/KyrieTangSheng/mcp-server-nationalparks.git AND ships a bin — the command is derived and runnable, not guessed."
+    },
+    {
+      "slug": "pypi-mcp",
+      "name": "PyPI",
+      "severity": "high",
+      "install_type": "pip",
+      "github_url": "https://github.com/loonghao/pypi-query-mcp-server",
+      "stars": 201,
+      "descriptionWords": 17,
+      "resolved": {
+        "package": "pypi-query-mcp-server",
+        "registry": "PyPI",
+        "command": "uvx pypi-query-mcp-server",
+        "declaredRepo": "https://github.com/loonghao/pypi-query-mcp-server",
+        "executable": true,
+        "entrypoint_unconfirmed": false
+      },
+      "note": "PyPI package \"pypi-query-mcp-server\" declares https://github.com/loonghao/pypi-query-mcp-server AND ships a bin — the command is derived and runnable, not guessed."
+    },
+    {
+      "slug": "nostr-mcp",
+      "name": "Nostr Protocol MCP",
+      "severity": "high",
+      "install_type": "npm",
+      "github_url": "https://github.com/AustinKelsay/nostr-mcp-server",
+      "stars": 198,
+      "descriptionWords": 47,
+      "resolved": {
+        "package": "nostr-mcp-server",
+        "registry": "npm",
+        "command": "npx -y nostr-mcp-server",
+        "declaredRepo": "git+https://github.com/AustinKelsay/nostr-mcp-server.git",
+        "executable": true,
+        "entrypoint_unconfirmed": false
+      },
+      "note": "npm package \"nostr-mcp-server\" declares git+https://github.com/AustinKelsay/nostr-mcp-server.git AND ships a bin — the command is derived and runnable, not guessed."
+    },
+    {
+      "slug": "epa-mcp-server",
+      "name": "EPA Environmental MCP",
+      "severity": "high",
+      "install_type": "npm",
+      "github_url": "https://github.com/cyanheads/epa-mcp-server",
+      "stars": 190,
+      "descriptionWords": 18,
+      "resolved": {
+        "package": "@cyanheads/epa-mcp-server",
+        "registry": "npm",
+        "command": "npx -y @cyanheads/epa-mcp-server",
+        "declaredRepo": "git+https://github.com/cyanheads/epa-mcp-server.git",
+        "executable": true,
+        "entrypoint_unconfirmed": false
+      },
+      "note": "npm package \"@cyanheads/epa-mcp-server\" declares git+https://github.com/cyanheads/epa-mcp-server.git AND ships a bin — the command is derived and runnable, not guessed."
+    },
+    {
+      "slug": "lokalise-mcp",
+      "name": "Lokalise MCP",
+      "severity": "high",
+      "install_type": "npm",
+      "github_url": "https://github.com/AbdallahAHO/lokalise-mcp",
+      "stars": 187,
+      "descriptionWords": 40,
+      "resolved": {
+        "package": "lokalise-mcp",
+        "registry": "npm",
+        "command": "npx -y lokalise-mcp",
+        "declaredRepo": "git+https://github.com/AbdallahAHO/lokalise-mcp.git",
+        "executable": true,
+        "entrypoint_unconfirmed": false
+      },
+      "note": "npm package \"lokalise-mcp\" declares git+https://github.com/AbdallahAHO/lokalise-mcp.git AND ships a bin — the command is derived and runnable, not guessed."
+    },
+    {
+      "slug": "aviationstack-mcp",
+      "name": "AviationStack MCP",
+      "severity": "high",
+      "install_type": "pip",
+      "github_url": "https://github.com/Pradumnasaraf/aviationstack-mcp",
+      "stars": 185,
+      "descriptionWords": 20,
+      "resolved": {
+        "package": "aviationstack-mcp",
+        "registry": "PyPI",
+        "command": "uvx aviationstack-mcp",
+        "declaredRepo": "https://github.com/pradumnasaraf/aviationstack-mcp",
+        "executable": true,
+        "entrypoint_unconfirmed": false
+      },
+      "note": "PyPI package \"aviationstack-mcp\" declares https://github.com/pradumnasaraf/aviationstack-mcp AND ships a bin — the command is derived and runnable, not guessed."
+    },
+    {
+      "slug": "spark-mcp",
+      "name": "Apache Spark MCP",
+      "severity": "high",
+      "install_type": "pip",
+      "github_url": "https://github.com/kubeflow/mcp-apache-spark-history-server",
+      "stars": 185,
+      "descriptionWords": 54,
+      "resolved": {
+        "package": "mcp-apache-spark-history-server",
+        "registry": "PyPI",
+        "command": "uvx --from mcp-apache-spark-history-server spark-mcp",
+        "declaredRepo": "https://github.com/kubeflow/mcp-apache-spark-history-server",
+        "executable": true,
+        "entrypoint_unconfirmed": false
+      },
+      "note": "PyPI package \"mcp-apache-spark-history-server\" declares https://github.com/kubeflow/mcp-apache-spark-history-server AND ships a bin — the command is derived and runnable, not guessed."
+    },
+    {
+      "slug": "postmark",
+      "name": "Postmark",
+      "severity": "high",
+      "install_type": "npm",
+      "github_url": "https://github.com/ActiveCampaign/postmark-mcp",
+      "stars": 170,
+      "descriptionWords": 20,
+      "resolved": {
+        "package": "@activecampaign/postmark-mcp",
+        "registry": "npm",
+        "command": "npx -y @activecampaign/postmark-mcp",
+        "declaredRepo": "git+https://github.com/activecampaign/postmark-mcp.git",
+        "executable": true,
+        "entrypoint_unconfirmed": false
+      },
+      "nearMisses": [
+        {
+          "package": "postmark-mcp",
+          "declaredRepo": null
+        }
+      ],
+      "note": "npm package \"@activecampaign/postmark-mcp\" declares git+https://github.com/activecampaign/postmark-mcp.git AND ships a bin — the command is derived and runnable, not guessed."
+    },
+    {
+      "slug": "teamcity-mcp",
+      "name": "TeamCity MCP",
+      "severity": "high",
+      "install_type": "npm",
+      "github_url": "https://github.com/Daghis/teamcity-mcp",
+      "stars": 167,
+      "descriptionWords": 28,
+      "resolved": {
+        "package": "@daghis/teamcity-mcp",
+        "registry": "npm",
+        "command": "npx -y @daghis/teamcity-mcp",
+        "declaredRepo": "git+https://github.com/Daghis/teamcity-mcp.git",
+        "executable": true,
+        "entrypoint_unconfirmed": false
+      },
+      "note": "npm package \"@daghis/teamcity-mcp\" declares git+https://github.com/Daghis/teamcity-mcp.git AND ships a bin — the command is derived and runnable, not guessed."
+    },
+    {
+      "slug": "ipinfo-mcp",
+      "name": "IPInfo MCP",
+      "severity": "high",
+      "install_type": "pip",
+      "github_url": "https://github.com/briandconnelly/mcp-server-ipinfo",
+      "stars": 165,
+      "descriptionWords": 25,
+      "resolved": {
+        "package": "mcp-server-ipinfo",
+        "registry": "PyPI",
+        "command": "uvx mcp-server-ipinfo",
+        "declaredRepo": "https://github.com/briandconnelly/mcp-server-ipinfo/issues",
+        "executable": true,
+        "entrypoint_unconfirmed": false
+      },
+      "note": "PyPI package \"mcp-server-ipinfo\" declares https://github.com/briandconnelly/mcp-server-ipinfo/issues AND ships a bin — the command is derived and runnable, not guessed."
+    },
+    {
+      "slug": "knowledge-base-mcp-server",
+      "name": "Knowledge Base MCP",
+      "severity": "high",
+      "install_type": "npm",
+      "github_url": "https://github.com/jeanibarz/knowledge-base-mcp-server",
+      "stars": 165,
+      "descriptionWords": 18,
+      "resolved": {
+        "package": "@jeanibarz/knowledge-base-mcp-server",
+        "registry": "npm",
+        "command": "npx -y @jeanibarz/knowledge-base-mcp-server",
+        "declaredRepo": "git+https://github.com/jeanibarz/knowledge-base-mcp-server.git",
+        "executable": true,
+        "entrypoint_unconfirmed": false
+      },
+      "nearMisses": [
+        {
+          "package": "knowledge-base-mcp-server",
+          "declaredRepo": "git+https://github.com/zhongce-xie/knowledge-base-mcp.git"
+        }
+      ],
+      "note": "npm package \"@jeanibarz/knowledge-base-mcp-server\" declares git+https://github.com/jeanibarz/knowledge-base-mcp-server.git AND ships a bin — the command is derived and runnable, not guessed."
+    },
+    {
+      "slug": "hledger-mcp",
+      "name": "hledger MCP",
+      "severity": "high",
+      "install_type": "npm",
+      "github_url": "https://github.com/iiAtlas/hledger-mcp",
+      "stars": 155,
+      "descriptionWords": 23,
+      "resolved": {
+        "package": "@iiatlas/hledger-mcp",
+        "registry": "npm",
+        "command": "npx -y @iiatlas/hledger-mcp",
+        "declaredRepo": "git+https://github.com/iiAtlas/hledger-mcp.git",
+        "executable": true,
+        "entrypoint_unconfirmed": false
+      },
+      "note": "npm package \"@iiatlas/hledger-mcp\" declares git+https://github.com/iiAtlas/hledger-mcp.git AND ships a bin — the command is derived and runnable, not guessed."
+    },
+    {
+      "slug": "discogs-mcp",
+      "name": "Discogs MCP",
+      "severity": "high",
+      "install_type": "npm",
+      "github_url": "https://github.com/cswkim/discogs-mcp-server",
+      "stars": 145,
+      "descriptionWords": 23,
+      "resolved": {
+        "package": "discogs-mcp-server",
+        "registry": "npm",
+        "command": "npx -y discogs-mcp-server",
+        "declaredRepo": "https://github.com/cswkim/discogs-mcp-server",
+        "executable": true,
+        "entrypoint_unconfirmed": false
+      },
+      "note": "npm package \"discogs-mcp-server\" declares https://github.com/cswkim/discogs-mcp-server AND ships a bin — the command is derived and runnable, not guessed."
+    },
+    {
+      "slug": "copilot-money-mcp",
+      "name": "Copilot Money MCP",
+      "severity": "high",
+      "install_type": "npm",
+      "github_url": "https://github.com/ignaciohermosillacornejo/copilot-money-mcp",
+      "stars": 142,
+      "descriptionWords": 52,
+      "resolved": {
+        "package": "copilot-money-mcp",
+        "registry": "npm",
+        "command": "npx -y copilot-money-mcp",
+        "declaredRepo": "git+https://github.com/ignaciohermosillacornejo/copilot-money-mcp.git",
+        "executable": true,
+        "entrypoint_unconfirmed": false
+      },
+      "note": "npm package \"copilot-money-mcp\" declares git+https://github.com/ignaciohermosillacornejo/copilot-money-mcp.git AND ships a bin — the command is derived and runnable, not guessed."
+    },
+    {
+      "slug": "replicate",
+      "name": "Replicate Flux MCP",
+      "severity": "high",
+      "install_type": "npm",
+      "github_url": "https://github.com/awkoy/replicate-flux-mcp",
+      "stars": 105,
+      "descriptionWords": 117,
+      "resolved": {
+        "package": "replicate-flux-mcp",
+        "registry": "npm",
+        "command": "npx -y replicate-flux-mcp",
+        "declaredRepo": "git+https://github.com/awkoy/replicate-flux-mcp.git",
+        "executable": true,
+        "entrypoint_unconfirmed": false
+      },
+      "note": "npm package \"replicate-flux-mcp\" declares git+https://github.com/awkoy/replicate-flux-mcp.git AND ships a bin — the command is derived and runnable, not guessed."
+    },
+    {
+      "slug": "genesys-cloud-mcp",
+      "name": "Genesys Cloud MCP",
+      "severity": "high",
+      "install_type": "npm",
+      "github_url": "https://github.com/MakingChatbots/genesys-cloud-mcp-server",
+      "stars": 102,
+      "descriptionWords": 28,
+      "resolved": {
+        "package": "@makingchatbots/genesys-cloud-mcp-server",
+        "registry": "npm",
+        "command": "npx -y @makingchatbots/genesys-cloud-mcp-server",
+        "declaredRepo": "git+https://github.com/MakingChatbots/genesys-cloud-mcp-server.git",
+        "executable": true,
+        "entrypoint_unconfirmed": false
+      },
+      "note": "npm package \"@makingchatbots/genesys-cloud-mcp-server\" declares git+https://github.com/MakingChatbots/genesys-cloud-mcp-server.git AND ships a bin — the command is derived and runnable, not guessed."
+    },
+    {
+      "slug": "zenoti-mcp",
+      "name": "Zenoti MCP",
+      "severity": "high",
+      "install_type": "npm",
+      "github_url": "https://github.com/tacit-code/zenoti-mcp-server",
+      "stars": 98,
+      "descriptionWords": 24,
+      "resolved": {
+        "package": "zenoti-mcp-server",
+        "registry": "npm",
+        "command": "npx -y zenoti-mcp-server",
+        "declaredRepo": "git+https://github.com/tacit-code/zenoti-mcp-server.git",
+        "executable": true,
+        "entrypoint_unconfirmed": false
+      },
+      "note": "npm package \"zenoti-mcp-server\" declares git+https://github.com/tacit-code/zenoti-mcp-server.git AND ships a bin — the command is derived and runnable, not guessed."
+    },
+    {
+      "slug": "celigo-mcp",
+      "name": "Celigo MCP",
+      "severity": "high",
+      "install_type": "npm",
+      "github_url": "https://github.com/ilyassesalama/celigo-mcp",
+      "stars": 76,
+      "descriptionWords": 24,
+      "resolved": {
+        "package": "@ilyassesalama/celigo-mcp",
+        "registry": "npm",
+        "command": "npx -y @ilyassesalama/celigo-mcp",
+        "declaredRepo": "git+https://github.com/ilyassesalama/celigo-mcp.git",
+        "executable": true,
+        "entrypoint_unconfirmed": false
+      },
+      "nearMisses": [
+        {
+          "package": "celigo-mcp",
+          "declaredRepo": "git+https://github.com/accentra-australia/celigo-mcp.git"
+        }
+      ],
+      "note": "npm package \"@ilyassesalama/celigo-mcp\" declares git+https://github.com/ilyassesalama/celigo-mcp.git AND ships a bin — the command is derived and runnable, not guessed."
+    },
+    {
+      "slug": "codecov-mcp",
+      "name": "Codecov MCP",
+      "severity": "high",
+      "install_type": "npm",
+      "github_url": "https://github.com/egulatee/mcp-server-codecov",
+      "stars": 71,
+      "descriptionWords": 22,
+      "resolved": {
+        "package": "mcp-server-codecov",
+        "registry": "npm",
+        "command": "npx -y mcp-server-codecov",
+        "declaredRepo": "git+https://github.com/egulatee/mcp-server-codecov.git",
+        "executable": true,
+        "entrypoint_unconfirmed": false
+      },
+      "note": "npm package \"mcp-server-codecov\" declares git+https://github.com/egulatee/mcp-server-codecov.git AND ships a bin — the command is derived and runnable, not guessed."
+    },
+    {
+      "slug": "hacker-news-mcp",
+      "name": "Hacker News MCP",
+      "severity": "high",
+      "install_type": "npm",
+      "github_url": "https://github.com/paabloLC/mcp-hacker-news",
+      "stars": 33,
+      "descriptionWords": 30,
+      "resolved": {
+        "package": "mcp-hacker-news",
+        "registry": "npm",
+        "command": "npx -y mcp-hacker-news",
+        "declaredRepo": "git+https://github.com/paabloLC/mcp-hacker-news.git",
+        "executable": true,
+        "entrypoint_unconfirmed": false
+      },
+      "note": "npm package \"mcp-hacker-news\" declares git+https://github.com/paabloLC/mcp-hacker-news.git AND ships a bin — the command is derived and runnable, not guessed."
+    },
+    {
+      "slug": "runway-mcp",
+      "name": "Runway ML MCP",
+      "severity": "high",
+      "install_type": "npm",
+      "github_url": "https://github.com/runwayml/runway-api-mcp-server",
+      "stars": 21,
+      "descriptionWords": 24,
+      "resolved": {
+        "package": "runway-api-mcp-server",
+        "registry": "npm",
+        "command": "npx -y runway-api-mcp-server",
+        "declaredRepo": "git+https://github.com/runwayml/runway-api-mcp-server.git",
+        "executable": true,
+        "entrypoint_unconfirmed": false
+      },
+      "note": "npm package \"runway-api-mcp-server\" declares git+https://github.com/runwayml/runway-api-mcp-server.git AND ships a bin — the command is derived and runnable, not guessed."
+    },
+    {
+      "slug": "calendly-mcp",
+      "name": "Calendly MCP",
+      "severity": "high",
+      "install_type": "npm",
+      "github_url": "https://github.com/meAmitPatil/calendly-mcp-server",
+      "stars": 9,
+      "descriptionWords": 47,
+      "resolved": {
+        "package": "calendly-mcp-server",
+        "registry": "npm",
+        "command": "npx -y calendly-mcp-server",
+        "declaredRepo": "git+https://github.com/meAmitPatil/calendly-mcp-server.git",
+        "executable": true,
+        "entrypoint_unconfirmed": false
+      },
+      "note": "npm package \"calendly-mcp-server\" declares git+https://github.com/meAmitPatil/calendly-mcp-server.git AND ships a bin — the command is derived and runnable, not guessed."
+    },
+    {
+      "slug": "chroma",
+      "name": "Chroma",
+      "severity": "high",
+      "install_type": "pip",
+      "github_url": "https://github.com/chroma-core/chroma-mcp",
+      "stars": 0,
+      "descriptionWords": 14,
+      "resolved": {
+        "package": "chroma-mcp",
+        "registry": "PyPI",
+        "command": "uvx chroma-mcp",
+        "declaredRepo": "https://github.com/chroma-core/chroma-mcp#readme",
+        "executable": true,
+        "entrypoint_unconfirmed": false
+      },
+      "note": "PyPI package \"chroma-mcp\" declares https://github.com/chroma-core/chroma-mcp#readme AND ships a bin — the command is derived and runnable, not guessed."
+    },
+    {
+      "slug": "launchdarkly",
+      "name": "LaunchDarkly",
+      "severity": "high",
+      "install_type": "npm",
+      "github_url": "https://github.com/launchdarkly/mcp-server",
+      "stars": 0,
+      "descriptionWords": 8,
+      "resolved": {
+        "package": "@launchdarkly/mcp-server",
+        "registry": "npm",
+        "command": "npx -y @launchdarkly/mcp-server",
+        "declaredRepo": "git+https://github.com/launchdarkly/mcp-server.git",
+        "executable": true,
+        "entrypoint_unconfirmed": false
+      },
+      "nearMisses": [
+        {
+          "package": "mcp-server",
+          "declaredRepo": "git+https://github.com/sandy-mount/mcp-server.git"
+        }
+      ],
+      "note": "npm package \"@launchdarkly/mcp-server\" declares git+https://github.com/launchdarkly/mcp-server.git AND ships a bin — the command is derived and runnable, not guessed."
+    },
+    {
+      "slug": "graphlit",
+      "name": "Graphlit",
+      "severity": "high",
+      "install_type": "npm",
+      "github_url": "https://github.com/graphlit/graphlit-mcp-server",
+      "stars": 0,
+      "descriptionWords": 15,
+      "resolved": {
+        "package": "graphlit-mcp-server",
+        "registry": "npm",
+        "command": "npx -y graphlit-mcp-server",
+        "declaredRepo": "git+https://github.com/graphlit/graphlit-mcp-server.git",
+        "executable": true,
+        "entrypoint_unconfirmed": false
+      },
+      "note": "npm package \"graphlit-mcp-server\" declares git+https://github.com/graphlit/graphlit-mcp-server.git AND ships a bin — the command is derived and runnable, not guessed."
+    },
+    {
+      "slug": "logfire",
+      "name": "Logfire",
+      "severity": "high",
+      "install_type": "pip",
+      "github_url": "https://github.com/pydantic/logfire-mcp",
+      "stars": 0,
+      "descriptionWords": 9,
+      "resolved": {
+        "package": "logfire-mcp",
+        "registry": "PyPI",
+        "command": "uvx logfire-mcp",
+        "declaredRepo": "https://github.com/pydantic/logfire-mcp",
+        "executable": true,
+        "entrypoint_unconfirmed": false
+      },
+      "note": "PyPI package \"logfire-mcp\" declares https://github.com/pydantic/logfire-mcp AND ships a bin — the command is derived and runnable, not guessed."
+    },
+    {
+      "slug": "appium",
+      "name": "Appium",
+      "severity": "high",
+      "install_type": "npm",
+      "github_url": "https://github.com/appium/appium-mcp",
+      "stars": 0,
+      "descriptionWords": 12,
+      "resolved": {
+        "package": "appium-mcp",
+        "registry": "npm",
+        "command": "npx -y appium-mcp",
+        "declaredRepo": "git+https://github.com/appium/appium-mcp.git",
+        "executable": true,
+        "entrypoint_unconfirmed": false
+      },
+      "note": "npm package \"appium-mcp\" declares git+https://github.com/appium/appium-mcp.git AND ships a bin — the command is derived and runnable, not guessed."
+    },
+    {
+      "slug": "apache-doris",
+      "name": "Apache Doris",
+      "severity": "high",
+      "install_type": "pip",
+      "github_url": "https://github.com/apache/doris-mcp-server",
+      "stars": 0,
+      "descriptionWords": 10,
+      "resolved": {
+        "package": "doris-mcp-server",
+        "registry": "PyPI",
+        "command": "uvx doris-mcp-server",
+        "declaredRepo": "https://github.com/apache/doris-mcp-server/blob/master/CHANGELOG.md",
+        "executable": true,
+        "entrypoint_unconfirmed": false
+      },
+      "note": "PyPI package \"doris-mcp-server\" declares https://github.com/apache/doris-mcp-server/blob/master/CHANGELOG.md AND ships a bin — the command is derived and runnable, not guessed."
+    },
+    {
+      "slug": "microsoft-clarity",
+      "name": "Microsoft Clarity",
+      "severity": "high",
+      "install_type": "npm",
+      "github_url": "https://github.com/microsoft/clarity-mcp-server",
+      "stars": 0,
+      "descriptionWords": 13,
+      "resolved": {
+        "package": "@microsoft/clarity-mcp-server",
+        "registry": "npm",
+        "command": "npx -y @microsoft/clarity-mcp-server",
+        "declaredRepo": "git+https://github.com/microsoft/clarity-mcp-server.git",
+        "executable": true,
+        "entrypoint_unconfirmed": false
+      },
+      "nearMisses": [
+        {
+          "package": "clarity-mcp-server",
+          "declaredRepo": "git+https://github.com/pronitdas/clarity-mcp.git"
+        }
+      ],
+      "note": "npm package \"@microsoft/clarity-mcp-server\" declares git+https://github.com/microsoft/clarity-mcp-server.git AND ships a bin — the command is derived and runnable, not guessed."
+    },
+    {
+      "slug": "datahub",
+      "name": "DataHub",
+      "severity": "high",
+      "install_type": "pip",
+      "github_url": "https://github.com/acryldata/mcp-server-datahub",
+      "stars": 0,
+      "descriptionWords": 11,
+      "resolved": {
+        "package": "mcp-server-datahub",
+        "registry": "PyPI",
+        "command": "uvx mcp-server-datahub",
+        "declaredRepo": "https://github.com/acryldata/mcp-server-datahub",
+        "executable": true,
+        "entrypoint_unconfirmed": false
+      },
+      "note": "PyPI package \"mcp-server-datahub\" declares https://github.com/acryldata/mcp-server-datahub AND ships a bin — the command is derived and runnable, not guessed."
+    },
+    {
+      "slug": "chrome-devtools",
+      "name": "Chrome DevTools",
+      "severity": "high",
+      "install_type": "npm",
+      "github_url": "https://github.com/ChromeDevTools/chrome-devtools-mcp",
+      "stars": 0,
+      "descriptionWords": 11,
+      "resolved": {
+        "package": "chrome-devtools-mcp",
+        "registry": "npm",
+        "command": "npx -y chrome-devtools-mcp",
+        "declaredRepo": "git+https://github.com/ChromeDevTools/chrome-devtools-mcp.git",
+        "executable": true,
+        "entrypoint_unconfirmed": false
+      },
+      "note": "npm package \"chrome-devtools-mcp\" declares git+https://github.com/ChromeDevTools/chrome-devtools-mcp.git AND ships a bin — the command is derived and runnable, not guessed."
+    },
+    {
+      "slug": "line",
+      "name": "LINE",
+      "severity": "high",
+      "install_type": "npm",
+      "github_url": "https://github.com/line/line-bot-mcp-server",
+      "stars": 0,
+      "descriptionWords": 14,
+      "resolved": {
+        "package": "@line/line-bot-mcp-server",
+        "registry": "npm",
+        "command": "npx -y @line/line-bot-mcp-server",
+        "declaredRepo": "git+ssh://git@github.com/line/line-bot-mcp-server.git",
+        "executable": true,
+        "entrypoint_unconfirmed": false
+      },
+      "note": "npm package \"@line/line-bot-mcp-server\" declares git+ssh://git@github.com/line/line-bot-mcp-server.git AND ships a bin — the command is derived and runnable, not guessed."
+    },
+    {
+      "slug": "alpaca",
+      "name": "Alpaca",
+      "severity": "high",
+      "install_type": "pip",
+      "github_url": "https://github.com/alpacahq/alpaca-mcp-server",
+      "stars": 0,
+      "descriptionWords": 13,
+      "resolved": {
+        "package": "alpaca-mcp-server",
+        "registry": "PyPI",
+        "command": "uvx alpaca-mcp-server",
+        "declaredRepo": "https://github.com/alpacahq/alpaca-mcp-server/issues",
+        "executable": true,
+        "entrypoint_unconfirmed": false
+      },
+      "note": "PyPI package \"alpaca-mcp-server\" declares https://github.com/alpacahq/alpaca-mcp-server/issues AND ships a bin — the command is derived and runnable, not guessed."
+    },
+    {
+      "slug": "coinex",
+      "name": "CoinEx",
+      "severity": "high",
+      "install_type": "pip",
+      "github_url": "https://github.com/coinexcom/coinex_mcp_server",
+      "stars": 0,
+      "descriptionWords": 11,
+      "resolved": {
+        "package": "coinex_mcp_server",
+        "registry": "PyPI",
+        "command": "uvx --from coinex_mcp_server coinex-mcp-server",
+        "declaredRepo": "https://github.com/coinexcom/coinex_mcp_server/issues",
+        "executable": true,
+        "entrypoint_unconfirmed": false
+      },
+      "note": "PyPI package \"coinex_mcp_server\" declares https://github.com/coinexcom/coinex_mcp_server/issues AND ships a bin — the command is derived and runnable, not guessed."
+    },
+    {
+      "slug": "flutterwave",
+      "name": "Flutterwave",
+      "severity": "high",
+      "install_type": "npm",
+      "github_url": "https://github.com/bajoski34/mcp-flutterwave",
+      "stars": 0,
+      "descriptionWords": 11,
+      "resolved": {
+        "package": "mcp-flutterwave",
+        "registry": "npm",
+        "command": "npx -y mcp-flutterwave",
+        "declaredRepo": "git+https://github.com/bajoski34/mcp-flutterwave.git",
+        "executable": true,
+        "entrypoint_unconfirmed": false
+      },
+      "note": "npm package \"mcp-flutterwave\" declares git+https://github.com/bajoski34/mcp-flutterwave.git AND ships a bin — the command is derived and runnable, not guessed."
+    },
+    {
+      "slug": "datawrapper",
+      "name": "Datawrapper",
+      "severity": "high",
+      "install_type": "pip",
+      "github_url": "https://github.com/palewire/datawrapper-mcp",
+      "stars": 0,
+      "descriptionWords": 9,
+      "resolved": {
+        "package": "datawrapper-mcp",
+        "registry": "PyPI",
+        "command": "uvx datawrapper-mcp",
+        "declaredRepo": "https://github.com/palewire/datawrapper-mcp/issues/",
+        "executable": true,
+        "entrypoint_unconfirmed": false
+      },
+      "note": "PyPI package \"datawrapper-mcp\" declares https://github.com/palewire/datawrapper-mcp/issues/ AND ships a bin — the command is derived and runnable, not guessed."
+    },
+    {
       "slug": "openai",
       "name": "OpenAI",
       "severity": "medium",
@@ -6938,7 +7707,7 @@
       "github_url": "https://github.com/openai/openai-agents-python",
       "stars": 27708,
       "descriptionWords": 194,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No npm package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "tabnine",
@@ -6948,7 +7717,13 @@
       "github_url": "https://github.com/codota/TabNine",
       "stars": 10784,
       "descriptionWords": 119,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "nearMisses": [
+        {
+          "package": "tabnine",
+          "declaredRepo": null
+        }
+      ],
+      "note": "No npm package declares this repo. 1 name(s) exist but belong elsewhere — do NOT write them."
     },
     {
       "slug": "codeium",
@@ -6958,7 +7733,7 @@
       "github_url": "https://github.com/Exafunction/windsurf.vim",
       "stars": 5113,
       "descriptionWords": 153,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No npm package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "cohere",
@@ -6968,7 +7743,7 @@
       "github_url": "https://github.com/cohere-ai/cohere-toolkit",
       "stars": 3176,
       "descriptionWords": 192,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No npm package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "apify-mcp",
@@ -6978,7 +7753,7 @@
       "github_url": "https://github.com/apify/apify-mcp-server",
       "stars": 2539,
       "descriptionWords": 29,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No npm package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "vercel-mcp",
@@ -6988,7 +7763,13 @@
       "github_url": "https://github.com/nganiet/mcp-vercel",
       "stars": 2341,
       "descriptionWords": 55,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "nearMisses": [
+        {
+          "package": "mcp-vercel",
+          "declaredRepo": "git+https://github.com/hlos-ai/mcp-servers.git"
+        }
+      ],
+      "note": "No npm package declares this repo. 1 name(s) exist but belong elsewhere — do NOT write them."
     },
     {
       "slug": "snowflake-mcp",
@@ -6998,7 +7779,7 @@
       "github_url": "https://github.com/isaacwasserman/mcp-snowflake-server",
       "stars": 2134,
       "descriptionWords": 54,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No npm package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "fastapi-mcp",
@@ -7008,7 +7789,15 @@
       "github_url": "https://github.com/tadata-org/fastapi_mcp",
       "stars": 1840,
       "descriptionWords": 32,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "resolved": {
+        "package": "fastapi_mcp",
+        "registry": "PyPI",
+        "command": "uvx fastapi_mcp",
+        "declaredRepo": "https://github.com/tadata-org/fastapi_mcp/issues",
+        "executable": false,
+        "entrypoint_unconfirmed": true
+      },
+      "note": "PyPI package \"fastapi_mcp\" belongs to this repo but its wheel declares no [console_scripts] (or no readable wheel exists) — `uvx` would error. NOT written."
     },
     {
       "slug": "1password-mcp",
@@ -7018,7 +7807,7 @@
       "github_url": "https://github.com/CakeRepository/1Password-MCP",
       "stars": 1823,
       "descriptionWords": 51,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No npm package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "terraform-mcp",
@@ -7028,7 +7817,17 @@
       "github_url": "https://github.com/hashicorp/terraform-mcp-server",
       "stars": 1495,
       "descriptionWords": 56,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "nearMisses": [
+        {
+          "package": "terraform-mcp-server",
+          "declaredRepo": "https://github.com/thrashr888/terraform-mcp-server"
+        },
+        {
+          "package": "mcp-server-terraform",
+          "declaredRepo": null
+        }
+      ],
+      "note": "No npm package declares this repo. 2 name(s) exist but belong elsewhere — do NOT write them."
     },
     {
       "slug": "qdrant-mcp",
@@ -7038,7 +7837,17 @@
       "github_url": "https://github.com/qdrant/mcp-server-qdrant",
       "stars": 1487,
       "descriptionWords": 30,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "nearMisses": [
+        {
+          "package": "mcp-server-qdrant",
+          "declaredRepo": null
+        },
+        {
+          "package": "qdrant-mcp-server",
+          "declaredRepo": "https://github.com/fiyen/qdrant-mcp-server/issues"
+        }
+      ],
+      "note": "No PyPI package declares this repo. 2 name(s) exist but belong elsewhere — do NOT write them."
     },
     {
       "slug": "hashicorp-vault-mcp",
@@ -7048,7 +7857,7 @@
       "github_url": "https://github.com/elisjetmax/mcp-vault-hashicorp",
       "stars": 1456,
       "descriptionWords": 51,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No npm package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "langchain",
@@ -7058,7 +7867,15 @@
       "github_url": "https://github.com/langchain-ai/langchain-mcp-adapters",
       "stars": 1300,
       "descriptionWords": 18,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "resolved": {
+        "package": "langchain-mcp-adapters",
+        "registry": "PyPI",
+        "command": "uvx langchain-mcp-adapters",
+        "declaredRepo": "https://www.github.com/langchain-ai/langchain-mcp-adapters",
+        "executable": false,
+        "entrypoint_unconfirmed": true
+      },
+      "note": "PyPI package \"langchain-mcp-adapters\" belongs to this repo but its wheel declares no [console_scripts] (or no readable wheel exists) — `uvx` would error. NOT written."
     },
     {
       "slug": "hubspot-mcp",
@@ -7068,7 +7885,13 @@
       "github_url": "https://github.com/baryhuang/mcp-hubspot",
       "stars": 1247,
       "descriptionWords": 50,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "nearMisses": [
+        {
+          "package": "mcp-hubspot",
+          "declaredRepo": "git+https://github.com/speakeasy-api/hubspot-typescript.git"
+        }
+      ],
+      "note": "No npm package declares this repo. 1 name(s) exist but belong elsewhere — do NOT write them."
     },
     {
       "slug": "bitwarden-mcp",
@@ -7078,7 +7901,7 @@
       "github_url": "https://github.com/giuliolibrando/bitwarden-mcp-server",
       "stars": 1034,
       "descriptionWords": 51,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No npm package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "google-analytics",
@@ -7088,7 +7911,7 @@
       "github_url": "https://github.com/googleanalytics/google-analytics-mcp",
       "stars": 920,
       "descriptionWords": 19,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No npm package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "resend-mcp",
@@ -7098,7 +7921,13 @@
       "github_url": "https://github.com/resend/mcp-send-email",
       "stars": 920,
       "descriptionWords": 33,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "nearMisses": [
+        {
+          "package": "mcp-send-email",
+          "declaredRepo": null
+        }
+      ],
+      "note": "No npm package declares this repo. 1 name(s) exist but belong elsewhere — do NOT write them."
     },
     {
       "slug": "readwise-mcp",
@@ -7108,7 +7937,13 @@
       "github_url": "https://github.com/readwiseio/readwise-mcp",
       "stars": 890,
       "descriptionWords": 26,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "nearMisses": [
+        {
+          "package": "readwise-mcp",
+          "declaredRepo": "git+https://github.com/IAmAlexander/readwise-mcp.git"
+        }
+      ],
+      "note": "No npm package declares this repo. 1 name(s) exist but belong elsewhere — do NOT write them."
     },
     {
       "slug": "postman",
@@ -7118,7 +7953,13 @@
       "github_url": "https://github.com/postmanlabs/postman-mcp-server",
       "stars": 820,
       "descriptionWords": 20,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "nearMisses": [
+        {
+          "package": "postman-mcp-server",
+          "declaredRepo": "git+https://github.com/ankit-roy-0602/postman-mcp-server.git"
+        }
+      ],
+      "note": "No npm package declares this repo. 1 name(s) exist but belong elsewhere — do NOT write them."
     },
     {
       "slug": "microsoft-teams",
@@ -7128,17 +7969,7 @@
       "github_url": "https://github.com/microsoft/IF-MCP-Server-for-Microsoft-Teams",
       "stars": 680,
       "descriptionWords": 21,
-      "note": "Not resolved this run (outside --resolve budget)."
-    },
-    {
-      "slug": "meta-ads-mcp",
-      "name": "Meta Ads MCP",
-      "severity": "medium",
-      "install_type": "pip",
-      "github_url": "https://github.com/pipeboard-co/meta-ads-mcp",
-      "stars": 680,
-      "descriptionWords": 21,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No npm package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "novu-mcp",
@@ -7148,7 +7979,7 @@
       "github_url": "https://github.com/novuhq/novu-mcp-server",
       "stars": 680,
       "descriptionWords": 27,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No npm package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "elastic-apm-mcp",
@@ -7158,7 +7989,13 @@
       "github_url": "https://github.com/h0rn3t/elastic-apm-mcp-server",
       "stars": 654,
       "descriptionWords": 52,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "nearMisses": [
+        {
+          "package": "elastic-apm-mcp-server",
+          "declaredRepo": "git+https://github.com/kimjunyoung90/elastic-apm-mcp-server.git"
+        }
+      ],
+      "note": "No npm package declares this repo. 1 name(s) exist but belong elsewhere — do NOT write them."
     },
     {
       "slug": "airbnb-mcp",
@@ -7168,7 +8005,13 @@
       "github_url": "https://github.com/openbnb-org/mcp-server-airbnb",
       "stars": 640,
       "descriptionWords": 20,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "nearMisses": [
+        {
+          "package": "airbnb-mcp-server",
+          "declaredRepo": null
+        }
+      ],
+      "note": "No npm package declares this repo. 1 name(s) exist but belong elsewhere — do NOT write them."
     },
     {
       "slug": "cal-com-mcp",
@@ -7178,7 +8021,17 @@
       "github_url": "https://github.com/calcom/cal-mcp",
       "stars": 640,
       "descriptionWords": 27,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "nearMisses": [
+        {
+          "package": "cal-mcp",
+          "declaredRepo": null
+        },
+        {
+          "package": "@calcom/cal-mcp",
+          "declaredRepo": null
+        }
+      ],
+      "note": "No npm package declares this repo. 2 name(s) exist but belong elsewhere — do NOT write them."
     },
     {
       "slug": "toggl-mcp",
@@ -7188,7 +8041,7 @@
       "github_url": "https://github.com/vontell/toggl-track-mcp",
       "stars": 634,
       "descriptionWords": 50,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No npm package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "redis-streams-mcp",
@@ -7198,7 +8051,7 @@
       "github_url": "https://github.com/johnsmith968530/mcp_vs_redis_streams",
       "stars": 634,
       "descriptionWords": 52,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No npm package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "lancedb-mcp",
@@ -7208,7 +8061,7 @@
       "github_url": "https://github.com/lancedb/lancedb-mcp-server",
       "stars": 620,
       "descriptionWords": 26,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No PyPI package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "wordpress-rest-mcp",
@@ -7218,7 +8071,7 @@
       "github_url": "https://github.com/paulstoicasebastian/mcp-server-wordpress-rest-api",
       "stars": 567,
       "descriptionWords": 30,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No npm package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "paypal",
@@ -7228,7 +8081,17 @@
       "github_url": "https://github.com/paypal/paypal-mcp-server",
       "stars": 540,
       "descriptionWords": 21,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "nearMisses": [
+        {
+          "package": "paypal-mcp-server",
+          "declaredRepo": null
+        },
+        {
+          "package": "mcp-server-paypal",
+          "declaredRepo": "git+https://github.com/hlos-ai/mcp-servers.git"
+        }
+      ],
+      "note": "No npm package declares this repo. 2 name(s) exist but belong elsewhere — do NOT write them."
     },
     {
       "slug": "google-ads-mcp",
@@ -7238,7 +8101,7 @@
       "github_url": "https://github.com/gomarble-ai/google-ads-mcp-server",
       "stars": 520,
       "descriptionWords": 18,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No PyPI package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "zoom",
@@ -7248,7 +8111,7 @@
       "github_url": "https://github.com/zoomeye-ai/mcp_zoomeye",
       "stars": 490,
       "descriptionWords": 20,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No npm package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "snowflake-cortex-mcp",
@@ -7258,7 +8121,7 @@
       "github_url": "https://github.com/curious-bigcat/snowflake-cortex-agent-bedrock-mcp",
       "stars": 487,
       "descriptionWords": 31,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No npm package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "devin-mcp",
@@ -7268,7 +8131,7 @@
       "github_url": "https://github.com/kazuph/mcp-devin",
       "stars": 487,
       "descriptionWords": 63,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No npm package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "zoominfo-mcp",
@@ -7278,7 +8141,7 @@
       "github_url": "https://github.com/Zoominfo/zoominfo-mcp-plugin",
       "stars": 478,
       "descriptionWords": 68,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No npm package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "segment",
@@ -7288,7 +8151,13 @@
       "github_url": "https://github.com/segmentio/analytics-next",
       "stars": 474,
       "descriptionWords": 200,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "nearMisses": [
+        {
+          "package": "analytics-next",
+          "declaredRepo": null
+        }
+      ],
+      "note": "No npm package declares this repo. 1 name(s) exist but belong elsewhere — do NOT write them."
     },
     {
       "slug": "aws-sagemaker-mcp",
@@ -7298,7 +8167,7 @@
       "github_url": "https://github.com/srikanrk/aws-wa-sagemaker-mcp",
       "stars": 467,
       "descriptionWords": 26,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No npm package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "bruno-mcp",
@@ -7308,7 +8177,13 @@
       "github_url": "https://github.com/hungthai1401/bruno-mcp",
       "stars": 465,
       "descriptionWords": 28,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "nearMisses": [
+        {
+          "package": "bruno-mcp",
+          "declaredRepo": null
+        }
+      ],
+      "note": "No npm package declares this repo. 1 name(s) exist but belong elsewhere — do NOT write them."
     },
     {
       "slug": "databricks-mcp",
@@ -7318,7 +8193,13 @@
       "github_url": "https://github.com/JustTryAI/databricks-mcp-server",
       "stars": 456,
       "descriptionWords": 59,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "nearMisses": [
+        {
+          "package": "databricks-mcp-server",
+          "declaredRepo": null
+        }
+      ],
+      "note": "No PyPI package declares this repo. 1 name(s) exist but belong elsewhere — do NOT write them."
     },
     {
       "slug": "zoho-books-mcp",
@@ -7328,7 +8209,7 @@
       "github_url": "https://github.com/ossycodes/zoho-books-mcp",
       "stars": 456,
       "descriptionWords": 53,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No npm package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "facebook-ads-mcp",
@@ -7338,7 +8219,7 @@
       "github_url": "https://github.com/gomarble-ai/facebook-ads-mcp-server",
       "stars": 445,
       "descriptionWords": 21,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No PyPI package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "apache-airflow-mcp",
@@ -7348,7 +8229,7 @@
       "github_url": "https://github.com/yangkyeongmo/mcp-server-apache-airflow",
       "stars": 445,
       "descriptionWords": 28,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No npm package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "pocketbase-mcp",
@@ -7358,7 +8239,13 @@
       "github_url": "https://github.com/mrwyndham/pocketbase-mcp",
       "stars": 430,
       "descriptionWords": 28,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "nearMisses": [
+        {
+          "package": "pocketbase-mcp",
+          "declaredRepo": null
+        }
+      ],
+      "note": "No npm package declares this repo. 1 name(s) exist but belong elsewhere — do NOT write them."
     },
     {
       "slug": "powerbi-mcp",
@@ -7368,7 +8255,7 @@
       "github_url": "https://github.com/SimonLexRS/Microsoft-MCP-PowerBI",
       "stars": 423,
       "descriptionWords": 26,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No npm package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "zotero-mcp",
@@ -7378,7 +8265,13 @@
       "github_url": "https://github.com/54yyyu/zotero-mcp",
       "stars": 420,
       "descriptionWords": 24,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "nearMisses": [
+        {
+          "package": "zotero-mcp",
+          "declaredRepo": "https://github.com/kujenga/zotero-mcp/issues"
+        }
+      ],
+      "note": "No PyPI package declares this repo. 1 name(s) exist but belong elsewhere — do NOT write them."
     },
     {
       "slug": "ray-distributed-mcp",
@@ -7388,7 +8281,15 @@
       "github_url": "https://github.com/ray-project/ray",
       "stars": 412,
       "descriptionWords": 17,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "resolved": {
+        "package": "ray",
+        "registry": "PyPI",
+        "command": "uvx ray",
+        "declaredRepo": "https://github.com/ray-project/ray",
+        "executable": false,
+        "entrypoint_unconfirmed": true
+      },
+      "note": "PyPI package \"ray\" belongs to this repo but its wheel declares no [console_scripts] (or no readable wheel exists) — `uvx` would error. NOT written."
     },
     {
       "slug": "llamaindex-mcp",
@@ -7398,7 +8299,7 @@
       "github_url": "https://github.com/LinkedInLearning/agentic-applications-with-llamaindex-and-mcp-4077221",
       "stars": 412,
       "descriptionWords": 25,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No npm package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "infisical-mcp",
@@ -7408,7 +8309,7 @@
       "github_url": "https://github.com/Infisical/infisical-mcp-server",
       "stars": 412,
       "descriptionWords": 58,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No npm package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "clay-gtm-mcp",
@@ -7418,17 +8319,7 @@
       "github_url": "https://github.com/bpw-civic/clay-mcp-server",
       "stars": 412,
       "descriptionWords": 65,
-      "note": "Not resolved this run (outside --resolve budget)."
-    },
-    {
-      "slug": "rabbitmq-mcp",
-      "name": "RabbitMQ MCP",
-      "severity": "medium",
-      "install_type": "pip",
-      "github_url": "https://github.com/kenliao94/mcp-server-rabbitmq",
-      "stars": 410,
-      "descriptionWords": 27,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No npm package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "planetscale-mcp",
@@ -7438,7 +8329,7 @@
       "github_url": "https://github.com/PetrefiedThunder/mcp-planetscale",
       "stars": 398,
       "descriptionWords": 24,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No npm package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "supabase-mcp",
@@ -7448,7 +8339,13 @@
       "github_url": "https://github.com/alexander-zuev/supabase-mcp-server",
       "stars": 398,
       "descriptionWords": 37,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "nearMisses": [
+        {
+          "package": "mcp-server-supabase",
+          "declaredRepo": "git+https://github.com/theinfosecguy/npx-canary.git"
+        }
+      ],
+      "note": "No npm package declares this repo. 1 name(s) exist but belong elsewhere — do NOT write them."
     },
     {
       "slug": "directus-mcp",
@@ -7458,7 +8355,7 @@
       "github_url": "https://github.com/pixelsock/directus-mcp",
       "stars": 395,
       "descriptionWords": 25,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No npm package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "aider-mcp",
@@ -7468,7 +8365,7 @@
       "github_url": "https://github.com/disler/aider-mcp-server",
       "stars": 394,
       "descriptionWords": 64,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No npm package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "pandadoc-mcp",
@@ -7478,7 +8375,7 @@
       "github_url": "https://github.com/dazanza/pandadoc-mcp",
       "stars": 389,
       "descriptionWords": 47,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No npm package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "google-bigquery-mcp",
@@ -7488,7 +8385,7 @@
       "github_url": "https://github.com/coupler-io/google-bigquery-mcp",
       "stars": 387,
       "descriptionWords": 32,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No npm package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "spotify",
@@ -7498,7 +8395,7 @@
       "github_url": "https://github.com/marcelmarais/spotify-mcp-server",
       "stars": 384,
       "descriptionWords": 123,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No npm package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "anthropic-claude",
@@ -7508,7 +8405,7 @@
       "github_url": "https://github.com/anthropics/claude-ai-mcp",
       "stars": 382,
       "descriptionWords": 187,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No npm package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "solana",
@@ -7518,7 +8415,7 @@
       "github_url": "https://github.com/solana-foundation/solana-mcp-official",
       "stars": 380,
       "descriptionWords": 20,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No npm package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "ccxt-mcp",
@@ -7528,7 +8425,7 @@
       "github_url": "https://github.com/doggybee/mcp-server-ccxt",
       "stars": 380,
       "descriptionWords": 24,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No npm package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "coolify-mcp",
@@ -7538,7 +8435,7 @@
       "github_url": "https://github.com/StuMason/coolify-mcp",
       "stars": 380,
       "descriptionWords": 24,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No npm package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "harness-mcp-server",
@@ -7548,7 +8445,13 @@
       "github_url": "https://github.com/harness/mcp-server",
       "stars": 380,
       "descriptionWords": 19,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "nearMisses": [
+        {
+          "package": "mcp-server",
+          "declaredRepo": "git+https://github.com/sandy-mount/mcp-server.git"
+        }
+      ],
+      "note": "No npm package declares this repo. 1 name(s) exist but belong elsewhere — do NOT write them."
     },
     {
       "slug": "dependabot-mcp",
@@ -7558,7 +8461,7 @@
       "github_url": "https://github.com/avarant/github-dependabot-mcp-server",
       "stars": 378,
       "descriptionWords": 51,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No npm package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "zapier-mcp",
@@ -7568,7 +8471,13 @@
       "github_url": "https://github.com/zapier/zapier-mcp",
       "stars": 372,
       "descriptionWords": 28,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "nearMisses": [
+        {
+          "package": "zapier-mcp",
+          "declaredRepo": "https://zapier.com"
+        }
+      ],
+      "note": "No npm package declares this repo. 1 name(s) exist but belong elsewhere — do NOT write them."
     },
     {
       "slug": "excalidraw",
@@ -7578,7 +8487,13 @@
       "github_url": "https://github.com/excalidraw/excalidraw-mcp",
       "stars": 360,
       "descriptionWords": 19,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "nearMisses": [
+        {
+          "package": "excalidraw-mcp",
+          "declaredRepo": null
+        }
+      ],
+      "note": "No npm package declares this repo. 1 name(s) exist but belong elsewhere — do NOT write them."
     },
     {
       "slug": "brightdata-mcp",
@@ -7588,7 +8503,7 @@
       "github_url": "https://github.com/liangdabiao/Bright-Data-MCP-Claude-Skill-deep-research",
       "stars": 356,
       "descriptionWords": 26,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No npm package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "clarity-mcp",
@@ -7598,7 +8513,7 @@
       "github_url": "https://github.com/pedroibr/microsoft_clarity_mcp",
       "stars": 356,
       "descriptionWords": 59,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No npm package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "zillow-mcp-server",
@@ -7608,7 +8523,7 @@
       "github_url": "https://github.com/sap156/zillow-mcp-server",
       "stars": 350,
       "descriptionWords": 20,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No PyPI package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "mistral-ai-mcp",
@@ -7618,7 +8533,13 @@
       "github_url": "https://github.com/everaldo/mcp-mistral-ocr",
       "stars": 345,
       "descriptionWords": 23,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "nearMisses": [
+        {
+          "package": "mcp-mistral-ocr",
+          "declaredRepo": "git+https://github.com/EngDawood/mcp-mistral-ocr.git"
+        }
+      ],
+      "note": "No npm package declares this repo. 1 name(s) exist but belong elsewhere — do NOT write them."
     },
     {
       "slug": "quickbooks",
@@ -7628,7 +8549,7 @@
       "github_url": "https://github.com/intuit/quickbooks-online-mcp-server",
       "stars": 343,
       "descriptionWords": 20,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No npm package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "intuit-quickbooks-mcp",
@@ -7638,7 +8559,7 @@
       "github_url": "https://github.com/intuit/quickbooks-online-mcp-server",
       "stars": 343,
       "descriptionWords": 55,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No npm package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "openphone-mcp",
@@ -7648,7 +8569,13 @@
       "github_url": "https://github.com/studio-corsair/openphone-mcp",
       "stars": 342,
       "descriptionWords": 51,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "nearMisses": [
+        {
+          "package": "openphone-mcp",
+          "declaredRepo": null
+        }
+      ],
+      "note": "No npm package declares this repo. 1 name(s) exist but belong elsewhere — do NOT write them."
     },
     {
       "slug": "okta",
@@ -7658,7 +8585,13 @@
       "github_url": "https://github.com/okta/okta-mcp-server",
       "stars": 340,
       "descriptionWords": 21,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "nearMisses": [
+        {
+          "package": "okta-mcp-server",
+          "declaredRepo": "git+https://github.com/vibe-coders-only/okta-mcp-server.git"
+        }
+      ],
+      "note": "No npm package declares this repo. 1 name(s) exist but belong elsewhere — do NOT write them."
     },
     {
       "slug": "ragie",
@@ -7668,7 +8601,7 @@
       "github_url": "https://github.com/ragieai/ragie-mcp-server",
       "stars": 340,
       "descriptionWords": 19,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No npm package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "bluesky-mcp",
@@ -7678,7 +8611,7 @@
       "github_url": "https://github.com/gwbischof/bluesky-social-mcp",
       "stars": 340,
       "descriptionWords": 23,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No PyPI package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "discord-bot-mcp",
@@ -7688,7 +8621,15 @@
       "github_url": "https://github.com/Rapptz/discord.py",
       "stars": 312,
       "descriptionWords": 22,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "resolved": {
+        "package": "discord.py",
+        "registry": "PyPI",
+        "command": "uvx discord.py",
+        "declaredRepo": "https://github.com/Rapptz/discord.py/issues",
+        "executable": false,
+        "entrypoint_unconfirmed": true
+      },
+      "note": "PyPI package \"discord.py\" belongs to this repo but its wheel declares no [console_scripts] (or no readable wheel exists) — `uvx` would error. NOT written."
     },
     {
       "slug": "dropbox-mcp",
@@ -7698,7 +8639,13 @@
       "github_url": "https://github.com/ngs/dropbox-mcp-server",
       "stars": 312,
       "descriptionWords": 27,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "nearMisses": [
+        {
+          "package": "dropbox-mcp-server",
+          "declaredRepo": null
+        }
+      ],
+      "note": "No npm package declares this repo. 1 name(s) exist but belong elsewhere — do NOT write them."
     },
     {
       "slug": "palantir-foundry-mcp",
@@ -7708,7 +8655,7 @@
       "github_url": "https://github.com/ChutneyCheeseball/palantir-foundry-mcp",
       "stars": 312,
       "descriptionWords": 21,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No npm package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "trino-mcp",
@@ -7718,7 +8665,7 @@
       "github_url": "https://github.com/tuannvm/mcp-trino",
       "stars": 312,
       "descriptionWords": 27,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No npm package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "google-calendar-mcp",
@@ -7728,7 +8675,13 @@
       "github_url": "https://github.com/nspady/google-calendar-mcp",
       "stars": 312,
       "descriptionWords": 29,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "nearMisses": [
+        {
+          "package": "google-calendar-mcp",
+          "declaredRepo": null
+        }
+      ],
+      "note": "No npm package declares this repo. 1 name(s) exist but belong elsewhere — do NOT write them."
     },
     {
       "slug": "alpaca-trading-mcp",
@@ -7738,7 +8691,7 @@
       "github_url": "https://github.com/Tekventedor/alpaca-trading-mcp",
       "stars": 312,
       "descriptionWords": 60,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No PyPI package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "switchbot-mcp",
@@ -7748,7 +8701,7 @@
       "github_url": "https://github.com/genm/switchbot-mcp",
       "stars": 312,
       "descriptionWords": 53,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No npm package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "lithic-mcp",
@@ -7758,7 +8711,7 @@
       "github_url": "https://github.com/mohit-novo/mcp-lithic",
       "stars": 312,
       "descriptionWords": 52,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No npm package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "hotjar-mcp",
@@ -7768,7 +8721,7 @@
       "github_url": "https://github.com/yasin749/hotjar-mcp-server",
       "stars": 312,
       "descriptionWords": 58,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No npm package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "akamai-mcp",
@@ -7778,7 +8731,13 @@
       "github_url": "https://github.com/gamittal-ak/alecs-mcp-server-akamai",
       "stars": 312,
       "descriptionWords": 53,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "nearMisses": [
+        {
+          "package": "alecs-mcp-server-akamai",
+          "declaredRepo": null
+        }
+      ],
+      "note": "No npm package declares this repo. 1 name(s) exist but belong elsewhere — do NOT write them."
     },
     {
       "slug": "loki-mcp",
@@ -7788,7 +8747,7 @@
       "github_url": "https://github.com/tumf/grafana-loki-mcp",
       "stars": 312,
       "descriptionWords": 66,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No npm package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "opgg-mcp",
@@ -7798,7 +8757,7 @@
       "github_url": "https://github.com/opgginc/opgg-mcp",
       "stars": 310,
       "descriptionWords": 21,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No npm package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "manim-mcp",
@@ -7808,7 +8767,7 @@
       "github_url": "https://github.com/abhiemj/manim-mcp-server",
       "stars": 310,
       "descriptionWords": 21,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No PyPI package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "jenkins-mcp",
@@ -7818,7 +8777,13 @@
       "github_url": "https://github.com/lanbaoshen/mcp-jenkins",
       "stars": 298,
       "descriptionWords": 27,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "nearMisses": [
+        {
+          "package": "mcp-jenkins",
+          "declaredRepo": null
+        }
+      ],
+      "note": "No npm package declares this repo. 1 name(s) exist but belong elsewhere — do NOT write them."
     },
     {
       "slug": "dropbox-sign-mcp",
@@ -7828,7 +8793,7 @@
       "github_url": "https://github.com/bmbouter/mcp-dropbox-sign",
       "stars": 298,
       "descriptionWords": 47,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No npm package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "opensearch",
@@ -7838,7 +8803,7 @@
       "github_url": "https://github.com/opensearch-project/opensearch-mcp-server-py",
       "stars": 290,
       "descriptionWords": 15,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No npm package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "tiktok-ads-mcp",
@@ -7848,7 +8813,7 @@
       "github_url": "https://github.com/AdsMCP/tiktok-ads-mcp-server",
       "stars": 290,
       "descriptionWords": 20,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No PyPI package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "ticktick-mcp",
@@ -7858,7 +8823,13 @@
       "github_url": "https://github.com/jacepark12/ticktick-mcp",
       "stars": 290,
       "descriptionWords": 24,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "nearMisses": [
+        {
+          "package": "ticktick-mcp",
+          "declaredRepo": "git+https://github.com/jordyvandomselaar/ticktick-mcp.git"
+        }
+      ],
+      "note": "No npm package declares this repo. 1 name(s) exist but belong elsewhere — do NOT write them."
     },
     {
       "slug": "google-cloud-storage-mcp",
@@ -7868,7 +8839,7 @@
       "github_url": "https://github.com/sundarleads/mcp-server-google-cloud-storage",
       "stars": 289,
       "descriptionWords": 31,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No npm package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "doppler-mcp",
@@ -7878,7 +8849,7 @@
       "github_url": "https://github.com/aledlie/doppler-mcp",
       "stars": 287,
       "descriptionWords": 54,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No npm package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "tripadvisor-mcp",
@@ -7888,7 +8859,7 @@
       "github_url": "https://github.com/pab1it0/tripadvisor-mcp",
       "stars": 280,
       "descriptionWords": 20,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No PyPI package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "real-estate-mcp-agentic",
@@ -7898,7 +8869,7 @@
       "github_url": "https://github.com/agentic-ops/real-estate-mcp",
       "stars": 280,
       "descriptionWords": 17,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No npm package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "loom-mcp",
@@ -7908,7 +8879,13 @@
       "github_url": "https://github.com/karbassi/mcp-loom",
       "stars": 278,
       "descriptionWords": 26,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "nearMisses": [
+        {
+          "package": "mcp-loom",
+          "declaredRepo": "git+https://github.com/buttonmonkey/mcp-loom.git"
+        }
+      ],
+      "note": "No npm package declares this repo. 1 name(s) exist but belong elsewhere — do NOT write them."
     },
     {
       "slug": "jina-ai-mcp",
@@ -7918,7 +8895,7 @@
       "github_url": "https://github.com/wong2/mcp-jina-reader",
       "stars": 278,
       "descriptionWords": 26,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No npm package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "fullstory-mcp",
@@ -7928,7 +8905,7 @@
       "github_url": "https://github.com/creevey-equals/fullstory-mcp",
       "stars": 278,
       "descriptionWords": 60,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No npm package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "tempo-mcp",
@@ -7938,7 +8915,7 @@
       "github_url": "https://github.com/kitakou0313/grafana-tempo-mcp",
       "stars": 278,
       "descriptionWords": 64,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No npm package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "npm-registry-mcp",
@@ -7948,7 +8925,7 @@
       "github_url": "https://github.com/vinkius-labs/npm-registry-mcp",
       "stars": 276,
       "descriptionWords": 18,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No npm package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "coinmarket-mcp",
@@ -7958,7 +8935,7 @@
       "github_url": "https://github.com/anjor/coinmarket-mcp-server",
       "stars": 270,
       "descriptionWords": 21,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No PyPI package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "travel-assistant-mcp",
@@ -7968,7 +8945,7 @@
       "github_url": "https://github.com/skarlekar/mcp_travelassistant",
       "stars": 270,
       "descriptionWords": 17,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No npm package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "sharepoint-mcp",
@@ -7978,7 +8955,7 @@
       "github_url": "https://github.com/iimransarwar/Microsoft-Cloud-and-SharePoint-MCP-Server",
       "stars": 267,
       "descriptionWords": 24,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No npm package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "phoenix-arize-mcp",
@@ -7988,7 +8965,7 @@
       "github_url": "https://github.com/shizuku198411/MCP-with-Arize-Phoenix",
       "stars": 267,
       "descriptionWords": 26,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No npm package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "farcaster-mcp",
@@ -7998,7 +8975,7 @@
       "github_url": "https://github.com/manimohans/farcaster-mcp",
       "stars": 267,
       "descriptionWords": 51,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No npm package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "yeelight-mcp",
@@ -8008,17 +8985,7 @@
       "github_url": "https://github.com/Yeelight/yeelight-iot-mcp",
       "stars": 267,
       "descriptionWords": 56,
-      "note": "Not resolved this run (outside --resolve budget)."
-    },
-    {
-      "slug": "instantly-ai-mcp",
-      "name": "Instantly.ai MCP",
-      "severity": "medium",
-      "install_type": "npm",
-      "github_url": "https://github.com/bcharleson/instantly-mcp",
-      "stars": 267,
-      "descriptionWords": 63,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No npm package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "fathom-mcp",
@@ -8028,7 +8995,13 @@
       "github_url": "https://github.com/mackenly/mcp-fathom-analytics",
       "stars": 265,
       "descriptionWords": 29,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "nearMisses": [
+        {
+          "package": "mcp-fathom-analytics",
+          "declaredRepo": null
+        }
+      ],
+      "note": "No npm package declares this repo. 1 name(s) exist but belong elsewhere — do NOT write them."
     },
     {
       "slug": "google-workspace-admin-mcp",
@@ -8038,17 +9011,7 @@
       "github_url": "https://github.com/micahyee415/google-workspace-admin-mcp",
       "stars": 256,
       "descriptionWords": 29,
-      "note": "Not resolved this run (outside --resolve budget)."
-    },
-    {
-      "slug": "confluence-cloud-mcp",
-      "name": "Confluence Cloud MCP",
-      "severity": "medium",
-      "install_type": "npm",
-      "github_url": "https://github.com/phuc-nt/confluence-cloud-mcp-server",
-      "stars": 243,
-      "descriptionWords": 23,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No npm package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "threads-mcp",
@@ -8058,7 +9021,13 @@
       "github_url": "https://github.com/baguskto/threads-mcp",
       "stars": 243,
       "descriptionWords": 23,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "nearMisses": [
+        {
+          "package": "threads-mcp",
+          "declaredRepo": null
+        }
+      ],
+      "note": "No npm package declares this repo. 1 name(s) exist but belong elsewhere — do NOT write them."
     },
     {
       "slug": "copy-ai-mcp",
@@ -8068,7 +9037,13 @@
       "github_url": "https://github.com/maoxiaoke/mcp-copy-web-ui",
       "stars": 243,
       "descriptionWords": 50,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "nearMisses": [
+        {
+          "package": "mcp-copy-web-ui",
+          "declaredRepo": null
+        }
+      ],
+      "note": "No npm package declares this repo. 1 name(s) exist but belong elsewhere — do NOT write them."
     },
     {
       "slug": "snomed-mcp",
@@ -8078,7 +9053,7 @@
       "github_url": "https://github.com/eigenbau/mcp-snomed-ct",
       "stars": 243,
       "descriptionWords": 52,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No npm package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "stadia-maps-mcp",
@@ -8088,7 +9063,7 @@
       "github_url": "https://github.com/stadiamaps/stadiamaps-mcp-server-ts",
       "stars": 240,
       "descriptionWords": 21,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No npm package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "supply-chain-mcp-agent",
@@ -8098,7 +9073,7 @@
       "github_url": "https://github.com/Ayancodes2003/claude-mcp-agent-for-supply-chain",
       "stars": 240,
       "descriptionWords": 17,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No npm package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "diffbot-mcp",
@@ -8108,17 +9083,7 @@
       "github_url": "https://github.com/diffbot/diffbot-mcp",
       "stars": 234,
       "descriptionWords": 25,
-      "note": "Not resolved this run (outside --resolve budget)."
-    },
-    {
-      "slug": "box-mcp",
-      "name": "Box MCP",
-      "severity": "medium",
-      "install_type": "npm",
-      "github_url": "https://github.com/hmk/box-mcp-server",
-      "stars": 234,
-      "descriptionWords": 31,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No npm package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "veeam-mcp",
@@ -8128,7 +9093,7 @@
       "github_url": "https://github.com/DevSkillsIT/Skills-MCP-Veeam-Backup-Pro",
       "stars": 234,
       "descriptionWords": 53,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No npm package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "aqara-mcp",
@@ -8138,7 +9103,7 @@
       "github_url": "https://github.com/aqara/aqara-mcp-server",
       "stars": 234,
       "descriptionWords": 51,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No npm package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "squarespace-mcp",
@@ -8148,7 +9113,7 @@
       "github_url": "https://github.com/timncox/squarespace-mcp",
       "stars": 234,
       "descriptionWords": 53,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No npm package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "cdc-data-mcp",
@@ -8158,7 +9123,7 @@
       "github_url": "https://github.com/QuentinCody/cdc-open-data-mcp-server",
       "stars": 234,
       "descriptionWords": 57,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No npm package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "spotify-extended-mcp",
@@ -8168,7 +9133,7 @@
       "github_url": "https://github.com/HappyHangbok/spotify-mcp-extended",
       "stars": 231,
       "descriptionWords": 22,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No npm package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "google-slides-mcp",
@@ -8178,7 +9143,13 @@
       "github_url": "https://github.com/matteoantoci/google-slides-mcp",
       "stars": 227,
       "descriptionWords": 31,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "nearMisses": [
+        {
+          "package": "google-slides-mcp",
+          "declaredRepo": "git+https://github.com/dovstern/google-slides-llm-tools.git"
+        }
+      ],
+      "note": "No npm package declares this repo. 1 name(s) exist but belong elsewhere — do NOT write them."
     },
     {
       "slug": "tmdb-mcp",
@@ -8188,7 +9159,15 @@
       "github_url": "https://github.com/drakonkat/wizzy-mcp-tmdb",
       "stars": 220,
       "descriptionWords": 22,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "resolved": {
+        "package": "wizzy-mcp-tmdb",
+        "registry": "npm",
+        "command": "npx -y wizzy-mcp-tmdb",
+        "declaredRepo": "git+https://github.com/drakonkat/wizzy-mcp-tmdb.git",
+        "executable": false,
+        "entrypoint_unconfirmed": true
+      },
+      "note": "npm package \"wizzy-mcp-tmdb\" belongs to this repo but declares no bin — it is a library, `npx` would error. NOT written."
     },
     {
       "slug": "mcp-sports-real-time",
@@ -8198,7 +9177,7 @@
       "github_url": "https://github.com/reeeeemo/mcp-sports",
       "stars": 220,
       "descriptionWords": 20,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No npm package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "docs-mcp",
@@ -8208,7 +9187,7 @@
       "github_url": "https://github.com/probelabs/docs-mcp",
       "stars": 220,
       "descriptionWords": 17,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No npm package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "google-document-ai-mcp",
@@ -8218,7 +9197,7 @@
       "github_url": "https://github.com/kamataryo/mcp-google-document",
       "stars": 219,
       "descriptionWords": 49,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No npm package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "intercom-mcp",
@@ -8228,7 +9207,7 @@
       "github_url": "https://github.com/intercom/intercom-mcp-server",
       "stars": 218,
       "descriptionWords": 29,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No npm package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "crowdin-mcp",
@@ -8238,17 +9217,7 @@
       "github_url": "https://github.com/Trofimov-Y/crowdin-translation-mcp",
       "stars": 212,
       "descriptionWords": 38,
-      "note": "Not resolved this run (outside --resolve budget)."
-    },
-    {
-      "slug": "national-parks-mcp",
-      "name": "National Parks MCP",
-      "severity": "medium",
-      "install_type": "npm",
-      "github_url": "https://github.com/KyrieTangSheng/mcp-server-nationalparks",
-      "stars": 210,
-      "descriptionWords": 23,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No npm package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "climatiq-mcp-server",
@@ -8258,17 +9227,7 @@
       "github_url": "https://github.com/jagan-shanmugam/climatiq-mcp-server",
       "stars": 210,
       "descriptionWords": 18,
-      "note": "Not resolved this run (outside --resolve budget)."
-    },
-    {
-      "slug": "pypi-mcp",
-      "name": "PyPI",
-      "severity": "medium",
-      "install_type": "pip",
-      "github_url": "https://github.com/loonghao/pypi-query-mcp-server",
-      "stars": 201,
-      "descriptionWords": 17,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No npm package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "batchdata-real-estate-mcp",
@@ -8278,7 +9237,7 @@
       "github_url": "https://github.com/zellerhaus/batchdata-mcp-real-estate",
       "stars": 200,
       "descriptionWords": 18,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No npm package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "infobip-mcp",
@@ -8288,7 +9247,7 @@
       "github_url": "https://github.com/infobip/infobip-openapi-mcp",
       "stars": 198,
       "descriptionWords": 26,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No npm package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "google-forms-mcp",
@@ -8298,7 +9257,13 @@
       "github_url": "https://github.com/matteoantoci/google-forms-mcp",
       "stars": 198,
       "descriptionWords": 32,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "nearMisses": [
+        {
+          "package": "google-forms-mcp",
+          "declaredRepo": null
+        }
+      ],
+      "note": "No npm package declares this repo. 1 name(s) exist but belong elsewhere — do NOT write them."
     },
     {
       "slug": "ibm-quantum-mcp",
@@ -8308,17 +9273,7 @@
       "github_url": "https://github.com/aaronsb/ibm-quantum-mcp",
       "stars": 198,
       "descriptionWords": 47,
-      "note": "Not resolved this run (outside --resolve budget)."
-    },
-    {
-      "slug": "nostr-mcp",
-      "name": "Nostr Protocol MCP",
-      "severity": "medium",
-      "install_type": "npm",
-      "github_url": "https://github.com/AustinKelsay/nostr-mcp-server",
-      "stars": 198,
-      "descriptionWords": 47,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No PyPI package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "tolgee-mcp",
@@ -8328,7 +9283,7 @@
       "github_url": "https://github.com/ytarfa/tolgee-mcp",
       "stars": 198,
       "descriptionWords": 45,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No npm package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "eufy-mcp",
@@ -8338,7 +9293,7 @@
       "github_url": "https://github.com/otacon6530/eufy-security-mcp",
       "stars": 198,
       "descriptionWords": 52,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No npm package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "campaignmonitor-mcp",
@@ -8348,7 +9303,13 @@
       "github_url": "https://github.com/shaunie2fly/Campaign-Monitor-MCP",
       "stars": 198,
       "descriptionWords": 48,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "nearMisses": [
+        {
+          "package": "campaign-monitor-mcp",
+          "declaredRepo": null
+        }
+      ],
+      "note": "No npm package declares this repo. 1 name(s) exist but belong elsewhere — do NOT write them."
     },
     {
       "slug": "loggly-mcp",
@@ -8358,7 +9319,13 @@
       "github_url": "https://github.com/sparrowlogic/loggly-mcp",
       "stars": 198,
       "descriptionWords": 56,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "nearMisses": [
+        {
+          "package": "loggly-mcp",
+          "declaredRepo": null
+        }
+      ],
+      "note": "No npm package declares this repo. 1 name(s) exist but belong elsewhere — do NOT write them."
     },
     {
       "slug": "booking-mcp-server",
@@ -8368,27 +9335,7 @@
       "github_url": "https://github.com/samwang0723/mcp-booking",
       "stars": 190,
       "descriptionWords": 16,
-      "note": "Not resolved this run (outside --resolve budget)."
-    },
-    {
-      "slug": "epa-mcp-server",
-      "name": "EPA Environmental MCP",
-      "severity": "medium",
-      "install_type": "npm",
-      "github_url": "https://github.com/cyanheads/epa-mcp-server",
-      "stars": 190,
-      "descriptionWords": 18,
-      "note": "Not resolved this run (outside --resolve budget)."
-    },
-    {
-      "slug": "thegraph-mcp",
-      "name": "The Graph Protocol MCP",
-      "severity": "medium",
-      "install_type": "npm",
-      "github_url": "https://github.com/shaneholloman/mcp-knowledge-graph",
-      "stars": 189,
-      "descriptionWords": 23,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No npm package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "google-patents-mcp",
@@ -8398,7 +9345,7 @@
       "github_url": "https://github.com/KunihiroS/google-patents-mcp",
       "stars": 189,
       "descriptionWords": 39,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No PyPI package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "rcsb-pdb-mcp",
@@ -8408,7 +9355,7 @@
       "github_url": "https://github.com/pipeworx-io/mcp-rcsb-pdb",
       "stars": 189,
       "descriptionWords": 58,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No PyPI package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "customerio-mcp",
@@ -8418,7 +9365,7 @@
       "github_url": "https://github.com/ChiragPatankar/AI-Customer-Support-Bot--MCP-Server",
       "stars": 187,
       "descriptionWords": 25,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No npm package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "commercetools-mcp",
@@ -8428,17 +9375,7 @@
       "github_url": "https://github.com/jatin-Udasi-Rc/MCP-Server-Commercetools",
       "stars": 187,
       "descriptionWords": 35,
-      "note": "Not resolved this run (outside --resolve budget)."
-    },
-    {
-      "slug": "lokalise-mcp",
-      "name": "Lokalise MCP",
-      "severity": "medium",
-      "install_type": "npm",
-      "github_url": "https://github.com/AbdallahAHO/lokalise-mcp",
-      "stars": 187,
-      "descriptionWords": 40,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No npm package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "zocdoc-mcp",
@@ -8448,7 +9385,7 @@
       "github_url": "https://github.com/markswendsen-code/mcp-zocdoc",
       "stars": 187,
       "descriptionWords": 46,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No npm package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "capsule-crm-mcp",
@@ -8458,7 +9395,7 @@
       "github_url": "https://github.com/hallodom/capsule-crm-mcp-server",
       "stars": 187,
       "descriptionWords": 48,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No npm package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "foursquare",
@@ -8468,17 +9405,7 @@
       "github_url": "https://github.com/foursquare/foursquare-places-mcp",
       "stars": 185,
       "descriptionWords": 23,
-      "note": "Not resolved this run (outside --resolve budget)."
-    },
-    {
-      "slug": "aviationstack-mcp",
-      "name": "AviationStack MCP",
-      "severity": "medium",
-      "install_type": "pip",
-      "github_url": "https://github.com/Pradumnasaraf/aviationstack-mcp",
-      "stars": 185,
-      "descriptionWords": 20,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No npm package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "apache-spark-mcp",
@@ -8488,17 +9415,7 @@
       "github_url": "https://github.com/kubeflow/mcp-apache-spark-history-server",
       "stars": 185,
       "descriptionWords": 20,
-      "note": "Not resolved this run (outside --resolve budget)."
-    },
-    {
-      "slug": "spark-mcp",
-      "name": "Apache Spark MCP",
-      "severity": "medium",
-      "install_type": "pip",
-      "github_url": "https://github.com/kubeflow/mcp-apache-spark-history-server",
-      "stars": 185,
-      "descriptionWords": 54,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No npm package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "youtube-data-mcp",
@@ -8508,7 +9425,7 @@
       "github_url": "https://github.com/youtube/api-samples",
       "stars": 184,
       "descriptionWords": 19,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No PyPI package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "supply-chain-digital-twin-mcp",
@@ -8518,7 +9435,7 @@
       "github_url": "https://github.com/Ryan-Clinton/supply-chain-digital-twin-mcp",
       "stars": 180,
       "descriptionWords": 17,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No npm package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "labelstudio-mcp",
@@ -8528,7 +9445,7 @@
       "github_url": "https://github.com/HumanSignal/label-studio-mcp-server",
       "stars": 178,
       "descriptionWords": 27,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No npm package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "five9-mcp",
@@ -8538,17 +9455,7 @@
       "github_url": "https://github.com/ryanshatz/five9-mcp",
       "stars": 176,
       "descriptionWords": 52,
-      "note": "Not resolved this run (outside --resolve budget)."
-    },
-    {
-      "slug": "postmark",
-      "name": "Postmark",
-      "severity": "medium",
-      "install_type": "npm",
-      "github_url": "https://github.com/ActiveCampaign/postmark-mcp",
-      "stars": 170,
-      "descriptionWords": 20,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No npm package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "openmeteo-mcp",
@@ -8558,17 +9465,13 @@
       "github_url": "https://github.com/open-meteo/open-meteo",
       "stars": 167,
       "descriptionWords": 20,
-      "note": "Not resolved this run (outside --resolve budget)."
-    },
-    {
-      "slug": "teamcity-mcp",
-      "name": "TeamCity MCP",
-      "severity": "medium",
-      "install_type": "npm",
-      "github_url": "https://github.com/Daghis/teamcity-mcp",
-      "stars": 167,
-      "descriptionWords": 28,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "nearMisses": [
+        {
+          "package": "open-meteo",
+          "declaredRepo": "https://github.com/frenck/python-open-meteo/issues"
+        }
+      ],
+      "note": "No PyPI package declares this repo. 1 name(s) exist but belong elsewhere — do NOT write them."
     },
     {
       "slug": "octopus-deploy-mcp",
@@ -8578,7 +9481,7 @@
       "github_url": "https://github.com/armanzeroeight/octopus-deploy-mcp-server",
       "stars": 167,
       "descriptionWords": 27,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No npm package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "hazelcast-mcp",
@@ -8588,7 +9491,7 @@
       "github_url": "https://github.com/bhmortim/Hazelcast-MCP",
       "stars": 167,
       "descriptionWords": 52,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No npm package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "payrix-mcp",
@@ -8598,7 +9501,7 @@
       "github_url": "https://github.com/apimatic/payrix-mcp-server",
       "stars": 167,
       "descriptionWords": 53,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No npm package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "papertrail-mcp",
@@ -8608,7 +9511,7 @@
       "github_url": "https://github.com/rogerchappel/papertrail-mcp",
       "stars": 167,
       "descriptionWords": 58,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No npm package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "make-com-mcp",
@@ -8618,7 +9521,13 @@
       "github_url": "https://github.com/integromat/make-mcp-server",
       "stars": 166,
       "descriptionWords": 24,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "nearMisses": [
+        {
+          "package": "make-mcp-server",
+          "declaredRepo": "git+https://github.com/danishashko/make-mcp.git"
+        }
+      ],
+      "note": "No npm package declares this repo. 1 name(s) exist but belong elsewhere — do NOT write them."
     },
     {
       "slug": "rideshare-comparison-mcp",
@@ -8628,27 +9537,13 @@
       "github_url": "https://github.com/MarceauSolutions/rideshare-comparison-mcp",
       "stars": 165,
       "descriptionWords": 22,
-      "note": "Not resolved this run (outside --resolve budget)."
-    },
-    {
-      "slug": "ipinfo-mcp",
-      "name": "IPInfo MCP",
-      "severity": "medium",
-      "install_type": "pip",
-      "github_url": "https://github.com/briandconnelly/mcp-server-ipinfo",
-      "stars": 165,
-      "descriptionWords": 25,
-      "note": "Not resolved this run (outside --resolve budget)."
-    },
-    {
-      "slug": "knowledge-base-mcp-server",
-      "name": "Knowledge Base MCP",
-      "severity": "medium",
-      "install_type": "npm",
-      "github_url": "https://github.com/jeanibarz/knowledge-base-mcp-server",
-      "stars": 165,
-      "descriptionWords": 18,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "nearMisses": [
+        {
+          "package": "rideshare-comparison-mcp",
+          "declaredRepo": "https://github.com/wmarceau/rideshare-comparison-mcp"
+        }
+      ],
+      "note": "No PyPI package declares this repo. 1 name(s) exist but belong elsewhere — do NOT write them."
     },
     {
       "slug": "glean",
@@ -8658,7 +9553,13 @@
       "github_url": "https://github.com/gleanwork/remote-mcp-server",
       "stars": 164,
       "descriptionWords": 259,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "nearMisses": [
+        {
+          "package": "remote-mcp-server",
+          "declaredRepo": null
+        }
+      ],
+      "note": "No npm package declares this repo. 1 name(s) exist but belong elsewhere — do NOT write them."
     },
     {
       "slug": "semantic-scholar-mcp",
@@ -8668,7 +9569,7 @@
       "github_url": "https://github.com/zongmin-yu/semantic-scholar-fastmcp-mcp-server",
       "stars": 163,
       "descriptionWords": 25,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No npm package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "weaviate-mcp",
@@ -8678,7 +9579,7 @@
       "github_url": "https://github.com/weaviate/mcp-server-weaviate",
       "stars": 162,
       "descriptionWords": 26,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No PyPI package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "logrocket-mcp",
@@ -8688,7 +9589,7 @@
       "github_url": "https://github.com/patricklafrance/logrocket-mcp-poc",
       "stars": 161,
       "descriptionWords": 32,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No npm package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "nasa-open-apis-mcp",
@@ -8698,7 +9599,13 @@
       "github_url": "https://github.com/nasa/api-docs",
       "stars": 156,
       "descriptionWords": 23,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "nearMisses": [
+        {
+          "package": "api-docs",
+          "declaredRepo": "https://github.com/lyonyang/django-api-docs"
+        }
+      ],
+      "note": "No PyPI package declares this repo. 1 name(s) exist but belong elsewhere — do NOT write them."
     },
     {
       "slug": "mastodon-mcp",
@@ -8708,7 +9615,13 @@
       "github_url": "https://github.com/The-Focus-AI/mastodon-mcp",
       "stars": 156,
       "descriptionWords": 24,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "nearMisses": [
+        {
+          "package": "mastodon-mcp",
+          "declaredRepo": null
+        }
+      ],
+      "note": "No npm package declares this repo. 1 name(s) exist but belong elsewhere — do NOT write them."
     },
     {
       "slug": "solace-mcp",
@@ -8718,7 +9631,7 @@
       "github_url": "https://github.com/solacese/solace-pubsub-mcp",
       "stars": 156,
       "descriptionWords": 56,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No npm package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "weblate-mcp",
@@ -8728,7 +9641,7 @@
       "github_url": "https://github.com/mmntm/weblate-mcp",
       "stars": 156,
       "descriptionWords": 41,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No PyPI package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "commvault-mcp",
@@ -8738,7 +9651,7 @@
       "github_url": "https://github.com/Commvault/commvault-mcp-server",
       "stars": 156,
       "descriptionWords": 51,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No PyPI package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "ordergroove-mcp",
@@ -8748,17 +9661,7 @@
       "github_url": "https://github.com/IFAKA/ordergroove-mcp",
       "stars": 156,
       "descriptionWords": 52,
-      "note": "Not resolved this run (outside --resolve budget)."
-    },
-    {
-      "slug": "hledger-mcp",
-      "name": "hledger MCP",
-      "severity": "medium",
-      "install_type": "npm",
-      "github_url": "https://github.com/iiAtlas/hledger-mcp",
-      "stars": 155,
-      "descriptionWords": 23,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No npm package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "patreon-mcp",
@@ -8768,7 +9671,7 @@
       "github_url": "https://github.com/KyuRish/patreon-mcp-server",
       "stars": 153,
       "descriptionWords": 32,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No npm package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "federal-register-mcp",
@@ -8778,7 +9681,13 @@
       "github_url": "https://github.com/Audrent-hq/federal-register-mcp",
       "stars": 153,
       "descriptionWords": 36,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "nearMisses": [
+        {
+          "package": "federal-register-mcp",
+          "declaredRepo": null
+        }
+      ],
+      "note": "No npm package declares this repo. 1 name(s) exist but belong elsewhere — do NOT write them."
     },
     {
       "slug": "render-mcp",
@@ -8788,7 +9697,17 @@
       "github_url": "https://github.com/render-oss/render-mcp-server",
       "stars": 152,
       "descriptionWords": 24,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "nearMisses": [
+        {
+          "package": "render-mcp-server",
+          "declaredRepo": null
+        },
+        {
+          "package": "mcp-server-render",
+          "declaredRepo": "git+https://github.com/hlos-ai/mcp-servers.git"
+        }
+      ],
+      "note": "No npm package declares this repo. 2 name(s) exist but belong elsewhere — do NOT write them."
     },
     {
       "slug": "fitness-mcp-server",
@@ -8798,17 +9717,7 @@
       "github_url": "https://github.com/ewongz/fitness-mcp-server",
       "stars": 150,
       "descriptionWords": 18,
-      "note": "Not resolved this run (outside --resolve budget)."
-    },
-    {
-      "slug": "discogs-mcp",
-      "name": "Discogs MCP",
-      "severity": "medium",
-      "install_type": "npm",
-      "github_url": "https://github.com/cswkim/discogs-mcp-server",
-      "stars": 145,
-      "descriptionWords": 23,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No npm package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "searchapi-mcp-travel",
@@ -8818,7 +9727,13 @@
       "github_url": "https://github.com/RikGmee/searchAPI-mcp",
       "stars": 145,
       "descriptionWords": 16,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "nearMisses": [
+        {
+          "package": "searchapi-mcp",
+          "declaredRepo": "git+https://github.com/lianshuang-photo/searchapi-mcp-nodejs.git"
+        }
+      ],
+      "note": "No npm package declares this repo. 1 name(s) exist but belong elsewhere — do NOT write them."
     },
     {
       "slug": "drupal-mcp",
@@ -8828,7 +9743,7 @@
       "github_url": "https://github.com/Omedia/mcp-server-drupal",
       "stars": 145,
       "descriptionWords": 29,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No npm package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "brandfolder-mcp",
@@ -8838,7 +9753,7 @@
       "github_url": "https://github.com/moiso97barrantes-ship-it/Brandfolder-MCP",
       "stars": 145,
       "descriptionWords": 50,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No npm package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "edgedb-mcp",
@@ -8848,7 +9763,7 @@
       "github_url": "https://github.com/edgedb/edgedb-python",
       "stars": 143,
       "descriptionWords": 19,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No PyPI package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "bugsnag-mcp",
@@ -8858,7 +9773,7 @@
       "github_url": "https://github.com/tgeselle/bugsnag-mcp",
       "stars": 143,
       "descriptionWords": 31,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No npm package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "smartling-mcp",
@@ -8868,7 +9783,7 @@
       "github_url": "https://github.com/Smartling/smartling-cli-mcp",
       "stars": 143,
       "descriptionWords": 39,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No PyPI package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "sonicwall-mcp",
@@ -8878,7 +9793,7 @@
       "github_url": "https://github.com/gensecaihq/Sonicwall-MCP-Server",
       "stars": 143,
       "descriptionWords": 52,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No npm package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "petfinder-mcp",
@@ -8888,7 +9803,7 @@
       "github_url": "https://github.com/mattlgroff/petfinder-mcp-server",
       "stars": 143,
       "descriptionWords": 55,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No npm package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "carvana-mcp",
@@ -8898,17 +9813,7 @@
       "github_url": "https://github.com/markswendsen-code/mcp-carvana",
       "stars": 143,
       "descriptionWords": 60,
-      "note": "Not resolved this run (outside --resolve budget)."
-    },
-    {
-      "slug": "copilot-money-mcp",
-      "name": "Copilot Money MCP",
-      "severity": "medium",
-      "install_type": "npm",
-      "github_url": "https://github.com/ignaciohermosillacornejo/copilot-money-mcp",
-      "stars": 142,
-      "descriptionWords": 52,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No npm package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "mcp-provenance-monitor",
@@ -8918,7 +9823,7 @@
       "github_url": "https://github.com/letmaik/mcp-provenance-monitor",
       "stars": 140,
       "descriptionWords": 18,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No npm package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "zwave-js-mcp",
@@ -8928,7 +9833,7 @@
       "github_url": "https://github.com/jiegec/waveform-mcp",
       "stars": 138,
       "descriptionWords": 38,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No npm package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "adobe-express-mcp",
@@ -8938,7 +9843,7 @@
       "github_url": "https://github.com/Fardeen26/adobe-express-addon-mcp",
       "stars": 134,
       "descriptionWords": 25,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No npm package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "mattermost-mcp",
@@ -8948,7 +9853,7 @@
       "github_url": "https://github.com/pvev/mattermost-mcp",
       "stars": 134,
       "descriptionWords": 18,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No npm package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "bamboo-ci-mcp",
@@ -8958,7 +9863,7 @@
       "github_url": "https://github.com/norus/atlassian-bamboo-mcp",
       "stars": 134,
       "descriptionWords": 28,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No npm package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "clicksend-mcp",
@@ -8968,7 +9873,13 @@
       "github_url": "https://github.com/ClickSend/clicksend-mcp-server",
       "stars": 134,
       "descriptionWords": 27,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "nearMisses": [
+        {
+          "package": "@clicksend/clicksend-mcp-server",
+          "declaredRepo": null
+        }
+      ],
+      "note": "No npm package declares this repo. 1 name(s) exist but belong elsewhere — do NOT write them."
     },
     {
       "slug": "mx-financial-mcp",
@@ -8978,7 +9889,7 @@
       "github_url": "https://github.com/Samarth2001/Financial-Data-MCP-Server",
       "stars": 134,
       "descriptionWords": 33,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No npm package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "zerto-mcp",
@@ -8988,7 +9899,7 @@
       "github_url": "https://github.com/prakashkumar-devarajan/zerto-jenkins-mcp-server",
       "stars": 132,
       "descriptionWords": 52,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No npm package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "rollbar-mcp",
@@ -8998,7 +9909,7 @@
       "github_url": "https://github.com/rollbar/rollbar-mcp-server",
       "stars": 128,
       "descriptionWords": 28,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No npm package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "crypto-news-mcp",
@@ -9008,7 +9919,7 @@
       "github_url": "https://github.com/kukapay/crypto-news-mcp",
       "stars": 120,
       "descriptionWords": 18,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No npm package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "deepnote-mcp",
@@ -9018,7 +9929,7 @@
       "github_url": "https://github.com/ujjwalredd/deepnote-mcp",
       "stars": 119,
       "descriptionWords": 30,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No npm package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "bitget-mcp",
@@ -9028,7 +9939,7 @@
       "github_url": "https://github.com/bitget-wallet-ai-lab/bitget-wallet-mcp",
       "stars": 118,
       "descriptionWords": 32,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No npm package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "clickup-mcp",
@@ -9038,7 +9949,17 @@
       "github_url": "https://github.com/mikepsinn/clickup-mcp-server",
       "stars": 112,
       "descriptionWords": 15,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "nearMisses": [
+        {
+          "package": "clickup-mcp-server",
+          "declaredRepo": "git+https://github.com/nsxdavid/clickup-mcp-server.git"
+        },
+        {
+          "package": "mcp-server-clickup",
+          "declaredRepo": "git+https://github.com/hlos-ai/mcp-servers.git"
+        }
+      ],
+      "note": "No npm package declares this repo. 2 name(s) exist but belong elsewhere — do NOT write them."
     },
     {
       "slug": "rocket-chat-mcp",
@@ -9048,7 +9969,7 @@
       "github_url": "https://github.com/Unknown-guy-369/Minimal-mcp-server-RocketChat",
       "stars": 112,
       "descriptionWords": 18,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No npm package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "zendesk-mcp",
@@ -9058,7 +9979,13 @@
       "github_url": "https://github.com/reminia/zendesk-mcp-server",
       "stars": 112,
       "descriptionWords": 49,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "nearMisses": [
+        {
+          "package": "zendesk-mcp-server",
+          "declaredRepo": null
+        }
+      ],
+      "note": "No npm package declares this repo. 1 name(s) exist but belong elsewhere — do NOT write them."
     },
     {
       "slug": "headspace-mcp",
@@ -9068,7 +9995,7 @@
       "github_url": "https://github.com/markswendsen-code/mcp-headspace",
       "stars": 112,
       "descriptionWords": 51,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No npm package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "crypto-portfolio-mcp",
@@ -9078,7 +10005,7 @@
       "github_url": "https://github.com/kukapay/crypto-portfolio-mcp",
       "stars": 110,
       "descriptionWords": 15,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No npm package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "twilio-mcp",
@@ -9088,7 +10015,13 @@
       "github_url": "https://github.com/twilio-labs/mcp",
       "stars": 108,
       "descriptionWords": 22,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "nearMisses": [
+        {
+          "package": "mcp",
+          "declaredRepo": null
+        }
+      ],
+      "note": "No npm package declares this repo. 1 name(s) exist but belong elsewhere — do NOT write them."
     },
     {
       "slug": "npi-registry-mcp",
@@ -9098,17 +10031,7 @@
       "github_url": "https://github.com/eliotk/npi-registry-mcp-server",
       "stars": 108,
       "descriptionWords": 32,
-      "note": "Not resolved this run (outside --resolve budget)."
-    },
-    {
-      "slug": "replicate",
-      "name": "Replicate Flux MCP",
-      "severity": "medium",
-      "install_type": "npm",
-      "github_url": "https://github.com/awkoy/replicate-flux-mcp",
-      "stars": 105,
-      "descriptionWords": 117,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No npm package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "square",
@@ -9118,17 +10041,17 @@
       "github_url": "https://github.com/square/square-mcp-server",
       "stars": 104,
       "descriptionWords": 20,
-      "note": "Not resolved this run (outside --resolve budget)."
-    },
-    {
-      "slug": "genesys-cloud-mcp",
-      "name": "Genesys Cloud MCP",
-      "severity": "medium",
-      "install_type": "npm",
-      "github_url": "https://github.com/MakingChatbots/genesys-cloud-mcp-server",
-      "stars": 102,
-      "descriptionWords": 28,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "nearMisses": [
+        {
+          "package": "square-mcp-server",
+          "declaredRepo": null
+        },
+        {
+          "package": "mcp-server-square",
+          "declaredRepo": "git+https://github.com/hlos-ai/mcp-servers.git"
+        }
+      ],
+      "note": "No npm package declares this repo. 2 name(s) exist but belong elsewhere — do NOT write them."
     },
     {
       "slug": "oxylabs-mcp",
@@ -9138,17 +10061,7 @@
       "github_url": "https://github.com/oxylabs/oxylabs-mcp",
       "stars": 101,
       "descriptionWords": 27,
-      "note": "Not resolved this run (outside --resolve budget)."
-    },
-    {
-      "slug": "zenoti-mcp",
-      "name": "Zenoti MCP",
-      "severity": "medium",
-      "install_type": "npm",
-      "github_url": "https://github.com/tacit-code/zenoti-mcp-server",
-      "stars": 98,
-      "descriptionWords": 24,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No npm package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "snaplogic-mcp",
@@ -9158,7 +10071,7 @@
       "github_url": "https://github.com/ashish-d-d/HRMS-Snaplogic-MCP",
       "stars": 98,
       "descriptionWords": 26,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No npm package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "rover-pets-mcp",
@@ -9168,7 +10081,7 @@
       "github_url": "https://github.com/redhat-community-ai-tools/rover-mcp",
       "stars": 97,
       "descriptionWords": 56,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No npm package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "crypto-projects-mcp",
@@ -9178,7 +10091,7 @@
       "github_url": "https://github.com/kukapay/crypto-projects-mcp",
       "stars": 95,
       "descriptionWords": 16,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No npm package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "monday-com-mcp",
@@ -9188,7 +10101,15 @@
       "github_url": "https://github.com/mondaycom/monday-sdk-js",
       "stars": 95,
       "descriptionWords": 14,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "resolved": {
+        "package": "monday-sdk-js",
+        "registry": "npm",
+        "command": "npx -y monday-sdk-js",
+        "declaredRepo": "git+https://github.com/mondaycom/monday-sdk-js.git",
+        "executable": false,
+        "entrypoint_unconfirmed": true
+      },
+      "note": "npm package \"monday-sdk-js\" belongs to this repo but declares no bin — it is a library, `npx` would error. NOT written."
     },
     {
       "slug": "carbon-interface-mcp",
@@ -9198,7 +10119,7 @@
       "github_url": "https://github.com/pipeworx-io/mcp-carbon-interface",
       "stars": 95,
       "descriptionWords": 22,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No npm package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "databricks",
@@ -9208,7 +10129,13 @@
       "github_url": "https://github.com/databrickslabs/mcp",
       "stars": 94,
       "descriptionWords": 283,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "nearMisses": [
+        {
+          "package": "mcp",
+          "declaredRepo": "https://github.com/modelcontextprotocol/python-sdk/issues"
+        }
+      ],
+      "note": "No PyPI package declares this repo. 1 name(s) exist but belong elsewhere — do NOT write them."
     },
     {
       "slug": "linkedin-api-mcp",
@@ -9218,7 +10145,7 @@
       "github_url": "https://github.com/1036007003-wq/linkedin-marketing-mcp",
       "stars": 93,
       "descriptionWords": 17,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No PyPI package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "calm-mcp",
@@ -9228,7 +10155,7 @@
       "github_url": "https://github.com/fr0ster/mcp-calm-server",
       "stars": 93,
       "descriptionWords": 48,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No npm package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "coinbase-mcp",
@@ -9238,7 +10165,15 @@
       "github_url": "https://github.com/coinbase/coinbase-advanced-py",
       "stars": 92,
       "descriptionWords": 14,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "resolved": {
+        "package": "coinbase-advanced-py",
+        "registry": "PyPI",
+        "command": "uvx coinbase-advanced-py",
+        "declaredRepo": "https://github.com/coinbase/coinbase-advanced-py",
+        "executable": false,
+        "entrypoint_unconfirmed": true
+      },
+      "note": "PyPI package \"coinbase-advanced-py\" belongs to this repo but its wheel declares no [console_scripts] (or no readable wheel exists) — `uvx` would error. NOT written."
     },
     {
       "slug": "mapbox-mcp",
@@ -9248,7 +10183,7 @@
       "github_url": "https://github.com/mapbox/mapbox-sdk-py",
       "stars": 89,
       "descriptionWords": 13,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No PyPI package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "azure-ml-mcp",
@@ -9258,7 +10193,7 @@
       "github_url": "https://github.com/Azure/azure-sdk-for-python",
       "stars": 89,
       "descriptionWords": 15,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No PyPI package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "nba-stats-mcp",
@@ -9268,7 +10203,15 @@
       "github_url": "https://github.com/swar/nba_api",
       "stars": 89,
       "descriptionWords": 22,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "resolved": {
+        "package": "nba_api",
+        "registry": "PyPI",
+        "command": "uvx nba_api",
+        "declaredRepo": "https://github.com/swar/nba_api/issues",
+        "executable": false,
+        "entrypoint_unconfirmed": true
+      },
+      "note": "PyPI package \"nba_api\" belongs to this repo but its wheel declares no [console_scripts] (or no readable wheel exists) — `uvx` would error. NOT written."
     },
     {
       "slug": "drone-ci-mcp",
@@ -9278,7 +10221,13 @@
       "github_url": "https://github.com/0xKoda/drone-mcp",
       "stars": 89,
       "descriptionWords": 24,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "nearMisses": [
+        {
+          "package": "drone-mcp",
+          "declaredRepo": "git+https://github.com/dvd-rsnw/drone-mcp.git"
+        }
+      ],
+      "note": "No npm package declares this repo. 1 name(s) exist but belong elsewhere — do NOT write them."
     },
     {
       "slug": "talkdesk-mcp",
@@ -9288,7 +10237,7 @@
       "github_url": "https://github.com/reagsmcc/talkdesk-mcp-server",
       "stars": 89,
       "descriptionWords": 31,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No npm package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "farmos-mcp",
@@ -9298,7 +10247,7 @@
       "github_url": "https://github.com/Teja2205/farmos-mcp",
       "stars": 88,
       "descriptionWords": 21,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No PyPI package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "lemmy-mcp",
@@ -9308,7 +10257,7 @@
       "github_url": "https://github.com/pipeworx-io/mcp-lemmy",
       "stars": 87,
       "descriptionWords": 25,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No npm package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "craft-cms-mcp",
@@ -9318,7 +10267,7 @@
       "github_url": "https://github.com/brainwhocodes/crafter-cms-mcp",
       "stars": 87,
       "descriptionWords": 29,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No npm package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "crypto-stocks-mcp",
@@ -9328,7 +10277,7 @@
       "github_url": "https://github.com/kukapay/crypto-stocks-mcp",
       "stars": 85,
       "descriptionWords": 15,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No npm package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "xero-mcp",
@@ -9338,7 +10287,15 @@
       "github_url": "https://github.com/XeroAPI/xero-node",
       "stars": 84,
       "descriptionWords": 13,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "resolved": {
+        "package": "xero-node",
+        "registry": "npm",
+        "command": "npx -y xero-node",
+        "declaredRepo": "git://github.com/XeroAPI/xero-node.git",
+        "executable": false,
+        "entrypoint_unconfirmed": true
+      },
+      "note": "npm package \"xero-node\" belongs to this repo but declares no bin — it is a library, `npx` would error. NOT written."
     },
     {
       "slug": "pipedrive-mcp",
@@ -9348,7 +10305,13 @@
       "github_url": "https://github.com/pipedrive/client-nodejs",
       "stars": 81,
       "descriptionWords": 14,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "nearMisses": [
+        {
+          "package": "client-nodejs",
+          "declaredRepo": null
+        }
+      ],
+      "note": "No npm package declares this repo. 1 name(s) exist but belong elsewhere — do NOT write them."
     },
     {
       "slug": "chess-mcp",
@@ -9358,7 +10321,13 @@
       "github_url": "https://github.com/pab1it0/chess-mcp",
       "stars": 80,
       "descriptionWords": 23,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "nearMisses": [
+        {
+          "package": "chess-mcp",
+          "declaredRepo": "https://github.com/yourusername/chess-mcp"
+        }
+      ],
+      "note": "No PyPI package declares this repo. 1 name(s) exist but belong elsewhere — do NOT write them."
     },
     {
       "slug": "openthread-mcp",
@@ -9368,7 +10337,7 @@
       "github_url": "https://github.com/swannman/openthread-mcp",
       "stars": 78,
       "descriptionWords": 30,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No PyPI package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "fresha-mcp",
@@ -9378,17 +10347,13 @@
       "github_url": "https://github.com/199-mcp/mcp-fresha",
       "stars": 76,
       "descriptionWords": 26,
-      "note": "Not resolved this run (outside --resolve budget)."
-    },
-    {
-      "slug": "celigo-mcp",
-      "name": "Celigo MCP",
-      "severity": "medium",
-      "install_type": "npm",
-      "github_url": "https://github.com/ilyassesalama/celigo-mcp",
-      "stars": 76,
-      "descriptionWords": 24,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "nearMisses": [
+        {
+          "package": "mcp-fresha",
+          "declaredRepo": "git+https://github.com/199-biotechnologies/mcp-fresha.git"
+        }
+      ],
+      "note": "No npm package declares this repo. 1 name(s) exist but belong elsewhere — do NOT write them."
     },
     {
       "slug": "betterhelp-mcp",
@@ -9398,7 +10363,7 @@
       "github_url": "https://github.com/markswendsen-code/mcp-betterhelp",
       "stars": 76,
       "descriptionWords": 45,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No npm package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "crypto-feargreed-mcp",
@@ -9408,7 +10373,7 @@
       "github_url": "https://github.com/kukapay/crypto-feargreed-mcp",
       "stars": 75,
       "descriptionWords": 17,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No npm package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "pagerduty-mcp",
@@ -9418,7 +10383,7 @@
       "github_url": "https://github.com/PagerDuty/pagerduty-mcp-server",
       "stars": 74,
       "descriptionWords": 19,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No npm package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "aws-iot-mcp",
@@ -9428,7 +10393,7 @@
       "github_url": "https://github.com/aws/aws-iot-device-sdk-python-v2",
       "stars": 74,
       "descriptionWords": 15,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No PyPI package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "google-classroom-mcp",
@@ -9438,7 +10403,7 @@
       "github_url": "https://github.com/faizan45640/google-classroom-mcp-server",
       "stars": 74,
       "descriptionWords": 18,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No npm package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "aws-bedrock-mcp",
@@ -9448,7 +10413,7 @@
       "github_url": "https://github.com/davidshtian/MCP-on-AWS-Bedrock",
       "stars": 73,
       "descriptionWords": 21,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No PyPI package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "sanity",
@@ -9458,7 +10423,7 @@
       "github_url": "https://github.com/sanity-io/sanity-mcp-server",
       "stars": 72,
       "descriptionWords": 21,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No npm package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "statamic-mcp",
@@ -9468,17 +10433,7 @@
       "github_url": "https://github.com/cboxdk/statamic-mcp",
       "stars": 72,
       "descriptionWords": 30,
-      "note": "Not resolved this run (outside --resolve budget)."
-    },
-    {
-      "slug": "codecov-mcp",
-      "name": "Codecov MCP",
-      "severity": "medium",
-      "install_type": "npm",
-      "github_url": "https://github.com/egulatee/mcp-server-codecov",
-      "stars": 71,
-      "descriptionWords": 22,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No npm package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "azure-iot-mcp",
@@ -9488,7 +10443,7 @@
       "github_url": "https://github.com/Azure/azure-iot-sdk-python",
       "stars": 68,
       "descriptionWords": 14,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No PyPI package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "smartthings-mcp",
@@ -9498,7 +10453,7 @@
       "github_url": "https://github.com/SmartThingsCommunity/smartthings-core-sdk",
       "stars": 67,
       "descriptionWords": 12,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No npm package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "freshdesk-mcp",
@@ -9508,7 +10463,7 @@
       "github_url": "https://github.com/effytech/freshdesk_mcp",
       "stars": 66,
       "descriptionWords": 29,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No npm package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "sonarcloud-mcp",
@@ -9518,7 +10473,7 @@
       "github_url": "https://github.com/dozzman/sonarcloud-mcp",
       "stars": 63,
       "descriptionWords": 23,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No npm package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "cassandra-mcp",
@@ -9528,7 +10483,7 @@
       "github_url": "https://github.com/CDataSoftware/apache-cassandra-mcp-server-by-cdata",
       "stars": 62,
       "descriptionWords": 19,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No npm package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "epa-envirofacts-mcp",
@@ -9538,7 +10493,7 @@
       "github_url": "https://github.com/pipeworx-io/mcp-epa-envirofacts",
       "stars": 62,
       "descriptionWords": 23,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No npm package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "financial-modeling-prep-mcp",
@@ -9548,7 +10503,13 @@
       "github_url": "https://github.com/antoinevulcain/Financial-Modeling-Prep-API",
       "stars": 61,
       "descriptionWords": 20,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "nearMisses": [
+        {
+          "package": "financial-modeling-prep-api",
+          "declaredRepo": "https://github.com/BillSchumacher/financial-modeling-prep/issues"
+        }
+      ],
+      "note": "No PyPI package declares this repo. 1 name(s) exist but belong elsewhere — do NOT write them."
     },
     {
       "slug": "contentful",
@@ -9558,7 +10519,7 @@
       "github_url": "https://github.com/contentful/contentful-mcp-server",
       "stars": 58,
       "descriptionWords": 22,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No npm package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "dexcom-mcp",
@@ -9568,7 +10529,7 @@
       "github_url": "https://github.com/ciprix-yp/dexcom-cgm-mcp",
       "stars": 58,
       "descriptionWords": 24,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No npm package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "contentful-mcp",
@@ -9578,7 +10539,7 @@
       "github_url": "https://github.com/contentful/contentful-mcp-server",
       "stars": 58,
       "descriptionWords": 27,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No npm package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "brevo-mcp",
@@ -9588,7 +10549,7 @@
       "github_url": "https://github.com/getbrevo/brevo-node",
       "stars": 57,
       "descriptionWords": 13,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No npm package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "mlb-statsapi-mcp",
@@ -9598,7 +10559,15 @@
       "github_url": "https://github.com/toddrob99/MLB-StatsAPI",
       "stars": 54,
       "descriptionWords": 22,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "resolved": {
+        "package": "mlb-statsapi",
+        "registry": "PyPI",
+        "command": "uvx mlb-statsapi",
+        "declaredRepo": "https://github.com/toddrob99/MLB-StatsAPI",
+        "executable": false,
+        "entrypoint_unconfirmed": true
+      },
+      "note": "PyPI package \"mlb-statsapi\" belongs to this repo but its wheel declares no [console_scripts] (or no readable wheel exists) — `uvx` would error. NOT written."
     },
     {
       "slug": "sap-business-one-mcp",
@@ -9608,7 +10577,7 @@
       "github_url": "https://github.com/CDataSoftware/sap-business-one-mcp-server-by-cdata",
       "stars": 54,
       "descriptionWords": 23,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No npm package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "baremetrics-mcp",
@@ -9618,7 +10587,7 @@
       "github_url": "https://github.com/jonnilundy/mcp-baremetrics",
       "stars": 54,
       "descriptionWords": 21,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No npm package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "google-cloud-iot-mcp",
@@ -9628,7 +10597,7 @@
       "github_url": "https://github.com/googleapis/python-iot",
       "stars": 53,
       "descriptionWords": 16,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No PyPI package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "netlify-mcp",
@@ -9638,7 +10607,13 @@
       "github_url": "https://github.com/netlify/netlify-mcp",
       "stars": 53,
       "descriptionWords": 56,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "nearMisses": [
+        {
+          "package": "netlify-mcp",
+          "declaredRepo": null
+        }
+      ],
+      "note": "No npm package declares this repo. 1 name(s) exist but belong elsewhere — do NOT write them."
     },
     {
       "slug": "carto-geospatial-mcp",
@@ -9648,7 +10623,7 @@
       "github_url": "https://github.com/CartoDB/carto-python",
       "stars": 52,
       "descriptionWords": 17,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No PyPI package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "patents-mcp",
@@ -9658,7 +10633,7 @@
       "github_url": "https://github.com/corey-coders/mcp-uspto-patents",
       "stars": 49,
       "descriptionWords": 21,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No npm package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "prefect",
@@ -9668,7 +10643,13 @@
       "github_url": "https://github.com/PrefectHQ/prefect-mcp-server",
       "stars": 48,
       "descriptionWords": 21,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "nearMisses": [
+        {
+          "package": "prefect-mcp-server",
+          "declaredRepo": "https://github.com/fortunto2/prefect-mcp-server"
+        }
+      ],
+      "note": "No PyPI package declares this repo. 1 name(s) exist but belong elsewhere — do NOT write them."
     },
     {
       "slug": "gusto-mcp",
@@ -9678,7 +10659,7 @@
       "github_url": "https://github.com/Savinda96/gusto-mcp",
       "stars": 44,
       "descriptionWords": 18,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No npm package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "here-maps-mcp",
@@ -9688,7 +10669,13 @@
       "github_url": "https://github.com/heremaps/here-map-widget-for-jupyter",
       "stars": 43,
       "descriptionWords": 13,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "nearMisses": [
+        {
+          "package": "here-map-widget-for-jupyter",
+          "declaredRepo": null
+        }
+      ],
+      "note": "No PyPI package declares this repo. 1 name(s) exist but belong elsewhere — do NOT write them."
     },
     {
       "slug": "wechat-work-mcp",
@@ -9698,7 +10685,7 @@
       "github_url": "https://github.com/sbzhu/weworkapi_python",
       "stars": 43,
       "descriptionWords": 18,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No PyPI package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "infor-mcp",
@@ -9708,7 +10695,7 @@
       "github_url": "https://github.com/clipham/infor-cloudsuite-mcp",
       "stars": 43,
       "descriptionWords": 21,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No npm package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "groq",
@@ -9718,7 +10705,17 @@
       "github_url": "https://github.com/groq/groq-mcp-server",
       "stars": 42,
       "descriptionWords": 22,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "nearMisses": [
+        {
+          "package": "groq-mcp-server",
+          "declaredRepo": null
+        },
+        {
+          "package": "mcp-server-groq",
+          "declaredRepo": "git+https://github.com/hlos-ai/mcp-servers.git"
+        }
+      ],
+      "note": "No npm package declares this repo. 2 name(s) exist but belong elsewhere — do NOT write them."
     },
     {
       "slug": "aws-healthlake-mcp",
@@ -9728,7 +10725,7 @@
       "github_url": "https://github.com/Adiking117/aws-healthlake-mcp",
       "stars": 42,
       "descriptionWords": 20,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No npm package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "weather-gov-mcp",
@@ -9738,7 +10735,7 @@
       "github_url": "https://github.com/weather-gov/api",
       "stars": 41,
       "descriptionWords": 17,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No PyPI package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "expensify-mcp",
@@ -9748,7 +10745,7 @@
       "github_url": "https://github.com/Expensify/Expensify.cash",
       "stars": 39,
       "descriptionWords": 11,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No npm package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "hl7-fhir-mcp",
@@ -9758,7 +10755,13 @@
       "github_url": "https://github.com/CSOAI-ORG/hl7-fhir-bridge-mcp",
       "stars": 38,
       "descriptionWords": 15,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "nearMisses": [
+        {
+          "package": "hl7-fhir-bridge-mcp",
+          "declaredRepo": null
+        }
+      ],
+      "note": "No PyPI package declares this repo. 1 name(s) exist but belong elsewhere — do NOT write them."
     },
     {
       "slug": "successfactors-mcp",
@@ -9768,7 +10771,7 @@
       "github_url": "https://github.com/CDataSoftware/sap-successfactors-mcp-server-by-cdata",
       "stars": 37,
       "descriptionWords": 14,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No npm package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "influxdb",
@@ -9778,7 +10781,7 @@
       "github_url": "https://github.com/influxdata/influxdb3_mcp_server",
       "stars": 36,
       "descriptionWords": 20,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No npm package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "particle-mcp",
@@ -9788,7 +10791,15 @@
       "github_url": "https://github.com/particle-iot/particle-api-js",
       "stars": 35,
       "descriptionWords": 14,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "resolved": {
+        "package": "particle-api-js",
+        "registry": "npm",
+        "command": "npx -y particle-api-js",
+        "declaredRepo": "git+https://github.com/particle-iot/particle-api-js.git",
+        "executable": false,
+        "entrypoint_unconfirmed": true
+      },
+      "note": "npm package \"particle-api-js\" belongs to this repo but declares no bin — it is a library, `npx` would error. NOT written."
     },
     {
       "slug": "twilio-video-mcp",
@@ -9798,7 +10809,13 @@
       "github_url": "https://github.com/twilio/twilio-node",
       "stars": 34,
       "descriptionWords": 12,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "nearMisses": [
+        {
+          "package": "twilio-node",
+          "declaredRepo": null
+        }
+      ],
+      "note": "No npm package declares this repo. 1 name(s) exist but belong elsewhere — do NOT write them."
     },
     {
       "slug": "bamboohr-mcp",
@@ -9808,17 +10825,7 @@
       "github_url": "https://github.com/acalder-techpm/bamboohr-mcp",
       "stars": 33,
       "descriptionWords": 15,
-      "note": "Not resolved this run (outside --resolve budget)."
-    },
-    {
-      "slug": "hacker-news-mcp",
-      "name": "Hacker News MCP",
-      "severity": "medium",
-      "install_type": "npm",
-      "github_url": "https://github.com/paabloLC/mcp-hacker-news",
-      "stars": 33,
-      "descriptionWords": 30,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No npm package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "weatherapi-mcp",
@@ -9828,7 +10835,7 @@
       "github_url": "https://github.com/weatherapicom/python",
       "stars": 32,
       "descriptionWords": 20,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No PyPI package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "zoho-projects-mcp",
@@ -9838,7 +10845,7 @@
       "github_url": "https://github.com/qpiai/zoho-projects-mcp",
       "stars": 31,
       "descriptionWords": 13,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No npm package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "zwave-mcp",
@@ -9848,7 +10855,7 @@
       "github_url": "https://github.com/zwave-js/node-zwave-js",
       "stars": 29,
       "descriptionWords": 15,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No npm package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "deel-mcp",
@@ -9858,7 +10865,7 @@
       "github_url": "https://github.com/BusyBee3333/deel-mcp-2026-complete",
       "stars": 28,
       "descriptionWords": 15,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No npm package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "accuweather-mcp",
@@ -9868,7 +10875,7 @@
       "github_url": "https://github.com/JonJam/accuweather-mcp",
       "stars": 28,
       "descriptionWords": 16,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No npm package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "podio-mcp",
@@ -9878,7 +10885,15 @@
       "github_url": "https://github.com/podio/podio-js",
       "stars": 26,
       "descriptionWords": 14,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "resolved": {
+        "package": "podio-js",
+        "registry": "npm",
+        "command": "npx -y podio-js",
+        "declaredRepo": "git+https://github.com/podio/podio-js.git",
+        "executable": false,
+        "entrypoint_unconfirmed": true
+      },
+      "note": "npm package \"podio-js\" belongs to this repo but declares no bin — it is a library, `npx` would error. NOT written."
     },
     {
       "slug": "adyen",
@@ -9888,7 +10903,7 @@
       "github_url": "https://github.com/Adyen/adyen-mcp",
       "stars": 25,
       "descriptionWords": 19,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No npm package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "concur-mcp",
@@ -9898,7 +10913,7 @@
       "github_url": "https://github.com/CDataSoftware/sap-concur-mcp-server-by-cdata",
       "stars": 22,
       "descriptionWords": 15,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No npm package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "fivetran",
@@ -9908,17 +10923,7 @@
       "github_url": "https://github.com/fivetran/fivetran-mcp",
       "stars": 21,
       "descriptionWords": 20,
-      "note": "Not resolved this run (outside --resolve budget)."
-    },
-    {
-      "slug": "runway-mcp",
-      "name": "Runway ML MCP",
-      "severity": "medium",
-      "install_type": "npm",
-      "github_url": "https://github.com/runwayml/runway-api-mcp-server",
-      "stars": 21,
-      "descriptionWords": 24,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No npm package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "us-congress-mcp",
@@ -9928,7 +10933,7 @@
       "github_url": "https://github.com/AshwinSundar/congress_gov_mcp",
       "stars": 19,
       "descriptionWords": 13,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No PyPI package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "congress-api-mcp",
@@ -9938,7 +10943,7 @@
       "github_url": "https://github.com/AshwinSundar/congress_gov_mcp",
       "stars": 19,
       "descriptionWords": 46,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No npm package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "harper",
@@ -9948,7 +10953,13 @@
       "github_url": "https://github.com/HarperFast/mcp-server",
       "stars": 15,
       "descriptionWords": 228,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "nearMisses": [
+        {
+          "package": "mcp-server",
+          "declaredRepo": "git+https://github.com/sandy-mount/mcp-server.git"
+        }
+      ],
+      "note": "No npm package declares this repo. 1 name(s) exist but belong elsewhere — do NOT write them."
     },
     {
       "slug": "mqtt",
@@ -9958,7 +10969,7 @@
       "github_url": "https://github.com/mqtt-ai/mcp-over-mqtt",
       "stars": 12,
       "descriptionWords": 24,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No npm package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "apache-flink-mcp",
@@ -9968,7 +10979,7 @@
       "github_url": "https://github.com/Ashfaqbs/apache-flink-mcp-server",
       "stars": 12,
       "descriptionWords": 27,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No npm package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "flink-mcp",
@@ -9978,7 +10989,7 @@
       "github_url": "https://github.com/Ashfaqbs/apache-flink-mcp-server",
       "stars": 12,
       "descriptionWords": 49,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No PyPI package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "unstructured-io-mcp",
@@ -9988,17 +10999,7 @@
       "github_url": "https://github.com/MKhalusova/unstructured-mcp",
       "stars": 11,
       "descriptionWords": 45,
-      "note": "Not resolved this run (outside --resolve budget)."
-    },
-    {
-      "slug": "calendly-mcp",
-      "name": "Calendly MCP",
-      "severity": "medium",
-      "install_type": "npm",
-      "github_url": "https://github.com/meAmitPatil/calendly-mcp-server",
-      "stars": 9,
-      "descriptionWords": 47,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No PyPI package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "yugabyte-mcp",
@@ -10008,7 +11009,7 @@
       "github_url": "https://github.com/yugabyte/yugabytedb-mcp-server",
       "stars": 8,
       "descriptionWords": 25,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No npm package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "cockroachdb",
@@ -10018,7 +11019,17 @@
       "github_url": "https://github.com/cockroachdb/cockroachdb-mcp-server",
       "stars": 3,
       "descriptionWords": 16,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "nearMisses": [
+        {
+          "package": "cockroachdb-mcp-server",
+          "declaredRepo": null
+        },
+        {
+          "package": "mcp-server-cockroachdb",
+          "declaredRepo": "git+https://github.com/hlos-ai/mcp-servers.git"
+        }
+      ],
+      "note": "No npm package declares this repo. 2 name(s) exist but belong elsewhere — do NOT write them."
     },
     {
       "slug": "turso-mcp",
@@ -10028,7 +11039,13 @@
       "github_url": "https://github.com/tursodatabase/turso-mcp",
       "stars": 3,
       "descriptionWords": 32,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "nearMisses": [
+        {
+          "package": "turso-mcp",
+          "declaredRepo": null
+        }
+      ],
+      "note": "No npm package declares this repo. 1 name(s) exist but belong elsewhere — do NOT write them."
     },
     {
       "slug": "vertex-ai-mcp",
@@ -10038,7 +11055,7 @@
       "github_url": "https://github.com/ragna-ai/mcp-google-vertex",
       "stars": 1,
       "descriptionWords": 28,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No npm package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "google-vertex-ai-mcp",
@@ -10048,7 +11065,7 @@
       "github_url": "https://github.com/ragna-ai/mcp-google-vertex",
       "stars": 1,
       "descriptionWords": 34,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No npm package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "21st-dev-magic",
@@ -10058,7 +11075,7 @@
       "github_url": "https://github.com/21st-dev/magic-mcp",
       "stars": 0,
       "descriptionWords": 11,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No npm package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "neo4j",
@@ -10068,17 +11085,7 @@
       "github_url": "https://github.com/neo4j-contrib/mcp-neo4j/",
       "stars": 0,
       "descriptionWords": 12,
-      "note": "Not resolved this run (outside --resolve budget)."
-    },
-    {
-      "slug": "chroma",
-      "name": "Chroma",
-      "severity": "medium",
-      "install_type": "pip",
-      "github_url": "https://github.com/chroma-core/chroma-mcp",
-      "stars": 0,
-      "descriptionWords": 14,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No PyPI package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "axiom",
@@ -10088,7 +11095,13 @@
       "github_url": "https://github.com/axiomhq/mcp-server-axiom",
       "stars": 0,
       "descriptionWords": 15,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "nearMisses": [
+        {
+          "package": "mcp-server-axiom",
+          "declaredRepo": "git+https://github.com/ThetaBird/mcp-server-axiom-js.git"
+        }
+      ],
+      "note": "No npm package declares this repo. 1 name(s) exist but belong elsewhere — do NOT write them."
     },
     {
       "slug": "langfuse",
@@ -10098,7 +11111,13 @@
       "github_url": "https://github.com/langfuse/mcp-server-langfuse",
       "stars": 0,
       "descriptionWords": 10,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "nearMisses": [
+        {
+          "package": "langfuse-mcp-server",
+          "declaredRepo": "hu"
+        }
+      ],
+      "note": "No npm package declares this repo. 1 name(s) exist but belong elsewhere — do NOT write them."
     },
     {
       "slug": "google-maps",
@@ -10108,7 +11127,7 @@
       "github_url": "https://github.com/googlemaps/platform-ai/tree/main/packages/code-assist",
       "stars": 0,
       "descriptionWords": 10,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No npm package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "buildkite",
@@ -10118,7 +11137,7 @@
       "github_url": "https://github.com/buildkite/buildkite-mcp-server",
       "stars": 0,
       "descriptionWords": 10,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No npm package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "brightdata",
@@ -10128,7 +11147,7 @@
       "github_url": "https://github.com/luminati-io/brightdata-mcp",
       "stars": 0,
       "descriptionWords": 17,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No npm package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "meilisearch",
@@ -10138,7 +11157,13 @@
       "github_url": "https://github.com/meilisearch/meilisearch-mcp",
       "stars": 0,
       "descriptionWords": 10,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "nearMisses": [
+        {
+          "package": "meilisearch-mcp",
+          "declaredRepo": null
+        }
+      ],
+      "note": "No PyPI package declares this repo. 1 name(s) exist but belong elsewhere — do NOT write them."
     },
     {
       "slug": "coingecko",
@@ -10148,7 +11173,15 @@
       "github_url": "https://github.com/coingecko/coingecko-typescript/tree/main/packages/mcp-server",
       "stars": 0,
       "descriptionWords": 15,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "resolved": {
+        "package": "@coingecko/coingecko-typescript",
+        "registry": "npm",
+        "command": "npx -y @coingecko/coingecko-typescript",
+        "declaredRepo": "git+https://github.com/coingecko/coingecko-typescript.git",
+        "executable": false,
+        "entrypoint_unconfirmed": true
+      },
+      "note": "npm package \"@coingecko/coingecko-typescript\" belongs to this repo but declares no bin — it is a library, `npx` would error. NOT written."
     },
     {
       "slug": "cloudinary",
@@ -10158,7 +11191,13 @@
       "github_url": "https://github.com/cloudinary/mcp-servers",
       "stars": 0,
       "descriptionWords": 11,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "nearMisses": [
+        {
+          "package": "mcp-servers",
+          "declaredRepo": null
+        }
+      ],
+      "note": "No npm package declares this repo. 1 name(s) exist but belong elsewhere — do NOT write them."
     },
     {
       "slug": "cal-com",
@@ -10168,7 +11207,17 @@
       "github_url": "https://github.com/calcom/cal-mcp",
       "stars": 0,
       "descriptionWords": 12,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "nearMisses": [
+        {
+          "package": "cal-mcp",
+          "declaredRepo": null
+        },
+        {
+          "package": "@calcom/cal-mcp",
+          "declaredRepo": null
+        }
+      ],
+      "note": "No npm package declares this repo. 2 name(s) exist but belong elsewhere — do NOT write them."
     },
     {
       "slug": "crowdstrike",
@@ -10178,7 +11227,13 @@
       "github_url": "https://github.com/CrowdStrike/falcon-mcp",
       "stars": 0,
       "descriptionWords": 12,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "nearMisses": [
+        {
+          "package": "falcon-mcp",
+          "declaredRepo": null
+        }
+      ],
+      "note": "No PyPI package declares this repo. 1 name(s) exist but belong elsewhere — do NOT write them."
     },
     {
       "slug": "aws-bedrock",
@@ -10188,7 +11243,7 @@
       "github_url": "https://github.com/modelcontextprotocol/servers-archived/tree/main/src/aws-kb-retrieval-server",
       "stars": 0,
       "descriptionWords": 9,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No npm package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "make",
@@ -10198,7 +11253,13 @@
       "github_url": "https://github.com/integromat/make-mcp-server",
       "stars": 0,
       "descriptionWords": 10,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "nearMisses": [
+        {
+          "package": "make-mcp-server",
+          "declaredRepo": "git+https://github.com/danishashko/make-mcp.git"
+        }
+      ],
+      "note": "No npm package declares this repo. 1 name(s) exist but belong elsewhere — do NOT write them."
     },
     {
       "slug": "duckdb",
@@ -10208,7 +11269,13 @@
       "github_url": "https://github.com/motherduckdb/mcp-server-motherduck",
       "stars": 0,
       "descriptionWords": 9,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "nearMisses": [
+        {
+          "package": "mcp-server-motherduck",
+          "declaredRepo": null
+        }
+      ],
+      "note": "No PyPI package declares this repo. 1 name(s) exist but belong elsewhere — do NOT write them."
     },
     {
       "slug": "astra-db",
@@ -10218,7 +11285,13 @@
       "github_url": "https://github.com/datastax/astra-db-mcp",
       "stars": 0,
       "descriptionWords": 13,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "nearMisses": [
+        {
+          "package": "@datastax/astra-db-mcp",
+          "declaredRepo": null
+        }
+      ],
+      "note": "No npm package declares this repo. 1 name(s) exist but belong elsewhere — do NOT write them."
     },
     {
       "slug": "newrelic",
@@ -10228,7 +11301,13 @@
       "github_url": "https://github.com/newrelic/mcp-server",
       "stars": 0,
       "descriptionWords": 6,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "nearMisses": [
+        {
+          "package": "mcp-server",
+          "declaredRepo": "git+https://github.com/sandy-mount/mcp-server.git"
+        }
+      ],
+      "note": "No npm package declares this repo. 1 name(s) exist but belong elsewhere — do NOT write them."
     },
     {
       "slug": "dynatrace",
@@ -10238,7 +11317,7 @@
       "github_url": "https://github.com/dynatrace-oss/dynatrace-mcp",
       "stars": 0,
       "descriptionWords": 12,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No PyPI package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "honeycomb",
@@ -10248,17 +11327,13 @@
       "github_url": "https://github.com/honeycombio/honeycomb-mcp",
       "stars": 0,
       "descriptionWords": 12,
-      "note": "Not resolved this run (outside --resolve budget)."
-    },
-    {
-      "slug": "launchdarkly",
-      "name": "LaunchDarkly",
-      "severity": "medium",
-      "install_type": "npm",
-      "github_url": "https://github.com/launchdarkly/mcp-server",
-      "stars": 0,
-      "descriptionWords": 8,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "nearMisses": [
+        {
+          "package": "honeycomb-mcp",
+          "declaredRepo": null
+        }
+      ],
+      "note": "No npm package declares this repo. 1 name(s) exist but belong elsewhere — do NOT write them."
     },
     {
       "slug": "intercom",
@@ -10268,7 +11343,7 @@
       "github_url": "https://github.com/intercom/intercom-mcp-server",
       "stars": 0,
       "descriptionWords": 216,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No npm package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "monday",
@@ -10278,7 +11353,13 @@
       "github_url": "https://github.com/mondaycom/mcp",
       "stars": 0,
       "descriptionWords": 203,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "nearMisses": [
+        {
+          "package": "mcp",
+          "declaredRepo": null
+        }
+      ],
+      "note": "No npm package declares this repo. 1 name(s) exist but belong elsewhere — do NOT write them."
     },
     {
       "slug": "fibery",
@@ -10288,7 +11369,7 @@
       "github_url": "https://github.com/Fibery-inc/fibery-mcp-server",
       "stars": 0,
       "descriptionWords": 9,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No npm package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "alpha-vantage",
@@ -10298,7 +11379,7 @@
       "github_url": "https://github.com/alphavantage/alpha_vantage_mcp",
       "stars": 0,
       "descriptionWords": 11,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No npm package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "kagi",
@@ -10308,7 +11389,7 @@
       "github_url": "https://github.com/kagisearch/kagimcp",
       "stars": 0,
       "descriptionWords": 7,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No npm package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "agentql",
@@ -10318,7 +11399,7 @@
       "github_url": "https://github.com/tinyfish-io/agentql-mcp",
       "stars": 0,
       "descriptionWords": 10,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No PyPI package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "gitpod",
@@ -10328,7 +11409,13 @@
       "github_url": "https://github.com/gitpod-io/gitpod",
       "stars": 0,
       "descriptionWords": 140,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "nearMisses": [
+        {
+          "package": "gitpod",
+          "declaredRepo": "git+https://github.com/rabbinik/gitpod.git"
+        }
+      ],
+      "note": "No npm package declares this repo. 1 name(s) exist but belong elsewhere — do NOT write them."
     },
     {
       "slug": "codacy",
@@ -10338,7 +11425,7 @@
       "github_url": "https://github.com/codacy/codacy-mcp-server/",
       "stars": 0,
       "descriptionWords": 13,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No npm package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "box",
@@ -10348,17 +11435,13 @@
       "github_url": "https://github.com/box-community/mcp-server-box",
       "stars": 0,
       "descriptionWords": 10,
-      "note": "Not resolved this run (outside --resolve budget)."
-    },
-    {
-      "slug": "graphlit",
-      "name": "Graphlit",
-      "severity": "medium",
-      "install_type": "npm",
-      "github_url": "https://github.com/graphlit/graphlit-mcp-server",
-      "stars": 0,
-      "descriptionWords": 15,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "nearMisses": [
+        {
+          "package": "mcp-server-box",
+          "declaredRepo": null
+        }
+      ],
+      "note": "No PyPI package declares this repo. 1 name(s) exist but belong elsewhere — do NOT write them."
     },
     {
       "slug": "needle",
@@ -10368,7 +11451,7 @@
       "github_url": "https://github.com/needle-ai/needle-mcp",
       "stars": 0,
       "descriptionWords": 15,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No PyPI package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "inkeep",
@@ -10378,7 +11461,13 @@
       "github_url": "https://github.com/inkeep/mcp-server-python",
       "stars": 0,
       "descriptionWords": 8,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "nearMisses": [
+        {
+          "package": "python-mcp-server",
+          "declaredRepo": "https://github.com/deadmeme5441/python-mcp-server/blob/main/CHANGELOG.md"
+        }
+      ],
+      "note": "No PyPI package declares this repo. 1 name(s) exist but belong elsewhere — do NOT write them."
     },
     {
       "slug": "arize-phoenix",
@@ -10388,7 +11477,13 @@
       "github_url": "https://github.com/Arize-ai/phoenix/tree/main/js/packages/phoenix-mcp",
       "stars": 0,
       "descriptionWords": 13,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "nearMisses": [
+        {
+          "package": "phoenix",
+          "declaredRepo": "git://github.com/phoenixframework/phoenix.git"
+        }
+      ],
+      "note": "No npm package declares this repo. 1 name(s) exist but belong elsewhere — do NOT write them."
     },
     {
       "slug": "comet-opik",
@@ -10398,17 +11493,13 @@
       "github_url": "https://github.com/comet-ml/opik-mcp",
       "stars": 0,
       "descriptionWords": 14,
-      "note": "Not resolved this run (outside --resolve budget)."
-    },
-    {
-      "slug": "logfire",
-      "name": "Logfire",
-      "severity": "medium",
-      "install_type": "pip",
-      "github_url": "https://github.com/pydantic/logfire-mcp",
-      "stars": 0,
-      "descriptionWords": 9,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "nearMisses": [
+        {
+          "package": "opik-mcp",
+          "declaredRepo": null
+        }
+      ],
+      "note": "No PyPI package declares this repo. 1 name(s) exist but belong elsewhere — do NOT write them."
     },
     {
       "slug": "knock",
@@ -10418,7 +11509,17 @@
       "github_url": "https://github.com/knocklabs/agent-toolkit",
       "stars": 0,
       "descriptionWords": 12,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "nearMisses": [
+        {
+          "package": "agent-toolkit",
+          "declaredRepo": null
+        },
+        {
+          "package": "@knocklabs/agent-toolkit",
+          "declaredRepo": null
+        }
+      ],
+      "note": "No npm package declares this repo. 2 name(s) exist but belong elsewhere — do NOT write them."
     },
     {
       "slug": "cartesia",
@@ -10428,7 +11529,13 @@
       "github_url": "https://github.com/cartesia-ai/cartesia-mcp",
       "stars": 0,
       "descriptionWords": 11,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "nearMisses": [
+        {
+          "package": "cartesia-mcp",
+          "declaredRepo": null
+        }
+      ],
+      "note": "No PyPI package declares this repo. 1 name(s) exist but belong elsewhere — do NOT write them."
     },
     {
       "slug": "gyazo",
@@ -10438,17 +11545,7 @@
       "github_url": "https://github.com/nota/gyazo-mcp-server",
       "stars": 0,
       "descriptionWords": 13,
-      "note": "Not resolved this run (outside --resolve budget)."
-    },
-    {
-      "slug": "appium",
-      "name": "Appium",
-      "severity": "medium",
-      "install_type": "npm",
-      "github_url": "https://github.com/appium/appium-mcp.git",
-      "stars": 0,
-      "descriptionWords": 12,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No npm package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "cycode",
@@ -10458,7 +11555,7 @@
       "github_url": "https://github.com/cycodehq/cycode-cli",
       "stars": 0,
       "descriptionWords": 11,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No PyPI package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "gitguardian",
@@ -10468,7 +11565,13 @@
       "github_url": "https://github.com/GitGuardian/gg-mcp",
       "stars": 0,
       "descriptionWords": 13,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "nearMisses": [
+        {
+          "package": "gg-mcp",
+          "declaredRepo": "https://github.com/tannht/google-cloud-mcp"
+        }
+      ],
+      "note": "No PyPI package declares this repo. 1 name(s) exist but belong elsewhere — do NOT write them."
     },
     {
       "slug": "label-studio",
@@ -10478,7 +11581,7 @@
       "github_url": "https://github.com/HumanSignal/label-studio-mcp-server",
       "stars": 0,
       "descriptionWords": 5,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No PyPI package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "aiven",
@@ -10488,17 +11591,7 @@
       "github_url": "https://github.com/Aiven-Open/mcp-aiven",
       "stars": 0,
       "descriptionWords": 11,
-      "note": "Not resolved this run (outside --resolve budget)."
-    },
-    {
-      "slug": "apache-doris",
-      "name": "Apache Doris",
-      "severity": "medium",
-      "install_type": "pip",
-      "github_url": "https://github.com/apache/doris-mcp-server",
-      "stars": 0,
-      "descriptionWords": 10,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No PyPI package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "greptimedb",
@@ -10508,7 +11601,13 @@
       "github_url": "https://github.com/GreptimeTeam/greptimedb-mcp-server",
       "stars": 0,
       "descriptionWords": 14,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "nearMisses": [
+        {
+          "package": "greptimedb-mcp-server",
+          "declaredRepo": null
+        }
+      ],
+      "note": "No PyPI package declares this repo. 1 name(s) exist but belong elsewhere — do NOT write them."
     },
     {
       "slug": "keboola",
@@ -10518,7 +11617,13 @@
       "github_url": "https://github.com/keboola/keboola-mcp-server",
       "stars": 0,
       "descriptionWords": 12,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "nearMisses": [
+        {
+          "package": "keboola-mcp-server",
+          "declaredRepo": null
+        }
+      ],
+      "note": "No PyPI package declares this repo. 1 name(s) exist but belong elsewhere — do NOT write them."
     },
     {
       "slug": "momento",
@@ -10528,7 +11633,7 @@
       "github_url": "https://github.com/momentohq/mcp-momento",
       "stars": 0,
       "descriptionWords": 13,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No npm package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "fireproof",
@@ -10538,7 +11643,13 @@
       "github_url": "https://github.com/fireproof-storage/mcp-database-server",
       "stars": 0,
       "descriptionWords": 6,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "nearMisses": [
+        {
+          "package": "mcp-database-server",
+          "declaredRepo": "git+https://github.com/mradovic95/database-mcp-server.git"
+        }
+      ],
+      "note": "No npm package declares this repo. 1 name(s) exist but belong elsewhere — do NOT write them."
     },
     {
       "slug": "nile",
@@ -10548,7 +11659,21 @@
       "github_url": "https://github.com/niledatabase/nile-mcp-server",
       "stars": 0,
       "descriptionWords": 12,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "resolved": {
+        "package": "@niledatabase/nile-mcp-server",
+        "registry": "npm",
+        "command": "npx -y @niledatabase/nile-mcp-server",
+        "declaredRepo": "git+https://github.com/niledatabase/nile-mcp-server.git",
+        "executable": false,
+        "entrypoint_unconfirmed": true
+      },
+      "nearMisses": [
+        {
+          "package": "nile-mcp-server",
+          "declaredRepo": null
+        }
+      ],
+      "note": "npm package \"@niledatabase/nile-mcp-server\" belongs to this repo but declares no bin — it is a library, `npx` would error. NOT written."
     },
     {
       "slug": "dolt",
@@ -10558,7 +11683,7 @@
       "github_url": "https://github.com/dolthub/dolt-mcp",
       "stars": 0,
       "descriptionWords": 7,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No npm package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "couchbase",
@@ -10568,7 +11693,13 @@
       "github_url": "https://github.com/Couchbase-Ecosystem/mcp-server-couchbase",
       "stars": 0,
       "descriptionWords": 8,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "nearMisses": [
+        {
+          "package": "couchbase-mcp-server",
+          "declaredRepo": "https://github.com/couchbase/mcp-server-couchbase"
+        }
+      ],
+      "note": "No PyPI package declares this repo. 1 name(s) exist but belong elsewhere — do NOT write them."
     },
     {
       "slug": "falkordb",
@@ -10578,7 +11709,7 @@
       "github_url": "https://github.com/FalkorDB/FalkorDB-MCPServer",
       "stars": 0,
       "descriptionWords": 8,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No PyPI package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "memgraph",
@@ -10588,7 +11719,13 @@
       "github_url": "https://github.com/memgraph/ai-toolkit/tree/main/integrations/mcp-memgraph",
       "stars": 0,
       "descriptionWords": 7,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "nearMisses": [
+        {
+          "package": "ai-toolkit",
+          "declaredRepo": "https://github.com/tyleryep/ai-toolkit"
+        }
+      ],
+      "note": "No PyPI package declares this repo. 1 name(s) exist but belong elsewhere — do NOT write them."
     },
     {
       "slug": "kuzu",
@@ -10598,7 +11735,7 @@
       "github_url": "https://github.com/kuzudb/kuzu-mcp-server",
       "stars": 0,
       "descriptionWords": 13,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No PyPI package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "bitrise",
@@ -10608,7 +11745,7 @@
       "github_url": "https://github.com/bitrise-io/bitrise-mcp",
       "stars": 0,
       "descriptionWords": 7,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No npm package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "deployhq",
@@ -10618,7 +11755,7 @@
       "github_url": "https://github.com/deployhq/deployhq-mcp-server",
       "stars": 0,
       "descriptionWords": 11,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No PyPI package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "jfrog",
@@ -10628,7 +11765,7 @@
       "github_url": "https://github.com/jfrog/mcp-jfrog",
       "stars": 0,
       "descriptionWords": 13,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No PyPI package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "last9",
@@ -10638,7 +11775,13 @@
       "github_url": "https://github.com/last9/last9-mcp-server",
       "stars": 0,
       "descriptionWords": 10,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "nearMisses": [
+        {
+          "package": "last9-mcp-server",
+          "declaredRepo": null
+        }
+      ],
+      "note": "No npm package declares this repo. 1 name(s) exist but belong elsewhere — do NOT write them."
     },
     {
       "slug": "metoro",
@@ -10648,17 +11791,7 @@
       "github_url": "https://github.com/metoro-io/metoro-mcp-server",
       "stars": 0,
       "descriptionWords": 9,
-      "note": "Not resolved this run (outside --resolve budget)."
-    },
-    {
-      "slug": "microsoft-clarity",
-      "name": "Microsoft Clarity",
-      "severity": "medium",
-      "install_type": "npm",
-      "github_url": "https://github.com/microsoft/clarity-mcp-server",
-      "stars": 0,
-      "descriptionWords": 13,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No PyPI package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "globalping",
@@ -10668,7 +11801,7 @@
       "github_url": "https://github.com/jsdelivr/globalping-mcp-server",
       "stars": 0,
       "descriptionWords": 15,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No npm package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "aqara",
@@ -10678,7 +11811,7 @@
       "github_url": "https://github.com/aqara/aqara-mcp-server/",
       "stars": 0,
       "descriptionWords": 9,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No PyPI package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "hunter",
@@ -10688,7 +11821,13 @@
       "github_url": "https://github.com/hunter-io/hunter-mcp",
       "stars": 0,
       "descriptionWords": 12,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "nearMisses": [
+        {
+          "package": "hunter-mcp",
+          "declaredRepo": "https://github.com/PiggyHurry/hunter-mcp"
+        }
+      ],
+      "note": "No PyPI package declares this repo. 1 name(s) exist but belong elsewhere — do NOT write them."
     },
     {
       "slug": "audiense",
@@ -10698,7 +11837,7 @@
       "github_url": "https://github.com/AudienseCo/mcp-audiense-insights",
       "stars": 0,
       "descriptionWords": 10,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No PyPI package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "atlan",
@@ -10708,17 +11847,13 @@
       "github_url": "https://github.com/atlanhq/agent-toolkit/tree/main/modelcontextprotocol",
       "stars": 0,
       "descriptionWords": 7,
-      "note": "Not resolved this run (outside --resolve budget)."
-    },
-    {
-      "slug": "datahub",
-      "name": "DataHub",
-      "severity": "medium",
-      "install_type": "pip",
-      "github_url": "https://github.com/acryldata/mcp-server-datahub",
-      "stars": 0,
-      "descriptionWords": 11,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "nearMisses": [
+        {
+          "package": "agent-toolkit",
+          "declaredRepo": null
+        }
+      ],
+      "note": "No PyPI package declares this repo. 1 name(s) exist but belong elsewhere — do NOT write them."
     },
     {
       "slug": "alation",
@@ -10728,17 +11863,15 @@
       "github_url": "https://github.com/Alation/alation-ai-agent-sdk",
       "stars": 0,
       "descriptionWords": 14,
-      "note": "Not resolved this run (outside --resolve budget)."
-    },
-    {
-      "slug": "chrome-devtools",
-      "name": "Chrome DevTools",
-      "severity": "medium",
-      "install_type": "npm",
-      "github_url": "https://github.com/ChromeDevTools/chrome-devtools-mcp",
-      "stars": 0,
-      "descriptionWords": 11,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "resolved": {
+        "package": "alation-ai-agent-sdk",
+        "registry": "PyPI",
+        "command": "uvx alation-ai-agent-sdk",
+        "declaredRepo": "https://github.com/Alation/alation-ai-agent-sdk/blob/main/python/core-sdk/README.md",
+        "executable": false,
+        "entrypoint_unconfirmed": true
+      },
+      "note": "PyPI package \"alation-ai-agent-sdk\" belongs to this repo but its wheel declares no [console_scripts] (or no readable wheel exists) — `uvx` would error. NOT written."
     },
     {
       "slug": "kiln",
@@ -10748,17 +11881,13 @@
       "github_url": "https://github.com/Kiln-AI/Kiln",
       "stars": 0,
       "descriptionWords": 13,
-      "note": "Not resolved this run (outside --resolve budget)."
-    },
-    {
-      "slug": "line",
-      "name": "LINE",
-      "severity": "medium",
-      "install_type": "npm",
-      "github_url": "https://github.com/line/line-bot-mcp-server",
-      "stars": 0,
-      "descriptionWords": 14,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "nearMisses": [
+        {
+          "package": "kiln",
+          "declaredRepo": null
+        }
+      ],
+      "note": "No PyPI package declares this repo. 1 name(s) exist but belong elsewhere — do NOT write them."
     },
     {
       "slug": "clicksend",
@@ -10768,7 +11897,13 @@
       "github_url": "https://github.com/ClickSend/clicksend-mcp-server/",
       "stars": 0,
       "descriptionWords": 8,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "nearMisses": [
+        {
+          "package": "@clicksend/clicksend-mcp-server",
+          "declaredRepo": null
+        }
+      ],
+      "note": "No npm package declares this repo. 1 name(s) exist but belong elsewhere — do NOT write them."
     },
     {
       "slug": "mailjet",
@@ -10778,7 +11913,7 @@
       "github_url": "https://github.com/mailgun/mailjet-mcp-server",
       "stars": 0,
       "descriptionWords": 11,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No PyPI package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "elastic-email",
@@ -10788,27 +11923,7 @@
       "github_url": "https://github.com/ElasticEmail/elasticemail-mcp-server",
       "stars": 0,
       "descriptionWords": 11,
-      "note": "Not resolved this run (outside --resolve budget)."
-    },
-    {
-      "slug": "alpaca",
-      "name": "Alpaca",
-      "severity": "medium",
-      "install_type": "pip",
-      "github_url": "https://github.com/alpacahq/alpaca-mcp-server",
-      "stars": 0,
-      "descriptionWords": 13,
-      "note": "Not resolved this run (outside --resolve budget)."
-    },
-    {
-      "slug": "coinex",
-      "name": "CoinEx",
-      "severity": "medium",
-      "install_type": "pip",
-      "github_url": "https://github.com/coinexcom/coinex_mcp_server",
-      "stars": 0,
-      "descriptionWords": 11,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No PyPI package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "coinstats",
@@ -10818,7 +11933,13 @@
       "github_url": "https://github.com/CoinStatsHQ/coinstats-mcp",
       "stars": 0,
       "descriptionWords": 13,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "nearMisses": [
+        {
+          "package": "coinstats-mcp",
+          "declaredRepo": null
+        }
+      ],
+      "note": "No npm package declares this repo. 1 name(s) exist but belong elsewhere — do NOT write them."
     },
     {
       "slug": "cashfree",
@@ -10828,17 +11949,7 @@
       "github_url": "https://github.com/cashfree/cashfree-mcp",
       "stars": 0,
       "descriptionWords": 8,
-      "note": "Not resolved this run (outside --resolve budget)."
-    },
-    {
-      "slug": "flutterwave",
-      "name": "Flutterwave",
-      "severity": "medium",
-      "install_type": "npm",
-      "github_url": "https://github.com/bajoski34/mcp-flutterwave/tree/main",
-      "stars": 0,
-      "descriptionWords": 11,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No npm package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "chargebee",
@@ -10848,7 +11959,13 @@
       "github_url": "https://github.com/chargebee/agentkit/tree/main/modelcontextprotocol",
       "stars": 0,
       "descriptionWords": 12,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "nearMisses": [
+        {
+          "package": "agentkit",
+          "declaredRepo": "https://github.com/japanvik/agentkit"
+        }
+      ],
+      "note": "No PyPI package declares this repo. 1 name(s) exist but belong elsewhere — do NOT write them."
     },
     {
       "slug": "boldsign",
@@ -10858,7 +11975,7 @@
       "github_url": "https://github.com/boldsign/boldsign-mcp",
       "stars": 0,
       "descriptionWords": 7,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No npm package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "esignatures",
@@ -10868,7 +11985,7 @@
       "github_url": "https://github.com/esignaturescom/mcp-server-esignatures",
       "stars": 0,
       "descriptionWords": 11,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No npm package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "nutrient",
@@ -10878,17 +11995,7 @@
       "github_url": "https://github.com/PSPDFKit/nutrient-dws-mcp-server",
       "stars": 0,
       "descriptionWords": 8,
-      "note": "Not resolved this run (outside --resolve budget)."
-    },
-    {
-      "slug": "datawrapper",
-      "name": "Datawrapper",
-      "severity": "medium",
-      "install_type": "pip",
-      "github_url": "https://github.com/palewire/datawrapper-mcp",
-      "stars": 0,
-      "descriptionWords": 9,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No npm package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "liveblocks",
@@ -10898,7 +12005,7 @@
       "github_url": "https://github.com/liveblocks/liveblocks-mcp-server",
       "stars": 0,
       "descriptionWords": 13,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No npm package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "anytype",
@@ -10908,7 +12015,7 @@
       "github_url": "https://github.com/anyproto/anytype-mcp",
       "stars": 0,
       "descriptionWords": 15,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No PyPI package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "growi",
@@ -10918,7 +12025,13 @@
       "github_url": "https://github.com/growilabs/growi-mcp-server",
       "stars": 0,
       "descriptionWords": 8,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "nearMisses": [
+        {
+          "package": "growi-mcp-server",
+          "declaredRepo": "git+https://github.com/smtrdev/growi-mcp-server.git"
+        }
+      ],
+      "note": "No npm package declares this repo. 1 name(s) exist but belong elsewhere — do NOT write them."
     },
     {
       "slug": "dart",
@@ -10928,7 +12041,7 @@
       "github_url": "https://github.com/its-dart/dart-mcp-server",
       "stars": 0,
       "descriptionWords": 14,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No PyPI package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "cortex",
@@ -10938,7 +12051,13 @@
       "github_url": "https://github.com/cortexapps/cortex-mcp",
       "stars": 0,
       "descriptionWords": 5,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "nearMisses": [
+        {
+          "package": "cortex-mcp",
+          "declaredRepo": "https://github.com/syab726/cortex/releases"
+        }
+      ],
+      "note": "No PyPI package declares this repo. 1 name(s) exist but belong elsewhere — do NOT write them."
     },
     {
       "slug": "sage-accounting-mcp",
@@ -10948,7 +12067,7 @@
       "github_url": "https://github.com/chrisjohnleah/sage-business-cloud-accounting-mcp",
       "stars": 0,
       "descriptionWords": 13,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No npm package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "sage-mcp",
@@ -10958,7 +12077,7 @@
       "github_url": "https://github.com/chrisjohnleah/sage-business-cloud-accounting-mcp",
       "stars": 0,
       "descriptionWords": 53,
-      "note": "Not resolved this run (outside --resolve budget)."
+      "note": "No npm package found under any name derived from the repo path; read the README."
     },
     {
       "slug": "ableton-mcp",
