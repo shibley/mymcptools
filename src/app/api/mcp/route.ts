@@ -115,13 +115,54 @@ export async function POST(req: Request): Promise<Response> {
   }
 }
 
-// The spec lets a server that offers no server-initiated stream reject GET.
-// Holding an SSE stream open is exactly what a stateless serverless function
-// cannot do, so say so plainly instead of hanging the client until it times out.
-export async function GET(): Promise<Response> {
-  return methodNotAllowed(
-    "GET",
-    "This MCP endpoint is stateless and does not support server-initiated SSE streams. POST JSON-RPC requests to this URL instead."
+// GET is three different callers wearing one verb, and answering all three with
+// the same 405 was costing real reach.
+//
+// 1. An MCP client opening a server-initiated SSE stream. The spec lets a server
+//    that offers none reject it, and holding a stream open is exactly what a
+//    stateless serverless function cannot do. It must keep getting 405 or it
+//    will not fall back to POST. Identified by `Accept: text/event-stream`.
+// 2. A browser. Merged awesome-list entries publish this exact URL, so every
+//    developer who clicked one landed on a raw 405 JSON blob. Send them to the
+//    page that explains the server.
+// 3. A crawler with no SSE intent. Same problem, worse: a 405 is a dead end, so
+//    the directory link passed its authority into nothing. Serve a discovery
+//    document a machine can actually read.
+export async function GET(req: Request): Promise<Response> {
+  const accept = req.headers.get("accept") ?? "";
+
+  if (accept.includes("text/event-stream")) {
+    return methodNotAllowed(
+      "GET",
+      "This MCP endpoint is stateless and does not support server-initiated SSE streams. POST JSON-RPC requests to this URL instead."
+    );
+  }
+
+  if (accept.includes("text/html")) {
+    logMcpRequest({ method: null, http: "GET", status: 302 });
+    return Response.redirect(new URL("/mcp-server", req.url), 302);
+  }
+
+  logMcpRequest({ method: null, http: "GET", status: 200 });
+  return Response.json(
+    {
+      name: "mymcptools",
+      title: "MyMCPTools MCP",
+      description:
+        "Search and inspect the MCP server catalog behind mymcptools.com, over MCP. No API key.",
+      transport: "streamable-http",
+      endpoint: "https://mymcptools.com/api/mcp",
+      method: "POST",
+      authentication: "none",
+      documentation: "https://mymcptools.com/mcp-server",
+    },
+    {
+      status: 200,
+      headers: {
+        "Access-Control-Allow-Origin": "*",
+        "Cache-Control": "public, max-age=3600",
+      },
+    }
   );
 }
 
