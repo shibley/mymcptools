@@ -419,7 +419,7 @@ const _serversPart1: MCPServer[] = [
   {
     slug: 'notion',
     name: 'Notion MCP Server',
-    description: 'The Notion MCP Server is the official integration from Notion that connects AI assistants directly to your Notion workspace via the Notion REST API. With 3,500+ GitHub stars, it is the canonical MCP tool for bringing Notion\'s knowledge management capabilities into Claude Desktop, Cursor, Windsurf, and any MCP-compatible client. The server exposes a rich set of tools: search your entire workspace by keyword and return matching pages and databases; retrieve full page content and block trees; create new pages inside any parent page or workspace section; update, append, or delete block content on existing pages; list all databases your integration has access to; query database entries with filter and sort parameters; retrieve individual blocks or nested children by block ID; and add comments to pages. Authentication uses a Notion integration token — create an internal integration at notion.so/my-integrations, share specific pages or databases with it, and set NOTION_API_KEY in your environment. Install with a single npx command. The Notion MCP Server is especially powerful for AI workflows that span documentation retrieval, project planning, and knowledge capture — Claude can read product specs from Notion, draft new pages from conversation output, log structured data into databases, and search across thousands of notes without any manual copy-paste.',
+    description: 'The Notion MCP Server is the official integration from Notion that connects AI assistants directly to your Notion workspace via the Notion REST API. With 4,580+ GitHub stars, it is the canonical MCP tool for bringing Notion\'s knowledge management capabilities into Claude Desktop, Cursor, Windsurf, and any MCP-compatible client. The server exposes a rich set of tools: search your entire workspace by keyword and return matching pages and databases; retrieve full page content and block trees; create new pages inside any parent page or workspace section; update, append, or delete block content on existing pages; list all databases your integration has access to; query database entries with filter and sort parameters; retrieve individual blocks or nested children by block ID; and add comments to pages. Authentication uses a Notion integration token — create an internal integration at notion.so/my-integrations, share specific pages or databases with it, and set NOTION_TOKEN in your environment (the older OPENAPI_MCP_HEADERS form still works). Install with a single npx command. The Notion MCP Server is especially powerful for AI workflows that span documentation retrieval, project planning, and knowledge capture — Claude can read product specs from Notion, draft new pages from conversation output, log structured data into databases, and search across thousands of notes without any manual copy-paste.',
     author: 'Notion',
     github_url: 'https://github.com/makenotion/notion-mcp-server',
     source_verified: true,
@@ -433,7 +433,7 @@ const _serversPart1: MCPServer[] = [
     install_checked: '2026-07-31',
     featured: true,
     official: true,
-    stars: 3500,
+    stars: 4580,
   },
   {
     slug: 'linear',
@@ -1512,7 +1512,7 @@ const _serversPart1: MCPServer[] = [
   {
     slug: 'obsidian',
     name: 'Obsidian MCP Server',
-    description: 'The Obsidian MCP server connects AI assistants to your local Obsidian vault through the Obsidian Local REST API community plugin, enabling read, write, and search operations on your personal knowledge base. With 4,000+ GitHub stars, mcp-obsidian by MarkusPfundstein is the most widely adopted Obsidian MCP integration available. The server exposes seven tools: list_files_in_vault (enumerate all vault files and directories), list_files_in_dir (browse a specific folder), get_file_contents (read any note by path), search (full-text search across all vault notes), patch_content (insert text relative to a heading, block reference, or frontmatter field), append_content (add text to a new or existing note), and delete_file (remove a note or folder). Install via a single uvx command; set OBSIDIAN_API_KEY, OBSIDIAN_HOST, and OBSIDIAN_PORT environment variables (default port 27124). You must first install and enable the Obsidian Local REST API community plugin inside your vault settings — it exposes the HTTP endpoint this server bridges. Works with Claude Desktop, Cursor, Windsurf, Cline, and any MCP-compatible client. Ideal for summarizing meeting notes, searching research across hundreds of Markdown files, drafting new pages from AI output, or building second-brain workflows where Claude reads and writes your full knowledge base.',
+    description: 'The Obsidian MCP server connects AI assistants to your local Obsidian vault through the Obsidian Local REST API community plugin, enabling read, write, and search operations on your personal knowledge base. With 4,280+ GitHub stars, mcp-obsidian by MarkusPfundstein is the most widely adopted Obsidian MCP integration available. The server exposes seven tools: list_files_in_vault (enumerate all vault files and directories), list_files_in_dir (browse a specific folder), get_file_contents (read any note by path), search (full-text search across all vault notes), patch_content (insert text relative to a heading, block reference, or frontmatter field), append_content (add text to a new or existing note), and delete_file (remove a note or folder). Install via a single uvx command; set OBSIDIAN_API_KEY, OBSIDIAN_HOST, and OBSIDIAN_PORT environment variables (default port 27124). You must first install and enable the Obsidian Local REST API community plugin inside your vault settings — it exposes the HTTP endpoint this server bridges. Works with Claude Desktop, Cursor, Windsurf, Cline, and any MCP-compatible client. Ideal for summarizing meeting notes, searching research across hundreds of Markdown files, drafting new pages from AI output, or building second-brain workflows where Claude reads and writes your full knowledge base.',
     author: 'MarkusPfundstein',
     github_url: 'https://github.com/MarkusPfundstein/mcp-obsidian',
     source_verified: true,
@@ -1524,7 +1524,7 @@ const _serversPart1: MCPServer[] = [
     install_command: 'uvx mcp-obsidian',
     install_verified: true,
     install_checked: '2026-07-31',
-    stars: 4000,
+    stars: 4281,
   },
   {
     slug: 'roam',
@@ -11921,7 +11921,7 @@ const _serversPart2: MCPServer[] = [
     slug: 'obsidian-mcp',
     name: 'Obsidian',
     description: 'Read and write Obsidian markdown notes, search across vaults, create and edit files, manage tags and backlinks. Integrates AI into your personal knowledge base.',
-    author: 'MarkusSagen',
+    author: 'StevenStavrakis',
     github_url: 'https://github.com/StevenStavrakis/obsidian-mcp',
     source_verified: true,
     verification: 'live',
@@ -11932,7 +11932,10 @@ const _serversPart2: MCPServer[] = [
     install_verified: true,
     install_checked: '2026-07-31',
     official: false,
-    stars: 1870,
+    // 720 per api.github.com on 2026-08-09; the entry claimed 1,870, and the
+    // author was recorded as MarkusSagen against StevenStavrakis' repository.
+    // Last push was 2025-06-23 — see the comparison block on /servers/obsidian.
+    stars: 720,
     featured: false,
   },
   {

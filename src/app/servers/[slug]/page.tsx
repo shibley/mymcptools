@@ -13,6 +13,7 @@ import { TrustGradeSummary } from "@/components/TrustGrade";
 import { TrustSignalList } from "@/components/TrustSignals";
 import { AffiliateServerCTA } from "@/components/AffiliateServerCTA";
 import { servers, getServerBySlug, getRelatedServers, categories, integrations, registryLabel } from "@/data/servers";
+import { getServerGuide } from "@/data/server-guides";
 import { getServerPricing, hasFreeOption } from "@/data/pricing";
 import { getBlogPostsForServer } from "@/data/blog";
 
@@ -136,14 +137,22 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   // to lose a click twice: once to the bounce, once to the search engine noting
   // the mismatch between the snippet and the page.
   const unverified = hasNoPublicArtifact(server);
+  // A page carrying a hand-written guide is a different page, and the snippet
+  // should say so — "Setup Guide" is what someone searching `[tool] mcp server`
+  // is looking for, and here it is a promise the page actually keeps.
+  const guide = getServerGuide(slug);
 
   return {
     title: unverified
       ? `${mcpPhrase(baseName)} — What We Could Verify | MyMCPTools`
-      : `${mcpPhrase(baseName)} — Setup, Features & Alternatives | MyMCPTools`,
+      : guide
+        ? `${mcpPhrase(baseName)} — Setup Guide, Tools & Alternatives | MyMCPTools`
+        : `${mcpPhrase(baseName)} — Setup, Features & Alternatives | MyMCPTools`,
     description: unverified
       ? `${sentenceDescription} No public repository or published package has been confirmed for the ${mcpPhrase(baseName, true)} — here is what the catalog can and cannot verify.`
-      : `${sentenceDescription} Learn how to install and configure the ${mcpPhrase(baseName, true)} for Claude, Cursor, VS Code, and more.`,
+      : guide
+        ? `Step-by-step setup for the ${mcpPhrase(baseName, true)} in Claude, Cursor, VS Code and Codex, its tool list, worked prompts, and the mistakes that break a first install — verified against the project's own docs ${guide.verifiedOn}.`
+        : `${sentenceDescription} Learn how to install and configure the ${mcpPhrase(baseName, true)} for Claude, Cursor, VS Code, and more.`,
     openGraph: {
       title: `${mcpPhrase(baseName)} | MyMCPTools`,
       description: sentenceDescription,
@@ -184,7 +193,13 @@ export default async function ServerPage({ params }: Props) {
   const integrationsAnswer = serverIntegrations.length > 0
     ? `${server.name} integrates with ${serverIntegrations.map(i => i.name).join(", ")}.`
     : `${server.name} works with MCP-compatible clients such as Claude Desktop, Cursor, and VS Code.`;
+  // Hand-written long-form guide, for the handful of slugs that have one.
+  const guide = getServerGuide(server.slug);
   const faqItems = [
+    // Guide gotchas lead: they are the questions people actually search
+    // ("why does X return nothing"), where the five below are definitional.
+    // They also carry into the FAQPage schema built from this same array.
+    ...(guide?.gotchas ?? []).map((g) => ({ question: g.question, answer: g.answer })),
     {
       question: `What is ${server.name}?`,
       answer: `${baseName} is an MCP server built by ${server.author}. ${capitalize(server.description)}`,
@@ -224,6 +239,23 @@ export default async function ServerPage({ params }: Props) {
     "downloadUrl": server.github_url || undefined,
   };
 
+  // HowTo schema, only where there are real steps to describe. Emitting it from
+  // a template would be describing steps we do not have.
+  const howToJsonLd = guide?.setup
+    ? {
+        "@context": "https://schema.org",
+        "@type": "HowTo",
+        "name": guide.setup.title,
+        "description": guide.intro,
+        "step": guide.setup.steps.map((step, i) => ({
+          "@type": "HowToStep",
+          "position": i + 1,
+          "name": step.title,
+          "text": step.code ? `${step.body} ${step.code}` : step.body,
+        })),
+      }
+    : null;
+
   const faqJsonLd = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
@@ -247,6 +279,12 @@ export default async function ServerPage({ params }: Props) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd).replace(/</g, "\\u003c") }}
       />
+      {howToJsonLd && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(howToJsonLd).replace(/</g, "\\u003c") }}
+        />
+      )}
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         {/* Breadcrumb */}
@@ -419,6 +457,131 @@ export default async function ServerPage({ params }: Props) {
                   )}
                 </div>
               </div>
+            )}
+
+            {/* ── Hand-written guide ─────────────────────────────────────────
+                Only renders for slugs with an entry in server-guides.ts. This is
+                the part of the page that is not derivable from the catalog row:
+                which of the similarly-named servers to pick, what to paste
+                where, and what breaks first. */}
+            {guide && (
+              <>
+                {guide.intro && (
+                  <div className="mb-8 rounded-xl border border-blue-500/25 bg-blue-500/5 p-5">
+                    <p className="text-gray-300 leading-relaxed">{guide.intro}</p>
+                  </div>
+                )}
+
+                {guide.setup && (
+                  <div className="mb-8">
+                    <h2 className="text-xl font-semibold text-white mb-4">{guide.setup.title}</h2>
+                    <ol className="space-y-5">
+                      {guide.setup.steps.map((step, i) => (
+                        <li key={step.title} className="rounded-xl border border-gray-800 bg-gray-900/60 p-5">
+                          <h3 className="text-white font-medium mb-2">
+                            <span className="mr-2 text-gray-500">{i + 1}.</span>
+                            {step.title}
+                          </h3>
+                          <p className="text-gray-400 leading-relaxed">{step.body}</p>
+                          {step.code && (
+                            <div className="mt-4 overflow-hidden rounded-lg border border-gray-800 bg-gray-950">
+                              <div className="flex items-center justify-between bg-gray-800/50 px-4 py-2">
+                                <span className="text-xs text-gray-400">{step.codeLabel || "config"}</span>
+                                <CopyButton text={step.code} />
+                              </div>
+                              <pre className="overflow-x-auto p-4 text-sm text-green-400">
+                                <code>{step.code}</code>
+                              </pre>
+                            </div>
+                          )}
+                        </li>
+                      ))}
+                    </ol>
+                  </div>
+                )}
+
+                {guide.tools && (
+                  <div className="mb-8">
+                    <h2 className="text-xl font-semibold text-white mb-4">{guide.tools.title}</h2>
+                    {guide.tools.note && (
+                      <p className="mb-4 text-gray-400 leading-relaxed">{guide.tools.note}</p>
+                    )}
+                    <div className="divide-y divide-gray-800 overflow-hidden rounded-xl border border-gray-800 bg-gray-900/60">
+                      {guide.tools.items.map((tool) => (
+                        <div key={tool.name} className="p-4 sm:flex sm:gap-4">
+                          <code className="shrink-0 text-sm text-blue-300 sm:w-56">{tool.name}</code>
+                          <p className="mt-1 text-sm leading-relaxed text-gray-400 sm:mt-0">{tool.what}</p>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                {guide.useCases && guide.useCases.length > 0 && (
+                  <div className="mb-8">
+                    <h2 className="text-xl font-semibold text-white mb-4">What people use it for</h2>
+                    <div className="space-y-4">
+                      {guide.useCases.map((uc) => (
+                        <div key={uc.title} className="rounded-xl border border-gray-800 bg-gray-900/60 p-5">
+                          <h3 className="text-white font-medium mb-3">{uc.title}</h3>
+                          <blockquote className="border-l-2 border-blue-500/50 pl-4 text-gray-300 italic">
+                            &ldquo;{uc.prompt}&rdquo;
+                          </blockquote>
+                          <p className="mt-3 text-sm leading-relaxed text-gray-500">{uc.why}</p>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                {guide.comparison && (
+                  <div className="mb-8">
+                    <h2 className="text-xl font-semibold text-white mb-4">Which one should you use?</h2>
+                    {guide.comparison.note && (
+                      <p className="mb-4 text-gray-400 leading-relaxed">{guide.comparison.note}</p>
+                    )}
+                    <div className="space-y-3">
+                      {guide.comparison.items.map((item) => (
+                        <div key={item.name} className="rounded-xl border border-gray-800 bg-gray-900/60 p-5">
+                          <h3 className="text-white font-medium mb-1">
+                            {item.slug ? (
+                              <Link href={`/servers/${item.slug}`} className="text-blue-400 transition hover:text-blue-300">
+                                {item.name}
+                              </Link>
+                            ) : (
+                              item.name
+                            )}
+                          </h3>
+                          <p className="text-sm leading-relaxed text-gray-400">{item.choose}</p>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                {/* Where the guide's claims came from. A setup guide that cannot
+                    be checked is just a confident paragraph. */}
+                <div className="mb-8 rounded-xl border border-gray-800 bg-gray-900/40 p-5">
+                  <p className="text-sm text-gray-500">
+                    Every command, environment variable, and endpoint above was read from the
+                    project&rsquo;s own documentation on {guide.verifiedOn}:{" "}
+                    {guide.sources.map((source, i) => (
+                      <span key={source.url}>
+                        {i > 0 && ", "}
+                        <a
+                          href={source.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-gray-400 underline decoration-gray-700 underline-offset-2 transition hover:text-blue-400"
+                        >
+                          {source.label}
+                        </a>
+                      </span>
+                    ))}
+                    .
+                  </p>
+                </div>
+              </>
             )}
 
             {/* Categories */}
