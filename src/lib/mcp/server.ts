@@ -131,7 +131,7 @@ export function createMcpToolsServer(): McpServer {
           .optional()
           .describe("Integration slug, e.g. 'claude-desktop' or 'cursor'."),
         install_type: z
-          .enum(["npm", "pip", "binary", "docker", "source"])
+          .enum(["npm", "pip", "binary", "docker", "source", "remote"])
           .optional()
           .describe("Restrict to one install mechanism."),
         official: z.boolean().optional().describe("Only first-party/official servers."),

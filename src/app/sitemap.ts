@@ -107,6 +107,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'weekly',
       priority: 0.9,
     },
+    // Hub for the hand-written per-server setup guides. The guides themselves
+    // live on /servers/[slug]; this is the only page that links to all of them.
+    {
+      url: `${baseUrl}/guides`,
+      lastModified: now,
+      changeFrequency: 'weekly',
+      priority: 0.9,
+    },
     {
       url: `${baseUrl}/mcp-server`,
       lastModified: now,

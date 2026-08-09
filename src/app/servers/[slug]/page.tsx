@@ -580,6 +580,14 @@ export default async function ServerPage({ params }: Props) {
                     ))}
                     .
                   </p>
+                  {/* Reciprocal link to the hub, so the guided pages are not
+                      dead ends and the hub is reachable from every one of them. */}
+                  <p className="mt-3 text-sm text-gray-500">
+                    <Link href="/guides" className="text-blue-400 transition hover:text-blue-300">
+                      Browse all MCP server setup guides
+                    </Link>
+                    .
+                  </p>
                 </div>
               </>
             )}

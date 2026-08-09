@@ -22,7 +22,7 @@ export interface MCPServer {
   website_url?: string;
   categories: string[];
   integrations: string[];
-  install_type: 'npm' | 'pip' | 'binary' | 'docker' | 'source';
+  install_type: 'npm' | 'pip' | 'binary' | 'docker' | 'source' | 'remote';
   install_command?: string;
   /**
    * Whether install_command's artifact was confirmed to exist on install_checked:
@@ -76,6 +76,10 @@ export function registryLabel(installType: MCPServer['install_type']): string {
       return 'the container registry';
     case 'binary':
       return 'the project release page';
+    // A hosted server has no artifact to publish; the verified/unverified copy
+    // should never render for one, but label it honestly if it ever does.
+    case 'remote':
+      return 'no registry (this server is hosted)';
     default:
       return 'its registry';
   }
@@ -283,7 +287,7 @@ const _serversPart1: MCPServer[] = [
     install_command: 'docker run -i --rm -e GITHUB_PERSONAL_ACCESS_TOKEN ghcr.io/github/github-mcp-server',
     install_verified: true,
     install_checked: '2026-08-01',
-    stars: 31881,
+    stars: 32097,
     featured: true,
     official: true,
   },
@@ -463,10 +467,10 @@ const _serversPart1: MCPServer[] = [
     categories: ['communication'],
     integrations: ['claude-desktop', 'cursor', 'vs-code', 'windsurf', 'cline'],
     install_type: 'npm',
-    install_command: 'npx slack-mcp-server@latest --transport stdio',
+    install_command: 'npx -y slack-mcp-server@latest --transport stdio',
     install_verified: true,
     install_checked: '2026-07-31',
-    stars: 1697,
+    stars: 1772,
     featured: true,
   },
   {
@@ -934,7 +938,7 @@ const _serversPart1: MCPServer[] = [
   {
     slug: 'figma',
     name: 'Figma MCP Server',
-    description: 'There are two different Figma MCP servers and the install command on most listings quietly belongs to the wrong one, so start with which you are choosing. **Figma\'s official Dev Mode MCP server ships inside the Figma Desktop app** — there is nothing to npm-install. Enable it under Preferences → Dev Mode MCP Server and the app opens a local endpoint at `http://127.0.0.1:3845/mcp`, which you attach with `claude mcp add figma --transport http http://127.0.0.1:3845/mcp`. Because it runs in the app, it reads whatever you have selected on the canvas: exact colors, typography, spacing, auto-layout constraints, component variants, and — the part a token-based reader cannot do — your Code Connect mappings, so it emits your component names rather than generic divs. It requires a Dev or Full seat on a paid plan and the desktop app must be open. The repository linked here is `figma/mcp-server-guide`, Figma\'s own setup guide; Figma does not publish the server\'s source. **The community alternative is Figma-Context-MCP by GLips** (15,500+ stars), installed as `npx figma-developer-mcp --figma-api-key=YOUR_FIGMA_ACCESS_TOKEN`. It authenticates with a Personal Access Token from Figma Settings → Personal Access Tokens and calls the REST API, so it needs no desktop app, works headlessly in CI, and can read any file your account can open — including from a free plan. It exposes the document JSON, node lookup by ID, component listing, text extraction, and rendered-image download. The practical split: pick the official server when design-to-code fidelity and Code Connect matter and you are already paying for Dev Mode; pick GLips when you need automation, a free plan, or a machine with no Figma app installed. Both let an assistant translate a frame into accurate React, Tailwind, or plain HTML/CSS instead of guessing from a screenshot.',
+    description: 'There are three different Figma MCP servers and the install command on most listings belongs to the one Figma no longer leads with, so start with which you are choosing. **Figma\'s recommended server is now the hosted remote one at `https://mcp.figma.com/mcp`** — nothing to install, OAuth in the client, attached with `claude mcp add --transport http figma https://mcp.figma.com/mcp`. It is also the only one with the write and cross-file tools (`use_figma`, `generate_figma_design`, `generate_diagram`, `create_new_file`, `search_design_system`, asset upload and download). **The Dev Mode desktop server ships inside the Figma Desktop app** — enable it in Dev Mode (Shift+D) from the MCP server section of the inspect panel and the app opens a local endpoint at `http://127.0.0.1:3845/mcp`. Figma\'s docs now describe the desktop server as being for specific organisation and enterprise cases and recommend the remote one instead. Because it runs in the app, it reads whatever you have selected on the canvas: exact colors, typography, spacing, auto-layout constraints, component variants, and — the part a token-based reader cannot do — your Code Connect mappings, so it emits your component names rather than generic divs. It requires a Dev or Full seat on a paid plan and the desktop app must be open. The repository linked here is `figma/mcp-server-guide`, Figma\'s own setup guide; Figma does not publish the server\'s source. **The community alternative is Figma-Context-MCP by GLips** (15,500+ stars), installed as `npx figma-developer-mcp --figma-api-key=YOUR_FIGMA_ACCESS_TOKEN`. It authenticates with a Personal Access Token from Figma Settings → Personal Access Tokens and calls the REST API, so it needs no desktop app, works headlessly in CI, and can read any file your account can open — including from a free plan. It exposes the document JSON, node lookup by ID, component listing, text extraction, and rendered-image download. The practical split: pick the official server when design-to-code fidelity and Code Connect matter and you are already paying for Dev Mode; pick GLips when you need automation, a free plan, or a machine with no Figma app installed. Both let an assistant translate a frame into accurate React, Tailwind, or plain HTML/CSS instead of guessing from a screenshot.',
     author: 'Figma',
     github_url: 'https://github.com/figma/mcp-server-guide',
     source_verified: true,
@@ -942,13 +946,12 @@ const _serversPart1: MCPServer[] = [
     website_url: 'https://figma.com',
     categories: ['coding', 'media'],
     integrations: ['claude-desktop', 'cursor', 'vs-code', 'windsurf', 'cline'],
-    install_type: 'npm',
-    install_command: 'claude mcp add figma --transport http http://127.0.0.1:3845/mcp',
-    install_verified: false,
+    install_type: 'remote',
+    install_command: 'claude mcp add --transport http figma https://mcp.figma.com/mcp',
     install_checked: '2026-08-06',
     featured: true,
     official: true,
-    stars: 1859,
+    stars: 1869,
   },
   {
     slug: 'twilio',
