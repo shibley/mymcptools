@@ -782,6 +782,280 @@ codex mcp add figma --url https://mcp.figma.com/mcp`,
       ],
     },
   },
+  {
+    slug: 'jira',
+    verifiedOn: '2026-08-10',
+    sources: [
+      { label: 'atlassian/atlassian-mcp-server README', url: 'https://github.com/atlassian/atlassian-mcp-server' },
+      { label: 'atlassian/atlassian-mcp-server server.json (MCP registry entry)', url: 'https://github.com/atlassian/atlassian-mcp-server/blob/main/server.json' },
+      { label: 'Atlassian Support — Getting started with the Atlassian Rovo MCP Server', url: 'https://support.atlassian.com/atlassian-rovo-mcp-server/docs/getting-started-with-the-atlassian-remote-mcp-server/' },
+      { label: 'Atlassian Support — Supported tools', url: 'https://support.atlassian.com/atlassian-rovo-mcp-server/docs/supported-tools/' },
+      { label: 'Atlassian Support — Troubleshooting and verifying your setup', url: 'https://support.atlassian.com/atlassian-rovo-mcp-server/docs/troubleshooting-and-verifying-your-setup/' },
+    ],
+    intro:
+      'There is no separate "Jira MCP server" from Atlassian. Jira is one product surface of a single hosted server — the Atlassian Rovo MCP Server — that also carries Confluence, Jira Service Management, Bitbucket Cloud and Compass, so connecting it once gives you all of them your account can see. The part that trips people up is the endpoint: the URL in most blog posts and in a lot of copied config is https://mcp.atlassian.com/v1/mcp, and the URL Atlassian now recommends is https://mcp.atlassian.com/v1/mcp/authv2. Both still resolve, and the older Server-Sent Events endpoint /v1/sse is still supported but explicitly on the way out — Atlassian tells custom clients to move off it. Use /mcp/authv2 for a browser OAuth 2.1 login, which is what almost everyone wants; /v1/mcp is the one the docs point at for API-token configurations. Nothing installs locally either way, so there is no package to fail and no version to pin.',
+    setup: {
+      title: 'Connecting Jira over the Atlassian Rovo MCP Server',
+      steps: [
+        {
+          title: 'Add the remote server to Claude Code',
+          body:
+            'One command, no package download. Claude Code opens a browser for the OAuth 2.1 consent screen the first time you call a tool; after that the session is remembered.',
+          code: 'claude mcp add --transport http atlassian https://mcp.atlassian.com/v1/mcp/authv2',
+          codeLabel: 'shell',
+        },
+        {
+          title: 'Or paste the config directly, for any HTTP-capable client',
+          body:
+            'This is the exact .mcp.json Atlassian ships in the repository root, so it is the config to copy rather than one reconstructed from a screenshot. Cursor, VS Code and ChatGPT also have one-click install links in the README that encode the same URL.',
+          code: '{\n  "mcpServers": {\n    "atlassian": {\n      "type": "http",\n      "url": "https://mcp.atlassian.com/v1/mcp/authv2"\n    }\n  }\n}',
+          codeLabel: 'json',
+        },
+        {
+          title: 'Clients that only speak stdio need the mcp-remote proxy',
+          body:
+            'If your client cannot open a streamable-HTTP connection itself, it runs mcp-remote locally to bridge to the hosted endpoint. Atlassian lists Node.js v18+ as a prerequisite for exactly this path — that requirement is about the proxy, not about the server.',
+          code: 'npx -y mcp-remote https://mcp.atlassian.com/v1/mcp/authv2',
+          codeLabel: 'shell',
+        },
+        {
+          title: 'Let the first consent be an admin, or the rest of the team is blocked',
+          body:
+            'The Rovo MCP app is not a Marketplace install. It is registered just-in-time the first time somebody on your site completes the OAuth 2.1 (3LO) consent flow, and that first user has to hold access to every product the MCP scopes request. Get that wrong and later users hit "Your site admin must authorize this app". After the first install, a user with only Jira (or only Confluence) can consent for their own product. The app then shows up under Connected apps in Atlassian Administration, where it can be reviewed or revoked.',
+        },
+        {
+          title: 'Pin the cloudId and project key so the model stops probing',
+          body:
+            'Every session otherwise opens with getAccessibleAtlassianResources and a project lookup before it does the thing you asked for. Atlassian publishes this AGENTS.md block to short-circuit those calls; the maxResults line matters as much as the IDs, because an unbounded JQL search will happily return enough issues to blow the context window.',
+          code: '## Atlassian Rovo MCP\n\nWhen connected to atlassian-rovo-mcp:\n- **MUST** use Jira project key = YOURPROJ\n- **MUST** use cloudId = "https://yoursite.atlassian.net" (do NOT call getAccessibleAtlassianResources)\n- **MUST** use `maxResults: 10` for ALL Jira JQL search operations.',
+          codeLabel: 'markdown',
+        },
+      ],
+    },
+    tools: {
+      title: 'The Jira tools, by permission group',
+      note:
+        'Access is granted per permission group, not per tool — an org admin turns on read_jira, write_jira or search_jira, and each tool inherits its group. That is why "it can read my issues but not comment" is a normal, deliberate state rather than a bug. atlassianUserInfo and getAccessibleAtlassianResources are common to every product.',
+      items: [
+        { name: 'getJiraIssue (read)', what: 'Fetch one issue by ID or key — the workhorse behind "summarise PROJ-412".' },
+        { name: 'searchJiraIssuesUsingJql (search)', what: 'The only search tool, and it takes raw JQL. Natural-language questions get translated to JQL by the model, so a bad answer is usually a bad query — ask it to show you the JQL.' },
+        { name: 'getVisibleJiraProjects (read)', what: 'Lists the projects your account can see. Pin the key in AGENTS.md to skip it.' },
+        { name: 'getTransitionsForJiraIssue (read)', what: 'The legal next statuses for an issue. Must be called before a transition, because workflow names differ per project.' },
+        { name: 'transitionJiraIssue (write)', what: 'Moves an issue through a workflow transition returned by the call above.' },
+        { name: 'editJiraIssue (write)', what: 'Updates fields on an existing issue.' },
+        { name: 'addCommentToJiraIssue (write)', what: 'Adds a comment, or edits an existing one when a commentID is supplied.' },
+        { name: 'addWorklogToJiraIssue (write)', what: 'Logs time against an issue.' },
+        { name: 'getJiraIssueTypeMetaWithFields (read)', what: 'Create-field metadata for a project and issue type — what a create call is allowed to set, including required custom fields.' },
+        { name: 'getJiraProjectIssueTypesMetadata (read)', what: 'The issue types available in a project.' },
+        { name: 'getIssueLinkTypes / getJiraIssueRemoteIssueLinks (read)', what: 'Link vocabulary, and the remote links on an issue — this is how a ticket resolves to its Confluence page.' },
+        { name: 'lookupJiraAccountId (read)', what: 'Resolves a name or email to an account ID, which is what assignee fields actually want.' },
+        { name: 'searchAtlassian / fetchAtlassian (platform)', what: 'Rovo-powered natural-language search across Jira and Confluence together, and fetch-by-ARI. Reach for these when the question spans both products.' },
+      ],
+    },
+    useCases: [
+      {
+        title: 'Sprint status without opening a board',
+        prompt: 'Using JQL, find every issue in PROJ in the current sprint that is not Done, group them by assignee, and flag anything that has not been updated in 5 days.',
+        why: 'One searchJiraIssuesUsingJql call plus model-side grouping. Naming JQL explicitly is the difference between a real query and a guess.',
+      },
+      {
+        title: 'Meeting notes to a triaged backlog',
+        prompt: 'Here are my notes. Create Jira issues in PROJ for each action item, set the issue type from getJiraProjectIssueTypesMetadata, assign each one with lookupJiraAccountId, and show me the list before you create anything.',
+        why: 'The metadata and account-ID lookups are what stop the create call failing on a required custom field or an unresolvable assignee. Atlassian ships a "capture tasks from meeting notes" skill for this exact flow.',
+      },
+      {
+        title: 'Close the loop on a release ticket',
+        prompt: 'For PROJ-812, list the available transitions, move it to the one that means code review is finished, and add a comment linking the Confluence release-plan page.',
+        why: 'Exercises getTransitionsForJiraIssue before transitionJiraIssue — the ordering that avoids an invalid-transition error on a customised workflow.',
+      },
+    ],
+    gotchas: [
+      {
+        question: 'Which Atlassian MCP endpoint should I use — /v1/mcp or /v1/mcp/authv2?',
+        answer:
+          'Use https://mcp.atlassian.com/v1/mcp/authv2 for a normal browser-based OAuth 2.1 login; it is the endpoint Atlassian recommends and the one in its own .mcp.json, its Cursor and VS Code install links, and its Claude Code command. https://mcp.atlassian.com/v1/mcp still works and is the one the docs reference for API-token configurations. The legacy SSE endpoint https://mcp.atlassian.com/v1/sse is still supported but Atlassian advises moving custom clients off it to /mcp or /mcp/authv2. Both current endpoints are listed as remotes in the server.json Atlassian publishes to the MCP registry.',
+      },
+      {
+        question: 'Why do I get "Your site admin must authorize this app"?',
+        answer:
+          'Because nobody has completed the first 3LO consent for your site yet. The Rovo MCP app is installed just-in-time rather than through the Marketplace, and the first person to consent must have access to all the products the MCP scopes ask for. An admin needs to run the connection flow once; after that, users with access to only one product can consent for that product.',
+      },
+      {
+        question: 'Why do Jira Service Management or Bitbucket tools not appear?',
+        answer:
+          'They are not available over OAuth 2.1 at all. Jira Service Management and Bitbucket Cloud tools require API token authentication, and Bitbucket needs a scoped token specifically; Compass is the mirror image and is OAuth-only. API token auth also has to be switched on by an org admin under Atlassian Administration → Rovo → Rovo MCP server → Authentication before any token will work.',
+      },
+      {
+        question: 'Why does the connection fail with a permission error from my machine?',
+        answer:
+          'If your organisation uses IP allowlisting for Atlassian Cloud, calls through the MCP server honour it, and you will see "You don\'t have permission to connect from this IP address." Connect from an allowed network or VPN range, or have an admin add yours. Separately, an OAuth flow that loops or fails to redirect usually means the browser is blocking pop-ups or http://localhost:3334 is blocked.',
+      },
+      {
+        question: 'It connects but returns nothing, or only some of my issues.',
+        answer:
+          'Empty or partial results are the documented symptom of an expired token or missing scopes — re-authenticate and check what you approved at login. A total silence is more often that the tools were never enabled for the session: re-run the connection flow and enable the Jira tools. Everything the server returns is filtered by your existing Jira project and issue permissions, so a query that works in the browser under one account will legitimately return less under another.',
+      },
+      {
+        question: 'Does the Atlassian MCP server work with Jira Server or Data Center?',
+        answer:
+          'No. It is a cloud-hosted bridge to Atlassian Cloud sites and there is no self-hosted build of it. For Server or Data Center you need a community server that talks to your own instance with a Personal Access Token — see the comparison below.',
+      },
+      {
+        question: 'Can I use it from a script or CI, with no browser?',
+        answer:
+          'Yes, via API token authentication, which exists for exactly these headless and service-style setups. It needs the admin enablement described above plus a personal API token scoped to the tools you intend to call. Every tool call is written to the organisation audit log under Rovo MCP User Actions either way, which is worth knowing before pointing an unattended agent at it.',
+      },
+    ],
+    comparison: {
+      note:
+        'One hosted server covers several products, so "which Jira MCP server" is usually really a question about deployment and auth.',
+      items: [
+        {
+          name: 'Confluence, same server',
+          slug: 'confluence',
+          choose: 'Nothing extra to install — the same connection carries the Confluence tools. Our Confluence guide covers that tool surface and the CQL side.',
+        },
+        {
+          name: 'sooperset/mcp-atlassian (community)',
+          choose: 'The one to use for Jira Server or Data Center, which the official server does not support. Runs locally via uvx mcp-atlassian, covers Confluence v6.0+ and Jira v8.14+, and authenticates with a Personal Access Token on self-hosted or an API token on Cloud. Not an Atlassian product.',
+        },
+        {
+          name: 'Bitbucket',
+          slug: 'bitbucket',
+          choose: 'Bitbucket over the official server is API-token-only and admin-gated. If you want OAuth or a richer pull-request tool surface, the community Bitbucket server is the pragmatic pick.',
+        },
+        {
+          name: 'mcp-remote',
+          slug: 'mcp-remote',
+          choose: 'Not an alternative — the proxy your client runs if it cannot speak streamable HTTP itself. This is why Node.js v18+ shows up in the prerequisites.',
+        },
+      ],
+    },
+  },
+  {
+    slug: 'confluence',
+    verifiedOn: '2026-08-10',
+    sources: [
+      { label: 'atlassian/atlassian-mcp-server README', url: 'https://github.com/atlassian/atlassian-mcp-server' },
+      { label: 'Atlassian Support — Supported tools', url: 'https://support.atlassian.com/atlassian-rovo-mcp-server/docs/supported-tools/' },
+      { label: 'Atlassian Support — Getting started with the Atlassian Rovo MCP Server', url: 'https://support.atlassian.com/atlassian-rovo-mcp-server/docs/getting-started-with-the-atlassian-remote-mcp-server/' },
+      { label: 'sooperset/mcp-atlassian README', url: 'https://github.com/sooperset/mcp-atlassian' },
+    ],
+    intro:
+      'Confluence has no MCP server of its own. It is a product surface on the Atlassian Rovo MCP Server, the same hosted endpoint that serves Jira, so if you already connected for Jira you already have the Confluence tools and there is nothing else to install. What is worth reading separately is the tool surface, because it is shaped nothing like Jira\'s: content is addressed by page ID rather than by a human-readable key, search is CQL and not JQL, and comments split into two distinct types with separate create and read tools. Most disappointing first sessions with Confluence over MCP come from one of those three, not from the connection.',
+    setup: {
+      title: 'Connecting Confluence and pointing it at the right space',
+      steps: [
+        {
+          title: 'Add the server, if you have not already for Jira',
+          body:
+            'Same endpoint, same OAuth 2.1 consent. Use https://mcp.atlassian.com/v1/mcp/authv2 rather than the older /v1/mcp that circulates in older config — both resolve, but authv2 is the one Atlassian recommends and ships in its own config file.',
+          code: 'claude mcp add --transport http atlassian https://mcp.atlassian.com/v1/mcp/authv2',
+          codeLabel: 'shell',
+        },
+        {
+          title: 'Confirm the Confluence tools were actually enabled',
+          body:
+            'Confluence has its own read/write/search permission groups that an org admin grants independently of Jira\'s, so a working Jira connection tells you nothing about Confluence. Ask for your spaces first — it is the cheapest call that proves read access end to end. If it comes back empty, re-run the connection flow and enable the Confluence tools; Atlassian lists that as the documented cause of a silent client.',
+          code: 'What Confluence spaces do I have access to?',
+          codeLabel: 'prompt',
+        },
+        {
+          title: 'Pin the spaceId, not the space name',
+          body:
+            'Confluence tools want a numeric spaceId, and every session that lacks one starts by listing spaces to find it. Add it to AGENTS.md alongside the cloudId. The limit line matters here more than in Jira: a CQL search across a large wiki returns page bodies, and unbounded results are the usual reason a Confluence session runs out of context halfway through an answer.',
+          code: '## Atlassian Rovo MCP\n\nWhen connected to atlassian-rovo-mcp:\n- **MUST** use Confluence spaceId = "123456"\n- **MUST** use cloudId = "https://yoursite.atlassian.net" (do NOT call getAccessibleAtlassianResources)\n- **MUST** use `limit: 10` for ALL Confluence CQL search operations.',
+          codeLabel: 'markdown',
+        },
+      ],
+    },
+    tools: {
+      title: 'The Confluence tools, by permission group',
+      note:
+        'Seven read tools, four write, one search. Note what is absent: there is no delete, no page-move and no attachment tool, so an agent cannot destroy a page tree through this server however it is prompted — the worst it can do is create clutter or overwrite a body with updateConfluencePage.',
+      items: [
+        { name: 'getConfluencePage (read)', what: 'Fetch a page or live doc by ID. Live docs are handled by the same tool, not a separate one.' },
+        { name: 'searchConfluenceUsingCql (search)', what: 'The only Confluence search, and it takes CQL — Confluence Query Language, a different syntax from Jira\'s JQL. Ask the model to show the CQL it used when results look wrong.' },
+        { name: 'getConfluenceSpaces (read)', what: 'Lists the spaces you can see; how you find a spaceId once, so you can pin it.' },
+        { name: 'getPagesInConfluenceSpace (read)', what: 'The pages in a space — the flat listing.' },
+        { name: 'getConfluencePageDescendants (read)', what: 'The subtree under a parent page. This, not the flat listing, is what answers "summarise this section of the wiki".' },
+        { name: 'createConfluencePage (write)', what: 'Creates a page or live doc. Needs the spaceId, which is why pinning it removes a whole discovery round-trip.' },
+        { name: 'updateConfluencePage (write)', what: 'Updates an existing page or live doc. It replaces content rather than appending, so ask for a diff before letting it run on a page anyone depends on.' },
+        { name: 'getConfluencePageFooterComments / createConfluenceFooterComment', what: 'The comment thread at the bottom of a page. Create also handles replies.' },
+        { name: 'getConfluencePageInlineComments / createConfluenceInlineComment', what: 'Comments anchored to selected text. Separate from footer comments in both directions — reading one does not return the other, which is the usual reason "it missed my comment".' },
+        { name: 'getConfluenceCommentChildren (read)', what: 'Replies to a comment. Threads are not returned nested by default; this is how you walk them.' },
+        { name: 'searchAtlassian / fetchAtlassian (platform)', what: 'Rovo natural-language search across Confluence and Jira together, and fetch-by-ARI. The right tool when the question crosses products — "the doc linked from this ticket".' },
+        { name: 'getTeamworkGraphContext / getTeamworkGraphObject (platform)', what: 'The relationship layer between Atlassian entities. What makes a page resolve to the work items and people around it instead of being read as loose text.' },
+      ],
+    },
+    useCases: [
+      {
+        title: 'Summarise a documentation subtree, not a single page',
+        prompt: 'Get the descendants of Confluence page 1234567, then summarise the onboarding process they describe as a numbered list, and tell me which of those pages contradict each other.',
+        why: 'getConfluencePageDescendants is the tool people miss. Pointing at a parent page and asking for descendants is what turns a wiki section into a single answer.',
+      },
+      {
+        title: 'Find the doc behind the ticket',
+        prompt: 'For PROJ-812, list its remote issue links, open the Confluence page they point to, and tell me whether the acceptance criteria in the ticket match the spec on the page.',
+        why: 'Crosses both products in one session — getJiraIssueRemoteIssueLinks on the Jira side, getConfluencePage on the other. This is the case the single shared server exists for.',
+      },
+      {
+        title: 'Draft into the wiki with review before write',
+        prompt: 'Search Confluence with CQL for pages in space 123456 updated in the last 30 days about our deployment process, then draft a consolidated runbook page. Show me the draft; do not create the page until I say so.',
+        why: 'createConfluencePage is a write tool with no undo through MCP. Making the draft an explicit checkpoint is the habit that keeps that safe.',
+      },
+    ],
+    gotchas: [
+      {
+        question: 'Do I need a separate Confluence MCP server if I already set up Jira?',
+        answer:
+          'No. Jira and Confluence are two product surfaces on the same hosted Atlassian Rovo MCP Server at https://mcp.atlassian.com/v1/mcp/authv2 — one connection, one OAuth consent. What can differ is authorisation: Confluence read, write and search are separate permission groups that an admin grants independently, so Jira can work perfectly while Confluence returns nothing.',
+      },
+      {
+        question: 'Why does Confluence search ignore what I asked for?',
+        answer:
+          'Because searchConfluenceUsingCql takes CQL, not JQL and not English. The model writes the query, and a wrong query looks exactly like a bad answer. Ask it to print the CQL it ran. For genuinely fuzzy questions, searchAtlassian — the Rovo natural-language tool — is usually the better instrument than trying to coax CQL out of a vague prompt.',
+      },
+      {
+        question: 'It did not see my comment on the page.',
+        answer:
+          'Confluence has two comment types and the server keeps them apart. getConfluencePageFooterComments returns the thread at the bottom of the page; getConfluencePageInlineComments returns comments anchored to selected text. Neither includes the other, and replies need getConfluenceCommentChildren on top. Say which kind you mean, or ask for both.',
+      },
+      {
+        question: 'Can it delete or move Confluence pages?',
+        answer:
+          'No. The write group is createConfluencePage, updateConfluencePage and the two comment-creation tools — there is no delete, no move and no attachment tool in the supported set. The real risk is updateConfluencePage replacing a body, so review before write on any page that matters. Every call is recorded in the organisation audit log under Rovo MCP User Actions.',
+      },
+      {
+        question: 'Why can it read some spaces and not others?',
+        answer:
+          'The server never widens your access — results are filtered by your existing Confluence space and page permissions, so restricted spaces are invisible to it exactly as they are to you in the browser. If a space you can genuinely open is still missing, the documented causes are an expired token or scopes you did not approve at login; re-authenticate and check the consent screen.',
+      },
+      {
+        question: 'Does this work with Confluence Data Center?',
+        answer:
+          'No — the official server is Cloud-only. sooperset/mcp-atlassian is the community server for self-hosted, covering Confluence v6.0+ and Jira v8.14+ with a Personal Access Token, run locally with uvx mcp-atlassian. It is not an Atlassian product and its auth model is a long-lived token rather than OAuth, so scope it narrowly.',
+      },
+    ],
+    comparison: {
+      items: [
+        {
+          name: 'Jira, same server',
+          slug: 'jira',
+          choose: 'The other half of this connection. Our Jira guide covers the endpoint choice, the 3LO admin-consent trap and the JQL tool surface in full.',
+        },
+        {
+          name: 'sooperset/mcp-atlassian (community)',
+          choose: 'Pick this when Confluence is Server or Data Center, or when you need a locally run process instead of a hosted endpoint. Cloud is supported too, via API token.',
+        },
+        {
+          name: 'Notion',
+          slug: 'notion',
+          choose: 'If the question is really "which wiki should my agent write into", Notion\'s hosted MCP server has the closer equivalent of a full page-editing surface. Confluence over MCP cannot delete or move anything.',
+        },
+      ],
+    },
+  },
 ];
 
 const guideBySlug = new Map(guides.map((g) => [g.slug, g] as const));

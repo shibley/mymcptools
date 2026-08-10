@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { MCPServer, categories } from "@/data/servers";
+import { getServerGuide } from "@/data/server-guides";
 import { getStatus } from "@/lib/trust/status-store";
 import { getStaticSignal } from "@/lib/trust/static-signals-store";
 import {
@@ -24,6 +25,10 @@ export function ServerCard({ server, showCategory = true }: ServerCardProps) {
   const status = getStatus(server.slug);
   const local = isLocal(status);
   const signal = local ? getStaticSignal(server.slug) : undefined;
+  // A hand-written guide is the one thing that makes a listing worth clicking
+  // over the 2,400 that only carry a description. /guides links to them, but the
+  // index is the surface people actually browse, so mark them here too.
+  const hasGuide = Boolean(getServerGuide(server.slug));
 
   return (
     <Link href={`/servers/${server.slug}`}>
@@ -43,6 +48,12 @@ export function ServerCard({ server, showCategory = true }: ServerCardProps) {
               <LocalSignalPill signal={signal} />
             ) : (
               <StatusPill status={status} showChecked={false} />
+            )}
+            {hasGuide && (
+              <span className="inline-flex items-center gap-1 leading-none px-2 py-1 bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-medium rounded-full">
+                <span aria-hidden="true">📘</span>
+                <span>Setup guide</span>
+              </span>
             )}
             {server.sponsored && (
               <span className="inline-flex items-center gap-1 leading-none px-2 py-1 bg-yellow-500/10 border border-yellow-500/30 text-yellow-400 text-xs font-medium rounded-full">
@@ -114,6 +125,9 @@ export function ServerCardCompact({ server }: { server: MCPServer }) {
           <LocalSignalPill signal={signal} />
         ) : (
           <StatusPill status={status} showChecked={false} />
+        )}
+        {getServerGuide(server.slug) && (
+          <span className="text-emerald-400 text-xs font-medium" title="Has a hand-written setup guide">📘</span>
         )}
         {server.sponsored && (
           <span className="text-yellow-400 text-xs font-medium">💰</span>
