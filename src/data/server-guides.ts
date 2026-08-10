@@ -1056,6 +1056,595 @@ codex mcp add figma --url https://mcp.figma.com/mcp`,
       ],
     },
   },
+  {
+    slug: 'datadog',
+    verifiedOn: '2026-08-10',
+    sources: [
+      { label: 'Datadog docs — Set Up the Datadog MCP Server', url: 'https://docs.datadoghq.com/mcp_server/setup/' },
+      { label: 'Datadog docs — MCP Server Tools reference', url: 'https://docs.datadoghq.com/mcp_server/tools/' },
+      { label: 'Datadog docs — MCP Server overview', url: 'https://docs.datadoghq.com/bits_ai/mcp_server/' },
+    ],
+    intro:
+      'There is nothing to install. The Datadog MCP Server is a hosted endpoint on your own Datadog site — `https://mcp.<your-site>/api/unstable/mcp-server/mcp` — and you authorise it with OAuth from inside your client, not with a package and a pair of keys. Two things decide whether the setup goes well. First, use the vendor plugin or connector for your client rather than a hand-written config: Datadog ships one for Claude Code, Claude, Cursor, VS Code/Copilot, JetBrains and OpenCode, and the docs say to remove any earlier manual entry so the two do not fight. Second, choose your toolsets. The default `core` toolset is deliberately small; the full catalogue runs to hundreds of tools across two dozen toolsets, and `toolsets=all` will eat a large share of your context window before you have asked anything.',
+    setup: {
+      title: 'Connecting to the Datadog MCP Server',
+      steps: [
+        {
+          title: 'Check your site is supported',
+          body:
+            'The MCP Server is not GovCloud compatible — it is unavailable on app.ddog-gov.com and us2.ddog-gov.com. Everything else (US1, US3, US5, EU1, AP1, AP2, UK1) is supported. Your endpoint is the mcp. host for your own site, so a US1 org uses https://mcp.datadoghq.com/api/unstable/mcp-server/mcp and an EU1 org uses https://mcp.datadoghq.eu/api/unstable/mcp-server/mcp. Getting this wrong is the usual cause of an auth loop that never completes: the org you log into has to be the org the host belongs to.',
+        },
+        {
+          title: 'Grant yourself mcp_read (and mcp_write if you want writes)',
+          body:
+            'Datadog gates MCP behind two role permissions of its own, on top of the normal resource permissions. `mcp_read` covers reading tools, `mcp_write` covers anything that creates or modifies. The Standard Role has both already; a custom role needs the MCP Read / MCP Write checkboxes ticked under Organization Settings → Roles. The resource permission still applies as well — reading monitors needs `mcp_read` *and* Monitors Read, which is why a correctly connected server can still answer "no monitors found".',
+        },
+        {
+          title: 'Claude Code — install the plugin, not a raw server entry',
+          body:
+            'The plugin bundles the server with Datadog\'s own skills and auto-updates. After installing, `/ddsetup` picks your site and runs the OAuth flow, `/ddtoolsets` turns on product toolsets, and `/reload-plugins` applies changes. If you had added the server by hand before, delete that entry first.',
+          code: `/plugin install datadog@claude-plugins-official
+/ddsetup
+/ddtoolsets`,
+          codeLabel: 'Claude Code',
+        },
+        {
+          title: 'Claude (desktop and web) — use the directory connector',
+          body:
+            'Install the Datadog connector from the Claude Connectors Directory via + → Add Connector, then complete OAuth. It includes MCP Apps for in-product visualisations, which a custom connector pointed at the same URL does not get. Again: if Datadog is already there as a custom connector, remove it to avoid conflicts.',
+        },
+        {
+          title: 'Any other client — add the endpoint over HTTP',
+          body:
+            'For clients with no plugin, add the endpoint as a streamable-HTTP server and let the client run OAuth. Append `?toolsets=` to the URL to pick tool groups — this only works on the remote/OAuth path, and the Codex CLI wants the `X-Datadog-MCP-Toolsets` header instead of the query parameter.',
+          code: 'claude mcp add --transport http datadog-mcp "https://mcp.datadoghq.com/api/unstable/mcp-server/mcp?toolsets=core,dbm"',
+          codeLabel: 'shell',
+        },
+        {
+          title: 'CI or a server, where OAuth cannot run — use a token header',
+          body:
+            'Header auth is the documented fallback. A Personal Access Token (for a user) or Service Access Token (for a service account) as a bearer token is preferred, and needs no API key at all. The older form — `DD_API_KEY` plus `DD_APPLICATION_KEY` as HTTP headers — still works, and is worth knowing because it is what almost every third-party write-up about this server describes as *the* way in.',
+          code: `{
+  "mcpServers": {
+    "datadog": {
+      "type": "http",
+      "url": "https://mcp.datadoghq.com/api/unstable/mcp-server/mcp",
+      "headers": { "Authorization": "Bearer <YOUR_ACCESS_TOKEN>" }
+    }
+  }
+}`,
+          codeLabel: 'mcp.json',
+        },
+      ],
+    },
+    tools: {
+      title: 'Toolsets, and the tools worth knowing in each',
+      note:
+        'Only `core` loads by default. Generally-available toolsets are alerting, audit-trail, cost, dashboards, data-observability, dbm, ddsql, error-tracking, feature-flags, kubernetes, llmobs, networks, onboarding, product-analytics, profiling, reference-tables, rum, security, software-delivery, synthetics, widgets and workflows. Four more are in Preview and are excluded from `toolsets=all` — ask for `apm`, `cases`, `code-exec` or `remote-actions` by name. `omit_tools=` drops individual tools after toolsets resolve, which is how you keep a toolset but remove its write half.',
+      items: [
+        { name: 'search_datadog_logs / analyze_datadog_logs', what: 'core. The first searches and returns log events; the second runs SQL over them for counts and aggregations. Both need Logs Read Data and Logs Read Index Data.' },
+        { name: 'get_datadog_metric / get_datadog_metric_context', what: 'core. Query a metric, and separately discover its tags and tag values so the query can be filtered correctly. The context call is the one people skip and then wonder why a tag filter matches nothing.' },
+        { name: 'get_datadog_trace / search_datadog_spans', what: 'core. Fetch a full trace by trace ID, or search spans. Large traces may come back truncated.' },
+        { name: 'search_datadog_monitors / create_datadog_monitor', what: 'core / alerting. Note the deliberate safety rail: a monitor created over MCP lands in draft and sends no notifications until it is published in the UI.' },
+        { name: 'get_monitor_coverage', what: 'alerting. Answers "what is not monitored" for a service or host — the question that is tedious to ask any other way.' },
+        { name: 'ddsql_run_query (+ ddsql_get_spec, ddsql_schema_search_tables)', what: 'ddsql. SQL across infrastructure, logs, metrics, RUM and spans. Have the agent read the spec and schema first; DDSQL is not standard SQL.' },
+        { name: 'get_datadog_database_explain_plans / optimize_datadog_database_query', what: 'dbm. PostgreSQL explain plans and optimisation analysis pulled from Database Monitoring, keyed by query signature.' },
+        { name: 'execute_code', what: 'code-exec, Preview. Runs agent-authored TypeScript in a Datadog-managed sandbox with direct API access — one call instead of a dozen tool round-trips for a multi-signal investigation.' },
+        { name: 'datadog_remote_action_restricted_shell_run_command', what: 'remote-actions, Preview. Read-only shell commands on an Agent-instrumented host, through a Private Action Runner. Needs Connections Resolve and Private Action Runner Contribute.' },
+      ],
+    },
+    useCases: [
+      {
+        title: 'Incident triage across three signals',
+        prompt:
+          'The checkout service p99 spiked in the last hour. Pull the metric, find the slowest spans in that window, and search ERROR logs for that service over the same range. Tell me what changed.',
+        why: 'This is what the server is for: the correlation step is the expensive part of on-call, and core alone covers metrics, spans and logs.',
+      },
+      {
+        title: 'Find the monitoring gaps before the next incident',
+        prompt: 'Using get_monitor_coverage, list the services in the catalog with no latency or error-rate monitor, then draft monitors for the top three as drafts.',
+        why: 'Drafts do not page anyone, so this is safe to run against production. You review and publish in the UI.',
+      },
+      {
+        title: 'Cost, without opening a dashboard',
+        prompt: 'List the current cost recommendations ranked by estimated daily savings, and for the top one explain which resources it applies to.',
+        why: 'Needs the `cost` toolset and Cloud Cost Management Read; it is a one-call answer that otherwise takes a meeting.',
+      },
+    ],
+    gotchas: [
+      {
+        question: 'Does the Datadog MCP server need DD_API_KEY and DD_APP_KEY?',
+        answer:
+          'No. OAuth is the recommended path and manages no long-lived credentials at all; a Personal or Service Access Token as an `Authorization: Bearer` header is the preferred fallback and needs no API key. API-key auth does exist, but the header names are `DD_API_KEY` and `DD_APPLICATION_KEY` — not `DD_APP_KEY` — and it is the last option in Datadog\'s own docs, not the first.',
+      },
+      {
+        question: 'Is there an npm package for the Datadog MCP server?',
+        answer:
+          'No. It is a hosted endpoint on your Datadog site, so there is nothing to `npx`. What is packaged is the client-side integration: the Claude Code plugin, the Cursor and Copilot plugins, the Claude connector and the OpenCode plugin. Any install command you find that npx-installs a "datadog-mcp" package is a third-party server, not this one.',
+      },
+      {
+        question: 'Why does Datadog MCP only show a handful of tools?',
+        answer:
+          'Because `core` is the default toolset and everything else is opt-in. Add `?toolsets=...` to the endpoint URL, or run `/ddtoolsets` in Claude Code. Preview toolsets (`apm`, `cases`, `code-exec`, `remote-actions`) are not in `toolsets=all` and must be named explicitly.',
+      },
+      {
+        question: 'Why do I get "no results" even though the connection works?',
+        answer:
+          'Almost always a permission, not a bug. `mcp_read` gets you the tool; the resource permission gets you the data. Reading monitors needs Monitors Read as well, logs need Logs Read Data *and* Logs Read Index Data, APM needs APM Read. Custom roles are where this bites.',
+      },
+      {
+        question: 'Are there rate limits on the Datadog MCP server?',
+        answer:
+          'Yes, and the docs say they are subject to change: a burst limit of 50 requests per 10 seconds on tool calls, and 50,000 tool calls per month. MCP usage data is retained for 120 days.',
+      },
+      {
+        question: 'Can I use the Datadog MCP server on GovCloud?',
+        answer: 'No. It is explicitly not GovCloud compatible — unsupported on app.ddog-gov.com and us2.ddog-gov.com.',
+      },
+      {
+        question: 'Can I stop the agent from being able to change things?',
+        answer:
+          'Three ways, and they compose. Do not grant `mcp_write`. Use `omit_tools=` to strip specific write tools from the list the client ever sees. And restrict where connections can come from with the org IP allowlist, which applies to the MCP server too.',
+      },
+    ],
+    comparison: {
+      note: 'The alternatives here are not other Datadog servers — they are the other observability endpoints your agent might reach for.',
+      items: [
+        {
+          name: 'Datadog Claude Code plugin vs. a manual server entry',
+          choose: 'Use the plugin. It carries skills, auto-updates, and Datadog explicitly says to remove a manual entry if you install it. Hand-written config is for clients with no plugin.',
+        },
+        {
+          name: 'Sentry',
+          slug: 'sentry',
+          choose: 'For error-first debugging with stack traces and release attribution. Datadog gets you the whole telemetry surface; Sentry gets you deeper into one exception.',
+        },
+        {
+          name: 'Grafana',
+          slug: 'grafana',
+          choose: 'When your data lives in Prometheus/Loki and Grafana is the pane of glass. The Grafana server is a locally run process against your own stack, not a vendor-hosted endpoint.',
+        },
+      ],
+    },
+  },
+  {
+    slug: 'hubspot',
+    verifiedOn: '2026-08-10',
+    sources: [
+      { label: 'HubSpot developers — MCP Server', url: 'https://developers.hubspot.com/mcp' },
+      { label: 'HubSpot changelog — MCP Server public beta', url: 'https://developers.hubspot.com/changelog/mcp-server-beta' },
+      { label: 'Live check — mcp.hubspot.com OAuth resource metadata', url: 'https://mcp.hubspot.com/.well-known/oauth-protected-resource' },
+    ],
+    intro:
+      'Three different things get called "the HubSpot MCP server", and the one most write-ups describe is the one you probably do not want. The current answer for working with CRM data is a hosted remote server at https://mcp.hubspot.com, authorised with OAuth against a user-level app. Separately there is a Developer MCP server, installed locally through the HubSpot CLI with `hs mcp setup`, whose job is helping you *build HubSpot apps* — not query contacts. And there is the original May-2025 public beta, an npm package configured with a private-app access token; that is the version nearly every blog post still copies, and it is not what HubSpot documents today.',
+    setup: {
+      title: 'Connecting to the HubSpot MCP server',
+      steps: [
+        {
+          title: 'Decide which server you actually need',
+          body:
+            'CRM data — contacts, companies, deals, tickets, engagements? Remote server, below. Building or debugging a HubSpot app, project or UI extension? That is the Developer MCP server: `npm i -g @hubspot/cli` then `hs mcp setup`, which prompts you to pick your agentic tools. It requires Developer Platform v2025.2. The two are not substitutes for each other.',
+          code: 'hs mcp setup',
+          codeLabel: 'shell',
+        },
+        {
+          title: 'Create a user-level app with the scopes you want',
+          body:
+            'Access is controlled by a HubSpot user-level app and its scopes, and this is the step that decides what the agent can touch. Grant read scopes for the CRM objects you want reachable and nothing else — the app, not the client, is your blast-radius control.',
+        },
+        {
+          title: 'Add the endpoint to your client and complete OAuth',
+          body:
+            'The endpoint is the bare host, https://mcp.hubspot.com — with no /mcp path. (Verified: a POST to the root returns 401 with `WWW-Authenticate: Bearer resource_metadata="https://mcp.hubspot.com/.well-known/oauth-protected-resource"`, while /mcp returns 404. If your client reports "not found" rather than an auth prompt, you have a path on the end.)',
+          code: 'claude mcp add --transport http hubspot https://mcp.hubspot.com',
+          codeLabel: 'shell',
+        },
+        {
+          title: 'Point it at a sandbox first',
+          body:
+            'HubSpot\'s own beta guidance is to experiment in a developer sandbox or other non-production account, and to read every write confirmation prompt rather than clicking through it: "LLM\'s are prone to hallucination, always review when prompted for permission to use an MCP tool that makes changes to your account." A CRM is a system of record; a hallucinated deal-stage update is a real one.',
+        },
+      ],
+    },
+    tools: {
+      title: 'What the remote server can reach',
+      note:
+        'HubSpot documents this as data surface rather than a fixed tool list, and says the accessible types will increase over time as more MCP tools ship. The read/write versus read-only split is the part worth planning around.',
+      items: [
+        { name: 'CRM objects — read and write', what: 'Contacts, companies, deals, tickets, carts, products, orders, line items, invoices, quotes, subscriptions and segments (lists).' },
+        { name: 'Engagements — read and write', what: 'Calls, emails, meetings, notes and tasks. This is what makes "log a note on this contact" work.' },
+        { name: 'Associations', what: 'Reading and creating associations between objects — the contact-to-deal-to-company graph, not just flat records.' },
+        { name: 'Organisational context — read only', what: 'Users, teams, reporting structures, owners, roles and seats.' },
+        { name: 'Marketing and content — read only', what: 'Campaigns and campaign metrics, landing pages, website pages and blog posts.' },
+        { name: 'UI navigation', what: 'Opening specific screens in the HubSpot UI, so the assistant can hand you off to the right record instead of describing it.' },
+      ],
+    },
+    useCases: [
+      {
+        title: 'Brief yourself before a call',
+        prompt: 'Find the contact for this email address, list their open deals with stage and amount, and summarise the last five engagements in date order.',
+        why: 'Reads across objects, engagements and associations in one pass — exactly the join that is slow to do by clicking.',
+      },
+      {
+        title: 'Log the call afterwards',
+        prompt: 'Log a call engagement on that contact with these notes, then create a follow-up task for Thursday and associate both with the open deal.',
+        why: 'Writes are the point of the write scopes; the association step is what keeps the record useful later.',
+      },
+      {
+        title: 'Pipeline hygiene',
+        prompt: 'List deals in the Proposal stage with no engagement in the last 21 days, with owner and amount. Do not change anything.',
+        why: 'A read-only prompt against read-only scopes is the safest way to get value out of this server on day one.',
+      },
+    ],
+    gotchas: [
+      {
+        question: 'Does the HubSpot MCP server use a private app access token?',
+        answer:
+          'Not the current one. The remote server at mcp.hubspot.com authorises with OAuth 2.0 against a user-level app; HubSpot has said it is moving to OAuth 2.1 with PKCE and refresh-token rotation. The private-app-token-in-a-JSON-config setup belongs to the original npm beta from May 2025, which is what most third-party guides still show.',
+      },
+      {
+        question: 'What is the HubSpot MCP server URL?',
+        answer:
+          'https://mcp.hubspot.com, with nothing after the host. Adding /mcp gives a 404, not an auth challenge — a useful way to tell a wrong URL from a wrong token.',
+      },
+      {
+        question: 'What is the difference between the HubSpot MCP server and the Developer MCP server?',
+        answer:
+          'Audience. The remote server exposes your CRM data to an assistant. The Developer MCP server, installed with `hs mcp setup` from the HubSpot CLI, helps you build on HubSpot\'s developer platform and requires Developer Platform v2025.2. The npm package @hubspot/mcp-server describes itself as the server "for developers building HubSpot Apps" — so if you installed that expecting contacts, you installed the other one.',
+      },
+      {
+        question: 'Can HubSpot MCP read sensitive data properties?',
+        answer:
+          'No. Custom Sensitive Data Properties and Personal Health Information are excluded from what the server can access, independent of the scopes you grant.',
+      },
+      {
+        question: 'Why can the assistant read contacts but not create anything?',
+        answer:
+          'Because the app was created with read scopes, which is what HubSpot\'s setup guidance suggests by default. Write access is a property of the user-level app\'s scopes; nothing in the client config can grant it.',
+      },
+      {
+        question: 'Is the HubSpot MCP server generally available?',
+        answer:
+          'It entered public beta in May 2025 and HubSpot still describes it as evolving — more functionality, an improved authentication system, and a data surface that grows as tools are added. Treat tool availability as a moving target and re-read the docs before depending on a specific capability.',
+      },
+    ],
+    comparison: {
+      items: [
+        {
+          name: 'HubSpot/mcp-server (the beta repo)',
+          choose: 'Historical. The repo exists and the npm package @hubspot/mcp-server is still published, but it is the developer-platform server; for CRM work the hosted endpoint is the documented path.',
+        },
+        {
+          name: 'Salesforce',
+          slug: 'salesforce',
+          choose: 'The same job in the other CRM. If you are choosing between them for an agent, the deciding factor is usually which one your org already runs, not the MCP surface.',
+        },
+        {
+          name: 'Airtable',
+          slug: 'airtable',
+          choose: 'When "CRM" is really a table you own. Airtable over MCP gives full field-level read/write with no scope model to negotiate, and no sensitive-property exclusions.',
+        },
+      ],
+    },
+  },
+  {
+    slug: 'n8n',
+    verifiedOn: '2026-08-10',
+    sources: [
+      { label: 'czlonkowski/n8n-mcp README', url: 'https://github.com/czlonkowski/n8n-mcp' },
+      { label: 'n8n-mcp — Claude Code setup guide', url: 'https://github.com/czlonkowski/n8n-mcp/blob/main/docs/CLAUDE_CODE_SETUP.md' },
+      { label: 'n8n-mcp — self-hosting guide', url: 'https://github.com/czlonkowski/n8n-mcp/blob/main/docs/SELF_HOSTING.md' },
+      { label: 'n8n docs — MCP Server Trigger node', url: 'https://docs.n8n.io/integrations/builtin/core-nodes/n8n-nodes-langchain.mcptrigger/' },
+    ],
+    intro:
+      'n8n-MCP is not a workflow execution engine, and expecting it to be one is the single biggest source of disappointment with it. What it is: a searchable reference to 2,412 n8n nodes (829 core, 1,583 community) with 99% property coverage, 66.5% operation coverage, 2,352 workflow templates, and validators that check a node config or a whole workflow *before* you deploy it. Give it your instance\'s API credentials and it gains a second half — 16 management tools that create, update, deploy and inspect workflows on that instance. It is also a community project by Romuald Czlonkowski (22.6k★, MIT), not something n8n publishes, and it is unrelated to n8n\'s own MCP Server Trigger node, which points the other way: that node makes an n8n workflow *into* an MCP server for clients to call.',
+    setup: {
+      title: 'Setting up n8n-MCP',
+      steps: [
+        {
+          title: 'Fastest path — the hosted instance',
+          body:
+            'dashboard.n8n-mcp.com is the maintainer\'s hosted version: sign up, take an API key, connect your client. Free tier is 100 tool calls per day and the node/template data is kept current, which is the part that goes stale in a local install.',
+        },
+        {
+          title: 'Local — add it to Claude Code, docs tools only',
+          body:
+            'MCP_MODE=stdio is required, not cosmetic: without it the process writes log lines to stdout and the client reports JSON parse errors like "Unexpected token…". LOG_LEVEL=error and DISABLE_CONSOLE_OUTPUT=true exist for the same reason.',
+          code: `claude mcp add n8n-mcp \\
+  -e MCP_MODE=stdio \\
+  -e LOG_LEVEL=error \\
+  -e DISABLE_CONSOLE_OUTPUT=true \\
+  -- npx n8n-mcp`,
+          codeLabel: 'shell',
+        },
+        {
+          title: 'Add your instance to unlock the management tools',
+          body:
+            'The n8n API credentials are optional. Without them you get documentation, templates and validation. With them you additionally get create/update/execute/inspect against that instance. For a local n8n, N8N_API_URL is http://localhost:5678 — or http://host.docker.internal:5678 if n8n-MCP itself runs in Docker.',
+          code: `claude mcp add n8n-mcp \\
+  -e MCP_MODE=stdio \\
+  -e LOG_LEVEL=error \\
+  -e DISABLE_CONSOLE_OUTPUT=true \\
+  -e N8N_API_URL=https://your-n8n-instance.com \\
+  -e N8N_API_KEY=your-api-key \\
+  -- npx n8n-mcp`,
+          codeLabel: 'shell',
+        },
+        {
+          title: 'Docker, including the loopback trap',
+          body:
+            'The image is ghcr.io/czlonkowski/n8n-mcp:latest. If N8N_API_URL points at localhost or host.docker.internal you must also set WEBHOOK_SECURITY_MODE=moderate — the SSRF gate covers both webhook triggers and the API client, and the default `strict` mode rejects loopback addresses outright. `moderate` allows localhost while still blocking RFC1918 ranges and cloud metadata endpoints.',
+          code: `{
+  "mcpServers": {
+    "n8n-mcp": {
+      "command": "docker",
+      "args": [
+        "run", "-i", "--rm",
+        "-e", "MCP_MODE=stdio",
+        "-e", "LOG_LEVEL=error",
+        "-e", "DISABLE_CONSOLE_OUTPUT=true",
+        "-e", "N8N_API_URL=http://host.docker.internal:5678",
+        "-e", "N8N_API_KEY=your-api-key",
+        "-e", "WEBHOOK_SECURITY_MODE=moderate",
+        "ghcr.io/czlonkowski/n8n-mcp:latest"
+      ]
+    }
+  }
+}`,
+          codeLabel: 'claude_desktop_config.json',
+        },
+        {
+          title: 'Behind Cloudflare Access',
+          body:
+            'Set N8N_CF_CLIENT_ID and N8N_CF_CLIENT_SECRET; they are sent as CF-Access-Client-Id / CF-Access-Client-Secret on API requests, health probes and webhook executions. The token is scoped to the N8N_API_URL origin only — a webhook on a different host deliberately does not receive it.',
+        },
+      ],
+    },
+    tools: {
+      title: 'The 23 tools, in the order you actually use them',
+      note:
+        'Seven documentation tools always load; the sixteen n8n_* management tools appear only when API credentials are present. `DISABLED_TOOLS` and `DISABLED_TOOL_OPERATIONS` (e.g. `n8n_executions:delete`) let you remove capabilities you do not want an agent to have.',
+      items: [
+        { name: 'search_templates / get_template', what: 'Start here. 2,352 templates, searchable by node type — `{searchMode: "by_nodes", nodeTypes: ["n8n-nodes-base.slack"]}`. Using a template requires the documented attribution line crediting its author.' },
+        { name: 'search_nodes', what: 'Find nodes by keyword. `includeExamples: true` pulls real configurations; `source: "community"|"verified"` filters the 1,583 community nodes.' },
+        { name: 'get_node', what: 'The token-economics tool. `detail: "minimal"` is ~200 tokens, `"standard"` is the default, `"full"` is 3,000–8,000 tokens per node. `mode: "search_properties"` with a propertyQuery finds one property without loading the schema; `mode: "docs"` returns readable markdown.' },
+        { name: 'validate_node', what: 'Run `mode: "minimal"` first (<100ms, required fields only), then `mode: "full", profile: "runtime"` for full validation with suggested fixes.' },
+        { name: 'validate_workflow', what: 'Whole-workflow check — connections and expressions, not just per-node fields. The documented order is minimal → full → workflow.' },
+        { name: 'n8n_create_workflow / n8n_update_partial_workflow', what: 'Management. Partial (diff-style) updates need n8n 2.32+; they let an agent change one node without rewriting the workflow JSON.' },
+        { name: 'n8n_autofix_workflow / n8n_validate_workflow', what: 'Validate what is already deployed, and attempt repairs against the live instance.' },
+        { name: 'n8n_test_workflow / n8n_executions', what: 'Trigger a workflow and read execution history — the closest this server comes to "running" things, and only with API credentials.' },
+        { name: 'n8n_manage_credentials / n8n_audit_instance / n8n_health_check', what: 'Instance-level operations. Folder management needs n8n 2.19+; some evaluation features need 2.30+.' },
+      ],
+    },
+    useCases: [
+      {
+        title: 'Build a workflow that works on the first deploy',
+        prompt:
+          'Search templates for a Slack-to-Google-Sheets workflow. If nothing fits, find the nodes, get their standard details with examples, configure every parameter explicitly, then validate each node and the whole workflow before creating it.',
+        why: 'This is the documented pattern, and the reason it exists is the failure mode below: relying on default parameter values is the primary cause of runtime failures.',
+      },
+      {
+        title: 'Explain a node you have never used',
+        prompt: 'Get the docs for the n8n LangChain AI Agent node and list which properties are required versus optional, with an example config.',
+        why: 'No API credentials needed — this half of the server is a documentation index, which is also why it is useful before you have an instance at all.',
+      },
+      {
+        title: 'Fix a broken deployed workflow',
+        prompt: 'Validate workflow <id> on my instance, then use a partial update to fix only the nodes that fail validation. Show me the diff before applying it.',
+        why: 'Partial updates (n8n 2.32+) keep the change small, which matters because the project\'s own top-line warning is never to let AI edit production workflows directly.',
+      },
+    ],
+    gotchas: [
+      {
+        question: 'Can n8n-MCP execute my n8n workflows?',
+        answer:
+          'Only indirectly, and only with credentials. The server itself is a documentation, template and validation layer; workflow execution happens through the n8n_* management tools calling your instance\'s API, which requires N8N_API_URL and N8N_API_KEY. With no credentials it cannot run anything at all.',
+      },
+      {
+        question: 'Is n8n-mcp the official n8n MCP server?',
+        answer:
+          'No. It is a community project by Romuald Czlonkowski (MIT, 22.6k stars) and is not published by n8n. The confusion is worth clearing up because n8n does ship MCP functionality of its own — the MCP Server Trigger node — which does the opposite thing: it exposes an n8n workflow as an MCP server over SSE or Streamable HTTP, with bearer or header auth, at a randomly generated URL path. It does not support stdio.',
+      },
+      {
+        question: 'Why do I get "Unexpected token" JSON errors in Claude Desktop?',
+        answer:
+          'MCP_MODE is not set to stdio. Without it, log output goes to stdout and corrupts the JSON-RPC stream. Set MCP_MODE=stdio, and LOG_LEVEL=error plus DISABLE_CONSOLE_OUTPUT=true alongside it.',
+      },
+      {
+        question: 'Why does it fail to reach my local n8n instance?',
+        answer:
+          'The SSRF gate. Default WEBHOOK_SECURITY_MODE is strict, which rejects loopback addresses for both webhook triggers and the API client. Set WEBHOOK_SECURITY_MODE=moderate when N8N_API_URL is localhost or host.docker.internal — it still blocks private networks and cloud metadata.',
+      },
+      {
+        question: 'Why does the agent build workflows that fail at runtime?',
+        answer:
+          'Because it left parameters at their defaults. The project states this directly: default values are the primary cause of runtime failures, so every parameter controlling node behaviour must be configured explicitly. Coverage is also uneven — 66.5% of node operations are documented, and `includeExamples` availability varies by node popularity.',
+      },
+      {
+        question: 'How much context does it consume?',
+        answer:
+          'Enough to plan for. `get_node` with `detail: "full"` costs 3,000–8,000 tokens per node, so use `minimal` or `standard`, or `mode: "search_properties"` to fetch one property. Minimal validation returns in under 100ms.',
+      },
+      {
+        question: 'Is it safe to point at production?',
+        answer:
+          'The maintainer\'s own answer is no: copy the workflow first, test in development, export backups, validate before deploying. If you need a harder guarantee, use DISABLED_TOOLS or DISABLED_TOOL_OPERATIONS to remove destructive operations from the tool list entirely.',
+      },
+    ],
+    comparison: {
+      items: [
+        {
+          name: 'n8n MCP Server Trigger (built into n8n)',
+          choose: 'Use this when you want your n8n workflows to be tools an agent can call. SSE or Streamable HTTP, bearer/header auth, no stdio. It is the mirror image of n8n-mcp, not a competitor.',
+        },
+        {
+          name: 'dashboard.n8n-mcp.com (hosted)',
+          choose: 'Pick the hosted tier when you do not want to keep a node/template database current. 100 tool calls/day free; self-host when you need more or cannot send queries out.',
+        },
+        {
+          name: 'Zapier',
+          slug: 'zapier',
+          choose: 'If the goal is "let the agent trigger automations" and you have no n8n instance, Zapier\'s MCP surface is action-oriented out of the box. n8n-mcp is for building n8n workflows, which is a different job.',
+        },
+      ],
+    },
+  },
+  {
+    slug: 'blender-mcp',
+    verifiedOn: '2026-08-10',
+    sources: [
+      { label: 'blender-mcp on PyPI (README, v1.8.0)', url: 'https://pypi.org/project/blender-mcp/' },
+      { label: 'BlenderMCP official site', url: 'https://blendermcp.org/' },
+      { label: 'Live check — GitHub repo redirect and PyPI release metadata', url: 'https://pypi.org/pypi/blender-mcp/json' },
+    ],
+    intro:
+      'BlenderMCP is two pieces, and people who install one and not the other account for most of the "it connects but nothing happens" reports. `addon.py` runs inside Blender and opens a socket server on port 9876; the `blender-mcp` Python package is the MCP server your client speaks to, which relays commands into that socket. So Blender has to be open, the addon has to be enabled, and you have to have pressed "Connect to Claude" in the BlenderMCP sidebar tab before any tool call can work. Requirements are Blender 3.0+ and Python 3.10+, and the install is via uv — the project is emphatic that you install uv with its official installer, not `pip install uv`, which may not create the `uvx` command your client needs.',
+    setup: {
+      title: 'Setting up BlenderMCP',
+      steps: [
+        {
+          title: 'Install uv properly',
+          body:
+            'macOS: `brew install uv`. Windows: `powershell -c "irm https://astral.sh/uv/install.ps1 | iex"`, then add %USERPROFILE%\\.local\\bin to your user PATH and restart the client. Linux: `curl -LsSf https://astral.sh/uv/install.sh | sh`, then open a new shell. Do not proceed before uv works.',
+          code: 'brew install uv   # macOS',
+          codeLabel: 'shell',
+        },
+        {
+          title: 'Install and enable the Blender addon',
+          body:
+            'Download addon.py from the project, then in Blender: Edit → Preferences → Add-ons → Install…, select addon.py, and tick the box next to "Interface: Blender MCP". Note that the upstream GitHub repository currently does not resolve — github.com/ahujasid/blender-mcp redirects to github.com/MCPBlender/blender-mcp, which returns 404 as of this verification date — so blendermcp.org is the place to start looking for the addon file. The PyPI release is unaffected and current.',
+        },
+        {
+          title: 'Add the server to your client',
+          body:
+            'Claude Desktop: Settings → Developer → Edit Config. Claude Code: `claude mcp add blender uvx blender-mcp`. Cursor takes the same JSON globally or in .cursor/mcp.json. On Windows, wrap it: `"command": "cmd", "args": ["/c", "uvx", "blender-mcp"]`. Run only one instance of the MCP server — Cursor or Claude Desktop, not both.',
+          code: `{
+  "mcpServers": {
+    "blender": {
+      "command": "uvx",
+      "args": ["blender-mcp"]
+    }
+  }
+}`,
+          codeLabel: 'claude_desktop_config.json',
+        },
+        {
+          title: 'If the client cannot find uvx',
+          body:
+            'A GUI-launched client does not inherit your terminal PATH, so a bare `"command": "uvx"` can fail with `spawn uvx ENOENT` even though uvx works in a shell. Use the absolute path from `which uvx` / `where uvx` (e.g. /opt/homebrew/bin/uvx), then fully quit and relaunch the client — Cmd-Q on macOS, quit from the system tray on Windows.',
+        },
+        {
+          title: 'Pin Python if you have conda, pyenv or asdf',
+          body:
+            'uv picks the interpreter, and on machines with an auto-activated conda base it can pick one that fails to build dependencies. Pin 3.11 and prefer uv-managed interpreters. If a failed attempt keeps replaying after you fix it, clear the cache: `uv cache clean blender-mcp && uvx --refresh blender-mcp`.',
+          code: `{
+  "mcpServers": {
+    "blender": {
+      "command": "uvx",
+      "args": ["--python", "3.11", "blender-mcp"],
+      "env": { "UV_PYTHON_PREFERENCE": "only-managed" }
+    }
+  }
+}`,
+          codeLabel: 'mcp config',
+        },
+        {
+          title: 'Start the connection inside Blender',
+          body:
+            'In the 3D View sidebar (press N), open the BlenderMCP tab, optionally tick Poly Haven to allow asset downloads, and click "Connect to Claude". Do not run the uvx command yourself in a terminal — the client starts it. Sometimes the first command does not go through and it works from the second onward.',
+        },
+      ],
+    },
+    tools: {
+      title: 'What it can do, and the asset services behind it',
+      note:
+        'Communication is a JSON protocol over TCP — commands carry a type and optional params, responses carry a status plus result or message. BLENDER_HOST (default localhost) and BLENDER_PORT (default 9876) let the MCP server talk to Blender on another machine.',
+      items: [
+        { name: 'Scene and object inspection', what: 'Read the scene graph and object details, including viewport screenshots so the model can see what it just built.' },
+        { name: 'Object creation and modification', what: 'Create, modify and delete 3D objects; position, scale and orient them.' },
+        { name: 'Material control', what: 'Apply and modify materials and colours on existing objects.' },
+        { name: 'execute_blender_code', what: 'Runs arbitrary Python in Blender. This is the escape hatch that makes everything else possible and the single most dangerous tool here — always save your work first.' },
+        { name: 'Poly Haven assets', what: 'Search and download models, textures and HDRIs through the Poly Haven API. Off unless you tick the checkbox in the addon panel, because it downloads files to your machine.' },
+        { name: 'Hyper3D Rodin generation', what: 'Generate 3D models from a prompt. The free trial key is limited per day; beyond that, bring your own from hyper3d.ai or fal.ai.' },
+        { name: 'Sketchfab search and download', what: 'Search and pull Sketchfab models, with your own Sketchfab API key.' },
+        { name: 'Hunyuan3D', what: 'Additional generation backend, configured with a SecretId/SecretKey pair and an API URL.' },
+      ],
+    },
+    useCases: [
+      {
+        title: 'Block out a scene from a description',
+        prompt: 'Create a low poly scene in a dungeon, with a dragon guarding a pot of gold.',
+        why: 'The canonical demo, and a fair test of whether the addon connection is live: you should see geometry appear in the viewport as tools run.',
+      },
+      {
+        title: 'Dress a scene with real assets',
+        prompt: 'Create a beach vibe using HDRIs, textures and models like rocks and vegetation from Poly Haven.',
+        why: 'Requires the Poly Haven checkbox to be on. The project notes the model can be erratic about Poly Haven, so expect to steer it.',
+      },
+      {
+        title: 'Fix look and framing',
+        prompt: 'Make this car red and metallic, make the lighting like a studio, then point the camera at the scene and make it isometric.',
+        why: 'Material and camera work is where the natural-language interface beats hunting through panels, and it is safe — no code execution needed.',
+      },
+    ],
+    gotchas: [
+      {
+        question: 'Why does Blender MCP connect but nothing happens in Blender?',
+        answer:
+          'The addon side is not running. Blender must be open with the "Interface: Blender MCP" addon enabled, and you must have clicked "Connect to Claude" in the BlenderMCP sidebar tab (press N to show the sidebar). Also do not run `uvx blender-mcp` in a terminal yourself — the client launches it. If the first command still fails, try again; the project documents that the first one sometimes does not go through.',
+      },
+      {
+        question: 'Where do I download addon.py now that the GitHub repo 404s?',
+        answer:
+          'As of 2026-08-10, github.com/ahujasid/blender-mcp redirects to github.com/MCPBlender/blender-mcp and that URL returns 404 — the repository has been moved or taken private. The PyPI package is still being released (1.8.0, uploaded 2026-08-03), so `uvx blender-mcp` continues to work; blendermcp.org is the project\'s own site and the place to look for the current addon file. Treat any third-party mirror of addon.py with suspicion: it runs arbitrary Python inside Blender.',
+      },
+      {
+        question: 'Why does uvx fail with spawn uvx ENOENT?',
+        answer:
+          'Your client was launched from a GUI and does not have uv on its PATH. Replace "uvx" with the absolute path from `which uvx` or `where uvx`, or on Windows use `"command": "cmd", "args": ["/c", "uvx", "blender-mcp"]`. Then fully quit and relaunch the client.',
+      },
+      {
+        question: 'Can I run BlenderMCP with Blender on another machine?',
+        answer: 'Yes. Set BLENDER_HOST and BLENDER_PORT — for example BLENDER_HOST=host.docker.internal, BLENDER_PORT=9876. Default is localhost:9876.',
+      },
+      {
+        question: 'Is execute_blender_code safe?',
+        answer:
+          'It runs arbitrary Python inside Blender, which is exactly as powerful and as dangerous as that sounds. The project says to use it with caution outside experiments and to always save your work first. Complex requests are also better broken into steps — timeouts are a documented failure mode for large single operations.',
+      },
+      {
+        question: 'Does BlenderMCP send telemetry?',
+        answer:
+          'Yes, anonymous usage data by default. With consent checked it can include anonymised prompts, code snippets and screenshots; unchecked it collects only tool names, success/failure and duration. Turn it off entirely with DISABLE_TELEMETRY=true, either in the env block of your MCP config or on the command line.',
+      },
+      {
+        question: 'Do I need API keys?',
+        answer:
+          'Not for core modelling. Asset and generation services need their own: store the Sketchfab and Hyper3D keys and the Hunyuan3D SecretId/SecretKey in Edit → Preferences → Add-ons → Blender MCP so they survive restarts, or inject them for headless use as BLENDERMCP_SKETCHFAB_API_KEY, BLENDERMCP_HYPER3D_API_KEY, BLENDERMCP_HUNYUAN3D_SECRET_ID, BLENDERMCP_HUNYUAN3D_SECRET_KEY and BLENDERMCP_HUNYUAN3D_API_URL.',
+      },
+      {
+        question: 'Is BlenderMCP made by Blender?',
+        answer: 'No. The project states plainly that it is a third-party integration, not made by Blender. It is by Siddharth Ahuja.',
+      },
+    ],
+    comparison: {
+      note: 'Only run one MCP server against a single Blender instance — the addon exposes one socket.',
+      items: [
+        {
+          name: 'Running it from Cursor and Claude Desktop at once',
+          choose: 'Do not. The project warns explicitly to run only one instance of the MCP server, in one client.',
+        },
+        {
+          name: 'Hyper3D Rodin vs. Poly Haven',
+          choose: 'Poly Haven when a real asset exists — it is a library of CC0 models, textures and HDRIs. Hyper3D when nothing exists and you need something generated, accepting trial-key daily limits.',
+        },
+        {
+          name: 'Driving a game engine instead',
+          choose: 'If the destination is a game engine rather than a render, an engine-side MCP server skips the export step entirely. Blender is the better answer for modelling, materials and stills.',
+        },
+      ],
+    },
+  },
 ];
 
 const guideBySlug = new Map(guides.map((g) => [g.slug, g] as const));
