@@ -2331,6 +2331,131 @@ codex mcp add figma --url https://mcp.figma.com/mcp`,
       ],
     },
   },
+  {
+    slug: 'cloudflare',
+    verifiedOn: '2026-08-11',
+    sources: [
+      { label: 'Cloudflare Agents docs — Cloudflare\'s own MCP servers', url: 'https://developers.cloudflare.com/agents/model-context-protocol/mcp-servers-for-cloudflare/' },
+      { label: 'Cloudflare Agents docs — Code Mode MCP server patterns', url: 'https://developers.cloudflare.com/agents/model-context-protocol/codemode/' },
+      { label: 'cloudflare/mcp — Cloudflare API MCP server', url: 'https://github.com/cloudflare/mcp' },
+      { label: 'cloudflare/mcp-server-cloudflare — product-specific servers', url: 'https://github.com/cloudflare/mcp-server-cloudflare' },
+      { label: 'cloudflare/skills — agent plugin', url: 'https://github.com/cloudflare/skills' },
+    ],
+    intro:
+      '"The Cloudflare MCP server" is not one thing, and picking the wrong one is the main way this goes badly. There are two families. The Cloudflare API MCP server at https://mcp.cloudflare.com/mcp exposes the entire Cloudflare API — over 2,500 endpoints across DNS, Workers, R2 and Zero Trust — behind exactly two tools, search and execute, using the Code Mode pattern. Separately there are sixteen product-specific servers, each on its own *.mcp.cloudflare.com/mcp hostname, with curated tools for one area: Observability, Workers Bindings, Radar, Browser Rendering, DNS Analytics, CASB and so on. The rule of thumb: if the task spans products or touches an endpoint nobody wrote a tool for, use the API server; if you want a small, legible tool list for one product — and want to see the tool names in your client — pick the product server. The two repos are different too, which is why star counts and issue trackers disagree: the API server is cloudflare/mcp, the sixteen are cloudflare/mcp-server-cloudflare.',
+    setup: {
+      title: 'Connecting to Cloudflare MCP',
+      steps: [
+        {
+          title: 'The API server — one URL, OAuth on first use',
+          body:
+            'There is nothing to install and no package to pin. Add the URL, and on connect you are redirected to Cloudflare to authorize and choose which permissions the agent gets. Use the /mcp Streamable HTTP endpoint for anything new.',
+          code: '{\n  "mcpServers": {\n    "cloudflare-api": {\n      "url": "https://mcp.cloudflare.com/mcp"\n    }\n  }\n}',
+          codeLabel: 'json',
+        },
+        {
+          title: 'A product-specific server — same shape, different hostname',
+          body:
+            'Every one of the sixteen follows the pattern https://<subdomain>.mcp.cloudflare.com/mcp. Nothing stops you adding several at once; each authorizes separately, and each adds its own tools to the context, which is the cost you are trading against the API server\'s two.',
+          code: 'claude mcp add --transport http cloudflare-observability https://observability.mcp.cloudflare.com/mcp\nclaude mcp add --transport http cloudflare-bindings https://bindings.mcp.cloudflare.com/mcp',
+          codeLabel: 'shell',
+        },
+        {
+          title: 'Clients that cannot speak remote MCP',
+          body:
+            'Older clients that only launch local processes need a bridge. mcp-remote runs as a stdio child and proxies to the remote endpoint, handling the OAuth browser flow on your behalf. Swap the subdomain for whichever server you want.',
+          code: '{\n  "mcpServers": {\n    "cloudflare": {\n      "command": "npx",\n      "args": ["mcp-remote", "https://bindings.mcp.cloudflare.com/mcp"]\n    }\n  }\n}',
+          codeLabel: 'json',
+        },
+        {
+          title: 'CI, where no browser exists',
+          body:
+            'OAuth is not an option in automation. Create a Cloudflare API token scoped to what the job needs and send it as a bearer token in the Authorization header — both user tokens and account tokens are accepted. This is the one place a long-lived credential belongs.',
+          code: 'Authorization: Bearer <cloudflare-api-token>',
+          codeLabel: 'http',
+        },
+        {
+          title: 'Or install the skills plugin instead of wiring servers by hand',
+          body:
+            'cloudflare/skills bundles the MCP servers together with contextual skills and slash commands for building on Cloudflare. It works with any agent supporting the Agent Skills standard — Claude Code, OpenCode, OpenAI Codex and Pi. Cursor takes it from its marketplace, or via Settings → Rules → Add Rule → Remote Rule (GitHub) with cloudflare/skills.',
+          code: '# Claude Code\n/plugin marketplace add cloudflare/skills\n\n# any agent, via the skills CLI\nnpx skills add https://github.com/cloudflare/skills',
+          codeLabel: 'shell',
+        },
+      ],
+    },
+    tools: {
+      title: 'Why the API server shows only two tools',
+      note: 'Code Mode replaces a tool-per-endpoint listing with a sandbox the model writes JavaScript into. Cloudflare publishes the arithmetic: 2,594 endpoints as native MCP tools costs roughly 1,170,000 tokens of context with full schemas, or ~244,000 with required parameters only. Code Mode costs about 1,000 tokens, and stays there no matter how many endpoints exist — more than the entire context window of most models, reduced to a rounding error.',
+      items: [
+        { name: 'search', what: 'Runs model-written code against the OpenAPI document and returns only the operations, parameters or schemas the task needs. The full spec never leaves the sandbox — that is the whole point.' },
+        { name: 'execute', what: 'Runs model-written code with an authenticated request function (codemode.request({ method, path })). The code composes calls and returns a focused result; the credential itself is never handed to the generated code.' },
+        { name: '(product servers)', what: 'The sixteen domain servers are ordinary MCP servers with named tools — observability query tools, binding creation, Radar traffic lookups, page-to-markdown rendering. Use these when you want to read the tool list rather than trust generated code.' },
+      ],
+    },
+    useCases: [
+      {
+        title: 'Debug a Worker that is throwing in production',
+        prompt: 'Using the Cloudflare observability server, show me the errors my Worker has logged in the last hour, grouped by message, and tell me which route they came from.',
+        why: 'This is what the Observability server at observability.mcp.cloudflare.com exists for, and it is a case where the product server beats the API server: the tools are already shaped like the question.',
+      },
+      {
+        title: 'Change something the tool list does not cover',
+        prompt: 'Find the Cloudflare API operations for zone rulesets, then list the rulesets on this zone with their id, name and phase.',
+        why: 'Two calls: search narrows the OpenAPI document to /rulesets, execute runs the request. This is exactly the case the sixteen product servers cannot serve — nobody wrote a ruleset tool, but the endpoint has always been there.',
+      },
+      {
+        title: 'Turn a live page into markdown without leaving the agent',
+        prompt: 'Fetch this URL with the Cloudflare Browser Rendering server and give me the page as markdown, plus a screenshot.',
+        why: 'browser.mcp.cloudflare.com renders and converts server-side. Worth knowing it exists before reaching for a scraping server — if you are already on Cloudflare, this needs no new account.',
+      },
+    ],
+    gotchas: [
+      {
+        question: 'Which Cloudflare MCP server should I install?',
+        answer:
+          'Start with the API server at https://mcp.cloudflare.com/mcp if you want one connection that can reach anything, and accept that you cannot see the tool names in advance. Add a product-specific server when you are working inside one area repeatedly — Observability for debugging, Workers Bindings for building, Radar for Internet data — because its tools are curated and readable. Adding all sixteen is the one clearly wrong answer: you pay their combined tool descriptions on every request.',
+      },
+      {
+        question: 'Why does my client fail to connect to the /sse endpoint?',
+        answer:
+          'The historical /sse URLs still resolve, but they are aliases pointing at the same Streamable HTTP handler — they no longer serve the deprecated HTTP+SSE transport. A client configured to force SSE will fail against a URL that looks correct. Switch it to Streamable HTTP or to automatic transport detection. The servers support the MCP 2026-07-28 specification and also accept stateless requests from 2025-era Streamable HTTP clients.',
+      },
+      {
+        question: 'Is it safe to let the model write code against my Cloudflare account?',
+        answer:
+          'The sandbox is real: generated code runs in an isolated Dynamic Worker with direct outbound network access blocked by default, reaching external systems only through upstream MCP tools or the host request callback. But Cloudflare states plainly that code execution does not replace authorization — the sandbox stops exfiltration, it does not stop a destructive API call you granted permission for. Scope the OAuth grant, or the API token in CI, to what the agent actually needs.',
+      },
+      {
+        question: 'Which repository do I file an issue against?',
+        answer:
+          'cloudflare/mcp is the API/Code Mode server. cloudflare/mcp-server-cloudflare is the monorepo behind all sixteen product servers, one directory per app under apps/. cloudflare/skills is the plugin bundle, not a server. Third-party write-ups routinely conflate the first two, which is also why you will see wildly different star counts cited for "the Cloudflare MCP server".',
+      },
+      {
+        question: 'Do I need to install anything to use these?',
+        answer:
+          'No, and that is a change from most catalog entries. Every Cloudflare server is remote and hosted; the only npm package in the picture is mcp-remote, and only for clients that cannot open a remote MCP connection themselves. If a guide tells you to npm install a Cloudflare MCP server, it is describing a setup that no longer exists.',
+      },
+    ],
+    comparison: {
+      note: 'The useful comparison here is mostly internal — Cloudflare against itself.',
+      items: [
+        {
+          name: 'Cloudflare API server vs the sixteen product servers',
+          choose: 'API server for breadth and a fixed ~1,000-token context cost; product servers for a legible tool list in one area. Most people end up with the API server plus one product server, not sixteen.',
+        },
+        {
+          name: 'Cloudflare Browser Rendering vs Playwright MCP',
+          slug: 'microsoft-playwright-mcp',
+          choose: 'Browser Rendering for stateless fetch-and-convert on infrastructure you already pay for. Playwright when the agent needs a persistent, interactive browser session it can click through.',
+        },
+        {
+          name: 'Cloudflare Observability vs Sentry',
+          slug: 'sentry',
+          choose: 'Observability reads Workers logs and analytics at the platform level. Sentry is application-level error grouping across whatever you deploy. They answer different halves of "why is it broken".',
+        },
+      ],
+    },
+  },
 ];
 
 const guideBySlug = new Map(guides.map((g) => [g.slug, g] as const));
