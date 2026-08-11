@@ -2042,6 +2042,295 @@ codex mcp add figma --url https://mcp.figma.com/mcp`,
       ],
     },
   },
+  {
+    slug: 'supabase',
+    verifiedOn: '2026-08-11',
+    sources: [
+      { label: 'Supabase Docs — Supabase MCP Server', url: 'https://supabase.com/docs/guides/ai-tools/mcp' },
+      { label: 'supabase/mcp on GitHub', url: 'https://github.com/supabase/mcp' },
+    ],
+    intro:
+      'Almost every third-party write-up of this server still tells you to mint a personal access token and run a local npx process. That is the old shape. Supabase now runs a hosted server at https://mcp.supabase.com/mcp using OAuth 2.1 with dynamic client registration — you paste a URL, a browser opens, you pick the organization, and there is no PAT to rotate. What replaces token management is URL configuration: three query parameters (read_only, project_ref, features) decide whether the agent can write, which project it can see, and which tool groups exist at all. Supabase itself is blunt about the reason those parameters matter — the docs tell you not to point this at production, and the prompt-injection example they give is a support ticket whose body contains the instructions.',
+    setup: {
+      title: 'Connecting the Supabase MCP server',
+      steps: [
+        {
+          title: 'Add the hosted server to Claude Code',
+          body:
+            'Project scope writes the entry into .mcp.json in the repo, which is usually what you want — the server is per-project in practice even when the URL is not scoped yet. The features list is the full default set minus storage.',
+          code: 'claude mcp add --scope project --transport http supabase \\\n  "https://mcp.supabase.com/mcp?features=docs,account,database,debugging,development,functions,branching"',
+          codeLabel: 'shell',
+        },
+        {
+          title: 'Or write .mcp.json by hand',
+          body:
+            'Any client that speaks Streamable HTTP takes the same URL. The type field is http; there is no command and no args because nothing runs locally.',
+          code: '{\n  "mcpServers": {\n    "supabase": {\n      "type": "http",\n      "url": "https://mcp.supabase.com/mcp"\n    }\n  }\n}',
+          codeLabel: 'json',
+        },
+        {
+          title: 'Run the auth flow in a real terminal',
+          body:
+            'This is the step people lose an hour to. In Claude Code the /mcp authentication flow has to run in a regular terminal, not the IDE extension. Select the supabase server, choose Authenticate, and grant access to the organization that owns the project you actually want — picking the wrong org produces a connected server with an empty project list.',
+          code: 'claude\n/mcp',
+          codeLabel: 'shell',
+        },
+        {
+          title: 'Scope it before you point it at anything real',
+          body:
+            'read_only=true executes every statement as a read-only Postgres user. project_ref=<id> limits the server to one project and, as a side effect, removes the account-management tools entirely — no create_project, no pause_project. The two combine, and the combination is the configuration to default to.',
+          code: 'https://mcp.supabase.com/mcp?project_ref=abc123&read_only=true',
+          codeLabel: 'url',
+        },
+        {
+          title: 'Cut the tool surface with features=',
+          body:
+            'features takes a comma-separated list of groups and is the cheapest way to shrink both the attack surface and the token cost of the tool list. A schema-and-docs assistant needs two groups, not seven.',
+          code: 'https://mcp.supabase.com/mcp?features=database,docs&read_only=true',
+          codeLabel: 'url',
+        },
+        {
+          title: 'Local development against the CLI',
+          body:
+            'When you are running the Supabase CLI locally, the MCP server is served by the local stack at http://localhost:54321/mcp. Same tools, no OAuth, and nothing of yours leaves the machine — the right place to experiment before you connect a cloud project.',
+          code: 'http://localhost:54321/mcp',
+          codeLabel: 'url',
+        },
+        {
+          title: 'CI, where no browser exists',
+          body:
+            'Dynamic client registration needs a browser, so CI is the one case where you still mint a personal access token from the dashboard and pass it as an Authorization header. Not every client supports custom headers — check before you build a pipeline on it.',
+          code: '{\n  "mcpServers": {\n    "supabase": {\n      "type": "http",\n      "url": "https://mcp.supabase.com/mcp?project_ref=${SUPABASE_PROJECT_REF}",\n      "headers": {\n        "Authorization": "Bearer ${SUPABASE_ACCESS_TOKEN}"\n      }\n    }\n  }\n}',
+          codeLabel: 'json',
+        },
+      ],
+    },
+    tools: {
+      title: 'Tool groups',
+      note: 'Every group except storage is enabled by default. The account group is silently dropped whenever project_ref is set.',
+      items: [
+        { name: 'database', what: 'list_tables, list_extensions, list_migrations, apply_migration, execute_sql. apply_migration is a write even when the SQL looks harmless — read_only is what stops it.' },
+        { name: 'debugging', what: 'get_logs across API, Postgres, Edge Functions, Auth, Storage and Realtime, plus get_advisors for Supabase\'s own security and performance findings.' },
+        { name: 'development', what: 'get_project_url, get_publishable_keys (publishable and legacy anon keys), generate_typescript_types from the live schema.' },
+        { name: 'functions', what: 'list_edge_functions, get_edge_function, deploy_edge_function — deployment from a chat window, so worth disabling on any connection you are not watching.' },
+        { name: 'account', what: 'list/get projects and organizations, create_project, pause_project, restore_project, get_cost and confirm_cost. Disabled under project_ref.' },
+        { name: 'docs', what: 'search_docs — the one group with no access to your data, and the reason to keep docs enabled even on a locked-down URL.' },
+        { name: 'branching', what: 'Experimental and paid-plan only: create/list/delete branches plus merge, reset and rebase. This is what makes "test the migration first" a real workflow rather than advice.' },
+        { name: 'storage', what: 'list_storage_buckets, get_storage_config, update_storage_config. Off by default; you have to name it in features= to get it.' },
+      ],
+    },
+    useCases: [
+      {
+        title: 'Find the schema problem before the advisor email does',
+        prompt: 'Run get_advisors for security and performance on this project and tell me which findings are caused by tables missing RLS policies, with the policy you would add for each.',
+        why: 'get_advisors is the tool most people never discover, and it is the one that turns the server from a SQL runner into something that tells you what is wrong unprompted.',
+      },
+      {
+        title: 'Migrate on a branch, not on the database',
+        prompt: 'Create a development branch, apply a migration on it that adds a created_at timestamptz default now() to public.users, run the app\'s smoke queries against the branch, then tell me whether it is safe to merge.',
+        why: 'Branching plus apply_migration is the combination Supabase recommends in place of connecting an agent to production, and it only works if you enabled the branching feature group on a paid plan.',
+      },
+      {
+        title: 'Regenerate types after someone changed the schema in the dashboard',
+        prompt: 'Generate TypeScript types from the current schema and diff them against src/types/database.ts, then list the code that will stop compiling.',
+        why: 'generate_typescript_types plus your local files in one context is the thing the Supabase CLI cannot do on its own, because it cannot see the code that consumes the types.',
+      },
+    ],
+    gotchas: [
+      {
+        question: 'Do I still need a Supabase personal access token for the MCP server?',
+        answer:
+          'No, not for normal use. The hosted server at mcp.supabase.com uses OAuth 2.1 with dynamic client registration, so your client opens a browser and you grant organization access. PATs are now only for CI, where no browser flow is possible, and are passed as an Authorization: Bearer header.',
+      },
+      {
+        question: 'Why does authentication fail in the Claude Code IDE extension?',
+        answer:
+          'Run the /mcp flow in a regular terminal instead. Supabase\'s own instructions call this out explicitly: start claude in a plain terminal, run /mcp, select supabase, then Authenticate. Some clients prompt automatically during setup; others need this manual step.',
+      },
+      {
+        question: 'Why are the project management tools missing?',
+        answer:
+          'You set project_ref in the URL. Project-scoped mode intentionally disables the whole account group — list_projects, create_project, pause_project, cost tools. That is the trade for confining the server to one project, and it is usually the right trade.',
+      },
+      {
+        question: 'Why can the agent not see my storage buckets?',
+        answer:
+          'The storage group is the only one disabled by default. Add it explicitly, e.g. ?features=database,storage — and note that including it also brings update_storage_config, which is a write.',
+      },
+      {
+        question: 'Is it safe to connect this to a production Supabase project?',
+        answer:
+          'Supabase says no. Their guidance is to use a development project with non-production or obfuscated data, and if you must touch real data, run with read_only=true, scope with project_ref, and restrict features. The stated reason is prompt injection: content stored in your own tables can carry instructions the model then follows. Supabase wraps SQL results with counter-instructions, and is explicit that this is not foolproof.',
+      },
+      {
+        question: 'My client wants an OAuth client ID and secret — what do I do?',
+        answer:
+          'Some clients (Azure API Center is the example in the docs) do not support dynamic client registration. Create an OAuth app under your Supabase organization, use the website and callback URLs your client gives you, and grant write access to all scopes — fine-grained scopes are not available yet. Then paste the client ID and secret into the client.',
+      },
+    ],
+    comparison: {
+      items: [
+        {
+          name: 'Hosted server vs the local Supabase CLI endpoint',
+          choose: 'Local (http://localhost:54321/mcp) while you are developing against the local stack — no auth, no cloud data. Hosted when the agent genuinely needs a cloud project, ideally a development one.',
+        },
+        {
+          name: 'Supabase MCP vs a generic Postgres MCP server',
+          slug: 'postgresql',
+          choose: 'A Postgres server gives you SQL against the database and nothing else. Take Supabase MCP when you want the platform — logs, advisors, Edge Function deploys, branches, generated types. Take plain Postgres when you only want queries and would rather not hand out platform access at all.',
+        },
+        {
+          name: 'MCP server vs the Supabase plugin for AI coding agents',
+          choose: 'The plugin bundles the server with Supabase\'s agent skills in one setup step. Use it if you want the recommended defaults; wire the server directly when you need specific features= and read_only settings.',
+        },
+      ],
+    },
+  },
+  {
+    slug: 'vercel',
+    verifiedOn: '2026-08-11',
+    sources: [
+      { label: 'Vercel Docs — Use Vercel\'s MCP server', url: 'https://vercel.com/docs/agent-resources/vercel-mcp' },
+      { label: 'Vercel Docs — Vercel MCP tools reference', url: 'https://vercel.com/docs/agent-resources/vercel-mcp/tools' },
+    ],
+    intro:
+      'Vercel MCP is a remote, OAuth-only server at https://mcp.vercel.com — in Beta, on all plans, with nothing to install. Two things about it are unusual enough to plan around. First, Vercel only accepts connections from AI clients it has reviewed and approved, so "my client cannot connect" is often not a bug you can fix. Second, nearly every tool takes a required teamId, which means an agent that has not yet called list_teams or read your .vercel/project.json will fail its first few calls in a way that looks like a permissions problem and is not. Vercel is also explicit about what a connection grants: the same access as your own Vercel user account.',
+    setup: {
+      title: 'Connecting to Vercel MCP',
+      steps: [
+        {
+          title: 'One command for whichever agents you have',
+          body:
+            'add-mcp detects the AI clients installed on the machine and configures Vercel MCP for each. -y skips confirmation for the agents already used in the project directory, -g installs globally across projects.',
+          code: 'npx add-mcp https://mcp.vercel.com',
+          codeLabel: 'shell',
+        },
+        {
+          title: 'Claude Code',
+          body:
+            'Add it as an HTTP transport from inside the project, then authenticate with /mcp once Claude is running. The browser flow is where you approve the connection for your account.',
+          code: 'claude mcp add --transport http vercel https://mcp.vercel.com\nclaude\n/mcp',
+          codeLabel: 'shell',
+        },
+        {
+          title: 'Codex CLI',
+          body:
+            'Codex detects OAuth support when the server is added and opens the browser for authorization immediately, so there is no separate auth step.',
+          code: 'codex mcp add vercel --url https://mcp.vercel.com',
+          codeLabel: 'shell',
+        },
+        {
+          title: 'Cursor and Windsurf',
+          body:
+            'Cursor takes the plain url key in .cursor/mcp.json and then shows a "Needs login" prompt you have to click to authorize. Windsurf uses serverUrl instead of url in mcp_config.json — the same value under a different key, which is a common copy-paste failure.',
+          code: '// .cursor/mcp.json\n{ "mcpServers": { "vercel": { "url": "https://mcp.vercel.com" } } }\n\n// Windsurf mcp_config.json\n{ "mcpServers": { "vercel": { "serverUrl": "https://mcp.vercel.com" } } }',
+          codeLabel: 'json',
+        },
+        {
+          title: 'VS Code with Copilot — the authentication detour',
+          body:
+            'Add the server over HTTP via MCP: Add Server, then start it from MCP: List Servers. When the browser prompt appears, the documented path is counter-intuitive: click Allow, then Cancel on "Do you want Code to open the external website?", then answer Yes to the "try a different way? (URL Handler)" message, then Open. Following the obvious prompt instead is what leaves people stuck in a loop.',
+          code: 'Cmd+Shift+P → MCP: Add Server → HTTP → https://mcp.vercel.com',
+          codeLabel: 'text',
+        },
+        {
+          title: 'Gemini CLI and Gemini Code Assist',
+          body:
+            'These do not speak remote MCP natively, so the documented configuration bridges through mcp-remote. Both read the same ~/.gemini/settings.json; restart the IDE after editing.',
+          code: '{\n  "mcpServers": {\n    "vercel": {\n      "command": "npx",\n      "args": ["mcp-remote", "https://mcp.vercel.com"]\n    }\n  }\n}',
+          codeLabel: 'json',
+        },
+        {
+          title: 'Claude.ai, Claude Desktop and ChatGPT',
+          body:
+            'Both are custom-connector flows on paid plans. In Claude, Settings → Connectors → Add custom connector with the URL. In ChatGPT you must first enable Developer mode under Settings → Connectors → Advanced, then create a connector with authentication set to OAuth; it then appears under Developer mode in the composer.',
+          code: 'https://mcp.vercel.com',
+          codeLabel: 'url',
+        },
+      ],
+    },
+    tools: {
+      title: 'What the tools actually do',
+      note: 'Documentation tools are public. Everything else requires authentication, and most of it requires a teamId — a team ID or slug, found as orgId in .vercel/project.json or via list_teams.',
+      items: [
+        { name: 'search_vercel_documentation', what: 'Takes a topic and an optional token budget (default 2500). Public — it works before you authenticate anything.' },
+        { name: 'list_teams / list_projects / get_project', what: 'The lookup chain. list_projects needs a teamId, get_project needs both projectId and teamId; IDs start with team_ and prj_ and both live in .vercel/project.json.' },
+        { name: 'list_deployments / get_deployment', what: 'Deployment history with state and target, then full detail for one deployment by ID or hostname.' },
+        { name: 'get_deployment_build_logs', what: 'Returns the tail by default because that is where build errors are. errorsOnly filters to error/stderr/exit/fatal; buildId disambiguates deployments with multiple builds.' },
+        { name: 'get_runtime_errors', what: 'Grouped error clusters with counts, affected routes, sample messages and first/last seen. The docs say start here, then drill down. Maximum lookback is 7 days.' },
+        { name: 'get_runtime_logs', what: 'Individual function log lines, filterable by environment, level, statusCode, source, request ID and full-text query. group_by returns counts by route, status code or deployment instead of lines — the difference between a readable answer and 1000 log entries.' },
+        { name: 'get_web_analytics', what: 'count mode returns one total; aggregate mode returns rows grouped by up to two dimensions and requires since, until and by. Supports OData filters like requestPath eq \'/pricing\' and country eq \'US\'. Needs Web Analytics enabled on the project.' },
+        { name: 'deploy_to_vercel', what: 'Deploys a file tree directly — no Git repo, no CLI. You pass target (preview or production), a name, and files as {file, data, encoding}; Vercel creates the project and detects the framework unless you override projectSettings.' },
+        { name: 'Agent Runs tools', what: 'list_agent_run_projects and friends expose observability for agents built with the eve framework on Vercel — irrelevant unless you run those.' },
+      ],
+    },
+    useCases: [
+      {
+        title: 'Diagnose a failed build without opening the dashboard',
+        prompt: 'Get the build logs for the most recent failed deployment on this project with errorsOnly, then find the file in this repo the error points at and propose the fix.',
+        why: 'errorsOnly plus the local checkout in one context is the whole point — the dashboard can show you the log, but it cannot read the code the log refers to.',
+      },
+      {
+        title: 'Triage production errors in the right order',
+        prompt: 'Show me the runtime error clusters for the last 24 hours, then for the largest cluster pull the matching runtime logs grouped by route and tell me which deployment introduced it.',
+        why: 'get_runtime_errors first, get_runtime_logs second is the order the docs recommend, and group_by is what keeps the second call from returning a wall of lines.',
+      },
+      {
+        title: 'Ask an analytics question the dashboard makes tedious',
+        prompt: 'Aggregate web analytics for this project from July 16 to July 22 by day and route, filtered to country eq \'US\', and tell me which route lost the most traffic week over week.',
+        why: 'aggregate mode with two dimensions and an OData filter is a query you would otherwise build by hand; note it only reaches back as far as your plan\'s reporting window.',
+      },
+    ],
+    gotchas: [
+      {
+        question: 'Why can my AI client not connect to Vercel MCP?',
+        answer:
+          'Vercel only supports clients it has reviewed and approved. The current list is Claude Code, Claude.ai and Claude Desktop, ChatGPT, Codex CLI, Cursor, VS Code with Copilot, Devin, Raycast, Goose, Windsurf, Gemini Code Assist and Gemini CLI. If yours is not on it, no configuration will fix it — clients are added over time.',
+      },
+      {
+        question: 'Why do Vercel MCP tools keep failing with a missing teamId?',
+        answer:
+          'teamId is a required parameter on most authenticated tools, including list_projects, get_deployment and the log tools. Give the agent the value up front: it is orgId in .vercel/project.json, or call list_teams first. The team slug works in place of the ID.',
+      },
+      {
+        question: 'VS Code gets stuck authenticating to Vercel MCP — what is the fix?',
+        answer:
+          'Cancel the "Do you want Code to open the external website?" popup rather than accepting it. VS Code then offers "try a different way? (URL Handler)" — answer Yes, click Open, and complete the Vercel sign-in. This is the documented path, not a workaround.',
+      },
+      {
+        question: 'How far back can Vercel MCP look at errors and analytics?',
+        answer:
+          'Runtime error clusters span at most 7 days. Runtime logs default to the last 24 hours and cap at 1000 entries per call. Analytics count queries can cover everything since Web Analytics was enabled, but aggregate queries are limited to your plan\'s reporting window.',
+      },
+      {
+        question: 'What access does connecting Vercel MCP grant?',
+        answer:
+          'The same access as your Vercel user account — there is no reduced-scope mode. Vercel\'s guidance is to keep human confirmation of tool calls enabled, be careful running it alongside other MCP servers because of prompt injection, and verify you are pointed at the official https://mcp.vercel.com endpoint rather than a lookalike from a third-party marketplace.',
+      },
+      {
+        question: 'Can Vercel MCP deploy without a Git repository?',
+        answer:
+          'Yes. deploy_to_vercel takes a file tree directly with a target of preview or production, creates the project if it does not exist, detects the framework and runs the build. Send source files only — Vercel installs dependencies itself.',
+      },
+    ],
+    comparison: {
+      items: [
+        {
+          name: 'Vercel MCP vs the Vercel CLI',
+          choose: 'The CLI when you know the command. MCP when the task is a question — why did this build fail, which route regressed — because the answer needs logs and your code read together.',
+        },
+        {
+          name: 'add-mcp vs per-client configuration',
+          choose: 'add-mcp if you run several agents and want them all wired in one command. Per-client config when you need it in exactly one place, or when the client (Windsurf, Gemini) needs its own key shape.',
+        },
+        {
+          name: 'Vercel MCP vs Netlify MCP',
+          slug: 'netlify',
+          choose: 'Whichever platform hosts the site — neither can see the other. Worth knowing that Vercel\'s is remote and OAuth-only with an approved-client list, which is a stricter connection model than most platform servers.',
+        },
+      ],
+    },
+  },
 ];
 
 const guideBySlug = new Map(guides.map((g) => [g.slug, g] as const));
