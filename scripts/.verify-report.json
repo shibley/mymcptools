@@ -1,22 +1,26 @@
 {
-  "generatedAt": "2026-08-11T09:39:20.752Z",
-  "authenticated": false,
+  "generatedAt": "2026-08-11T10:57:16.670Z",
+  "authenticated": true,
   "progress": {
     "total": 2467,
-    "checked": 1010,
-    "remaining": 1457,
-    "percent": 40.9
+    "checked": 1053,
+    "remaining": 1414,
+    "percent": 42.7
   },
   "countsByStatus": {
-    "ok_low_overlap": 307,
-    "mismatch": 8,
-    "ok": 660,
-    "archived": 35
+    "ok_low_overlap": 301,
+    "ok": 688,
+    "archived": 38,
+    "renamed": 16,
+    "not_found": 4,
+    "mismatch": 6
   },
   "failureCounts": {
-    "ok_low_overlap": 307,
-    "mismatch": 8,
-    "archived": 35
+    "ok_low_overlap": 301,
+    "archived": 38,
+    "renamed": 16,
+    "not_found": 4,
+    "mismatch": 6
   },
   "failures": {
     "ok_low_overlap": [
@@ -75,6 +79,15 @@
         "reason": "weak overlap (0.05) — review"
       },
       {
+        "slug": "amazon-sp-api-mcp",
+        "name": "Amazon Selling Partner API MCP",
+        "author": "community",
+        "github_url": "https://github.com/christian-ramos/mcp-amazon-sp-api",
+        "ownerRepo": "christian-ramos/mcp-amazon-sp-api",
+        "overlapScore": 0.07,
+        "reason": "weak overlap (0.07) — review"
+      },
+      {
         "slug": "anki-mcp",
         "name": "Anki MCP",
         "author": "community",
@@ -100,15 +113,6 @@
         "ownerRepo": "yangkyeongmo/mcp-server-apache-airflow",
         "overlapScore": 0.08,
         "reason": "weak overlap (0.08) — review"
-      },
-      {
-        "slug": "apollo-io-mcp",
-        "name": "Apollo.io MCP",
-        "author": "community",
-        "github_url": "https://github.com/apollographql/apollo-mcp-server",
-        "ownerRepo": "apollographql/apollo-mcp-server",
-        "overlapScore": 0.02,
-        "reason": "weak overlap (0.02) — review"
       },
       {
         "slug": "aqara-mcp",
@@ -453,15 +457,6 @@
         "reason": "weak overlap (0.09) — review"
       },
       {
-        "slug": "cloudflare-workers-mcp",
-        "name": "Cloudflare Workers MCP",
-        "author": "community",
-        "github_url": "https://github.com/daniil-shumko/cloudflare-workers-mcp",
-        "ownerRepo": "daniil-shumko/cloudflare-workers-mcp",
-        "overlapScore": 0.06,
-        "reason": "weak overlap (0.06) — review"
-      },
-      {
         "slug": "codecov-mcp",
         "name": "Codecov MCP",
         "author": "community",
@@ -476,8 +471,8 @@
         "author": "community",
         "github_url": "https://github.com/comet-ml/comet-mcp",
         "ownerRepo": "comet-ml/comet-mcp",
-        "overlapScore": 0.11,
-        "reason": "weak overlap (0.11) — review"
+        "overlapScore": 0.16,
+        "reason": "weak overlap (0.16) — review"
       },
       {
         "slug": "commercetools-mcp",
@@ -624,15 +619,6 @@
         "reason": "weak overlap (0.03) — review"
       },
       {
-        "slug": "datagov-mcp",
-        "name": "Data.gov MCP",
-        "author": "community",
-        "github_url": "https://github.com/DavidOsherdiagnostica/data-gov-il-mcp",
-        "ownerRepo": "DavidOsherdiagnostica/data-gov-il-mcp",
-        "overlapScore": 0.13,
-        "reason": "weak overlap (0.13) — review"
-      },
-      {
         "slug": "deepnote-mcp",
         "name": "Deepnote MCP",
         "author": "community",
@@ -667,15 +653,6 @@
         "ownerRepo": "avarant/github-dependabot-mcp-server",
         "overlapScore": 0.05,
         "reason": "weak overlap (0.05) — review"
-      },
-      {
-        "slug": "devdocs-mcp",
-        "name": "DevDocs",
-        "author": "Community",
-        "github_url": "https://github.com/pluginslab/wp-devdocs-mcp",
-        "ownerRepo": "pluginslab/wp-devdocs-mcp",
-        "overlapScore": 0.06,
-        "reason": "weak overlap (0.06) — review"
       },
       {
         "slug": "devin-mcp",
@@ -804,6 +781,15 @@
         "reason": "weak overlap (0.06) — review"
       },
       {
+        "slug": "easypost-mcp",
+        "name": "EasyPost MCP",
+        "author": "community",
+        "github_url": "https://github.com/pipeworx-io/mcp-easypost",
+        "ownerRepo": "pipeworx-io/mcp-easypost",
+        "overlapScore": 0.1,
+        "reason": "weak overlap (0.1) — review"
+      },
+      {
         "slug": "ebay-mcp",
         "name": "eBay MCP",
         "author": "community",
@@ -820,15 +806,6 @@
         "ownerRepo": "zhr7777777/echarts-mcp-server",
         "overlapScore": 0.08,
         "reason": "weak overlap (0.08) — review"
-      },
-      {
-        "slug": "edgedb-mcp",
-        "name": "EdgeDB MCP",
-        "author": "community",
-        "github_url": "https://github.com/edgedb/edgedb-python",
-        "ownerRepo": "edgedb/edgedb-python",
-        "overlapScore": 0.13,
-        "reason": "weak overlap (0.13) — review"
       },
       {
         "slug": "elastic-apm-mcp",
@@ -881,15 +858,6 @@
         "author": "Anthropic",
         "github_url": "https://github.com/modelcontextprotocol/servers/tree/main/src/everything",
         "ownerRepo": "modelcontextprotocol/servers",
-        "overlapScore": 0.13,
-        "reason": "weak overlap (0.13) — review"
-      },
-      {
-        "slug": "expensify-mcp",
-        "name": "Expensify MCP",
-        "author": "community",
-        "github_url": "https://github.com/Expensify/Expensify.cash",
-        "ownerRepo": "Expensify/Expensify.cash",
         "overlapScore": 0.13,
         "reason": "weak overlap (0.13) — review"
       },
@@ -949,12 +917,12 @@
       },
       {
         "slug": "filesystem",
-        "name": "Filesystem",
+        "name": "Filesystem MCP Server",
         "author": "Anthropic",
         "github_url": "https://github.com/modelcontextprotocol/servers/tree/main/src/filesystem",
         "ownerRepo": "modelcontextprotocol/servers",
-        "overlapScore": 0.08,
-        "reason": "weak overlap (0.08) — review"
+        "overlapScore": 0.01,
+        "reason": "weak overlap (0.01) — review"
       },
       {
         "slug": "firebase",
@@ -971,8 +939,8 @@
         "author": "community",
         "github_url": "https://github.com/ryanshatz/five9-mcp",
         "ownerRepo": "ryanshatz/five9-mcp",
-        "overlapScore": 0.03,
-        "reason": "weak overlap (0.03) — review"
+        "overlapScore": 0.14,
+        "reason": "weak overlap (0.14) — review"
       },
       {
         "slug": "flink-mcp",
@@ -1180,15 +1148,6 @@
         "ownerRepo": "vincentmcleese/beautiful-gradient-mcp",
         "overlapScore": 0.07,
         "reason": "weak overlap (0.07) — review"
-      },
-      {
-        "slug": "greenhouse-mcp",
-        "name": "Greenhouse MCP",
-        "author": "community",
-        "github_url": "https://github.com/alexmeckes/greenhouse-mcp",
-        "ownerRepo": "alexmeckes/greenhouse-mcp",
-        "overlapScore": 0.09,
-        "reason": "weak overlap (0.09) — review"
       },
       {
         "slug": "grubhub-mcp",
@@ -1434,15 +1393,6 @@
         "reason": "weak overlap (0.04) — review"
       },
       {
-        "slug": "kdb-mcp",
-        "name": "KDB+ / q MCP",
-        "author": "community",
-        "github_url": "https://github.com/KxSystems/kdb-x-mcp-server",
-        "ownerRepo": "KxSystems/kdb-x-mcp-server",
-        "overlapScore": 0.13,
-        "reason": "weak overlap (0.13) — review"
-      },
-      {
         "slug": "keda-mcp",
         "name": "KEDA MCP",
         "author": "Community",
@@ -1650,6 +1600,15 @@
         "reason": "weak overlap (0.06) — review"
       },
       {
+        "slug": "mcp-remote",
+        "name": "mcp-remote",
+        "author": "Glen Maddern",
+        "github_url": "https://github.com/geelen/mcp-remote",
+        "ownerRepo": "geelen/mcp-remote",
+        "overlapScore": 0.01,
+        "reason": "weak overlap (0.01) — review"
+      },
+      {
         "slug": "meltano-mcp",
         "name": "Meltano",
         "author": "community",
@@ -1673,6 +1632,15 @@
         "author": "community",
         "github_url": "https://github.com/jbdamask/mcp-mercury-banking",
         "ownerRepo": "jbdamask/mcp-mercury-banking",
+        "overlapScore": 0.08,
+        "reason": "weak overlap (0.08) — review"
+      },
+      {
+        "slug": "midjourney-proxy-mcp",
+        "name": "Midjourney Image Gen MCP",
+        "author": "community",
+        "github_url": "https://github.com/runapi-ai/midjourney-mcp",
+        "ownerRepo": "runapi-ai/midjourney-mcp",
         "overlapScore": 0.08,
         "reason": "weak overlap (0.08) — review"
       },
@@ -1749,15 +1717,6 @@
         "reason": "weak overlap (0.13) — review"
       },
       {
-        "slug": "nats-mcp",
-        "name": "NATS",
-        "author": "community",
-        "github_url": "https://github.com/sinadarbouy/mcp-nats",
-        "ownerRepo": "sinadarbouy/mcp-nats",
-        "overlapScore": 0.14,
-        "reason": "weak overlap (0.14) — review"
-      },
-      {
         "slug": "neptune-ai-mcp",
         "name": "Neptune.ai",
         "author": "community",
@@ -1776,6 +1735,15 @@
         "reason": "weak overlap (0.03) — review"
       },
       {
+        "slug": "newrelic-mcp",
+        "name": "New Relic MCP",
+        "author": "community",
+        "github_url": "https://github.com/cloudbring/newrelic-mcp",
+        "ownerRepo": "cloudbring/newrelic-mcp",
+        "overlapScore": 0.08,
+        "reason": "weak overlap (0.08) — review"
+      },
+      {
         "slug": "nostr-mcp",
         "name": "Nostr Protocol MCP",
         "author": "community",
@@ -1783,15 +1751,6 @@
         "ownerRepo": "AustinKelsay/nostr-mcp-server",
         "overlapScore": 0.03,
         "reason": "weak overlap (0.03) — review"
-      },
-      {
-        "slug": "obsidian-mcp",
-        "name": "Obsidian",
-        "author": "MarkusSagen",
-        "github_url": "https://github.com/StevenStavrakis/obsidian-mcp",
-        "ownerRepo": "StevenStavrakis/obsidian-mcp",
-        "overlapScore": 0.05,
-        "reason": "weak overlap (0.05) — review"
       },
       {
         "slug": "octopus-deploy-mcp",
@@ -2073,15 +2032,6 @@
         "reason": "weak overlap (0.04) — review"
       },
       {
-        "slug": "reddit-api-mcp",
-        "name": "Reddit API MCP",
-        "author": "community",
-        "github_url": "https://github.com/praw-dev/praw",
-        "ownerRepo": "praw-dev/praw",
-        "overlapScore": 0.08,
-        "reason": "weak overlap (0.08) — review"
-      },
-      {
         "slug": "reddit-mcp",
         "name": "Reddit MCP",
         "author": "community",
@@ -2206,6 +2156,15 @@
         "ownerRepo": "stefanoamorelli/sec-edgar-mcp",
         "overlapScore": 0.13,
         "reason": "weak overlap (0.13) — review"
+      },
+      {
+        "slug": "sequential-thinking",
+        "name": "Sequential Thinking MCP Server",
+        "author": "Anthropic",
+        "github_url": "https://github.com/modelcontextprotocol/servers/tree/main/src/sequentialthinking",
+        "ownerRepo": "modelcontextprotocol/servers",
+        "overlapScore": 0.01,
+        "reason": "weak overlap (0.01) — review"
       },
       {
         "slug": "sfmc-mcp",
@@ -2478,13 +2437,13 @@
         "reason": "weak overlap (0.11) — review"
       },
       {
-        "slug": "thegraph-mcp",
-        "name": "The Graph Protocol MCP",
+        "slug": "tesla-vehicle-api-mcp",
+        "name": "Tesla Vehicle API MCP",
         "author": "community",
-        "github_url": "https://github.com/shaneholloman/mcp-knowledge-graph",
-        "ownerRepo": "shaneholloman/mcp-knowledge-graph",
-        "overlapScore": 0.05,
-        "reason": "weak overlap (0.05) — review"
+        "github_url": "https://github.com/tylergibbs1/tesla-mcp-server",
+        "ownerRepo": "tylergibbs1/tesla-mcp-server",
+        "overlapScore": 0.11,
+        "reason": "weak overlap (0.11) — review"
       },
       {
         "slug": "thinkific-mcp",
@@ -2658,15 +2617,6 @@
         "reason": "weak overlap (0.03) — review"
       },
       {
-        "slug": "webull-mcp",
-        "name": "Webull Trading MCP",
-        "author": "community",
-        "github_url": "https://github.com/yuankunzhang/charming",
-        "ownerRepo": "yuankunzhang/charming",
-        "overlapScore": 0.08,
-        "reason": "weak overlap (0.08) — review"
-      },
-      {
         "slug": "wechat-work-mcp",
         "name": "WeChat Work (WeCom) MCP",
         "author": "community",
@@ -2784,90 +2734,7 @@
         "reason": "weak overlap (0.04) — review"
       }
     ],
-    "mismatch": [
-      {
-        "slug": "canva-api-mcp",
-        "name": "Canva Connect API MCP",
-        "author": "community",
-        "github_url": "https://github.com/Jylebum/mcp-canvas-connector",
-        "ownerRepo": "Jylebum/mcp-canvas-connector",
-        "overlapScore": 0,
-        "reason": "no name/desc overlap with claim and owner \"jylebum\" != author \"community\""
-      },
-      {
-        "slug": "clickhouse-mcp",
-        "name": "ClickHouse MCP",
-        "author": "clickhouse-community",
-        "github_url": "https://github.com/AminKhorramii/mcp-clikchouse-ts",
-        "ownerRepo": "AminKhorramii/mcp-clikchouse-ts",
-        "overlapScore": 0,
-        "reason": "no name/desc overlap with claim and owner \"aminkhorramii\" != author \"clickhouse-community\""
-      },
-      {
-        "slug": "evidently-ai-mcp",
-        "name": "Evidently AI MCP",
-        "author": "community",
-        "github_url": "https://github.com/vikasmalikst/evidentlyaeo-mcp-server",
-        "ownerRepo": "vikasmalikst/evidentlyaeo-mcp-server",
-        "overlapScore": 0,
-        "reason": "no name/desc overlap with claim and owner \"vikasmalikst\" != author \"community\""
-      },
-      {
-        "slug": "jan-ai-mcp",
-        "name": "Jan.ai",
-        "author": "community",
-        "github_url": "https://github.com/maurik77/mcp-janus",
-        "ownerRepo": "maurik77/mcp-janus",
-        "overlapScore": 0,
-        "reason": "no name/desc overlap with claim and owner \"maurik77\" != author \"community\""
-      },
-      {
-        "slug": "lago-mcp",
-        "name": "Lago",
-        "author": "community",
-        "github_url": "https://github.com/Joseph-Heirendt-CC/LAGOS-MCP",
-        "ownerRepo": "Joseph-Heirendt-CC/LAGOS-MCP",
-        "overlapScore": 0,
-        "reason": "no name/desc overlap with claim and owner \"joseph-heirendt-cc\" != author \"community\""
-      },
-      {
-        "slug": "nx-mcp",
-        "name": "Nx Monorepo",
-        "author": "community",
-        "github_url": "https://github.com/nrwl/nx-console",
-        "ownerRepo": "nrwl/nx-console",
-        "overlapScore": 0,
-        "reason": "no name/desc overlap with claim and owner \"nrwl\" != author \"community\""
-      },
-      {
-        "slug": "rocket-chat-mcp",
-        "name": "Rocket.Chat MCP",
-        "author": "community",
-        "github_url": "https://github.com/Unknown-guy-369/Minimal-mcp-server-RocketChat",
-        "ownerRepo": "Unknown-guy-369/Minimal-mcp-server-RocketChat",
-        "overlapScore": 0,
-        "reason": "no name/desc overlap with claim and owner \"unknown-guy-369\" != author \"community\""
-      },
-      {
-        "slug": "sequential-thinking",
-        "name": "Sequential Thinking",
-        "author": "Anthropic",
-        "github_url": "https://github.com/modelcontextprotocol/servers/tree/main/src/sequentialthinking",
-        "ownerRepo": "modelcontextprotocol/servers",
-        "overlapScore": 0,
-        "reason": "no name/desc overlap with claim and owner \"modelcontextprotocol\" != author \"Anthropic\""
-      }
-    ],
     "archived": [
-      {
-        "slug": "amazon-sp-api-mcp",
-        "name": "Amazon Seller MCP",
-        "author": "community",
-        "github_url": "https://github.com/amzn/selling-partner-api-docs",
-        "ownerRepo": "amzn/selling-partner-api-docs",
-        "overlapScore": 0.15,
-        "reason": "repo exists but is archived"
-      },
       {
         "slug": "audiense",
         "name": "Audiense Insights",
@@ -2906,11 +2773,11 @@
       },
       {
         "slug": "browserbase",
-        "name": "Browserbase",
+        "name": "Browserbase MCP Server",
         "author": "Browserbase",
         "github_url": "https://github.com/browserbase/mcp-server-browserbase",
         "ownerRepo": "browserbase/mcp-server-browserbase",
-        "overlapScore": 0.17,
+        "overlapScore": 0.04,
         "reason": "repo exists but is archived"
       },
       {
@@ -2941,15 +2808,6 @@
         "reason": "repo exists but is archived"
       },
       {
-        "slug": "glean",
-        "name": "Glean",
-        "author": "Glean",
-        "github_url": "https://github.com/gleanwork/mcp-server",
-        "ownerRepo": "gleanwork/mcp-server",
-        "overlapScore": 0.2,
-        "reason": "repo exists but is archived"
-      },
-      {
         "slug": "google-cloud-iot-mcp",
         "name": "Google Cloud IoT MCP",
         "author": "community",
@@ -2969,11 +2827,11 @@
       },
       {
         "slug": "harper",
-        "name": "Harper",
+        "name": "Harper MCP Server",
         "author": "Harper",
-        "github_url": "https://github.com/HarperDB/mcp-server",
-        "ownerRepo": "HarperDB/mcp-server",
-        "overlapScore": 1,
+        "github_url": "https://github.com/HarperFast/mcp-server",
+        "ownerRepo": "HarperFast/mcp-server",
+        "overlapScore": 0.03,
         "reason": "repo exists but is archived"
       },
       {
@@ -2995,6 +2853,15 @@
         "reason": "repo exists but is archived"
       },
       {
+        "slug": "kong-mcp",
+        "name": "Kong Konnect MCP Server",
+        "author": "Kong",
+        "github_url": "https://github.com/Kong/mcp-konnect",
+        "ownerRepo": "Kong/mcp-konnect",
+        "overlapScore": 0.05,
+        "reason": "repo exists but is archived"
+      },
+      {
         "slug": "kuzu",
         "name": "Kuzu",
         "author": "Kuzu",
@@ -3010,6 +2877,15 @@
         "github_url": "https://github.com/mapbox/mapbox-sdk-py",
         "ownerRepo": "mapbox/mapbox-sdk-py",
         "overlapScore": 0.18,
+        "reason": "repo exists but is archived"
+      },
+      {
+        "slug": "medplum-mcp",
+        "name": "Medplum MCP",
+        "author": "medplum",
+        "github_url": "https://github.com/medplum/medplum-mcp-server",
+        "ownerRepo": "medplum/medplum-mcp-server",
+        "overlapScore": 0.07,
         "reason": "repo exists but is archived"
       },
       {
@@ -3037,15 +2913,6 @@
         "github_url": "https://github.com/erunion/sport-api-specifications",
         "ownerRepo": "erunion/sport-api-specifications",
         "overlapScore": 0.08,
-        "reason": "repo exists but is archived"
-      },
-      {
-        "slug": "openstreetmap-mcp",
-        "name": "OpenStreetMap MCP",
-        "author": "community",
-        "github_url": "https://github.com/mvexel/overpass-api-python-wrapper",
-        "ownerRepo": "mvexel/overpass-api-python-wrapper",
-        "overlapScore": 0.22,
         "reason": "repo exists but is archived"
       },
       {
@@ -3085,12 +2952,21 @@
         "reason": "repo exists but is archived"
       },
       {
+        "slug": "posthog-mcp",
+        "name": "PostHog MCP",
+        "author": "PostHog",
+        "github_url": "https://github.com/PostHog/mcp",
+        "ownerRepo": "PostHog/mcp",
+        "overlapScore": 0.2,
+        "reason": "repo exists but is archived"
+      },
+      {
         "slug": "puppeteer",
-        "name": "Puppeteer",
+        "name": "Puppeteer MCP Server",
         "author": "Anthropic",
         "github_url": "https://github.com/modelcontextprotocol/servers-archived/tree/main/src/puppeteer",
         "ownerRepo": "modelcontextprotocol/servers-archived",
-        "overlapScore": 0.2,
+        "overlapScore": 0.04,
         "reason": "repo exists but is archived"
       },
       {
@@ -3153,7 +3029,25 @@
         "author": "Anthropic",
         "github_url": "https://github.com/modelcontextprotocol/servers-archived/tree/main/src/sqlite",
         "ownerRepo": "modelcontextprotocol/servers-archived",
+        "overlapScore": 0.04,
+        "reason": "repo exists but is archived"
+      },
+      {
+        "slug": "stagehand",
+        "name": "Stagehand (Browserbase) MCP Server",
+        "author": "Browserbase",
+        "github_url": "https://github.com/browserbase/mcp-server-browserbase",
+        "ownerRepo": "browserbase/mcp-server-browserbase",
         "overlapScore": 0.03,
+        "reason": "repo exists but is archived"
+      },
+      {
+        "slug": "storyblok-mcp",
+        "name": "Storyblok MCP",
+        "author": "storyblok",
+        "github_url": "https://github.com/storyblok/mcp-server",
+        "ownerRepo": "storyblok/mcp-server",
+        "overlapScore": 0.06,
         "reason": "repo exists but is archived"
       },
       {
@@ -3166,6 +3060,15 @@
         "reason": "repo exists but is archived"
       },
       {
+        "slug": "webull-mcp",
+        "name": "Webull MCP Server",
+        "author": "Webull",
+        "github_url": "https://github.com/webull-inc/webull-mcp-server",
+        "ownerRepo": "webull-inc/webull-mcp-server",
+        "overlapScore": 0.03,
+        "reason": "repo exists but is archived"
+      },
+      {
         "slug": "youtube-data-mcp",
         "name": "YouTube Data API MCP",
         "author": "community",
@@ -3173,6 +3076,242 @@
         "ownerRepo": "youtube/api-samples",
         "overlapScore": 0.21,
         "reason": "repo exists but is archived"
+      }
+    ],
+    "renamed": [
+      {
+        "slug": "alchemy-mcp",
+        "name": "Alchemy MCP",
+        "author": "alchemyplatform",
+        "github_url": "https://github.com/alchemyplatform/alchemy-mcp",
+        "ownerRepo": "alchemyplatform/alchemy-mcp",
+        "overlapScore": 0.2,
+        "reason": "github_url \"alchemyplatform/alchemy-mcp\" only resolves via GitHub's rename redirect — repo is now \"alchemyplatform/alchemy-mcp-server\""
+      },
+      {
+        "slug": "brightdata",
+        "name": "BrightData",
+        "author": "BrightData",
+        "github_url": "https://github.com/luminati-io/brightdata-mcp",
+        "ownerRepo": "luminati-io/brightdata-mcp",
+        "overlapScore": 0.38,
+        "reason": "github_url \"luminati-io/brightdata-mcp\" only resolves via GitHub's rename redirect — repo is now \"brightdata/brightdata-mcp\""
+      },
+      {
+        "slug": "couchbase",
+        "name": "Couchbase",
+        "author": "Couchbase",
+        "github_url": "https://github.com/Couchbase-Ecosystem/mcp-server-couchbase",
+        "ownerRepo": "Couchbase-Ecosystem/mcp-server-couchbase",
+        "overlapScore": 0.8,
+        "reason": "github_url \"Couchbase-Ecosystem/mcp-server-couchbase\" only resolves via GitHub's rename redirect — repo is now \"couchbase/mcp-server-couchbase\""
+      },
+      {
+        "slug": "edgedb-mcp",
+        "name": "EdgeDB MCP",
+        "author": "community",
+        "github_url": "https://github.com/edgedb/edgedb-python",
+        "ownerRepo": "edgedb/edgedb-python",
+        "overlapScore": 0.13,
+        "reason": "github_url \"edgedb/edgedb-python\" only resolves via GitHub's rename redirect — repo is now \"geldata/gel-python\""
+      },
+      {
+        "slug": "eplan-mcp",
+        "name": "EPLAN Electric P8",
+        "author": "covagashi",
+        "github_url": "https://github.com/covagashi/Eplan_2026_IA_MCP_scripts",
+        "ownerRepo": "covagashi/Eplan_2026_IA_MCP_scripts",
+        "overlapScore": 0.2,
+        "reason": "github_url \"covagashi/Eplan_2026_IA_MCP_scripts\" only resolves via GitHub's rename redirect — repo is now \"covagashi/eplan-rag-mcp\""
+      },
+      {
+        "slug": "expensify-mcp",
+        "name": "Expensify MCP",
+        "author": "community",
+        "github_url": "https://github.com/Expensify/Expensify.cash",
+        "ownerRepo": "Expensify/Expensify.cash",
+        "overlapScore": 0.13,
+        "reason": "github_url \"Expensify/Expensify.cash\" only resolves via GitHub's rename redirect — repo is now \"Expensify/App\""
+      },
+      {
+        "slug": "financial-modeling-prep-mcp",
+        "name": "Financial Modeling Prep MCP",
+        "author": "community",
+        "github_url": "https://github.com/antoinevulcain/Financial-Modeling-Prep-API",
+        "ownerRepo": "antoinevulcain/Financial-Modeling-Prep-API",
+        "overlapScore": 0.28,
+        "reason": "github_url \"antoinevulcain/Financial-Modeling-Prep-API\" only resolves via GitHub's rename redirect — repo is now \"FinancialModelingPrepAPI/Financial-Modeling-Prep-API\""
+      },
+      {
+        "slug": "gitguardian",
+        "name": "GitGuardian",
+        "author": "GitGuardian",
+        "github_url": "https://github.com/GitGuardian/gg-mcp",
+        "ownerRepo": "GitGuardian/gg-mcp",
+        "overlapScore": 0.5,
+        "reason": "github_url \"GitGuardian/gg-mcp\" only resolves via GitHub's rename redirect — repo is now \"GitGuardian/ggmcp\""
+      },
+      {
+        "slug": "k6",
+        "name": "k6 Performance Testing",
+        "author": "grafana",
+        "github_url": "https://github.com/grafana/k6-mcp-server",
+        "ownerRepo": "grafana/k6-mcp-server",
+        "overlapScore": 0.07,
+        "reason": "github_url \"grafana/k6-mcp-server\" only resolves via GitHub's rename redirect — repo is now \"grafana/mcp-k6\""
+      },
+      {
+        "slug": "keboola",
+        "name": "Keboola",
+        "author": "Keboola",
+        "github_url": "https://github.com/keboola/keboola-mcp-server",
+        "ownerRepo": "keboola/keboola-mcp-server",
+        "overlapScore": 0.3,
+        "reason": "github_url \"keboola/keboola-mcp-server\" only resolves via GitHub's rename redirect — repo is now \"keboola/mcp-server\""
+      },
+      {
+        "slug": "luma-ai-mcp",
+        "name": "Luma AI (Dream Machine) MCP",
+        "author": "lumalabs",
+        "github_url": "https://github.com/lumalabs/luma-mcp",
+        "ownerRepo": "lumalabs/luma-mcp",
+        "overlapScore": 0.12,
+        "reason": "github_url \"lumalabs/luma-mcp\" only resolves via GitHub's rename redirect — repo is now \"lumalabs/luma-api-mcp\""
+      },
+      {
+        "slug": "open-legal-mcp",
+        "name": "Open Legal Compliance MCP",
+        "author": "TCoder920x",
+        "github_url": "https://github.com/TCoder920x/open-legal-compliance-mcp",
+        "ownerRepo": "TCoder920x/open-legal-compliance-mcp",
+        "overlapScore": 0.23,
+        "reason": "github_url \"TCoder920x/open-legal-compliance-mcp\" only resolves via GitHub's rename redirect — repo is now \"TCoder920/open-legal-compliance-mcp\""
+      },
+      {
+        "slug": "prometheus",
+        "name": "Prometheus",
+        "author": "prometheus",
+        "github_url": "https://github.com/prometheus/prometheus-mcp-server",
+        "ownerRepo": "prometheus/prometheus-mcp-server",
+        "overlapScore": 0.06,
+        "reason": "github_url \"prometheus/prometheus-mcp-server\" only resolves via GitHub's rename redirect — repo is now \"prometheus/prometheus-mcp\""
+      },
+      {
+        "slug": "resend-mcp",
+        "name": "Resend MCP",
+        "author": "resend",
+        "github_url": "https://github.com/resend/mcp-send-email",
+        "ownerRepo": "resend/mcp-send-email",
+        "overlapScore": 0.17,
+        "reason": "github_url \"resend/mcp-send-email\" only resolves via GitHub's rename redirect — repo is now \"resend/resend-mcp\""
+      },
+      {
+        "slug": "tomtom-maps-mcp",
+        "name": "TomTom Maps",
+        "author": "tomtom-devs",
+        "github_url": "https://github.com/tomtom-international/tomtom-mcp",
+        "ownerRepo": "tomtom-international/tomtom-mcp",
+        "overlapScore": 0.29,
+        "reason": "github_url \"tomtom-international/tomtom-mcp\" only resolves via GitHub's rename redirect — repo is now \"tomtom-international/tomtom-maps-mcp\""
+      },
+      {
+        "slug": "zwave-mcp",
+        "name": "Z-Wave Smart Home MCP",
+        "author": "community",
+        "github_url": "https://github.com/zwave-js/node-zwave-js",
+        "ownerRepo": "zwave-js/node-zwave-js",
+        "overlapScore": 0.25,
+        "reason": "github_url \"zwave-js/node-zwave-js\" only resolves via GitHub's rename redirect — repo is now \"zwave-js/zwave-js\""
+      }
+    ],
+    "not_found": [
+      {
+        "slug": "dev-to-mcp",
+        "name": "Dev.to",
+        "author": "devto-community",
+        "github_url": "https://github.com/DevTo-AI/devto-mcp",
+        "ownerRepo": "DevTo-AI/devto-mcp",
+        "reason": "GitHub returned 404 — repo does not exist"
+      },
+      {
+        "slug": "jobber-mcp",
+        "name": "Jobber",
+        "author": "jobber-community",
+        "github_url": "https://github.com/justinvogel/jobber-mcp",
+        "ownerRepo": "justinvogel/jobber-mcp",
+        "reason": "GitHub returned 404 — repo does not exist"
+      },
+      {
+        "slug": "roblox-mcp",
+        "name": "Roblox MCP",
+        "author": "community",
+        "github_url": "https://github.com/notpoiu/roblox-executor-mcp",
+        "ownerRepo": "notpoiu/roblox-executor-mcp",
+        "reason": "GitHub returned 404 — repo does not exist"
+      },
+      {
+        "slug": "xai-grok-mcp",
+        "name": "xAI Grok MCP",
+        "author": "Community",
+        "github_url": "https://github.com/CenblueOne/grok-xAI-mcp",
+        "ownerRepo": "CenblueOne/grok-xAI-mcp",
+        "reason": "GitHub returned 404 — repo does not exist"
+      }
+    ],
+    "mismatch": [
+      {
+        "slug": "canva-api-mcp",
+        "name": "Canva Connect API MCP",
+        "author": "community",
+        "github_url": "https://github.com/Jylebum/mcp-canvas-connector",
+        "ownerRepo": "Jylebum/mcp-canvas-connector",
+        "overlapScore": 0,
+        "reason": "no name/desc overlap with claim and owner \"jylebum\" != author \"community\""
+      },
+      {
+        "slug": "evidently-ai-mcp",
+        "name": "Evidently AI MCP",
+        "author": "community",
+        "github_url": "https://github.com/vikasmalikst/evidentlyaeo-mcp-server",
+        "ownerRepo": "vikasmalikst/evidentlyaeo-mcp-server",
+        "overlapScore": 0,
+        "reason": "no name/desc overlap with claim and owner \"vikasmalikst\" != author \"community\""
+      },
+      {
+        "slug": "jan-ai-mcp",
+        "name": "Jan.ai",
+        "author": "community",
+        "github_url": "https://github.com/maurik77/mcp-janus",
+        "ownerRepo": "maurik77/mcp-janus",
+        "overlapScore": 0,
+        "reason": "no name/desc overlap with claim and owner \"maurik77\" != author \"community\""
+      },
+      {
+        "slug": "lago-mcp",
+        "name": "Lago",
+        "author": "community",
+        "github_url": "https://github.com/Joseph-Heirendt-CC/LAGOS-MCP",
+        "ownerRepo": "Joseph-Heirendt-CC/LAGOS-MCP",
+        "overlapScore": 0,
+        "reason": "no name/desc overlap with claim and owner \"joseph-heirendt-cc\" != author \"community\""
+      },
+      {
+        "slug": "nx-mcp",
+        "name": "Nx Monorepo",
+        "author": "community",
+        "github_url": "https://github.com/nrwl/nx-console",
+        "ownerRepo": "nrwl/nx-console",
+        "overlapScore": 0,
+        "reason": "no name/desc overlap with claim and owner \"nrwl\" != author \"community\""
+      },
+      {
+        "slug": "rocket-chat-mcp",
+        "name": "Rocket.Chat MCP",
+        "author": "community",
+        "github_url": "https://github.com/Unknown-guy-369/Minimal-mcp-server-RocketChat",
+        "ownerRepo": "Unknown-guy-369/Minimal-mcp-server-RocketChat",
+        "overlapScore": 0,
+        "reason": "no name/desc overlap with claim and owner \"unknown-guy-369\" != author \"community\""
       }
     ]
   }

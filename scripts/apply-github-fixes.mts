@@ -43,10 +43,24 @@ const dryRun = process.argv.includes('--dry-run');
  * can't see. The remaining 3 point at a genuinely unrelated repo and are the
  * most actively misleading rows in the catalog, so they are nulled unless a
  * correct repo was confirmed by hand.
+ *
+ * These also override a "repaired" verdict from the resolver (see decide()):
+ * the resolver's GitHub-code-search tier matches on name similarity, which is
+ * exactly how the bad URLs got into the catalog in the first place, so a
+ * hand-checked repo beats a search hit.
  */
 const OVERRIDES: Record<string, { url: string | null; verification: string; note: string }> = {
   'feishu-lark-mcp': { url: null, verification: 'unresolved', note: 'pointed at larksuite/oapi-sdk-python — an SDK, not this MCP server' },
   boostsecurity: { url: null, verification: 'unresolved', note: 'pointed at boost-community/boost-mcp — unrelated to BoostSecurity' },
+  // 2026-08-11: resolver search picked keboola/keboola-api-documentation-mcp-server
+  // (0 stars, no description). The old URL keboola/keboola-mcp-server actually
+  // redirects to keboola/mcp-server — the official server, 84 stars.
+  keboola: { url: 'https://github.com/keboola/mcp-server', verification: 'live', note: 'official Keboola MCP server; resolver search picked a 0-star docs repo' },
+  // 2026-08-11: resolver search picked Lagomics/lagomics-mcp ("lagomics mcps",
+  // 0 stars) — unrelated to Lago, the open-source metered billing platform.
+  // getlago has no MCP repo and `npx lago-mcp` 404s on the npm registry, so
+  // this entry has no verifiable upstream at all.
+  'lago-mcp': { url: null, verification: 'unresolved', note: 'no getlago MCP repo exists and npm lago-mcp 404s; search match was an unrelated project' },
 };
 
 const verify = JSON.parse(readFileSync(VERIFY_STATE, 'utf8')) as Record<string, { status: string; github_url: string }>;
@@ -58,14 +72,23 @@ const resolve = JSON.parse(readFileSync(RESOLVE_STATE, 'utf8')) as Record<
 type Decision = { url: string | null; verification: 'live' | 'archived' | 'unresolved'; moveToWebsite?: string };
 
 function decide(slug: string, currentUrl: string): Decision | null {
-  // A confirmed replacement always wins: it is stronger evidence than the
-  // hand-adjudication below, which exists only to catch entries the automated
-  // pass cannot fix.
-  const r = resolve[slug];
-  if (r?.verdict === 'repaired' && r.newUrl) return { url: r.newUrl, verification: 'live' };
-
+  // Hand-adjudication wins, including over a "repaired" verdict. The resolver's
+  // npm/PyPI tiers are publisher-declared and trustworthy, but its code-search
+  // tier matches on name similarity — the same failure mode that produced the
+  // broken URLs — so a human-confirmed repo has to be able to beat it.
   const ov = OVERRIDES[slug];
   if (ov) return { url: ov.url, verification: ov.verification as Decision['verification'] };
+
+  // A resolve verdict is a judgement about the URL that was in the catalog when
+  // the resolver ran (r.oldUrl). If the catalog has moved on since — a later
+  // pass repaired it, or it was corrected by hand — that verdict is about a URL
+  // this entry no longer has, so it must not decide anything. Without this,
+  // a stale "unresolved" from an earlier run nulls a link that the current
+  // verify pass just confirmed live.
+  const raw = resolve[slug];
+  const r = raw && raw.oldUrl === currentUrl ? raw : undefined;
+
+  if (r?.verdict === 'repaired' && r.newUrl) return { url: r.newUrl, verification: 'live' };
 
   if (r && r.verdict !== 'repaired') {
     // Dead link with no confirmed replacement. If what was there is a real
@@ -98,12 +121,23 @@ const stats = { repaired: 0, nulled: 0, live: 0, archived: 0, untouched: 0, webs
 
 // A slug's entry may declare website_url before or after github_url, so
 // pre-scan which slugs already have one to avoid emitting a duplicate key.
+// Verdict fields already in the file, per slug. The rewrite below strips every
+// source_verified/verification line so a re-run updates rather than duplicates
+// them — but it only re-emits for entries it decides on, so an entry decide()
+// declines (returns null for) would silently LOSE its existing verdict. These
+// are captured first and replayed in that case.
+const priorVerdict = new Map<string, { sourceVerified?: string; verification?: string }>();
 {
   let s: string | null = null;
   for (const line of lines) {
     const m = line.match(/^\s*slug: '([^']+)',/);
     if (m) s = m[1];
-    if (s && /^\s*website_url:/.test(line)) websiteSlugs.add(s);
+    if (!s) continue;
+    if (/^\s*website_url:/.test(line)) websiteSlugs.add(s);
+    const sv = line.match(/^\s*source_verified: (.*),\s*$/);
+    if (sv) priorVerdict.set(s, { ...priorVerdict.get(s), sourceVerified: sv[1] });
+    const vf = line.match(/^\s*verification: (.*),\s*$/);
+    if (vf) priorVerdict.set(s, { ...priorVerdict.get(s), verification: vf[1] });
   }
 }
 
@@ -126,6 +160,9 @@ for (const line of lines) {
     if (!d) {
       stats.untouched++;
       out.push(line);
+      const prior = priorVerdict.get(currentSlug);
+      if (prior?.sourceVerified !== undefined) out.push(`${indent}source_verified: ${prior.sourceVerified},`);
+      if (prior?.verification !== undefined) out.push(`${indent}verification: ${prior.verification},`);
       continue;
     }
     if (d.url === null) {

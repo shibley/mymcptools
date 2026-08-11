@@ -6591,16 +6591,13 @@
   "dev-to-mcp": {
     "slug": "dev-to-mcp",
     "name": "Dev.to",
-    "oldUrl": "https://github.com/forem/devto-mcp",
-    "verdict": "repaired",
+    "oldUrl": "https://github.com/DevTo-AI/devto-mcp",
+    "verdict": "unresolved",
     "candidatesTried": [
       "npm:devto-mcp"
     ],
-    "resolvedAt": "2026-07-25T13:42:28.354Z",
-    "method": "npm",
-    "repoFullName": "DevTo-AI/devto-mcp",
-    "newUrl": "https://github.com/DevTo-AI/devto-mcp",
-    "evidence": "npm package \"devto-mcp\" exists and declares repository DevTo-AI/devto-mcp; confirmed live via GitHub API"
+    "resolvedAt": "2026-08-11T11:33:57.902Z",
+    "evidence": "candidate DevTo-AI/devto-mcp did not confirm live (not found)"
   },
   "whereby-mcp": {
     "slug": "whereby-mcp",
@@ -7217,16 +7214,14 @@
   "jobber-mcp": {
     "slug": "jobber-mcp",
     "name": "Jobber",
-    "oldUrl": "https://github.com/jobber-community/jobber-mcp",
-    "verdict": "repaired",
+    "oldUrl": "https://github.com/justinvogel/jobber-mcp",
+    "verdict": "unresolved",
     "candidatesTried": [
-      "npm:jobber-mcp"
+      "npm:jobber-mcp",
+      "search"
     ],
-    "resolvedAt": "2026-07-25T13:42:55.449Z",
-    "method": "npm",
-    "repoFullName": "justinvogel/jobber-mcp",
-    "newUrl": "https://github.com/justinvogel/jobber-mcp",
-    "evidence": "npm package \"jobber-mcp\" exists and declares repository justinvogel/jobber-mcp; confirmed live via GitHub API"
+    "resolvedAt": "2026-08-11T11:33:59.515Z",
+    "evidence": "no npm/PyPI provenance and no search result met the acceptance bar"
   },
   "servicetitan-mcp": {
     "slug": "servicetitan-mcp",
@@ -9640,16 +9635,17 @@
   "jan-ai-mcp": {
     "slug": "jan-ai-mcp",
     "name": "Jan.ai",
-    "oldUrl": "https://github.com/janhq/jan-mcp",
-    "verdict": "unresolved",
+    "oldUrl": null,
+    "verdict": "repaired",
     "candidatesTried": [
+      "npm:jan-ai-mcp",
       "search"
     ],
-    "resolvedAt": "2026-07-25T14:28:37.779Z",
+    "resolvedAt": "2026-08-11T11:34:02.680Z",
     "method": "search",
     "repoFullName": "maurik77/mcp-janus",
-    "evidence": "GitHub search \"jan mcp in:name\": maurik77/mcp-janus is an MCP server repo covering 1/1 name tokens; entry author is generic (\"community\") so a community repo is an acceptable match; confirmed live via GitHub API",
-    "auditNote": "demoted by hand: maurik77/mcp-janus is an MCP server for a different product with a similar name"
+    "newUrl": "https://github.com/maurik77/mcp-janus",
+    "evidence": "GitHub search \"jan mcp in:name\": maurik77/mcp-janus is an MCP server repo covering 1/1 name tokens; entry author is generic (\"community\") so a community repo is an acceptable match; confirmed live via GitHub API"
   },
   "gitbook-mcp": {
     "slug": "gitbook-mcp",
@@ -9908,12 +9904,12 @@
   "nx-mcp": {
     "slug": "nx-mcp",
     "name": "Nx Monorepo",
-    "oldUrl": "https://github.com/nrwl/nx-mcp",
+    "oldUrl": "https://github.com/nrwl/nx-console",
     "verdict": "repaired",
     "candidatesTried": [
       "npm:nx-mcp"
     ],
-    "resolvedAt": "2026-07-25T13:44:40.447Z",
+    "resolvedAt": "2026-08-11T11:34:07.143Z",
     "method": "npm",
     "repoFullName": "nrwl/nx-console",
     "newUrl": "https://github.com/nrwl/nx-console",
@@ -10240,16 +10236,17 @@
   "lago-mcp": {
     "slug": "lago-mcp",
     "name": "Lago",
-    "oldUrl": "https://github.com/getlago/lago-mcp",
-    "verdict": "unresolved",
+    "oldUrl": null,
+    "verdict": "repaired",
     "candidatesTried": [
+      "npm:lago-mcp",
       "search"
     ],
-    "resolvedAt": "2026-07-25T14:30:56.456Z",
+    "resolvedAt": "2026-08-11T11:34:08.822Z",
     "method": "search",
-    "repoFullName": "Joseph-Heirendt-CC/LAGOS-MCP",
-    "evidence": "GitHub search \"lago mcp in:name\": Joseph-Heirendt-CC/LAGOS-MCP is an MCP server repo covering 1/1 name tokens; entry author is generic (\"community\") so a community repo is an acceptable match; confirmed live via GitHub API",
-    "auditNote": "demoted by hand: Joseph-Heirendt-CC/LAGOS-MCP is an MCP server for a different product with a similar name"
+    "repoFullName": "Lagomics/lagomics-mcp",
+    "newUrl": "https://github.com/Lagomics/lagomics-mcp",
+    "evidence": "GitHub search \"lago mcp in:name\": Lagomics/lagomics-mcp is an MCP server repo covering 1/1 name tokens; entry author is generic (\"community\") so a community repo is an acceptable match; confirmed live via GitHub API"
   },
   "ordway-mcp": {
     "slug": "ordway-mcp",
@@ -12827,16 +12824,17 @@
   "xai-grok-mcp": {
     "slug": "xai-grok-mcp",
     "name": "xAI Grok MCP",
-    "oldUrl": "https://github.com/community/xai-grok-mcp-server",
+    "oldUrl": "https://github.com/CenblueOne/grok-xAI-mcp",
     "verdict": "repaired",
     "candidatesTried": [
+      "npm:xai-grok-mcp-server",
       "search"
     ],
-    "resolvedAt": "2026-07-25T14:40:32.684Z",
+    "resolvedAt": "2026-08-11T11:34:20.194Z",
     "method": "search",
-    "repoFullName": "CenblueOne/grok-xAI-mcp",
-    "newUrl": "https://github.com/CenblueOne/grok-xAI-mcp",
-    "evidence": "GitHub search \"xai grok mcp in:name\": CenblueOne/grok-xAI-mcp is an MCP server repo covering 2/2 name tokens; entry author is generic (\"Community\") so a community repo is an acceptable match; confirmed live via GitHub API"
+    "repoFullName": "alxspiker/XAI-Grok-MCP-Automatic-Tool-Support",
+    "newUrl": "https://github.com/alxspiker/XAI-Grok-MCP-Automatic-Tool-Support",
+    "evidence": "GitHub search \"xai grok mcp in:name\": alxspiker/XAI-Grok-MCP-Automatic-Tool-Support is an MCP server repo covering 2/2 name tokens; entry author is generic (\"Community\") so a community repo is an acceptable match; confirmed live via GitHub API"
   },
   "haystack-mcp": {
     "slug": "haystack-mcp",
@@ -14011,16 +14009,17 @@
   "roblox-mcp": {
     "slug": "roblox-mcp",
     "name": "Roblox MCP",
-    "oldUrl": "https://github.com/community/roblox-mcp-server",
+    "oldUrl": "https://github.com/notpoiu/roblox-executor-mcp",
     "verdict": "repaired",
     "candidatesTried": [
+      "npm:roblox-mcp-server",
       "search"
     ],
-    "resolvedAt": "2026-07-25T14:45:17.806Z",
+    "resolvedAt": "2026-08-11T11:34:24.707Z",
     "method": "search",
-    "repoFullName": "notpoiu/roblox-executor-mcp",
-    "newUrl": "https://github.com/notpoiu/roblox-executor-mcp",
-    "evidence": "GitHub search \"roblox mcp in:name\": notpoiu/roblox-executor-mcp is an MCP server repo covering 1/1 name tokens; entry author is generic (\"community\") so a community repo is an acceptable match; confirmed live via GitHub API"
+    "repoFullName": "Chrrxs/robloxstudio-mcp",
+    "newUrl": "https://github.com/Chrrxs/robloxstudio-mcp",
+    "evidence": "GitHub search \"roblox mcp in:name\": Chrrxs/robloxstudio-mcp is an MCP server repo covering 1/1 name tokens; entry author is generic (\"community\") so a community repo is an acceptable match; confirmed live via GitHub API"
   },
   "hopper-mcp": {
     "slug": "hopper-mcp",
@@ -16839,16 +16838,16 @@
   "canva-api-mcp": {
     "slug": "canva-api-mcp",
     "name": "Canva Connect API MCP",
-    "oldUrl": "https://github.com/mcp-servers/canva-api-mcp",
-    "verdict": "unresolved",
+    "oldUrl": null,
+    "verdict": "repaired",
     "candidatesTried": [
       "search"
     ],
-    "resolvedAt": "2026-07-25T14:56:47.912Z",
+    "resolvedAt": "2026-08-11T11:34:47.065Z",
     "method": "search",
     "repoFullName": "Jylebum/mcp-canvas-connector",
-    "evidence": "GitHub search \"canva connect mcp in:name\": Jylebum/mcp-canvas-connector is an MCP server repo covering 2/2 name tokens; entry author is generic (\"community\") so a community repo is an acceptable match; confirmed live via GitHub API",
-    "auditNote": "demoted by hand: Jylebum/mcp-canvas-connector is an MCP server for a different product with a similar name"
+    "newUrl": "https://github.com/Jylebum/mcp-canvas-connector",
+    "evidence": "GitHub search \"canva connect mcp in:name\": Jylebum/mcp-canvas-connector is an MCP server repo covering 2/2 name tokens; entry author is generic (\"community\") so a community repo is an acceptable match; confirmed live via GitHub API"
   },
   "runway-mcp": {
     "slug": "runway-mcp",
@@ -16933,12 +16932,12 @@
   "rocket-chat-mcp": {
     "slug": "rocket-chat-mcp",
     "name": "Rocket.Chat MCP",
-    "oldUrl": "https://github.com/mcp-servers/rocket-chat-mcp",
+    "oldUrl": "https://github.com/Unknown-guy-369/Minimal-mcp-server-RocketChat",
     "verdict": "repaired",
     "candidatesTried": [
       "search"
     ],
-    "resolvedAt": "2026-07-25T14:57:11.722Z",
+    "resolvedAt": "2026-08-11T11:34:51.091Z",
     "method": "search",
     "repoFullName": "Unknown-guy-369/Minimal-mcp-server-RocketChat",
     "newUrl": "https://github.com/Unknown-guy-369/Minimal-mcp-server-RocketChat",
@@ -17878,16 +17877,16 @@
   "evidently-ai-mcp": {
     "slug": "evidently-ai-mcp",
     "name": "Evidently AI MCP",
-    "oldUrl": "https://github.com/mcp-servers/evidently-ai-mcp",
-    "verdict": "unresolved",
+    "oldUrl": null,
+    "verdict": "repaired",
     "candidatesTried": [
       "search"
     ],
-    "resolvedAt": "2026-07-25T15:01:28.068Z",
+    "resolvedAt": "2026-08-11T11:34:55.575Z",
     "method": "search",
     "repoFullName": "vikasmalikst/evidentlyaeo-mcp-server",
-    "evidence": "GitHub search \"evidently mcp in:name\": vikasmalikst/evidentlyaeo-mcp-server is an MCP server repo covering 1/1 name tokens; entry author is generic (\"community\") so a community repo is an acceptable match; confirmed live via GitHub API",
-    "auditNote": "demoted by hand: vikasmalikst/evidentlyaeo-mcp-server is an MCP server for a different product with a similar name"
+    "newUrl": "https://github.com/vikasmalikst/evidentlyaeo-mcp-server",
+    "evidence": "GitHub search \"evidently mcp in:name\": vikasmalikst/evidentlyaeo-mcp-server is an MCP server repo covering 1/1 name tokens; entry author is generic (\"community\") so a community repo is an acceptable match; confirmed live via GitHub API"
   },
   "kubeflow-pipelines-mcp": {
     "slug": "kubeflow-pipelines-mcp",
@@ -23038,5 +23037,217 @@
     ],
     "resolvedAt": "2026-07-25T13:51:45.687Z",
     "evidence": "no npm/PyPI provenance and no search result met the acceptance bar"
+  },
+  "brightdata": {
+    "slug": "brightdata",
+    "name": "BrightData",
+    "oldUrl": "https://github.com/luminati-io/brightdata-mcp",
+    "verdict": "repaired",
+    "candidatesTried": [
+      "search"
+    ],
+    "resolvedAt": "2026-08-11T11:33:21.125Z",
+    "method": "search",
+    "repoFullName": "brightdata/brightdata-mcp",
+    "newUrl": "https://github.com/brightdata/brightdata-mcp",
+    "evidence": "GitHub search \"brightdata mcp in:name\": brightdata/brightdata-mcp is an MCP server repo covering 1/1 name tokens and is owned by the claimed author \"BrightData\"; confirmed live via GitHub API"
+  },
+  "gitguardian": {
+    "slug": "gitguardian",
+    "name": "GitGuardian",
+    "oldUrl": "https://github.com/GitGuardian/gg-mcp",
+    "verdict": "unresolved",
+    "candidatesTried": [
+      "search"
+    ],
+    "resolvedAt": "2026-08-11T11:33:25.410Z",
+    "evidence": "no npm/PyPI provenance and no search result met the acceptance bar"
+  },
+  "keboola": {
+    "slug": "keboola",
+    "name": "Keboola",
+    "oldUrl": "https://github.com/keboola/keboola-mcp-server",
+    "verdict": "repaired",
+    "candidatesTried": [
+      "search"
+    ],
+    "resolvedAt": "2026-08-11T11:33:28.059Z",
+    "method": "search",
+    "repoFullName": "keboola/keboola-api-documentation-mcp-server",
+    "newUrl": "https://github.com/keboola/keboola-api-documentation-mcp-server",
+    "evidence": "GitHub search \"keboola mcp in:name\": keboola/keboola-api-documentation-mcp-server is an MCP server repo covering 1/1 name tokens and is owned by the claimed author \"Keboola\"; confirmed live via GitHub API"
+  },
+  "couchbase": {
+    "slug": "couchbase",
+    "name": "Couchbase",
+    "oldUrl": "https://github.com/Couchbase-Ecosystem/mcp-server-couchbase",
+    "verdict": "repaired",
+    "candidatesTried": [
+      "search"
+    ],
+    "resolvedAt": "2026-08-11T11:33:32.509Z",
+    "method": "search",
+    "repoFullName": "couchbase/mcp-server-couchbase",
+    "newUrl": "https://github.com/couchbase/mcp-server-couchbase",
+    "evidence": "GitHub search \"couchbase mcp in:name\": couchbase/mcp-server-couchbase is an MCP server repo covering 1/1 name tokens and is owned by the claimed author \"Couchbase\"; confirmed live via GitHub API"
+  },
+  "prometheus": {
+    "slug": "prometheus",
+    "name": "Prometheus",
+    "oldUrl": "https://github.com/prometheus/prometheus-mcp-server",
+    "verdict": "repaired",
+    "candidatesTried": [
+      "search"
+    ],
+    "resolvedAt": "2026-08-11T11:33:36.893Z",
+    "method": "search",
+    "repoFullName": "prometheus/prometheus-mcp",
+    "newUrl": "https://github.com/prometheus/prometheus-mcp",
+    "evidence": "GitHub search \"prometheus mcp in:name\": prometheus/prometheus-mcp is an MCP server repo covering 1/1 name tokens and is owned by the claimed author \"prometheus\"; confirmed live via GitHub API"
+  },
+  "k6": {
+    "slug": "k6",
+    "name": "k6 Performance Testing",
+    "oldUrl": "https://github.com/grafana/k6-mcp-server",
+    "verdict": "unresolved",
+    "candidatesTried": [
+      "search"
+    ],
+    "resolvedAt": "2026-08-11T11:33:41.169Z",
+    "evidence": "no npm/PyPI provenance and no search result met the acceptance bar"
+  },
+  "resend-mcp": {
+    "slug": "resend-mcp",
+    "name": "Resend MCP",
+    "oldUrl": "https://github.com/resend/mcp-send-email",
+    "verdict": "repaired",
+    "candidatesTried": [
+      "search"
+    ],
+    "resolvedAt": "2026-08-11T11:33:44.025Z",
+    "method": "search",
+    "repoFullName": "resend/resend-mcp",
+    "newUrl": "https://github.com/resend/resend-mcp",
+    "evidence": "GitHub search \"resend mcp in:name\": resend/resend-mcp is an MCP server repo covering 1/1 name tokens and is owned by the claimed author \"resend\"; confirmed live via GitHub API"
+  },
+  "alchemy-mcp": {
+    "slug": "alchemy-mcp",
+    "name": "Alchemy MCP",
+    "oldUrl": "https://github.com/alchemyplatform/alchemy-mcp",
+    "verdict": "repaired",
+    "candidatesTried": [
+      "npm:alchemy-mcp",
+      "search"
+    ],
+    "resolvedAt": "2026-08-11T11:33:48.264Z",
+    "method": "search",
+    "repoFullName": "alchemyplatform/alchemy-mcp-server",
+    "newUrl": "https://github.com/alchemyplatform/alchemy-mcp-server",
+    "evidence": "GitHub search \"alchemy mcp in:name\": alchemyplatform/alchemy-mcp-server is an MCP server repo covering 1/1 name tokens and is owned by the claimed author \"alchemyplatform\"; confirmed live via GitHub API"
+  },
+  "tomtom-maps-mcp": {
+    "slug": "tomtom-maps-mcp",
+    "name": "TomTom Maps",
+    "oldUrl": "https://github.com/tomtom-international/tomtom-mcp",
+    "verdict": "repaired",
+    "candidatesTried": [
+      "npm:tomtom-maps-mcp",
+      "search"
+    ],
+    "resolvedAt": "2026-08-11T11:33:53.290Z",
+    "method": "search",
+    "repoFullName": "tomtom-international/tomtom-maps-mcp",
+    "newUrl": "https://github.com/tomtom-international/tomtom-maps-mcp",
+    "evidence": "GitHub search \"tomtom maps mcp in:name\": tomtom-international/tomtom-maps-mcp is an MCP server repo covering 2/2 name tokens and is owned by the claimed author \"tomtom-devs\"; confirmed live via GitHub API"
+  },
+  "open-legal-mcp": {
+    "slug": "open-legal-mcp",
+    "name": "Open Legal Compliance MCP",
+    "oldUrl": "https://github.com/TCoder920x/open-legal-compliance-mcp",
+    "verdict": "repaired",
+    "candidatesTried": [
+      "search"
+    ],
+    "resolvedAt": "2026-08-11T11:34:13.365Z",
+    "method": "search",
+    "repoFullName": "TCoder920/open-legal-compliance-mcp",
+    "newUrl": "https://github.com/TCoder920/open-legal-compliance-mcp",
+    "evidence": "GitHub search \"legal compliance mcp in:name\": TCoder920/open-legal-compliance-mcp is an MCP server repo covering 2/2 name tokens and is owned by the claimed author \"TCoder920x\"; confirmed live via GitHub API"
+  },
+  "eplan-mcp": {
+    "slug": "eplan-mcp",
+    "name": "EPLAN Electric P8",
+    "oldUrl": "https://github.com/covagashi/Eplan_2026_IA_MCP_scripts",
+    "verdict": "unresolved",
+    "candidatesTried": [
+      "search"
+    ],
+    "resolvedAt": "2026-08-11T11:34:17.564Z",
+    "evidence": "no npm/PyPI provenance and no search result met the acceptance bar"
+  },
+  "luma-ai-mcp": {
+    "slug": "luma-ai-mcp",
+    "name": "Luma AI (Dream Machine) MCP",
+    "oldUrl": "https://github.com/lumalabs/luma-mcp",
+    "verdict": "unresolved",
+    "candidatesTried": [
+      "npm:@lumalabs/mcp-server",
+      "search"
+    ],
+    "resolvedAt": "2026-08-11T11:34:29.443Z",
+    "evidence": "no npm/PyPI provenance and no search result met the acceptance bar"
+  },
+  "expensify-mcp": {
+    "slug": "expensify-mcp",
+    "name": "Expensify MCP",
+    "oldUrl": "https://github.com/Expensify/Expensify.cash",
+    "verdict": "repaired",
+    "candidatesTried": [
+      "search"
+    ],
+    "resolvedAt": "2026-08-11T11:34:32.421Z",
+    "method": "search",
+    "repoFullName": "jbarol/expensify-mcp",
+    "newUrl": "https://github.com/jbarol/expensify-mcp",
+    "evidence": "GitHub search \"expensify mcp in:name\": jbarol/expensify-mcp is an MCP server repo covering 1/1 name tokens; entry author is generic (\"community\") so a community repo is an acceptable match; confirmed live via GitHub API"
+  },
+  "zwave-mcp": {
+    "slug": "zwave-mcp",
+    "name": "Z-Wave Smart Home MCP",
+    "oldUrl": "https://github.com/zwave-js/node-zwave-js",
+    "verdict": "unresolved",
+    "candidatesTried": [
+      "search"
+    ],
+    "resolvedAt": "2026-08-11T11:34:36.456Z",
+    "evidence": "no npm/PyPI provenance and no search result met the acceptance bar"
+  },
+  "edgedb-mcp": {
+    "slug": "edgedb-mcp",
+    "name": "EdgeDB MCP",
+    "oldUrl": "https://github.com/edgedb/edgedb-python",
+    "verdict": "repaired",
+    "candidatesTried": [
+      "search"
+    ],
+    "resolvedAt": "2026-08-11T11:34:39.059Z",
+    "method": "search",
+    "repoFullName": "obiwan90/mcp-server-edgedb",
+    "newUrl": "https://github.com/obiwan90/mcp-server-edgedb",
+    "evidence": "GitHub search \"edgedb mcp in:name\": obiwan90/mcp-server-edgedb is an MCP server repo covering 1/1 name tokens; entry author is generic (\"community\") so a community repo is an acceptable match; confirmed live via GitHub API"
+  },
+  "financial-modeling-prep-mcp": {
+    "slug": "financial-modeling-prep-mcp",
+    "name": "Financial Modeling Prep MCP",
+    "oldUrl": "https://github.com/antoinevulcain/Financial-Modeling-Prep-API",
+    "verdict": "repaired",
+    "candidatesTried": [
+      "search"
+    ],
+    "resolvedAt": "2026-08-11T11:34:43.078Z",
+    "method": "search",
+    "repoFullName": "imbenrabi/Financial-Modeling-Prep-MCP-Server",
+    "newUrl": "https://github.com/imbenrabi/Financial-Modeling-Prep-MCP-Server",
+    "evidence": "GitHub search \"financial modeling prep mcp in:name\": imbenrabi/Financial-Modeling-Prep-MCP-Server is an MCP server repo covering 3/3 name tokens; entry author is generic (\"community\") so a community repo is an acceptable match; confirmed live via GitHub API"
   }
 }
