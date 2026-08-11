@@ -81,6 +81,7 @@ type Status =
   | 'archived'        // repo exists but archived
   | 'disabled'        // repo exists but disabled
   | 'mismatch'        // repo exists+active but looks like a different tool
+  | 'renamed'         // repo moved — our github_url only resolves via GitHub's rename redirect
   | 'bad_url'         // github_url not parseable to owner/repo
   | 'error';          // transient fetch/parse error (safe to re-check)
 
@@ -188,6 +189,7 @@ async function ghGet(ownerRepo: string): Promise<{
   remaining: number | null;
   body: any | null;
   rateLimited: boolean;
+  redirectedTo?: string | null;
 }> {
   const controller = new AbortController();
   const timer = setTimeout(() => controller.abort(), FETCH_TIMEOUT_MS);
@@ -198,10 +200,26 @@ async function ghGet(ownerRepo: string): Promise<{
       'X-GitHub-Api-Version': '2022-11-28',
     };
     if (GITHUB_TOKEN) headers.Authorization = `Bearer ${GITHUB_TOKEN}`;
-    const res = await fetch(`https://api.github.com/repos/${ownerRepo}`, {
+    // `redirect: 'manual'` on purpose. fetch() follows redirects by default, and
+    // GitHub keeps a permanent redirect alive after a repo is renamed or moved
+    // to a new owner — so a stale github_url silently resolves 200 against the
+    // *new* repo and gets scored `ok` forever. stripe/agent-toolkit → stripe/ai
+    // is the case that surfaced this. We follow the hop ourselves so the entry
+    // still gets classified against real repo data, but we keep the fact that a
+    // redirect happened and report it as `renamed`.
+    let res = await fetch(`https://api.github.com/repos/${ownerRepo}`, {
       headers,
+      redirect: 'manual',
       signal: controller.signal,
     });
+    let redirectedTo: string | null = null;
+    if (res.status === 301 || res.status === 302 || res.status === 307 || res.status === 308) {
+      const location = res.headers.get('location');
+      if (location && location.startsWith('https://api.github.com/')) {
+        redirectedTo = location;
+        res = await fetch(location, { headers, redirect: 'manual', signal: controller.signal });
+      }
+    }
     const remainingHdr = res.headers.get('x-ratelimit-remaining');
     const remaining = remainingHdr != null ? Number(remainingHdr) : null;
     const rateLimited =
@@ -213,7 +231,7 @@ async function ghGet(ownerRepo: string): Promise<{
     } catch {
       body = null;
     }
-    return { httpStatus: res.status, remaining, body, rateLimited };
+    return { httpStatus: res.status, remaining, body, rateLimited, redirectedTo };
   } finally {
     clearTimeout(timer);
   }
@@ -224,6 +242,7 @@ function classify(
   ownerRepo: string,
   http: number,
   body: any,
+  redirectedTo?: string | null,
 ): VerifyResult {
   const base: VerifyResult = {
     slug: s.slug,
@@ -280,6 +299,16 @@ function classify(
     authorMatch,
   };
 
+  // A rename redirect means our stored github_url is stale even though it still
+  // "works" in a browser. Report it so the URL can be rewritten to the real one.
+  if (redirectedTo && repoFullName.toLowerCase() !== ownerRepo.toLowerCase()) {
+    return {
+      ...result,
+      status: 'renamed',
+      reason: `github_url "${ownerRepo}" only resolves via GitHub's rename redirect — repo is now "${repoFullName}"`,
+    };
+  }
+
   if (disabled) return { ...result, status: 'disabled', reason: 'repo exists but is disabled' };
   if (archived) return { ...result, status: 'archived', reason: 'repo exists but is archived' };
 
@@ -296,7 +325,7 @@ function classify(
 }
 
 // ---- Report ---------------------------------------------------------------
-const HARD_FAIL: Status[] = ['not_found', 'archived', 'disabled', 'mismatch', 'bad_url'];
+const HARD_FAIL: Status[] = ['not_found', 'archived', 'disabled', 'mismatch', 'renamed', 'bad_url'];
 function buildReport(state: State) {
   const total = servers.length;
   const byStatus: Record<string, number> = {};
@@ -394,7 +423,7 @@ async function main() {
       break;
     }
 
-    state[s.slug] = classify(s, ownerRepo, res.httpStatus, res.body);
+    state[s.slug] = classify(s, ownerRepo, res.httpStatus, res.body, res.redirectedTo);
     saveState(state);
 
     const r = state[s.slug];

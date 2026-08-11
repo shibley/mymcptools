@@ -1645,6 +1645,403 @@ codex mcp add figma --url https://mcp.figma.com/mcp`,
       ],
     },
   },
+
+  {
+    slug: 'stripe',
+    verifiedOn: '2026-08-11',
+    sources: [
+      { label: 'Stripe docs — Model Context Protocol (MCP)', url: 'https://docs.stripe.com/mcp' },
+      { label: 'stripe/ai (formerly stripe/agent-toolkit)', url: 'https://github.com/stripe/ai' },
+    ],
+    intro:
+      'Most write-ups of "the Stripe MCP server" describe a local npm package you run with your secret key. That is not what Stripe documents any more. The server Stripe operates is remote — https://mcp.stripe.com — and the connection mechanism it wants is OAuth, so the thing you paste into a client is a URL, not an API key. Two consequences follow, and they are the whole reason this page exists: the sessions you create are revocable from the Dashboard rather than being as long-lived as a key, and an administrator has to switch MCP access on per environment before any of it works. Secret-key auth still exists, but it is the fallback for clients that cannot do OAuth and the path for autonomous agents, where the guidance is to use a restricted key rather than a live secret key.',
+    setup: {
+      title: 'Connecting to the Stripe MCP server',
+      steps: [
+        {
+          title: 'Turn MCP access on first',
+          body:
+            'An administrator enables MCP access from Dashboard settings, and it is managed separately for sandbox and for live mode. If you enable it in a sandbox and then wonder why the live connection will not authorise, this is why — the two environments do not inherit from each other.',
+        },
+        {
+          title: 'Claude Code',
+          body:
+            'Add it over HTTP transport, then run the /mcp command inside a session to complete the OAuth consent. The command exits successfully before you have authenticated, so a first tool call failing is expected if you skipped the second step.',
+          code: 'claude mcp add --transport http stripe https://mcp.stripe.com/\nclaude /mcp',
+          codeLabel: 'shell',
+        },
+        {
+          title: 'Cursor and VS Code',
+          body:
+            'Both take the bare URL. Cursor wants { "url": "https://mcp.stripe.com" } under mcpServers in ~/.cursor/mcp.json; VS Code wants { "type": "http", "url": "https://mcp.stripe.com" } under servers in .vscode/mcp.json. Stripe publishes one-click install links for both from its MCP docs page.',
+          code: '{\n  "mcpServers": {\n    "stripe": {\n      "url": "https://mcp.stripe.com"\n    }\n  }\n}',
+          codeLabel: 'json — ~/.cursor/mcp.json',
+        },
+        {
+          title: 'ChatGPT',
+          body:
+            'Supported on Pro, Plus, Business, Enterprise and Education accounts as a custom connector: server URL https://mcp.stripe.com, connection mechanism OAuth. The same server also works against OpenAI\'s Responses API when you are building an agent rather than chatting.',
+        },
+        {
+          title: 'Clients that cannot do OAuth',
+          body:
+            'Pass a restricted API key as a bearer token in the Authorization header. Do not embed the key in code — supply it from a secrets vault or an environment variable. This is also the documented path for autonomous agents, where scoping the key to exactly the calls the agent needs is the only real containment you have.',
+          code: '{\n  "stripe": {\n    "url": "https://mcp.stripe.com",\n    "headers": {\n      "Authorization": "Bearer rk_..."\n    }\n  }\n}',
+          codeLabel: 'json',
+        },
+        {
+          title: 'Connect platforms acting as a connected account',
+          body:
+            'OAuth cannot express this, so it is restricted-key only: use a restricted access key with the appropriate Connect permissions and add a Stripe-Account header carrying the acct_ id. This is how you let your own connected accounts make MCP calls through your platform.',
+          code: '"headers": {\n  "Authorization": "Bearer rk_...",\n  "Stripe-Account": "acct_xxxxxxxxx"\n}',
+          codeLabel: 'json',
+        },
+      ],
+    },
+    tools: {
+      title: 'What the server exposes',
+      note:
+        'The design is deliberately not one tool per endpoint. Four generic API tools cover most of the surface so the tool schemas do not eat your context window, and only a handful of operations get a dedicated tool.',
+      items: [
+        { name: 'stripe_api_search', what: 'Find Stripe API methods by keyword — the discovery step before a read or a write.' },
+        { name: 'stripe_api_details', what: 'Get the parameter detail for one specific API method.' },
+        { name: 'stripe_api_read', what: 'Any supported GET. This is what answers "list customers", "retrieve this charge", "show me yesterday\'s payouts".' },
+        { name: 'stripe_api_write', what: 'Any supported POST, PATCH, PUT or DELETE. The tool to gate behind human confirmation.' },
+        { name: 'get_stripe_account_info', what: 'Retrieve the connected account — useful as a cheap "am I pointed at the right account and environment" check.' },
+        { name: 'create_refund', what: 'A dedicated refund tool rather than a generic write.' },
+        { name: 'search_stripe_documentation', what: 'Searches Stripe docs and support articles for a question in a given language.' },
+        { name: 'stripe_implementation_planner', what: 'Walks you through the Stripe products for a goal — accepting payments, selling online, setting up billing.' },
+        { name: 'stripe_report', what: 'Search, retrieve and create reports and report runs.' },
+        { name: 'get_balance_summary', what: 'Public preview, Treasury: an interactive summary across the Stripe balance and Treasury accounts.' },
+        { name: 'send_stripe_mcp_feedback', what: 'Sends feedback about the server itself back to Stripe.' },
+      ],
+    },
+    useCases: [
+      {
+        title: 'Ask the account a revenue question without opening the Dashboard',
+        prompt: 'List the charges that failed in the last 24 hours, group them by decline reason, and tell me which customers have an active subscription so I know who to follow up with.',
+        why: 'Pure stripe_api_read work across charges, customers and subscriptions — the read-only shape worth running first to see whether the connection is scoped the way you expect.',
+      },
+      {
+        title: 'Build a payment link from a product that does not exist yet',
+        prompt: 'Create a product called "Annual plan" with a recurring yearly price of $290, then create a payment link for it and give me the URL.',
+        why: 'Product, price and payment-link creation are all in the supported write set. Run it against a sandbox first — the same prompt in live mode creates a real, publicly payable link.',
+      },
+      {
+        title: 'Plan an integration before writing any of it',
+        prompt: 'I need to charge a one-off fee and then start a monthly subscription on the same card. Which Stripe objects should I use, in what order?',
+        why: 'stripe_implementation_planner plus documentation search answers this without touching your account at all, so it is safe to run on a connection you have not finished scoping.',
+      },
+    ],
+    gotchas: [
+      {
+        question: 'Is the Stripe MCP server an npm package I install locally?',
+        answer:
+          'No — not in Stripe\'s current documentation. The documented server is remote, at https://mcp.stripe.com, and you connect by URL over OAuth. There is an @stripe/mcp npm package, but it describes itself as a command-line tool for setting up the Stripe MCP server, not the server itself. Guides telling you to run a local server with sk_live_ are describing the older agent-toolkit shape.',
+      },
+      {
+        question: 'What happened to the stripe/agent-toolkit GitHub repo?',
+        answer:
+          'It was renamed. github.com/stripe/agent-toolkit now redirects to github.com/stripe/ai — "one-stop shop for building AI-powered products and businesses with Stripe". The old URL still resolves because GitHub keeps rename redirects alive, which is exactly why a lot of directories (this one included, until recently) still show the dead name.',
+      },
+      {
+        question: 'How do I revoke an AI client\'s access to my Stripe account?',
+        answer:
+          'Dashboard → user settings → OAuth sessions. Find the client session, open the overflow menu, choose Revoke access. Administrators can do the same for other users from Team and security → the team member → their OAuth sessions table, including Revoke all. Session management is scoped to the account or organization you are currently viewing and to the current environment, so revoking in live mode does not touch sandbox sessions.',
+      },
+      {
+        question: 'Why can I not connect even though the URL is right?',
+        answer:
+          'MCP access is an account setting an administrator has to enable, and it is enabled separately for sandbox and for live mode. Check the environment you are actually authenticating against before debugging the client.',
+      },
+      {
+        question: 'Is it safe to run the Stripe MCP server alongside other MCP servers?',
+        answer:
+          'Stripe explicitly recommends enabling human confirmation of tools and exercising caution when combining its MCP server with others, because of prompt-injection risk. A server that can call stripe_api_write is a server that can issue refunds and cancel subscriptions on instructions that arrived inside a web page.',
+      },
+      {
+        question: 'Which API key should an autonomous agent use?',
+        answer:
+          'A restricted key, scoped to exactly the functionality the agent needs — Stripe\'s own wording is "strongly recommend". Provide it through a secrets vault or environment variable rather than embedding it. A live secret key handed to an agent is an unbounded grant over the account.',
+      },
+    ],
+    comparison: {
+      items: [
+        {
+          name: 'The Stripe CLI + agent skills',
+          choose: 'Stripe now ships skills and plugins (stripe agent setup via the CLI) aimed at coding agents. If your agent is writing Stripe integration code, the skills path is what Stripe points at first; MCP is for querying and acting on the account.',
+        },
+        {
+          name: 'A read-only setup',
+          choose: 'There is no read-only endpoint variant. The way to get one is a restricted key with only read permissions, which also means giving up OAuth.',
+        },
+      ],
+    },
+  },
+
+  {
+    slug: 'microsoft-playwright-mcp',
+    verifiedOn: '2026-08-11',
+    sources: [
+      { label: 'microsoft/playwright-mcp README', url: 'https://github.com/microsoft/playwright-mcp' },
+      { label: '@playwright/mcp on npm', url: 'https://www.npmjs.com/package/@playwright/mcp' },
+    ],
+    intro:
+      'Playwright MCP drives a real browser through Playwright\'s accessibility tree rather than screenshots, so it needs no vision model and its output is structured text a language model can act on deterministically. Before you install it, read the project\'s own caveat: Microsoft now says that if you are using a coding agent, you may be better served by the Playwright CLI with skills, because CLI invocations avoid loading large tool schemas and verbose accessibility trees into the context window. MCP is the right choice for agentic loops that want persistent browser state and iterative reasoning over page structure — exploratory automation, self-healing tests, long-running autonomous workflows — and the wrong choice if you mostly want a browser occasionally in a session already full of code.',
+    setup: {
+      title: 'Installing Playwright MCP',
+      steps: [
+        {
+          title: 'Check the runtime',
+          body: 'Node.js 18 or newer. Everything below runs through npx, so there is nothing to install globally.',
+        },
+        {
+          title: 'Claude Code',
+          body: 'One command, no arguments needed for a default headed persistent-profile setup.',
+          code: 'claude mcp add playwright npx @playwright/mcp@latest',
+          codeLabel: 'shell',
+        },
+        {
+          title: 'Anything with a JSON config',
+          body:
+            'Cursor, Claude Desktop, Windsurf, Goose, Codex, LM Studio, Kiro, Copilot and others take the same stdio block. Flags go in args after the package name.',
+          code: '{\n  "mcpServers": {\n    "playwright": {\n      "command": "npx",\n      "args": ["@playwright/mcp@latest"]\n    }\n  }\n}',
+          codeLabel: 'json',
+        },
+        {
+          title: 'Decide persistent or isolated before you run two clients',
+          body:
+            'The default is a persistent profile, so logins survive across sessions. It lives in ~/Library/Caches/ms-playwright/mcp-{channel}-{workspace-hash} on macOS, ~/.cache/ms-playwright/... on Linux and %USERPROFILE%\\AppData\\Local\\ms-playwright\\... on Windows, where the workspace hash comes from the MCP client\'s workspace root — so different projects get separate profiles automatically. A persistent profile can only be used by one browser instance at a time.',
+        },
+        {
+          title: 'Run several clients in parallel',
+          body:
+            'Start each additional client with --isolated, or point it at a distinct --user-data-dir. Isolated sessions keep the profile in memory and lose all storage state when the browser closes; seed them with --storage-state pointing at a Playwright storage-state file if they need to start logged in.',
+          code: '{\n  "mcpServers": {\n    "playwright": {\n      "command": "npx",\n      "args": [\n        "@playwright/mcp@latest",\n        "--isolated",\n        "--storage-state=/path/to/storage.json"\n      ]\n    }\n  }\n}',
+          codeLabel: 'json',
+        },
+        {
+          title: 'Turn on the capability groups you need',
+          body:
+            'Core automation, tab management and browser installation are always on. Everything else is opt-in behind --caps: config, network, storage, devtools, vision and pdf, plus testing for assertion tools. Note that the README\'s options table lists only vision, pdf and devtools while its tool sections document the rest — trust the tool sections, and verify with a tools/list against your own install.',
+          code: 'npx @playwright/mcp@latest --caps=network,storage,testing',
+          codeLabel: 'shell',
+        },
+      ],
+    },
+    tools: {
+      title: 'The tool surface, by group',
+      note:
+        'Roughly 70 tools across eight groups. The ones worth knowing by name are the ones that change how you prompt.',
+      items: [
+        { name: 'browser_snapshot', what: 'The accessibility-tree snapshot the whole design rests on. Most other tools take a target reference produced by it.' },
+        { name: 'browser_find', what: 'Locates an element without dumping a whole snapshot — the cheaper first move on a large page.' },
+        { name: 'browser_click / browser_type / browser_fill_form / browser_select_option', what: 'Core interaction. fill_form fills several fields in one call rather than one tool call per input.' },
+        { name: 'browser_evaluate / browser_run_code_unsafe', what: 'Arbitrary JavaScript in the page, and arbitrary Playwright code. Treat the latter as the escape hatch it is.' },
+        { name: 'browser_console_messages / browser_network_requests', what: 'Read the console and the request log — how the agent debugs a page rather than just driving it.' },
+        { name: 'browser_route / browser_unroute / browser_network_state_set', what: 'Request mocking and offline simulation. Opt-in via --caps=network.' },
+        { name: 'browser_cookie_* / browser_localstorage_* / browser_sessionstorage_* / browser_storage_state', what: 'Full storage read-write, including exporting a storage state you can feed back in with --storage-state. Opt-in via --caps=storage.' },
+        { name: 'browser_start_tracing / browser_start_video / browser_highlight / browser_annotate', what: 'Traces, screen recordings and visual annotation. Opt-in via --caps=devtools.' },
+        { name: 'browser_mouse_click_xy / browser_mouse_drag_xy / browser_mouse_wheel', what: 'Coordinate-based input for canvas and other things with no accessibility tree. Opt-in via --caps=vision.' },
+        { name: 'browser_generate_locator / browser_verify_text_visible / browser_verify_element_visible / browser_verify_value', what: 'Assertion and locator-generation tools for writing tests from a live session. Opt-in via --caps=testing.' },
+        { name: 'browser_pdf_save', what: 'Save the page as a PDF. Opt-in via --caps=pdf.' },
+      ],
+    },
+    useCases: [
+      {
+        title: 'Reproduce a bug report against your own logged-in staging site',
+        prompt: 'Open our staging dashboard, follow these steps from the bug report, and tell me at which step the behaviour diverges from what the reporter described — include the console errors and any failing network requests.',
+        why: 'Uses the persistent profile so you are already authenticated, and browser_console_messages plus browser_network_requests to explain the failure instead of only reporting it.',
+      },
+      {
+        title: 'Turn a manual click-through into a Playwright test',
+        prompt: 'Walk through the signup flow, then generate stable locators for each element you interacted with and write me a Playwright test asserting the success state.',
+        why: 'browser_generate_locator and the verify_* tools exist for exactly this, but only with --caps=testing enabled.',
+      },
+      {
+        title: 'Check a page against a flaky third-party API',
+        prompt: 'Route the pricing API to return a 500, reload the page, and tell me what the user sees. Then set the browser offline and do it again.',
+        why: 'Failure-path testing without touching the backend, via --caps=network. This is the workflow that justifies MCP over a CLI: the browser keeps its state across the whole investigation.',
+      },
+    ],
+    gotchas: [
+      {
+        question: 'Why does Playwright MCP fail when I open it in a second client?',
+        answer:
+          'A persistent profile can only be used by one browser instance at a time, and the profile directory is keyed to the MCP client\'s workspace root — so two clients in the same workspace collide. Start the second one with --isolated or give it its own --user-data-dir.',
+      },
+      {
+        question: 'Should I use Playwright MCP or the Playwright CLI with skills?',
+        answer:
+          'Microsoft\'s own README recommends the CLI plus skills for coding agents, because CLI calls do not load large tool schemas and verbose accessibility trees into the model context. It recommends MCP for specialised agentic loops that benefit from persistent state and iterative reasoning over page structure. If you are mostly writing code and occasionally need a browser, take the CLI.',
+      },
+      {
+        question: 'Can Playwright MCP read files on my machine?',
+        answer:
+          'By default no — file-system access is restricted to workspace root directories, or the working directory if no roots are configured, and navigation to file:// URLs is blocked. --allow-unrestricted-file-access removes both restrictions, which is a meaningful thing to hand an agent.',
+      },
+      {
+        question: 'Does --allowed-origins make the browser safe to point at the open web?',
+        answer:
+          'No. The README is explicit that both --allowed-origins and --blocked-origins do not serve as a security boundary and do not affect redirects. The blocklist is evaluated before the allowlist. Treat them as guardrails against accidents, not against an adversary.',
+      },
+      {
+        question: 'Is it headless by default?',
+        answer:
+          'No — it runs headed by default. Pass --headless, or set PLAYWRIGHT_MCP_HEADLESS. Every CLI flag has a matching PLAYWRIGHT_MCP_* environment variable, which is usually the cleaner way to configure it in a container.',
+      },
+      {
+        question: 'Why does it time out on a slow page?',
+        answer:
+          'Defaults are 5000ms for an action, 60000ms for a navigation, and a 500ms settle wait after each action. Raise them with --timeout-action, --timeout-navigation and --timeout-settle rather than retrying the prompt.',
+      },
+      {
+        question: 'How do I cut token usage on big pages?',
+        answer:
+          'Three levers: --mobile emulates a generic mobile device (Pixel 10 on Chromium, iPhone 17 on WebKit) and mobile pages are usually lighter; --snapshot-mode=none stops returning a full snapshot with every response; --image-responses=omit drops image payloads. browser_find is also cheaper than a full browser_snapshot when you know what you are looking for.',
+      },
+    ],
+    comparison: {
+      note: 'Two different projects answer to "the Playwright MCP server". They are not the same code.',
+      items: [
+        {
+          name: 'ExecuteAutomation Playwright MCP',
+          slug: 'playwright',
+          choose: 'Pick it for auto-generated Playwright test scripts, in-page JavaScript execution and a large device-preset library. Pick Microsoft\'s for the official, actively-maintained accessibility-tree server with the opt-in capability model.',
+        },
+        {
+          name: 'Connecting to your own already-open browser',
+          choose: 'Use --extension with the Playwright Extension (Edge and Chrome only) to attach to existing tabs and their logged-in state, or --cdp-endpoint to attach to a browser you launched yourself.',
+        },
+      ],
+    },
+  },
+
+  {
+    slug: 'sentry',
+    verifiedOn: '2026-08-11',
+    sources: [
+      { label: 'getsentry/sentry-mcp README', url: 'https://github.com/getsentry/sentry-mcp' },
+      { label: 'Sentry MCP service', url: 'https://mcp.sentry.dev' },
+    ],
+    intro:
+      'Sentry is explicit that this is not a general-purpose wrapper around the Sentry API — it is built for human-in-the-loop coding agents, and the tool selection is skewed to debugging workflows rather than administration. The default deployment is remote, at https://mcp.sentry.dev/mcp, running on Cloudflare\'s remote-MCP infrastructure, so for Sentry SaaS there is nothing to install. The stdio transport exists mainly so self-hosted Sentry installs have a path, and the README describes it as still a work in progress. The one configuration decision that catches people out is unrelated to transport: the AI-powered search tools need their own LLM provider key, and without one they simply do not appear.',
+    setup: {
+      title: 'Connecting to Sentry MCP',
+      steps: [
+        {
+          title: 'Sentry SaaS — use the remote server',
+          body:
+            'Point any OAuth-capable client at https://mcp.sentry.dev/mcp and complete the browser flow. There is no token to mint and nothing to install.',
+          code: 'claude mcp add --transport http sentry https://mcp.sentry.dev/mcp',
+          codeLabel: 'shell',
+        },
+        {
+          title: 'Claude Code, as a plugin instead',
+          body:
+            'Installing it as a plugin gives you a sentry-mcp subagent that Claude delegates to automatically whenever the conversation touches Sentry errors, issues, traces or performance — rather than you having to steer every lookup. A separate experimental marketplace channel carries forward-looking tool variants.',
+          code: 'claude plugin marketplace add getsentry/sentry-mcp\nclaude plugin install sentry-mcp@sentry-mcp',
+          codeLabel: 'shell',
+        },
+        {
+          title: 'Remote, but with your own Sentry token',
+          body:
+            'Clients that support custom headers can pass an upstream Sentry API token to the Cloudflare transport using the Sentry-Bearer scheme. This is intentionally not Bearer — Bearer is reserved for MCP OAuth access tokens. With Sentry-Bearer the worker does not store, validate, exchange or refresh the token; it forwards it through the same API calls an OAuth session would use, and token lifetime stays your problem.',
+          code: '{\n  "mcpServers": {\n    "sentry": {\n      "url": "https://mcp.sentry.dev/mcp",\n      "headers": {\n        "Authorization": "Sentry-Bearer ${SENTRY_ACCESS_TOKEN}"\n      }\n    }\n  }\n}',
+          codeLabel: 'json',
+        },
+        {
+          title: 'Narrow what a direct-auth session can reach',
+          body:
+            'Direct remote auth defaults to every active MCP skill. Append ?skills=inspect,triage to expose only those, or ?disable-skills=seer to drop one. Worth doing on any connection you are not supervising.',
+          code: 'https://mcp.sentry.dev/mcp?skills=inspect,triage',
+          codeLabel: 'url',
+        },
+        {
+          title: 'Self-hosted Sentry — stdio',
+          body:
+            'Create a User Auth Token with scopes org:read, project:read, project:write, team:read, team:write and event:write, then launch the stdio transport with --host set to the hostname only (no scheme, no path). Leave the host unset and the CLI targets Sentry SaaS.',
+          code: 'npx @sentry/mcp-server@latest --access-token=TOKEN --host=sentry.example.com',
+          codeLabel: 'shell',
+        },
+        {
+          title: 'Self-hosted without TLS, or without Seer',
+          body:
+            'Internal deployments that only expose plain HTTP need --insecure-http. Features like Seer may not exist on a self-hosted instance at all; --disable-skills=seer stops the unsupported tools being advertised, which is cleaner than letting them fail at call time.',
+          code: 'npx @sentry/mcp-server@latest --access-token=TOKEN --host=sentry.internal:9000 --insecure-http --disable-skills=seer',
+          codeLabel: 'shell',
+        },
+        {
+          title: 'Enable the AI-powered search tools',
+          body:
+            'search_events, search_issues and the other AI-powered search tools translate natural language into Sentry query syntax using an embedded agent, so they need an LLM provider: OpenAI, Azure OpenAI, Anthropic or OpenRouter. Set EMBEDDED_AGENT_PROVIDER explicitly — auto-detection from whichever API keys happen to be present is deprecated and will be removed.',
+          code: '{\n  "mcpServers": {\n    "sentry": {\n      "command": "npx",\n      "args": ["@sentry/mcp-server"],\n      "env": {\n        "SENTRY_ACCESS_TOKEN": "your-token",\n        "EMBEDDED_AGENT_PROVIDER": "openai",\n        "OPENAI_API_KEY": "sk-..."\n      }\n    }\n  }\n}',
+          codeLabel: 'json',
+        },
+      ],
+    },
+    useCases: [
+      {
+        title: 'Debug a production regression without leaving the editor',
+        prompt: 'Find the issues in this project that first appeared after today\'s deploy, pull the stack trace for the highest-volume one, and tell me which change in the diff most likely caused it.',
+        why: 'The workflow the server is actually designed for — issue search plus event detail plus your local code in the same context, which is the part the Sentry web UI cannot give an agent.',
+      },
+      {
+        title: 'Triage before standup',
+        prompt: 'What regressed in the last 24 hours across our projects — new issues only, ordered by users affected, and skip anything already assigned.',
+        why: 'Natural-language filtering like this is what the AI-powered search tools are for, so it is the prompt that will silently do nothing useful if you never configured EMBEDDED_AGENT_PROVIDER.',
+      },
+      {
+        title: 'Follow a slow request through a trace',
+        prompt: 'Pull the trace for this event id and tell me which span accounts for most of the latency, and whether that span appears in other slow traces on the same endpoint.',
+        why: 'Performance traces are in scope alongside errors, and reasoning over span timings is the kind of thing that is tedious to do by eye in a trace waterfall.',
+      },
+    ],
+    gotchas: [
+      {
+        question: 'Why are search_events and search_issues missing from my Sentry MCP tools?',
+        answer:
+          'They need an LLM provider configured — OpenAI, Azure OpenAI, Anthropic or OpenRouter — because they use an embedded agent to translate natural language into Sentry query syntax. Without one, those specific tools are unavailable while everything else works normally. Set EMBEDDED_AGENT_PROVIDER as well as the provider key.',
+      },
+      {
+        question: 'Why does Authorization: Bearer <sentry token> not work on the remote server?',
+        answer:
+          'Bearer is reserved for MCP OAuth access tokens. To pass an upstream Sentry API token to the remote transport, use the Sentry-Bearer scheme instead. The worker forwards that token without storing, validating, exchanging or refreshing it.',
+      },
+      {
+        question: 'Do I need the stdio server if I use Sentry SaaS?',
+        answer:
+          'No. The remote server at mcp.sentry.dev is the primary deployment and needs no install. The stdio transport is described in the README as a work in progress, and its main reason to exist is self-hosted Sentry.',
+      },
+      {
+        question: 'What scopes does the Sentry auth token need?',
+        answer:
+          'org:read, project:read, project:write, team:read, team:write and event:write. The write scopes are what let it triage — assign, resolve, comment — rather than only read.',
+      },
+      {
+        question: 'What should SENTRY_HOST be set to?',
+        answer:
+          'The hostname only, for example sentry.example.com — not a URL with a scheme or path. Leave it unset for Sentry SaaS; only set it when you run self-hosted Sentry.',
+      },
+      {
+        question: 'Can I limit which Sentry tools an agent sees?',
+        answer:
+          'Yes, through skills. On the remote server with direct auth, append ?skills=inspect,triage or ?disable-skills=seer to the URL. On stdio, use --disable-skills or the MCP_DISABLE_SKILLS environment variable with a comma-separated list.',
+      },
+    ],
+    comparison: {
+      items: [
+        {
+          name: 'Remote vs stdio',
+          choose: 'Remote for Sentry SaaS: no install, OAuth, and it stays current. Stdio for self-hosted Sentry, or when you need the server pinned to a version you control.',
+        },
+        {
+          name: 'MCP server vs the Claude Code plugin',
+          choose: 'The plugin wraps the same server but adds a subagent Claude delegates to on its own. If you find yourself repeatedly telling Claude to go look in Sentry, take the plugin.',
+        },
+      ],
+    },
+  },
 ];
 
 const guideBySlug = new Map(guides.map((g) => [g.slug, g] as const));
