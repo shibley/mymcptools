@@ -337,10 +337,30 @@ function buildReport(state: State) {
     }
   }
   const checked = Object.keys(state).length;
+  // Entries with github_url:null are already-adjudicated "no verified repo" —
+  // they are skipped by the candidate filter and can never enter state, so
+  // counting them as pending made the pass look ~43% done when every entry it
+  // is capable of checking was in fact finished. Coverage is measured against
+  // the checkable set; `total` is kept for context.
+  // Counted against the CURRENT catalog, not against state: a handful of slugs
+  // were checked, failed, and then had github_url nulled out as the fix, so a
+  // raw state count overshoots the checkable set (100.8% on the first run).
+  const checkableSlugs = new Set(servers.filter((s) => s.github_url != null).map((s) => s.slug));
+  const checkable = checkableSlugs.size;
+  const checkedLive = Object.keys(state).filter((slug) => checkableSlugs.has(slug)).length;
   const report = {
     generatedAt: new Date().toISOString(),
     authenticated: !!GITHUB_TOKEN,
-    progress: { total, checked, remaining: total - checked, percent: Number(((checked / total) * 100).toFixed(1)) },
+    progress: {
+      total,
+      unverifiable: total - checkable,
+      checkable,
+      checked: checkedLive,
+      /** Retired since being checked: repaired to github_url:null. */
+      checkedThenUnverifiable: checked - checkedLive,
+      remaining: checkable - checkedLive,
+      percent: Number(((checkedLive / checkable) * 100).toFixed(1)),
+    },
     countsByStatus: byStatus,
     failureCounts: Object.fromEntries(Object.entries(groups).map(([k, v]) => [k, v.length])),
     failures: Object.fromEntries(

@@ -665,7 +665,7 @@ const _serversPart1: MCPServer[] = [
   {
     slug: 'clickhouse',
     name: 'ClickHouse MCP Server',
-    description: "ClickHouse MCP Server is ClickHouse's official MCP server (ClickHouse/mcp-clickhouse) that connects Claude, Cursor, and other MCP clients to a ClickHouse cluster for fast analytical querying over natural language. Its primary tool, run_query, executes arbitrary SQL against your cluster in read-only mode by default (CLICKHOUSE_ALLOW_WRITE_ACCESS=false) so an AI assistant can explore tables, aggregate billions of rows, and answer analytics questions without risk of mutating data — writes can be enabled explicitly when needed. Companion tools list databases and tables and return schema metadata (including the full create_table_query, with an option to omit per-column detail for lighter responses). A second tool set embeds chDB, ClickHouse's in-process engine, via run_chdb_select_query, letting the assistant query files, URLs, and external databases directly without an ETL step (enabled with the optional mcp-clickhouse[chdb] extra). The server supports both stdio and HTTP/SSE transports; HTTP deployments can be secured with a static bearer token (CLICKHOUSE_MCP_AUTH_TOKEN) or delegated to FastMCP's OAuth/OIDC providers (Azure Entra, Google, GitHub, WorkOS) for production. Connection is configured through CLICKHOUSE_HOST, CLICKHOUSE_PORT, CLICKHOUSE_USER, and CLICKHOUSE_PASSWORD, with ClickHouse Cloud, self-hosted, and the public SQL playground all supported.",
+    description: "ClickHouse MCP Server is ClickHouse's official MCP server (ClickHouse/mcp-clickhouse) that connects Claude, Cursor, and other MCP clients to a ClickHouse cluster for fast analytical querying over natural language. Its primary tool, run_query, executes arbitrary SQL against your cluster in read-only mode by default (CLICKHOUSE_ALLOW_WRITE_ACCESS=false) so an AI assistant can explore tables, aggregate billions of rows, and answer analytics questions without risk of mutating data — writes can be enabled explicitly when needed. Companion tools list databases and tables and return schema metadata (including the full create_table_query, with an option to omit per-column detail for lighter responses). A second tool set embeds chDB, ClickHouse's in-process engine, via run_chdb_select_query, letting the assistant query files, URLs, and external databases directly without an ETL step (enabled with the optional mcp-clickhouse[chdb] extra). Destructive statements are gated a second time: even with writes enabled, DROP and TRUNCATE require CLICKHOUSE_ALLOW_DROP=true as well. The server supports both stdio and HTTP/SSE transports; on HTTP/SSE authentication is required rather than optional — startup fails unless a static bearer token (CLICKHOUSE_MCP_AUTH_TOKEN), a FastMCP OAuth/OIDC provider (Azure Entra, Google, GitHub, WorkOS via FASTMCP_SERVER_AUTH), or an explicit local-development opt-out (CLICKHOUSE_MCP_AUTH_DISABLED) is configured. Connection is configured through CLICKHOUSE_HOST, CLICKHOUSE_PORT, CLICKHOUSE_USER, and CLICKHOUSE_PASSWORD, with ClickHouse Cloud, self-hosted, and the public SQL playground all supported.",
     author: 'ClickHouse',
     github_url: 'https://github.com/ClickHouse/mcp-clickhouse',
     source_verified: true,
@@ -676,7 +676,7 @@ const _serversPart1: MCPServer[] = [
     install_type: 'pip',
     install_command: 'uvx mcp-clickhouse',
     official: true,
-    stars: 846,
+    stars: 848,
   },
   {
     slug: 'neo4j',

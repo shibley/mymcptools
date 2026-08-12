@@ -1,11 +1,14 @@
 {
-  "generatedAt": "2026-08-11T21:57:35.245Z",
-  "authenticated": true,
+  "generatedAt": "2026-08-12T21:37:41.449Z",
+  "authenticated": false,
   "progress": {
     "total": 2467,
-    "checked": 1053,
-    "remaining": 1414,
-    "percent": 42.7
+    "unverifiable": 1422,
+    "checkable": 1045,
+    "checked": 1045,
+    "checkedThenUnverifiable": 8,
+    "remaining": 0,
+    "percent": 100
   },
   "countsByStatus": {
     "ok_low_overlap": 299,
@@ -2914,7 +2917,7 @@
         "author": "Anthropic",
         "github_url": "https://github.com/modelcontextprotocol/servers-archived/tree/main/src/postgres",
         "ownerRepo": "modelcontextprotocol/servers-archived",
-        "overlapScore": 0.03,
+        "overlapScore": 0.07,
         "reason": "repo exists but is archived"
       },
       {

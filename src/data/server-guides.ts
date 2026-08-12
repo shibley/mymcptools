@@ -2740,6 +2740,162 @@ codex mcp add figma --url https://mcp.figma.com/mcp`,
       ],
     },
   },
+  {
+    slug: 'clickhouse',
+    verifiedOn: '2026-08-12',
+    sources: [
+      { label: 'ClickHouse/mcp-clickhouse on GitHub', url: 'https://github.com/ClickHouse/mcp-clickhouse' },
+      { label: 'mcp-clickhouse on PyPI', url: 'https://pypi.org/project/mcp-clickhouse' },
+      { label: 'ClickHouse SQL Playground', url: 'https://sql.clickhouse.com/' },
+    ],
+    intro:
+      'Most of what goes wrong with this server is not the server. It is that `CLICKHOUSE_*` names two unrelated things and people configure one while thinking about the other: the variables that decide how this process dials your database, and the `CLICKHOUSE_MCP_*` variables that decide how MCP clients reach this process. The README calls that out explicitly, and it is worth internalising before you paste anything, because the failure mode is an opaque HTTP or TLS error in the server log rather than a message that says "wrong scheme". The second thing to know is that safety here is two-tier and off by default in a way that is genuinely useful: reads work with no flags, writes need `CLICKHOUSE_ALLOW_WRITE_ACCESS=true`, and `DROP`/`TRUNCATE` need `CLICKHOUSE_ALLOW_DROP=true` on top of that. And if you only want to see whether a ClickHouse-shaped agent is useful at all, you can point it at ClickHouse\'s public playground and never connect a cluster of your own.',
+    setup: {
+      title: 'Connecting mcp-clickhouse',
+      steps: [
+        {
+          title: 'Try it against the public playground first',
+          body:
+            'No account, no cluster, no credentials — the demo user on ClickHouse\'s SQL Playground is read-only and populated with real datasets. This is the config to paste into Claude Desktop if what you want to know is whether the tools are worth wiring to your own data.',
+          code: '{\n  "mcpServers": {\n    "mcp-clickhouse": {\n      "command": "uv",\n      "args": ["run", "--with", "mcp-clickhouse", "--python", "3.10", "mcp-clickhouse"],\n      "env": {\n        "CLICKHOUSE_HOST": "sql-clickhouse.clickhouse.com",\n        "CLICKHOUSE_PORT": "8443",\n        "CLICKHOUSE_USER": "demo",\n        "CLICKHOUSE_PASSWORD": "",\n        "CLICKHOUSE_SECURE": "true",\n        "CLICKHOUSE_VERIFY": "true"\n      }\n    }\n  }\n}',
+          codeLabel: 'json',
+        },
+        {
+          title: 'Point it at your own cluster',
+          body:
+            'Only three variables are required: `CLICKHOUSE_HOST`, `CLICKHOUSE_USER`, `CLICKHOUSE_PASSWORD`. Port defaults follow `CLICKHOUSE_SECURE` — 8443 when true, 8123 when false — so on ClickHouse Cloud you can usually leave the port unset entirely. The README is blunt about the user: treat it as any external client, grant the minimum privileges, never the default or an admin account.',
+          code: 'CLICKHOUSE_HOST=your-instance.clickhouse.cloud\nCLICKHOUSE_USER=mcp_readonly\nCLICKHOUSE_PASSWORD=...\n# CLICKHOUSE_SECURE=true is the default and implies port 8443\n# CLICKHOUSE_DATABASE=analytics   # optional, avoids qualifying every table',
+          codeLabel: 'env',
+        },
+        {
+          title: 'Use the HTTP interface port, not the native one',
+          body:
+            'This server talks to ClickHouse over the HTTP interface via clickhouse-connect. 8123 plain and 8443 TLS work; 9000 and 9440 are the native TCP protocol that `clickhouse-client` uses and will not work here. If you see `Port 9000 is for clickhouse-client program`, that is the whole diagnosis.',
+        },
+        {
+          title: 'Replace `uv` with its absolute path',
+          body:
+            'Claude Desktop does not inherit your shell PATH, so a bare `uv` resolves inconsistently or not at all. Run `which uv` and paste the result as `command`. The same applies to `python3` or `mcp-clickhouse` if you install from PyPI instead of running it with uv.',
+          code: 'which uv\n# → /Users/you/.local/bin/uv',
+          codeLabel: 'shell',
+        },
+        {
+          title: 'Turn on writes only if you mean it, and drops separately',
+          body:
+            'Left alone, queries run with the `readonly=1` setting and mutations are impossible. `CLICKHOUSE_ALLOW_WRITE_ACCESS=true` unlocks DDL and DML; `DROP TABLE`, `DROP DATABASE`, `DROP VIEW`, `DROP DICTIONARY` and `TRUNCATE TABLE` stay blocked until `CLICKHOUSE_ALLOW_DROP=true` is also set. Read-only enforcement also survives being enabled here if the ClickHouse instance itself disallows writes.',
+          code: '"env": {\n  "CLICKHOUSE_ALLOW_WRITE_ACCESS": "true",\n  "CLICKHOUSE_ALLOW_DROP": "true"\n}',
+          codeLabel: 'json',
+        },
+        {
+          title: 'HTTP transport: authentication is required, not optional',
+          body:
+            'stdio needs no auth because it never opens a socket. Under `http` or `sse` the process refuses to start unless exactly one of three things is configured: a static bearer token, a FastMCP auth provider, or an explicit development-only opt-out. Generate the token with `uuidgen` or `openssl rand -hex 32` and send it as `Authorization: Bearer <token>`.',
+          code: 'CLICKHOUSE_MCP_SERVER_TRANSPORT=http\nCLICKHOUSE_MCP_BIND_HOST=0.0.0.0\nCLICKHOUSE_MCP_BIND_PORT=4200\nCLICKHOUSE_MCP_AUTH_TOKEN="$(openssl rand -hex 32)"\n# MCP endpoint:  http://localhost:4200/mcp\n# Health check:  http://localhost:4200/health',
+          codeLabel: 'env',
+        },
+        {
+          title: 'For an identity provider, hand auth to FastMCP',
+          body:
+            '`FASTMCP_SERVER_AUTH` takes the full class path of a FastMCP auth provider — Azure Entra, Google, GitHub, WorkOS — and the provider reads its own `FASTMCP_SERVER_AUTH_*` variables. Leave `CLICKHOUSE_MCP_AUTH_TOKEN` unset in this mode; the two are alternatives, not layers.',
+          code: 'export FASTMCP_SERVER_AUTH=fastmcp.server.auth.providers.azure.AzureProvider\nexport FASTMCP_SERVER_AUTH_AZURE_TENANT_ID="<tenant-id>"\nexport FASTMCP_SERVER_AUTH_AZURE_CLIENT_ID="<client-id>"\nexport FASTMCP_SERVER_AUTH_AZURE_CLIENT_SECRET="<client-secret>"',
+          codeLabel: 'shell',
+        },
+        {
+          title: 'chDB, if you want queries without a cluster',
+          body:
+            'chDB is ClickHouse as an in-process engine, and it ships as an optional extra rather than being installed by default. Enabling it alone — `CLICKHOUSE_ENABLED=false` — gives you a server that queries files, URLs and external databases with no ClickHouse deployment behind it at all. `CHDB_DATA_PATH` defaults to `:memory:`; give it a path to persist.',
+          code: '{\n  "command": "uv",\n  "args": ["run", "--with", "mcp-clickhouse[chdb]", "--python", "3.10", "mcp-clickhouse"],\n  "env": {\n    "CHDB_ENABLED": "true",\n    "CLICKHOUSE_ENABLED": "false",\n    "CHDB_DATA_PATH": "/path/to/chdb/data"\n  }\n}',
+          codeLabel: 'json',
+        },
+      ],
+    },
+    tools: {
+      title: 'Tools',
+      note: 'Four, and the split matters: three go to your ClickHouse cluster, one goes to the embedded chDB engine and never touches it.',
+      items: [
+        { name: 'run_query', what: 'Executes arbitrary SQL against the cluster. Read-only by default via the `readonly=1` setting; subject to `CLICKHOUSE_MCP_QUERY_TIMEOUT`, which defaults to 30 seconds.' },
+        { name: 'list_databases', what: 'Lists every database on the cluster. No arguments.' },
+        { name: 'list_tables', what: 'Paginated. Takes `database`, plus optional `like`/`not_like` name filters, `page_token`, `page_size` (default 50) and `include_detailed_columns` (default true). Returns `tables`, `next_page_token` and `total_tables`.' },
+        { name: 'run_chdb_select_query', what: 'SELECTs through chDB\'s embedded engine against files, URLs and external databases — no ETL and no cluster. Requires the `mcp-clickhouse[chdb]` extra and `CHDB_ENABLED=true`.' },
+      ],
+    },
+    useCases: [
+      {
+        title: 'Explore a schema you have never seen',
+        prompt: 'Run list_databases, then list_tables on the one that looks like production analytics with include_detailed_columns set to false, and summarise what each table appears to record from its name and create_table_query.',
+        why: 'Setting `include_detailed_columns` to false is the trick on a wide schema: you keep the full `create_table_query` for every table but drop the per-column metadata, which is what otherwise blows the response past what the model will read in one turn.',
+      },
+      {
+        title: 'Aggregate over a dataset you do not own',
+        prompt: 'Using run_chdb_select_query, read the Parquet file at this URL and give me the top 20 values by count, without loading it anywhere.',
+        why: 'chDB is the reason to reach for this server over a generic SQL one. Querying a remote file directly removes the load step entirely, and because it is in-process there is no cluster to provision for a one-off question.',
+      },
+      {
+        title: 'Let an analyst loose on the cluster without risk',
+        prompt: 'Answer questions about our event data using run_query only, and show me the SQL for every number you report.',
+        why: 'With no write flags set, the connection is enforced read-only at the ClickHouse setting level rather than by prompt instruction. Pair it with a minimally-privileged database user and this is a safe default to hand to someone who is not on call.',
+      },
+    ],
+    gotchas: [
+      {
+        question: 'Why does the ClickHouse MCP server fail to start with HTTP transport?',
+        answer:
+          'Because authentication is required by default on `http` and `sse`, and startup fails if none of the three modes is configured. Set `CLICKHOUSE_MCP_AUTH_TOKEN`, or `FASTMCP_SERVER_AUTH`, or — for local work only — `CLICKHOUSE_MCP_AUTH_DISABLED=true`. stdio, the default transport, is exempt because it communicates only over standard input and output.',
+      },
+      {
+        question: 'I set CLICKHOUSE_SECURE=false because my MCP server is behind an ingress. Why did the database connection break?',
+        answer:
+          'Those are different layers. `CLICKHOUSE_SECURE`, `CLICKHOUSE_VERIFY` and `CLICKHOUSE_PORT` configure how this process reaches ClickHouse; they do nothing to the MCP protocol endpoint. Turning the flag off makes the server dial ClickHouse over plain HTTP, often against an HTTPS-only port, and the errors that come back are HTTP/TLS noise rather than a clear mismatch. Keep it aligned with how the pod reaches the database and configure ingress TLS separately.',
+      },
+      {
+        question: 'Why do I get "Port 9000 is for clickhouse-client program"?',
+        answer:
+          'You pointed `CLICKHOUSE_PORT` at the native TCP protocol. This server uses the HTTP interface — 8123 plain, 8443 TLS, or whatever your deployment maps HTTP to. 9000 and 9440 belong to `clickhouse-client` and are not supported here.',
+      },
+      {
+        question: 'Can the AI drop my tables?',
+        answer:
+          'Not without two separate opt-ins. Writes require `CLICKHOUSE_ALLOW_WRITE_ACCESS=true`, and even then `DROP TABLE`, `DROP DATABASE`, `DROP VIEW`, `DROP DICTIONARY` and `TRUNCATE TABLE` remain blocked until `CLICKHOUSE_ALLOW_DROP=true` is set as well. Neither is on by default.',
+      },
+      {
+        question: 'Why do chDB queries fail with the server otherwise working?',
+        answer:
+          'chDB is an optional extra and is disabled by default. You need both the dependency — install `mcp-clickhouse[chdb]`, not plain `mcp-clickhouse` — and `CHDB_ENABLED=true`. Installing the extra without the flag, or the flag without the extra, both present as the tool simply not working.',
+      },
+      {
+        question: 'Queries time out on large tables. Which timeout do I raise?',
+        answer:
+          'Probably `CLICKHOUSE_MCP_QUERY_TIMEOUT`, which caps the query tools at 30 seconds and produces `Query timed out after ...`. That is separate from `CLICKHOUSE_SEND_RECEIVE_TIMEOUT` (300s, the database client) and `CLICKHOUSE_CONNECT_TIMEOUT` (30s, establishing the connection). Match the error text to the layer before changing anything.',
+      },
+      {
+        question: 'Is the /health endpoint safe to expose?',
+        answer:
+          'It is designed to be. It is deliberately unauthenticated so Kubernetes probes and load balancers can reach it without credentials, and the body is just `OK` or a generic 503 specifically to avoid leaking version strings or error detail. The corollary: a 200 from /health proves nothing about your bearer token. To test auth, POST a JSON-RPC request to `/mcp` with and without the header and confirm the unauthenticated one returns 401.',
+      },
+      {
+        question: 'Can I connect through a reverse proxy or a load balancer with a different certificate hostname?',
+        answer:
+          'Yes. `CLICKHOUSE_SERVER_HOST_NAME` overrides the SNI hostname and the name used for certificate validation, and `CLICKHOUSE_PROXY_PATH` sets a URL path prefix when the HTTP interface is exposed under one, for example `/clickhouse`. Reach for these before disabling `CLICKHOUSE_VERIFY`.',
+      },
+    ],
+    comparison: {
+      items: [
+        {
+          name: 'ClickHouse MCP vs a Postgres MCP server',
+          slug: 'postgresql',
+          choose: 'Whichever holds the data — but note the difference in ambition. The Postgres servers add index tuning and health analysis; this one stays close to "run SQL, list things" and puts its extra surface into chDB and transport instead.',
+        },
+        {
+          name: 'ClickHouse tools vs chDB tools',
+          choose: 'The cluster tools when the data already lives in ClickHouse. chDB when it lives in files, URLs or another database and you would rather not load it anywhere first. Both can be on at once, and `CLICKHOUSE_ENABLED=false` gives you chDB alone.',
+        },
+        {
+          name: 'stdio vs HTTP transport',
+          choose: 'stdio for Claude Desktop and anything running on your machine — no listener, no auth to configure. HTTP or SSE only when the server has to be reachable over a network, at which point authentication stops being optional and you own a service.',
+        },
+      ],
+    },
+  },
 ];
 
 const guideBySlug = new Map(guides.map((g) => [g.slug, g] as const));
