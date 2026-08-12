@@ -4,13 +4,35 @@
 // gives fast, allocation-free reads.
 
 import rawStore from "@/data/probe-status.json";
+import { VERDICTS } from "@/lib/trust/types";
 import type { CurrentStatus, StatusStore, Verdict } from "@/lib/trust/types";
 
 const store = rawStore as StatusStore;
 
+/**
+ * The committed store carries duplicate slugs — on the 2026-08-12 file, 2,726
+ * rows over 2,440 distinct servers (201 slugs appear more than once). `bySlug`
+ * has always collapsed those, so `getStatus` was right while every count taken
+ * off `store.statuses`/`store.summary` was inflated by ~11%: the /status page,
+ * `/api/v1/status`, `/api/v1/export`, `get_catalog_stats` and `total_tracked`
+ * all reported more servers than the catalog holds (2,467), and the duplicates
+ * are overwhelmingly UNPROBEABLE, so they also skewed the verdict mix.
+ *
+ * Deduplicate once here, last row wins, matching what `bySlug`/`getStatus`
+ * already serve. Every read-side consumer then agrees on one population.
+ */
 const bySlug = new Map<string, CurrentStatus>(
   store.statuses.map((s) => [s.slug, s])
 );
+
+const dedupedStatuses: readonly CurrentStatus[] = Array.from(bySlug.values());
+
+const dedupedSummary: Record<Verdict, number> = (() => {
+  const counts = {} as Record<Verdict, number>;
+  for (const v of VERDICTS) counts[v] = 0;
+  for (const s of dedupedStatuses) counts[s.verdict] = (counts[s.verdict] ?? 0) + 1;
+  return counts;
+})();
 
 /** When the committed dataset was generated. */
 export function generatedAt(): string {
@@ -23,14 +45,14 @@ export function statusStore(): StatusStore {
   return store;
 }
 
-/** Verdict counts across the whole inventory. */
+/** Verdict counts across the whole inventory, one row per slug. */
 export function summary(): Record<Verdict, number> {
-  return store.summary;
+  return dedupedSummary;
 }
 
-/** Every current_status row (do not mutate). */
+/** Every current_status row, one per slug (do not mutate). */
 export function allStatuses(): readonly CurrentStatus[] {
-  return store.statuses;
+  return dedupedStatuses;
 }
 
 /** One server's current_status, or undefined for an unknown slug. */

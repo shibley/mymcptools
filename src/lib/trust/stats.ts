@@ -3,7 +3,8 @@
 // trivially testable and safe to call on every request; the underlying store is
 // a static committed JSON file, so there is no I/O here.
 
-import { allStatuses, generatedAt, summary } from '@/lib/trust/status-store';
+import { servers } from '@/data/servers';
+import { allStatuses, generatedAt } from '@/lib/trust/status-store';
 import { VERDICTS } from '@/lib/trust/types';
 import type {
   CatalogStats,
@@ -136,7 +137,27 @@ export function computeCatalogStats(
   };
 }
 
-/** Compute stats from the committed probe-status store. */
+/**
+ * Compute stats from the committed probe-status store, restricted to slugs that
+ * are still in the published catalog.
+ *
+ * The probe store outlives the catalog: a server dropped from `src/data/servers`
+ * keeps its last current_status row, so `allStatuses().length` runs ahead of
+ * `servers.length` (2,726 vs 2,467 on the 2026-08-12 store). Reporting the
+ * store count as the catalog total contradicts `list_categories.total_servers`
+ * and inflates the denominator under every percentage here — an orphaned row is
+ * almost always UNPROBEABLE, so it drags the "share probeable" figure down
+ * against a population no visitor can look up. Filter to the live catalog and
+ * recount verdicts from the surviving rows rather than trusting the store's
+ * precomputed `summary()`, which is over the unfiltered set.
+ */
 export function computeCatalogStatsFromStore(): CatalogStats {
-  return computeCatalogStats(allStatuses(), generatedAt(), summary());
+  const inCatalog = new Set(servers.map((s) => s.slug));
+  const rows = allStatuses().filter((s) => inCatalog.has(s.slug));
+
+  const verdictCounts = {} as Record<Verdict, number>;
+  for (const v of VERDICTS) verdictCounts[v] = 0;
+  for (const r of rows) verdictCounts[r.verdict] = (verdictCounts[r.verdict] ?? 0) + 1;
+
+  return computeCatalogStats(rows, generatedAt(), verdictCounts);
 }
