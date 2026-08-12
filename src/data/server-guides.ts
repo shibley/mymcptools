@@ -2456,6 +2456,290 @@ codex mcp add figma --url https://mcp.figma.com/mcp`,
       ],
     },
   },
+  {
+    slug: 'postgresql',
+    verifiedOn: '2026-08-12',
+    sources: [
+      { label: 'modelcontextprotocol/servers-archived — src/postgres', url: 'https://github.com/modelcontextprotocol/servers-archived/tree/main/src/postgres' },
+      { label: '@modelcontextprotocol/server-postgres on npm', url: 'https://www.npmjs.com/package/@modelcontextprotocol/server-postgres' },
+      { label: 'crystaldba/postgres-mcp on GitHub', url: 'https://github.com/crystaldba/postgres-mcp' },
+    ],
+    intro:
+      'Nearly every "connect Claude to Postgres" article still tells you to run npx @modelcontextprotocol/server-postgres. That server is retired. Its repository moved to modelcontextprotocol/servers-archived — a repo GitHub itself marks archived, described as "Reference MCP servers that are no longer maintained" — and the npm package carries a deprecation notice: "Package no longer supported." It still installs and still runs, which is exactly why the advice keeps propagating. What you get is one tool, query, executing read-only SQL, plus table schemas exposed as resources. No index advice, no health checks, and nothing has shipped in it for a long time. The live server people actually mean when they say "the Postgres MCP server" is Postgres MCP Pro (crystaldba/postgres-mcp, 3,184 stars) — nine tools, an explicit access-mode switch, and index tuning that runs real EXPLAIN plans against hypothetical indexes. This guide sets up the live one and tells you when the archived one is still the right call.',
+    setup: {
+      title: 'Setting up Postgres MCP Pro',
+      steps: [
+        {
+          title: 'Pick an install method',
+          body:
+            'Docker is the one to default to: it needs nothing on the host, and the image rewrites localhost in your connection string to reach the host database (host.docker.internal on macOS and Windows, 172.17.0.1 on Linux) rather than looking inside the container — the failure that otherwise reads as "connection refused" against a database you can see running.',
+          code: 'docker pull crystaldba/postgres-mcp\n# or, on the host:\npipx install postgres-mcp\nuv pip install postgres-mcp',
+          codeLabel: 'shell',
+        },
+        {
+          title: 'Wire it into Claude Desktop with Docker',
+          body:
+            'DATABASE_URI is passed by name in args and by value in env — that is deliberate in the project\'s own example, so the password is not baked into the argument list. The config file is at ~/Library/Application Support/Claude/claude_desktop_config.json on macOS and %APPDATA%/Claude/claude_desktop_config.json on Windows.',
+          code: '{\n  "mcpServers": {\n    "postgres": {\n      "command": "docker",\n      "args": [\n        "run", "-i", "--rm",\n        "-e", "DATABASE_URI",\n        "crystaldba/postgres-mcp",\n        "--access-mode=unrestricted"\n      ],\n      "env": {\n        "DATABASE_URI": "postgresql://username:password@localhost:5432/dbname"\n      }\n    }\n  }\n}',
+          codeLabel: 'json',
+        },
+        {
+          title: 'Or run it from uvx with no container',
+          body:
+            'Same flags, no Docker daemon. This is the shape to use when the database is remote anyway and the localhost remapping buys you nothing.',
+          code: '{\n  "mcpServers": {\n    "postgres": {\n      "command": "uvx",\n      "args": ["postgres-mcp", "--access-mode=unrestricted"],\n      "env": {\n        "DATABASE_URI": "postgresql://username:password@localhost:5432/dbname"\n      }\n    }\n  }\n}',
+          codeLabel: 'json',
+        },
+        {
+          title: 'Switch to restricted mode for anything you care about',
+          body:
+            'Replace --access-mode=unrestricted with --access-mode=restricted and every statement runs inside a read-only transaction. The parser also rejects COMMIT and ROLLBACK, which is the detail that makes it hold: without that, a model can close the read-only transaction and open a writable one, and the mode becomes decoration.',
+          code: 'uvx postgres-mcp --access-mode=restricted',
+          codeLabel: 'shell',
+        },
+        {
+          title: 'Install the two extensions the good tools depend on',
+          body:
+            'pg_stat_statements is what get_top_queries and analyze_workload_indexes read; hypopg is what lets explain_query cost an index that does not exist yet. Without them the server still starts and those tools simply have nothing to say — a silent degradation that looks like the server being useless.',
+          code: 'CREATE EXTENSION IF NOT EXISTS pg_stat_statements;\nCREATE EXTENSION IF NOT EXISTS hypopg;',
+          codeLabel: 'sql',
+        },
+        {
+          title: 'SSE, when the client will not spawn a process',
+          body:
+            'Start it with --transport=sse and it listens on port 8000; clients point at http://localhost:8000/sse. Useful for editors that only take a URL, and for running one server against a shared dev database instead of one process per developer.',
+          code: 'docker run -p 8000:8000 \\\n  -e DATABASE_URI=postgresql://username:password@localhost:5432/dbname \\\n  crystaldba/postgres-mcp --access-mode=unrestricted --transport=sse',
+          codeLabel: 'shell',
+        },
+      ],
+    },
+    tools: {
+      title: 'The nine tools',
+      note: 'The first four are what the archived reference server did, roughly. The last five are the reason to switch.',
+      items: [
+        { name: 'list_schemas', what: 'Inventory of database schemas — the usual first call before anything else knows where to look.' },
+        { name: 'list_objects', what: 'Tables, views, sequences and extensions within a schema.' },
+        { name: 'get_object_details', what: 'Columns, constraints and indexes for one object.' },
+        { name: 'execute_sql', what: 'Runs SQL. In restricted mode it is confined to a read-only transaction; in unrestricted mode it will happily write.' },
+        { name: 'explain_query', what: 'Execution plans, including plans costed against hypothetical indexes via hypopg — you can ask what a query would cost with an index before creating it.' },
+        { name: 'get_top_queries', what: 'Slowest statements from pg_stat_statements.' },
+        { name: 'analyze_workload_indexes', what: 'Finds the resource-heavy queries across the workload and proposes indexes for them.' },
+        { name: 'analyze_query_indexes', what: 'The same recommendation engine pointed at up to ten specific queries you hand it.' },
+        { name: 'analyze_db_health', what: 'Buffer cache, connections, invalid constraints, unused and duplicate indexes, sequence exhaustion, vacuum and replication state.' },
+      ],
+    },
+    useCases: [
+      {
+        title: 'Index tuning that was actually costed, not guessed',
+        prompt: 'Run analyze_workload_indexes, then for the top three recommendations use explain_query with the hypothetical index to show me the before and after plan cost. Do not create anything.',
+        why: 'An LLM asked to suggest indexes will always suggest indexes. Making it route through hypopg means the numbers come from the planner rather than from the model, and you see the ones that would not have helped.',
+      },
+      {
+        title: 'The health check nobody schedules',
+        prompt: 'Run analyze_db_health and tell me which findings would cause an outage rather than a slowdown — start with sequence exhaustion and invalid constraints.',
+        why: 'analyze_db_health covers the failures that are boring until the day an int4 sequence runs out. It is one tool call and there is no equivalent in the archived reference server.',
+      },
+      {
+        title: 'Explain the schema you inherited',
+        prompt: 'Using list_schemas, list_objects and get_object_details, write me a description of how orders, payments and refunds relate, and flag any foreign key I would expect to exist that does not.',
+        why: 'This is the one thing the archived server could also do, and it remains the most common reason to connect a database at all — with the difference that constraints come back structured instead of as a SELECT you wrote by hand.',
+      },
+    ],
+    gotchas: [
+      {
+        question: 'Is @modelcontextprotocol/server-postgres deprecated?',
+        answer:
+          'Yes. The npm package is flagged "Package no longer supported", and the source now lives in modelcontextprotocol/servers-archived, a repository GitHub reports as archived and whose description is "Reference MCP servers that are no longer maintained". It still installs and runs; it just is not being maintained, and it has a single query tool. Use it only for a throwaway read-only connection where you want zero dependencies.',
+      },
+      {
+        question: 'Which Postgres MCP server should I use?',
+        answer:
+          'Postgres MCP Pro (crystaldba/postgres-mcp) for general use — it is the actively developed one, has nine tools instead of one, and has a real read-only mode. Take the Supabase or Neon server instead if your database is on that platform, because you also get branching, logs and platform tooling that a raw Postgres connection cannot see.',
+      },
+      {
+        question: 'Why does the server say connection refused when my database is running?',
+        answer:
+          'Almost always Docker networking with localhost in the connection string. The Postgres MCP Pro image remaps it for you (host.docker.internal on macOS and Windows, 172.17.0.1 on Linux), so if you are on the archived server or a different image inside a container, write the host address explicitly rather than localhost.',
+      },
+      {
+        question: 'Is restricted mode actually safe to point at production?',
+        answer:
+          'It is a genuine read-only transaction, and the parser rejects COMMIT and ROLLBACK specifically so the transaction cannot be escaped — that is more than most database MCP servers do. It still does not stop a query from reading data you did not intend to expose to a model, and it does not stop prompt injection from data stored in your own tables. Treat it as protection against the agent breaking things, not against it seeing things.',
+      },
+      {
+        question: 'Which Postgres versions does it support?',
+        answer:
+          'Testing focuses on 15, 16 and 17, with stated plans to support 13 through 17. Older majors are not tested, and pg_stat_statements availability on managed providers varies, so confirm the extension exists before assuming the query-analysis tools will return anything.',
+      },
+      {
+        question: 'Do I need an OpenAI API key?',
+        answer:
+          'No. OPENAI_API_KEY is optional and only used by the experimental LLM-based index tuning path. The standard index recommendations come from the workload statistics and the planner, not from a model.',
+      },
+    ],
+    comparison: {
+      items: [
+        {
+          name: 'Postgres MCP Pro vs the archived reference server',
+          choose: 'Pro unless you specifically want the smallest possible surface — one npx process, one read-only query tool, no extensions, nothing maintained.',
+        },
+        {
+          name: 'Postgres MCP vs Supabase MCP',
+          slug: 'supabase',
+          choose: 'Supabase if the database is a Supabase project: you additionally get logs, advisors, Edge Functions and branching. Plain Postgres when you want SQL and nothing else, including against a Supabase database via its connection string.',
+        },
+        {
+          name: 'Postgres MCP vs Neon MCP',
+          slug: 'neon',
+          choose: 'Neon when the database is on Neon and you want branch-per-migration workflows. Postgres MCP Pro when you want index and health analysis, which the platform servers do not do at the same depth.',
+        },
+      ],
+    },
+  },
+  {
+    slug: 'neon',
+    verifiedOn: '2026-08-12',
+    sources: [
+      { label: 'neondatabase/mcp-server-neon on GitHub', url: 'https://github.com/neondatabase/mcp-server-neon' },
+      { label: 'Neon Docs — Neon MCP Server', url: 'https://neon.com/docs/ai/neon-mcp-server' },
+    ],
+    intro:
+      'The Neon server is remote-first — there is nothing to install, you point a client at https://mcp.neon.tech/mcp and authorize in a browser — and that makes the interesting configuration entirely a matter of what you put in the URL. Three query params (readonly, category, projectId) decide whether the agent can write, which tool categories exist at all, and whether it can see one project or your whole account. This matters more here than on most servers because the default surface is roughly thirty tools spanning project creation, deletion, migrations and auth provisioning, and because Neon says plainly in its own README that the server is "intended for local development and IDE integrations only" and that it does not recommend running it against production. The other thing worth knowing before you start: the migration tools are two-phase on purpose, and the branch they create is what makes "let the agent change my schema" a defensible idea rather than a reckless one.',
+    setup: {
+      title: 'Connecting the Neon MCP server',
+      steps: [
+        {
+          title: 'One command, if your editor is Cursor, VS Code or Claude Code',
+          body:
+            'neon init authenticates over OAuth, mints an API key for you, and writes the MCP config plus Neon\'s agent skills and the VS Code extension. It is the fastest path and the one to use unless you need a specific scoped URL.',
+          code: 'npx neon@latest init',
+          codeLabel: 'shell',
+        },
+        {
+          title: 'Or register the hosted server everywhere at once',
+          body:
+            'add-mcp detects the agents and editors in the workspace and adds the entry to each. It is project-scoped by default; add -g to write it to the global MCP server list instead. On first connect a browser window opens for the OAuth grant.',
+          code: 'npx add-mcp https://mcp.neon.tech/mcp',
+          codeLabel: 'shell',
+        },
+        {
+          title: 'Or write the config by hand',
+          body:
+            'Streamable HTTP, so there is no command and no args. Any client that speaks it takes this verbatim.',
+          code: '{\n  "mcpServers": {\n    "Neon": {\n      "type": "http",\n      "url": "https://mcp.neon.tech/mcp"\n    }\n  }\n}',
+          codeLabel: 'json',
+        },
+        {
+          title: 'Constrain it in the URL before you connect anything real',
+          body:
+            'readonly=true removes the write tools and leaves run_sql available for read-only queries. projectId confines every operation to one project — and note that in project-scoped mode the docs-search tools search and fetch become unavailable. Config in the URL travels with each request and takes effect immediately, with no re-auth.',
+          code: 'https://mcp.neon.tech/mcp?readonly=true&projectId=proj-123',
+          codeLabel: 'url',
+        },
+        {
+          title: 'Cut the tool list with category=',
+          body:
+            'category takes repeated params or a CSV, drawn from projects, branches, schema, querying, neon_auth, data_api, observability and docs. Dropping to two categories is the cheapest way to shrink both the risk and the tokens the tool list costs on every turn.',
+          code: 'https://mcp.neon.tech/mcp?category=querying&category=schema',
+          codeLabel: 'url',
+        },
+        {
+          title: 'Check what a URL actually exposes before you trust it',
+          body:
+            'The server will tell you which tools a given configuration yields, without authenticating. Worth running once after you write a scoped URL, rather than assuming the params did what you meant.',
+          code: 'curl "https://mcp.neon.tech/api/list-tools?readonly=true&category=querying"',
+          codeLabel: 'shell',
+        },
+        {
+          title: 'API-key auth, where no browser exists',
+          body:
+            'Create the key in the Neon Console and pass it as a bearer header. Use an organization key to confine access to that organization\'s projects. In this flow there is no OAuth scope exchange, so readonly=true in the URL is the only way to get read-only mode.',
+          code: 'npx add-mcp https://mcp.neon.tech/mcp \\\n  --header "Authorization: Bearer <$NEON_API_KEY>"',
+          codeLabel: 'shell',
+        },
+      ],
+    },
+    tools: {
+      title: 'Tool categories',
+      note: 'Roughly thirty tools, grouped by the scope category used for filtering and for the OAuth consent screen.',
+      items: [
+        { name: 'projects', what: 'list_projects (first 10 unless you raise limit), list_shared_projects, describe_project, list_organizations, plus create_project and delete_project behind write access.' },
+        { name: 'branches', what: 'create_branch, delete_branch, describe_branch, list_branch_computes, compare_database_schema (diff against parent) and reset_from_parent, which auto-preserves a backup if the branch has children.' },
+        { name: 'querying', what: 'run_sql, run_sql_transaction, get_connection_string. run_sql stays available in read-only mode but only for read-only queries.' },
+        { name: 'schema', what: 'get_database_tables and describe_table_schema, plus the two-phase prepare_database_migration and complete_database_migration.' },
+        { name: 'observability', what: 'query_logs, list_log_fields, list_log_field_values, and the optimization set — inspect_database, list_slow_queries, explain_sql_statement, prepare_query_tuning, complete_query_tuning.' },
+        { name: 'neon_auth / data_api', what: 'provision_neon_auth, configure_neon_auth, get_neon_auth_config and provision_neon_data_api. All writes except reading the config; disable these unless you are actually provisioning.' },
+        { name: 'docs', what: 'search, fetch, list_docs_resources, get_doc_resource — Neon\'s documentation, the only category with no access to your data. Note that search and fetch drop out under projectId.' },
+      ],
+    },
+    useCases: [
+      {
+        title: 'Migrate on a branch, then decide',
+        prompt: 'Use prepare_database_migration to add a created_at timestamptz default now() to public.users, run my smoke queries against the temporary branch, show me compare_database_schema against the parent, and stop before completing.',
+        why: 'prepare creates a throwaway branch and applies the change there; complete is a separate call that merges it and cleans up. Stopping between the two is the whole point — you review a real applied schema, not a proposed diff.',
+      },
+      {
+        title: 'Find the slow query and prove the fix',
+        prompt: 'Run list_slow_queries, take the worst one, use explain_sql_statement to show the plan, then run prepare_query_tuning and tell me what it changed and what the new plan costs.',
+        why: 'The tuning tools are two-phase like migrations, so the optimization is applied somewhere disposable first. This is the workflow that justifies giving an agent database access at all.',
+      },
+      {
+        title: 'A read-only analyst on one project',
+        prompt: 'Using only the tables in this project, tell me which accounts signed up in the last 30 days and never returned, and show the SQL you ran.',
+        why: 'Point this at ?readonly=true&projectId=... and the agent physically cannot create, delete or migrate anything. It is the configuration to hand to anyone who is not the person on call.',
+      },
+    ],
+    gotchas: [
+      {
+        question: 'Can I use the Neon MCP server in production?',
+        answer:
+          'Neon says no. Its README states the server is intended for local development and IDE integrations only and that it does not recommend production use, because it can execute powerful operations that lead to accidental or unauthorized changes. If you need something production-adjacent, use readonly=true with projectId and treat it as a reporting connection.',
+      },
+      {
+        question: 'Why does the MCP server not see my organization\'s projects?',
+        answer:
+          'With OAuth the server defaults to projects under your personal Neon account. To reach organization projects you have to name the org_id or project_id in your prompt, or connect with an organization API key instead, which confines access to that organization by construction.',
+      },
+      {
+        question: 'How do I make the Neon MCP server read-only?',
+        answer:
+          'Two ways, and which one applies depends on your auth. Under OAuth, uncheck Full access in the consent UI, or override it with ?readonly=true in the URL. Under API-key auth there is no scope exchange, so ?readonly=true is the mechanism. The legacy x-read-only header still works as a lower-priority fallback.',
+      },
+      {
+        question: 'The connection fails and I have IP Allow enabled — what do I whitelist?',
+        answer:
+          'The static IPs for mcp.neon.tech: 34.192.103.46 and 23.22.233.166. Without them the OAuth flow can succeed while every subsequent database call fails, which reads as a broken server rather than a network rule.',
+      },
+      {
+        question: 'My client does not support Streamable HTTP — is there an SSE endpoint?',
+        answer:
+          'Yes, https://mcp.neon.tech/sse, added with npx add-mcp https://mcp.neon.tech/sse --type sse. SSE is the deprecated transport in MCP and Streamable HTTP is recommended, so treat this as a compatibility path for older clients rather than a choice.',
+      },
+      {
+        question: 'Do I need to run the server locally?',
+        answer:
+          'No, and generally you should not. The remote server at mcp.neon.tech is Neon-hosted and picks up new features as they ship; a local install pins you to whatever you last pulled. Node 18 or newer is only needed for the npx setup commands themselves.',
+      },
+    ],
+    comparison: {
+      items: [
+        {
+          name: 'Neon MCP vs a generic Postgres MCP server',
+          slug: 'postgresql',
+          choose: 'Neon when you want the platform — branches, migrations on a throwaway branch, logs, connection strings. A Postgres server when you want SQL and index analysis against the database itself and would rather not expose project creation and deletion at all.',
+        },
+        {
+          name: 'Neon MCP vs Supabase MCP',
+          slug: 'supabase',
+          choose: 'Whichever hosts your database; they are not interchangeable. The shapes rhyme, though — both are hosted, both are OAuth, both put read-only and project scoping in URL params, and both tell you not to point them at production.',
+        },
+        {
+          name: 'Remote server vs running mcp-server-neon locally',
+          choose: 'Remote, in almost every case. Local exists for development on the server itself and needs Node 22+ with Corepack; it gains you nothing operationally and falls behind.',
+        },
+      ],
+    },
+  },
 ];
 
 const guideBySlug = new Map(guides.map((g) => [g.slug, g] as const));
