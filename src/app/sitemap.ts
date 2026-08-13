@@ -123,6 +123,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'weekly',
       priority: 0.9,
     },
+    // Same shape for "devops mcp server" / "deployment mcp server" — the five
+    // infrastructure guides compared on blast radius rather than tool count.
+    {
+      url: `${baseUrl}/guides/devops`,
+      lastModified: now,
+      changeFrequency: 'weekly',
+      priority: 0.9,
+    },
     {
       url: `${baseUrl}/mcp-server`,
       lastModified: now,

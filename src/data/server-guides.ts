@@ -3079,6 +3079,191 @@ codex mcp add figma --url https://mcp.figma.com/mcp`,
       ],
     },
   },
+  {
+    slug: 'railway',
+    verifiedOn: '2026-08-13',
+    sources: [
+      { label: 'Railway Docs — Railway MCP Server', url: 'https://docs.railway.com/ai/mcp-server' },
+      { label: 'Railway Docs — railway mcp', url: 'https://docs.railway.com/cli/mcp' },
+      { label: 'Railway Docs — railway setup', url: 'https://docs.railway.com/cli/setup' },
+      { label: 'Railway Docs — CLI', url: 'https://docs.railway.com/cli' },
+      { label: 'railwayapp/cli README', url: 'https://github.com/railwayapp/cli' },
+      { label: 'npm — @railway/mcp-server (deprecated)', url: 'https://www.npmjs.com/package/@railway/mcp-server' },
+    ],
+    intro:
+      'Searching "railway mcp" turns up four things and only one of them is current. `railwayapp/railway-mcp-server` was the official repository; it is archived, last pushed 2026-05-23, and still clones and builds. `@railway/mcp-server` on npm is a deprecated compatibility shim — its own npm metadata says "Railway MCP is now bundled into the Railway CLI. Use `railway mcp`". `jason-tan-swe/railway-mcp` is an unofficial community server, untouched since June 2025. The live one is not a package at all: it ships inside the Railway CLI, and `railway mcp` starts it. There is also a genuine name collision — several of the top GitHub hits for "railway mcp" are Indian Railways train-status servers, unrelated to the PaaS. The decision that actually matters once you are in the right place is Local versus Remote, and it is not a transport preference: they expose different tool sets, and picking on convenience silently costs you tools.',
+    setup: {
+      title: 'Installing Railway MCP',
+      steps: [
+        {
+          title: 'Install the CLI and configure agents in one step',
+          body:
+            'The bootstrap installs the CLI to `~/.railway/bin` and then runs `railway setup agent`, which writes MCP config for every AI coding tool it detects and installs Railway\'s `use-railway` agent skill. macOS and Linux natively; Windows through WSL with a Bash shell. If you would rather install the CLI without touching any editor config, drop the agent flag.',
+          code: 'curl -fsSL agents.railway.com | sh\n\n# CLI only, no agent/MCP configuration:\nbash <(curl -fsSL railway.com/install.sh) -y',
+          codeLabel: 'shell',
+        },
+        {
+          title: 'Or install the CLI the way you install everything else',
+          body:
+            'Homebrew, npm and Scoop all work, as do the pre-built binaries on the releases page. The npm route needs Node 16 or later. Note which npm package you want: `@railway/cli` is the CLI and is the right one — `@railway/mcp-server` is the deprecated shim and installing it is the most common way people end up on the old path.',
+          code: 'brew install railway          # macOS\nnpm i -g @railway/cli         # needs Node >= 16\nscoop install railway         # Windows',
+          codeLabel: 'shell',
+        },
+        {
+          title: 'Authenticate before you configure anything',
+          body:
+            'Local MCP has no credentials of its own — it uses whatever the CLI is logged in as. On a box without a browser, `--browserless` prints a code to paste. For CI, set a token instead of logging in: `RAILWAY_TOKEN` is project-scoped, `RAILWAY_API_TOKEN` is account or workspace scoped. Neither works for Remote MCP; see the gotcha below.',
+          code: 'railway login\nrailway login --browserless   # SSH sessions\nrailway whoami',
+          codeLabel: 'shell',
+        },
+        {
+          title: 'Pick a server, then install it',
+          body:
+            'Three install shapes, and the flags are the whole choice. Bare `install` writes Local MCP (the CLI runs the server on your machine). `--remote` writes `railway mcp proxy`, which speaks stdio to the editor and forwards to `mcp.railway.com` over HTTPS using your `railway login` session — so no long-lived credential ever lands in an editor config file. `--remote --oauth` writes the HTTPS URL directly and lets the client run OAuth itself. Add `--agent` once per tool to skip detection.',
+          code: 'railway mcp install                       # Local MCP, all detected tools\nrailway mcp install --remote              # Remote MCP via the CLI proxy\nrailway mcp install --remote --oauth      # Remote MCP, client handles OAuth\nrailway mcp install --agent claude-code --agent copilot',
+          codeLabel: 'shell',
+        },
+        {
+          title: 'Know the six agent values',
+          body:
+            '`--agent` accepts `claude-code`, `cursor`, `factory-droid`, `copilot`, `codex` and `opencode`. Anything else is not a supported target — including VS Code, which you configure by hand. `railway skills` installs into a universal `.agents` directory as well, but that directory has no MCP configuration convention, so skills land there and MCP config does not.',
+          code: 'railway mcp install --agent cursor\nrailway skills --agent claude-code',
+          codeLabel: 'shell',
+        },
+        {
+          title: 'Configure it by hand instead',
+          body:
+            'The installer only merges — it never removes MCP servers you already had — but if you want to see exactly what it writes, this is it. Claude Code and Codex have one-liners of their own. VS Code is not a supported `--agent` target and has to be written manually.',
+          code: '// .cursor/mcp.json\n{ "mcpServers": { "railway": { "command": "railway", "args": ["mcp"] } } }\n\n// .vscode/mcp.json — manual only\n{ "servers": { "railway": { "type": "stdio", "command": "railway", "args": ["mcp"] } } }\n\n// Claude Code:  claude mcp add railway railway mcp\n// Codex:        codex mcp add railway -- railway mcp\n// Factory:      droid mcp add railway "railway mcp"',
+          codeLabel: 'json',
+        },
+        {
+          title: 'If your editor is Windsurf, Cline or Devin',
+          body:
+            'Those three only support Remote MCP with OAuth — there is no local stdio path for them in Railway\'s own per-editor matrix. Point them at the HTTPS endpoint and let the client do the OAuth dance. That also means those editors get the remote tool set, which is the smaller one.',
+          code: 'railway mcp install --remote --oauth\n# writes: { "type": "http", "url": "https://mcp.railway.com" }',
+          codeLabel: 'shell',
+        },
+      ],
+    },
+    tools: {
+      title: 'What it can do — and why Local and Remote are not the same server',
+      note:
+        'Local MCP exposes roughly fifty tools across ten families, because it drives the CLI. Remote MCP exposes eleven, plus one that Local does not have: `railway-agent`, which hands a natural-language request to Railway\'s own agent for multi-step work. So Remote is not "Local over HTTPS" — choose Remote and you lose domains, volumes, TCP proxies, logs and metrics as tools; choose Local and you lose the agent handoff.',
+      items: [
+        { name: 'whoami', what: 'The only tool both servers share by name. Worth calling first — it tells you which identity the connection actually resolved to.' },
+        { name: 'list_projects / create_project / list_services / create_service / remove_service', what: 'Local. Project and service CRUD, including `connect_service_source` to attach a GitHub repo and `scale_service`.' },
+        { name: 'deploy / list_deployments / environment_status', what: 'Local. Deploy and read deployment state, per environment, alongside `create_environment` and `link_environment`.' },
+        { name: 'list_variables / set_variables / add_reference_variable', what: 'Local. The variables family — reference variables are how one service points at another\'s value rather than copying it.' },
+        { name: 'generate_domain / list_domains / domain_status / retry_domain_certificate', what: 'Local only. Domain issuance and the certificate retry, which is the tool you want when a custom domain is stuck.' },
+        { name: 'list_tcp_proxies / create_tcp_proxy / private_network_status / private_network_update', what: 'Local only. Networking, including the TCP proxy you need to reach a database from outside the private network.' },
+        { name: 'create_volume / update_volume / remove_volume / create_bucket / remove_bucket', what: 'Local only. Persistent storage and object buckets.' },
+        { name: 'get_logs / service_metrics / http_requests / http_error_rate / http_response_time', what: 'Local only. The observability family — this is the set that makes "why did the deploy fail" answerable in-editor.' },
+        { name: 'search_templates / deploy_template', what: 'Local. How "deploy a Postgres" resolves to an actual template rather than a hand-rolled service.' },
+        { name: 'docs_search / docs_fetch', what: 'Local. Railway\'s documentation, in the client, so the model stops guessing at flag names.' },
+        { name: 'railway-agent', what: 'Remote only. Hands a request to Railway\'s AI agent for multi-step operations — log analysis, debugging, service configuration. The reason to pick Remote.' },
+        { name: 'list-feature-flags / get-feature-flag / set-feature-flag / delete-feature-flag', what: 'Remote only. Feature flags per project; delete is admin and marked destructive at the protocol level.' },
+        { name: 'redeploy / accept-deploy', what: 'Remote. `accept-deploy` commits staged changes and deploys — destructive, and clients that honour protocol hints will prompt.' },
+      ],
+    },
+    useCases: [
+      {
+        title: 'Stand up and deploy an app without opening the dashboard',
+        prompt:
+          'Create a Next.js app in this directory and deploy it to Railway. Also assign it a domain.',
+        why:
+          'This is the path Local MCP is built for: `create_project`, `deploy` and `generate_domain` in one turn. Remote MCP cannot finish it — it has no domain tools.',
+      },
+      {
+        title: 'Debug a crashing service with Railway\'s own agent',
+        prompt:
+          'Use the railway agent to figure out why my backend service is crashing on deploy.',
+        why:
+          '`railway-agent` is remote-only and does the multi-step log reading itself rather than streaming a deploy log through your context window. If this prompt does nothing, you are on Local MCP.',
+      },
+      {
+        title: 'Pull environment variables into a local .env',
+        prompt:
+          'Pull environment variables for my project and save them to a .env file.',
+        why:
+          '`list_variables` plus the model writing the file. The reason to do it conversationally rather than with `railway variable list` is that the agent can reconcile against the `.env.example` already in the repo.',
+      },
+    ],
+    gotchas: [
+      {
+        question: 'Is @railway/mcp-server deprecated?',
+        answer:
+          'Yes. The npm package is explicitly marked deprecated — its own registry metadata reads "Railway MCP is now bundled into the Railway CLI. Use `railway mcp`" — and its last publish was 0.1.12 on 2026-05-23. The repository it came from, `railwayapp/railway-mcp-server`, is archived on the same date. Neither is broken, which is the problem: an install that still succeeds is why people are running the old path months later. Install `@railway/cli` and run `railway mcp` instead.',
+      },
+      {
+        question: 'What is the difference between Railway Local MCP and Remote MCP?',
+        answer:
+          'The tool set, not just the transport. Local runs through your CLI and exposes roughly fifty tools — domains, volumes, TCP proxies, buckets, logs, metrics, templates, docs search. Remote runs at `mcp.railway.com` and exposes eleven: whoami, three project tools, four feature-flag tools, redeploy, accept-deploy and `railway-agent`. `railway-agent` exists nowhere else. If a prompt about domains or volumes quietly does nothing, check which one your editor is pointed at.',
+      },
+      {
+        question: 'Can I use a Railway project token with Remote MCP?',
+        answer:
+          'No. Remote MCP does not accept project tokens — it requires a user identity so that usage has a billing and audit trail. `RAILWAY_TOKEN` and `RAILWAY_API_TOKEN` are for CLI automation. For Remote you either proxy your `railway login` session with `railway mcp proxy`, or let the client run OAuth against `https://mcp.railway.com`.',
+      },
+      {
+        question: 'Why does the Railway MCP proxy say I am not authenticated?',
+        answer:
+          'The proxy reads and refreshes the credentials from your `railway login` session; if that session is gone, the tool call reports it. Run `railway login` in a terminal — the next tool call picks up the new session, with no editor restart. This is also the argument for the proxy over direct OAuth: the editor config holds `railway mcp proxy` and no credential at all.',
+      },
+      {
+        question: 'Will railway mcp install overwrite my other MCP servers?',
+        answer:
+          'No. Both `railway mcp install` and `railway setup agent` merge the Railway entry into existing tool configs and leave other servers alone, and both are idempotent — re-run them to update. `railway setup agent` additionally refreshes the Railway-owned skill directories, which are the only directories it will rewrite.',
+      },
+      {
+        question: 'Does the Railway MCP server confirm before destructive actions?',
+        answer:
+          'Local MCP marks destructive tools with protocol-level hints and returns a preview before requiring `confirm: true` on the call. Remote marks `delete-feature-flag` and `accept-deploy` as destructive and relies on the client honouring the hint. Railway names the ones to watch: `remove_service`, `delete_domain`, `remove_tcp_proxy`, `remove_bucket`, `remove_volume`, `redeploy`, `accept-deploy` and `railway-agent` — the last because it acts on its own.',
+      },
+      {
+        question: 'Is "railway mcp" the Indian Railways MCP server?',
+        answer:
+          'Different thing entirely. Several of the most-starred GitHub repositories matching "railway mcp" are Indian Railways servers for train schedules, seat availability and live station status. They have no relationship to Railway.com the deployment platform. If you are looking at a repo whose tools mention PNR numbers, you are in the wrong catalog entry.',
+      },
+      {
+        question: 'How do I uninstall the Railway CLI?',
+        answer:
+          'The installer ships its own removal flag: `bash <(curl -fsSL cli.new) -r`. Worth knowing because the bootstrap puts the binary in `~/.railway/bin` rather than anywhere a package manager tracks, so uninstalling by deleting what `which railway` prints leaves the rest behind.',
+      },
+    ],
+    comparison: {
+      note:
+        'Four things answer to this name. Only one is maintained.',
+      items: [
+        {
+          name: 'Railway CLI (railway mcp)',
+          choose:
+            'This one. Bundled in `railwayapp/cli`, 587★ and pushed the day this guide was verified. Updating the CLI is how you get new MCP tools — there is no package to track separately.',
+        },
+        {
+          name: 'railwayapp/railway-mcp-server',
+          choose:
+            'Never, for new setups. It was the official repo and is archived as of 2026-05-23. Fine as a reference for how the tools are implemented; not a thing to install.',
+        },
+        {
+          name: '@railway/mcp-server (npm)',
+          choose:
+            'Never. Deprecated shim, last published 0.1.12 on 2026-05-23. It exists so old configs fail loudly rather than silently.',
+        },
+        {
+          name: 'jason-tan-swe/railway-mcp',
+          choose:
+            'Only if you specifically want the community implementation and its API-token auth model. Unofficial, 73★, last pushed June 2025 — it predates the CLI bundling and Remote MCP entirely.',
+        },
+        {
+          name: 'Railway MCP vs a Vercel or Cloudflare MCP server',
+          slug: 'vercel',
+          choose:
+            'Whichever hosts the thing. Worth noting the shape difference: Vercel and Cloudflare lead with hosted remote servers, while Railway\'s richer surface is the local one — the reverse of the usual assumption that remote means fuller.',
+        },
+      ],
+    },
+  },
 ]
 
 const guideBySlug = new Map(guides.map((g) => [g.slug, g] as const));

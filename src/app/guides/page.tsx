@@ -75,6 +75,16 @@ const CATEGORY_PRIORITY: [string, BucketId][] = [
   ["api", "other"],
 ];
 
+/**
+ * Buckets that have earned a comparison page. A cluster is worth one once it
+ * holds five guides and the head term is a "which one do I install" question
+ * rather than a browse.
+ */
+const CLUSTER_PAGES: Partial<Record<BucketId, { href: string; noun: string }>> = {
+  data: { href: "/guides/databases", noun: "database" },
+  infra: { href: "/guides/devops", noun: "DevOps" },
+};
+
 function bucketFor(categories: readonly string[]): BucketId {
   for (const [category, bucket] of CATEGORY_PRIORITY) {
     if (categories.includes(category)) return bucket;
@@ -182,15 +192,16 @@ export default function GuidesPage() {
                 {bucket.blurb}
               </p>
             )}
-            {/* The database bucket is the only one big enough to be worth
-                comparing side by side, so it gets a landing page of its own. */}
-            {bucket.id === "data" && (
+            {/* Two buckets are big enough to be worth comparing side by side,
+                so each gets a landing page of its own aimed at the head term. */}
+            {CLUSTER_PAGES[bucket.id] && (
               <p className="mt-2 text-sm">
                 <Link
-                  href="/guides/databases"
+                  href={CLUSTER_PAGES[bucket.id]!.href}
                   className="text-blue-400 transition hover:text-blue-300"
                 >
-                  Compare all {items.length} database MCP servers side by side &rarr;
+                  Compare all {items.length} {CLUSTER_PAGES[bucket.id]!.noun} MCP
+                  servers side by side &rarr;
                 </Link>
               </p>
             )}
