@@ -2896,7 +2896,190 @@ codex mcp add figma --url https://mcp.figma.com/mcp`,
       ],
     },
   },
-];
+  {
+    slug: 'mongodb',
+    verifiedOn: '2026-08-13',
+    sources: [
+      { label: 'mongodb-js/mongodb-mcp-server README', url: 'https://github.com/mongodb-js/mongodb-mcp-server' },
+      { label: 'MongoDB Atlas — Service Accounts overview', url: 'https://www.mongodb.com/docs/atlas/api/service-accounts-overview/' },
+      { label: 'MongoDB Atlas — service user roles', url: 'https://www.mongodb.com/docs/atlas/reference/user-roles/#service-user-roles' },
+      { label: 'MCP specification — elicitation', url: 'https://modelcontextprotocol.io/specification/draft/client/elicitation' },
+    ],
+    intro:
+      'There is only one MongoDB MCP server — `mongodb-js/mongodb-mcp-server`, maintained by MongoDB — so unlike Postgres you do not have to pick. What you do have to pick is which half of it you are turning on, because it is really two servers sharing a process. The database half talks to a deployment over a connection string and gives you `find`, `aggregate`, `explain`, index and schema tools. The Atlas half is a control plane: it creates clusters, database users and access-list entries, and it authenticates with Atlas Service Account credentials, not with your connection string. Set only `MDB_MCP_CONNECTION_STRING` and the Atlas tools never register; that is the single most common "the tools are missing" report, and it is configuration, not a bug. The other thing to know before you paste anything: `readOnly` defaults to false. MongoDB puts `--readOnly` in every example in its own README, which is a fair signal about what the default should be for an agent pointed at a real database.',
+    setup: {
+      title: 'Connecting the MongoDB MCP server',
+      steps: [
+        {
+          title: 'Check your Node version first',
+          body:
+            'The server requires Node 22.13.0 or later. Node 20 still runs but is formally deprecated and will be removed in a future release, and the failure on an older runtime is a syntax or engine error at startup rather than anything that mentions MongoDB. Check before you debug anything else.',
+          code: 'node -v\n# needs v22.13.0 or later',
+          codeLabel: 'shell',
+        },
+        {
+          title: 'Option A — a connection string, read-only',
+          body:
+            'This is the configuration to start from: it reaches one deployment, and no tool that creates, updates or deletes is registered at all. `MDB_MCP_CONNECTION_STRING` accepts anything the driver accepts, local or `mongodb+srv://` Atlas. Keep the credentials in `env` rather than in `args` — MongoDB explicitly recommends this, because command-line arguments show up in process lists and in whatever collects them.',
+          code: '{\n  "mcpServers": {\n    "MongoDB": {\n      "command": "npx",\n      "args": ["-y", "mongodb-mcp-server@latest", "--readOnly"],\n      "env": {\n        "MDB_MCP_CONNECTION_STRING": "mongodb://localhost:27017/myDatabase"\n      }\n    }\n  }\n}',
+          codeLabel: 'json',
+        },
+        {
+          title: 'Option B — Atlas Service Account credentials',
+          body:
+            'The Atlas tools need a service account, created under Access Manager → Organization Access → Add New → Applications → Service Accounts. Give it an expiry. The client secret is shown once and never again. You also have to add the IP the server runs from to the API access list, or every Atlas call fails at the network layer before any permission is evaluated. Set both credentials and a connection string if you want both halves at once.',
+          code: '{\n  "mcpServers": {\n    "MongoDB": {\n      "command": "npx",\n      "args": ["-y", "mongodb-mcp-server@latest", "--readOnly"],\n      "env": {\n        "MDB_MCP_API_CLIENT_ID": "<service-account-client-id>",\n        "MDB_MCP_API_CLIENT_SECRET": "<service-account-client-secret>"\n      }\n    }\n  }\n}',
+          codeLabel: 'json',
+        },
+        {
+          title: 'Give the service account the smallest role that works',
+          body:
+            'MongoDB’s own warning is that Organization Owner is rarely necessary and is a security risk, and the roles are granular enough that you never need it: Org Member or Org Read Only to list orgs and projects, Org Project Creator to create projects, Project Read Only to view clusters, Project Cluster Manager to create and scale them, Project IP Access List Admin for access lists, Project Database Access Admin for database users, Project Stream Processing Owner for the streams tools. Prefer project-level roles, scoped to the projects you actually want an agent touching.',
+        },
+        {
+          title: 'Or connect at runtime instead of preconfiguring',
+          body:
+            'Leaving the connection string unset is a legitimate mode, not an incomplete one: the model calls the `connect` tool with a URI and gets back a `connectionId` to pass to subsequent calls, `list-connections` enumerates them and `disconnect` revokes one. Connections are scoped to the MCP session by default (`connectionScope`), so a session only sees what it opened and everything closes when it ends. A single scope holds at most ten open connections — past that the least-recently-used one is closed and its id revoked, which surfaces as a previously working `connectionId` suddenly being invalid.',
+          code: 'MDB_MCP_CONNECTION_SCOPE=session   # default; "global" shares connections across sessions\nMDB_MCP_MAX_ACTIVE_CONNECTIONS=10  # default; LRU eviction past this',
+          codeLabel: 'env',
+        },
+        {
+          title: 'Docker, if you would rather not install Node',
+          body:
+            'The published image takes the same environment variables. Note that the flag form does not exist here — read-only is `MDB_MCP_READ_ONLY=true` passed as an environment variable, and `-i` is required because the container talks stdio to the client.',
+          code: 'export MDB_MCP_CONNECTION_STRING="mongodb+srv://user:pass@cluster.mongodb.net/myDatabase"\n\ndocker run --rm -i \\\n  -e MDB_MCP_CONNECTION_STRING \\\n  -e MDB_MCP_READ_ONLY="true" \\\n  mongodb/mongodb-mcp-server:latest',
+          codeLabel: 'shell',
+        },
+        {
+          title: 'Verify the configuration without starting the server',
+          body:
+            '`--dryRun` dumps the resolved configuration and the list of tools that would be enabled, then exits. This is the fastest way to answer "why can the agent see `drop-collection`" or "why are there no Atlas tools" — you get the answer in a terminal instead of by interrogating the model. Precedence is command-line arguments, then environment variables, then the config file, so a stray flag beats the env you thought was authoritative.',
+          code: 'npx -y mongodb-mcp-server@latest --readOnly --dryRun',
+          codeLabel: 'shell',
+        },
+        {
+          title: 'HTTP transport and the separate monitoring port',
+          body:
+            'Default transport is stdio. `--transport http` binds to 127.0.0.1:3000 and is the mode to use when the server is shared rather than launched per-client. Health checks and Prometheus metrics do not live on that port: they are a second listener that only starts when both `monitoringServerHost` and `monitoringServerPort` are set, exposing `/health` and, if you add it to `monitoringServerFeatures`, `/metrics`.',
+          code: 'MDB_MCP_TRANSPORT=http\nMDB_MCP_HTTP_HOST=127.0.0.1\nMDB_MCP_HTTP_PORT=3000\nMDB_MCP_MONITORING_SERVER_HOST=127.0.0.1\nMDB_MCP_MONITORING_SERVER_PORT=9091\nMDB_MCP_MONITORING_SERVER_FEATURES=health-check,metrics',
+          codeLabel: 'env',
+        },
+      ],
+    },
+    tools: {
+      title: 'What it can do',
+      note:
+        'Roughly sixty tools in four families. The database tools need a connection; the Atlas tools need service account credentials; the Atlas Local tools drive containerised deployments; the Assistant tools search MongoDB’s own documentation. `--readOnly` removes every create, update and delete tool from all of them.',
+      items: [
+        { name: 'find', what: 'Run a find query against a collection. Capped by maxDocumentsPerQuery (100) and maxBytesPerQuery (16 MB).' },
+        { name: 'aggregate / aggregate-db', what: 'Run an aggregation against a collection or a whole database. Always asks for confirmation when the pipeline contains $out or $merge.' },
+        { name: 'explain', what: 'Return the execution statistics for the winning plan the query optimiser chose — the tool that makes "why is this slow" answerable.' },
+        { name: 'collection-schema', what: 'Infer and describe the schema of a collection, which is how the model learns your document shape without you writing it out.' },
+        { name: 'collection-indexes / create-index / drop-index', what: 'Inspect and manage indexes.' },
+        { name: 'export', what: 'Export query or aggregation results as EJSON, retrievable at exported-data://{exportName}.' },
+        { name: 'mongodb-logs', what: 'Return the most recent logged mongod events.' },
+        { name: 'connect / list-connections / disconnect', what: 'Open, enumerate and revoke connections at runtime when no connection string is preconfigured.' },
+        { name: 'atlas-list-clusters / atlas-inspect-cluster', what: 'Read the control plane: what exists, and what state it is in.' },
+        { name: 'atlas-create-free-cluster / atlas-create-cluster', what: 'Provision. The dedicated version returns immediately — poll atlas-inspect-cluster until state is IDLE, because connection strings do not exist before then.' },
+        { name: 'atlas-get-performance-advisor', what: 'Atlas’s own suggested indexes, drop-index suggestions, schema suggestions and up to fifty recent slow queries.' },
+        { name: 'atlas-local-create-deployment', what: 'Create a local Atlas deployment in Docker; defaults to the preview image tag.' },
+        { name: 'search-knowledge / list-knowledge-sources', what: 'Search MongoDB’s documentation and curated guidance from inside the client.' },
+      ],
+    },
+    useCases: [
+      {
+        title: 'Diagnose a slow endpoint without a mongosh session',
+        prompt:
+          'Connect read-only, look at the orders collection, and explain the query {status: "pending", createdAt: {$gt: ISODate("2026-08-01")}}. Tell me whether it uses an index, and if not, which index would fix it and what it would cost to build.',
+        why:
+          '`explain` plus `collection-indexes` is the pairing that makes this worth doing conversationally — the model reads the winning plan and the existing indexes together, which is the part that is tedious by hand.',
+      },
+      {
+        title: 'Refuse collection scans instead of noticing them later',
+        prompt:
+          'Run the same query again with indexCheck on, and if it is rejected, propose the index.',
+        why:
+          '`MDB_MCP_INDEX_CHECK=true` rejects any query that would do a collection scan. On a production replica that turns an agent from a plausible cause of a page into something that cannot start one.',
+      },
+      {
+        title: 'Have Atlas tell you what to fix',
+        prompt:
+          'Use the performance advisor on the production cluster and summarise the suggested indexes, the drop suggestions, and the slowest recent queries.',
+        why:
+          '`atlas-get-performance-advisor` is the tool with the best ratio of value to risk in the whole server: it only reads, and it returns recommendations Atlas has already computed rather than asking a model to invent them.',
+      },
+    ],
+    gotchas: [
+      {
+        question: 'Is the MongoDB MCP server read-only by default?',
+        answer:
+          'No. `MDB_MCP_READ_ONLY` / `--readOnly` defaults to false, so `insert-many`, `update-many`, `delete-many`, `drop-collection` and `drop-database` are all registered unless you say otherwise. Every example in MongoDB’s README passes `--readOnly` explicitly. Turning it on filters by operation type — read, connect and metadata tools stay, everything else is never registered, and the server logs which tools it withheld.',
+      },
+      {
+        question: 'Why are the Atlas tools missing from the MongoDB MCP server?',
+        answer:
+          'Because they only register when `MDB_MCP_API_CLIENT_ID` and `MDB_MCP_API_CLIENT_SECRET` are set. A connection string authenticates you to a deployment; the Atlas tools talk to the Atlas Administration API, which is a different system with different credentials. Create a Service Account under Organization Access, add the server’s IP to the API access list, and run `--dryRun` to confirm the tools appear.',
+      },
+      {
+        question: 'Will it ask before dropping a collection?',
+        answer:
+          'Only if your client supports MCP elicitation. `drop-database`, `drop-collection`, `delete-many`, `drop-index`, `atlas-create-db-user`, `atlas-create-access-list`, `atlas-streams-manage` and `atlas-streams-teardown` are confirmation-required by default — but if the client cannot elicit, the tool runs without confirmation. That is the important half of the sentence: a confirmation prompt is not a permission boundary. `--readOnly` or `--disabledTools` is.',
+      },
+      {
+        question: 'Why did my find only return 100 documents?',
+        answer:
+          'That is `maxDocumentsPerQuery`, which defaults to 100 and is an upper bound on the tool’s own `limit` parameter, not a suggestion. There is a byte ceiling too, `maxBytesPerQuery` at 16 MB. Both are deliberate: the results go into a context window. Raise them if you must, or use `export` and read the EJSON rather than streaming a collection through the model.',
+      },
+      {
+        question: 'Why does $where fail in a query?',
+        answer:
+          'Server-side JavaScript is disabled by default — `MDB_MCP_DISABLE_SERVER_SIDE_JS` is true, which blocks `$where`, `$function` and `$accumulator` in filters and pipelines. This is the correct default when the filter text is written by a language model. Rewrite the predicate as a normal query operator rather than turning the flag off.',
+      },
+      {
+        question: 'How do I disable a whole category of tools?',
+        answer:
+          '`disabledTools` takes tool names, operation types (`create`, `update`, `delete`, `read`, `metadata`, `connect`) and categories (`atlas`, `mongodb`) in the same list. The syntax differs by configuration method and this trips people: comma-separated as an environment variable, space-separated as a command-line argument. Disabling `connect` means you must supply a connection string at startup.',
+      },
+      {
+        question: 'Does connecting to an Atlas cluster create a database user?',
+        answer:
+          'Yes — `atlas-connect-cluster` provisions a temporary database user and deletes it automatically after `atlasTemporaryDatabaseUserLifetimeMs`, four hours by default. Worth knowing before someone finds an unfamiliar user in the Atlas audit log and treats it as an incident.',
+      },
+      {
+        question: 'What Node version does mongodb-mcp-server need?',
+        answer:
+          'Node 22.13.0 or later. Node 20 is deprecated and slated for removal. Because the client launches the process, the version that matters is the one on the client’s PATH, not the one in the terminal where you tested it — Claude Desktop in particular does not inherit a shell-managed nvm PATH.',
+      },
+    ],
+    comparison: {
+      note:
+        'The choice here is not between MongoDB MCP servers — there is one — but between how much of it you expose.',
+      items: [
+        {
+          name: 'Connection string only vs Atlas credentials as well',
+          choose:
+            'Connection string only if the job is querying data. Add Atlas credentials when you want provisioning, users, access lists or the performance advisor — and give that service account project-scoped roles, since it is the half that can create billable infrastructure.',
+        },
+        {
+          name: '--readOnly vs --disabledTools',
+          choose:
+            '`--readOnly` for the common case: one flag, drops every write tool across all four families. `--disabledTools` when the cut is not along read/write lines — for example allowing writes to data but removing the `atlas` category entirely.',
+        },
+        {
+          name: 'MongoDB MCP vs a Postgres MCP server',
+          slug: 'postgresql',
+          choose:
+            'Whichever holds the data, obviously — but note the difference in shape. The Postgres server is one focused tool surface with a parser-level access mode; this one is a database client and a cloud control plane in the same process, which is more reach and correspondingly more to fence off.',
+        },
+        {
+          name: '"mongo mcp" vs "mongodb mcp"',
+          choose:
+            'Same server. There is no separate short-form project; both names resolve to `mongodb-js/mongodb-mcp-server`.',
+        },
+      ],
+    },
+  },
+]
 
 const guideBySlug = new Map(guides.map((g) => [g.slug, g] as const));
 

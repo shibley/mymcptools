@@ -115,6 +115,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'weekly',
       priority: 0.9,
     },
+    // Category landing page for "database mcp server" — compares the five
+    // database guides rather than repeating them.
+    {
+      url: `${baseUrl}/guides/databases`,
+      lastModified: now,
+      changeFrequency: 'weekly',
+      priority: 0.9,
+    },
     {
       url: `${baseUrl}/mcp-server`,
       lastModified: now,

@@ -182,6 +182,18 @@ export default function GuidesPage() {
                 {bucket.blurb}
               </p>
             )}
+            {/* The database bucket is the only one big enough to be worth
+                comparing side by side, so it gets a landing page of its own. */}
+            {bucket.id === "data" && (
+              <p className="mt-2 text-sm">
+                <Link
+                  href="/guides/databases"
+                  className="text-blue-400 transition hover:text-blue-300"
+                >
+                  Compare all {items.length} database MCP servers side by side &rarr;
+                </Link>
+              </p>
+            )}
 
             <div className="mt-5 space-y-4">
               {items.map(({ guide, server }) => {
