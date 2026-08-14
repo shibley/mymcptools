@@ -3264,6 +3264,185 @@ codex mcp add figma --url https://mcp.figma.com/mcp`,
       ],
     },
   },
+  {
+    slug: 'redis',
+    verifiedOn: '2026-08-14',
+    sources: [
+      { label: 'redis/mcp-redis README', url: 'https://github.com/redis/mcp-redis' },
+      { label: 'PyPI — redis-mcp-server', url: 'https://pypi.org/project/redis-mcp-server/' },
+      { label: 'Docker Hub — mcp/redis', url: 'https://hub.docker.com/r/mcp/redis' },
+      { label: 'npm — @modelcontextprotocol/server-redis (deprecated)', url: 'https://www.npmjs.com/package/@modelcontextprotocol/server-redis' },
+      { label: 'redis/mcp-redis-cloud README', url: 'https://github.com/redis/mcp-redis-cloud' },
+      { label: 'Redis docs — ACL SETUSER', url: 'https://redis.io/docs/latest/commands/acl-setuser/' },
+    ],
+    intro:
+      'Three different servers answer to "redis mcp" and the one most tutorials still paste is the retired one. `npx @modelcontextprotocol/server-redis` was Anthropic\'s reference implementation; the package is marked "Package no longer supported" on npm, its last publish was 2025-04-25, and its source now sits in `modelcontextprotocol/servers-archived`. It installs without complaint, which is why people are still running it. Redis maintains its own server, `redis/mcp-redis` — 567★, pushed the week this guide was verified — and it is a Python package, not an npm one, so the muscle-memory `npx` command cannot reach it. The third, `redis/mcp-redis-cloud`, is a control plane for the Redis Cloud account and cannot touch a single key. The other thing worth knowing before you connect it: unlike every other database server in this cluster, this one has no read-only flag. The guard is a Redis ACL user, and you create it yourself.',
+    setup: {
+      title: 'Installing the Redis MCP Server',
+      steps: [
+        {
+          title: 'Run it from PyPI with uvx — the recommended path',
+          body:
+            'There is nothing to install first. `uvx` downloads `redis-mcp-server` on demand, builds a throwaway environment and runs it. The `--url` argument is the whole connection: `redis://` plain, `rediss://` for TLS, and the trailing number is the logical database, not a port. Pin a version by dropping `@latest`.',
+          code: '{\n  "mcpServers": {\n    "RedisMCPServer": {\n      "command": "uvx",\n      "args": [\n        "--from", "redis-mcp-server@latest",\n        "redis-mcp-server",\n        "--url", "redis://localhost:6379/0"\n      ]\n    }\n  }\n}',
+          codeLabel: 'json',
+        },
+        {
+          title: 'Connect over TLS to Redis Cloud or any managed instance',
+          body:
+            'The `rediss://` scheme carries the TLS settings as query parameters rather than flags, which is the part people get wrong. `ssl_cert_reqs=required` plus `ssl_ca_certs` verifies the server; `ssl_cert_reqs=none` skips verification and should stay out of anything that matters. Every URL option also exists as a CLI flag — `--ssl`, `--ssl-ca-path`, `--ssl-certfile`, `--ssl-keyfile`, `--cluster-mode`.',
+          code: '# verified TLS\nrediss://user:secret@hostname:port?ssl_cert_reqs=required&ssl_ca_certs=/path/to/ca.pem\n\n# unverified — development only\nrediss://user:secret@hostname:port?ssl_cert_reqs=none',
+          codeLabel: 'shell',
+        },
+        {
+          title: 'Create a read-only ACL user before you point it anywhere real',
+          body:
+            'This server has no `--read-only` switch, so this step is the switch. Redis ACLs are the documented control: the user below can run every read command and no write command, across all keys. Narrow `~*` to a key pattern if the agent only needs part of the keyspace, then put that user in the connection URL.',
+          code: '# in redis-cli\nACL SETUSER readonlyuser on >mypassword ~* +@read -@write\n\n# then connect as that user\nuvx --from redis-mcp-server@latest redis-mcp-server \\\n  --url redis://readonlyuser:mypassword@localhost:6379/0',
+          codeLabel: 'shell',
+        },
+        {
+          title: 'Or use environment variables instead of a URL',
+          body:
+            'Precedence is command-line arguments, then environment variables, then defaults — so a stray `REDIS_HOST` in the client config cannot override a `--url` you passed explicitly. Note the password variable is `REDIS_PWD`, not `REDIS_PASSWORD`, which is the single most common reason a connection silently falls back to no auth.',
+          code: 'REDIS_HOST=127.0.0.1      # default\nREDIS_PORT=6379           # default\nREDIS_DB=0\nREDIS_USERNAME=default\nREDIS_PWD=                # note: PWD, not PASSWORD\nREDIS_SSL=False\nREDIS_SSL_CA_PATH=\nREDIS_CLUSTER_MODE=False\nMCP_REDIS_LOG_LEVEL=INFO  # default WARNING',
+          codeLabel: 'shell',
+        },
+        {
+          title: 'Azure Managed Redis: use EntraID instead of a password',
+          body:
+            'The server has first-class Azure AD support with automatic background token renewal, and falls back to standard Redis auth when none of it is set. Three flows: `default_credential` picks up an `az login` session and is the one you want locally, `service_principal` for production, `managed_identity` for Azure-hosted apps.',
+          code: '# local development\naz login\nexport REDIS_ENTRAID_AUTH_FLOW=default_credential\nexport REDIS_ENTRAID_SCOPES=https://redis.azure.com/.default\nexport REDIS_URL=redis://your-azure-redis.redis.cache.windows.net:6379\n\n# production\nexport REDIS_ENTRAID_AUTH_FLOW=service_principal\nexport REDIS_ENTRAID_CLIENT_ID=...\nexport REDIS_ENTRAID_CLIENT_SECRET=...\nexport REDIS_ENTRAID_TENANT_ID=...',
+          codeLabel: 'shell',
+        },
+        {
+          title: 'Docker, if you would rather not have Python on the box',
+          body:
+            'Redis publishes an official image, `mcp/redis`. The repository also ships a Dockerfile if you want to build your own — the client config is identical apart from the image name. Note this route takes environment variables only; there is no URL argument in the documented invocation.',
+          code: '{\n  "mcpServers": {\n    "redis": {\n      "command": "docker",\n      "args": ["run", "--rm", "-i",\n        "-e", "REDIS_HOST=<host>",\n        "-e", "REDIS_PORT=6379",\n        "-e", "REDIS_USERNAME=<user>",\n        "-e", "REDIS_PWD=<password>",\n        "mcp/redis"]\n    }\n  }\n}',
+          codeLabel: 'json',
+        },
+        {
+          title: 'VS Code with Copilot',
+          body:
+            'Since VS Code 1.102 MCP servers live in `mcp.json`, not `settings.json` — configs written against older instructions are read from a file the editor no longer looks at. Enable agent mode first with `"chat.agent.enabled": true` in settings, then reference the tools in chat with `#redis`. Add `-qq` to the uvx args if "Installed N packages" noise on stderr shows up as warnings in your MCP logs.',
+          code: '// mcp.json\n{\n  "servers": {\n    "redis": {\n      "type": "stdio",\n      "command": "uvx",\n      "args": ["-qq", "--from", "redis-mcp-server@latest",\n               "redis-mcp-server", "--url", "redis://localhost:6379/0"]\n    }\n  }\n}',
+          codeLabel: 'json',
+        },
+      ],
+    },
+    tools: {
+      title: 'What it can do',
+      note:
+        'Tools are grouped by Redis type rather than by verb, so "can it do X" is usually a question about whether your data is in the right structure. This is a much wider surface than the archived reference server, which is the practical reason to move: vectors, JSON, Streams consumer groups and stateful pub/sub subscriptions did not exist there. Transport is stdio only — streamable HTTP is listed as future work, so there is no hosted endpoint to point a browser client at.',
+      items: [
+        { name: 'string tools', what: 'Set and get strings with expiration. The cache and session-value workhorse — "store the session with an expiration time" resolves here.' },
+        { name: 'hash tools', what: 'Field-value pairs under one key, for objects with individually addressable attributes. A hash can also hold a vector embedding, which is how the query engine tools find things.' },
+        { name: 'list tools', what: 'Append and pop. Queues, recent-actions lists, simple brokers.' },
+        { name: 'set tools', what: 'Add, remove and list members. Unique IDs and tags, plus set operations like intersection.' },
+        { name: 'sorted set tools', what: 'Score-ordered data — leaderboards, priority queues, time-bucketed analytics.' },
+        { name: 'pub/sub tools', what: 'Publish, plus stateful channel and pattern subscriptions that return a handle you read queued messages from. The handle is what makes this usable from a request/response protocol at all.' },
+        { name: 'streams tools', what: 'Add, read and delete entries, create and destroy consumer groups, acknowledge processed entries. Event sourcing and worker pipelines, not just a log.' },
+        { name: 'JSON tools', what: 'Store, retrieve and manipulate JSON documents with path-based access — nested config and document-style data without serialising to a string.' },
+        { name: 'query engine tools', what: 'Create and manage vector indexes and run vector search. This is the tool family that turns a Redis instance into an agent memory or RAG store.' },
+        { name: 'docs', what: 'Searches Redis documentation, tutorials and best practices in natural language. Backed by an HTTP API at MCP_DOCS_SEARCH_URL, so it is the one tool that reaches the network rather than your database.' },
+        { name: 'server management', what: 'Retrieves information about the database itself — the tool to call first when you want to know what the connection actually resolved to.' },
+      ],
+    },
+    useCases: [
+      {
+        title: 'Inspect live cache state mid-debug without leaving the editor',
+        prompt:
+          'Show me every key matching session:* in Redis, with its TTL, and tell me which ones are about to expire.',
+        why:
+          'The reason to do this conversationally rather than in redis-cli is that the model already has the code that wrote those keys in context, so it can tell you which writer produced a wrong TTL instead of just printing the number.',
+      },
+      {
+        title: 'Use Redis as agent memory over vector search',
+        prompt:
+          'Index these documents as vectors in Redis and then answer my next question using the closest three.',
+        why:
+          'The query engine tools cover index creation and search, and the hash tools store the embeddings, so a working memory store is one conversation rather than a schema decision. This is the capability the archived reference server did not have at all.',
+      },
+      {
+        title: 'Drive a Streams consumer group by hand while debugging a worker',
+        prompt:
+          'Read pending entries for consumer group orders-workers on the orders stream, and acknowledge the three that already completed.',
+        why:
+          'Pending-entry surgery is the classic reason to open redis-cli at an awkward hour. The Streams tools cover create, read, delete, acknowledge and destroy, which is the full loop.',
+      },
+    ],
+    gotchas: [
+      {
+        question: 'Is @modelcontextprotocol/server-redis deprecated?',
+        answer:
+          'Yes. The npm package carries an explicit deprecation notice — "Package no longer supported" — and its last publish was version 2025.4.25 on 2025-04-25. Its source moved to `modelcontextprotocol/servers-archived`, a repository GitHub reports as archived. Nothing about it errors on install, which is exactly why it keeps getting pasted into configs. The maintained server is `redis/mcp-redis`, run with `uvx --from redis-mcp-server@latest redis-mcp-server`.',
+      },
+      {
+        question: 'Why is there no npx command for the Redis MCP server?',
+        answer:
+          'Because the maintained server is written in Python and published to PyPI as `redis-mcp-server`, not to npm. The only npm package in this story is the deprecated reference implementation. If a set of instructions starts with `npx` and mentions Redis, it is describing the archived server. Use `uvx` — or the official `mcp/redis` Docker image if you would rather not have a Python toolchain involved.',
+      },
+      {
+        question: 'How do I make the Redis MCP server read-only?',
+        answer:
+          'With a Redis ACL, because the server has no read-only flag of its own. `ACL SETUSER readonlyuser on >mypassword ~* +@read -@write` creates a user that can run read commands against every key and no write commands, and you then connect as that user. This is a stronger guard than the flags the other database servers ship, because it is enforced by the database rather than by which tools the server chose to register — but it is also entirely opt-in, and nothing warns you if you skip it.',
+      },
+      {
+        question: 'What is the difference between mcp-redis and mcp-redis-cloud?',
+        answer:
+          'They operate on different layers and cannot substitute for each other. `redis/mcp-redis` talks to a Redis database — keys, streams, vectors. `redis/mcp-redis-cloud` talks to the Redis Cloud account API: subscriptions, database provisioning, payment methods, regions, plans and task status. It can create and delete databases and it cannot read a single key. Note also that mcp-redis-cloud has no published npm package despite what several listings claim — the documented setup is clone, `npm run build`, then run `dist/index.js` with `API_KEY` and `SECRET_KEY`.',
+      },
+      {
+        question: 'Does the Redis MCP server support HTTP or SSE transport?',
+        answer:
+          'No — stdio only, as of this guide\'s verification date. The README lists streamable HTTP as planned rather than shipped. That rules out the remote/hosted pattern the Neon and Supabase servers use, and it means editors that only support remote MCP servers cannot connect to this one at all. Docker is the closest thing to an isolation boundary available.',
+      },
+      {
+        question: 'Why can I not see any log output from the Redis MCP server?',
+        answer:
+          'It logs at WARNING and above by default. Set `MCP_REDIS_LOG_LEVEL` to `INFO` or `DEBUG` in the client config env block. One deliberate behaviour to know: if the host process already installed console handlers, the server will not add its own — it only lowers a handler threshold that would filter out your chosen level, and never raises one. So a silent server under a host that captures stderr is expected, not broken.',
+      },
+      {
+        question: 'Does it work with Redis Cluster?',
+        answer:
+          'Yes, behind an explicit switch — `--cluster-mode` on the command line or `REDIS_CLUSTER_MODE=True` in the environment. It is off by default, and connecting to a cluster without it produces redirection failures rather than a clear error.',
+      },
+      {
+        question: 'Can I use this with the OpenAI Agents SDK rather than a chat client?',
+        answer:
+          'Yes, and Redis ships an example — `examples/redis_assistant.py` in the repository, driven by `pip install openai-agents` and an `OPENAI_API_KEY`. Traces show up in the OpenAI platform dashboard. Augment also has one-click support through its Easy MCP feature, so those two are the paths with vendor-tested configuration behind them.',
+      },
+    ],
+    comparison: {
+      note:
+        'Three servers share the name, and the retired one is still the most-linked.',
+      items: [
+        {
+          name: 'redis/mcp-redis',
+          choose:
+            'This one, for anything touching data. Redis maintains it, 567★, MIT, and it is the only one of the three with vector search, JSON and Streams consumer groups.',
+        },
+        {
+          name: '@modelcontextprotocol/server-redis (archived)',
+          choose:
+            'Never, for new setups. Anthropic\'s reference implementation: npm package deprecated, last published 2025-04-25, source in modelcontextprotocol/servers-archived. It still installs, which is the trap.',
+        },
+        {
+          name: 'redis/mcp-redis-cloud',
+          slug: 'redis-cloud-mcp',
+          choose:
+            'Alongside, not instead — when you want the agent to provision and manage Redis Cloud subscriptions and databases. Different credentials (API_KEY/SECRET_KEY), no key access, and no npm package: clone and build.',
+        },
+        {
+          name: 'Redis MCP vs a Postgres or MongoDB MCP server',
+          slug: 'postgresql',
+          choose:
+            'Not really a competition — pick the one that matches the store you have. The shape difference worth noting is the guard: those two ship read-only switches inside the server, while Redis expects you to build the boundary out of an ACL user.',
+        },
+      ],
+    },
+  },
 ]
 
 const guideBySlug = new Map(guides.map((g) => [g.slug, g] as const));

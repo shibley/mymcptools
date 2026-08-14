@@ -66,6 +66,15 @@ const CLUSTER: {
       "readonly in the URL, plus the fact that a scoped URL can be verified before use by calling the public list-tools endpoint.",
   },
   {
+    slug: "redis",
+    pitch:
+      "Same ambiguity as Postgres and the same cause: the npm package everyone pastes is Anthropic's reference server, deprecated since April 2025, while the maintained one is a Python package no npx command can reach.",
+    shape:
+      "Local stdio server, stdio only — no hosted endpoint. Tools are grouped by Redis type: strings, hashes, lists, sets, sorted sets, JSON, Streams with consumer groups, stateful pub/sub subscriptions, and vector index management for use as an agent memory store.",
+    guard:
+      "None in the server. It is the one here with no read-only flag — the documented control is a Redis ACL user (ACL SETUSER readonlyuser on >pw ~* +@read -@write), enforced by the database rather than by which tools got registered.",
+  },
+  {
     slug: "clickhouse",
     pitch:
       "Columnar analytics, where the common failure is configuration rather than SQL.",
@@ -86,12 +95,12 @@ const FAQS: { question: string; answer: string }[] = [
   {
     question: "Which database MCP server should I install?",
     answer:
-      "The one for the database you have — there is no cross-database server worth using, because the value is in the tools that understand that engine's plans, indexes and schema. The choice that actually matters is within an engine: for Postgres, whether you install the archived reference server or the maintained one; for MongoDB, whether you also hand it Atlas control-plane credentials.",
+      "The one for the database you have — there is no cross-database server worth using, because the value is in the tools that understand that engine's plans, indexes and schema. The choice that actually matters is within an engine: for Postgres and Redis, whether you install the archived reference server or the maintained one; for MongoDB, whether you also hand it Atlas control-plane credentials.",
   },
   {
     question: "Is it safe to connect an MCP server to a production database?",
     answer:
-      "Only with a read-only mode enabled at the server and a database user that cannot write, which is two independent guards for a reason. Every server in this cluster ships a read-only switch and none of them is on by default. Treat a confirmation prompt as a convenience rather than a control: MongoDB's confirmations, for example, depend on the client supporting elicitation, and a client that does not simply runs the tool.",
+      "Only with a read-only mode enabled at the server and a database user that cannot write, which is two independent guards for a reason. Every server in this cluster except Redis ships a read-only switch, and none of the ones that do is on by default; Redis has no such switch, so there the database-side user is the only guard there is. Treat a confirmation prompt as a convenience rather than a control: MongoDB's confirmations, for example, depend on the client supporting elicitation, and a client that does not simply runs the tool.",
   },
   {
     question: "Can an MCP server drop my tables?",
@@ -101,19 +110,19 @@ const FAQS: { question: string; answer: string }[] = [
   {
     question: "Do database MCP servers work with Claude, Cursor and VS Code?",
     answer:
-      "Yes — all five are ordinary MCP servers. The local ones (Postgres, MongoDB, ClickHouse) launch over stdio from a client config file; the hosted ones (Neon, Supabase) are added as a URL and authorised with OAuth. The most common client-side failure is PATH: a client launched from the desktop does not inherit a shell-managed Node or Python, so bare npx, uv or python3 can resolve differently than in your terminal.",
+      "Yes — all six are ordinary MCP servers. The local ones (Postgres, MongoDB, Redis, ClickHouse) launch over stdio from a client config file; the hosted ones (Neon, Supabase) are added as a URL and authorised with OAuth. Redis is stdio-only, so a client that supports remote servers exclusively cannot connect to it at all. The most common client-side failure is PATH: a client launched from the desktop does not inherit a shell-managed Node or Python, so bare npx, uv or python3 can resolve differently than in your terminal.",
   },
 ];
 
 export const metadata: Metadata = {
   title: "Database MCP Servers — Which One to Install | MyMCPTools",
   description:
-    "Postgres, MongoDB, ClickHouse, Neon and Supabase MCP servers compared: what each one actually exposes, which read-only switch stops writes, and which server the name refers to when more than one claims it.",
+    "Postgres, MongoDB, Redis, ClickHouse, Neon and Supabase MCP servers compared: what each one actually exposes, which read-only switch stops writes, and which server the name refers to when more than one claims it.",
   alternates: { canonical: "https://mymcptools.com/guides/databases" },
   openGraph: {
     title: "Database MCP servers, compared | MyMCPTools",
     description:
-      "Five source-verified database MCP server guides in one place — tools, transports and the read-only switch for each.",
+      "Six source-verified database MCP server guides in one place — tools, transports and the read-only switch for each.",
     type: "website",
     url: "https://mymcptools.com/guides/databases",
   },
@@ -179,17 +188,18 @@ export default function DatabaseGuidesPage() {
         <p className="mt-5 text-lg leading-relaxed text-gray-400">
           A database MCP server is the thing that decides what an AI client can do to
           your data: which tools exist, whether any of them writes, and what happens
-          when the model guesses. Five of them have hand-written guides here, and the
+          when the model guesses. Six of them have hand-written guides here, and the
           differences that matter are not the ones a feature table shows.
         </p>
         <p className="mt-4 leading-relaxed text-gray-500">
           Two patterns are worth knowing before you pick. First, the name is sometimes
-          ambiguous: &ldquo;the Postgres MCP server&rdquo; most often refers to a
-          server that has been archived and whose npm package is marked deprecated,
-          and installing it works fine right up until you want a second tool. Second,
-          none of these ships read-only by default. Every one of them has the switch;
-          not one of them has it on. The rows below say which switch, and where in the
-          configuration it lives.
+          ambiguous: &ldquo;the Postgres MCP server&rdquo; and &ldquo;the Redis MCP
+          server&rdquo; both most often refer to servers that have been archived and
+          whose npm packages are marked deprecated, and installing either works fine
+          right up until you want a second tool. Second, none of these ships read-only
+          by default &mdash; and Redis does not ship one at all, which is why the rows
+          below name the guard rather than tick a box. The rest have the switch; not
+          one of them has it on, and the row says where in the configuration it lives.
         </p>
 
         <div className="mt-10 space-y-4">
@@ -242,7 +252,8 @@ export default function DatabaseGuidesPage() {
           <p className="mt-3 leading-relaxed text-gray-400">
             Start with the engine, because the tools that make these servers worth
             installing are engine-specific: Postgres&rsquo; index tuning, Atlas&rsquo;
-            performance advisor, ClickHouse&rsquo;s chDB. A generic
+            performance advisor, ClickHouse&rsquo;s chDB, Redis&rsquo; vector index and
+            Streams consumer groups. A generic
             &ldquo;SQL&rdquo; server would be a driver with extra steps.
           </p>
           <p className="mt-4 leading-relaxed text-gray-400">
