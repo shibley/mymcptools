@@ -3443,6 +3443,175 @@ codex mcp add figma --url https://mcp.figma.com/mcp`,
       ],
     },
   },
+  {
+    slug: 'elasticsearch',
+    verifiedOn: '2026-08-14',
+    sources: [
+      { label: 'elastic/mcp-server-elasticsearch README (0.4.0+)', url: 'https://github.com/elastic/mcp-server-elasticsearch' },
+      { label: 'Same repo, README at tag v0.3.1', url: 'https://github.com/elastic/mcp-server-elasticsearch/tree/v0.3.1' },
+      { label: 'npm — @elastic/mcp-server-elasticsearch (deprecated)', url: 'https://www.npmjs.com/package/@elastic/mcp-server-elasticsearch' },
+      { label: 'Elastic Docs — Agent Builder MCP server', url: 'https://www.elastic.co/docs/explore-analyze/ai-features/agent-builder/mcp-server' },
+      { label: 'Elastic Docs — authenticate MCP clients with API keys', url: 'https://www.elastic.co/docs/explore-analyze/ai-features/agent-builder/mcp-server-api-keys' },
+    ],
+    intro:
+      'This is the one server in the database cluster where the deprecation notice is not the interesting part — the install route is. Elastic\'s standalone server is deprecated in favour of the Agent Builder MCP endpoint, which is true and which every listing repeats. What none of them say is that at version 0.4.0 the project stopped shipping to npm. `@elastic/mcp-server-elasticsearch` is marked deprecated on the registry and frozen at 0.3.1, published 2025-07-01; releases since then — up to v0.4.6 — exist only as the Docker image `docker.elastic.co/mcp/elasticsearch`. So the `npx -y @elastic/mcp-server-elasticsearch` block in nearly every write-up still installs and still connects, and quietly gives you a server without the `esql` tool. The repo itself is alive (704★, Apache-2.0, not archived, pushed the day this guide was verified) because security fixes still land there. Read the version question first, the deprecation question second.',
+    setup: {
+      title: 'Running the Elasticsearch MCP Server',
+      steps: [
+        {
+          title: 'Decide which server you actually want',
+          body:
+            'If your cluster is Elastic 9.2.0+ or a Serverless project, the supported path is the Agent Builder MCP endpoint — skip to the last two steps. If you are on 8.x, or on 9.x below 9.2, the standalone container is what you have, and it is still receiving critical security updates. Nothing here is a package you install: 0.4.0 and later are container-only.',
+        },
+        {
+          title: 'Run the container over stdio',
+          body:
+            'This is the direct-connection mode, for a client running in the same environment as the container. `ES_URL` is the cluster; authenticate with either `ES_API_KEY` or an `ES_USERNAME`/`ES_PASSWORD` pair. The bare `-e ES_URL` form passes the variable through from your shell rather than baking a value into the command, which is the form the README uses and the one to keep — a URL with credentials in it should not end up in shell history.',
+          code: 'docker run -i --rm \\\n  -e ES_URL \\\n  -e ES_API_KEY \\\n  docker.elastic.co/mcp/elasticsearch \\\n  stdio',
+          codeLabel: 'shell',
+        },
+        {
+          title: 'Point Claude Desktop, Cursor or VS Code at it',
+          body:
+            'The client launches the container itself, so the env block carries the real values and the `-e` flags in args only name what to forward. Pin the image if you care about reproducibility — the registry carries tags from 0.3.1 through 0.4.6 alongside `latest`, and `latest` is what moves under you.',
+          code: '{\n  "mcpServers": {\n    "elasticsearch-mcp-server": {\n      "command": "docker",\n      "args": [\n        "run", "-i", "--rm",\n        "-e", "ES_URL",\n        "-e", "ES_API_KEY",\n        "docker.elastic.co/mcp/elasticsearch",\n        "stdio"\n      ],\n      "env": {\n        "ES_URL": "<elasticsearch-cluster-url>",\n        "ES_API_KEY": "<elasticsearch-API-key>"\n      }\n    }\n  }\n}',
+          codeLabel: 'claude_desktop_config.json',
+        },
+        {
+          title: 'Or run it over streamable HTTP for shared or web clients',
+          body:
+            'Same environment variables, different final argument, and a port. The MCP endpoint lands at `http://<host>:8080/mcp` and there is a health check at `http://<host>:8080/ping` that answers `pong` — worth wiring into whatever watches your containers, because a server that has lost its cluster still accepts connections. SSE is deprecated; do not build against it.',
+          code: 'docker run --rm \\\n  -e ES_URL \\\n  -e ES_API_KEY \\\n  -p 8080:8080 \\\n  docker.elastic.co/mcp/elasticsearch \\\n  http\n\n# check it\ncurl http://localhost:8080/ping   # -> pong',
+          codeLabel: 'shell',
+        },
+        {
+          title: 'Bridge HTTP to a stdio-only client with mcp-proxy',
+          body:
+            'Claude Desktop\'s free edition speaks stdio only, so reaching an HTTP-mode server needs a bridge. The README documents `mcp-proxy` for this, installed with `uv tool install mcp-proxy`, and the API key travels as an `Authorization: ApiKey ...` header rather than an env var. Use the absolute path to the binary — a desktop-launched client does not inherit your shell PATH, which is the usual reason this entry silently fails to start.',
+          code: '{\n  "mcpServers": {\n    "elasticsearch-mcp-server": {\n      "command": "/<home-directory>/.local/bin/mcp-proxy",\n      "args": [\n        "--transport=streamablehttp",\n        "--header", "Authorization", "ApiKey <elasticsearch-API-key>",\n        "http://<mcp-server-host>:<mcp-server-port>/mcp"\n      ]\n    }\n  }\n}',
+          codeLabel: 'json',
+        },
+        {
+          title: 'The successor: create an API key scoped to Agent Builder',
+          body:
+            'The Agent Builder endpoint has no container and no install. It is a Kibana route, so the whole of its configuration is a URL plus a key — and the key is also the read-only guard, because tools execute with exactly the scope it carries. Two details in this body are where 403s come from: the application name must be literally `kibana-.kibana`, and without `feature_agentBuilder.read` the connection is refused rather than degraded. Narrow `"names"` from `*` to the index patterns the agent needs.',
+          code: 'POST /_security/api_key\n{\n  "name": "my-mcp-api-key",\n  "expiration": "30d",\n  "role_descriptors": {\n    "mcp-access": {\n      "cluster": ["monitor_inference"],\n      "indices": [\n        {\n          "names": ["logs-*", "metrics-*"],\n          "privileges": ["read", "view_index_metadata"]\n        }\n      ],\n      "applications": [\n        {\n          "application": "kibana-.kibana",\n          "privileges": ["feature_agentBuilder.read", "feature_actions.read"],\n          "resources": ["space:default"]\n        }\n      ]\n    }\n  }\n}',
+          codeLabel: 'json',
+        },
+        {
+          title: 'Connect a client to the Agent Builder endpoint',
+          body:
+            'The endpoint is `{KIBANA_URL}/api/agent_builder/mcp`, or `{KIBANA_URL}/s/{SPACE_NAME}/api/agent_builder/mcp` if you are in a custom Kibana space — pointing at the default-space URL from inside a custom space is the second-most-common 403. Serverless projects can use OAuth 2.1 instead of a key, which is the option to take when several people share one client: each person consents separately and acts with their own live permissions, rather than everyone inheriting one key\'s snapshotted scope.',
+          code: '{\n  "mcpServers": {\n    "elastic-agent-builder": {\n      "command": "npx",\n      "args": [\n        "mcp-remote",\n        "${KIBANA_URL}/api/agent_builder/mcp",\n        "--header", "Authorization:${AUTH_HEADER}"\n      ],\n      "env": {\n        "KIBANA_URL": "${KIBANA_URL}",\n        "AUTH_HEADER": "ApiKey ${API_KEY}"\n      }\n    }\n  }\n}',
+          codeLabel: 'json',
+        },
+      ],
+    },
+    tools: {
+      title: 'What it can do',
+      note:
+        'Five tools, and the count is version-dependent in a way worth checking: 0.3.1 shipped four, and `esql` — the one that makes this server more than a search box — arrived with the container-only line. If your agent claims it cannot run ES|QL, you are on the npm build.',
+      items: [
+        { name: 'list_indices', what: 'Lists the indices reachable with the supplied credentials. Call it first: it is also the fastest check that ES_URL and the key resolved to what you expected.' },
+        { name: 'get_mappings', what: 'Field mappings for one index. This is what lets the model write a correct query instead of guessing field names, so a mappings call usually precedes any useful search.' },
+        { name: 'search', what: 'A search using Elasticsearch query DSL. In 0.3.x the README also credited it with highlighting, query profiling and query explanation.' },
+        { name: 'esql', what: 'Runs an ES|QL query. Aggregation, transformation and pipeline work that query DSL makes painful to express — and the reason to be on the container rather than the npm package.' },
+        { name: 'get_shards', what: 'Shard information for all or specific indices. An operations tool rather than a data one: the thing to ask about when a query is slow or an index is yellow.' },
+      ],
+    },
+    useCases: [
+      {
+        title: 'Ask an incident question against logs without writing the query',
+        prompt:
+          'List my indices, then show me the top error messages in logs-* from the last 24 hours grouped by service.',
+        why:
+          'The mapping lookup and the ES|QL aggregation are two tool calls the model makes for you, and the field names come from the cluster rather than from memory. This is the shape of nearly every real session with this server.',
+      },
+      {
+        title: 'Explain a slow query with the shard layout in context',
+        prompt:
+          'Get the shard information for orders-2026-* and tell me whether the shard count explains why this search is slow.',
+        why:
+          'get_shards returns the operational picture, and the model already has the query in the conversation. Correlating the two is normally a tab-switch between Kibana and your editor.',
+      },
+      {
+        title: 'Check what an API key can actually reach before shipping it',
+        prompt:
+          'Using this connection, list every index you can see and tell me which of them are outside logs-* and metrics-*.',
+        why:
+          'Scope on this server is entirely a property of the credential, so the only honest test of a role descriptor is to connect with it and ask. Do this before the key goes anywhere near an unattended agent.',
+      },
+    ],
+    gotchas: [
+      {
+        question: 'Is the Elasticsearch MCP Server deprecated?',
+        answer:
+          'The standalone server is. Its README opens with a deprecation caution: it will only receive critical security updates, and it has been superseded by the Elastic Agent Builder MCP endpoint, available in Elastic 9.2.0+ and Elasticsearch Serverless projects. The repository is not archived — 704★, Apache-2.0, and commits still land — because security fixes go there. If your cluster is old enough that Agent Builder is not available, the container is a supported thing to run; if it is 9.2.0 or newer, new work should target the Kibana endpoint.',
+      },
+      {
+        question: 'Why does npx @elastic/mcp-server-elasticsearch still work?',
+        answer:
+          'Because the package is deprecated, not unpublished. The npm registry marks `@elastic/mcp-server-elasticsearch` deprecated with a note pointing at the repository README, and its latest version is 0.3.1 from 2025-07-01 — every release from 0.4.0 to 0.4.6 exists only as the Docker image. So the npx config installs cleanly, connects cleanly, and gives you a server two minor versions behind that has no `esql` tool. This is the single most likely reason a set of instructions found online does not match what your client shows.',
+      },
+      {
+        question: 'How do I make the Elasticsearch MCP server read-only?',
+        answer:
+          'Through the credential, because the server has no read-only flag. Create an Elasticsearch API key whose role descriptor grants only `read` and `view_index_metadata` on the index patterns the agent needs, and connect with that in `ES_API_KEY`. The same applies to the Agent Builder endpoint, where the docs are explicit that tools execute with the scope assigned to the key. Redis is the other server in this cluster with no switch of its own; the difference is that Elastic publishes the exact role descriptor to paste.',
+      },
+      {
+        question: 'Why do I get 403 Forbidden connecting to the Agent Builder MCP endpoint?',
+        answer:
+          'Two causes, both in the API key rather than the URL. First, the key needs the `feature_agentBuilder.read` application privilege — the docs call out the 403 by name for exactly this omission. Second, the `application` field must be exactly `kibana-.kibana`; that string is how Kibana registers its privileges with Elasticsearch, and anything else silently grants nothing. If both are right and it still fails, check the space: a custom Kibana space needs `{KIBANA_URL}/s/{SPACE_NAME}/api/agent_builder/mcp`, not the plain path.',
+      },
+      {
+        question: 'Should I use an API key or OAuth for the Agent Builder MCP server?',
+        answer:
+          'API keys work on both Elastic Stack deployments and Serverless projects and are the right choice for automation and machine-to-machine access; the trade-off is that one shared key is one shared identity with permissions snapshotted at creation. OAuth 2.1 is Serverless-only and is the better fit when people are driving the client: one client registration serves many users, each consents separately, each acts with their own live permissions, and access is revocable per person. OAuth connections also expire if unused for 30 or more days.',
+      },
+      {
+        question: 'Does the Elasticsearch MCP server support SSE?',
+        answer:
+          'No — SSE is deprecated and the README says to use streamable HTTP instead. The two supported transports are stdio, for a client running beside the container, and streamable HTTP on port 8080 for web integrations, stateful sessions and concurrent clients. A stdio-only client can still reach an HTTP-mode server through `mcp-proxy`, which the README documents.',
+      },
+      {
+        question: 'What Elasticsearch versions does it work with?',
+        answer:
+          'The 0.4.x README requires a cluster on 8.x or 9.x. The older npm build had an `ES_VERSION` variable that assumed 9.x unless you set it to `8`; the container README documents `ES_URL`, `ES_API_KEY`, `ES_USERNAME`, `ES_PASSWORD` and `ES_SSL_SKIP_VERIFY` only, so if you depended on `ES_CA_CERT`, `ES_PATH_PREFIX` or `ES_VERSION`, confirm they still apply to your image before assuming they carry over.',
+      },
+      {
+        question: 'Can I run it against a cluster with a self-signed certificate?',
+        answer:
+          'Set `ES_SSL_SKIP_VERIFY=true`, which the README flags for development and testing only. The honest version of this for anything real is to fix the trust chain instead: the server talks to Elasticsearch over HTTPS whenever `ES_URL` uses `https://`, and skipping verification removes the only thing distinguishing your cluster from something answering on its address.',
+      },
+    ],
+    comparison: {
+      note:
+        'The choice here is a version question before it is a product question.',
+      items: [
+        {
+          name: 'Elastic Agent Builder MCP endpoint',
+          choose:
+            'New integrations on Elastic 9.2.0+ or Serverless. No container, no install — a Kibana route at /api/agent_builder/mcp, an API key or OAuth, and the full Agent Builder tool catalog including Elastic Workflows.',
+        },
+        {
+          name: 'docker.elastic.co/mcp/elasticsearch (0.4.x)',
+          choose:
+            'Clusters on 8.x or pre-9.2 9.x. Five tools including esql, stdio and streamable HTTP, critical security updates only. This is the current standalone server despite the deprecation notice.',
+        },
+        {
+          name: '@elastic/mcp-server-elasticsearch on npm (0.3.1)',
+          choose:
+            'Never, for new setups. Deprecated on the registry, frozen at 2025-07-01, no esql tool — and it installs and connects without complaint, which is why it keeps getting pasted into configs.',
+        },
+        {
+          name: 'Elasticsearch MCP vs a Postgres or MongoDB MCP server',
+          slug: 'postgresql',
+          choose:
+            'Different question entirely — pick the store you have. What is unusual about this one is the guard: Postgres, MongoDB and ClickHouse ship read-only switches, Elasticsearch has none and expects the API key role descriptor to be the boundary.',
+        },
+      ],
+    },
+  },
 ]
 
 const guideBySlug = new Map(guides.map((g) => [g.slug, g] as const));
