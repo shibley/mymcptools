@@ -3951,6 +3951,180 @@ codex mcp add figma --url https://mcp.figma.com/mcp`,
       ],
     },
   },
+  {
+    slug: 'playwright',
+    verifiedOn: '2026-08-15',
+    sources: [
+      { label: 'executeautomation/mcp-playwright README', url: 'https://github.com/executeautomation/mcp-playwright' },
+      { label: 'Same repo — docs/playwright-web/Supported-Tools', url: 'https://executeautomation.github.io/mcp-playwright/docs/playwright-web/Supported-Tools' },
+      { label: 'Same repo — src/toolHandler.ts (registered tool names)', url: 'https://github.com/executeautomation/mcp-playwright/blob/main/src/toolHandler.ts' },
+      { label: 'npm — @executeautomation/playwright-mcp-server', url: 'https://www.npmjs.com/package/@executeautomation/playwright-mcp-server' },
+    ],
+    intro:
+      'Two different servers are called Playwright MCP, and this is the community one. It is genuinely popular — 5,633 stars, MIT, featured in most directories — and it does things Microsoft\'s does not: it records a browsing session into a runnable Playwright test file, it emulates 143 real device profiles by name, and it can fire HTTP requests with no browser involved at all. The fact none of those listings mention, checked against GitHub and npm on the day this guide was verified: the repository has not been pushed since 2025-12-13, and npm 1.0.12 was published 2025-12-12, with 32 issues open. It is not archived and the package is not deprecated, so nothing warns you — it simply installs and runs a build that is eight months old while Microsoft\'s server ships continuously. Pick this one for the codegen and device-emulation features specifically. Do not pick it because it came up first.',
+    setup: {
+      title: 'Setting up ExecuteAutomation Playwright MCP',
+      steps: [
+        {
+          title: 'Add it over stdio',
+          body:
+            'The recommended mode, and the only one Claude Desktop supports. Nothing else to install first: the server downloads the Playwright browser binaries itself the first time a tool needs one, prints progress, and retries the request. They land in the standard Playwright cache — ~/Library/Caches/ms-playwright on macOS, ~/.cache/ms-playwright on Linux, %USERPROFILE%\\AppData\\Local\\ms-playwright on Windows — so an existing `npx playwright install` is reused rather than duplicated.',
+          code: 'claude mcp add --transport stdio playwright npx @executeautomation/playwright-mcp-server',
+          codeLabel: 'shell',
+        },
+        {
+          title: 'Or paste the client config',
+          body:
+            'The same block works in Claude Desktop, Cursor, VS Code, Windsurf and Cline; VS Code also publishes one-click install buttons and a `code --add-mcp` one-liner. One thing to know about stdio mode: logging is redirected to a file so it cannot corrupt the JSON-RPC stream, which means the console tells you nothing when something goes wrong. The log is at ~/playwright-mcp-server.log, and it is the first place to look.',
+          code: '{\n  "mcpServers": {\n    "playwright": {\n      "command": "npx",\n      "args": ["-y", "@executeautomation/playwright-mcp-server"]\n    }\n  }\n}',
+          codeLabel: 'claude_desktop_config.json',
+        },
+        {
+          title: 'Or run it as a standalone HTTP server',
+          body:
+            'The mode for running a headed browser on a machine with no display, for VS Code Copilot, or for sharing one server between clients. It exposes an SSE stream at /sse, a unified MCP endpoint at /mcp, and a health check at /health. There is also a monitoring listener on a dynamically allocated port — read the console output rather than assuming a number.',
+          code: 'npx @executeautomation/playwright-mcp-server --port 8931\n\n# check it\ncurl http://localhost:8931/health',
+          codeLabel: 'shell',
+        },
+        {
+          title: 'Set "type": "http" or the HTTP connection will not work',
+          body:
+            'The README flags this as critical and it earns the label — without the type field the client fails with a 400 and the message "Bad Request: No transport found for sessionId", which reads like a server bug and is a missing line of config. The server also binds to localhost only, by design, so remote access is an SSH tunnel rather than a flag: ssh -L 8931:localhost:8931 user@remote-server.',
+          code: '{\n  "mcpServers": {\n    "playwright": {\n      "url": "http://localhost:8931/mcp",\n      "type": "http"\n    }\n  }\n}',
+          codeLabel: 'mcp.json',
+        },
+        {
+          title: 'Record a session into a test file',
+          body:
+            'The feature that justifies choosing this server. Open a codegen session with an absolute outputPath, drive the browser through the actions you want captured, then close it — the session writes a runnable Playwright test. get_codegen_session and clear_codegen_session exist for inspecting and discarding one mid-flight. testNamePrefix defaults to GeneratedTest and includeComments adds descriptive comments to the output.',
+          code: 'Start a codegen session writing to /Users/me/tests, then log in with the\ndemo account, add an item to the cart, and end the session.',
+          codeLabel: 'prompt',
+        },
+        {
+          title: 'Emulate a device by name',
+          body:
+            'playwright_resize takes a device string from Playwright\'s own 143-entry preset list and swaps in the viewport, user agent, touch support and device pixel ratio together, which is the part hand-setting a width does not do. An orientation argument handles landscape. Plain width and height still work when you want an arbitrary size.',
+          code: 'await playwright_resize({ device: "iPhone 13" });\nawait playwright_resize({ device: "iPad Pro 11", orientation: "landscape" });',
+          codeLabel: 'javascript',
+        },
+        {
+          title: 'Keep tool names short if you use Cursor',
+          body:
+            'A constraint from the project\'s own contributing notes that matters when you run several servers at once: Cursor caps the combined server_name:tool_name at 60 characters. This server registers itself as playwright-mcp and its longest tool is playwright_click_and_switch_tab, so it fits — but naming the entry something long in your own config is how you silently lose tools.',
+        },
+      ],
+    },
+    tools: {
+      title: 'What it can do',
+      note:
+        'Twenty-nine playwright_* tools plus four codegen tools. The browser set is conventional; what is worth knowing is the three groups that do something Microsoft\'s server does not.',
+      items: [
+        { name: 'start_codegen_session / end_codegen_session', what: 'Records the actions taken during a session and writes them out as a Playwright test file. get_codegen_session and clear_codegen_session inspect and discard one. This is the headline feature and the main reason to choose this server.' },
+        { name: 'playwright_resize', what: 'Device emulation by name across 143 Playwright presets — iPhone, iPad, Pixel, Galaxy and desktop profiles — applying viewport, user agent, touch and pixel ratio together, with an orientation argument for landscape.' },
+        { name: 'playwright_get / post / put / patch / delete', what: 'Plain HTTP requests with no browser involved. An API-testing surface sitting inside a browser server, which is unusual and genuinely useful when a test needs to seed state before driving the UI.' },
+        { name: 'playwright_navigate', what: 'Takes browserType (chromium, firefox or webkit), width and height, timeout, waitUntil — and headless, which defaults to false. This server opens a visible browser window unless you tell it not to.' },
+        { name: 'playwright_evaluate', what: 'Runs arbitrary JavaScript in the page context. The escape hatch, and the tool to think about before pointing this at a page you do not control.' },
+        { name: 'playwright_get_visible_text / playwright_get_visible_html', what: 'Scrapes the rendered page as text or HTML. The text form is the one to reach for in an agent loop — full HTML on a modern page will eat a context window.' },
+        { name: 'playwright_iframe_click / playwright_iframe_fill', what: 'Explicit iframe-scoped interaction, taking an iframeSelector alongside the selector. Embedded checkout and auth widgets are the usual reason to need these.' },
+        { name: 'playwright_expect_response / playwright_assert_response', what: 'Waits for a network response and asserts on it. Assertion primitives inside the MCP surface, which fits the test-authoring angle the rest of the server takes.' },
+        { name: 'playwright_save_as_pdf', what: 'Renders the current page to a PDF with format, margins and printBackground options. A small thing that is annoying to do any other way from inside an agent.' },
+      ],
+    },
+    useCases: [
+      {
+        title: 'Turn a manual walkthrough into a regression test',
+        prompt:
+          'Start a codegen session writing to ./e2e, walk through signup with a throwaway email, confirm the welcome screen appears, then end the session.',
+        why:
+          'The output is a Playwright test file you can run in CI. Every other browser MCP server leaves you with a transcript of what happened; this one leaves you with something executable.',
+      },
+      {
+        title: 'Check a responsive bug on the device it was reported on',
+        prompt:
+          'Open the pricing page, resize to iPhone 13, screenshot it, then switch to iPad Pro 11 in landscape and screenshot again.',
+        why:
+          'Named presets carry user agent and touch support, not just a viewport, so a layout that breaks because of pointer detection actually reproduces instead of looking fine at a narrow width.',
+      },
+      {
+        title: 'Seed state over the API, then test the UI against it',
+        prompt:
+          'POST a new order to the staging API, then open the orders page and confirm it appears with the right total.',
+        why:
+          'The HTTP tools and the browser tools live in the same server, so setup and assertion are one conversation. This is the workflow the API tool group exists for.',
+      },
+    ],
+    gotchas: [
+      {
+        question: 'Which Playwright MCP server should I use — Microsoft or ExecuteAutomation?',
+        answer:
+          'Microsoft\'s microsoft/playwright-mcp is the actively developed one and the sensible default: leaner tool surface, accessibility-tree driven, file access fenced to workspace roots by default. Choose ExecuteAutomation\'s specifically for the three things Microsoft\'s does not do — recording a session into a runnable test file, device emulation by preset name, and HTTP request tools alongside the browser ones. They are separate projects that share a name, and they are configured completely differently, so instructions for one will not work with the other.',
+      },
+      {
+        question: 'Is ExecuteAutomation Playwright MCP still maintained?',
+        answer:
+          'Not actively, as of this guide\'s verification date. The repository is alive in the sense that it is not archived — MIT, 5,633 stars, 32 open issues — but its last push was 2025-12-13 and npm 1.0.12 was published 2025-12-12. That is eight months without a commit or a release. Nothing warns you at install time, because a stale package is not a deprecated one: it installs, connects and works. The practical consequence is that its Playwright dependency and browser support drift while Microsoft\'s server ships continuously, so weigh the codegen and device features against running a build nobody is patching.',
+      },
+      {
+        question: 'Why does a browser window open when I use it?',
+        answer:
+          'Because headless defaults to false on playwright_navigate. Pass headless: true, or ask for it in the prompt. This is the opposite default from what people expect from an automation server, and on a machine with no display it is why the tool call fails outright rather than running invisibly — the documented answer for that case is HTTP mode, which is what the standalone server exists for.',
+      },
+      {
+        question: 'Do I need to install Playwright browsers first?',
+        answer:
+          'No. The server detects a missing browser, downloads it, prints progress and retries the request. If you would rather do it up front, npx playwright install works and the binaries go to the same place — ~/Library/Caches/ms-playwright on macOS, ~/.cache/ms-playwright on Linux, %USERPROFILE%\\AppData\\Local\\ms-playwright on Windows — so a Playwright install you already have is reused.',
+      },
+      {
+        question: 'What does "No transport found for sessionId" mean?',
+        answer:
+          'You are connecting to HTTP mode without "type": "http" in the client config. The README calls this out as critical because the failure is a 400 that reads like a server problem. Add the field, confirm the server log shows the incoming GET /mcp, a registered transport with a sessionId, and a POST carrying the same sessionId, then restart both sides. If the server will not start at all, check that port 8931 is free.',
+      },
+      {
+        question: 'Can I reach the HTTP server from another machine?',
+        answer:
+          'Not directly, and that is deliberate — it binds to localhost only as a security measure. The documented route is an SSH tunnel: ssh -L 8931:localhost:8931 user@remote-server, then point the client at http://localhost:8931/mcp on your side. This is also the setup for the case the HTTP mode was built for, running a headed browser on a display-less remote box.',
+      },
+      {
+        question: 'Where are the logs?',
+        answer:
+          'In stdio mode, ~/playwright-mcp-server.log. Logging is deliberately kept off the console there so it cannot corrupt the JSON-RPC stream, which means a silent failure is normal and the file is the only place the reason exists. In HTTP mode the console carries it, along with the dynamically allocated monitoring port.',
+      },
+      {
+        question: 'Why do some tools disappear in Cursor?',
+        answer:
+          'Cursor limits the combined server_name:tool_name string to 60 characters, which the project documents in its contributing notes. This server identifies as playwright-mcp and its longest tool name is playwright_click_and_switch_tab, so the defaults fit comfortably. Giving the server a long name in your own config is what pushes individual tools over the line, and they vanish rather than erroring.',
+      },
+    ],
+    comparison: {
+      note:
+        'Three browser servers, one real decision — and it is not close unless you want the codegen.',
+      items: [
+        {
+          name: 'Playwright MCP (Microsoft)',
+          slug: 'microsoft-playwright-mcp',
+          choose:
+            'The default. Actively developed, leaner tool surface, accessibility-tree driven, file access fenced to workspace roots. Choose it unless you specifically need test-file generation, named device presets or the HTTP request tools.',
+        },
+        {
+          name: 'Chrome DevTools MCP',
+          slug: 'chrome-devtools',
+          choose:
+            'When the question is why a page is slow or leaking rather than what it does. Performance traces, Lighthouse, source-mapped console output and heap-snapshot analysis, none of which either Playwright server has. Chrome only.',
+        },
+        {
+          name: 'Puppeteer MCP',
+          slug: 'puppeteer',
+          choose:
+            'Nothing new — archived in modelcontextprotocol/servers-archived. Worth knowing only because it is the fourth result for browser automation over MCP and still installs cleanly.',
+        },
+        {
+          name: 'The Playwright CLI with skills',
+          choose:
+            'Worth considering before any of them if your session is mostly code. Microsoft says outright that a coding agent may be better served by CLI invocations, which keep large tool schemas and verbose accessibility trees out of the context window entirely.',
+        },
+      ],
+    },
+  },
 ]
 
 const guideBySlug = new Map(guides.map((g) => [g.slug, g] as const));

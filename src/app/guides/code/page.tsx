@@ -6,8 +6,8 @@ import { getServerBySlug } from "@/data/servers";
 /**
  * Landing page for "browser MCP server" / "coding MCP server".
  *
- * Third cluster page, same reason as the first two: six hand-written guides now
- * sit in the code bucket, and six cards inside /guides answers "here are some
+ * Third cluster page, same reason as the first two: seven hand-written guides now
+ * sit in the code bucket, and seven cards inside /guides answers "here are some
  * guides" rather than the question the head term asks.
  *
  * The comparison axis has to be different again, or this is a copy of the other
@@ -56,6 +56,15 @@ const CLUSTER: {
       "Deliberately little. File access is fenced to workspace roots and file:// navigation is blocked, until --allow-unrestricted-file-access removes both. Microsoft's own caveat is worth reading first: for a coding agent, the Playwright CLI with skills may beat MCP, because it keeps large tool schemas and accessibility trees out of the context window.",
   },
   {
+    slug: "playwright",
+    pitch:
+      "The other server called Playwright MCP. It records a session into a runnable test file and emulates 143 named devices — and it has not been pushed since December 2025, which nothing at install time tells you.",
+    attaches:
+      "A Chromium, Firefox or WebKit browser it launches itself, downloading the binaries on first use. Headed by default: headless is false unless you set it. There is also a standalone HTTP mode on port 8931 for display-less machines, which needs \"type\": \"http\" in the client config or it fails with a 400.",
+    inherits:
+      "A visible local browser plus playwright_evaluate for arbitrary JavaScript — and, unusually, playwright_get/post/put/patch/delete, which fire HTTP requests with no browser involved. The HTTP server binds to localhost only by design; remote access is an SSH tunnel.",
+  },
+  {
     slug: "blender-mcp",
     pitch:
       "The clearest example in this cluster of a server that is useless without something already running — and the reason most \"it connects but nothing happens\" reports exist.",
@@ -98,12 +107,12 @@ const FAQS: { question: string; answer: string }[] = [
   {
     question: "What is a browser MCP server?",
     answer:
-      "A server that gives an AI client control of a real browser through the Model Context Protocol — navigating, clicking, filling forms, reading the console and network, taking screenshots or snapshots of the page. The three worth knowing are Chrome DevTools MCP, which adds performance traces and heap analysis, Playwright MCP, which is leaner and cross-browser, and the archived Puppeteer server, which is superseded by both.",
+      "A server that gives an AI client control of a real browser through the Model Context Protocol — navigating, clicking, filling forms, reading the console and network, taking screenshots or snapshots of the page. Four are worth knowing and two of them share a name: Microsoft's Playwright MCP is the lean cross-browser default, ExecuteAutomation's Playwright MCP adds test-code generation and named device presets, Chrome DevTools MCP adds performance traces and heap analysis, and the Puppeteer server is archived and superseded by all of them.",
   },
   {
     question: "Chrome DevTools MCP or Playwright MCP — which should I use?",
     answer:
-      "Playwright if you want a page driven cheaply and cross-browser: it reads the accessibility tree, has a smaller tool surface, and fences file access to your workspace by default. Chrome DevTools MCP if you want the panels — performance traces with the insights the Performance panel computes, Lighthouse audits, source-mapped console messages, and twelve heap-snapshot tools for confirming a memory leak rather than guessing at one. They are not really competitors; one automates a browser and the other instruments one.",
+      "Playwright — Microsoft's — if you want a page driven cheaply and cross-browser: it reads the accessibility tree, has a smaller tool surface, and fences file access to your workspace by default. Chrome DevTools MCP if you want the panels — performance traces with the insights the Performance panel computes, Lighthouse audits, source-mapped console messages, and twelve heap-snapshot tools for confirming a memory leak rather than guessing at one. They are not really competitors; one automates a browser and the other instruments one.",
   },
   {
     question: "Can an MCP server use the browser I am already signed in to?",
@@ -125,12 +134,12 @@ const FAQS: { question: string; answer: string }[] = [
 export const metadata: Metadata = {
   title: "Browser and Coding MCP Servers — What Each One Attaches To | MyMCPTools",
   description:
-    "Chrome DevTools, Playwright, GitHub, Figma, Blender and Context7 MCP servers compared: what each connects to, what the connection inherits, and which of the several servers sharing a name you actually want.",
+    "Chrome DevTools, both Playwright servers, GitHub, Figma, Blender and Context7 MCP servers compared: what each connects to, what the connection inherits, and which of the several servers sharing a name you actually want.",
   alternates: { canonical: "https://mymcptools.com/guides/code" },
   openGraph: {
     title: "Code, design and browser MCP servers, compared | MyMCPTools",
     description:
-      "Six source-verified MCP server guides in one place — what each server attaches to, and what it inherits by attaching.",
+      "Seven source-verified MCP server guides in one place — what each server attaches to, and what it inherits by attaching.",
     type: "website",
     url: "https://mymcptools.com/guides/code",
   },
@@ -195,7 +204,7 @@ export default function CodeGuidesPage() {
         </h1>
         <p className="mt-5 text-lg leading-relaxed text-gray-400">
           A browser, a repository, a design file and a documentation index have
-          nothing in common as things, which is why comparing these six on tool
+          nothing in common as things, which is why comparing these seven on tool
           count tells you nothing useful. What they do have in common is an
           attachment question. Each one either drives a process already running on
           your machine, or reaches a remote service as you, or touches nothing of
@@ -263,14 +272,16 @@ export default function CodeGuidesPage() {
         <section className="mt-14">
           <h2 className="text-xl font-semibold text-white">Choosing between them</h2>
           <p className="mt-3 leading-relaxed text-gray-400">
-            Only one real either-or exists in this cluster, and it is the browser
-            one. Chrome DevTools MCP and Playwright MCP overlap on navigating and
-            clicking, and after that they diverge completely: Playwright is the
-            cheaper way to drive a page across browsers, Chrome DevTools MCP is
-            the only way to get a performance trace, a Lighthouse audit or a heap
-            snapshot out of an agent loop. Running both is defensible and running
-            neither is fine — Microsoft says out loud that a coding agent may be
-            better served by the Playwright CLI with skills than by MCP at all.
+            The only real either-or in this cluster is the browser one, and it is a
+            three-way. Microsoft&rsquo;s Playwright server is the default: leanest,
+            actively developed, fenced to your workspace. Chrome DevTools MCP is the
+            only one that gets a performance trace, a Lighthouse audit or a heap
+            snapshot out of an agent loop. ExecuteAutomation&rsquo;s Playwright
+            server is the one to pick deliberately, for recording a session into a
+            runnable test file or emulating a named device — and knowing that it has
+            not been touched since December 2025. Running none of them is also fine:
+            Microsoft says out loud that a coding agent may be better served by the
+            Playwright CLI with skills than by MCP at all.
           </p>
           <p className="mt-4 leading-relaxed text-gray-400">
             Everything else here stacks. The GitHub server, the Figma server and
@@ -284,11 +295,12 @@ export default function CodeGuidesPage() {
           </p>
           <p className="mt-4 leading-relaxed text-gray-400">
             Then check what the connection inherits, because it is not uniform
-            here the way it is with a database or a deploy platform. Two of these
-            six have a documented read-only path — GitHub has three, one per
-            distribution. Two attach to a live local process and can do whatever
-            you can do inside it. One is fenced to your workspace by default and
-            has a flag that unfences it. Reading that row first is a shorter job
+            here the way it is with a database or a deploy platform. GitHub is the
+            only one with a documented read-only path, and it has three, one per
+            distribution. Three attach to a live local process — two of them a
+            browser, one your open Blender — and can do whatever you can do inside
+            it. One is fenced to your workspace by default and has a flag that
+            unfences it. Reading that row first is a shorter job
             than recovering from having skipped it.
           </p>
         </section>
