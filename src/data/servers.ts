@@ -4093,8 +4093,8 @@ const _serversPart1: MCPServer[] = [
   },
   {
     slug: 'chrome-devtools',
-    name: 'Chrome DevTools',
-    description: 'Enable AI coding assistants to debug web pages directly in Chrome.',
+    name: 'Chrome DevTools MCP Server',
+    description: 'Google\'s own MCP server for driving and inspecting a live Chrome instance — the one case where "browser automation" undersells what a server does, because automation is only one of eleven tool categories. It is built on Puppeteer for the clicking and typing (with automatic waiting for action results), and on the Chrome DevTools frontend for the part nothing else offers: `performance_start_trace` / `performance_stop_trace` record a real trace and `performance_analyze_insight` returns the same actionable insights the Performance panel shows, optionally alongside CrUX field data for the same URL. There is also `lighthouse_audit`. Roughly 56 tools ship across Input automation (10), Navigation (6), Emulation (2), Performance (3), Network (2), Debugging (8, including `take_snapshot` of the accessibility tree and source-mapped console messages), Memory heap-snapshot analysis (12), Extensions (5), third-party developer tools, WebMCP and Progressive Web Apps — but several of those categories are off by default and gated behind flags: `--categoryExtensions`, `--categoryPwa`, `--memoryDebugging`, `--experimentalScreencast` (needs ffmpeg), `--experimentalVision` for coordinate-based `click_at`. Run `--slim` for a smaller set if you only want basic browsing. By default the server launches its own Chrome against a dedicated profile at `$HOME/.cache/chrome-devtools-mcp/chrome-profile`, so it starts logged in to nothing; `--autoConnect` (Chrome 144+, with remote debugging enabled at `chrome://inspect/#remote-debugging`) or `--browserUrl=http://127.0.0.1:9222` instead attach it to a browser you are already using, which is how you test signed-in flows and also how an agent inherits your real session. Network access can be fenced with `--blockedUrlPattern` / `--allowedUrlPattern` (URLPattern syntax; the allow form needs Chrome 149+). Only Google Chrome and Chrome for Testing are officially supported. Note that usage statistics are collected by default and CrUX lookups are on by default — opt out with `--no-usage-statistics` and `--no-performance-crux`.',
     author: 'Google',
     github_url: 'https://github.com/ChromeDevTools/chrome-devtools-mcp',
     source_verified: true,
@@ -4103,8 +4103,11 @@ const _serversPart1: MCPServer[] = [
     categories: ['browser', 'coding'],
     integrations: ['claude-desktop', 'cursor', 'vs-code', 'windsurf', 'cline'],
     install_type: 'npm',
-    install_command: 'npx -y chrome-devtools-mcp',
+    install_command: 'npx -y chrome-devtools-mcp@latest',
+    install_verified: true,
+    install_checked: '2026-08-15',
     official: true,
+    stars: 49191,
   },
   {
     slug: 'kiln',
@@ -39494,11 +39497,11 @@ const _serversPart28: MCPServer[] = [
     categories: ['coding', 'search', 'ai'],
     integrations: ['claude-desktop', 'cursor', 'vs-code', 'windsurf', 'zed', 'continue', 'cline'],
     install_type: 'npm',
-    install_command: 'npx -y @upstash/context7-mcp',
+    install_command: 'npx ctx7 setup',
     install_verified: true,
-    install_checked: '2026-07-31',
+    install_checked: '2026-08-15',
     official: true,
-    stars: 60610,
+    stars: 60778,
   },
   // mcp-inspector — target keyword "mcp inspector" (18,100 SV / SD 36), plus
   // "mcp inspector tool" (720), "npx mcp inspector" (480), "mcp inspector online" (480)

@@ -83,6 +83,7 @@ const CATEGORY_PRIORITY: [string, BucketId][] = [
 const CLUSTER_PAGES: Partial<Record<BucketId, { href: string; noun: string }>> = {
   data: { href: "/guides/databases", noun: "database" },
   infra: { href: "/guides/devops", noun: "DevOps" },
+  code: { href: "/guides/code", noun: "code and browser" },
 };
 
 function bucketFor(categories: readonly string[]): BucketId {

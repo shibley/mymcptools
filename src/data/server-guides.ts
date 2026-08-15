@@ -3612,6 +3612,345 @@ codex mcp add figma --url https://mcp.figma.com/mcp`,
       ],
     },
   },
+  {
+    slug: 'chrome-devtools',
+    verifiedOn: '2026-08-15',
+    sources: [
+      { label: 'ChromeDevTools/chrome-devtools-mcp README', url: 'https://github.com/ChromeDevTools/chrome-devtools-mcp' },
+      { label: 'Same repo — docs/troubleshooting.md', url: 'https://github.com/ChromeDevTools/chrome-devtools-mcp/blob/main/docs/troubleshooting.md' },
+      { label: 'npm — chrome-devtools-mcp', url: 'https://www.npmjs.com/package/chrome-devtools-mcp' },
+      { label: 'Chrome for Developers — remote debugging port', url: 'https://developer.chrome.com/blog/remote-debugging-port' },
+    ],
+    intro:
+      'Filed under browser automation everywhere, and that is the part of it worth the least. Clicking and typing is ten of roughly fifty-six tools, and Playwright does that job with a smaller context footprint. What only this server has is the panel side of Chrome: record a real performance trace and get back the same insights the Performance panel computes, run a Lighthouse audit, read console messages with source-mapped stack traces, and walk a heap snapshot through twelve dedicated tools. The decision that actually matters at install time is not which browser server to use — it is which browser it drives. By default it launches its own Chrome against a dedicated profile under $HOME/.cache/chrome-devtools-mcp, which is signed in to nothing; the two flags that fix that, --autoConnect and --browserUrl, are also the two ways an agent ends up holding your real logged-in session. Read that part before the tool list.',
+    setup: {
+      title: 'Setting up Chrome DevTools MCP',
+      steps: [
+        {
+          title: 'Add the server with its own Chrome',
+          body:
+            'Node LTS and a current stable Chrome are the only requirements, and there is nothing to install ahead of time. Pinning to @latest is the README recommendation rather than an accident — the tool surface moves, and 1.7.0 was published five days before this guide was verified. Note that the browser does not start when the client connects; it starts the first time a tool needs it, so an empty tab list right after connecting is expected.',
+          code: 'claude mcp add chrome-devtools --scope user npx chrome-devtools-mcp@latest',
+          codeLabel: 'shell',
+        },
+        {
+          title: 'Or paste the client config directly',
+          body:
+            'The same entry works in Cursor, VS Code, Cline, Codex, Copilot CLI, Gemini CLI and Antigravity, which all take a command-plus-args block. On Windows 10, an MCP error -32000 "Connection closed" during discovery usually means npx is not resolving from inside the host process; the documented fix is to run it through cmd /c, or to give the absolute path to the npx shim.',
+          code: '{\n  "mcpServers": {\n    "chrome-devtools": {\n      "command": "npx",\n      "args": ["-y", "chrome-devtools-mcp@latest"]\n    }\n  }\n}',
+          codeLabel: 'mcp.json',
+        },
+        {
+          title: 'Decide whether it drives your browser or its own',
+          body:
+            'This is the real configuration decision. The default profile lives at $HOME/.cache/chrome-devtools-mcp/chrome-profile (per channel, and reused between runs — only one browser can hold it at a time, so pass --isolated for a temporary one). That profile has none of your logins, which is why testing a signed-in flow pushes people to attach to a running Chrome instead. Chrome 144+ supports --autoConnect: enable remote debugging at chrome://inspect/#remote-debugging, and the server connects to your default profile after you approve a permission dialog — with access to every open window in it.',
+          code: '{\n  "mcpServers": {\n    "chrome-devtools": {\n      "command": "npx",\n      "args": ["chrome-devtools-mcp@latest", "--autoConnect"]\n    }\n  }\n}',
+          codeLabel: 'mcp.json',
+        },
+        {
+          title: 'Or attach over the remote debugging port',
+          body:
+            'The older, sandbox-friendly path. Start Chrome yourself with a debugging port and point the server at it with --browserUrl. Chrome requires a non-default user data directory when the port is open, which is a security measure and not an inconvenience to work around: the port is unauthenticated, so any process on the machine can drive that browser for as long as it is open. Close it when you are done, and do not browse anything sensitive in that window.',
+          code: '# macOS — start Chrome with the port open\n/Applications/Google\\ Chrome.app/Contents/MacOS/Google\\ Chrome \\\n  --remote-debugging-port=9222 \\\n  --user-data-dir=/tmp/chrome-profile-stable\n\n# then run the server against it\nnpx chrome-devtools-mcp@latest --browser-url=http://127.0.0.1:9222',
+          codeLabel: 'shell',
+        },
+        {
+          title: 'Turn on the tool categories you actually want',
+          body:
+            'Several categories are off by default, so "the extension tools are missing" is a flag, not a bug. --categoryExtensions and --categoryPwa both require a pipe connection and do not work with --autoConnect, --browserUrl or --wsEndpoint. --memoryDebugging adds the twelve heap-snapshot tools, --experimentalScreencast needs ffmpeg on the server PATH, and --experimentalVision adds coordinate-based click_at, which is only useful with a model that can produce accurate coordinates from a screenshot. Going the other way, --slim trims to a basic browsing set and --categoryEmulation=false, --categoryPerformance=false or --categoryNetwork=false drop what you are not using.',
+          code: 'npx chrome-devtools-mcp@latest --memoryDebugging --categoryExtensions',
+          codeLabel: 'shell',
+        },
+        {
+          title: 'Fence the network and shrink the screenshots',
+          body:
+            'Two settings worth changing before an agent runs unattended. --blockedUrlPattern and --allowedUrlPattern restrict what the browser can reach using URLPattern syntax, blocking navigations and subresources and silently detaching from targets that violate them (the allow form needs Chrome 149+). And screenshots are the fastest way to burn a context window: --screenshotFormat webp with --screenshotQuality and --screenshotMaxWidth produces images three to five times smaller than the PNG default.',
+          code: 'npx chrome-devtools-mcp@latest \\\n  --allowedUrlPattern "https://staging.example.com/*" \\\n  --screenshotFormat webp --screenshotMaxWidth 1200',
+          codeLabel: 'shell',
+        },
+        {
+          title: 'Opt out of the telemetry if you need to',
+          body:
+            'Both defaults here are on. Google collects usage statistics — tool invocation success rates, latency, environment information — unless you pass --no-usage-statistics or set CHROME_DEVTOOLS_MCP_NO_USAGE_STATISTICS; it is disabled automatically when CI is set. Separately, the performance tools send trace URLs to the CrUX API to fetch real-user field data, which --no-performance-crux turns off. Opting out of Chrome browser metrics does not cover either of these.',
+          code: '{\n  "args": ["-y", "chrome-devtools-mcp@latest", "--no-usage-statistics", "--no-performance-crux"]\n}',
+          codeLabel: 'mcp.json',
+        },
+      ],
+    },
+    tools: {
+      title: 'What it can do',
+      note:
+        'Roughly fifty-six tools across eleven categories, and the split is the argument for using this server rather than a general browser one. Input automation, navigation and emulation are table stakes; performance, network, debugging and memory are the DevTools panels, and nothing else exposes them over MCP.',
+      items: [
+        { name: 'performance_start_trace / performance_stop_trace', what: 'Records a real Chrome performance trace around a navigation or interaction. This is the tool the README uses for its smoke test — "Check the performance of https://developers.chrome.com".' },
+        { name: 'performance_analyze_insight', what: 'Returns a specific insight from the recorded trace, the same analysis the Performance panel computes, optionally alongside CrUX field data for the same URL so lab and real-user numbers sit together.' },
+        { name: 'lighthouse_audit', what: 'Runs a Lighthouse audit from inside the agent loop, so "why is this page slow" and "fix it" happen in one conversation instead of two tools.' },
+        { name: 'take_snapshot', what: 'A structured text snapshot of the page rather than an image — the accessibility-tree view a model can act on deterministically, and far cheaper in context than a screenshot.' },
+        { name: 'list_console_messages / get_console_message', what: 'Console output with source-mapped stack traces, which is the difference between a frame in a minified bundle and a line in your own source.' },
+        { name: 'list_network_requests / get_network_request', what: 'The Network panel: what was requested, what came back, and the headers and timing for any one of them.' },
+        { name: 'take_heapsnapshot and 11 companions', what: 'Heap analysis behind --memoryDebugging: summaries, dominators, retainers, retaining paths, duplicate strings, and compare_heapsnapshots for the before-and-after that actually finds a leak.' },
+        { name: 'evaluate_script', what: 'Runs JavaScript in the page context. The escape hatch when no named tool fits, and the one to think about before pointing this at a page you do not control.' },
+        { name: 'install_extension / reload_extension / trigger_extension_action', what: 'Extension development tools, behind --categoryExtensions and a pipe connection. Reloading an unpacked extension and firing its action is otherwise a manual loop.' },
+      ],
+    },
+    useCases: [
+      {
+        title: 'Find out why a page is slow and fix it in the same session',
+        prompt:
+          'Record a performance trace of https://example.com/pricing, then tell me the largest contentful paint and what is delaying it.',
+        why:
+          'The trace, the insight analysis and the source file are all reachable from one conversation. This is the workflow the server was built for, and the one nothing else on this list can do.',
+      },
+      {
+        title: 'Debug a form that fails only in the browser',
+        prompt:
+          'Open the checkout page, fill the form with test data, submit it, then show me the console errors and the failing network request.',
+        why:
+          'Input automation plus console plus network in one loop. The source-mapped stack traces are what make the console output worth reading rather than a wall of minified frames.',
+      },
+      {
+        title: 'Confirm a memory leak instead of guessing at one',
+        prompt:
+          'Take a heap snapshot, navigate between the two tabs ten times, take another, and compare them for retained detached nodes.',
+        why:
+          'compare_heapsnapshots with dominator and retaining-path tools is a genuinely hard manual task, and it is the reason to accept the extra tools that --memoryDebugging loads.',
+      },
+    ],
+    gotchas: [
+      {
+        question: 'Does Chrome DevTools MCP use my normal Chrome profile?',
+        answer:
+          'Not by default. It launches its own Chrome against $HOME/.cache/chrome-devtools-mcp/chrome-profile (with the channel name appended for non-stable channels), which is signed in to nothing and is reused between runs. Only one browser can use that directory at a time — pass --isolated for a throwaway profile per session. Your real profile is only involved if you deliberately attach to a running browser with --autoConnect or --browserUrl, and at that point the server has access to every open window in that profile.',
+      },
+      {
+        question: 'How do I make it use a browser I am already signed in to?',
+        answer:
+          'Two ways, and they suit different situations. --autoConnect (Chrome 144+) connects to your locally running browser after you enable remote debugging at chrome://inspect/#remote-debugging and approve a dialog; it picks the default profile if you have several. --browserUrl=http://127.0.0.1:9222 connects to a Chrome you started yourself with --remote-debugging-port, which is the option that works when the MCP server runs inside a sandbox that cannot launch a browser. Some sites also refuse sign-in when the browser is WebDriver-controlled, which is a second reason to attach rather than launch.',
+      },
+      {
+        question: 'Is it safe to open the Chrome remote debugging port?',
+        answer:
+          'Treat it as a local root handle on that browser. The port is unauthenticated, so any application on the machine can connect and control it while it is open — the README says so directly. Chrome mitigates the worst case by refusing to open the port against your default user data directory, which is why the documented commands all pass --user-data-dir. Start it only when you need it, do not sign in to anything sensitive in that window, and close it afterwards.',
+      },
+      {
+        question: 'Why do I get a Target closed error?',
+        answer:
+          'The browser could not start. The usual cause is another Chrome instance already holding the profile — close running Chrome instances and retry — and the next most common is a system that cannot run Chrome at all. A related failure appears when the MCP client sandboxes the server with macOS Seatbelt or a Linux container: Chrome needs to create its own sandboxes, cannot, and dies. Disable sandboxing for this server in the client, or use --browserUrl against a browser you start outside the sandbox.',
+      },
+      {
+        question: 'Where did the extension or PWA tools go?',
+        answer:
+          'They are off by default. --categoryExtensions and --categoryPwa turn them on, and both are only supported over a pipe connection — if you are using --autoConnect, --browserUrl or --wsEndpoint they will not appear regardless of the flag. The same pattern covers --memoryDebugging for heap snapshots, --experimentalScreencast (which additionally needs ffmpeg on the server PATH), --experimentalVision for click_at, and --categoryExperimentalWebmcp, which needs Chrome 150+ launched with --enable-features=WebMCP.',
+      },
+      {
+        question: 'Does Chrome DevTools MCP send data to Google?',
+        answer:
+          'Yes, on two separate channels, both enabled by default. Usage statistics — tool invocation success rates, latency and environment information — go to Google unless you pass --no-usage-statistics or set CHROME_DEVTOOLS_MCP_NO_USAGE_STATISTICS (CI also disables it). And the performance tools send trace URLs to the CrUX API to fetch field data, which --no-performance-crux disables. Opting out of Chrome browser metrics does not opt you out of either; they are independent.',
+      },
+      {
+        question: 'Does it work in WSL, or with Edge and Brave?',
+        answer:
+          'WSL needs Chrome installed inside the Linux distribution — launching Chrome on the Windows side currently fails because of a known WSL issue — or mirrored networking plus a --browser-url connection to a Windows-side Chrome. On browsers: only Google Chrome and Chrome for Testing are officially supported. Other Chromium-based browsers may work and are explicitly not guaranteed, and support tracks the latest Extended Stable Chrome.',
+      },
+      {
+        question: 'Can several agents share one Chrome DevTools MCP server?',
+        answer:
+          'Only with --experimentalPageIdRouting, which exposes pageId on page-scoped tools so each agent can address the tab it is working on. Most clients start one server per conversation and do not need it; clients that share a single instance across subagents do. Add --isolated if you also want each session to get its own temporary Chrome profile rather than contending for the shared user data directory. Separately, the server forces all tabs to load, so pointing it at a browser with hundreds of open tabs is documented as not recommended.',
+      },
+    ],
+    comparison: {
+      note:
+        'Three servers drive a browser and they are not interchangeable — the question is what you want out of the page.',
+      items: [
+        {
+          name: 'Playwright MCP (Microsoft)',
+          slug: 'microsoft-playwright-mcp',
+          choose:
+            'Cross-browser automation and test work. It drives the accessibility tree with a leaner tool surface, and Microsoft itself suggests the Playwright CLI with skills when the session is mostly code. Choose Chrome DevTools MCP when you want traces, Lighthouse, heap snapshots or source-mapped console output.',
+        },
+        {
+          name: 'Playwright MCP (ExecuteAutomation)',
+          slug: 'playwright',
+          choose:
+            'Generating test code and running API tests alongside the browser. A community server with a different emphasis from Microsoft\'s, and a different project despite the shared name.',
+        },
+        {
+          name: 'Puppeteer MCP',
+          slug: 'puppeteer',
+          choose:
+            'Nothing new. It is archived in modelcontextprotocol/servers-archived, and this server is built on Puppeteer anyway — Chrome DevTools MCP is the maintained thing that superseded it, from the same people who maintain the browser.',
+        },
+        {
+          name: 'A hosted browser service',
+          choose:
+            'When the browser should not run on your machine at all. Everything here is local: the tools reach local files and internal addresses exactly as your own browser does, which is fine for debugging your own app and is the whole risk when the agent visits a page you do not control.',
+        },
+      ],
+    },
+  },
+  {
+    slug: 'context7',
+    verifiedOn: '2026-08-15',
+    sources: [
+      { label: 'upstash/context7 README', url: 'https://github.com/upstash/context7' },
+      { label: 'Same repo — packages/mcp/CHANGELOG.md', url: 'https://github.com/upstash/context7/blob/master/packages/mcp/CHANGELOG.md' },
+      { label: 'npm — @upstash/context7-mcp', url: 'https://www.npmjs.com/package/@upstash/context7-mcp' },
+      { label: 'npm — ctx7 CLI', url: 'https://www.npmjs.com/package/ctx7' },
+    ],
+    intro:
+      'The most-copied Context7 setup on the internet references a tool that has not existed since December 2025. get-library-docs was removed in v2.0.0 and replaced by query-docs, and the rule snippets, Copilot config blocks and blog posts that name it are all still circulating — including the README published with the current npm package, 4.0.2, which carries a GitHub Copilot config listing "tools": ["get-library-docs", "resolve-library-id"]. The repository README is the one that is current. Two other things are worth knowing before you install: the recommended path is now the ctx7 CLI rather than a hand-written MCP entry, and it can set Context7 up with no MCP server at all, as a skill that shells out to CLI commands. Which of those two you pick is the actual decision here, and it depends on how much of your context window you are willing to spend.',
+    setup: {
+      title: 'Setting up Context7',
+      steps: [
+        {
+          title: 'Run the setup command',
+          body:
+            'One command does the whole thing: it authenticates over OAuth, generates an API key and installs the integration. It will ask whether you want CLI plus Skills mode or MCP mode. Target a specific agent with --cursor, --claude or --opencode. Node 18 or newer is required for the CLI itself; the MCP server package needs Node 20.18.1 or newer as of 3.2.5, which dropped Node 18 when it moved to undici 7.',
+          code: 'npx ctx7 setup',
+          codeLabel: 'shell',
+        },
+        {
+          title: 'Choose CLI plus Skills, or MCP',
+          body:
+            'CLI plus Skills installs a skill that teaches your agent to run ctx7 library and ctx7 docs as shell commands — no MCP server, no tool schemas loaded into every request, and the docs arrive only when the agent decides to fetch them. MCP mode registers the server so the two tools are always present. On a coding agent that already has a shell, the CLI mode is usually the cheaper choice; MCP mode is the one to take when the client has no shell access or when you want the tools visible in the client tool list.',
+          code: '# what the skill mode actually runs\nctx7 library next.js "middleware jwt cookies"\nctx7 docs /vercel/next.js "middleware jwt cookies"',
+          codeLabel: 'shell',
+        },
+        {
+          title: 'Or wire the hosted server by hand',
+          body:
+            'There is no local server to run in the normal case: Context7 is a hosted endpoint at https://mcp.context7.com/mcp, and the API key travels as an Authorization: Bearer header. A free key from context7.com/dashboard mainly buys higher rate limits — anonymous use works until you cross a per-IP threshold, at which point the server fires an MCP elicitation asking you to sign in rather than silently degrading.',
+          code: '{\n  "mcpServers": {\n    "context7": {\n      "type": "http",\n      "url": "https://mcp.context7.com/mcp",\n      "headers": {\n        "Authorization": "Bearer YOUR_API_KEY"\n      }\n    }\n  }\n}',
+          codeLabel: 'mcp.json',
+        },
+        {
+          title: 'Add a rule so you stop typing "use context7"',
+          body:
+            'Out of the box you trigger it by appending use context7 to a prompt. ctx7 setup installs a skill that fires on library questions automatically; if you configured things manually, add the rule yourself — Cursor Settings then Rules, or CLAUDE.md for Claude Code. This is the single change that moves Context7 from a thing you remember to a thing that works.',
+          code: 'Always use Context7 when I need library/API documentation, code generation,\nsetup or configuration steps without me having to explicitly ask.',
+          codeLabel: 'CLAUDE.md',
+        },
+        {
+          title: 'Name the library ID when you already know it',
+          body:
+            'Every question otherwise costs two calls: resolve-library-id to turn a name into an ID, then query-docs against that ID. Naming the ID in the prompt skips the first one. IDs look like /vercel/next.js, /supabase/supabase or /mongodb/docs. Versions work the same way — mention the version in the sentence and Context7 matches it, which is the entire point of the product.',
+          code: 'Implement basic authentication with Supabase.\nuse library /supabase/supabase for API and docs.',
+          codeLabel: 'prompt',
+        },
+        {
+          title: 'Ask one concept per query',
+          body:
+            'A deliberate constraint rather than a style preference. The 3.2.3 release rewrote the query-docs description to tell callers to make a separate query per concept, because combining distinct topics in one query returns diluted, shallow results — the retrieval is a vector search, so a query spanning two subjects matches the middle of neither. The server also caps itself at three tool calls per question to stop an agent grinding through your context window.',
+          code: '# instead of one query spanning both\nctx7 docs /vercel/next.js "route handlers"\nctx7 docs /vercel/next.js "middleware matcher config"',
+          codeLabel: 'shell',
+        },
+      ],
+    },
+    tools: {
+      title: 'What it can do',
+      note:
+        'Two MCP tools, and the small surface is the design. Both are read-only and carry the readOnlyHint annotation, so a client that surfaces tool safety will show them as non-destructive.',
+      items: [
+        { name: 'resolve-library-id', what: 'Turns a plain library name into a Context7 ID. Requires both libraryName and query — the query is not decoration, it is what ranks and deduplicates the candidate libraries by what you are actually trying to do.' },
+        { name: 'query-docs', what: 'Fetches documentation for an exact library ID. Takes libraryId and query. This is the tool that replaced get-library-docs in v2.0.0, along with the rename of context7CompatibleLibraryID to libraryId.' },
+        { name: 'ctx7 library (CLI)', what: 'The CLI equivalent of resolve-library-id — searches the index by name and returns matching libraries with their IDs.' },
+        { name: 'ctx7 docs (CLI)', what: 'The CLI equivalent of query-docs. Same retrieval, invoked as a shell command, which is how the skill mode avoids loading tool schemas into every request.' },
+      ],
+    },
+    useCases: [
+      {
+        title: 'Stop the model writing config for a version you are not running',
+        prompt:
+          'How do I set up Next.js 14 middleware? use context7',
+        why:
+          'Version matching is the thing Context7 does that a web search in the loop does not. Naming the version in the sentence is the whole interface — there is no version parameter to pass.',
+      },
+      {
+        title: 'Pin the library when the name is ambiguous',
+        prompt:
+          'Implement row level security policies. use library /supabase/supabase for API and docs.',
+        why:
+          'Skips resolve-library-id entirely, which halves the calls and removes the chance of the resolver picking a fork, a mirror or a similarly named package.',
+      },
+      {
+        title: 'Get real examples for a library released after the model was trained',
+        prompt:
+          'Configure a Cloudflare Worker script to cache JSON API responses for five minutes. use context7',
+        why:
+          'This is the failure mode Context7 exists for: the model has a confident answer from year-old training data and no way to know it is stale. The docs arrive before the code is written rather than after it fails.',
+      },
+    ],
+    gotchas: [
+      {
+        question: 'Why does get-library-docs not work in Context7?',
+        answer:
+          'Because it was removed. v2.0.0, published 2025-12-29, deleted get-library-docs and replaced it with query-docs; the same release made query required on resolve-library-id and renamed the context7CompatibleLibraryID parameter to libraryId. The name survives because it is baked into rule templates, blog posts and client config snippets — including the README shipped with the current npm package, 4.0.2, which still lists it in a GitHub Copilot config block. If your agent is calling get-library-docs, the fix is in your rule file, not in your setup.',
+      },
+      {
+        question: 'Do I need an API key for Context7?',
+        answer:
+          'No, but you want one. Anonymous use works; the free key from context7.com/dashboard buys higher rate limits. What happens when you cross the anonymous per-IP threshold is unusually well handled — since 3.2.0 the backend signals it with an X-Context7-Auth-Prompt header and the MCP server raises an elicitation/create request, so a client that supports elicitation prompts you to sign in instead of appending nag text into the tool result or failing.',
+      },
+      {
+        question: 'Should I use Context7 as an MCP server or as a CLI skill?',
+        answer:
+          'The CLI plus Skills mode is the better default on a coding agent that has shell access, because nothing is loaded into context until the agent decides to fetch docs — no tool schemas in every request. MCP mode is right when the client cannot run shell commands, when you want the tools listed in the client UI, or when several clients should share one configured endpoint. ctx7 setup asks you which one you want, and npx ctx7 remove reverses whichever it installed.',
+      },
+      {
+        question: 'Can I self-host Context7?',
+        answer:
+          'Not meaningfully. The public repository contains the MCP server, the CLI and the SDKs; the API backend, the parsing engine and the crawling engine are private. So running the open-source part still points at Upstash infrastructure at mcp.context7.com. There is a developer guide for running the MCP server locally, but local here means the protocol layer, not the index.',
+      },
+      {
+        question: 'How accurate is Context7 documentation?',
+        answer:
+          'Upstash is direct about this: the indexed projects are community-contributed, maintained by their owners rather than by Context7, and accuracy, completeness and security are not guaranteed. Every project page carries a Report button for suspicious or harmful content. In practice this means Context7 is much better than the model guessing and is not a substitute for the official docs on anything security-sensitive — check the source when the answer touches auth, permissions or key handling.',
+      },
+      {
+        question: 'Why do I get Invalid input: expected string, received undefined?',
+        answer:
+          'An argument-name mismatch, usually from a model echoing phrasing out of the tool description rather than the schema. The server now ships a compatibility shim for exactly this: userQuery and question are rewritten to query on either tool, and context7CompatibleLibraryID, libraryID and libraryName are rewritten to libraryId on query-docs. The published schemas are unchanged, so the canonical names are still what tools/list advertises — if you are seeing this error, you are on a build older than that shim.',
+      },
+      {
+        question: 'Why do my Context7 requests hang or return 503?',
+        answer:
+          'Both were real, both are fixed, and both are worth knowing if you have pinned a version. 4.0.1 stopped forcing SSE on every response — that had pushed concurrent upstream streams from about ten to over five thousand and exhausted the gateway pool, returning 503 reset reason: overflow. 4.0.2 then added a 60-second timeout to the backend calls, where previously a stalled call rode undici\'s roughly 300-second default, and disabled SSE keepalives so hung exchanges can be reaped by proxy idle timeouts. Upgrade rather than diagnose.',
+      },
+      {
+        question: 'Does Context7 work behind a corporate proxy?',
+        answer:
+          'From 3.2.5 onward, yes. Earlier versions bundled undici 6, and on Node 26 and above its setGlobalDispatcher wrote a global-dispatcher symbol the built-in fetch no longer reads — so HTTPS_PROXY and custom CA settings were silently ignored and requests failed with ENOTFOUND behind CONNECT proxies. undici 7 writes both symbols and restores proxy and CA support. That release is also what raised the floor to Node 20.18.1. Separately, 3.2.2 added validation of Enterprise-Managed Auth tokens so clients can authenticate through an enterprise IdP such as Okta.',
+      },
+    ],
+    comparison: {
+      note:
+        'Context7 is a context source rather than a tool that does something to your project, so the real comparison is against the other ways docs reach the model.',
+      items: [
+        {
+          name: 'A web search or fetch tool',
+          choose:
+            'When you need something that is not a library — a changelog thread, an issue, a blog post. Context7 wins on library documentation specifically because it is version-aware and returns ranked snippets rather than a page you then have to pay to read into context.',
+        },
+        {
+          name: 'The library docs in your repo or an AGENTS.md',
+          choose:
+            'For anything about your own code and conventions. Context7 knows nothing about your project — it answers "how does this library work", never "how do we use it here". The two are complements, not alternatives.',
+        },
+        {
+          name: 'Serena MCP',
+          slug: 'serena',
+          choose:
+            'When the missing context is your own codebase rather than a dependency. Serena gives symbol-level retrieval over your project; Context7 gives version-matched documentation for what your project imports.',
+        },
+        {
+          name: 'GitHub MCP Server',
+          slug: 'github',
+          choose:
+            'When you want the repository itself — issues, pull requests, file contents, CI. Reading a library\'s source through GitHub answers documentation questions too, at considerably more tokens and with no version resolution.',
+        },
+      ],
+    },
+  },
 ]
 
 const guideBySlug = new Map(guides.map((g) => [g.slug, g] as const));

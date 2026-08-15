@@ -131,6 +131,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'weekly',
       priority: 0.9,
     },
+    // And for "browser mcp server" / "coding mcp server" — the six code-bucket
+    // guides compared on what each server attaches to and what it inherits.
+    {
+      url: `${baseUrl}/guides/code`,
+      lastModified: now,
+      changeFrequency: 'weekly',
+      priority: 0.9,
+    },
     {
       url: `${baseUrl}/mcp-server`,
       lastModified: now,
