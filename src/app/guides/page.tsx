@@ -84,6 +84,7 @@ const CLUSTER_PAGES: Partial<Record<BucketId, { href: string; noun: string }>> =
   data: { href: "/guides/databases", noun: "database" },
   infra: { href: "/guides/devops", noun: "DevOps" },
   code: { href: "/guides/code", noun: "code and browser" },
+  work: { href: "/guides/workspace", noun: "workspace and team-tool" },
 };
 
 function bucketFor(categories: readonly string[]): BucketId {

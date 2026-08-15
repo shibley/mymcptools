@@ -335,6 +335,13 @@ export default function CodeGuidesPage() {
             DevOps MCP servers, compared
           </Link>
           {" · "}
+          <Link
+            href="/guides/workspace"
+            className="text-blue-400 hover:text-blue-300"
+          >
+            Workspace MCP servers, compared
+          </Link>
+          {" · "}
           <Link href="/guides" className="text-blue-400 hover:text-blue-300">
             All setup guides
           </Link>

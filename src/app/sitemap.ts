@@ -139,6 +139,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'weekly',
       priority: 0.9,
     },
+    // And for "workspace mcp server" / "productivity mcp server" — the ten
+    // docs-and-tickets guides compared on what the auth step actually grants
+    // and why each one connects and then returns nothing.
+    {
+      url: `${baseUrl}/guides/workspace`,
+      lastModified: now,
+      changeFrequency: 'weekly',
+      priority: 0.9,
+    },
     {
       url: `${baseUrl}/mcp-server`,
       lastModified: now,

@@ -305,6 +305,21 @@ export default function DatabaseGuidesPage() {
 
         <p className="mt-12 text-sm text-gray-500">
           Looking for something other than a database?{" "}
+          <Link href="/guides/devops" className="text-blue-400 hover:text-blue-300">
+            DevOps MCP servers, compared
+          </Link>
+          {" · "}
+          <Link href="/guides/code" className="text-blue-400 hover:text-blue-300">
+            Code and browser MCP servers, compared
+          </Link>
+          {" · "}
+          <Link
+            href="/guides/workspace"
+            className="text-blue-400 hover:text-blue-300"
+          >
+            Workspace MCP servers, compared
+          </Link>
+          {" · "}
           <Link href="/guides" className="text-blue-400 hover:text-blue-300">
             All setup guides
           </Link>

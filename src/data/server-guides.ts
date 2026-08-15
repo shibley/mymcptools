@@ -4125,6 +4125,309 @@ codex mcp add figma --url https://mcp.figma.com/mcp`,
       ],
     },
   },
+  {
+    slug: 'gmail',
+    verifiedOn: '2026-08-15',
+    sources: [
+      { label: 'taylorwilsdon/google_workspace_mcp README', url: 'https://github.com/taylorwilsdon/google_workspace_mcp' },
+      { label: 'Gmail tool tiers — core/tool_tiers.yaml', url: 'https://github.com/taylorwilsdon/google_workspace_mcp/blob/main/core/tool_tiers.yaml' },
+      { label: 'Workspace MCP FAQ — OAuth errors and client setup', url: 'https://workspacemcp.com/welcome/faq' },
+      { label: 'PyPI — workspace-mcp', url: 'https://pypi.org/project/workspace-mcp/' },
+      { label: 'GongRzhe/Gmail-MCP-Server (archived 2025-08-06)', url: 'https://github.com/GongRzhe/Gmail-MCP-Server' },
+    ],
+    intro:
+      'Google does not publish a Gmail MCP server. That single fact resolves most of the confusion around this term: the two MCP repositories in the googleworkspace GitHub organisation are for building on Workspace APIs, not for reading your mail, so every working Gmail setup is community-built. The one to install is taylorwilsdon/google_workspace_mcp — 3,021 stars, MIT, on PyPI as workspace-mcp — which covers Gmail as one of twelve Workspace services behind a single connection. The one most guides still name is GongRzhe/Gmail-MCP-Server, archived on 2025-08-06 with an npm package unpublished since the same day. It still installs cleanly, which is exactly why it keeps getting recommended.',
+    setup: {
+      title: 'Setting up Gmail MCP',
+      steps: [
+        {
+          title: 'Create your own OAuth client in Google Cloud',
+          body:
+            'The server ships no credentials — you bring a client ID and secret from your own Google Cloud project, with the APIs enabled for the services you plan to use. Use the Web Application client type if you are running it over HTTP; Desktop is only appropriate for a local stdio instance. Picking Desktop for a hosted setup is the single most common mistake, and it surfaces later as Error 400: redirect_uri_mismatch.',
+        },
+        {
+          title: 'Export the credentials and launch',
+          body:
+            'Two environment variables and one command. The tool tiers exist to keep tool schemas out of your context window: core is the essential set, extended adds management operations, complete loads everything.',
+          code: `export GOOGLE_OAUTH_CLIENT_ID="..."
+export GOOGLE_OAUTH_CLIENT_SECRET="..."
+
+uvx workspace-mcp --tool-tier core`,
+          codeLabel: 'shell',
+        },
+        {
+          title: 'Load only Gmail, if Gmail is what you want',
+          body:
+            'The default loads every service you have enabled. `--tools` cherry-picks, and it is the difference between a handful of tool schemas and 120+ on every request. `--read-only` and per-service `--permissions` narrow it further, and `--disabled-tools` subtracts individual tools by name.',
+          code: 'uvx workspace-mcp --tools gmail --read-only',
+          codeLabel: 'shell',
+        },
+        {
+          title: 'Connect the client over HTTP',
+          body:
+            'HTTP is the recommended transport; stdio remains for clients without Connector support. For Claude Desktop, web and mobile, run the server in HTTP mode and add it under Settings → Connectors → Add custom connector. For Claude Code it is one command against the running server.',
+          code: 'claude mcp add --transport http workspace-mcp http://localhost:8000/mcp',
+          codeLabel: 'shell',
+        },
+        {
+          title: 'For a shared or remote endpoint, turn on OAuth 2.1',
+          body:
+            'Multi-user and remote deployments need bearer-token auth rather than a single local credential file. MCP clients connect with PKCE and no secret, but Google still requires a client secret server-side, so both variables stay set. OAuth 2.1 requires the HTTP transport.',
+          code: `export MCP_ENABLE_OAUTH21=true
+export WORKSPACE_MCP_PORT=8000
+export GOOGLE_OAUTH_REDIRECT_URI="http://localhost:\${WORKSPACE_MCP_PORT}/oauth2callback"
+
+uvx workspace-mcp --transport streamable-http --tool-tier core`,
+          codeLabel: 'shell',
+        },
+      ],
+    },
+    tools: {
+      title: 'The fifteen Gmail tools, by tier',
+      note:
+        'Tiers are defined in core/tool_tiers.yaml, so which of these load depends on the --tool-tier you launch with. Only the core four are loaded by default at that tier.',
+      items: [
+        { name: 'search_gmail_messages', what: 'Core. Searches the mailbox with Gmail query syntax — from:, subject:, has:attachment, is:unread, after:.' },
+        { name: 'get_gmail_message_content', what: 'Core. Returns the body and metadata of a single message.' },
+        { name: 'get_gmail_messages_content_batch', what: 'Core. The same for many messages in one call — the tool to prefer when summarising an inbox rather than looping.' },
+        { name: 'send_gmail_message', what: 'Core. Sends mail. Present at the lowest tier, which is worth knowing before you connect it unsupervised.' },
+        { name: 'get_gmail_thread_content', what: 'Extended. Full thread rather than a single message.' },
+        { name: 'get_gmail_attachment_content', what: 'Extended. Reads an attachment; local file reads are sandboxed to the managed attachment directory.' },
+        { name: 'draft_gmail_message', what: 'Extended. Writes a draft instead of sending — the safer half of the write surface.' },
+        { name: 'modify_gmail_message_labels / list_gmail_labels / manage_gmail_label', what: 'Extended. Apply, remove, list and create labels.' },
+        { name: 'list_gmail_filters / manage_gmail_filter', what: 'Extended. Reads and edits Gmail filters, which is server-side rule automation, not just triage.' },
+        { name: 'batch_modify_gmail_message_labels', what: 'Complete. Bulk label changes across many messages at once.' },
+        { name: 'get_gmail_threads_content_batch', what: 'Complete. Batch thread reads for large summarisation jobs.' },
+      ],
+    },
+    useCases: [
+      {
+        title: 'Triage the inbox without granting send access',
+        prompt: 'Search my Gmail for unread messages from the last two days, batch-read them, and give me a list of the ones that need a reply today.',
+        why: 'Run with --read-only and this is the whole job: search plus a batch content read. The batch tool matters — reading messages one at a time is how a triage prompt turns into fifty tool calls.',
+      },
+      {
+        title: 'Draft rather than send',
+        prompt: 'Draft a reply to the most recent thread from this client agreeing to Thursday, and label the thread Follow-Up. Do not send it.',
+        why: 'draft_gmail_message and modify_gmail_message_labels are both extended-tier, so this needs --tool-tier extended. Drafting keeps a human in the loop on the one action that cannot be undone.',
+      },
+      {
+        title: 'Audit what is auto-filing itself',
+        prompt: 'List my Gmail filters and tell me which ones are archiving mail from senders I have replied to in the last month.',
+        why: 'Filters are the part of Gmail nobody re-reads. The filter tools make them inspectable in the same session as the mail they act on.',
+      },
+    ],
+    gotchas: [
+      {
+        question: 'Is there an official Google Gmail MCP server?',
+        answer:
+          'No. The googleworkspace GitHub organisation publishes developer-mcp and dev-assist, both aimed at building on Workspace APIs rather than at reading your mail, and neither is a Gmail server. Any listing that describes a Gmail MCP server as built and maintained by the Google Workspace team is wrong, including — until this page was written — ours. The de facto standard is taylorwilsdon/google_workspace_mcp, a community project under MIT.',
+      },
+      {
+        question: 'Why does @gongrzhe/server-gmail-autoauth-mcp still show up everywhere?',
+        answer:
+          'Because it still works. GongRzhe/Gmail-MCP-Server was archived on 2025-08-06 and its npm package has not been published since 2025-08-06 either, but an archived repository and a frozen package install exactly as cleanly as a maintained one. Nothing at install time warns you. It is the fourth server in this catalog with that shape, after Redis, Elasticsearch and ExecuteAutomation Playwright.',
+      },
+      {
+        question: 'I get Error 400: redirect_uri_mismatch when signing in to Google.',
+        answer:
+          'Your OAuth client is the wrong type or the URIs do not match. Confirm the client is Web Application, not Desktop — Desktop clients have no redirect URI fields at all, so recreating the client is the fix. Then set the Authorized JavaScript Origin to your server origin and the Authorized Redirect URI to that origin plus /oauth2callback. "Access blocked: This app\'s request is invalid" is the same fault wearing a different message.',
+      },
+      {
+        question: 'Google warns that the app is unverified. Is that a problem?',
+        answer:
+          'It is expected, and the project recommends leaving your OAuth app in testing mode unless you have a reason not to. Testing mode is fully functional; the only difference is the consent-screen warning, past which you click Advanced and continue. Organisations that block unverified apps outright should supply their own client ID from the company GCP project, which keeps consent and audit logs inside existing governance.',
+      },
+      {
+        question: 'How do I reach two mailboxes from one client?',
+        answer:
+          'Add the endpoint once per account as separate connectors, giving each a distinct URL by appending an ?email= query parameter. The parameter only exists to stop the client collapsing them into one server — each connection still authenticates independently as its own Google account.',
+      },
+      {
+        question: 'How much of my machine can it read?',
+        answer:
+          'Local file reads default to the managed attachment directory. Broadening that with ALLOWED_FILE_DIRS is possible, but validate_file_path() still refuses .env* files and common credential stores such as ~/.ssh/ and ~/.aws/ regardless. The larger risk is the other direction: the project says plainly that emails can carry hidden instructions, so be deliberate about which write tools you enable.',
+      },
+      {
+        question: 'Why does uvx workspace-cli fail?',
+        answer:
+          'Because an abandoned PyPI package squats that name. The CLI is installed from the repo with `uv tool install .`, and the README flags the squat explicitly. The server itself is the workspace-mcp package and `uvx workspace-mcp` is correct.',
+      },
+    ],
+    comparison: {
+      note:
+        'The choice here is not really between Gmail servers — it is between one maintained multi-service server and a set of frozen single-service ones.',
+      items: [
+        {
+          name: 'GongRzhe/Gmail-MCP-Server',
+          choose:
+            'Do not start here. Archived 2025-08-06, npm unpublished since the same day. It is the most-linked Gmail MCP server and the least maintained one.',
+        },
+        {
+          name: 'Google Drive MCP',
+          slug: 'google-drive',
+          choose:
+            'If you also want Drive, do not install a second server — workspace-mcp covers Drive with 16 tools behind the same OAuth client and the same connection.',
+        },
+        {
+          name: 'Google Sheets MCP',
+          slug: 'google-sheets',
+          choose:
+            'Same reasoning. A separate Sheets server means a second Google Cloud client, a second consent flow and a second set of tool schemas in every request.',
+        },
+        {
+          name: 'Slack MCP',
+          slug: 'slack',
+          choose:
+            'The comparable server for the other inbox. Both connect to a communication surface; Slack differs in that its token classes, not flags, decide what you can do.',
+        },
+      ],
+    },
+  },
+  {
+    slug: 'asana',
+    verifiedOn: '2026-08-15',
+    sources: [
+      { label: "Asana developer docs — Using Asana's MCP Server", url: 'https://developers.asana.com/docs/using-asanas-mcp-server' },
+      { label: 'Asana developer docs — Connecting Coding Clients to the V2 server', url: 'https://developers.asana.com/docs/connecting-mcp-clients-to-asanas-v2-server' },
+      { label: 'Asana developer docs — MCP Tools Reference', url: 'https://developers.asana.com/docs/mcp-tools-reference' },
+      { label: 'roychri/mcp-server-asana README', url: 'https://github.com/roychri/mcp-server-asana' },
+    ],
+    intro:
+      'Asana ships an official MCP server and it is hosted, at https://mcp.asana.com/v2/mcp — so there is nothing to install, and one thing to create. V2 will not accept a generic OAuth client: you register your own app at app.asana.com/0/my-apps, get a client ID and secret, and set a redirect URL that matches your client exactly. The other fact worth reading before you connect it is that MCP apps in Asana do not use permission scopes at all. Authorising grants the full tool set, including deletes, and the only thing bounding it is what your own Asana account can already see.',
+    setup: {
+      title: 'Connecting to the Asana V2 MCP server',
+      steps: [
+        {
+          title: 'Create an Asana MCP app',
+          body:
+            'Go to app.asana.com/0/my-apps and create an app. You get a client ID and a client secret. Asana recommends unique credentials per developer rather than a shared pair, and warns against committing them — the secret is a long-lived credential for your whole work graph.',
+        },
+        {
+          title: 'Set the redirect URL to match your client exactly',
+          body:
+            'This is the step that fails. Each client has its own callback and Asana requires an exact match: Claude Code is http://localhost:8080/callback, Cursor is cursor://anysphere.cursor-mcp/oauth/callback, VS Code needs both http://127.0.0.1:33418/ and https://vscode.dev/redirect, and most others — Windsurf, Kiro, Codex — use http://localhost:3334/oauth/callback.',
+        },
+        {
+          title: 'Add the server (Claude Code)',
+          body:
+            'Claude Code supports pre-registered OAuth credentials natively, which is why Asana recommends it over the mcp-remote bridge. Run the command, then paste the client secret at the prompt — it is hidden as you type and stored in your system keychain, not in ~/.claude.json.',
+          code: `claude mcp add --transport http \\
+  --client-id YOUR_CLIENT_ID \\
+  --client-secret \\
+  --callback-port 8080 \\
+  asana https://mcp.asana.com/v2/mcp`,
+          codeLabel: 'shell',
+        },
+        {
+          title: 'Authorise in the browser',
+          body:
+            'The command opens a browser, you sign in to Asana, review the request and allow access. If your workspace blocks the app under Asana app management, you will instead be prompted to send an unblock request to an admin — that is a workspace policy, not a setup error.',
+        },
+        {
+          title: 'Prefer the community server if you need read-only',
+          body:
+            'The official server has no read-only mode. roychri/mcp-server-asana does: a local npm server on a personal access token from app.asana.com/0/my-apps, with READ_ONLY_MODE=true disabling every create, update and delete tool as well as the create-task prompt.',
+          code: 'claude mcp add asana -e ASANA_ACCESS_TOKEN=<TOKEN> -- npx -y @roychri/mcp-server-asana',
+          codeLabel: 'shell',
+        },
+      ],
+    },
+    tools: {
+      title: 'What the V2 server exposes',
+      note:
+        'Asana states this list changes over time and to run tools/list for current schemas. Read tools return data; write tools change it; interactive tools render a confirmation UI and exist only in Claude and ChatGPT.',
+      items: [
+        { name: 'search_objects', what: 'Universal search across tasks, projects, portfolios, goals, teams, users, tags, custom fields and AI Teammates. The first call when you do not know a GID — and the only way to find goals, since V2 has no dedicated goals tool.' },
+        { name: 'get_my_tasks', what: 'Tasks assigned to the authenticated user. The shortcut for "what is on my plate", filterable by completion.' },
+        { name: 'get_tasks', what: 'Filtered task list by project, section, tag, user task list or assignee. Requires at least one filter — and it is the fallback for workspaces where search_tasks is unavailable.' },
+        { name: 'search_tasks', what: 'Full-text search across names, descriptions and comments with complex filters. Premium accounts only.' },
+        { name: 'get_status_overview', what: 'Aggregated status report across projects or portfolios, including status updates and flagged blockers. It searches internally, so do not chain a search tool before it.' },
+        { name: 'create_tasks / update_tasks', what: 'Create or update up to 50 tasks in one call, with assignee, dates, description, dependencies, project membership and custom fields.' },
+        { name: 'delete_task', what: 'Permanently deletes a task and its subtasks that are not in another project. Cannot be undone, and no scope prevents it.' },
+        { name: 'create_project_status_update', what: 'Posts a status update to a project or portfolio. Needs a title, body and a colour: green, yellow, red, blue or complete.' },
+        { name: 'create_task_preview / create_project_preview / search_tasks_preview', what: 'Interactive. Draft the change and show it for review before committing. Claude and ChatGPT only — every other client goes straight to the write tools.' },
+        { name: 'get_workspace_agents / get_agent', what: 'Lists and describes AI Teammates in the workspace. search_objects with resource_type: actor covers humans and agents together.' },
+      ],
+    },
+    useCases: [
+      {
+        title: 'A status report that reads the blockers, not just the task list',
+        prompt: 'Give me a status overview of the Q3 Rebrand initiative, including any flagged blockers.',
+        why: 'get_status_overview aggregates project details, current status updates and blockers in one call and does its own searching — a prompt that chains search first usually gets a worse answer.',
+      },
+      {
+        title: 'Bulk-create a project plan from a document',
+        prompt: 'Create a project for the Q4 launch with Backlog, In Progress and Done sections, and add these twelve tasks with the owners and dates listed above.',
+        why: 'create_project takes sections and tasks in a single operation, and create_tasks handles 50 at a time. In Claude or ChatGPT, ask for the preview first and you get a confirmation UI before anything is written.',
+      },
+      {
+        title: 'Find work by what it is, not by where it lives',
+        prompt: 'Find every incomplete task across the workspace tagged "security" that is blocking something else.',
+        why: 'search_tasks carries is_blocking and tag filters — on Premium. On a non-Premium workspace this has to be reframed as get_tasks against specific projects, which is the most common way an Asana MCP session quietly under-answers.',
+      },
+    ],
+    gotchas: [
+      {
+        question: 'Does the Asana MCP server have permission scopes?',
+        answer:
+          'No. Asana documents this directly: MCP apps do not use permission scopes, and authorising a client requests full access to all available tools. The only boundary is your own account — a tool cannot reach a project, task or portfolio you could not already open in Asana. That includes delete_task, which is permanent and has no separate consent.',
+      },
+      {
+        question: 'Why does Asana search return nothing on my workspace?',
+        answer:
+          'search_tasks is a Premium feature. On a non-Premium workspace it is unavailable and get_tasks is the documented substitute, which means filtering by project, section, tag, user task list or assignee instead of by free text. A model that reaches for search_tasks first will look like it found nothing rather than like it hit a plan limit.',
+      },
+      {
+        question: 'Which Asana MCP endpoint and redirect URL do I use?',
+        answer:
+          'The endpoint is https://mcp.asana.com/v2/mcp. The redirect URL depends on the client and must match exactly on both sides: http://localhost:8080/callback for Claude Code, cursor://anysphere.cursor-mcp/oauth/callback for Cursor, both http://127.0.0.1:33418/ and https://vscode.dev/redirect for VS Code, and http://localhost:3334/oauth/callback for Windsurf, Kiro and Codex.',
+      },
+      {
+        question: 'Do I need mcp-remote to connect?',
+        answer:
+          'Most clients do, because V2 is an HTTP server behind OAuth. Asana strongly recommends Claude Code specifically because it supports pre-configured OAuth credentials natively and skips the bridge — and its own docs tell you to review the mcp-remote source yourself and accept responsibility if you use it.',
+      },
+      {
+        question: 'How do I stop an agent writing to Asana?',
+        answer:
+          'Not on the official server — there is no read-only mode and no scope to withhold. Use roychri/mcp-server-asana with READ_ONLY_MODE=true, which disables every create, update and delete tool plus the create-task prompt. In Claude or ChatGPT the interactive preview tools are a weaker version of the same idea: a confirmation step, not a guarantee.',
+      },
+      {
+        question: 'Why can it not find my goals?',
+        answer:
+          'V2 has no dedicated goals tool. Goals are reachable through search_objects with resource_type: goal. The same tool covers portfolios, teams, tags, custom fields and AI Teammates, and resource_type: actor searches humans and agents together.',
+      },
+      {
+        question: 'I am prompted to ask an admin to unblock the app.',
+        answer:
+          'Your workspace blocks the client, or the Asana MCP app, under Asana app management. That is a domain policy rather than a misconfiguration, and the prompt sends the request for you. Until an admin clears it, authorisation cannot complete.',
+      },
+    ],
+    comparison: {
+      note:
+        'Official versus community here is a straight trade between coverage and restraint.',
+      items: [
+        {
+          name: 'roychri/mcp-server-asana',
+          choose:
+            'When you want a read-only guarantee, a personal access token instead of a registered OAuth app, or a local process. 146 stars, MIT, npm 1.8.0. It also ships MCP prompts — task-summary, task-completeness, create-task — which the hosted server has no equivalent of.',
+        },
+        {
+          name: 'Linear MCP',
+          slug: 'linear',
+          choose:
+            'The closest comparison in this catalog, and the instructive one: Linear is also first-party and hosted, but exposes a dedicated /mcp/readonly endpoint and a read OAuth scope. Same shape of product, opposite answer on scoping.',
+        },
+        {
+          name: 'Jira MCP',
+          slug: 'jira',
+          choose:
+            'If the tracker is Atlassian. One connection there covers Jira, Confluence, Bitbucket and Compass, and admin consent is a real gate rather than an occasional app-management block.',
+        },
+      ],
+    },
+  },
 ]
 
 const guideBySlug = new Map(guides.map((g) => [g.slug, g] as const));
