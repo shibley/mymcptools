@@ -4428,6 +4428,344 @@ uvx workspace-mcp --transport streamable-http --tool-tier core`,
       ],
     },
   },
+  {
+    slug: 'gitlab',
+    verifiedOn: '2026-08-16',
+    sources: [
+      { label: 'GitLab Docs — GitLab MCP server', url: 'https://docs.gitlab.com/user/model_context_protocol/mcp_server/' },
+      { label: 'GitLab Docs — MCP server tools reference', url: 'https://docs.gitlab.com/user/model_context_protocol/tools/' },
+      { label: 'zereight/gitlab-mcp README', url: 'https://github.com/zereight/gitlab-mcp' },
+      { label: 'zereight/gitlab-mcp docs — environment variables', url: 'https://zereight.github.io/gitlab-mcp/' },
+      { label: 'npm — @zereight/mcp-gitlab', url: 'https://www.npmjs.com/package/@zereight/mcp-gitlab' },
+    ],
+    intro:
+      'There are two GitLab MCP servers and they are not competing implementations of the same thing — they are different products that happen to share a name. GitLab ships one inside the application: no package, no token, answering at https://<your-instance>/api/v4/mcp, authenticating by OAuth Dynamic Client Registration. zereight/gitlab-mcp is the community one: 1,889 stars, npm @zereight/mcp-gitlab, a personal access token in a config file, and 217 tools against GitLab\'s REST and GraphQL APIs. The decision is almost always made for you by your instance version, because the built-in server needs GitLab 18.3 or later with settings an administrator has to turn on. If you are on an older instance, or you do not control those settings, the community server is not a downgrade — it is the only one that will connect.',
+    setup: {
+      title: 'Connecting to the built-in GitLab MCP server',
+      steps: [
+        {
+          title: 'Check the three instance settings first',
+          body:
+            'This is where most first connections die, and none of the failures are client-side. The docs list three prerequisites: GitLab Duo availability set to Always on or On by default, beta and experimental features enabled, and MCP server access allowed. On GitLab.com each is set on the top-level group; on Self-Managed and Dedicated each is set on the instance. The feature entered as an experiment in 18.3 behind the mcp_server and oauth_dynamic_client_registration flags, moved to beta in 18.6 with the flags removed, and became a separate setting available on GitLab Free in 19.2 — before that it needed Premium.',
+        },
+        {
+          title: 'Add the HTTP endpoint',
+          body:
+            'HTTP is the recommended transport and needs no dependencies. There is no token in this config, because there is no token: the client registers itself as an OAuth application on your instance the first time it connects, and your browser opens to approve it.',
+          code: `claude mcp add --transport http GitLab https://gitlab.com/api/v4/mcp`,
+          codeLabel: 'shell',
+        },
+        {
+          title: 'Or write it into the client config directly',
+          body:
+            'Cursor, Kiro and anything else that reads an mcpServers key take the same three lines. Replace gitlab.com with your instance host on Self-Managed. Gemini CLI is the odd one out — it wants the key httpUrl rather than type plus url.',
+          code: `{
+  "mcpServers": {
+    "GitLab": {
+      "type": "http",
+      "url": "https://gitlab.com/api/v4/mcp"
+    }
+  }
+}`,
+          codeLabel: 'json',
+        },
+        {
+          title: 'Use mcp-remote only if your client cannot speak HTTP',
+          body:
+            'Claude Desktop is the common case. It needs Node.js 20 or later available globally on PATH — check with which -a node — and if npx is installed locally rather than globally you have to give the full path to it in the command field.',
+          code: `{
+  "mcpServers": {
+    "GitLab": {
+      "command": "npx",
+      "args": ["-y", "mcp-remote", "https://gitlab.com/api/v4/mcp"]
+    }
+  }
+}`,
+          codeLabel: 'json',
+        },
+        {
+          title: 'Prefix the tool names if you have more than one server connected',
+          body:
+            'Generic names like search collide fast. Sending an X-Gitlab-Mcp-Server-Tool-Name-Prefix header renames every tool on this connection; it is truncated to the first 32 characters. Tool prefixing arrived in GitLab 18.11, so on 18.6 to 18.10 the only fix for a collision is disconnecting the other server.',
+          code: `{
+  "mcpServers": {
+    "GitLab": {
+      "type": "http",
+      "url": "https://gitlab.com/api/v4/mcp",
+      "headers": { "X-Gitlab-Mcp-Server-Tool-Name-Prefix": "gitlab_" }
+    }
+  }
+}`,
+          codeLabel: 'json',
+        },
+        {
+          title: 'The community server, when the built-in one is not available',
+          body:
+            'A personal access token and one npm package. The README recommends installing globally and calling the zereight-mcp-gitlab binary — a less collision-prone alias for the legacy mcp-gitlab name — rather than resolving through npx every start. If you do use npx, pin a version: the docs recommend pinning to the previous stable release rather than tracking latest.',
+          code: `npm install -g @zereight/mcp-gitlab
+
+# then, in your client config:
+#   command: zereight-mcp-gitlab
+#   env: GITLAB_PERSONAL_ACCESS_TOKEN, GITLAB_API_URL=https://gitlab.com/api/v4`,
+          codeLabel: 'shell',
+        },
+        {
+          title: 'Bound what the community server can do before you connect it',
+          body:
+            'It defaults to full access — every create, update and delete tool, plus delete mutations through execute_graphql. GITLAB_PERMISSION_MODE=modify keeps writes but blocks every delete including the GraphQL path; readonly blocks writes entirely. Both are also available as CLI arguments for clients that mishandle environment variables, and CLI arguments win over env vars.',
+          code: `{
+  "mcpServers": {
+    "gitlab": {
+      "command": "zereight-mcp-gitlab",
+      "args": ["--token=YOUR_GITLAB_TOKEN", "--api-url=https://gitlab.com/api/v4", "--permission-mode=readonly"]
+    }
+  }
+}`,
+          codeLabel: 'json',
+        },
+      ],
+    },
+    tools: {
+      title: 'What each server exposes',
+      note:
+        'The built-in server covers the objects GitLab considers core to an AI workflow. The community server covers the API. That difference — not quality — is the whole comparison.',
+      items: [
+        { name: 'search / semantic_code_search / search_labels', what: 'Built-in. Instance-wide search, including a semantic code search that has no equivalent in the community server. These are also the names most likely to collide with another connected MCP server, which is why the prefix header exists.' },
+        { name: 'create_issue / get_issue / create_merge_request / get_merge_request', what: 'Built-in. The issue and merge-request core, plus get_merge_request_commits, get_merge_request_diffs, get_merge_request_pipelines and the note tools for reading and posting comments.' },
+        { name: 'manage_pipeline / get_pipeline_jobs / get_job_log', what: 'Built-in. One tool handles list, create, delete, retry and cancel; get_job_log is what makes "why did this pipeline fail" answerable rather than a guess from the status.' },
+        { name: 'create_workitem_note / link_work_items / get_saved_view_work_items', what: 'Built-in. Work items are the newer GitLab object model and the community server, which is REST-shaped, has thinner coverage of them.' },
+        { name: 'merge_merge_request / approve_merge_request / get_merge_request_conflicts', what: 'Community only. The built-in server can read and create merge requests; it does not merge or approve them. If the workflow ends in "and merge it", that is a reason to pick the community server.' },
+        { name: 'execute_graphql', what: 'Community only, and the reason permission mode matters — an arbitrary GraphQL query is also an arbitrary GraphQL mutation. GITLAB_PERMISSION_MODE=modify blocks delete mutations through this path specifically.' },
+        { name: 'create_or_update_file / search_repositories / create_repository / create_group', what: 'Community. File-level writes and project and group creation, none of which the built-in server exposes.' },
+        { name: 'list_project_variables / update_project_variable / list_group_variables', what: 'Community. Full CI/CD variable management at project and group level, with environment-scope filters. Read these carefully before granting them — CI variables are where secrets live.' },
+      ],
+    },
+    useCases: [
+      {
+        title: 'Explain a red pipeline without opening GitLab',
+        prompt: 'Pipeline 41822 on this project failed. Pull the failing job logs and tell me what broke.',
+        why: 'get_pipeline_jobs then get_job_log is the pair that turns a status badge into a diagnosis. Both are in the built-in server, so this works on a hosted connection with no token anywhere.',
+      },
+      {
+        title: 'Review a merge request against its own diff',
+        prompt: 'Read merge request !318, walk the diffs, and list anything that changes behaviour the description does not mention.',
+        why: 'get_merge_request_diffs gives the model the change rather than the summary. Built-in gets you the read; if you also want it to approve or merge at the end, that needs the community server.',
+      },
+      {
+        title: 'Audit CI/CD variables across a group',
+        prompt: 'List every CI/CD variable on this group and flag any that are not masked or not protected.',
+        why: 'Community server only — list_group_variables with environment-scope filters. Run it in readonly mode: the same toolset can update and delete those variables, and this task never needs to.',
+      },
+    ],
+    gotchas: [
+      {
+        question: 'Why does the GitLab MCP server not appear or fail to authorise?',
+        answer:
+          'Almost always one of the three instance prerequisites rather than your client. GitLab Duo has to be Always on or On by default, beta and experimental features have to be enabled, and MCP server access has to be allowed — set on the top-level group on GitLab.com and on the instance for Self-Managed and Dedicated. The endpoint returns nothing useful until all three are on, and none of them are visible from the client side.',
+      },
+      {
+        question: 'Do I need a personal access token for the GitLab MCP server?',
+        answer:
+          'Not for the built-in one. It uses OAuth 2.0 Dynamic Client Registration: the client registers itself as an OAuth application on your instance on first connect and is issued an access token, so nothing long-lived goes in a config file. Administrators who do not want one OAuth application per tool can pre-create a shared application instead. The community server is the opposite — GITLAB_PERSONAL_ACCESS_TOKEN, in plain text, in your client config.',
+      },
+      {
+        question: 'Why does my client show hundreds of GitLab tools?',
+        answer:
+          'That is the community server; it ships 217. Every one of those schemas is sent to the model on connect, which is a real cost in context and a real cost in tool-selection accuracy. Narrow it: GITLAB_TOOLSETS enables groups, GITLAB_TOOLS allow-lists individual tools by name, and GITLAB_DENIED_TOOLS_REGEX deny-lists by pattern. The older USE_GITLAB_WIKI, USE_MILESTONE and USE_PIPELINE flags still work but are kept only for backward compatibility.',
+      },
+      {
+        question: 'Can Claude.ai connect to the community GitLab MCP server?',
+        answer:
+          'Yes, with GITLAB_MCP_OAUTH=true, but you must pre-register a GitLab OAuth application first — GitLab restricts dynamically registered unverified applications to the mcp scope, which is not enough to call the API. Create a non-confidential application with the api, read_api and read_user scopes, and pass its Application ID as GITLAB_OAUTH_APP_ID. Skipping this is the documented failure.',
+      },
+      {
+        question: 'Is the GitLab MCP server safe to point at repositories I do not control?',
+        answer:
+          'GitLab\'s own docs say no, on every client page: you are responsible for guarding against prompt injection, and you should exercise extreme caution or use MCP tools only on GitLab objects you trust. Issue descriptions, merge-request comments and job logs are all attacker-writable on a public project, and all three are things these tools read straight into a model.',
+      },
+      {
+        question: 'Which GitLab MCP server should I use?',
+        answer:
+          'Built-in if your instance is 18.6 or later and an administrator has turned the settings on: no token to leak, no package to update, semantic code search, and it stays current with GitLab. Community if you are on an older instance, cannot get those settings changed, need to merge or approve merge requests, need file-level writes or CI/CD variable management, or need a hard read-only guarantee — the built-in server has no permission-mode equivalent.',
+      },
+      {
+        question: 'Does this work with self-hosted GitLab?',
+        answer:
+          'Both do. For the built-in server, swap gitlab.com for your instance host in the URL — the path stays /api/v4/mcp. For the community server, set GITLAB_API_URL to https://your-gitlab/api/v4; it also supports proxy settings and dynamic API URL routing, with GITLAB_ALLOWED_HOSTS controlling which X-GitLab-API-URL hosts a multi-tenant deployment will accept.',
+      },
+    ],
+    comparison: {
+      note:
+        'The community server is not the fallback option — it is the larger one. Pick on capability and blast radius, not on which is official.',
+      items: [
+        {
+          name: 'zereight/gitlab-mcp',
+          choose:
+            'Older instance, no admin control over the Duo settings, or a workflow that has to merge, approve, write files or manage CI variables. 1,889 stars, npm @zereight/mcp-gitlab, stdio plus SSE plus streamable HTTP, and the only one of the two with a readonly mode.',
+        },
+        {
+          name: 'GitHub MCP',
+          slug: 'github',
+          choose:
+            'If the repositories are on GitHub. The shape is the same argument in reverse — a first-party hosted server with OAuth against a community server with a token — and the guide there covers the toolset filtering that this one needs too.',
+        },
+        {
+          name: 'Git MCP',
+          slug: 'git',
+          choose:
+            'If what you actually want is local history rather than the platform. Anthropic\'s git server reads and manipulates a checked-out repository and never touches GitLab, which means no token, no OAuth and no prompt-injection surface from issue text.',
+        },
+      ],
+    },
+  },
+  {
+    slug: 'google-drive',
+    verifiedOn: '2026-08-16',
+    sources: [
+      { label: 'modelcontextprotocol/servers-archived — src/gdrive README', url: 'https://github.com/modelcontextprotocol/servers-archived/tree/main/src/gdrive' },
+      { label: 'npm — @modelcontextprotocol/server-gdrive', url: 'https://www.npmjs.com/package/@modelcontextprotocol/server-gdrive' },
+      { label: 'taylorwilsdon/google_workspace_mcp README', url: 'https://github.com/taylorwilsdon/google_workspace_mcp' },
+      { label: 'Drive tool tiers — core/tool_tiers.yaml', url: 'https://github.com/taylorwilsdon/google_workspace_mcp/blob/main/core/tool_tiers.yaml' },
+      { label: 'Drive tool implementations — gdrive/drive_tools.py', url: 'https://github.com/taylorwilsdon/google_workspace_mcp/blob/main/gdrive/drive_tools.py' },
+    ],
+    intro:
+      'The Google Drive MCP server that everything links to is Anthropic\'s, and it was retired: the repository moved to modelcontextprotocol/servers-archived, which was archived on 2025-05-28 and has had no commits since. Its npm package, @modelcontextprotocol/server-gdrive, is still published — latest version 2025.1.14 — so npx installs it without complaint and it still works, which is exactly why it keeps getting recommended. What is worth knowing before you install it is how small it is. It exposes one tool, search, and returns file names and MIME types; everything else is MCP resources under gdrive:///<file_id>, and it authenticates read-only. The maintained alternative is taylorwilsdon/google_workspace_mcp — 3,020 stars, MIT, PyPI workspace-mcp 1.24.1 — which carries 16 Drive tools including writes and covers eleven other Workspace services on the same connection.',
+    setup: {
+      title: 'Setting up a Google Drive MCP server',
+      steps: [
+        {
+          title: 'Decide read-only or read-write before you touch Google Cloud',
+          body:
+            'This choice determines which server you install and which OAuth scope you request, and reversing it later means going back through the consent screen. The archived server is read-only by construction — it asks for drive.readonly and has no tool that can change anything. workspace-mcp can create files and folders, copy, update and change sharing permissions, and its --read-only flag is the way to get the same guarantee from it.',
+        },
+        {
+          title: 'Create your own OAuth client',
+          body:
+            'Neither server ships credentials. Create a Google Cloud project, enable the Drive API, configure an OAuth consent screen — internal is fine for testing — and create an OAuth Client ID. Application type matters: Desktop App for a local stdio server, Web Application if you will run workspace-mcp over HTTP. Choosing Desktop for an HTTP setup is the single most common mistake and it surfaces much later as Error 400: redirect_uri_mismatch.',
+        },
+        {
+          title: 'Run the maintained server',
+          body:
+            'Two environment variables and one command. Tool tiers keep schemas out of your context window: core is the essential set, extended adds management operations, complete loads everything. For Drive specifically, core is search, read, download-URL, create file, create folder, the three import-to-Google-format tools and get_drive_shareable_link — enough for almost every read-and-summarise workflow.',
+          code: `export GOOGLE_OAUTH_CLIENT_ID="..."
+export GOOGLE_OAUTH_CLIENT_SECRET="..."
+
+uvx workspace-mcp --tools drive --tool-tier core`,
+          codeLabel: 'shell',
+        },
+        {
+          title: 'Connect the client over HTTP',
+          body:
+            'Streamable HTTP is the recommended transport, and for Claude Desktop, web and mobile the supported path is running the server in HTTP mode and adding it under Settings → Connectors → Add custom connector. Claude Code takes one command against the same running server.',
+          code: `# server, in one terminal
+uvx workspace-mcp --transport streamable-http --tools drive
+
+# client
+claude mcp add --transport http workspace-mcp http://localhost:8000/mcp`,
+          codeLabel: 'shell',
+        },
+        {
+          title: 'If you deliberately want the archived server',
+          body:
+            'It is a reasonable choice when all you need is search-and-read and you would rather run a server that cannot write than trust a flag. Setup is manual: add the drive.readonly scope, create a Desktop App client, download the key file, rename it to gcp-oauth.keys.json, place it in the repo root, and run the auth flow once. Credentials land in .gdrive-server-credentials.json next to it. Note the shape — the token is a file on disk in the repo, not in a keychain.',
+          code: `node ./dist auth   # opens the browser, writes .gdrive-server-credentials.json`,
+          codeLabel: 'shell',
+        },
+      ],
+    },
+    tools: {
+      title: 'What the maintained server exposes for Drive',
+      note:
+        'Sixteen tools across three tiers. The archived server has one, called search, so any prompt below that involves writing, sharing or reading a specific file has no equivalent there.',
+      items: [
+        { name: 'search_drive_files', what: 'The tool you will use most, and the one with a behaviour worth knowing: if your query does not look like a structured Drive query it is wrapped as fullText contains \'…\', so plain English searches file contents rather than filenames. It also appends trashed=false unless you wrote an explicit trashed clause, so results match what the Drive web UI shows.' },
+        { name: 'get_drive_file_content', what: 'Reads a file by ID and handles the format conversion for you: Docs export to plain text, Sheets to CSV, Slides to plain text; Office .docx/.xlsx/.pptx are unzipped and parsed with the standard library; PDFs go through pypdf, with a download hint when the PDF is scanned images; images come back base64 with MIME metadata for multimodal clients. It supports files in shared drives.' },
+        { name: 'get_drive_file_download_url', what: 'A link rather than the bytes, with export control for native files — Docs to PDF or DOCX, Sheets to XLSX, PDF or CSV, Slides to PDF or PPTX. This is the right tool when the file is large enough that pulling its content into context is the wrong move.' },
+        { name: 'import_to_google_doc / import_to_google_sheets / import_to_google_slides', what: 'Core tier, and the reason people install this over a plain file-reader: bring an Office or text file into Drive as a native Google document instead of an opaque upload.' },
+        { name: 'create_drive_file / create_drive_folder / copy_drive_file / update_drive_file', what: 'The write surface. create_drive_file and create_drive_folder are core; copy and update are extended tier, so they load only if you ask for extended or complete.' },
+        { name: 'manage_drive_access / set_drive_file_permissions / get_drive_shareable_link', what: 'Sharing. get_drive_shareable_link is core and harmless; the two permission tools are extended and change who can see a file. Grant these deliberately — this is the one part of the Drive toolset where a wrong call is visible to other people.' },
+        { name: 'get_drive_file_permissions / check_drive_file_public_access', what: 'Complete tier only. check_drive_file_public_access is the useful half of an audit prompt: it answers "is this document exposed" per file.' },
+        { name: 'list_drive_items', what: 'Extended. Browsing a folder rather than searching it — the right call when you know where something lives and search keeps returning near-misses from full-text matching.' },
+      ],
+    },
+    useCases: [
+      {
+        title: 'Find a document by what is inside it',
+        prompt: 'Search my Drive for the pricing model we used in the Q2 renewal deck and read me the assumptions.',
+        why: 'Free-text queries are rewritten to fullText contains, so this matches document contents, not filenames — the behaviour people assume Drive search already has and are surprised to find it does not, when they search from the web UI.',
+      },
+      {
+        title: 'Read a spreadsheet without exporting it first',
+        prompt: 'Open the FY26 headcount sheet and total the contractor lines by department.',
+        why: 'get_drive_file_content exports Sheets to CSV automatically, so the model receives rows rather than a binary blob. The same call handles a .xlsx uploaded to Drive — it is unzipped and parsed rather than refused.',
+      },
+      {
+        title: 'Audit what is shared publicly',
+        prompt: 'List everything in the Client Contracts folder and tell me which files are accessible to anyone with the link.',
+        why: 'check_drive_file_public_access answers this per file, but it is complete-tier — this prompt silently under-answers on core or extended, which is the most common way a Drive MCP session looks like it worked and did not.',
+      },
+    ],
+    gotchas: [
+      {
+        question: 'Is there an official Google Drive MCP server?',
+        answer:
+          'Not a maintained one. Anthropic\'s reference server was moved to modelcontextprotocol/servers-archived and archived on 2025-05-28; Google does not publish a Drive MCP server of its own. The npm package @modelcontextprotocol/server-gdrive is still on the registry at 2025.1.14, so it installs and runs — being installable is not the same as being maintained, and this is the clearest example of that in the whole catalog.',
+      },
+      {
+        question: 'Why does the archived Google Drive MCP server only find files and not read them?',
+        answer:
+          'Because that is all it has. Its one tool is search, and it returns file names and MIME types. Reading happens through MCP resources at gdrive:///<file_id>, with Docs exported to Markdown, Sheets to CSV, Presentations to plain text and Drawings to PNG. Clients that do not surface resources well therefore look like the server is broken when it is working exactly as documented.',
+      },
+      {
+        question: 'Why does Drive search return files I deleted?',
+        answer:
+          'The Drive API\'s files.list returns trashed items unless told otherwise. workspace-mcp appends trashed=false for you — unless your query already contains an explicit trashed clause, in which case yours wins. If you are getting deleted files back, check whether the query you wrote includes one.',
+      },
+      {
+        question: 'Does it work with shared drives?',
+        answer:
+          'Yes, but not by default in search. get_drive_file_content passes supportsAllDrives and reads shared-drive files fine. search_drive_files takes drive_id, corpora and include_items_from_all_drives — corpora accepts user, domain, drive or allDrives, and defaults to drive when you pass a drive_id. A search that "cannot find" a document a colleague shared is usually one that never left the user corpus.',
+      },
+      {
+        question: 'How do I stop an agent writing to my Drive?',
+        answer:
+          'Two layers, and use both. Pass --read-only to workspace-mcp, which drops the write tools; and request the drive.readonly scope on your OAuth client rather than full drive, so the token could not write even if the flag were removed. Tier alone is not a safety control — create_drive_file and create_drive_folder are in the core tier.',
+      },
+      {
+        question: 'Error 400: redirect_uri_mismatch',
+        answer:
+          'The OAuth client type does not match how you are running the server. Desktop App is for local stdio; anything over HTTP needs a Web Application client with the redirect URI registered exactly. For the OAuth 2.1 PKCE path set GOOGLE_OAUTH_REDIRECT_URI to http://localhost:${WORKSPACE_MCP_PORT}/oauth2callback and OAUTHLIB_INSECURE_TRANSPORT=1 for local HTTP, and register that exact URI in Google Cloud.',
+      },
+      {
+        question: 'Do I need a separate server for Gmail, Calendar and Docs?',
+        answer:
+          'No, and that is the strongest argument for workspace-mcp over any single-purpose Drive server. One connection and one OAuth consent cover twelve services — Gmail, Drive, Calendar, Docs, Sheets, Slides, Forms, Tasks, Contacts, Chat, Custom Search and Apps Script. Use --tools drive gmail calendar to load only the ones you want rather than all twelve.',
+      },
+    ],
+    comparison: {
+      note:
+        'One of these is maintained. The other is the one at the top of most search results.',
+      items: [
+        {
+          name: '@modelcontextprotocol/server-gdrive (archived)',
+          choose:
+            'Only when you want search-and-read and nothing else, and prefer a server that structurally cannot write over a flag that says it will not. Accept that it is frozen at 2025.1.14, that its credentials sit in a JSON file in the repo, and that nothing about it will be fixed.',
+        },
+        {
+          name: 'Gmail MCP',
+          slug: 'gmail',
+          choose:
+            'Same server, different service — if mail is the actual job, that guide covers the Gmail tool tiers and the OAuth failure modes in more depth. You do not need both connections; add drive to the --tools list you already have.',
+        },
+        {
+          name: 'Filesystem MCP',
+          slug: 'filesystem',
+          choose:
+            'If the documents are already synced to a local Drive folder. Anthropic\'s filesystem server reads and edits them with no OAuth at all, and its allow-list is a harder boundary than a scope — the trade is that you lose Drive search, sharing and the native-format exports.',
+        },
+      ],
+    },
+  },
 ]
 
 const guideBySlug = new Map(guides.map((g) => [g.slug, g] as const));

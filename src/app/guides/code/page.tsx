@@ -6,8 +6,8 @@ import { getServerBySlug } from "@/data/servers";
 /**
  * Landing page for "browser MCP server" / "coding MCP server".
  *
- * Third cluster page, same reason as the first two: seven hand-written guides now
- * sit in the code bucket, and seven cards inside /guides answers "here are some
+ * Third cluster page, same reason as the first two: eight hand-written guides now
+ * sit in the code bucket, and eight cards inside /guides answers "here are some
  * guides" rather than the question the head term asks.
  *
  * The comparison axis has to be different again, or this is a copy of the other
@@ -83,6 +83,15 @@ const CLUSTER: {
       "Exactly what your token or OAuth grant carries — this is the one server here where the read-only guard is a real, documented switch. Connect to /mcp/readonly on the remote server, pass --read-only to the binary, or set GITHUB_READ_ONLY=1 on Docker.",
   },
   {
+    slug: "gitlab",
+    pitch:
+      "Two servers with one name, and unusually the community one is the larger. GitLab ships an MCP server inside the application; zereight/gitlab-mcp ships 217 tools against the API. Which you can use is decided by your instance version, not by preference.",
+    attaches:
+      "The built-in server attaches to your GitLab instance itself, at https://<instance>/api/v4/mcp, with no package installed — HTTP transport direct, or npx mcp-remote for clients that only speak stdio. The community server attaches to the REST and GraphQL APIs from a local npm process.",
+    inherits:
+      "The built-in server inherits an OAuth grant it registers for itself through Dynamic Client Registration, so nothing long-lived sits in a config file — but it needs three instance settings on (Duo availability, beta features, MCP access) before it answers at all. The community server inherits a personal access token in plain text and defaults to full access, including deletes through execute_graphql; GITLAB_PERMISSION_MODE=readonly or modify is the switch, and there is no equivalent on the built-in one.",
+  },
+  {
     slug: "figma",
     pitch:
       "Most listings still hand you the desktop setup, and Figma's own docs no longer lead with it. About a third of the tools exist only on the remote server.",
@@ -134,12 +143,12 @@ const FAQS: { question: string; answer: string }[] = [
 export const metadata: Metadata = {
   title: "Browser and Coding MCP Servers — What Each One Attaches To | MyMCPTools",
   description:
-    "Chrome DevTools, both Playwright servers, GitHub, Figma, Blender and Context7 MCP servers compared: what each connects to, what the connection inherits, and which of the several servers sharing a name you actually want.",
+    "Chrome DevTools, both Playwright servers, GitHub, GitLab, Figma, Blender and Context7 MCP servers compared: what each connects to, what the connection inherits, and which of the several servers sharing a name you actually want.",
   alternates: { canonical: "https://mymcptools.com/guides/code" },
   openGraph: {
     title: "Code, design and browser MCP servers, compared | MyMCPTools",
     description:
-      "Seven source-verified MCP server guides in one place — what each server attaches to, and what it inherits by attaching.",
+      "Eight source-verified MCP server guides in one place — what each server attaches to, and what it inherits by attaching.",
     type: "website",
     url: "https://mymcptools.com/guides/code",
   },
@@ -204,7 +213,7 @@ export default function CodeGuidesPage() {
         </h1>
         <p className="mt-5 text-lg leading-relaxed text-gray-400">
           A browser, a repository, a design file and a documentation index have
-          nothing in common as things, which is why comparing these seven on tool
+          nothing in common as things, which is why comparing these eight on tool
           count tells you nothing useful. What they do have in common is an
           attachment question. Each one either drives a process already running on
           your machine, or reaches a remote service as you, or touches nothing of

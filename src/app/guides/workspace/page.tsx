@@ -8,13 +8,13 @@ import { getServerBySlug } from "@/data/servers";
  * docs, tickets and team-tools cluster.
  *
  * Fourth cluster page. The work bucket has been the largest bucket on /guides
- * without one for three fires running; at ten guides it is now the largest by
- * some distance, and ten cards under a heading answers "here are some guides"
+ * without one for three fires running; at eleven guides it is now the largest by
+ * some distance, and eleven cards under a heading answers "here are some guides"
  * rather than the question the head term asks.
  *
  * The axis has to be new again. Databases compare on the read-only switch,
  * DevOps on blast radius, code on what the server attaches to. None of those
- * separate these ten, because they are all remote services reached over OAuth
+ * separate these eleven, because they are all remote services reached over OAuth
  * and none of them touches your machine.
  *
  * What they share instead is a failure mode. Every one of these connects
@@ -112,6 +112,15 @@ const CLUSTER: {
       "More often it never connects: Error 400 redirect_uri_mismatch, which means a Desktop-type OAuth client where a Web Application one is required. Loading everything is the other trap — --tools gmail is the difference between a few tool schemas and 120+ per request.",
   },
   {
+    slug: "google-drive",
+    pitch:
+      "The one everybody links to is Anthropic's, and it was archived on 2025-05-28 — while its npm package stays published at 2025.1.14, so it still installs cleanly. It also has exactly one tool.",
+    grants:
+      "On the archived server, read and nothing else: it asks for the drive.readonly scope, so no tool in it could write even if one existed. On the maintained taylorwilsdon/google_workspace_mcp, whatever scope your own OAuth client requests — which is why --read-only and a drive.readonly scope are worth setting together rather than trusting either alone.",
+    empty:
+      "On the archived one, because reading is not a tool. `search` returns names and MIME types; file contents come back as MCP resources at gdrive:///<file_id>, so a client that renders resources poorly looks like a broken server. On the maintained one, because the search never left your own corpus — shared-drive results need drive_id, corpora or include_items_from_all_drives, and none of them are the default.",
+  },
+  {
     slug: "hubspot",
     pitch:
       "Three different things are called the HubSpot MCP server, and the one nearly every write-up documents is the npm beta from May 2025.",
@@ -163,12 +172,12 @@ const FAQS: { question: string; answer: string }[] = [
 export const metadata: Metadata = {
   title: "Workspace MCP Servers — What the Auth Step Actually Grants | MyMCPTools",
   description:
-    "Notion, Confluence, Obsidian, Linear, Jira, Asana, Slack, Gmail, HubSpot and n8n MCP servers compared: what authorising really grants, and the specific reason each one connects and then returns nothing.",
+    "Notion, Confluence, Obsidian, Linear, Jira, Asana, Slack, Gmail, Google Drive, HubSpot and n8n MCP servers compared: what authorising really grants, and the specific reason each one connects and then returns nothing.",
   alternates: { canonical: "https://mymcptools.com/guides/workspace" },
   openGraph: {
     title: "Docs, tickets and team-tool MCP servers, compared | MyMCPTools",
     description:
-      "Ten source-verified MCP server guides in one place — what each auth flow grants, and why the tools come back empty.",
+      "Eleven source-verified MCP server guides in one place — what each auth flow grants, and why the tools come back empty.",
     type: "website",
     url: "https://mymcptools.com/guides/workspace",
   },
@@ -232,7 +241,7 @@ export default function WorkspaceGuidesPage() {
           Workspace MCP servers, compared
         </h1>
         <p className="mt-5 text-lg leading-relaxed text-gray-400">
-          These ten connect to the tools a team actually works in — a knowledge
+          These eleven connect to the tools a team actually works in — a knowledge
           base, an issue tracker, a CRM, a chat workspace, an inbox. Almost all
           of them are hosted remote servers, so there is nothing to install and
           nothing on your machine to misconfigure. Setup is an OAuth flow that
