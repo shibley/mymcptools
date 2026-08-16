@@ -40574,6 +40574,24 @@ const _serversPart31: MCPServer[] = [
     stars: 336,
     isNew: true,
   },
+  {
+    slug: 'agent-qa',
+    name: 'Agent QA',
+    description: 'Agent QA is Vostride\'s local, trusted MCP server for an agentic QA harness. It exposes structured tools for inspecting configuration and schemas; authoring and validating natural-language web and mobile test definitions, suites, and hooks; queuing runs through the local dashboard; reading steps, logs, and artifacts; and classifying failures from run evidence. The stdio server starts with npx -y agent-qa mcp. Agent QA is source-available under FSL-1.1-ALv2 rather than OSI-approved open source; each release converts to Apache-2.0 after two years. Configured AI or cloud-device providers may incur their own charges.',
+    author: 'Vostride',
+    github_url: 'https://github.com/vostride/agent-qa',
+    source_verified: true,
+    verification: 'live',
+    categories: ['browser', 'coding'],
+    integrations: ['claude-desktop', 'cursor'],
+    install_type: 'npm',
+    install_command: 'npx -y agent-qa mcp',
+    install_verified: true,
+    install_checked: '2026-08-16',
+    official: true,
+    stars: 845,
+    isNew: true,
+  },
 ];
 
 export const servers: MCPServer[] = [..._serversPart1, ..._serversPart2, ..._serversPart3, ..._serversPart4, ..._serversPart5, ..._serversPart6, ..._serversPart7, ..._serversPart8, ..._serversPart9, ..._serversPart10, ..._serversPart11, ..._serversPart12, ..._serversPart13, ..._serversPart14, ..._serversPart15, ..._serversPart16, ..._serversPart17, ..._serversPart18, ..._serversPart19, ..._serversPart20, ..._serversPart21, ..._serversPart22, ..._serversPart23, ..._serversPart24, ..._serversPart25, ..._serversPart26, ..._serversPart27, ..._serversPart28, ..._serversPart29, ..._serversPart30, ..._serversPart31];
