@@ -20,7 +20,8 @@
     "trust:selfcheck": "node scripts/trust-verdict-selfcheck.mts",
     "firewall:sweep": "node scripts/firewall-sweep.mts",
     "firewall:selfcheck": "node scripts/firewall-selfcheck.mts",
-    "verify:github": "node scripts/verify-github-entries.mts"
+    "verify:github": "node scripts/verify-github-entries.mts",
+    "stale:sweep": "node scripts/stale-release-sweep.mts"
   },
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.29.0",

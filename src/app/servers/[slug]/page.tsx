@@ -183,8 +183,26 @@ export default async function ServerPage({ params }: Props) {
   const primaryCategory = serverCategories[0]?.name || server.categories[0] || "MCP workflows";
   const baseName = server.name.replace(/\s+MCP\s+Servers?$/i, "").trim();
   const capability = getFirstSentence(server.description);
+  /**
+   * `verification: 'archived'` has been in the data for months and has never
+   * rendered here — 37+ entries whose repository GitHub reports as archived
+   * were described to the reader as "officially maintained", right above a
+   * copy-pasteable install command. `stale-release-sweep.mts` (2026-08-16)
+   * showed why that combination is the catalog's worst error rather than a
+   * cosmetic one: the package is usually still published, so the command works
+   * and the reader finds out only after building on it. Say it at the top.
+   */
+  const isArchived = server.verification === 'archived';
+  const maintenancePhrase = isArchived
+    ? 'no longer maintained'
+    : server.official
+      ? 'officially maintained'
+      : 'community-built';
   const installAnswer = server.install_command && server.install_verified !== false
-    ? `Install ${server.name} with ${server.install_type}: ${server.install_command}`
+    ? isArchived
+      // The command works; that is exactly why the answer cannot stop there.
+      ? `Install ${server.name} with ${server.install_type}: ${server.install_command}. Note that its repository is archived and no longer maintained — the package is still published, so this command succeeds, but the project takes no further fixes.`
+      : `Install ${server.name} with ${server.install_type}: ${server.install_command}`
     : server.install_command && server.install_verified === false
       ? `The install command commonly listed for ${server.name} (${server.install_command}) points at a package that is not published to ${registryLabel(server.install_type)}, so it will fail. Install it from source instead${server.github_url ? `: ${server.github_url}` : '.'}`
     : server.github_url
@@ -315,6 +333,11 @@ export default async function ServerPage({ params }: Props) {
                       ✓ Official
                     </span>
                   )}
+                  {isArchived && (
+                    <span className="px-2 py-1 bg-red-500/10 border border-red-500/30 text-red-400 text-xs font-medium rounded-full">
+                      ⚠ Archived
+                    </span>
+                  )}
                   {server.featured && (
                     <span className="px-2 py-1 bg-amber-500/10 border border-amber-500/30 text-amber-400 text-xs font-medium rounded-full">
                       ⭐ Featured
@@ -334,18 +357,44 @@ export default async function ServerPage({ params }: Props) {
                   {isSelfNaming(capability, baseName) ? (
                     <>
                       {capitalize(capability)}. Built by {server.author}, it is{" "}
-                      {server.official ? "officially maintained" : "community-built"} and best for {primaryCategory}.
+                      {maintenancePhrase} and best for {primaryCategory}.
                     </>
                   ) : (
                     <>
                       The {mcpPhrase(baseName, true)}, built by {server.author}, provides {uncapitalize(capability)}. It is{" "}
-                      {server.official ? "officially maintained" : "community-built"} and best for {primaryCategory}.
+                      {maintenancePhrase} and best for {primaryCategory}.
                     </>
                   )}
                 </p>
                 <p className="text-gray-500">by {server.author}</p>
               </div>
             </div>
+
+            {/* Archived notice — above About, because a reader who scrolls
+                straight to the install block has to have passed it. */}
+            {isArchived && (
+              <div className="mb-8 rounded-xl border border-red-500/30 bg-red-500/5 p-5">
+                <h2 className="mb-2 text-sm font-semibold text-red-300">
+                  This repository is archived
+                </h2>
+                <p className="text-sm leading-relaxed text-gray-300">
+                  GitHub reports {server.github_url ? "the repository below" : "this project's repository"} as
+                  archived, so it takes no further commits, issues or pull requests
+                  {server.install_command ? (
+                    <>
+                      {" "}— but the published package has not been unpublished, so{" "}
+                      <code className="rounded bg-gray-900 px-1 py-0.5 text-xs text-gray-200">
+                        {server.install_command}
+                      </code>{" "}
+                      still installs and runs. Read the section below before you build on it: where a
+                      maintained replacement exists, it is named there.
+                    </>
+                  ) : (
+                    <>. Where a maintained replacement exists, it is named below.</>
+                  )}
+                </p>
+              </div>
+            )}
 
             {/* Description */}
             <div className="mb-8">
