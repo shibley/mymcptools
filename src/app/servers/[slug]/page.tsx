@@ -12,6 +12,7 @@ import {
   formatMonthYear,
   formatMonthsAgo,
 } from "@/lib/trust/repo-recency";
+import { installVerdict, formatCheckDate } from "@/lib/trust/install-check";
 import { getHistory } from "@/lib/trust/history-store";
 import { getTrustVerdict } from "@/lib/trust/verdict-store";
 import { TrustGradeSummary } from "@/components/TrustGrade";
@@ -222,7 +223,15 @@ export default async function ServerPage({ params }: Props) {
     : server.official
       ? isDormant ? 'official' : 'officially maintained'
       : 'community-built';
-  const installAnswer = server.install_command && server.install_verified !== false
+  /**
+   * Registry truth for the install command, dated. Replaces the row's frozen
+   * `install_verified`: a 404 recorded on 2026-07-31 was still being stated as
+   * present-tense fact on six pages whose packages had since been published.
+   * See src/lib/trust/install-check.ts for why the row alone cannot carry this.
+   */
+  const { state: installState, check: installCheck } = installVerdict(server);
+  const installOk = installState === "ok";
+  const installAnswer = server.install_command && installOk
     ? isArchived
       // The command works; that is exactly why the answer cannot stop there.
       ? `Install ${server.name} with ${server.install_type}: ${server.install_command}. Note that its repository is archived and no longer maintained — the package is still published, so this command succeeds, but the project takes no further fixes.`
@@ -230,8 +239,16 @@ export default async function ServerPage({ params }: Props) {
         // Same reasoning as archived: the install succeeding is the trap.
         ? `Install ${server.name} with ${server.install_type}: ${server.install_command}. This command works, but the project has had no commits since ${formatMonthYear(recency!.lastCommitAt)} (${dormantAge})${recency!.version && recency!.publishedAt ? `, and the published ${recency!.packageName}@${recency!.version} dates from ${formatMonthYear(recency!.publishedAt)}` : ''} — treat it as feature-frozen and check for a maintained alternative before depending on it.`
         : `Install ${server.name} with ${server.install_type}: ${server.install_command}`
-    : server.install_command && server.install_verified === false
-      ? `The install command commonly listed for ${server.name} (${server.install_command}) points at a package that is not published to ${registryLabel(server.install_type)}, so it will fail. Install it from source instead${server.github_url ? `: ${server.github_url}` : '.'}`
+    : server.install_command && installState === "phantom"
+      // Name the package and date the claim. The old wording asserted the
+      // registry gap without either, and this answer feeds FAQPage schema.
+      ? `The install command commonly listed for ${server.name} (${server.install_command}) ${installCheck?.collision
+          ? `resolves to a package of the same name that is a different product — ${installCheck.collision}. It will not give you ${server.name}`
+          : `names ${installCheck!.registry === 'npm' ? 'the npm package' : 'the PyPI package'} ${installCheck!.packageName}, which was not published to ${registryLabel(server.install_type)} when we checked on ${formatCheckDate(installCheck!.checkedAt)}, so it will fail`}. Install it from source instead${server.github_url ? `: ${server.github_url}` : '.'}`
+    : server.install_command && installState === "unknown"
+      // A git clone, a Docker one-liner or a remote `mcp add <url>`. There is no
+      // registry package here, so there is no registry claim to make either way.
+      ? `${server.name} is installed with the command ${server.install_command}. It does not resolve to a published npm or PyPI package, so we have not been able to verify it against a registry — follow the repository's own README before depending on it${server.github_url ? `: ${server.github_url}` : '.'}`
     : server.github_url
       ? `Install ${server.name} from its GitHub repository: ${server.github_url}`
       : `${server.name} has no verified public repository, so there is no confirmed install command for it.`;
@@ -558,34 +575,62 @@ export default async function ServerPage({ params }: Props) {
             {server.install_command && (
               <div className="mb-8">
                 <h2 className="text-xl font-semibold text-white mb-4">Installation</h2>
-                <div className={`bg-gray-900 border rounded-xl overflow-hidden ${server.install_verified === false ? 'border-amber-500/40' : 'border-gray-800'}`}>
+                <div className={`bg-gray-900 border rounded-xl overflow-hidden ${installState === 'phantom' ? 'border-amber-500/40' : 'border-gray-800'}`}>
                   <div className="flex items-center justify-between px-4 py-2 bg-gray-800/50">
                     <span className="text-sm text-gray-400">
                       {server.install_type === 'npm' ? 'npm / npx' : server.install_type}
                     </span>
-                    {server.install_verified === false ? (
+                    {installState === 'phantom' ? (
                       <span className="text-xs font-medium text-amber-400">⚠️ Not on the registry</span>
                     ) : (
+                      /* An unverifiable command (git clone, remote URL) is still a
+                         command the reader wants to copy — only a confirmed 404
+                         earns the strikethrough. */
                       <CopyButton text={server.install_command} />
                     )}
                   </div>
-                  <pre className={`p-4 overflow-x-auto text-sm ${server.install_verified === false ? 'text-gray-500 line-through decoration-amber-500/60' : 'text-green-400'}`}>
+                  <pre className={`p-4 overflow-x-auto text-sm ${installState === 'phantom' ? 'text-gray-500 line-through decoration-amber-500/60' : 'text-green-400'}`}>
                     <code>{server.install_command}</code>
                   </pre>
                   {/* An install command that 404s on the registry is worse than no
                       command at all — it sends people to a terminal error. Say so
-                      instead of offering a copy button. */}
-                  {server.install_verified === false && (
+                      instead of offering a copy button, and name the package we
+                      actually looked up rather than guessing at a token: the old
+                      first-bare-token fallback printed "`git` is not published to
+                      npm" on every source-install entry. */}
+                  {installState === 'phantom' && installCheck && (
                     <p className="border-t border-amber-500/20 bg-amber-500/5 px-4 py-3 text-sm text-amber-200/90">
-                      This command will fail: <code className="text-amber-100">{server.install_command?.split(/\s+/).find(t => !t.startsWith('-') && !['npx', 'uvx', 'pip', 'install', 'npm', 'docker', 'run'].includes(t))}</code> is not published to {registryLabel(server.install_type)} (checked {server.install_checked}).
+                      {installCheck.collision ? (
+                        <>
+                          This command will not give you {server.name}:{' '}
+                          <code className="text-amber-100">{installCheck.packageName}</code> is published, but it is a
+                          different product — {installCheck.collision.replace(/^npm `[^`]+` is published but belongs to /, 'it belongs to ')}.
+                        </>
+                      ) : (
+                        <>
+                          This command will fail: <code className="text-amber-100">{installCheck.packageName}</code> was
+                          not published to {registryLabel(server.install_type)} when we checked on{' '}
+                          {formatCheckDate(installCheck.checkedAt)}.
+                        </>
+                      )}
                       {server.github_url
                         ? ' Install from the repository below instead.'
                         : ' No verified repository is on file for this server either, so treat it as unconfirmed.'}
                     </p>
                   )}
-                  {server.install_verified === true && (
+                  {installOk && installCheck && (
                     <p className="border-t border-gray-800 px-4 py-2 text-xs text-gray-500">
-                      Package confirmed live on {registryLabel(server.install_type)} — checked {server.install_checked}.
+                      <code className="text-gray-400">{installCheck.packageName}</code> confirmed live on{' '}
+                      {registryLabel(server.install_type)} — checked {formatCheckDate(installCheck.checkedAt)}.
+                    </p>
+                  )}
+                  {installState === 'unknown' && (
+                    /* No registry package to check. Saying nothing here would let
+                       the command read as verified; saying "not published" would
+                       be a claim about a package that does not exist. */
+                    <p className="border-t border-gray-800 px-4 py-2 text-xs text-gray-500">
+                      This command does not resolve to a published npm or PyPI package, so we have not verified it
+                      against a registry. Follow the repository&rsquo;s README before depending on it.
                     </p>
                   )}
                 </div>

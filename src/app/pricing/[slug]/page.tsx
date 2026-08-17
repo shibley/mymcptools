@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { servers, categories, getRelatedServers, registryLabel } from "@/data/servers";
 import { getServerPricing, getPricingBadge, hasFreeOption } from "@/data/pricing";
+import { installVerdict, formatCheckDate } from "@/lib/trust/install-check";
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -98,6 +99,7 @@ export default async function PricingPage({ params }: Props) {
   if (!server) notFound();
 
   const pricing = getServerPricing(slug);
+  const { state: installState, check: installCheck } = installVerdict(server);
   const badge = getPricingBadge(pricing.pricing_model);
   const isFree = hasFreeOption(pricing.pricing_model);
   const category = categories.find((c) => c.slug === server.categories[0]);
@@ -312,13 +314,20 @@ export default async function PricingPage({ params }: Props) {
                   <span className="px-2 py-0.5 bg-gray-800 text-gray-300 text-xs rounded capitalize">{server.install_type}</span>
                 </div>
                 {server.install_command && (
-                  <code className={`block bg-gray-950 p-3 rounded-lg text-sm font-mono overflow-x-auto ${server.install_verified === false ? 'text-gray-500 line-through' : 'text-green-400'}`}>
+                  <code className={`block bg-gray-950 p-3 rounded-lg text-sm font-mono overflow-x-auto ${installState === 'phantom' ? 'text-gray-500 line-through' : 'text-green-400'}`}>
                     {server.install_command}
                   </code>
                 )}
-                {server.install_command && server.install_verified === false && (
+                {/* Same dated registry check the /servers page uses. This block
+                    carried the same two defects: it struck through commands whose
+                    package had since been published, and it asserted "not
+                    published to npm" for git-clone commands that name no package
+                    at all. */}
+                {installState === 'phantom' && installCheck && (
                   <p className="mt-2 text-xs text-amber-300/90">
-                    ⚠️ This command fails — the package is not published to {registryLabel(server.install_type)} (checked {server.install_checked}). Install from source.
+                    ⚠️ {installCheck.collision
+                      ? <>This command installs <code>{installCheck.packageName}</code>, a different product of the same name — not {server.name}. Install from source.</>
+                      : <>This command fails — <code>{installCheck.packageName}</code> was not published to {registryLabel(server.install_type)} when we checked on {formatCheckDate(installCheck.checkedAt)}. Install from source.</>}
                   </p>
                 )}
                 <p className="text-gray-500 text-xs mt-3">

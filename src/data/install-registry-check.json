@@ -1,0 +1,7434 @@
+{
+  "generatedAt": "2026-08-17",
+  "entries": {
+    "3dcart-mcp": {
+      "registry": "npm",
+      "package": "3dcart-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "8x8-mcp": {
+      "registry": "npm",
+      "package": "8x8-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "ab-tasty-mcp": {
+      "registry": "npm",
+      "package": "@abtasty/mcp-server",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "absorb-lms-mcp": {
+      "registry": "npm",
+      "package": "absorb-lms-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "activecampaign-mcp": {
+      "registry": "npm",
+      "package": "mcp-activecampaign",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "activemq-mcp": {
+      "registry": "npm",
+      "package": "activemq-mcp-server",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "activepieces-mcp": {
+      "registry": "npm",
+      "package": "activepieces-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "acumatica-mcp": {
+      "registry": "npm",
+      "package": "acumatica-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "aderant-mcp": {
+      "registry": "npm",
+      "package": "aderant-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "adobe-illustrator-mcp": {
+      "registry": "npm",
+      "package": "illustrator-mcp-server",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "advancedmd-mcp": {
+      "registry": "npm",
+      "package": "advancedmd-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "adyen-mcp": {
+      "registry": "npm",
+      "package": "@adyen/mcp-server",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "agco-connect-mcp": {
+      "registry": "npm",
+      "package": "agco-connect-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "agoda-mcp": {
+      "registry": "npm",
+      "package": "agoda-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "agorapulse-mcp": {
+      "registry": "npm",
+      "package": "agorapulse-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "agworld-mcp": {
+      "registry": "npm",
+      "package": "agworld-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "ahrefs-mcp": {
+      "registry": "npm",
+      "package": "ahrefs-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "ai-data-parser": {
+      "registry": "npm",
+      "package": "aidataparser",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "ai21-mcp": {
+      "registry": "pip",
+      "package": "ai21-mcp-server",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "airbyte-mcp": {
+      "registry": "npm",
+      "package": "airbyte-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "aircall-mcp": {
+      "registry": "npm",
+      "package": "aircall-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "airflow-mcp": {
+      "registry": "pip",
+      "package": "airflow-mcp-server",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "airtable": {
+      "registry": "npm",
+      "package": "airtable-mcp-server",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "akeneo-mcp": {
+      "registry": "npm",
+      "package": "akeneo-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "alation-mcp": {
+      "registry": "npm",
+      "package": "alation-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "alchemy-mcp": {
+      "registry": "npm",
+      "package": "alchemy-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "alienvaul-otx-mcp": {
+      "registry": "npm",
+      "package": "alienvault-otx-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "allegro-mcp": {
+      "registry": "npm",
+      "package": "allegro-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "alloydb-mcp": {
+      "registry": "pip",
+      "package": "alloydb-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "allscripts-mcp": {
+      "registry": "pip",
+      "package": "mcp-allscripts",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "alpaca": {
+      "registry": "pip",
+      "package": "alpaca-mcp-server",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "alpaca-mcp": {
+      "registry": "npm",
+      "package": "alpaca-mcp",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "alpha-vantage-mcp": {
+      "registry": "pip",
+      "package": "marketdata-mcp-server",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "alphafold-mcp": {
+      "registry": "pip",
+      "package": "alphafold-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "amadeus-mcp": {
+      "registry": "pip",
+      "package": "amadeus-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "amazon-ads-mcp": {
+      "registry": "npm",
+      "package": "@marketplaceadpros/amazon-ads-mcp-server",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "amazon-seller-mcp": {
+      "registry": "npm",
+      "package": "amazon-sp-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "amazon-sp-mcp": {
+      "registry": "npm",
+      "package": "amazon-sp-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "amplitude-mcp": {
+      "registry": "npm",
+      "package": "mcp-amplitude",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "anaplan-mcp": {
+      "registry": "npm",
+      "package": "anaplan-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "anki-mcp": {
+      "registry": "npm",
+      "package": "anki-mcp-server",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "ansible": {
+      "registry": "pip",
+      "package": "ansible-mcp-server",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "anyscale-mcp": {
+      "registry": "pip",
+      "package": "anyscale-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "anythingllm-mcp": {
+      "registry": "npm",
+      "package": "anythingllm-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "apache-doris": {
+      "registry": "pip",
+      "package": "doris-mcp-server",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "apache-druid-mcp": {
+      "registry": "pip",
+      "package": "apache-druid-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "apache-pinot-mcp": {
+      "registry": "pip",
+      "package": "apache-pinot-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "apify": {
+      "registry": "npm",
+      "package": "@apify/actors-mcp-server",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "apollo-io": {
+      "registry": "npm",
+      "package": "@thevgergroup/apollo-io-mcp",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "appcues-mcp": {
+      "registry": "npm",
+      "package": "appcues-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "appdynamics-mcp": {
+      "registry": "npm",
+      "package": "appdynamics-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "appflowy-mcp": {
+      "registry": "npm",
+      "package": "appflowy-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "appfolio-mcp": {
+      "registry": "npm",
+      "package": "appfolio-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "appium": {
+      "registry": "npm",
+      "package": "appium-mcp",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "apple-mail-mcp": {
+      "registry": "pip",
+      "package": "mcp-apple-mail",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "applied-epic-mcp": {
+      "registry": "npm",
+      "package": "applied-epic-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "appsmith-mcp": {
+      "registry": "npm",
+      "package": "appsmith-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "arcgis-mcp": {
+      "registry": "pip",
+      "package": "arcgis-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "arduino-mcp": {
+      "registry": "npm",
+      "package": "arduino-mcp-server",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "ardupilot-mcp": {
+      "registry": "pip",
+      "package": "ardupilot-mcp",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "argocd-mcp": {
+      "registry": "npm",
+      "package": "argocd-mcp",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "aruba-central-mcp": {
+      "registry": "pip",
+      "package": "aruba-central-mcp",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "arxiv": {
+      "registry": "pip",
+      "package": "arxiv-mcp-server",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "asana": {
+      "registry": "npm",
+      "package": "@roychri/mcp-server-asana",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "assemblyai-mcp": {
+      "registry": "pip",
+      "package": "assemblyai-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "athenahealth-mcp": {
+      "registry": "npm",
+      "package": "athenahealth-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "atlan-mcp": {
+      "registry": "npm",
+      "package": "atlan-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "attentive-mcp": {
+      "registry": "npm",
+      "package": "attentive-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "attio-mcp": {
+      "registry": "npm",
+      "package": "attio-mcp",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "attom-data-mcp": {
+      "registry": "npm",
+      "package": "attom-data-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "audible-mcp": {
+      "registry": "pip",
+      "package": "audible-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "august-smart-lock-mcp": {
+      "registry": "npm",
+      "package": "august-smart-lock-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "auth0": {
+      "registry": "npm",
+      "package": "@auth0/auth0-mcp-server",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "autodesk-bim360-mcp": {
+      "registry": "npm",
+      "package": "autodesk-bim360-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "autogen": {
+      "registry": "pip",
+      "package": "pyautogen-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "automatic1111-mcp": {
+      "registry": "pip",
+      "package": "a1111-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "availity-mcp": {
+      "registry": "npm",
+      "package": "availity-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "avalara-mcp": {
+      "registry": "npm",
+      "package": "avalara-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "aveva-mcp": {
+      "registry": "npm",
+      "package": "aveva-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "aviationstack-mcp": {
+      "registry": "pip",
+      "package": "aviationstack-mcp",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "aweber-mcp": {
+      "registry": "npm",
+      "package": "aweber-mcp-server",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "aws": {
+      "registry": "pip",
+      "package": "awslabs.aws-documentation-mcp-server",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "aws-iot-core-mcp": {
+      "registry": "pip",
+      "package": "aws-iot-core-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "aws-sqs-mcp": {
+      "registry": "npm",
+      "package": "aws-sqs-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "azure-devbox-mcp": {
+      "registry": "npm",
+      "package": "@microsoft/devbox-mcp",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "azure-devops": {
+      "registry": "npm",
+      "package": "@azure-devops/mcp",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "azure-fabric-mcp": {
+      "registry": "npm",
+      "package": "@microsoft/fabric-mcp",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "azure-foundry-mcp": {
+      "registry": "npm",
+      "package": "@microsoft/foundry-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "azure-iot-hub-mcp": {
+      "registry": "pip",
+      "package": "azure-iot-hub-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "azure-resource-graph-mcp": {
+      "registry": "npm",
+      "package": "@microsoft/resource-graph-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "azure-service-bus-mcp": {
+      "registry": "npm",
+      "package": "azure-service-bus-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "back4app-mcp": {
+      "registry": "npm",
+      "package": "back4app-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "backstage-mcp": {
+      "registry": "npm",
+      "package": "backstage-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "bacnet-mcp": {
+      "registry": "pip",
+      "package": "bacnet-mcp",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "baidu-map": {
+      "registry": "pip",
+      "package": "mcp-server-baidu-maps",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "balena-mcp": {
+      "registry": "npm",
+      "package": "mcp-balena",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "bambu-lab-mcp": {
+      "registry": "pip",
+      "package": "bambu-lab-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "bandwidth-mcp": {
+      "registry": "npm",
+      "package": "bandwidth-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "basecamp-mcp": {
+      "registry": "npm",
+      "package": "basecamp-mcp",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "baselime-mcp": {
+      "registry": "npm",
+      "package": "baselime-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "baseten-mcp": {
+      "registry": "pip",
+      "package": "baseten-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "battlenet-api-mcp": {
+      "registry": "npm",
+      "package": "battlenet-api-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "beehiiv-mcp": {
+      "registry": "npm",
+      "package": "beehiiv-mcp",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "bentoml-mcp": {
+      "registry": "pip",
+      "package": "bentoml-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "betterstack-mcp": {
+      "registry": "npm",
+      "package": "betterstack-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "bigcommerce-mcp": {
+      "registry": "npm",
+      "package": "bigcommerce-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "bigquery": {
+      "registry": "npm",
+      "package": "@toolbox-sdk/server",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "bigtable-mcp": {
+      "registry": "pip",
+      "package": "bigtable-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "bill-com-mcp": {
+      "registry": "npm",
+      "package": "bill-com-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "bill4time-mcp": {
+      "registry": "npm",
+      "package": "bill4time-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "binance-mcp": {
+      "registry": "pip",
+      "package": "mcp-binance",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "binance-mcp-server": {
+      "registry": "pip",
+      "package": "binance-mcp-server",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "biomcp": {
+      "registry": "pip",
+      "package": "biomcp",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "birdeye-mcp": {
+      "registry": "npm",
+      "package": "birdeye-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "bitbucket": {
+      "registry": "npm",
+      "package": "bitbucket-mcp",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "bitmex-mcp": {
+      "registry": "npm",
+      "package": "bitmex-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "bitstamp-mcp": {
+      "registry": "npm",
+      "package": "bitstamp-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "bizzabo-mcp": {
+      "registry": "npm",
+      "package": "bizzabo-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "blackboard-mcp": {
+      "registry": "npm",
+      "package": "blackboard-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "bland-ai-mcp": {
+      "registry": "npm",
+      "package": "bland-ai-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "blender-mcp": {
+      "registry": "pip",
+      "package": "blender-mcp",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "blizzard-mcp": {
+      "registry": "npm",
+      "package": "mcp-server-blizzard",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "bloomberg-enterprise-mcp": {
+      "registry": "pip",
+      "package": "bloomberg-enterprise-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "bloomerang-mcp": {
+      "registry": "npm",
+      "package": "bloomerang-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "bloomreach-mcp": {
+      "registry": "npm",
+      "package": "bloomreach-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "bls-mcp": {
+      "registry": "pip",
+      "package": "bls-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "blue-yonder-mcp": {
+      "registry": "npm",
+      "package": "blue-yonder-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "bluebutton-mcp": {
+      "registry": "pip",
+      "package": "bluebutton-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "bluesnap-mcp": {
+      "registry": "npm",
+      "package": "bluesnap-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "bolt-mcp": {
+      "registry": "npm",
+      "package": "bolt-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "bolt-stackblitz-mcp": {
+      "registry": "npm",
+      "package": "bolt-stackblitz-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "booking-com-mcp": {
+      "registry": "npm",
+      "package": "booking-com-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "boomi-mcp": {
+      "registry": "npm",
+      "package": "boomi-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "botpress-mcp": {
+      "registry": "npm",
+      "package": "botpress-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "box-mcp": {
+      "registry": "npm",
+      "package": "box-mcp-server",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "braintree-mcp": {
+      "registry": "npm",
+      "package": "braintree-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "brave-search": {
+      "registry": "npm",
+      "package": "@brave/brave-search-mcp-server",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "braze-mcp": {
+      "registry": "npm",
+      "package": "braze-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "brightcove-mcp": {
+      "registry": "npm",
+      "package": "brightcove-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "brightpearl-mcp": {
+      "registry": "npm",
+      "package": "brightpearl-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "brightspot-mcp": {
+      "registry": "npm",
+      "package": "brightspot-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "browserstack": {
+      "registry": "npm",
+      "package": "@browserstack/mcp-server",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "bubble-mcp": {
+      "registry": "npm",
+      "package": "bubble-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "budibase-mcp": {
+      "registry": "npm",
+      "package": "budibase-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "buffer-mcp": {
+      "registry": "npm",
+      "package": "buffer-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "builder-io-mcp": {
+      "registry": "npm",
+      "package": "builder-io-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "buildertrend-mcp": {
+      "registry": "npm",
+      "package": "buildertrend-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "buildium-mcp": {
+      "registry": "npm",
+      "package": "buildium-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "bullhorn-mcp": {
+      "registry": "npm",
+      "package": "bullhorn-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "bunny-cdn-mcp": {
+      "registry": "npm",
+      "package": "bunny-cdn-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "buzzsprout-mcp": {
+      "registry": "npm",
+      "package": "buzzsprout-mcp",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "bybit-mcp": {
+      "registry": "npm",
+      "package": "bybit-mcp",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "calendly": {
+      "registry": "npm",
+      "package": "calendly-mcp-server",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "calendly-mcp": {
+      "registry": "npm",
+      "package": "calendly-mcp-server",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "canopen-mcp": {
+      "registry": "pip",
+      "package": "canopen-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "canvas-lms-mcp": {
+      "registry": "npm",
+      "package": "canvas-lms-mcp",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "capacities-mcp": {
+      "registry": "npm",
+      "package": "capacities-mcp",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "captions": {
+      "registry": "npm",
+      "package": "captions-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "caselaw-mcp": {
+      "registry": "pip",
+      "package": "caselaw-mcp",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "casetext-mcp": {
+      "registry": "pip",
+      "package": "casetext-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "casthu-mcp": {
+      "registry": "npm",
+      "package": "casthu-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "ccxt-crypto-mcp": {
+      "registry": "npm",
+      "package": "ccxt-crypto-trading-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "cdc-mcp": {
+      "registry": "pip",
+      "package": "cdc-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "celigo-mcp": {
+      "registry": "npm",
+      "package": "@ilyassesalama/celigo-mcp",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "census-mcp": {
+      "registry": "pip",
+      "package": "census-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "cerebras-mcp": {
+      "registry": "pip",
+      "package": "cerebras-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "cerebrium-mcp": {
+      "registry": "pip",
+      "package": "cerebrium-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "ceridian-mcp": {
+      "registry": "pip",
+      "package": "ceridian-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "cerner-fhir-mcp": {
+      "registry": "npm",
+      "package": "cerner-fhir-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "cerner-mcp": {
+      "registry": "pip",
+      "package": "cerner-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "chainlink-mcp": {
+      "registry": "npm",
+      "package": "chainlink-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "change-healthcare-mcp": {
+      "registry": "npm",
+      "package": "change-healthcare-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "checkly-mcp": {
+      "registry": "npm",
+      "package": "checkly-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "chef-mcp": {
+      "registry": "pip",
+      "package": "chef-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "chess-com-mcp": {
+      "registry": "npm",
+      "package": "mcp-server-chesscom",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "chorus-ai-mcp": {
+      "registry": "npm",
+      "package": "chorus-ai-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "chroma": {
+      "registry": "pip",
+      "package": "chroma-mcp",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "chroma-mcp": {
+      "registry": "pip",
+      "package": "chroma-mcp",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "chrome-devtools": {
+      "registry": "npm",
+      "package": "chrome-devtools-mcp",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "cin7-mcp": {
+      "registry": "npm",
+      "package": "cin7-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "circleci": {
+      "registry": "npm",
+      "package": "@circleci/mcp-server-circleci",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "cisco-meraki-mcp": {
+      "registry": "npm",
+      "package": "cisco-meraki-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "classy-mcp": {
+      "registry": "npm",
+      "package": "classy-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "clearml-mcp": {
+      "registry": "pip",
+      "package": "clearml-mcp",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "clerk-mcp": {
+      "registry": "npm",
+      "package": "clerk-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "clickhouse": {
+      "registry": "pip",
+      "package": "mcp-clickhouse",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "clickup": {
+      "registry": "npm",
+      "package": "@hauptsache.net/clickup-mcp",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "climate-corporation-mcp": {
+      "registry": "npm",
+      "package": "fieldview-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "climate-fieldview-mcp": {
+      "registry": "npm",
+      "package": "climate-fieldview-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "climatetrace-mcp": {
+      "registry": "npm",
+      "package": "climatetrace-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "clinicaltrials-mcp": {
+      "registry": "pip",
+      "package": "clinicaltrials-mcp",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "clio-mcp": {
+      "registry": "npm",
+      "package": "clio-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "clockify-mcp": {
+      "registry": "npm",
+      "package": "clockify-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "close": {
+      "registry": "npm",
+      "package": "close-crm-cli",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "close-crm-mcp": {
+      "registry": "npm",
+      "package": "close-crm-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "cloudbeds-mcp": {
+      "registry": "npm",
+      "package": "cloudbeds-mcp",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "cloudflare-api-mcp": {
+      "registry": "npm",
+      "package": "@cloudflare/mcp-server",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "cloudflare-bindings-mcp": {
+      "registry": "npm",
+      "package": "@cloudflare/mcp-server-cloudflare",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "cloudflare-d1-mcp": {
+      "registry": "npm",
+      "package": "cloudflare-d1-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "cloudflare-stream-mcp": {
+      "registry": "npm",
+      "package": "cloudflare-stream-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "cloudflare-workers-mcp": {
+      "registry": "npm",
+      "package": "cloudflare-workers-mcp",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "cloudinary-mcp": {
+      "registry": "npm",
+      "package": "@cloudinary/mcp-server",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "clover-mcp": {
+      "registry": "npm",
+      "package": "clover-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "cockroachdb-mcp": {
+      "registry": "npm",
+      "package": "cockroachdb-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "coda": {
+      "registry": "pip",
+      "package": "coda-mcp-server",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "codat-mcp": {
+      "registry": "npm",
+      "package": "codat-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "codecov-mcp": {
+      "registry": "npm",
+      "package": "mcp-server-codecov",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "coderabbit": {
+      "registry": "npm",
+      "package": "coderabbitai-mcp",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "codesandbox": {
+      "registry": "npm",
+      "package": "@techlibs/codesandbox-mcp",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "codesignal-mcp": {
+      "registry": "npm",
+      "package": "codesignal-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "codex": {
+      "registry": "npm",
+      "package": "@openai/codex",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "cognito-mcp": {
+      "registry": "npm",
+      "package": "cognito-mcp-server",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "cohere-mcp": {
+      "registry": "pip",
+      "package": "cohere-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "coinbase": {
+      "registry": "npm",
+      "package": "@coinbase/payments-mcp",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "coinbase-advanced-mcp": {
+      "registry": "npm",
+      "package": "@coinbase/advanced-trade-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "coinex": {
+      "registry": "pip",
+      "package": "coinex_mcp_server",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "coingecko-mcp": {
+      "registry": "npm",
+      "package": "coingecko-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "coinmarketcap-mcp": {
+      "registry": "npm",
+      "package": "coinmarketcap-mcp",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "comet-ml-mcp": {
+      "registry": "pip",
+      "package": "comet-mcp",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "comfyui-mcp": {
+      "registry": "pip",
+      "package": "comfyui-mcp",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "composio": {
+      "registry": "npm",
+      "package": "@composio/mcp",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "concur-sap-mcp": {
+      "registry": "npm",
+      "package": "concur-sap-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "confluence-cloud-mcp": {
+      "registry": "npm",
+      "package": "confluence-cloud-mcp-server",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "congress-mcp": {
+      "registry": "pip",
+      "package": "congress-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "constant-contact-mcp": {
+      "registry": "npm",
+      "package": "constant-contact-mcp-server",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "constructor-io-mcp": {
+      "registry": "npm",
+      "package": "constructor-io-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "contentstack-mcp": {
+      "registry": "npm",
+      "package": "contentstack-mcp",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "context7": {
+      "registry": "npm",
+      "package": "ctx7",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "contract-pod-ai-mcp": {
+      "registry": "npm",
+      "package": "contract-pod-ai-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "contractsafe-mcp": {
+      "registry": "pip",
+      "package": "contractsafe-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "convai-mcp": {
+      "registry": "npm",
+      "package": "convai-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "convertkit-mcp": {
+      "registry": "npm",
+      "package": "mcp-convertkit",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "copilot-money-mcp": {
+      "registry": "npm",
+      "package": "copilot-money-mcp",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "copper-crm-mcp": {
+      "registry": "npm",
+      "package": "copper-crm-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "coralogix-mcp": {
+      "registry": "npm",
+      "package": "coralogix-mcp",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "cornerstone-mcp": {
+      "registry": "npm",
+      "package": "cornerstone-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "cosmic-cms-mcp": {
+      "registry": "npm",
+      "package": "cosmic-cms-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "costar-mcp": {
+      "registry": "npm",
+      "package": "costar-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "coupa-mcp": {
+      "registry": "npm",
+      "package": "coupa-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "coursera-mcp": {
+      "registry": "npm",
+      "package": "coursera-mcp",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "courtlistener-mcp": {
+      "registry": "pip",
+      "package": "courtlistener-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "courtsmash-mcp": {
+      "registry": "npm",
+      "package": "courtsmart-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "cr-sqlite-mcp": {
+      "registry": "npm",
+      "package": "cr-sqlite-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "cratedb-mcp": {
+      "registry": "pip",
+      "package": "cratedb-mcp",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "crewai": {
+      "registry": "pip",
+      "package": "crewai-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "crexi-mcp": {
+      "registry": "npm",
+      "package": "crexi-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "crisp-mcp": {
+      "registry": "npm",
+      "package": "crisp-mcp",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "crossplane-mcp": {
+      "registry": "npm",
+      "package": "crossplane-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "crypto-indicators-mcp": {
+      "registry": "pip",
+      "package": "crypto-indicators-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "crypto-orderbook-mcp": {
+      "registry": "pip",
+      "package": "crypto-orderbook-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "cumulocity-mcp": {
+      "registry": "pip",
+      "package": "cumulocity-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "curl-mcp": {
+      "registry": "npm",
+      "package": "http-mcp-server",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "currency-exchange-mcp": {
+      "registry": "npm",
+      "package": "currency-exchange-mcp",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "cvent-mcp": {
+      "registry": "npm",
+      "package": "cvent-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "d-id-mcp": {
+      "registry": "npm",
+      "package": "d-id-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "d2l-brightspace-mcp": {
+      "registry": "npm",
+      "package": "d2l-brightspace-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "d3js-mcp": {
+      "registry": "npm",
+      "package": "d3js-mcp-server",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "dagster-mcp": {
+      "registry": "pip",
+      "package": "dagster-mcp",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "daily-mcp": {
+      "registry": "npm",
+      "package": "daily-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "dassault-3dexperience-mcp": {
+      "registry": "npm",
+      "package": "dassault-3dexperience-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "data-gov-mcp": {
+      "registry": "pip",
+      "package": "mcp-datagov",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "datagov-mcp": {
+      "registry": "npm",
+      "package": "data-gov-il-mcp",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "datahub": {
+      "registry": "pip",
+      "package": "mcp-server-datahub",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "datawrapper": {
+      "registry": "pip",
+      "package": "datawrapper-mcp",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "dbt-mcp": {
+      "registry": "pip",
+      "package": "dbt-mcp",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "dear-inventory-mcp": {
+      "registry": "npm",
+      "package": "dear-inventory-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "deepeval": {
+      "registry": "pip",
+      "package": "deepeval-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "deepgram-mcp": {
+      "registry": "npm",
+      "package": "deepgram-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "deepinfra-mcp": {
+      "registry": "npm",
+      "package": "deepinfra-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "deepl": {
+      "registry": "npm",
+      "package": "deepl-mcp-server",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "deepseek-mcp": {
+      "registry": "npm",
+      "package": "deepseek-mcp-server",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "deezer-mcp": {
+      "registry": "npm",
+      "package": "deezer-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "defillama-mcp": {
+      "registry": "npm",
+      "package": "defillama-mcp",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "dendron-mcp": {
+      "registry": "npm",
+      "package": "dendron-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "deno-deploy-mcp": {
+      "registry": "npm",
+      "package": "deno-deploy-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "deribit-mcp": {
+      "registry": "npm",
+      "package": "deribit-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "descope-mcp": {
+      "registry": "npm",
+      "package": "descope-mcp-server",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "dev-to-mcp": {
+      "registry": "npm",
+      "package": "devto-mcp",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "devdocs-mcp": {
+      "registry": "npm",
+      "package": "wp-devdocs-mcp",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "dexpaprika-mcp": {
+      "registry": "npm",
+      "package": "dexpaprika-mcp",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "dhl-mcp": {
+      "registry": "npm",
+      "package": "dhl-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "dialogflow-mcp": {
+      "registry": "npm",
+      "package": "dialogflow-mcp-server",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "dialpad-mcp": {
+      "registry": "npm",
+      "package": "dialpad-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "dify-mcp": {
+      "registry": "pip",
+      "package": "dify-mcp",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "dimensions-mcp": {
+      "registry": "npm",
+      "package": "dimensions-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "discogs-mcp": {
+      "registry": "npm",
+      "package": "discogs-mcp-server",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "discourse-mcp": {
+      "registry": "npm",
+      "package": "discourse-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "divvy-mcp": {
+      "registry": "npm",
+      "package": "divvy-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "django-mcp": {
+      "registry": "pip",
+      "package": "django-mcp-server",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "dji-mcp": {
+      "registry": "pip",
+      "package": "dji-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "docebo-mcp": {
+      "registry": "npm",
+      "package": "docebo-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "docket-alarm-mcp": {
+      "registry": "npm",
+      "package": "docket-alarm-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "document360-mcp": {
+      "registry": "npm",
+      "package": "document360-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "docusign": {
+      "registry": "npm",
+      "package": "@docusign/mcp-server",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "docusign-mcp": {
+      "registry": "npm",
+      "package": "@docusign/mcp-server",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "docx-mcp": {
+      "registry": "pip",
+      "package": "docx-mcp",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "domo-mcp": {
+      "registry": "npm",
+      "package": "domo-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "domoticz-mcp": {
+      "registry": "pip",
+      "package": "domoticz-mcp",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "donorperfect-mcp": {
+      "registry": "npm",
+      "package": "donorperfect-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "doordash-mcp": {
+      "registry": "npm",
+      "package": "doordash-drive-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "draftbit-mcp": {
+      "registry": "npm",
+      "package": "draftbit-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "drchrono-mcp": {
+      "registry": "pip",
+      "package": "mcp-drchrono",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "drift-mcp": {
+      "registry": "npm",
+      "package": "drift-mcp",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "drip-mcp": {
+      "registry": "npm",
+      "package": "mcp-drip",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "duck-creek-mcp": {
+      "registry": "npm",
+      "package": "duck-creek-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "duckdb-mcp": {
+      "registry": "pip",
+      "package": "motherduck-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "duckduckgo-mcp": {
+      "registry": "pip",
+      "package": "duckduckgo-mcp-server",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "dun-bradstreet-mcp": {
+      "registry": "npm",
+      "package": "dun-bradstreet-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "duo-security-mcp": {
+      "registry": "npm",
+      "package": "duo-security-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "duolingo-api-mcp": {
+      "registry": "npm",
+      "package": "duolingo-api-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "dvc-mcp": {
+      "registry": "pip",
+      "package": "dvc-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "dwolla-mcp": {
+      "registry": "npm",
+      "package": "dwolla-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "dynamics-365-mcp": {
+      "registry": "npm",
+      "package": "mcp-server-dynamics365",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "dynamics365-mcp": {
+      "registry": "npm",
+      "package": "@microsoft/dynamics365-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "e2b": {
+      "registry": "npm",
+      "package": "@e2b/mcp-server",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "e2b-mcp": {
+      "registry": "npm",
+      "package": "mcp-e2b",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "ebay-mcp": {
+      "registry": "pip",
+      "package": "mcp-server-ebay",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "ebay-trading-mcp": {
+      "registry": "npm",
+      "package": "ebay-trading-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "echarts-mcp": {
+      "registry": "npm",
+      "package": "echarts-mcp-server",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "eclinicalworks-mcp": {
+      "registry": "npm",
+      "package": "eclinicalworks-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "ecobee-mcp": {
+      "registry": "npm",
+      "package": "ecobee-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "ecwid-mcp": {
+      "registry": "npm",
+      "package": "mcp-ecwid",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "eia-open-data-mcp": {
+      "registry": "npm",
+      "package": "eia-open-data-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "elastic-siem-mcp": {
+      "registry": "npm",
+      "package": "elastic-siem-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "electric-sql-mcp": {
+      "registry": "npm",
+      "package": "electric-sql-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "elevenlabs": {
+      "registry": "pip",
+      "package": "elevenlabs-mcp",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "elevenlabs-mcp": {
+      "registry": "pip",
+      "package": "elevenlabs-mcp",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "emby-mcp": {
+      "registry": "pip",
+      "package": "emby-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "emqx-mcp": {
+      "registry": "npm",
+      "package": "emqx-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "enphase-mcp": {
+      "registry": "npm",
+      "package": "enphase-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "ensembl-mcp": {
+      "registry": "pip",
+      "package": "ensembl-mcp",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "entrata-mcp": {
+      "registry": "npm",
+      "package": "entrata-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "epa-data-mcp": {
+      "registry": "pip",
+      "package": "mcp-epa-data",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "epa-mcp-server": {
+      "registry": "npm",
+      "package": "@cyanheads/epa-mcp-server",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "epic-fhir-mcp": {
+      "registry": "pip",
+      "package": "mcp-epic-fhir",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "epic-games-mcp": {
+      "registry": "npm",
+      "package": "epic-games-mcp-server",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "epic-online-services-mcp": {
+      "registry": "npm",
+      "package": "epic-online-services-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "episerver-mcp": {
+      "registry": "npm",
+      "package": "episerver-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "esp-rainmaker-mcp": {
+      "registry": "pip",
+      "package": "esp-rainmaker-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "esphome-mcp": {
+      "registry": "pip",
+      "package": "mcp-esphome",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "estuary-flow-mcp": {
+      "registry": "npm",
+      "package": "estuary-flow-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "etherscan-mcp": {
+      "registry": "npm",
+      "package": "etherscan-mcp",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "etsy-mcp": {
+      "registry": "npm",
+      "package": "etsy-mcp-server",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "eu-open-data-mcp": {
+      "registry": "pip",
+      "package": "mcp-server-eu-opendata",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "eurostat-mcp": {
+      "registry": "pip",
+      "package": "eurostat-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "eventbrite-mcp": {
+      "registry": "npm",
+      "package": "eventbrite-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "everything": {
+      "registry": "npm",
+      "package": "@modelcontextprotocol/server-everything",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "evisort-mcp": {
+      "registry": "npm",
+      "package": "evisort-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "evolu-mcp": {
+      "registry": "npm",
+      "package": "evolu-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "excel-mcp": {
+      "registry": "pip",
+      "package": "excel-mcp-server",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "expedia-mcp": {
+      "registry": "npm",
+      "package": "expedia-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "experian-mcp": {
+      "registry": "npm",
+      "package": "experian-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "factset-analytics-mcp": {
+      "registry": "npm",
+      "package": "factset-analytics-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "fal-ai-mcp": {
+      "registry": "npm",
+      "package": "fal-ai-mcp",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "fastcase-mcp": {
+      "registry": "npm",
+      "package": "fastcase-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "fastspring-mcp": {
+      "registry": "npm",
+      "package": "fastspring-mcp",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "fda-open-mcp": {
+      "registry": "npm",
+      "package": "openfda-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "fdic-mcp": {
+      "registry": "pip",
+      "package": "fdic-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "feast-mcp": {
+      "registry": "pip",
+      "package": "feast-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "fec-mcp": {
+      "registry": "npm",
+      "package": "fec-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "fedex-mcp": {
+      "registry": "npm",
+      "package": "fedex-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "fetch": {
+      "registry": "pip",
+      "package": "mcp-server-fetch",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "fhir-mcp": {
+      "registry": "npm",
+      "package": "@flexpa/mcp-fhir",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "fibaro-mcp": {
+      "registry": "pip",
+      "package": "fibaro-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "fieldaware-mcp": {
+      "registry": "npm",
+      "package": "fieldaware-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "fieldedge-mcp": {
+      "registry": "npm",
+      "package": "fieldedge-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "filesystem": {
+      "registry": "npm",
+      "package": "@modelcontextprotocol/server-filesystem",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "fillout-mcp": {
+      "registry": "npm",
+      "package": "fillout-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "financekit-mcp": {
+      "registry": "npm",
+      "package": "financekit-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "financial-datasets-mcp": {
+      "registry": "npm",
+      "package": "@financial-datasets/mcp-server",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "finicity-mcp": {
+      "registry": "npm",
+      "package": "finicity-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "finviz-mcp": {
+      "registry": "pip",
+      "package": "finviz-mcp-server",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "firebase": {
+      "registry": "npm",
+      "package": "firebase-tools",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "firecrawl": {
+      "registry": "npm",
+      "package": "firecrawl-mcp",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "firecrawl-mcp": {
+      "registry": "npm",
+      "package": "firecrawl-mcp",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "firestore-mcp": {
+      "registry": "npm",
+      "package": "firestore-mcp-server",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "fireworks-ai-mcp": {
+      "registry": "npm",
+      "package": "fireworks-ai-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "fitbit-mcp": {
+      "registry": "npm",
+      "package": "fitbit-mcp",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "fivetran-mcp": {
+      "registry": "npm",
+      "package": "fivetran-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "flagsmith": {
+      "registry": "npm",
+      "package": "flagsmith",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "fleet-complete-mcp": {
+      "registry": "npm",
+      "package": "fleet-complete-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "flexport-mcp": {
+      "registry": "pip",
+      "package": "flexport-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "flink": {
+      "registry": "pip",
+      "package": "flink-mcp",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "flowise-mcp": {
+      "registry": "npm",
+      "package": "flowise-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "flutterflow-mcp": {
+      "registry": "pip",
+      "package": "flutterflow-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "flutterwave": {
+      "registry": "npm",
+      "package": "mcp-flutterwave",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "fluxcd-mcp": {
+      "registry": "npm",
+      "package": "fluxcd-mcp-server",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "formbricks-mcp": {
+      "registry": "npm",
+      "package": "formbricks-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "fortinet-fortigate-mcp": {
+      "registry": "pip",
+      "package": "fortigate-mcp",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "fountain-ats-mcp": {
+      "registry": "npm",
+      "package": "fountain-ats-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "frame-io-mcp": {
+      "registry": "npm",
+      "package": "frame-io-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "framer-mcp": {
+      "registry": "npm",
+      "package": "framer-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "fred-mcp": {
+      "registry": "pip",
+      "package": "fred-mcp",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "freecad-mcp": {
+      "registry": "pip",
+      "package": "freecad-mcp",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "freightos-mcp": {
+      "registry": "npm",
+      "package": "freightos-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "freshbooks-mcp": {
+      "registry": "npm",
+      "package": "mcp-freshbooks",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "freshdesk": {
+      "registry": "pip",
+      "package": "freshdesk-mcp",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "freshping-mcp": {
+      "registry": "npm",
+      "package": "freshping-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "freshsales-mcp": {
+      "registry": "npm",
+      "package": "freshsales-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "freshservice-mcp": {
+      "registry": "npm",
+      "package": "freshservice-mcp",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "fronius-solar-mcp": {
+      "registry": "pip",
+      "package": "fronius-mcp",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "gainsight-mcp": {
+      "registry": "npm",
+      "package": "gainsight-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "garmin-mcp": {
+      "registry": "pip",
+      "package": "garmin-mcp",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "gather-mcp": {
+      "registry": "npm",
+      "package": "gather-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "gbif-mcp": {
+      "registry": "pip",
+      "package": "gbif-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "gcp": {
+      "registry": "npm",
+      "package": "@google-cloud/cloud-run-mcp",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "ge-historian-mcp": {
+      "registry": "pip",
+      "package": "ge-historian-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "ge-predix-mcp": {
+      "registry": "npm",
+      "package": "ge-predix-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "gemini-exchange-mcp": {
+      "registry": "npm",
+      "package": "gemini-exchange-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "genesys-cloud-mcp": {
+      "registry": "npm",
+      "package": "@makingchatbots/genesys-cloud-mcp-server",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "geocoding-mcp": {
+      "registry": "npm",
+      "package": "geocoding-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "geotab-mcp": {
+      "registry": "npm",
+      "package": "geotab-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "getresponse-mcp": {
+      "registry": "npm",
+      "package": "getresponse-mcp-server",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "getyourguide-mcp": {
+      "registry": "npm",
+      "package": "getyourguide-mcp",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "ghost-mcp": {
+      "registry": "npm",
+      "package": "ghost-mcp",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "git": {
+      "registry": "pip",
+      "package": "mcp-server-git",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "gitbook-mcp": {
+      "registry": "npm",
+      "package": "gitbook-mcp",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "github-repo-mcp": {
+      "registry": "npm",
+      "package": "github-repo-mcp",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "glide-mcp": {
+      "registry": "npm",
+      "package": "glide-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "gmail": {
+      "registry": "pip",
+      "package": "workspace-mcp",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "godaddy-mcp": {
+      "registry": "npm",
+      "package": "godaddy-mcp-server",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "godot-mcp": {
+      "registry": "npm",
+      "package": "@coding-solo/godot-mcp",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "google-chat-mcp": {
+      "registry": "npm",
+      "package": "google-chat-mcp",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "google-drive": {
+      "registry": "npm",
+      "package": "@modelcontextprotocol/server-gdrive",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "google-flights-mcp": {
+      "registry": "npm",
+      "package": "google-flights-mcp",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "google-sheets": {
+      "registry": "pip",
+      "package": "mcp-google-sheets",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "gorgias-mcp": {
+      "registry": "npm",
+      "package": "gorgias-mcp",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "govee-mcp": {
+      "registry": "npm",
+      "package": "govee-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "govinfo-mcp": {
+      "registry": "pip",
+      "package": "govinfo-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "gradient-ai-mcp": {
+      "registry": "npm",
+      "package": "gradient-ai-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "grafana": {
+      "registry": "pip",
+      "package": "mcp-grafana",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "grants-gov-mcp": {
+      "registry": "npm",
+      "package": "grantsgov-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "granular-mcp": {
+      "registry": "npm",
+      "package": "granular-ag-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "graphite-dev-mcp": {
+      "registry": "npm",
+      "package": "graphite-dev-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "graphlit": {
+      "registry": "npm",
+      "package": "graphlit-mcp-server",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "graphql-mcp": {
+      "registry": "npm",
+      "package": "graphql-mcp-server",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "graylog-mcp": {
+      "registry": "pip",
+      "package": "graylog-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "great-expectations-mcp": {
+      "registry": "pip",
+      "package": "great-expectations-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "greenway-health-mcp": {
+      "registry": "npm",
+      "package": "greenway-health-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "gremlin": {
+      "registry": "npm",
+      "package": "@gremlin/mcp-server",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "greptile-mcp": {
+      "registry": "npm",
+      "package": "greptile-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "greynoise-mcp": {
+      "registry": "npm",
+      "package": "greynoise-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "groq-mcp": {
+      "registry": "npm",
+      "package": "groq-mcp-server",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "grubhub-mcp": {
+      "registry": "npm",
+      "package": "grubhub-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "gtfs-mcp": {
+      "registry": "npm",
+      "package": "gtfs-realtime-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "guardian-api-mcp": {
+      "registry": "npm",
+      "package": "guardian-api-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "guesty-mcp": {
+      "registry": "npm",
+      "package": "guesty-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "guidewire-mcp": {
+      "registry": "npm",
+      "package": "guidewire-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "gumroad-mcp": {
+      "registry": "npm",
+      "package": "mcp-gumroad",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "guru-mcp": {
+      "registry": "npm",
+      "package": "guru-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "hackernews": {
+      "registry": "npm",
+      "package": "mcp-hacker-news",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "hanko-mcp": {
+      "registry": "npm",
+      "package": "hanko-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "hapi-fhir-mcp": {
+      "registry": "pip",
+      "package": "hapi-fhir-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "hardhat-mcp": {
+      "registry": "npm",
+      "package": "hardhat-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "harvest-mcp": {
+      "registry": "npm",
+      "package": "harvest-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "haveibeenpwned-mcp": {
+      "registry": "npm",
+      "package": "haveibeenpwned-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "haystack-mcp": {
+      "registry": "pip",
+      "package": "haystack-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "healthcare-mcp": {
+      "registry": "pip",
+      "package": "healthcare-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "healthlake-mcp": {
+      "registry": "pip",
+      "package": "awslabs.healthlake-mcp-server",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "heap-analytics-mcp": {
+      "registry": "npm",
+      "package": "mcp-heap-analytics",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "heap-mcp": {
+      "registry": "npm",
+      "package": "heap-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "hellosign": {
+      "registry": "npm",
+      "package": "hellosign-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "helpscout-mcp": {
+      "registry": "npm",
+      "package": "helpscout-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "hexagon-mi-mcp": {
+      "registry": "npm",
+      "package": "hexagon-mi-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "heyform-mcp": {
+      "registry": "npm",
+      "package": "heyform-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "heygen": {
+      "registry": "npm",
+      "package": "heygen-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "heygen-mcp": {
+      "registry": "npm",
+      "package": "heygen-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "highlight-io-mcp": {
+      "registry": "npm",
+      "package": "highlight-io-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "hightouch-mcp": {
+      "registry": "npm",
+      "package": "hightouch-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "hipaa-vault-mcp": {
+      "registry": "npm",
+      "package": "hipaa-vault-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "hivemq-mcp": {
+      "registry": "npm",
+      "package": "hivemq-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "hl7-mcp": {
+      "registry": "npm",
+      "package": "hl7-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "hledger-mcp": {
+      "registry": "npm",
+      "package": "@iiatlas/hledger-mcp",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "holistics-mcp": {
+      "registry": "npm",
+      "package": "holistics-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "home-assistant-mcp": {
+      "registry": "pip",
+      "package": "ha-mcp",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "homeassistant-tevonsb-mcp": {
+      "registry": "npm",
+      "package": "homeassistant-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "homey-mcp": {
+      "registry": "npm",
+      "package": "homey-mcp",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "honeywell-forge-mcp": {
+      "registry": "npm",
+      "package": "honeywell-forge-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "hootsuite-mcp": {
+      "registry": "npm",
+      "package": "hootsuite-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "hopper-mcp": {
+      "registry": "npm",
+      "package": "hopper-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "hoppscotch-mcp": {
+      "registry": "npm",
+      "package": "hoppscotch-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "hotelbeds-mcp": {
+      "registry": "npm",
+      "package": "hotelbeds-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "housecall-pro-mcp": {
+      "registry": "npm",
+      "package": "housecall-pro-mcp",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "hubstaff-mcp": {
+      "registry": "pip",
+      "package": "hubstaff-mcp",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "hud-mcp": {
+      "registry": "npm",
+      "package": "hud-mcp",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "huggingface": {
+      "registry": "npm",
+      "package": "@llmindset/hf-mcp-server",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "huggingface-mcp": {
+      "registry": "npm",
+      "package": "@llmindset/hf-mcp-server",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "humanloop": {
+      "registry": "npm",
+      "package": "humanloop-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "hume-ai-mcp": {
+      "registry": "npm",
+      "package": "hume-ai-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "hyperbrowser": {
+      "registry": "npm",
+      "package": "hyperbrowser-mcp",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "ibm-baw-mcp": {
+      "registry": "npm",
+      "package": "@ibm-baw/mcp-server",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "ibm-content-services-mcp": {
+      "registry": "npm",
+      "package": "@ibm-ecm/content-services-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "ibm-cos-mcp": {
+      "registry": "npm",
+      "package": "@ibm/cos-mcp-server",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "ibm-data-intelligence-mcp": {
+      "registry": "npm",
+      "package": "@ibm/data-intelligence-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "ibm-mdm-mcp": {
+      "registry": "npm",
+      "package": "@ibm/mdm-mcp-server",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "ibm-mq-mcp": {
+      "registry": "pip",
+      "package": "mq-mcp-server",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "ibm-openpages-mcp": {
+      "registry": "npm",
+      "package": "@ibm/openpages-mcp-server",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "ibm-watson-mcp": {
+      "registry": "npm",
+      "package": "ibm-watson-mcp-server",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "ibm-watsonxdata-mcp": {
+      "registry": "pip",
+      "package": "ibm-watsonxdata-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "icims-mcp": {
+      "registry": "npm",
+      "package": "icims-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "icinga-mcp": {
+      "registry": "pip",
+      "package": "icinga-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "ideogram-mcp": {
+      "registry": "npm",
+      "package": "ideogram-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "ifttt-mcp": {
+      "registry": "npm",
+      "package": "ifttt-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "ikea-tradfri-mcp": {
+      "registry": "pip",
+      "package": "ikea-tradfri-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "image-generation": {
+      "registry": "pip",
+      "package": "minimax-mcp",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "imanage-mcp": {
+      "registry": "npm",
+      "package": "imanage-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "imf-data-mcp": {
+      "registry": "pip",
+      "package": "imf-data-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "imf-mcp": {
+      "registry": "pip",
+      "package": "imf-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "incident-io-mcp": {
+      "registry": "npm",
+      "package": "incident-io-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "inferless-mcp": {
+      "registry": "pip",
+      "package": "inferless-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "influxdb-mcp": {
+      "registry": "pip",
+      "package": "influxdb-mcp",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "infoblox-mcp": {
+      "registry": "pip",
+      "package": "infoblox-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "infor-cloudsuite-mcp": {
+      "registry": "npm",
+      "package": "infor-cloudsuite-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "infura-mcp": {
+      "registry": "npm",
+      "package": "infura-mcp",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "inngest-mcp": {
+      "registry": "npm",
+      "package": "@inngest/mcp-server",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "insomnia-mcp": {
+      "registry": "npm",
+      "package": "mcp-insomnia",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "instacart-mcp": {
+      "registry": "npm",
+      "package": "instacart-platform-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "instagram-mcp": {
+      "registry": "npm",
+      "package": "instagram-mcp",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "instana-mcp": {
+      "registry": "npm",
+      "package": "instana-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "instantly-ai-mcp": {
+      "registry": "npm",
+      "package": "instantly-mcp",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "insteon-mcp": {
+      "registry": "pip",
+      "package": "insteon-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "instructure-canvas-api-mcp": {
+      "registry": "npm",
+      "package": "instructure-canvas-api-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "interactive-brokers-mcp": {
+      "registry": "pip",
+      "package": "interactive-brokers-mcp",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "invision-mcp": {
+      "registry": "npm",
+      "package": "mcp-invision",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "invoke-ai-mcp": {
+      "registry": "pip",
+      "package": "invokeai-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "iobroker-mcp": {
+      "registry": "npm",
+      "package": "iobroker.mcp",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "ipinfo-mcp": {
+      "registry": "pip",
+      "package": "mcp-server-ipinfo",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "ironclad": {
+      "registry": "npm",
+      "package": "ironclad-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "ironclad-mcp": {
+      "registry": "npm",
+      "package": "ironclad-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "irs-data-mcp": {
+      "registry": "pip",
+      "package": "irs-data-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "ispring-mcp": {
+      "registry": "npm",
+      "package": "ispring-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "istio-mcp": {
+      "registry": "npm",
+      "package": "istio-mcp-server",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "itch-io-mcp": {
+      "registry": "npm",
+      "package": "itchio-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "itchio-mcp": {
+      "registry": "npm",
+      "package": "itchio-mcp-server",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "iterable-mcp": {
+      "registry": "npm",
+      "package": "iterable-mcp",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "jan-ai-mcp": {
+      "registry": "npm",
+      "package": "jan-ai-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "jellyfin-mcp": {
+      "registry": "pip",
+      "package": "jellyfin-mcp",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "jina-mcp": {
+      "registry": "npm",
+      "package": "mcp-server-jina",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "jobber-mcp": {
+      "registry": "npm",
+      "package": "jobber-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "jobvite-mcp": {
+      "registry": "npm",
+      "package": "jobvite-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "john-deere-ops-mcp": {
+      "registry": "npm",
+      "package": "john-deere-ops-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "jotform-mcp": {
+      "registry": "npm",
+      "package": "jotform-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "jumio-mcp": {
+      "registry": "npm",
+      "package": "jumio-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "jumpcloud-mcp": {
+      "registry": "npm",
+      "package": "jumpcloud-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "june-analytics-mcp": {
+      "registry": "npm",
+      "package": "june-analytics-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "june-so-mcp": {
+      "registry": "npm",
+      "package": "june-so-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "juniper-mist-mcp": {
+      "registry": "npm",
+      "package": "juniper-mist-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "jupyter": {
+      "registry": "pip",
+      "package": "jupyter-mcp-server",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "k3s-mcp": {
+      "registry": "npm",
+      "package": "k3s-mcp-server",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "kafka-mcp": {
+      "registry": "npm",
+      "package": "@confluentinc/mcp-confluent",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "kajabi-mcp": {
+      "registry": "npm",
+      "package": "kajabi-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "kaltura-mcp": {
+      "registry": "npm",
+      "package": "kaltura-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "kapwing-mcp": {
+      "registry": "npm",
+      "package": "kapwing-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "kareo-mcp": {
+      "registry": "npm",
+      "package": "kareo-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "keap-mcp": {
+      "registry": "npm",
+      "package": "keap-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "keda-mcp": {
+      "registry": "npm",
+      "package": "keda-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "kestra": {
+      "registry": "npm",
+      "package": "kestra-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "keycloak-mcp": {
+      "registry": "npm",
+      "package": "keycloak-mcp-server",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "keystone-mcp": {
+      "registry": "npm",
+      "package": "mcp-keystone",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "kinaxis-mcp": {
+      "registry": "npm",
+      "package": "kinaxis-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "kinde-mcp": {
+      "registry": "npm",
+      "package": "kinde-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "kintone-mcp": {
+      "registry": "npm",
+      "package": "kintone-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "kira-mcp": {
+      "registry": "npm",
+      "package": "kira-mcp",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "kiwi-mcp": {
+      "registry": "npm",
+      "package": "kiwi-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "klarna-mcp": {
+      "registry": "npm",
+      "package": "klarna-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "klaviyo-mcp": {
+      "registry": "npm",
+      "package": "klaviyo-mcp-server",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "kling-ai-mcp": {
+      "registry": "npm",
+      "package": "kling-ai-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "klook-mcp": {
+      "registry": "npm",
+      "package": "klook-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "knowledge-base-mcp-server": {
+      "registry": "npm",
+      "package": "@jeanibarz/knowledge-base-mcp-server",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "knx-mcp": {
+      "registry": "pip",
+      "package": "knx-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "kong-mcp": {
+      "registry": "npm",
+      "package": "@kong/mcp-server",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "kontent-ai-mcp": {
+      "registry": "npm",
+      "package": "kontent-ai-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "kount-mcp": {
+      "registry": "npm",
+      "package": "kount-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "kraken-exchange-mcp": {
+      "registry": "npm",
+      "package": "kraken-exchange-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "kubernetes": {
+      "registry": "npm",
+      "package": "mcp-server-kubernetes",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "kucoin-mcp": {
+      "registry": "npm",
+      "package": "kucoin-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "lago-mcp": {
+      "registry": "npm",
+      "package": "lago-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "langflow-mcp": {
+      "registry": "pip",
+      "package": "langflow-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "langsmith": {
+      "registry": "npm",
+      "package": "langsmith-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "langsmith-hub": {
+      "registry": "npm",
+      "package": "langhub-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "langsmith-mcp": {
+      "registry": "pip",
+      "package": "langsmith-mcp",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "laserfiche-mcp": {
+      "registry": "npm",
+      "package": "laserfiche-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "last-fm-mcp": {
+      "registry": "npm",
+      "package": "lastfm-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "lastfm-mcp": {
+      "registry": "npm",
+      "package": "lastfm-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "lattice-mcp": {
+      "registry": "npm",
+      "package": "lattice-mcp",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "launchdarkly": {
+      "registry": "npm",
+      "package": "@launchdarkly/mcp-server",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "lawgeex-mcp": {
+      "registry": "npm",
+      "package": "lawgeex-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "learnworlds-mcp": {
+      "registry": "npm",
+      "package": "learnworlds-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "legal-research-mcp": {
+      "registry": "pip",
+      "package": "legal-research-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "lemlist-mcp": {
+      "registry": "npm",
+      "package": "lemlist-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "lemon-squeezy-mcp": {
+      "registry": "npm",
+      "package": "lemon-squeezy-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "leptonai-mcp": {
+      "registry": "pip",
+      "package": "lep-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "letta-mcp": {
+      "registry": "pip",
+      "package": "letta-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "lever-mcp": {
+      "registry": "npm",
+      "package": "lever-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "lexisnexis": {
+      "registry": "npm",
+      "package": "lexisnexis-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "lexisnexis-mcp": {
+      "registry": "npm",
+      "package": "lexisnexis-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "lexmachina-mcp": {
+      "registry": "npm",
+      "package": "lexmachina-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "librechat-mcp": {
+      "registry": "npm",
+      "package": "librechat-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "librenms-mcp": {
+      "registry": "pip",
+      "package": "librenms-mcp",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "libreoffice-mcp": {
+      "registry": "pip",
+      "package": "libreoffice-mcp",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "libsyn-mcp": {
+      "registry": "npm",
+      "package": "libsyn-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "lichess-mcp": {
+      "registry": "npm",
+      "package": "lichess-mcp",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "lightdash-mcp": {
+      "registry": "npm",
+      "package": "lightdash-mcp-server",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "lightning-ai-mcp": {
+      "registry": "pip",
+      "package": "lightning-ai-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "lightspeed-pos-mcp": {
+      "registry": "npm",
+      "package": "lightspeed-pos-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "lightspeed-retail-mcp": {
+      "registry": "npm",
+      "package": "lightspeed-retail-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "line": {
+      "registry": "npm",
+      "package": "@line/line-bot-mcp-server",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "linksquares-mcp": {
+      "registry": "npm",
+      "package": "linksquares-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "linnworks-mcp": {
+      "registry": "npm",
+      "package": "linnworks-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "listenotes-mcp": {
+      "registry": "npm",
+      "package": "listennotes-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "litera-mcp": {
+      "registry": "npm",
+      "package": "litera-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "llamaindex": {
+      "registry": "pip",
+      "package": "llama-index-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "llamaparse-mcp": {
+      "registry": "pip",
+      "package": "llamaparse-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "lmstudio-mcp": {
+      "registry": "npm",
+      "package": "lmstudio-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "lob-mcp": {
+      "registry": "npm",
+      "package": "lob-mcp",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "logfire": {
+      "registry": "pip",
+      "package": "logfire-mcp",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "logseq-mcp": {
+      "registry": "npm",
+      "package": "logseq-mcp",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "logto-mcp": {
+      "registry": "npm",
+      "package": "logto-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "lokalise-mcp": {
+      "registry": "npm",
+      "package": "lokalise-mcp",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "looker-mcp": {
+      "registry": "pip",
+      "package": "looker-mcp",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "loopnet-mcp": {
+      "registry": "npm",
+      "package": "loopnet-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "lootlocker-mcp": {
+      "registry": "npm",
+      "package": "lootlocker-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "lottie-mcp": {
+      "registry": "npm",
+      "package": "lottie-mcp-server",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "lovable-mcp": {
+      "registry": "npm",
+      "package": "lovable-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "lseg-data-mcp": {
+      "registry": "pip",
+      "package": "lseg-data-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "luma": {
+      "registry": "npm",
+      "package": "luma-mcp",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "luma-ai-mcp": {
+      "registry": "npm",
+      "package": "@lumalabs/mcp-server",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "lutron-mcp": {
+      "registry": "npm",
+      "package": "lutron-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "lyft-mcp": {
+      "registry": "npm",
+      "package": "lyft-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "m-files-mcp": {
+      "registry": "npm",
+      "package": "m-files-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "magento-mcp": {
+      "registry": "pip",
+      "package": "magento-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "mailchimp-mcp": {
+      "registry": "npm",
+      "package": "mailchimp-mcp",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "mailerlite-mcp": {
+      "registry": "npm",
+      "package": "mcp-mailerlite",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "mailgun": {
+      "registry": "npm",
+      "package": "@mailgun/mcp-server",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "make-com": {
+      "registry": "npm",
+      "package": "@makehq/mcp-server",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "manageengine-mcp": {
+      "registry": "npm",
+      "package": "manageengine-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "mapbox": {
+      "registry": "npm",
+      "package": "@mapbox/mcp-server",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "mariana-tek-mcp": {
+      "registry": "npm",
+      "package": "mariana-tek-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "marketo-mcp": {
+      "registry": "npm",
+      "package": "marketo-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "markitdown-mcp": {
+      "registry": "pip",
+      "package": "markitdown-mcp",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "marqeta-mcp": {
+      "registry": "npm",
+      "package": "marqeta-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "marqo-mcp": {
+      "registry": "pip",
+      "package": "marqo-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "mastercontrol-mcp": {
+      "registry": "npm",
+      "package": "mastercontrol-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "matrix-mcp": {
+      "registry": "pip",
+      "package": "mcp-matrix",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "matter-mcp": {
+      "registry": "pip",
+      "package": "matter-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "matterport-mcp": {
+      "registry": "npm",
+      "package": "matterport-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "mautic-mcp": {
+      "registry": "npm",
+      "package": "mautic-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "maxio-mcp": {
+      "registry": "npm",
+      "package": "maxio-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "mcp-context-forge": {
+      "registry": "pip",
+      "package": "mcp-contextforge-gateway",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "mcp-fredapi": {
+      "registry": "pip",
+      "package": "mcp-fredapi",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "mcp-proxy-for-aws": {
+      "registry": "pip",
+      "package": "mcp-proxy-for-aws",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "mcp-server-odoo-ivnvxd": {
+      "registry": "pip",
+      "package": "mcp-server-odoo",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "medidata-rave-mcp": {
+      "registry": "pip",
+      "package": "medidata-rave-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "meditech-mcp": {
+      "registry": "pip",
+      "package": "meditech-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "medium-mcp": {
+      "registry": "npm",
+      "package": "medium-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "medlineplus-mcp": {
+      "registry": "pip",
+      "package": "medlineplus-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "medplum-mcp": {
+      "registry": "npm",
+      "package": "@medplum/mcp-server",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "medusa-mcp": {
+      "registry": "npm",
+      "package": "medusa-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "meltano-mcp": {
+      "registry": "pip",
+      "package": "meltano-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "mem0": {
+      "registry": "npm",
+      "package": "@mem0ai/mcp-server",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "mem0-mcp": {
+      "registry": "pip",
+      "package": "mem0-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "memory": {
+      "registry": "npm",
+      "package": "@modelcontextprotocol/server-memory",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "memory-bank-mcp": {
+      "registry": "npm",
+      "package": "@allpepper/memory-bank-mcp",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "mercury-bank-mcp": {
+      "registry": "npm",
+      "package": "mercury-bank-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "meross-mcp": {
+      "registry": "pip",
+      "package": "meross-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "messagebird-mcp": {
+      "registry": "npm",
+      "package": "messagebird-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "meta-ads-mcp": {
+      "registry": "pip",
+      "package": "meta-ads-mcp",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "metabase-mcp": {
+      "registry": "npm",
+      "package": "metabase-mcp",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "metasploit-mcp": {
+      "registry": "pip",
+      "package": "metasploit-mcp",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "mews-mcp": {
+      "registry": "npm",
+      "package": "mews-mcp",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "microsoft-clarity": {
+      "registry": "npm",
+      "package": "@microsoft/clarity-mcp-server",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "microsoft-loop-mcp": {
+      "registry": "npm",
+      "package": "microsoft-loop-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "microsoft-playwright-mcp": {
+      "registry": "npm",
+      "package": "@playwright/mcp",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "microsoft-sentinel-mcp": {
+      "registry": "npm",
+      "package": "@microsoft/sentinel-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "milvus-mcp": {
+      "registry": "pip",
+      "package": "milvus-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "mindbody-mcp": {
+      "registry": "npm",
+      "package": "mindbody-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "minecraft-mcp": {
+      "registry": "npm",
+      "package": "minecraft-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "misp-mcp": {
+      "registry": "pip",
+      "package": "misp-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "mistral": {
+      "registry": "npm",
+      "package": "mistral-mcp",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "mitre-attack-mcp": {
+      "registry": "pip",
+      "package": "attack-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "mixmax-mcp": {
+      "registry": "npm",
+      "package": "mixmax-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "mixpanel-mcp": {
+      "registry": "npm",
+      "package": "mcp-mixpanel",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "mlflow-mcp": {
+      "registry": "pip",
+      "package": "mlflow-mcp",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "modal": {
+      "registry": "pip",
+      "package": "modal-mcp-toolset",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "modal-labs-mcp": {
+      "registry": "pip",
+      "package": "modal-mcp",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "modbus-mcp": {
+      "registry": "pip",
+      "package": "mcp-modbus",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "modern-treasury-mcp": {
+      "registry": "npm",
+      "package": "modern-treasury-mcp",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "mollie-mcp": {
+      "registry": "npm",
+      "package": "mollie-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "monarch-mcp": {
+      "registry": "pip",
+      "package": "monarch-mcp-server",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "monday-mcp": {
+      "registry": "npm",
+      "package": "monday-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "mongodb": {
+      "registry": "npm",
+      "package": "mongodb-mcp-server",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "moodle-mcp": {
+      "registry": "pip",
+      "package": "moodle-mcp",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "moralis-mcp": {
+      "registry": "npm",
+      "package": "moralis-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "morningstar-direct-mcp": {
+      "registry": "npm",
+      "package": "morningstar-direct-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "morningstar-mcp": {
+      "registry": "pip",
+      "package": "mcp-server-morningstar",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "motherduck-mcp": {
+      "registry": "npm",
+      "package": "mcp-server-motherduck",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "motion-mcp": {
+      "registry": "npm",
+      "package": "motion-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "motive-mcp": {
+      "registry": "npm",
+      "package": "motive-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "mparticle-mcp": {
+      "registry": "npm",
+      "package": "mparticle-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "mqtt-mcp": {
+      "registry": "npm",
+      "package": "mqtt-mcp",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "mri-software-mcp": {
+      "registry": "npm",
+      "package": "mri-software-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "ms-365-mcp": {
+      "registry": "npm",
+      "package": "ms-365-mcp-server",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "mssql-mcp": {
+      "registry": "npm",
+      "package": "mssql-mcp",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "mulesoft-mcp": {
+      "registry": "npm",
+      "package": "mulesoft-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "murf-ai-mcp": {
+      "registry": "pip",
+      "package": "murf-mcp",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "musicbrainz-mcp": {
+      "registry": "npm",
+      "package": "musicbrainz-mcp",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "mycase-mcp": {
+      "registry": "npm",
+      "package": "mycase-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "mysql": {
+      "registry": "npm",
+      "package": "@f4ww4z/mcp-mysql-server",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "n8n": {
+      "registry": "npm",
+      "package": "n8n-mcp",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "n8n-mcp": {
+      "registry": "npm",
+      "package": "n8n-mcp",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "nagios-mcp": {
+      "registry": "pip",
+      "package": "nagios-mcp-server",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "nakama-mcp": {
+      "registry": "npm",
+      "package": "nakama-mcp-server",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "namecheap-mcp": {
+      "registry": "npm",
+      "package": "namecheap-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "national-parks-mcp": {
+      "registry": "npm",
+      "package": "mcp-server-nationalparks",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "nautobot-mcp": {
+      "registry": "pip",
+      "package": "nautobot-mcp",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "navan-mcp": {
+      "registry": "npm",
+      "package": "navan-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "ncbi-entrez-mcp": {
+      "registry": "pip",
+      "package": "ncbi-entrez-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "neon": {
+      "registry": "npm",
+      "package": "add-mcp",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "neptune-ai-mcp": {
+      "registry": "pip",
+      "package": "neptune-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "nessus-mcp": {
+      "registry": "npm",
+      "package": "nessus-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "netbox-mcp": {
+      "registry": "pip",
+      "package": "netbox-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "netdocuments-mcp": {
+      "registry": "npm",
+      "package": "netdocuments-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "netlify": {
+      "registry": "npm",
+      "package": "@netlify/mcp",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "netsmart-mcp": {
+      "registry": "npm",
+      "package": "netsmart-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "netsuite-mcp": {
+      "registry": "npm",
+      "package": "netsuite-mcp-server",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "newsapi-mcp": {
+      "registry": "npm",
+      "package": "newsapi-mcp",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "nextgen-healthcare-mcp": {
+      "registry": "npm",
+      "package": "nextgen-healthcare-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "nhost-mcp": {
+      "registry": "npm",
+      "package": "nhost-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "nih-reporter-mcp": {
+      "registry": "pip",
+      "package": "nih-reporter-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "noaa-mcp": {
+      "registry": "pip",
+      "package": "mcp-noaa",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "node-red-mcp": {
+      "registry": "npm",
+      "package": "node-red-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "nomic-mcp": {
+      "registry": "pip",
+      "package": "nomic-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "nominatim-mcp": {
+      "registry": "pip",
+      "package": "nominatim-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "nosto-mcp": {
+      "registry": "npm",
+      "package": "nosto-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "nostr-mcp": {
+      "registry": "npm",
+      "package": "nostr-mcp-server",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "notion": {
+      "registry": "npm",
+      "package": "@notionhq/notion-mcp-server",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "nuclino-mcp": {
+      "registry": "npm",
+      "package": "nuclino-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "nutshell-crm-mcp": {
+      "registry": "npm",
+      "package": "nutshell-crm-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "nvd-mcp": {
+      "registry": "pip",
+      "package": "nvd-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "nws-mcp": {
+      "registry": "npm",
+      "package": "nws-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "nx-mcp": {
+      "registry": "npm",
+      "package": "nx-mcp",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "nyt-api-mcp": {
+      "registry": "npm",
+      "package": "nyt-api-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "oanda-mcp": {
+      "registry": "npm",
+      "package": "oanda-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "observable-mcp": {
+      "registry": "npm",
+      "package": "observable-mcp-server",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "obsidian": {
+      "registry": "pip",
+      "package": "mcp-obsidian",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "obsidian-mcp": {
+      "registry": "npm",
+      "package": "obsidian-mcp",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "octagon-private-credit-mcp": {
+      "registry": "pip",
+      "package": "octagon-private-credit-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "octagon-sec-filings-mcp": {
+      "registry": "pip",
+      "package": "octagon-sec-filings-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "octoprint-mcp": {
+      "registry": "pip",
+      "package": "octoprint-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "odoo-mcp": {
+      "registry": "pip",
+      "package": "odoo-mcp",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "odoo-mcp-pro": {
+      "registry": "pip",
+      "package": "odoo-mcp-pro",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "okx-mcp": {
+      "registry": "npm",
+      "package": "okx-mcp",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "ollama-mcp": {
+      "registry": "npm",
+      "package": "ollama-mcp",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "omnisend-mcp": {
+      "registry": "npm",
+      "package": "omnisend-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "omnivore-mcp": {
+      "registry": "npm",
+      "package": "omnivore-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "onelogin-mcp": {
+      "registry": "npm",
+      "package": "onelogin-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "onetrust-mcp": {
+      "registry": "npm",
+      "package": "onetrust-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "onfido-mcp": {
+      "registry": "npm",
+      "package": "onfido-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "onpay-mcp": {
+      "registry": "npm",
+      "package": "onpay-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "ontraport-mcp": {
+      "registry": "npm",
+      "package": "ontraport-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "opc-ua-mcp": {
+      "registry": "pip",
+      "package": "opcua-mcp",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "opcua-mcp": {
+      "registry": "pip",
+      "package": "opcua-mcp",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "open-banking-mcp": {
+      "registry": "npm",
+      "package": "open-banking-mcp",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "open-exchange-mcp": {
+      "registry": "npm",
+      "package": "openexchangerates-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "open-fda-mcp": {
+      "registry": "npm",
+      "package": "mcp-openfda",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "open-meteo-mcp": {
+      "registry": "npm",
+      "package": "open-meteo-mcp",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "open-webui-mcp": {
+      "registry": "pip",
+      "package": "open-webui-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "openai-mcp": {
+      "registry": "pip",
+      "package": "openai-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "openai-realtime-mcp": {
+      "registry": "npm",
+      "package": "openai-realtime-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "openalex-mcp": {
+      "registry": "npm",
+      "package": "openalex-mcp",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "openapi-spec": {
+      "registry": "npm",
+      "package": "openapi-mcp-server",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "openaq-mcp": {
+      "registry": "npm",
+      "package": "openaq-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "opencorporates-mcp": {
+      "registry": "npm",
+      "package": "opencorporates-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "opencti-mcp": {
+      "registry": "pip",
+      "package": "opencti-mcp",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "openei-mcp": {
+      "registry": "npm",
+      "package": "openei-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "openemr-mcp": {
+      "registry": "pip",
+      "package": "mcp-openemr",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "openfda-augmented-mcp": {
+      "registry": "pip",
+      "package": "openfda-mcp-server",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "openfda-mcp": {
+      "registry": "npm",
+      "package": "openfda-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "openfga-mcp": {
+      "registry": "npm",
+      "package": "openfga-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "openmrs-mcp": {
+      "registry": "pip",
+      "package": "openmrs-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "openrouter-mcp": {
+      "registry": "npm",
+      "package": "openrouter-mcp",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "opensea-mcp": {
+      "registry": "npm",
+      "package": "opensea-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "opensecrets-mcp": {
+      "registry": "npm",
+      "package": "opensecrets-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "openstates-mcp": {
+      "registry": "pip",
+      "package": "openstates-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "openstreetmap-mcp": {
+      "registry": "pip",
+      "package": "osm-mcp-server",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "opentable-mcp": {
+      "registry": "npm",
+      "package": "opentable-mcp",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "opentext-mcp": {
+      "registry": "npm",
+      "package": "opentext-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "openvas-mcp": {
+      "registry": "pip",
+      "package": "openvas-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "openweathermap-mcp": {
+      "registry": "npm",
+      "package": "openweathermap-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "opslevel-mcp": {
+      "registry": "npm",
+      "package": "opslevel-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "opus-clip-mcp": {
+      "registry": "npm",
+      "package": "@opusclip/mcp",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "oracle-cloud-mcp": {
+      "registry": "pip",
+      "package": "oracle-cloud-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "oracle-db-mcp": {
+      "registry": "pip",
+      "package": "oracle-db-mcp",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "oracle-hcm-cloud-mcp": {
+      "registry": "npm",
+      "package": "oracle-hcm-cloud-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "orca-security-mcp": {
+      "registry": "pip",
+      "package": "orca-security-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "ordway-mcp": {
+      "registry": "npm",
+      "package": "ordway-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "oura-mcp": {
+      "registry": "npm",
+      "package": "oura-ring-mcp",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "outline-mcp": {
+      "registry": "npm",
+      "package": "outline-mcp",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "outreach-io-mcp": {
+      "registry": "npm",
+      "package": "outreach-io-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "owasp-zap-mcp": {
+      "registry": "pip",
+      "package": "owasp-zap-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "oxylabs": {
+      "registry": "pip",
+      "package": "oxylabs-mcp",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "pacer": {
+      "registry": "pip",
+      "package": "pacer-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "paddle-mcp": {
+      "registry": "npm",
+      "package": "paddle-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "paloalto-panorama-mcp": {
+      "registry": "pip",
+      "package": "panorama-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "pandadoc": {
+      "registry": "npm",
+      "package": "pandadoc-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "pandora-mcp": {
+      "registry": "pip",
+      "package": "pandora-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "parse-server-mcp": {
+      "registry": "npm",
+      "package": "parse-server-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "particle-io-mcp": {
+      "registry": "npm",
+      "package": "mcp-particle-io",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "patent-mcp": {
+      "registry": "npm",
+      "package": "patent-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "patriot-payroll-mcp": {
+      "registry": "npm",
+      "package": "patriot-payroll-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "paychex-mcp": {
+      "registry": "npm",
+      "package": "paychex-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "paycom-mcp": {
+      "registry": "npm",
+      "package": "paycom-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "payload-cms-mcp": {
+      "registry": "npm",
+      "package": "payload-cms-mcp",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "payload-mcp": {
+      "registry": "npm",
+      "package": "mcp-payload-cms",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "paylocity-mcp": {
+      "registry": "npm",
+      "package": "paylocity-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "payoneer-mcp": {
+      "registry": "npm",
+      "package": "payoneer-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "payware-mcp": {
+      "registry": "npm",
+      "package": "payware-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "pdf-reader": {
+      "registry": "npm",
+      "package": "pdf-reader-mcp-server",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "peloton-mcp": {
+      "registry": "npm",
+      "package": "peloton-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "pendo-mcp": {
+      "registry": "npm",
+      "package": "pendo-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "penpot-mcp": {
+      "registry": "npm",
+      "package": "@penpot/mcp",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "peoplesoft-mcp": {
+      "registry": "npm",
+      "package": "peoplesoft-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "perforce-helix-mcp": {
+      "registry": "npm",
+      "package": "perforce-helix-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "permit-io-mcp": {
+      "registry": "npm",
+      "package": "permit-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "perplexity": {
+      "registry": "npm",
+      "package": "@perplexity-ai/mcp-server",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "perplexity-mcp": {
+      "registry": "npm",
+      "package": "mcp-perplexity",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "perplexity-sonar-mcp": {
+      "registry": "npm",
+      "package": "@felores/perplexity-sonar-mcp",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "personio-mcp": {
+      "registry": "pip",
+      "package": "personio-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "pexels-mcp": {
+      "registry": "pip",
+      "package": "pexels-mcp-server",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "philips-hue-mcp": {
+      "registry": "npm",
+      "package": "philips-hue-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "phoenix-arize": {
+      "registry": "pip",
+      "package": "phoenix-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "pictory-mcp": {
+      "registry": "npm",
+      "package": "pictory-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "pika": {
+      "registry": "npm",
+      "package": "pika-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "pinecone": {
+      "registry": "npm",
+      "package": "@pinecone-database/mcp",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "pinecone-mcp": {
+      "registry": "npm",
+      "package": "@pinecone-database/mcp",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "ping-identity-mcp": {
+      "registry": "npm",
+      "package": "ping-identity-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "pinterest-mcp": {
+      "registry": "npm",
+      "package": "pinterest-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "pipedream-mcp": {
+      "registry": "npm",
+      "package": "pipedream-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "piwikpro-mcp": {
+      "registry": "npm",
+      "package": "piwikpro-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "plaid-mcp": {
+      "registry": "npm",
+      "package": "plaid-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "plane": {
+      "registry": "npm",
+      "package": "@makeplane/plane-mcp-server",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "plane-mcp": {
+      "registry": "npm",
+      "package": "plane-mcp",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "plangrid-mcp": {
+      "registry": "npm",
+      "package": "plangrid-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "playfab-mcp": {
+      "registry": "npm",
+      "package": "@microsoft/playfab-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "playwright": {
+      "registry": "npm",
+      "package": "@executeautomation/playwright-mcp-server",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "pleo-mcp": {
+      "registry": "npm",
+      "package": "pleo-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "plex-mcp": {
+      "registry": "pip",
+      "package": "plex-mcp",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "plivo-mcp": {
+      "registry": "pip",
+      "package": "plivo-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "plotly-mcp": {
+      "registry": "pip",
+      "package": "plotly-mcp-server",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "pluralsight-mcp": {
+      "registry": "npm",
+      "package": "pluralsight-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "podcast-index-mcp": {
+      "registry": "npm",
+      "package": "podcast-index-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "podia-mcp": {
+      "registry": "npm",
+      "package": "podia-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "podium-mcp": {
+      "registry": "npm",
+      "package": "podium-mcp",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "podman-mcp": {
+      "registry": "pip",
+      "package": "podman-mcp",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "pointclickcare-mcp": {
+      "registry": "npm",
+      "package": "pointclickcare-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "polygon-io-mcp": {
+      "registry": "pip",
+      "package": "polygon-mcp",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "porkbun-mcp": {
+      "registry": "npm",
+      "package": "porkbun-mcp-server",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "portainer-mcp": {
+      "registry": "npm",
+      "package": "portainer-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "postgresql": {
+      "registry": "npm",
+      "package": "@modelcontextprotocol/server-postgres",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "posthog": {
+      "registry": "npm",
+      "package": "@posthog/wizard",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "postmark": {
+      "registry": "npm",
+      "package": "@activecampaign/postmark-mcp",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "postmark-mcp": {
+      "registry": "npm",
+      "package": "postmark-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "power-bi-mcp": {
+      "registry": "npm",
+      "package": "powerbi-mcp",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "powersync-mcp": {
+      "registry": "npm",
+      "package": "powersync-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "prefect-mcp": {
+      "registry": "pip",
+      "package": "prefect-mcp",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "prestashop-mcp": {
+      "registry": "pip",
+      "package": "prestashop-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "printful-mcp": {
+      "registry": "npm",
+      "package": "mcp-printful",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "printify-mcp": {
+      "registry": "npm",
+      "package": "mcp-printify",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "prismic-mcp": {
+      "registry": "npm",
+      "package": "mcp-prismic",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "procore-mcp": {
+      "registry": "npm",
+      "package": "procore-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "producthunt": {
+      "registry": "pip",
+      "package": "product-hunt-mcp",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "project44-mcp": {
+      "registry": "npm",
+      "package": "project44-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "project44-visibility-mcp": {
+      "registry": "npm",
+      "package": "project44-visibility-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "promptfoo": {
+      "registry": "npm",
+      "package": "promptfoo-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "propertyware-mcp": {
+      "registry": "npm",
+      "package": "propertyware-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "ptc-thingworx-mcp": {
+      "registry": "npm",
+      "package": "ptc-thingworx-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "ptc-windchill-mcp": {
+      "registry": "npm",
+      "package": "ptc-windchill-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "pubmed-mcp": {
+      "registry": "pip",
+      "package": "pubmed-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "pulsar-mcp": {
+      "registry": "pip",
+      "package": "pulsar-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "pulumi-mcp": {
+      "registry": "npm",
+      "package": "pulumi-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "puppet-mcp": {
+      "registry": "pip",
+      "package": "puppet-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "puppeteer": {
+      "registry": "npm",
+      "package": "@modelcontextprotocol/server-puppeteer",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "px4-mcp": {
+      "registry": "pip",
+      "package": "px4-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "pylsp": {
+      "registry": "pip",
+      "package": "python-lsp-server",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "pypi-mcp": {
+      "registry": "pip",
+      "package": "pypi-query-mcp-server",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "pytest": {
+      "registry": "pip",
+      "package": "pytest-mcp-server",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "qdrant": {
+      "registry": "pip",
+      "package": "mcp-server-qdrant",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "qlik-mcp": {
+      "registry": "npm",
+      "package": "qlik-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "qualtrics-mcp": {
+      "registry": "pip",
+      "package": "qualtrics-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "qualys-mcp": {
+      "registry": "pip",
+      "package": "qualys-mcp",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "questdb-mcp": {
+      "registry": "npm",
+      "package": "questdb-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "quickbooks-mcp": {
+      "registry": "npm",
+      "package": "quickbooks-mcp",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "rabbitmq-mcp": {
+      "registry": "pip",
+      "package": "mcp-server-rabbitmq",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "raindrop-mcp": {
+      "registry": "npm",
+      "package": "@adeze/raindrop-mcp",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "ramp-mcp": {
+      "registry": "npm",
+      "package": "mcp-ramp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "rancher-mcp": {
+      "registry": "npm",
+      "package": "rancher-mcp-server",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "rapid7-mcp": {
+      "registry": "pip",
+      "package": "rapid7-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "rasa-mcp": {
+      "registry": "pip",
+      "package": "rasa-mcp-server",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "raspberry-pi-mcp": {
+      "registry": "pip",
+      "package": "raspberry-pi-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "rawg-mcp": {
+      "registry": "npm",
+      "package": "rawg-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "re-leased-mcp": {
+      "registry": "npm",
+      "package": "re-leased-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "realpage-mcp": {
+      "registry": "npm",
+      "package": "realpage-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "recharge-mcp": {
+      "registry": "npm",
+      "package": "recharge-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "reclaim-ai-mcp": {
+      "registry": "npm",
+      "package": "reclaim-mcp",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "recruitee-mcp": {
+      "registry": "npm",
+      "package": "recruitee-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "recurly-mcp": {
+      "registry": "npm",
+      "package": "recurly-mcp",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "redash-mcp": {
+      "registry": "pip",
+      "package": "redash-mcp",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "reddit": {
+      "registry": "npm",
+      "package": "reddit-mcp-buddy",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "reddit-api-mcp": {
+      "registry": "npm",
+      "package": "reddit-mcp-buddy",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "reddit-mcp": {
+      "registry": "npm",
+      "package": "reddit-mcp-buddy",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "redfin-mcp": {
+      "registry": "npm",
+      "package": "redfin-mcp",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "redis": {
+      "registry": "pip",
+      "package": "redis-mcp-server",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "redox-mcp": {
+      "registry": "npm",
+      "package": "mcp-redox",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "reflect-app-mcp": {
+      "registry": "npm",
+      "package": "reflect-app-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "regulations-gov-mcp": {
+      "registry": "npm",
+      "package": "regulations-gov-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "relativity-mcp": {
+      "registry": "npm",
+      "package": "relativity-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "rent-manager-mcp": {
+      "registry": "npm",
+      "package": "rent-manager-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "replicate": {
+      "registry": "npm",
+      "package": "replicate-flux-mcp",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "replicate-mcp": {
+      "registry": "npm",
+      "package": "replicate-mcp",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "repomix-mcp": {
+      "registry": "npm",
+      "package": "repomix",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "resend": {
+      "registry": "npm",
+      "package": "resend-mcp",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "restream-mcp": {
+      "registry": "npm",
+      "package": "@shaktech786/restream-mcp-server",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "retell-ai-mcp": {
+      "registry": "npm",
+      "package": "retell-ai-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "revenuecat-mcp": {
+      "registry": "npm",
+      "package": "revenuecat-mcp",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "revolut-mcp": {
+      "registry": "npm",
+      "package": "revolut-mcp",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "ring-mcp": {
+      "registry": "npm",
+      "package": "ring-mcp-server",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "ringcentral-mcp": {
+      "registry": "npm",
+      "package": "ringcentral-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "riot-games-mcp": {
+      "registry": "npm",
+      "package": "riot-games-mcp-server",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "rippling-mcp": {
+      "registry": "npm",
+      "package": "rippling-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "roam": {
+      "registry": "npm",
+      "package": "@roam-research/roam-mcp",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "roam-mcp": {
+      "registry": "npm",
+      "package": "roam-mcp",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "robinhood-mcp": {
+      "registry": "pip",
+      "package": "robinhood-mcp",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "roblox-mcp": {
+      "registry": "npm",
+      "package": "roblox-mcp-server",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "roboflow-mcp": {
+      "registry": "npm",
+      "package": "roboflow-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "rocketchat-mcp": {
+      "registry": "npm",
+      "package": "mcp-rocketchat",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "rockwell-mcp": {
+      "registry": "npm",
+      "package": "rockwell-factorytalk-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "rome2rio-mcp": {
+      "registry": "npm",
+      "package": "rome2rio-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "ros-mcp-server": {
+      "registry": "pip",
+      "package": "ros-mcp-server",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "route53-mcp": {
+      "registry": "npm",
+      "package": "route53-mcp-server",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "rudderstack-mcp": {
+      "registry": "npm",
+      "package": "rudderstack-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "runpod-mcp": {
+      "registry": "npm",
+      "package": "runpod-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "runway-mcp": {
+      "registry": "npm",
+      "package": "runway-api-mcp-server",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "runway-ml-mcp": {
+      "registry": "npm",
+      "package": "runway-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "sabre-mcp": {
+      "registry": "npm",
+      "package": "sabre-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "sage-intacct-mcp": {
+      "registry": "npm",
+      "package": "sage-intacct-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "salesforce": {
+      "registry": "npm",
+      "package": "@salesforce/mcp",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "salesforce-data360-mcp": {
+      "registry": "npm",
+      "package": "@salesforce/data360-mcp-server",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "salesforce-npsp-mcp": {
+      "registry": "npm",
+      "package": "salesforce-npsp-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "salesloft-mcp": {
+      "registry": "npm",
+      "package": "salesloft-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "salsify-mcp": {
+      "registry": "npm",
+      "package": "salsify-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "saltstack-mcp": {
+      "registry": "pip",
+      "package": "saltstack-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "sambanova-cloud-mcp": {
+      "registry": "npm",
+      "package": "sambanova-cloud-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "sambanova-mcp": {
+      "registry": "npm",
+      "package": "sambanova-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "samsara-mcp": {
+      "registry": "npm",
+      "package": "samsara-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "samsung-smarthings-mcp": {
+      "registry": "npm",
+      "package": "samsung-smarthings-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "sap-abap-adt-mcp": {
+      "registry": "npm",
+      "package": "@mcp-abap-adt/core",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "sap-ariba-mcp": {
+      "registry": "npm",
+      "package": "sap-ariba-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "sap-mcp": {
+      "registry": "npm",
+      "package": "@sap/mcp-server-cap",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "schwab-mcp": {
+      "registry": "pip",
+      "package": "schwab-mcp-server",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "scrut-mcp": {
+      "registry": "npm",
+      "package": "scrut-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "searchspring-mcp": {
+      "registry": "npm",
+      "package": "searchspring-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "seatgeek-mcp": {
+      "registry": "npm",
+      "package": "seatgeek-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "sec-edgar-mcp": {
+      "registry": "pip",
+      "package": "sec-edgar-mcp",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "secedgar-xbrl-mcp": {
+      "registry": "npm",
+      "package": "secedgar-mcp-server",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "secureframe-mcp": {
+      "registry": "npm",
+      "package": "secureframe-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "segment-mcp": {
+      "registry": "npm",
+      "package": "mcp-segment",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "semantic-scholar": {
+      "registry": "pip",
+      "package": "semantic-scholar-fastmcp",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "sematext-mcp": {
+      "registry": "npm",
+      "package": "sematext-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "semgrep": {
+      "registry": "pip",
+      "package": "semgrep-mcp",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "semrush-mcp": {
+      "registry": "npm",
+      "package": "semrush-mcp",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "sendgrid-mcp": {
+      "registry": "npm",
+      "package": "sendgrid-mcp",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "sentinelone-mcp": {
+      "registry": "pip",
+      "package": "sentinelone-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "sentry": {
+      "registry": "npm",
+      "package": "@sentry/mcp-server",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "sequential-thinking": {
+      "registry": "npm",
+      "package": "@modelcontextprotocol/server-sequential-thinking",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "serena": {
+      "registry": "pip",
+      "package": "serena-agent",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "serper": {
+      "registry": "npm",
+      "package": "serper-search-scrape-mcp-server",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "servicemax-mcp": {
+      "registry": "npm",
+      "package": "servicemax-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "servicenow-mcp": {
+      "registry": "npm",
+      "package": "servicenow-mcp",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "servicetitan-mcp": {
+      "registry": "npm",
+      "package": "servicetitan-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "sfmc-mcp": {
+      "registry": "npm",
+      "package": "sfmc-mcp",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "shelly-mcp": {
+      "registry": "pip",
+      "package": "shelly-mcp",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "shipbob-mcp": {
+      "registry": "npm",
+      "package": "shipbob-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "shiphero-mcp": {
+      "registry": "npm",
+      "package": "shiphero-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "shipstation-mcp": {
+      "registry": "npm",
+      "package": "shipstation-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "shodan-mcp": {
+      "registry": "pip",
+      "package": "shodan-mcp",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "shopify": {
+      "registry": "npm",
+      "package": "shopify-mcp",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "shopify-admin-mcp": {
+      "registry": "npm",
+      "package": "shopify-admin-mcp",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "shopify-storefront-mcp": {
+      "registry": "npm",
+      "package": "shopify-storefront-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "shopware-mcp": {
+      "registry": "npm",
+      "package": "shopware-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "siemens-mindsphere-mcp": {
+      "registry": "npm",
+      "package": "siemens-mindsphere-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "siemens-simatic-mcp": {
+      "registry": "pip",
+      "package": "siemens-simatic-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "sigma-computing-mcp": {
+      "registry": "npm",
+      "package": "sigma-computing-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "signalwire-mcp": {
+      "registry": "npm",
+      "package": "signalwire-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "signifyd-mcp": {
+      "registry": "npm",
+      "package": "signifyd-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "signoz-mcp": {
+      "registry": "pip",
+      "package": "signoz-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "simplecast-mcp": {
+      "registry": "npm",
+      "package": "simplecast-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "simpro-mcp": {
+      "registry": "npm",
+      "package": "simpro-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "sinch-mcp": {
+      "registry": "npm",
+      "package": "@sinch/mcp",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "singlestore-mcp": {
+      "registry": "npm",
+      "package": "singlestore-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "sisense-mcp": {
+      "registry": "npm",
+      "package": "sisense-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "sketch-mcp": {
+      "registry": "npm",
+      "package": "mcp-sketch",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "skiplagged-mcp": {
+      "registry": "npm",
+      "package": "skiplagged-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "skubana-mcp": {
+      "registry": "npm",
+      "package": "skubana-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "skyscanner-mcp": {
+      "registry": "npm",
+      "package": "skyscanner-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "slab-mcp": {
+      "registry": "npm",
+      "package": "slab-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17",
+      "collision": "npm `slab-mcp` is published but belongs to dev-jeb/slab-community, an MCP server for a trading-card grading API — not Slab the team knowledge base this entry documents"
+    },
+    "slack": {
+      "registry": "npm",
+      "package": "slack-mcp-server",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "slite-mcp": {
+      "registry": "npm",
+      "package": "slite-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "smartrecruiters-mcp": {
+      "registry": "npm",
+      "package": "smartrecruiters-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "smartsheet-mcp": {
+      "registry": "npm",
+      "package": "smartsheet-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "smartthings-api-mcp": {
+      "registry": "npm",
+      "package": "smartthings-api-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "smokeball-mcp": {
+      "registry": "npm",
+      "package": "smokeball-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "snapchat-mcp": {
+      "registry": "npm",
+      "package": "snapchat-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "snmp-mcp": {
+      "registry": "pip",
+      "package": "snmp-mcp-server",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "snowflake": {
+      "registry": "pip",
+      "package": "mcp_snowflake_server",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "snowplow": {
+      "registry": "npm",
+      "package": "snowplow-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "socradar-mcp": {
+      "registry": "npm",
+      "package": "socradar-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "solaranywhere-mcp": {
+      "registry": "npm",
+      "package": "solaranywhere-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "solaredge-mcp": {
+      "registry": "npm",
+      "package": "solaredge-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "sonatype-nexus-mcp": {
+      "registry": "npm",
+      "package": "sonatype-nexus-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "sonoff-mcp": {
+      "registry": "npm",
+      "package": "sonoff-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "soundcloud-mcp": {
+      "registry": "npm",
+      "package": "soundcloud-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "sovos-mcp": {
+      "registry": "npm",
+      "package": "sovos-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "spanner-mcp": {
+      "registry": "pip",
+      "package": "spanner-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "spark-mcp": {
+      "registry": "pip",
+      "package": "mcp-apache-spark-history-server",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "sparkpost-mcp": {
+      "registry": "npm",
+      "package": "sparkpost-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "speckle-mcp": {
+      "registry": "npm",
+      "package": "speckle-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "spendesk-mcp": {
+      "registry": "npm",
+      "package": "spendesk-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "sperax-crypto-mcp": {
+      "registry": "npm",
+      "package": "sperax-crypto-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "split": {
+      "registry": "npm",
+      "package": "@kud/mcp-harness-fme",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "splitio-mcp": {
+      "registry": "npm",
+      "package": "splitio-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "splunk-mcp": {
+      "registry": "pip",
+      "package": "splunk-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "sportradar-mcp": {
+      "registry": "npm",
+      "package": "sportradar-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "sportsdata-io-mcp": {
+      "registry": "npm",
+      "package": "sportsdata-io-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "spotdraft-mcp": {
+      "registry": "npm",
+      "package": "@spotdraft/spotdraft-mcp",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "spreedly-mcp": {
+      "registry": "npm",
+      "package": "spreedly-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "sprinto-mcp": {
+      "registry": "npm",
+      "package": "sprinto-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "sprout-social-mcp": {
+      "registry": "npm",
+      "package": "sprout-social-mcp",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "sqlite": {
+      "registry": "pip",
+      "package": "mcp-server-sqlite",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "sqlmesh-mcp": {
+      "registry": "pip",
+      "package": "sqlmesh-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "squadcast-mcp": {
+      "registry": "npm",
+      "package": "squadcast-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "square-mcp": {
+      "registry": "npm",
+      "package": "@square/mcp-server",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "squarespace-commerce-mcp": {
+      "registry": "npm",
+      "package": "mcp-squarespace-commerce",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "stability-ai": {
+      "registry": "npm",
+      "package": "mcp-stability-ai",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "stability-ai-mcp": {
+      "registry": "pip",
+      "package": "stability-ai-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "stackblitz": {
+      "registry": "npm",
+      "package": "stackblitz-mcp",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "stagehand": {
+      "registry": "npm",
+      "package": "@browserbasehq/mcp-server-browserbase",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "starrocks-mcp": {
+      "registry": "pip",
+      "package": "starrocks-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "statsig-mcp": {
+      "registry": "npm",
+      "package": "statsig-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "statuspage-mcp": {
+      "registry": "npm",
+      "package": "statuspage-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "steam-mcp": {
+      "registry": "npm",
+      "package": "steam-mcp",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "steam-web-api-mcp": {
+      "registry": "npm",
+      "package": "@tmhs/steam-mcp",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "strava-mcp": {
+      "registry": "npm",
+      "package": "strava-mcp",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "streak-mcp": {
+      "registry": "npm",
+      "package": "streak-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "stubhub-mcp": {
+      "registry": "npm",
+      "package": "stubhub-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "stytch-mcp": {
+      "registry": "npm",
+      "package": "stytch-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "substack-mcp": {
+      "registry": "npm",
+      "package": "substack-mcp",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "sumo-logic-mcp": {
+      "registry": "npm",
+      "package": "sumo-logic-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "sumsub-mcp": {
+      "registry": "npm",
+      "package": "sumsub-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "supernotes-mcp": {
+      "registry": "npm",
+      "package": "supernotes-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "superset-mcp": {
+      "registry": "pip",
+      "package": "superset-mcp",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "surveymonkey-mcp": {
+      "registry": "npm",
+      "package": "surveymonkey-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "swell-mcp": {
+      "registry": "npm",
+      "package": "swell-mcp",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "swimm-mcp": {
+      "registry": "npm",
+      "package": "swimm-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "synthesia": {
+      "registry": "npm",
+      "package": "synthesia-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "tableau-mcp": {
+      "registry": "pip",
+      "package": "tableau-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "talentlms-mcp": {
+      "registry": "npm",
+      "package": "talentlms-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "taleo-mcp": {
+      "registry": "npm",
+      "package": "taleo-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "tally-forms-mcp": {
+      "registry": "npm",
+      "package": "tally-forms-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "tally-mcp": {
+      "registry": "npm",
+      "package": "tally-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "task-master-ai": {
+      "registry": "npm",
+      "package": "task-master-ai",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "tasmota-mcp": {
+      "registry": "pip",
+      "package": "tasmota-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "tavily": {
+      "registry": "npm",
+      "package": "tavily-mcp",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "tavily-mcp": {
+      "registry": "npm",
+      "package": "tavily-mcp",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "taxjar-mcp": {
+      "registry": "npm",
+      "package": "taxjar-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "teachable-mcp": {
+      "registry": "npm",
+      "package": "teachable-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "teamcity-mcp": {
+      "registry": "npm",
+      "package": "@daghis/teamcity-mcp",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "teamtailor-mcp": {
+      "registry": "pip",
+      "package": "teamtailor-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "teamwork-mcp": {
+      "registry": "npm",
+      "package": "teamwork-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "tebra-mcp": {
+      "registry": "npm",
+      "package": "tebra-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "telnyx-mcp": {
+      "registry": "npm",
+      "package": "telnyx-mcp",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "tenable-mcp": {
+      "registry": "pip",
+      "package": "tenable-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "terraform-cloud-mcp": {
+      "registry": "npm",
+      "package": "mcp-server-terraform-cloud",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "tettra-mcp": {
+      "registry": "npm",
+      "package": "tettra-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "the-graph-mcp": {
+      "registry": "npm",
+      "package": "the-graph-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "thegraph-mcp": {
+      "registry": "pip",
+      "package": "thegraph-mcp",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "thehive-mcp": {
+      "registry": "pip",
+      "package": "thehive-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "thesportsdb-mcp": {
+      "registry": "npm",
+      "package": "thesportsdb-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "things3-mcp": {
+      "registry": "pip",
+      "package": "mcp-server-things",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "thingsboard-mcp": {
+      "registry": "pip",
+      "package": "thingsboard-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "thinkific-mcp": {
+      "registry": "npm",
+      "package": "thinkific-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "thoughtspot-mcp": {
+      "registry": "npm",
+      "package": "thoughtspot-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "threads-api-mcp": {
+      "registry": "npm",
+      "package": "threads-api-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "threejs-mcp": {
+      "registry": "npm",
+      "package": "threejs-mcp-server",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "thunkable-mcp": {
+      "registry": "npm",
+      "package": "thunkable-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "ticketlens-mcp": {
+      "registry": "npm",
+      "package": "ticketlens-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "ticketmaster-discovery-mcp": {
+      "registry": "npm",
+      "package": "ticketmaster-discovery-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "ticketmaster-mcp": {
+      "registry": "npm",
+      "package": "ticketmaster-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "tidal-mcp": {
+      "registry": "pip",
+      "package": "tidal-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "tidb-mcp": {
+      "registry": "npm",
+      "package": "tidb-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "tiingo-mcp": {
+      "registry": "pip",
+      "package": "tiingo-mcp",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "time": {
+      "registry": "pip",
+      "package": "mcp-server-time",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "timescaledb-mcp": {
+      "registry": "npm",
+      "package": "timescaledb-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "timesolv-mcp": {
+      "registry": "npm",
+      "package": "timesolv-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "tinybird-mcp": {
+      "registry": "npm",
+      "package": "@tinybird/mcp-server",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "tipalti-mcp": {
+      "registry": "npm",
+      "package": "tipalti-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "toast-pos-mcp": {
+      "registry": "npm",
+      "package": "toast-pos-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "todoist": {
+      "registry": "npm",
+      "package": "@doist/todoist-mcp",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "todoist-mcp": {
+      "registry": "npm",
+      "package": "todoist-mcp-server",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "tomorrow-io-mcp": {
+      "registry": "npm",
+      "package": "tomorrow-io-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "tomtom-maps-mcp": {
+      "registry": "npm",
+      "package": "tomtom-maps-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "tooljet-mcp": {
+      "registry": "npm",
+      "package": "tooljet-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "tplink-kasa-mcp": {
+      "registry": "pip",
+      "package": "tplink-kasa-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "tractive-mcp": {
+      "registry": "npm",
+      "package": "tractive-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "trademark-mcp": {
+      "registry": "npm",
+      "package": "trademark-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "tradingview-mcp": {
+      "registry": "pip",
+      "package": "tradingview-mcp",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "trainline-mcp": {
+      "registry": "npm",
+      "package": "trainline-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "transistor-fm-mcp": {
+      "registry": "npm",
+      "package": "transistor-fm-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "travelport-mcp": {
+      "registry": "npm",
+      "package": "travelport-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "trello": {
+      "registry": "npm",
+      "package": "@delorenj/mcp-server-trello",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "trigger-dev-mcp": {
+      "registry": "npm",
+      "package": "@trigger.dev/mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "trimble-construction-mcp": {
+      "registry": "npm",
+      "package": "trimble-construction-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "trulens": {
+      "registry": "pip",
+      "package": "trulens-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "trulioo-mcp": {
+      "registry": "npm",
+      "package": "trulioo-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "trustpilot-mcp": {
+      "registry": "npm",
+      "package": "trustpilot-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "tunein-mcp": {
+      "registry": "npm",
+      "package": "tunein-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "turbopuffer-mcp": {
+      "registry": "npm",
+      "package": "turbopuffer-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "turborepo-mcp": {
+      "registry": "npm",
+      "package": "turborepo-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "tursodb": {
+      "registry": "npm",
+      "package": "turso-mcp-server",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "tuya-mcp": {
+      "registry": "npm",
+      "package": "mcp-tuya-smart",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "tuya-smart-mcp": {
+      "registry": "npm",
+      "package": "tuya-mcp-server",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "twilio": {
+      "registry": "npm",
+      "package": "@twilio-alpha/mcp",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "twitch-mcp": {
+      "registry": "npm",
+      "package": "twitch-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "twitter": {
+      "registry": "pip",
+      "package": "x-twitter-mcp",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "typeform-mcp": {
+      "registry": "npm",
+      "package": "typeform-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "ubereats-mcp": {
+      "registry": "npm",
+      "package": "ubereats-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "udemy-instructor-mcp": {
+      "registry": "npm",
+      "package": "udemy-instructor-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "udemy-mcp": {
+      "registry": "npm",
+      "package": "udemy-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "ukg-ready-mcp": {
+      "registry": "npm",
+      "package": "ukg-ready-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "umbraco-mcp": {
+      "registry": "npm",
+      "package": "umbraco-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "uniprot-mcp": {
+      "registry": "pip",
+      "package": "uniprot-mcp",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "uniswap-mcp": {
+      "registry": "npm",
+      "package": "uniswap-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "unstructured-mcp": {
+      "registry": "pip",
+      "package": "unstructured-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "ups-mcp": {
+      "registry": "npm",
+      "package": "ups-mcp",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "upstash": {
+      "registry": "npm",
+      "package": "@upstash/mcp-server",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "uptimerobot-mcp": {
+      "registry": "npm",
+      "package": "uptimerobot-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "us-code-mcp": {
+      "registry": "npm",
+      "package": "us-code-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "us-court-mcp": {
+      "registry": "npm",
+      "package": "us-court-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "us-gov-data-mcp": {
+      "registry": "pip",
+      "package": "gov-mcp-servers",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "us-legal-mcp": {
+      "registry": "npm",
+      "package": "us-legal-mcp",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "usa-jobs-mcp": {
+      "registry": "npm",
+      "package": "usajobs-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "usaspending-mcp": {
+      "registry": "pip",
+      "package": "usaspending-mcp",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "usgs-mcp": {
+      "registry": "npm",
+      "package": "usgs-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "uspto-mcp": {
+      "registry": "pip",
+      "package": "uspto-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "v0-mcp": {
+      "registry": "npm",
+      "package": "v0-mcp",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "val-town-mcp": {
+      "registry": "npm",
+      "package": "@valtown/mcp-server",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "vanta-mcp": {
+      "registry": "npm",
+      "package": "vanta-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "vapi-mcp": {
+      "registry": "npm",
+      "package": "vapi-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "vectara-mcp": {
+      "registry": "npm",
+      "package": "vectara-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "veeva-vault-mcp": {
+      "registry": "npm",
+      "package": "mcp-veeva-vault",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "vendure-mcp": {
+      "registry": "npm",
+      "package": "vendure-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "veradigm-mcp": {
+      "registry": "npm",
+      "package": "veradigm-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "vercel-ai-sdk-mcp": {
+      "registry": "npm",
+      "package": "vercel-ai-sdk-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "vertex-tax-mcp": {
+      "registry": "npm",
+      "package": "vertex-tax-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "vespa-mcp": {
+      "registry": "pip",
+      "package": "vespa-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "viator-mcp": {
+      "registry": "npm",
+      "package": "viator-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "viber-mcp": {
+      "registry": "npm",
+      "package": "viber-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "virustotal-mcp": {
+      "registry": "npm",
+      "package": "virustotal-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "visa-requirements-mcp": {
+      "registry": "npm",
+      "package": "visa-requirements-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "vlex-mcp": {
+      "registry": "npm",
+      "package": "vlex-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "vllm-mcp": {
+      "registry": "pip",
+      "package": "vllm-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "volusion-mcp": {
+      "registry": "npm",
+      "package": "volusion-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "vonage-mcp": {
+      "registry": "npm",
+      "package": "mcp-vonage",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "voyage-ai-mcp": {
+      "registry": "pip",
+      "package": "voyage-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "vultr-mcp": {
+      "registry": "pip",
+      "package": "vultr-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "vwo-mcp": {
+      "registry": "npm",
+      "package": "wingify-fme-mcp",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "wallabag-mcp": {
+      "registry": "pip",
+      "package": "wallabag-mcp",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "walmart-marketplace-mcp": {
+      "registry": "npm",
+      "package": "walmart-marketplace-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "wandb-mcp": {
+      "registry": "pip",
+      "package": "wandb-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "wasabi-mcp": {
+      "registry": "pip",
+      "package": "wasabi-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "wave-accounting-mcp": {
+      "registry": "npm",
+      "package": "mcp-wave-accounting",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "waze-mcp": {
+      "registry": "npm",
+      "package": "waze-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "weather": {
+      "registry": "npm",
+      "package": "open-meteo-mcp-server",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "webex-mcp": {
+      "registry": "npm",
+      "package": "webex-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "webflow": {
+      "registry": "npm",
+      "package": "webflow-mcp-server",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "webflow-mcp": {
+      "registry": "npm",
+      "package": "webflow-mcp",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "webpt-mcp": {
+      "registry": "pip",
+      "package": "webpt-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "wellsaid-mcp": {
+      "registry": "pip",
+      "package": "wellsaid-mcp",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "wemo-mcp": {
+      "registry": "pip",
+      "package": "wemo-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "westlaw-mcp": {
+      "registry": "npm",
+      "package": "westlaw-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "whereby-mcp": {
+      "registry": "npm",
+      "package": "whereby-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "who-mcp": {
+      "registry": "pip",
+      "package": "who-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "whoop-mcp": {
+      "registry": "npm",
+      "package": "whoop-mcp",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "wikipedia": {
+      "registry": "npm",
+      "package": "wikipedia-mcp-server",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "wire-mcp": {
+      "registry": "npm",
+      "package": "wire-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "wise-mcp": {
+      "registry": "npm",
+      "package": "wise-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "wise-systems-mcp": {
+      "registry": "npm",
+      "package": "wise-systems-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "wistia-mcp": {
+      "registry": "npm",
+      "package": "wistia-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "wix-ecommerce-mcp": {
+      "registry": "npm",
+      "package": "wix-ecommerce-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "wix-mcp": {
+      "registry": "npm",
+      "package": "@wix/mcp-server",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "wiz-mcp": {
+      "registry": "pip",
+      "package": "wiz-mcp",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "woocommerce-mcp": {
+      "registry": "npm",
+      "package": "woocommerce-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "wordpress": {
+      "registry": "npm",
+      "package": "@automattic/mcp-wordpress-remote",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "workable-mcp": {
+      "registry": "npm",
+      "package": "workable-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "workato-mcp": {
+      "registry": "npm",
+      "package": "workato-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "workday-mcp": {
+      "registry": "npm",
+      "package": "workday-mcp",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "workers-ai-mcp": {
+      "registry": "npm",
+      "package": "workers-ai-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "workiva-mcp": {
+      "registry": "npm",
+      "package": "workiva-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "workos-mcp": {
+      "registry": "npm",
+      "package": "workos-mcp-server",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "world-bank-api-mcp": {
+      "registry": "pip",
+      "package": "world-bank-mcp-server",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "world-bank-mcp": {
+      "registry": "pip",
+      "package": "mcp-worldbank",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "wrike-mcp": {
+      "registry": "npm",
+      "package": "wrike-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "wyze-mcp": {
+      "registry": "pip",
+      "package": "mcp-wyze-server",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "xai-grok-mcp": {
+      "registry": "npm",
+      "package": "xai-grok-mcp-server",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "xcode": {
+      "registry": "npm",
+      "package": "xcodebuildmcp",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "xero": {
+      "registry": "npm",
+      "package": "@xeroapi/xero-mcp-server",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "xlsx-mcp": {
+      "registry": "pip",
+      "package": "xlsx-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "yardi-mcp": {
+      "registry": "npm",
+      "package": "yardi-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "yelp-mcp": {
+      "registry": "npm",
+      "package": "yelp-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "yodlee-mcp": {
+      "registry": "npm",
+      "package": "yodlee-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "yotpo-mcp": {
+      "registry": "npm",
+      "package": "yotpo-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "you-com": {
+      "registry": "npm",
+      "package": "@youdotcom-oss/mcp",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "youtube": {
+      "registry": "npm",
+      "package": "zubeid-youtube-mcp-server",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "youtube-studio-mcp": {
+      "registry": "npm",
+      "package": "youtube-studio-mcp",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "yugabytedb-mcp": {
+      "registry": "npm",
+      "package": "yugabytedb-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "z-wave-js-mcp": {
+      "registry": "npm",
+      "package": "z-wave-js-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "zabbix-mcp": {
+      "registry": "pip",
+      "package": "zabbix-mcp",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "zapier-nla": {
+      "registry": "npm",
+      "package": "zapier-nla-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "zen-planner-mcp": {
+      "registry": "npm",
+      "package": "zen-planner-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "zendesk-sell-mcp": {
+      "registry": "npm",
+      "package": "zendesk-sell-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "zenoti-mcp": {
+      "registry": "npm",
+      "package": "zenoti-mcp-server",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "zep-mcp": {
+      "registry": "pip",
+      "package": "zep-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "zeplin-mcp": {
+      "registry": "npm",
+      "package": "mcp-zeplin",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "zigbee2mqtt-mcp": {
+      "registry": "npm",
+      "package": "zigbee2mqtt-mcp",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "zillow-mcp": {
+      "registry": "npm",
+      "package": "zillow-mcp",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "zoom-mcp": {
+      "registry": "npm",
+      "package": "mcp-server-zoom",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "zulip-mcp": {
+      "registry": "pip",
+      "package": "zulip-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    },
+    "zuora-mcp": {
+      "registry": "npm",
+      "package": "zuora-mcp",
+      "exists": true,
+      "checkedAt": "2026-08-17"
+    },
+    "zwift-mcp": {
+      "registry": "npm",
+      "package": "zwift-mcp",
+      "exists": false,
+      "checkedAt": "2026-08-17"
+    }
+  }
+}
