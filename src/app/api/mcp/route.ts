@@ -13,6 +13,7 @@
 
 import { WebStandardStreamableHTTPServerTransport } from "@modelcontextprotocol/sdk/server/webStandardStreamableHttp.js";
 import { createMcpToolsServer } from "@/lib/mcp/server";
+import { recordMcpUsage } from "@/lib/analytics/mcp-usage";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -21,10 +22,10 @@ export const dynamic = "force-dynamic";
 export const maxDuration = 30;
 
 /** JSON-RPC error response for methods this endpoint does not implement. */
-function methodNotAllowed(httpMethod: string, message: string): Response {
+async function methodNotAllowed(req: Request, httpMethod: string, message: string): Promise<Response> {
   // Worth counting too: a client trying GET/DELETE is a real client, and the
   // 405 rate is the signal for whether SSE-only clients are being turned away.
-  logMcpRequest({ method: null, http: httpMethod, status: 405 });
+  await track(req, { method: null, target: null, client: null, http: httpMethod, status: 405 });
   return Response.json(
     {
       jsonrpc: "2.0",
@@ -51,6 +52,26 @@ function logMcpRequest(fields: Record<string, unknown>): void {
   } catch {
     // Logging must never be able to fail a request.
   }
+}
+
+/**
+ * Record one request twice: to stdout (human-readable, ephemeral) and to the
+ * first-party warehouse (queryable, durable).
+ *
+ * The stdout line alone could not answer "has anything ever called this?" —
+ * Vercel's log drain is not queryable to us — and that question is the whole
+ * reason this endpoint is open and unauthenticated. The warehouse write is
+ * awaited rather than fired-and-forgotten because the lambda can be frozen the
+ * moment the response is returned; it swallows its own errors, so awaiting it
+ * cannot fail or meaningfully delay the request.
+ */
+async function track(
+  req: Request,
+  fields: { method: string | null; target: string | null; client: string | null; http: string; status: number },
+  extra?: Record<string, unknown>
+): Promise<void> {
+  logMcpRequest({ ...fields, ...extra });
+  await recordMcpUsage({ headers: req.headers, ...fields });
 }
 
 /**
@@ -99,11 +120,15 @@ export async function POST(req: Request): Promise<Response> {
   try {
     await server.connect(transport);
     const res = await transport.handleRequest(req);
-    logMcpRequest({ ...envelope, status: res.status, ms: Date.now() - startedAt });
+    await track(req, { method: envelope.method, target: envelope.target, client: envelope.client, http: "POST", status: res.status }, { batch: envelope.batch, ms: Date.now() - startedAt });
     return res;
   } catch (err) {
     const message = err instanceof Error ? err.message : "Internal server error";
-    logMcpRequest({ ...envelope, status: 500, ms: Date.now() - startedAt, error: message });
+    await track(
+      req,
+      { method: envelope.method, target: envelope.target, client: envelope.client, http: "POST", status: 500 },
+      { batch: envelope.batch, ms: Date.now() - startedAt, error: message }
+    );
     return Response.json(
       { jsonrpc: "2.0", error: { code: -32603, message }, id: null },
       { status: 500 }
@@ -133,17 +158,18 @@ export async function GET(req: Request): Promise<Response> {
 
   if (accept.includes("text/event-stream")) {
     return methodNotAllowed(
+      req,
       "GET",
       "This MCP endpoint is stateless and does not support server-initiated SSE streams. POST JSON-RPC requests to this URL instead."
     );
   }
 
   if (accept.includes("text/html")) {
-    logMcpRequest({ method: null, http: "GET", status: 302 });
+    await track(req, { method: null, target: null, client: null, http: "GET", status: 302 });
     return Response.redirect(new URL("/mcp-server", req.url), 302);
   }
 
-  logMcpRequest({ method: null, http: "GET", status: 200 });
+  await track(req, { method: null, target: null, client: null, http: "GET", status: 200 });
   return Response.json(
     {
       name: "mymcptools",
@@ -167,8 +193,8 @@ export async function GET(req: Request): Promise<Response> {
 }
 
 // No sessions exist, so there is nothing for a client to terminate.
-export async function DELETE(): Promise<Response> {
-  return methodNotAllowed("DELETE", "This MCP endpoint is stateless; there is no session to terminate.");
+export async function DELETE(req: Request): Promise<Response> {
+  return methodNotAllowed(req, "DELETE", "This MCP endpoint is stateless; there is no session to terminate.");
 }
 
 export async function OPTIONS(): Promise<Response> {
