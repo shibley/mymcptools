@@ -7,6 +7,11 @@ import { StatusBadge, LocalSignalBadge } from "@/components/StatusBadge";
 import { UptimeSparkline } from "@/components/UptimeSparkline";
 import { getStatus } from "@/lib/trust/status-store";
 import { getStaticSignal } from "@/lib/trust/static-signals-store";
+import {
+  getRepoRecency,
+  formatMonthYear,
+  formatMonthsAgo,
+} from "@/lib/trust/repo-recency";
 import { getHistory } from "@/lib/trust/history-store";
 import { getTrustVerdict } from "@/lib/trust/verdict-store";
 import { TrustGradeSummary } from "@/components/TrustGrade";
@@ -193,16 +198,38 @@ export default async function ServerPage({ params }: Props) {
    * and the reader finds out only after building on it. Say it at the top.
    */
   const isArchived = server.verification === 'archived';
+  /**
+   * The tier below archived, and the larger bucket: repos GitHub says are open
+   * but that nobody has pushed to in a year or more, whose package is still
+   * published and still installs. The sweep found 25 of those against 10
+   * archived. Until now the only place that showed was an orange "Quiet repo"
+   * pill in the right rail — and only for local/stdio servers, so a dormant
+   * remote entry surfaced nothing at all, while this page's own first paragraph
+   * called it "community-built" directly above a copy-paste command.
+   *
+   * Archived stays the louder state and takes precedence; dormancy is stated as
+   * a date rather than a verdict, because a year of quiet is a fact and "dead"
+   * would be a guess.
+   */
+  const recency = getRepoRecency(server.slug);
+  const isDormant = !isArchived && Boolean(recency?.dormant);
+  const dormantAge = recency ? formatMonthsAgo(recency.monthsSinceCommit) : null;
+  // "officially maintained" is the specific claim dormancy contradicts, so a
+  // dormant official server drops to the neutral "official" and the sentence
+  // that follows in the intro carries the date.
   const maintenancePhrase = isArchived
     ? 'no longer maintained'
     : server.official
-      ? 'officially maintained'
+      ? isDormant ? 'official' : 'officially maintained'
       : 'community-built';
   const installAnswer = server.install_command && server.install_verified !== false
     ? isArchived
       // The command works; that is exactly why the answer cannot stop there.
       ? `Install ${server.name} with ${server.install_type}: ${server.install_command}. Note that its repository is archived and no longer maintained — the package is still published, so this command succeeds, but the project takes no further fixes.`
-      : `Install ${server.name} with ${server.install_type}: ${server.install_command}`
+      : isDormant
+        // Same reasoning as archived: the install succeeding is the trap.
+        ? `Install ${server.name} with ${server.install_type}: ${server.install_command}. This command works, but the project has had no commits since ${formatMonthYear(recency!.lastCommitAt)} (${dormantAge})${recency!.version && recency!.publishedAt ? `, and the published ${recency!.packageName}@${recency!.version} dates from ${formatMonthYear(recency!.publishedAt)}` : ''} — treat it as feature-frozen and check for a maintained alternative before depending on it.`
+        : `Install ${server.name} with ${server.install_type}: ${server.install_command}`
     : server.install_command && server.install_verified === false
       ? `The install command commonly listed for ${server.name} (${server.install_command}) points at a package that is not published to ${registryLabel(server.install_type)}, so it will fail. Install it from source instead${server.github_url ? `: ${server.github_url}` : '.'}`
     : server.github_url
@@ -338,6 +365,11 @@ export default async function ServerPage({ params }: Props) {
                       ⚠ Archived
                     </span>
                   )}
+                  {isDormant && (
+                    <span className="px-2 py-1 bg-orange-500/10 border border-orange-500/30 text-orange-300 text-xs font-medium rounded-full">
+                      No commits in {recency!.monthsSinceCommit} months
+                    </span>
+                  )}
                   {server.featured && (
                     <span className="px-2 py-1 bg-amber-500/10 border border-amber-500/30 text-amber-400 text-xs font-medium rounded-full">
                       ⭐ Featured
@@ -366,6 +398,16 @@ export default async function ServerPage({ params }: Props) {
                     </>
                   )}
                 </p>
+                {/* The date belongs in the intro, not only in the notice below:
+                    this paragraph is what search engines and AI answers quote,
+                    and it is where the "is this still maintained" question that
+                    brought the reader here actually gets answered. */}
+                {isDormant && (
+                  <p className="text-orange-300/90 leading-relaxed mb-2 text-sm">
+                    Its repository has had no commits since{" "}
+                    {formatMonthYear(recency!.lastCommitAt)} ({dormantAge}).
+                  </p>
+                )}
                 <p className="text-gray-500">by {server.author}</p>
               </div>
             </div>
@@ -391,6 +433,48 @@ export default async function ServerPage({ params }: Props) {
                     </>
                   ) : (
                     <>. Where a maintained replacement exists, it is named below.</>
+                  )}
+                </p>
+              </div>
+            )}
+
+            {/* Dormancy notice — same placement and same reasoning as the
+                archived block above it, one severity down. Mutually exclusive
+                with it by construction (isDormant excludes isArchived). */}
+            {isDormant && (
+              <div className="mb-8 rounded-xl border border-orange-500/30 bg-orange-500/5 p-5">
+                <h2 className="mb-2 text-sm font-semibold text-orange-300">
+                  No commits in {recency!.monthsSinceCommit} months
+                </h2>
+                <p className="text-sm leading-relaxed text-gray-300">
+                  The last commit GitHub reports for this project is from{" "}
+                  {formatMonthYear(recency!.lastCommitAt)}
+                  {recency!.version && recency!.publishedAt && (
+                    <>
+                      , and{" "}
+                      <code className="rounded bg-gray-900 px-1 py-0.5 text-xs text-gray-200">
+                        {recency!.packageName}@{recency!.version}
+                      </code>{" "}
+                      has been the published release since{" "}
+                      {formatMonthYear(recency!.publishedAt)}
+                    </>
+                  )}
+                  . The repository is not archived and the maintainer may return
+                  {server.install_command ? (
+                    <>
+                      , but{" "}
+                      <code className="rounded bg-gray-900 px-1 py-0.5 text-xs text-gray-200">
+                        {server.install_command}
+                      </code>{" "}
+                      installing cleanly is not evidence that it does — expect no fixes for
+                      breaking changes in the upstream API this server wraps, and check the
+                      alternatives below before you depend on it.
+                    </>
+                  ) : (
+                    <>
+                      . Treat it as feature-frozen and check the alternatives below before you
+                      depend on it.
+                    </>
                   )}
                 </p>
               </div>

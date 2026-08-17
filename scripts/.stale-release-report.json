@@ -1,13 +1,13 @@
 {
-  "generatedAt": "2026-08-16T21:42:13.014Z",
+  "generatedAt": "2026-08-17T09:37:49.129Z",
   "thresholds": {
     "dormantMonths": 12,
     "deadMonths": 24
   },
-  "checked": 510,
-  "candidates": 510,
+  "checked": 509,
+  "candidates": 509,
   "counts": {
-    "critical": 10,
+    "critical": 9,
     "high": 0,
     "medium": 25,
     "low": 27
@@ -36,7 +36,7 @@
       "package": "@modelcontextprotocol/server-gdrive",
       "version": "2025.1.14",
       "publishedAt": "2025-01-14T01:44:34.879Z",
-      "releaseAgeMonths": 19,
+      "releaseAgeMonths": 19.1,
       "repo": "modelcontextprotocol/servers-archived",
       "archived": true,
       "pushedAt": "2025-05-28T17:57:12Z",
@@ -66,7 +66,7 @@
       "package": "@modelcontextprotocol/server-puppeteer",
       "version": "2025.5.12",
       "publishedAt": "2025-05-12T21:29:35.151Z",
-      "releaseAgeMonths": 15.1,
+      "releaseAgeMonths": 15.2,
       "repo": "modelcontextprotocol/servers-archived",
       "archived": true,
       "pushedAt": "2025-05-28T17:57:12Z",
@@ -81,7 +81,7 @@
       "package": "semgrep-mcp",
       "version": "0.9.0",
       "publishedAt": "2025-09-29T21:15:42.890143Z",
-      "releaseAgeMonths": 10.5,
+      "releaseAgeMonths": 10.6,
       "repo": "semgrep/mcp",
       "archived": true,
       "pushedAt": "2025-10-28T22:32:31Z",
@@ -119,21 +119,6 @@
       "why": "repo is archived; @browserbasehq/mcp-server-browserbase@2.4.3 is still published and installs cleanly"
     },
     {
-      "slug": "sanity-mcp",
-      "name": "Sanity",
-      "severity": "critical",
-      "registry": "npm",
-      "package": "@sanity/mcp-server",
-      "version": "0.12.2",
-      "publishedAt": "2026-03-12T22:02:17.052Z",
-      "releaseAgeMonths": 5.2,
-      "repo": "sanity-io/sanity-mcp-server",
-      "archived": true,
-      "pushedAt": "2026-02-06T16:39:40Z",
-      "pushAgeMonths": 6.3,
-      "why": "repo is archived; @sanity/mcp-server@0.12.2 is still published and installs cleanly"
-    },
-    {
       "slug": "posthog",
       "name": "PostHog MCP Server",
       "severity": "critical",
@@ -141,7 +126,7 @@
       "package": "@posthog/wizard",
       "version": "2.62.0",
       "publishedAt": "2026-08-12T19:38:53.642Z",
-      "releaseAgeMonths": 0.1,
+      "releaseAgeMonths": 0.2,
       "repo": "PostHog/mcp",
       "archived": true,
       "pushedAt": "2026-01-19T16:47:34Z",
@@ -150,7 +135,7 @@
     },
     {
       "slug": "langsmith-mcp",
-      "name": "LangSmith MCP",
+      "name": "LangSmith MCP Server",
       "severity": "critical",
       "registry": "pip",
       "package": "langsmith-mcp",
@@ -175,7 +160,7 @@
       "repo": "marcopesani/mcp-server-serper",
       "archived": false,
       "pushedAt": "2025-03-13T00:28:41Z",
-      "pushAgeMonths": 17.1,
+      "pushAgeMonths": 17.2,
       "why": "dormant: last release 18mo ago, last push 17mo ago"
     },
     {
@@ -310,7 +295,7 @@
       "repo": "jagan-shanmugam/open-streetmap-mcp",
       "archived": false,
       "pushedAt": "2025-07-12T21:55:20Z",
-      "pushAgeMonths": 13.1,
+      "pushAgeMonths": 13.2,
       "why": "dormant: last release 15mo ago, last push 13mo ago"
     },
     {
@@ -370,7 +355,7 @@
       "repo": "paabloLC/mcp-hacker-news",
       "archived": false,
       "pushedAt": "2025-06-09T07:08:52Z",
-      "pushAgeMonths": 14.2,
+      "pushAgeMonths": 14.3,
       "why": "dormant: last release 14mo ago, last push 14mo ago"
     },
     {
@@ -400,7 +385,7 @@
       "repo": "paabloLC/mcp-hacker-news",
       "archived": false,
       "pushedAt": "2025-06-09T07:08:52Z",
-      "pushAgeMonths": 14.2,
+      "pushAgeMonths": 14.3,
       "why": "dormant: last release 14mo ago, last push 14mo ago"
     },
     {
@@ -426,7 +411,7 @@
       "package": "hubstaff-mcp",
       "version": "0.1.3",
       "publishedAt": "2025-06-18T12:51:56.024398Z",
-      "releaseAgeMonths": 13.9,
+      "releaseAgeMonths": 14,
       "repo": "cdmx-in/hubstaff-mcp",
       "archived": false,
       "pushedAt": "2025-07-14T04:14:34Z",
@@ -461,7 +446,7 @@
       "archived": false,
       "pushedAt": "2025-07-02T05:04:44Z",
       "pushAgeMonths": 13.5,
-      "why": "dormant: last release 13mo ago, last push 13mo ago"
+      "why": "dormant: last release 14mo ago, last push 14mo ago"
     },
     {
       "slug": "keycloak-mcp",
@@ -486,11 +471,11 @@
       "package": "gorgias-mcp",
       "version": "2.0.1",
       "publishedAt": "2025-07-19T02:13:23.415Z",
-      "releaseAgeMonths": 12.9,
+      "releaseAgeMonths": 13,
       "repo": "ariadng/gorgias-mcp",
       "archived": false,
       "pushedAt": "2025-07-19T02:14:46Z",
-      "pushAgeMonths": 12.9,
+      "pushAgeMonths": 13,
       "why": "dormant: last release 13mo ago, last push 13mo ago"
     },
     {
@@ -535,7 +520,7 @@
       "repo": "code-rabi/mews-mcp",
       "archived": false,
       "pushedAt": "2025-08-06T08:40:22Z",
-      "pushAgeMonths": 12.3,
+      "pushAgeMonths": 12.4,
       "why": "dormant: last release 12mo ago, last push 12mo ago"
     },
     {
@@ -549,7 +534,7 @@
       "releaseAgeMonths": 20.3,
       "repo": "genomoncology/biomcp",
       "archived": false,
-      "pushedAt": "2026-08-16T20:22:17Z",
+      "pushedAt": "2026-08-16T21:55:02Z",
       "pushAgeMonths": 0,
       "why": "release drift: repo pushed 0.0mo ago but biomcp@0.0.1 is 20mo old"
     },
@@ -641,7 +626,7 @@
       "archived": false,
       "pushedAt": "2026-05-15T10:25:32Z",
       "pushAgeMonths": 3.1,
-      "why": "release drift: repo pushed 3.1mo ago but mcp-obsidian@0.2.2 is 16mo old"
+      "why": "release drift: repo pushed 3.1mo ago but mcp-obsidian@0.2.2 is 17mo old"
     },
     {
       "slug": "snowflake",
@@ -700,8 +685,8 @@
       "repo": "stevengonsalvez/todoist-mcp",
       "archived": false,
       "pushedAt": "2026-02-19T21:55:25Z",
-      "pushAgeMonths": 5.8,
-      "why": "release drift: repo pushed 5.8mo ago but todoist-mcp-server@1.0.7 is 16mo old"
+      "pushAgeMonths": 5.9,
+      "why": "release drift: repo pushed 5.9mo ago but todoist-mcp-server@1.0.7 is 16mo old"
     },
     {
       "slug": "freshdesk",
@@ -730,8 +715,8 @@
       "repo": "jem-computer/capacities-mcp",
       "archived": false,
       "pushedAt": "2026-04-21T17:42:48Z",
-      "pushAgeMonths": 3.8,
-      "why": "release drift: repo pushed 3.8mo ago but capacities-mcp@1.0.2 is 14mo old"
+      "pushAgeMonths": 3.9,
+      "why": "release drift: repo pushed 3.9mo ago but capacities-mcp@1.0.2 is 14mo old"
     },
     {
       "slug": "rabbitmq-mcp",
@@ -790,8 +775,8 @@
       "repo": "w0h1v/mcp-shodan",
       "archived": false,
       "pushedAt": "2026-03-31T18:08:46Z",
-      "pushAgeMonths": 4.5,
-      "why": "release drift: repo pushed 4.5mo ago but shodan-mcp@0.1.0 is 14mo old"
+      "pushAgeMonths": 4.6,
+      "why": "release drift: repo pushed 4.6mo ago but shodan-mcp@0.1.0 is 14mo old"
     },
     {
       "slug": "gitbook-mcp",
@@ -865,8 +850,8 @@
       "repo": "Augmented-Nature/OpenFDA-MCP-Server",
       "archived": false,
       "pushedAt": "2025-12-21T10:01:51Z",
-      "pushAgeMonths": 7.8,
-      "why": "release drift: repo pushed 7.8mo ago but openfda-mcp-server@0.1.7 is 13mo old"
+      "pushAgeMonths": 7.9,
+      "why": "release drift: repo pushed 7.9mo ago but openfda-mcp-server@0.1.7 is 13mo old"
     },
     {
       "slug": "pypi-mcp",
@@ -884,6 +869,21 @@
       "why": "release drift: repo pushed 0.2mo ago but pypi-query-mcp-server@0.6.5 is 12mo old"
     },
     {
+      "slug": "baidu-map",
+      "name": "Baidu Map MCP Server",
+      "severity": "low",
+      "registry": "pip",
+      "package": "mcp-server-baidu-maps",
+      "version": "0.2.4",
+      "publishedAt": "2025-08-06T03:45:40.377552Z",
+      "releaseAgeMonths": 12.4,
+      "repo": "baidu-maps/mcp",
+      "archived": false,
+      "pushedAt": "2025-08-22T03:30:09Z",
+      "pushAgeMonths": 11.8,
+      "why": "release drift: repo pushed 11.8mo ago but mcp-server-baidu-maps@0.2.4 is 12mo old"
+    },
+    {
       "slug": "composio",
       "name": "Composio MCP Server",
       "severity": "low",
@@ -894,24 +894,9 @@
       "releaseAgeMonths": 12.3,
       "repo": "ComposioHQ/composio",
       "archived": false,
-      "pushedAt": "2026-08-16T20:03:40Z",
+      "pushedAt": "2026-08-16T22:21:06Z",
       "pushAgeMonths": 0,
       "why": "release drift: repo pushed 0.0mo ago but @composio/mcp@1.0.9 is 12mo old"
-    },
-    {
-      "slug": "baidu-map",
-      "name": "Baidu Map MCP Server",
-      "severity": "low",
-      "registry": "pip",
-      "package": "mcp-server-baidu-maps",
-      "version": "0.2.4",
-      "publishedAt": "2025-08-06T03:45:40.377552Z",
-      "releaseAgeMonths": 12.3,
-      "repo": "baidu-maps/mcp",
-      "archived": false,
-      "pushedAt": "2025-08-22T03:30:09Z",
-      "pushAgeMonths": 11.8,
-      "why": "release drift: repo pushed 11.8mo ago but mcp-server-baidu-maps@0.2.4 is 12mo old"
     },
     {
       "slug": "chroma",
@@ -925,8 +910,8 @@
       "repo": "chroma-core/chroma-mcp",
       "archived": false,
       "pushedAt": "2025-09-17T20:20:13Z",
-      "pushAgeMonths": 10.9,
-      "why": "release drift: repo pushed 10.9mo ago but chroma-mcp@0.2.6 is 12mo old"
+      "pushAgeMonths": 11,
+      "why": "release drift: repo pushed 11.0mo ago but chroma-mcp@0.2.6 is 12mo old"
     },
     {
       "slug": "chroma-mcp",
@@ -940,8 +925,8 @@
       "repo": "chroma-core/chroma-mcp",
       "archived": false,
       "pushedAt": "2025-09-17T20:20:13Z",
-      "pushAgeMonths": 10.9,
-      "why": "release drift: repo pushed 10.9mo ago but chroma-mcp@0.2.6 is 12mo old"
+      "pushAgeMonths": 11,
+      "why": "release drift: repo pushed 11.0mo ago but chroma-mcp@0.2.6 is 12mo old"
     }
   ]
 }

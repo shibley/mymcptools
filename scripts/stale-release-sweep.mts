@@ -43,16 +43,32 @@
  * GitHub calls are authenticated when GH_TOKEN/GITHUB_TOKEN is set (5,000/hr);
  * anonymous is 60/hr and will not get through the catalog, so `--limit` exists.
  *
+ * EMITTING THE DATES, NOT JUST THE VERDICT
+ *   The first run's findings shipped as prose edits to four descriptions. That
+ *   does not scale and it rots: "last pushed 14 months ago" is true on the day
+ *   it is written and wrong a month later. `--emit-recency` writes the raw
+ *   pushed/published dates for EVERY entry it resolves — not only the flagged
+ *   ones — to src/data/repo-recency.json, so /servers/[slug] can compute the
+ *   age at build time and say it once, correctly, on every page at once.
+ *   Fresh repos are as worth stating as dormant ones: "last commit this month"
+ *   is the answer to the same reader question.
+ *
+ * STRICTLY READ-ONLY with respect to servers.ts. `--emit-recency` writes only
+ * the generated recency file.
+ *
  * Usage: node scripts/stale-release-sweep.mts [--min critical|high|medium|low]
  *                                             [--only npm|pip] [--limit N] [--json]
+ *                                             [--emit-recency]
  */
-import { writeFileSync } from 'node:fs';
+import { readFileSync, writeFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
 import { servers } from '../src/data/servers.ts';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const REPORT_FILE = join(__dirname, '.stale-release-report.json');
+/** Generated, committed, and imported by the server detail page. */
+const RECENCY_FILE = join(__dirname, '..', 'src', 'data', 'repo-recency.json');
 
 const args = process.argv.slice(2);
 const argVal = (f: string) => {
@@ -60,6 +76,7 @@ const argVal = (f: string) => {
   return i >= 0 ? args[i + 1] : undefined;
 };
 const asJson = args.includes('--json');
+const emitRecency = args.includes('--emit-recency');
 const only = argVal('--only');
 const limit = Number(argVal('--limit') ?? 0) || 0;
 
@@ -275,8 +292,24 @@ type Finding = {
   why: string;
 };
 
+/**
+ * One record per entry whose repo AND registry both resolved, flagged or not.
+ * Deliberately stores DATES and not ages — an age baked into a data file is a
+ * fact with an expiry date, and this file is committed.
+ */
+type Recency = {
+  repo: string;
+  archived: boolean;
+  pushedAt: string | null;
+  registry: 'npm' | 'pip';
+  package: string;
+  version: string;
+  publishedAt: string | null;
+};
+
 const now = Date.now();
 const findings: Finding[] = [];
+const recency: Record<string, Recency> = {};
 
 const candidates = servers
   .filter((s: any) => s.install_command && s.github_url)
@@ -310,6 +343,16 @@ for (const { s, npmPkg, pyPkg } of work) {
 
   const relAge = monthsAgo(rel.published, now);
   const pushAge = monthsAgo(repo.pushedAt, now);
+
+  recency[s.slug] = {
+    repo: `${id.owner}/${id.repo}`,
+    archived: repo.archived,
+    pushedAt: repo.pushedAt,
+    registry,
+    package: pkg,
+    version: rel.version,
+    publishedAt: rel.published,
+  };
 
   let severity: Severity | null = null;
   let why = '';
@@ -368,6 +411,34 @@ const report = {
   findings,
 };
 writeFileSync(REPORT_FILE, JSON.stringify(report, null, 2));
+
+if (emitRecency) {
+  // A partial run (--limit / --only) would silently delete the slugs it did not
+  // visit, and the page would quietly stop showing their dates. Merge instead.
+  let previous: Record<string, Recency> = {};
+  try {
+    previous = JSON.parse(readFileSync(RECENCY_FILE, 'utf8')).entries ?? {};
+  } catch {
+    previous = {};
+  }
+  const merged = { ...previous, ...recency };
+  writeFileSync(
+    RECENCY_FILE,
+    JSON.stringify(
+      {
+        generatedAt: new Date().toISOString(),
+        entries: Object.fromEntries(Object.entries(merged).sort(([a], [b]) => a.localeCompare(b))),
+      },
+      null,
+      2,
+    ) + '\n',
+  );
+  if (!asJson) {
+    console.log(
+      `recency: ${Object.keys(recency).length} resolved this run, ${Object.keys(merged).length} total -> ${RECENCY_FILE}`,
+    );
+  }
+}
 
 if (asJson) {
   console.log(JSON.stringify(report, null, 2));

@@ -1,0 +1,2939 @@
+{
+  "generatedAt": "2026-08-17T09:37:49.134Z",
+  "entries": {
+    "ab-tasty-mcp": {
+      "repo": "flagship-io/mcp-server",
+      "archived": false,
+      "pushedAt": "2026-03-25T14:25:34Z",
+      "registry": "npm",
+      "package": "@abtasty/mcp-server",
+      "version": "0.3.0",
+      "publishedAt": "2026-03-25T14:25:55.268Z"
+    },
+    "activemq-mcp": {
+      "repo": "mradovic95/activemq-mcp-server",
+      "archived": false,
+      "pushedAt": "2025-10-01T13:09:10Z",
+      "registry": "npm",
+      "package": "activemq-mcp-server",
+      "version": "0.1.6",
+      "publishedAt": "2025-10-01T13:09:12.531Z"
+    },
+    "adobe-illustrator-mcp": {
+      "repo": "ie3jp/illustrator-mcp-server",
+      "archived": false,
+      "pushedAt": "2026-08-11T00:45:40Z",
+      "registry": "npm",
+      "package": "illustrator-mcp-server",
+      "version": "1.6.2",
+      "publishedAt": "2026-08-05T15:03:52.805Z"
+    },
+    "airflow-mcp": {
+      "repo": "abhishekbhakat/airflow-mcp-server",
+      "archived": false,
+      "pushedAt": "2025-10-14T19:57:26Z",
+      "registry": "pip",
+      "package": "airflow-mcp-server",
+      "version": "0.9.1",
+      "publishedAt": "2025-10-09T22:59:01.053595Z"
+    },
+    "airtable": {
+      "repo": "domdomegg/airtable-mcp-server",
+      "archived": false,
+      "pushedAt": "2026-08-11T19:09:42Z",
+      "registry": "npm",
+      "package": "airtable-mcp-server",
+      "version": "1.14.0",
+      "publishedAt": "2026-07-27T15:31:41.777Z"
+    },
+    "alpaca": {
+      "repo": "alpacahq/alpaca-mcp-server",
+      "archived": false,
+      "pushedAt": "2026-08-10T15:31:43Z",
+      "registry": "pip",
+      "package": "alpaca-mcp-server",
+      "version": "2.2.1",
+      "publishedAt": "2026-08-10T15:36:01.405650Z"
+    },
+    "alpha-vantage-mcp": {
+      "repo": "alphavantage/alpha_vantage_mcp",
+      "archived": false,
+      "pushedAt": "2026-08-13T22:08:22Z",
+      "registry": "pip",
+      "package": "marketdata-mcp-server",
+      "version": "0.3.1",
+      "publishedAt": "2026-03-16T04:21:31.759628Z"
+    },
+    "amazon-ads-mcp": {
+      "repo": "MarketplaceAdPros/amazon-ads-mcp-server",
+      "archived": false,
+      "pushedAt": "2025-05-21T06:33:00Z",
+      "registry": "npm",
+      "package": "@marketplaceadpros/amazon-ads-mcp-server",
+      "version": "0.1.1",
+      "publishedAt": "2025-05-21T06:32:50.915Z"
+    },
+    "anki-mcp": {
+      "repo": "nailuoGG/anki-mcp-server",
+      "archived": false,
+      "pushedAt": "2026-07-21T03:33:59Z",
+      "registry": "npm",
+      "package": "anki-mcp-server",
+      "version": "0.1.8",
+      "publishedAt": "2025-09-30T14:12:54.714Z"
+    },
+    "ansible": {
+      "repo": "ansible-collections/ansible.mcp",
+      "archived": false,
+      "pushedAt": "2026-07-16T11:15:52Z",
+      "registry": "pip",
+      "package": "ansible-mcp-server",
+      "version": "0.1.1",
+      "publishedAt": "2026-02-03T10:47:19.695315Z"
+    },
+    "apache-doris": {
+      "repo": "apache/doris-mcp-server",
+      "archived": false,
+      "pushedAt": "2026-08-13T16:22:43Z",
+      "registry": "pip",
+      "package": "doris-mcp-server",
+      "version": "1.0.0",
+      "publishedAt": "2026-08-01T01:37:25.608647Z"
+    },
+    "apify": {
+      "repo": "apify/apify-mcp-server",
+      "archived": false,
+      "pushedAt": "2026-08-16T06:13:38Z",
+      "registry": "npm",
+      "package": "@apify/actors-mcp-server",
+      "version": "0.14.3",
+      "publishedAt": "2026-08-12T07:34:43.953Z"
+    },
+    "apollo-io": {
+      "repo": "thevgergroup/apollo-io-mcp",
+      "archived": false,
+      "pushedAt": "2026-08-17T09:09:45Z",
+      "registry": "npm",
+      "package": "@thevgergroup/apollo-io-mcp",
+      "version": "2.3.1",
+      "publishedAt": "2026-08-14T00:11:18.353Z"
+    },
+    "appium": {
+      "repo": "appium/appium-mcp",
+      "archived": false,
+      "pushedAt": "2026-08-16T09:43:02Z",
+      "registry": "npm",
+      "package": "appium-mcp",
+      "version": "1.92.4",
+      "publishedAt": "2026-08-16T09:43:10.570Z"
+    },
+    "apple-mail-mcp": {
+      "repo": "patrickfreyer/apple-mail-mcp",
+      "archived": false,
+      "pushedAt": "2026-08-04T04:35:46Z",
+      "registry": "pip",
+      "package": "mcp-apple-mail",
+      "version": "3.2.0",
+      "publishedAt": "2026-07-05T03:28:17.852658Z"
+    },
+    "arduino-mcp": {
+      "repo": "hardware-mcp/arduino-mcp-server",
+      "archived": false,
+      "pushedAt": "2026-03-08T02:28:51Z",
+      "registry": "npm",
+      "package": "arduino-mcp-server",
+      "version": "0.2.8",
+      "publishedAt": "2026-03-08T02:28:49.537Z"
+    },
+    "ardupilot-mcp": {
+      "repo": "furkanisikay/ardupilot-mcp",
+      "archived": false,
+      "pushedAt": "2026-07-01T23:19:40Z",
+      "registry": "pip",
+      "package": "ardupilot-mcp",
+      "version": "0.1.2",
+      "publishedAt": "2026-06-14T20:45:17.043235Z"
+    },
+    "argocd-mcp": {
+      "repo": "argoproj-labs/mcp-for-argocd",
+      "archived": false,
+      "pushedAt": "2026-08-11T15:32:49Z",
+      "registry": "npm",
+      "package": "argocd-mcp",
+      "version": "0.9.0",
+      "publishedAt": "2026-08-11T15:33:14.317Z"
+    },
+    "aruba-central-mcp": {
+      "repo": "shigechika/aruba-central-mcp",
+      "archived": false,
+      "pushedAt": "2026-08-15T12:11:19Z",
+      "registry": "pip",
+      "package": "aruba-central-mcp",
+      "version": "0.8.0",
+      "publishedAt": "2026-08-15T12:13:13.757496Z"
+    },
+    "arxiv": {
+      "repo": "blazickjp/arxiv-mcp-server",
+      "archived": false,
+      "pushedAt": "2026-08-14T21:37:21Z",
+      "registry": "pip",
+      "package": "arxiv-mcp-server",
+      "version": "0.6.3",
+      "publishedAt": "2026-08-14T21:37:57.179547Z"
+    },
+    "asana": {
+      "repo": "roychri/mcp-server-asana",
+      "archived": false,
+      "pushedAt": "2026-05-10T14:47:21Z",
+      "registry": "npm",
+      "package": "@roychri/mcp-server-asana",
+      "version": "1.8.0",
+      "publishedAt": "2026-03-29T22:57:42.258Z"
+    },
+    "attio-mcp": {
+      "repo": "kesslerio/attio-mcp-server",
+      "archived": false,
+      "pushedAt": "2026-08-01T08:46:20Z",
+      "registry": "npm",
+      "package": "attio-mcp",
+      "version": "1.6.1",
+      "publishedAt": "2026-05-14T23:49:58.149Z"
+    },
+    "auth0": {
+      "repo": "auth0/auth0-mcp-server",
+      "archived": false,
+      "pushedAt": "2026-08-13T09:09:57Z",
+      "registry": "npm",
+      "package": "@auth0/auth0-mcp-server",
+      "version": "0.1.0-beta.19",
+      "publishedAt": "2026-08-13T09:09:55.255Z"
+    },
+    "aviationstack-mcp": {
+      "repo": "Pradumnasaraf/aviationstack-mcp",
+      "archived": false,
+      "pushedAt": "2026-08-05T06:23:17Z",
+      "registry": "pip",
+      "package": "aviationstack-mcp",
+      "version": "1.6.0",
+      "publishedAt": "2026-02-15T18:22:21.096790Z"
+    },
+    "aws": {
+      "repo": "awslabs/mcp",
+      "archived": false,
+      "pushedAt": "2026-08-14T22:02:20Z",
+      "registry": "pip",
+      "package": "awslabs.aws-documentation-mcp-server",
+      "version": "1.1.30",
+      "publishedAt": "2026-08-10T23:26:58.755935Z"
+    },
+    "azure-devbox-mcp": {
+      "repo": "microsoft/mcp",
+      "archived": false,
+      "pushedAt": "2026-08-14T23:35:44Z",
+      "registry": "npm",
+      "package": "@microsoft/devbox-mcp",
+      "version": "0.0.3-alpha.4",
+      "publishedAt": "2025-09-10T18:09:46.528Z"
+    },
+    "azure-devops": {
+      "repo": "microsoft/azure-devops-mcp",
+      "archived": false,
+      "pushedAt": "2026-08-14T18:02:38Z",
+      "registry": "npm",
+      "package": "@azure-devops/mcp",
+      "version": "2.9.0",
+      "publishedAt": "2026-07-29T14:06:26.896Z"
+    },
+    "azure-fabric-mcp": {
+      "repo": "microsoft/mcp",
+      "archived": false,
+      "pushedAt": "2026-08-14T23:35:44Z",
+      "registry": "npm",
+      "package": "@microsoft/fabric-mcp",
+      "version": "1.3.0",
+      "publishedAt": "2026-08-10T16:54:11.176Z"
+    },
+    "baidu-map": {
+      "repo": "baidu-maps/mcp",
+      "archived": false,
+      "pushedAt": "2025-08-22T03:30:09Z",
+      "registry": "pip",
+      "package": "mcp-server-baidu-maps",
+      "version": "0.2.4",
+      "publishedAt": "2025-08-06T03:45:40.377552Z"
+    },
+    "basecamp-mcp": {
+      "repo": "stefanoverna/basecamp-mcp",
+      "archived": false,
+      "pushedAt": "2026-06-13T10:47:07Z",
+      "registry": "npm",
+      "package": "basecamp-mcp",
+      "version": "1.2.1",
+      "publishedAt": "2026-06-13T10:47:05.265Z"
+    },
+    "bigquery": {
+      "repo": "googleapis/mcp-toolbox",
+      "archived": false,
+      "pushedAt": "2026-08-17T05:45:18Z",
+      "registry": "npm",
+      "package": "@toolbox-sdk/server",
+      "version": "1.9.0",
+      "publishedAt": "2026-08-14T01:38:34.081Z"
+    },
+    "binance-mcp-server": {
+      "repo": "ethancod1ng/binance-mcp-server",
+      "archived": false,
+      "pushedAt": "2026-01-31T12:10:12Z",
+      "registry": "pip",
+      "package": "binance-mcp-server",
+      "version": "1.2.7",
+      "publishedAt": "2025-12-27T12:38:04.165524Z"
+    },
+    "biomcp": {
+      "repo": "genomoncology/biomcp",
+      "archived": false,
+      "pushedAt": "2026-08-16T21:55:02Z",
+      "registry": "pip",
+      "package": "biomcp",
+      "version": "0.0.1",
+      "publishedAt": "2024-12-06T02:19:54.825714Z"
+    },
+    "bitbucket": {
+      "repo": "MatanYemini/bitbucket-mcp",
+      "archived": false,
+      "pushedAt": "2026-05-11T03:27:12Z",
+      "registry": "npm",
+      "package": "bitbucket-mcp",
+      "version": "5.0.6",
+      "publishedAt": "2025-12-22T07:55:16.176Z"
+    },
+    "box-mcp": {
+      "repo": "hmk/box-mcp-server",
+      "archived": false,
+      "pushedAt": "2025-08-22T14:46:26Z",
+      "registry": "npm",
+      "package": "box-mcp-server",
+      "version": "0.3.1",
+      "publishedAt": "2025-01-29T17:53:54.261Z"
+    },
+    "brave-search": {
+      "repo": "brave/brave-search-mcp-server",
+      "archived": false,
+      "pushedAt": "2026-08-14T19:44:36Z",
+      "registry": "npm",
+      "package": "@brave/brave-search-mcp-server",
+      "version": "2.1.0",
+      "publishedAt": "2026-07-18T19:30:01.486Z"
+    },
+    "browserstack": {
+      "repo": "browserstack/mcp-server",
+      "archived": false,
+      "pushedAt": "2026-08-13T18:06:29Z",
+      "registry": "npm",
+      "package": "@browserstack/mcp-server",
+      "version": "1.2.36",
+      "publishedAt": "2026-08-11T14:19:11.318Z"
+    },
+    "buzzsprout-mcp": {
+      "repo": "JamesTeague/buzzsprout-mcp",
+      "archived": false,
+      "pushedAt": "2026-03-31T04:05:01Z",
+      "registry": "npm",
+      "package": "buzzsprout-mcp",
+      "version": "0.1.1",
+      "publishedAt": "2026-03-31T03:53:18.137Z"
+    },
+    "calendly": {
+      "repo": "meAmitPatil/calendly-mcp-server",
+      "archived": false,
+      "pushedAt": "2025-10-17T22:10:17Z",
+      "registry": "npm",
+      "package": "calendly-mcp-server",
+      "version": "1.0.0",
+      "publishedAt": "2025-08-17T05:18:00.233Z"
+    },
+    "calendly-mcp": {
+      "repo": "meAmitPatil/calendly-mcp-server",
+      "archived": false,
+      "pushedAt": "2025-10-17T22:10:17Z",
+      "registry": "npm",
+      "package": "calendly-mcp-server",
+      "version": "1.0.0",
+      "publishedAt": "2025-08-17T05:18:00.233Z"
+    },
+    "canvas-lms-mcp": {
+      "repo": "bruchris/canvas-lms-mcp",
+      "archived": false,
+      "pushedAt": "2026-08-15T17:48:03Z",
+      "registry": "npm",
+      "package": "canvas-lms-mcp",
+      "version": "1.27.0",
+      "publishedAt": "2026-08-15T17:26:54.869Z"
+    },
+    "capacities-mcp": {
+      "repo": "jem-computer/capacities-mcp",
+      "archived": false,
+      "pushedAt": "2026-04-21T17:42:48Z",
+      "registry": "npm",
+      "package": "capacities-mcp",
+      "version": "1.0.2",
+      "publishedAt": "2025-06-08T22:08:27.107Z"
+    },
+    "celigo-mcp": {
+      "repo": "ilyassesalama/celigo-mcp",
+      "archived": false,
+      "pushedAt": "2026-04-17T13:08:45Z",
+      "registry": "npm",
+      "package": "@ilyassesalama/celigo-mcp",
+      "version": "3.0.0",
+      "publishedAt": "2026-04-17T12:52:55.106Z"
+    },
+    "chroma": {
+      "repo": "chroma-core/chroma-mcp",
+      "archived": false,
+      "pushedAt": "2025-09-17T20:20:13Z",
+      "registry": "pip",
+      "package": "chroma-mcp",
+      "version": "0.2.6",
+      "publishedAt": "2025-08-14T15:33:48.099548Z"
+    },
+    "chroma-mcp": {
+      "repo": "chroma-core/chroma-mcp",
+      "archived": false,
+      "pushedAt": "2025-09-17T20:20:13Z",
+      "registry": "pip",
+      "package": "chroma-mcp",
+      "version": "0.2.6",
+      "publishedAt": "2025-08-14T15:33:48.099548Z"
+    },
+    "chrome-devtools": {
+      "repo": "ChromeDevTools/chrome-devtools-mcp",
+      "archived": false,
+      "pushedAt": "2026-08-17T09:35:15Z",
+      "registry": "npm",
+      "package": "chrome-devtools-mcp",
+      "version": "1.7.0",
+      "publishedAt": "2026-08-10T08:20:48.854Z"
+    },
+    "circleci": {
+      "repo": "CircleCI-Public/mcp-server-circleci",
+      "archived": false,
+      "pushedAt": "2026-08-06T17:41:49Z",
+      "registry": "npm",
+      "package": "@circleci/mcp-server-circleci",
+      "version": "0.20.0",
+      "publishedAt": "2026-08-06T19:26:31.406Z"
+    },
+    "clearml-mcp": {
+      "repo": "prassanna-ravishankar/clearml-mcp",
+      "archived": false,
+      "pushedAt": "2026-06-16T20:10:01Z",
+      "registry": "pip",
+      "package": "clearml-mcp",
+      "version": "0.3.0",
+      "publishedAt": "2025-07-13T21:48:54.045327Z"
+    },
+    "clickhouse": {
+      "repo": "ClickHouse/mcp-clickhouse",
+      "archived": false,
+      "pushedAt": "2026-08-05T04:23:40Z",
+      "registry": "pip",
+      "package": "mcp-clickhouse",
+      "version": "0.4.1",
+      "publishedAt": "2026-07-17T17:17:45.838662Z"
+    },
+    "clickup": {
+      "repo": "hauptsacheNet/clickup-mcp",
+      "archived": false,
+      "pushedAt": "2026-08-12T17:56:56Z",
+      "registry": "npm",
+      "package": "@hauptsache.net/clickup-mcp",
+      "version": "1.7.0",
+      "publishedAt": "2026-07-30T11:18:06.438Z"
+    },
+    "clinicaltrials-mcp": {
+      "repo": "agents100x/clinicaltrials-mcp",
+      "archived": false,
+      "pushedAt": "2026-05-05T14:55:53Z",
+      "registry": "pip",
+      "package": "clinicaltrials-mcp",
+      "version": "0.1.1",
+      "publishedAt": "2026-05-05T14:53:31.088611Z"
+    },
+    "close": {
+      "repo": "bcharleson/close-crm-cli",
+      "archived": false,
+      "pushedAt": "2026-03-13T21:47:41Z",
+      "registry": "npm",
+      "package": "close-crm-cli",
+      "version": "0.1.0",
+      "publishedAt": "2026-03-13T22:16:16.549Z"
+    },
+    "cloudflare-bindings-mcp": {
+      "repo": "cloudflare/mcp-server-cloudflare",
+      "archived": false,
+      "pushedAt": "2026-08-11T11:45:57Z",
+      "registry": "npm",
+      "package": "@cloudflare/mcp-server-cloudflare",
+      "version": "0.2.0",
+      "publishedAt": "2025-03-14T10:41:19.350Z"
+    },
+    "cloudflare-workers-mcp": {
+      "repo": "daniil-shumko/cloudflare-workers-mcp",
+      "archived": false,
+      "pushedAt": "2026-07-13T15:47:54Z",
+      "registry": "npm",
+      "package": "cloudflare-workers-mcp",
+      "version": "1.0.0",
+      "publishedAt": "2026-07-13T15:53:45.443Z"
+    },
+    "coda": {
+      "repo": "TJC-LP/coda-mcp-server",
+      "archived": false,
+      "pushedAt": "2025-10-16T15:16:21Z",
+      "registry": "pip",
+      "package": "coda-mcp-server",
+      "version": "1.2.1",
+      "publishedAt": "2025-10-16T15:05:55.184941Z"
+    },
+    "codecov-mcp": {
+      "repo": "egulatee/mcp-server-codecov",
+      "archived": false,
+      "pushedAt": "2026-02-20T12:09:11Z",
+      "registry": "npm",
+      "package": "mcp-server-codecov",
+      "version": "1.3.0",
+      "publishedAt": "2026-02-12T17:17:56.650Z"
+    },
+    "coderabbit": {
+      "repo": "bradthebeeble/coderabbitai-mcp",
+      "archived": false,
+      "pushedAt": "2025-07-01T07:10:37Z",
+      "registry": "npm",
+      "package": "coderabbitai-mcp",
+      "version": "1.1.1",
+      "publishedAt": "2025-06-29T16:17:54.640Z"
+    },
+    "codesandbox": {
+      "repo": "techlibs/codesandbox-mcp",
+      "archived": false,
+      "pushedAt": "2025-09-23T02:58:25Z",
+      "registry": "npm",
+      "package": "@techlibs/codesandbox-mcp",
+      "version": "0.1.1",
+      "publishedAt": "2025-09-07T01:09:20.460Z"
+    },
+    "codex": {
+      "repo": "openai/codex",
+      "archived": false,
+      "pushedAt": "2026-08-17T08:13:06Z",
+      "registry": "npm",
+      "package": "@openai/codex",
+      "version": "0.147.0",
+      "publishedAt": "2026-08-07T01:47:21.081Z"
+    },
+    "coinbase": {
+      "repo": "coinbase/payments-mcp",
+      "archived": false,
+      "pushedAt": "2025-10-22T15:44:43Z",
+      "registry": "npm",
+      "package": "@coinbase/payments-mcp",
+      "version": "1.0.5",
+      "publishedAt": "2025-10-22T15:46:00.718Z"
+    },
+    "coinex": {
+      "repo": "coinexcom/coinex_mcp_server",
+      "archived": false,
+      "pushedAt": "2025-11-11T09:33:47Z",
+      "registry": "pip",
+      "package": "coinex_mcp_server",
+      "version": "0.1.0a8",
+      "publishedAt": "2025-11-11T07:06:31.824381Z"
+    },
+    "coinmarketcap-mcp": {
+      "repo": "gcharang/coinmarketcap-mcp",
+      "archived": false,
+      "pushedAt": "2025-05-08T15:52:08Z",
+      "registry": "npm",
+      "package": "coinmarketcap-mcp",
+      "version": "1.3.9",
+      "publishedAt": "2025-05-08T15:51:46.979Z"
+    },
+    "comet-ml-mcp": {
+      "repo": "comet-ml/comet-mcp",
+      "archived": false,
+      "pushedAt": "2026-06-01T21:48:52Z",
+      "registry": "pip",
+      "package": "comet-mcp",
+      "version": "1.4.2",
+      "publishedAt": "2026-06-01T21:49:09.651032Z"
+    },
+    "comfyui-mcp": {
+      "repo": "ModdingFox/comfyui_mcp",
+      "archived": false,
+      "pushedAt": "2026-02-21T14:13:47Z",
+      "registry": "pip",
+      "package": "comfyui-mcp",
+      "version": "0.0.5",
+      "publishedAt": "2026-02-21T14:14:54.280784Z"
+    },
+    "composio": {
+      "repo": "ComposioHQ/composio",
+      "archived": false,
+      "pushedAt": "2026-08-16T22:21:06Z",
+      "registry": "npm",
+      "package": "@composio/mcp",
+      "version": "1.0.9",
+      "publishedAt": "2025-08-07T21:06:13.078Z"
+    },
+    "confluence-cloud-mcp": {
+      "repo": "phuc-nt/confluence-cloud-mcp-server",
+      "archived": false,
+      "pushedAt": "2026-07-08T01:17:34Z",
+      "registry": "npm",
+      "package": "confluence-cloud-mcp-server",
+      "version": "1.5.0",
+      "publishedAt": "2026-07-08T01:04:28.761Z"
+    },
+    "contentstack-mcp": {
+      "repo": "SamueleReply/contentstack-mcp",
+      "archived": false,
+      "pushedAt": "2025-10-12T14:28:08Z",
+      "registry": "npm",
+      "package": "contentstack-mcp",
+      "version": "1.0.3",
+      "publishedAt": "2025-10-12T13:10:11.968Z"
+    },
+    "context7": {
+      "repo": "upstash/context7",
+      "archived": false,
+      "pushedAt": "2026-08-17T09:16:28Z",
+      "registry": "npm",
+      "package": "ctx7",
+      "version": "0.5.8",
+      "publishedAt": "2026-08-11T13:22:45.672Z"
+    },
+    "copilot-money-mcp": {
+      "repo": "ignaciohermosillacornejo/copilot-money-mcp",
+      "archived": false,
+      "pushedAt": "2026-08-17T07:54:55Z",
+      "registry": "npm",
+      "package": "copilot-money-mcp",
+      "version": "2.3.0",
+      "publishedAt": "2026-07-18T23:29:40.995Z"
+    },
+    "coursera-mcp": {
+      "repo": "fmbetancourt/coursera-mcp",
+      "archived": false,
+      "pushedAt": "2026-05-14T23:15:28Z",
+      "registry": "npm",
+      "package": "coursera-mcp",
+      "version": "1.4.0",
+      "publishedAt": "2026-05-14T23:15:31.191Z"
+    },
+    "cratedb-mcp": {
+      "repo": "crate/cratedb-mcp",
+      "archived": false,
+      "pushedAt": "2026-08-01T23:25:46Z",
+      "registry": "pip",
+      "package": "cratedb-mcp",
+      "version": "0.1.2",
+      "publishedAt": "2026-05-13T07:31:14.107681Z"
+    },
+    "crisp-mcp": {
+      "repo": "thisismydesign/crisp-mcp",
+      "archived": false,
+      "pushedAt": "2026-06-30T10:32:37Z",
+      "registry": "npm",
+      "package": "crisp-mcp",
+      "version": "2.0.0",
+      "publishedAt": "2026-06-30T10:45:43.049Z"
+    },
+    "currency-exchange-mcp": {
+      "repo": "onmyway133/currency-exchange-mcp",
+      "archived": false,
+      "pushedAt": "2026-01-09T20:11:08Z",
+      "registry": "npm",
+      "package": "currency-exchange-mcp",
+      "version": "1.0.1",
+      "publishedAt": "2026-01-07T19:54:50.677Z"
+    },
+    "dagster-mcp": {
+      "repo": "fabdendev/dagster-mcp",
+      "archived": false,
+      "pushedAt": "2026-07-30T21:04:39Z",
+      "registry": "pip",
+      "package": "dagster-mcp",
+      "version": "0.8.0",
+      "publishedAt": "2026-07-27T12:26:23.119500Z"
+    },
+    "datagov-mcp": {
+      "repo": "DavidOsherdiagnostica/data-gov-il-mcp",
+      "archived": false,
+      "pushedAt": "2026-08-17T03:38:34Z",
+      "registry": "npm",
+      "package": "data-gov-il-mcp",
+      "version": "3.0.1",
+      "publishedAt": "2026-06-18T12:22:00.499Z"
+    },
+    "datahub": {
+      "repo": "acryldata/mcp-server-datahub",
+      "archived": false,
+      "pushedAt": "2026-08-13T20:58:03Z",
+      "registry": "pip",
+      "package": "mcp-server-datahub",
+      "version": "0.6.0",
+      "publishedAt": "2026-05-18T16:59:42.182673Z"
+    },
+    "datawrapper": {
+      "repo": "palewire/datawrapper-mcp",
+      "archived": false,
+      "pushedAt": "2026-07-01T02:54:16Z",
+      "registry": "pip",
+      "package": "datawrapper-mcp",
+      "version": "0.2.3",
+      "publishedAt": "2026-03-27T12:44:53.478591Z"
+    },
+    "dbt-mcp": {
+      "repo": "dbt-labs/dbt-mcp",
+      "archived": false,
+      "pushedAt": "2026-08-14T20:57:09Z",
+      "registry": "pip",
+      "package": "dbt-mcp",
+      "version": "1.22.1",
+      "publishedAt": "2026-07-20T15:23:19.801540Z"
+    },
+    "deepl": {
+      "repo": "DeepL/deepl-mcp-server",
+      "archived": false,
+      "pushedAt": "2026-08-05T09:11:45Z",
+      "registry": "npm",
+      "package": "deepl-mcp-server",
+      "version": "1.3.0",
+      "publishedAt": "2026-07-31T14:34:35.648Z"
+    },
+    "deepseek-mcp": {
+      "repo": "DMontgomery40/deepseek-mcp-server",
+      "archived": false,
+      "pushedAt": "2026-04-24T16:49:50Z",
+      "registry": "npm",
+      "package": "deepseek-mcp-server",
+      "version": "0.5.0",
+      "publishedAt": "2026-04-24T16:35:12.869Z"
+    },
+    "devdocs-mcp": {
+      "repo": "pluginslab/wp-devdocs-mcp",
+      "archived": false,
+      "pushedAt": "2026-05-18T21:29:38Z",
+      "registry": "npm",
+      "package": "wp-devdocs-mcp",
+      "version": "1.3.0",
+      "publishedAt": "2026-05-19T16:38:56.254Z"
+    },
+    "dexpaprika-mcp": {
+      "repo": "coinpaprika/dexpaprika-mcp",
+      "archived": false,
+      "pushedAt": "2026-08-14T13:07:40Z",
+      "registry": "npm",
+      "package": "dexpaprika-mcp",
+      "version": "2.5.0",
+      "publishedAt": "2026-08-14T13:10:43.444Z"
+    },
+    "dify-mcp": {
+      "repo": "salted-butter-joshua/dify-mcp",
+      "archived": false,
+      "pushedAt": "2026-07-05T12:12:28Z",
+      "registry": "pip",
+      "package": "dify-mcp",
+      "version": "0.1.0",
+      "publishedAt": "2026-07-05T12:12:52.640751Z"
+    },
+    "discogs-mcp": {
+      "repo": "cswkim/discogs-mcp-server",
+      "archived": false,
+      "pushedAt": "2026-07-06T16:10:19Z",
+      "registry": "npm",
+      "package": "discogs-mcp-server",
+      "version": "0.5.7",
+      "publishedAt": "2026-05-26T14:34:15.988Z"
+    },
+    "django-mcp": {
+      "repo": "gts360/django-mcp-server",
+      "archived": false,
+      "pushedAt": "2026-03-10T10:38:28Z",
+      "registry": "pip",
+      "package": "django-mcp-server",
+      "version": "0.5.7",
+      "publishedAt": "2025-10-10T17:13:33.560976Z"
+    },
+    "docx-mcp": {
+      "repo": "rockcj/Docx_MCP_cj",
+      "archived": false,
+      "pushedAt": "2025-10-27T15:54:14Z",
+      "registry": "pip",
+      "package": "docx-mcp",
+      "version": "0.1.8",
+      "publishedAt": "2025-10-27T16:03:12.976372Z"
+    },
+    "domoticz-mcp": {
+      "repo": "adrighem/domoticz-mcp",
+      "archived": false,
+      "pushedAt": "2026-07-30T18:46:19Z",
+      "registry": "pip",
+      "package": "domoticz-mcp",
+      "version": "1.3.1",
+      "publishedAt": "2026-07-23T20:49:14.299307Z"
+    },
+    "duckduckgo-mcp": {
+      "repo": "nickclyde/duckduckgo-mcp-server",
+      "archived": false,
+      "pushedAt": "2026-07-28T14:23:09Z",
+      "registry": "pip",
+      "package": "duckduckgo-mcp-server",
+      "version": "0.6.1",
+      "publishedAt": "2026-07-28T14:23:57.453672Z"
+    },
+    "e2b": {
+      "repo": "e2b-dev/mcp-server",
+      "archived": true,
+      "pushedAt": "2026-04-16T15:51:25Z",
+      "registry": "npm",
+      "package": "@e2b/mcp-server",
+      "version": "0.2.3",
+      "publishedAt": "2025-12-31T18:22:19.508Z"
+    },
+    "echarts-mcp": {
+      "repo": "zhr7777777/echarts-mcp-server",
+      "archived": false,
+      "pushedAt": "2025-07-30T15:40:53Z",
+      "registry": "npm",
+      "package": "echarts-mcp-server",
+      "version": "0.0.11",
+      "publishedAt": "2025-07-30T15:49:36.567Z"
+    },
+    "elevenlabs": {
+      "repo": "elevenlabs/elevenlabs-mcp",
+      "archived": false,
+      "pushedAt": "2026-08-14T10:15:11Z",
+      "registry": "pip",
+      "package": "elevenlabs-mcp",
+      "version": "0.12.2",
+      "publishedAt": "2026-08-04T14:16:08.142784Z"
+    },
+    "elevenlabs-mcp": {
+      "repo": "elevenlabs/elevenlabs-mcp",
+      "archived": false,
+      "pushedAt": "2026-08-14T10:15:11Z",
+      "registry": "pip",
+      "package": "elevenlabs-mcp",
+      "version": "0.12.2",
+      "publishedAt": "2026-08-04T14:16:08.142784Z"
+    },
+    "epa-mcp-server": {
+      "repo": "cyanheads/epa-mcp-server",
+      "archived": false,
+      "pushedAt": "2026-07-30T18:08:28Z",
+      "registry": "npm",
+      "package": "@cyanheads/epa-mcp-server",
+      "version": "0.3.0",
+      "publishedAt": "2026-07-10T21:56:52.769Z"
+    },
+    "everything": {
+      "repo": "modelcontextprotocol/servers",
+      "archived": false,
+      "pushedAt": "2026-08-10T02:41:59Z",
+      "registry": "npm",
+      "package": "@modelcontextprotocol/server-everything",
+      "version": "2026.7.4",
+      "publishedAt": "2026-07-04T23:05:18.837Z"
+    },
+    "excel-mcp": {
+      "repo": "haris-musa/excel-mcp-server",
+      "archived": false,
+      "pushedAt": "2026-04-12T06:14:45Z",
+      "registry": "pip",
+      "package": "excel-mcp-server",
+      "version": "0.1.8",
+      "publishedAt": "2026-04-12T06:15:20.593997Z"
+    },
+    "fal-ai-mcp": {
+      "repo": "enescanguven/fal-mcp",
+      "archived": false,
+      "pushedAt": "2026-03-07T03:38:27Z",
+      "registry": "npm",
+      "package": "fal-ai-mcp",
+      "version": "0.2.1",
+      "publishedAt": "2026-03-07T03:38:36.036Z"
+    },
+    "fastspring-mcp": {
+      "repo": "ssv445/fastspring-mcp-server",
+      "archived": false,
+      "pushedAt": "2026-03-27T12:40:29Z",
+      "registry": "npm",
+      "package": "fastspring-mcp",
+      "version": "1.0.0",
+      "publishedAt": "2026-03-29T05:33:23.649Z"
+    },
+    "fetch": {
+      "repo": "modelcontextprotocol/servers",
+      "archived": false,
+      "pushedAt": "2026-08-10T02:41:59Z",
+      "registry": "pip",
+      "package": "mcp-server-fetch",
+      "version": "2026.7.10",
+      "publishedAt": "2026-07-10T03:31:06.746123Z"
+    },
+    "filesystem": {
+      "repo": "modelcontextprotocol/servers",
+      "archived": false,
+      "pushedAt": "2026-08-10T02:41:59Z",
+      "registry": "npm",
+      "package": "@modelcontextprotocol/server-filesystem",
+      "version": "2026.7.10",
+      "publishedAt": "2026-07-10T03:31:10.875Z"
+    },
+    "firebase": {
+      "repo": "firebase/firebase-tools",
+      "archived": false,
+      "pushedAt": "2026-08-17T09:33:01Z",
+      "registry": "npm",
+      "package": "firebase-tools",
+      "version": "15.27.0",
+      "publishedAt": "2026-08-13T22:22:42.578Z"
+    },
+    "firecrawl": {
+      "repo": "firecrawl/firecrawl-mcp-server",
+      "archived": false,
+      "pushedAt": "2026-08-14T23:12:46Z",
+      "registry": "npm",
+      "package": "firecrawl-mcp",
+      "version": "3.24.0",
+      "publishedAt": "2026-08-12T15:41:48.525Z"
+    },
+    "firecrawl-mcp": {
+      "repo": "firecrawl/firecrawl-mcp-server",
+      "archived": false,
+      "pushedAt": "2026-08-14T23:12:46Z",
+      "registry": "npm",
+      "package": "firecrawl-mcp",
+      "version": "3.24.0",
+      "publishedAt": "2026-08-12T15:41:48.525Z"
+    },
+    "flagsmith": {
+      "repo": "Flagsmith/flagsmith-mcp",
+      "archived": false,
+      "pushedAt": "2026-03-13T10:10:51Z",
+      "registry": "npm",
+      "package": "flagsmith",
+      "version": "10.0.0",
+      "publishedAt": "2025-12-10T17:27:21.754Z"
+    },
+    "flink": {
+      "repo": "Cledar/flink-mcp",
+      "archived": false,
+      "pushedAt": "2025-09-03T20:05:42Z",
+      "registry": "pip",
+      "package": "flink-mcp",
+      "version": "0.2.6",
+      "publishedAt": "2025-09-03T19:45:32.377041Z"
+    },
+    "flutterwave": {
+      "repo": "bajoski34/mcp-flutterwave",
+      "archived": false,
+      "pushedAt": "2026-07-11T23:20:47Z",
+      "registry": "npm",
+      "package": "mcp-flutterwave",
+      "version": "1.4.1",
+      "publishedAt": "2026-06-17T01:09:18.530Z"
+    },
+    "fortinet-fortigate-mcp": {
+      "repo": "Picaresco/MCP-Fortigate",
+      "archived": false,
+      "pushedAt": "2026-07-25T00:27:44Z",
+      "registry": "pip",
+      "package": "fortigate-mcp",
+      "version": "0.2.1",
+      "publishedAt": "2026-05-01T20:23:09.699479Z"
+    },
+    "fred-mcp": {
+      "repo": "zachspar/fred-mcp",
+      "archived": false,
+      "pushedAt": "2026-05-25T22:41:45Z",
+      "registry": "pip",
+      "package": "fred-mcp",
+      "version": "1.0.1",
+      "publishedAt": "2026-05-25T22:42:16.234521Z"
+    },
+    "freshdesk": {
+      "repo": "effytech/freshdesk_mcp",
+      "archived": false,
+      "pushedAt": "2026-07-30T12:27:17Z",
+      "registry": "pip",
+      "package": "freshdesk-mcp",
+      "version": "1.2.0",
+      "publishedAt": "2025-05-20T08:59:42.530435Z"
+    },
+    "fronius-solar-mcp": {
+      "repo": "flowiesner/fronius-mcp",
+      "archived": false,
+      "pushedAt": "2026-04-18T13:31:06Z",
+      "registry": "pip",
+      "package": "fronius-mcp",
+      "version": "0.1.2",
+      "publishedAt": "2026-04-18T13:20:07.638896Z"
+    },
+    "garmin-mcp": {
+      "repo": "Tyler-Irving/garmin-mcp",
+      "archived": false,
+      "pushedAt": "2026-06-12T18:13:36Z",
+      "registry": "pip",
+      "package": "garmin-mcp",
+      "version": "0.4.0",
+      "publishedAt": "2026-05-31T17:29:41.732479Z"
+    },
+    "gcp": {
+      "repo": "GoogleCloudPlatform/cloud-run-mcp",
+      "archived": false,
+      "pushedAt": "2026-08-14T09:46:09Z",
+      "registry": "npm",
+      "package": "@google-cloud/cloud-run-mcp",
+      "version": "1.10.0",
+      "publishedAt": "2026-03-04T14:42:22.301Z"
+    },
+    "genesys-cloud-mcp": {
+      "repo": "MakingChatbots/genesys-cloud-mcp-server",
+      "archived": false,
+      "pushedAt": "2026-04-06T18:53:47Z",
+      "registry": "npm",
+      "package": "@makingchatbots/genesys-cloud-mcp-server",
+      "version": "1.0.4",
+      "publishedAt": "2026-03-30T21:55:03.908Z"
+    },
+    "getyourguide-mcp": {
+      "repo": "chrischall/getyourguide-mcp",
+      "archived": false,
+      "pushedAt": "2026-08-16T03:14:25Z",
+      "registry": "npm",
+      "package": "getyourguide-mcp",
+      "version": "1.1.3",
+      "publishedAt": "2026-07-27T02:56:20.968Z"
+    },
+    "ghost-mcp": {
+      "repo": "slb350/ghost-mcp",
+      "archived": false,
+      "pushedAt": "2025-07-26T06:36:50Z",
+      "registry": "npm",
+      "package": "ghost-mcp",
+      "version": "0.1.7",
+      "publishedAt": "2025-07-26T06:13:26.552Z"
+    },
+    "git": {
+      "repo": "modelcontextprotocol/servers",
+      "archived": false,
+      "pushedAt": "2026-08-10T02:41:59Z",
+      "registry": "pip",
+      "package": "mcp-server-git",
+      "version": "2026.7.10",
+      "publishedAt": "2026-07-10T03:31:03.977269Z"
+    },
+    "gitbook-mcp": {
+      "repo": "rickysullivan/gitbook-mcp",
+      "archived": false,
+      "pushedAt": "2026-02-02T09:39:33Z",
+      "registry": "npm",
+      "package": "gitbook-mcp",
+      "version": "1.0.4",
+      "publishedAt": "2025-06-29T04:14:46.492Z"
+    },
+    "github-repo-mcp": {
+      "repo": "Ryan0204/github-repo-mcp",
+      "archived": false,
+      "pushedAt": "2025-04-25T23:34:52Z",
+      "registry": "npm",
+      "package": "github-repo-mcp",
+      "version": "1.0.3",
+      "publishedAt": "2025-04-25T05:45:59.470Z"
+    },
+    "gmail": {
+      "repo": "taylorwilsdon/google_workspace_mcp",
+      "archived": false,
+      "pushedAt": "2026-08-16T23:44:07Z",
+      "registry": "pip",
+      "package": "workspace-mcp",
+      "version": "1.24.1",
+      "publishedAt": "2026-08-13T18:34:04.299460Z"
+    },
+    "godot-mcp": {
+      "repo": "Coding-Solo/godot-mcp",
+      "archived": false,
+      "pushedAt": "2026-04-16T23:37:00Z",
+      "registry": "npm",
+      "package": "@coding-solo/godot-mcp",
+      "version": "0.1.1",
+      "publishedAt": "2026-02-03T17:23:27.236Z"
+    },
+    "google-chat-mcp": {
+      "repo": "mohn93/google-chat-mcp",
+      "archived": false,
+      "pushedAt": "2026-03-29T12:45:04Z",
+      "registry": "npm",
+      "package": "google-chat-mcp",
+      "version": "1.0.0",
+      "publishedAt": "2026-03-29T12:45:23.360Z"
+    },
+    "google-drive": {
+      "repo": "modelcontextprotocol/servers-archived",
+      "archived": true,
+      "pushedAt": "2025-05-28T17:57:12Z",
+      "registry": "npm",
+      "package": "@modelcontextprotocol/server-gdrive",
+      "version": "2025.1.14",
+      "publishedAt": "2025-01-14T01:44:34.879Z"
+    },
+    "google-flights-mcp": {
+      "repo": "andreacappelletti97/google-flights-mcp",
+      "archived": false,
+      "pushedAt": "2026-04-17T21:14:07Z",
+      "registry": "npm",
+      "package": "google-flights-mcp",
+      "version": "1.0.3",
+      "publishedAt": "2026-04-17T21:16:10.111Z"
+    },
+    "google-sheets": {
+      "repo": "xing5/mcp-google-sheets",
+      "archived": false,
+      "pushedAt": "2026-05-14T21:12:23Z",
+      "registry": "pip",
+      "package": "mcp-google-sheets",
+      "version": "0.6.3",
+      "publishedAt": "2026-05-14T21:10:13.652107Z"
+    },
+    "gorgias-mcp": {
+      "repo": "ariadng/gorgias-mcp",
+      "archived": false,
+      "pushedAt": "2025-07-19T02:14:46Z",
+      "registry": "npm",
+      "package": "gorgias-mcp",
+      "version": "2.0.1",
+      "publishedAt": "2025-07-19T02:13:23.415Z"
+    },
+    "grafana": {
+      "repo": "grafana/mcp-grafana",
+      "archived": false,
+      "pushedAt": "2026-08-17T02:22:24Z",
+      "registry": "pip",
+      "package": "mcp-grafana",
+      "version": "1.1.0",
+      "publishedAt": "2026-08-10T09:52:40.174464Z"
+    },
+    "graphlit": {
+      "repo": "graphlit/graphlit-mcp-server",
+      "archived": false,
+      "pushedAt": "2026-01-12T19:10:52Z",
+      "registry": "npm",
+      "package": "graphlit-mcp-server",
+      "version": "1.0.20260112001",
+      "publishedAt": "2026-01-12T19:11:43.581Z"
+    },
+    "gremlin": {
+      "repo": "gremlin/mcp",
+      "archived": false,
+      "pushedAt": "2026-08-10T20:39:29Z",
+      "registry": "npm",
+      "package": "@gremlin/mcp-server",
+      "version": "2.3.0",
+      "publishedAt": "2026-07-08T19:43:13.299Z"
+    },
+    "hacker-news-mcp": {
+      "repo": "paabloLC/mcp-hacker-news",
+      "archived": false,
+      "pushedAt": "2025-06-09T07:08:52Z",
+      "registry": "npm",
+      "package": "mcp-hacker-news",
+      "version": "1.0.3",
+      "publishedAt": "2025-06-08T19:55:06.818Z"
+    },
+    "hackernews": {
+      "repo": "paabloLC/mcp-hacker-news",
+      "archived": false,
+      "pushedAt": "2025-06-09T07:08:52Z",
+      "registry": "npm",
+      "package": "mcp-hacker-news",
+      "version": "1.0.3",
+      "publishedAt": "2025-06-08T19:55:06.818Z"
+    },
+    "healthlake-mcp": {
+      "repo": "awslabs/mcp",
+      "archived": false,
+      "pushedAt": "2026-08-14T22:02:20Z",
+      "registry": "pip",
+      "package": "awslabs.healthlake-mcp-server",
+      "version": "0.0.18",
+      "publishedAt": "2026-08-10T23:45:03.078481Z"
+    },
+    "hledger-mcp": {
+      "repo": "iiAtlas/hledger-mcp",
+      "archived": false,
+      "pushedAt": "2026-02-28T18:51:46Z",
+      "registry": "npm",
+      "package": "@iiatlas/hledger-mcp",
+      "version": "1.0.5",
+      "publishedAt": "2025-09-25T14:03:35.522Z"
+    },
+    "home-assistant-mcp": {
+      "repo": "homeassistant-ai/ha-mcp",
+      "archived": false,
+      "pushedAt": "2026-08-17T09:28:47Z",
+      "registry": "pip",
+      "package": "ha-mcp",
+      "version": "8.2.0",
+      "publishedAt": "2026-08-10T01:29:27.209734Z"
+    },
+    "hubstaff-mcp": {
+      "repo": "cdmx-in/hubstaff-mcp",
+      "archived": false,
+      "pushedAt": "2025-07-14T04:14:34Z",
+      "registry": "pip",
+      "package": "hubstaff-mcp",
+      "version": "0.1.3",
+      "publishedAt": "2025-06-18T12:51:56.024398Z"
+    },
+    "huggingface": {
+      "repo": "huggingface/hf-mcp-server",
+      "archived": false,
+      "pushedAt": "2026-08-14T12:52:40Z",
+      "registry": "npm",
+      "package": "@llmindset/hf-mcp-server",
+      "version": "0.4.9",
+      "publishedAt": "2026-08-14T12:52:55.108Z"
+    },
+    "huggingface-mcp": {
+      "repo": "huggingface/hf-mcp-server",
+      "archived": false,
+      "pushedAt": "2026-08-14T12:52:40Z",
+      "registry": "npm",
+      "package": "@llmindset/hf-mcp-server",
+      "version": "0.4.9",
+      "publishedAt": "2026-08-14T12:52:55.108Z"
+    },
+    "hyperbrowser": {
+      "repo": "hyperbrowserai/mcp",
+      "archived": false,
+      "pushedAt": "2025-11-20T01:32:08Z",
+      "registry": "npm",
+      "package": "hyperbrowser-mcp",
+      "version": "1.0.25",
+      "publishedAt": "2025-04-13T21:20:30.944Z"
+    },
+    "image-generation": {
+      "repo": "MiniMax-AI/MiniMax-MCP",
+      "archived": false,
+      "pushedAt": "2026-05-21T03:40:18Z",
+      "registry": "pip",
+      "package": "minimax-mcp",
+      "version": "0.0.18",
+      "publishedAt": "2026-01-07T08:22:04.953470Z"
+    },
+    "influxdb-mcp": {
+      "repo": "influxdata/influxdb3_mcp_server",
+      "archived": false,
+      "pushedAt": "2026-08-12T20:17:06Z",
+      "registry": "pip",
+      "package": "influxdb-mcp",
+      "version": "0.1.1",
+      "publishedAt": "2025-06-17T10:08:20.123138Z"
+    },
+    "insomnia-mcp": {
+      "repo": "anggasct/mcp-insomnia",
+      "archived": false,
+      "pushedAt": "2026-08-12T15:01:29Z",
+      "registry": "npm",
+      "package": "mcp-insomnia",
+      "version": "0.7.4",
+      "publishedAt": "2026-08-04T17:48:52.031Z"
+    },
+    "instantly-ai-mcp": {
+      "repo": "bcharleson/instantly-mcp",
+      "archived": false,
+      "pushedAt": "2026-01-02T16:09:14Z",
+      "registry": "npm",
+      "package": "instantly-mcp",
+      "version": "1.0.5",
+      "publishedAt": "2025-06-11T14:24:35.580Z"
+    },
+    "interactive-brokers-mcp": {
+      "repo": "henrysouchien/ibkr-mcp",
+      "archived": false,
+      "pushedAt": "2026-04-30T20:14:23Z",
+      "registry": "pip",
+      "package": "interactive-brokers-mcp",
+      "version": "0.2.4",
+      "publishedAt": "2026-04-30T19:44:55.797387Z"
+    },
+    "iobroker-mcp": {
+      "repo": "ioBroker/ioBroker.mcp",
+      "archived": false,
+      "pushedAt": "2026-08-04T22:41:39Z",
+      "registry": "npm",
+      "package": "iobroker.mcp",
+      "version": "1.1.0",
+      "publishedAt": "2026-08-04T22:47:45.823Z"
+    },
+    "ipinfo-mcp": {
+      "repo": "briandconnelly/mcp-server-ipinfo",
+      "archived": false,
+      "pushedAt": "2026-08-05T04:38:51Z",
+      "registry": "pip",
+      "package": "mcp-server-ipinfo",
+      "version": "0.7.0",
+      "publishedAt": "2026-06-07T20:18:08.745745Z"
+    },
+    "istio-mcp": {
+      "repo": "krutsko/istio-mcp-server",
+      "archived": false,
+      "pushedAt": "2026-07-12T11:01:38Z",
+      "registry": "npm",
+      "package": "istio-mcp-server",
+      "version": "0.0.32",
+      "publishedAt": "2026-07-12T11:07:36.652Z"
+    },
+    "iterable-mcp": {
+      "repo": "jginorio/iterable-mcp",
+      "archived": false,
+      "pushedAt": "2026-06-18T16:07:53Z",
+      "registry": "npm",
+      "package": "iterable-mcp",
+      "version": "1.0.4",
+      "publishedAt": "2026-06-18T16:08:14.098Z"
+    },
+    "jupyter": {
+      "repo": "datalayer/jupyter-mcp-server",
+      "archived": false,
+      "pushedAt": "2026-08-17T03:31:43Z",
+      "registry": "pip",
+      "package": "jupyter-mcp-server",
+      "version": "1.4.4",
+      "publishedAt": "2026-08-17T03:32:18.825473Z"
+    },
+    "kafka-mcp": {
+      "repo": "confluentinc/mcp-confluent",
+      "archived": false,
+      "pushedAt": "2026-08-17T06:03:43Z",
+      "registry": "npm",
+      "package": "@confluentinc/mcp-confluent",
+      "version": "1.5.0",
+      "publishedAt": "2026-07-07T16:19:25.387Z"
+    },
+    "keycloak-mcp": {
+      "repo": "M0-AR/keycloak-mcp-server",
+      "archived": false,
+      "pushedAt": "2025-07-14T00:46:59Z",
+      "registry": "npm",
+      "package": "keycloak-mcp-server",
+      "version": "2.0.0",
+      "publishedAt": "2025-07-14T00:49:38.571Z"
+    },
+    "kira-mcp": {
+      "repo": "aibenyclaude-coder/Kira",
+      "archived": false,
+      "pushedAt": "2026-08-05T20:14:44Z",
+      "registry": "npm",
+      "package": "kira-mcp",
+      "version": "0.11.0",
+      "publishedAt": "2026-08-05T20:15:42.497Z"
+    },
+    "knowledge-base-mcp-server": {
+      "repo": "jeanibarz/knowledge-base-mcp-server",
+      "archived": false,
+      "pushedAt": "2026-07-21T10:14:36Z",
+      "registry": "npm",
+      "package": "@jeanibarz/knowledge-base-mcp-server",
+      "version": "0.2.1",
+      "publishedAt": "2026-04-25T19:04:45.587Z"
+    },
+    "kubernetes": {
+      "repo": "Flux159/mcp-server-kubernetes",
+      "archived": false,
+      "pushedAt": "2026-08-08T17:15:37Z",
+      "registry": "npm",
+      "package": "mcp-server-kubernetes",
+      "version": "4.1.4",
+      "publishedAt": "2026-08-08T17:15:50.736Z"
+    },
+    "langsmith-mcp": {
+      "repo": "langchain-ai/langsmith-mcp-server",
+      "archived": true,
+      "pushedAt": "2026-08-11T23:41:26Z",
+      "registry": "pip",
+      "package": "langsmith-mcp",
+      "version": "0.2.0",
+      "publishedAt": "2026-08-12T21:43:09.227770Z"
+    },
+    "lattice-mcp": {
+      "repo": "aidenappl/lattice-mcp",
+      "archived": false,
+      "pushedAt": "2026-08-01T19:08:04Z",
+      "registry": "npm",
+      "package": "lattice-mcp",
+      "version": "1.4.0",
+      "publishedAt": "2026-07-28T06:16:09.476Z"
+    },
+    "launchdarkly": {
+      "repo": "launchdarkly/mcp-server",
+      "archived": false,
+      "pushedAt": "2026-08-17T00:10:10Z",
+      "registry": "npm",
+      "package": "@launchdarkly/mcp-server",
+      "version": "0.6.2",
+      "publishedAt": "2026-05-08T21:08:17.934Z"
+    },
+    "librenms-mcp": {
+      "repo": "mhajder/librenms-mcp",
+      "archived": false,
+      "pushedAt": "2026-08-17T07:55:43Z",
+      "registry": "pip",
+      "package": "librenms-mcp",
+      "version": "1.11.1",
+      "publishedAt": "2026-08-12T18:07:09.135162Z"
+    },
+    "lightdash-mcp": {
+      "repo": "syucream/lightdash-mcp-server",
+      "archived": false,
+      "pushedAt": "2025-06-09T02:43:48Z",
+      "registry": "npm",
+      "package": "lightdash-mcp-server",
+      "version": "0.0.12",
+      "publishedAt": "2025-06-09T01:05:51.004Z"
+    },
+    "line": {
+      "repo": "line/line-bot-mcp-server",
+      "archived": false,
+      "pushedAt": "2026-08-17T03:41:44Z",
+      "registry": "npm",
+      "package": "@line/line-bot-mcp-server",
+      "version": "0.5.0",
+      "publishedAt": "2026-05-29T04:52:30.503Z"
+    },
+    "lob-mcp": {
+      "repo": "optimize-overseas/lob-mcp",
+      "archived": false,
+      "pushedAt": "2026-07-16T20:31:09Z",
+      "registry": "npm",
+      "package": "lob-mcp",
+      "version": "1.4.0",
+      "publishedAt": "2026-07-16T19:47:51.769Z"
+    },
+    "logfire": {
+      "repo": "pydantic/logfire-mcp",
+      "archived": false,
+      "pushedAt": "2026-07-13T14:19:15Z",
+      "registry": "pip",
+      "package": "logfire-mcp",
+      "version": "0.9.0",
+      "publishedAt": "2026-07-13T14:19:44.382990Z"
+    },
+    "logseq-mcp": {
+      "repo": "briansunter/logseq-mcp",
+      "archived": false,
+      "pushedAt": "2026-07-15T01:59:15Z",
+      "registry": "npm",
+      "package": "logseq-mcp",
+      "version": "0.8.1",
+      "publishedAt": "2026-07-15T01:59:42.558Z"
+    },
+    "lokalise-mcp": {
+      "repo": "AbdallahAHO/lokalise-mcp",
+      "archived": false,
+      "pushedAt": "2026-02-09T09:47:09Z",
+      "registry": "npm",
+      "package": "lokalise-mcp",
+      "version": "1.1.0",
+      "publishedAt": "2025-08-28T20:48:02.903Z"
+    },
+    "luma": {
+      "repo": "JochenYang/luma-mcp",
+      "archived": false,
+      "pushedAt": "2026-08-09T06:39:44Z",
+      "registry": "npm",
+      "package": "luma-mcp",
+      "version": "1.7.1",
+      "publishedAt": "2026-08-09T06:40:00.364Z"
+    },
+    "mailchimp-mcp": {
+      "repo": "Eyalm321/mailchimp-mcp",
+      "archived": false,
+      "pushedAt": "2026-05-03T06:09:13Z",
+      "registry": "npm",
+      "package": "mailchimp-mcp",
+      "version": "1.0.0",
+      "publishedAt": "2026-04-07T19:06:16.172Z"
+    },
+    "mailgun": {
+      "repo": "mailgun/mailgun-mcp-server",
+      "archived": false,
+      "pushedAt": "2026-07-24T16:31:37Z",
+      "registry": "npm",
+      "package": "@mailgun/mcp-server",
+      "version": "2.1.2",
+      "publishedAt": "2026-07-24T16:32:06.983Z"
+    },
+    "make-com": {
+      "repo": "integromat/make-mcp-server",
+      "archived": false,
+      "pushedAt": "2026-06-10T13:56:59Z",
+      "registry": "npm",
+      "package": "@makehq/mcp-server",
+      "version": "0.5.0",
+      "publishedAt": "2025-03-11T20:42:17.415Z"
+    },
+    "mapbox": {
+      "repo": "mapbox/mcp-server",
+      "archived": false,
+      "pushedAt": "2026-08-14T04:01:18Z",
+      "registry": "npm",
+      "package": "@mapbox/mcp-server",
+      "version": "0.14.0",
+      "publishedAt": "2026-07-30T18:06:14.799Z"
+    },
+    "markitdown-mcp": {
+      "repo": "microsoft/markitdown",
+      "archived": false,
+      "pushedAt": "2026-07-29T18:18:09Z",
+      "registry": "pip",
+      "package": "markitdown",
+      "version": "0.1.7",
+      "publishedAt": "2026-07-29T18:20:30.226447Z"
+    },
+    "mcp-context-forge": {
+      "repo": "IBM/mcp-context-forge",
+      "archived": false,
+      "pushedAt": "2026-08-17T09:36:12Z",
+      "registry": "pip",
+      "package": "mcp-contextforge-gateway",
+      "version": "1.0.7",
+      "publishedAt": "2026-08-05T19:08:47.212043Z"
+    },
+    "mcp-proxy-for-aws": {
+      "repo": "aws/mcp-proxy-for-aws",
+      "archived": false,
+      "pushedAt": "2026-08-17T08:38:06Z",
+      "registry": "pip",
+      "package": "mcp-proxy-for-aws",
+      "version": "1.6.4",
+      "publishedAt": "2026-07-20T15:16:03.082136Z"
+    },
+    "mcp-server-odoo-ivnvxd": {
+      "repo": "ivnvxd/mcp-server-odoo",
+      "archived": false,
+      "pushedAt": "2026-08-16T08:23:14Z",
+      "registry": "pip",
+      "package": "mcp-server-odoo",
+      "version": "0.7.1",
+      "publishedAt": "2026-06-12T13:47:30.465932Z"
+    },
+    "memory": {
+      "repo": "modelcontextprotocol/servers",
+      "archived": false,
+      "pushedAt": "2026-08-10T02:41:59Z",
+      "registry": "npm",
+      "package": "@modelcontextprotocol/server-memory",
+      "version": "2026.7.4",
+      "publishedAt": "2026-07-04T23:05:12.015Z"
+    },
+    "memory-bank-mcp": {
+      "repo": "alioshr/memory-bank-mcp",
+      "archived": false,
+      "pushedAt": "2025-08-20T10:23:06Z",
+      "registry": "npm",
+      "package": "@allpepper/memory-bank-mcp",
+      "version": "0.2.2",
+      "publishedAt": "2026-01-09T11:59:18.590Z"
+    },
+    "meta-ads-mcp": {
+      "repo": "pipeboard-co/meta-ads-mcp",
+      "archived": false,
+      "pushedAt": "2026-08-11T00:11:52Z",
+      "registry": "pip",
+      "package": "meta-ads-mcp",
+      "version": "1.0.120",
+      "publishedAt": "2026-08-10T23:52:31.449849Z"
+    },
+    "metabase-mcp": {
+      "repo": "gobenpark/metabase-mcp",
+      "archived": false,
+      "pushedAt": "2026-03-10T07:53:36Z",
+      "registry": "npm",
+      "package": "metabase-mcp",
+      "version": "0.1.8",
+      "publishedAt": "2026-03-10T07:55:08.789Z"
+    },
+    "mews-mcp": {
+      "repo": "code-rabi/mews-mcp",
+      "archived": false,
+      "pushedAt": "2025-08-06T08:40:22Z",
+      "registry": "npm",
+      "package": "mews-mcp",
+      "version": "1.1.2",
+      "publishedAt": "2025-08-04T18:35:43.064Z"
+    },
+    "microsoft-clarity": {
+      "repo": "microsoft/clarity-mcp-server",
+      "archived": false,
+      "pushedAt": "2026-02-24T14:02:49Z",
+      "registry": "npm",
+      "package": "@microsoft/clarity-mcp-server",
+      "version": "2.0.1",
+      "publishedAt": "2025-10-28T06:18:22.362Z"
+    },
+    "microsoft-playwright-mcp": {
+      "repo": "microsoft/playwright-mcp",
+      "archived": false,
+      "pushedAt": "2026-08-12T20:16:20Z",
+      "registry": "npm",
+      "package": "@playwright/mcp",
+      "version": "0.0.79",
+      "publishedAt": "2026-08-06T00:20:45.023Z"
+    },
+    "mistral": {
+      "repo": "Swih/mistral-mcp",
+      "archived": false,
+      "pushedAt": "2026-07-01T14:36:50Z",
+      "registry": "npm",
+      "package": "mistral-mcp",
+      "version": "0.8.2",
+      "publishedAt": "2026-05-06T08:15:38.700Z"
+    },
+    "mlflow-mcp": {
+      "repo": "kkruglik/mlflow-mcp",
+      "archived": false,
+      "pushedAt": "2026-08-08T13:03:40Z",
+      "registry": "pip",
+      "package": "mlflow-mcp",
+      "version": "0.4.1",
+      "publishedAt": "2026-08-08T13:04:10.771557Z"
+    },
+    "modal-labs-mcp": {
+      "repo": "php-workx/modal-mcp",
+      "archived": false,
+      "pushedAt": "2026-05-17T12:55:33Z",
+      "registry": "pip",
+      "package": "modal-mcp",
+      "version": "0.1.0",
+      "publishedAt": "2026-05-05T06:16:13.700206Z"
+    },
+    "modern-treasury-mcp": {
+      "repo": "Modern-Treasury/modern-treasury-node",
+      "archived": false,
+      "pushedAt": "2026-08-13T20:34:58Z",
+      "registry": "npm",
+      "package": "modern-treasury-mcp",
+      "version": "4.20.0",
+      "publishedAt": "2026-07-27T18:29:28.141Z"
+    },
+    "mongodb": {
+      "repo": "mongodb-js/mongodb-mcp-server",
+      "archived": false,
+      "pushedAt": "2026-08-16T03:19:38Z",
+      "registry": "npm",
+      "package": "mongodb-mcp-server",
+      "version": "2.1.0",
+      "publishedAt": "2026-08-10T12:18:03.267Z"
+    },
+    "moodle-mcp": {
+      "repo": "loyaniu/moodle-mcp",
+      "archived": false,
+      "pushedAt": "2026-06-29T02:30:30Z",
+      "registry": "pip",
+      "package": "moodle-mcp",
+      "version": "0.2.1",
+      "publishedAt": "2026-06-29T02:30:38.365305Z"
+    },
+    "mqtt-mcp": {
+      "repo": "mqtt-ai/mcp-over-mqtt",
+      "archived": false,
+      "pushedAt": "2026-01-07T13:35:35Z",
+      "registry": "npm",
+      "package": "mqtt-mcp",
+      "version": "0.1.2",
+      "publishedAt": "2025-11-18T10:32:39.239Z"
+    },
+    "mssql-mcp": {
+      "repo": "bymcs/mssql-mcp",
+      "archived": false,
+      "pushedAt": "2026-08-13T13:50:23Z",
+      "registry": "npm",
+      "package": "mssql-mcp",
+      "version": "2.3.6",
+      "publishedAt": "2026-08-13T13:51:39.919Z"
+    },
+    "murf-ai-mcp": {
+      "repo": "murf-ai/murf-mcp",
+      "archived": false,
+      "pushedAt": "2025-06-02T10:14:25Z",
+      "registry": "pip",
+      "package": "murf-mcp",
+      "version": "0.1.13",
+      "publishedAt": "2025-06-02T10:14:44.263791Z"
+    },
+    "musicbrainz-mcp": {
+      "repo": "chrischall/musicbrainz-mcp",
+      "archived": false,
+      "pushedAt": "2026-08-11T23:14:35Z",
+      "registry": "npm",
+      "package": "musicbrainz-mcp",
+      "version": "0.2.5",
+      "publishedAt": "2026-07-19T12:46:05.341Z"
+    },
+    "mysql": {
+      "repo": "f4ww4z/mcp-mysql-server",
+      "archived": false,
+      "pushedAt": "2025-11-14T08:30:28Z",
+      "registry": "npm",
+      "package": "@f4ww4z/mcp-mysql-server",
+      "version": "0.1.0",
+      "publishedAt": "2024-12-13T09:49:21.735Z"
+    },
+    "n8n": {
+      "repo": "czlonkowski/n8n-mcp",
+      "archived": false,
+      "pushedAt": "2026-08-17T09:24:20Z",
+      "registry": "npm",
+      "package": "n8n-mcp",
+      "version": "2.69.2",
+      "publishedAt": "2026-08-15T09:55:20.722Z"
+    },
+    "n8n-mcp": {
+      "repo": "czlonkowski/n8n-mcp",
+      "archived": false,
+      "pushedAt": "2026-08-17T09:24:20Z",
+      "registry": "npm",
+      "package": "n8n-mcp",
+      "version": "2.69.2",
+      "publishedAt": "2026-08-15T09:55:20.722Z"
+    },
+    "national-parks-mcp": {
+      "repo": "KyrieTangSheng/mcp-server-nationalparks",
+      "archived": false,
+      "pushedAt": "2025-06-17T23:53:17Z",
+      "registry": "npm",
+      "package": "mcp-server-nationalparks",
+      "version": "1.0.1",
+      "publishedAt": "2025-03-20T19:36:21.076Z"
+    },
+    "neon": {
+      "repo": "neondatabase/mcp-server-neon",
+      "archived": false,
+      "pushedAt": "2026-08-17T05:55:38Z",
+      "registry": "npm",
+      "package": "add-mcp",
+      "version": "2.0.0",
+      "publishedAt": "2026-07-23T05:15:51.856Z"
+    },
+    "netlify": {
+      "repo": "netlify/netlify-mcp",
+      "archived": false,
+      "pushedAt": "2026-08-13T17:53:55Z",
+      "registry": "npm",
+      "package": "@netlify/mcp",
+      "version": "1.15.1",
+      "publishedAt": "2025-11-11T15:38:23.610Z"
+    },
+    "newsapi-mcp": {
+      "repo": "EventRegistry/newsapi-mcp",
+      "archived": false,
+      "pushedAt": "2026-03-18T14:41:31Z",
+      "registry": "npm",
+      "package": "newsapi-mcp",
+      "version": "1.3.1",
+      "publishedAt": "2026-03-18T14:42:42.565Z"
+    },
+    "nostr-mcp": {
+      "repo": "AustinKelsay/nostr-mcp-server",
+      "archived": false,
+      "pushedAt": "2026-04-04T20:41:46Z",
+      "registry": "npm",
+      "package": "nostr-mcp-server",
+      "version": "3.0.0",
+      "publishedAt": "2026-02-17T21:47:54.155Z"
+    },
+    "notion": {
+      "repo": "makenotion/notion-mcp-server",
+      "archived": false,
+      "pushedAt": "2026-07-25T16:20:03Z",
+      "registry": "npm",
+      "package": "@notionhq/notion-mcp-server",
+      "version": "2.5.1",
+      "publishedAt": "2026-07-25T16:20:34.018Z"
+    },
+    "nx-mcp": {
+      "repo": "nrwl/nx-console",
+      "archived": false,
+      "pushedAt": "2026-08-12T16:04:53Z",
+      "registry": "npm",
+      "package": "nx-mcp",
+      "version": "0.25.0",
+      "publishedAt": "2026-04-30T11:38:28.620Z"
+    },
+    "obsidian": {
+      "repo": "MarkusPfundstein/mcp-obsidian",
+      "archived": false,
+      "pushedAt": "2026-05-15T10:25:32Z",
+      "registry": "pip",
+      "package": "mcp-obsidian",
+      "version": "0.2.2",
+      "publishedAt": "2025-04-01T19:38:10.542021Z"
+    },
+    "obsidian-mcp": {
+      "repo": "StevenStavrakis/obsidian-mcp",
+      "archived": false,
+      "pushedAt": "2026-08-14T01:26:30Z",
+      "registry": "npm",
+      "package": "obsidian-mcp",
+      "version": "2.0.1",
+      "publishedAt": "2026-08-14T01:25:53.654Z"
+    },
+    "odoo-mcp": {
+      "repo": "erpipe-org/mcp-odoo",
+      "archived": false,
+      "pushedAt": "2026-08-14T03:35:19Z",
+      "registry": "pip",
+      "package": "odoo-mcp",
+      "version": "1.3.0",
+      "publishedAt": "2026-07-29T02:54:12.347192Z"
+    },
+    "ollama-mcp": {
+      "repo": "rawveg/ollama-mcp",
+      "archived": false,
+      "pushedAt": "2026-08-13T23:18:19Z",
+      "registry": "npm",
+      "package": "ollama-mcp",
+      "version": "2.1.0",
+      "publishedAt": "2025-11-10T16:32:43.696Z"
+    },
+    "opc-ua-mcp": {
+      "repo": "kukapay/opcua-mcp",
+      "archived": false,
+      "pushedAt": "2025-10-29T23:52:25Z",
+      "registry": "pip",
+      "package": "opcua-mcp",
+      "version": "0.1.0",
+      "publishedAt": "2025-03-27T22:45:57.294817Z"
+    },
+    "open-meteo-mcp": {
+      "repo": "adrianR84/Weather-Open-Meteo-MCP",
+      "archived": false,
+      "pushedAt": "2026-04-08T23:05:45Z",
+      "registry": "npm",
+      "package": "open-meteo-mcp",
+      "version": "0.1.0",
+      "publishedAt": "2026-03-31T11:55:40.924Z"
+    },
+    "openalex-mcp": {
+      "repo": "reetp14/openalex-mcp",
+      "archived": false,
+      "pushedAt": "2025-07-02T05:04:44Z",
+      "registry": "npm",
+      "package": "openalex-mcp",
+      "version": "0.1.8",
+      "publishedAt": "2025-07-02T05:07:22.932Z"
+    },
+    "opencti-mcp": {
+      "repo": "Space-C0wboy/OpenCTI-MCP-Server",
+      "archived": false,
+      "pushedAt": "2026-07-14T21:36:08Z",
+      "registry": "pip",
+      "package": "opencti-mcp",
+      "version": "0.1.1",
+      "publishedAt": "2026-07-14T21:36:36.245008Z"
+    },
+    "openfda-augmented-mcp": {
+      "repo": "Augmented-Nature/OpenFDA-MCP-Server",
+      "archived": false,
+      "pushedAt": "2025-12-21T10:01:51Z",
+      "registry": "pip",
+      "package": "openfda-mcp-server",
+      "version": "0.1.7",
+      "publishedAt": "2025-07-17T03:54:26.876446Z"
+    },
+    "openrouter-mcp": {
+      "repo": "minovap/openrouter-mcp",
+      "archived": false,
+      "pushedAt": "2026-01-18T00:08:04Z",
+      "registry": "npm",
+      "package": "openrouter-mcp",
+      "version": "2.0.1",
+      "publishedAt": "2026-01-18T00:08:11.892Z"
+    },
+    "openstreetmap-mcp": {
+      "repo": "jagan-shanmugam/open-streetmap-mcp",
+      "archived": false,
+      "pushedAt": "2025-07-12T21:55:20Z",
+      "registry": "pip",
+      "package": "osm-mcp-server",
+      "version": "0.1.1",
+      "publishedAt": "2025-05-11T19:21:23.717209Z"
+    },
+    "opentable-mcp": {
+      "repo": "chrischall/opentable-mcp",
+      "archived": false,
+      "pushedAt": "2026-08-16T03:44:03Z",
+      "registry": "npm",
+      "package": "opentable-mcp",
+      "version": "0.16.5",
+      "publishedAt": "2026-08-09T21:02:43.766Z"
+    },
+    "opus-clip-mcp": {
+      "repo": "opus-pro/opusclip-mcp",
+      "archived": false,
+      "pushedAt": "2026-08-14T22:30:55Z",
+      "registry": "npm",
+      "package": "@opusclip/mcp",
+      "version": "0.1.0",
+      "publishedAt": "2026-07-02T13:50:21.254Z"
+    },
+    "oura-mcp": {
+      "repo": "mitchhankins01/oura-ring-mcp",
+      "archived": false,
+      "pushedAt": "2026-02-08T15:51:14Z",
+      "registry": "npm",
+      "package": "oura-ring-mcp",
+      "version": "0.1.4",
+      "publishedAt": "2026-01-25T19:45:18.360Z"
+    },
+    "oxylabs": {
+      "repo": "oxylabs/oxylabs-mcp",
+      "archived": false,
+      "pushedAt": "2026-08-17T07:31:41Z",
+      "registry": "pip",
+      "package": "oxylabs-mcp",
+      "version": "0.9.2",
+      "publishedAt": "2026-08-14T04:43:36.984110Z"
+    },
+    "payload-cms-mcp": {
+      "repo": "disruption-hub/payloadcmsmcp",
+      "archived": false,
+      "pushedAt": "2025-03-15T03:43:25Z",
+      "registry": "npm",
+      "package": "payload-cms-mcp",
+      "version": "1.1.0",
+      "publishedAt": "2025-03-15T04:22:11.605Z"
+    },
+    "penpot-mcp": {
+      "repo": "penpot/penpot",
+      "archived": false,
+      "pushedAt": "2026-08-17T09:34:52Z",
+      "registry": "npm",
+      "package": "@penpot/mcp",
+      "version": "2.15.4",
+      "publishedAt": "2026-06-02T08:24:16.531Z"
+    },
+    "perplexity": {
+      "repo": "perplexityai/modelcontextprotocol",
+      "archived": false,
+      "pushedAt": "2026-07-30T23:03:53Z",
+      "registry": "npm",
+      "package": "@perplexity-ai/mcp-server",
+      "version": "1.2.0",
+      "publishedAt": "2026-07-27T19:42:45.175Z"
+    },
+    "perplexity-sonar-mcp": {
+      "repo": "felores/perplexity-sonar-mcp",
+      "archived": false,
+      "pushedAt": "2025-04-04T09:04:54Z",
+      "registry": "npm",
+      "package": "@felores/perplexity-sonar-mcp",
+      "version": "0.1.7",
+      "publishedAt": "2025-04-04T17:00:30.940Z"
+    },
+    "pexels-mcp": {
+      "repo": "garylab/pexels-mcp-server",
+      "archived": false,
+      "pushedAt": "2025-11-02T18:16:24Z",
+      "registry": "pip",
+      "package": "pexels-mcp-server",
+      "version": "0.0.4",
+      "publishedAt": "2025-09-15T17:28:18.564545Z"
+    },
+    "pinecone": {
+      "repo": "pinecone-io/pinecone-mcp",
+      "archived": false,
+      "pushedAt": "2026-08-14T16:07:18Z",
+      "registry": "npm",
+      "package": "@pinecone-database/mcp",
+      "version": "0.3.0",
+      "publishedAt": "2026-08-07T15:38:25.631Z"
+    },
+    "pinecone-mcp": {
+      "repo": "pinecone-io/pinecone-mcp",
+      "archived": false,
+      "pushedAt": "2026-08-14T16:07:18Z",
+      "registry": "npm",
+      "package": "@pinecone-database/mcp",
+      "version": "0.3.0",
+      "publishedAt": "2026-08-07T15:38:25.631Z"
+    },
+    "plane": {
+      "repo": "makeplane/plane-mcp-server",
+      "archived": false,
+      "pushedAt": "2026-08-17T09:23:22Z",
+      "registry": "npm",
+      "package": "@makeplane/plane-mcp-server",
+      "version": "0.1.5",
+      "publishedAt": "2025-10-30T12:26:16.529Z"
+    },
+    "plane-mcp": {
+      "repo": "makeplane/plane-mcp-server",
+      "archived": false,
+      "pushedAt": "2026-08-17T09:23:22Z",
+      "registry": "npm",
+      "package": "plane-mcp",
+      "version": "0.1.0",
+      "publishedAt": "2026-08-06T13:14:43.471Z"
+    },
+    "playwright": {
+      "repo": "executeautomation/mcp-playwright",
+      "archived": false,
+      "pushedAt": "2025-12-13T04:28:38Z",
+      "registry": "npm",
+      "package": "@executeautomation/playwright-mcp-server",
+      "version": "1.0.12",
+      "publishedAt": "2025-12-12T08:08:12.010Z"
+    },
+    "podium-mcp": {
+      "repo": "hoainho/podium-mcp",
+      "archived": false,
+      "pushedAt": "2026-06-30T16:04:55Z",
+      "registry": "npm",
+      "package": "podium-mcp",
+      "version": "0.5.0",
+      "publishedAt": "2026-07-13T02:13:28.131Z"
+    },
+    "podman-mcp": {
+      "repo": "manusa/podman-mcp-server",
+      "archived": false,
+      "pushedAt": "2026-08-03T21:33:42Z",
+      "registry": "pip",
+      "package": "podman-mcp",
+      "version": "0.3.0",
+      "publishedAt": "2026-06-22T20:13:18.403125Z"
+    },
+    "polygon-io-mcp": {
+      "repo": "atomcp-ai/polygon-mcp",
+      "archived": false,
+      "pushedAt": "2025-12-25T22:28:40Z",
+      "registry": "pip",
+      "package": "polygon-mcp",
+      "version": "0.1.0",
+      "publishedAt": "2025-12-25T22:33:25.976969Z"
+    },
+    "porkbun-mcp": {
+      "repo": "Eyalm321/porkbun-mcp",
+      "archived": false,
+      "pushedAt": "2026-05-04T00:34:30Z",
+      "registry": "npm",
+      "package": "porkbun-mcp-server",
+      "version": "1.4.0",
+      "publishedAt": "2026-05-04T00:35:07.707Z"
+    },
+    "postgresql": {
+      "repo": "modelcontextprotocol/servers-archived",
+      "archived": true,
+      "pushedAt": "2025-05-28T17:57:12Z",
+      "registry": "npm",
+      "package": "@modelcontextprotocol/server-postgres",
+      "version": "0.6.2",
+      "publishedAt": "2024-12-04T16:14:51.820Z"
+    },
+    "posthog": {
+      "repo": "PostHog/mcp",
+      "archived": true,
+      "pushedAt": "2026-01-19T16:47:34Z",
+      "registry": "npm",
+      "package": "@posthog/wizard",
+      "version": "2.62.0",
+      "publishedAt": "2026-08-12T19:38:53.642Z"
+    },
+    "postmark": {
+      "repo": "ActiveCampaign/postmark-mcp",
+      "archived": false,
+      "pushedAt": "2026-08-12T20:17:23Z",
+      "registry": "npm",
+      "package": "@activecampaign/postmark-mcp",
+      "version": "2.1.1",
+      "publishedAt": "2026-07-13T20:48:11.358Z"
+    },
+    "power-bi-mcp": {
+      "repo": "AjvoGod/powerbi-mcp",
+      "archived": false,
+      "pushedAt": "2026-02-27T19:20:49Z",
+      "registry": "npm",
+      "package": "powerbi-mcp",
+      "version": "1.0.1",
+      "publishedAt": "2026-02-27T19:20:12.200Z"
+    },
+    "prefect-mcp": {
+      "repo": "PrefectHQ/prefect-mcp-server",
+      "archived": false,
+      "pushedAt": "2026-08-16T01:15:11Z",
+      "registry": "pip",
+      "package": "prefect-mcp",
+      "version": "0.0.1b12",
+      "publishedAt": "2026-06-24T19:31:39.612469Z"
+    },
+    "producthunt": {
+      "repo": "jaipandya/producthunt-mcp-server",
+      "archived": false,
+      "pushedAt": "2025-04-19T02:32:28Z",
+      "registry": "pip",
+      "package": "product-hunt-mcp",
+      "version": "0.1.0",
+      "publishedAt": "2025-04-18T06:12:50.631796Z"
+    },
+    "puppeteer": {
+      "repo": "modelcontextprotocol/servers-archived",
+      "archived": true,
+      "pushedAt": "2025-05-28T17:57:12Z",
+      "registry": "npm",
+      "package": "@modelcontextprotocol/server-puppeteer",
+      "version": "2025.5.12",
+      "publishedAt": "2025-05-12T21:29:35.151Z"
+    },
+    "pylsp": {
+      "repo": "python-lsp/python-lsp-server",
+      "archived": false,
+      "pushedAt": "2026-07-27T18:27:08Z",
+      "registry": "pip",
+      "package": "python-lsp-server",
+      "version": "1.15.0",
+      "publishedAt": "2026-07-27T18:26:29.530529Z"
+    },
+    "pypi-mcp": {
+      "repo": "loonghao/pypi-query-mcp-server",
+      "archived": false,
+      "pushedAt": "2026-08-11T02:00:58Z",
+      "registry": "pip",
+      "package": "pypi-query-mcp-server",
+      "version": "0.6.5",
+      "publishedAt": "2025-08-02T07:14:15.033855Z"
+    },
+    "qdrant": {
+      "repo": "qdrant/mcp-server-qdrant",
+      "archived": false,
+      "pushedAt": "2026-08-14T00:13:56Z",
+      "registry": "pip",
+      "package": "mcp-server-qdrant",
+      "version": "0.8.1",
+      "publishedAt": "2025-12-10T10:25:42.944786Z"
+    },
+    "qualys-mcp": {
+      "repo": "nelssec/qualys-mcp",
+      "archived": false,
+      "pushedAt": "2026-07-08T03:40:49Z",
+      "registry": "pip",
+      "package": "qualys-mcp",
+      "version": "0.2.9",
+      "publishedAt": "2026-07-08T03:41:15.644363Z"
+    },
+    "quickbooks-mcp": {
+      "repo": "laf-rge/quickbooks-mcp",
+      "archived": false,
+      "pushedAt": "2026-08-17T00:55:02Z",
+      "registry": "npm",
+      "package": "quickbooks-mcp",
+      "version": "0.9.0",
+      "publishedAt": "2026-08-17T00:49:08.524Z"
+    },
+    "rabbitmq-mcp": {
+      "repo": "kenliao94/mcp-server-rabbitmq",
+      "archived": false,
+      "pushedAt": "2025-10-14T20:42:39Z",
+      "registry": "pip",
+      "package": "mcp-server-rabbitmq",
+      "version": "2.2.0",
+      "publishedAt": "2025-06-11T19:52:39.040106Z"
+    },
+    "raindrop-mcp": {
+      "repo": "adeze/raindrop-mcp",
+      "archived": false,
+      "pushedAt": "2026-07-24T01:14:54Z",
+      "registry": "npm",
+      "package": "@adeze/raindrop-mcp",
+      "version": "2.4.5",
+      "publishedAt": "2026-03-11T06:15:52.834Z"
+    },
+    "rancher-mcp": {
+      "repo": "mrostamii/rancher-mcp-server",
+      "archived": false,
+      "pushedAt": "2026-04-27T23:36:28Z",
+      "registry": "npm",
+      "package": "rancher-mcp-server",
+      "version": "0.9.1",
+      "publishedAt": "2026-04-27T23:36:47.446Z"
+    },
+    "recurly-mcp": {
+      "repo": "francktrouillez/recurly-mcp",
+      "archived": false,
+      "pushedAt": "2026-06-04T22:40:19Z",
+      "registry": "npm",
+      "package": "recurly-mcp",
+      "version": "0.1.1",
+      "publishedAt": "2026-06-04T22:41:16.191Z"
+    },
+    "redash-mcp": {
+      "repo": "wise-toddler/redash-mcp",
+      "archived": false,
+      "pushedAt": "2026-07-14T11:00:59Z",
+      "registry": "pip",
+      "package": "redash-mcp",
+      "version": "0.2.4",
+      "publishedAt": "2026-07-14T11:01:37.945665Z"
+    },
+    "reddit": {
+      "repo": "karanb192/reddit-mcp-buddy",
+      "archived": false,
+      "pushedAt": "2026-08-04T03:02:10Z",
+      "registry": "npm",
+      "package": "reddit-mcp-buddy",
+      "version": "1.1.14",
+      "publishedAt": "2026-07-29T10:20:18.688Z"
+    },
+    "reddit-api-mcp": {
+      "repo": "karanb192/reddit-mcp-buddy",
+      "archived": false,
+      "pushedAt": "2026-08-04T03:02:10Z",
+      "registry": "npm",
+      "package": "reddit-mcp-buddy",
+      "version": "1.1.14",
+      "publishedAt": "2026-07-29T10:20:18.688Z"
+    },
+    "reddit-mcp": {
+      "repo": "karanb192/reddit-mcp-buddy",
+      "archived": false,
+      "pushedAt": "2026-08-04T03:02:10Z",
+      "registry": "npm",
+      "package": "reddit-mcp-buddy",
+      "version": "1.1.14",
+      "publishedAt": "2026-07-29T10:20:18.688Z"
+    },
+    "redfin-mcp": {
+      "repo": "chrischall/redfin-mcp",
+      "archived": false,
+      "pushedAt": "2026-08-15T12:23:46Z",
+      "registry": "npm",
+      "package": "redfin-mcp",
+      "version": "0.10.3",
+      "publishedAt": "2026-08-06T00:43:14.534Z"
+    },
+    "redis": {
+      "repo": "redis/mcp-redis",
+      "archived": false,
+      "pushedAt": "2026-08-05T12:04:27Z",
+      "registry": "pip",
+      "package": "redis-mcp-server",
+      "version": "0.5.1",
+      "publishedAt": "2026-08-05T06:11:41.148572Z"
+    },
+    "replicate": {
+      "repo": "awkoy/replicate-flux-mcp",
+      "archived": false,
+      "pushedAt": "2026-06-14T13:12:11Z",
+      "registry": "npm",
+      "package": "replicate-flux-mcp",
+      "version": "0.4.0",
+      "publishedAt": "2026-04-19T11:13:36.129Z"
+    },
+    "repomix-mcp": {
+      "repo": "yamadashy/repomix",
+      "archived": false,
+      "pushedAt": "2026-08-17T05:10:28Z",
+      "registry": "npm",
+      "package": "repomix",
+      "version": "1.18.0",
+      "publishedAt": "2026-08-04T15:33:07.742Z"
+    },
+    "resend": {
+      "repo": "resend/resend-mcp",
+      "archived": false,
+      "pushedAt": "2026-08-15T18:56:36Z",
+      "registry": "npm",
+      "package": "resend-mcp",
+      "version": "2.13.0",
+      "publishedAt": "2026-08-11T17:26:21.178Z"
+    },
+    "restream-mcp": {
+      "repo": "shaktech786/restream-mcp-server",
+      "archived": false,
+      "pushedAt": "2026-03-06T18:58:16Z",
+      "registry": "npm",
+      "package": "@shaktech786/restream-mcp-server",
+      "version": "1.0.0",
+      "publishedAt": "2025-11-10T07:14:45.362Z"
+    },
+    "revenuecat-mcp": {
+      "repo": "iamhenry/revenuecat-mcp",
+      "archived": false,
+      "pushedAt": "2025-06-17T19:24:33Z",
+      "registry": "npm",
+      "package": "revenuecat-mcp",
+      "version": "1.0.0",
+      "publishedAt": "2025-06-17T18:02:04.390Z"
+    },
+    "roam": {
+      "repo": "Roam-Research/roam-tools",
+      "archived": false,
+      "pushedAt": "2026-08-17T09:00:11Z",
+      "registry": "npm",
+      "package": "@roam-research/roam-mcp",
+      "version": "0.10.0",
+      "publishedAt": "2026-08-04T09:43:18.405Z"
+    },
+    "robinhood-mcp": {
+      "repo": "verygoodplugins/robinhood-mcp",
+      "archived": false,
+      "pushedAt": "2026-07-29T15:44:26Z",
+      "registry": "pip",
+      "package": "robinhood-mcp",
+      "version": "0.1.2",
+      "publishedAt": "2026-03-08T16:35:15.241280Z"
+    },
+    "roblox-mcp": {
+      "repo": "Chrrxs/robloxstudio-mcp",
+      "archived": false,
+      "pushedAt": "2026-08-02T04:45:45Z",
+      "registry": "npm",
+      "package": "roblox-mcp-server",
+      "version": "3.8.4",
+      "publishedAt": "2026-07-01T16:23:46.173Z"
+    },
+    "runway-mcp": {
+      "repo": "runwayml/runway-api-mcp-server",
+      "archived": false,
+      "pushedAt": "2026-08-10T15:22:22Z",
+      "registry": "npm",
+      "package": "runway-api-mcp-server",
+      "version": "1.0.0",
+      "publishedAt": "2025-09-18T14:45:18.972Z"
+    },
+    "salesforce": {
+      "repo": "salesforcecli/mcp",
+      "archived": false,
+      "pushedAt": "2026-07-31T19:40:29Z",
+      "registry": "npm",
+      "package": "@salesforce/mcp",
+      "version": "0.30.15",
+      "publishedAt": "2026-07-09T14:42:18.783Z"
+    },
+    "sap-abap-adt-mcp": {
+      "repo": "fr0ster/mcp-abap-adt",
+      "archived": false,
+      "pushedAt": "2026-08-11T08:48:25Z",
+      "registry": "npm",
+      "package": "@mcp-abap-adt/core",
+      "version": "8.13.0",
+      "publishedAt": "2026-07-24T18:16:03.789Z"
+    },
+    "sec-edgar-mcp": {
+      "repo": "stefanoamorelli/sec-edgar-mcp",
+      "archived": false,
+      "pushedAt": "2026-08-12T20:16:12Z",
+      "registry": "pip",
+      "package": "sec-edgar-mcp",
+      "version": "1.0.8",
+      "publishedAt": "2026-01-25T18:48:53.442446Z"
+    },
+    "semantic-scholar": {
+      "repo": "zongmin-yu/semantic-scholar-fastmcp-mcp-server",
+      "archived": false,
+      "pushedAt": "2026-03-20T08:36:10Z",
+      "registry": "pip",
+      "package": "semantic-scholar-fastmcp",
+      "version": "0.1.2",
+      "publishedAt": "2026-03-20T08:36:31.676621Z"
+    },
+    "semgrep": {
+      "repo": "semgrep/mcp",
+      "archived": true,
+      "pushedAt": "2025-10-28T22:32:31Z",
+      "registry": "pip",
+      "package": "semgrep-mcp",
+      "version": "0.9.0",
+      "publishedAt": "2025-09-29T21:15:42.890143Z"
+    },
+    "semrush-mcp": {
+      "repo": "superseoworld/semrush-mcp",
+      "archived": false,
+      "pushedAt": "2026-04-30T10:26:46Z",
+      "registry": "npm",
+      "package": "semrush-mcp",
+      "version": "0.1.5",
+      "publishedAt": "2026-04-30T10:27:04.140Z"
+    },
+    "sendgrid-mcp": {
+      "repo": "deyikong/sendgrid-mcp",
+      "archived": false,
+      "pushedAt": "2026-08-07T07:09:18Z",
+      "registry": "npm",
+      "package": "sendgrid-mcp",
+      "version": "1.1.0",
+      "publishedAt": "2026-08-07T07:30:54.477Z"
+    },
+    "sentry": {
+      "repo": "getsentry/sentry-mcp",
+      "archived": false,
+      "pushedAt": "2026-08-16T17:43:32Z",
+      "registry": "npm",
+      "package": "@sentry/mcp-server",
+      "version": "0.37.0",
+      "publishedAt": "2026-07-02T19:17:32.538Z"
+    },
+    "sequential-thinking": {
+      "repo": "modelcontextprotocol/servers",
+      "archived": false,
+      "pushedAt": "2026-08-10T02:41:59Z",
+      "registry": "npm",
+      "package": "@modelcontextprotocol/server-sequential-thinking",
+      "version": "2026.7.4",
+      "publishedAt": "2026-07-04T23:05:13.130Z"
+    },
+    "serper": {
+      "repo": "marcopesani/mcp-server-serper",
+      "archived": false,
+      "pushedAt": "2025-03-13T00:28:41Z",
+      "registry": "npm",
+      "package": "serper-search-scrape-mcp-server",
+      "version": "0.1.2",
+      "publishedAt": "2025-02-20T23:35:31.983Z"
+    },
+    "servicenow-mcp": {
+      "repo": "schwarztim/servicenow-mcp",
+      "archived": false,
+      "pushedAt": "2026-06-10T19:44:32Z",
+      "registry": "npm",
+      "package": "servicenow-mcp",
+      "version": "1.2.0",
+      "publishedAt": "2026-01-24T18:07:44.386Z"
+    },
+    "sfmc-mcp": {
+      "repo": "abhireddymusku/mcp-sfmc",
+      "archived": false,
+      "pushedAt": "2026-05-11T03:05:43Z",
+      "registry": "npm",
+      "package": "sfmc-mcp",
+      "version": "1.2.0",
+      "publishedAt": "2026-05-11T03:03:22.085Z"
+    },
+    "shelly-mcp": {
+      "repo": "Buggy1111/shelly-mcp",
+      "archived": false,
+      "pushedAt": "2026-08-11T17:30:39Z",
+      "registry": "pip",
+      "package": "shelly-mcp",
+      "version": "0.1.2",
+      "publishedAt": "2026-06-10T19:01:23.299078Z"
+    },
+    "shodan-mcp": {
+      "repo": "w0h1v/mcp-shodan",
+      "archived": false,
+      "pushedAt": "2026-03-31T18:08:46Z",
+      "registry": "pip",
+      "package": "shodan-mcp",
+      "version": "0.1.0",
+      "publishedAt": "2025-06-18T05:31:27.883686Z"
+    },
+    "shopify": {
+      "repo": "GeLi2001/shopify-mcp",
+      "archived": false,
+      "pushedAt": "2026-04-05T00:29:07Z",
+      "registry": "npm",
+      "package": "shopify-mcp",
+      "version": "1.0.8",
+      "publishedAt": "2026-02-23T02:43:45.469Z"
+    },
+    "shopify-admin-mcp": {
+      "repo": "MAYUNO-International-LLC/shopify-admin-mcp",
+      "archived": false,
+      "pushedAt": "2026-02-01T08:25:23Z",
+      "registry": "npm",
+      "package": "shopify-admin-mcp",
+      "version": "0.1.4",
+      "publishedAt": "2026-02-01T08:29:19.824Z"
+    },
+    "sinch-mcp": {
+      "repo": "sinch/sinch-mcp-server",
+      "archived": false,
+      "pushedAt": "2026-08-17T08:35:45Z",
+      "registry": "npm",
+      "package": "@sinch/mcp",
+      "version": "0.0.1-alpha.6",
+      "publishedAt": "2026-04-14T21:48:42.021Z"
+    },
+    "sketch-mcp": {
+      "repo": "YamadaAoi/mcp-sketch",
+      "archived": false,
+      "pushedAt": "2026-08-17T02:09:46Z",
+      "registry": "npm",
+      "package": "mcp-sketch",
+      "version": "1.7.0",
+      "publishedAt": "2026-08-17T02:09:13.333Z"
+    },
+    "slack": {
+      "repo": "korotovsky/slack-mcp-server",
+      "archived": false,
+      "pushedAt": "2026-07-16T17:14:22Z",
+      "registry": "npm",
+      "package": "slack-mcp-server",
+      "version": "1.3.0",
+      "publishedAt": "2026-05-14T22:55:54.869Z"
+    },
+    "snowflake": {
+      "repo": "Snowflake-Labs/mcp",
+      "archived": false,
+      "pushedAt": "2026-05-15T16:30:51Z",
+      "registry": "pip",
+      "package": "mcp_snowflake_server",
+      "version": "0.4.0",
+      "publishedAt": "2025-04-10T14:31:42.698533Z"
+    },
+    "spark-mcp": {
+      "repo": "kubeflow/mcp-apache-spark-history-server",
+      "archived": false,
+      "pushedAt": "2026-08-07T00:29:20Z",
+      "registry": "pip",
+      "package": "mcp-apache-spark-history-server",
+      "version": "1.0.0",
+      "publishedAt": "2026-06-23T23:15:34.154083Z"
+    },
+    "split": {
+      "repo": "kud/mcp-harness-fme",
+      "archived": false,
+      "pushedAt": "2026-07-07T15:33:18Z",
+      "registry": "npm",
+      "package": "@kud/mcp-harness-fme",
+      "version": "1.5.2",
+      "publishedAt": "2026-07-07T15:33:44.900Z"
+    },
+    "spotdraft-mcp": {
+      "repo": "MattDavisRV/spotdraft-mcp",
+      "archived": false,
+      "pushedAt": "2026-03-23T07:25:05Z",
+      "registry": "npm",
+      "package": "@spotdraft/spotdraft-mcp",
+      "version": "0.2.0",
+      "publishedAt": "2026-03-24T19:48:02.829Z"
+    },
+    "sqlite": {
+      "repo": "modelcontextprotocol/servers-archived",
+      "archived": true,
+      "pushedAt": "2025-05-28T17:57:12Z",
+      "registry": "pip",
+      "package": "mcp-server-sqlite",
+      "version": "2025.4.25",
+      "publishedAt": "2025-04-25T08:27:27.459457Z"
+    },
+    "stability-ai": {
+      "repo": "alesurli/mcp-stability-ai",
+      "archived": false,
+      "pushedAt": "2026-06-10T07:28:00Z",
+      "registry": "npm",
+      "package": "mcp-stability-ai",
+      "version": "1.0.0",
+      "publishedAt": "2026-06-09T12:30:00.990Z"
+    },
+    "stackblitz": {
+      "repo": "sxzz/stackblitz-mcp",
+      "archived": false,
+      "pushedAt": "2026-08-17T06:08:23Z",
+      "registry": "npm",
+      "package": "stackblitz-mcp",
+      "version": "0.0.0",
+      "publishedAt": "2026-01-31T19:08:10.871Z"
+    },
+    "stagehand": {
+      "repo": "browserbase/mcp-server-browserbase",
+      "archived": true,
+      "pushedAt": "2026-07-20T21:48:14Z",
+      "registry": "npm",
+      "package": "@browserbasehq/mcp-server-browserbase",
+      "version": "2.4.3",
+      "publishedAt": "2026-01-23T23:13:33.015Z"
+    },
+    "steam-mcp": {
+      "repo": "jkiley129/steam-mcp",
+      "archived": false,
+      "pushedAt": "2026-03-23T15:07:29Z",
+      "registry": "npm",
+      "package": "steam-mcp",
+      "version": "0.2.0",
+      "publishedAt": "2026-03-16T19:25:05.269Z"
+    },
+    "steam-web-api-mcp": {
+      "repo": "TMHSDigital/steam-mcp",
+      "archived": false,
+      "pushedAt": "2026-08-10T06:26:41Z",
+      "registry": "npm",
+      "package": "@tmhs/steam-mcp",
+      "version": "0.7.0",
+      "publishedAt": "2026-03-29T15:17:37.809Z"
+    },
+    "strava-mcp": {
+      "repo": "rmarescu/strava-mcp",
+      "archived": false,
+      "pushedAt": "2025-04-04T01:33:11Z",
+      "registry": "npm",
+      "package": "strava-mcp",
+      "version": "0.0.1",
+      "publishedAt": "2025-04-04T01:33:40.524Z"
+    },
+    "substack-mcp": {
+      "repo": "marcomoauro/substack-mcp",
+      "archived": false,
+      "pushedAt": "2026-08-09T17:42:21Z",
+      "registry": "npm",
+      "package": "substack-mcp",
+      "version": "1.3.0",
+      "publishedAt": "2026-08-09T17:42:37.363Z"
+    },
+    "superset-mcp": {
+      "repo": "dguerrar/mcp-apache-superset",
+      "archived": false,
+      "pushedAt": "2026-06-21T08:29:29Z",
+      "registry": "pip",
+      "package": "superset-mcp",
+      "version": "0.6.0",
+      "publishedAt": "2025-07-01T16:03:47.596690Z"
+    },
+    "swell-mcp": {
+      "repo": "devkindhq/swell-mcp",
+      "archived": false,
+      "pushedAt": "2026-05-15T02:30:29Z",
+      "registry": "npm",
+      "package": "swell-mcp",
+      "version": "1.1.0",
+      "publishedAt": "2026-05-15T02:14:33.637Z"
+    },
+    "task-master-ai": {
+      "repo": "eyaltoledano/claude-task-master",
+      "archived": false,
+      "pushedAt": "2026-04-28T13:27:12Z",
+      "registry": "npm",
+      "package": "task-master-ai",
+      "version": "0.43.1",
+      "publishedAt": "2026-03-31T17:49:03.352Z"
+    },
+    "tavily": {
+      "repo": "tavily-ai/tavily-mcp",
+      "archived": false,
+      "pushedAt": "2026-08-13T20:10:44Z",
+      "registry": "npm",
+      "package": "tavily-mcp",
+      "version": "0.2.22",
+      "publishedAt": "2026-08-05T16:49:02.196Z"
+    },
+    "tavily-mcp": {
+      "repo": "tavily-ai/tavily-mcp",
+      "archived": false,
+      "pushedAt": "2026-08-13T20:10:44Z",
+      "registry": "npm",
+      "package": "tavily-mcp",
+      "version": "0.2.22",
+      "publishedAt": "2026-08-05T16:49:02.196Z"
+    },
+    "teamcity-mcp": {
+      "repo": "Daghis/teamcity-mcp",
+      "archived": false,
+      "pushedAt": "2026-07-01T00:16:23Z",
+      "registry": "npm",
+      "package": "@daghis/teamcity-mcp",
+      "version": "2.12.1",
+      "publishedAt": "2026-05-12T23:17:51.628Z"
+    },
+    "telnyx-mcp": {
+      "repo": "team-telnyx/telnyx-node",
+      "archived": false,
+      "pushedAt": "2026-08-17T09:18:56Z",
+      "registry": "npm",
+      "package": "telnyx-mcp",
+      "version": "7.15.0",
+      "publishedAt": "2026-08-16T14:03:57.580Z"
+    },
+    "thegraph-mcp": {
+      "repo": "kukapay/thegraph-mcp",
+      "archived": false,
+      "pushedAt": "2025-07-31T09:46:42Z",
+      "registry": "pip",
+      "package": "thegraph-mcp",
+      "version": "0.1.0",
+      "publishedAt": "2025-03-27T23:04:09.421469Z"
+    },
+    "things3-mcp": {
+      "repo": "ebowman/mcp-server-things",
+      "archived": false,
+      "pushedAt": "2026-07-26T11:45:50Z",
+      "registry": "pip",
+      "package": "mcp-server-things",
+      "version": "1.5.0",
+      "publishedAt": "2026-07-20T19:16:24.508546Z"
+    },
+    "tiingo-mcp": {
+      "repo": "major7apps/tiingo-mcp",
+      "archived": false,
+      "pushedAt": "2026-08-05T00:35:37Z",
+      "registry": "pip",
+      "package": "tiingo-mcp",
+      "version": "1.1.0",
+      "publishedAt": "2026-04-13T23:08:36.582753Z"
+    },
+    "time": {
+      "repo": "modelcontextprotocol/servers",
+      "archived": false,
+      "pushedAt": "2026-08-10T02:41:59Z",
+      "registry": "pip",
+      "package": "mcp-server-time",
+      "version": "2026.7.10",
+      "publishedAt": "2026-07-10T03:31:04.803450Z"
+    },
+    "todoist": {
+      "repo": "doist/todoist-mcp",
+      "archived": false,
+      "pushedAt": "2026-08-17T04:02:09Z",
+      "registry": "npm",
+      "package": "@doist/todoist-mcp",
+      "version": "12.5.7",
+      "publishedAt": "2026-08-13T11:10:32.678Z"
+    },
+    "todoist-mcp": {
+      "repo": "stevengonsalvez/todoist-mcp",
+      "archived": false,
+      "pushedAt": "2026-02-19T21:55:25Z",
+      "registry": "npm",
+      "package": "todoist-mcp-server",
+      "version": "1.0.7",
+      "publishedAt": "2025-04-17T00:42:19.078Z"
+    },
+    "tradingview-mcp": {
+      "repo": "DEBARPAN2000/tradingview-mcp",
+      "archived": false,
+      "pushedAt": "2026-04-04T00:27:04Z",
+      "registry": "pip",
+      "package": "tradingview-mcp",
+      "version": "0.9.1",
+      "publishedAt": "2026-05-01T05:10:32.402377Z"
+    },
+    "trello": {
+      "repo": "delorenj/mcp-server-trello",
+      "archived": false,
+      "pushedAt": "2026-08-04T05:52:57Z",
+      "registry": "npm",
+      "package": "@delorenj/mcp-server-trello",
+      "version": "1.8.1",
+      "publishedAt": "2026-07-25T22:47:39.290Z"
+    },
+    "twilio": {
+      "repo": "twilio-labs/mcp",
+      "archived": false,
+      "pushedAt": "2026-02-14T10:40:21Z",
+      "registry": "npm",
+      "package": "@twilio-alpha/mcp",
+      "version": "0.7.0",
+      "publishedAt": "2025-07-07T21:36:21.313Z"
+    },
+    "twitter": {
+      "repo": "rafaljanicki/x-twitter-mcp-server",
+      "archived": false,
+      "pushedAt": "2026-05-24T10:53:07Z",
+      "registry": "pip",
+      "package": "x-twitter-mcp",
+      "version": "0.1.15",
+      "publishedAt": "2026-01-29T08:43:13.827853Z"
+    },
+    "uniprot-mcp": {
+      "repo": "josefdc/Uniprot-MCP",
+      "archived": false,
+      "pushedAt": "2026-03-02T13:22:27Z",
+      "registry": "pip",
+      "package": "uniprot-mcp",
+      "version": "0.1.0",
+      "publishedAt": "2025-10-27T23:21:21.615887Z"
+    },
+    "ups-mcp": {
+      "repo": "roscoej/ups-mcp",
+      "archived": false,
+      "pushedAt": "2026-05-05T01:25:12Z",
+      "registry": "npm",
+      "package": "ups-mcp",
+      "version": "0.1.0",
+      "publishedAt": "2026-05-05T00:38:22.231Z"
+    },
+    "upstash": {
+      "repo": "upstash/mcp-server",
+      "archived": false,
+      "pushedAt": "2026-08-13T08:00:47Z",
+      "registry": "npm",
+      "package": "@upstash/mcp-server",
+      "version": "0.2.7",
+      "publishedAt": "2026-08-13T08:01:10.992Z"
+    },
+    "us-legal-mcp": {
+      "repo": "JamesANZ/us-legal-mcp",
+      "archived": false,
+      "pushedAt": "2026-04-20T03:40:34Z",
+      "registry": "npm",
+      "package": "us-legal-mcp",
+      "version": "1.0.0",
+      "publishedAt": "2025-11-03T10:47:36.366Z"
+    },
+    "vwo-mcp": {
+      "repo": "wingify/wingify-fme-mcp",
+      "archived": false,
+      "pushedAt": "2026-07-07T14:21:25Z",
+      "registry": "npm",
+      "package": "wingify-fme-mcp",
+      "version": "1.11.0",
+      "publishedAt": "2026-08-11T08:01:42.509Z"
+    },
+    "weather": {
+      "repo": "cmer81/open-meteo-mcp",
+      "archived": false,
+      "pushedAt": "2026-07-25T22:24:22Z",
+      "registry": "npm",
+      "package": "open-meteo-mcp-server",
+      "version": "2.0.1",
+      "publishedAt": "2026-07-25T22:24:46.437Z"
+    },
+    "webflow": {
+      "repo": "webflow/mcp-server",
+      "archived": false,
+      "pushedAt": "2026-06-09T05:00:48Z",
+      "registry": "npm",
+      "package": "webflow-mcp-server",
+      "version": "1.0.0",
+      "publishedAt": "2025-09-17T20:00:13.899Z"
+    },
+    "wellsaid-mcp": {
+      "repo": "wellsaid-labs/wellsaid-mcp",
+      "archived": false,
+      "pushedAt": "2026-04-09T16:02:54Z",
+      "registry": "pip",
+      "package": "wellsaid-mcp",
+      "version": "0.2.2",
+      "publishedAt": "2026-04-14T22:42:08.511101Z"
+    },
+    "wikipedia": {
+      "repo": "hatsu38/wikipedia-mcp-server",
+      "archived": false,
+      "pushedAt": "2025-06-04T15:37:16Z",
+      "registry": "npm",
+      "package": "wikipedia-mcp-server",
+      "version": "0.0.2",
+      "publishedAt": "2025-06-04T15:09:57.713Z"
+    },
+    "wordpress": {
+      "repo": "Automattic/mcp-wordpress-remote",
+      "archived": false,
+      "pushedAt": "2026-08-12T20:16:45Z",
+      "registry": "npm",
+      "package": "@automattic/mcp-wordpress-remote",
+      "version": "0.4.0",
+      "publishedAt": "2026-07-27T14:53:36.641Z"
+    },
+    "workday-mcp": {
+      "repo": "chrischall/workday-mcp",
+      "archived": false,
+      "pushedAt": "2026-08-14T03:54:58Z",
+      "registry": "npm",
+      "package": "workday-mcp",
+      "version": "0.3.2",
+      "publishedAt": "2026-08-06T00:42:55.943Z"
+    },
+    "world-bank-api-mcp": {
+      "repo": "anshumax/world_bank_mcp_server",
+      "archived": false,
+      "pushedAt": "2025-08-17T09:14:37Z",
+      "registry": "pip",
+      "package": "world-bank-mcp-server",
+      "version": "0.1.0",
+      "publishedAt": "2025-04-17T10:11:20.139858Z"
+    },
+    "wyze-mcp": {
+      "repo": "aldilaff/mcp-wyze-server",
+      "archived": false,
+      "pushedAt": "2025-08-17T05:42:37Z",
+      "registry": "pip",
+      "package": "mcp-wyze-server",
+      "version": "0.1.2",
+      "publishedAt": "2025-08-17T05:43:37.963814Z"
+    },
+    "xcode": {
+      "repo": "getsentry/XcodeBuildMCP",
+      "archived": false,
+      "pushedAt": "2026-08-12T20:00:35Z",
+      "registry": "npm",
+      "package": "xcodebuildmcp",
+      "version": "2.7.0",
+      "publishedAt": "2026-07-23T14:07:49.017Z"
+    },
+    "xero": {
+      "repo": "xeroapi/xero-mcp-server",
+      "archived": false,
+      "pushedAt": "2026-06-05T06:52:56Z",
+      "registry": "npm",
+      "package": "@xeroapi/xero-mcp-server",
+      "version": "0.0.17",
+      "publishedAt": "2026-05-26T05:07:15.624Z"
+    },
+    "you-com": {
+      "repo": "youdotcom-oss/dx-toolkit",
+      "archived": false,
+      "pushedAt": "2026-07-23T09:19:54Z",
+      "registry": "npm",
+      "package": "@youdotcom-oss/mcp",
+      "version": "3.5.0",
+      "publishedAt": "2026-07-23T09:10:53.116Z"
+    },
+    "youtube": {
+      "repo": "ZubeidHendricks/youtube-mcp-server",
+      "archived": false,
+      "pushedAt": "2026-08-08T22:55:53Z",
+      "registry": "npm",
+      "package": "zubeid-youtube-mcp-server",
+      "version": "1.0.2",
+      "publishedAt": "2026-07-16T14:13:35.202Z"
+    },
+    "youtube-studio-mcp": {
+      "repo": "adityaarsharma/youtube-marketing-skills",
+      "archived": false,
+      "pushedAt": "2026-05-14T04:14:36Z",
+      "registry": "npm",
+      "package": "youtube-studio-mcp",
+      "version": "2.1.0",
+      "publishedAt": "2026-03-24T09:31:14.978Z"
+    },
+    "zabbix-mcp": {
+      "repo": "mhajder/zabbix-mcp",
+      "archived": false,
+      "pushedAt": "2026-08-11T21:45:08Z",
+      "registry": "pip",
+      "package": "zabbix-mcp",
+      "version": "0.5.3",
+      "publishedAt": "2026-07-14T05:17:31.495376Z"
+    },
+    "zenoti-mcp": {
+      "repo": "tacit-code/zenoti-mcp-server",
+      "archived": false,
+      "pushedAt": "2026-08-07T18:38:16Z",
+      "registry": "npm",
+      "package": "zenoti-mcp-server",
+      "version": "1.1.0",
+      "publishedAt": "2026-08-07T18:37:47.231Z"
+    },
+    "zillow-mcp": {
+      "repo": "chrischall/zillow-mcp",
+      "archived": false,
+      "pushedAt": "2026-08-15T12:53:41Z",
+      "registry": "npm",
+      "package": "zillow-mcp",
+      "version": "0.11.3",
+      "publishedAt": "2026-08-06T00:43:09.278Z"
+    }
+  }
+}
