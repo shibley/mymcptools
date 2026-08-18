@@ -70,6 +70,27 @@
  *   matches the package name, and `uvx --from <pkg> <script>` otherwise. A
  *   registry lookup could never have known which of the two to write.
  *
+ * THE PHANTOM BUCKET (added 2026-08-18)
+ *   The 2026-08-17 fire measured a second, larger population that this sweep
+ *   was structurally blind to for the same reason the mis-link sweeps were
+ *   blind to blanks: an entry whose `install_command` NAMES A PACKAGE THAT DOES
+ *   NOT EXIST is not blank, so it never entered the population. 862 of 1,238
+ *   checked commands (70%) are in that state. Those pages render a copy button
+ *   over a command that 404s, plus a banner saying so — honest, but still no
+ *   install.
+ *
+ *   A phantom command and a blank field are the same defect from the reader's
+ *   side, and — critically — the same fix: derive a REAL command from the
+ *   entry's own verified `github_url` under the registry-agreement +
+ *   entry-point gates below. So the population is now "entries that do not give
+ *   a reader a runnable command", which is blank OR placeholder OR phantom.
+ *   Phantom membership is not re-derived here; it is read from
+ *   `src/data/install-registry-check.json`, the dated artifact the
+ *   phantom-package sweep emits, so the two agree by construction. A resolved
+ *   phantom is reported as a REPLACEMENT (it carries the exact string it would
+ *   overwrite) and the applier refuses to write unless that string still
+ *   matches — a stale report cannot clobber a hand fix.
+ *
  * SEVERITIES
  *   critical — blank command AND `github_url` is null: the page offers a reader
  *              no path of any kind to the software. Nothing to resolve from.
@@ -87,7 +108,7 @@
  *          [--min critical|high|medium|low] [--limit N] [--budget N]
  *          [--resolve] [--fixes] [--json]
  */
-import { writeFileSync } from 'node:fs';
+import { readFileSync, writeFileSync } from 'node:fs';
 import { inflateRawSync } from 'node:zlib';
 import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
@@ -95,6 +116,7 @@ import { servers, type MCPServer } from '../src/data/servers.ts';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const REPORT_FILE = join(__dirname, '.install-completeness-report.json');
+const REGISTRY_CHECK_FILE = join(__dirname, '..', 'src', 'data', 'install-registry-check.json');
 
 const args = process.argv.slice(2);
 const flag = (n: string) => args.includes(`--${n}`);
@@ -133,6 +155,12 @@ interface Finding {
   };
   /** Candidates that exist on the registry but declare a DIFFERENT repo. */
   nearMisses?: { package: string; declaredRepo: string | null }[];
+  /**
+   * Set when the entry is in the PHANTOM bucket rather than the blank one: it
+   * already carries a command, and that command names a package the registry
+   * says does not exist. `command` is the exact string a fix must overwrite.
+   */
+  phantom?: { command: string; package: string; registry: string; checkedAt: string };
   note: string;
 }
 
@@ -335,13 +363,52 @@ async function resolvePypi(
   return { declaredRepo: candidate ? String(candidate) : null, doc };
 }
 
+/* ------------------------------------------------------------------ *
+ * PHANTOM MEMBERSHIP is read, never re-derived. `phantom-package-sweep
+ * --emit` owns that check and dates it; duplicating the logic here would
+ * let the two drift and let this sweep overwrite a command the trust
+ * layer still shows as live. Missing file => empty set, and the sweep
+ * degrades to its original blank-only behaviour rather than guessing.
+ * ------------------------------------------------------------------ */
+interface RegistryCheckRow {
+  registry: string;
+  package: string;
+  exists: boolean;
+  checkedAt: string;
+}
+function loadPhantoms(): Map<string, RegistryCheckRow> {
+  const out = new Map<string, RegistryCheckRow>();
+  try {
+    const doc = JSON.parse(readFileSync(REGISTRY_CHECK_FILE, 'utf8'));
+    for (const [slug, row] of Object.entries<any>(doc?.entries ?? {})) {
+      if (row && row.exists === false && typeof row.package === 'string') {
+        out.set(slug, {
+          registry: String(row.registry ?? ''),
+          package: row.package,
+          exists: false,
+          checkedAt: String(row.checkedAt ?? doc?.generatedAt ?? ''),
+        });
+      }
+    }
+  } catch {
+    /* no artifact on disk — blank-only mode */
+  }
+  return out;
+}
+
 async function main() {
+  const phantoms = loadPhantoms();
   const blanks = servers.filter((s) => isEmptyCommand(s.install_command));
+  // Same defect from the reader's side, same fix: no runnable command.
+  const phantomEntries = servers.filter(
+    (s) => !isEmptyCommand(s.install_command) && phantoms.has(s.slug),
+  );
+  const population = [...blanks, ...phantomEntries];
   const findings: Finding[] = [];
 
   // Highest-star first: these are the pages with the most inbound interest,
   // and the resolver's network budget should go to them before the long tail.
-  const ordered = [...blanks].sort((a, b) => (b.stars ?? 0) - (a.stars ?? 0));
+  const ordered = [...population].sort((a, b) => (b.stars ?? 0) - (a.stars ?? 0));
   // `--limit` caps DISPLAY; the resolver gets its own budget so a short report
   // no longer silently shrinks coverage (the 2026-08-07 run resolved 40 of 403
   // resolvable entries for exactly that reason).
@@ -351,12 +418,28 @@ async function main() {
   for (const s of ordered) {
     const id = ghIdentity(s.github_url);
     const words = String(s.description ?? '').trim().split(/\s+/).filter(Boolean).length;
+    const phRow = isEmptyCommand(s.install_command) ? undefined : phantoms.get(s.slug);
+    const phantom = phRow
+      ? {
+          command: String(s.install_command),
+          package: phRow.package,
+          registry: phRow.registry,
+          checkedAt: phRow.checkedAt,
+        }
+      : undefined;
+    const base = {
+      slug: s.slug, name: s.name, install_type: s.install_type,
+      github_url: s.github_url ?? null, stars: s.stars ?? 0, descriptionWords: words,
+      ...(phantom ? { phantom } : {}),
+    };
 
     if (!id) {
       findings.push({
-        slug: s.slug, name: s.name, severity: 'critical', install_type: s.install_type,
-        github_url: s.github_url ?? null, stars: s.stars ?? 0, descriptionWords: words,
-        note: 'No install command AND no repository — the page gives a reader no path to the software at all.',
+        ...base,
+        severity: 'critical',
+        note: phantom
+          ? `Command names ${phantom.registry} package "${phantom.package}", which does not exist (checked ${phantom.checkedAt}), and the entry has no repository either — nothing to resolve a real command from.`
+          : 'No install command AND no repository — the page gives a reader no path to the software at all.',
       });
       continue;
     }
@@ -364,17 +447,21 @@ async function main() {
     const registryBacked = s.install_type === 'npm' || s.install_type === 'pip';
     if (!registryBacked) {
       findings.push({
-        slug: s.slug, name: s.name, severity: 'low', install_type: s.install_type,
-        github_url: s.github_url ?? null, stars: s.stars ?? 0, descriptionWords: words,
-        note: `${s.install_type} install has no registry to resolve against; the command must be read out of the repo README.`,
+        ...base,
+        // A phantom command on a source/binary entry is a live defect, not the
+        // inherent no-registry case the `low` tier was written for.
+        severity: phantom ? 'medium' : 'low',
+        note: phantom
+          ? `Command names ${phantom.registry} package "${phantom.package}", which does not exist (checked ${phantom.checkedAt}); install_type is ${s.install_type}, so there is no registry to derive a replacement from — read the repo README.`
+          : `${s.install_type} install has no registry to resolve against; the command must be read out of the repo README.`,
       });
       continue;
     }
 
     if (resolved >= resolveBudget) {
       findings.push({
-        slug: s.slug, name: s.name, severity: 'medium', install_type: s.install_type,
-        github_url: s.github_url ?? null, stars: s.stars ?? 0, descriptionWords: words,
+        ...base,
+        severity: 'medium',
         note: 'Not resolved this run (outside --resolve budget).',
       });
       continue;
@@ -425,17 +512,17 @@ async function main() {
     }
 
     findings.push({
-      slug: s.slug, name: s.name,
+      ...base,
       // Only an executable-confirmed candidate is a ready fix. Repo agreement
       // without an entry point stays `medium`: it names the right package but
       // cannot promise the command runs.
       severity: hit?.executable ? 'high' : 'medium',
-      install_type: s.install_type, github_url: s.github_url ?? null,
-      stars: s.stars ?? 0, descriptionWords: words,
       resolved: hit,
       nearMisses: nearMisses.length ? nearMisses : undefined,
       note: hit?.executable
-        ? `${registry} package "${hit.package}" declares ${hit.declaredRepo} AND ships a bin — the command is derived and runnable, not guessed.`
+        ? phantom
+          ? `REPLACEMENT: current command names ${phantom.registry} package "${phantom.package}" (does not exist, checked ${phantom.checkedAt}). ${registry} package "${hit.package}" declares ${hit.declaredRepo} AND ships an entry point — swap in, do not append.`
+          : `${registry} package "${hit.package}" declares ${hit.declaredRepo} AND ships a bin — the command is derived and runnable, not guessed.`
         : hit
           ? `${registry} package "${hit.package}" belongs to this repo but ${registry === 'npm' ? 'declares no bin — it is a library, `npx` would error' : 'its wheel declares no [console_scripts] (or no readable wheel exists) — `uvx` would error'}. NOT written.`
         : nearMisses.length
@@ -457,6 +544,15 @@ async function main() {
     catalog_entries: servers.length,
     blank_install_command: blanks.length,
     blank_pct: Math.round((blanks.length / servers.length) * 1000) / 10,
+    phantom_install_command: phantomEntries.length,
+    population: population.length,
+    registry_check_generated_at: (() => {
+      try {
+        return JSON.parse(readFileSync(REGISTRY_CHECK_FILE, 'utf8'))?.generatedAt ?? null;
+      } catch {
+        return null;
+      }
+    })(),
     resolve_attempted: resolved,
     counts,
     findings,
@@ -471,15 +567,18 @@ async function main() {
   console.log(`\nINSTALL-COMMAND COMPLETENESS SWEEP`);
   console.log(`  catalog entries ............ ${servers.length}`);
   console.log(`  blank install_command ...... ${blanks.length} (${report.blank_pct}% — Installation section is not rendered on these pages)`);
+  console.log(`  phantom install_command .... ${phantomEntries.length} (command names a package the registry check dated ${report.registry_check_generated_at ?? 'n/a'} says does not exist)`);
+  console.log(`  population ................. ${population.length} entries with no runnable command`);
   console.log(`  registry resolve attempted . ${resolved}`);
   console.log(`  critical=${counts.critical ?? 0} high=${counts.high ?? 0} medium=${counts.medium ?? 0} low=${counts.low ?? 0}\n`);
 
   if (SHOW_FIXES) {
     const fixes = findings.filter((f) => f.resolved?.executable);
     const held = findings.filter((f) => f.resolved && !f.resolved.executable);
-    console.log(`READY FIXES (repo-agreed AND executable, ${fixes.length}):`);
+    console.log(`READY FIXES (repo-agreed AND executable, ${fixes.length} — ${fixes.filter((f) => f.phantom).length} replace a phantom command, ${fixes.filter((f) => !f.phantom).length} fill a blank):`);
     for (const f of fixes) {
       console.log(`  ${f.slug.padEnd(30)} ${String(f.stars).padStart(6)}★  ${f.resolved!.command}`);
+      if (f.phantom) console.log(`  ${''.padEnd(30)}         replaces ${f.phantom.command}  (${f.phantom.package} does not exist)`);
       console.log(`  ${''.padEnd(30)}         declares ${f.resolved!.declaredRepo}`);
     }
     console.log(`\nHELD BACK — right package, no proven entry point (${held.length}):`);

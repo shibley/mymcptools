@@ -261,9 +261,9 @@
     },
     "anythingllm-mcp": {
       "registry": "npm",
-      "package": "anythingllm-mcp",
-      "exists": false,
-      "checkedAt": "2026-08-17"
+      "package": "anythingllm-mcp-server",
+      "exists": true,
+      "checkedAt": "2026-08-18"
     },
     "apache-doris": {
       "registry": "pip",
@@ -1187,12 +1187,6 @@
       "registry": "npm",
       "package": "@cloudflare/mcp-server-cloudflare",
       "exists": true,
-      "checkedAt": "2026-08-17"
-    },
-    "cloudflare-d1-mcp": {
-      "registry": "npm",
-      "package": "cloudflare-d1-mcp",
-      "exists": false,
       "checkedAt": "2026-08-17"
     },
     "cloudflare-stream-mcp": {
@@ -2317,12 +2311,6 @@
       "exists": true,
       "checkedAt": "2026-08-17"
     },
-    "fluxcd-mcp": {
-      "registry": "npm",
-      "package": "fluxcd-mcp-server",
-      "exists": false,
-      "checkedAt": "2026-08-17"
-    },
     "formbricks-mcp": {
       "registry": "npm",
       "package": "formbricks-mcp",
@@ -2523,9 +2511,9 @@
     },
     "godaddy-mcp": {
       "registry": "npm",
-      "package": "godaddy-mcp-server",
-      "exists": false,
-      "checkedAt": "2026-08-17"
+      "package": "godaddy-mcp",
+      "exists": true,
+      "checkedAt": "2026-08-18"
     },
     "godot-mcp": {
       "registry": "npm",
@@ -3379,12 +3367,6 @@
       "exists": true,
       "checkedAt": "2026-08-17"
     },
-    "kiwi-mcp": {
-      "registry": "npm",
-      "package": "kiwi-mcp",
-      "exists": false,
-      "checkedAt": "2026-08-17"
-    },
     "klarna-mcp": {
       "registry": "npm",
       "package": "klarna-mcp",
@@ -3843,9 +3825,9 @@
     },
     "marqeta-mcp": {
       "registry": "npm",
-      "package": "marqeta-mcp",
-      "exists": false,
-      "checkedAt": "2026-08-17"
+      "package": "@marqeta/marqeta-mcp",
+      "exists": true,
+      "checkedAt": "2026-08-18"
     },
     "marqo-mcp": {
       "registry": "pip",
@@ -4209,9 +4191,9 @@
     },
     "ms-365-mcp": {
       "registry": "npm",
-      "package": "ms-365-mcp-server",
-      "exists": false,
-      "checkedAt": "2026-08-17"
+      "package": "@softeria/ms-365-mcp-server",
+      "exists": true,
+      "checkedAt": "2026-08-18"
     },
     "mssql-mcp": {
       "registry": "npm",
@@ -4629,9 +4611,9 @@
     },
     "openaq-mcp": {
       "registry": "npm",
-      "package": "openaq-mcp",
-      "exists": false,
-      "checkedAt": "2026-08-17"
+      "package": "@cyanheads/openaq-mcp-server",
+      "exists": true,
+      "checkedAt": "2026-08-18"
     },
     "opencorporates-mcp": {
       "registry": "npm",
@@ -4899,9 +4881,9 @@
     },
     "payware-mcp": {
       "registry": "npm",
-      "package": "payware-mcp",
-      "exists": false,
-      "checkedAt": "2026-08-17"
+      "package": "@payware/mcp-server",
+      "exists": true,
+      "checkedAt": "2026-08-18"
     },
     "pdf-reader": {
       "registry": "npm",
@@ -5655,9 +5637,9 @@
     },
     "runway-ml-mcp": {
       "registry": "npm",
-      "package": "runway-mcp",
-      "exists": false,
-      "checkedAt": "2026-08-17"
+      "package": "runway-api-mcp-server",
+      "exists": true,
+      "checkedAt": "2026-08-18"
     },
     "sabre-mcp": {
       "registry": "npm",
@@ -5781,9 +5763,9 @@
     },
     "secedgar-xbrl-mcp": {
       "registry": "npm",
-      "package": "secedgar-mcp-server",
-      "exists": false,
-      "checkedAt": "2026-08-17"
+      "package": "@cyanheads/secedgar-mcp-server",
+      "exists": true,
+      "checkedAt": "2026-08-18"
     },
     "secureframe-mcp": {
       "registry": "npm",
@@ -6030,7 +6012,7 @@
       "package": "slab-mcp",
       "exists": false,
       "checkedAt": "2026-08-17",
-      "collision": "npm `slab-mcp` is published but belongs to dev-jeb/slab-community, an MCP server for a trading-card grading API — not Slab the team knowledge base this entry documents"
+      "collision": "npm `slab-mcp` is published but belongs to dev-jeb/slab-community, an MCP server for a trading-card grading API \u2014 not Slab the team knowledge base this entry documents"
     },
     "slack": {
       "registry": "npm",
@@ -6208,9 +6190,9 @@
     },
     "spreedly-mcp": {
       "registry": "npm",
-      "package": "spreedly-mcp",
-      "exists": false,
-      "checkedAt": "2026-08-17"
+      "package": "@spreedly/spreedly-mcp",
+      "exists": true,
+      "checkedAt": "2026-08-18"
     },
     "sprinto-mcp": {
       "registry": "npm",
@@ -6448,9 +6430,9 @@
     },
     "teachable-mcp": {
       "registry": "npm",
-      "package": "teachable-mcp",
-      "exists": false,
-      "checkedAt": "2026-08-17"
+      "package": "teachable-mcp-server",
+      "exists": true,
+      "checkedAt": "2026-08-18"
     },
     "teamcity-mcp": {
       "registry": "npm",
@@ -6556,9 +6538,9 @@
     },
     "threejs-mcp": {
       "registry": "npm",
-      "package": "threejs-mcp-server",
-      "exists": false,
-      "checkedAt": "2026-08-17"
+      "package": "threejs-devtools-mcp",
+      "exists": true,
+      "checkedAt": "2026-08-18"
     },
     "thunkable-mcp": {
       "registry": "npm",
@@ -7429,6 +7411,24 @@
       "package": "zwift-mcp",
       "exists": false,
       "checkedAt": "2026-08-17"
+    },
+    "resend-mcp": {
+      "registry": "npm",
+      "package": "resend-mcp",
+      "exists": true,
+      "checkedAt": "2026-08-18"
+    },
+    "newrelic-mcp": {
+      "registry": "npm",
+      "package": "newrelic-mcp",
+      "exists": true,
+      "checkedAt": "2026-08-18"
+    },
+    "couchbase": {
+      "registry": "pip",
+      "package": "couchbase-mcp-server",
+      "exists": true,
+      "checkedAt": "2026-08-18"
     }
   }
 }
