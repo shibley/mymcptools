@@ -29,7 +29,7 @@ function parseWindowHours(raw: string | null): number {
 //   format=json|md     response shape (default json; md → text/markdown for the
 //                      content engine)
 export async function GET(req: NextRequest) {
-  const auth = authenticate(req);
+  const auth = await authenticate(req);
   if (!auth.ok) return auth.response;
 
   const q = req.nextUrl.searchParams;

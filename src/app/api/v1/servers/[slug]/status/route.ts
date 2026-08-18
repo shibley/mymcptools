@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
-import { authenticate, withRateLimitHeaders } from "@/lib/api/auth";
+import { authenticateOpen } from "@/lib/api/auth";
+import { finishFreeTier } from "@/lib/analytics/trust-api-usage";
 import { generatedAt, getStatus } from "@/lib/trust/status-store";
 
 export const runtime = "nodejs";
@@ -10,7 +11,7 @@ export async function GET(
   req: NextRequest,
   { params }: { params: Promise<{ slug: string }> }
 ) {
-  const auth = authenticate(req);
+  const auth = await authenticateOpen(req);
   if (!auth.ok) return auth.response;
 
   const { slug } = await params;
@@ -21,12 +22,12 @@ export async function GET(
       { error: "not_found", message: `No server with slug '${slug}'.` },
       { status: 404 }
     );
-    return withRateLimitHeaders(res, auth.rate);
+    return finishFreeTier(req, "/api/v1/servers/:slug/status", auth, res);
   }
 
   const res = NextResponse.json({
     generated_at: generatedAt(),
     status,
   });
-  return withRateLimitHeaders(res, auth.rate);
+  return finishFreeTier(req, "/api/v1/servers/:slug/status", auth, res);
 }

@@ -160,19 +160,34 @@ export default function DevelopersPage() {
       <section className="mx-auto max-w-5xl px-4 py-12 sm:px-6 lg:px-8">
         <h2 className="mb-4 text-3xl font-bold">Authentication</h2>
         <p className="mb-4 max-w-3xl leading-relaxed text-gray-400">
-          Every <Code>/api/v1</Code> endpoint requires an API key. Pass it on either an{" "}
+          The <strong className="text-white">verified-liveness endpoints are free and keyless</strong>:{" "}
+          <Code>/api/v1/status</Code>, <Code>/api/v1/stats</Code> and{" "}
+          <Code>/api/v1/servers/&#123;slug&#125;/status</Code> answer an anonymous{" "}
+          <Code>curl</Code> with no header at all, at 30 requests per minute per IP.
+          Every response carries an <Code>X-RateLimit-Tier</Code> header saying which
+          allowance served it. The base URL is <Code>https://mymcptools.com</Code>.
+        </p>
+        <CodeBlock
+          label="Free tier — no key"
+          code={`curl https://mymcptools.com/api/v1/status`}
+        />
+        <p className="mb-4 mt-6 max-w-3xl leading-relaxed text-gray-400">
+          The remaining endpoints — <Code>/export</Code>, <Code>/digest</Code>,{" "}
+          <Code>/drift</Code>, <Code>/incidents</Code>,{" "}
+          <Code>/servers/&#123;slug&#125;/history</Code> and{" "}
+          <Code>/firewall/check</Code> — require a key, and a key also raises the rate
+          limit to 120/min. Pass it on either an{" "}
           <Code>Authorization: Bearer &lt;key&gt;</Code> header or an{" "}
           <Code>x-api-key: &lt;key&gt;</Code> header. A missing or unknown key returns{" "}
-          <Code>401</Code> with an <Code>unauthorized</Code> error body. The base URL is{" "}
-          <Code>https://mymcptools.com</Code>.
+          <Code>401</Code> with an <Code>unauthorized</Code> error body.
         </p>
         <CodeBlock
           label="Authenticated request"
-          code={`curl https://mymcptools.com/api/v1/status \\
+          code={`curl https://mymcptools.com/api/v1/export \\
   -H "Authorization: Bearer $MCPTOOLS_API_KEY"
 
 # or, equivalently:
-curl https://mymcptools.com/api/v1/status \\
+curl https://mymcptools.com/api/v1/export \\
   -H "x-api-key: $MCPTOOLS_API_KEY"`}
         />
       </section>
@@ -181,7 +196,8 @@ curl https://mymcptools.com/api/v1/status \\
       <section className="mx-auto max-w-5xl px-4 py-12 sm:px-6 lg:px-8">
         <h2 className="mb-4 text-3xl font-bold">Rate limits</h2>
         <p className="mb-4 max-w-3xl leading-relaxed text-gray-400">
-          Requests are limited to <strong className="text-white">120 per minute, per key</strong>.
+          Keyed requests are limited to <strong className="text-white">120 per minute, per key</strong>;
+          keyless free-tier requests to <strong className="text-white">30 per minute, per IP</strong>.
           Every response carries the current window state in standard headers. Exceeding
           the limit returns <Code>429</Code> with a <Code>Retry-After</Code> header.
         </p>

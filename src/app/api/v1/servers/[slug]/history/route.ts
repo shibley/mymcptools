@@ -60,7 +60,7 @@ export async function GET(
   req: NextRequest,
   { params }: { params: Promise<{ slug: string }> }
 ) {
-  const auth = authenticate(req);
+  const auth = await authenticate(req);
   if (!auth.ok) return auth.response;
 
   const { slug } = await params;

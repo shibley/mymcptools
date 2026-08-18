@@ -22,7 +22,7 @@ export const dynamic = "force-dynamic";
 // contract as the rest of /api/v1). The public /firewall page uses the separate
 // unauthenticated /api/firewall/scan endpoint with a tighter per-IP limit.
 export async function POST(req: NextRequest) {
-  const auth = authenticate(req);
+  const auth = await authenticate(req);
   if (!auth.ok) return auth.response;
 
   let body: unknown;

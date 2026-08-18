@@ -29,7 +29,7 @@ function parseOffset(raw: string | null): number {
 //   filter=schema|protocol   restrict to schema-only or protocol-only drift
 //   limit (<=200), cursor|offset
 export async function GET(req: NextRequest) {
-  const auth = authenticate(req);
+  const auth = await authenticate(req);
   if (!auth.ok) return auth.response;
 
   const q = req.nextUrl.searchParams;

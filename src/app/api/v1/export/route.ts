@@ -42,7 +42,7 @@ function toCsv(rows: readonly CurrentStatus[]): string {
 
 // GET /api/v1/export?format=json|csv — full status dataset bulk export (PRD P0-7).
 export async function GET(req: NextRequest) {
-  const auth = authenticate(req);
+  const auth = await authenticate(req);
   if (!auth.ok) return auth.response;
 
   const format = (req.nextUrl.searchParams.get("format") ?? "json").toLowerCase();

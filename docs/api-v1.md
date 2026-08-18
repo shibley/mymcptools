@@ -8,7 +8,37 @@ Base path: `/api/v1`
 
 ## Authentication
 
-Every v1 endpoint requires an API key. Configure the allow-list with the
+### Free tier (no key)
+
+The **verified-liveness subset** is open to keyless callers at **30 req/min per
+IP**:
+
+| Endpoint                        | Free |
+| ------------------------------- | ---- |
+| `/api/v1/status`                | yes  |
+| `/api/v1/stats`                 | yes  |
+| `/api/v1/servers/{slug}/status` | yes  |
+| `/api/v1/servers/{slug}/badge`  | yes (already public) |
+| `/api/v1/servers/{slug}/sparkline` | yes (already public) |
+| everything else                 | key required |
+
+```
+curl https://mymcptools.com/api/v1/status
+```
+
+Free-tier responses carry `X-RateLimit-Tier: anonymous | key`. Presenting an
+*invalid* key on a free endpoint is still a 401 — silently downgrading a caller
+who believes they are authenticated would hide a broken integration behind a 200.
+
+Free-tier calls are recorded to the first-party warehouse
+(`analytics.events`, `utm_source = 'trustapi'`) so the endpoints have a
+queryable caller count; `npm run demand:report` prints it. Before 2026-08-18
+these routes were key-gated with zero keys ever issued, which made their caller
+count structurally zero and meaningless as a demand signal.
+
+### Keyed tier
+
+The remaining endpoints require an API key. Configure the allow-list with the
 `MCPTOOLS_API_KEYS` environment variable — a comma-separated list of accepted
 keys:
 
@@ -32,7 +62,9 @@ A missing or unrecognized key returns **401**:
 
 ## Rate limiting
 
-Each key gets a token bucket of **120 requests per 60s** (per server instance).
+Each key gets a token bucket of **120 requests per 60s** (per server instance);
+keyless free-tier callers get **30 per 60s**, bucketed by a daily-rotating hash
+of the client IP.
 Every response carries:
 
 | Header                  | Meaning                               |

@@ -21,7 +21,8 @@
     "firewall:sweep": "node scripts/firewall-sweep.mts",
     "firewall:selfcheck": "node scripts/firewall-selfcheck.mts",
     "verify:github": "node scripts/verify-github-entries.mts",
-    "stale:sweep": "node scripts/stale-release-sweep.mts"
+    "stale:sweep": "node scripts/stale-release-sweep.mts",
+    "demand:report": "node scripts/mcp-demand-report.mts"
   },
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.29.0",

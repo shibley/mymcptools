@@ -36,7 +36,7 @@ function parseOffset(raw: string | null): number {
 //   min_duration_seconds=<int>   drop resolved incidents shorter than this
 //   limit (<=200), cursor|offset pagination
 export async function GET(req: NextRequest) {
-  const auth = authenticate(req);
+  const auth = await authenticate(req);
   if (!auth.ok) return auth.response;
 
   const q = req.nextUrl.searchParams;

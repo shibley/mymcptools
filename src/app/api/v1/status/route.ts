@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
-import { authenticate, withRateLimitHeaders } from "@/lib/api/auth";
+import { authenticateOpen } from "@/lib/api/auth";
+import { finishFreeTier } from "@/lib/analytics/trust-api-usage";
 import { allStatuses, generatedAt, summary } from "@/lib/trust/status-store";
 import type { CurrentStatus, Verdict } from "@/lib/trust/types";
 
@@ -27,7 +28,7 @@ function parseOffset(raw: string | null): number {
 // GET /api/v1/status — paginated current_status list (PRD P0-7).
 // Query params: filter=healthy, updated_since=<ISO>, limit (<=200), cursor|offset.
 export async function GET(req: NextRequest) {
-  const auth = authenticate(req);
+  const auth = await authenticateOpen(req);
   if (!auth.ok) return auth.response;
 
   const q = req.nextUrl.searchParams;
@@ -49,7 +50,7 @@ export async function GET(req: NextRequest) {
         },
         { status: 400 }
       );
-      return withRateLimitHeaders(res, auth.rate);
+      return finishFreeTier(req, "/api/v1/status", auth, res);
     }
     updatedSince = t;
   }
@@ -79,5 +80,5 @@ export async function GET(req: NextRequest) {
     },
     statuses: page,
   });
-  return withRateLimitHeaders(res, auth.rate);
+  return finishFreeTier(req, "/api/v1/status", auth, res);
 }
