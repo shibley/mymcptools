@@ -122,31 +122,63 @@ if (t.calls === 0) {
   // toward a 100-consumer escalation gate would escalate on our own category's
   // indexing traffic. So they get their own bucket, and only a caller that
   // actually invoked a tool counts as demand.
+  // Invoking a tool is necessary for demand but not sufficient. Scanners that
+  // grade endpoints do call tools — that is how they check the endpoint answers
+  // rather than just advertising. Three signals disqualify a tool call as
+  // demand, and each one was observed in the first 63h of data:
+  //   - the client name says so (agentstatus-probe, verifymcp-probe,
+  //     mcp-reputation-scanner)
+  //   - the UA says so (mcp-reputation-scanner/1.0 (+…/bounded-invocation…))
+  //   - the tool name is synthetic — verifymcp calls
+  //     __verifymcp_auth_probe_<hex>__, a name we do not serve, purely to see
+  //     which error we return
+  // Counting these would escalate the slot on our own category's grading
+  // traffic, so the headline number is tool callers with all three stripped.
+  const SCANNER_NAME = `'(probe|scan|census|index|grader|beat|monitor|registry|crawler|reputation)'`;
+  const REAL_TOOL_CALL = `path like '/api/mcp:tools/call:%' and path not like '/api/mcp:tools/call:\\_\\_%'`;
   const tooled = await client.query(
     `select
-       count(distinct session_hash) filter (where path like '/api/mcp:tools/call:%')::int as tool_callers,
-       count(*) filter (where path like '/api/mcp:tools/call:%')::int                     as tool_calls
+       count(distinct session_hash) filter (where ${REAL_TOOL_CALL})::int as tool_callers,
+       count(*) filter (where ${REAL_TOOL_CALL})::int                     as tool_calls
      from analytics.events where ${WHERE} and not is_bot`,
     [String(DAYS)]
   );
   const registryish = await client.query(
     `select count(distinct session_hash)::int as callers
        from analytics.events where ${WHERE} and not is_bot
-        and utm_medium ~* '(probe|scan|census|index|grader|beat|monitor|registry|crawler)'`,
+        and (utm_medium ~* ${SCANNER_NAME} or ua ~* ${SCANNER_NAME})`,
+    [String(DAYS)]
+  );
+  // A qualified consumer: invoked a tool we actually serve, and neither its
+  // client name nor its UA identifies it as scanner infrastructure.
+  const qualified = await client.query(
+    `with scanners as (
+       select distinct session_hash from analytics.events
+        where ${WHERE} and (utm_medium ~* ${SCANNER_NAME} or ua ~* ${SCANNER_NAME})
+     )
+     select count(distinct session_hash)::int as callers,
+            count(*)::int                     as tool_calls
+       from analytics.events e
+      where ${WHERE} and not is_bot and ${REAL_TOOL_CALL}
+        and session_hash not in (select session_hash from scanners)`,
     [String(DAYS)]
   );
   const tc = tooled.rows[0];
+  const q = qualified.rows[0];
   console.log(`\n-- consumer quality --`);
-  console.log(`invoked >=1 tool          ${tc.tool_callers} callers (${tc.tool_calls} tool calls)`);
+  console.log(`invoked >=1 real tool     ${tc.tool_callers} callers (${tc.tool_calls} tool calls)`);
+  console.log(`  of those, scanner-named ${tc.tool_callers - q.callers} callers  <- graded us, did not consume`);
+  console.log(`  QUALIFIED consumers     ${q.callers} callers (${q.tool_calls} tool calls)`);
   console.log(`self-named as registry/   ${registryish.rows[0].callers} callers`);
   console.log(`  scanner infrastructure`);
   console.log(`handshake-only            ${t.consumers - tc.tool_callers} callers  <- indexed us, consumed nothing`);
 
   const verdict =
-    tc.tool_callers >= GATE
-      ? `ESCALATE: ${tc.tool_callers} distinct callers actually invoked a tool, clearing the ${GATE} gate.`
-      : `BELOW GATE: ${tc.tool_callers} distinct callers invoked a tool vs a ${GATE} threshold ` +
-        `(${t.consumers} passed the crawler test, but ${t.consumers - tc.tool_callers} of those only handshook). ` +
+    q.callers >= GATE
+      ? `ESCALATE: ${q.callers} distinct non-scanner callers actually invoked a tool, clearing the ${GATE} gate.`
+      : `BELOW GATE: ${q.callers} qualified consumers vs a ${GATE} threshold. ` +
+        `${t.consumers} passed the crawler test; ${t.consumers - tc.tool_callers} of those only handshook, ` +
+        `and all ${tc.tool_callers - q.callers} remaining tool-invokers self-identify as scanner infrastructure. ` +
         `Real data, no demand yet.`;
   console.log(`\nVERDICT: ${verdict}`);
 }

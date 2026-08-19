@@ -13,7 +13,57 @@ then discuss a paid tier. Below that, the data is real but nothing wants it.
 
 ---
 
-## 2026-08-19 — first reading with a full instrumented day
+## 2026-08-19 (2nd reading) — the 6 tool-invokers were all scanners; the real number is 0
+
+Window: 30 days, ~63 hours of real data. Re-ran the report and then looked at
+who the six tool-invoking callers from the earlier reading actually were. All
+six are grading infrastructure:
+
+| session client | UA | tool calls | what it called |
+| --- | --- | --- | --- |
+| `agentstatus-probe` ×3 | `python-requests/2.31.0`, `2.32.5` | 30 | the same six tools in the same order each time |
+| `mcp-reputation-scanner` | `mcp-reputation-scanner/1.0 (+github.com/cyeragit/mcp-reputation/…/bounded-invocation-of-hosted-endpoints)` | 5 | five read tools, whole session spanning 1 second |
+| `verifymcp-probe` ×2 | `Go-http-client/2.0` | 2 | `__verifymcp_auth_probe_<hex>__` — a tool name we do not serve, called only to see which error we return |
+
+Two corrections to the report follow from this, both now in
+`scripts/mcp-demand-report.mts`:
+
+1. **Synthetic tool names do not count.** A `tools/call` for
+   `__verifymcp_auth_probe_…__` is an auth-behaviour probe, not a tool
+   invocation. Calls to `__`-prefixed names are excluded.
+2. **Scanner self-identification disqualifies the session.** The name test now
+   also reads the UA (the cyeragit scanner announces itself there, not in the
+   MCP client name) and adds `reputation` to the pattern. A session that
+   identifies as scanner infrastructure cannot also be counted as a consumer of
+   it.
+
+The report now prints a **QUALIFIED consumers** line and the verdict is keyed to
+it, so grading traffic can never push this slot over its escalation gate.
+
+**/api/mcp (open, no auth), 63h**
+
+- 2,240 calls from 92 distinct callers — volume up ~34% in 27 hours
+- 76 passed the crawler test; **72 of those were handshake-only**
+- 4 callers invoked a tool we actually serve; **all 4 self-identify as scanner
+  infrastructure**
+- **QUALIFIED consumers: 0** (0 tool calls)
+- 42 callers self-name as registry/scanner infrastructure
+
+**Verdict: BELOW GATE — 0, not 6.** The earlier 6 was an overcount, and the
+direction of the error is the informative part: the callers most likely to
+invoke a tool are precisely the ones grading us, because invoking is how a
+grader checks the endpoint answers. Tool invocation is therefore a *weaker*
+demand signal than it looked. Every additional registry listing adds callers to
+the numerator of the wrong metric.
+
+Volume grew 34% in a day and qualified consumption stayed at zero. Nothing here
+argues for more discoverability work.
+
+**/api/v1 free tier (keyless since 2026-08-18):** still 0 calls, 0 callers.
+
+---
+
+## 2026-08-19 (1st reading) — first reading with a full instrumented day
 
 Window: 30 days, but instrumentation only landed 2026-08-17, so this is really
 ~36 hours of data (first row 2026-08-18 00:13 PT). The 30-day clock ends
@@ -83,5 +133,8 @@ can do.
 ## Next reading
 
 Re-run both commands each fire and append. The decision point is 2026-09-16:
-≥100 tool-invoking consumers → escalate; otherwise state plainly that the data
-is real and nothing wants it, and hand the slot back for reallocation.
+≥100 **qualified** consumers → escalate; otherwise state plainly that the data
+is real and nothing wants it, and hand the slot back for reallocation. Qualified
+means it invoked a tool we serve and neither its client name nor its UA
+identifies it as scanner infrastructure — raw tool-invoker counts run high for
+the wrong reason.
