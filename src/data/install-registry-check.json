@@ -1117,6 +1117,18 @@
       "exists": true,
       "checkedAt": "2026-08-17"
     },
+    "clicksend": {
+      "registry": "npm",
+      "package": "@clicksend/clicksend-mcp-server",
+      "exists": true,
+      "checkedAt": "2026-08-19"
+    },
+    "clicksend-mcp": {
+      "registry": "npm",
+      "package": "@clicksend/clicksend-mcp-server",
+      "exists": true,
+      "checkedAt": "2026-08-19"
+    },
     "clickup": {
       "registry": "npm",
       "package": "@hauptsache.net/clickup-mcp",
@@ -1422,6 +1434,12 @@
       "package": "costar-mcp",
       "exists": false,
       "checkedAt": "2026-08-17"
+    },
+    "couchbase": {
+      "registry": "pip",
+      "package": "couchbase-mcp-server",
+      "exists": true,
+      "checkedAt": "2026-08-18"
     },
     "coupa-mcp": {
       "registry": "npm",
@@ -2683,12 +2701,6 @@
       "exists": false,
       "checkedAt": "2026-08-17"
     },
-    "guru-mcp": {
-      "registry": "npm",
-      "package": "guru-mcp",
-      "exists": false,
-      "checkedAt": "2026-08-17"
-    },
     "hackernews": {
       "registry": "npm",
       "package": "mcp-hacker-news",
@@ -2979,9 +2991,9 @@
     },
     "ibm-watsonxdata-mcp": {
       "registry": "pip",
-      "package": "ibm-watsonxdata-mcp",
-      "exists": false,
-      "checkedAt": "2026-08-17"
+      "package": "ibm-watsonxdata-dl-retrieval-mcp-server",
+      "exists": true,
+      "checkedAt": "2026-08-19"
     },
     "icims-mcp": {
       "registry": "npm",
@@ -4245,9 +4257,9 @@
     },
     "nagios-mcp": {
       "registry": "pip",
-      "package": "nagios-mcp-server",
-      "exists": false,
-      "checkedAt": "2026-08-17"
+      "package": "nagios-mcp",
+      "exists": true,
+      "checkedAt": "2026-08-19"
     },
     "nakama-mcp": {
       "registry": "npm",
@@ -4332,6 +4344,12 @@
       "package": "netsuite-mcp-server",
       "exists": true,
       "checkedAt": "2026-08-17"
+    },
+    "newrelic-mcp": {
+      "registry": "npm",
+      "package": "newrelic-mcp",
+      "exists": true,
+      "checkedAt": "2026-08-18"
     },
     "newsapi-mcp": {
       "registry": "npm",
@@ -5509,6 +5527,12 @@
       "exists": true,
       "checkedAt": "2026-08-17"
     },
+    "resend-mcp": {
+      "registry": "npm",
+      "package": "resend-mcp",
+      "exists": true,
+      "checkedAt": "2026-08-18"
+    },
     "restream-mcp": {
       "registry": "npm",
       "package": "@shaktech786/restream-mcp-server",
@@ -6262,9 +6286,9 @@
     },
     "starrocks-mcp": {
       "registry": "pip",
-      "package": "starrocks-mcp",
-      "exists": false,
-      "checkedAt": "2026-08-17"
+      "package": "mcp-server-starrocks",
+      "exists": true,
+      "checkedAt": "2026-08-19"
     },
     "statsig-mcp": {
       "registry": "npm",
@@ -7411,24 +7435,6 @@
       "package": "zwift-mcp",
       "exists": false,
       "checkedAt": "2026-08-17"
-    },
-    "resend-mcp": {
-      "registry": "npm",
-      "package": "resend-mcp",
-      "exists": true,
-      "checkedAt": "2026-08-18"
-    },
-    "newrelic-mcp": {
-      "registry": "npm",
-      "package": "newrelic-mcp",
-      "exists": true,
-      "checkedAt": "2026-08-18"
-    },
-    "couchbase": {
-      "registry": "pip",
-      "package": "couchbase-mcp-server",
-      "exists": true,
-      "checkedAt": "2026-08-18"
     }
   }
 }

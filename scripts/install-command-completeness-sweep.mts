@@ -333,20 +333,33 @@ async function pypiConsoleScripts(doc: any): Promise<string[] | null> {
       return pa - pb || (a.size ?? 0) - (b.size ?? 0);
     });
   if (!wheels.length) return null; // sdist-only: no built metadata to read.
-  try {
-    const res = await fetch(wheels[0].url, {
-      headers: { 'user-agent': 'mymcptools-install-completeness-sweep' },
-      signal: AbortSignal.timeout(30000),
-    });
-    if (!res.ok) return null;
-    const buf = Buffer.from(await res.arrayBuffer());
-    if (buf.length > MAX_WHEEL_BYTES) return null;
-    const txt = readZipMember(buf, (n) => /(^|\/)[^/]+\.dist-info\/entry_points\.txt$/i.test(n));
-    if (txt === null) return []; // wheel read fine, no entry_points => library
-    return parseConsoleScripts(txt);
-  } catch {
-    return null;
+  // A single failed GET used to be indistinguishable from "this package is a
+  // library", and the finding then ASSERTED the library reading. That is how
+  // mcp-server-starrocks — whose wheel does declare a console script — sat in
+  // the held-back pile across two fires. Retry before concluding anything, and
+  // keep `null` (could not read) separate from `[]` (read fine, no scripts).
+  for (let attempt = 0; attempt < 3; attempt++) {
+    if (attempt > 0) await new Promise((r) => setTimeout(r, 400 * attempt));
+    try {
+      const res = await fetch(wheels[0].url, {
+        headers: { 'user-agent': 'mymcptools-install-completeness-sweep' },
+        signal: AbortSignal.timeout(30000),
+      });
+      if (!res.ok) {
+        // 404/410 is an answer; 5xx and 429 are not.
+        if (res.status < 500 && res.status !== 429) return null;
+        continue;
+      }
+      const buf = Buffer.from(await res.arrayBuffer());
+      if (buf.length > MAX_WHEEL_BYTES) return null;
+      const txt = readZipMember(buf, (n) => /(^|\/)[^/]+\.dist-info\/entry_points\.txt$/i.test(n));
+      if (txt === null) return []; // wheel read fine, no entry_points => library
+      return parseConsoleScripts(txt);
+    } catch {
+      // network/timeout — retry, then give up as UNREADABLE, not as "library".
+    }
   }
+  return null;
 }
 
 async function resolvePypi(
@@ -472,6 +485,8 @@ async function main() {
     const cands = s.install_type === 'npm' ? npmCandidates(id) : pypiCandidates(id);
     const nearMisses: { package: string; declaredRepo: string | null }[] = [];
     let hit: Finding['resolved'] | undefined;
+    /** PyPI only: the wheel could not be read at all, so "library" is not a claim we can make. */
+    let wheelUnreadable = false;
 
     for (const pkg of cands) {
       const meta = s.install_type === 'npm' ? await resolveNpm(pkg) : await resolvePypi(pkg);
@@ -486,6 +501,7 @@ async function main() {
           // Read the wheel's own console_scripts table. null = could not read
           // (sdist-only, oversized, unparseable zip) => unconfirmed, held back.
           const scripts = await pypiConsoleScripts((meta as { doc: any }).doc);
+          wheelUnreadable = scripts === null;
           executable = Array.isArray(scripts) && scripts.length > 0;
           // `uvx X` runs the script named X, not the package named X.
           const direct = scripts?.includes(pkg) || scripts?.includes(pkg.replace(/-/g, '_'));
@@ -524,7 +540,13 @@ async function main() {
           ? `REPLACEMENT: current command names ${phantom.registry} package "${phantom.package}" (does not exist, checked ${phantom.checkedAt}). ${registry} package "${hit.package}" declares ${hit.declaredRepo} AND ships an entry point — swap in, do not append.`
           : `${registry} package "${hit.package}" declares ${hit.declaredRepo} AND ships a bin — the command is derived and runnable, not guessed.`
         : hit
-          ? `${registry} package "${hit.package}" belongs to this repo but ${registry === 'npm' ? 'declares no bin — it is a library, `npx` would error' : 'its wheel declares no [console_scripts] (or no readable wheel exists) — `uvx` would error'}. NOT written.`
+          ? `${registry} package "${hit.package}" belongs to this repo but ${
+              registry === 'npm'
+                ? 'declares no bin — it is a library, `npx` would error'
+                : wheelUnreadable
+                  ? 'its wheel could not be READ after 3 attempts (sdist-only, oversized, or the fetch failed) — runnability is UNKNOWN, not disproven; re-run before concluding anything'
+                  : 'its wheel declares no [console_scripts] — `uvx` would error'
+            }. NOT written.`
         : nearMisses.length
           ? `No ${registry} package declares this repo. ${nearMisses.length} name(s) exist but belong elsewhere — do NOT write them.`
           : `No ${registry} package found under any name derived from the repo path; read the README.`,

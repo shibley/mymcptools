@@ -4766,6 +4766,277 @@ claude mcp add --transport http workspace-mcp http://localhost:8000/mcp`,
       ],
     },
   },
+  {
+    slug: 'zapier',
+    verifiedOn: '2026-08-19',
+    sources: [
+      { label: 'zapier/zapier-mcp README', url: 'https://github.com/zapier/zapier-mcp' },
+      { label: 'Zapier docs — connect your client', url: 'https://docs.zapier.com/mcp/clients' },
+      { label: 'Zapier docs — how tools work', url: 'https://docs.zapier.com/mcp/how-tools-work' },
+      { label: 'Zapier docs — authentication', url: 'https://docs.zapier.com/mcp/authentication' },
+      { label: 'Zapier docs — tool bundles', url: 'https://docs.zapier.com/mcp/tool-bundles' },
+      { label: 'Official MCP registry entry com.zapier/mcp', url: 'https://registry.modelcontextprotocol.io/v0.1/servers/com.zapier%2Fmcp/versions/latest' },
+    ],
+    intro:
+      'Zapier MCP is not a package you install, and the GitHub repo people find first is not the server. github.com/zapier/zapier-mcp distributes a client-side plugin — guided onboarding, a demo, role-tailored skills — while the server itself is hosted by Zapier and reachable at one URL: https://mcp.zapier.com/api/v1/connect. That is the whole install. The registry entry com.zapier/mcp confirms it as a streamable-http remote, and Zapier is explicit that SSE is not supported, which is the single most common reason a connection attempt fails. The other thing worth knowing before you start is that the tool list is not fixed: your agent discovers and enables actions during the conversation through a set of meta-tools, so the 9,000+ apps and 40,000+ actions figure is a ceiling reached on demand, not a list you configure up front.',
+    setup: {
+      title: 'Connecting Zapier MCP',
+      steps: [
+        {
+          title: 'Point your client at the connect URL',
+          body:
+            'Most clients handle this over OAuth: you supply the URL, sign in to Zapier, and Zapier creates and provisions the server for you. Claude Code takes it as an http transport. Cursor and VS Code take the same URL as an http-type server entry, and both have one-click install badges in the repo README. Claude, ChatGPT, Gemini CLI, Windsurf, Zed, Warp, Microsoft Copilot Studio, Kiro, Replit, Linear, Figma Make and others each have a per-client page under docs.zapier.com/mcp/clients.',
+          code: 'claude mcp add --transport http zapier https://mcp.zapier.com/api/v1/connect',
+          codeLabel: 'shell',
+        },
+        {
+          title: 'Or install the plugin, if your client has a marketplace',
+          body:
+            'A few clients can install the plugin from this repo on top of the base connection, which adds onboarding and packaged skills. Claude Code takes zapier/marketplace or anthropics/claude-plugins-official; OpenAI Codex and GitHub Copilot CLI take zapier/marketplace; Cursor takes cursor/mcp-servers; Claude Cowork takes anthropics/knowledge-work-plugins; Kiro goes through kiro.dev/powers. Gemini CLI installs the repo directly as an extension.',
+          code: 'gemini extensions install https://github.com/zapier/zapier-mcp\ngemini /mcp auth zapier',
+          codeLabel: 'shell',
+        },
+        {
+          title: 'Use a connection token when OAuth is not available',
+          body:
+            'If your client is not on the supported list, or cannot complete an OAuth flow, add the server at mcp.zapier.com with See all → Other and click Generate token on the Connect tab. Send it as a bearer header against the same connect URL. Zapier shows the token exactly once — it cannot be retrieved later, only regenerated, and regenerating immediately breaks any client still holding the old one.',
+          code: 'Authorization: Bearer <token>',
+          codeLabel: 'HTTP header',
+        },
+        {
+          title: 'Let auto-provisioning do the first pass',
+          body:
+            'Connecting over OAuth runs auto_provision_mcp automatically, which builds your toolset from the apps already connected in your Zapier account. It covers your own connections only — anything a teammate shared with you is excluded, which is why a shared workspace can look half-empty on first run. Ask the agent to search for and enable the missing actions rather than hunting for a settings screen.',
+        },
+      ],
+    },
+    tools: {
+      title: 'The 14 meta-tools',
+      note:
+        'These are always present regardless of which apps you have connected; the app-specific tools appear underneath them as the agent enables actions. If you are scripting against Zapier MCP, these names are the stable surface.',
+      items: [
+        { name: 'discover_zapier_actions', what: 'Searches the catalogue for apps and actions available to add.' },
+        { name: 'enable_zapier_action', what: 'Turns a specific action into a callable tool.' },
+        { name: 'inspect_zapier_actions', what: 'Lists your enabled actions and what each one needs to run.' },
+        { name: 'disable_zapier_action', what: 'Removes an action you no longer want exposed.' },
+        { name: 'auto_provision_mcp', what: 'Provisions tools from your existing Zapier connections. Runs by itself on an OAuth connect.' },
+        { name: 'execute_zapier_read_action', what: 'Runs a read or search action — find an email, look up a contact.' },
+        { name: 'execute_zapier_write_action', what: 'Runs a write action — send a message, create a task, update a record. The one to watch in an approval policy.' },
+        { name: 'get_configuration_url', what: 'Returns the URL of your server configuration page.' },
+        { name: 'list_zapier_skills / get_zapier_skill', what: 'Lists and retrieves saved Skills — Markdown workflow instructions the agent loads on demand.' },
+        { name: 'create_zapier_skill / update_zapier_skill / delete_zapier_skill', what: 'Manage those Skills from inside the conversation.' },
+        { name: 'send_feedback', what: 'Sends feedback to Zapier.' },
+        { name: 'write_code_action', what: 'Not on every account. Generates a custom code action when no built-in action matches, and runs it sandboxed with authenticated API access. Rolling out gradually.' },
+      ],
+    },
+    useCases: [
+      {
+        title: 'Chain two apps in one instruction',
+        prompt: 'Add the lead from this email thread to HubSpot as a new contact, then post a summary to the #sales Slack channel.',
+        why: 'The canonical shape: one execute_zapier_write_action per app, routed through connections you already authorised in Zapier, with no per-API integration code on your side.',
+      },
+      {
+        title: 'Enable a tool mid-conversation instead of pre-configuring',
+        prompt: 'Find whether Zapier has an action for creating a Linear issue, enable it, and file one for the bug we just discussed.',
+        why: 'discover_zapier_actions then enable_zapier_action then execute_zapier_write_action — this is what dynamic tool discovery buys you, and it is worth showing an agent once so it stops asking you to set things up manually.',
+      },
+      {
+        title: 'Hand a working setup to a teammate without sharing your accounts',
+        prompt: 'List my enabled actions so I can share them as a tool bundle.',
+        why: 'A tool bundle link copies the tool list, not your connected accounts or data. The recipient connects their own accounts and their calls bill to their own plan — the right primitive for onboarding, as opposed to server access, which is Team/Enterprise-only and shares one server.',
+      },
+    ],
+    gotchas: [
+      {
+        question: 'Why will my client not connect to Zapier MCP?',
+        answer:
+          'Almost always transport. Zapier MCP is Streamable HTTP only and does not support SSE, so a client configured with an sse type — or an older client that only speaks SSE — will fail no matter how the auth is set up. Confirm the client supports Streamable HTTP, then point it at https://mcp.zapier.com/api/v1/connect.',
+      },
+      {
+        question: 'Do I need to install anything to use Zapier MCP?',
+        answer:
+          'No. The server is hosted by Zapier; connecting is a URL plus an OAuth sign-in. The zapier/zapier-mcp repository distributes a client-side plugin that layers onboarding and skills on top of that connection — it is optional, and it is not the server. There is no npm package to run and nothing to keep updated.',
+      },
+      {
+        question: 'Why does my Zapier MCP server show fewer tools than I expected?',
+        answer:
+          'Auto-provisioning only covers connections you own. Apps that another Zapier user shared with you are deliberately not provisioned. Ask the agent to run discover_zapier_actions for the app you want and enable it, or connect the app under your own account first.',
+      },
+      {
+        question: 'What happens to my Zapier task quota when an AI calls a tool?',
+        answer:
+          'Tool calls bill against your existing Zapier plan. That matters most with tool bundles: each person who uses a shared bundle gets their own independent copy of the tools connected to their own accounts, and their calls count against their plan, not yours.',
+      },
+      {
+        question: 'How do I revoke an AI client\'s access to Zapier MCP?',
+        answer:
+          'For a token-authenticated client, regenerate the connection token on the Connect tab — the previous one is invalidated immediately. For an OAuth client, delete the server from the mcp.zapier.com dashboard, which drops access at once. Removing a tool bundle link stops new people from using it but does not remove tools others already added.',
+      },
+    ],
+    comparison: {
+      note:
+        'Zapier MCP is the breadth option. The trade you are making is depth of tooling and directness of auth against not having to run or configure anything.',
+      items: [
+        {
+          name: 'A first-party server for the one app you actually need',
+          choose:
+            'Almost always better if your work is concentrated in a single product. A dedicated Slack, Linear or HubSpot server exposes that product\'s full surface with typed arguments; Zapier exposes actions, which are shaped for automation rather than exploration.',
+        },
+        {
+          name: 'n8n MCP',
+          slug: 'n8n',
+          choose:
+            'When you want the workflow engine self-hosted and the data never leaving your infrastructure. n8n is the run-it-yourself answer to the same problem; Zapier is the do-not-run-anything answer.',
+        },
+        {
+          name: 'Make / Pipedream style hosted connectors',
+          choose:
+            'Comparable breadth. Pick on which one already holds your app connections — the value here is the authorised connections, not the protocol.',
+        },
+      ],
+    },
+  },
+
+  {
+    slug: 'airtable',
+    verifiedOn: '2026-08-19',
+    sources: [
+      { label: 'domdomegg/airtable-mcp-server README', url: 'https://github.com/domdomegg/airtable-mcp-server' },
+      { label: 'Airtable/airtable-mcp-cli README (official)', url: 'https://github.com/Airtable/airtable-mcp-cli' },
+      { label: 'Airtable personal access token creation', url: 'https://airtable.com/create/tokens/new' },
+      { label: 'Live check of https://mcp.airtable.com/mcp (OAuth protected-resource metadata, 2026-08-19)', url: 'https://mcp.airtable.com/.well-known/oauth-protected-resource' },
+    ],
+    intro:
+      'There are now two live answers to "Airtable MCP", and most write-ups only know the older one. domdomegg/airtable-mcp-server is the established community server: an npm package you run locally over stdio, authenticated with a personal access token, with 16 tools covering records, schema, fields and comments. Airtable also runs an official hosted server at https://mcp.airtable.com/mcp — it answers with OAuth protected-resource metadata, and Airtable\'s own CLI points at it as its default endpoint. Take the community server when you want the token scoped by hand, a pinned version and a process on your own machine. Take the hosted one when you would rather authorise with OAuth and skip credential management, accepting that Airtable calls the surface experimental and says tool names and arguments may change without notice.',
+    setup: {
+      title: 'Setting up Airtable MCP',
+      steps: [
+        {
+          title: 'Create a personal access token with the narrowest scopes',
+          body:
+            'Go to airtable.com/create/tokens/new. The README asks for schema.bases:read and data.records:read; add schema.bases:write, data.records:write, data.recordComments:read and data.recordComments:write only if you want the assistant to change things. Grant the token access to specific bases, not the whole workspace — the token is what an LLM will be holding, and record deletion is one of the exposed tools. It looks like pat123.abc123, only longer.',
+        },
+        {
+          title: 'Run the community server over stdio',
+          body:
+            'The env var is AIRTABLE_API_KEY. This is worth stating plainly because AIRTABLE_TOKEN is a common and silent mistake — it is the variable the official CLI uses, not this server, and the server simply starts with no credentials. The repo also publishes an install-mcp link that generates the right config for Claude Code, Claude Desktop, Cursor, Cline and VS Code.',
+          code: `{
+  "mcpServers": {
+    "airtable": {
+      "command": "npx",
+      "args": ["-y", "airtable-mcp-server"],
+      "env": { "AIRTABLE_API_KEY": "pat123.abc123" }
+    }
+  }
+}`,
+          codeLabel: 'claude_desktop_config.json',
+        },
+        {
+          title: 'Or connect the official hosted server',
+          body:
+            'No install and no token file: point a Streamable-HTTP client at https://mcp.airtable.com/mcp and complete the OAuth flow. The endpoint returns a 401 with a www-authenticate bearer challenge and an oauth-protected-resource pointer until you do, which is the expected response and not a misconfiguration.',
+          code: 'claude mcp add --transport http airtable https://mcp.airtable.com/mcp',
+          codeLabel: 'shell',
+        },
+        {
+          title: 'Drive the official server from a terminal or a script',
+          body:
+            'Airtable ships a CLI over the same hosted server. It discovers commands from the server at runtime rather than shipping a fixed list, so airtable-mcp tools reflects whatever exists right now. AIRTABLE_TOKEN skips the interactive configure step, which is what you want in CI, and AIRTABLE_MCP_ENDPOINT overrides the endpoint (restricted to HTTPS on *.airtable.com).',
+          code: 'npm install -g @airtable/mcp-cli\nairtable-mcp configure\nairtable-mcp tools\nairtable-mcp list-records --baseId appXXX --tableIdOrName Tasks',
+          codeLabel: 'shell',
+        },
+      ],
+    },
+    tools: {
+      title: 'The 16 tools on the community server',
+      note:
+        'Everything is addressed by baseId and tableId, so a first-run conversation almost always begins with list_bases and list_tables. The schema tools are the half most catalogue listings omit, and they are why this server can be used to build a base rather than only to read one.',
+      items: [
+        { name: 'list_bases', what: 'Every base the token can reach, with id, name and permission level. The usual first call.' },
+        { name: 'list_tables', what: 'Tables in a base. detailLevel of tableIdentifiersOnly, identifiersOnly or full controls how much schema comes back — use the cheap one when you only need ids.' },
+        { name: 'describe_table', what: 'Same shape as list_tables for a single table, without pulling the whole base.' },
+        { name: 'list_records', what: 'Up to maxRecords (100 by default) rows, optionally narrowed with an Airtable filterByFormula.' },
+        { name: 'search_records', what: 'Free-text search across text fields, or only the fieldIds you name.' },
+        { name: 'get_record', what: 'One record by id.' },
+        { name: 'create_record', what: 'One new row from a fields object.' },
+        { name: 'update_records', what: 'Batch update — an array of record id plus fields.' },
+        { name: 'delete_records', what: 'Batch delete by record id. The tool to think about before granting data.records:write.' },
+        { name: 'create_table / update_table', what: 'Creates a table from field definitions, or renames one and edits its description.' },
+        { name: 'create_field / update_field', what: 'Adds a typed field with options, or renames an existing one. Needs the schema.bases:write scope.' },
+        { name: 'create_comment / list_comments', what: 'Threaded record comments, newest first, with authors, reactions and mentions. Requires the recordComments scopes.' },
+      ],
+    },
+    useCases: [
+      {
+        title: 'Query a base without learning its schema first',
+        prompt: 'List my Airtable bases, find the one used as a CRM, and show me every lead added in the last seven days.',
+        why: 'list_bases, then list_tables, then list_records with a filterByFormula. The model resolves the ids itself, which is the part that makes this better than the REST API for ad-hoc questions.',
+      },
+      {
+        title: 'Build the table, not just fill it',
+        prompt: 'In base appXXX, create a table called Interviews with a date field, a single-select for stage, and a long-text field for notes.',
+        why: 'create_table plus create_field. Most Airtable MCP write-ups stop at records; the schema tools are the reason this server can stand in for the Airtable UI during a design conversation.',
+      },
+      {
+        title: 'Close the loop on a record without leaving the chat',
+        prompt: 'Update the Acme record to stage Won and leave a comment explaining why, tagging the account owner.',
+        why: 'update_records then create_comment — the comment is the audit trail a human teammate will actually read later, and it needs data.recordComments:write.',
+      },
+    ],
+    gotchas: [
+      {
+        question: 'Why does the Airtable MCP server start but see nothing?',
+        answer:
+          'Two usual causes. The env var is AIRTABLE_API_KEY on domdomegg/airtable-mcp-server — AIRTABLE_TOKEN is the official CLI\'s variable and is ignored here, so the server starts unauthenticated. The other is token scope: a personal access token grants access to the bases you explicitly select when you create it, so list_bases returns an empty list until you add them.',
+      },
+      {
+        question: 'Is it safe to run Airtable MCP in HTTP mode?',
+        answer:
+          'Not on its own. MCP_TRANSPORT=http PORT=3000 starts a stateless server at /mcp with no authentication, and the README is explicit that binding to localhost or a private network is not a security boundary against browsers: a malicious site can use DNS rebinding to make a visitor\'s browser call /mcp and invoke tools — including deleting records — with your Airtable token. Put it behind a proxy that requires an Authorization header, or use the default stdio transport, which opens no port at all.',
+      },
+      {
+        question: 'Should I use the official Airtable MCP server or the community one?',
+        answer:
+          'Official (https://mcp.airtable.com/mcp) if you want OAuth and no credential to store, and you can live with Airtable calling it experimental — its own CLI README warns that tool names, arguments and output formats may change without notice. Community (domdomegg/airtable-mcp-server) if you want a pinned npm version, a hand-scoped token and a local stdio process. They are separate implementations, not two front doors to one server.',
+      },
+      {
+        question: 'Why does my Airtable MCP query only return 100 records?',
+        answer:
+          'That is the default. Both list_records and search_records take maxRecords and default to 100. For anything larger, either raise it explicitly or narrow the query with filterByFormula rather than pulling the table and filtering in the model — the second approach is what turns a small base into a context-window problem.',
+      },
+      {
+        question: 'Can Airtable MCP create fields and tables, or only records?',
+        answer:
+          'Both, on the community server: create_table, update_table, create_field and update_field are exposed alongside the record tools. They need the schema.bases:write scope on the token, which is not one of the two scopes the README asks for by default, so a token created from the quick-start instructions will fail on them.',
+      },
+    ],
+    comparison: {
+      items: [
+        {
+          name: 'Airtable MCP (official, mcp.airtable.com/mcp)',
+          choose:
+            'OAuth instead of a stored token, nothing to install, and the same server the official @airtable/mcp-cli drives. Accept the experimental label on tool names and arguments.',
+        },
+        {
+          name: 'domdomegg/airtable-mcp-server (community)',
+          choose:
+            'Default for local use. Pinned version, hand-scoped token, stdio by default, and 16 documented tools including the schema and comment surfaces.',
+        },
+        {
+          name: 'PostgreSQL MCP',
+          slug: 'postgresql',
+          choose:
+            'If the base has outgrown Airtable. Once you are writing filterByFormula strings to work around the 100-record default and the lack of joins, an actual database with an MCP server in front of it is the cheaper answer.',
+        },
+        {
+          name: 'Google Sheets / Excel MCP',
+          choose:
+            'When the artefact needs to be a spreadsheet a non-technical colleague opens and edits. Airtable\'s advantage here is typed fields and a real schema API; a sheet has neither.',
+        },
+      ],
+    },
+  },
+
 ]
 
 const guideBySlug = new Map(guides.map((g) => [g.slug, g] as const));

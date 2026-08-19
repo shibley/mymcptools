@@ -1,16 +1,15 @@
 {
-  "generated_at": "2026-08-18T22:42:03.752Z",
+  "generated_at": "2026-08-19T10:47:50.976Z",
   "catalog_entries": 2466,
-  "blank_install_command": 1091,
-  "blank_pct": 44.2,
-  "phantom_install_command": 861,
-  "population": 1952,
+  "blank_install_command": 1086,
+  "blank_pct": 44,
+  "phantom_install_command": 844,
+  "population": 1930,
   "registry_check_generated_at": "2026-08-17",
-  "resolve_attempted": 545,
+  "resolve_attempted": 525,
   "counts": {
     "critical": 1367,
-    "high": 15,
-    "medium": 532,
+    "medium": 525,
     "low": 38
   },
   "findings": [
@@ -17765,354 +17764,6 @@
       "note": "Command names npm package \"mcp-server-zoom\", which does not exist (checked 2026-08-17), and the entry has no repository either — nothing to resolve a real command from."
     },
     {
-      "slug": "ms-365-mcp",
-      "name": "Microsoft 365 MCP",
-      "install_type": "npm",
-      "github_url": "https://github.com/softeria/ms-365-mcp-server",
-      "stars": 909,
-      "descriptionWords": 37,
-      "phantom": {
-        "command": "npx ms-365-mcp-server",
-        "package": "ms-365-mcp-server",
-        "registry": "npm",
-        "checkedAt": "2026-08-17"
-      },
-      "severity": "high",
-      "resolved": {
-        "package": "@softeria/ms-365-mcp-server",
-        "registry": "npm",
-        "command": "npx -y @softeria/ms-365-mcp-server",
-        "declaredRepo": "git+https://github.com/Softeria/ms-365-mcp-server.git",
-        "executable": true,
-        "entrypoint_unconfirmed": false
-      },
-      "note": "REPLACEMENT: current command names npm package \"ms-365-mcp-server\" (does not exist, checked 2026-08-17). npm package \"@softeria/ms-365-mcp-server\" declares git+https://github.com/Softeria/ms-365-mcp-server.git AND ships an entry point — swap in, do not append."
-    },
-    {
-      "slug": "resend-mcp",
-      "name": "Resend MCP",
-      "install_type": "npm",
-      "github_url": "https://github.com/resend/resend-mcp",
-      "stars": 559,
-      "descriptionWords": 33,
-      "severity": "high",
-      "resolved": {
-        "package": "resend-mcp",
-        "registry": "npm",
-        "command": "npx -y resend-mcp",
-        "declaredRepo": "git+https://github.com/resend/resend-mcp.git",
-        "executable": true,
-        "entrypoint_unconfirmed": false
-      },
-      "note": "npm package \"resend-mcp\" declares git+https://github.com/resend/resend-mcp.git AND ships a bin — the command is derived and runnable, not guessed."
-    },
-    {
-      "slug": "threejs-mcp",
-      "name": "Three.js MCP",
-      "install_type": "npm",
-      "github_url": "https://github.com/DmitriyGolub/threejs-devtools-mcp",
-      "stars": 85,
-      "descriptionWords": 14,
-      "phantom": {
-        "command": "npx threejs-mcp-server",
-        "package": "threejs-mcp-server",
-        "registry": "npm",
-        "checkedAt": "2026-08-17"
-      },
-      "severity": "high",
-      "resolved": {
-        "package": "threejs-devtools-mcp",
-        "registry": "npm",
-        "command": "npx -y threejs-devtools-mcp",
-        "declaredRepo": "git+https://github.com/DmitriyGolub/threejs-devtools-mcp.git",
-        "executable": true,
-        "entrypoint_unconfirmed": false
-      },
-      "note": "REPLACEMENT: current command names npm package \"threejs-mcp-server\" (does not exist, checked 2026-08-17). npm package \"threejs-devtools-mcp\" declares git+https://github.com/DmitriyGolub/threejs-devtools-mcp.git AND ships an entry point — swap in, do not append."
-    },
-    {
-      "slug": "runway-ml-mcp",
-      "name": "Runway ML",
-      "install_type": "npm",
-      "github_url": "https://github.com/runwayml/runway-api-mcp-server",
-      "stars": 22,
-      "descriptionWords": 29,
-      "phantom": {
-        "command": "npx runway-mcp",
-        "package": "runway-mcp",
-        "registry": "npm",
-        "checkedAt": "2026-08-17"
-      },
-      "severity": "high",
-      "resolved": {
-        "package": "runway-api-mcp-server",
-        "registry": "npm",
-        "command": "npx -y runway-api-mcp-server",
-        "declaredRepo": "git+https://github.com/runwayml/runway-api-mcp-server.git",
-        "executable": true,
-        "entrypoint_unconfirmed": false
-      },
-      "note": "REPLACEMENT: current command names npm package \"runway-mcp\" (does not exist, checked 2026-08-17). npm package \"runway-api-mcp-server\" declares git+https://github.com/runwayml/runway-api-mcp-server.git AND ships an entry point — swap in, do not append."
-    },
-    {
-      "slug": "anythingllm-mcp",
-      "name": "AnythingLLM",
-      "install_type": "npm",
-      "github_url": "https://github.com/raqueljezweb/anythingllm-mcp-server",
-      "stars": 15,
-      "descriptionWords": 30,
-      "phantom": {
-        "command": "npx anythingllm-mcp",
-        "package": "anythingllm-mcp",
-        "registry": "npm",
-        "checkedAt": "2026-08-17"
-      },
-      "severity": "high",
-      "resolved": {
-        "package": "anythingllm-mcp-server",
-        "registry": "npm",
-        "command": "npx -y anythingllm-mcp-server",
-        "declaredRepo": "git+https://github.com/raqueljezweb/anythingllm-mcp-server.git",
-        "executable": true,
-        "entrypoint_unconfirmed": false
-      },
-      "note": "REPLACEMENT: current command names npm package \"anythingllm-mcp\" (does not exist, checked 2026-08-17). npm package \"anythingllm-mcp-server\" declares git+https://github.com/raqueljezweb/anythingllm-mcp-server.git AND ships an entry point — swap in, do not append."
-    },
-    {
-      "slug": "newrelic-mcp",
-      "name": "New Relic MCP",
-      "install_type": "npm",
-      "github_url": "https://github.com/cloudbring/newrelic-mcp",
-      "stars": 14,
-      "descriptionWords": 53,
-      "severity": "high",
-      "resolved": {
-        "package": "newrelic-mcp",
-        "registry": "npm",
-        "command": "npx -y newrelic-mcp",
-        "declaredRepo": "git+https://github.com/cloudbring/newrelic-mcp.git",
-        "executable": true,
-        "entrypoint_unconfirmed": false
-      },
-      "note": "npm package \"newrelic-mcp\" declares git+https://github.com/cloudbring/newrelic-mcp.git AND ships a bin — the command is derived and runnable, not guessed."
-    },
-    {
-      "slug": "spreedly-mcp",
-      "name": "Spreedly MCP",
-      "install_type": "npm",
-      "github_url": "https://github.com/spreedly/spreedly-mcp",
-      "stars": 10,
-      "descriptionWords": 29,
-      "phantom": {
-        "command": "npx spreedly-mcp",
-        "package": "spreedly-mcp",
-        "registry": "npm",
-        "checkedAt": "2026-08-17"
-      },
-      "severity": "high",
-      "resolved": {
-        "package": "@spreedly/spreedly-mcp",
-        "registry": "npm",
-        "command": "npx -y @spreedly/spreedly-mcp",
-        "declaredRepo": "git+https://github.com/spreedly/spreedly-mcp.git",
-        "executable": true,
-        "entrypoint_unconfirmed": false
-      },
-      "note": "REPLACEMENT: current command names npm package \"spreedly-mcp\" (does not exist, checked 2026-08-17). npm package \"@spreedly/spreedly-mcp\" declares git+https://github.com/spreedly/spreedly-mcp.git AND ships an entry point — swap in, do not append."
-    },
-    {
-      "slug": "secedgar-xbrl-mcp",
-      "name": "SEC EDGAR XBRL MCP",
-      "install_type": "npm",
-      "github_url": "https://github.com/cyanheads/secedgar-mcp-server",
-      "stars": 8,
-      "descriptionWords": 36,
-      "phantom": {
-        "command": "npx secedgar-mcp-server",
-        "package": "secedgar-mcp-server",
-        "registry": "npm",
-        "checkedAt": "2026-08-17"
-      },
-      "severity": "high",
-      "resolved": {
-        "package": "@cyanheads/secedgar-mcp-server",
-        "registry": "npm",
-        "command": "npx -y @cyanheads/secedgar-mcp-server",
-        "declaredRepo": "git+https://github.com/cyanheads/secedgar-mcp-server.git",
-        "executable": true,
-        "entrypoint_unconfirmed": false
-      },
-      "note": "REPLACEMENT: current command names npm package \"secedgar-mcp-server\" (does not exist, checked 2026-08-17). npm package \"@cyanheads/secedgar-mcp-server\" declares git+https://github.com/cyanheads/secedgar-mcp-server.git AND ships an entry point — swap in, do not append."
-    },
-    {
-      "slug": "marqeta-mcp",
-      "name": "Marqeta Card Issuing",
-      "install_type": "npm",
-      "github_url": "https://github.com/marqeta/marqeta-mcp",
-      "stars": 3,
-      "descriptionWords": 24,
-      "phantom": {
-        "command": "npx marqeta-mcp",
-        "package": "marqeta-mcp",
-        "registry": "npm",
-        "checkedAt": "2026-08-17"
-      },
-      "severity": "high",
-      "resolved": {
-        "package": "@marqeta/marqeta-mcp",
-        "registry": "npm",
-        "command": "npx -y @marqeta/marqeta-mcp",
-        "declaredRepo": "git+https://github.com/marqeta/marqeta-mcp.git",
-        "executable": true,
-        "entrypoint_unconfirmed": false
-      },
-      "note": "REPLACEMENT: current command names npm package \"marqeta-mcp\" (does not exist, checked 2026-08-17). npm package \"@marqeta/marqeta-mcp\" declares git+https://github.com/marqeta/marqeta-mcp.git AND ships an entry point — swap in, do not append."
-    },
-    {
-      "slug": "openaq-mcp",
-      "name": "OpenAQ",
-      "install_type": "npm",
-      "github_url": "https://github.com/cyanheads/openaq-mcp-server",
-      "stars": 2,
-      "descriptionWords": 34,
-      "phantom": {
-        "command": "npx openaq-mcp",
-        "package": "openaq-mcp",
-        "registry": "npm",
-        "checkedAt": "2026-08-17"
-      },
-      "severity": "high",
-      "resolved": {
-        "package": "@cyanheads/openaq-mcp-server",
-        "registry": "npm",
-        "command": "npx -y @cyanheads/openaq-mcp-server",
-        "declaredRepo": "git+https://github.com/cyanheads/openaq-mcp-server.git",
-        "executable": true,
-        "entrypoint_unconfirmed": false
-      },
-      "note": "REPLACEMENT: current command names npm package \"openaq-mcp\" (does not exist, checked 2026-08-17). npm package \"@cyanheads/openaq-mcp-server\" declares git+https://github.com/cyanheads/openaq-mcp-server.git AND ships an entry point — swap in, do not append."
-    },
-    {
-      "slug": "godaddy-mcp",
-      "name": "GoDaddy MCP",
-      "install_type": "npm",
-      "github_url": "https://github.com/Harshalkatakiya/godaddy-mcp",
-      "stars": 2,
-      "descriptionWords": 13,
-      "phantom": {
-        "command": "npx godaddy-mcp-server",
-        "package": "godaddy-mcp-server",
-        "registry": "npm",
-        "checkedAt": "2026-08-17"
-      },
-      "severity": "high",
-      "resolved": {
-        "package": "godaddy-mcp",
-        "registry": "npm",
-        "command": "npx -y godaddy-mcp",
-        "declaredRepo": "git+https://github.com/Harshalkatakiya/godaddy-mcp.git",
-        "executable": true,
-        "entrypoint_unconfirmed": false
-      },
-      "note": "REPLACEMENT: current command names npm package \"godaddy-mcp-server\" (does not exist, checked 2026-08-17). npm package \"godaddy-mcp\" declares git+https://github.com/Harshalkatakiya/godaddy-mcp.git AND ships an entry point — swap in, do not append."
-    },
-    {
-      "slug": "guru-mcp",
-      "name": "Guru",
-      "install_type": "npm",
-      "github_url": "https://github.com/GuruPDF/gurupdf-mcp",
-      "stars": 1,
-      "descriptionWords": 41,
-      "phantom": {
-        "command": "npx guru-mcp",
-        "package": "guru-mcp",
-        "registry": "npm",
-        "checkedAt": "2026-08-17"
-      },
-      "severity": "high",
-      "resolved": {
-        "package": "gurupdf-mcp",
-        "registry": "npm",
-        "command": "npx -y gurupdf-mcp",
-        "declaredRepo": "git+https://github.com/GuruPDF/gurupdf-mcp.git",
-        "executable": true,
-        "entrypoint_unconfirmed": false
-      },
-      "note": "REPLACEMENT: current command names npm package \"guru-mcp\" (does not exist, checked 2026-08-17). npm package \"gurupdf-mcp\" declares git+https://github.com/GuruPDF/gurupdf-mcp.git AND ships an entry point — swap in, do not append."
-    },
-    {
-      "slug": "couchbase",
-      "name": "Couchbase",
-      "install_type": "pip",
-      "github_url": "https://github.com/couchbase/mcp-server-couchbase",
-      "stars": 0,
-      "descriptionWords": 8,
-      "severity": "high",
-      "resolved": {
-        "package": "couchbase-mcp-server",
-        "registry": "PyPI",
-        "command": "uvx couchbase-mcp-server",
-        "declaredRepo": "https://github.com/couchbase/mcp-server-couchbase",
-        "executable": true,
-        "entrypoint_unconfirmed": false
-      },
-      "note": "PyPI package \"couchbase-mcp-server\" declares https://github.com/couchbase/mcp-server-couchbase AND ships a bin — the command is derived and runnable, not guessed."
-    },
-    {
-      "slug": "teachable-mcp",
-      "name": "Teachable",
-      "install_type": "npm",
-      "github_url": "https://github.com/ahmedrowaihi/teachable-mcp-server",
-      "stars": 0,
-      "descriptionWords": 32,
-      "phantom": {
-        "command": "npx teachable-mcp",
-        "package": "teachable-mcp",
-        "registry": "npm",
-        "checkedAt": "2026-08-17"
-      },
-      "severity": "high",
-      "resolved": {
-        "package": "teachable-mcp-server",
-        "registry": "npm",
-        "command": "npx -y teachable-mcp-server",
-        "declaredRepo": "git+https://github.com/ahmedrowaihi/teachable-mcp-server.git",
-        "executable": true,
-        "entrypoint_unconfirmed": false
-      },
-      "note": "REPLACEMENT: current command names npm package \"teachable-mcp\" (does not exist, checked 2026-08-17). npm package \"teachable-mcp-server\" declares git+https://github.com/ahmedrowaihi/teachable-mcp-server.git AND ships an entry point — swap in, do not append."
-    },
-    {
-      "slug": "payware-mcp",
-      "name": "Payware",
-      "install_type": "npm",
-      "github_url": "https://github.com/payware/mcp-server",
-      "stars": 0,
-      "descriptionWords": 34,
-      "phantom": {
-        "command": "npx payware-mcp",
-        "package": "payware-mcp",
-        "registry": "npm",
-        "checkedAt": "2026-08-17"
-      },
-      "severity": "high",
-      "resolved": {
-        "package": "@payware/mcp-server",
-        "registry": "npm",
-        "command": "npx -y @payware/mcp-server",
-        "declaredRepo": "git+https://github.com/payware/mcp-server.git",
-        "executable": true,
-        "entrypoint_unconfirmed": false
-      },
-      "nearMisses": [
-        {
-          "package": "mcp-server",
-          "declaredRepo": "git+https://github.com/sandy-mount/mcp-server.git"
-        }
-      ],
-      "note": "REPLACEMENT: current command names npm package \"payware-mcp\" (does not exist, checked 2026-08-17). npm package \"@payware/mcp-server\" declares git+https://github.com/payware/mcp-server.git AND ships an entry point — swap in, do not append."
-    },
-    {
       "slug": "terraform-cloud-mcp",
       "name": "Terraform Cloud MCP",
       "install_type": "npm",
@@ -18150,7 +17801,7 @@
         "executable": false,
         "entrypoint_unconfirmed": true
       },
-      "note": "PyPI package \"ray\" belongs to this repo but its wheel declares no [console_scripts] (or no readable wheel exists) — `uvx` would error. NOT written."
+      "note": "PyPI package \"ray\" belongs to this repo but its wheel could not be READ after 3 attempts (sdist-only, oversized, or the fetch failed) — runnability is UNKNOWN, not disproven; re-run before concluding anything. NOT written."
     },
     {
       "slug": "openai",
@@ -18178,7 +17829,7 @@
         "executable": false,
         "entrypoint_unconfirmed": true
       },
-      "note": "PyPI package \"discord.py\" belongs to this repo but its wheel declares no [console_scripts] (or no readable wheel exists) — `uvx` would error. NOT written."
+      "note": "PyPI package \"discord.py\" belongs to this repo but its wheel declares no [console_scripts] — `uvx` would error. NOT written."
     },
     {
       "slug": "fastapi-mcp",
@@ -18196,7 +17847,7 @@
         "executable": false,
         "entrypoint_unconfirmed": true
       },
-      "note": "PyPI package \"fastapi_mcp\" belongs to this repo but its wheel declares no [console_scripts] (or no readable wheel exists) — `uvx` would error. NOT written."
+      "note": "PyPI package \"fastapi_mcp\" belongs to this repo but its wheel declares no [console_scripts] — `uvx` would error. NOT written."
     },
     {
       "slug": "tabnine",
@@ -18308,7 +17959,7 @@
         "executable": false,
         "entrypoint_unconfirmed": true
       },
-      "note": "PyPI package \"nba_api\" belongs to this repo but its wheel declares no [console_scripts] (or no readable wheel exists) — `uvx` would error. NOT written."
+      "note": "PyPI package \"nba_api\" belongs to this repo but its wheel declares no [console_scripts] — `uvx` would error. NOT written."
     },
     {
       "slug": "langchain",
@@ -18326,7 +17977,7 @@
         "executable": false,
         "entrypoint_unconfirmed": true
       },
-      "note": "PyPI package \"langchain-mcp-adapters\" belongs to this repo but its wheel declares no [console_scripts] (or no readable wheel exists) — `uvx` would error. NOT written."
+      "note": "PyPI package \"langchain-mcp-adapters\" belongs to this repo but its wheel declares no [console_scripts] — `uvx` would error. NOT written."
     },
     {
       "slug": "microsoft-sentinel-mcp",
@@ -18566,7 +18217,7 @@
         "executable": false,
         "entrypoint_unconfirmed": true
       },
-      "note": "PyPI package \"mlb-statsapi\" belongs to this repo but its wheel declares no [console_scripts] (or no readable wheel exists) — `uvx` would error. NOT written."
+      "note": "PyPI package \"mlb-statsapi\" belongs to this repo but its wheel declares no [console_scripts] — `uvx` would error. NOT written."
     },
     {
       "slug": "supabase-mcp",
@@ -18583,22 +18234,6 @@
         }
       ],
       "note": "No npm package declares this repo. 1 name(s) exist but belong elsewhere — do NOT write them."
-    },
-    {
-      "slug": "fluxcd-mcp",
-      "name": "Flux CD MCP",
-      "install_type": "binary",
-      "github_url": "https://github.com/controlplaneio-fluxcd/flux-operator",
-      "stars": 740,
-      "descriptionWords": 151,
-      "phantom": {
-        "command": "brew install controlplaneio-fluxcd/tap/flux-operator-mcp",
-        "package": "fluxcd-mcp-server",
-        "registry": "npm",
-        "checkedAt": "2026-08-17"
-      },
-      "severity": "medium",
-      "note": "Command names npm package \"fluxcd-mcp-server\", which does not exist (checked 2026-08-17); install_type is binary, so there is no registry to derive a replacement from — read the repo README."
     },
     {
       "slug": "cloudflare-api-mcp",
@@ -18886,7 +18521,7 @@
         "executable": false,
         "entrypoint_unconfirmed": true
       },
-      "note": "PyPI package \"coinbase-advanced-py\" belongs to this repo but its wheel declares no [console_scripts] (or no readable wheel exists) — `uvx` would error. NOT written."
+      "note": "PyPI package \"coinbase-advanced-py\" belongs to this repo but its wheel declares no [console_scripts] — `uvx` would error. NOT written."
     },
     {
       "slug": "quickbooks",
@@ -19129,30 +18764,6 @@
         }
       ],
       "note": "No npm package declares this repo. 1 name(s) exist but belong elsewhere — do NOT write them."
-    },
-    {
-      "slug": "starrocks-mcp",
-      "name": "StarRocks",
-      "install_type": "pip",
-      "github_url": "https://github.com/StarRocks/mcp-server-starrocks",
-      "stars": 182,
-      "descriptionWords": 24,
-      "phantom": {
-        "command": "pip install starrocks-mcp",
-        "package": "starrocks-mcp",
-        "registry": "pip",
-        "checkedAt": "2026-08-17"
-      },
-      "severity": "medium",
-      "resolved": {
-        "package": "mcp-server-starrocks",
-        "registry": "PyPI",
-        "command": "uvx mcp-server-starrocks",
-        "declaredRepo": "https://github.com/starrocks/mcp-server-starrocks",
-        "executable": false,
-        "entrypoint_unconfirmed": true
-      },
-      "note": "PyPI package \"mcp-server-starrocks\" belongs to this repo but its wheel declares no [console_scripts] (or no readable wheel exists) — `uvx` would error. NOT written."
     },
     {
       "slug": "apache-airflow-mcp",
@@ -21317,22 +20928,6 @@
       "note": "No npm package declares this repo. 1 name(s) exist but belong elsewhere — do NOT write them."
     },
     {
-      "slug": "kiwi-mcp",
-      "name": "Kiwi.com",
-      "install_type": "remote",
-      "github_url": "https://github.com/alpic-ai/kiwi-mcp-server-public",
-      "stars": 11,
-      "descriptionWords": 175,
-      "phantom": {
-        "command": "claude mcp add --transport http kiwi-com-flight-search https://mcp.kiwi.com",
-        "package": "kiwi-mcp",
-        "registry": "npm",
-        "checkedAt": "2026-08-17"
-      },
-      "severity": "medium",
-      "note": "Command names npm package \"kiwi-mcp\", which does not exist (checked 2026-08-17); install_type is remote, so there is no registry to derive a replacement from — read the repo README."
-    },
-    {
       "slug": "crypto-portfolio-mcp",
       "name": "Crypto Portfolio MCP",
       "install_type": "npm",
@@ -21757,30 +21352,6 @@
       "note": "No PyPI package found under any name derived from the repo path; read the README."
     },
     {
-      "slug": "nagios-mcp",
-      "name": "Nagios MCP",
-      "install_type": "pip",
-      "github_url": "https://github.com/PROSPIRE-TECHNOLOGY-SERVICES/nagios-mcp",
-      "stars": 5,
-      "descriptionWords": 13,
-      "phantom": {
-        "command": "pip install nagios-mcp-server",
-        "package": "nagios-mcp-server",
-        "registry": "pip",
-        "checkedAt": "2026-08-17"
-      },
-      "severity": "medium",
-      "resolved": {
-        "package": "nagios-mcp",
-        "registry": "PyPI",
-        "command": "uvx nagios-mcp",
-        "declaredRepo": "https://github.com/PROSPIRE-TECHNOLOGY-SERVICES/nagios-mcp",
-        "executable": false,
-        "entrypoint_unconfirmed": true
-      },
-      "note": "PyPI package \"nagios-mcp\" belongs to this repo but its wheel declares no [console_scripts] (or no readable wheel exists) — `uvx` would error. NOT written."
-    },
-    {
       "slug": "microsoft-teams",
       "name": "Microsoft Teams",
       "install_type": "npm",
@@ -21959,30 +21530,6 @@
       },
       "severity": "medium",
       "note": "No PyPI package found under any name derived from the repo path; read the README."
-    },
-    {
-      "slug": "ibm-watsonxdata-mcp",
-      "name": "IBM watsonx.data",
-      "install_type": "pip",
-      "github_url": "https://github.com/IBM/ibm-watsonxdata-dl-retrieval-mcp-server",
-      "stars": 4,
-      "descriptionWords": 35,
-      "phantom": {
-        "command": "pip install ibm-watsonxdata-mcp",
-        "package": "ibm-watsonxdata-mcp",
-        "registry": "pip",
-        "checkedAt": "2026-08-17"
-      },
-      "severity": "medium",
-      "resolved": {
-        "package": "ibm-watsonxdata-dl-retrieval-mcp-server",
-        "registry": "PyPI",
-        "command": "uvx ibm-watsonxdata-dl-retrieval-mcp-server",
-        "declaredRepo": "https://github.com/IBM/ibm-watsonxdata-dl-retrieval-mcp-server/issues",
-        "executable": false,
-        "entrypoint_unconfirmed": true
-      },
-      "note": "PyPI package \"ibm-watsonxdata-dl-retrieval-mcp-server\" belongs to this repo but its wheel declares no [console_scripts] (or no readable wheel exists) — `uvx` would error. NOT written."
     },
     {
       "slug": "observable-mcp",
@@ -22377,22 +21924,6 @@
       "descriptionWords": 25,
       "severity": "medium",
       "note": "No npm package found under any name derived from the repo path; read the README."
-    },
-    {
-      "slug": "clicksend-mcp",
-      "name": "ClickSend MCP",
-      "install_type": "npm",
-      "github_url": "https://github.com/ClickSend/clicksend-mcp-server",
-      "stars": 2,
-      "descriptionWords": 27,
-      "severity": "medium",
-      "nearMisses": [
-        {
-          "package": "@clicksend/clicksend-mcp-server",
-          "declaredRepo": null
-        }
-      ],
-      "note": "No npm package declares this repo. 1 name(s) exist but belong elsewhere — do NOT write them."
     },
     {
       "slug": "farcaster-mcp",
@@ -23822,7 +23353,7 @@
         "executable": false,
         "entrypoint_unconfirmed": true
       },
-      "note": "PyPI package \"alation-ai-agent-sdk\" belongs to this repo but its wheel declares no [console_scripts] (or no readable wheel exists) — `uvx` would error. NOT written."
+      "note": "PyPI package \"alation-ai-agent-sdk\" belongs to this repo but its wheel could not be READ after 3 attempts (sdist-only, oversized, or the fetch failed) — runnability is UNKNOWN, not disproven; re-run before concluding anything. NOT written."
     },
     {
       "slug": "kiln",
@@ -23839,22 +23370,6 @@
         }
       ],
       "note": "No PyPI package declares this repo. 1 name(s) exist but belong elsewhere — do NOT write them."
-    },
-    {
-      "slug": "clicksend",
-      "name": "ClickSend",
-      "install_type": "npm",
-      "github_url": "https://github.com/ClickSend/clicksend-mcp-server/",
-      "stars": 0,
-      "descriptionWords": 8,
-      "severity": "medium",
-      "nearMisses": [
-        {
-          "package": "@clicksend/clicksend-mcp-server",
-          "declaredRepo": null
-        }
-      ],
-      "note": "No npm package declares this repo. 1 name(s) exist but belong elsewhere — do NOT write them."
     },
     {
       "slug": "mailjet",
