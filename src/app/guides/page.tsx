@@ -172,6 +172,13 @@ export default function GuidesPage() {
           behind this page: a setup guide with invented steps is worse than no guide,
           because the reader finds out by pasting it into a terminal.
         </p>
+        <p className="mt-4 leading-relaxed text-gray-500">
+          If the term itself is still fuzzy, start with{" "}
+          <Link href="/what-is-an-mcp-server" className="text-blue-400 transition hover:text-blue-300">
+            what &ldquo;MCP server&rdquo; means
+          </Link>{" "}
+          — what MCP stands for, and why almost none of these run on a server.
+        </p>
 
         <nav className="mt-8 flex flex-wrap gap-2 text-sm">
           {grouped.map(({ bucket, items }) => (

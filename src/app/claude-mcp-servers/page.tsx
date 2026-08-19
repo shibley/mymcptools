@@ -126,6 +126,11 @@ export default function ClaudeMCPServersPage() {
             to external tools and data sources. Every server listed here works with Claude via MCP — giving
             your AI assistant new capabilities through a single standardized interface.
           </p>
+          <p className="text-gray-500 max-w-3xl mb-6 text-sm">
+            Not sure what the term covers? <Link href="/what-is-an-mcp-server" className="text-blue-400 hover:text-blue-300 transition">
+            What &ldquo;MCP server&rdquo; means</Link> — the definition, the host/client/server split, and what a server
+            actually hands the model.
+          </p>
           <div className="flex flex-wrap gap-3">
             <Link href="/servers" className="bg-blue-600 hover:bg-blue-700 text-white px-5 py-2.5 rounded-lg font-medium transition text-sm">
               Browse All Servers →

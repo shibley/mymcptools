@@ -148,6 +148,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'weekly',
       priority: 0.9,
     },
+    // Definition page for the "mcp server means" / "what does mcp server mean"
+    // family — 3,600 SV at SD 19, the highest-volume lowest-difficulty term the
+    // keyword mining has turned up. Informational intent, so no /servers/[slug]
+    // page can win it; it needs its own explainer URL.
+    {
+      url: `${baseUrl}/what-is-an-mcp-server`,
+      lastModified: now,
+      changeFrequency: 'weekly',
+      priority: 0.9,
+    },
     {
       url: `${baseUrl}/mcp-server`,
       lastModified: now,

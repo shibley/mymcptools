@@ -5175,9 +5175,9 @@
     },
     "power-bi-mcp": {
       "registry": "npm",
-      "package": "powerbi-mcp",
+      "package": "@microsoft/powerbi-modeling-mcp",
       "exists": true,
-      "checkedAt": "2026-08-17"
+      "checkedAt": "2026-08-19"
     },
     "powersync-mcp": {
       "registry": "npm",

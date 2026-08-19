@@ -253,6 +253,11 @@ export default function MCPMarketplacePage() {
               MyMCPTools is the largest independent MCP marketplace, with {servers.length}+ servers across 19 categories,
               live uptime status, install commands, and a free submission process for new servers.
             </p>
+            <p>
+              New to the term? <Link href="/what-is-an-mcp-server" className="text-blue-400 hover:text-blue-300 transition">
+              What &ldquo;MCP server&rdquo; actually means</Link> explains the protocol, the host/client/server split, and why
+              most MCP servers are not hosted anywhere at all.
+            </p>
           </div>
         </section>
 
