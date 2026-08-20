@@ -13,6 +13,58 @@ then discuss a paid tier. Below that, the data is real but nothing wants it.
 
 ---
 
+## 2026-08-20 late (4th reading) — the gate is now arithmetically out of reach
+
+`node scripts/mcp-demand-report.mts --days 30`, 63h of data.
+
+- **3,654 calls** from **148 sessions** = **100 distinct agents** by
+  client-name+UA identity (2,964 / 130 / 96 six hours earlier).
+- **0 qualified consumers.** Fourth consecutive reading at zero, across a
+  window in which call volume grew 23×.
+- 7 callers invoked a real tool (53 calls); all 7 self-identify as scanner
+  infrastructure in either the MCP client name or the UA, so none qualify.
+  116 of the 123 non-crawler callers handshook and read `tools/list` only.
+- Median inter-call gap still 0.4s across 119 multi-call sessions.
+
+**New this reading: the report now answers reachability, not just the total.**
+Three flat readings had established "not yet"; what a kill decision actually
+turns on is whether the arrival curve *could* still deliver 100 qualified
+consumers by 2026-09-16. The report now fits the day-over-day new-agent ratio
+on complete days only (the partial tail day would read as a collapse and
+flatter the case for killing early) and extrapolates the geometric tail.
+
+```
+day           calls  agents  new  qualified
+2026-08-18     1000      54   54          0
+2026-08-19     1315      68   31          0
+2026-08-20     1342      71   15          0  (partial, ~23h UTC)
+
+day-over-day new-agent ratio   0.58x  (54 -> 31)
+days to decision               27
+projected further arrivals     42
+projected total agents ever    142  (100 today)
+reachable only if 70% of all 142 agents ever seen qualify
+  (observed rate so far: 0.0%, 100 more needed)
+```
+
+**Verdict: BELOW GATE, and the gate is no longer reachable on trend.** New
+arrivals are decaying at 0.58× per day while call volume rises — the registries
+that were going to find us are finishing finding us, and the ones already here
+re-poll on a schedule. Even granting every one of the 42 projected future
+arrivals, the ceiling is 142 agents ever; clearing the gate would require 70%
+of them to be qualified consumers against an observed rate of 0.0% sustained
+over 100 agents. There is no arrival trend that reaches 100 qualified consumers
+by 2026-09-16.
+
+This does not close the slot early — the decision date stands and the record
+keeps accruing — but the remaining fires should be read as confirming a known
+answer, not as a live test. Nothing should be built on the assumption that
+demand arrives.
+
+**/api/v1 free tier:** 0 calls, 0 callers, fourth consecutive reading.
+
+---
+
 ## 2026-08-20 (3rd reading) — the audience is saturating, and 130 "callers" is really 96 agents
 
 `node scripts/mcp-demand-report.mts --days 30`, 51h of data.

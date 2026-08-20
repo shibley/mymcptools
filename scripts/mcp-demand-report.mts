@@ -23,6 +23,11 @@ import pg from "pg";
 
 const HERE = dirname(fileURLToPath(import.meta.url));
 const GATE = 100;
+// The 30-day window opened 2026-08-17 with a true zero, so the slot's own
+// kill-or-escalate call falls on 2026-09-16. Naming it here lets the report
+// answer "is the gate still reachable from where we are" instead of making
+// every fire re-derive the arithmetic by hand.
+const DECISION_DAY = "2026-09-16";
 
 function connectionString(): string {
   const direct = process.env.ANALYTICS_DATABASE_URL?.replace(/\\n/g, "").trim();
@@ -234,6 +239,63 @@ if (t.calls === 0) {
     console.log(
       `${day}  ${String(r.calls).padStart(6)}  ${String(r.agents).padStart(6)}  ${String(r.new_agents).padStart(3)}  ${String(r.qualified).padStart(9)}${partial}`
     );
+  }
+
+  // Reachability, not just the running total. Three flat readings in a row said
+  // "not yet"; the question a kill decision actually turns on is whether the
+  // arrival curve could still deliver 100 qualified consumers by DECISION_DAY.
+  // Fit the decay on COMPLETE days only — the partial tail day would read as a
+  // collapse and flatter the case for killing early.
+  const completeDays = daily.rows.filter((r: any) => {
+    const day = new Date(r.day).toISOString().slice(0, 10);
+    return !(day === lastDay && day === lastSeenDay && hoursElapsed < 24);
+  });
+  const arrivals = completeDays.map((r: any) => Number(r.new_agents));
+  console.log(`\n-- is the gate still reachable by ${DECISION_DAY}? --`);
+  const daysLeft = Math.max(
+    0,
+    Math.round((Date.parse(`${DECISION_DAY}T00:00:00Z`) - Date.parse(`${lastDay}T00:00:00Z`)) / 86_400_000)
+  );
+  if (arrivals.length < 2) {
+    console.log(`not enough complete days yet (${arrivals.length}) to fit an arrival trend`);
+  } else {
+    // Geometric mean of day-over-day ratios: arrivals decay multiplicatively as
+    // the registries that were going to find us finish finding us, so an
+    // arithmetic mean would overstate the tail.
+    const ratios: number[] = [];
+    for (let i = 1; i < arrivals.length; i++) {
+      if (arrivals[i - 1] > 0) ratios.push((arrivals[i] + 0.5) / (arrivals[i - 1] + 0.5));
+    }
+    const r = ratios.length ? Math.exp(ratios.reduce((a, b) => a + Math.log(b), 0) / ratios.length) : 1;
+    const last = arrivals[arrivals.length - 1];
+    // Geometric tail when decaying; flat-rate extrapolation when it is not,
+    // which is the generous reading and the one worth failing against.
+    const projectedNew =
+      r < 1
+        ? Math.round(last * r * (1 - Math.pow(r, daysLeft)) / (1 - r))
+        : Math.round(last * daysLeft);
+    const ceiling = id0.idents + projectedNew;
+    console.log(`day-over-day new-agent ratio   ${r.toFixed(2)}x  (${arrivals.join(" -> ")})`);
+    console.log(`days to decision               ${daysLeft}`);
+    console.log(`projected further arrivals     ${projectedNew}`);
+    console.log(`projected total agents ever    ${ceiling}  (${id0.idents} today)`);
+    const qualifiedNeeded = GATE - q.callers;
+    if (ceiling < GATE) {
+      console.log(
+        `UNREACHABLE: even if every future arrival were a qualified consumer, the ceiling is ${ceiling} < ${GATE}.`
+      );
+    } else {
+      // Qualified consumers can come from a future arrival or from an agent
+      // that already handshook and comes back to actually call a tool, so the
+      // denominator is every agent that will ever have touched us, not just the
+      // new ones.
+      const share = (GATE / ceiling) * 100;
+      console.log(
+        `reachable only if ${share.toFixed(0)}% of all ${ceiling} agents ever seen qualify ` +
+          `(observed rate so far: ${((q.callers / Math.max(1, id0.idents)) * 100).toFixed(1)}%, ` +
+          `${qualifiedNeeded} more needed).`
+      );
+    }
   }
 
   const verdict =
