@@ -1897,6 +1897,12 @@
       "exists": false,
       "checkedAt": "2026-08-17"
     },
+    "dynatrace": {
+      "registry": "npm",
+      "package": "@dynatrace-oss/dynatrace-mcp-server",
+      "exists": true,
+      "checkedAt": "2026-08-20"
+    },
     "e2b": {
       "registry": "npm",
       "package": "@e2b/mcp-server",
@@ -3636,6 +3642,12 @@
       "package": "@line/line-bot-mcp-server",
       "exists": true,
       "checkedAt": "2026-08-17"
+    },
+    "linkedin": {
+      "registry": "pip",
+      "package": "mcp-server-linkedin",
+      "exists": true,
+      "checkedAt": "2026-08-20"
     },
     "linksquares-mcp": {
       "registry": "npm",
@@ -6185,12 +6197,6 @@
     "splitio-mcp": {
       "registry": "npm",
       "package": "splitio-mcp",
-      "exists": false,
-      "checkedAt": "2026-08-17"
-    },
-    "splunk-mcp": {
-      "registry": "pip",
-      "package": "splunk-mcp",
       "exists": false,
       "checkedAt": "2026-08-17"
     },

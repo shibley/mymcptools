@@ -29,6 +29,30 @@ const nextConfig: NextConfig = {
        * duplicate is gone from servers.ts and 301s here.
        */
       { source: "/servers/powerbi-mcp", destination: "/servers/power-bi-mcp", permanent: true },
+      /**
+       * Snowflake was carried three times: `snowflake` (Snowflake's own managed
+       * Cortex MCP server, deep entry), `snowflake-mcp` (isaacwasserman's
+       * self-hosted server — already described inside the canonical entry) and
+       * `snowflake-cortex-mcp` (an 8★ Bedrock demo repo). "snowflake mcp" mines
+       * at 1,000 SV / SD 25 and three pages were splitting it. The two thin ones
+       * are gone from servers.ts and 301 at the survivor.
+       */
+      { source: "/servers/snowflake-mcp", destination: "/servers/snowflake", permanent: true },
+      { source: "/servers/snowflake-cortex-mcp", destination: "/servers/snowflake", permanent: true },
+      /**
+       * `dynatrace-mcp` had github_url: null / verification: 'unresolved' — no
+       * repository was ever found for it — while `dynatrace` points at the real
+       * dynatrace-oss/dynatrace-mcp. 320 SV / SD 37, one page, not two.
+       */
+      { source: "/servers/dynatrace-mcp", destination: "/servers/dynatrace", permanent: true },
+      /**
+       * `linkedin` had github_url: null and a false `official: true`; the
+       * duplicate `linkedin-api-mcp` pointed at a 0★ marketing-API wrapper.
+       * "linkedin mcp" mines at 480 SV / SD 29. The surviving `linkedin` entry
+       * now carries stickerdaniel/linkedin-mcp-server (3,163★), which is what
+       * the query actually means.
+       */
+      { source: "/servers/linkedin-api-mcp", destination: "/servers/linkedin", permanent: true },
     ];
   },
 };
