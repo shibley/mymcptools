@@ -13,6 +13,51 @@ then discuss a paid tier. Below that, the data is real but nothing wants it.
 
 ---
 
+## 2026-08-20 (3rd reading) — the audience is saturating, and 130 "callers" is really 96 agents
+
+`node scripts/mcp-demand-report.mts --days 30`, 51h of data.
+
+- **2,964 calls** from **130 sessions** (2,240 / 92 at the 2nd reading — volume
+  up 32% in 27h)
+- **0 qualified consumers.** Unchanged across all three readings.
+- 5 sessions invoked a real tool (41 tool calls); all 5 are scanner-named.
+- 101 of the 106 non-crawler sessions handshook and left.
+- 55 sessions self-name as registry/scanner infrastructure.
+- median inter-call gap 0.4s across 106 multi-call sessions
+
+**Two corrections to how the number was being read.**
+
+*`session_hash` counts sessions, not agents.* Not one hash in the window spans
+two days — it rotates per connection. Identity that survives a reconnect is the
+self-reported client name plus the UA, and by that measure the 130 "distinct
+callers" are **96 distinct agents**. `SentinelOracle/0.1` alone holds 794 calls
+across 41 hashes. The report now prints both, labelled.
+
+*The population is closing, not growing.* 55 of the 96 agents appear on more
+than one day — this is a standing set of graders re-polling on a schedule, not
+a stream of arrivals:
+
+| day | calls | agents | new agents | qualified |
+| --- | --- | --- | --- | --- |
+| 2026-08-18 | 1,000 | 54 | 54 | 0 |
+| 2026-08-19 | 1,315 | 68 | 31 | 0 |
+| 2026-08-20 | 649 | 54 | 11 | 0 (partial, ~11h UTC) |
+
+Day 1 is definitionally all-new, so the comparison that carries information is
+08-18 → 08-19: **new agents fell 43% while calls rose 32%.** Day 3 is a third of
+a day and is not comparable. The same machines are calling more often; almost
+no new ones are finding us.
+
+That matters for 2026-09-16. The gate is 100 qualified consumers, and the
+qualified column has been flat at zero for every hour of instrumented history
+while the discovery funnel that feeds it is already narrowing. There is no
+arrival trend that reaches 100 by the decision date — the remaining question is
+only whether a single genuine consumer ever shows up, not whether a hundred do.
+
+**/api/v1 free tier:** 0 calls, 0 callers, third consecutive reading.
+
+---
+
 ## 2026-08-19 (2nd reading) — the 6 tool-invokers were all scanners; the real number is 0
 
 Window: 30 days, ~63 hours of real data. Re-ran the report and then looked at

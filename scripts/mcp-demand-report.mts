@@ -65,7 +65,7 @@ const t = totals.rows[0];
 
 console.log(`\n=== MCP demand, last ${DAYS} days (mymcptools.com/api/mcp) ===`);
 console.log(`calls                     ${t.calls}`);
-console.log(`distinct callers          ${t.callers}`);
+console.log(`distinct sessions         ${t.callers}  (see caller identity below — agents are fewer)`);
 console.log(`  crawler-classified      ${t.callers - t.consumers} (${t.crawler_calls} calls)`);
 console.log(`  consumer-classified     ${t.consumers}`);
 console.log(`first / last seen         ${t.first_seen ?? "—"} / ${t.last_seen ?? "—"}`);
@@ -172,6 +172,69 @@ if (t.calls === 0) {
   console.log(`self-named as registry/   ${registryish.rows[0].callers} callers`);
   console.log(`  scanner infrastructure`);
   console.log(`handshake-only            ${t.consumers - tc.tool_callers} callers  <- indexed us, consumed nothing`);
+
+  // session_hash rotates per connection, so it counts *sessions*, not agents:
+  // not one hash in the whole window spans two days. Identity that survives a
+  // reconnect is the self-reported client name plus the UA — SentinelOracle
+  // alone holds 794 calls across 41 hashes. Reporting sessions as "distinct
+  // callers" inflates the audience the same way counting scanner tool calls
+  // inflated demand, so both numbers get printed side by side.
+  const CALLER_ID = `coalesce(nullif(utm_medium, ''), '(anon)') || ' | ' || coalesce(left(ua, 80), '')`;
+  const identity = await client.query(
+    `select count(*)::int as idents,
+            count(*) filter (where days > 1)::int as recurring,
+            count(*) filter (where days = 1)::int as one_day
+       from (select ${CALLER_ID} as id, count(distinct ts::date) as days
+               from analytics.events where ${WHERE} group by 1) s`,
+    [String(DAYS)]
+  );
+  const id0 = identity.rows[0];
+  console.log(`\n-- caller identity (client name + UA, survives reconnects) --`);
+  console.log(`distinct agents           ${id0.idents}  (vs ${t.callers} sessions)`);
+  console.log(`  seen on >1 day          ${id0.recurring}  <- re-polling on a schedule`);
+  console.log(`  seen on exactly 1 day   ${id0.one_day}`);
+
+  // Cumulative totals cannot tell a growing audience apart from a fixed set of
+  // graders re-polling, and those two have opposite implications for the
+  // 2026-09-16 verdict: the first says the 30-day number is still climbing, the
+  // second says it already found its ceiling. An agent is NEW on the first day
+  // its identity appears anywhere in the window, so new-agents falling toward
+  // zero while calls hold steady is the saturation signal.
+  const daily = await client.query(
+    `with tagged as (
+       select ts, session_hash, path, ${CALLER_ID} as id,
+              (utm_medium ~* ${SCANNER_NAME} or ua ~* ${SCANNER_NAME}) as scannerish
+         from analytics.events where ${WHERE}
+     ),
+     debut as (select id, min(ts)::date as day from tagged group by 1),
+     scanners as (select distinct session_hash from tagged where scannerish)
+     select t.ts::date                              as day,
+            count(*)::int                           as calls,
+            count(distinct t.id)::int               as agents,
+            count(distinct d.id)::int               as new_agents,
+            count(distinct t.id) filter (
+              where ${REAL_TOOL_CALL}
+                and t.session_hash not in (select session_hash from scanners)
+            )::int                                  as qualified
+       from tagged t
+       left join debut d on d.id = t.id and d.day = t.ts::date
+      group by 1 order by 1`,
+    [String(DAYS)]
+  );
+  // The final row is almost always a few hours of an unfinished day; without the
+  // marker its low counts read as a collapse in traffic rather than a clock.
+  const lastDay = daily.rows.length ? new Date(daily.rows[daily.rows.length - 1].day).toISOString().slice(0, 10) : "";
+  const lastSeenDay = t.last_seen ? new Date(t.last_seen).toISOString().slice(0, 10) : "";
+  const hoursElapsed = t.last_seen ? new Date(t.last_seen).getUTCHours() + 1 : 24;
+  console.log(`\n-- daily arrivals --`);
+  console.log(`day           calls  agents  new  qualified`);
+  for (const r of daily.rows) {
+    const day = new Date(r.day).toISOString().slice(0, 10);
+    const partial = day === lastDay && day === lastSeenDay && hoursElapsed < 24 ? `  (partial, ~${hoursElapsed}h UTC)` : "";
+    console.log(
+      `${day}  ${String(r.calls).padStart(6)}  ${String(r.agents).padStart(6)}  ${String(r.new_agents).padStart(3)}  ${String(r.qualified).padStart(9)}${partial}`
+    );
+  }
 
   const verdict =
     q.callers >= GATE
