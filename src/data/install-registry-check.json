@@ -2597,7 +2597,7 @@
       "registry": "pip",
       "package": "mcp-grafana",
       "exists": true,
-      "checkedAt": "2026-08-17"
+      "checkedAt": "2026-08-20"
     },
     "grants-gov-mcp": {
       "registry": "npm",

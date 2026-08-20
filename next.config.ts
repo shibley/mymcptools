@@ -53,6 +53,17 @@ const nextConfig: NextConfig = {
        * the query actually means.
        */
       { source: "/servers/linkedin-api-mcp", destination: "/servers/linkedin", permanent: true },
+      /**
+       * Observability duplicate pairs, found by grepping servers.ts for the
+       * terms mined on 2026-08-20. Both `grafana-mcp` and `prometheus-mcp`
+       * were github_url: null / verification: 'unresolved' community stubs
+       * splitting the query with a real, verified entry — grafana/mcp-grafana
+       * (3,377\u2605) and prometheus/prometheus-mcp (86\u2605, the adopted
+       * tjhop/prometheus-mcp-server). "grafana mcp" mines at 1,600 SV / SD 25,
+       * "prometheus mcp" at 170 SV / SD 29. One page each, not two.
+       */
+      { source: "/servers/grafana-mcp", destination: "/servers/grafana", permanent: true },
+      { source: "/servers/prometheus-mcp", destination: "/servers/prometheus", permanent: true },
     ];
   },
 };
