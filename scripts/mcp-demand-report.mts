@@ -296,6 +296,53 @@ if (t.calls === 0) {
           `${qualifiedNeeded} more needed).`
       );
     }
+
+    // ---- terminal test: is the gate out of reach even under the kindest
+    // assumptions? The decay fit above is the honest read of the arrival curve,
+    // but a kill decision should not rest on a curve fit alone — a skeptic can
+    // always answer "what if arrivals stop decaying?". The constraint that
+    // actually binds is the QUALIFICATION rate, and that one has an upper bound
+    // we can state with confidence rather than a projection.
+    //
+    // Observed k qualified out of n agents. The Wilson 95% upper bound on the
+    // per-agent qualification probability answers "given we have seen this, how
+    // high could the true rate plausibly be?" — for k=0 it reduces to roughly
+    // the rule of three (3/n). Divide the gate by that ceiling rate and you get
+    // the number of agents that would have to touch the endpoint AT ALL for 100
+    // qualified consumers to be plausible. Compare that against the most
+    // generous arrival model available (flat at the current rate, zero decay,
+    // every remaining day) rather than the fitted one. If even that falls short,
+    // the gate is unreachable for reasons no amount of further waiting changes.
+    const n = Math.max(1, id0.idents);
+    const k = q.callers;
+    const Z = 1.96;
+    const phat = k / n;
+    const denom = 1 + (Z * Z) / n;
+    const centre = phat + (Z * Z) / (2 * n);
+    const margin = Z * Math.sqrt((phat * (1 - phat)) / n + (Z * Z) / (4 * n * n));
+    const pHi = Math.min(1, (centre + margin) / denom);
+    const agentsNeeded = pHi > 0 ? Math.ceil(GATE / pHi) : Infinity;
+    // No decay at all, current arrival rate held flat to the decision day.
+    const generousCeiling = id0.idents + last * daysLeft;
+    console.log(
+      `qualification rate            ${k}/${n} observed, 95% upper bound ${(pHi * 100).toFixed(1)}%`
+    );
+    console.log(
+      `agents needed at that rate    ${agentsNeeded}  vs ${generousCeiling} under flat arrivals (no decay, ${last}/day x ${daysLeft}d)`
+    );
+    if (agentsNeeded > generousCeiling) {
+      console.log(
+        `TERMINAL: unreachable at 95% confidence. Even holding arrivals flat at the current ` +
+          `rate — ignoring the ${r.toFixed(2)}x/day decay — the endpoint would see ${generousCeiling} agents ever, ` +
+          `and ${GATE} qualified consumers would require at least ${agentsNeeded}. Waiting for ${DECISION_DAY} ` +
+          `re-confirms a settled answer; the finding is the zero.`
+      );
+    } else {
+      console.log(
+        `NOT YET TERMINAL: flat arrivals could still deliver ${generousCeiling} agents, enough to clear the gate ` +
+          `if the true qualification rate sits at its 95% upper bound. Keep reading.`
+      );
+    }
   }
 
   const verdict =

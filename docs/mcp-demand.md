@@ -13,6 +13,87 @@ then discuss a paid tier. Below that, the data is real but nothing wants it.
 
 ---
 
+## 2026-08-21 (5th reading) — TERMINAL: unreachable at 95% confidence, stop the slot
+
+`node scripts/mcp-demand-report.mts --days 30`, 4 days of data (2026-08-18 →
+2026-08-21, the last day 23.5h complete in UTC).
+
+- **5,114 calls** from **215 sessions** = **108 distinct agents** by
+  client-name+UA identity.
+- **0 qualified consumers.** Fifth consecutive reading at zero, over a window
+  in which call volume grew from 1,670 to 5,114.
+- 9 callers invoked a real tool (65 calls). All 9 self-identify as scanner
+  infrastructure in the client name or the UA — `verifymcp-probe`,
+  `agentstatus-probe`, `aisec-registry-probe`, `mcp-ledger-probe`,
+  `mcpindex-trust`, `mcp-rugpull-research`, `glimind-probe`, `acton-probe`,
+  `glama`. 162 of the 171 non-crawler callers handshook and read `tools/list`
+  only.
+- Median inter-call gap still 0.4s across 160 multi-call sessions. Nothing in
+  four days has paced like a human.
+- **/api/v1 free tier: still 0 calls, 0 callers**, four days after it opened
+  keyless. The REST half has never been touched by anything.
+
+**Daily arrivals, the only series that was ever going to move:**
+
+| day | calls | agents | new agents | qualified |
+| --- | --- | --- | --- | --- |
+| 2026-08-18 | 1,000 | 54 | 54 | 0 |
+| 2026-08-19 | 1,315 | 68 | 31 | 0 |
+| 2026-08-20 | 1,416 | 72 | 16 | 0 |
+| 2026-08-21 | 1,383 | 66 | 7 | 0 |
+
+Calls are flat around 1,400/day while new arrivals decay 0.52×/day. That is the
+signature of a fixed population of schedulers re-polling: 66 of the 108 agents
+have been seen on more than one day. The registries that were going to find us
+have finished finding us.
+
+### Why this reading ends the test rather than continuing it
+
+The 4th reading called the gate unreachable *on the arrival trend*. That rested
+on a curve fit, and a curve fit invites the obvious objection — what if arrivals
+stop decaying? So the report now tests the constraint that actually binds, which
+is not arrivals but the **qualification rate**, and it bounds that rate instead
+of projecting it:
+
+- Observed: **0 qualified out of 108 agents.** The Wilson 95% upper bound on the
+  per-agent qualification probability is **3.4%** — i.e. even on the kindest
+  reading of the evidence, the true rate is almost certainly no better than that.
+- At 3.4%, reaching 100 qualified consumers needs **2,912 agents** to touch the
+  endpoint.
+- The most generous arrival model available — **flat at 7 new agents/day with
+  zero decay** for all 26 remaining days, contradicting the observed 0.52×/day
+  decline — yields **290 agents ever**.
+
+2,912 needed against 290 available under an assumption we already know is too
+kind. **The gate cannot be cleared by 2026-09-16 by any path.** Waiting until
+the nominal decision date would re-confirm a settled answer at the cost of three
+more fires.
+
+### The finding
+
+The data is real and nothing wants it. Concretely, and this is the reusable part:
+
+- **Demand for verified MCP metadata exists, but it is entirely
+  registry-to-registry.** 92 of 108 agents self-identify as catalogue or grading
+  infrastructure. We are an input to other people's catalogues, not a service
+  with consumers. Nobody in that population pays; they are the same free,
+  VC-subsidised layer the brief flagged as this idea's named weakness.
+- **The only surface anyone reads is the `tools/list` payload.** Every endpoint
+  built behind it — the 8 tools, the REST subset, the paid rail — has a measured
+  consumer count of zero.
+- **Discoverability is not the constraint and never was.** Five listings' worth
+  of arrival volume produced 5,114 calls and 0 consumers. Adding Smithery or
+  PulseMCP would add indexers, which is the number that is already high.
+
+**Recommendation: stop the `mcp-trust-demand` slot and hand it back for
+reallocation**, per the slot spec's own instruction for a below-gate result. No
+further build, no paid tier, no BD. Leave `/api/mcp` and the keyless `/api/v1`
+tier running — they cost nothing and the instrumentation stays live, so if the
+picture ever changes the number is still there to read. This document is the
+deliverable.
+
+---
+
 ## 2026-08-20 late (4th reading) — the gate is now arithmetically out of reach
 
 `node scripts/mcp-demand-report.mts --days 30`, 63h of data.
@@ -229,9 +310,12 @@ can do.
 
 ## Next reading
 
-Re-run both commands each fire and append. The decision point is 2026-09-16:
-≥100 **qualified** consumers → escalate; otherwise state plainly that the data
-is real and nothing wants it, and hand the slot back for reallocation. Qualified
-means it invoked a tool we serve and neither its client name nor its UA
-identifies it as scanner infrastructure — raw tool-invoker counts run high for
-the wrong reason.
+**There is no next reading.** The 5th reading (2026-08-21) closed the test:
+0 qualified consumers out of 108 agents, and 100 is unreachable by 2026-09-16
+at 95% confidence even under a flat-arrival model that ignores the observed
+decay. The slot's own rule for a below-gate result is to say so plainly and hand
+it back for reallocation, which is what the top section does.
+
+`npm run demand:report` still works and the instrumentation is still live, so
+the number remains readable on demand if anything ever changes. It just should
+not consume a rotation slot to re-confirm a zero.
