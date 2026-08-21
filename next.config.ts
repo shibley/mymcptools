@@ -64,6 +64,22 @@ const nextConfig: NextConfig = {
        */
       { source: "/servers/grafana-mcp", destination: "/servers/grafana", permanent: true },
       { source: "/servers/prometheus-mcp", destination: "/servers/prometheus", permanent: true },
+      /**
+       * CI/CD duplicate pairs, found by the sibling-pair sweep on 2026-08-21.
+       * `gitlab-issues-mcp` was github_url: null / verification: 'unresolved'
+       * — no repository was ever found for it — and its blurb described
+       * capabilities the real `gitlab` entry already documents. "gitlab mcp
+       * server" mines at 880 SV / SD 34; one page, not two.
+       *
+       * `argocd-mcp` and `argo-cd` were the more unusual shape: both pointed at
+       * the SAME repository (argoproj-labs/mcp-for-argocd, 557★) with the same
+       * star count, so the pair was two renderings of one project rather than a
+       * stub beside a real entry. The survivor keeps the `argo-cd` slug and
+       * absorbs the duplicate's verified npx install command. "argocd mcp
+       * server" mines at 110 SV / SD 20.
+       */
+      { source: "/servers/gitlab-issues-mcp", destination: "/servers/gitlab", permanent: true },
+      { source: "/servers/argocd-mcp", destination: "/servers/argo-cd", permanent: true },
     ];
   },
 };

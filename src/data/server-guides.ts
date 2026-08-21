@@ -5037,6 +5037,278 @@ claude mcp add --transport http workspace-mcp http://localhost:8000/mcp`,
     },
   },
 
+  {
+    slug: 'argo-cd',
+    verifiedOn: '2026-08-21',
+    sources: [
+      { label: 'argoproj-labs/mcp-for-argocd README', url: 'https://github.com/argoproj-labs/mcp-for-argocd' },
+      { label: 'Argo CD docs — API authorization / token', url: 'https://argo-cd.readthedocs.io/en/stable/developer-guide/api-docs/#authorization' },
+    ],
+    intro:
+      'The Argo CD MCP server is argoproj-labs/mcp-for-argocd, and it is the one the ecosystem has settled on — there is no competing implementation with meaningful adoption, so the "which server" question that dogs most MCP setups does not apply here. The question that does matter is exposure. The tool list includes delete_application, sync_application and run_resource_action, so this is a write path into your delivery pipeline, not a read-only dashboard. The server binds loopback by default and that default is doing real work; the two sections below on tokens and network exposure are the ones to read before you move it anywhere.',
+    setup: {
+      title: 'Setting up the Argo CD MCP server',
+      steps: [
+        {
+          title: 'Create an Argo CD API token',
+          body:
+            'The server authenticates to Argo CD with an API token, not your login. Generate one per the Argo CD API authorization docs and scope it to what the assistant should be allowed to do — a token that can only read is the difference between a bad answer and a deleted application, because Argo CD, not the MCP server, is what enforces the limit.',
+        },
+        {
+          title: 'Add the server to your client',
+          body:
+            'Node 18 or newer. The published package is argocd-mcp; stdio is the transport to start with. The same JSON shape works in Cursor (.cursor/mcp.json), VS Code (.vscode/mcp.json) and Claude Desktop, with ARGOCD_BASE_URL pointing at your Argo CD endpoint.',
+          code: `{
+  "mcpServers": {
+    "argocd-mcp": {
+      "command": "npx",
+      "args": ["argocd-mcp@latest", "stdio"],
+      "env": {
+        "ARGOCD_BASE_URL": "<argocd_url>",
+        "ARGOCD_API_TOKEN": "<argocd_token>"
+      }
+    }
+  }
+}`,
+          codeLabel: '.cursor/mcp.json',
+        },
+        {
+          title: 'If your Argo CD uses a self-signed certificate',
+          body:
+            'A private CA or self-signed cert on the Argo CD endpoint makes every call fail at the TLS handshake. Adding NODE_TLS_REJECT_UNAUTHORIZED to the env block disables Node certificate validation and gets you moving, but it disables it for the whole process — the README flags it as a development-only workaround, and it should not follow you into a shared or production deployment.',
+          code: '"NODE_TLS_REJECT_UNAUTHORIZED": "0"',
+          codeLabel: 'env entry',
+        },
+        {
+          title: 'For several Argo CD instances, use a token registry',
+          body:
+            'Point ARGOCD_TOKEN_REGISTRY_PATH at a JSON file mapping each base URL to its own token — a mounted Kubernetes secret is the intended shape. A call then names an instance with the non-secret argocdBaseUrl argument and the server pairs it with the registered token, so no credential passes through the tool call. Restrict the file to the server user (chmod 400); if it is set but missing or malformed the server throws at startup rather than falling back to the default credential.',
+          code: `[
+  { "baseUrl": "https://argo-a.example.com", "token": "<token-a>" },
+  { "baseUrl": "https://argo-b.example.com", "token": "<token-b>" }
+]`,
+          codeLabel: 'token-registry.json',
+        },
+      ],
+    },
+    tools: {
+      title: 'What the server can do',
+      note:
+        'Applications, the Kubernetes resources beneath them, and the cluster registry. Six of these tools mutate state, which is what the exposure settings below are protecting.',
+      items: [
+        { name: 'list_applications', what: 'List and filter every application Argo CD manages. The usual entry point.' },
+        { name: 'get_application', what: 'Full detail for one application, including sync and health status.' },
+        { name: 'sync_application', what: 'Trigger a sync. Mutating — this deploys.' },
+        { name: 'create_application / update_application / delete_application', what: 'Full application lifecycle. All three mutate.' },
+        { name: 'get_application_resource_tree', what: 'The Kubernetes objects an application owns, as a tree. Use it to find which object is degraded.' },
+        { name: 'get_application_managed_resources', what: 'The managed resources with their live-vs-desired diff.' },
+        { name: 'get_application_workload_logs', what: 'Pod and Deployment logs for an application, without a kubectl context. The tool that changes day-to-day debugging.' },
+        { name: 'get_resource_events', what: 'Kubernetes events for an application’s resources — usually where the real cause is.' },
+        { name: 'get_resource_actions / run_resource_action', what: 'List and execute resource actions (restart, and so on). run_resource_action mutates.' },
+        { name: 'list_clusters', what: 'Every cluster registered with this Argo CD.' },
+        { name: 'get_appproject', what: 'Detail for one AppProject, including its permitted destinations.' },
+      ],
+    },
+    useCases: [
+      {
+        title: 'Diagnose a degraded application end to end',
+        prompt: 'The payments app is Degraded in Argo CD. Get its resource tree, find the unhealthy object, then pull that workload’s logs and its recent events and tell me the cause.',
+        why:
+          'This is the chain the server exists for: resource tree to locate, workload logs for the stack trace, resource events for the scheduling or image-pull reason. Doing it by hand is three context switches between the Argo CD UI and kubectl.',
+      },
+      {
+        title: 'Audit drift before a release',
+        prompt: 'List every application that is OutOfSync, and for each one summarise what differs between the live and desired state.',
+        why:
+          'list_applications filters on sync status and get_application_managed_resources carries the diff, so the whole answer comes from read-only tools — safe to run against production with a read-scoped token.',
+      },
+      {
+        title: 'Check what an AppProject actually permits',
+        prompt: 'Show me the AppProject for the platform team and tell me which clusters and namespaces it is allowed to deploy into.',
+        why:
+          'AppProject destinations are the guardrail most teams configure once and never re-read. get_appproject makes that reviewable in a sentence.',
+      },
+    ],
+    gotchas: [
+      {
+        question: 'Does ARGOCD_API_TOKEN secure the HTTP endpoint?',
+        answer:
+          'No, and assuming it does is the significant mistake here. That token authenticates the server to Argo CD; it says nothing about who is calling the server. The http and sse transports open a listener that reaches delete_application, sync_application and run_resource_action. Inbound access is controlled separately: set MCP_AUTH_TOKEN to require an Authorization: Bearer header on every request, and only then consider changing MCP_BIND_ADDRESS from its 127.0.0.1 default. --allow-unauthenticated exists for the case where something in front already authenticates callers.',
+      },
+      {
+        question: 'Why does overriding argocdBaseUrl to another instance fail?',
+        answer:
+          'By design. The argocdBaseUrl argument arrives in the tool call, so a prompt-injected model could point it at an attacker-controlled host — and if the default token were paired with any supplied URL, it would be sent there as a bearer header. The default token is therefore bound to the default base URL and never sent elsewhere. Targeting a second instance requires registering its token, and thus its hostname, in the token registry up front.',
+      },
+      {
+        question: 'Why can the assistant not see my API token to pass it in?',
+        answer:
+          'It is deliberately never accepted as a tool argument. The token is read only from the x-argocd-api-token header (HTTP transport) or the ARGOCD_API_TOKEN environment variable, so it never enters a prompt, the model context, or a tool-call log. On the HTTP transport a connection carrying no token is rejected with 400 Bad Request unless a token registry is configured.',
+      },
+      {
+        question: 'Every call fails with a certificate error. What is wrong?',
+        answer:
+          'Argo CD is almost certainly serving a self-signed certificate or one from a private CA that Node does not trust. NODE_TLS_REJECT_UNAUTHORIZED=0 in the client env block gets you past it, at the cost of disabling certificate validation for the entire Node process. Prefer adding your CA to the system trust store for anything longer-lived than a local experiment.',
+      },
+    ],
+    comparison: {
+      note:
+        'Argo CD MCP addresses the delivery layer. The two below sit either side of it, and the split is clean enough that teams often run this one alongside one of them rather than choosing.',
+      items: [
+        {
+          name: 'Kubernetes MCP',
+          choose:
+            'When the question is about the cluster rather than the delivery pipeline — arbitrary objects, namespaces Argo CD does not manage, anything applied outside GitOps. Argo CD MCP only sees what Argo CD manages, which is the point of it.',
+        },
+        {
+          name: 'GitHub MCP',
+          slug: 'github',
+          choose:
+            'When the fix is a manifest change. In GitOps the repository is the source of truth, so the actual remedy for a bad deploy is usually a pull request; Argo CD MCP tells you what broke and GitHub MCP is where you change it.',
+        },
+      ],
+    },
+  },
+  {
+    slug: 'jenkins-mcp',
+    verifiedOn: '2026-08-21',
+    sources: [
+      { label: 'lanbaoshen/mcp-jenkins README', url: 'https://github.com/lanbaoshen/mcp-jenkins' },
+      { label: 'mcp-jenkins on PyPI', url: 'https://pypi.org/project/mcp-jenkins/' },
+    ],
+    intro:
+      'There are two ways to give an assistant access to Jenkins and they differ in where the code runs. The official Jenkins MCP plugin installs into the controller from the update centre, which means the controller starts answering MCP itself — excellent if you administer Jenkins, impossible if you do not. This one, lanbaoshen/mcp-jenkins, runs beside Jenkins as an ordinary Python process and talks to it over the REST API with your own credentials, so you can point it at a controller you have no admin rights on. It is also the wider of the two tool surfaces, and the only one that can read your plugin inventory.',
+    setup: {
+      title: 'Setting up MCP Jenkins',
+      steps: [
+        {
+          title: 'Install the server',
+          body:
+            'Published to PyPI as mcp-jenkins. uvx is the recommended route because it needs no virtualenv of your own; pip and a prebuilt container image are both supported alternatives.',
+          code: `# recommended
+uvx mcp-jenkins
+
+# or
+pip install mcp-jenkins && mcp-jenkins
+
+# or
+docker run -p 9887:9887 --rm ghcr.io/lanbaoshen/mcp-jenkins:latest --transport streamable-http`,
+          codeLabel: 'shell',
+        },
+        {
+          title: 'Create a Jenkins API token',
+          body:
+            'Under your Jenkins user page, Security → API Token. Pass it as --jenkins-password; the server treats a token and a password identically, and a token is revocable without changing your login. The permissions of that Jenkins user are the real boundary — the server adds none of its own.',
+        },
+        {
+          title: 'Point your client at it',
+          body:
+            'stdio is the default transport and takes the connection details as command-line arguments. This shape works in Claude Desktop, Cursor, VS Code Copilot Chat and JetBrains Copilot alike.',
+          code: `{
+  "mcpServers": {
+    "jenkins": {
+      "command": "uvx",
+      "args": [
+        "mcp-jenkins",
+        "--jenkins-url=https://jenkins.example.com",
+        "--jenkins-username=you",
+        "--jenkins-password=<api-token>",
+        "--read-only"
+      ]
+    }
+  }
+}`,
+          codeLabel: 'claude_desktop_config.json',
+        },
+        {
+          title: 'Optional — run it once for several controllers',
+          body:
+            'With --transport streamable-http the server listens on 0.0.0.0:9887 (override with --host and --port) and accepts the connection details per request as the x-jenkins-url, x-jenkins-username and x-jenkins-password headers. That is what lets one running instance serve several Jenkins controllers instead of one process each. sse is available too, for clients that still want it.',
+          code: 'uvx mcp-jenkins --transport streamable-http',
+          codeLabel: 'shell',
+        },
+      ],
+    },
+    tools: {
+      title: 'What the server can do',
+      note:
+        'Jobs, builds, the queue, agents, and — uniquely — the plugin inventory. build_item, stop_build, cancel_queue_item and run_groovy_script mutate; --read-only removes all of them.',
+      items: [
+        { name: 'get_all_items / get_item / query_items', what: 'List jobs, fetch one, or search by pattern. query_items is how you find a job without knowing its exact path.' },
+        { name: 'get_item_config / get_item_parameters', what: 'A job’s config XML and its declared build parameters.' },
+        { name: 'build_item', what: 'Trigger a build, with parameters. Mutating.' },
+        { name: 'get_build / get_build_console_output', what: 'Build metadata and full console log — the pair behind almost every "why did this fail" question.' },
+        { name: 'get_build_test_report / get_build_parameters / get_build_scripts', what: 'Test results, the parameters a build actually ran with, and its pipeline scripts.' },
+        { name: 'get_running_builds / stop_build', what: 'See what is executing now and stop it. stop_build mutates.' },
+        { name: 'get_all_build_artifacts / get_build_artifact / get_build_artifact_url', what: 'List, download, or link an artifact from a finished build.' },
+        { name: 'get_all_queue_items / get_queue_item / cancel_queue_item', what: 'The build queue, including why an item is stuck waiting for an executor.' },
+        { name: 'get_all_nodes / get_node / get_node_config', what: 'Agent inventory and configuration — where offline-executor problems surface.' },
+        { name: 'get_plugins_with_problems', what: 'Plugins with missing dependencies or version mismatches. The tool with no equivalent in the official plugin, and the one that turns an upgrade audit into a single question.' },
+        { name: 'get_all_plugins / get_plugin / get_plugins_with_updates / get_plugins_with_backup', what: 'Full plugin inventory, available updates, and which ones can be rolled back.' },
+        { name: 'get_plugin_dependency_graph', what: 'A plugin’s dependency graph in Graphviz format.' },
+        { name: 'run_groovy_script', what: 'Executes arbitrary Groovy on the controller. This is remote code execution against your CI — see the gotcha below.' },
+      ],
+    },
+    useCases: [
+      {
+        title: 'Explain a red build without opening Jenkins',
+        prompt: 'The nightly-integration job failed on its last run. Pull the console output and the test report and tell me which test broke and why.',
+        why:
+          'get_build_console_output plus get_build_test_report is the whole answer, and both are read-only — this is the case that justifies running the server with --read-only permanently.',
+      },
+      {
+        title: 'Plan a plugin upgrade',
+        prompt: 'List the plugins on this controller that have problems, then the ones with available updates, and flag any where updating would break a dependency.',
+        why:
+          'get_plugins_with_problems, get_plugins_with_updates and get_plugin_dependency_graph together answer a question that otherwise means clicking through the Jenkins plugin manager page by page.',
+      },
+      {
+        title: 'Find out why nothing is building',
+        prompt: 'Show me the current build queue and the node list, and tell me whether anything is blocked because no executor matches its label.',
+        why:
+          'Queue items carry the reason they are waiting and the node list carries the labels; pairing them is the standard diagnosis for a stalled controller.',
+      },
+    ],
+    gotchas: [
+      {
+        question: 'Is run_groovy_script safe to leave enabled?',
+        answer:
+          'No. Groovy on the Jenkins controller runs with the controller’s privileges — it can read credentials, alter jobs, and reach anything the controller can reach. Exposing it to a model that also reads untrusted input (pull request descriptions, build logs, issue text) is a remote code execution path. Pass --read-only, which disables run_groovy_script along with every other mutating tool, unless you have a specific reason not to.',
+      },
+      {
+        question: 'Large requests time out. What do I change?',
+        answer:
+          '--jenkins-timeout defaults to 5 seconds, which is often too short for get_all_items or get_build_console_output against a busy controller with many jobs. Raise it before concluding the server is broken.',
+      },
+      {
+        question: 'Should I use this or the official Jenkins MCP plugin?',
+        answer:
+          'Use the plugin if you administer the controller and want MCP served by Jenkins itself with no extra process — it reuses Jenkins credentials directly and exposes operational tools like replayBuild and searchBuildLog. Use this one if you cannot install plugins, want to reach several controllers from one process, want the plugin-inventory tools, or want a --read-only mode that is enforced outside Jenkins.',
+      },
+      {
+        question: 'Can one instance serve more than one Jenkins?',
+        answer:
+          'Yes, on the HTTP transports. --jenkins-url, --jenkins-username and --jenkins-password are all optional, and the same three values can arrive per request as x-jenkins-url, x-jenkins-username and x-jenkins-password headers. Note that --host defaults to 0.0.0.0 for streamable-http, so bind it deliberately and put authentication in front of it.',
+      },
+    ],
+    comparison: {
+      items: [
+        {
+          name: 'Jenkins MCP Server (official plugin)',
+          slug: 'jenkins',
+          choose:
+            'When you administer the controller. It installs from the update centre, needs no separate process, and reaches internals this server cannot — replayBuild, searchBuildLog, and SCM-aware lookups.',
+        },
+        {
+          name: 'GitHub MCP',
+          slug: 'github',
+          choose:
+            'When your pipelines are moving to GitHub Actions, or when the fix for a failing build is a code change rather than a Jenkins operation.',
+        },
+      ],
+    },
+  },
+
 ]
 
 const guideBySlug = new Map(guides.map((g) => [g.slug, g] as const));
