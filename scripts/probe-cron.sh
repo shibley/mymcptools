@@ -45,7 +45,10 @@ fi
 git add src/data/probe-status.json src/data/probe-events.jsonl src/data/probe-inventory.json 2>/dev/null
 git commit -q -m "chore(probe): scheduled ${MODE} probe refresh" || { log "FAIL: commit"; exit 1; }
 
-if git push -q origin HEAD 2>>"${LOG}"; then
+# System cron has no keychain session, so the osxkeychain helper fails with
+# "could not read Username". Use gh as the credential helper instead — same
+# pattern as apistatuscheck/scripts/monitor-hourly.sh.
+if git -c credential.helper='!/opt/homebrew/bin/gh auth git-credential' push -q origin HEAD 2>>"${LOG}"; then
   log "done: pushed $(git rev-parse --short HEAD)"
 else
   log "WARN: committed $(git rev-parse --short HEAD) but push failed — will go out with the next push"
