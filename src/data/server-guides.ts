@@ -5447,6 +5447,154 @@ docker run -p 9887:9887 --rm ghcr.io/lanbaoshen/mcp-jenkins:latest --transport s
     },
   },
 
+  {
+    slug: 'zendesk',
+    verifiedOn: '2026-08-22',
+    sources: [
+      { label: 'reminia/zendesk-mcp-server README', url: 'https://github.com/reminia/zendesk-mcp-server' },
+      { label: 'reminia/zendesk-mcp-server .env.example', url: 'https://github.com/reminia/zendesk-mcp-server/blob/main/.env.example' },
+      { label: 'zendesk-mcp-server on PyPI', url: 'https://pypi.org/project/zendesk-mcp-server/' },
+      { label: 'Zendesk API token docs', url: 'https://support.zendesk.com/hc/en-us/articles/4408889192858' },
+    ],
+    intro:
+      'Zendesk does not publish an MCP server of its own — there is no developer.zendesk.com MCP page, which is why every result for this query is a community project. The one that has taken the name is reminia/zendesk-mcp-server: 114 stars, Apache-2.0, Python, and the only one of the eight on GitHub with meaningful adoption. It is deliberately narrow. Six tools cover tickets and comments, one resource hands over the Help Center, and two prompts do ticket analysis and reply drafting. It does not touch macros, triggers, automations, views, CSAT, organizations, Talk or Guide authoring, and directory listings that say otherwise are describing the Zendesk API rather than this server. If you need writes beyond ticket fields and comments, you are looking at building against the API yourself, not at this.',
+    setup: {
+      title: 'Setting up Zendesk MCP',
+      steps: [
+        {
+          title: 'Create a Zendesk API token',
+          body:
+            'In Zendesk: Admin Center → Apps and integrations → Zendesk API → Settings, enable Token access and add an API token. You authenticate as a specific agent, so the token inherits that agent’s permissions — the cleanest way to bound what an assistant can do here is to make a restricted agent and issue the token from that account, because the server itself has no read-only mode. Note the token once; Zendesk will not show it again.',
+        },
+        {
+          title: 'Install from PyPI (fastest path)',
+          body:
+            'The project publishes a wheel, so nothing needs cloning. `uvx zendesk-mcp-server` fetches and runs it in a throwaway environment; the console script is named after the package. Credentials come from the environment, so set them in the client config rather than a shell profile.',
+          code: `{
+  "mcpServers": {
+    "zendesk": {
+      "command": "uvx",
+      "args": ["zendesk-mcp-server"],
+      "env": {
+        "ZENDESK_SUBDOMAIN": "your-company",
+        "ZENDESK_EMAIL": "agent@your-company.com",
+        "ZENDESK_API_KEY": "****"
+      }
+    }
+  }
+}`,
+          codeLabel: 'claude_desktop_config.json',
+        },
+        {
+          title: 'Or build from source, which is what the README documents',
+          body:
+            'Clone the repo, build with uv, and copy `.env.example` to `.env` with your subdomain, agent email and API token. This is the path to take if you want the current main branch rather than the published release — see the version gotcha below. The client entry then points uv at the checkout directory.',
+          code: `git clone https://github.com/reminia/zendesk-mcp-server
+cd zendesk-mcp-server
+uv venv && uv pip install -e .
+cp .env.example .env   # ZENDESK_SUBDOMAIN / ZENDESK_EMAIL / ZENDESK_API_KEY`,
+          codeLabel: 'shell',
+        },
+        {
+          title: 'Or run it in a container',
+          body:
+            'The repo ships a Dockerfile that installs from requirements.lock and drops privileges to a non-root user, with configuration passed only through environment variables. Build the image, then wire the client to `docker run`. The `-i` flag is required, not optional: MCP clients speak to the container over STDIN/STDOUT and it will look like the server never starts without it.',
+          code: `docker build -t zendesk-mcp-server .
+docker run --rm -i --env-file /path/to/.env zendesk-mcp-server`,
+          codeLabel: 'shell',
+        },
+      ],
+    },
+    tools: {
+      title: 'The six tools, one resource and two prompts',
+      note:
+        'Everything below is read off the project README. Three of the six tools write to your Zendesk instance and are marked — there is no confirmation step and no dry-run mode, so an assistant that decides to post is posting.',
+      items: [
+        { name: 'get_tickets', what: 'Paginated list of the latest tickets. Takes page, per_page (max 100, default 25), sort_by (created_at, updated_at, priority, status) and sort_order. Returns id, subject, status, priority, description, timestamps and assignee.' },
+        { name: 'get_ticket', what: 'One ticket by numeric ticket_id.' },
+        { name: 'get_ticket_comments', what: 'The full comment thread for a ticket_id — this is what the drafting prompt reads before it writes anything.' },
+        { name: 'create_ticket_comment', what: 'WRITES. Posts a comment on an existing ticket. `public` defaults to true, so a comment an assistant adds without setting it explicitly is customer-visible.' },
+        { name: 'create_ticket', what: 'WRITES. Subject and description required; requester_id, assignee_id, priority (low/normal/high/urgent), type (problem/incident/question/task), tags and custom_fields optional.' },
+        { name: 'update_ticket', what: 'WRITES. Changes status (new/open/pending/on-hold/solved/closed), priority, type, subject, assignee_id, requester_id, tags, custom_fields or due_at on an existing ticket.' },
+        { name: 'zendesk://knowledge-base (resource)', what: 'Read-only. Exposes the whole Help Center article set as MCP context, which is what lets a reply cite existing documentation instead of inventing policy.' },
+        { name: 'analyze-ticket (prompt)', what: 'Summarises a ticket and its history into an analysis.' },
+        { name: 'draft-ticket-response (prompt)', what: 'Drafts a reply grounded in the ticket’s comments and the knowledge base. It drafts — it does not post; posting is a separate create_ticket_comment call.' },
+      ],
+    },
+    useCases: [
+      {
+        title: 'Triage the overnight queue',
+        prompt: 'List the 25 most recent tickets sorted by created_at descending, and group them by what the customer is actually asking for. Flag anything that looks like a billing dispute or an outage.',
+        why: 'One get_tickets call. The list response already carries status, priority and assignee, so the grouping happens without a per-ticket fetch — which matters, because 25 get_ticket calls is 25 round trips.',
+      },
+      {
+        title: 'Draft a reply that cites your own docs',
+        prompt: 'Read ticket 4821 and its comments, then draft a response using the draft-ticket-response prompt. Cite the relevant Help Center article and do not post it.',
+        why: 'The knowledge-base resource is the whole point of this server over a raw API wrapper: the draft quotes documentation that exists rather than inventing a refund window.',
+      },
+      {
+        title: 'Close out a resolved thread without opening the agent console',
+        prompt: 'Add an internal note to ticket 4821 summarising what we decided, then set its status to solved and add the tag escalation-reviewed.',
+        why: 'create_ticket_comment with public false, then update_ticket. Ask for the note explicitly as internal — the default is public.',
+      },
+    ],
+    gotchas: [
+      {
+        question: 'Why does uvx install a different version than the GitHub repo?',
+        answer:
+          'The published wheel is 0.1.1, uploaded 2026-01-30, while main has been pushed as recently as July 2026 without a version bump — main’s pyproject still reads 0.1.0. The two also name the console script differently: the wheel installs `zendesk-mcp-server`, main’s pyproject declares `zendesk`. Both carry the same six tools, checked this fire. If you specifically need something that landed on main after January, build from source; otherwise the wheel is the shorter path.',
+      },
+      {
+        question: 'Can I give the assistant read-only access to Zendesk?',
+        answer:
+          'Not through the server — three of its six tools write and there is no flag that disables them. The control you do have is the agent account the API token belongs to: create a restricted agent with a narrow role, issue the token from it, and the server inherits exactly that. A token from an admin account gives an assistant admin-level ticket access.',
+      },
+      {
+        question: 'Why did a comment go to the customer instead of staying internal?',
+        answer:
+          'create_ticket_comment’s `public` parameter defaults to true. An assistant that was asked to "add a note" and did not set public false has posted publicly to the requester. Say "internal note" in the prompt, and if this matters for your workflow, treat it as the reason to keep the assistant on draft-and-approve rather than letting it post unattended.',
+      },
+      {
+        question: 'The knowledge-base resource is slow or huge on my instance',
+        answer:
+          'zendesk://knowledge-base exposes the whole Help Center, not a search over it. On a small documentation set that is an advantage — the model sees everything. On an instance with thousands of articles it is a large context payload for every session that touches it. There is no filter parameter, so the practical mitigation is to only reference the resource in the prompts that need it.',
+      },
+      {
+        question: 'It needs Python 3.12 and fails to build on older versions',
+        answer:
+          'pyproject sets requires-python >=3.12, and zenpy plus the mcp package are the hard dependencies. uvx handles this by fetching a matching interpreter; a manual pip install into a 3.11 virtualenv will not resolve.',
+      },
+      {
+        question: 'Does Zendesk itself publish an MCP server?',
+        answer:
+          'Not as of this check — developer.zendesk.com has no MCP documentation and there is no zendesk-org repository on GitHub for one. Every Zendesk MCP server available today is a community project, which is worth knowing before you put a support-team workflow on one.',
+      },
+    ],
+    comparison: {
+      note:
+        'Eight Zendesk MCP servers exist on GitHub. These are the ones with any adoption; the rest are single-digit-star forks and experiments.',
+      items: [
+        {
+          name: 'koundinya/zd-mcp-server',
+          choose:
+            'The TypeScript alternative, MIT, on npm as zd-mcp-server so it runs with npx and no Python at all. Smaller (16 stars) but it adds two things reminia lacks: search against Zendesk’s query syntax, and linked-incident retrieval. Pick it if you want ticket search or a Node-only toolchain.',
+        },
+        {
+          name: 'Freshdesk MCP',
+          slug: 'freshdesk',
+          choose:
+            'Not an alternative for Zendesk, but the comparison people actually make. Much wider surface — agents, contacts, companies, ticket search, AI summaries — because that server was built against a different help desk. If you are choosing a help desk rather than a server, that is the coverage gap.',
+        },
+        {
+          name: 'Intercom MCP',
+          slug: 'intercom',
+          choose:
+            'The vendor-published option in this category: Intercom hosts its own remote server with OAuth, so there is no install and no API token in a config file. The comparison is instructive — that is what a first-party Zendesk MCP would look like, and it does not exist yet.',
+        },
+      ],
+    },
+  },
+
 ]
 
 const guideBySlug = new Map(guides.map((g) => [g.slug, g] as const));

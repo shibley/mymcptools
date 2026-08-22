@@ -80,6 +80,17 @@ const nextConfig: NextConfig = {
        */
       { source: "/servers/gitlab-issues-mcp", destination: "/servers/gitlab", permanent: true },
       { source: "/servers/argocd-mcp", destination: "/servers/argo-cd", permanent: true },
+      /**
+       * `zendesk-mcp` and `zendesk` were two entries for one project: both
+       * carried github_url reminia/zendesk-mcp-server, but the thin one was
+       * named "Zendesk MCP", listed install_type npm for a Python package, and
+       * described macros, CSAT scores, Talk and dashboards — none of which
+       * that server implements (it ships six ticket/comment tools, one
+       * knowledge-base resource and two prompts). "zendesk mcp" mines at
+       * 590 SV / SD 20 and two pages were splitting it. The duplicate is gone
+       * from servers.ts and 301s at the canonical page.
+       */
+      { source: "/servers/zendesk-mcp", destination: "/servers/zendesk", permanent: true },
     ];
   },
 };
