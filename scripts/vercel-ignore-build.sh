@@ -14,10 +14,15 @@ set -uo pipefail
 # Diff the whole batch instead of just the tip commit. Prefer the SHA of the
 # last successful deploy when Vercel exposes it; fall back to a bounded
 # lookback within the platform's shallow-clone depth (10) otherwise.
-BASE="HEAD~9"
-if [ -n "${VERCEL_GIT_PREVIOUS_SHA:-}" ] && git cat-file -e "${VERCEL_GIT_PREVIOUS_SHA}^{commit}" 2>/dev/null; then
-  BASE="${VERCEL_GIT_PREVIOUS_SHA}"
+# Fail OPEN: if Vercel does not hand us a usable previous SHA, BUILD rather
+# than guess a lookback window. The old HEAD~9 fallback was narrower than the
+# median push on some repos (apistatuscheck: median 10 commits, max 25, 56% of
+# pushes wider than 9) — a guess that is too short silently skips real work.
+# A wasted build costs cents; a silent skip cost us a whole research fire.
+if [ -z "${VERCEL_GIT_PREVIOUS_SHA:-}" ] || ! git cat-file -e "${VERCEL_GIT_PREVIOUS_SHA}^{commit}" 2>/dev/null; then
+  exit 1
 fi
+BASE="${VERCEL_GIT_PREVIOUS_SHA}"
 
 # Build if any commit in that range touched relevant source/config paths.
 # NOTE: do NOT pipe straight into `grep -q` here. `grep -q` exits on the first
