@@ -5309,6 +5309,144 @@ docker run -p 9887:9887 --rm ghcr.io/lanbaoshen/mcp-jenkins:latest --transport s
     },
   },
 
+  {
+    slug: 'docker',
+    verifiedOn: '2026-08-22',
+    sources: [
+      { label: 'ckreiling/mcp-server-docker README', url: 'https://github.com/ckreiling/mcp-server-docker' },
+      { label: 'docker/mcp-gateway README', url: 'https://github.com/docker/mcp-gateway' },
+      { label: 'Docker SDK for Python — client.from_env', url: 'https://docker-py.readthedocs.io/en/stable/client.html#docker.client.from_env' },
+    ],
+    intro:
+      'Searching "Docker MCP" returns two completely different products and the names do not help you tell them apart. This page is ckreiling/mcp-server-docker, the community server that hands an assistant your Docker daemon — containers, images, networks, volumes. Docker’s own Docker MCP Gateway is not a rival implementation of that; it manages no containers of yours at all, it is a CLI plugin that runs *other* MCP servers inside containers behind one endpoint. If the sentence you want to type is "why does the postgres container keep restarting", you are in the right place. If it is "give Cursor and Claude Desktop the same twenty tools without twenty stdio processes", you want the gateway instead. The other thing to settle before installing: this server can create, recreate and remove containers, and Docker is not a sandbox, so it reaches the host. Decide up front whether it points at a throwaway engine or a real one.',
+    setup: {
+      title: 'Setting up the Docker MCP server',
+      steps: [
+        {
+          title: 'Install with uv (recommended)',
+          body:
+            'The server is published to PyPI as mcp-server-docker and needs no clone or build — uvx fetches and runs it. Install uv first if you do not have it. The same block works in Claude Desktop (claude_desktop_config.json), Cursor (.cursor/mcp.json) and VS Code, and no token or API key is involved: authorisation is whatever your local Docker socket already grants.',
+          code: `{
+  "mcpServers": {
+    "mcp-server-docker": {
+      "command": "uvx",
+      "args": ["mcp-server-docker"]
+    }
+  }
+}`,
+          codeLabel: 'claude_desktop_config.json',
+        },
+        {
+          title: 'Or run the server itself in a container',
+          body:
+            'There is a Dockerfile in the repository for convenience — clone it and build the image, then run it with the Docker socket mounted, which is what lets the containerised server reach the daemon on the host. Note the trade this makes: mounting /var/run/docker.sock into a container grants that container effective control of the host’s Docker, so this is a packaging convenience, not a security boundary.',
+          code: `docker build -t mcp-server-docker .
+
+# then, in your MCP config:
+"args": ["run", "-i", "--rm",
+         "-v", "/var/run/docker.sock:/var/run/docker.sock",
+         "mcp-server-docker:latest"]`,
+          codeLabel: 'shell',
+        },
+        {
+          title: 'Point it at a remote engine over SSH',
+          body:
+            'The server builds its client with the Python Docker SDK’s from_env, so every variable that SDK reads applies — in practice DOCKER_HOST is the one that matters. Set it to an ssh:// URL in the env block and the same server administers a remote host, which is the server-administrator use case the project names first. SSH key auth has to already work for that user from the machine running the server.',
+          code: `"env": { "DOCKER_HOST": "ssh://myusername@myhost.example.com" }`,
+          codeLabel: 'env entry',
+        },
+      ],
+    },
+    tools: {
+      title: 'What the server can do',
+      note:
+        'Twenty tools across four object types, plus two resource templates. Roughly half mutate — create_container, run_container, recreate_container, remove_container, build_image, push_image, remove_image, remove_network and remove_volume all change state on the daemon.',
+      items: [
+        { name: 'list_containers', what: 'Every container on the daemon. The usual entry point, and read-only.' },
+        { name: 'create_container / run_container', what: 'Create, or create and start. Mutating — this is where the assistant brings something up.' },
+        { name: 'recreate_container', what: 'Replace a container with a new one from an updated spec. The tool behind "bump the image and restart it".' },
+        { name: 'start_container / stop_container / remove_container', what: 'Lifecycle. remove_container destroys; nothing here asks twice.' },
+        { name: 'fetch_container_logs', what: 'Container logs without a terminal. The tool that changes day-to-day debugging.' },
+        { name: 'list_images / pull_image / push_image', what: 'The image registry side. push_image writes to a remote registry with whatever credentials the daemon holds.' },
+        { name: 'build_image / remove_image', what: 'Build from a Dockerfile, and prune. Both mutate.' },
+        { name: 'list_networks / create_network / remove_network', what: 'Networks, which is where most multi-container connectivity bugs actually live.' },
+        { name: 'list_volumes / create_volume / remove_volume', what: 'Persistent data. remove_volume deletes data that no image rebuild brings back.' },
+        { name: 'docker://containers/{id}/logs', what: 'Resource template, text/plain. Read logs by container ID or name with no tool call — the server exposes templates rather than enumerating live containers.' },
+        { name: 'docker://containers/{id}/stats', what: 'Resource template, application/json. Live CPU and memory stats for one container.' },
+      ],
+    },
+    useCases: [
+      {
+        title: 'Stand up a stack with the docker_compose prompt',
+        prompt: 'Use the docker_compose prompt with project name "wordpress": deploy a WordPress container and a supporting MySQL container, exposing WordPress on port 9000.',
+        why:
+          'The docker_compose prompt puts the model in a plan-then-apply loop — it writes a concise natural-language plan and waits, so you approve or send it back for another pass before anything runs. That approval step is the difference between this and letting a model call run_container freehand.',
+      },
+      {
+        title: 'Find out why a container keeps dying',
+        prompt: 'The api container is restarting. List the containers, pull the last 100 lines of its logs, check its stats, and tell me whether it is crashing or being OOM-killed.',
+        why:
+          'list_containers, fetch_container_logs and the stats resource answer this without a single context switch to a terminal, and all three are read-only — safe against an engine you care about.',
+      },
+      {
+        title: 'Clean up after a chat you lost',
+        prompt: 'Reopen the docker_compose prompt for project name "wordpress" and tear down everything it created.',
+        why:
+          'Starting the prompt with an existing project name re-reads the status of every container, volume and network created under that name. The project explicitly calls this out as the recovery path when the conversation that created a stack is gone.',
+      },
+    ],
+    gotchas: [
+      {
+        question: 'Is this the same as Docker’s official Docker MCP Gateway?',
+        answer:
+          'No, and they do not overlap. This server exposes your Docker daemon as tools. The gateway (docker/mcp-gateway, the docker-mcp CLI plugin behind Docker Desktop’s MCP Toolkit) exposes *other* MCP servers, each running in its own container, behind one endpoint your clients share. Running both is normal: the gateway for tool distribution, this server for container administration.',
+      },
+      {
+        question: 'Can I safely put secrets in containers the assistant creates?',
+        answer:
+          'No. The project states this bluntly: do not configure containers with sensitive data — API keys, database passwords — because that configuration passes through the model, and anything the model sees is compromised unless the model runs on your own machine. Inject secrets by a path the assistant never touches.',
+      },
+      {
+        question: 'Why can it not run a privileged container for me?',
+        answer:
+          'Deliberately unsupported. --privileged and --cap-add/--cap-drop are not exposed, for the same reason the disclaimer warns that Docker is not a secure sandbox: the MCP server can affect the host through Docker, and these flags remove the last constraints on how far. The project asks for an issue with a use case rather than shipping them by default.',
+      },
+      {
+        question: 'How do I stop it from touching production?',
+        answer:
+          'By choosing which daemon it talks to, not by configuring the server — there is no read-only mode. It authenticates as whatever the socket or DOCKER_HOST grants, so scope it there: point DOCKER_HOST at a development engine, or run it against a remote host over SSH under a user whose Docker access is limited. Review created containers regardless; the disclaimer asks you to.',
+      },
+      {
+        question: 'It cannot reach Docker from inside the container. What is missing?',
+        answer:
+          'The socket mount. When running the server as a container, -v /var/run/docker.sock:/var/run/docker.sock is what connects it to the host daemon — without it the SDK’s from_env finds nothing to talk to. On a remote setup, check that plain `docker ps` works over the same ssh:// URL from the host running the server before blaming the MCP layer.',
+      },
+    ],
+    comparison: {
+      note:
+        'Three servers get called "Docker MCP" in listings. They are not interchangeable, and the choice follows from what you want to control.',
+      items: [
+        {
+          name: 'Docker MCP Gateway',
+          slug: 'docker-mcp-gateway',
+          choose:
+            'When the problem is distributing MCP servers, not managing containers. It runs catalog servers in isolated containers, keeps secrets in Docker Desktop rather than JSON config, and gives VS Code, Cursor and Claude Desktop one identical endpoint. Docker Desktop 4.59+ with the MCP Toolkit enabled.',
+        },
+        {
+          name: 'QuantGeekDev/docker-mcp',
+          choose:
+            'The other community Docker server. Smaller and, as of this check, last pushed in December 2024 — it installs and runs, but nothing warns you it is frozen. Prefer ckreiling unless you specifically depend on its behaviour.',
+        },
+        {
+          name: 'Kubernetes MCP',
+          slug: 'kubernetes',
+          choose:
+            'When containers are scheduled by a cluster rather than started by hand. Asking a Docker server about a pod gets you the node’s view of a container, not the workload’s.',
+        },
+      ],
+    },
+  },
+
 ]
 
 const guideBySlug = new Map(guides.map((g) => [g.slug, g] as const));
