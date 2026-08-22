@@ -20,7 +20,16 @@ if [ -n "${VERCEL_GIT_PREVIOUS_SHA:-}" ] && git cat-file -e "${VERCEL_GIT_PREVIO
 fi
 
 # Build if any commit in that range touched relevant source/config paths.
-git diff --name-only "${BASE}" HEAD 2>/dev/null | grep -qE '^(src/|app/|components/|lib/|data/|public/|supabase/migrations/|package(-lock)?\.json|next\.config|tsconfig|tailwind|vercel\.json|eslint\.config|postcss\.config)' && exit 1
+# NOTE: do NOT pipe straight into `grep -q` here. `grep -q` exits on the first
+# match, git gets SIGPIPE (141), and `set -o pipefail` propagates that as the
+# pipeline's status — so a LARGE diff (git still writing when grep quits)
+# silently took the skip branch while a small one built fine. That is what left
+# aisotools' monitoring-upsell route 404 in production after a 1,712-file push.
+# Materialise the file list first, then match it.
+CHANGED="$(git diff --name-only "${BASE}" HEAD 2>/dev/null || true)"
+if grep -qE '^(src/|app/|components/|lib/|data/|public/|supabase/migrations/|package(-lock)?\.json|next\.config|tsconfig|tailwind|vercel\.json|eslint\.config|postcss\.config)' <<<"${CHANGED}"; then
+  exit 1
+fi
 
 # Otherwise, junk-only range — skip.
 exit 0
