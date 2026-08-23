@@ -5875,6 +5875,279 @@ docker run --rm -i --env-file /path/to/.env zendesk-mcp-server`,
     },
   },
 
+  {
+    slug: 'tableau-mcp',
+    verifiedOn: '2026-08-23',
+    sources: [
+      { label: 'tableau/tableau-mcp README', url: 'https://github.com/tableau/tableau-mcp' },
+      { label: 'Official Tableau MCP documentation site', url: 'https://tableau.github.io/tableau-mcp/' },
+      {
+        label: 'src/tools/web/toolName.ts (all 43 web tool names and the 16 tool groups)',
+        url: 'https://github.com/tableau/tableau-mcp/blob/main/src/tools/web/toolName.ts',
+      },
+      {
+        label: 'src/tools/desktop/toolName.ts (the 6 Tableau Desktop authoring tools)',
+        url: 'https://github.com/tableau/tableau-mcp/blob/main/src/tools/desktop/toolName.ts',
+      },
+      {
+        label: 'src/config.ts (auth modes, required env vars, tool-gate flags)',
+        url: 'https://github.com/tableau/tableau-mcp/blob/main/src/config.ts',
+      },
+      {
+        label: 'src/overridableConfig.ts (INCLUDE_TOOLS / EXCLUDE_TOOLS parsing)',
+        url: 'https://github.com/tableau/tableau-mcp/blob/main/src/overridableConfig.ts',
+      },
+      {
+        label: 'npm @tableau/mcp-server 4.6.0 (bin map, engines, published tarball contents)',
+        url: 'https://www.npmjs.com/package/@tableau/mcp-server',
+      },
+    ],
+    intro:
+      'There is only one Tableau MCP server worth considering and Tableau publishes it themselves, so the ' +
+      'decision here is not which project to trust — it is which of the three ways to run it you want. ' +
+      'The hosted server at mcp.tableau.com is the right default for Tableau Cloud: it speaks OAuth 2.1, ' +
+      'each user signs in as themselves, and the permissions already configured on your site are what the ' +
+      'agent gets, with nothing to deploy. The self-hosted npm package is for Tableau Server, and for Cloud ' +
+      'customers whose security review will not allow a vendor-hosted endpoint; you supply a Personal Access ' +
+      'Token and the server runs beside the client, which means it runs with that token’s permissions for ' +
+      'everyone who talks to it. The third path, the Tableau Desktop authoring build, is the one people find ' +
+      'by accident and lose an afternoon to — it exists in the repository, it is not in the published npm ' +
+      'package, and its README is a single heading with no body. Read the gotchas below before you pick.',
+    setup: {
+      title: 'Connecting the Tableau MCP server',
+      steps: [
+        {
+          title: 'Decide hosted or self-hosted before anything else',
+          body:
+            'On Tableau Cloud, point your client at the hosted server and stop — there is no install, no token ' +
+            'to mint and no Node version to satisfy. Every MCP-compatible client that supports remote servers ' +
+            'and OAuth will prompt you to sign in to Tableau on first use, and per-user permissions are enforced ' +
+            'automatically. Only continue to step 2 if you are on Tableau Server, or if you need the server on ' +
+            'your own infrastructure.',
+          code: 'https://mcp.tableau.com',
+          codeLabel: 'hosted endpoint',
+        },
+        {
+          title: 'Check your Node version first',
+          body:
+            'The package declares engines.node >= 22.7.5. That is a newer floor than most MCP servers and it is ' +
+            'the most common reason a first npx run fails with a syntax error rather than a clean message. ' +
+            'Confirm before you write any config.',
+          code: 'node --version   # must be >= 22.7.5',
+          codeLabel: 'shell',
+        },
+        {
+          title: 'Create a Personal Access Token on your Tableau site',
+          body:
+            'Self-hosted defaults to PAT auth. In Tableau, open your account settings, create a Personal Access ' +
+            'Token, and keep both halves: the token name goes in PAT_NAME and the secret in PAT_VALUE. The server ' +
+            'refuses to start without both — config.ts asserts each one individually. SITE_NAME is the site’s ' +
+            'URL name, not its display name; on Tableau Cloud it is the segment that appears after /site/ in the ' +
+            'browser address bar, and on a Server default site it is the empty string.',
+        },
+        {
+          title: 'Add the server to your MCP client',
+          body:
+            'This is the configuration from the project README, unmodified. It works as-is in Claude Desktop, ' +
+            'Claude Code, Cursor, VS Code and any other client that accepts the standard mcpServers block — the ' +
+            'only difference between them is which JSON file it goes in.',
+          code: `{
+  "mcpServers": {
+    "tableau": {
+      "command": "npx",
+      "args": ["-y", "@tableau/mcp-server@latest"],
+      "env": {
+        "SERVER": "https://my-tableau-server.com",
+        "SITE_NAME": "my_site",
+        "PAT_NAME": "my_pat",
+        "PAT_VALUE": "pat_value"
+      }
+    }
+  }
+}`,
+          codeLabel: 'claude_desktop_config.json',
+        },
+        {
+          title: 'Turn on the tool groups that ship disabled',
+          body:
+            'Admin Insights, Prep flow and generated-insight tools are gated behind three separate flags that ' +
+            'default to off, and each is compared literally against the string "true". If query-admin-insights, ' +
+            'the four flow tools or generate-insight-cards are missing from your client’s tool list, this is ' +
+            'why — it is not a permissions problem on the Tableau side.',
+          code: `"ADMIN_TOOLS_ENABLED": "true",
+"FLOW_TOOLS_ENABLED": "true",
+"INSIGHTS_TOOLS_ENABLED": "true"`,
+          codeLabel: 'env additions',
+        },
+        {
+          title: 'Smoke test with a content query, not a data query',
+          body:
+            'Ask the client to list your workbooks before you ask it anything about numbers. list-workbooks ' +
+            'exercises the auth handshake and the site name without depending on a datasource being queryable, ' +
+            'so a failure points at exactly one thing. Once that returns, move on to query-datasource.',
+          code: 'Find me the most viewed workbook within the last year.',
+          codeLabel: 'prompt',
+        },
+      ],
+    },
+    tools: {
+      title: '43 web tools in 16 groups, plus 6 desktop authoring tools',
+      note:
+        'Grouped as the project groups them — the group names are also the values INCLUDE_TOOLS and ' +
+        'EXCLUDE_TOOLS accept, so you can scope the server to "datasource,view" rather than listing tools ' +
+        'one by one. Three groups are disabled by default; see the setup step above.',
+      items: [
+        { name: 'datasource', what: 'list-datasources, get-datasource-metadata, query-datasource — discovery plus the VizQL query that actually returns rows.' },
+        { name: 'workbook', what: 'list-workbooks, get-workbook, download-workbook.' },
+        { name: 'view', what: 'list-views, list-custom-views, get-view, get-view-data, get-view-image, get-custom-view-data, get-custom-view-image — the image tools return a rendered viz, which is how a chart appears inline in a chat client.' },
+        { name: 'pulse', what: 'Seven tools over Tableau Pulse: metric definitions by id, metrics by definition, subscriptions, plus generate-pulse-metric-value-insight-bundle and generate-pulse-insight-brief.' },
+        { name: 'project', what: 'list-projects.' },
+        { name: 'flow', what: 'list-flows, get-flow, list-flow-runs, list-flow-tasks — Tableau Prep. Gated behind FLOW_TOOLS_ENABLED.' },
+        { name: 'tasks', what: 'list-extract-refresh-tasks, update-cloud-extract-refresh-task and its confirm- pair — the update is a two-step human-in-the-loop confirmation, not a single call.' },
+        { name: 'jobs', what: 'list-jobs.' },
+        { name: 'users', what: 'list-users, update-user.' },
+        { name: 'authoring', what: 'request-workbook-upload, publish-workbook.' },
+        { name: 'content', what: 'delete-content and confirm-delete-content — also a confirm-gated pair, deliberately.' },
+        { name: 'content-exploration', what: 'search-content — one search across workbooks, views, datasources and projects.' },
+        { name: 'insights', what: 'generate-insight-cards. Gated behind INSIGHTS_TOOLS_ENABLED.' },
+        { name: 'admin-insights', what: 'query-admin-insights. Gated behind ADMIN_TOOLS_ENABLED.' },
+        { name: 'token-management', what: 'revoke-access-token, reset-consent.' },
+        { name: 'mcp-apps', what: 'get-embed-token, record-event, render-interactive-viz — the MCP-Apps surface that draws a live, interactive Tableau viz inside a supporting client rather than returning a static image.' },
+        { name: 'desktop (separate build)', what: 'list-instances, check-for-user-changes, get-workbook-xml, apply-workbook, list-worksheets, list-dashboards — authoring against a running Tableau Desktop. Not in the npm package; see the gotchas.' },
+      ],
+    },
+    useCases: [
+      {
+        title: 'Answer a data question without opening Tableau',
+        prompt: 'For the Superstore Datasource, what are the top 5 states with the most sales in 2025?',
+        why:
+          'This is the README’s own example and it is the single call worth testing first, because it exercises ' +
+          'query-datasource — the tool that turns a natural-language question into VizQL against a published ' +
+          'datasource and returns actual rows rather than metadata.',
+      },
+      {
+        title: 'Audit which content is actually used',
+        prompt: 'List every workbook in the Marketing project, then show me the ones with fewer than 10 views in the last year.',
+        why:
+          'list-workbooks plus list-views is the cheapest read-only pass at the question every Tableau admin ' +
+          'eventually has to answer. It needs no extra flags and no write permissions.',
+      },
+      {
+        title: 'Put a chart into the conversation',
+        prompt: 'Show me the "Economy" view in the "Finances" project.',
+        why:
+          'get-view-image returns a rendered image, so the answer is the chart itself rather than a description ' +
+          'of it. In a client that supports MCP-Apps, render-interactive-viz goes further and embeds a live viz.',
+      },
+      {
+        title: 'Catch a stale extract before someone else does',
+        prompt: 'List the extract refresh tasks on this site and tell me which ones last completed more than a week ago.',
+        why:
+          'list-extract-refresh-tasks and list-jobs together cover the failure that quietly makes every dashboard ' +
+          'wrong. Changing a schedule is possible too, but update-cloud-extract-refresh-task requires an explicit ' +
+          'confirm call, so an agent cannot reschedule anything by accident.',
+      },
+    ],
+    gotchas: [
+      {
+        question: 'Why does pip install tableau-mcp fail?',
+        answer:
+          'Because it does not exist. Tableau MCP is a TypeScript project distributed on npm as ' +
+          '@tableau/mcp-server; there has never been a PyPI package named tableau-mcp and the name 404s on ' +
+          'pypi.org. Use npx -y @tableau/mcp-server@latest. This catalog carried the pip command itself until ' +
+          '2026-08-23, which is a fair illustration of how far the wrong instruction travels.',
+      },
+      {
+        question: 'Why are the Tableau Desktop authoring tools missing?',
+        answer:
+          'Because they are not in the published package. The npm tarball for 4.6.0 contains exactly one entry ' +
+          'point, build/index.js, and package.json maps its only bin — tableau-mcp-server — to that file. The ' +
+          'desktop server is a separate build target (npm run build:desktop against src/index.desktop.ts) and ' +
+          'ships neither compiled nor as a second bin, so no amount of npx flags will surface list-worksheets or ' +
+          'apply-workbook. You have to clone and build. README.desktop.md, which is where you would look for ' +
+          'this, is a single heading with no body in both the repo and the tarball.',
+      },
+      {
+        question: 'Why do I still see all the tools after setting INCLUDE_TOOLS?',
+        answer:
+          'A typo. INCLUDE_TOOLS is split on commas and each entry is resolved as either a tool name or a group ' +
+          'name; anything matching neither is dropped silently rather than raising. The filter then only applies ' +
+          'when the resulting list is non-empty, so a value that is entirely misspelled collapses to an empty ' +
+          'list and the server exposes every tool — the opposite of what you asked for, with no warning. Verify ' +
+          'against the tool list above, and note that setting INCLUDE_TOOLS and EXCLUDE_TOOLS together does ' +
+          'throw, so the silence is specific to the typo case.',
+      },
+      {
+        question: 'Why is the server ignoring my AUTH setting?',
+        answer:
+          'An unrecognised AUTH value is not an error. config.ts falls back to oauth when an OAuth issuer is ' +
+          'configured and to pat otherwise, so a misspelled auth type quietly becomes PAT auth and then fails ' +
+          'later with "the environment variable PAT_NAME is not set" — a message about the wrong variable ' +
+          'entirely. The four accepted values are pat, uat, direct-trust and oauth.',
+      },
+      {
+        question: 'Why does the server refuse to start when OAUTH_ISSUER is set?',
+        answer:
+          'OAuth requires the HTTP transport. Setting OAUTH_ISSUER while TRANSPORT is stdio throws ' +
+          '"TRANSPORT must be \'http\' when OAUTH_ISSUER is set" at startup. The reverse constraint applies to ' +
+          'the desktop build, which throws unless TRANSPORT is stdio. If you want OAuth without running an HTTP ' +
+          'listener yourself, use the hosted server at mcp.tableau.com instead.',
+      },
+      {
+        question: 'Does a self-hosted Tableau MCP server respect each user’s permissions?',
+        answer:
+          'Not by default. A PAT is one identity, so every client sharing that server sees whatever that token ' +
+          'can see. Per-user enforcement is what the hosted OAuth 2.1 server buys you, and self-hosted ' +
+          'deployments can approximate it with Connected App direct-trust (JWT_SUB_CLAIM plus the three ' +
+          'CONNECTED_APP_* variables) or user-attribute tokens. Worth settling before a shared HTTP deployment, ' +
+          'not after.',
+      },
+      {
+        question: 'Is Tableau MCP officially supported?',
+        answer:
+          'Yes, and unusually explicitly. The repository is tableau/tableau-mcp under Apache-2.0 and carries ' +
+          'Tableau’s own "Tableau Supported" support-level badge, which is a documented commitment rather than ' +
+          'a community label. It is on 4.6.0 with commits in August 2026.',
+      },
+    ],
+    comparison: {
+      note:
+        'Tableau is one of the few analytics vendors that ships its own server, so the comparison worth making ' +
+        'is against the other BI servers you might be connecting the same agent to.',
+      items: [
+        {
+          name: 'Hosted mcp.tableau.com vs self-hosted @tableau/mcp-server',
+          choose:
+            'Hosted unless you are on Tableau Server or a security review forbids it. Hosted gets you OAuth 2.1, ' +
+            'per-user permissions and no deployment; self-hosted gets you network control at the cost of a shared ' +
+            'PAT identity.',
+        },
+        {
+          name: 'BigQuery MCP Server',
+          slug: 'bigquery-mcp',
+          choose:
+            'BigQuery if the question is about raw warehouse tables. Tableau if the question is about published ' +
+            'datasources, governed metrics and existing dashboards — the value here is that the semantics are ' +
+            'already modelled.',
+        },
+        {
+          name: 'Mixpanel MCP Server',
+          slug: 'mixpanel',
+          choose:
+            'Mixpanel for product-analytics event funnels, and note it is a community server with no vendor ' +
+            'support. Tableau for governed BI. They rarely overlap.',
+        },
+        {
+          name: 'Looker',
+          slug: 'looker-mcp',
+          choose:
+            'Looker if your semantic layer is LookML. Both are governed-BI servers; the answer is whichever ' +
+            'platform your metrics are actually defined in.',
+        },
+      ],
+    },
+  },
+
 ]
 
 const guideBySlug = new Map(guides.map((g) => [g.slug, g] as const));
