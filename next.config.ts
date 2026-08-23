@@ -91,6 +91,17 @@ const nextConfig: NextConfig = {
        * from servers.ts and 301s at the canonical page.
        */
       { source: "/servers/zendesk-mcp", destination: "/servers/zendesk", permanent: true },
+      /**
+       * `mixpanel-mcp` and `mixpanel` were two entries for one keyword and
+       * neither described a real project: both carried `github_url: null`, and
+       * the thin one advertised `npx mcp-mixpanel` as a verified install. That
+       * npm name was published on 2025-04-26 and unpublished 22 minutes later
+       * — it has not resolved since, and it belongs to dragonkhoi/mixpanel-mcp
+       * anyway, not to the "mixpanel-community" author the entry invented.
+       * "mixpanel mcp" mines at 390 SV / SD 21 and two null-repo pages were
+       * splitting it. The surviving entry points at the real leader.
+       */
+      { source: "/servers/mixpanel-mcp", destination: "/servers/mixpanel", permanent: true },
     ];
   },
 };

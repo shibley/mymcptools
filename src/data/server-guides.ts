@@ -5594,6 +5594,286 @@ docker run --rm -i --env-file /path/to/.env zendesk-mcp-server`,
       ],
     },
   },
+  {
+    slug: 'mixpanel',
+    verifiedOn: '2026-08-23',
+    sources: [
+      { label: 'dragonkhoi/mixpanel-mcp README', url: 'https://github.com/dragonkhoi/mixpanel-mcp' },
+      {
+        label: 'dragonkhoi/mixpanel-mcp src/index.ts (all 19 tool definitions, argv and env handling)',
+        url: 'https://github.com/dragonkhoi/mixpanel-mcp/blob/main/src/index.ts',
+      },
+      {
+        label: 'Smithery registry entry (tool list and config schema, as built)',
+        url: 'https://registry.smithery.ai/servers/@dragonkhoi/mixpanel-mcp',
+      },
+      { label: 'Mixpanel Service Accounts reference', url: 'https://developer.mixpanel.com/reference/service-accounts' },
+      { label: 'Mixpanel Query API reference', url: 'https://developer.mixpanel.com/reference/query-api' },
+      { label: 'mixpanel/mixpanel-headless — the official agent-facing CLI', url: 'https://github.com/mixpanel/mixpanel-headless' },
+      { label: 'mixpanel/ai-plugins — the official Agent Skills collection', url: 'https://github.com/mixpanel/ai-plugins' },
+    ],
+    intro:
+      'Mixpanel does not publish an MCP server. That is the first thing worth knowing, because ' +
+      'several catalogs — including this one until August 2026 — listed a "Mixpanel" server marked ' +
+      'official with no repository behind it. What Mixpanel actually ships for agents is ' +
+      'mixpanel-headless, a Python CLI it describes as "designed with coding agent use in mind", and ' +
+      'ai-plugins, a set of Claude Agent Skills. Neither speaks MCP. So the practical answer to ' +
+      '"which Mixpanel MCP server do I install" is a community one, and there are three worth ' +
+      'separating. dragonkhoi/mixpanel-mcp is the adoption leader at 19 stars and 19 forks and has by ' +
+      'far the widest tool surface — 19 tools over the Query API — but its last commit was March 2025 ' +
+      'and it has no working published package. mrfentmen/mixpanel-mcp is the actively maintained one ' +
+      'and is on npm, but it is seven tools and its published binary does not run (see the gotchas). ' +
+      'moonbirdai/mixpanel-mcp-server is a different job entirely: it writes events into Mixpanel ' +
+      'rather than reading them out. This guide sets up dragonkhoi/mixpanel-mcp, and tells you when ' +
+      'not to.',
+    setup: {
+      title: 'Setting up dragonkhoi/mixpanel-mcp',
+      steps: [
+        {
+          title: 'Create a Mixpanel Service Account',
+          body:
+            'The server authenticates with HTTP Basic against Mixpanel\'s Query API, and the ' +
+            'credential is a Service Account — not your login, and not a project token. Create one in ' +
+            'Organization Settings → Service Accounts. Mixpanel shows the secret exactly once. The ' +
+            'README calls the two halves "username" and "password"; in the Mixpanel UI they are ' +
+            'labelled username and secret, which is the single most common point of confusion on the ' +
+            'issue tracker. You also need the numeric project ID, which lives in Project Settings, ' +
+            'not in Organization Settings.',
+        },
+        {
+          title: 'Clone and build',
+          body:
+            'There is no package to npx. The repo\'s package.json runs the TypeScript build from a ' +
+            'postinstall hook, so `npm install` alone produces build/index.js and marks it executable.',
+          code:
+            'git clone https://github.com/dragonkhoi/mixpanel-mcp\n' +
+            'cd mixpanel-mcp\n' +
+            'npm install',
+          codeLabel: 'bash',
+        },
+        {
+          title: 'Point your client at the build, with credentials as positional arguments',
+          body:
+            'The three credentials are read from argv, in the order username, password, project ID. ' +
+            'Use the absolute path to build/index.js — a relative path resolves against whatever ' +
+            'directory your MCP client happens to launch from.',
+          code:
+            '{\n' +
+            '  "mcpServers": {\n' +
+            '    "mixpanel": {\n' +
+            '      "command": "node",\n' +
+            '      "args": [\n' +
+            '        "/ABSOLUTE/PATH/TO/mixpanel-mcp/build/index.js",\n' +
+            '        "YOUR_SERVICE_ACCOUNT_USERNAME",\n' +
+            '        "YOUR_SERVICE_ACCOUNT_SECRET",\n' +
+            '        "YOUR_PROJECT_ID"\n' +
+            '      ]\n' +
+            '    }\n' +
+            '  }\n' +
+            '}',
+          codeLabel: 'claude_desktop_config.json',
+        },
+        {
+          title: 'Or run the Smithery bundle instead of building',
+          body:
+            'Smithery hosts a prebuilt stdio bundle of the same project. Its config schema takes the ' +
+            'same three fields under the names username, password and projectId. This is the route ' +
+            'the README recommends for Cursor, where a single command string is easier to paste than ' +
+            'a JSON args array.',
+          code:
+            'npx -y @smithery/cli@latest run @dragonkhoi/mixpanel-mcp \\\n' +
+            '  --config \'{"username":"YOUR_USERNAME","password":"YOUR_SECRET","projectId":"YOUR_PROJECT_ID"}\'',
+          codeLabel: 'bash',
+        },
+        {
+          title: 'Confirm it is reading the right project',
+          body:
+            'Ask for today\'s top events before anything else. It is the cheapest call in the set and ' +
+            'it fails loudly on all three credential mistakes: a wrong username or secret returns a ' +
+            '401, and a wrong project ID returns an empty list rather than an error — which is why ' +
+            'you want to see event names you recognise, not just an absence of red text.',
+        },
+      ],
+    },
+    tools: {
+      title: 'All 19 tools',
+      note:
+        'Read-only, every one of them. These map onto Mixpanel\'s Query API; the ingestion API — ' +
+        'track, engage, import — is not exposed at all, so no prompt can make this server write to ' +
+        'your project. Tool names and descriptions were read from src/index.ts and cross-checked ' +
+        'against the built server\'s advertised tool list in the Smithery registry.',
+      items: [
+        { name: 'get_today_top_events', what: 'Today\'s most active events. The cheapest smoke test after setup.' },
+        { name: 'get_top_events', what: 'The most common events over the trailing 31 days — use this to learn the event names before writing any other query.' },
+        { name: 'aggregate_event_counts', what: 'Unique, general or average counts for a set of events bucketed by day, week or month.' },
+        { name: 'aggregated_event_property_values', what: 'The same aggregation for one event broken out by one property.' },
+        { name: 'top_event_properties', what: 'Which property names appear most often on a given event — property discovery, so segmentation queries can be written blind.' },
+        { name: 'top_event_property_values', what: 'The distribution of values for one property on one event. Defaults to 255 values.' },
+        { name: 'query_segmentation_report', what: 'An event segmented and filtered by properties over a date range. The workhorse.' },
+        { name: 'query_segmentation_bucket', what: 'The same, with numeric values placed into buckets.' },
+        { name: 'query_segmentation_sum', what: 'Sums a numeric expression across events per unit time.' },
+        { name: 'query_segmentation_average', what: 'Averages a numeric expression across events per unit time.' },
+        { name: 'query_funnel_report', what: 'Conversion data for one saved funnel, by funnel_id. It cannot define a funnel — only read one that exists in the UI.' },
+        { name: 'list_saved_funnels', what: 'Names and IDs of saved funnels. You need this first, because query_funnel_report takes an ID and nobody knows their funnel IDs.' },
+        { name: 'query_retention_report', what: 'Cohort retention from the Retention report.' },
+        { name: 'query_frequency_report', what: 'How often users perform an action over time — Mixpanel\'s addiction endpoint.' },
+        { name: 'query_insights_report', what: 'Data behind a saved Insights report.' },
+        { name: 'list_saved_cohorts', what: 'Every cohort defined in the project, with IDs.' },
+        { name: 'query_profiles', what: 'User profile search with filtering, against the engage endpoint.' },
+        { name: 'profile_event_activity', what: 'The event stream for specific distinct_ids over a date range — one user\'s timeline.' },
+        { name: 'custom_jql', what: 'Runs a raw JQL script. The escape hatch for anything the eighteen typed tools cannot express.' },
+      ],
+    },
+    useCases: [
+      {
+        title: 'Diagnose a funnel drop without opening Mixpanel',
+        prompt:
+          'List our saved funnels. Take the signup one, pull its conversion by step for the last 14 days ' +
+          'versus the 14 days before that, and tell me which single step moved most.',
+        why:
+          'This is the pairing the tool list is built for: list_saved_funnels to resolve the ID, then two ' +
+          'query_funnel_report calls. Doing it in the UI means two date-range changes and reading numbers ' +
+          'off a chart; the diff is the part a human is bad at and the model is not.',
+      },
+      {
+        title: 'Find the property worth segmenting on',
+        prompt:
+          'For our checkout_completed event, show me the top properties, then for the two most common ones ' +
+          'show the value distribution. Which one actually splits the population?',
+        why:
+          'top_event_properties into top_event_property_values is discovery, not reporting — it answers ' +
+          '"what can I even segment by" for an event somebody else instrumented. Most analytics MCP ' +
+          'servers skip this and jump straight to querying, which only works if you already know the schema.',
+      },
+      {
+        title: 'Answer a question the typed tools cannot',
+        prompt:
+          'Write a JQL script that finds users who triggered purchase more than three times in the last 30 ' +
+          'days but have never triggered refund_requested, and run it.',
+        why:
+          'custom_jql is why this server outlasts its own staleness. Anything Mixpanel\'s Query API cannot ' +
+          'express as a segmentation or funnel call, JQL can — and the model writing the script is a better ' +
+          'fit for JQL than for remembering endpoint parameters.',
+      },
+    ],
+    gotchas: [
+      {
+        question: 'Why does the server exit immediately when I set the credentials as environment variables?',
+        answer:
+          'Because of an ordering bug in src/index.ts. The file does check for SERVICE_ACCOUNT_USER_NAME, ' +
+          'SERVICE_ACCOUNT_PASSWORD and DEFAULT_PROJECT_ID — none of which the README mentions — but the ' +
+          'argv length guard runs first: if process.argv.slice(2) is empty it prints "Please provide a ' +
+          'Mixpanel service account username and password and a project ID" and exits 1, before the ' +
+          'environment is ever consulted. The env vars only work if you also pass at least one positional ' +
+          'argument. If you want secrets out of the args array, pass a single dummy positional and set all ' +
+          'three variables in the client\'s env block.',
+      },
+      {
+        question: 'Does the Mixpanel MCP server work with EU or India data residency?',
+        answer:
+          'No. Every one of the nineteen tools builds its URL from a hardcoded https://mixpanel.com/api/ ' +
+          'prefix — there is no base-URL option, no env var, and no residency flag anywhere in the source. ' +
+          'EU projects live on eu.mixpanel.com and India projects on in.mixpanel.com, and against those a ' +
+          'correct Service Account will return empty results or a 401 rather than an obvious error, which ' +
+          'makes it look like a credential problem. This has been an open issue since April 2025. Editing ' +
+          'the prefix in your own clone is a global find-and-replace and works.',
+      },
+      {
+        question: 'Is there an npm package for the Mixpanel MCP server?',
+        answer:
+          'Not a working one, and the near-misses are the trap. dragonkhoi/mixpanel-mcp declares itself as ' +
+          '"mcp-mixpanel" in package.json, and that name was published to npm on 2025-04-26 and unpublished ' +
+          'twenty-two minutes later — `npx mcp-mixpanel` has resolved to nothing ever since. A separate ' +
+          'project, mrfentmen/mixpanel-mcp, does hold the name "mixpanel-mcp" on npm, but its published ' +
+          'dist/index.js has no `#!/usr/bin/env node` line while still being declared as the package bin, ' +
+          'so `npx -y mixpanel-mcp` hands the file to your shell instead of to Node. On macOS with ' +
+          'ImageMagick installed, the shell resolves the first word — `import` — to ImageMagick\'s import ' +
+          'binary and prints a screenshot-utility usage message, which is a memorable way to lose twenty ' +
+          'minutes. That package does work if you invoke it as `node node_modules/mixpanel-mcp/dist/index.js`.',
+      },
+      {
+        question: 'Can this server track events or update profiles in Mixpanel?',
+        answer:
+          'No, and that is a design choice rather than a gap. All nineteen tools hit the Query API. There ' +
+          'is no track, no engage, no import — an assistant with this server connected cannot pollute your ' +
+          'analytics, which is the right default for a tool you are pointing at production data. If you ' +
+          'want the write path, moonbirdai/mixpanel-mcp-server is the opposite server: it tracks events, ' +
+          'page views and signups and updates profiles, and reads nothing.',
+      },
+      {
+        question: 'What is the "password" the README asks for?',
+        answer:
+          'The Service Account secret. Mixpanel\'s UI calls it a secret and the README calls it a password, ' +
+          'and people reasonably try their account login. It is also shown only at creation time — if you ' +
+          'did not copy it, delete the Service Account and make another one rather than hunting for it.',
+      },
+      {
+        question: 'I get "fetch is not defined" on startup.',
+        answer:
+          'You are on Node 16 or older. The source calls global fetch directly and imports no polyfill, so ' +
+          'it needs Node 18 or newer. Worth checking explicitly if your MCP client bundles its own Node ' +
+          'runtime rather than using the one on your PATH.',
+      },
+      {
+        question: 'How stale is it, and does that matter?',
+        answer:
+          'Last commit March 2025, seven open issues, MIT. It matters less than the dates suggest, because ' +
+          'the Mixpanel Query API endpoints it wraps are stable and versioned — the server is a thin ' +
+          'authenticated proxy over URLs that have not moved. The real cost of the staleness is the two ' +
+          'items above it in this list: the residency limitation and the argv bug are both open and neither ' +
+          'is going to be fixed for you.',
+      },
+      {
+        question: 'Does Mixpanel publish an official MCP server?',
+        answer:
+          'No. As of August 2026 the mixpanel GitHub organisation ships mixpanel-headless — a Python ' +
+          'library and CLI it explicitly describes as designed for coding-agent use — and ai-plugins, a ' +
+          'collection of Agent Skills for Claude. Both are agent tooling; neither implements the Model ' +
+          'Context Protocol. If you are on a Claude client, the Agent Skills route is worth comparing ' +
+          'against any of these servers, because it is the one Mixpanel actually maintains.',
+      },
+    ],
+    comparison: {
+      note:
+        'Three community servers share this name and they are not substitutes for each other. Pick by ' +
+        'direction of data flow first, then by whether you can tolerate a clone.',
+      items: [
+        {
+          name: 'mrfentmen/mixpanel-mcp',
+          choose:
+            'Pick it if you want a maintained project and seven tools are enough — query_events, ' +
+            'get_top_events, get_funnel, get_retention, query_profiles, run_jql, list_events, with ' +
+            'credentials via MIXPANEL_SERVICE_ACCOUNT / MIXPANEL_SERVICE_SECRET / MIXPANEL_PROJECT_ID, ' +
+            'which is a cleaner auth story than positional args. It is on npm and pushed in August 2026. ' +
+            'Budget for invoking it through node rather than npx until the missing shebang is fixed, and ' +
+            'note it has no saved-report tools at all: no Insights, no saved funnels or cohorts by ID.',
+        },
+        {
+          name: 'moonbirdai/mixpanel-mcp-server',
+          choose:
+            'Pick it only if you want to write. It tracks events, page views and signups and updates ' +
+            'profiles, authenticating with a project token rather than a Service Account, and it cannot ' +
+            'read anything back. It is the tool for instrumenting from an agent, not for asking questions.',
+        },
+        {
+          name: 'mixpanel-headless (official, not MCP)',
+          choose:
+            'Pick it if your agent can run shell commands. It is Mixpanel\'s own Python CLI for discovery, ' +
+            'querying and extraction, built for coding agents, and being first-party it will track API ' +
+            'changes that a community MCP server will not. The tradeoff is that you give up structured ' +
+            'tool schemas and the model has to learn a CLI.',
+        },
+        {
+          name: 'PostHog MCP Server',
+          slug: 'posthog',
+          choose:
+            'The nearest thing to a vendor-supported version of this workflow: PostHog runs a hosted ' +
+            'remote MCP server, so there is no clone, no build and no Service Account in a config file. ' +
+            'Relevant if you are choosing an analytics stack rather than integrating one you already have.',
+        },
+      ],
+    },
+  },
 
 ]
 
