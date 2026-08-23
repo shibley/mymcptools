@@ -45,10 +45,21 @@ fi
 git add src/data/probe-status.json src/data/probe-events.jsonl src/data/probe-inventory.json 2>/dev/null
 git commit -q -m "chore(probe): scheduled ${MODE} probe refresh" || { log "FAIL: commit"; exit 1; }
 
-# System cron has no keychain session, so the osxkeychain helper fails with
-# "could not read Username". Use gh as the credential helper instead — same
-# pattern as apistatuscheck/scripts/monitor-hourly.sh.
-if git -c credential.helper='!/opt/homebrew/bin/gh auth git-credential' push -q origin HEAD 2>>"${LOG}"; then
+# Push auth under cron (see 2026-08-23 monitoring run):
+# `gh auth git-credential` alone is NOT sufficient. gh keeps its token in the
+# macOS keyring, which a non-login cron session cannot unlock, so the push dies
+# on "could not read Username: Device not configured". It failed every run for
+# 2 days while appearing fixed, because the Aug 21 change was only ever tested
+# from a logged-in shell that HAD keychain access — reproducing it requires an
+# actual cron context, not `env -i`.
+# Mitigation: hand gh a token from a plain file; GH_TOKEN bypasses the keyring
+# entirely. The empty `-c credential.helper=` resets the system-wide osxkeychain
+# helper so gh is the only one consulted (belt-and-braces; a failing first
+# helper was tested and does NOT abort the chain, so that alone was not it).
+# If a push still fails after this, the fallback is unchanged: the commit is
+# held locally and ships with the next deploy-batch push.
+[ -r "${HOME}/.gh-cron-token" ] && export GH_TOKEN="$(cat "${HOME}/.gh-cron-token")"
+if git -c credential.helper= -c credential.helper='!/opt/homebrew/bin/gh auth git-credential' push -q origin HEAD 2>>"${LOG}"; then
   log "done: pushed $(git rev-parse --short HEAD)"
 else
   log "WARN: committed $(git rev-parse --short HEAD) but push failed — will go out with the next push"
