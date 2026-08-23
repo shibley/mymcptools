@@ -40421,6 +40421,26 @@ const _serversPart31: MCPServer[] = [
     stars: 336,
     isNew: true,
   },
+  // ClipMyApp — inbound free submission 2026-08-23 (Resend 3af88e72). Hosted server
+  // verified live the same day: POST /mcp returns 401 with a spec-compliant
+  // WWW-Authenticate carrying resource_metadata and the four OAuth scopes, and
+  // /.well-known/oauth-protected-resource resolves. No public repository exists.
+  {
+    slug: 'clipmyapp',
+    name: 'ClipMyApp MCP Server',
+    description: 'ClipMyApp is a short-form social content pipeline for app and SaaS makers, and its MCP server is the whole product exposed to an assistant rather than a read-only sidecar. The underlying service takes a website URL and, optionally, a screen recording of the app, and turns them into TikTok, Instagram Reels and YouTube Shorts posts — creator-style UGC video with a human on camera and the real app on screen, memes, and multi-slide carousels — then schedules them to connected accounts. The hosted endpoint at https://api.clipmyapp.com/mcp is Streamable HTTP and exposes 23 tools across four stages, which is the useful way to read it. Understand is read-only inventory: get_account, list_projects, list_recordings, get_recording, list_creator_hooks, list_memes, list_audio_tracks, get_post_media_options, get_pack, list_social_accounts, get_calendar, list_finished_posts, list_own_posts, get_analytics and open_studio. Create covers generate_posts, write_own_post and edit_post. Review is rewrite_finished_post, approve_post and reject_post. Publish is schedule_post and cancel_scheduled_post. The separation matters because it maps onto the permission model: authorisation is OAuth with four scopes — content:read, content:generate, content:decide and publish:schedule — so a client can be granted drafting without being granted the ability to post, and nothing reaches a live social account unless publish:schedule was consented to. Paid actions restate the exact current credit cost before spending, and a key or client connection can be revoked from the dashboard. Two setup paths exist for the same URL: hosted clients that speak remote MCP sign in through OAuth on connect, while local clients pass a ClipMyApp API key as a bearer header. There is no package to install and no public repository — the endpoint is the product, and access requires a ClipMyApp account (plans start at $29/month, with 20 finished posts free on signup).',
+    author: 'ClipMyApp (TEMURIYDEVS LTD)',
+    github_url: null,
+    source_verified: false,
+    verification: 'unresolved',
+    website_url: 'https://clipmyapp.com/mcp',
+    categories: ['media', 'marketing'],
+    integrations: ['claude-desktop', 'cursor', 'vs-code'],
+    install_type: 'remote',
+    install_command: 'claude mcp add --transport http clipmyapp https://api.clipmyapp.com/mcp --header "Authorization: Bearer YOUR_API_KEY"',
+    install_checked: '2026-08-23',
+    isNew: true,
+  },
 ];
 
 export const servers: MCPServer[] = [..._serversPart1, ..._serversPart2, ..._serversPart3, ..._serversPart4, ..._serversPart5, ..._serversPart6, ..._serversPart7, ..._serversPart8, ..._serversPart9, ..._serversPart10, ..._serversPart11, ..._serversPart12, ..._serversPart13, ..._serversPart14, ..._serversPart15, ..._serversPart16, ..._serversPart17, ..._serversPart18, ..._serversPart19, ..._serversPart20, ..._serversPart21, ..._serversPart22, ..._serversPart23, ..._serversPart24, ..._serversPart25, ..._serversPart26, ..._serversPart27, ..._serversPart28, ..._serversPart29, ..._serversPart30, ..._serversPart31];
