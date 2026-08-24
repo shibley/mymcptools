@@ -6508,6 +6508,395 @@ docker run --rm -i --env-file /path/to/.env zendesk-mcp-server`,
       ],
     },
   },
+  {
+    slug: 'snowflake',
+    verifiedOn: '2026-08-24',
+    sources: [
+      {
+        label: 'Snowflake-managed MCP server (official documentation, read end-to-end)',
+        url: 'https://docs.snowflake.com/en/user-guide/snowflake-cortex/cortex-agents-mcp',
+      },
+      {
+        label: 'Snowflake-Labs/mcp README — the deprecation notice and legacy tool surface',
+        url: 'https://github.com/Snowflake-Labs/mcp',
+      },
+      { label: 'PyPI snowflake-labs-mcp 1.4.2 (last release, 2026-05-15)', url: 'https://pypi.org/project/snowflake-labs-mcp/' },
+      {
+        label: 'isaacwasserman/mcp-snowflake-server README (the community self-hosted alternative)',
+        url: 'https://github.com/isaacwasserman/mcp-snowflake-server',
+      },
+      {
+        label: 'Getting Started with Managed Snowflake MCP Server Quickstart',
+        url: 'https://quickstarts.snowflake.com/guide/getting-started-with-snowflake-mcp-server/index.html',
+      },
+    ],
+    intro:
+      'Three different things have been called the Snowflake MCP server, and only one of them is the ' +
+      'answer now. The Snowflake-managed server is a first-party, Generally Available feature that you ' +
+      'create with SQL — it is a database object, not a package — and reach over HTTPS; nothing installs ' +
+      'anywhere. Snowflake-Labs/mcp, the local Python server most older tutorials point at, carries a ' +
+      'deprecation notice at the top of its own README and has not shipped a release since 1.4.2 in May ' +
+      '2026; do not start there. isaacwasserman/mcp-snowflake-server is a genuinely independent community ' +
+      'project that is still a reasonable choice if what you want is a plain read/write SQL bridge with no ' +
+      'Cortex in it. The managed server is the one this guide covers. Its surprises are not installation ' +
+      'problems — there is no installation — but governance ones: a tool can be visible and still refuse ' +
+      'to run, and the role your session ends up with is usually not the role you think you selected.',
+    setup: {
+      title: 'Creating and connecting a Snowflake-managed MCP server',
+      steps: [
+        {
+          title: 'Create the MCP server object in a database and schema',
+          body:
+            'The server is created with CREATE MCP SERVER and a specification YAML that lists its tools. ' +
+            'For governed business questions Snowflake recommends exposing exactly one Cortex Agent and ' +
+            'letting the agent orchestrate its own Analyst, Search and custom tools — the client then has ' +
+            'one interface to choose from and the semantic layer stays in the loop.',
+          code: `CREATE OR REPLACE MCP SERVER <database_name>.<schema_name>.<server_name>
+FROM SPECIFICATION $$
+tools:
+  - title: "Governed business data agent"
+    name: "business_data_agent"
+    type: "CORTEX_AGENT_RUN"
+    identifier: "<database_name>.<schema_name>.<agent_name>"
+    description: "Use this agent for governed business data questions."
+$$;`,
+          codeLabel: 'sql',
+        },
+        {
+          title: 'Add the other tool types only if you actually want the client choosing between them',
+          body:
+            'Five types are supported: CORTEX_AGENT_RUN, CORTEX_ANALYST_MESSAGE (semantic views only — the ' +
+            'managed server does not support semantic models), CORTEX_SEARCH_SERVICE_QUERY, ' +
+            'SYSTEM_EXECUTE_SQL and GENERIC for a UDF or stored procedure. SYSTEM_EXECUTE_SQL takes ' +
+            'read_only (default true), query_timeout and warehouse in its config block. Snowflake warns ' +
+            'explicitly against putting SYSTEM_EXECUTE_SQL on the same server as an agent: direct SQL lets ' +
+            'the client route around the agent’s semantic views and verified queries. If you need both, ' +
+            'make it a second MCP server with its own least-privileged role.',
+          code: `tools:
+  - title: "SQL Execution Tool"
+    name: "sql_exec_tool"
+    type: "SYSTEM_EXECUTE_SQL"
+    description: "A tool to execute SQL queries against the connected Snowflake database."
+    config:
+      read_only: true
+      query_timeout: 600
+      warehouse: "<warehouse_name>"`,
+          codeLabel: 'specification yaml',
+        },
+        {
+          title: 'Grant the access role — twice over',
+          body:
+            'This is the step that produces the most "the tool is listed but it will not run" reports. ' +
+            'USAGE on the MCP SERVER only lets a client connect and discover tools. Every tool needs a ' +
+            'second grant on the object behind it: USAGE on the Cortex Agent, USAGE on a Cortex Search ' +
+            'service, SELECT on a semantic view, USAGE on a function or procedure. Access to the server is ' +
+            'not access to the tools.',
+          code: `CREATE ROLE <mcp_access_role>;
+GRANT DATABASE ROLE SNOWFLAKE.CORTEX_AGENT_USER TO ROLE <mcp_access_role>;
+GRANT USAGE ON WAREHOUSE <warehouse_name> TO ROLE <mcp_access_role>;
+GRANT USAGE ON DATABASE <database_name> TO ROLE <mcp_access_role>;
+GRANT USAGE ON SCHEMA <database_name>.<schema_name> TO ROLE <mcp_access_role>;
+GRANT USAGE ON MCP SERVER <database_name>.<schema_name>.<server_name> TO ROLE <mcp_access_role>;
+GRANT USAGE ON AGENT <database_name>.<schema_name>.<agent_name> TO ROLE <mcp_access_role>;
+GRANT ROLE <mcp_access_role> TO USER <username>;`,
+          codeLabel: 'sql',
+        },
+        {
+          title: 'Create the OAuth security integration',
+          body:
+            'One integration can serve every user in the account and every MCP server in it — each user ' +
+            'still authenticates individually, but the client id and secret are shared. Set ' +
+            'OAUTH_REDIRECT_URI to the exact callback the client shows you, keep ' +
+            'OAUTH_USE_SECONDARY_ROLES = NONE, and restrict ALLOWED_ROLES_LIST to the MCP access role. If ' +
+            'the client registers more than one callback — VS Code does — add the rest with ' +
+            'OAUTH_ALTERNATE_REDIRECT_URIS. To authenticate against Okta or Entra ID instead, set ' +
+            'OAUTH_AUTHORIZATION_SERVER to bind the server to an External OAuth integration. Dynamic ' +
+            'client registration is not supported, so you will always be pasting a client id and secret.',
+          code: `CREATE OR REPLACE SECURITY INTEGRATION <integration_name>
+  TYPE = OAUTH
+  OAUTH_CLIENT = CUSTOM
+  ENABLED = TRUE
+  OAUTH_CLIENT_TYPE = 'CONFIDENTIAL'
+  OAUTH_REDIRECT_URI = '<redirect_URI>'
+  OAUTH_USE_SECONDARY_ROLES = NONE
+  ALLOWED_ROLES_LIST = ('<mcp_access_role>');
+
+-- integration name is case sensitive and must be uppercase here
+SELECT SYSTEM$SHOW_OAUTH_CLIENT_SECRETS('<INTEGRATION_NAME>');`,
+          codeLabel: 'sql',
+        },
+        {
+          title: 'Set DEFAULT_ROLE and DEFAULT_WAREHOUSE on every user who will connect',
+          body:
+            'Not optional, and not a nicety. A session with no default warehouse fails to initialise at ' +
+            'all. And because several clients — Claude among them — request the session:role:all scope ' +
+            'rather than a named role, the session runs as the user’s DEFAULT_ROLE whatever else you ' +
+            'advertise in OAUTH_SCOPES_SUPPORTED. If different users need different data, the reliable ' +
+            'answer is separate MCP servers with separate roles, not scopes.',
+          code: `ALTER USER <username> SET DEFAULT_ROLE = '<mcp_access_role>' DEFAULT_WAREHOUSE = '<warehouse_name>';`,
+          codeLabel: 'sql',
+        },
+        {
+          title: 'Point the client at the server URL',
+          body:
+            'The URL is fully qualified down to the server name — a truncated path authenticates fine and ' +
+            'then fails to connect, which is the second entry in Snowflake’s own troubleshooting table. ' +
+            'In Claude, add it under Settings → Connectors as a custom connector with the client id and ' +
+            'secret; in ChatGPT, enable Developer mode and create a Connector with OAuth; in Cursor, add a ' +
+            'url entry to ~/.cursor/mcp.json and then click Sign in under Cursor Settings → MCP.',
+          code: `https://<account_url>/api/v2/databases/<database>/schemas/<schema>/mcp-servers/<name>
+
+// Cursor — ~/.cursor/mcp.json
+{
+  "mcpServers": {
+    "snowflake": {
+      "url": "https://<account_url>/api/v2/databases/<database>/schemas/<schema>/mcp-servers/<name>",
+      "auth": {
+        "CLIENT_ID": "\${env:MCP_CLIENT_ID}",
+        "CLIENT_SECRET": "\${env:MCP_CLIENT_SECRET}"
+      }
+    }
+  }
+}`,
+          codeLabel: 'server URL and Cursor config',
+        },
+        {
+          title: 'Open the network policy if you have one',
+          body:
+            'A remote MCP client connects from its provider’s infrastructure, not from the user’s ' +
+            'browser, so an account network policy will block it even though the same user can log into ' +
+            'Snowsight fine. The tell is misleading: a blocked token request comes back as ' +
+            'error: invalid_client from /oauth/token-request, the same error as wrong credentials. ' +
+            'Anthropic publishes Claude’s outbound IPs; other providers publish their own.',
+          code: `CREATE NETWORK RULE mcp_client_ingress_rule
+  MODE = INGRESS
+  TYPE = IPV4
+  VALUE_LIST = ('<client_provider_ip_1>', '<client_provider_ip_2>');
+
+ALTER NETWORK POLICY <your_policy_name>
+  ADD ALLOWED_NETWORK_RULE_LIST = ('mcp_client_ingress_rule');`,
+          codeLabel: 'sql',
+        },
+        {
+          title: 'Inspect what you built',
+          body:
+            'DESCRIBE returns the stored server_spec as JSON, which is the fastest way to confirm the ' +
+            'client is seeing the tool list you think you wrote.',
+          code: `SHOW MCP SERVERS IN SCHEMA <schema_name>;
+DESCRIBE MCP SERVER <server_name>;
+DROP MCP SERVER <server_name>;`,
+          codeLabel: 'sql',
+        },
+      ],
+    },
+    tools: {
+      title: 'The five tool types',
+      note:
+        'The managed server has no fixed tool list — you compose it. Each entry in the specification YAML ' +
+        'becomes one tool, named by you, with one of these five types. Maximum 50 per server.',
+      items: [
+        {
+          name: 'CORTEX_AGENT_RUN',
+          what:
+            'Exposes a Cortex Agent. The client sends a message; the agent picks among its own Analyst, ' +
+            'Search and custom tools and answers. Snowflake’s recommended shape for governed business ' +
+            'questions. Responses include reasoning traces, tool calls, search results and citations by ' +
+            'design, which is why they can exceed 200 KB.',
+        },
+        {
+          name: 'CORTEX_ANALYST_MESSAGE',
+          what:
+            'Text-to-SQL over a semantic view. Exposed directly (rather than behind an agent) it generates ' +
+            'SQL and returns the statement to the client. Semantic views only — semantic models are not ' +
+            'supported on the managed server.',
+        },
+        {
+          name: 'CORTEX_SEARCH_SERVICE_QUERY',
+          what:
+            'Unstructured retrieval against a Cortex Search service. Set max_results in the agent’s ' +
+            'search resources if payload size becomes a problem.',
+        },
+        {
+          name: 'SYSTEM_EXECUTE_SQL',
+          what:
+            'Runs SQL directly, with no agent orchestration. read_only defaults to true; query_timeout and ' +
+            'warehouse are configurable. Responses truncate at 250 KB.',
+        },
+        {
+          name: 'GENERIC',
+          what:
+            'Any UDF (type: function) or stored procedure (type: procedure), exposed with input_schema ' +
+            'matching the signature. This is how anything Snowflake did not build a tool type for becomes ' +
+            'a tool. Responses truncate at 250 KB.',
+        },
+      ],
+    },
+    useCases: [
+      {
+        title: 'Ask a governed question without letting the model write SQL',
+        prompt:
+          'Using the business_data_agent tool, what was net revenue by region last quarter, and how does ' +
+          'that compare to the same quarter last year?',
+        why:
+          'The agent resolves the question against a semantic view you have already defined and tested, so ' +
+          'the number matches the one in your BI tool. Nothing in the path lets the model invent a join.',
+      },
+      {
+        title: 'Search unstructured content and cite it',
+        prompt:
+          'Search the product-search tool for customer complaints about billing in the last 60 days and ' +
+          'summarise the three most common themes with quotes.',
+        why:
+          'Cortex Search runs inside Snowflake against data that never leaves the account, and the agent ' +
+          'response carries citations back to the source rows.',
+      },
+      {
+        title: 'Expose an existing stored procedure as an agent tool',
+        prompt:
+          'Run the refresh_forecast tool for the EMEA region and tell me what changed in the top five ' +
+          'accounts.',
+        why:
+          'A GENERIC tool wraps a UDF or procedure you already trust, so the agent calls reviewed code ' +
+          'rather than generating something equivalent. Governance stays where it already was.',
+      },
+      {
+        title: 'Give a read-only analyst a SQL scratchpad',
+        prompt:
+          'Using sql_exec_tool, list the ten largest tables in ANALYTICS.PUBLIC by row count.',
+        why:
+          'read_only: true plus a least-privileged role makes a genuinely safe exploration tool. Put it on ' +
+          'its own MCP server, not next to the agent.',
+      },
+    ],
+    gotchas: [
+      {
+        question: 'Is the Snowflake-Labs/mcp server still the right Snowflake MCP server to install?',
+        answer:
+          'No. Its README opens with a deprecation caution telling you to migrate to the Snowflake-managed ' +
+          'MCP server, the legacy documentation is collapsed behind a "for reference only" fold, and the ' +
+          'last PyPI release of snowflake-labs-mcp is 1.4.2 from 15 May 2026. Most blog posts and videos ' +
+          'about "the Snowflake MCP server" predate the managed server going GA and still show ' +
+          'uvx snowflake-labs-mcp --service-config-file config.yaml with a YAML file of Cortex services. ' +
+          'That command still runs; it is simply no longer the supported path, and none of the managed ' +
+          'server’s governance model applies to it.',
+      },
+      {
+        question: 'Why can my client see a Snowflake tool but not invoke it?',
+        answer:
+          'Because USAGE on the MCP server and access to the tool are two different grants, and Snowflake ' +
+          'says so in as many words: access to the MCP server does not give access to the tools. Discovery ' +
+          'only needs USAGE on the server object, so tools/list happily returns things the session cannot ' +
+          'call. Grant the underlying privilege — USAGE on the agent, USAGE on the Cortex Search service, ' +
+          'SELECT on the semantic view, USAGE on the function or procedure — to the role the session is ' +
+          'actually running as.',
+      },
+      {
+        question: 'Why does my Snowflake MCP session use the wrong role?',
+        answer:
+          'Because OAuth scopes control the primary role and most clients do not set one. By default the ' +
+          'server advertises session:role:all, which despite the name does not activate every role — it ' +
+          'means "use the connecting user’s DEFAULT_ROLE". Claude requests exactly that scope and cannot ' +
+          'request a named role, so advertising session:role:ANALYST via OAUTH_SCOPES_SUPPORTED changes ' +
+          'nothing for it. Set the user’s DEFAULT_ROLE to the MCP access role. Secondary roles are a ' +
+          'separate mechanism controlled by OAUTH_USE_SECONDARY_ROLES on the integration, not by scopes; ' +
+          'if a consent screen says "secondary roles = ALL" while your integration has NONE, that label is ' +
+          'cosmetic and Snowflake enforces the integration setting.',
+      },
+      {
+        question: 'Why does the session fail to initialise even though OAuth succeeded?',
+        answer:
+          'Almost always a missing default warehouse. Snowflake’s troubleshooting table lists it plainly: ' +
+          'if the user has no DEFAULT_WAREHOUSE the session cannot open, and the role also needs USAGE on ' +
+          'that warehouse. The second candidate is an incomplete URL — the path has to be fully qualified ' +
+          'through database, schema and server name, and a shortened one authenticates before it fails.',
+      },
+      {
+        question: 'Why does my Snowflake MCP connection fail with a hostname error?',
+        answer:
+          'Underscores in the account hostname. Snowflake flags this twice in its own documentation: use ' +
+          'hyphens instead of underscores when configuring hostnames for MCP connections, because MCP ' +
+          'clients have connection issues with hostnames containing underscores. It is the one failure ' +
+          'here that has nothing to do with grants.',
+      },
+      {
+        question: 'Can Claude.ai or ChatGPT reach a PrivateLink Snowflake account?',
+        answer:
+          'Yes, but not through the PrivateLink URL. Configure the SaaS client with the public MCP server ' +
+          'URL and set USE_PRIVATELINK_FOR_AUTHORIZATION_ENDPOINT = TRUE on the OAuth security integration. ' +
+          'That sends the user’s browser to the PrivateLink authorization endpoint while leaving the token ' +
+          'endpoint public, which is the only arrangement where the vendor’s servers can complete the ' +
+          'exchange. Separately, if you run a network policy, the client provider’s outbound IPs have to ' +
+          'be allowed or the token request returns invalid_client.',
+      },
+      {
+        question: 'What are the limits on a Snowflake-managed MCP server?',
+        answer:
+          'Fifty tools per server across all types, and Snowflake notes that tool-selection accuracy ' +
+          'degrades before you get there — split into multiple servers rather than filling one. Generic ' +
+          'and SQL execution responses truncate at 250 KB; narrow the query rather than expecting a page. ' +
+          'Only tools are supported: no resources, prompts, roots, notifications, version negotiation, ' +
+          'lifecycle phases or sampling, and responses are non-streaming. Agent recursion is capped at 10 ' +
+          'invocations, which matters if an agent tool can reach another MCP server that calls back. And ' +
+          'MCP server objects are not replicated in failover groups — you recreate them on the secondary ' +
+          'account, though the OAuth security integrations do replicate.',
+      },
+      {
+        question: 'Does the managed Snowflake MCP server work with semantic models?',
+        answer:
+          'No — semantic views only. The Cortex Analyst tool type on the managed server supports semantic ' +
+          'views and explicitly does not support semantic models, which is a migration item if your ' +
+          'existing Analyst setup is built on YAML semantic models. The deprecated Snowflake-Labs server ' +
+          'accepted either, so a like-for-like port can stall here.',
+      },
+    ],
+    comparison: {
+      note:
+        'Three projects answer to "Snowflake MCP server". Two of them are the same lineage and only one is ' +
+        'supported.',
+      items: [
+        {
+          name: 'Snowflake-Labs/mcp (snowflake-labs-mcp)',
+          choose:
+            'Neither, now. Deprecated in its own README in favour of the managed server, last released ' +
+            '1.4.2 on 2026-05-15. Its docs are still useful for understanding the Cortex tool surface, and ' +
+            'nothing else.',
+        },
+        {
+          name: 'isaacwasserman/mcp-snowflake-server',
+          choose:
+            'This one if you want a small self-hosted SQL bridge and no Cortex: read_query, write_query and ' +
+            'create_table behind an --allow-write flag, list_databases / list_schemas / list_tables / ' +
+            'describe_table, and a memo://insights resource that accumulates findings across a session. ' +
+            'Community-maintained and unaffiliated with Snowflake; last PyPI release 0.4.0, so treat it as ' +
+            'stable rather than active.',
+        },
+        {
+          name: 'Databricks',
+          slug: 'databricks',
+          choose:
+            'Databricks if the governed data lives in Unity Catalog. The architectures rhyme — both vendors ' +
+            'now push managed, in-account MCP endpoints with on-behalf-of permissions rather than a local ' +
+            'server holding credentials.',
+        },
+        {
+          name: 'BigQuery',
+          slug: 'bigquery',
+          choose:
+            'BigQuery when the warehouse is Google’s. Note the difference in shape: BigQuery is served by ' +
+            'a self-run toolbox binary with a --prebuilt flag, so the credentials sit on your machine, ' +
+            'where Snowflake’s managed server keeps them in the account.',
+        },
+        {
+          name: 'dbt',
+          slug: 'dbt-mcp',
+          choose:
+            'dbt if the agent should reason about transformation logic and Semantic Layer metrics rather ' +
+            'than tables. They compose well: dbt for what the numbers mean, Snowflake for running against ' +
+            'them.',
+        },
+      ],
+    },
+  },
 ]
 
 const guideBySlug = new Map(guides.map((g) => [g.slug, g] as const));
