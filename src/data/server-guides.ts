@@ -6148,6 +6148,366 @@ docker run --rm -i --env-file /path/to/.env zendesk-mcp-server`,
     },
   },
 
+  {
+    slug: 'dbt-mcp',
+    verifiedOn: '2026-08-24',
+    sources: [
+      { label: 'dbt-labs/dbt-mcp README (tool list by toolset)', url: 'https://github.com/dbt-labs/dbt-mcp' },
+      { label: 'Official dbt MCP documentation', url: 'https://docs.getdbt.com/docs/dbt-ai/about-mcp' },
+      {
+        label: 'src/dbt_mcp/config/settings.py (every env var, the validators, the auto-disable)',
+        url: 'https://github.com/dbt-labs/dbt-mcp/blob/main/src/dbt_mcp/config/settings.py',
+      },
+      {
+        label: 'src/dbt_mcp/config/credentials.py (the OAuth fallback and ~/.dbt/mcp.yml)',
+        url: 'https://github.com/dbt-labs/dbt-mcp/blob/main/src/dbt_mcp/config/credentials.py',
+      },
+      {
+        label: 'src/dbt_mcp/tools/register.py (enable/disable precedence rules)',
+        url: 'https://github.com/dbt-labs/dbt-mcp/blob/main/src/dbt_mcp/tools/register.py',
+      },
+      {
+        label: 'pyproject.toml (Python floor, entry point) and CHANGELOG.md (v2.1.2, 2026-08-20)',
+        url: 'https://github.com/dbt-labs/dbt-mcp/blob/main/pyproject.toml',
+      },
+      { label: 'PyPI dbt-mcp 2.1.2', url: 'https://pypi.org/project/dbt-mcp/' },
+    ],
+    intro:
+      'dbt Labs publishes this one themselves, so — as with Tableau — the question is not which project to ' +
+      'trust but which flavour to run. The remote server, reached over HTTP at /api/ai/v1/mcp/ on your dbt ' +
+      'platform host, needs nothing installed and is the right default if the agent is going to read metadata ' +
+      'and query metrics. It cannot run dbt CLI commands or Codegen, and it never will: those tools need a ' +
+      'checkout on disk. The self-hosted server, started with uvx dbt-mcp beside your client, is the one for ' +
+      'development workflows — it is the only flavour that can run dbt build, dbt test or generate a staging ' +
+      'model, and it can still reach the platform APIs on top. The surface is large either way: 61 tools ' +
+      'across nine toolsets, more than most clients will happily show at once, which is why the enable/disable ' +
+      'configuration below matters more here than on a five-tool server. Read the gotchas before your first ' +
+      'run; two of the three most common failures are silent by design.',
+    setup: {
+      title: 'Connecting the dbt MCP server',
+      steps: [
+        {
+          title: 'Check your Python version before anything else',
+          body:
+            'pyproject.toml pins requires-python to >=3.12,<3.14. The upper bound is deliberate and is ' +
+            'commented in the file: pyarrow has not released 3.14 wheels. On a 3.14 interpreter uv will fail ' +
+            'to resolve rather than fail to run, which reads like a network problem and is not one.',
+          code: 'python3 --version   # must be 3.12.x or 3.13.x',
+          codeLabel: 'shell',
+        },
+        {
+          title: 'Decide remote or self-hosted',
+          body:
+            'If the agent only needs to explore metadata, read lineage and query Semantic Layer metrics, point ' +
+            'your client at the remote server on your own dbt platform host and skip the rest of the install. ' +
+            'The remote flavour supports the Semantic Layer, SQL, Discovery, Admin API, Fusion, product-docs ' +
+            'and metadata toolsets — but not the dbt CLI toolset and not Codegen. Continue below only if you ' +
+            'want those, or you want the server running on your own machine against a local project.',
+          code: 'https://<your-account-prefix>.<your-host>/api/ai/v1/mcp/',
+          codeLabel: 'remote endpoint',
+        },
+        {
+          title: 'Install uv, not pip',
+          body:
+            'The published console script is dbt-mcp and the documented way to start it is uvx dbt-mcp, which ' +
+            'resolves the package into an isolated environment on each run. A bare pip install dbt-mcp puts the ' +
+            'package somewhere, but it does not give your MCP client a command it can find, and a dbt-mcp ' +
+            'installed into the same environment as your dbt adapters is exactly the dependency conflict uv ' +
+            'exists to avoid. Latest release is 2.1.2 (2026-08-20).',
+          code: 'curl -LsSf https://astral.sh/uv/install.sh | sh\nuvx dbt-mcp --help',
+          codeLabel: 'shell',
+        },
+        {
+          title: 'Add the server to your MCP client',
+          body:
+            'DBT_PROJECT_DIR must point at a directory that contains dbt_project.yml, and DBT_PATH must be a ' +
+            'dbt executable that actually exists — settings.py validates both, and dbt and dbtf are the two ' +
+            'names it will accept from $PATH without a full path. If you are only using platform tools and ' +
+            'have no local checkout, leave both out and set DISABLE_DBT_CLI=true so the CLI toolset does not ' +
+            'try to load.',
+          code: `{
+  "mcpServers": {
+    "dbt": {
+      "command": "uvx",
+      "args": ["dbt-mcp"],
+      "env": {
+        "DBT_PROJECT_DIR": "/absolute/path/to/your/dbt/project",
+        "DBT_PATH": "dbt",
+        "DBT_HOST": "your-host.dbt.com",
+        "DBT_TOKEN": "your_service_token",
+        "DBT_PROD_ENV_ID": "12345",
+        "DBT_DEV_ENV_ID": "67890",
+        "DBT_USER_ID": "1122"
+      }
+    }
+  }
+}`,
+          codeLabel: 'claude_desktop_config.json',
+        },
+        {
+          title: 'Set every platform variable the toolsets you want actually require',
+          body:
+            'This is where most configurations fall over, because the requirements are per-toolset and the ' +
+            'error only appears once. Semantic Layer, Discovery, SQL and the Admin API all need DBT_HOST, ' +
+            'DBT_TOKEN and either DBT_PROD_ENV_ID or DBT_PROJECT_IDS — setting both of the last two is an ' +
+            'error, not a merge. execute_sql additionally needs DBT_DEV_ENV_ID and DBT_USER_ID, and ' +
+            'text_to_sql needs DBT_PROD_ENV_ID specifically. DBT_HOST is the bare hostname: strip the scheme, ' +
+            'and note that a value beginning with metadata or semantic-layer is rejected outright, because ' +
+            'those are the API subdomains people reach for and neither is the right one.',
+        },
+        {
+          title: 'Trim the tool list before you hand it to an agent',
+          body:
+            'Sixty-one tools is more than most clients present well and more than most models choose well ' +
+            'between. Two toolsets already ship off — Codegen (DISABLE_DBT_CODEGEN defaults true) and server ' +
+            'metadata — and SQL is off unless you explicitly set DISABLE_SQL=false. Prefer the allowlist: set ' +
+            'DBT_MCP_ENABLE_TOOLS to just the tools you want, or the DBT_MCP_ENABLE_* flags for whole ' +
+            'toolsets. Individual tool settings beat toolset settings, and enables beat disables at the same ' +
+            'level.',
+          code: 'DBT_MCP_ENABLE_TOOLS="list_metrics,query_metrics,get_all_models,get_lineage"',
+          codeLabel: 'env',
+        },
+        {
+          title: 'Smoke test with a metadata call, not a query',
+          body:
+            'Ask for the model list first. get_all_models exercises the host, the token and the environment id ' +
+            'together without depending on the Semantic Layer being configured or the warehouse being ' +
+            'reachable, so a failure points at one layer. Only then try a metric query.',
+          code: 'List every model in my dbt project and tell me which marts have failing tests.',
+          codeLabel: 'prompt',
+        },
+      ],
+    },
+    tools: {
+      title: 'The nine toolsets',
+      note:
+        '61 tools in total. Everything except the dbt CLI and Codegen toolsets is available on the remote ' +
+        'server as well as self-hosted.',
+      items: [
+        {
+          name: 'Discovery',
+          what:
+            'The metadata graph: get_all_models, get_all_sources, get_mart_models, get_node_details, ' +
+            'get_lineage, get_model_health, get_model_performance, get_related_models. Several older ' +
+            'per-type tools (get_model_details, get_source_details, get_model_parents/children) are ' +
+            'deprecated in favour of get_node_details and get_lineage.',
+        },
+        {
+          name: 'Semantic Layer',
+          what:
+            'list_metrics, list_saved_queries, query_metrics, get_dimensions, get_dimension_values, ' +
+            'get_entities, get_metrics_compiled_sql. The governed path — the agent asks for your defined ' +
+            'metrics instead of writing SQL against raw tables.',
+        },
+        {
+          name: 'dbt CLI',
+          what:
+            'build, run, test, compile, parse, show, list, clone, docs, plus get_lineage_dev and ' +
+            'get_node_details_dev which read the local manifest.json. Self-hosted only, and the toolset that ' +
+            'can modify your warehouse.',
+        },
+        {
+          name: 'Admin API',
+          what:
+            'list_projects, list_jobs, get_job_details, trigger_job_run, retry_job_run, cancel_job_run, ' +
+            'list_jobs_runs, get_job_run_details, get_job_run_error, list_job_run_artifacts.',
+        },
+        {
+          name: 'SQL',
+          what:
+            'execute_sql (runs against dbt platform infrastructure, with Semantic Layer support) and ' +
+            'text_to_sql. Off by default — see the gotcha on DISABLE_SQL.',
+        },
+        {
+          name: 'Codegen',
+          what:
+            'generate_source, generate_staging_model, generate_model_yaml. Boilerplate for new models. ' +
+            'Self-hosted only and disabled by default.',
+        },
+        {
+          name: 'dbt LSP / Fusion',
+          what:
+            'get_column_lineage (local, needs dbt-lsp from the dbt Labs VS Code extension), ' +
+            'fusion.get_column_lineage and fusion.compile_sql (via dbt platform). Column-level lineage, ' +
+            'which the Discovery tools do not give you.',
+        },
+        {
+          name: 'Product docs',
+          what:
+            'search_product_docs and get_product_doc_pages, which search and fetch docs.getdbt.com. Useful ' +
+            'for stopping an agent inventing dbt syntax.',
+        },
+        {
+          name: 'Server metadata',
+          what:
+            'get_mcp_server_version and get_mcp_server_branch. Disabled by default; worth enabling only ' +
+            'while debugging a version mismatch.',
+        },
+      ],
+    },
+    useCases: [
+      {
+        title: 'Answer a metric question without letting the agent write SQL',
+        prompt:
+          'What was weekly revenue by product line for the last 8 weeks? Use the defined metrics, not raw tables.',
+        why:
+          'query_metrics goes through the Semantic Layer, so the numbers match the ones in your BI tool by ' +
+          'construction. This is the whole argument for putting dbt in front of an agent rather than a ' +
+          'warehouse connector: the join logic and the filters are already governed.',
+      },
+      {
+        title: 'Triage a failed nightly run',
+        prompt:
+          'The last run of our nightly job failed. Find the run, get the error, and tell me which models downstream of the failure did not build.',
+        why:
+          'get_job_run_error and get_lineage together do the thing a person does by hand across two browser ' +
+          'tabs — read the error out of the Admin API, then walk the DAG to find the blast radius.',
+      },
+      {
+        title: 'Assess a change before making it',
+        prompt:
+          'I want to change the grain of fct_orders. Show me everything downstream, including exposures, and which of those have tests.',
+        why:
+          'get_lineage returns descendants with type and depth filtering, and get_exposures surfaces the ' +
+          'dashboards nobody remembers are wired to the model. This is the question the catalog UI answers ' +
+          'slowly and the agent answers in one turn.',
+      },
+      {
+        title: 'Draft the boilerplate for a new source',
+        prompt:
+          'Generate the source YAML for the raw.stripe schema with columns, then a staging model for raw.stripe.charges.',
+        why:
+          'generate_source and generate_staging_model introspect the warehouse rather than guessing column ' +
+          'names. Requires the self-hosted server and DBT_MCP_ENABLE_DBT_CODEGEN=true, since Codegen ships off.',
+      },
+    ],
+    gotchas: [
+      {
+        question: 'Why does the dbt MCP server hang on first run instead of returning an error?',
+        answer:
+          'Because it has opened a browser-based OAuth login that your MCP client is not showing you. ' +
+          'credentials.py validates the platform settings first; if any of them are missing or invalid it ' +
+          'ignores DBT_TOKEN entirely — logging a warning you will never see over stdio — and falls back to ' +
+          'the interactive login, which starts a local redirect listener on the first free port from 6785 ' +
+          'upward and waits. The fix is to complete the configuration, not to retry: DBT_HOST, DBT_TOKEN and ' +
+          'either DBT_PROD_ENV_ID or DBT_PROJECT_IDS all have to be present and valid together, and DBT_HOST ' +
+          'must not begin with metadata or semantic-layer. Once you have logged in once, the resolved account ' +
+          'and environment ids are cached to ~/.dbt/mcp.yml (or $DBT_PROFILES_DIR/mcp.yml) and reused, which ' +
+          'is also why the second run can succeed with a configuration the first one rejected.',
+      },
+      {
+        question: 'Why are the dbt CLI tools missing from my tool list?',
+        answer:
+          'They were auto-disabled at startup and the only notice was a log line. The auto_disable model ' +
+          'validator in settings.py runs validate_dbt_cli_settings, and on any error — DBT_PROJECT_DIR unset, ' +
+          'or a DBT_PATH that is neither an existing file nor on $PATH — it sets disable_dbt_cli and ' +
+          'disable_dbt_codegen to true and continues. It does not raise. Because that happens during model ' +
+          'validation, the later validate_settings call sees the toolset as already disabled and reports ' +
+          'nothing, so the server starts cleanly with a third of its tools quietly absent. Check that ' +
+          'DBT_PROJECT_DIR is an absolute path to the directory holding dbt_project.yml and that `which dbt` ' +
+          'resolves in the environment your MCP client launches, which is not necessarily your shell.',
+      },
+      {
+        question: 'Why did setting DBT_MCP_ENABLE_TOOLS remove every tool?',
+        answer:
+          'A typo in the value. _parse_tool_list splits on commas and maps each entry through the ToolName ' +
+          'enum; anything that does not match is logged and skipped, so a value with no valid names parses ' +
+          'to an empty list rather than to None. register.py treats that empty list as an allowlist that ' +
+          'permits nothing — has_explicit_enables is true, so the fallback rule returns False for every ' +
+          'tool. The distinction is deliberate and documented in the code, but it means one misspelled tool ' +
+          'name in an otherwise good list silently drops that tool, and an entirely misspelled list silently ' +
+          'drops all of them. Note this is the opposite of how several other servers behave in the same ' +
+          'situation, where an unparseable allowlist collapses to "no filter" and exposes everything.',
+      },
+      {
+        question: 'Why are execute_sql and text_to_sql not available?',
+        answer:
+          'The SQL toolset is off unless you turn it on, and the flag reads backwards from the others. ' +
+          'actual_disable_sql returns DISABLE_SQL when set, then the legacy DISABLE_REMOTE when set, and ' +
+          'otherwise True — so the default is disabled and you enable it with DISABLE_SQL=false rather than ' +
+          'by setting something to true. Once enabled, execute_sql also requires DBT_DEV_ENV_ID and ' +
+          'DBT_USER_ID, and text_to_sql requires DBT_PROD_ENV_ID; missing any of those is a hard ' +
+          'configuration error rather than a silent skip. DBT_MCP_ENABLE_SQL=true is the newer, less ' +
+          'confusing spelling.',
+      },
+      {
+        question: 'Can the dbt MCP server modify my warehouse?',
+        answer:
+          'Yes, if the dbt CLI toolset is enabled — and it is enabled by default whenever DBT_PROJECT_DIR ' +
+          'and a working DBT_PATH are present. build, run, clone and seed materialise objects in your target ' +
+          'schema, and the README says so in as many words. There is no dry-run mode and no confirmation ' +
+          'step; the MCP client is the only place a human is in the loop. If the agent is meant to answer ' +
+          'questions rather than change things, set DISABLE_DBT_CLI=true, or use the remote server, which ' +
+          'cannot run CLI commands at all. Pointing DBT_PROJECT_DIR at a project whose profile targets ' +
+          'production is the configuration to be careful about.',
+      },
+      {
+        question: 'Does the remote dbt MCP server consume dbt Copilot actions?',
+        answer:
+          'Only text_to_sql does. The rest of the tools do not draw down the allotment — but the failure ' +
+          'mode when you exhaust it is broader than it looks: once the account is out of Copilot actions, ' +
+          'the remote server blocks every tool that runs through it, including tools invoked on a ' +
+          'self-hosted server and proxied to remote, such as SQL and the Fusion tools. They stay unavailable ' +
+          'until the limit resets. Remote MCP is also subject to the standard 5,000 requests per minute per ' +
+          'IP API limit, while self-hosted falls under the Administrative and Discovery API limits instead.',
+      },
+      {
+        question: 'Which dbt platform plan do I need?',
+        answer:
+          'The remote server is available on every plan, but the tools it can offer you are not — each ' +
+          'toolset sits on top of a dbt API, and the Discovery API and Semantic Layer APIs are plan-gated. ' +
+          'So a lower-tier account connects successfully and then finds that list_metrics or get_all_models ' +
+          'is simply not there. That is a plan boundary, not a misconfiguration, and no amount of env-var ' +
+          'work will produce the tool.',
+      },
+      {
+        question: 'Does the dbt MCP server send telemetry?',
+        answer:
+          'Anonymous usage data is on by default. usage_tracking_enabled honours DO_NOT_TRACK=true and ' +
+          'DBT_SEND_ANONYMOUS_USAGE_STATS=false as environment variables, and falls back to the ' +
+          'flags.send_anonymous_usage_stats key in your dbt_project.yml — with the environment variables ' +
+          'taking precedence over the project file. Separately, DISABLE_MCP_APPS=true stops the server ' +
+          'registering the ui:// app resources, which is the one other thing that reaches a dbt-owned CDN; ' +
+          'the tools still return their structured data without it.',
+      },
+    ],
+    comparison: {
+      note:
+        'dbt is the semantic/transformation layer, so the real comparison is not against other dbt servers ' +
+        '— there is only one — but against connecting the agent somewhere else in the stack.',
+      items: [
+        {
+          name: 'A direct warehouse MCP server (Snowflake, BigQuery, Postgres)',
+          slug: 'snowflake',
+          choose:
+            'The warehouse server if you want raw table access and are willing to let the model write its ' +
+            'own joins. dbt if you want the numbers to match your BI tool — the Semantic Layer tools query ' +
+            'metrics you have already defined and tested.',
+        },
+        {
+          name: 'Tableau',
+          slug: 'tableau-mcp',
+          choose:
+            'Tableau if the metrics live in published datasources and the audience is analysts. dbt if the ' +
+            'metrics live in your dbt project and the audience is the people who build the models.',
+        },
+        {
+          name: 'Databricks',
+          slug: 'databricks',
+          choose:
+            'Databricks for Unity Catalog governance and notebook/job control. dbt if the transformation ' +
+            'logic — not the compute — is what the agent needs to understand.',
+        },
+        {
+          name: 'Power BI',
+          slug: 'power-bi-mcp',
+          choose:
+            'Power BI when the semantic model is a Power BI dataset. These are not really alternatives; ' +
+            'run both if your metrics are defined in both places, which is more common than anyone likes.',
+        },
+      ],
+    },
+  },
 ]
 
 const guideBySlug = new Map(guides.map((g) => [g.slug, g] as const));
