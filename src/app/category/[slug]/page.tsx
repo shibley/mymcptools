@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { ServerCard } from "@/components/ServerCard";
 import { AffiliateServerCTA } from "@/components/AffiliateServerCTA";
 import { categories, getServersByCategory } from "@/data/servers";
+import { getPaidListingsByCategory } from "@/lib/paid-listings";
 import { getStatus } from "@/lib/trust/status-store";
 import type { Verdict } from "@/lib/trust/types";
 
@@ -55,7 +56,17 @@ export default async function CategoryPage({ params, searchParams }: Props) {
     notFound();
   }
 
-  const allCategoryServers = getServersByCategory(slug);
+  /**
+   * Paid listings are prepended, not appended: the $9 Featured confirmation
+   * email promises the server will be "listed with a Featured badge, appearing
+   * at the top of its category", and until thread #218 that promise was kept by
+   * a human hand-editing `src/data/servers.ts` — measured at 0 listings in 16
+   * days. This page already renders per request (it reads searchParams), so the
+   * overlay lands with no deploy. `getPaidListingsByCategory` drops any slug the
+   * static catalog already holds, so a promoted listing never renders twice.
+   */
+  const paidListings = await getPaidListingsByCategory(slug);
+  const allCategoryServers = [...paidListings, ...getServersByCategory(slug)];
   const healthyOnly = filter === "healthy";
   const sortByUptime = sort === "uptime";
 

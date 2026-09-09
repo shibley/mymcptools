@@ -19,6 +19,7 @@ import { TrustGradeSummary } from "@/components/TrustGrade";
 import { TrustSignalList } from "@/components/TrustSignals";
 import { AffiliateServerCTA } from "@/components/AffiliateServerCTA";
 import { servers, getServerBySlug, getRelatedServers, categories, integrations, registryLabel } from "@/data/servers";
+import { getPaidListingBySlug } from "@/lib/paid-listings";
 import { getServerGuide } from "@/data/server-guides";
 import { getServerPricing, hasFreeOption } from "@/data/pricing";
 import { getBlogPostsForServer } from "@/data/blog";
@@ -123,9 +124,22 @@ export async function generateStaticParams() {
   }));
 }
 
+/**
+ * A slug the static catalog has never seen is not prerendered by
+ * generateStaticParams, so Next renders it on demand — which is exactly the
+ * door a paid listing needs to walk through the moment Stripe reports payment,
+ * instead of waiting for a human to hand-edit `src/data/servers.ts` and
+ * redeploy (thread #218: the one paid order in this property's lifetime ran
+ * 144h against a 24h promise). Static catalog first; the paid overlay only
+ * answers for slugs the catalog does not hold.
+ */
+async function resolveServer(slug: string) {
+  return getServerBySlug(slug) ?? (await getPaidListingBySlug(slug));
+}
+
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
-  const server = getServerBySlug(slug);
+  const server = await resolveServer(slug);
   
   if (!server) {
     return { title: "Server Not Found | MyMCPTools" };
@@ -169,7 +183,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function ServerPage({ params }: Props) {
   const { slug } = await params;
-  const server = getServerBySlug(slug);
+  const server = await resolveServer(slug);
 
   if (!server) {
     notFound();
