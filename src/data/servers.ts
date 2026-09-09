@@ -40439,6 +40439,30 @@ const _serversPart31: MCPServer[] = [
     install_checked: '2026-08-23',
     isNew: true,
   },
+  // Coinrule — inbound PAID Featured listing, $9 one-time, 2026-09-03 10:22 UTC
+  // (Stripe cs_live_a1VouZA5aEVdQIcHk7rhRGW9cHu0jlGGHFajfbvoM3oUpbhyfut82JDNi9).
+  // Hosted server verified live 2026-09-09: POST https://cloud.coinrule.com/mcp
+  // returns 401 with a spec-compliant WWW-Authenticate carrying resource_metadata,
+  // and /.well-known/oauth-protected-resource resolves with the two coinrule
+  // scopes. Public repo coinrule-com/coinrule-mcp-ai-trading exists and was
+  // pushed 2026-09-04, but it is documentation only — the endpoint is the product.
+  {
+    slug: 'coinrule',
+    name: 'Coinrule MCP',
+    description: 'Coinrule is a Y Combinator-backed automated trading platform out of London, and its MCP server exposes the whole trading stack to an AI assistant rather than a read-only market-data feed. The endpoint is remote Streamable HTTP at https://cloud.coinrule.com/mcp, authorised with OAuth 2.1 — you add the URL to a client that supports remote MCP connectors (Claude, ChatGPT, Grok, Cursor, VS Code are the ones the maintainers name), sign in to a Coinrule Cloud account, and consent to one of two scopes. That scope choice is the part to understand before connecting, because the two are not equivalent: coinrule:read grants portfolio inspection, strategy listing, signal history and backtesting, while coinrule:write can launch strategies that trade real funds on a connected exchange or broker. The maintainers put a warning at the top of their own README about it and recommend starting on read-only or paper trading, and that is the right default — an assistant with write scope is an assistant that can open a position. What the server is actually for is closing the gap between a trading idea stated in English and the automation infrastructure needed to test and run it: asking which strategy produced the latest signal, how a portfolio is allocated across venues, or to design a momentum rule for BTC with explicit risk controls and backtest it before anything goes live. Coinrule connects to more than 25 execution venues underneath, and paper trading works without connecting an exchange at all, so the server can be evaluated end-to-end on a free account before any capital is at risk. There is no package to install and nothing to run locally — the hosted endpoint is the entire integration.',
+    author: 'Coinrule',
+    github_url: 'https://github.com/coinrule-com/coinrule-mcp-ai-trading',
+    source_verified: true,
+    verification: 'live',
+    website_url: 'https://coinrule.com/mcp/',
+    categories: ['finance'],
+    integrations: ['claude-desktop', 'cursor', 'vs-code'],
+    install_type: 'remote',
+    install_command: 'claude mcp add --transport http coinrule https://cloud.coinrule.com/mcp',
+    install_checked: '2026-09-09',
+    featured: true,
+    isNew: true,
+  },
 ];
 
 export const servers: MCPServer[] = [..._serversPart1, ..._serversPart2, ..._serversPart3, ..._serversPart4, ..._serversPart5, ..._serversPart6, ..._serversPart7, ..._serversPart8, ..._serversPart9, ..._serversPart10, ..._serversPart11, ..._serversPart12, ..._serversPart13, ..._serversPart14, ..._serversPart15, ..._serversPart16, ..._serversPart17, ..._serversPart18, ..._serversPart19, ..._serversPart20, ..._serversPart21, ..._serversPart22, ..._serversPart23, ..._serversPart24, ..._serversPart25, ..._serversPart26, ..._serversPart27, ..._serversPart28, ..._serversPart29, ..._serversPart30, ..._serversPart31];
