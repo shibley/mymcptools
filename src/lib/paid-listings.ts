@@ -193,6 +193,11 @@ export async function getPaidListings(): Promise<MCPServer[]> {
         integrations: [],
         install_type: (r.install_type as MCPServer["install_type"]) || "remote",
         featured: true,
+        // Money was taken for this row by construction — the table only holds
+        // Stripe-confirmed orders. Keeps an overlay row ahead of the 55 free
+        // `featured` grants if it is ever merged into the static catalog rather
+        // than prepended (thread #219).
+        paid_placement: true,
         sponsored: r.sku === "sponsored",
       }));
     cache = { at: Date.now(), rows: mapped };

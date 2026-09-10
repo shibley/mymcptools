@@ -37,6 +37,24 @@ export interface MCPServer {
   /** ISO date the registry check behind install_verified was run. */
   install_checked?: string;
   featured?: boolean;
+  /**
+   * True only when money was taken for this entry's placement.
+   *
+   * WHY THIS IS SEPARATE FROM `featured`: 56 entries carry `featured: true` and
+   * exactly one of them was paid for (thread #219, 2026-09-09). The $9 Featured
+   * SKU on /submit sells "Top of category placement" and the confirmation email
+   * promises "listed with a Featured badge at the top of its category" — but
+   * `rankForPlacement` banded the payer with 55 free editorial grants, so the
+   * only customer the property has ever had rendered SECOND on
+   * /category/finance, behind `stripe`, a free grant with an identical flag.
+   * A promise that a free grant can outrank is not a promise. This flag is the
+   * tiebreak, and it is also the only scarcity the tier has: thread #217
+   * blocked any reprice on the unit being distinguishable from a free badge.
+   *
+   * Set it ONLY from a Stripe line item. It is not an editorial judgement and
+   * it must never be granted.
+   */
+  paid_placement?: boolean;
   /** Paid sponsored placement — renders in homepage sponsored strip with gold accent */
   sponsored?: boolean;
   official?: boolean;
@@ -40461,6 +40479,9 @@ const _serversPart31: MCPServer[] = [
     install_command: 'claude mcp add --transport http coinrule https://cloud.coinrule.com/mcp',
     install_checked: '2026-09-09',
     featured: true,
+    // Paid $9 Featured, cs_live_a1VouZA5aEV…, 2026-09-03. The only paid
+    // placement in the property's lifetime. See `paid_placement`.
+    paid_placement: true,
     isNew: true,
   },
 ];
@@ -40472,11 +40493,23 @@ export function getServerBySlug(slug: string): MCPServer | undefined {
   return servers.find(s => s.slug === slug);
 }
 
-/** Sponsored (Pro/Premium) sort above Featured (Basic) sort above everything else — delivers the "priority placement" / "top of category" tiers sold on /advertise. Array.prototype.sort is stable, so within each tier original order is preserved. */
+/**
+ * Placement bands, highest first. Array.prototype.sort is stable, so within a
+ * band the original catalog order is preserved.
+ *
+ *   0  sponsored          — $49–$199 /advertise tiers
+ *   1  paid_placement     — $9 Featured from /submit; the SKU sells "top of category"
+ *   2  featured           — free editorial grants (55 of the 56 `featured` rows)
+ *   3  everything else
+ *
+ * Band 1 exists because bands 0 and 2 alone put the one paying customer behind
+ * a free grant on the exact surface the checkout sold (thread #219).
+ */
 function rankForPlacement(s: MCPServer): number {
   if (s.sponsored) return 0;
-  if (s.featured) return 1;
-  return 2;
+  if (s.paid_placement) return 1;
+  if (s.featured) return 2;
+  return 3;
 }
 
 export function getServersByCategory(categorySlug: string): MCPServer[] {
@@ -40489,8 +40522,20 @@ export function getServersByIntegration(integrationSlug: string): MCPServer[] {
   return servers.filter(s => s.integrations.includes(integrationSlug));
 }
 
+/**
+ * Featured entries, paid ones first.
+ *
+ * The three surfaces that render a featured strip all take a fixed slice of
+ * this list — `/` takes 8, `/mcp-marketplace` and `/claude-mcp-servers` take 12
+ * — and the slice used to be pure catalog (i.e. seed) order, so all 32 slots
+ * were held by free grants and the only payer sat at featured index 55 of 56:
+ * 0 of 32. Sorting by placement band is what makes those slots reachable by
+ * paying for them at all.
+ */
 export function getFeaturedServers(): MCPServer[] {
-  return servers.filter(s => s.featured);
+  return servers
+    .filter(s => s.featured)
+    .sort((a, b) => rankForPlacement(a) - rankForPlacement(b));
 }
 
 export function getOfficialServers(): MCPServer[] {
