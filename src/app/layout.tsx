@@ -5,6 +5,7 @@ import Script from "next/script";
 import "./globals.css";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
+import AnalyticsBeacon from "./_analytics/beacon";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -44,6 +45,7 @@ export default function RootLayout({
         </main>
         <Footer />
         <Analytics />
+        <AnalyticsBeacon />
         <Script src="https://cdn.tinystats.net/scripts/capi.js" strategy="afterInteractive" />
       </body>
     </html>
