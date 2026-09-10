@@ -38,7 +38,7 @@ function loadEvents(): ProbeEventRow[] {
       continue; // tolerate a partially-written / malformed line
     }
     // Keep any object; computeDigest validates probe-vs-drift shape itself.
-    if (isObject(row)) rows.push(row as ProbeEventRow);
+    if (isObject(row)) rows.push(row as unknown as ProbeEventRow);
   }
   return rows;
 }
@@ -58,7 +58,7 @@ export function getAllEvents(): readonly ProbeEventRow[] {
 export function latestEventAt(): string | null {
   let latest: string | null = null;
   for (const row of allEvents) {
-    const r = row as Record<string, unknown>;
+    const r = row as unknown as Record<string, unknown>;
     const ts =
       typeof r.checked_at === "string"
         ? r.checked_at

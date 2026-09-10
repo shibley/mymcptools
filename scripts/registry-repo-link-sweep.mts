@@ -338,9 +338,15 @@ type Finding = {
   reason: string;
 };
 
-const candidates = servers
+type Candidate = {
+  server: (typeof servers)[number];
+  kind: 'pip' | 'docker';
+  artifact: string;
+};
+
+const candidates: Candidate[] = servers
   .filter((s) => s.install_command && s.github_url)
-  .flatMap((s) => {
+  .flatMap((s): Candidate[] => {
     if (s.install_type === 'pip' && only !== 'docker') {
       const pkg = extractPyPackage(s.install_command);
       return pkg ? [{ server: s, kind: 'pip' as const, artifact: pkg }] : [];

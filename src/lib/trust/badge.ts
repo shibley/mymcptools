@@ -21,6 +21,10 @@ const STATES: Record<BadgeState, BadgeStyle> = {
   WARN: { color: "#d29922", message: "limited" },
   AUTH_REQUIRED: { color: "#3b82f6", message: "auth required" },
   DOWN: { color: "#f85149", message: "down" },
+  // Local/stdio servers carry no liveness signal; badgeStateFor never returns
+  // this today, but the map must cover every Verdict so a new caller that
+  // indexes STATES directly cannot fall through to an undefined style.
+  UNPROBEABLE: { color: "#6e7681", message: "local install" },
   UNKNOWN: { color: "#9f9f9f", message: "unknown" },
 };
 

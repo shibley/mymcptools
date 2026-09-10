@@ -303,7 +303,11 @@ async function ociSourceLabel(img: ParsedImage): Promise<{ missing?: true; sourc
       ? 'https://registry-1.docker.io'
       : `https://${img.registry}`;
   const token = await registryToken(img.registry, img.repository);
-  const auth = token ? { authorization: `Bearer ${token}` } : {};
+  // Widen to a plain header record: the ternary's two branches otherwise
+  // infer as an incompatible union that fetch's HeadersInit will not accept.
+  const auth: Record<string, string> = token
+    ? { authorization: `Bearer ${token}` }
+    : {};
   const getManifest = async (refr: string) => {
     const r = await fetch(`${base}/v2/${img.repository}/manifests/${refr}`, {
       headers: { accept: MANIFEST_ACCEPT, ...auth },
