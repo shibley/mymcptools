@@ -1,10 +1,10 @@
 {
-  "scanned": 145,
+  "scanned": 162,
   "counts": {
     "critical": 1,
-    "high": 4,
-    "medium": 40,
-    "low": 30
+    "high": 1,
+    "medium": 35,
+    "low": 32
   },
   "findings": [
     {
@@ -18,26 +18,6 @@
       "reason": "image `ghcr.io/obot-platform/obot` points at a DIFFERENT owner AND repo than the page links — a reader following the install command gets other software"
     },
     {
-      "slug": "apple-health-mcp",
-      "name": "Apple Health MCP",
-      "kind": "pip",
-      "severity": "high",
-      "artifact": "apple-health-mcp-server",
-      "entryRepo": "the-momentum/apple-health-mcp-server",
-      "declaredRepo": "rinoshiyo/apple-health-mcp-server",
-      "reason": "SAME repo name, DIFFERENT owner — classic name collision (the `sendgrid` shape)"
-    },
-    {
-      "slug": "blender-mcp",
-      "name": "Blender MCP",
-      "kind": "pip",
-      "severity": "high",
-      "artifact": "blender-mcp",
-      "entryRepo": "ahujasid/blender-mcp",
-      "declaredRepo": "yourusername/blender-mcp",
-      "reason": "SAME repo name, DIFFERENT owner — classic name collision (the `sendgrid` shape)"
-    },
-    {
       "slug": "hubstaff-mcp",
       "name": "Hubstaff MCP Server",
       "kind": "pip",
@@ -45,16 +25,6 @@
       "artifact": "hubstaff-mcp",
       "entryRepo": "cdmx-in/hubstaff-mcp",
       "declaredRepo": "yourusername/hubstaff-mcp",
-      "reason": "SAME repo name, DIFFERENT owner — classic name collision (the `sendgrid` shape)"
-    },
-    {
-      "slug": "penpot-mcp",
-      "name": "Penpot MCP",
-      "kind": "pip",
-      "severity": "high",
-      "artifact": "penpot-mcp",
-      "entryRepo": "penpot/penpot-mcp",
-      "declaredRepo": "montevive/penpot-mcp",
       "reason": "SAME repo name, DIFFERENT owner — classic name collision (the `sendgrid` shape)"
     },
     {
@@ -178,16 +148,6 @@
       "reason": "PyPI package `mq-mcp-server` does not exist (404) — install_command is not copy-pasteable"
     },
     {
-      "slug": "ibm-watsonxdata-mcp",
-      "name": "IBM watsonx.data",
-      "kind": "pip",
-      "severity": "medium",
-      "artifact": "ibm-watsonxdata-mcp",
-      "entryRepo": "ibm/ibm-watsonxdata-dl-retrieval-mcp-server",
-      "declaredRepo": null,
-      "reason": "PyPI package `ibm-watsonxdata-mcp` does not exist (404) — install_command is not copy-pasteable"
-    },
-    {
       "slug": "icinga-mcp",
       "name": "Icinga",
       "kind": "pip",
@@ -266,16 +226,6 @@
       "entryRepo": "carsol/monarch-mcp-server",
       "declaredRepo": null,
       "reason": "PyPI package `monarch-mcp-server` does not exist (404) — install_command is not copy-pasteable"
-    },
-    {
-      "slug": "nagios-mcp",
-      "name": "Nagios MCP",
-      "kind": "pip",
-      "severity": "medium",
-      "artifact": "nagios-mcp-server",
-      "entryRepo": "prospire-technology-services/nagios-mcp",
-      "declaredRepo": null,
-      "reason": "PyPI package `nagios-mcp-server` does not exist (404) — install_command is not copy-pasteable"
     },
     {
       "slug": "neptune-ai-mcp",
@@ -386,36 +336,6 @@
       "entryRepo": "acato/snmp-mcp",
       "declaredRepo": null,
       "reason": "PyPI package `snmp-mcp-server` does not exist (404) — install_command is not copy-pasteable"
-    },
-    {
-      "slug": "splunk-mcp",
-      "name": "Splunk",
-      "kind": "pip",
-      "severity": "medium",
-      "artifact": "splunk-mcp",
-      "entryRepo": "splunk/splunk-mcp-server2",
-      "declaredRepo": null,
-      "reason": "PyPI package `splunk-mcp` does not exist (404) — install_command is not copy-pasteable"
-    },
-    {
-      "slug": "starrocks-mcp",
-      "name": "StarRocks",
-      "kind": "pip",
-      "severity": "medium",
-      "artifact": "starrocks-mcp",
-      "entryRepo": "starrocks/mcp-server-starrocks",
-      "declaredRepo": null,
-      "reason": "PyPI package `starrocks-mcp` does not exist (404) — install_command is not copy-pasteable"
-    },
-    {
-      "slug": "tableau-mcp",
-      "name": "Tableau",
-      "kind": "pip",
-      "severity": "medium",
-      "artifact": "tableau-mcp",
-      "entryRepo": "tableau/tableau-mcp",
-      "declaredRepo": null,
-      "reason": "PyPI package `tableau-mcp` does not exist (404) — install_command is not copy-pasteable"
     },
     {
       "slug": "thingsboard-mcp",
@@ -588,8 +508,18 @@
       "reason": "PyPI package `influxdb-mcp` declares no GitHub project_urls/home_page — link cannot be corroborated from the registry side"
     },
     {
+      "slug": "jenkins-mcp",
+      "name": "MCP Jenkins",
+      "kind": "pip",
+      "severity": "low",
+      "artifact": "mcp-jenkins",
+      "entryRepo": "lanbaoshen/mcp-jenkins",
+      "declaredRepo": null,
+      "reason": "PyPI package `mcp-jenkins` declares no GitHub project_urls/home_page — link cannot be corroborated from the registry side"
+    },
+    {
       "slug": "langsmith-mcp",
-      "name": "LangSmith MCP",
+      "name": "LangSmith MCP Server",
       "kind": "pip",
       "severity": "low",
       "artifact": "langsmith-mcp",
@@ -756,6 +686,16 @@
       "entryRepo": "anshumax/world_bank_mcp_server",
       "declaredRepo": null,
       "reason": "PyPI package `world-bank-mcp-server` declares no GitHub project_urls/home_page — link cannot be corroborated from the registry side"
+    },
+    {
+      "slug": "zendesk",
+      "name": "Zendesk MCP Server",
+      "kind": "pip",
+      "severity": "low",
+      "artifact": "zendesk-mcp-server",
+      "entryRepo": "reminia/zendesk-mcp-server",
+      "declaredRepo": null,
+      "reason": "PyPI package `zendesk-mcp-server` declares no GitHub project_urls/home_page — link cannot be corroborated from the registry side"
     }
   ]
 }
