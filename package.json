@@ -12,6 +12,8 @@
     "probe:full": "node scripts/mcp-probe.mts --mode full",
     "probe:hot": "node scripts/mcp-probe.mts --mode hot",
     "drift:selfcheck": "node scripts/drift-selfcheck.mts",
+    "identity:selfcheck": "node scripts/session-identity-selfcheck.mts",
+    "verify:predeploy": "npm run identity:selfcheck",
     "probe:selfcheck": "node scripts/rolling-window-selfcheck.mts",
     "digest": "node scripts/digest.mts",
     "digest:selfcheck": "node scripts/digest-selfcheck.mts",

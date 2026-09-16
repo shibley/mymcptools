@@ -14,6 +14,9 @@
  * Privacy: no cookies, no request bodies, no arguments. Identity is
  * sha256(ip | ua | utc-date | salt), which rotates every UTC day and cannot be
  * reversed to a person. The raw IP is used to derive that hash and discarded.
+ * That derivation is the JOIN KEY these rows share with pageview rows, so it
+ * lives in `@/lib/session-identity` and is NOT inlined here — three copies of a
+ * join key drift silently (thread #224). `npm run identity:selfcheck` pins it.
  *
  * COLUMN MAPPING. The warehouse table was built for browser pageviews and we
  * deliberately do not alter its schema for one caller, so MCP rows reuse the
@@ -33,8 +36,8 @@
  * Fire-and-forget: every failure is swallowed. Recording usage must never be
  * able to fail an MCP request.
  */
-import { createHash } from "node:crypto";
 import { Pool } from "pg";
+import { sessionHash as beaconSessionHash } from "@/lib/session-identity";
 
 export const MCP_SITE = "mymcptools";
 export const MCP_SOURCE = "mcp";
@@ -59,19 +62,6 @@ function getPool(): Pool | null {
     pool.on("error", () => {});
   }
   return pool;
-}
-
-function salt(): string {
-  const explicit = process.env.ANALYTICS_SALT?.trim();
-  if (explicit) return explicit;
-  const cs = process.env.ANALYTICS_DATABASE_URL || "unsalted";
-  return createHash("sha256").update(cs).digest("hex").slice(0, 32);
-}
-
-function clientIp(h: Headers): string {
-  const xff = h.get("x-forwarded-for");
-  if (xff) return xff.split(",")[0].trim();
-  return h.get("x-real-ip") || h.get("cf-connecting-ip") || "0.0.0.0";
 }
 
 function trunc(v: unknown, n: number): string | null {
@@ -188,11 +178,7 @@ export async function recordMcpUsage(u: McpUsage): Promise<void> {
 
     const h = u.headers;
     const ua = trunc(h.get("user-agent"), 512);
-    const utcDate = new Date().toISOString().slice(0, 10);
-    const sessionHash = createHash("sha256")
-      .update(`${clientIp(h)}|${ua || ""}|${utcDate}|${salt()}`)
-      .digest("hex")
-      .slice(0, 32);
+    const sessionHash = beaconSessionHash(h);
 
     const method = trunc(u.method, 64);
     const target = trunc(u.target, 120);

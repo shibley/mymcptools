@@ -22,10 +22,10 @@
  * Fire-and-forget: every failure is swallowed. Recording usage must never be
  * able to fail an API request.
  */
-import { createHash } from "node:crypto";
 import { NextRequest, NextResponse } from "next/server";
 import { Pool } from "pg";
 import { AuthTier, RateLimitState, withRateLimitHeaders } from "@/lib/api/auth";
+import { sessionHash as beaconSessionHash } from "@/lib/session-identity";
 import { classifyCaller, MCP_SITE } from "./mcp-usage";
 
 export const TRUST_API_SOURCE = "trustapi";
@@ -46,19 +46,6 @@ function getPool(): Pool | null {
     pool.on("error", () => {});
   }
   return pool;
-}
-
-function salt(): string {
-  const explicit = process.env.ANALYTICS_SALT?.trim();
-  if (explicit) return explicit;
-  const cs = process.env.ANALYTICS_DATABASE_URL || "unsalted";
-  return createHash("sha256").update(cs).digest("hex").slice(0, 32);
-}
-
-function clientIp(h: Headers): string {
-  const xff = h.get("x-forwarded-for");
-  if (xff) return xff.split(",")[0].trim();
-  return h.get("x-real-ip") || h.get("cf-connecting-ip") || "0.0.0.0";
 }
 
 function trunc(v: unknown, n: number): string | null {
@@ -94,11 +81,7 @@ export async function recordTrustApiUsage(u: TrustApiUsage): Promise<void> {
 
     const h = u.headers;
     const ua = trunc(h.get("user-agent"), 512);
-    const utcDate = new Date().toISOString().slice(0, 10);
-    const sessionHash = createHash("sha256")
-      .update(`${clientIp(h)}|${ua || ""}|${utcDate}|${salt()}`)
-      .digest("hex")
-      .slice(0, 32);
+    const sessionHash = beaconSessionHash(h);
 
     // No JSON-RPC on this surface: pass a method so the MCP-specific
     // "bare URL fetch" and "anonymous discovery" rules stay out of it and only
