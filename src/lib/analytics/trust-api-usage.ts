@@ -24,11 +24,25 @@
  */
 import { NextRequest, NextResponse } from "next/server";
 import { Pool } from "pg";
-import { AuthTier, RateLimitState, withRateLimitHeaders } from "@/lib/api/auth";
+import {
+  authenticate,
+  AuthResult,
+  AuthTier,
+  RateLimitState,
+  withRateLimitHeaders,
+} from "@/lib/api/auth";
 import { sessionHash as beaconSessionHash } from "@/lib/session-identity";
 import { classifyCaller, MCP_SITE } from "./mcp-usage";
 
 export const TRUST_API_SOURCE = "trustapi";
+/**
+ * Separate source for the KEY-GATED endpoints. Deliberately not `trustapi`:
+ * the free-tier number in `npm run demand:report` must keep meaning "calls we
+ * actually served", and a gated 401 is the opposite of a served call. Mixing
+ * them would inflate the one figure this property has that is a real demand
+ * measurement.
+ */
+export const TRUST_API_GATED_SOURCE = "trustapi-gated";
 
 let pool: Pool | null = null;
 function getPool(): Pool | null {
@@ -125,4 +139,74 @@ export async function finishFreeTier(
     status: res.status,
   });
   return res;
+}
+
+/**
+ * Authenticate a KEY-GATED /api/v1 request and record the attempt — including
+ * the rejections.
+ *
+ * WHY THIS EXISTS: the six key-gated endpoints (digest, drift, export,
+ * incidents, firewall/check, servers/:slug/history) recorded nothing at all. A
+ * caller who wanted exactly the data we charge $49/mo for got a bare 401 and
+ * vanished from every log we can query, so "does anyone want the paid tier?"
+ * had no answer — the same structural zero that keylessness fixed on the free
+ * half. `src/data/api-keys.json` has never held a key, so historically 100% of
+ * traffic here was a 401 nobody counted. These rows are the buy-intent meter
+ * for /api/trust-api/checkout.
+ *
+ * Column mapping (analytics.events, same warehouse as the free tier):
+ *   utm_source  = 'trustapi-gated'   never mixes into the free-tier figure
+ *   utm_medium  = 'anonymous' | 'key'   what the caller presented
+ *   utm_campaign= 'GET:<status>'      401 = wanted it, had no key
+ *
+ * `status` is the AUTH outcome, not the final response status: a request that
+ * authenticates and then 400s on a bad param is recorded here as 200. That is
+ * intentional — this meter is about who reached for the gate, not about
+ * downstream parameter validation.
+ *
+ * Awaited, never throws: recording is wrapped by recordTrustApiUsage, which
+ * swallows everything.
+ */
+export async function authenticateGated(
+  req: NextRequest,
+  endpoint: string
+): Promise<AuthResult> {
+  const auth = await authenticate(req);
+  const presented = req.headers.get("authorization") || req.headers.get("x-api-key");
+
+  await recordGatedAttempt({
+    headers: req.headers,
+    endpoint,
+    tier: presented ? "key" : "anonymous",
+    status: auth.ok ? 200 : auth.response.status,
+  });
+
+  return auth;
+}
+
+/** Write one gated-attempt row. Same insert, different source discriminator. */
+async function recordGatedAttempt(u: TrustApiUsage): Promise<void> {
+  try {
+    const p = getPool();
+    if (!p) return;
+
+    const h = u.headers;
+    const ua = trunc(h.get("user-agent"), 512);
+    const { isCrawler, reason } = classifyCaller(ua, "GET", null);
+
+    await p.query(INSERT, [
+      MCP_SITE,
+      u.endpoint.slice(0, 512),
+      TRUST_API_GATED_SOURCE,
+      trunc(u.tier, 128),
+      `GET:${u.status}`,
+      beaconSessionHash(h),
+      isCrawler,
+      reason,
+      ua,
+      trunc(h.get("x-vercel-ip-country"), 8),
+    ]);
+  } catch {
+    // Never surface a warehouse problem as an API failure.
+  }
 }

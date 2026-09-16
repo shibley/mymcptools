@@ -178,9 +178,45 @@ export default function DevelopersPage() {
           <Code>/firewall/check</Code> — require a key, and a key also raises the rate
           limit to 120/min. Pass it on either an{" "}
           <Code>Authorization: Bearer &lt;key&gt;</Code> header or an{" "}
-          <Code>x-api-key: &lt;key&gt;</Code> header. A missing or unknown key returns{" "}
-          <Code>401</Code> with an <Code>unauthorized</Code> error body.
+          <Code>x-api-key: &lt;key&gt;</Code> header.
         </p>
+        <p className="mb-4 max-w-3xl leading-relaxed text-gray-400">
+          A missing or unknown key returns <Code>401</Code> with an{" "}
+          <Code>unauthorized</Code> body that is{" "}
+          <strong className="text-white">self-describing</strong>: it carries an{" "}
+          <Code>upgrade_url</Code>, a <Code>docs_url</Code> and a <Code>plans</Code>{" "}
+          array listing both the keyless endpoints you can call right now and the
+          price of a key — so a client that hits the gate can recover without a
+          human reading this page. The same response sets{" "}
+          <Code>WWW-Authenticate: Bearer</Code>,{" "}
+          <Code>Link: &lt;…&gt;; rel=&quot;payment&quot;</Code> and{" "}
+          <Code>X-MCPTools-Upgrade</Code>. A <Code>429</Code> carries the same block,
+          pointing at the higher keyed allowance.
+        </p>
+        <CodeBlock
+          label="401 — the gate tells you how to pass it"
+          code={`$ curl -i https://mymcptools.com/api/v1/drift
+HTTP/2 401
+www-authenticate: Bearer realm="mymcptools-trust-api"
+link: <https://mymcptools.com/developers#pro>; rel="payment"
+x-mcptools-upgrade: https://mymcptools.com/developers#pro
+
+{
+  "error": "unauthorized",
+  "message": "This endpoint needs an API key. ...",
+  "upgrade_url": "https://mymcptools.com/developers#pro",
+  "docs_url": "https://mymcptools.com/developers",
+  "plans": [
+    { "name": "Free", "price_usd_month": 0,  "rate_limit_per_min": 30,
+      "key_required": false,
+      "endpoints": ["/api/v1/status", "/api/v1/stats",
+                    "/api/v1/servers/{slug}/status"] },
+    { "name": "Pro",  "price_usd_month": 49, "rate_limit_per_min": 120,
+      "key_required": true, "endpoints": "all",
+      "checkout_url": "https://mymcptools.com/developers#pro" }
+  ]
+}`}
+        />
         <CodeBlock
           label="Authenticated request"
           code={`curl https://mymcptools.com/api/v1/export \\
@@ -948,6 +984,10 @@ docker,DOWN,,,,...`}
 
       {/* Access CTA */}
       <section id="access" className="mx-auto max-w-5xl px-4 py-16 sm:px-6 lg:px-8">
+        {/* Every API 401/429 body and the X-MCPTools-Upgrade header point at
+            /developers#pro. Without this anchor that URL lands at the top of the
+            page and the caller never sees the checkout. */}
+        <span id="pro" className="block scroll-mt-24" aria-hidden="true" />
         <div className="relative overflow-hidden rounded-2xl border border-blue-500/20 bg-gradient-to-r from-blue-600/20 via-purple-600/15 to-emerald-500/10 p-12 text-center">
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-blue-600/10 via-transparent to-transparent" />
           <div className="relative">

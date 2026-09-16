@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
-import { authenticate, withRateLimitHeaders } from "@/lib/api/auth";
+import { withRateLimitHeaders } from "@/lib/api/auth";
+import { authenticateGated } from "@/lib/analytics/trust-api-usage";
 import { ECOSYSTEMS, type Ecosystem } from "@/lib/firewall/types";
 import { MAX_PACKAGES_PER_REQUEST, scanPackages } from "@/lib/firewall/scan";
 import { corpusGeneratedAt, corpusSize } from "@/lib/firewall/corpus-store";
@@ -22,7 +23,7 @@ export const dynamic = "force-dynamic";
 // contract as the rest of /api/v1). The public /firewall page uses the separate
 // unauthenticated /api/firewall/scan endpoint with a tighter per-IP limit.
 export async function POST(req: NextRequest) {
-  const auth = await authenticate(req);
+  const auth = await authenticateGated(req, "/api/v1/firewall/check");
   if (!auth.ok) return auth.response;
 
   let body: unknown;

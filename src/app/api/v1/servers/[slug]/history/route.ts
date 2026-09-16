@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
-import { authenticate, withRateLimitHeaders } from "@/lib/api/auth";
+import { withRateLimitHeaders } from "@/lib/api/auth";
+import { authenticateGated } from "@/lib/analytics/trust-api-usage";
 import { getHistory, type HistoryPoint } from "@/lib/trust/history-store";
 import { generatedAt, getStatus } from "@/lib/trust/status-store";
 
@@ -60,7 +61,7 @@ export async function GET(
   req: NextRequest,
   { params }: { params: Promise<{ slug: string }> }
 ) {
-  const auth = await authenticate(req);
+  const auth = await authenticateGated(req, "/api/v1/servers/:slug/history");
   if (!auth.ok) return auth.response;
 
   const { slug } = await params;

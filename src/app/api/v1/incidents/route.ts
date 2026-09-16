@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
-import { authenticate, withRateLimitHeaders } from "@/lib/api/auth";
+import { withRateLimitHeaders } from "@/lib/api/auth";
+import { authenticateGated } from "@/lib/analytics/trust-api-usage";
 import { getAllEvents, latestEventAt } from "@/lib/trust/events-store";
 import { computeIncidents } from "@/lib/trust/incidents";
 import { generatedAt } from "@/lib/trust/status-store";
@@ -36,7 +37,7 @@ function parseOffset(raw: string | null): number {
 //   min_duration_seconds=<int>   drop resolved incidents shorter than this
 //   limit (<=200), cursor|offset pagination
 export async function GET(req: NextRequest) {
-  const auth = await authenticate(req);
+  const auth = await authenticateGated(req, "/api/v1/incidents");
   if (!auth.ok) return auth.response;
 
   const q = req.nextUrl.searchParams;

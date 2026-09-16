@@ -388,4 +388,60 @@ if (r0.calls === 0) {
   for (const r of byEndpoint.rows) console.log(`${String(r.callers).padStart(4)} callers  ${String(r.calls).padStart(6)} calls  ${r.path}`);
 }
 
+// ---- key-gated half: buy intent ------------------------------------------
+// The six key-gated endpoints recorded NOTHING until 2026-09-16. Because
+// src/data/api-keys.json has never held a key, every call they ever took was a
+// 401 that no queryable store saw — so "does anyone want the $49/mo tier?" had
+// no answer, the same structural zero keylessness fixed on the free half. These
+// rows are the buy-intent meter for /api/trust-api/checkout. A 401 here is the
+// strongest demand signal this property can emit: a caller who reached for data
+// that is only sold, not given.
+const GATED_WHERE = `site = 'mymcptools' and utm_source = 'trustapi-gated' and ts > now() - ($1 || ' days')::interval`;
+const gated = await client.query(
+  `select
+     count(*)::int                                                          as calls,
+     count(distinct session_hash)::int                                      as callers,
+     count(distinct session_hash) filter (where not is_bot)::int            as consumers,
+     count(*) filter (where utm_campaign = 'GET:401')::int                  as denied,
+     count(distinct session_hash) filter (where utm_campaign = 'GET:401' and not is_bot)::int as denied_consumers,
+     count(distinct session_hash) filter (where utm_medium = 'key')::int    as key_callers,
+     min(ts) as first_seen, max(ts) as last_seen
+   from analytics.events where ${GATED_WHERE}`,
+  [String(DAYS)]
+);
+const g0 = gated.rows[0];
+console.log(`\n=== Paid-tier BUY INTENT, last ${DAYS} days (/api/v1 key-gated subset) ===`);
+console.log(`attempts                  ${g0.calls}`);
+console.log(`distinct callers          ${g0.callers}  (${g0.consumers} non-crawler, ${g0.key_callers} presented a key)`);
+console.log(`denied (401)              ${g0.denied}  from ${g0.denied_consumers} non-crawler callers  <- wanted the paid data`);
+console.log(`first / last seen         ${g0.first_seen ?? "\u2014"} / ${g0.last_seen ?? "\u2014"}`);
+if (g0.calls === 0) {
+  console.log(
+    `No gated attempts recorded yet. Recording starts at deploy of mymcptools thread #235\n` +
+      `(2026-09-16) — before that these endpoints wrote no rows at all, so an empty\n` +
+      `section here means "not yet measured", NOT "measured zero". Re-read after a\n` +
+      `full ${DAYS}-day window has elapsed post-deploy before drawing any conclusion.`
+  );
+} else {
+  const byEndpoint = await client.query(
+    `select path,
+            count(*)::int as calls,
+            count(distinct session_hash)::int as callers,
+            count(*) filter (where utm_campaign = 'GET:401')::int as denied
+       from analytics.events where ${GATED_WHERE} group by 1 order by 3 desc limit 15`,
+    [String(DAYS)]
+  );
+  console.log(`\n-- which paid endpoint was reached for --`);
+  for (const r of byEndpoint.rows) {
+    console.log(
+      `${String(r.callers).padStart(4)} callers  ${String(r.calls).padStart(6)} attempts  ` +
+        `${String(r.denied).padStart(6)} denied  ${r.path}`
+    );
+  }
+  console.log(
+    `\nVERDICT (paid tier): ${g0.denied_consumers} non-crawler caller(s) hit a paywall they could not pass. ` +
+      `Every one of them now receives the checkout URL in the 401 body and the X-MCPTools-Upgrade header.`
+  );
+}
+
 await client.end();

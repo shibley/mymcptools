@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
-import { authenticate, withRateLimitHeaders } from "@/lib/api/auth";
+import { withRateLimitHeaders } from "@/lib/api/auth";
+import { authenticateGated } from "@/lib/analytics/trust-api-usage";
 import { allStatuses, generatedAt, summary } from "@/lib/trust/status-store";
 import type { CurrentStatus } from "@/lib/trust/types";
 
@@ -42,7 +43,7 @@ function toCsv(rows: readonly CurrentStatus[]): string {
 
 // GET /api/v1/export?format=json|csv — full status dataset bulk export (PRD P0-7).
 export async function GET(req: NextRequest) {
-  const auth = await authenticate(req);
+  const auth = await authenticateGated(req, "/api/v1/export");
   if (!auth.ok) return auth.response;
 
   const format = (req.nextUrl.searchParams.get("format") ?? "json").toLowerCase();

@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
-import { authenticate, withRateLimitHeaders } from "@/lib/api/auth";
+import { withRateLimitHeaders } from "@/lib/api/auth";
+import { authenticateGated } from "@/lib/analytics/trust-api-usage";
 import { getDrifts, latestDriftAt } from "@/lib/trust/drift-store";
 import { generatedAt } from "@/lib/trust/status-store";
 import type { DriftEvent } from "@/lib/trust/types";
@@ -29,7 +30,7 @@ function parseOffset(raw: string | null): number {
 //   filter=schema|protocol   restrict to schema-only or protocol-only drift
 //   limit (<=200), cursor|offset
 export async function GET(req: NextRequest) {
-  const auth = await authenticate(req);
+  const auth = await authenticateGated(req, "/api/v1/drift");
   if (!auth.ok) return auth.response;
 
   const q = req.nextUrl.searchParams;

@@ -25,7 +25,8 @@
     "verify:github": "node scripts/verify-github-entries.mts",
     "stale:sweep": "node scripts/stale-release-sweep.mts",
     "demand:report": "node scripts/mcp-demand-report.mts",
-    "listings:check": "node scripts/registry-listing-check.mts"
+    "listings:check": "node scripts/registry-listing-check.mts",
+    "intent:selfcheck": "npx tsx scripts/trust-api-intent-selfcheck.mts"
   },
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.29.0",
