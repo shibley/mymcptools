@@ -32,7 +32,7 @@ import {
   withRateLimitHeaders,
 } from "@/lib/api/auth";
 import { sessionHash as beaconSessionHash } from "@/lib/session-identity";
-import { classifyCaller, MCP_SITE } from "./mcp-usage";
+import { CallerClass, classifyCaller, MCP_SITE } from "./mcp-usage";
 
 export const TRUST_API_SOURCE = "trustapi";
 /**
@@ -74,8 +74,41 @@ insert into analytics.events
    session_hash, is_bot, bot_reason, ua, country, screen_w)
 values ($1, $2, null, null, $3, $4, $5, $6, $7, $8, $9, $10, null)`;
 
+/**
+ * Our own checks against the trust API, marked so they never read as demand.
+ *
+ * WHY: on 2026-09-18 a sprint fire curl'd /api/v1/digest to confirm the gated
+ * meter records in production. It did — as `is_bot = false`, i.e. one
+ * "non-crawler caller who wanted the paid data", the exact signal the $49/mo
+ * buy-intent alert fires on. A REST caller is a program, so no UA or pacing
+ * rule can tell our curl from a prospect's; only a marker we set ourselves can.
+ * Same convention as the portfolio's `?probe=1` (replacedbai
+ * lib/analytics-probe.ts): the query param for a walk that can only set a URL,
+ * plus an `X-Probe: 1` header for scripts that would rather not alter it.
+ * Probe rows are still WRITTEN — they prove the recorder is alive — but as
+ * `is_bot = true, bot_reason = 'internal-probe'`, which every demand query
+ * already excludes.
+ */
+export const INTERNAL_PROBE_REASON = "internal-probe";
+
+export function isInternalProbe(headers: Headers, url: URL | null): boolean {
+  if (headers.get("x-probe") === "1") return true;
+  return url?.searchParams.get("probe") === "1";
+}
+
+/** Classify a trust-API caller: our own probe first, then the UA list. */
+export function classifyTrustApiCaller(headers: Headers, url: URL | null): CallerClass {
+  if (isInternalProbe(headers, url)) return { isCrawler: true, reason: INTERNAL_PROBE_REASON };
+  // No JSON-RPC on this surface: pass a method so the MCP-specific
+  // "bare URL fetch" and "anonymous discovery" rules stay out of it and only
+  // the UA list applies.
+  return classifyCaller(trunc(headers.get("user-agent"), 512), "GET", null);
+}
+
 export type TrustApiUsage = {
   headers: Headers;
+  /** Request URL, read only for the `?probe=1` marker. */
+  url?: URL | null;
   /** Route identity, e.g. '/api/v1/status' or '/api/v1/servers/:slug/status'. */
   endpoint: string;
   /** 'anonymous' when served keyless, 'key' when a valid key was presented. */
@@ -97,10 +130,7 @@ export async function recordTrustApiUsage(u: TrustApiUsage): Promise<void> {
     const ua = trunc(h.get("user-agent"), 512);
     const sessionHash = beaconSessionHash(h);
 
-    // No JSON-RPC on this surface: pass a method so the MCP-specific
-    // "bare URL fetch" and "anonymous discovery" rules stay out of it and only
-    // the UA list applies.
-    const { isCrawler, reason } = classifyCaller(ua, "GET", null);
+    const { isCrawler, reason } = classifyTrustApiCaller(h, u.url ?? null);
 
     await p.query(INSERT, [
       MCP_SITE,
@@ -134,6 +164,7 @@ export async function finishFreeTier(
   res.headers.set("X-RateLimit-Tier", auth.tier);
   await recordTrustApiUsage({
     headers: req.headers,
+    url: req.nextUrl,
     endpoint,
     tier: auth.tier,
     status: res.status,
@@ -176,6 +207,7 @@ export async function authenticateGated(
 
   await recordGatedAttempt({
     headers: req.headers,
+    url: req.nextUrl,
     endpoint,
     tier: presented ? "key" : "anonymous",
     status: auth.ok ? 200 : auth.response.status,
@@ -192,7 +224,7 @@ async function recordGatedAttempt(u: TrustApiUsage): Promise<void> {
 
     const h = u.headers;
     const ua = trunc(h.get("user-agent"), 512);
-    const { isCrawler, reason } = classifyCaller(ua, "GET", null);
+    const { isCrawler, reason } = classifyTrustApiCaller(h, u.url ?? null);
 
     await p.query(INSERT, [
       MCP_SITE,

@@ -192,6 +192,44 @@ await check('gated rows use a distinct utm_source', async () => {
   );
 });
 
+// ---- 5. our own probes never read as buy intent ---------------------------
+// 2026-09-18: a sprint fire's curl of /api/v1/digest landed in the warehouse as
+// is_bot=false GET:401 — one "non-crawler caller who wanted the paid data".
+// The watchdog alert on that number would have paged on our own check.
+console.log('\n-- internal probes are excluded from demand --');
+{
+  const m = await import('../src/lib/analytics/trust-api-usage.ts');
+  const UA = { 'user-agent': 'curl/8.7.1' };
+  const u = (q = '') => new URL(`https://mymcptools.com/api/v1/digest${q}`);
+
+  await check('?probe=1 classifies as internal-probe, not a consumer', () => {
+    const c = m.classifyTrustApiCaller?.(new Headers(UA), u('?probe=1'));
+    assert.deepEqual(c, { isCrawler: true, reason: 'internal-probe' });
+  });
+  await check('X-Probe: 1 header classifies as internal-probe', () => {
+    const c = m.classifyTrustApiCaller?.(new Headers({ ...UA, 'x-probe': '1' }), u());
+    assert.deepEqual(c, { isCrawler: true, reason: 'internal-probe' });
+  });
+  await check('an unmarked curl still counts as a consumer (no false exclusion)', () => {
+    const c = m.classifyTrustApiCaller?.(new Headers(UA), u());
+    assert.deepEqual(c, { isCrawler: false, reason: null });
+  });
+  await check('?probe=0 / other params do not exclude a real caller', () => {
+    const c = m.classifyTrustApiCaller?.(new Headers(UA), u('?probe=0&window_hours=24'));
+    assert.equal(c?.isCrawler, false);
+  });
+  await check('a known crawler UA is still flagged by the UA list', () => {
+    const c = m.classifyTrustApiCaller?.(new Headers({ 'user-agent': 'Mozilla/5.0 (compatible; bingbot/2.0)' }), u());
+    assert.equal(c?.isCrawler, true);
+  });
+  await check('both recorders pass the request URL through', () => {
+    const src = readFileSync('src/lib/analytics/trust-api-usage.ts', 'utf8');
+    const passes = src.match(/url: req\.nextUrl/g)?.length ?? 0;
+    assert.equal(passes, 2, `expected finishFreeTier + authenticateGated to pass req.nextUrl, found ${passes}`);
+    assert.ok(!/classifyCaller\(ua, "GET", null\)/.test(src), 'a recorder still classifies on the UA alone');
+  });
+}
+
 console.log(
   failures === 0
     ? '\nAll trust-API intent checks passed.'
