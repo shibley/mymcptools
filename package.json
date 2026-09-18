@@ -13,7 +13,7 @@
     "probe:hot": "node scripts/mcp-probe.mts --mode hot",
     "drift:selfcheck": "node scripts/drift-selfcheck.mts",
     "identity:selfcheck": "node scripts/session-identity-selfcheck.mts",
-    "verify:predeploy": "npm run identity:selfcheck",
+    "verify:predeploy": "npm run -s identity:selfcheck && npm run -s drift:selfcheck && npm run -s probe:selfcheck && npm run -s digest:selfcheck && npm run -s webhooks:selfcheck && npm run -s trust:selfcheck && npm run -s firewall:selfcheck && npm run -s intent:selfcheck && npm run -s rel:census && npm run -s signals:selfcheck",
     "probe:selfcheck": "node scripts/rolling-window-selfcheck.mts",
     "digest": "node scripts/digest.mts",
     "digest:selfcheck": "node scripts/digest-selfcheck.mts",
@@ -26,7 +26,9 @@
     "stale:sweep": "node scripts/stale-release-sweep.mts",
     "demand:report": "node scripts/mcp-demand-report.mts",
     "listings:check": "node scripts/registry-listing-check.mts",
-    "intent:selfcheck": "npx tsx scripts/trust-api-intent-selfcheck.mts"
+    "intent:selfcheck": "npx tsx scripts/trust-api-intent-selfcheck.mts",
+    "rel:census": "node scripts/paid-rel-census.mts",
+    "signals:selfcheck": "npx tsx scripts/signal-repo-join-selfcheck.mts"
   },
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.29.0",

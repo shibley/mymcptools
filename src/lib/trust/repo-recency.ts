@@ -26,6 +26,7 @@
 
 import rawRecency from "@/data/repo-recency.json";
 import { getStaticSignal } from "@/lib/trust/static-signals-store";
+import { sweepMatchesListing } from "@/lib/trust/listing-repo";
 
 type RecencyRecord = {
   repo: string;
@@ -80,7 +81,8 @@ function isUsableDate(value: string | null | undefined): value is string {
  */
 export function getRepoRecency(slug: string): RepoRecency | undefined {
   const record = store.entries[slug];
-  if (record && isUsableDate(record.pushedAt)) {
+  // Same repo-join guard as static-signals-store (thread #262).
+  if (record && isUsableDate(record.pushedAt) && sweepMatchesListing(slug, record.repo)) {
     return {
       lastCommitAt: record.pushedAt,
       monthsSinceCommit: monthsSince(record.pushedAt),

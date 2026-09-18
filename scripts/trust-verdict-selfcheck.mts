@@ -214,12 +214,18 @@ console.log('\n# live catalog pass');
     .map((s) => s.slug);
   check('found all 7 reference monorepo servers', referenceSlugs.length === 7, referenceSlugs);
 
-  // The known bad claim: right repo, non-existent subpath. It must be graded
-  // as an ordinary community server, not as an official reference impl.
+  // The known bad claim was: right repo, non-existent subpath. The listing was
+  // corrected on 2026-08-04 to Alex2Yang97/yahoo-finance-mcp, so the old
+  // "repo_link is flagged for review" assertion described data that no longer
+  // exists and failed for 44 days while nothing ran this script (thread #262).
+  // The subpath case itself is still covered by the parseRepoRef unit above.
+  // What must hold on the live row: it never regains reference provenance, and
+  // the listing never goes back to the non-existent monorepo path.
   const yf = catalogVerdicts.find((v) => v.slug === 'yfinance-mcp');
   if (yf) {
     check('yfinance-mcp gets no official-reference provenance', yf.signals.find((s) => s.id === 'provenance')?.score !== 100);
-    check('yfinance-mcp repo_link is flagged for review, not trusted', yf.signals.find((s) => s.id === 'repo_link')?.polarity === 'neutral');
+    const yfRow = servers.find((s) => s.slug === 'yfinance-mcp');
+    check('yfinance-mcp no longer claims the modelcontextprotocol/servers subpath', !(yfRow?.github_url ?? '').includes('modelcontextprotocol/servers/tree/main/src/yfinance'), yfRow?.github_url);
   }
 
   for (const slug of referenceSlugs) {

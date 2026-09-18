@@ -7,6 +7,7 @@
 
 import rawStore from "@/data/static-signals.json";
 import type { StaticSignal, StaticSignalStore } from "@/lib/trust/types";
+import { sweepMatchesListing } from "@/lib/trust/listing-repo";
 
 const store = rawStore as StaticSignalStore;
 
@@ -25,8 +26,12 @@ function deriveFreshness(s: StaticSignal): StaticSignal["freshness"] {
   return "stale";
 }
 
+// A row swept from a repository the listing no longer links is dropped, not
+// shown: its dates describe a different project (thread #262).
 const bySlug = new Map<string, StaticSignal>(
-  store.signals.map((s) => [s.slug, { ...s, freshness: deriveFreshness(s) }])
+  store.signals
+    .filter((s) => sweepMatchesListing(s.slug, s.repo_url))
+    .map((s) => [s.slug, { ...s, freshness: deriveFreshness(s) }])
 );
 
 /** One server's static signal (with derived freshness), or undefined. */

@@ -11,6 +11,14 @@ const nextConfig: NextConfig = {
     return [
       { source: "/sponsor", destination: "/advertise", permanent: false },
       /**
+       * 97 internal links (7 pillar-page CTAs "Browse all MCP servers" + 83 blog
+       * posts + the what-is page) point at /servers, and there is no index route
+       * there — only /servers/[slug] — so every one of them 404'd. The homepage
+       * IS the directory. Temporary, so an index can take the path later.
+       * Thread #262, 2026-09-17.
+       */
+      { source: "/servers", destination: "/", permanent: false },
+      /**
        * `hacker-news-mcp` and `hackernews` were two catalog entries for one
        * project — same repo (paabloLC/mcp-hacker-news), same published package,
        * two slugs competing for the same query with two different descriptions.

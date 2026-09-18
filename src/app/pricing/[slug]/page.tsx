@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { servers, categories, getRelatedServers, registryLabel } from "@/data/servers";
 import { getServerPricing, getPricingBadge, hasFreeOption } from "@/data/pricing";
 import { installVerdict, formatCheckDate } from "@/lib/trust/install-check";
+import { listingOutboundRel } from "@/lib/outbound-rel";
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -443,7 +444,7 @@ export default async function PricingPage({ params }: Props) {
                   <div>
                     <dt className="text-gray-500">Source Code</dt>
                     <dd>
-                      <a href={server.github_url} target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:text-blue-300 text-sm transition">
+                      <a href={server.github_url} target="_blank" rel={listingOutboundRel(server)} className="text-blue-400 hover:text-blue-300 text-sm transition">
                         View on GitHub →
                       </a>
                     </dd>
