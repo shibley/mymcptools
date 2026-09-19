@@ -33,6 +33,7 @@ import {
 } from "@/lib/api/auth";
 import { sessionHash as beaconSessionHash } from "@/lib/session-identity";
 import { CallerClass, classifyCaller, MCP_SITE } from "./mcp-usage";
+import { readVia } from "@/lib/api/pro-pointer";
 
 export const TRUST_API_SOURCE = "trustapi";
 /**
@@ -216,6 +217,24 @@ export async function authenticateGated(
   return auth;
 }
 
+/**
+ * Same columns as INSERT, plus `referrer_full`: 'pointer:<via>' when the caller
+ * followed a URL from a free-tier response's `pro` block (src/lib/api/
+ * pro-pointer.ts), null otherwise. That is the attribution for whether the
+ * free tier's pointer is what walks callers to the paywall.
+ */
+const GATED_INSERT = `
+insert into analytics.events
+  (site, path, referrer_host, referrer_full, utm_source, utm_medium, utm_campaign,
+   session_hash, is_bot, bot_reason, ua, country, screen_w)
+values ($1, $2, null, $11, $3, $4, $5, $6, $7, $8, $9, $10, null)`;
+
+/** The referrer_full value a gated row carries, or null for a direct attempt. */
+export function gatedPointerTag(url: URL | null | undefined): string | null {
+  const via = readVia(url);
+  return via ? `pointer:${via}` : null;
+}
+
 /** Write one gated-attempt row. Same insert, different source discriminator. */
 async function recordGatedAttempt(u: TrustApiUsage): Promise<void> {
   try {
@@ -226,7 +245,7 @@ async function recordGatedAttempt(u: TrustApiUsage): Promise<void> {
     const ua = trunc(h.get("user-agent"), 512);
     const { isCrawler, reason } = classifyTrustApiCaller(h, u.url ?? null);
 
-    await p.query(INSERT, [
+    await p.query(GATED_INSERT, [
       MCP_SITE,
       u.endpoint.slice(0, 512),
       TRUST_API_GATED_SOURCE,
@@ -237,6 +256,7 @@ async function recordGatedAttempt(u: TrustApiUsage): Promise<void> {
       reason,
       ua,
       trunc(h.get("x-vercel-ip-country"), 8),
+      gatedPointerTag(u.url),
     ]);
   } catch {
     // Never surface a warehouse problem as an API failure.

@@ -230,6 +230,68 @@ console.log('\n-- internal probes are excluded from demand --');
   });
 }
 
+// ---- 6. free responses lead to the paywall --------------------------------
+// 2026-09-19: 10 non-crawler callers used the free tier in 30 days and 0 ever
+// reached a gated endpoint — no free body named one. Every free response must
+// carry followable, attributable URLs into the paid endpoints.
+console.log('\n-- free-tier responses point at the paid endpoints --');
+{
+  const gatedPaths = new Map<string, string>(); // route pattern -> file
+  for (const f of files) {
+    const src = readFileSync(f, 'utf8');
+    const m = src.match(/authenticateGated\(\s*req\s*,\s*"([^"]+)"/);
+    if (m) gatedPaths.set(m[1], f);
+  }
+  const toPattern = (u: URL) => u.pathname.replace(/^\/api\/v1\/servers\/[^/]+\//, '/api/v1/servers/:slug/');
+
+  const free: Array<[string, string, () => Promise<Response>]> = [
+    ['stats', '/api/v1/stats', async () => (await import('../src/app/api/v1/stats/route.ts')).GET(
+      new NextRequest('https://mymcptools.com/api/v1/stats', { headers: { 'x-forwarded-for': '198.51.100.1' } }))],
+    ['status', '/api/v1/status', async () => (await import('../src/app/api/v1/status/route.ts')).GET(
+      new NextRequest('https://mymcptools.com/api/v1/status?limit=1', { headers: { 'x-forwarded-for': '198.51.100.2' } }))],
+    ['server-status', '/api/v1/servers/:slug/status', async () => {
+      const { allStatuses } = await import('../src/lib/trust/status-store.ts');
+      const slug = allStatuses()[0].slug;
+      return (await import('../src/app/api/v1/servers/[slug]/status/route.ts')).GET(
+        new NextRequest(`https://mymcptools.com/api/v1/servers/${slug}/status`, { headers: { 'x-forwarded-for': '198.51.100.3' } }),
+        { params: Promise.resolve({ slug }) });
+    }],
+  ];
+  for (const [via, name, call] of free) {
+    let body: Record<string, any> = {};
+    await check(`${name} returns 200`, async () => {
+      const res = await call();
+      assert.equal(res.status, 200);
+      body = await res.json();
+    });
+    await check(`${name} body carries a pro block with price + upgrade URL`, () => {
+      assert.ok(body.pro, `${name} names no paid endpoint — a free caller has no road to the paywall`);
+      assert.equal(body.pro.price_usd_month, PRO_PRICE_USD);
+      assert.equal(body.pro.upgrade_url, UPGRADE_URL);
+    });
+    await check(`${name} pointers are real gated routes, tagged via=${via}`, () => {
+      const eps = Object.values(body.pro?.endpoints ?? {}) as string[];
+      assert.ok(eps.length >= 3, `expected >=3 paid pointers, got ${eps.length}`);
+      for (const e of eps) {
+        const u = new URL(e);
+        assert.ok(gatedPaths.has(toPattern(u)), `${u.pathname} is not a key-gated route — the pointer leads nowhere billable`);
+        assert.equal(u.searchParams.get('via'), via, `${e} is not attributable`);
+      }
+    });
+  }
+
+  const m = await import('../src/lib/analytics/trust-api-usage.ts');
+  await check('a gated attempt that followed a pointer is tagged; a direct one is not', () => {
+    assert.equal(m.gatedPointerTag?.(new URL('https://mymcptools.com/api/v1/drift?via=status')), 'pointer:status');
+    assert.equal(m.gatedPointerTag?.(new URL('https://mymcptools.com/api/v1/drift')), null);
+    assert.equal(m.gatedPointerTag?.(new URL('https://mymcptools.com/api/v1/drift?via=<script>')), null);
+  });
+  await check('demand report reads the pointer attribution', () => {
+    const src = readFileSync('scripts/mcp-demand-report.mts', 'utf8');
+    assert.ok(/referrer_full like 'pointer:%'/.test(src), 'demand:report never reads pointer-attributed gated attempts');
+  });
+}
+
 console.log(
   failures === 0
     ? '\nAll trust-API intent checks passed.'

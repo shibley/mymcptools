@@ -438,6 +438,23 @@ if (g0.calls === 0) {
         `${String(r.denied).padStart(6)} denied  ${r.path}`
     );
   }
+  // Pointer attribution (2026-09-19): free-tier bodies now carry a `pro` block
+  // of gated URLs tagged ?via=<free endpoint>; a gated row that followed one has
+  // referrer_full = 'pointer:<via>'. This is whether the free tier walks its
+  // callers to the paywall — the only road to it an API caller has.
+  const byPointer = await client.query(
+    `select coalesce(referrer_full, 'direct') as via,
+            count(*)::int as calls,
+            count(distinct session_hash) filter (where not is_bot)::int as consumers
+       from analytics.events
+      where ${GATED_WHERE} and (referrer_full like 'pointer:%' or referrer_full is null)
+      group by 1 order by 2 desc`,
+    [String(DAYS)]
+  );
+  console.log(`\n-- how they reached the paywall (pointer = followed a free-tier 'pro' URL) --`);
+  for (const r of byPointer.rows) {
+    console.log(`${String(r.consumers).padStart(4)} non-crawler  ${String(r.calls).padStart(6)} attempts  ${r.via}`);
+  }
   console.log(
     `\nVERDICT (paid tier): ${g0.denied_consumers} non-crawler caller(s) hit a paywall they could not pass. ` +
       `Every one of them now receives the checkout URL in the 401 body and the X-MCPTools-Upgrade header.`

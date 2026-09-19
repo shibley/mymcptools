@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { authenticateOpen } from "@/lib/api/auth";
 import { finishFreeTier } from "@/lib/analytics/trust-api-usage";
 import { allStatuses, generatedAt, summary } from "@/lib/trust/status-store";
+import { proPointer } from "@/lib/api/pro-pointer";
 import type { CurrentStatus, Verdict } from "@/lib/trust/types";
 
 export const runtime = "nodejs";
@@ -79,6 +80,7 @@ export async function GET(req: NextRequest) {
       next_cursor: nextCursor,
     },
     statuses: page,
+    pro: proPointer("status"),
   });
   return finishFreeTier(req, "/api/v1/status", auth, res);
 }

@@ -30,6 +30,13 @@ Free-tier responses carry `X-RateLimit-Tier: anonymous | key`. Presenting an
 *invalid* key on a free endpoint is still a 401 — silently downgrading a caller
 who believes they are authenticated would hide a broken integration behind a 200.
 
+The three free JSON endpoints also return a `pro` object: price, upgrade URL, and
+followable URLs to the key-gated endpoints (history, incidents, drift, digest,
+export), scoped to the server on `/servers/{slug}/status`. Each URL is tagged
+`?via=<status|stats|server-status>`, and a gated attempt carrying that tag is
+recorded with `referrer_full = 'pointer:<via>'` so `demand:report` can tell how
+many callers reached the paywall by following a free response.
+
 Free-tier calls are recorded to the first-party warehouse
 (`analytics.events`, `utm_source = 'trustapi'`) so the endpoints have a
 queryable caller count; `npm run demand:report` prints it. Before 2026-08-18
