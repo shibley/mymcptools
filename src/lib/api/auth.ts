@@ -22,6 +22,7 @@
 import { createHash } from "node:crypto";
 import { NextRequest, NextResponse } from "next/server";
 import { isActiveStoredKey } from "./key-store";
+import { checkoutUrl } from "./checkout-entry";
 
 /** Requests allowed per window, per key. */
 const RATE_LIMIT_MAX = 120;
@@ -50,10 +51,27 @@ const FREE_TIER_ENDPOINTS = [
   "/api/v1/servers/{slug}/status",
 ];
 
+/**
+ * Where a gate sends the caller to actually pay. `/developers#pro` is an HTML
+ * page with a React form — a script that just got a 401 cannot fill one in, so
+ * a rejection also carries the direct, followable checkout URL, tagged with the
+ * endpoint that denied it (and the free-tier pointer that led there, if any) so
+ * the Stripe session records what sold it. See src/lib/api/checkout-entry.ts.
+ */
+export interface UpgradeContext {
+  /** The key-gated endpoint the caller was denied. */
+  endpoint?: string | null;
+  /** `?via=` carried in from a free-tier pointer URL. */
+  via?: string | null;
+}
+
 /** The upgrade block embedded in every auth-failure body. */
-function upgradeBlock() {
+function upgradeBlock(ctx: UpgradeContext = {}) {
+  const buyUrl = checkoutUrl({ endpoint: ctx.endpoint, via: ctx.via });
   return {
     upgrade_url: UPGRADE_URL,
+    /** One GET away from Stripe — no form, no page, no browser required. */
+    checkout_url: buyUrl,
     docs_url: `${SITE}/developers`,
     plans: [
       {
@@ -69,16 +87,25 @@ function upgradeBlock() {
         rate_limit_per_min: RATE_LIMIT_MAX,
         key_required: true,
         endpoints: "all",
-        checkout_url: UPGRADE_URL,
+        checkout_url: buyUrl,
       },
     ],
   };
 }
 
-/** Attach the machine-readable buy path to a response. */
-export function withUpgradeHeaders(res: NextResponse): NextResponse {
-  res.headers.set("Link", `<${UPGRADE_URL}>; rel="payment"`);
+/**
+ * Attach the machine-readable buy path to a response. `Link rel="payment"` and
+ * X-MCPTools-Checkout name the URL that actually reaches Stripe; the docs page
+ * stays on X-MCPTools-Upgrade for a human reading the headers.
+ */
+export function withUpgradeHeaders(
+  res: NextResponse,
+  ctx: UpgradeContext = {}
+): NextResponse {
+  const buyUrl = checkoutUrl({ endpoint: ctx.endpoint, via: ctx.via });
+  res.headers.set("Link", `<${buyUrl}>; rel="payment"`);
   res.headers.set("X-MCPTools-Upgrade", UPGRADE_URL);
+  res.headers.set("X-MCPTools-Checkout", buyUrl);
   return res;
 }
 
@@ -189,31 +216,42 @@ export type AuthResult =
  * via withRateLimitHeaders). On failure returns a ready-to-return JSON error
  * with the appropriate status + rate-limit headers.
  */
-export async function authenticate(req: NextRequest): Promise<AuthResult> {
+export async function authenticate(
+  req: NextRequest,
+  ctx: UpgradeContext = {}
+): Promise<AuthResult> {
   const key = extractKey(req);
+  // A gated caller may have arrived via a free-tier pointer; carry the tag on
+  // to the buy URL so the Stripe session knows which free endpoint started it.
+  const upgradeCtx: UpgradeContext = {
+    endpoint: ctx.endpoint,
+    via: ctx.via ?? req.nextUrl?.searchParams.get("via") ?? null,
+  };
 
   if (!key || !(await isAllowed(key))) {
     const res = NextResponse.json(
       {
         error: "unauthorized",
         message: key
-          ? "That API key is not active. Get a working one at " + UPGRADE_URL + "."
+          ? "That API key is not active. Get a working one at " +
+            checkoutUrl({ endpoint: upgradeCtx.endpoint, via: upgradeCtx.via }) +
+            "."
           : "This endpoint needs an API key. Pass it as 'Authorization: Bearer <key>' " +
-            "or 'x-api-key: <key>' — get one at " +
-            UPGRADE_URL +
+            "or 'x-api-key: <key>' — buy one in one GET at " +
+            checkoutUrl({ endpoint: upgradeCtx.endpoint, via: upgradeCtx.via }) +
             ` ($${PRO_PRICE_USD}/mo), or call the free keyless endpoints listed below.`,
-        ...upgradeBlock(),
+        ...upgradeBlock(upgradeCtx),
       },
       { status: 401 }
     );
     res.headers.set("WWW-Authenticate", 'Bearer realm="mymcptools-trust-api"');
-    withUpgradeHeaders(res);
+    withUpgradeHeaders(res, upgradeCtx);
     return { ok: false, response: res };
   }
 
   const rate = consume(key);
   if (rate.exceeded) {
-    return { ok: false, response: rateLimitedResponse(rate) };
+    return { ok: false, response: rateLimitedResponse(rate, upgradeCtx) };
   }
 
   return { ok: true, key, tier: "key", rate };
@@ -255,19 +293,22 @@ export async function authenticateOpen(req: NextRequest): Promise<AuthResult> {
   return { ok: true, key: "", tier: "anonymous", rate };
 }
 
-function rateLimitedResponse(rate: RateLimitState): NextResponse {
+function rateLimitedResponse(
+  rate: RateLimitState,
+  ctx: UpgradeContext = {}
+): NextResponse {
   const res = NextResponse.json(
     {
       error: "rate_limited",
       message:
         `Rate limit exceeded (${rate.limit}/min). Retry later, or raise it to ` +
-        `${RATE_LIMIT_MAX}/min with a Pro key at ${UPGRADE_URL}.`,
-      ...upgradeBlock(),
+        `${RATE_LIMIT_MAX}/min with a Pro key: ${checkoutUrl({ endpoint: ctx.endpoint, via: ctx.via })}.`,
+      ...upgradeBlock(ctx),
     },
     { status: 429 }
   );
   withRateLimitHeaders(res, rate);
-  withUpgradeHeaders(res);
+  withUpgradeHeaders(res, ctx);
   res.headers.set(
     "Retry-After",
     String(Math.max(1, rate.resetAt - Math.floor(Date.now() / 1000)))

@@ -17,12 +17,12 @@
  * follows a URL from a JSON body lands on a 401 that already sells the key.
  */
 import { PRO_PRICE_USD, UPGRADE_URL } from "./auth";
+import { POINTER_SOURCES, type PointerSource } from "./checkout-entry";
+
+export { POINTER_SOURCES };
+export type { PointerSource };
 
 const SITE = process.env.NEXT_PUBLIC_SITE_URL || "https://mymcptools.com";
-
-/** Free endpoints that emit a pointer. Closed set: `via` is never free text. */
-export const POINTER_SOURCES = ["status", "stats", "server-status"] as const;
-export type PointerSource = (typeof POINTER_SOURCES)[number];
 
 function tagged(path: string, via: PointerSource): string {
   const sep = path.includes("?") ? "&" : "?";

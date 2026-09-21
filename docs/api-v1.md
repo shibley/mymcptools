@@ -61,10 +61,39 @@ Authorization: Bearer <key>
 x-api-key: <key>
 ```
 
-A missing or unrecognized key returns **401**:
+A missing or unrecognized key returns **401**, and that 401 carries the buy path
+in both the body and the headers:
 
 ```json
-{ "error": "unauthorized", "message": "Missing or invalid API key. ..." }
+{
+  "error": "unauthorized",
+  "message": "This endpoint needs an API key. ... buy one in one GET at ...",
+  "checkout_url": "https://mymcptools.com/api/trust-api/checkout?endpoint=/api/v1/drift",
+  "upgrade_url": "https://mymcptools.com/developers#pro",
+  "plans": [ { "name": "Free", ... }, { "name": "Pro", "price_usd_month": 49, ... } ]
+}
+```
+
+| Header | Value |
+| --- | --- |
+| `Link` | `<…/api/trust-api/checkout?endpoint=…>; rel="payment"` |
+| `X-MCPTools-Checkout` | the same URL — one GET to Stripe |
+| `X-MCPTools-Upgrade` | `https://mymcptools.com/developers#pro` (docs for humans) |
+
+### Buying a key from a script
+
+`GET /api/trust-api/checkout` redirects (303) straight to a Stripe Checkout
+page for the $49/mo Pro plan. No form and no email are required — Stripe
+collects the address and the key is mailed on payment. The `?endpoint=` and
+`?via=` tags that the 401 put on the URL travel into the Stripe session's
+metadata, so a subscription records which endpoint sold it.
+
+Append `?probe=1` for a dry run: it returns JSON describing the session that
+would be created and touches nothing.
+
+```bash
+curl -sS https://mymcptools.com/api/v1/drift | jq -r .checkout_url
+# -> open that URL to subscribe
 ```
 
 ## Rate limiting

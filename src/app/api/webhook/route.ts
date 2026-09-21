@@ -78,7 +78,12 @@ export async function POST(req: NextRequest) {
       // P2-1). No live DB — generate the key now, email it to the customer,
       // and tell admin the exact record to commit to src/data/api-keys.json
       // (same async-fulfillment pattern as Featured/Sponsored listings below).
-      const { plan, email, use_case } = meta;
+      // `email` may be empty: the machine-facing GET /api/trust-api/checkout
+      // collects no email (a script has none to give) and Stripe's hosted page
+      // captures it instead. Falling back to customer_details is what keeps
+      // that path fulfillable.
+      const { plan, use_case } = meta;
+      const email = meta.email || session.customer_details?.email || "";
       const apiKey = generateApiKey();
       const record = {
         key: apiKey,
@@ -96,6 +101,9 @@ export async function POST(req: NextRequest) {
           <p><strong>Email:</strong> ${email}</p>
           <p><strong>Plan:</strong> ${plan}</p>
           ${use_case ? `<p><strong>Use case:</strong> ${use_case}</p>` : ""}
+          <p><strong>Entry:</strong> ${meta.entry_kind || "unknown"}${
+            meta.entry_endpoint ? ` via ${meta.entry_endpoint}` : ""
+          }${meta.entry_via ? ` (pointer from ${meta.entry_via})` : ""}</p>
           <p><strong>Generated key:</strong> <code>${apiKey}</code></p>
           <p><strong>Stripe Session:</strong> ${session.id}</p>
           <p><strong>Amount:</strong> $${((session.amount_total || 0) / 100).toFixed(2)}/mo</p>

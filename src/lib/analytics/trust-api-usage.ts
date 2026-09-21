@@ -34,6 +34,11 @@ import {
 import { sessionHash as beaconSessionHash } from "@/lib/session-identity";
 import { CallerClass, classifyCaller, MCP_SITE } from "./mcp-usage";
 import { readVia } from "@/lib/api/pro-pointer";
+import {
+  CHECKOUT_PATH,
+  entryTag,
+  type CheckoutEntry,
+} from "@/lib/api/checkout-entry";
 
 export const TRUST_API_SOURCE = "trustapi";
 /**
@@ -203,7 +208,9 @@ export async function authenticateGated(
   req: NextRequest,
   endpoint: string
 ): Promise<AuthResult> {
-  const auth = await authenticate(req);
+  // The endpoint travels with the rejection so the 401's checkout URL names the
+  // gate that produced it — that is what makes a conversion attributable.
+  const auth = await authenticate(req, { endpoint });
   const presented = req.headers.get("authorization") || req.headers.get("x-api-key");
 
   await recordGatedAttempt({
@@ -260,5 +267,51 @@ async function recordGatedAttempt(u: TrustApiUsage): Promise<void> {
     ]);
   } catch {
     // Never surface a warehouse problem as an API failure.
+  }
+}
+
+/**
+ * Separate source again for CHECKOUT STARTS. A gated 401 says "someone wanted
+ * the paid data"; this says "someone followed the buy link". Without it the
+ * only record that anyone ever opened checkout lived in Stripe, which holds no
+ * row at all for a session that was never completed — so the step between the
+ * paywall and the card form was invisible, and "do pointer-attributed callers
+ * convert better than direct ones?" was unanswerable for want of a denominator.
+ *
+ *   utm_source   = 'trustapi-checkout'
+ *   utm_medium   = entry kind ('gate' | 'pointer' | 'page' | 'direct')
+ *   utm_campaign = '<METHOD>:<status>'
+ *   referrer_full= 'entry:<kind>:<endpoint>:<via>'  (src/lib/api/checkout-entry.ts)
+ */
+export const TRUST_API_CHECKOUT_SOURCE = "trustapi-checkout";
+
+/** Record one checkout start. Fire-and-forget; never fails the request. */
+export async function recordCheckoutStart(u: {
+  headers: Headers;
+  url?: URL | null;
+  entry: CheckoutEntry;
+  method: string;
+  status: number;
+}): Promise<void> {
+  try {
+    const p = getPool();
+    if (!p) return;
+    const h = u.headers;
+    const { isCrawler, reason } = classifyTrustApiCaller(h, u.url ?? null);
+    await p.query(GATED_INSERT, [
+      MCP_SITE,
+      CHECKOUT_PATH,
+      TRUST_API_CHECKOUT_SOURCE,
+      u.entry.kind,
+      `${u.method}:${u.status}`,
+      beaconSessionHash(h),
+      isCrawler,
+      reason,
+      trunc(h.get("user-agent"), 512),
+      trunc(h.get("x-vercel-ip-country"), 8),
+      entryTag(u.entry),
+    ]);
+  } catch {
+    // Never surface a warehouse problem as a checkout failure.
   }
 }

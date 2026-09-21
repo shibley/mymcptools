@@ -461,4 +461,50 @@ if (g0.calls === 0) {
   );
 }
 
+// ---- checkout starts: the step between the paywall and the card form -------
+// A gated 401 says someone WANTED the paid data; these rows say someone
+// FOLLOWED the buy link. Until 2026-09-21 nothing recorded that step at all —
+// the only trace of an opened checkout lived in Stripe, which keeps no row for
+// a session that was never completed — so pointer-vs-direct conversion had no
+// denominator. utm_medium carries the entry kind (gate | pointer | page |
+// direct), written by recordCheckoutStart (src/lib/analytics/trust-api-usage.ts).
+const CHECKOUT_WHERE = `site = 'mymcptools' and utm_source = 'trustapi-checkout' and ts > now() - ($1 || ' days')::interval`;
+const checkout = await client.query(
+  `select coalesce(utm_medium, 'direct')                                   as entry,
+          count(*)::int                                                    as starts,
+          count(distinct session_hash) filter (where not is_bot)::int      as consumers,
+          count(*) filter (where utm_campaign like '%:302' or utm_campaign like '%:200')::int as reached_stripe,
+          count(*) filter (where is_bot and bot_reason = 'internal-probe')::int as probes
+     from analytics.events where ${CHECKOUT_WHERE}
+    group by 1 order by 2 desc`,
+  [String(DAYS)]
+);
+const startsTotal = checkout.rows.reduce((n, r) => n + r.starts, 0);
+const consumerStarts = checkout.rows.reduce((n, r) => n + r.consumers, 0);
+console.log(`\n=== Checkout STARTS, last ${DAYS} days (${"/api/trust-api/checkout"}) ===`);
+if (startsTotal === 0) {
+  console.log(
+    `starts                    0  — not yet measured. Recording began 2026-09-21; ` +
+      `before that a followed buy link left no row, so this is an empty meter, not a measured zero.`
+  );
+} else {
+  console.log(`starts                    ${startsTotal}  (${consumerStarts} non-crawler)`);
+  for (const r of checkout.rows) {
+    console.log(
+      `${String(r.consumers).padStart(4)} non-crawler  ${String(r.starts).padStart(6)} starts  ` +
+        `${String(r.reached_stripe).padStart(4)} reached Stripe  ${r.entry}` +
+        (r.probes ? `  (${r.probes} internal probe)` : "")
+    );
+  }
+}
+// The one rate this whole funnel exists to move: of the callers who hit a
+// paywall, how many followed the buy link that 401 handed them?
+const gateStarts = checkout.rows
+  .filter((r) => r.entry === "gate" || r.entry === "pointer")
+  .reduce((n, r) => n + r.consumers, 0);
+console.log(
+  `\ngate -> checkout          ${gateStarts} / ${g0.denied_consumers} denied non-crawler caller(s)` +
+    (g0.denied_consumers === 0 ? "  (no denied callers yet to convert)" : "")
+);
+
 await client.end();
