@@ -2,13 +2,19 @@ import { NextRequest, NextResponse } from "next/server";
 import { withRateLimitHeaders } from "@/lib/api/auth";
 import { authenticateGated } from "@/lib/analytics/trust-api-usage";
 import { allStatuses, generatedAt, summary } from "@/lib/trust/status-store";
-import type { CurrentStatus } from "@/lib/trust/types";
+import { signalSummary, withStaticSignals } from "@/lib/api/status-view";
+import type { ApiStatusRow } from "@/lib/api/status-view";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
-// Flat columns for the CSV export — a stable scalar projection of CurrentStatus.
-const CSV_COLUMNS: ReadonlyArray<keyof CurrentStatus> = [
+/**
+ * Flat columns for the CSV export — a stable scalar projection of a joined row.
+ * The four `static_*` columns are flattened out of `static_signal` so the CSV
+ * carries a freshness date for the ~900 local/stdio servers whose live-probe
+ * columns are necessarily empty (PRD P1-3).
+ */
+const CSV_COLUMNS: ReadonlyArray<keyof ApiStatusRow> = [
   "slug",
   "verdict",
   "tool_count",
@@ -25,6 +31,24 @@ const CSV_COLUMNS: ReadonlyArray<keyof CurrentStatus> = [
   "auth_server_url",
 ];
 
+/** The `static_signal` fields flattened into CSV columns, in order. */
+const CSV_SIGNAL_COLUMNS = [
+  "static_freshness",
+  "static_last_commit_at",
+  "static_last_release_at",
+  "static_repo_url",
+] as const;
+
+function signalCells(row: ApiStatusRow): ReadonlyArray<unknown> {
+  const s = row.static_signal;
+  return [
+    s?.freshness ?? null,
+    s?.last_commit_at ?? null,
+    s?.last_release_at ?? null,
+    s?.repo_url ?? null,
+  ];
+}
+
 /** RFC-4180 field escaping: quote when the value contains "," `"` or newline. */
 function csvCell(value: unknown): string {
   if (value === null || value === undefined) return "";
@@ -33,10 +57,13 @@ function csvCell(value: unknown): string {
   return s;
 }
 
-function toCsv(rows: readonly CurrentStatus[]): string {
-  const header = CSV_COLUMNS.join(",");
+function toCsv(rows: readonly ApiStatusRow[]): string {
+  const header = [...CSV_COLUMNS, ...CSV_SIGNAL_COLUMNS].join(",");
   const lines = rows.map((row) =>
-    CSV_COLUMNS.map((col) => csvCell(row[col])).join(",")
+    [
+      ...CSV_COLUMNS.map((col) => csvCell(row[col])),
+      ...signalCells(row).map(csvCell),
+    ].join(",")
   );
   return [header, ...lines].join("\r\n");
 }
@@ -47,7 +74,7 @@ export async function GET(req: NextRequest) {
   if (!auth.ok) return auth.response;
 
   const format = (req.nextUrl.searchParams.get("format") ?? "json").toLowerCase();
-  const rows = allStatuses();
+  const rows = withStaticSignals(allStatuses());
   const stamp = generatedAt().slice(0, 10);
 
   if (format === "csv") {
@@ -73,6 +100,7 @@ export async function GET(req: NextRequest) {
     {
       generated_at: generatedAt(),
       summary: summary(),
+      signal_summary: signalSummary(rows),
       count: rows.length,
       statuses: rows,
     },

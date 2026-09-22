@@ -3,6 +3,14 @@ import { authenticateOpen } from "@/lib/api/auth";
 import { finishFreeTier } from "@/lib/analytics/trust-api-usage";
 import { allStatuses, generatedAt, summary } from "@/lib/trust/status-store";
 import { proPointer } from "@/lib/api/pro-pointer";
+import {
+  SIGNAL_FILTERS,
+  matchesSignalFilter,
+  parseSignalFilter,
+  signalSummary,
+  withStaticSignals,
+} from "@/lib/api/status-view";
+import type { ApiStatusRow } from "@/lib/api/status-view";
 import type { CurrentStatus, Verdict } from "@/lib/trust/types";
 
 export const runtime = "nodejs";
@@ -27,7 +35,12 @@ function parseOffset(raw: string | null): number {
 }
 
 // GET /api/v1/status — paginated current_status list (PRD P0-7).
-// Query params: filter=healthy, updated_since=<ISO>, limit (<=200), cursor|offset.
+// Query params: filter=healthy, signal=<freshness>, updated_since=<ISO>,
+// limit (<=200), cursor|offset.
+//
+// Every row carries `static_signal` (PRD P1-3): for the 2,396 local/stdio
+// servers the handshake prober records UNPROBEABLE, the repo sweep supplies a
+// last-commit / last-release date and a freshness bucket. See status-view.ts.
 export async function GET(req: NextRequest) {
   const auth = await authenticateOpen(req);
   if (!auth.ok) return auth.response;
@@ -56,14 +69,36 @@ export async function GET(req: NextRequest) {
     updatedSince = t;
   }
 
-  let rows: readonly CurrentStatus[] = allStatuses();
-  if (filterHealthy) rows = rows.filter((s) => HEALTHY.has(s.verdict));
+  const signalFilter = parseSignalFilter(q.get("signal"));
+  if (signalFilter === undefined) {
+    const res = NextResponse.json(
+      {
+        error: "bad_request",
+        message: `signal must be one of: ${SIGNAL_FILTERS.join(", ")}.`,
+      },
+      { status: 400 }
+    );
+    return finishFreeTier(req, "/api/v1/status", auth, res);
+  }
+
+  let base: readonly CurrentStatus[] = allStatuses();
+  if (filterHealthy) base = base.filter((s) => HEALTHY.has(s.verdict));
   if (updatedSince !== null) {
-    rows = rows.filter((s) => {
+    base = base.filter((s) => {
       const checked = Date.parse(s.checked_at);
       return !Number.isNaN(checked) && checked >= updatedSince!;
     });
   }
+
+  // `signal_summary` is taken BEFORE the signal filter, so it always describes
+  // the freshness mix available under the other filters rather than tautologically
+  // restating the one bucket the caller asked for.
+  const joined: readonly ApiStatusRow[] = withStaticSignals(base);
+  const signals = signalSummary(joined);
+  const rows: readonly ApiStatusRow[] =
+    signalFilter === null
+      ? joined
+      : joined.filter((r) => matchesSignalFilter(r, signalFilter));
 
   const total = rows.length;
   const page = rows.slice(offset, offset + limit);
@@ -73,6 +108,7 @@ export async function GET(req: NextRequest) {
   const res = NextResponse.json({
     generated_at: generatedAt(),
     summary: summary(),
+    signal_summary: signals,
     pagination: {
       total,
       limit,

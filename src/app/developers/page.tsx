@@ -288,6 +288,18 @@ curl https://mymcptools.com/api/v1/export \\
           <p className="mb-4 max-w-3xl text-gray-400">
             Paginated list of every server&apos;s current status, plus a verdict summary.
           </p>
+          <p className="mb-4 max-w-3xl text-gray-400">
+            Most of the catalog is local/stdio — installed from npm, PyPI or a container,
+            with no remote endpoint to handshake, so it is recorded{" "}
+            <Code>UNPROBEABLE</Code> and has no live verdict. Those rows instead carry{" "}
+            <Code>static_signal</Code>: the last commit and last release swept from the
+            server&apos;s own repository, plus a coarse <Code>freshness</Code> bucket —{" "}
+            <Code>active</Code> (moved in the last 6 months), <Code>aging</Code> (6–18),{" "}
+            <Code>stale</Code> (older) or <Code>unknown</Code>. It is <Code>null</Code>{" "}
+            when we hold no date at all, so <Code>static_signal !== null</Code> means we
+            know something. <Code>signal_summary</Code> on every response reports how much
+            of the current result set is covered.
+          </p>
 
           <h4 className="mb-2 mt-6 text-sm font-semibold uppercase tracking-wide text-gray-500">
             Query parameters
@@ -306,6 +318,15 @@ curl https://mymcptools.com/api/v1/export \\
                   <td className="px-4 py-3">
                     Set to <Code>healthy</Code> to return only servers currently serving
                     (verdict <Code>GOOD</Code> or <Code>WARN</Code>).
+                  </td>
+                </tr>
+                <tr>
+                  <td className="px-4 py-3 font-mono text-blue-300">signal</td>
+                  <td className="px-4 py-3">
+                    Filter on repo freshness: <Code>active</Code>, <Code>aging</Code>,{" "}
+                    <Code>stale</Code>, <Code>unknown</Code>, <Code>any</Code> (has a
+                    dated signal) or <Code>none</Code>. Anything else returns{" "}
+                    <Code>400</Code>. Composes with <Code>filter</Code>.
                   </td>
                 </tr>
                 <tr>
@@ -336,16 +357,21 @@ curl https://mymcptools.com/api/v1/export \\
           <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
             <CodeBlock
               label="Request"
-              code={`curl "https://mymcptools.com/api/v1/status?filter=healthy&limit=2" \\
-  -H "Authorization: Bearer $MCPTOOLS_API_KEY"`}
+              code={`# every server whose repo moved in the last 6 months
+curl "https://mymcptools.com/api/v1/status?signal=active&limit=2"`}
             />
             <CodeBlock
               label="200 Response (truncated)"
               code={`{
   "generated_at": "2026-06-30T11:00:00.000Z",
   "summary": {
-    "GOOD": 142, "WARN": 11, "AUTH_REQUIRED": 7,
-    "DOWN": 9, "UNPROBEABLE": 38
+    "GOOD": 5, "WARN": 0, "AUTH_REQUIRED": 38,
+    "DOWN": 1, "UNPROBEABLE": 2396
+  },
+  "signal_summary": {
+    "covered": 915, "uncovered": 1525,
+    "active": 549, "aging": 332, "stale": 34,
+    "generated_at": "2026-07-25T16:50:25.829Z"
   },
   "pagination": {
     "total": 153,
@@ -365,7 +391,25 @@ curl https://mymcptools.com/api/v1/export \\
       "last_seen_good_at": "2026-06-30T11:00:00.000Z",
       "checked_at": "2026-06-30T11:00:00.000Z",
       "status_changed_at": "2026-06-12T08:30:00.000Z",
-      "schema_changed": false
+      "schema_changed": false,
+      "static_signal": null
+    },
+    {
+      "slug": "sqlite",
+      "verdict": "UNPROBEABLE",
+      "tool_count": null,
+      "latency_ms": null,
+      "failure_reason": "local stdio install (npm)",
+      "static_signal": {
+        "repo_url": "https://github.com/.../servers",
+        "last_commit_at": "2026-07-18T09:12:04.000Z",
+        "last_release_at": "2026-06-02T00:00:00.000Z",
+        "last_release_tag": "v0.6.2",
+        "freshness": "active",
+        "package_registry": "npm",
+        "package_name": "@modelcontextprotocol/server-sqlite",
+        "checked_at": "2026-07-25T16:45:16.181Z"
+      }
     }
   ]
 }`}
