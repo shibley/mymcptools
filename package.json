@@ -13,7 +13,7 @@
     "probe:hot": "node scripts/mcp-probe.mts --mode hot",
     "drift:selfcheck": "node scripts/drift-selfcheck.mts",
     "identity:selfcheck": "node scripts/session-identity-selfcheck.mts",
-    "verify:predeploy": "npm run -s identity:selfcheck && npm run -s drift:selfcheck && npm run -s probe:selfcheck && npm run -s digest:selfcheck && npm run -s webhooks:selfcheck && npm run -s trust:selfcheck && npm run -s firewall:selfcheck && npm run -s intent:selfcheck && npm run -s rel:census && npm run -s signals:selfcheck && npm run -s signals:api-selfcheck",
+    "verify:predeploy": "npm run -s identity:selfcheck && npm run -s drift:selfcheck && npm run -s probe:selfcheck && npm run -s digest:selfcheck && npm run -s webhooks:selfcheck && npm run -s trust:selfcheck && npm run -s firewall:selfcheck && npm run -s intent:selfcheck && npm run -s fulfil:selfcheck && npm run -s rel:census && npm run -s signals:selfcheck && npm run -s signals:api-selfcheck",
     "probe:selfcheck": "node scripts/rolling-window-selfcheck.mts",
     "digest": "node scripts/digest.mts",
     "digest:selfcheck": "node scripts/digest-selfcheck.mts",
@@ -29,7 +29,9 @@
     "intent:selfcheck": "npx tsx scripts/trust-api-intent-selfcheck.mts",
     "rel:census": "node scripts/paid-rel-census.mts",
     "signals:selfcheck": "npx tsx scripts/signal-repo-join-selfcheck.mts",
-    "signals:api-selfcheck": "npx tsx scripts/api-signal-coverage-selfcheck.mts"
+    "signals:api-selfcheck": "npx tsx scripts/api-signal-coverage-selfcheck.mts",
+    "fulfil:selfcheck": "npx tsx scripts/trust-api-fulfilment-selfcheck.mts",
+    "migrate:api-keys": "node scripts/migrate-api-keys.mjs"
   },
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.29.0",

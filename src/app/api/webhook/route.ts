@@ -1,7 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
 import Stripe from "stripe";
-import { randomBytes } from "node:crypto";
 import { recordPaidListing } from "@/lib/paid-listings";
+import { addApiKey } from "@/lib/api/key-store";
+import { fulfilTrustApiPurchase } from "@/lib/api/trust-api-fulfilment";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -11,11 +12,6 @@ const STRIPE_WEBHOOK_SECRET = process.env.STRIPE_WEBHOOK_SECRET;
 const RESEND_API_KEY = process.env.RESEND_API_KEY;
 const FROM_EMAIL = "shibley@apistatuscheck.com";
 const ADMIN_EMAIL = "shibley@gmail.com";
-
-/** mcpt_live_<48 hex chars> — generated per Trust API subscription purchase. */
-function generateApiKey(): string {
-  return `mcpt_live_${randomBytes(24).toString("hex")}`;
-}
 
 async function sendEmail(to: string, subject: string, html: string) {
   if (!RESEND_API_KEY) return;
@@ -75,64 +71,28 @@ export async function POST(req: NextRequest) {
 
     if (meta.product === "trust-api") {
       // Trust Data API self-serve checkout (/api/trust-api/checkout, PRD
-      // P2-1). No live DB — generate the key now, email it to the customer,
-      // and tell admin the exact record to commit to src/data/api-keys.json
-      // (same async-fulfillment pattern as Featured/Sponsored listings below).
-      // `email` may be empty: the machine-facing GET /api/trust-api/checkout
-      // collects no email (a script has none to give) and Stripe's hosted page
-      // captures it instead. Falling back to customer_details is what keeps
-      // that path fulfillable.
-      const { plan, use_case } = meta;
-      const email = meta.email || session.customer_details?.email || "";
-      const apiKey = generateApiKey();
-      const record = {
-        key: apiKey,
-        email,
-        plan: plan || "pro",
-        created_at: new Date().toISOString(),
-        status: "active",
-      };
-
-      await sendEmail(
-        ADMIN_EMAIL,
-        `🔑 Trust API Pro subscription: ${email}`,
-        `
-          <h2>New Trust Data API subscriber — PAID ✅</h2>
-          <p><strong>Email:</strong> ${email}</p>
-          <p><strong>Plan:</strong> ${plan}</p>
-          ${use_case ? `<p><strong>Use case:</strong> ${use_case}</p>` : ""}
-          <p><strong>Entry:</strong> ${meta.entry_kind || "unknown"}${
-            meta.entry_endpoint ? ` via ${meta.entry_endpoint}` : ""
-          }${meta.entry_via ? ` (pointer from ${meta.entry_via})` : ""}</p>
-          <p><strong>Generated key:</strong> <code>${apiKey}</code></p>
-          <p><strong>Stripe Session:</strong> ${session.id}</p>
-          <p><strong>Amount:</strong> $${((session.amount_total || 0) / 100).toFixed(2)}/mo</p>
-          <hr/>
-          <p>Append this record to <code>src/data/api-keys.json</code> and redeploy to activate:</p>
-          <pre>${JSON.stringify(record, null, 2)}</pre>
-        `
+      // P2-1). Activate first, notify second — see
+      // src/lib/api/trust-api-fulfilment.ts for the defect this replaced
+      // (a key that was emailed, promised in 24h, and never written anywhere
+      // `authenticate()` reads). `email` may be empty: the machine-facing GET
+      // /api/trust-api/checkout collects none (a script has none to give) and
+      // Stripe's hosted page captures it instead, which is why
+      // customer_details is the fallback.
+      const result = await fulfilTrustApiPurchase(
+        {
+          meta: meta as Record<string, string>,
+          sessionId: session.id,
+          customerEmail: session.customer_details?.email,
+          amountTotal: session.amount_total,
+        },
+        { addKey: addApiKey, sendEmail, adminEmail: ADMIN_EMAIL }
       );
-
-      if (email) {
-        await sendEmail(
-          email,
-          "Your MyMCPTools Trust Data API key",
-          `
-            <h2>Payment received — welcome to the Trust Data API 🔑</h2>
-            <p>Hi,</p>
-            <p>Your key: <code>${apiKey}</code></p>
-            <p>It will be <strong>active within 24 hours</strong>. Once live, authenticate with:</p>
-            <pre>curl https://mymcptools.com/api/v1/status -H "Authorization: Bearer ${apiKey}"</pre>
-            <p>Docs: <a href="https://mymcptools.com/developers">mymcptools.com/developers</a></p>
-            <p>Questions? Reply to this email.</p>
-            <p>— MyMCPTools Team</p>
-          `
-        );
-      }
+      // Stamped either way: a redelivery must not mint the buyer a second,
+      // different key. A failed activation is recovered from the admin mail.
       await stripe.checkout.sessions.update(session.id, {
         metadata: { ...meta, fulfilled: "true" },
       });
-      return NextResponse.json({ received: true });
+      return NextResponse.json({ received: true, activated: result.activated });
     }
 
     if (meta.plan && meta.server_name) {
