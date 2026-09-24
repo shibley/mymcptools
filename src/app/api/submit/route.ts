@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import { recordSubmissionEvent } from "@/lib/analytics/submission-event";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -231,6 +232,18 @@ export async function POST(req: NextRequest) {
       `We received your submission: ${toolName.trim()}`,
       buildConfirmationEmailHtml(toolName.trim())
     );
+
+    // Server-side conversion row. The client beacon missed at least 42.9% of
+    // submitters in the first 14 days of the instrument and flagged 14.3% of
+    // the ones it did see as bots — see src/lib/analytics/submission-event.ts.
+    // Awaited so the lambda cannot be frozen before the insert lands, but it
+    // can never throw and never blocks the ack mail, which is already sent.
+    await recordSubmissionEvent(req.headers, {
+      email: email.trim(),
+      toolName: toolName.trim(),
+      category: category.trim(),
+      installType: installType.trim(),
+    });
 
     return NextResponse.json({
       success: true,
