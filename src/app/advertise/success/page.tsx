@@ -12,8 +12,8 @@ export default function AdvertiseSuccessPage() {
         </p>
         <p className="text-gray-500 text-sm mb-8">
           Questions? Email{" "}
-          <a href="mailto:shibley@mymcptools.com" className="text-blue-400 hover:text-blue-300">
-            shibley@mymcptools.com
+          <a href="mailto:shibley@apistatuscheck.com" className="text-blue-400 hover:text-blue-300">
+            shibley@apistatuscheck.com
           </a>
         </p>
         <Link

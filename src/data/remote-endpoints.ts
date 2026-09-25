@@ -338,6 +338,13 @@ export const remoteEndpoints: RemoteEndpoint[] = [
     expected_auth: true,
     source: 'buildkite.com/docs/apis/mcp-server (remote hosted, OAuth)',
   },
+  {
+    slug: 'noveum',
+    url: 'https://noveum.ai/api/mcp',
+    transport: 'streamable-http',
+    expected_auth: true,
+    source: 'noveum.ai/en/docs/platform/mcp-server-reference',
+  },
 ];
 
 export const remoteEndpointBySlug: Map<string, RemoteEndpoint> = new Map(

@@ -25,7 +25,7 @@ export const metadata: Metadata = {
   alternates: { canonical: "https://mymcptools.com/developers" },
 };
 
-const CONTACT_EMAIL = "shibley@mymcptools.com";
+const CONTACT_EMAIL = "shibley@apistatuscheck.com";
 
 const accessMailto = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(
   "Trust Data API — request an API key"

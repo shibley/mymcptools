@@ -40484,6 +40484,27 @@ const _serversPart31: MCPServer[] = [
     paid_placement: true,
     isNew: true,
   },
+  {
+    slug: 'noveum',
+    name: 'Noveum MCP',
+    description: 'Noveum is an observability and evaluation platform for AI agents, and its MCP server is the part that lets a coding assistant work inside that platform instead of alongside it. There is nothing to install: the endpoint is hosted Streamable HTTP at https://noveum.ai/api/mcp, and it is also an OAuth 2.1 authorization server, so URL-only clients such as Claude Code, Codex, Cursor and VS Code discover the sign-in flow themselves through the MCP authorization spec. Add the URL alone and the client opens a Noveum consent screen; an unauthenticated request to /api/mcp returns 401 with a WWW-Authenticate header pointing at https://noveum.ai/.well-known/oauth-protected-resource, which is how a compliant client finds its way in with no hardcoded endpoints. The maintainers also publish an authorization-server document at /.well-known/oauth-authorization-server, support dynamic client registration, bind tokens to an organization, and let you revoke a connection from the dashboard. Clients that cannot do OAuth — Claude Desktop via mcp-remote, cURL, plain Python — pass the same Bearer API key the REST API uses, rotated from organization settings. The working model is resources first, then tools: load projects, trace filters, scorers and datasets as MCP resources so every id and slug comes from real data rather than a guess, then call tools to list things, start jobs and read results, passing projectId or organizationSlug where asked. Long-running jobs return an id immediately and are polled to a final status, roughly every three to five seconds while active. Slash prompts cover guided workflows for traces, ETL, evaluations, NovaPilot and NovaSynth, and search_noveum_docs answers a plain-language question out of the documentation when you do not know which path applies. The practical use is failure investigation — pointing an assistant at a trace that went wrong, letting it pull the evaluation dataset, and having it reason over both without leaving the editor. The server itself is hosted and proprietary; the public repository at github.com/Noveum/noveum-skill contains the agent skill and setup documentation, not the server implementation.',
+    author: 'Noveum',
+    // Hosted and proprietary. The public Noveum/noveum-skill repo is the setup
+    // skill, NOT this server's source, so it must not be published as the
+    // server's repository — see `verification`.
+    github_url: null,
+    source_verified: false,
+    verification: 'unresolved',
+    website_url: 'https://noveum.ai/en/docs/platform/mcp-server-reference',
+    categories: ['ai', 'devops'],
+    integrations: ['claude-desktop', 'cursor', 'vs-code'],
+    install_type: 'remote',
+    install_command: 'claude mcp add --transport http noveum https://noveum.ai/api/mcp',
+    // Endpoint checked 2026-09-25: 401 + OAuth discovery header, as documented.
+    install_checked: '2026-09-25',
+    official: true,
+    isNew: true,
+  },
 ];
 
 export const servers: MCPServer[] = [..._serversPart1, ..._serversPart2, ..._serversPart3, ..._serversPart4, ..._serversPart5, ..._serversPart6, ..._serversPart7, ..._serversPart8, ..._serversPart9, ..._serversPart10, ..._serversPart11, ..._serversPart12, ..._serversPart13, ..._serversPart14, ..._serversPart15, ..._serversPart16, ..._serversPart17, ..._serversPart18, ..._serversPart19, ..._serversPart20, ..._serversPart21, ..._serversPart22, ..._serversPart23, ..._serversPart24, ..._serversPart25, ..._serversPart26, ..._serversPart27, ..._serversPart28, ..._serversPart29, ..._serversPart30, ..._serversPart31];

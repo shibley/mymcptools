@@ -268,7 +268,7 @@ export default async function AdvertisePage({
               />
               <p className="text-center text-gray-600 text-xs mt-3">
                 <a
-                  href={`mailto:shibley@mymcptools.com?subject=${encodeURIComponent(`${plan.name} Sponsored Listing — MyMCPTools`)}&body=${encodeURIComponent(`Hi,\n\nI'm interested in the ${plan.name} plan (${plan.price}) for a sponsored listing on MyMCPTools.\n\nServer Name: \nServer URL: \n\nThanks!`)}`}
+                  href={`mailto:shibley@apistatuscheck.com?subject=${encodeURIComponent(`${plan.name} Sponsored Listing — MyMCPTools`)}&body=${encodeURIComponent(`Hi,\n\nI'm interested in the ${plan.name} plan (${plan.price}) for a sponsored listing on MyMCPTools.\n\nServer Name: \nServer URL: \n\nThanks!`)}`}
                   className="hover:text-gray-400 transition"
                 >
                   Prefer email? Contact us directly →
@@ -280,7 +280,7 @@ export default async function AdvertisePage({
         <p className="text-center text-gray-500 text-sm mt-8">
           Payments processed securely via Stripe. Need a custom arrangement?{" "}
           <a
-            href="mailto:shibley@mymcptools.com?subject=Custom%20Sponsored%20Listing%20—%20MyMCPTools"
+            href="mailto:shibley@apistatuscheck.com?subject=Custom%20Sponsored%20Listing%20—%20MyMCPTools"
             className="text-blue-400 hover:text-blue-300"
           >
             Let&apos;s talk →
@@ -348,8 +348,8 @@ export default async function AdvertisePage({
             </div>
             <p className="text-gray-500 text-sm mt-6">
               Questions?{" "}
-              <a href="mailto:shibley@mymcptools.com" className="text-blue-400 hover:text-blue-300">
-                shibley@mymcptools.com
+              <a href="mailto:shibley@apistatuscheck.com" className="text-blue-400 hover:text-blue-300">
+                shibley@apistatuscheck.com
               </a>
             </p>
           </div>

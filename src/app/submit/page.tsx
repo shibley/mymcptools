@@ -266,6 +266,11 @@ export default function SubmitPage() {
               <option value="binary">Binary</option>
               <option value="docker">Docker</option>
               <option value="source">Source</option>
+              {/* 2026-09-25: added after Noveum's founder wrote in saying the
+                  form offered only local install types, so he could not submit
+                  a hosted server without picking an inaccurate one. The
+                  MCPServer type has allowed 'remote' all along. */}
+              <option value="remote">Hosted / remote endpoint (no local install)</option>
             </select>
           </div>
 
