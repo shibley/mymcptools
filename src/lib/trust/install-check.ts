@@ -39,6 +39,7 @@ type CheckRecord = {
   exists: boolean;
   checkedAt: string;
   collision?: string;
+  lastPublishedAt?: string;
 };
 
 type CheckFile = { generatedAt: string; entries: Record<string, CheckRecord> };
@@ -55,6 +56,14 @@ export type InstallCheck = {
   checkedAt: string;
   /** Set when the name is published but belongs to a different product. */
   collision?: string;
+  /**
+   * ISO instant of the package's most recent publish, when the registry states
+   * one. Dates the ARTIFACT the command fetches, not the repository — the two
+   * diverge constantly (a repo commits daily and ships yearly, and 1,424 of the
+   * 2,457 catalog entries have no repo URL at all, so for those this is the
+   * only freshness fact that exists).
+   */
+  lastPublishedAt?: string;
 };
 
 export function getInstallCheck(slug: string): InstallCheck | null {
@@ -66,7 +75,18 @@ export function getInstallCheck(slug: string): InstallCheck | null {
     exists: rec.exists,
     checkedAt: rec.checkedAt,
     collision: rec.collision,
+    lastPublishedAt: rec.lastPublishedAt,
   };
+}
+
+/** Date the sweep behind these records was generated (YYYY-MM-DD). */
+export function installChecksGeneratedAt(): string {
+  return (rawCheck as CheckFile).generatedAt ?? "";
+}
+
+/** Every slug the sweep holds a completed lookup for. */
+export function installCheckSlugs(): readonly string[] {
+  return Object.keys(CHECKS);
 }
 
 /**

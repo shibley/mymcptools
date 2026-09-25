@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { withRateLimitHeaders } from "@/lib/api/auth";
 import { authenticateGated } from "@/lib/analytics/trust-api-usage";
 import { allStatuses, generatedAt, summary } from "@/lib/trust/status-store";
-import { signalSummary, withStaticSignals } from "@/lib/api/status-view";
+import { installSummary, signalSummary, withStaticSignals } from "@/lib/api/status-view";
 import type { ApiStatusRow } from "@/lib/api/status-view";
 
 export const runtime = "nodejs";
@@ -31,21 +31,35 @@ const CSV_COLUMNS: ReadonlyArray<keyof ApiStatusRow> = [
   "auth_server_url",
 ];
 
-/** The `static_signal` fields flattened into CSV columns, in order. */
+/**
+ * The `static_signal` and `install_signal` fields flattened into CSV columns.
+ * `install_*` is what a spreadsheet consumer needs for the 1,424 entries with
+ * no repo URL — and `install_exists=false` is a fact in its own right, so the
+ * column is populated even when there is no date to go with it.
+ */
 const CSV_SIGNAL_COLUMNS = [
   "static_freshness",
   "static_last_commit_at",
   "static_last_release_at",
   "static_repo_url",
+  "install_registry",
+  "install_package",
+  "install_exists",
+  "install_last_published_at",
 ] as const;
 
 function signalCells(row: ApiStatusRow): ReadonlyArray<unknown> {
   const s = row.static_signal;
+  const i = row.install_signal;
   return [
     s?.freshness ?? null,
     s?.last_commit_at ?? null,
     s?.last_release_at ?? null,
     s?.repo_url ?? null,
+    i?.registry ?? null,
+    i?.package ?? null,
+    i ? String(i.exists) : null,
+    i?.last_published_at ?? null,
   ];
 }
 
@@ -101,6 +115,7 @@ export async function GET(req: NextRequest) {
       generated_at: generatedAt(),
       summary: summary(),
       signal_summary: signalSummary(rows),
+      install_summary: installSummary(rows),
       count: rows.length,
       statuses: rows,
     },

@@ -1,25 +1,361 @@
 {
-  "generatedAt": "2026-08-17T21:47:55.400Z",
-  "checked": 1259,
-  "candidates": 1259,
+  "generatedAt": "2026-09-25T06:30:49.568Z",
+  "checked": 1254,
+  "candidates": 1254,
   "counts": {
-    "revived": 0,
-    "unnamed": 22,
-    "phantom": 33
+    "revived": 29,
+    "unnamed": 14,
+    "phantom": 30
   },
   "unchecked": 0,
   "findings": [
     {
-      "slug": "adp-mcp",
-      "name": "ADP MCP Server",
-      "verdict": "unnamed",
-      "install_type": "source",
-      "registry": null,
-      "package": null,
-      "install_command": null,
-      "install_checked": "2026-08-04",
-      "github_url": "https://github.com/CDataSoftware/adp-mcp-server-by-cdata",
-      "why": "marked install_verified:false but the command names no registry package — the \"not published\" notice on /servers/adp-mcp is unsupportable"
+      "slug": "allegro-mcp",
+      "name": "Allegro MCP",
+      "verdict": "revived",
+      "install_type": "npm",
+      "registry": "npm",
+      "package": "allegro-mcp",
+      "install_command": "npx allegro-mcp",
+      "install_checked": "2026-07-31",
+      "github_url": null,
+      "why": "npm package `allegro-mcp` IS published today, but /servers/allegro-mcp strikes the command through and says it will fail (checked 2026-07-31)"
+    },
+    {
+      "slug": "bitstamp-mcp",
+      "name": "Bitstamp",
+      "verdict": "revived",
+      "install_type": "npm",
+      "registry": "npm",
+      "package": "bitstamp-mcp",
+      "install_command": "npx bitstamp-mcp",
+      "install_checked": "2026-07-31",
+      "github_url": "https://github.com/pipeworx-io/mcp-bitstamp",
+      "why": "npm package `bitstamp-mcp` IS published today, but /servers/bitstamp-mcp strikes the command through and says it will fail (checked 2026-07-31)"
+    },
+    {
+      "slug": "blackboard-mcp",
+      "name": "Blackboard Learn",
+      "verdict": "revived",
+      "install_type": "npm",
+      "registry": "npm",
+      "package": "blackboard-mcp",
+      "install_command": "npx blackboard-mcp",
+      "install_checked": "2026-07-31",
+      "github_url": null,
+      "why": "npm package `blackboard-mcp` IS published today, but /servers/blackboard-mcp strikes the command through and says it will fail (checked 2026-07-31)"
+    },
+    {
+      "slug": "deezer-mcp",
+      "name": "Deezer MCP",
+      "verdict": "revived",
+      "install_type": "npm",
+      "registry": "npm",
+      "package": "deezer-mcp",
+      "install_command": "npx deezer-mcp",
+      "install_checked": "2026-07-31",
+      "github_url": null,
+      "why": "npm package `deezer-mcp` IS published today, but /servers/deezer-mcp strikes the command through and says it will fail (checked 2026-07-31)"
+    },
+    {
+      "slug": "deribit-mcp",
+      "name": "Deribit Exchange",
+      "verdict": "revived",
+      "install_type": "npm",
+      "registry": "npm",
+      "package": "deribit-mcp",
+      "install_command": "npx deribit-mcp",
+      "install_checked": "2026-07-31",
+      "github_url": null,
+      "why": "npm package `deribit-mcp` IS published today, but /servers/deribit-mcp strikes the command through and says it will fail (checked 2026-07-31)"
+    },
+    {
+      "slug": "ecobee-mcp",
+      "name": "ecobee Smart Thermostat",
+      "verdict": "revived",
+      "install_type": "npm",
+      "registry": "npm",
+      "package": "ecobee-mcp",
+      "install_command": "npx ecobee-mcp",
+      "install_checked": "2026-07-31",
+      "github_url": null,
+      "why": "npm package `ecobee-mcp` IS published today, but /servers/ecobee-mcp strikes the command through and says it will fail (checked 2026-07-31)"
+    },
+    {
+      "slug": "fda-open-mcp",
+      "name": "FDA OpenFDA",
+      "verdict": "revived",
+      "install_type": "npm",
+      "registry": "npm",
+      "package": "openfda-mcp",
+      "install_command": "npx openfda-mcp",
+      "install_checked": "2026-07-31",
+      "github_url": "https://github.com/Augmented-Nature/OpenFDA-MCP-Server",
+      "why": "npm package `openfda-mcp` IS published today, but /servers/fda-open-mcp strikes the command through and says it will fail (checked 2026-07-31)"
+    },
+    {
+      "slug": "fec-mcp",
+      "name": "FEC OpenFEC MCP",
+      "verdict": "revived",
+      "install_type": "npm",
+      "registry": "npm",
+      "package": "fec-mcp",
+      "install_command": "npx fec-mcp",
+      "install_checked": "2026-07-31",
+      "github_url": null,
+      "why": "npm package `fec-mcp` IS published today, but /servers/fec-mcp strikes the command through and says it will fail (checked 2026-07-31)"
+    },
+    {
+      "slug": "formbricks-mcp",
+      "name": "Formbricks MCP",
+      "verdict": "revived",
+      "install_type": "npm",
+      "registry": "npm",
+      "package": "formbricks-mcp",
+      "install_command": "npx formbricks-mcp",
+      "install_checked": "2026-07-31",
+      "github_url": null,
+      "why": "npm package `formbricks-mcp` IS published today, but /servers/formbricks-mcp strikes the command through and says it will fail (checked 2026-07-31)"
+    },
+    {
+      "slug": "gather-mcp",
+      "name": "Gather",
+      "verdict": "revived",
+      "install_type": "npm",
+      "registry": "npm",
+      "package": "gather-mcp",
+      "install_command": "npx gather-mcp",
+      "install_checked": "2026-07-31",
+      "github_url": null,
+      "why": "npm package `gather-mcp` IS published today, but /servers/gather-mcp strikes the command through and says it will fail (checked 2026-07-31)"
+    },
+    {
+      "slug": "greynoise-mcp",
+      "name": "GreyNoise",
+      "verdict": "revived",
+      "install_type": "npm",
+      "registry": "npm",
+      "package": "greynoise-mcp",
+      "install_command": "npx greynoise-mcp",
+      "install_checked": "2026-07-31",
+      "github_url": "https://github.com/pipeworx-io/mcp-greynoise",
+      "why": "npm package `greynoise-mcp` IS published today, but /servers/greynoise-mcp strikes the command through and says it will fail (checked 2026-07-31)"
+    },
+    {
+      "slug": "healthcare-mcp",
+      "name": "Healthcare MCP",
+      "verdict": "revived",
+      "install_type": "pip",
+      "registry": "pip",
+      "package": "healthcare-mcp",
+      "install_command": "pip install healthcare-mcp",
+      "install_checked": "2026-07-31",
+      "github_url": "https://github.com/Cicatriiz/healthcare-mcp-public",
+      "why": "PyPI package `healthcare-mcp` IS published today, but /servers/healthcare-mcp strikes the command through and says it will fail (checked 2026-07-31)"
+    },
+    {
+      "slug": "kucoin-mcp",
+      "name": "KuCoin Exchange",
+      "verdict": "revived",
+      "install_type": "npm",
+      "registry": "npm",
+      "package": "kucoin-mcp",
+      "install_command": "npx kucoin-mcp",
+      "install_checked": "2026-07-31",
+      "github_url": null,
+      "why": "npm package `kucoin-mcp` IS published today, but /servers/kucoin-mcp strikes the command through and says it will fail (checked 2026-07-31)"
+    },
+    {
+      "slug": "lever-mcp",
+      "name": "Lever ATS",
+      "verdict": "revived",
+      "install_type": "npm",
+      "registry": "npm",
+      "package": "lever-mcp",
+      "install_command": "npx lever-mcp",
+      "install_checked": "2026-07-31",
+      "github_url": null,
+      "why": "npm package `lever-mcp` IS published today, but /servers/lever-mcp strikes the command through and says it will fail (checked 2026-07-31)"
+    },
+    {
+      "slug": "logto-mcp",
+      "name": "Logto",
+      "verdict": "revived",
+      "install_type": "npm",
+      "registry": "npm",
+      "package": "logto-mcp",
+      "install_command": "npx logto-mcp",
+      "install_checked": "2026-07-31",
+      "github_url": null,
+      "why": "npm package `logto-mcp` IS published today, but /servers/logto-mcp strikes the command through and says it will fail (checked 2026-07-31)"
+    },
+    {
+      "slug": "openfda-mcp",
+      "name": "OpenFDA MCP",
+      "verdict": "revived",
+      "install_type": "npm",
+      "registry": "npm",
+      "package": "openfda-mcp",
+      "install_command": "npx openfda-mcp",
+      "install_checked": "2026-07-31",
+      "github_url": null,
+      "why": "npm package `openfda-mcp` IS published today, but /servers/openfda-mcp strikes the command through and says it will fail (checked 2026-07-31)"
+    },
+    {
+      "slug": "opensecrets-mcp",
+      "name": "OpenSecrets MCP",
+      "verdict": "revived",
+      "install_type": "npm",
+      "registry": "npm",
+      "package": "opensecrets-mcp",
+      "install_command": "npx opensecrets-mcp",
+      "install_checked": "2026-07-31",
+      "github_url": null,
+      "why": "npm package `opensecrets-mcp` IS published today, but /servers/opensecrets-mcp strikes the command through and says it will fail (checked 2026-07-31)"
+    },
+    {
+      "slug": "pinterest-mcp",
+      "name": "Pinterest",
+      "verdict": "revived",
+      "install_type": "npm",
+      "registry": "npm",
+      "package": "pinterest-mcp",
+      "install_command": "npx pinterest-mcp",
+      "install_checked": "2026-07-31",
+      "github_url": null,
+      "why": "npm package `pinterest-mcp` IS published today, but /servers/pinterest-mcp strikes the command through and says it will fail (checked 2026-07-31)"
+    },
+    {
+      "slug": "rawg-mcp",
+      "name": "RAWG Game Database MCP",
+      "verdict": "revived",
+      "install_type": "npm",
+      "registry": "npm",
+      "package": "rawg-mcp",
+      "install_command": "npx rawg-mcp",
+      "install_checked": "2026-07-31",
+      "github_url": null,
+      "why": "npm package `rawg-mcp` IS published today, but /servers/rawg-mcp strikes the command through and says it will fail (checked 2026-07-31)"
+    },
+    {
+      "slug": "seatgeek-mcp",
+      "name": "SeatGeek Events & Tickets",
+      "verdict": "revived",
+      "install_type": "npm",
+      "registry": "npm",
+      "package": "seatgeek-mcp",
+      "install_command": "npx seatgeek-mcp",
+      "install_checked": "2026-07-31",
+      "github_url": null,
+      "why": "npm package `seatgeek-mcp` IS published today, but /servers/seatgeek-mcp strikes the command through and says it will fail (checked 2026-07-31)"
+    },
+    {
+      "slug": "simplecast-mcp",
+      "name": "Simplecast Podcast Platform",
+      "verdict": "revived",
+      "install_type": "npm",
+      "registry": "npm",
+      "package": "simplecast-mcp",
+      "install_command": "npx simplecast-mcp",
+      "install_checked": "2026-07-31",
+      "github_url": null,
+      "why": "npm package `simplecast-mcp` IS published today, but /servers/simplecast-mcp strikes the command through and says it will fail (checked 2026-07-31)"
+    },
+    {
+      "slug": "smartrecruiters-mcp",
+      "name": "SmartRecruiters",
+      "verdict": "revived",
+      "install_type": "npm",
+      "registry": "npm",
+      "package": "smartrecruiters-mcp",
+      "install_command": "npx smartrecruiters-mcp",
+      "install_checked": "2026-07-31",
+      "github_url": null,
+      "why": "npm package `smartrecruiters-mcp` IS published today, but /servers/smartrecruiters-mcp strikes the command through and says it will fail (checked 2026-07-31)"
+    },
+    {
+      "slug": "sqlmesh-mcp",
+      "name": "SQLMesh",
+      "verdict": "revived",
+      "install_type": "pip",
+      "registry": "pip",
+      "package": "sqlmesh-mcp",
+      "install_command": "pip install sqlmesh-mcp",
+      "install_checked": "2026-07-31",
+      "github_url": null,
+      "why": "PyPI package `sqlmesh-mcp` IS published today, but /servers/sqlmesh-mcp strikes the command through and says it will fail (checked 2026-07-31)"
+    },
+    {
+      "slug": "supernotes-mcp",
+      "name": "Supernotes",
+      "verdict": "revived",
+      "install_type": "npm",
+      "registry": "npm",
+      "package": "supernotes-mcp",
+      "install_command": "npx supernotes-mcp",
+      "install_checked": "2026-07-31",
+      "github_url": "https://github.com/SilvanCodes/supernotes-mcp",
+      "why": "npm package `supernotes-mcp` IS published today, but /servers/supernotes-mcp strikes the command through and says it will fail (checked 2026-07-31)"
+    },
+    {
+      "slug": "thesportsdb-mcp",
+      "name": "TheSportsDB",
+      "verdict": "revived",
+      "install_type": "npm",
+      "registry": "npm",
+      "package": "thesportsdb-mcp",
+      "install_command": "npx thesportsdb-mcp",
+      "install_checked": "2026-07-31",
+      "github_url": null,
+      "why": "npm package `thesportsdb-mcp` IS published today, but /servers/thesportsdb-mcp strikes the command through and says it will fail (checked 2026-07-31)"
+    },
+    {
+      "slug": "tunein-mcp",
+      "name": "TuneIn MCP",
+      "verdict": "revived",
+      "install_type": "npm",
+      "registry": "npm",
+      "package": "tunein-mcp",
+      "install_command": "npx tunein-mcp",
+      "install_checked": "2026-07-31",
+      "github_url": null,
+      "why": "npm package `tunein-mcp` IS published today, but /servers/tunein-mcp strikes the command through and says it will fail (checked 2026-07-31)"
+    },
+    {
+      "slug": "usa-jobs-mcp",
+      "name": "USAJobs Federal Employment",
+      "verdict": "revived",
+      "install_type": "npm",
+      "registry": "npm",
+      "package": "usajobs-mcp",
+      "install_command": "npx usajobs-mcp",
+      "install_checked": "2026-07-31",
+      "github_url": null,
+      "why": "npm package `usajobs-mcp` IS published today, but /servers/usa-jobs-mcp strikes the command through and says it will fail (checked 2026-07-31)"
+    },
+    {
+      "slug": "virustotal-mcp",
+      "name": "VirusTotal",
+      "verdict": "revived",
+      "install_type": "npm",
+      "registry": "npm",
+      "package": "virustotal-mcp",
+      "install_command": "npx virustotal-mcp",
+      "install_checked": "2026-07-31",
+      "github_url": null,
+      "why": "npm package `virustotal-mcp` IS published today, but /servers/virustotal-mcp strikes the command through and says it will fail (checked 2026-07-31)"
+    },
+    {
+      "slug": "workable-mcp",
+      "name": "Workable",
+      "verdict": "revived",
+      "install_type": "npm",
+      "registry": "npm",
+      "package": "workable-mcp",
+      "install_command": "npx workable-mcp",
+      "install_checked": "2026-07-31",
+      "github_url": "https://github.com/CT-Workable/workable-mcp",
+      "why": "npm package `workable-mcp` IS published today, but /servers/workable-mcp strikes the command through and says it will fail (checked 2026-07-31)"
     },
     {
       "slug": "agentgateway",
@@ -32,18 +368,6 @@
       "install_checked": "2026-08-02",
       "github_url": "https://github.com/agentgateway/agentgateway",
       "why": "marked install_verified:false but the command names no registry package — the \"not published\" notice on /servers/agentgateway is unsupportable"
-    },
-    {
-      "slug": "amazon-sp-api-mcp",
-      "name": "Amazon Selling Partner API MCP",
-      "verdict": "unnamed",
-      "install_type": "source",
-      "registry": null,
-      "package": null,
-      "install_command": null,
-      "install_checked": "2026-08-04",
-      "github_url": "https://github.com/christian-ramos/mcp-amazon-sp-api",
-      "why": "marked install_verified:false but the command names no registry package — the \"not published\" notice on /servers/amazon-sp-api-mcp is unsupportable"
     },
     {
       "slug": "apple-health-mcp",
@@ -80,18 +404,6 @@
       "install_checked": "2026-07-31",
       "github_url": "https://github.com/georgeantonopoulos/Basecamp-MCP-Server",
       "why": "marked install_verified:false but the command names no registry package — the \"not published\" notice on /servers/basecamp is unsupportable"
-    },
-    {
-      "slug": "bridge-lms-mcp",
-      "name": "Bridge LMS MCP",
-      "verdict": "unnamed",
-      "install_type": "source",
-      "registry": null,
-      "package": null,
-      "install_command": null,
-      "install_checked": "2026-08-04",
-      "github_url": "",
-      "why": "marked install_verified:false but the command names no registry package — the \"not published\" notice on /servers/bridge-lms-mcp is unsupportable"
     },
     {
       "slug": "canva",
@@ -142,18 +454,6 @@
       "why": "marked install_verified:false but the command names no registry package — the \"not published\" notice on /servers/epic-mcp is unsupportable"
     },
     {
-      "slug": "esp32-mcp",
-      "name": "ESP32 MCP Server",
-      "verdict": "unnamed",
-      "install_type": "source",
-      "registry": null,
-      "package": null,
-      "install_command": null,
-      "install_checked": "2026-08-04",
-      "github_url": "",
-      "why": "marked install_verified:false but the command names no registry package — the \"not published\" notice on /servers/esp32-mcp is unsupportable"
-    },
-    {
       "slug": "greenhouse-mcp",
       "name": "Greenhouse MCP",
       "verdict": "unnamed",
@@ -164,42 +464,6 @@
       "install_checked": "2026-08-06",
       "github_url": "https://github.com/alexmeckes/greenhouse-mcp",
       "why": "marked install_verified:false but the command names no registry package — the \"not published\" notice on /servers/greenhouse-mcp is unsupportable"
-    },
-    {
-      "slug": "hbase-mcp",
-      "name": "Apache HBase MCP",
-      "verdict": "unnamed",
-      "install_type": "source",
-      "registry": null,
-      "package": null,
-      "install_command": null,
-      "install_checked": "2026-08-04",
-      "github_url": "",
-      "why": "marked install_verified:false but the command names no registry package — the \"not published\" notice on /servers/hbase-mcp is unsupportable"
-    },
-    {
-      "slug": "nhl-stats-mcp",
-      "name": "NHL Stats MCP",
-      "verdict": "unnamed",
-      "install_type": "source",
-      "registry": null,
-      "package": null,
-      "install_command": null,
-      "install_checked": "2026-08-04",
-      "github_url": "",
-      "why": "marked install_verified:false but the command names no registry package — the \"not published\" notice on /servers/nhl-stats-mcp is unsupportable"
-    },
-    {
-      "slug": "olo-mcp",
-      "name": "Olo",
-      "verdict": "unnamed",
-      "install_type": "source",
-      "registry": null,
-      "package": null,
-      "install_command": null,
-      "install_checked": "2026-08-04",
-      "github_url": "",
-      "why": "marked install_verified:false but the command names no registry package — the \"not published\" notice on /servers/olo-mcp is unsupportable"
     },
     {
       "slug": "redis-cloud-mcp",
@@ -236,18 +500,6 @@
       "install_checked": "2026-08-05",
       "github_url": "https://github.com/Garoth/sendgrid-mcp",
       "why": "marked install_verified:false but the command names no registry package — the \"not published\" notice on /servers/sendgrid is unsupportable"
-    },
-    {
-      "slug": "webull-mcp",
-      "name": "Webull MCP Server",
-      "verdict": "unnamed",
-      "install_type": "source",
-      "registry": null,
-      "package": null,
-      "install_command": null,
-      "install_checked": "2026-08-04",
-      "github_url": "https://github.com/webull-inc/webull-mcp-server",
-      "why": "marked install_verified:false but the command names no registry package — the \"not published\" notice on /servers/webull-mcp is unsupportable"
     },
     {
       "slug": "wolfram-alpha",
@@ -370,18 +622,6 @@
       "why": "npm package `coingecko-mcp` does not exist — the install command on /servers/coingecko-mcp cannot run, and the page does not say so"
     },
     {
-      "slug": "curl-mcp",
-      "name": "HTTP Client (curl)",
-      "verdict": "phantom",
-      "install_type": "npm",
-      "registry": "npm",
-      "package": "http-mcp-server",
-      "install_command": "npx http-mcp-server",
-      "install_checked": null,
-      "github_url": null,
-      "why": "npm package `http-mcp-server` does not exist — the install command on /servers/curl-mcp cannot run, and the page does not say so"
-    },
-    {
       "slug": "deepgram-mcp",
       "name": "Deepgram",
       "verdict": "phantom",
@@ -490,18 +730,6 @@
       "why": "npm package `minecraft-mcp` does not exist — the install command on /servers/minecraft-mcp cannot run, and the page does not say so"
     },
     {
-      "slug": "mixpanel-mcp",
-      "name": "Mixpanel Analytics MCP",
-      "verdict": "phantom",
-      "install_type": "npm",
-      "registry": "npm",
-      "package": "mcp-mixpanel",
-      "install_command": "npx mcp-mixpanel",
-      "install_checked": "2026-07-31",
-      "github_url": null,
-      "why": "npm package `mcp-mixpanel` does not exist — the install command on /servers/mixpanel-mcp cannot run, and the page does not say so"
-    },
-    {
       "slug": "monday-mcp",
       "name": "Monday.com",
       "verdict": "phantom",
@@ -598,16 +826,16 @@
       "why": "npm package `questdb-mcp` does not exist — the install command on /servers/questdb-mcp cannot run, and the page does not say so"
     },
     {
-      "slug": "shopware-mcp",
-      "name": "Shopware",
+      "slug": "tiingo-mcp",
+      "name": "Tiingo Financial Data",
       "verdict": "phantom",
-      "install_type": "npm",
-      "registry": "npm",
-      "package": "shopware-mcp",
-      "install_command": "npx shopware-mcp",
+      "install_type": "pip",
+      "registry": "pip",
+      "package": "tiingo-mcp",
+      "install_command": "pip install tiingo-mcp",
       "install_checked": "2026-07-31",
-      "github_url": null,
-      "why": "npm package `shopware-mcp` does not exist — the install command on /servers/shopware-mcp cannot run, and the page does not say so"
+      "github_url": "https://github.com/major7apps/tiingo-mcp",
+      "why": "PyPI package `tiingo-mcp` does not exist — the install command on /servers/tiingo-mcp cannot run, and the page does not say so"
     },
     {
       "slug": "tursodb",
@@ -644,18 +872,6 @@
       "install_checked": "2026-07-31",
       "github_url": null,
       "why": "npm package `viber-mcp` does not exist — the install command on /servers/viber-mcp cannot run, and the page does not say so"
-    },
-    {
-      "slug": "wise-mcp",
-      "name": "Wise",
-      "verdict": "phantom",
-      "install_type": "npm",
-      "registry": "npm",
-      "package": "wise-mcp",
-      "install_command": "npx wise-mcp",
-      "install_checked": "2026-07-31",
-      "github_url": null,
-      "why": "npm package `wise-mcp` does not exist — the install command on /servers/wise-mcp cannot run, and the page does not say so"
     },
     {
       "slug": "woocommerce-mcp",

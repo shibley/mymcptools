@@ -300,6 +300,21 @@ curl https://mymcptools.com/api/v1/export \\
             know something. <Code>signal_summary</Code> on every response reports how much
             of the current result set is covered.
           </p>
+          <p className="mb-4 max-w-3xl text-gray-400">
+            A repository signal can only speak for listings that have one, and 1,424 of
+            the 2,457 entries carry no repo URL at all. Every row therefore also carries{" "}
+            <Code>install_signal</Code>: the registry lookup for the package the install
+            command actually names — <Code>registry</Code>, <Code>package</Code>,{" "}
+            <Code>exists</Code>, and <Code>last_published_at</Code>, which dates the
+            artifact the command fetches rather than the repo behind it. Unlike{" "}
+            <Code>static_signal</Code>, it is served even when the answer is negative:{" "}
+            <Code>exists: false</Code> means the named package is not in its registry and
+            the command cannot run. That is currently true of 810 of the 1,233 rows we
+            have checked, and it is the single most useful thing the dataset can tell an
+            agent before it routes. <Code>install_summary</Code> reports the split, and{" "}
+            <Code>dated_by_either_signal</Code> is the honest coverage number across both
+            sources.
+          </p>
 
           <h4 className="mb-2 mt-6 text-sm font-semibold uppercase tracking-wide text-gray-500">
             Query parameters
@@ -327,6 +342,17 @@ curl https://mymcptools.com/api/v1/export \\
                     <Code>stale</Code>, <Code>unknown</Code>, <Code>any</Code> (has a
                     dated signal) or <Code>none</Code>. Anything else returns{" "}
                     <Code>400</Code>. Composes with <Code>filter</Code>.
+                  </td>
+                </tr>
+                <tr>
+                  <td className="px-4 py-3 font-mono text-blue-300">installable</td>
+                  <td className="px-4 py-3">
+                    Filter on the registry lookup: <Code>yes</Code> (named package is
+                    published and is the right product), <Code>no</Code> (it is not there,
+                    so the command cannot run) or <Code>unknown</Code> (the command names
+                    no registry package — a git clone, a container, a remote URL).
+                    Anything else returns <Code>400</Code>. Composes with{" "}
+                    <Code>filter</Code> and <Code>signal</Code>.
                   </td>
                 </tr>
                 <tr>
@@ -373,6 +399,12 @@ curl "https://mymcptools.com/api/v1/status?signal=active&limit=2"`}
     "active": 549, "aging": 332, "stale": 34,
     "generated_at": "2026-07-25T16:50:25.829Z"
   },
+  "install_summary": {
+    "covered": 1233, "uncovered": 1207,
+    "installable": 423, "phantom": 810, "dated": 420,
+    "dated_by_either_signal": 1023,
+    "generated_at": "2026-09-25"
+  },
   "pagination": {
     "total": 153,
     "limit": 2,
@@ -392,7 +424,8 @@ curl "https://mymcptools.com/api/v1/status?signal=active&limit=2"`}
       "checked_at": "2026-06-30T11:00:00.000Z",
       "status_changed_at": "2026-06-12T08:30:00.000Z",
       "schema_changed": false,
-      "static_signal": null
+      "static_signal": null,
+      "install_signal": null
     },
     {
       "slug": "sqlite",
@@ -409,6 +442,14 @@ curl "https://mymcptools.com/api/v1/status?signal=active&limit=2"`}
         "package_registry": "npm",
         "package_name": "@modelcontextprotocol/server-sqlite",
         "checked_at": "2026-07-25T16:45:16.181Z"
+      },
+      "install_signal": {
+        "registry": "npm",
+        "package": "@modelcontextprotocol/server-sqlite",
+        "exists": true,
+        "last_published_at": "2026-06-02T18:44:10.113Z",
+        "collision": null,
+        "checked_at": "2026-09-25"
       }
     }
   ]
