@@ -1,6 +1,11 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import TrustApiCheckoutButton from "./TrustApiCheckoutButton";
+import {
+  proPopulation,
+  sellableCapabilities,
+  suppressedCapabilities,
+} from "@/lib/api/pro-offer";
 
 export const metadata: Metadata = {
   title: "MCP Server Status API — Live Uptime & Drift Data | MyMCPTools",
@@ -1082,6 +1087,43 @@ docker,DOWN,,,,...`}
               and we&apos;ll get you a key by hand. Need the whole dataset on a schedule?
               Join the data-feed waitlist.
             </p>
+
+            {/* WHAT THE $49 BUYS, AS COVERAGE. Generated from the committed
+                stores by @/lib/api/pro-offer — the same source as the Stripe
+                order summary and the 401 upgrade body, so the three cannot
+                disagree. Stating a thin row count is deliberate: most of this
+                catalog is local/stdio and unprobeable, and a buyer who learns
+                that here instead of after paying is the point. A signal with
+                zero rows is listed as not held rather than omitted. */}
+            <div className="mx-auto mb-8 max-w-2xl overflow-hidden rounded-xl border border-white/10 bg-black/30 text-left">
+              <div className="border-b border-white/10 px-5 py-3 text-sm font-semibold text-gray-300">
+                Coverage across {proPopulation().toLocaleString("en-US")} catalogued
+                MCP servers
+              </div>
+              <ul className="divide-y divide-white/5">
+                {sellableCapabilities().map((c) => (
+                  <li
+                    key={c.id}
+                    className="flex items-baseline justify-between gap-4 px-5 py-3 text-sm"
+                  >
+                    <span className="text-gray-400">{c.label}</span>
+                    <span className="shrink-0 font-mono text-gray-200">
+                      {c.rows.toLocaleString("en-US")}
+                    </span>
+                  </li>
+                ))}
+                {suppressedCapabilities().map((c) => (
+                  <li
+                    key={c.id}
+                    className="flex items-baseline justify-between gap-4 px-5 py-3 text-sm"
+                  >
+                    <span className="text-gray-500 line-through">{c.label}</span>
+                    <span className="shrink-0 font-mono text-gray-500">not held</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
             <div className="mx-auto mb-6 flex max-w-md justify-center">
               <TrustApiCheckoutButton />
             </div>

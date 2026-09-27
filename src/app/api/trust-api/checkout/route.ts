@@ -9,6 +9,7 @@ import {
   isInternalProbe,
   recordCheckoutStart,
 } from "@/lib/analytics/trust-api-usage";
+import { proProductDescription, proProductName } from "@/lib/api/pro-offer";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -20,6 +21,14 @@ const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://mymcptools.com";
 // same headline price point as the Advertise "Basic" sponsor tier. Uses
 // dynamic price_data (no pre-created Stripe product/price needed), same
 // fallback pattern as /api/advertise/checkout.
+//
+// THE ORDER SUMMARY IS NOT A LITERAL HERE ANY MORE. It used to read "live
+// status, uptime, latency, and drift for every probed MCP server" — four facts
+// we hold for 0, 44, 44 and 4 servers of 2,440, while the two we hold for 1,233
+// and 915 went unmentioned. Checkout was reached 4 times in the 30 days to
+// 2026-09-27 and paid 0 times. `@/lib/api/pro-offer` generates the name and
+// description from the committed stores' row counts, so a promise with no data
+// behind it cannot be shipped; `npm run offer:selfcheck` enforces that.
 const PRO_PRICE_CENTS = 4900;
 
 /**
@@ -45,9 +54,8 @@ async function createProSession(opts: {
           unit_amount: PRO_PRICE_CENTS,
           recurring: { interval: "month" },
           product_data: {
-            name: "MyMCPTools Trust Data API — Pro",
-            description:
-              "Self-serve API key for the MCP Trust Data API: live status, uptime, latency, and drift for every probed MCP server. 120 req/min.",
+            name: proProductName(),
+            description: proProductDescription(),
           },
         },
         quantity: 1,
@@ -97,6 +105,14 @@ export async function GET(req: NextRequest) {
       would_create: {
         mode: "subscription",
         unit_amount: PRO_PRICE_CENTS,
+        // The literal order summary Stripe would render. Reporting it here is
+        // what makes the last screen before the decision readable in
+        // production without minting a cart — the reason the old copy went
+        // 0/4 unnoticed is that nobody could see it without buying.
+        order_summary: {
+          name: proProductName(),
+          description: proProductDescription(),
+        },
         metadata: { product: "trust-api", plan: "pro", ...stripeEntryMetadata(entry) },
       },
       entry,

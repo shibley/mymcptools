@@ -23,6 +23,7 @@ import { createHash } from "node:crypto";
 import { NextRequest, NextResponse } from "next/server";
 import { isActiveStoredKey } from "./key-store";
 import { checkoutUrl } from "./checkout-entry";
+import { proCoverageBlock } from "./pro-offer";
 
 /** Requests allowed per window, per key. */
 const RATE_LIMIT_MAX = 120;
@@ -88,6 +89,16 @@ function upgradeBlock(ctx: UpgradeContext = {}) {
         key_required: true,
         endpoints: "all",
         checkout_url: buyUrl,
+        /**
+         * WHAT THE $49 BUYS, AS ROW COUNTS. `endpoints: "all"` told a caller
+         * which URLs unlock and nothing about whether the data behind them is
+         * populated — and for the four gated endpoints they actually reach for,
+         * it very unevenly is. The buyers here are scripts: a coverage table
+         * answers "is this worth $49" in one parse. Generated from the stores
+         * (src/lib/api/pro-offer.ts), so a signal we hold zero rows of is
+         * reported under `not_available` rather than sold.
+         */
+        coverage: proCoverageBlock(),
       },
     ],
   };
