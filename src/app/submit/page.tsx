@@ -3,7 +3,7 @@
 import { useState, FormEvent } from "react";
 import Link from "next/link";
 
-type ListingTier = "free" | "featured";
+type ListingTier = "free" | "featured" | "pro";
 
 export default function SubmitPage() {
   const [tier, setTier] = useState<ListingTier>("free");
@@ -25,6 +25,8 @@ export default function SubmitPage() {
       installType: (form.elements.namedItem("install") as HTMLSelectElement).value,
       email: (form.elements.namedItem("email") as HTMLInputElement).value,
       website_url: (form.elements.namedItem("website_url") as HTMLInputElement)?.value || "",
+      // The checkout route whitelists this; anything unknown falls back to $9.
+      tier,
     };
 
     // Honeypot check
@@ -33,7 +35,7 @@ export default function SubmitPage() {
       return;
     }
 
-    if (tier === "featured") {
+    if (tier === "featured" || tier === "pro") {
       // Stripe checkout flow
       try {
         const res = await fetch("/api/checkout", {
@@ -103,7 +105,7 @@ export default function SubmitPage() {
       </div>
 
       {/* Tier Selector */}
-      <div className="grid grid-cols-2 gap-4 mb-8">
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
         <button
           type="button"
           onClick={() => setTier("free")}
@@ -145,11 +147,38 @@ export default function SubmitPage() {
             <li>✓ Highlighted in search results</li>
           </ul>
         </button>
+
+        {/*
+          $49 Pro — thread #325. This is /advertise's existing "Basic" plan at
+          its existing price, moved to the surface the buyer is actually on.
+          /advertise was seen by 0 of 1,148 human web sessions; /submit is where
+          the property's only sale came from. $9 stays live as the control.
+        */}
+        <button
+          type="button"
+          onClick={() => setTier("pro")}
+          className={`rounded-xl border p-5 text-left transition ${
+            tier === "pro"
+              ? "border-emerald-500 bg-emerald-950/30"
+              : "border-gray-700 bg-gray-900 hover:border-emerald-700"
+          }`}
+        >
+          <div className="text-lg font-semibold text-white mb-1">Pro</div>
+          <div className="text-2xl font-bold text-white mb-2">
+            $49 <span className="text-base font-normal text-gray-400">one-time</span>
+          </div>
+          <ul className="space-y-1 text-sm text-gray-400">
+            <li>⭐ Everything in Featured</li>
+            <li>✓ Dofollow link to your repo and site</li>
+            <li>✓ Homepage placement for 30 days</li>
+            <li>✓ Listed within 24 hrs, reviewed by hand</li>
+          </ul>
+        </button>
       </div>
 
       {/* Submission Form */}
-      <div className={`rounded-xl border p-8 ${tier === "featured" ? "bg-gray-900 border-yellow-800/50" : "bg-gray-900 border-gray-800"}`}>
-        {tier === "featured" && (
+      <div className={`rounded-xl border p-8 ${tier !== "free" ? "bg-gray-900 border-yellow-800/50" : "bg-gray-900 border-gray-800"}`}>
+        {(tier === "featured" || tier === "pro") && (
           <div className="mb-6 flex items-center gap-2 text-sm text-yellow-300 bg-yellow-900/20 border border-yellow-800/50 rounded-lg px-4 py-3">
             ⭐ Featured listing — you&apos;ll be redirected to secure checkout after filling out this form.
           </div>
@@ -304,6 +333,8 @@ export default function SubmitPage() {
             className={`w-full px-6 py-3 disabled:opacity-60 disabled:cursor-not-allowed text-white font-medium rounded-lg transition ${
               tier === "featured"
                 ? "bg-yellow-600 hover:bg-yellow-500"
+                : tier === "pro"
+                ? "bg-emerald-600 hover:bg-emerald-500"
                 : "bg-blue-600 hover:bg-blue-700"
             }`}
           >
@@ -311,6 +342,8 @@ export default function SubmitPage() {
               ? "Processing…"
               : tier === "featured"
               ? "Continue to Checkout — $9"
+              : tier === "pro"
+              ? "Continue to Checkout — $49"
               : "Submit Server — Free"}
           </button>
         </form>
