@@ -38,6 +38,7 @@
  */
 import { Pool } from "pg";
 import { sessionHash as beaconSessionHash } from "@/lib/session-identity";
+import { classifyCaller } from "./caller-class";
 
 export const MCP_SITE = "mymcptools";
 export const MCP_SOURCE = "mcp";
@@ -71,82 +72,18 @@ function trunc(v: unknown, n: number): string | null {
 }
 
 /**
- * User agents that are scanning, not consuming. Deliberately NOT the browser
- * bot list: `python-requests`, `axios`, `curl` and friends are how an agent or a
- * developer's integration legitimately speaks to an MCP endpoint, so treating
- * them as bots here would zero out exactly the signal we are trying to measure.
- * Only agents that identify as indexers/scanners/preview-fetchers count.
+ * Caller classification lives in `./caller-class` so that a self-check can
+ * exercise it without `pg` or the `@/` alias (thread #329, 2026-09-28). The
+ * rules and the measurements behind them are documented there.
  */
-const CRAWLER_UA = [
-  "bot",
-  "crawl",
-  "spider",
-  "slurp",
-  "scrap",
-  "fetcher",
-  "monitor",
-  "preview",
-  "ahrefs",
-  "semrush",
-  "mj12",
-  "dotbot",
-  "dataforseo",
-  "petalbot",
-  "censys",
-  "shodan",
-  "zgrab",
-  "masscan",
-  "expanse",
-  "internet-measurement",
-  "paloaltonetworks",
-  "lighthouse",
-  "pagespeed",
-  "facebookexternalhit",
-  "embedly",
-  "headless",
-];
-
-// `bot` as a substring would otherwise swallow real MCP clients that carry it
-// legitimately in their product name.
-const CRAWLER_UA_ALLOW = ["claudebot", "gptbot", "chatgpt-user", "oai-searchbot", "perplexitybot"];
-
-export type CallerClass = { isCrawler: boolean; reason: string | null };
-
-/**
- * Classify a caller as crawler-ish or agent-ish.
- *
- * Every caller here is a program, so the browser heuristics (screen size,
- * navigator.webdriver) are meaningless. What separates a crawler from a consumer
- * on this endpoint is intent, and JSON-RPC exposes it: a real MCP client
- * handshakes with `initialize` and then calls tools; a scanner pokes the URL
- * once with no method, no client identity, and an indexer UA.
- *
- * Known-AI-crawler UAs (ClaudeBot, GPTBot, PerplexityBot…) are deliberately NOT
- * counted as crawlers when they speak JSON-RPC — an AI vendor's fetcher issuing
- * `tools/call` is precisely the consumer this test is looking for.
- */
-export function classifyCaller(ua: string | null, method: string | null, client: string | null): CallerClass {
-  const lc = (ua || "").toLowerCase();
-  const reasons: string[] = [];
-
-  const aiVendor = CRAWLER_UA_ALLOW.find((a) => lc.includes(a));
-  if (aiVendor && method) {
-    // Speaking the protocol outweighs the UA.
-    return { isCrawler: false, reason: null };
-  }
-
-  const hit = CRAWLER_UA.find((b) => lc.includes(b));
-  if (hit) reasons.push(`ua:${hit}`);
-
-  // No JSON-RPC method at all means this was a bare URL fetch, not a client.
-  if (!method) reasons.push("no-jsonrpc");
-
-  // A client that never introduces itself and never gets past discovery is
-  // indistinguishable from a scanner walking a directory listing.
-  if (!client && method === "tools/list") reasons.push("anonymous-discovery");
-
-  return { isCrawler: reasons.length > 0, reason: reasons.length ? reasons.join(",") : null };
-}
+export {
+  CRAWLER_UA,
+  CRAWLER_UA_ALLOW,
+  PROBE_TOKENS,
+  classifyCaller,
+  isToolCall,
+} from "./caller-class";
+export type { CallerClass } from "./caller-class";
 
 const INSERT = `
 insert into analytics.events
