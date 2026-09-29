@@ -18,6 +18,12 @@
  */
 import { PRO_PRICE_USD, UPGRADE_URL } from "./auth";
 import { POINTER_SOURCES, type PointerSource } from "./checkout-entry";
+import {
+  isTrialEndpoint,
+  TRIAL_CALLS_PER_CALLER_PER_DAY,
+  TRIAL_ENDPOINTS,
+  TRIAL_ROW_CAP,
+} from "./trial";
 
 export { POINTER_SOURCES };
 export type { PointerSource };
@@ -49,14 +55,45 @@ export function proPointer(via: PointerSource, slug?: string) {
         drift: tagged(`/api/v1/drift`, via),
         export: tagged(`/api/v1/export?format=json`, via),
       };
+  // Which of the pointed-at endpoints answer a keyless caller with a capped
+  // real sample (src/lib/api/trial.ts). Derived from TRIAL_ENDPOINTS rather
+  // than listed, so a pointer can never promise a trial the gate won't honour.
+  // `/servers/:slug/history` is pointed at but deliberately NOT trialable, so
+  // the per-slug block genuinely has fewer trial URLs than the catalog one.
+  const trialable = Object.fromEntries(
+    Object.entries(endpoints).filter(([, url]) =>
+      isTrialEndpoint(new URL(url).pathname)
+    )
+  );
+
   return {
     tier: "free",
+    // NOTE (2026-09-28): this string used to open with "Uptime history". We hold
+    // ZERO uptime rows anywhere — the same defect src/lib/api/pro-offer.ts was
+    // built to kill in the order summary, surviving one level up in a hand-typed
+    // pointer note. Named facts here are ones the stores actually carry.
     note: s
-      ? "Uptime history, past outages and tool-schema drift for this server are on the Pro key."
+      ? "Probe history, past outages and tool-schema drift for this server are on the Pro key."
       : "What changed in the last 24h, outage history, schema drift and the full export are on the Pro key.",
     price_usd_month: PRO_PRICE_USD,
     upgrade_url: UPGRADE_URL,
     endpoints,
+    /**
+     * The reason to follow one of those URLs before paying. Until now a free
+     * caller who followed a pointer got a 401 — so the pointer's only effect
+     * was to move a caller from "saw our free data" to "was refused". These
+     * URLs now return real rows with no key at all.
+     */
+    trial: {
+      keyless: true,
+      row_cap: TRIAL_ROW_CAP,
+      calls_per_day: TRIAL_CALLS_PER_CALLER_PER_DAY,
+      note:
+        `No key, account or browser required: ${TRIAL_ROW_CAP} real rows per call, ` +
+        `${TRIAL_CALLS_PER_CALLER_PER_DAY} calls per day, on the endpoints below.`,
+      endpoints: trialable,
+      all_trial_endpoints: TRIAL_ENDPOINTS,
+    },
   };
 }
 

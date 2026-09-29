@@ -180,8 +180,9 @@ export default function DevelopersPage() {
           The remaining endpoints — <Code>/export</Code>, <Code>/digest</Code>,{" "}
           <Code>/drift</Code>, <Code>/incidents</Code>,{" "}
           <Code>/servers/&#123;slug&#125;/history</Code> and{" "}
-          <Code>/firewall/check</Code> — require a key, and a key also raises the rate
-          limit to 120/min. Pass it on either an{" "}
+          <Code>/firewall/check</Code> — require a key for full, uncapped access (four
+          of them answer a keyless caller with a capped sample first — see the trial
+          below), and a key also raises the rate limit to 120/min. Pass it on either an{" "}
           <Code>Authorization: Bearer &lt;key&gt;</Code> header or an{" "}
           <Code>x-api-key: &lt;key&gt;</Code> header.
         </p>
@@ -220,6 +221,50 @@ x-mcptools-upgrade: https://mymcptools.com/developers#pro
       "key_required": true, "endpoints": "all",
       "checkout_url": "https://mymcptools.com/developers#pro" }
   ]
+}`}
+        />
+        <p className="mb-4 max-w-3xl leading-relaxed text-gray-400">
+          <strong className="text-white">
+            Try the paid endpoints with no key at all.
+          </strong>{" "}
+          <Code>/drift</Code>, <Code>/export</Code>, <Code>/digest</Code> and{" "}
+          <Code>/incidents</Code> answer a keyless caller with{" "}
+          <strong className="text-white">10 real rows</strong> from the same stores a
+          Pro key reads, <strong className="text-white">3 calls per day</strong>, no
+          account, email or browser required. The response carries a{" "}
+          <Code>trial</Code> block with <Code>rows_withheld</Code> — how much of that
+          dataset a key adds, measured against what you just received rather than
+          claimed — plus <Code>X-MCPTools-Trial: 1</Code> and the row cap in headers so
+          a CSV or Markdown response says it too. Aggregates (<Code>summary</Code>,{" "}
+          <Code>install_summary</Code>, <Code>counts</Code>) are{" "}
+          <strong className="text-white">never truncated</strong>: coverage is the
+          thing you are evaluating.{" "}
+          <Code>/firewall/check</Code> and <Code>/servers/&#123;slug&#125;/history</Code>{" "}
+          are excluded — a truncated single-subject answer is a wrong answer, not a
+          sample.
+        </p>
+        <CodeBlock
+          label="Trial — a real sample, no key"
+          code={`$ curl -i https://mymcptools.com/api/v1/drift
+HTTP/2 200
+x-ratelimit-tier: trial
+x-mcptools-trial: 1
+x-mcptools-trial-row-cap: 10
+x-mcptools-trial-calls-remaining: 2
+
+{
+  "drift_events": [ /* 10 real rows */ ],
+  "pagination": { "total": 21, "limit": 10, "next_cursor": null },
+  "trial": {
+    "trial": true,
+    "row_cap": 10,
+    "rows_returned": 10,
+    "rows_withheld": 11,
+    "calls_remaining_today": 2,
+    "full_access": { "price_usd_month": 49,
+                     "checkout_url": "https://mymcptools.com/api/trust-api/checkout?...",
+                     "coverage": { /* row counts per capability */ } }
+  }
 }`}
         />
         <CodeBlock

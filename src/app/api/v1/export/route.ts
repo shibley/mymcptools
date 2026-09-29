@@ -1,5 +1,11 @@
 import { NextRequest, NextResponse } from "next/server";
 import { withRateLimitHeaders } from "@/lib/api/auth";
+import { capRows } from "@/lib/api/trial";
+import {
+  trialGrant,
+  trialPayload,
+  withTrialHeaders,
+} from "@/lib/api/trial-response";
 import { authenticateGated } from "@/lib/analytics/trust-api-usage";
 import { allStatuses, generatedAt, summary } from "@/lib/trust/status-store";
 import { installSummary, signalSummary, withStaticSignals } from "@/lib/api/status-view";
@@ -88,18 +94,29 @@ export async function GET(req: NextRequest) {
   if (!auth.ok) return auth.response;
 
   const format = (req.nextUrl.searchParams.get("format") ?? "json").toLowerCase();
-  const rows = withStaticSignals(allStatuses());
+  const allRows = withStaticSignals(allStatuses());
   const stamp = generatedAt().slice(0, 10);
 
+  // The bulk export is the widest thing the $49 buys (install_signal 1,233 rows
+  // / static_signal 915 across 2,440 servers) and therefore the one a trial
+  // must cap hardest. `summary`/`signal_summary`/`install_summary` stay
+  // FULL-POPULATION on a trial: they are precisely the coverage numbers a
+  // machine consumer is evaluating, and truncating them would hide the product
+  // rather than sample it. `count` always reports the rows actually serialised.
+  const grant = trialGrant(auth);
+  const { rows, withheld } = capRows(allRows, grant);
+
   if (format === "csv") {
-    const res = new NextResponse(toCsv(rows), {
+    const csvRes = new NextResponse(toCsv(rows), {
       status: 200,
       headers: {
         "Content-Type": "text/csv; charset=utf-8",
-        "Content-Disposition": `attachment; filename="mcptools-status-${stamp}.csv"`,
+        "Content-Disposition": `attachment; filename="mcptools-status-${stamp}${
+          grant ? "-trial" : ""
+        }.csv"`,
       },
     });
-    return withRateLimitHeaders(res, auth.rate);
+    return withTrialHeaders(withRateLimitHeaders(csvRes, auth.rate), auth);
   }
 
   if (format !== "json") {
@@ -114,16 +131,20 @@ export async function GET(req: NextRequest) {
     {
       generated_at: generatedAt(),
       summary: summary(),
-      signal_summary: signalSummary(rows),
-      install_summary: installSummary(rows),
+      signal_summary: signalSummary(allRows),
+      install_summary: installSummary(allRows),
       count: rows.length,
+      total_count: allRows.length,
       statuses: rows,
+      ...(grant ? { trial: trialPayload(grant, rows.length, withheld) } : {}),
     },
     {
       headers: {
-        "Content-Disposition": `attachment; filename="mcptools-status-${stamp}.json"`,
+        "Content-Disposition": `attachment; filename="mcptools-status-${stamp}${
+          grant ? "-trial" : ""
+        }.json"`,
       },
     }
   );
-  return withRateLimitHeaders(res, auth.rate);
+  return withTrialHeaders(withRateLimitHeaders(res, auth.rate), auth);
 }

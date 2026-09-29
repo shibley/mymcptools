@@ -405,6 +405,12 @@ const gated = await client.query(
      count(*) filter (where utm_campaign = 'GET:401')::int                  as denied,
      count(distinct session_hash) filter (where utm_campaign = 'GET:401' and not is_bot)::int as denied_consumers,
      count(distinct session_hash) filter (where utm_medium = 'key')::int    as key_callers,
+     count(*) filter (where utm_medium = 'trial')::int                      as trial_served,
+     count(*) filter (where utm_medium = 'trial' and bot_reason = 'internal-probe')::int as trial_probes,
+     count(distinct session_hash) filter (where utm_medium = 'trial' and not is_bot)::int as trial_consumers,
+     count(*) filter (where utm_medium = 'trial-exhausted')::int            as trial_spent,
+     count(distinct session_hash) filter (where utm_medium = 'trial-exhausted' and not is_bot)::int as trial_spent_consumers,
+     count(distinct session_hash) filter (where not is_bot and (utm_campaign = 'GET:401' or utm_medium = 'trial'))::int as reached_gate_consumers,
      min(ts) as first_seen, max(ts) as last_seen
    from analytics.events where ${GATED_WHERE}`,
   [String(DAYS)]
@@ -455,9 +461,43 @@ if (g0.calls === 0) {
   for (const r of byPointer.rows) {
     console.log(`${String(r.consumers).padStart(4)} non-crawler  ${String(r.calls).padStart(6)} attempts  ${r.via}`);
   }
+  // ---- keyless trial (live 2026-09-28) ----------------------------------
+  // The measured loss in the 30d to 2026-09-28 was not the gate and not the
+  // ask: 3 of 7 denied callers followed the buy link and 4 sessions reached
+  // Stripe, and 0 paid — every one of them having never seen a row of the
+  // dataset, because src/data/api-keys.json has never held a key and the free
+  // tier does not overlap the gated endpoints. /v1/drift, /export, /digest and
+  // /incidents now answer a keyless non-crawler with a capped REAL sample
+  // (src/lib/api/trial.ts). `denied` above stays 401-only on purpose: a served
+  // trial is not a refusal, and mixing them would erase the thing being tested.
+  console.log(`\n-- keyless TRIAL (live 2026-09-28; 10 rows/call, 3 calls/caller/day) --`);
+  if (g0.trial_served === 0 && g0.trial_spent === 0) {
+    console.log(
+      `served                    0  — not yet measured. Rows start at the deploy of this build;\n` +
+        `                             an empty block here means "no gated caller has arrived since", NOT zero interest.`
+    );
+  } else {
+    console.log(
+      `served                    ${g0.trial_served} calls to ${g0.trial_consumers} non-crawler caller(s)` +
+        (g0.trial_probes ? `  (${g0.trial_probes} of the calls are our own ?probe=1 walks, excluded from the caller count)` : "")
+    );
+    console.log(`spent their daily cap     ${g0.trial_spent} calls from ${g0.trial_spent_consumers} non-crawler caller(s)  <- saw the data, came back, still capped`);
+    const byTrial = await client.query(
+      `select path,
+              count(*) filter (where utm_medium = 'trial')::int as served,
+              count(distinct session_hash) filter (where utm_medium = 'trial' and not is_bot)::int as consumers
+         from analytics.events
+        where ${GATED_WHERE} and utm_medium in ('trial', 'trial-exhausted')
+        group by 1 order by 2 desc`,
+      [String(DAYS)]
+    );
+    for (const r of byTrial.rows)
+      console.log(`${String(r.consumers).padStart(4)} non-crawler  ${String(r.served).padStart(6)} served  ${r.path}`);
+  }
   console.log(
-    `\nVERDICT (paid tier): ${g0.denied_consumers} non-crawler caller(s) hit a paywall they could not pass. ` +
-      `Every one of them now receives the checkout URL in the 401 body and the X-MCPTools-Upgrade header.`
+    `\nVERDICT (paid tier): ${g0.denied_consumers} non-crawler caller(s) hit a paywall they could not pass, ` +
+      `and ${g0.trial_consumers} were served a capped sample instead of a 401. ` +
+      `Every one of them receives the checkout URL in the body and the X-MCPTools-Upgrade header.`
   );
 }
 
@@ -502,9 +542,14 @@ if (startsTotal === 0) {
 const gateStarts = checkout.rows
   .filter((r) => r.entry === "gate" || r.entry === "pointer")
   .reduce((n, r) => n + r.consumers, 0);
+// Denominator is every non-crawler caller who REACHED the gate — denied with a
+// 401 or served a trial. Before the trial shipped those were the same set; now
+// they are not, and leaving it at `denied` would make the rate climb purely
+// because fewer callers get refused.
 console.log(
-  `\ngate -> checkout          ${gateStarts} / ${g0.denied_consumers} denied non-crawler caller(s)` +
-    (g0.denied_consumers === 0 ? "  (no denied callers yet to convert)" : "")
+  `\ngate -> checkout          ${gateStarts} / ${g0.reached_gate_consumers} non-crawler caller(s) who reached the gate` +
+    `  (${g0.denied_consumers} denied, ${g0.trial_consumers} sampled)` +
+    (g0.reached_gate_consumers === 0 ? "  (nobody at the gate yet to convert)" : "")
 );
 
 await client.end();

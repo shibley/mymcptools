@@ -24,6 +24,12 @@ import { NextRequest, NextResponse } from "next/server";
 import { isActiveStoredKey } from "./key-store";
 import { checkoutUrl } from "./checkout-entry";
 import { proCoverageBlock } from "./pro-offer";
+import {
+  TRIAL_CALLS_PER_CALLER_PER_DAY,
+  TRIAL_ENDPOINTS,
+  TRIAL_ROW_CAP,
+  type TrialGrant,
+} from "./trial";
 
 /** Requests allowed per window, per key. */
 const RATE_LIMIT_MAX = 120;
@@ -66,7 +72,15 @@ export interface UpgradeContext {
   via?: string | null;
 }
 
-/** The upgrade block embedded in every auth-failure body. */
+/**
+ * The upgrade block embedded in every auth-failure body. Exported as
+ * `upgradePayload` for the trial-exhausted 401, which needs the same block
+ * under a different message (src/lib/analytics/trust-api-usage.ts).
+ */
+export function upgradePayload(ctx: UpgradeContext = {}) {
+  return upgradeBlock(ctx);
+}
+
 function upgradeBlock(ctx: UpgradeContext = {}) {
   const buyUrl = checkoutUrl({ endpoint: ctx.endpoint, via: ctx.via });
   return {
@@ -74,6 +88,22 @@ function upgradeBlock(ctx: UpgradeContext = {}) {
     /** One GET away from Stripe — no form, no page, no browser required. */
     checkout_url: buyUrl,
     docs_url: `${SITE}/developers`,
+    /**
+     * EVALUATE BEFORE BUYING. Carried on every auth failure — including the
+     * bad-key and the non-trialable-endpoint cases, which is the whole point:
+     * those callers are the ones who would otherwise never learn a keyless
+     * sample exists. See src/lib/api/trial.ts for the measurement that
+     * motivated it (4 Stripe sessions, 0 sales, 0 rows ever seen).
+     */
+    trial: {
+      keyless: true,
+      row_cap: TRIAL_ROW_CAP,
+      calls_per_day: TRIAL_CALLS_PER_CALLER_PER_DAY,
+      endpoints: TRIAL_ENDPOINTS,
+      note:
+        `Omit the key entirely on the endpoints listed here to get ${TRIAL_ROW_CAP} ` +
+        `real rows per call, ${TRIAL_CALLS_PER_CALLER_PER_DAY} calls per UTC day.`,
+    },
     plans: [
       {
         name: "Free",
@@ -214,12 +244,34 @@ export function withRateLimitHeaders(
   return res;
 }
 
-/** Which allowance a request was served under. */
-export type AuthTier = "key" | "anonymous";
+/**
+ * Which allowance a request was served under. `trial` is a keyless caller
+ * served a CAPPED sample of a key-gated endpoint (src/lib/api/trial.ts) —
+ * granted by `authenticateGated`, never by `authenticate` itself, because the
+ * grant needs a warehouse read that this module deliberately does not do.
+ */
+export type AuthTier = "key" | "anonymous" | "trial";
 
 export type AuthResult =
-  | { ok: true; key: string; tier: AuthTier; rate: RateLimitState }
+  | {
+      ok: true;
+      key: string;
+      tier: AuthTier;
+      rate: RateLimitState;
+      /** Set only on tier === "trial": the row cap this response must obey. */
+      trial?: TrialGrant | null;
+    }
   | { ok: false; response: NextResponse };
+
+/**
+ * Consume one request against the anonymous (per-IP, per-UTC-day) bucket. Used
+ * by the gated trial, which serves a keyless caller and therefore has no key to
+ * meter against. Exported rather than inlined so the trial cannot accidentally
+ * be given the full per-key allowance.
+ */
+export function consumeAnonymous(req: NextRequest): RateLimitState {
+  return consume(anonBucketKey(req), ANON_RATE_LIMIT_MAX);
+}
 
 /**
  * Authenticate + rate-limit a v1 request. On success returns the key and the

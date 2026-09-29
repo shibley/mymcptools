@@ -14,7 +14,7 @@
     "probe:hot": "node scripts/mcp-probe.mts --mode hot",
     "drift:selfcheck": "node scripts/drift-selfcheck.mts",
     "identity:selfcheck": "node scripts/session-identity-selfcheck.mts",
-    "verify:predeploy": "npm run -s identity:selfcheck && npm run -s drift:selfcheck && npm run -s probe:selfcheck && npm run -s digest:selfcheck && npm run -s webhooks:selfcheck && npm run -s trust:selfcheck && npm run -s firewall:selfcheck && npm run -s intent:selfcheck && npm run -s fulfil:selfcheck && npm run -s rel:census && npm run -s signals:selfcheck && npm run -s signals:api-selfcheck && npm run -s install:api-selfcheck && npm run -s submit:selfcheck && npm run -s offer:selfcheck && npm run -s tier:selfcheck && npm run -s caller:selfcheck",
+    "verify:predeploy": "npm run -s identity:selfcheck && npm run -s drift:selfcheck && npm run -s probe:selfcheck && npm run -s digest:selfcheck && npm run -s webhooks:selfcheck && npm run -s trust:selfcheck && npm run -s firewall:selfcheck && npm run -s intent:selfcheck && npm run -s fulfil:selfcheck && npm run -s rel:census && npm run -s signals:selfcheck && npm run -s signals:api-selfcheck && npm run -s install:api-selfcheck && npm run -s submit:selfcheck && npm run -s offer:selfcheck && npm run -s tier:selfcheck && npm run -s caller:selfcheck && npm run -s trial:selfcheck",
     "probe:selfcheck": "node scripts/rolling-window-selfcheck.mts",
     "digest": "node scripts/digest.mts",
     "digest:selfcheck": "node scripts/digest-selfcheck.mts",
@@ -37,7 +37,8 @@
     "submit:selfcheck": "npx tsx scripts/submit-event-selfcheck.mts",
     "offer:selfcheck": "npx tsx scripts/pro-offer-selfcheck.mts",
     "tier:selfcheck": "node scripts/listing-tier-selfcheck.mts",
-    "caller:selfcheck": "node scripts/caller-class-selfcheck.mts"
+    "caller:selfcheck": "node scripts/caller-class-selfcheck.mts",
+    "trial:selfcheck": "npx tsx scripts/trial-selfcheck.mts"
   },
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.29.0",

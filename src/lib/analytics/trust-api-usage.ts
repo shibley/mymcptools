@@ -28,9 +28,24 @@ import {
   authenticate,
   AuthResult,
   AuthTier,
+  consumeAnonymous,
+  PRO_PRICE_USD,
   RateLimitState,
+  upgradePayload,
   withRateLimitHeaders,
+  withUpgradeHeaders,
 } from "@/lib/api/auth";
+import {
+  decideTrial,
+  type TrialDenial,
+  type TrialGrant,
+  TRIAL_CALLS_PER_CALLER_PER_DAY,
+  TRIAL_ROW_CAP,
+  TRIAL_EVENT_SOURCE,
+  TRIAL_EXHAUSTED_TIER,
+  TRIAL_TIER,
+  type TrialUsage,
+} from "@/lib/api/trial";
 import { sessionHash as beaconSessionHash } from "@/lib/session-identity";
 import { CallerClass, classifyCaller, MCP_SITE } from "./mcp-usage";
 import { readVia } from "@/lib/api/pro-pointer";
@@ -213,15 +228,217 @@ export async function authenticateGated(
   const auth = await authenticate(req, { endpoint });
   const presented = req.headers.get("authorization") || req.headers.get("x-api-key");
 
+  if (auth.ok) {
+    await recordGatedAttempt({
+      headers: req.headers,
+      url: req.nextUrl,
+      endpoint,
+      tier: "key",
+      status: 200,
+    });
+    return auth;
+  }
+
+  // ---- keyless trial ----------------------------------------------------
+  // A 401 is the right answer for a bad key and for a crawler. It is the wrong
+  // answer for a keyless program evaluating whether $49/mo of this dataset is
+  // worth buying, because it is the ONLY answer that surface has ever given:
+  // measured 30d to 2026-09-28, 7 non-crawler callers were denied, 4 reached
+  // Stripe and 0 paid, having never seen one row. See src/lib/api/trial.ts.
+  const trialWanted = auth.response.status === 401 && !presented;
+  if (trialWanted) {
+    const outcome = await grantTrial(req, endpoint);
+    const grantOrNull = outcome.granted ? outcome.grant : null;
+    if (grantOrNull) {
+      await recordGatedAttempt({
+        headers: req.headers,
+        url: req.nextUrl,
+        endpoint,
+        tier: TRIAL_TIER,
+        status: 200,
+      });
+      return {
+        ok: true,
+        key: "",
+        tier: "trial",
+        rate: consumeAnonymous(req),
+        trial: grantOrNull,
+      };
+    }
+    // Wanted a trial and hit a CAP. Recorded under its own medium so the demand
+    // report can separate "never offered a sample" from "used the sample up and
+    // still did not buy" — those are opposite findings.
+    //
+    // A meter we could not READ is deliberately NOT reported as exhausted: the
+    // caller's budget is intact and telling them otherwise is a lie on a buyer
+    // surface. They get the ordinary 401, which advertises the trial, and the
+    // row lands under 'anonymous' so the trial figures stay true.
+    if (!outcome.granted && (outcome.reason === "caller_cap" || outcome.reason === "global_cap")) {
+      const exhausted = trialExhaustedResponse(endpoint);
+      await recordGatedAttempt({
+        headers: req.headers,
+        url: req.nextUrl,
+        endpoint,
+        tier: TRIAL_EXHAUSTED_TIER,
+        status: exhausted.status,
+      });
+      return { ok: false, response: exhausted };
+    }
+  }
+
   await recordGatedAttempt({
     headers: req.headers,
     url: req.nextUrl,
     endpoint,
     tier: presented ? "key" : "anonymous",
-    status: auth.ok ? 200 : auth.response.status,
+    status: auth.response.status,
   });
 
   return auth;
+}
+
+/**
+ * Is this request even in the running for a trial? Keyless, on a trial
+ * endpoint, and either a non-crawler OR one of our own `?probe=1` walks.
+ *
+ * WHY THE PROBE IS ALLOWED IN: the whole reason the old order-summary copy went
+ * 0-for-4 unnoticed is that nobody could read the last screen a buyer sees
+ * without minting a cart. A trial payload has the same problem, so `?probe=1`
+ * must be able to read the real thing in production. Probe rows are still
+ * written as `is_bot = true, bot_reason = 'internal-probe'`, every demand query
+ * already excludes them, and `trialUsageToday` excludes them from the GLOBAL
+ * budget so our own reads cannot burn a real agent's day.
+ */
+function isTrialCandidate(req: NextRequest, endpoint: string): boolean {
+  if (req.headers.get("authorization") || req.headers.get("x-api-key")) return false;
+  const { isCrawler, reason } = classifyTrustApiCaller(req.headers, req.nextUrl);
+  if (isCrawler && reason !== INTERNAL_PROBE_REASON) return false;
+  return decideTrial(endpoint, { caller: 0, global: 0 }).granted;
+}
+
+/**
+ * The 401 a caller gets once their daily trial is spent. Deliberately NOT the
+ * generic "this endpoint needs an API key": that message is true but useless to
+ * someone who has already seen the data, and it is the one moment in the funnel
+ * where the ask lands on a caller with first-hand knowledge of what it buys.
+ */
+function trialExhaustedResponse(endpoint: string): NextResponse {
+  const ctx = { endpoint, via: null };
+  const res = NextResponse.json(
+    {
+      error: "trial_exhausted",
+      message:
+        `Your keyless trial of ${endpoint} is spent for today ` +
+        `(${TRIAL_CALLS_PER_CALLER_PER_DAY} calls/day, ${TRIAL_ROW_CAP} rows each). ` +
+        `It resets at 00:00 UTC. For uncapped rows and ${endpoint} without a cap, ` +
+        `a Pro key is $${PRO_PRICE_USD}/mo and one GET away — see checkout_url below.`,
+      ...upgradePayload(ctx),
+      // Same `trial` block every auth failure carries, plus the two facts only
+      // this response knows: it is spent, and when it comes back.
+      trial: {
+        ...upgradePayload(ctx).trial,
+        exhausted: true,
+        resets_at: `${new Date(Date.now() + 86_400_000)
+          .toISOString()
+          .slice(0, 10)}T00:00:00Z`,
+      },
+    },
+    { status: 401 }
+  );
+  res.headers.set("WWW-Authenticate", 'Bearer realm="mymcptools-trust-api"');
+  res.headers.set("X-MCPTools-Trial", "exhausted");
+  withUpgradeHeaders(res, ctx);
+  return res;
+}
+
+/**
+ * Today's trial counts for this caller and for everyone, read out of the rows
+ * `recordGatedAttempt` already writes. No new table: the meter for the trial is
+ * the same warehouse row that proves the trial happened.
+ *
+ * A warehouse that cannot be read FAILS CLOSED (no trial). The alternative —
+ * serving on a read error — turns a transient DB blip into an uncapped free
+ * tier, and this endpoint set includes a full 2,440-row bulk export.
+ */
+const TRIAL_USAGE_SQL = `
+select
+  count(*) filter (where session_hash = $2)                            as caller,
+  count(*) filter (where coalesce(bot_reason, '') <> $5)               as global
+from analytics.events
+where site = $1
+  and utm_source = $3
+  and utm_medium = $4
+  and ts >= (date_trunc('day', now() at time zone 'utc')) at time zone 'utc'`;
+
+/**
+ * TEST SEAM. The granted-trial path cannot be exercised in-process without a
+ * warehouse, and a self-check that can only ever observe the fail-closed 401
+ * would guard the least interesting half of the feature. This replaces the
+ * counter, nothing else — the decision, the caps, the row truncation and the
+ * response shape all still run for real.
+ *
+ * Refused outright in production: a seam that can raise a caller's remaining
+ * trial budget is an authorisation bypass if it is ever reachable on the live
+ * deployment, so the guard is the absence of the capability rather than the
+ * absence of a caller. `npm run trial:selfcheck` asserts this.
+ */
+type TrialUsageReader = (sessionHash: string) => Promise<TrialUsage | null>;
+let usageReaderOverride: TrialUsageReader | null = null;
+
+export function __setTrialUsageReaderForTests(fn: TrialUsageReader | null): void {
+  if (process.env.NODE_ENV === "production") {
+    throw new Error("__setTrialUsageReaderForTests is not available in production");
+  }
+  usageReaderOverride = fn;
+}
+
+export async function trialUsageToday(sessionHash: string): Promise<TrialUsage | null> {
+  if (usageReaderOverride && process.env.NODE_ENV !== "production") {
+    return usageReaderOverride(sessionHash);
+  }
+  try {
+    const p = getPool();
+    if (!p) return null;
+    const { rows } = await p.query(TRIAL_USAGE_SQL, [
+      MCP_SITE,
+      sessionHash,
+      TRIAL_EVENT_SOURCE,
+      TRIAL_TIER,
+      INTERNAL_PROBE_REASON,
+    ]);
+    const r = rows[0] ?? {};
+    return {
+      caller: Number(r.caller ?? 0),
+      global: Number(r.global ?? 0),
+    };
+  } catch {
+    return null;
+  }
+}
+
+/**
+ * Decide whether this caller gets a trial, and say WHY not when they do not —
+ * the reason picks the rejection copy, so "you spent it" can never be printed
+ * at someone who did not.
+ */
+type TrialOutcome =
+  | { granted: true; grant: TrialGrant }
+  | { granted: false; reason: TrialDenial | "ineligible" | "no_identity" | "no_meter" };
+
+async function grantTrial(req: NextRequest, endpoint: string): Promise<TrialOutcome> {
+  if (!isTrialCandidate(req, endpoint)) return { granted: false, reason: "ineligible" };
+  // No caller identity means no per-caller cap is enforceable, so there is no
+  // trial to give — the cap is the product boundary, not a nicety.
+  const hash = beaconSessionHash(req.headers);
+  if (!hash) return { granted: false, reason: "no_identity" };
+  const usage = await trialUsageToday(hash);
+  // Unreadable meter = no trial (fail closed). Serving on a read error would
+  // turn a transient DB blip into an uncapped free bulk export.
+  if (!usage) return { granted: false, reason: "no_meter" };
+  const decision = decideTrial(endpoint, usage);
+  return decision.granted
+    ? { granted: true, grant: decision.grant }
+    : { granted: false, reason: decision.reason };
 }
 
 /**

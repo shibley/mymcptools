@@ -226,10 +226,18 @@ console.log('\n-- internal probes are excluded from demand --');
     const c = m.classifyTrustApiCaller?.(new Headers({ 'user-agent': 'Mozilla/5.0 (compatible; bingbot/2.0)' }), u());
     assert.equal(c?.isCrawler, true);
   });
-  await check('both recorders pass the request URL through', () => {
+  await check('every recorder call site passes the request URL through', () => {
     const src = readFileSync('src/lib/analytics/trust-api-usage.ts', 'utf8');
-    const passes = src.match(/url: req\.nextUrl/g)?.length ?? 0;
-    assert.equal(passes, 2, `expected finishFreeTier + authenticateGated to pass req.nextUrl, found ${passes}`);
+    // Was `=== 2` (finishFreeTier + authenticateGated). authenticateGated now
+    // records four distinct outcomes — keyed, trial-served, trial-exhausted and
+    // plain 401 — so a fixed count measures the refactor rather than the rule.
+    // The rule is that NO recorder may be handed a request without its URL,
+    // because the `?probe=1` marker lives there and a recorder that misses it
+    // files our own walks as demand.
+    const sites = [...src.matchAll(/record(?:TrustApiUsage|GatedAttempt)\(\{([^}]*)\}/g)];
+    assert.ok(sites.length >= 5, `expected >=5 recorder call sites, found ${sites.length}`);
+    for (const [, args] of sites)
+      assert.match(args, /url:\s*(req\.nextUrl|u\.url)/, `a recorder call site omits the URL: ${args.trim().slice(0, 60)}`);
     assert.ok(!/classifyCaller\(ua, "GET", null\)/.test(src), 'a recorder still classifies on the UA alone');
   });
 }
