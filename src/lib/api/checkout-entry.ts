@@ -61,8 +61,28 @@ export type EntryKind =
   | "page" // the /developers marketing page form
   | "direct"; // opened the checkout URL with no attribution
 
+/**
+ * Whether the caller had SEEN the data before following the buy link. Closed
+ * set, orthogonal to `kind`: a sampled caller still reached the checkout from a
+ * gated endpoint (`kind: "gate"`), so the trial is its own axis rather than a
+ * fifth kind — folding it into `kind` would silently drop it from every
+ * `entry in ('gate','pointer')` meter that already exists.
+ *
+ *   sampled   — followed the link in a capped trial response (it saw rows)
+ *   exhausted — followed the link in the trial_exhausted 401 (it saw rows on
+ *               an earlier call today, came back, and was capped)
+ *
+ * Without it the trial's buy link was byte-identical to a bare 401's, so the
+ * one question the trial exists to answer — does seeing the data sell it? —
+ * could not be read from a checkout row or from Stripe metadata.
+ */
+export const TRIAL_STAGES = ["sampled", "exhausted"] as const;
+export type TrialStage = (typeof TRIAL_STAGES)[number];
+
 export interface CheckoutEntry {
   kind: EntryKind;
+  /** Set when the buy link came from a trial response; null for a bare 401. */
+  trial: TrialStage | null;
   /** The gated endpoint they were denied, when known. */
   endpoint: GatedEndpoint | null;
   /** The free endpoint whose pointer started the walk, when known. */
@@ -75,6 +95,9 @@ function isGated(v: string | null): v is GatedEndpoint {
 function isVia(v: string | null): v is PointerSource {
   return !!v && (POINTER_SOURCES as readonly string[]).includes(v);
 }
+function isTrialStage(v: string | null): v is TrialStage {
+  return !!v && (TRIAL_STAGES as readonly string[]).includes(v);
+}
 
 /**
  * The followable buy URL handed to a machine caller. `endpoint` is the gate it
@@ -85,11 +108,13 @@ function isVia(v: string | null): v is PointerSource {
 export function checkoutUrl(opts: {
   endpoint?: string | null;
   via?: string | null;
+  trial?: TrialStage | null;
   site?: string;
 } = {}): string {
   const u = new URL(CHECKOUT_PATH, opts.site || SITE);
   if (isGated(opts.endpoint ?? null)) u.searchParams.set("endpoint", opts.endpoint as string);
   if (isVia(opts.via ?? null)) u.searchParams.set("via", opts.via as string);
+  if (isTrialStage(opts.trial ?? null)) u.searchParams.set("trial", opts.trial as string);
   return u.toString();
 }
 
@@ -98,6 +123,8 @@ export function readCheckoutEntry(url: URL | null | undefined): CheckoutEntry {
   const ep = url?.searchParams.get("endpoint") ?? null;
   const via = url?.searchParams.get("via") ?? null;
   const from = url?.searchParams.get("from") ?? null;
+  const t = url?.searchParams.get("trial") ?? null;
+  const trial = isTrialStage(t) ? t : null;
   const endpoint = isGated(ep) ? ep : null;
   const source = isVia(via) ? via : null;
   const kind: EntryKind = endpoint
@@ -109,15 +136,18 @@ export function readCheckoutEntry(url: URL | null | undefined): CheckoutEntry {
       : source
         ? "pointer"
         : "direct";
-  return { kind, endpoint, via: source };
+  return { kind, trial, endpoint, via: source };
 }
 
 /**
  * The `referrer_full` value a checkout-start row carries. Same convention as
  * the gated rows' `pointer:<via>` tag, so both meters read with one `like`.
+ * The trial stage is APPENDED as a fifth segment only when present, so every
+ * row written before it existed still parses as the same four-part tag.
  */
 export function entryTag(entry: CheckoutEntry): string {
-  return `entry:${entry.kind}:${entry.endpoint ?? "-"}:${entry.via ?? "-"}`;
+  const base = `entry:${entry.kind}:${entry.endpoint ?? "-"}:${entry.via ?? "-"}`;
+  return entry.trial ? `${base}:trial-${entry.trial}` : base;
 }
 
 /**
@@ -131,5 +161,6 @@ export function stripeEntryMetadata(entry: CheckoutEntry): Record<string, string
     entry_kind: entry.kind,
     entry_endpoint: entry.endpoint ?? "",
     entry_via: entry.via ?? "",
+    entry_trial: entry.trial ?? "",
   };
 }

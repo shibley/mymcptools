@@ -323,7 +323,9 @@ function isTrialCandidate(req: NextRequest, endpoint: string): boolean {
  * where the ask lands on a caller with first-hand knowledge of what it buys.
  */
 function trialExhaustedResponse(endpoint: string): NextResponse {
-  const ctx = { endpoint, via: null };
+  // Tagged `trial=exhausted` so a sale from this exact moment — the ask landing
+  // on a caller who has already seen the rows — is countable on its own.
+  const ctx = { endpoint, via: null, trial: "exhausted" as const };
   const res = NextResponse.json(
     {
       error: "trial_exhausted",

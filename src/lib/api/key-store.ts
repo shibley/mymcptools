@@ -37,6 +37,11 @@ export interface ApiKeyRecord {
   entry_kind?: string;
   entry_endpoint?: string;
   entry_via?: string;
+  /**
+   * 'sampled' | 'exhausted' when the buyer saw trial rows first. Lives in the
+   * `raw` jsonb column (no migration): read it as `raw->>'entry_trial'`.
+   */
+  entry_trial?: string;
   amount_cents?: number;
 }
 

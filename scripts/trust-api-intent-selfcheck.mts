@@ -379,7 +379,7 @@ console.log('\n-- a gated rejection hands back a followable, attributed buy URL 
     const meta = ce.stripeEntryMetadata(
       ce.readCheckoutEntry(new URL(`https://mymcptools.com${ce.CHECKOUT_PATH}?endpoint=/api/v1/digest&via=stats`))
     );
-    assert.deepEqual(meta, { entry_kind: 'pointer', entry_endpoint: '/api/v1/digest', entry_via: 'stats' });
+    assert.deepEqual(meta, { entry_kind: 'pointer', entry_endpoint: '/api/v1/digest', entry_via: 'stats', entry_trial: '' });
     for (const v of Object.values(meta)) assert.equal(typeof v, 'string');
   });
   await check('the webhook can fulfil a session that carried no email', () => {

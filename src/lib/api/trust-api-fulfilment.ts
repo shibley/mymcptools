@@ -107,7 +107,9 @@ function adminHtml(
     ${meta.use_case ? `<p><strong>Use case:</strong> ${meta.use_case}</p>` : ""}
     <p><strong>Entry:</strong> ${meta.entry_kind || "unknown"}${
       meta.entry_endpoint ? ` via ${meta.entry_endpoint}` : ""
-    }${meta.entry_via ? ` (pointer from ${meta.entry_via})` : ""}</p>
+    }${meta.entry_via ? ` (pointer from ${meta.entry_via})` : ""}${
+      meta.entry_trial ? ` — after a keyless trial (${meta.entry_trial})` : ""
+    }</p>
     <p><strong>Key:</strong> <code>${record.key}</code></p>
     <p><strong>Stripe Session:</strong> ${sessionId}</p>
     <p><strong>Amount:</strong> $${((amountTotal || 0) / 100).toFixed(2)}/mo</p>
@@ -146,6 +148,7 @@ export async function fulfilTrustApiPurchase(
     entry_kind: meta.entry_kind || undefined,
     entry_endpoint: meta.entry_endpoint || undefined,
     entry_via: meta.entry_via || undefined,
+    entry_trial: meta.entry_trial || undefined,
     amount_cents: amountTotal ?? undefined,
   };
 

@@ -552,4 +552,65 @@ console.log(
     (g0.reached_gate_consumers === 0 ? "  (nobody at the gate yet to convert)" : "")
 );
 
+// TRIAL -> CHECKOUT -> PAID. The trial exists to answer one question: does
+// seeing the rows sell them? Two independent reads, because neither alone is
+// trustworthy:
+//   (a) TAGGED — checkout rows whose entry tag ends `:trial-sampled|exhausted`
+//       (the buy link inside a trial response; live from this commit). Exact,
+//       but blind to every start before it shipped.
+//   (b) JOINED — trial-served callers whose session_hash also appears on a
+//       checkout row, regardless of which link they followed. Covers history,
+//       but a caller whose identity changes between the two requests is lost.
+// Paid comes from the key store, where fulfilment copies Stripe's
+// `entry_trial` metadata into `raw`. A key with no stage is a sale the trial
+// did not make — or one bought before the tag existed.
+const trialFunnel = await client.query(
+  `with sampled as (
+     select distinct session_hash from analytics.events
+      where ${GATED_WHERE} and utm_medium in ('trial', 'trial-exhausted') and not is_bot
+   ), starts as (
+     select session_hash, referrer_full, utm_campaign from analytics.events
+      where ${CHECKOUT_WHERE} and not is_bot
+   )
+   select
+     (select count(*) from sampled)::int                                                   as sampled,
+     (select count(distinct s.session_hash) from starts s join sampled t using (session_hash))::int as joined_starts,
+     (select count(distinct session_hash) from starts where referrer_full like '%:trial-sampled')::int   as tagged_sampled,
+     (select count(distinct session_hash) from starts where referrer_full like '%:trial-exhausted')::int as tagged_exhausted,
+     (select count(*) from starts where referrer_full like '%:trial-%'
+        and (utm_campaign like '%:302' or utm_campaign like '%:200'))::int                 as tagged_reached_stripe`,
+  [String(DAYS)]
+);
+const tf = trialFunnel.rows[0];
+let paidByStage: { stage: string; keys: number }[] | null = null;
+try {
+  const paid = await client.query(
+    `select coalesce(nullif(raw->>'entry_trial', ''), 'none') as stage, count(*)::int as keys
+       from analytics.mcpt_api_keys
+      where status = 'active' and stripe_session_id is not null
+      group by 1 order by 2 desc`
+  );
+  paidByStage = paid.rows;
+} catch {
+  paidByStage = null; // table unreadable: say so, never print a 0
+}
+console.log(`\n-- trial -> checkout -> paid (tagged from 2026-10-01; joined covers history) --`);
+console.log(`sampled callers           ${tf.sampled}  (non-crawler, served a trial or capped at it)`);
+console.log(`  -> started checkout     ${tf.joined_starts}  joined on caller identity`);
+console.log(
+  `  -> tagged starts        ${tf.tagged_sampled} from a trial response, ${tf.tagged_exhausted} from trial_exhausted` +
+    `  (${tf.tagged_reached_stripe} reached Stripe)`
+);
+if (paidByStage === null) {
+  console.log(`  -> paid                 UNREADABLE — analytics.mcpt_api_keys query failed; not a zero`);
+} else {
+  const trialPaid = paidByStage.filter((r) => r.stage !== "none").reduce((n, r) => n + r.keys, 0);
+  const otherPaid = paidByStage.filter((r) => r.stage === "none").reduce((n, r) => n + r.keys, 0);
+  console.log(
+    `  -> paid (lifetime keys) ${trialPaid} after a trial` +
+      (trialPaid ? ` (${paidByStage.filter((r) => r.stage !== "none").map((r) => `${r.keys} ${r.stage}`).join(", ")})` : "") +
+      `, ${otherPaid} without one`
+  );
+}
+
 await client.end();

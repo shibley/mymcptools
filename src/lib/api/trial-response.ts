@@ -21,9 +21,11 @@ export function trialGrant(
 
 /**
  * The `trial` block to merge into a trial response body. The ask rides the same
- * one-GET checkout URL the 401 uses, tagged `entry=gate` with the endpoint that
- * served the sample — so a trial-attributed sale is distinguishable in Stripe
- * metadata from one that bounced off a bare 401.
+ * one-GET checkout URL the 401 uses, tagged with the endpoint that served the
+ * sample AND `trial=sampled`. This comment used to claim the endpoint tag alone
+ * made a trial sale "distinguishable in Stripe metadata from one that bounced
+ * off a bare 401" — it did not: both URLs were byte-identical, so the trial's
+ * own conversion was unreadable. `trial` is what makes it true.
  */
 export function trialPayload(
   grant: TrialGrant,
@@ -35,7 +37,7 @@ export function trialPayload(
     rowsReturned,
     rowsWithheld,
     priceUsdMonth: PRO_PRICE_USD,
-    checkoutUrl: checkoutUrl({ endpoint: grant.endpoint, via: null }),
+    checkoutUrl: checkoutUrl({ endpoint: grant.endpoint, via: null, trial: "sampled" }),
     upgradeUrl: UPGRADE_URL,
     coverage: proCoverageBlock(),
   });
@@ -59,7 +61,7 @@ export function withTrialHeaders(
     "X-MCPTools-Trial-Calls-Remaining",
     String(grant.callsRemainingToday)
   );
-  const buyUrl = checkoutUrl({ endpoint: grant.endpoint, via: null });
+  const buyUrl = checkoutUrl({ endpoint: grant.endpoint, via: null, trial: "sampled" });
   res.headers.set("Link", `<${buyUrl}>; rel="payment"`);
   res.headers.set("X-MCPTools-Checkout", buyUrl);
   res.headers.set("X-MCPTools-Upgrade", UPGRADE_URL);

@@ -22,7 +22,7 @@
 import { createHash } from "node:crypto";
 import { NextRequest, NextResponse } from "next/server";
 import { isActiveStoredKey } from "./key-store";
-import { checkoutUrl } from "./checkout-entry";
+import { checkoutUrl, type TrialStage } from "./checkout-entry";
 import { proCoverageBlock } from "./pro-offer";
 import {
   TRIAL_CALLS_PER_CALLER_PER_DAY,
@@ -70,6 +70,8 @@ export interface UpgradeContext {
   endpoint?: string | null;
   /** `?via=` carried in from a free-tier pointer URL. */
   via?: string | null;
+  /** Set only by the trial_exhausted 401; a bare refusal never saw rows. */
+  trial?: TrialStage | null;
 }
 
 /**
@@ -82,7 +84,7 @@ export function upgradePayload(ctx: UpgradeContext = {}) {
 }
 
 function upgradeBlock(ctx: UpgradeContext = {}) {
-  const buyUrl = checkoutUrl({ endpoint: ctx.endpoint, via: ctx.via });
+  const buyUrl = checkoutUrl({ endpoint: ctx.endpoint, via: ctx.via, trial: ctx.trial });
   return {
     upgrade_url: UPGRADE_URL,
     /** One GET away from Stripe — no form, no page, no browser required. */
@@ -143,7 +145,7 @@ export function withUpgradeHeaders(
   res: NextResponse,
   ctx: UpgradeContext = {}
 ): NextResponse {
-  const buyUrl = checkoutUrl({ endpoint: ctx.endpoint, via: ctx.via });
+  const buyUrl = checkoutUrl({ endpoint: ctx.endpoint, via: ctx.via, trial: ctx.trial });
   res.headers.set("Link", `<${buyUrl}>; rel="payment"`);
   res.headers.set("X-MCPTools-Upgrade", UPGRADE_URL);
   res.headers.set("X-MCPTools-Checkout", buyUrl);

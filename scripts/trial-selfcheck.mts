@@ -53,6 +53,12 @@ import { GET as digestGET } from '../src/app/api/v1/digest/route.ts';
 import { GET as incidentsGET } from '../src/app/api/v1/incidents/route.ts';
 import { POST as firewallPOST } from '../src/app/api/v1/firewall/check/route.ts';
 import { proPointer } from '../src/lib/api/pro-pointer.ts';
+import {
+  entryTag,
+  readCheckoutEntry,
+  stripeEntryMetadata,
+} from '../src/lib/api/checkout-entry.ts';
+import { fulfilTrustApiPurchase } from '../src/lib/api/trust-api-fulfilment.ts';
 
 let failures = 0;
 async function check(name: string, fn: () => unknown | Promise<unknown>) {
@@ -346,6 +352,82 @@ await check('the per-slug pointer omits the non-trialable history endpoint', () 
 await check('no pointer note sells "uptime", of which we hold zero rows', () => {
   for (const p of [proPointer('status'), proPointer('server-status', 'supabase')])
     assert.doesNotMatch((p as Record<string, any>).note, /uptime/i);
+});
+
+// ------------------------------------------------- the trial's own sale ----
+// The trial exists to answer "does seeing the rows sell them?". Until
+// 2026-10-01 its buy link was byte-identical to a bare 401's, so a sale it made
+// was indistinguishable — in the checkout row and in Stripe — from one it did
+// not. These 8 checks were all RED against that build.
+console.log('\n=== a trial-made sale is attributable to the trial ===');
+
+const entryOf = (u: string) => readCheckoutEntry(new URL(u));
+
+await check('the trial body\'s buy link says the caller SAW rows', async () => {
+  meter(0);
+  const body = await (await driftGET(req('/api/v1/drift'))).json();
+  const e = entryOf(body.trial.full_access.checkout_url);
+  assert.equal(e.trial, 'sampled', `trial=${e.trial}`);
+  assert.equal(e.endpoint, '/api/v1/drift');
+});
+
+await check('the trial headers carry the same tagged buy link', async () => {
+  meter(0);
+  const res = await driftGET(req('/api/v1/drift'));
+  assert.equal(entryOf(res.headers.get('X-MCPTools-Checkout') ?? '').trial, 'sampled');
+  assert.match(res.headers.get('Link') ?? '', /trial=sampled/);
+});
+
+await check('the trial_exhausted 401 tags its buy link `exhausted`', async () => {
+  meter(TRIAL_CALLS_PER_CALLER_PER_DAY);
+  const res = await driftGET(req('/api/v1/drift'));
+  const body = await res.json();
+  assert.equal(entryOf(body.checkout_url).trial, 'exhausted');
+  assert.equal(entryOf(res.headers.get('X-MCPTools-Checkout') ?? '').trial, 'exhausted');
+});
+
+await check('a bare 401 (never saw rows) is NOT tagged as a trial', async () => {
+  meter(0);
+  const body = await (
+    await driftGET(req('/api/v1/drift', { authorization: 'Bearer nope' }))
+  ).json();
+  assert.equal(entryOf(body.checkout_url).trial, null);
+  assert.doesNotMatch(body.checkout_url, /trial=/);
+});
+
+await check('an unknown ?trial= value is dropped, never stored', () => {
+  assert.equal(entryOf('https://x/api/trust-api/checkout?trial=<script>').trial, null);
+});
+
+await check('Stripe metadata carries the trial stage to the paid event', () => {
+  const e = entryOf('https://x/api/trust-api/checkout?endpoint=/api/v1/drift&trial=sampled');
+  assert.equal(stripeEntryMetadata(e).entry_trial, 'sampled');
+  assert.equal(e.kind, 'gate', 'trial must not change kind — existing gate meters key on it');
+});
+
+await check('entryTag appends the stage; an untagged row keeps the old 4-part shape', () => {
+  const t = entryOf('https://x/api/trust-api/checkout?endpoint=/api/v1/drift&trial=exhausted');
+  assert.equal(entryTag(t), 'entry:gate:/api/v1/drift:-:trial-exhausted');
+  const b = entryOf('https://x/api/trust-api/checkout?endpoint=/api/v1/drift');
+  assert.equal(entryTag(b), 'entry:gate:/api/v1/drift:-');
+});
+
+await check('a paid key records which trial stage sold it', async () => {
+  let stored: Record<string, unknown> | null = null;
+  await fulfilTrustApiPurchase(
+    {
+      meta: { product: 'trust-api', plan: 'pro', entry_kind: 'gate', entry_trial: 'sampled' },
+      sessionId: 'cs_test_selfcheck',
+      customerEmail: 'funnel-probe+trust-layer@apistatuscheck.com',
+      amountTotal: 4900,
+    },
+    {
+      addKey: async (r) => { stored = r as unknown as Record<string, unknown>; },
+      sendEmail: async () => {},
+      adminEmail: 'funnel-probe+trust-layer@apistatuscheck.com',
+    }
+  );
+  assert.equal(stored?.['entry_trial'], 'sampled');
 });
 
 // ------------------------------------------------------------ the wiring ----
