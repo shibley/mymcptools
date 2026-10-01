@@ -46,7 +46,8 @@ import {
   TRIAL_GLOBAL_PER_DAY,
   TRIAL_ROW_CAP,
 } from '../src/lib/api/trial.ts';
-import { __setTrialUsageReaderForTests } from '../src/lib/analytics/trust-api-usage.ts';
+import { __setTrialUsageReaderForTests, classifyTrustApiCaller } from '../src/lib/analytics/trust-api-usage.ts';
+import { GET as checkoutGET } from '../src/app/api/trust-api/checkout/route.ts';
 import { GET as driftGET } from '../src/app/api/v1/drift/route.ts';
 import { GET as exportGET } from '../src/app/api/v1/export/route.ts';
 import { GET as digestGET } from '../src/app/api/v1/digest/route.ts';
@@ -441,6 +442,47 @@ for (const route of ['drift', 'export', 'digest', 'incidents']) {
     assert.match(src, /trialPayload\(/, 'never carries the ask');
   });
 }
+
+// ------------------------------------------------- who is a buyer at all ----
+// 30d to 2026-10-01: 8 of 9 "non-crawler" checkout starts and all 5 trial
+// samplers were ONE frozen iOS 13.2.3 UA rotating through 7 countries, and the
+// GET minted a live Stripe session for every one of them (plus Amzn-SearchBot,
+// already classified a crawler). A program cannot use a hosted card form.
+console.log('\n=== buyer identity (a crawler is not a checkout start) ===');
+const FOSSIL = 'Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0.3 Mobile/15E148 Safari/604.1';
+const MODERN_IPHONE = 'Mozilla/5.0 (iPhone; CPU iPhone OS 18_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.6 Mobile/15E148 Safari/604.1';
+const AMZN = 'Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko; compatible; Amzn-SearchBot/0.1) Chrome/119.0.6045.214 Safari/537.36';
+
+await check('the frozen iOS 13.2.3 fleet is a crawler on the trust surface', () => {
+  const c = classifyTrustApiCaller(new Headers({ 'user-agent': FOSSIL }), null);
+  assert.equal(c.isCrawler, true, 'counted as a buyer');
+});
+
+await check('a current iPhone Safari is still a person', () => {
+  assert.equal(classifyTrustApiCaller(new Headers({ 'user-agent': MODERN_IPHONE }), null).isCrawler, false);
+});
+
+await check('the fleet is not served the trial sample', async () => {
+  meter(0);
+  const res = await driftGET(req('/api/v1/drift', { 'user-agent': FOSSIL }));
+  assert.equal(res.headers.get('x-ratelimit-tier') === 'trial', false, 'fleet got trial rows');
+});
+
+for (const [label, ua] of [['fossil-UA fleet', FOSSIL], ['Amzn-SearchBot', AMZN]] as const) {
+  await check(`checkout GET from ${label} mints no Stripe session`, async () => {
+    const res = await checkoutGET(req('/api/trust-api/checkout?endpoint=/api/v1/drift', { 'user-agent': ua }));
+    assert.equal(res.status, 200, `status ${res.status} — it tried to reach Stripe`);
+    const body = await res.json();
+    assert.equal(body.checkout, 'not_created');
+    assert.match(String(body.buy?.browser), /\/developers#pro$/, 'no way for a person to buy');
+  });
+}
+
+await check('checkout GET from an agent library still goes for Stripe', async () => {
+  // No STRIPE_SECRET_KEY in a selfcheck, so "went for Stripe" reads as the 503.
+  const res = await checkoutGET(req('/api/trust-api/checkout?endpoint=/api/v1/drift'));
+  assert.equal(res.status, process.env.STRIPE_SECRET_KEY ? 303 : 503);
+});
 
 __setTrialUsageReaderForTests(null);
 console.log(

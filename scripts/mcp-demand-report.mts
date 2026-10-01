@@ -20,6 +20,7 @@ import { readFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import pg from "pg";
+import { FOSSIL_UA } from "../src/lib/analytics/caller-class.ts";
 
 const HERE = dirname(fileURLToPath(import.meta.url));
 const GATE = 100;
@@ -355,6 +356,14 @@ if (t.calls === 0) {
   console.log(`\nVERDICT: ${verdict}`);
 }
 
+// ---- trust-API rows: one bot definition, applied to history ---------------
+// is_bot is decided at write time, so rows written before FOSSIL_UA existed
+// still say `false` for the frozen iOS 13.2.3 fleet that was 8 of 9 checkout
+// starts and all 5 trial "samplers" (src/lib/analytics/caller-class.ts). Every
+// trust-API count below reads it through this one predicate so the 30-day
+// window is corrected in full, not just from the deploy forward.
+const NOT_BOT = `not (is_bot or coalesce(ua, '') in (${FOSSIL_UA.map((u) => `'${u.replace(/'/g, "''")}'`).join(", ")}))`;
+
 // ---- free-tier REST half -------------------------------------------------
 // Until 2026-08-18 the /api/v1 endpoints were key-gated with zero keys ever
 // issued, so their caller count was structurally zero and told us nothing. The
@@ -365,7 +374,7 @@ const rest = await client.query(
   `select
      count(*)::int                                               as calls,
      count(distinct session_hash)::int                           as callers,
-     count(distinct session_hash) filter (where not is_bot)::int  as consumers,
+     count(distinct session_hash) filter (where ${NOT_BOT})::int  as consumers,
      count(distinct session_hash) filter (where utm_medium = 'anonymous')::int as anon_callers,
      min(ts) as first_seen, max(ts) as last_seen
    from analytics.events where ${REST_WHERE}`,
@@ -401,16 +410,16 @@ const gated = await client.query(
   `select
      count(*)::int                                                          as calls,
      count(distinct session_hash)::int                                      as callers,
-     count(distinct session_hash) filter (where not is_bot)::int            as consumers,
+     count(distinct session_hash) filter (where ${NOT_BOT})::int            as consumers,
      count(*) filter (where utm_campaign = 'GET:401')::int                  as denied,
-     count(distinct session_hash) filter (where utm_campaign = 'GET:401' and not is_bot)::int as denied_consumers,
+     count(distinct session_hash) filter (where utm_campaign = 'GET:401' and ${NOT_BOT})::int as denied_consumers,
      count(distinct session_hash) filter (where utm_medium = 'key')::int    as key_callers,
      count(*) filter (where utm_medium = 'trial')::int                      as trial_served,
      count(*) filter (where utm_medium = 'trial' and bot_reason = 'internal-probe')::int as trial_probes,
-     count(distinct session_hash) filter (where utm_medium = 'trial' and not is_bot)::int as trial_consumers,
+     count(distinct session_hash) filter (where utm_medium = 'trial' and ${NOT_BOT})::int as trial_consumers,
      count(*) filter (where utm_medium = 'trial-exhausted')::int            as trial_spent,
-     count(distinct session_hash) filter (where utm_medium = 'trial-exhausted' and not is_bot)::int as trial_spent_consumers,
-     count(distinct session_hash) filter (where not is_bot and (utm_campaign = 'GET:401' or utm_medium = 'trial'))::int as reached_gate_consumers,
+     count(distinct session_hash) filter (where utm_medium = 'trial-exhausted' and ${NOT_BOT})::int as trial_spent_consumers,
+     count(distinct session_hash) filter (where ${NOT_BOT} and (utm_campaign = 'GET:401' or utm_medium = 'trial'))::int as reached_gate_consumers,
      min(ts) as first_seen, max(ts) as last_seen
    from analytics.events where ${GATED_WHERE}`,
   [String(DAYS)]
@@ -451,7 +460,7 @@ if (g0.calls === 0) {
   const byPointer = await client.query(
     `select coalesce(referrer_full, 'direct') as via,
             count(*)::int as calls,
-            count(distinct session_hash) filter (where not is_bot)::int as consumers
+            count(distinct session_hash) filter (where ${NOT_BOT})::int as consumers
        from analytics.events
       where ${GATED_WHERE} and (referrer_full like 'pointer:%' or referrer_full is null)
       group by 1 order by 2 desc`,
@@ -485,7 +494,7 @@ if (g0.calls === 0) {
     const byTrial = await client.query(
       `select path,
               count(*) filter (where utm_medium = 'trial')::int as served,
-              count(distinct session_hash) filter (where utm_medium = 'trial' and not is_bot)::int as consumers
+              count(distinct session_hash) filter (where utm_medium = 'trial' and ${NOT_BOT})::int as consumers
          from analytics.events
         where ${GATED_WHERE} and utm_medium in ('trial', 'trial-exhausted')
         group by 1 order by 2 desc`,
@@ -512,7 +521,7 @@ const CHECKOUT_WHERE = `site = 'mymcptools' and utm_source = 'trustapi-checkout'
 const checkout = await client.query(
   `select coalesce(utm_medium, 'direct')                                   as entry,
           count(*)::int                                                    as starts,
-          count(distinct session_hash) filter (where not is_bot)::int      as consumers,
+          count(distinct session_hash) filter (where ${NOT_BOT})::int      as consumers,
           count(*) filter (where utm_campaign like '%:302' or utm_campaign like '%:200')::int as reached_stripe,
           count(*) filter (where is_bot and bot_reason = 'internal-probe')::int as probes
      from analytics.events where ${CHECKOUT_WHERE}
@@ -567,10 +576,10 @@ console.log(
 const trialFunnel = await client.query(
   `with sampled as (
      select distinct session_hash from analytics.events
-      where ${GATED_WHERE} and utm_medium in ('trial', 'trial-exhausted') and not is_bot
+      where ${GATED_WHERE} and utm_medium in ('trial', 'trial-exhausted') and ${NOT_BOT}
    ), starts as (
      select session_hash, referrer_full, utm_campaign from analytics.events
-      where ${CHECKOUT_WHERE} and not is_bot
+      where ${CHECKOUT_WHERE} and ${NOT_BOT}
    )
    select
      (select count(*) from sampled)::int                                                   as sampled,

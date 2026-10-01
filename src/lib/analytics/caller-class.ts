@@ -76,6 +76,27 @@ export const CRAWLER_UA = [
 ];
 
 /**
+ * Exact browser UAs that are a bot fleet, not a browser. A token list cannot
+ * catch these — they ARE a real Safari string, just one frozen in 2019.
+ *
+ * iOS 13.2.3 / Safari 13.0.3: in the 30 days to 2026-10-01 it sent 27 rows to
+ * mymcptools from 26 sessions in 7 countries (US, HK, DE, BR...), one request
+ * per session, walking /v1/status -> every gated endpoint -> the buy link
+ * minutes apart. It was 8 of the 9 "non-crawler" checkout starts and all 5
+ * "sampled" trial callers, so the trust funnel's whole buyer cohort was this
+ * one crawler. The four sister properties whose beacon reads a screen width
+ * already flag it 406 of 406 (`implausible-screen`, a 1px screen); the API
+ * surface has no screen to read, so only the string itself can.
+ */
+export const FOSSIL_UA = [
+  "Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0.3 Mobile/15E148 Safari/604.1",
+];
+
+export function isFossilUa(ua: string | null): boolean {
+  return !!ua && FOSSIL_UA.includes(ua.trim());
+}
+
+/**
  * Tokens that a caller only puts in its OWN name when it is surveying the
  * endpoint rather than using it. Every one of these was observed in the 30-day
  * window as a self-description by a caller that never issued a `tools/call`.

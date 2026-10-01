@@ -6,6 +6,7 @@ import {
   type CheckoutEntry,
 } from "@/lib/api/checkout-entry";
 import {
+  classifyTrustApiCaller,
   isInternalProbe,
   recordCheckoutStart,
 } from "@/lib/analytics/trust-api-usage";
@@ -117,6 +118,40 @@ export async function GET(req: NextRequest) {
       },
       entry,
       note: "Dry run — no Stripe session was created. Drop ?probe=1 to buy.",
+    });
+  }
+
+  // AN AUTOMATED CALLER GETS THE OFFER, NOT A CART. In the 30 days to
+  // 2026-10-01 this GET minted 10 live Stripe sessions and 0 were paid: 8 came
+  // from one frozen-UA crawler fleet (FOSSIL_UA in caller-class.ts) and one
+  // from Amzn-SearchBot, which was classified a crawler and minted a cs_live_
+  // anyway because only `?probe=1` was checked. A hosted card form is
+  // unusable to a program, so the session could only ever expire — while it
+  // read in demand:report as a buyer who "reached Stripe" and walked away,
+  // pointing every fire at the checkout copy. Now a crawler is told what the
+  // plan is and where a person can buy it, and its row says `GET:offer-only`.
+  const caller = classifyTrustApiCaller(req.headers, req.nextUrl);
+  if (caller.isCrawler) {
+    await recordCheckoutStart({
+      headers: req.headers,
+      url: req.nextUrl,
+      entry,
+      method: "GET",
+      status: 200,
+      outcome: "GET:offer-only",
+    });
+    return NextResponse.json({
+      checkout: "not_created",
+      reason: "automated client — a Stripe checkout page needs a person with a card",
+      plan: {
+        name: proProductName(),
+        description: proProductDescription(),
+        price_usd_per_month: PRO_PRICE_CENTS / 100,
+      },
+      buy: {
+        browser: `${SITE_URL}/developers#pro`,
+        api: `POST ${SITE_URL}/api/trust-api/checkout {"email": "..."} -> {"url": "<stripe checkout>"}`,
+      },
     });
   }
 

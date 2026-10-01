@@ -38,7 +38,8 @@
     "offer:selfcheck": "npx tsx scripts/pro-offer-selfcheck.mts",
     "tier:selfcheck": "node scripts/listing-tier-selfcheck.mts",
     "caller:selfcheck": "node scripts/caller-class-selfcheck.mts",
-    "trial:selfcheck": "npx tsx scripts/trial-selfcheck.mts"
+    "trial:selfcheck": "npx tsx scripts/trial-selfcheck.mts",
+    "key:e2e": "npx tsx scripts/paid-key-e2e.mts"
   },
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.29.0",

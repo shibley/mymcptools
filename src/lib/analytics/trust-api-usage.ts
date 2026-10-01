@@ -48,6 +48,7 @@ import {
 } from "@/lib/api/trial";
 import { sessionHash as beaconSessionHash } from "@/lib/session-identity";
 import { CallerClass, classifyCaller, MCP_SITE } from "./mcp-usage";
+import { isFossilUa } from "./caller-class";
 import { readVia } from "@/lib/api/pro-pointer";
 import {
   CHECKOUT_PATH,
@@ -111,6 +112,7 @@ values ($1, $2, null, null, $3, $4, $5, $6, $7, $8, $9, $10, null)`;
  * already excludes.
  */
 export const INTERNAL_PROBE_REASON = "internal-probe";
+export const FOSSIL_UA_REASON = "ua:fossil";
 
 export function isInternalProbe(headers: Headers, url: URL | null): boolean {
   if (headers.get("x-probe") === "1") return true;
@@ -120,6 +122,8 @@ export function isInternalProbe(headers: Headers, url: URL | null): boolean {
 /** Classify a trust-API caller: our own probe first, then the UA list. */
 export function classifyTrustApiCaller(headers: Headers, url: URL | null): CallerClass {
   if (isInternalProbe(headers, url)) return { isCrawler: true, reason: INTERNAL_PROBE_REASON };
+  // A frozen-in-2019 Safari string is a fleet, not a buyer (see FOSSIL_UA).
+  if (isFossilUa(headers.get("user-agent"))) return { isCrawler: true, reason: FOSSIL_UA_REASON };
   // No JSON-RPC on this surface: pass a method so the MCP-specific
   // "bare URL fetch" and "anonymous discovery" rules stay out of it and only
   // the UA list applies.
@@ -511,6 +515,12 @@ export async function recordCheckoutStart(u: {
   entry: CheckoutEntry;
   method: string;
   status: number;
+  /**
+   * Overrides the `<method>:<status>` outcome. Used for `GET:offer-only` — an
+   * automated caller was shown the offer and NO Stripe session was minted, so
+   * the row must not match demand:report's `reached Stripe` (:302 / :200).
+   */
+  outcome?: string;
 }): Promise<void> {
   try {
     const p = getPool();
@@ -522,7 +532,7 @@ export async function recordCheckoutStart(u: {
       CHECKOUT_PATH,
       TRUST_API_CHECKOUT_SOURCE,
       u.entry.kind,
-      `${u.method}:${u.status}`,
+      u.outcome ?? `${u.method}:${u.status}`,
       beaconSessionHash(h),
       isCrawler,
       reason,
