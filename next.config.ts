@@ -9,7 +9,12 @@ const nextConfig: NextConfig = {
   },
   async redirects() {
     return [
-      { source: "/sponsor", destination: "/advertise", permanent: false },
+      // Thread #330: /advertise sold the same badge as /submit at a different
+      // price ladder and took 0 of 1,532 human sessions lifetime. /submit is the
+      // one listing price surface; old links land there.
+      { source: "/sponsor", destination: "/submit", permanent: false },
+      { source: "/advertise", destination: "/submit", permanent: true },
+      { source: "/advertise/:path*", destination: "/submit", permanent: true },
       /**
        * 97 internal links (7 pillar-page CTAs "Browse all MCP servers" + 83 blog
        * posts + the what-is page) point at /servers, and there is no index route

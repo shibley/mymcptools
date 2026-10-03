@@ -35,7 +35,7 @@
  *
  *   npm run tier:selfcheck
  */
-import { readFileSync } from "node:fs";
+import { existsSync, readFileSync } from "node:fs";
 
 const CHECKOUT = "src/app/api/checkout/route.ts";
 const SUBMIT = "src/app/submit/page.tsx";
@@ -97,6 +97,26 @@ if (!/function resolveTier\s*\(/.test(checkout)) {
   failures.push(`Rule 3: ${CHECKOUT} has no resolveTier() whitelist — a browser-supplied tier reaches the price map unchecked.`);
 } else if (!/resolveTier\(body\.tier\)/.test(checkout)) {
   failures.push(`Rule 3: resolveTier() exists but the request body is not routed through it.`);
+}
+
+// --- Rule 4: /submit is the ONLY surface that sells a listing (thread #330) -
+// /advertise sold the same badge at $49/$99/$199 beside /submit's $9/$49 and
+// took 0 of 1,532 human web sessions and 0 non-test checkouts, lifetime
+// (beacon 2026-08-18 -> 2026-10-03; Stripe since 2026-03-01). A second page
+// quoting a different price for the same deliverable makes #325's elasticity
+// read ambiguous. It now 301s to /submit; this keeps it from growing back.
+for (const dead of ["src/app/advertise", "src/app/api/advertise"]) {
+  if (existsSync(dead)) {
+    failures.push(`Rule 4: ${dead} exists — a second listing price surface beside /submit (thread #330).`);
+  }
+}
+const header = readFileSync("src/components/Header.tsx", "utf8");
+if (/href="\/advertise"/.test(header)) {
+  failures.push(`Rule 4: the header still links /advertise — send listing buyers to /submit.`);
+}
+const nextConfig = readFileSync("next.config.ts", "utf8");
+if (!/source:\s*"\/advertise",\s*destination:\s*"\/submit",\s*permanent:\s*true/.test(nextConfig)) {
+  failures.push(`Rule 4: next.config.ts has no permanent /advertise -> /submit redirect; old links would 404.`);
 }
 
 console.log("LISTING TIER SELF-CHECK — /submit price ladder (thread #325)");
