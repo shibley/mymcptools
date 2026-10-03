@@ -622,4 +622,42 @@ if (paidByStage === null) {
   );
 }
 
+// HUMAN DOOR: /servers/[slug] -> /developers#pro (src/lib/api/server-page-door.ts).
+// Every funnel above is machine-facing and its real cohort is ~1 caller/month;
+// the 694 sessions/30d reading server pages had no link to the price until
+// this door. Arrivals are pageviews tagged utm_source=server-page; starts join
+// on session_hash (same daily identity for /api/collect and the checkout row).
+const door = await client.query(
+  `with server_readers as (
+     select distinct session_hash from analytics.events
+      where site = 'mymcptools' and utm_source is null and path like '/servers/%'
+        and ts > now() - ($1 || ' days')::interval and not is_bot
+   ), arrivals as (
+     select distinct session_hash, utm_campaign from analytics.events
+      where site = 'mymcptools' and utm_source = 'server-page' and path = '/developers'
+        and ts > now() - ($1 || ' days')::interval and ${NOT_BOT}
+   ), starts as (
+     select session_hash, utm_campaign from analytics.events
+      where ${CHECKOUT_WHERE} and ${NOT_BOT}
+   )
+   select
+     (select count(*) from server_readers)::int                                          as readers,
+     (select count(distinct session_hash) from arrivals)::int                             as arrivals,
+     (select count(distinct a.session_hash) from arrivals a join starts s using (session_hash))::int as starts,
+     (select count(distinct a.session_hash) from arrivals a join starts s using (session_hash)
+        where s.utm_campaign like '%:302' or s.utm_campaign like '%:200')::int            as reached_stripe,
+     (select string_agg(utm_campaign, ', ') from (select utm_campaign from arrivals group by 1
+        order by count(*) desc limit 5) t)                                                 as top_slugs`,
+  [String(DAYS)]
+);
+const d0 = door.rows[0];
+console.log(`\n-- HUMAN door: server page -> /developers#pro (live from the door commit, 2026-10-03) --`);
+console.log(`server-page readers        ${d0.readers}  (human sessions on /servers/*)`);
+console.log(
+  `  -> clicked the API door  ${d0.arrivals}` +
+    (d0.readers ? `  (${((100 * d0.arrivals) / d0.readers).toFixed(2)}%)` : "") +
+    (d0.top_slugs ? `  from: ${d0.top_slugs}` : "")
+);
+console.log(`  -> started checkout     ${d0.starts}  joined on session  (${d0.reached_stripe} reached Stripe)`);
+
 await client.end();
