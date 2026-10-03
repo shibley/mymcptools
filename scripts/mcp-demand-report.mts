@@ -660,4 +660,26 @@ console.log(
 );
 console.log(`  -> started checkout     ${d0.starts}  joined on session  (${d0.reached_stripe} reached Stripe)`);
 
+// Since the retry of 2026-10-03 the door's button POSTs straight to checkout
+// (entry kind 'server-page'), so a press is a checkout row, not a /developers
+// pageview. Read it directly; the slug rides in the tag as `:server-<slug>`.
+const direct = await client.query(
+  `select count(*)::int                                                          as presses,
+          count(distinct session_hash)::int                                      as sessions,
+          count(*) filter (where utm_campaign like '%:302')::int                 as reached_stripe,
+          count(*) filter (where utm_campaign like '%offer-only')::int           as offer_only,
+          (select string_agg(t, ', ') from (select substring(referrer_full from ':server-(.*)$') t
+             from analytics.events where ${CHECKOUT_WHERE} and utm_medium = 'server-page' and ${NOT_BOT}
+             group by 1 order by count(*) desc limit 5) x)                       as top_slugs
+     from analytics.events
+    where ${CHECKOUT_WHERE} and utm_medium = 'server-page' and ${NOT_BOT}`,
+  [String(DAYS)]
+);
+const dd = direct.rows[0];
+console.log(
+  `  -> pressed the $49 button ${dd.presses} (${dd.sessions} sessions) -> ${dd.reached_stripe} reached Stripe` +
+    (dd.offer_only ? `, ${dd.offer_only} offer-only` : "") +
+    (dd.top_slugs ? `  from: ${dd.top_slugs}` : "")
+);
+
 await client.end();

@@ -25,6 +25,7 @@
  *   3. The price comes from PRO_PRICE_USD, the same constant the 401 body uses.
  */
 import { PRO_PRICE_USD } from "@/lib/api/auth";
+import { serverPageCheckoutAction } from "@/lib/api/checkout-entry";
 import {
   proPopulation,
   sellableCapabilities,
@@ -44,7 +45,12 @@ export interface HeldFact {
 }
 
 export interface ServerApiDoor {
-  /** /developers#pro, attributed to the page it was clicked from. */
+  /**
+   * The buy button's form action: POST /api/trust-api/checkout
+   * ?from=server-page&server=<slug> -> 303 to Stripe. One press, one hop.
+   */
+  checkoutAction: string;
+  /** /developers#pro (what the feed holds), attributed to this page. */
   href: string;
   /** This server's row in the free per-server endpoint (no key). */
   freeJsonHref: string;
@@ -108,6 +114,7 @@ export function serverApiDoor(slug: string): ServerApiDoor {
   const sellable = new Set(sellableCapabilities().map((c) => c.id));
 
   return {
+    checkoutAction: serverPageCheckoutAction(slug),
     href: serverApiDoorHref(slug),
     freeJsonHref: `/api/v1/servers/${encodeURIComponent(slug)}/status`,
     priceUsd: PRO_PRICE_USD,

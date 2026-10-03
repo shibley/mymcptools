@@ -59,7 +59,18 @@ export type EntryKind =
   | "gate" // bounced off a key-gated 401/429
   | "pointer" // followed a free-tier `pro` URL into a gate, then the gate's buy link
   | "page" // the /developers marketing page form
+  | "server-page" // the buy button under a /servers/[slug] Trust verdict
   | "direct"; // opened the checkout URL with no attribution
+
+/**
+ * A catalog slug as it may travel into Stripe metadata and an analytics tag.
+ * Shape-checked, not looked up: this module stays free of the 2,458-row
+ * catalog so the self-checks can import it cheaply. Anything else drops.
+ */
+const SLUG_RE = /^[a-z0-9][a-z0-9-]{0,99}$/;
+function isSlug(v: string | null): v is string {
+  return !!v && SLUG_RE.test(v);
+}
 
 /**
  * Whether the caller had SEEN the data before following the buy link. Closed
@@ -87,6 +98,12 @@ export interface CheckoutEntry {
   endpoint: GatedEndpoint | null;
   /** The free endpoint whose pointer started the walk, when known. */
   via: PointerSource | null;
+  /**
+   * The /servers/[slug] page whose buy button was pressed (kind "server-page"
+   * only). Optional so every entry built before the server-page door existed
+   * keeps its exact shape — in metadata, tags and the intent self-check.
+   */
+  server?: string | null;
 }
 
 function isGated(v: string | null): v is GatedEndpoint {
@@ -133,9 +150,15 @@ export function readCheckoutEntry(url: URL | null | undefined): CheckoutEntry {
       : "gate"
     : from === "developers"
       ? "page"
-      : source
-        ? "pointer"
-        : "direct";
+      : from === "server-page"
+        ? "server-page"
+        : source
+          ? "pointer"
+          : "direct";
+  const srv = url?.searchParams.get("server") ?? null;
+  if (kind === "server-page") {
+    return { kind, trial, endpoint, via: source, server: isSlug(srv) ? srv : null };
+  }
   return { kind, trial, endpoint, via: source };
 }
 
@@ -147,7 +170,8 @@ export function readCheckoutEntry(url: URL | null | undefined): CheckoutEntry {
  */
 export function entryTag(entry: CheckoutEntry): string {
   const base = `entry:${entry.kind}:${entry.endpoint ?? "-"}:${entry.via ?? "-"}`;
-  return entry.trial ? `${base}:trial-${entry.trial}` : base;
+  const withTrial = entry.trial ? `${base}:trial-${entry.trial}` : base;
+  return entry.server ? `${withTrial}:server-${entry.server}` : withTrial;
 }
 
 /**
@@ -162,5 +186,19 @@ export function stripeEntryMetadata(entry: CheckoutEntry): Record<string, string
     entry_endpoint: entry.endpoint ?? "",
     entry_via: entry.via ?? "",
     entry_trial: entry.trial ?? "",
+    ...(entry.server ? { entry_server: entry.server } : {}),
   };
+}
+
+/**
+ * The form action under a server page's Trust verdict. A POST, not a link:
+ * 2,458 server pages are crawled daily, and a GET href to a URL that mints a
+ * live Stripe session would be followed by every crawler the UA list misses
+ * (the FOSSIL_UA fleet minted 8 of 10 sessions/30d that way). Crawlers do not
+ * submit forms; a person pressing the button lands on Stripe in one hop.
+ */
+export function serverPageCheckoutAction(slug: string): string {
+  const qs = new URLSearchParams({ from: "server-page" });
+  if (isSlug(slug)) qs.set("server", slug);
+  return `${CHECKOUT_PATH}?${qs.toString()}`;
 }

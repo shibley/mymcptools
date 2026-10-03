@@ -502,7 +502,7 @@ async function recordGatedAttempt(u: TrustApiUsage): Promise<void> {
  * convert better than direct ones?" was unanswerable for want of a denominator.
  *
  *   utm_source   = 'trustapi-checkout'
- *   utm_medium   = entry kind ('gate' | 'pointer' | 'page' | 'direct')
+ *   utm_medium   = entry kind ('gate' | 'pointer' | 'page' | 'server-page' | 'direct')
  *   utm_campaign = '<METHOD>:<status>'
  *   referrer_full= 'entry:<kind>:<endpoint>:<via>'  (src/lib/api/checkout-entry.ts)
  */

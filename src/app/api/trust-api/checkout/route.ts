@@ -71,8 +71,83 @@ async function createProSession(opts: {
       ...stripeEntryMetadata(opts.entry),
     },
     success_url: `${SITE_URL}/developers/success?session_id={CHECKOUT_SESSION_ID}`,
-    cancel_url: `${SITE_URL}/developers?cancelled=1`,
+    cancel_url: cancelUrl(opts.entry),
   });
+}
+
+/**
+ * Where Stripe's back arrow goes. A buyer who pressed the button under a
+ * server's verdict goes back to THAT server page, not to a /developers page
+ * they never saw.
+ */
+function cancelUrl(entry: CheckoutEntry): string {
+  if (entry.kind === "server-page" && entry.server) {
+    return `${SITE_URL}/servers/${encodeURIComponent(entry.server)}?checkout=cancelled#trust`;
+  }
+  return `${SITE_URL}/developers?cancelled=1`;
+}
+
+function isFormPost(req: NextRequest): boolean {
+  const ct = req.headers.get("content-type") || "";
+  return ct.startsWith("application/x-www-form-urlencoded") || ct.startsWith("multipart/form-data");
+}
+
+/**
+ * POST from a plain HTML <form> — the buy button under every server page's
+ * Trust verdict (src/lib/api/server-page-door.ts). No email field and no JS:
+ * Stripe's hosted page collects the email, exactly as the GET path relies on.
+ * Answers 303 -> Stripe so the browser lands on the card form in one hop.
+ *
+ * Before this the server-page door was a link to /developers#pro, a second
+ * marketing page with its own JSON form — one hop more between the 694
+ * sessions/30d reading a verdict and a checkout, on a page that drew 2.
+ */
+async function formCheckout(req: NextRequest, entry: CheckoutEntry) {
+  if (isInternalProbe(req.headers, req.nextUrl)) {
+    await recordCheckoutStart({ headers: req.headers, url: req.nextUrl, entry, method: "POST", status: 200 });
+    return NextResponse.json({
+      probe: true,
+      would_create: {
+        mode: "subscription",
+        unit_amount: PRO_PRICE_CENTS,
+        order_summary: { name: proProductName(), description: proProductDescription() },
+        metadata: { product: "trust-api", plan: "pro", ...stripeEntryMetadata(entry) },
+        cancel_url: cancelUrl(entry),
+      },
+      entry,
+      note: "Dry run — no Stripe session was created. Drop ?probe=1 to buy.",
+    });
+  }
+
+  // A form-submitting automated client still gets no cart (see the GET path).
+  const caller = classifyTrustApiCaller(req.headers, req.nextUrl);
+  if (caller.isCrawler) {
+    await recordCheckoutStart({
+      headers: req.headers,
+      url: req.nextUrl,
+      entry,
+      method: "POST",
+      status: 303,
+      outcome: "POST:offer-only",
+    });
+    return NextResponse.redirect(`${SITE_URL}/developers#pro`, 303);
+  }
+
+  if (!STRIPE_SECRET_KEY) {
+    await recordCheckoutStart({ headers: req.headers, url: req.nextUrl, entry, method: "POST", status: 503 });
+    return NextResponse.json({ error: "Stripe not configured" }, { status: 503 });
+  }
+
+  try {
+    const session = await createProSession({ stripe: new Stripe(STRIPE_SECRET_KEY), entry });
+    // `POST:302` so demand:report's existing "reached Stripe" predicate
+    // (utm_campaign like '%:302') counts it with the GET redirects.
+    await recordCheckoutStart({ headers: req.headers, url: req.nextUrl, entry, method: "POST", status: 302 });
+    return NextResponse.redirect(session.url as string, 303);
+  } catch {
+    await recordCheckoutStart({ headers: req.headers, url: req.nextUrl, entry, method: "POST", status: 500 });
+    return NextResponse.json({ error: "Could not start checkout" }, { status: 500 });
+  }
 }
 
 /**
@@ -194,6 +269,7 @@ export async function GET(req: NextRequest) {
 
 export async function POST(req: NextRequest) {
   const entry = readCheckoutEntry(req.nextUrl);
+  if (isFormPost(req)) return formCheckout(req, entry);
 
   if (!STRIPE_SECRET_KEY) {
     return NextResponse.json({ error: "Stripe not configured" }, { status: 503 });

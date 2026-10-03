@@ -574,11 +574,22 @@ export default async function ServerPage({ params }: Props) {
                     .
                   </p>
                   <div className="mt-4 flex flex-wrap items-center gap-3">
+                    {/* A form POST, not a link: the press lands on Stripe in
+                        one hop, and crawlers (which follow hrefs, not forms)
+                        cannot mint live checkout sessions from 2,458 pages. */}
+                    <form method="post" action={apiDoor.checkoutAction} data-door-buy="trust-api">
+                      <button
+                        type="submit"
+                        className="inline-flex items-center rounded-lg bg-blue-600 px-4 py-2 text-sm font-semibold text-white transition hover:bg-blue-700"
+                      >
+                        Get an API key — ${apiDoor.priceUsd}/mo
+                      </button>
+                    </form>
                     <Link
                       href={apiDoor.href}
-                      className="inline-flex items-center rounded-lg bg-blue-600 px-4 py-2 text-sm font-semibold text-white transition hover:bg-blue-700"
+                      className="text-sm text-gray-400 transition hover:text-gray-300"
                     >
-                      Get an API key — ${apiDoor.priceUsd}/mo
+                      What&apos;s in the feed
                     </Link>
                     <a
                       href={apiDoor.freeJsonHref}
