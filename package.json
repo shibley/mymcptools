@@ -41,7 +41,8 @@
     "trial:selfcheck": "npx tsx scripts/trial-selfcheck.mts",
     "key:e2e": "npx tsx scripts/paid-key-e2e.mts",
     "door:selfcheck": "npx tsx scripts/server-door-selfcheck.mts",
-    "robots:selfcheck": "npx tsx scripts/robots-selfcheck.mts"
+    "robots:selfcheck": "npx tsx scripts/robots-selfcheck.mts",
+    "pass:e2e": "npx tsx scripts/pass-live-e2e.mts"
   },
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.29.0",

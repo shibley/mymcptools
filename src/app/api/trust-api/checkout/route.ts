@@ -5,6 +5,13 @@ import {
   stripeEntryMetadata,
   type CheckoutEntry,
 } from "@/lib/api/checkout-entry";
+import { readPlan, type TrustApiPlan } from "@/lib/api/pass";
+import {
+  cancelUrl,
+  planSummary,
+  PRO_PRICE_CENTS,
+  trustApiSessionParams,
+} from "@/lib/api/trust-api-session";
 import {
   classifyTrustApiCaller,
   isInternalProbe,
@@ -18,73 +25,32 @@ export const dynamic = "force-dynamic";
 const STRIPE_SECRET_KEY = process.env.STRIPE_SECRET_KEY;
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://mymcptools.com";
 
-// Trust Data API — self-serve Pro tier (PRD P2-1). $49/mo subscription,
-// same headline price point as the Advertise "Basic" sponsor tier. Uses
-// dynamic price_data (no pre-created Stripe product/price needed), same
-// fallback pattern as /api/advertise/checkout.
-//
-// THE ORDER SUMMARY IS NOT A LITERAL HERE ANY MORE. It used to read "live
-// status, uptime, latency, and drift for every probed MCP server" — four facts
-// we hold for 0, 44, 44 and 4 servers of 2,440, while the two we hold for 1,233
-// and 915 went unmentioned. Checkout was reached 4 times in the 30 days to
-// 2026-09-27 and paid 0 times. `@/lib/api/pro-offer` generates the name and
-// description from the committed stores' row counts, so a promise with no data
-// behind it cannot be shipped; `npm run offer:selfcheck` enforces that.
-const PRO_PRICE_CENTS = 4900;
+// Trust Data API — two plans on one route (PRD P2-1 + 2026-10-05):
+//   pro  — $49/mo subscription, the default and the machine-facing GET path.
+//   pass — $9 one-time 30-day key, selected by `?plan=pass` (src/lib/api/pass.ts).
+// Session parameters, order-summary copy and cancel_url live in
+// @/lib/api/trust-api-session so a live e2e can mint the exact same session.
 
-/**
- * Build the Stripe session. `email` is optional: a GET from a script has no
- * email to offer, and Stripe's own hosted page collects one (and passes it back
- * on the completed event as `customer_details.email`, which the webhook reads).
- * Requiring one up front is exactly what made this surface unreachable from an
- * API 401.
- */
-async function createProSession(opts: {
+async function createSession(opts: {
   stripe: Stripe;
+  plan: TrustApiPlan;
   email?: string;
   useCase?: string;
   entry: CheckoutEntry;
 }) {
-  return opts.stripe.checkout.sessions.create({
-    payment_method_types: ["card"],
-    mode: "subscription",
-    line_items: [
-      {
-        price_data: {
-          currency: "usd",
-          unit_amount: PRO_PRICE_CENTS,
-          recurring: { interval: "month" },
-          product_data: {
-            name: proProductName(),
-            description: proProductDescription(),
-          },
-        },
-        quantity: 1,
-      },
-    ],
-    ...(opts.email ? { customer_email: opts.email } : {}),
-    metadata: {
-      product: "trust-api",
-      plan: "pro",
-      email: (opts.email || "").slice(0, 255),
-      use_case: (opts.useCase || "").slice(0, 500),
-      ...stripeEntryMetadata(opts.entry),
-    },
-    success_url: `${SITE_URL}/developers/success?session_id={CHECKOUT_SESSION_ID}`,
-    cancel_url: cancelUrl(opts.entry),
-  });
+  return opts.stripe.checkout.sessions.create(trustApiSessionParams(opts));
 }
 
-/**
- * Where Stripe's back arrow goes. A buyer who pressed the button under a
- * server's verdict goes back to THAT server page, not to a /developers page
- * they never saw.
- */
-function cancelUrl(entry: CheckoutEntry): string {
-  if (entry.kind === "server-page" && entry.server) {
-    return `${SITE_URL}/servers/${encodeURIComponent(entry.server)}?checkout=cancelled#trust`;
-  }
-  return `${SITE_URL}/developers?cancelled=1`;
+/** What a ?probe=1 dry run reports: the session a press would have minted. */
+function wouldCreate(plan: TrustApiPlan, entry: CheckoutEntry) {
+  const p = planSummary(plan);
+  return {
+    mode: p.mode,
+    unit_amount: p.unit_amount,
+    order_summary: { name: p.name, description: p.description },
+    metadata: { product: "trust-api", plan: p.plan_id, ...stripeEntryMetadata(entry) },
+    cancel_url: cancelUrl(entry),
+  };
 }
 
 function isFormPost(req: NextRequest): boolean {
@@ -103,17 +69,13 @@ function isFormPost(req: NextRequest): boolean {
  * sessions/30d reading a verdict and a checkout, on a page that drew 2.
  */
 async function formCheckout(req: NextRequest, entry: CheckoutEntry) {
+  const plan = readPlan(req.nextUrl);
   if (isInternalProbe(req.headers, req.nextUrl)) {
-    await recordCheckoutStart({ headers: req.headers, url: req.nextUrl, entry, method: "POST", status: 200 });
+    await recordCheckoutStart({ headers: req.headers, url: req.nextUrl, entry, plan, method: "POST", status: 200 });
     return NextResponse.json({
       probe: true,
-      would_create: {
-        mode: "subscription",
-        unit_amount: PRO_PRICE_CENTS,
-        order_summary: { name: proProductName(), description: proProductDescription() },
-        metadata: { product: "trust-api", plan: "pro", ...stripeEntryMetadata(entry) },
-        cancel_url: cancelUrl(entry),
-      },
+      plan,
+      would_create: wouldCreate(plan, entry),
       entry,
       note: "Dry run — no Stripe session was created. Drop ?probe=1 to buy.",
     });
@@ -126,6 +88,7 @@ async function formCheckout(req: NextRequest, entry: CheckoutEntry) {
       headers: req.headers,
       url: req.nextUrl,
       entry,
+      plan,
       method: "POST",
       status: 303,
       outcome: "POST:offer-only",
@@ -134,18 +97,18 @@ async function formCheckout(req: NextRequest, entry: CheckoutEntry) {
   }
 
   if (!STRIPE_SECRET_KEY) {
-    await recordCheckoutStart({ headers: req.headers, url: req.nextUrl, entry, method: "POST", status: 503 });
+    await recordCheckoutStart({ headers: req.headers, url: req.nextUrl, entry, plan, method: "POST", status: 503 });
     return NextResponse.json({ error: "Stripe not configured" }, { status: 503 });
   }
 
   try {
-    const session = await createProSession({ stripe: new Stripe(STRIPE_SECRET_KEY), entry });
+    const session = await createSession({ stripe: new Stripe(STRIPE_SECRET_KEY), plan, entry });
     // `POST:302` so demand:report's existing "reached Stripe" predicate
     // (utm_campaign like '%:302') counts it with the GET redirects.
-    await recordCheckoutStart({ headers: req.headers, url: req.nextUrl, entry, method: "POST", status: 302 });
+    await recordCheckoutStart({ headers: req.headers, url: req.nextUrl, entry, plan, method: "POST", status: 302 });
     return NextResponse.redirect(session.url as string, 303);
   } catch {
-    await recordCheckoutStart({ headers: req.headers, url: req.nextUrl, entry, method: "POST", status: 500 });
+    await recordCheckoutStart({ headers: req.headers, url: req.nextUrl, entry, plan, method: "POST", status: 500 });
     return NextResponse.json({ error: "Could not start checkout" }, { status: 500 });
   }
 }
@@ -166,6 +129,7 @@ async function formCheckout(req: NextRequest, entry: CheckoutEntry) {
  */
 export async function GET(req: NextRequest) {
   const entry = readCheckoutEntry(req.nextUrl);
+  const plan = readPlan(req.nextUrl);
   const probe = isInternalProbe(req.headers, req.nextUrl);
 
   if (probe) {
@@ -173,24 +137,17 @@ export async function GET(req: NextRequest) {
       headers: req.headers,
       url: req.nextUrl,
       entry,
+      plan,
       method: "GET",
       status: 200,
     });
     return NextResponse.json({
       probe: true,
-      would_create: {
-        mode: "subscription",
-        unit_amount: PRO_PRICE_CENTS,
-        // The literal order summary Stripe would render. Reporting it here is
-        // what makes the last screen before the decision readable in
-        // production without minting a cart — the reason the old copy went
-        // 0/4 unnoticed is that nobody could see it without buying.
-        order_summary: {
-          name: proProductName(),
-          description: proProductDescription(),
-        },
-        metadata: { product: "trust-api", plan: "pro", ...stripeEntryMetadata(entry) },
-      },
+      // The literal order summary Stripe would render. Reporting it here is
+      // what makes the last screen before the decision readable in
+      // production without minting a cart — the reason the old copy went
+      // 0/4 unnoticed is that nobody could see it without buying.
+      would_create: wouldCreate(plan, entry),
       entry,
       note: "Dry run — no Stripe session was created. Drop ?probe=1 to buy.",
     });
@@ -211,6 +168,7 @@ export async function GET(req: NextRequest) {
       headers: req.headers,
       url: req.nextUrl,
       entry,
+      plan,
       method: "GET",
       status: 200,
       outcome: "GET:offer-only",
@@ -235,6 +193,7 @@ export async function GET(req: NextRequest) {
       headers: req.headers,
       url: req.nextUrl,
       entry,
+      plan,
       method: "GET",
       status: 503,
     });
@@ -242,14 +201,16 @@ export async function GET(req: NextRequest) {
   }
 
   try {
-    const session = await createProSession({
+    const session = await createSession({
       stripe: new Stripe(STRIPE_SECRET_KEY),
+      plan,
       entry,
     });
     await recordCheckoutStart({
       headers: req.headers,
       url: req.nextUrl,
       entry,
+      plan,
       method: "GET",
       status: 302,
     });
@@ -260,6 +221,7 @@ export async function GET(req: NextRequest) {
       headers: req.headers,
       url: req.nextUrl,
       entry,
+      plan,
       method: "GET",
       status: 500,
     });
@@ -287,8 +249,9 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: "Valid email required" }, { status: 400 });
   }
 
-  const session = await createProSession({
+  const session = await createSession({
     stripe: new Stripe(STRIPE_SECRET_KEY),
+    plan: readPlan(req.nextUrl),
     email,
     useCase,
     entry,

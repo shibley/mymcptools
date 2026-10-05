@@ -24,6 +24,7 @@
 
 import { Pool } from "pg";
 import seedKeys from "@/data/api-keys.json";
+import { keyIsLive, LIVE_KEY_SQL } from "./pass";
 
 export interface ApiKeyRecord {
   key: string;
@@ -104,16 +105,20 @@ export async function addApiKey(record: ApiKeyRecord): Promise<void> {
   );
 }
 
-/** True if `key` is a live, active self-serve key. */
+/**
+ * True if `key` is a live, active self-serve key. A $9 one-time pass key
+ * (plan 'pass-30d', src/lib/api/pass.ts) stops being live 30 days after
+ * purchase — the SQL and the seed check share keyIsLive()'s rule.
+ */
 export async function isActiveStoredKey(key: string): Promise<boolean> {
   if (!key) return false;
-  if (seed.keys.some((k) => k.key === key && k.status === "active")) return true;
+  if (seed.keys.some((k) => k.key === key && keyIsLive(k))) return true;
   const p = getPool();
   if (!p) return false;
   try {
     const { rows } = await p.query(
       `SELECT 1 FROM analytics.mcpt_api_keys
-        WHERE key = $1 AND status = 'active' LIMIT 1`,
+        WHERE key = $1 AND ${LIVE_KEY_SQL} LIMIT 1`,
       [key]
     );
     return rows.length > 0;

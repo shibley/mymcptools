@@ -1,5 +1,6 @@
 /**
- * Fulfilment for a paid $49/mo Trust Data API subscription.
+ * Fulfilment for a paid Trust Data API key — the $49/mo subscription or the
+ * $9 one-time 30-day key (plan 'pass-30d', src/lib/api/pass.ts).
  *
  * WHY THIS EXISTS (thread #241). The Stripe webhook's `trust-api` branch did
  * four things in this order: generate a key, email it to the buyer promising it
@@ -30,6 +31,7 @@
  */
 import { randomBytes } from "node:crypto";
 import type { ApiKeyRecord } from "./key-store";
+import { PASS_DAYS, PASS_PLAN_ID, passExpiresAt } from "./pass";
 
 /** mcpt_live_<48 hex chars> — generated per Trust API subscription purchase. */
 export function generateApiKey(): string {
@@ -81,7 +83,13 @@ function customerHtml(record: ApiKeyRecord, activated: boolean): string {
            no action needed from you. Once live:</p>
            <pre>${CURL_EXAMPLE(record.key)}</pre>`
     }
-    <p>Your plan: <strong>${record.plan}</strong> — every /api/v1 endpoint, 120 req/min.</p>
+    ${
+      record.plan === PASS_PLAN_ID
+        ? `<p>Your plan: <strong>${PASS_DAYS}-day key</strong> — every /api/v1 endpoint, 120 req/min,
+           until <strong>${passExpiresAt(record.created_at).toISOString().slice(0, 10)}</strong>.
+           One payment: nothing renews and there is nothing to cancel.</p>`
+        : `<p>Your plan: <strong>${record.plan}</strong> — every /api/v1 endpoint, 120 req/min.</p>`
+    }
     <p>Docs: <a href="https://mymcptools.com/developers">mymcptools.com/developers</a></p>
     <p>Questions? Reply to this email.</p>
     <p>— MyMCPTools Team</p>
@@ -112,7 +120,9 @@ function adminHtml(
     }</p>
     <p><strong>Key:</strong> <code>${record.key}</code></p>
     <p><strong>Stripe Session:</strong> ${sessionId}</p>
-    <p><strong>Amount:</strong> $${((amountTotal || 0) / 100).toFixed(2)}/mo</p>
+    <p><strong>Amount:</strong> $${((amountTotal || 0) / 100).toFixed(2)}${
+      record.plan === PASS_PLAN_ID ? ` one-time (${PASS_DAYS}-day key, expires ${passExpiresAt(record.created_at).toISOString().slice(0, 10)})` : "/mo"
+    }</p>
     ${
       activated
         ? ""
@@ -168,7 +178,7 @@ export async function fulfilTrustApiPurchase(
   await deps.sendEmail(
     deps.adminEmail,
     activated
-      ? `🔑 Trust API Pro subscription: ${email || sessionId}`
+      ? `🔑 Trust API ${record.plan === PASS_PLAN_ID ? `${PASS_DAYS}-day key ($9 one-time)` : "Pro subscription"}: ${email || sessionId}`
       : `⚠️ Trust API PAID but key NOT ACTIVE: ${email || sessionId}`,
     adminHtml(record, activated, input, error)
   );

@@ -679,7 +679,10 @@ const direct = await client.query(
           count(distinct session_hash)::int                                      as sessions,
           count(*) filter (where utm_campaign like '%:302')::int                 as reached_stripe,
           count(*) filter (where utm_campaign like '%offer-only')::int           as offer_only,
-          (select string_agg(t, ', ') from (select substring(referrer_full from ':server-(.*)$') t
+          count(*) filter (where referrer_full like '%:plan-pass%')::int         as pass_presses,
+          count(*) filter (where referrer_full like '%:plan-pass%'
+                             and utm_campaign like '%:302')::int                 as pass_reached_stripe,
+          (select string_agg(t, ', ') from (select substring(referrer_full from ':server-([^:]*)$') t
              from analytics.events where ${CHECKOUT_WHERE} and utm_medium = 'server-page' and ${NOT_BOT}
              group by 1 order by count(*) desc limit 5) x)                       as top_slugs
      from analytics.events
@@ -688,9 +691,16 @@ const direct = await client.query(
 );
 const dd = direct.rows[0];
 console.log(
-  `  -> pressed the $49 button ${dd.presses} (${dd.sessions} of ${d0.exposed} exposed sessions) -> ${dd.reached_stripe} reached Stripe` +
+  `  -> pressed a buy button  ${dd.presses} (${dd.sessions} of ${d0.exposed} exposed sessions) -> ${dd.reached_stripe} reached Stripe` +
     (dd.offer_only ? `, ${dd.offer_only} offer-only` : "") +
     (dd.top_slugs ? `  from: ${dd.top_slugs}` : "")
+);
+// The $9 one-time 30-day key (src/lib/api/pass.ts) went live beside $49/mo on
+// 2026-10-05; its rows carry `:plan-pass` in the entry tag. Read the two
+// against each other — the pass exists because $49/mo drew 0 of 33.
+console.log(
+  `       by plan: $49/mo ${dd.presses - dd.pass_presses} (${dd.reached_stripe - dd.pass_reached_stripe} reached Stripe)` +
+    ` | $9 30-day ${dd.pass_presses} (${dd.pass_reached_stripe} reached Stripe)`
 );
 
 await client.end();

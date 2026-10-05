@@ -26,6 +26,7 @@
  */
 import { PRO_PRICE_USD } from "@/lib/api/auth";
 import { serverPageCheckoutAction } from "@/lib/api/checkout-entry";
+import { PASS_DAYS, PASS_PRICE_USD } from "@/lib/api/pass";
 import {
   proPopulation,
   sellableCapabilities,
@@ -50,6 +51,14 @@ export interface ServerApiDoor {
    * ?from=server-page&server=<slug> -> 303 to Stripe. One press, one hop.
    */
   checkoutAction: string;
+  /**
+   * The $9 one-time 30-day key (src/lib/api/pass.ts): same form, `&plan=pass`.
+   * 0 of 33 exposed sessions pressed $49/mo; the property's only stranger
+   * payment ever was a one-time $9.
+   */
+  passAction: string;
+  passPriceUsd: number;
+  passDays: number;
   /** /developers#pro (what the feed holds), attributed to this page. */
   href: string;
   /** This server's row in the free per-server endpoint (no key). */
@@ -115,6 +124,9 @@ export function serverApiDoor(slug: string): ServerApiDoor {
 
   return {
     checkoutAction: serverPageCheckoutAction(slug),
+    passAction: serverPageCheckoutAction(slug, "pass"),
+    passPriceUsd: PASS_PRICE_USD,
+    passDays: PASS_DAYS,
     href: serverApiDoorHref(slug),
     freeJsonHref: `/api/v1/servers/${encodeURIComponent(slug)}/status`,
     priceUsd: PRO_PRICE_USD,

@@ -221,5 +221,102 @@ await check("demand:report reads the door's arrivals back", () => {
   ok(/utm_source = 'server-page'/.test(src), 'no arrival read');
 });
 
+// ---- $9 one-time 30-day key (retry of bf6b825, 2026-10-05) -----------------
+// 0 of 33 exposed sessions pressed $49/mo; the only stranger who ever paid this
+// property paid $9 once. The door now offers both. These drive the real route,
+// the real session builder, the real key-liveness rule and the real receipt.
+
+await check('the door offers a $9 one-time 30-day key beside $49/mo', () => {
+  ok(door, 'no module');
+  const d = door.serverApiDoor('ab-tasty-mcp');
+  ok(typeof d.passAction === 'string', 'no passAction — the only price is a subscription');
+  const u = new URL(d.passAction, 'https://mymcptools.com');
+  ok(u.pathname === '/api/trust-api/checkout', `pass action ${u.pathname}`);
+  ok(u.searchParams.get('plan') === 'pass', 'pass action does not select plan=pass');
+  const e = readCheckoutEntry(u);
+  ok(e.kind === 'server-page' && e.server === 'ab-tasty-mcp', 'pass press loses server-page attribution');
+  ok(d.passPriceUsd === 9 && d.passDays === 30, `pass ${d.passPriceUsd}/${d.passDays}d`);
+  ok(new URL(d.checkoutAction, 'https://x').searchParams.get('plan') === null, '$49 button changed plan');
+});
+
+await check('page renders the pass as its own POST form under the verdict', () => {
+  const src = readFileSync(PAGE, 'utf8');
+  ok(/<form method="post" action=\{apiDoor\.passAction\}/.test(src), 'no POST form to apiDoor.passAction');
+  ok(/no subscription/.test(src), 'button does not say it is not a subscription');
+  ok(src.indexOf('apiDoor.passAction') > src.indexOf('id="trust"'), 'pass button not under the verdict');
+});
+
+await check('a pass press (probe) would mint a one-time $9 payment, not a subscription', async () => {
+  ok(route, 'route not importable');
+  const res = await route.POST(formPost('from=server-page&server=ab-tasty-mcp&plan=pass&probe=1'));
+  ok(res.status === 200, `status ${res.status}`);
+  const j = await res.json();
+  ok(j.would_create?.mode === 'payment', `mode ${j.would_create?.mode} — a pass must not recur`);
+  ok(j.would_create.unit_amount === 900, `amount ${j.would_create.unit_amount}`);
+  ok(j.would_create.metadata.plan === 'pass-30d', `plan ${j.would_create.metadata.plan}`);
+  ok(j.would_create.metadata.entry_server === 'ab-tasty-mcp', 'slug lost');
+  ok(/30-day key/.test(j.would_create.order_summary.name), 'order summary does not name the 30-day key');
+  const pro = await (await route.POST(formPost('from=server-page&server=ab-tasty-mcp&probe=1'))).json();
+  ok(pro.would_create.mode === 'subscription' && pro.would_create.unit_amount === 4900, '$49/mo default changed');
+});
+
+await check('a real person pressing the pass reaches the Stripe step (503: key unset here)', async () => {
+  ok(route, 'route not importable');
+  const res = await route.POST(formPost('from=server-page&server=ab-tasty-mcp&plan=pass'));
+  ok(res.status === 503, `status ${res.status}`);
+});
+
+await check('Stripe params: pass has no recurring price; pro recurs monthly', async () => {
+  const lib = new URL('../src/lib/api/trust-api-session.ts', import.meta.url);
+  ok(existsSync(lib), 'no shared session builder');
+  const { trustApiSessionParams } = await import(lib.href);
+  const entry = readCheckoutEntry(new URL('https://x/api/trust-api/checkout?from=server-page&server=ab-tasty-mcp'));
+  const pass = trustApiSessionParams({ plan: 'pass', entry });
+  ok(pass.mode === 'payment', `pass mode ${pass.mode}`);
+  ok(!('recurring' in pass.line_items[0].price_data), 'pass price carries recurring');
+  const pro = trustApiSessionParams({ plan: 'pro', entry });
+  ok(pro.mode === 'subscription' && pro.line_items[0].price_data.recurring?.interval === 'month', 'pro no longer monthly');
+});
+
+await check('a pass key opens the API for 30 days, then stops; pro keys do not expire', async () => {
+  const lib = new URL('../src/lib/api/pass.ts', import.meta.url);
+  ok(existsSync(lib), 'no pass module');
+  const { keyIsLive, LIVE_KEY_SQL } = await import(lib.href);
+  const now = new Date('2026-10-05T00:00:00Z');
+  const ago = (d: number) => new Date(now.getTime() - d * 86_400_000).toISOString();
+  ok(keyIsLive({ plan: 'pass-30d', status: 'active', created_at: ago(29) }, now), '29-day-old pass dead');
+  ok(!keyIsLive({ plan: 'pass-30d', status: 'active', created_at: ago(31) }, now), '31-day-old pass still live');
+  ok(keyIsLive({ plan: 'pro', status: 'active', created_at: ago(400) }, now), 'pro key expired');
+  ok(!keyIsLive({ plan: 'pro', status: 'revoked', created_at: ago(1) }, now), 'revoked key live');
+  const store = readFileSync(new URL('../src/lib/api/key-store.ts', import.meta.url), 'utf8');
+  ok(/\$\{LIVE_KEY_SQL\}/.test(store), 'key-store lookup ignores pass expiry');
+  ok(/interval '30 days'/.test(LIVE_KEY_SQL), `sql ${LIVE_KEY_SQL}`);
+});
+
+await check('the pass receipt states the expiry and never says /mo', async () => {
+  const { fulfilTrustApiPurchase } = await import('../src/lib/api/trust-api-fulfilment.ts');
+  const mails: { to: string; html: string }[] = [];
+  const r = await fulfilTrustApiPurchase(
+    { meta: { product: 'trust-api', plan: 'pass-30d' }, sessionId: 'cs_test', customerEmail: 'funnel-probe+trust-layer@apistatuscheck.com', amountTotal: 900 },
+    { addKey: async () => {}, sendEmail: async (to, _s, html) => { mails.push({ to, html }); }, adminEmail: 'admin@x', generateKey: () => 'k', now: () => new Date('2026-10-05T00:00:00Z') }
+  );
+  ok(r.record.plan === 'pass-30d', `plan ${r.record.plan}`);
+  const cust = mails.find((m) => m.to.startsWith('funnel-probe'));
+  ok(cust && /2026-11-04/.test(cust.html) && /nothing renews/.test(cust.html), 'customer not told when it ends');
+  const admin = mails.find((m) => m.to === 'admin@x');
+  ok(admin && /one-time/.test(admin.html) && !/9\.00\/mo/.test(admin.html), 'admin mail books $9 as monthly');
+});
+
+await check('pass rows are tagged before the slug, so the slug tail still parses', () => {
+  const e = readCheckoutEntry(new URL('https://x/api/trust-api/checkout?from=server-page&server=ab-tasty-mcp'));
+  const t = entryTag(e, 'pass');
+  ok(t === 'entry:server-page:-:-:plan-pass:server-ab-tasty-mcp', `tag ${t}`);
+  // demand:report's slug read. `:server-(.*)$` matched the `entry:server-page`
+  // prefix first and returned 'page:-:-:server-<slug>' for every row.
+  ok(/:server-([^:]*)$/.exec(t)?.[1] === 'ab-tasty-mcp', 'slug tail broken');
+  ok(/':server-\(\[\^:\]\*\)\$'/.test(readFileSync(REPORT, 'utf8')), 'demand:report slug regex still greedy');
+  ok(/plan-pass/.test(readFileSync(REPORT, 'utf8')), 'demand:report never splits presses by plan');
+});
+
 console.log(failures ? `\n${failures} FAILED` : '\nall checks passed');
 process.exit(failures ? 1 : 0);

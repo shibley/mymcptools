@@ -513,6 +513,8 @@ export async function recordCheckoutStart(u: {
   headers: Headers;
   url?: URL | null;
   entry: CheckoutEntry;
+  /** 'pass' tags the row `:plan-pass` (the $9 one-time key); default 'pro'. */
+  plan?: "pro" | "pass";
   method: string;
   status: number;
   /**
@@ -538,7 +540,7 @@ export async function recordCheckoutStart(u: {
       reason,
       trunc(h.get("user-agent"), 512),
       trunc(h.get("x-vercel-ip-country"), 8),
-      entryTag(u.entry),
+      entryTag(u.entry, u.plan),
     ]);
   } catch {
     // Never surface a warehouse problem as a checkout failure.

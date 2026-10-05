@@ -585,6 +585,16 @@ export default async function ServerPage({ params }: Props) {
                         Get an API key — ${apiDoor.priceUsd}/mo
                       </button>
                     </form>
+                    {/* One-time alternative: same key for a fixed window, no
+                        subscription. See src/lib/api/pass.ts for why. */}
+                    <form method="post" action={apiDoor.passAction} data-door-buy="trust-api-pass">
+                      <button
+                        type="submit"
+                        className="inline-flex items-center rounded-lg border border-blue-500/40 px-4 py-2 text-sm font-semibold text-blue-200 transition hover:bg-blue-500/10"
+                      >
+                        {apiDoor.passDays}-day key — ${apiDoor.passPriceUsd} once, no subscription
+                      </button>
+                    </form>
                     <Link
                       href={apiDoor.href}
                       className="text-sm text-gray-400 transition hover:text-gray-300"

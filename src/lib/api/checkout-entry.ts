@@ -168,10 +168,13 @@ export function readCheckoutEntry(url: URL | null | undefined): CheckoutEntry {
  * The trial stage is APPENDED as a fifth segment only when present, so every
  * row written before it existed still parses as the same four-part tag.
  */
-export function entryTag(entry: CheckoutEntry): string {
+export function entryTag(entry: CheckoutEntry, plan?: "pro" | "pass"): string {
   const base = `entry:${entry.kind}:${entry.endpoint ?? "-"}:${entry.via ?? "-"}`;
   const withTrial = entry.trial ? `${base}:trial-${entry.trial}` : base;
-  return entry.server ? `${withTrial}:server-${entry.server}` : withTrial;
+  // `:plan-pass` marks the $9 one-time key (src/lib/api/pass.ts). It sits
+  // BEFORE `:server-<slug>` because demand:report reads the slug as the tail.
+  const withPlan = plan === "pass" ? `${withTrial}:plan-pass` : withTrial;
+  return entry.server ? `${withPlan}:server-${entry.server}` : withPlan;
 }
 
 /**
@@ -197,8 +200,9 @@ export function stripeEntryMetadata(entry: CheckoutEntry): Record<string, string
  * (the FOSSIL_UA fleet minted 8 of 10 sessions/30d that way). Crawlers do not
  * submit forms; a person pressing the button lands on Stripe in one hop.
  */
-export function serverPageCheckoutAction(slug: string): string {
+export function serverPageCheckoutAction(slug: string, plan: "pro" | "pass" = "pro"): string {
   const qs = new URLSearchParams({ from: "server-page" });
   if (isSlug(slug)) qs.set("server", slug);
+  if (plan === "pass") qs.set("plan", "pass");
   return `${CHECKOUT_PATH}?${qs.toString()}`;
 }
