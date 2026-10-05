@@ -40,7 +40,8 @@
     "caller:selfcheck": "node scripts/caller-class-selfcheck.mts",
     "trial:selfcheck": "npx tsx scripts/trial-selfcheck.mts",
     "key:e2e": "npx tsx scripts/paid-key-e2e.mts",
-    "door:selfcheck": "npx tsx scripts/server-door-selfcheck.mts"
+    "door:selfcheck": "npx tsx scripts/server-door-selfcheck.mts",
+    "robots:selfcheck": "npx tsx scripts/robots-selfcheck.mts"
   },
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.29.0",

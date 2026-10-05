@@ -627,6 +627,10 @@ if (paidByStage === null) {
 // the 694 sessions/30d reading server pages had no link to the price until
 // this door. Arrivals are pageviews tagged utm_source=server-page; starts join
 // on session_hash (same daily identity for /api/collect and the checkout row).
+// The $49 form button went live with a0e99c0; the first server-page checkout
+// row is 2026-10-03T23:06:58Z. A 30-day reader count is NOT the door's
+// denominator — it printed "0 of 727 (0.00%)" when ~35 sessions had seen it.
+const DOOR_LIVE = '2026-10-03T23:06:58Z';
 const door = await client.query(
   `with server_readers as (
      select distinct session_hash from analytics.events
@@ -642,17 +646,24 @@ const door = await client.query(
    )
    select
      (select count(*) from server_readers)::int                                          as readers,
+     (select count(distinct session_hash) from analytics.events
+       where site = 'mymcptools' and utm_source is null and path like '/servers/%'
+         and ts >= $2::timestamptz and not is_bot)::int                                   as exposed,
      (select count(distinct session_hash) from arrivals)::int                             as arrivals,
      (select count(distinct a.session_hash) from arrivals a join starts s using (session_hash))::int as starts,
      (select count(distinct a.session_hash) from arrivals a join starts s using (session_hash)
         where s.utm_campaign like '%:302' or s.utm_campaign like '%:200')::int            as reached_stripe,
      (select string_agg(utm_campaign, ', ') from (select utm_campaign from arrivals group by 1
         order by count(*) desc limit 5) t)                                                 as top_slugs`,
-  [String(DAYS)]
+  [String(DAYS), DOOR_LIVE]
 );
 const d0 = door.rows[0];
 console.log(`\n-- HUMAN door: server page -> /developers#pro (live from the door commit, 2026-10-03) --`);
-console.log(`server-page readers        ${d0.readers}  (human sessions on /servers/*)`);
+console.log(`server-page readers        ${d0.readers}  (human sessions on /servers/*, ${DAYS}d)`);
+const daysLive = (Date.now() - Date.parse(DOOR_LIVE)) / 86_400_000;
+console.log(
+  `  exposed to the $49 button ${d0.exposed}  (since ${DOOR_LIVE.slice(0, 10)}, ${daysLive.toFixed(1)}d live — the denominator for presses below)`
+);
 console.log(
   `  -> clicked the API door  ${d0.arrivals}` +
     (d0.readers ? `  (${((100 * d0.arrivals) / d0.readers).toFixed(2)}%)` : "") +
@@ -677,7 +688,7 @@ const direct = await client.query(
 );
 const dd = direct.rows[0];
 console.log(
-  `  -> pressed the $49 button ${dd.presses} (${dd.sessions} sessions) -> ${dd.reached_stripe} reached Stripe` +
+  `  -> pressed the $49 button ${dd.presses} (${dd.sessions} of ${d0.exposed} exposed sessions) -> ${dd.reached_stripe} reached Stripe` +
     (dd.offer_only ? `, ${dd.offer_only} offer-only` : "") +
     (dd.top_slugs ? `  from: ${dd.top_slugs}` : "")
 );
