@@ -703,4 +703,30 @@ console.log(
     ` | $9 30-day ${dd.pass_presses} (${dd.pass_reached_stripe} reached Stripe)`
 );
 
+// MAKER DOOR (src/lib/maker-door.ts): every href carries utm_source=maker-door
+// and utm_medium=<entry> (server-page | submit-ack | submit-success) — the
+// beacon stores the path only, so before 2026-10-07 an arrival was invisible.
+// Free submissions are the ack door's exposure: each one is mailed the door.
+// Cash is read in Stripe (metadata.entry), not here.
+const maker = await client.query(
+  `select coalesce(utm_medium, '?') as entry,
+          count(distinct session_hash)::int as sessions,
+          count(distinct session_hash) filter (where not is_bot)::int as human
+     from analytics.events
+    where site = 'mymcptools' and path = '/submit' and utm_source = 'maker-door'
+      and ts > now() - ($1 || ' days')::interval
+    group by 1 order by 2 desc`,
+  [String(DAYS)]
+);
+const acks = await client.query(
+  `select count(*)::int as n from analytics.events
+    where site = 'mymcptools' and path = '/_e/submit/received' and bot_reason = 'server-submit'
+      and ts > now() - ($1 || ' days')::interval`,
+  [String(DAYS)]
+);
+console.log(`\n-- MAKER door: -> /submit on Featured ($9), tagged from 2026-10-07 --`);
+console.log(`free submissions (each mailed the submit-ack door)  ${acks.rows[0].n}  (${DAYS}d, non-probe)`);
+if (!maker.rows.length) console.log(`  door arrivals            0 tagged`);
+for (const r of maker.rows) console.log(`  arrivals via ${String(r.entry).padEnd(15)} ${r.human} human session(s)  (${r.sessions} incl. bots)`);
+
 await client.end();

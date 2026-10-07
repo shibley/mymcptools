@@ -2,6 +2,7 @@
 
 import { useState, useEffect, FormEvent } from "react";
 import Link from "next/link";
+import { ackDoorHref, cleanDoorEntry, type MakerDoorEntry, type SubmittedFields } from "@/lib/maker-door";
 
 type ListingTier = "free" | "featured" | "pro";
 
@@ -14,6 +15,10 @@ export default function SubmitPage() {
   // Read in an effect rather than useSearchParams so the page stays static.
   const [prefill, setPrefill] = useState<Record<string, string>>({});
   const [doorServer, setDoorServer] = useState<string>("");
+  // Which maker door opened this page (server page, ack mail, success screen).
+  const [doorFrom, setDoorFrom] = useState<MakerDoorEntry | undefined>(undefined);
+  // A free submission's fields, handed back by the success screen's door.
+  const [sent, setSent] = useState<{ fields: SubmittedFields; server?: string } | null>(null);
 
   useEffect(() => {
     const sp = new URLSearchParams(window.location.search);
@@ -21,8 +26,9 @@ export default function SubmitPage() {
     if (t === "featured" || t === "pro") setTier(t);
     const server = sp.get("server") || "";
     if (/^[A-Za-z0-9][A-Za-z0-9-]{0,79}$/.test(server)) setDoorServer(server);
+    setDoorFrom(cleanDoorEntry(sp.get("from")));
     const next: Record<string, string> = {};
-    for (const k of ["name", "description", "github", "website", "category", "install"]) {
+    for (const k of ["name", "description", "github", "website", "category", "install", "email"]) {
       const v = sp.get(k);
       if (v) next[k] = v.slice(0, 500);
     }
@@ -49,7 +55,7 @@ export default function SubmitPage() {
       // Catalog slug from the maker door; the route re-validates it and the
       // webhook only honours a slug the catalog really holds.
       server: doorServer || undefined,
-      from: doorServer ? "server-page" : undefined,
+      from: doorFrom ?? (doorServer ? "server-page" : undefined),
     };
 
     // Honeypot check
@@ -92,6 +98,18 @@ export default function SubmitPage() {
         setErrorMsg(json.error || "Something went wrong. Please try again.");
         setStatus("error");
       } else {
+        setSent({
+          fields: {
+            toolName: data.toolName,
+            description: data.description,
+            github: data.github,
+            website: data.website,
+            category: data.category,
+            installType: data.installType,
+            email: data.email,
+          },
+          server: typeof json.server === "string" ? json.server : undefined,
+        });
         setStatus("success");
       }
     } catch {
@@ -109,6 +127,29 @@ export default function SubmitPage() {
           <p className="text-gray-400 mb-6">
             Thanks for submitting your MCP server. We&apos;ll review it within 24-48 hours and notify you by email.
           </p>
+          {sent && (
+            // MAKER DOOR, entry `submit-success` (src/lib/maker-door.ts): the
+            // one moment a maker is certainly on the page, with the $9 tier
+            // one press away and every field they just typed carried over.
+            <div data-maker-door="submit-success" className="mb-6 rounded-lg border border-yellow-800/60 bg-yellow-950/20 p-5 text-left">
+              <p className="font-semibold text-yellow-300 mb-1">Want {sent.fields.toolName} featured? $9 once.</p>
+              <p className="text-sm text-gray-400 mb-4">
+                Priority review within 24 hours, a Featured badge on the listing, and the top of its category. Your details carry over.
+              </p>
+              <a
+                href={ackDoorHref(sent.fields, "submit-success", sent.server)}
+                onClick={(e) => {
+                  // Same page: a hash-only reload would keep the success state.
+                  e.preventDefault();
+                  window.location.assign(ackDoorHref(sent.fields, "submit-success", sent.server));
+                }}
+                rel="nofollow"
+                className="inline-block px-5 py-2.5 bg-yellow-600 hover:bg-yellow-500 text-gray-950 font-semibold rounded-lg transition"
+              >
+                Feature it — $9 once
+              </a>
+            </div>
+          )}
           <Link href="/" className="inline-block px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition">
             Back to Directory
           </Link>
@@ -122,7 +163,7 @@ export default function SubmitPage() {
       {/* Header */}
       <div className="text-center mb-10">
         <h1 className="text-3xl font-bold text-white mb-4">
-          {doorServer ? `Feature ${prefill.name || "your server"} on MyMCPTools` : "Submit Your MCP Server"}
+          {doorServer || doorFrom ? `Feature ${prefill.name || "your server"} on MyMCPTools` : "Submit Your MCP Server"}
         </h1>
         <p className="text-gray-400">
           {doorServer ? (
@@ -354,6 +395,7 @@ export default function SubmitPage() {
               id="email"
               name="email"
               required
+              defaultValue={prefill.email}
               placeholder="you@example.com"
               className="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg text-gray-100 placeholder-gray-500 focus:outline-none focus:border-blue-500 transition"
             />

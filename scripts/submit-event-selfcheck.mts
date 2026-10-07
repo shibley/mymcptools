@@ -56,7 +56,7 @@ check("calls recordSubmissionEvent(", src.includes("recordSubmissionEvent("));
 
 // The call must sit on the success path: after the maker ack, before the 200.
 const callAt = src.indexOf("recordSubmissionEvent(req.headers");
-const ackAt = src.indexOf("buildConfirmationEmailHtml(toolName");
+const ackAt = src.indexOf("buildConfirmationEmailHtml(submitted");
 const okAt = src.indexOf('success: true,\n      message: "Submission received!');
 check("call is on the success path (after ack, before the 200)",
   callAt > 0 && ackAt > 0 && okAt > 0 && callAt > ackAt && callAt < okAt,

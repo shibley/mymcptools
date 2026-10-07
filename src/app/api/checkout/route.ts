@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import Stripe from "stripe";
-import { cleanServerSlug, MAKER_DOOR_FROM } from "@/lib/maker-door";
+import { cleanDoorEntry, cleanServerSlug, MAKER_DOOR_FROM } from "@/lib/maker-door";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -80,6 +80,9 @@ export async function POST(req: NextRequest) {
   // Maker door: the catalog slug this order is FOR. Whitelisted here and again
   // in the webhook (resolveListingSlug only honours a real catalog slug).
   const server = cleanServerSlug(body.server);
+  // Which maker door sold it (server page, ack mail, success screen). Kept
+  // even with no `server` — a brand-new server's ack door has no catalog slug.
+  const entry = cleanDoorEntry(body.from) ?? (server ? MAKER_DOOR_FROM : undefined);
 
   if (!toolName || !email || !github || !category || !installType) {
     return NextResponse.json({ error: "Missing required fields" }, { status: 400 });
@@ -114,7 +117,8 @@ export async function POST(req: NextRequest) {
       installType: installType.slice(0, 100),
       email: email.slice(0, 255),
       listingType: tier,
-      ...(server ? { server, entry: MAKER_DOOR_FROM } : {}),
+      ...(server ? { server } : {}),
+      ...(entry ? { entry } : {}),
     },
     success_url: `${SITE_URL}/submit/success?session_id={CHECKOUT_SESSION_ID}&featured=1&tier=${tier}`,
     // A maker who backs out returns to their own listing, not a blank form.

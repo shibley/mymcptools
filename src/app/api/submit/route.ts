@@ -1,5 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { recordSubmissionEvent } from "@/lib/analytics/submission-event";
+import { servers } from "@/data/servers";
+import { ackDoorEmailBlock, normGithub, type SubmittedFields } from "@/lib/maker-door";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -149,12 +151,23 @@ function buildAdminEmailHtml(fields: {
     </div>`;
 }
 
-function buildConfirmationEmailHtml(toolName: string): string {
+const SITE_URL = "https://mymcptools.com";
+
+/** Catalog slug for a repo we already list, so a Featured order lands on that page. */
+function catalogSlugForGithub(github: string): string | undefined {
+  const want = normGithub(github);
+  if (!want) return undefined;
+  return servers.find((s) => normGithub(s.github_url) === want)?.slug;
+}
+
+function buildConfirmationEmailHtml(fields: SubmittedFields, server?: string): string {
+  const toolName = fields.toolName;
   return `
     <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 600px; margin: 0 auto; background: #0f172a; color: #e2e8f0; padding: 32px; border-radius: 12px;">
       <h1 style="color: #22c55e; margin-top: 0;">Thanks for submitting ${toolName}! 🎉</h1>
       <p style="font-size: 16px; line-height: 1.6;">We received your submission and will review it within 24-48 hours.</p>
       <p style="font-size: 14px; line-height: 1.6; color:#94a3b8;">If approved, your MCP server will appear in the <a href="https://mymcptools.com" style="color:#60a5fa;">MyMCPTools directory</a> and be visible to thousands of AI developers.</p>
+      ${ackDoorEmailBlock(fields, SITE_URL, server)}
       <p style="font-size: 14px; line-height: 1.6; color:#94a3b8;">In the meantime, feel free to share the directory with your users.</p>
       <p style="color: #94a3b8; font-size: 14px; margin-top: 24px;">— The MyMCPTools Team</p>
     </div>`;
@@ -227,10 +240,21 @@ export async function POST(req: NextRequest) {
       })
     );
 
+    const submitted: SubmittedFields = {
+      toolName: toolName.trim(),
+      description: description.trim(),
+      github: github.trim(),
+      website: website?.trim() || "",
+      category: category.trim(),
+      installType: installType.trim(),
+      email: email.trim(),
+    };
+    const catalogSlug = catalogSlugForGithub(github);
+
     await sendEmail(
       email.trim(),
       `We received your submission: ${toolName.trim()}`,
-      buildConfirmationEmailHtml(toolName.trim())
+      buildConfirmationEmailHtml(submitted, catalogSlug)
     );
 
     // Server-side conversion row. The client beacon missed at least 42.9% of
@@ -248,6 +272,8 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({
       success: true,
       message: "Submission received! We'll review your MCP server within 24-48 hours.",
+      // Lets the success screen's door deliver onto an existing listing.
+      ...(catalogSlug ? { server: catalogSlug } : {}),
     });
   } catch (err) {
     console.error("Submit error:", err);

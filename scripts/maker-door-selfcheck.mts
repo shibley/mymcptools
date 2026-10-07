@@ -113,8 +113,80 @@ await check('/submit reads the door params and forwards `server` to checkout', (
 await check('checkout route whitelists server into Stripe metadata and returns a backed-out maker to their page', () => {
   const src = read(CHECKOUT);
   ok(/cleanServerSlug\(body\.server\)/.test(src), 'server not whitelisted');
-  ok(/server, entry: MAKER_DOOR_FROM/.test(src), 'server not in metadata');
+  ok(/\{ server \}/.test(src) || /server, entry: MAKER_DOOR_FROM/.test(src), 'server not in metadata');
   ok(/cancel_url: server \?/.test(src), 'cancel_url ignores server');
+});
+
+// ---- ACK DOORS (2026-10-07 retry): the free submitter is the maker. -------
+// 48h after the server-page door shipped, 0 /submit arrivals came from a
+// server page while 4 human sessions sent a FREE submission via / -> /search
+// -> /submit. Their ack mail and success screen never named the $9 tier, and
+// the beacon could not count a door arrival at all (it stores the path only).
+await check('every door href is countable: utm_source=maker-door, utm_medium=<entry>, utm_campaign=<slug>', () => {
+  ok(door, 'no door module');
+  const s = servers.find((x) => !x.featured && !x.paid_placement)!;
+  const u = new URL(door.makerDoorHref(s), 'https://x');
+  ok(u.searchParams.get('utm_source') === 'maker-door', `server-page door utm_source=${u.searchParams.get('utm_source')}`);
+  ok(u.searchParams.get('utm_medium') === 'server-page', `server-page door utm_medium=${u.searchParams.get('utm_medium')}`);
+  ok(u.searchParams.get('utm_campaign') === s.slug, 'server-page door utm_campaign is not the slug');
+});
+
+const SUBMITTED = {
+  toolName: 'Acme Probe MCP', description: 'Probe server <b>&</b> "quotes"', github: 'https://github.com/acme/probe-mcp',
+  website: 'https://acme.example', category: 'database', installType: 'npm', email: 'funnel-probe+maker@apistatuscheck.com',
+};
+await check('ackDoorHref hands a free submitter back to Featured with every field they typed, email included', () => {
+  ok(typeof door?.ackDoorHref === 'function', 'no ackDoorHref — a free submitter is never offered the $9 tier');
+  for (const entry of ['submit-ack', 'submit-success']) {
+    const u = new URL(door.ackDoorHref(SUBMITTED, entry), 'https://x');
+    const want: Record<string, string> = {
+      tier: 'featured', from: entry, name: SUBMITTED.toolName, description: SUBMITTED.description, github: SUBMITTED.github,
+      website: SUBMITTED.website, category: 'database', install: 'npm', email: SUBMITTED.email,
+      utm_source: 'maker-door', utm_medium: entry, utm_campaign: SUBMITTED.toolName,
+    };
+    for (const [k, v] of Object.entries(want)) ok(u.searchParams.get(k) === v, `${entry}: ${k}=${u.searchParams.get(k)}, want ${v}`);
+    ok(!u.searchParams.has('server'), `${entry}: server set with no catalog match`);
+  }
+  const listed = servers[0];
+  const u = new URL(door.ackDoorHref(SUBMITTED, 'submit-ack', listed.slug), 'https://x');
+  ok(u.searchParams.get('server') === listed.slug && u.searchParams.get('utm_campaign') === listed.slug, 'catalog match not carried');
+  const forged = new URL(door.ackDoorHref({ ...SUBMITTED, category: 'evil' }, 'submit-ack', '../x'), 'https://x');
+  ok(!forged.searchParams.has('server') && !forged.searchParams.has('category'), 'forged server/category passed through');
+});
+
+await check('the ack mail every free submitter receives carries the door, HTML-escaped', () => {
+  ok(typeof door?.ackDoorEmailBlock === 'function', 'no ackDoorEmailBlock');
+  const html: string = door.ackDoorEmailBlock(SUBMITTED, 'https://mymcptools.com');
+  ok(/data-maker-door="submit-ack"/.test(html) && /Feature it — \$9 once/.test(html), 'block has no $9 call to action');
+  const href = html.match(/href="([^"]+)"/)?.[1] ?? '';
+  ok(href.startsWith('https://mymcptools.com/submit?'), `door href ${href.slice(0, 60)}`);
+  ok(!/<b>/.test(html.replace(/<\/?(div|p|a)\b[^>]*>/g, '')), 'tool name not escaped');
+  const route = read('src/app/api/submit/route.ts');
+  ok(/ackDoorEmailBlock\(fields, SITE_URL, server\)/.test(route), 'ack mail does not render the door');
+  ok(/buildConfirmationEmailHtml\(submitted, catalogSlug\)/.test(route), 'ack mail not given the submitted fields + catalog slug');
+});
+
+await check('a free submission of an already-listed repo is matched to its catalog slug', () => {
+  ok(typeof door?.normGithub === 'function', 'no normGithub');
+  const s = servers.find((x) => x.github_url)!;
+  ok(door.normGithub(s.github_url + '/') === door.normGithub(s.github_url!.toUpperCase().replace('HTTPS', 'http') + '.git'), 'normGithub not stable');
+  ok(/servers\.find\(\(s\) => normGithub\(s\.github_url\) === want\)/.test(read('src/app/api/submit/route.ts')), 'no catalog match in /api/submit');
+});
+
+await check('checkout records WHICH door sold it, even for a brand-new server with no catalog slug', () => {
+  const src = read(CHECKOUT);
+  ok(/cleanDoorEntry\(body\.from\)/.test(src), 'body.from not whitelisted into metadata.entry');
+  ok(/\.\.\.\(entry \? \{ entry \} : \{\}\)/.test(src), 'entry not written independently of server');
+  for (const bad of ['evil', '', 'server-page ', null, 7]) ok(door.cleanDoorEntry(bad) === undefined, `accepted ${JSON.stringify(bad)}`);
+  for (const good of ['server-page', 'submit-ack', 'submit-success']) ok(door.cleanDoorEntry(good) === good, `rejected ${good}`);
+});
+
+await check('/submit success screen shows the door and /submit forwards from + prefills email', () => {
+  const src = read(SUBMIT);
+  ok(/data-maker-door="submit-success"/.test(src), 'success screen has no door');
+  ok(/ackDoorHref\(sent\.fields, "submit-success", sent\.server\)/.test(src), 'success door not built from the submitted fields');
+  ok(/from: doorFrom \?\?/.test(src), '/submit drops ?from=');
+  ok(/defaultValue=\{prefill\.email\}/.test(src), 'email not prefilled');
 });
 
 await check('webhook files the order under the catalog slug the buyer came from', () => {
