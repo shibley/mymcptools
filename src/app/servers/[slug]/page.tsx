@@ -21,6 +21,8 @@ import { TrustSignalList } from "@/components/TrustSignals";
 import { AffiliateServerCTA } from "@/components/AffiliateServerCTA";
 import { servers, getServerBySlug, getRelatedServers, categories, integrations, registryLabel } from "@/data/servers";
 import { getPaidListingBySlug } from "@/lib/paid-listings";
+import { makerDoorHref } from "@/lib/maker-door";
+import PaidFeaturedBadge from "@/components/PaidFeaturedBadge";
 import { listingOutboundRel } from "@/lib/outbound-rel";
 import { getServerGuide } from "@/data/server-guides";
 import { getServerPricing, hasFreeOption } from "@/data/pricing";
@@ -404,10 +406,12 @@ export default async function ServerPage({ params }: Props) {
                       No commits in {recency!.monthsSinceCommit} months
                     </span>
                   )}
-                  {server.featured && (
+                  {server.featured ? (
                     <span className="px-2 py-1 bg-amber-500/10 border border-amber-500/30 text-amber-400 text-xs font-medium rounded-full">
                       ⭐ Featured
                     </span>
+                  ) : (
+                    <PaidFeaturedBadge slug={server.slug} />
                   )}
                   {trust && trust.score !== null && (
                     <a
@@ -978,6 +982,28 @@ export default async function ServerPage({ params }: Props) {
                   </div>
                 )}
               </div>
+
+              {/* Maker door (src/lib/maker-door.ts): the one reader of this
+                  page who can buy placement is whoever maintains the server.
+                  The property's only sale was that buyer, on /submit. */}
+              {!server.featured && !server.paid_placement && (
+                <div className="bg-gray-900 border border-yellow-800/50 rounded-xl p-6" data-maker-door>
+                  <h3 className="text-base font-semibold text-white mb-2">
+                    Maintain {server.name}?
+                  </h3>
+                  <p className="text-sm text-gray-400 mb-4">
+                    Feature this listing: a ⭐ Featured badge on this page and the top of its
+                    category, live as soon as payment clears.
+                  </p>
+                  <Link
+                    href={makerDoorHref(server)}
+                    rel="nofollow"
+                    className="inline-flex items-center rounded-lg bg-yellow-600 px-4 py-2 text-sm font-semibold text-white transition hover:bg-yellow-500"
+                  >
+                    Feature it — $9 once
+                  </Link>
+                </div>
+              )}
 
               {/* Quick Info */}
               <div className="bg-gray-900 border border-gray-800 rounded-xl p-6">

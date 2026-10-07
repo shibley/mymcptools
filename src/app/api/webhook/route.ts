@@ -187,6 +187,8 @@ export async function POST(req: NextRequest) {
       installType,
       contactEmail: email,
       amountCents: session.amount_total ?? undefined,
+      // Maker-door order: file it under the catalog page the buyer came from.
+      catalogSlug: meta.server,
     });
 
     // Notify admin

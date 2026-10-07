@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, FormEvent } from "react";
+import { useState, useEffect, FormEvent } from "react";
 import Link from "next/link";
 
 type ListingTier = "free" | "featured" | "pro";
@@ -9,6 +9,25 @@ export default function SubmitPage() {
   const [tier, setTier] = useState<ListingTier>("free");
   const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
   const [errorMsg, setErrorMsg] = useState("");
+  // Maker door (src/lib/maker-door.ts): a server page links here with the
+  // listing's own fields so its maintainer lands on Featured, form filled.
+  // Read in an effect rather than useSearchParams so the page stays static.
+  const [prefill, setPrefill] = useState<Record<string, string>>({});
+  const [doorServer, setDoorServer] = useState<string>("");
+
+  useEffect(() => {
+    const sp = new URLSearchParams(window.location.search);
+    const t = sp.get("tier");
+    if (t === "featured" || t === "pro") setTier(t);
+    const server = sp.get("server") || "";
+    if (/^[A-Za-z0-9][A-Za-z0-9-]{0,79}$/.test(server)) setDoorServer(server);
+    const next: Record<string, string> = {};
+    for (const k of ["name", "description", "github", "website", "category", "install"]) {
+      const v = sp.get(k);
+      if (v) next[k] = v.slice(0, 500);
+    }
+    setPrefill(next);
+  }, []);
 
   async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -27,6 +46,10 @@ export default function SubmitPage() {
       website_url: (form.elements.namedItem("website_url") as HTMLInputElement)?.value || "",
       // The checkout route whitelists this; anything unknown falls back to $9.
       tier,
+      // Catalog slug from the maker door; the route re-validates it and the
+      // webhook only honours a slug the catalog really holds.
+      server: doorServer || undefined,
+      from: doorServer ? "server-page" : undefined,
     };
 
     // Honeypot check
@@ -98,9 +121,21 @@ export default function SubmitPage() {
     <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
       {/* Header */}
       <div className="text-center mb-10">
-        <h1 className="text-3xl font-bold text-white mb-4">Submit Your MCP Server</h1>
+        <h1 className="text-3xl font-bold text-white mb-4">
+          {doorServer ? `Feature ${prefill.name || "your server"} on MyMCPTools` : "Submit Your MCP Server"}
+        </h1>
         <p className="text-gray-400">
-          Get your server listed in the directory and reach thousands of developers.
+          {doorServer ? (
+            <>
+              Already listed at{" "}
+              <Link href={`/servers/${doorServer}`} className="text-blue-400 hover:text-blue-300">
+                /servers/{doorServer}
+              </Link>
+              . Featured adds the badge to that page and moves it to the top of its category the moment payment clears.
+            </>
+          ) : (
+            "Get your server listed in the directory and reach thousands of developers."
+          )}
         </p>
       </div>
 
@@ -184,7 +219,7 @@ export default function SubmitPage() {
           </div>
         )}
 
-        <form className="space-y-6" onSubmit={handleSubmit}>
+        <form id="form" key={Object.keys(prefill).length ? "prefilled" : "blank"} className="space-y-6" onSubmit={handleSubmit}>
           {/* Honeypot */}
           <input type="text" name="website_url" style={{ display: "none" }} tabIndex={-1} autoComplete="off" />
 
@@ -197,6 +232,7 @@ export default function SubmitPage() {
               type="text"
               id="name"
               name="name"
+              defaultValue={prefill.name}
               required
               placeholder="e.g., My Awesome MCP Server"
               className="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg text-gray-100 placeholder-gray-500 focus:outline-none focus:border-blue-500 transition"
@@ -211,6 +247,7 @@ export default function SubmitPage() {
             <textarea
               id="description"
               name="description"
+              defaultValue={prefill.description}
               required
               rows={3}
               placeholder="What does your server do? Keep it concise but informative."
@@ -227,6 +264,7 @@ export default function SubmitPage() {
               type="url"
               id="github"
               name="github"
+              defaultValue={prefill.github}
               required
               placeholder="https://github.com/username/repo"
               className="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg text-gray-100 placeholder-gray-500 focus:outline-none focus:border-blue-500 transition"
@@ -242,6 +280,7 @@ export default function SubmitPage() {
               type="url"
               id="website"
               name="website"
+              defaultValue={prefill.website}
               placeholder="https://yourwebsite.com"
               className="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg text-gray-100 placeholder-gray-500 focus:outline-none focus:border-blue-500 transition"
             />
@@ -255,6 +294,7 @@ export default function SubmitPage() {
             <select
               id="category"
               name="category"
+              defaultValue={prefill.category ?? ""}
               required
               className="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg text-gray-100 focus:outline-none focus:border-blue-500 transition"
             >
@@ -286,6 +326,7 @@ export default function SubmitPage() {
             <select
               id="install"
               name="install"
+              defaultValue={prefill.install ?? ""}
               required
               className="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg text-gray-100 focus:outline-none focus:border-blue-500 transition"
             >

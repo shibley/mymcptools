@@ -35,6 +35,8 @@
 import { Pool } from "pg";
 import { servers, type MCPServer } from "@/data/servers";
 
+const STATIC_SLUGS = new Set(servers.map((s) => s.slug));
+
 /** How long a resolved overlay is reused inside one warm lambda. */
 const CACHE_MS = 60_000;
 
@@ -71,6 +73,14 @@ export interface PaidListingInput {
   installType?: string;
   contactEmail?: string;
   amountCents?: number;
+  /**
+   * The catalog slug the buyer bought FOR, when they came through the
+   * server-page maker door (`/submit?server=<slug>`). Honoured only when it is
+   * a slug `src/data/servers.ts` really holds — otherwise the slug is derived
+   * from `name` as before, so a forged value can never overwrite someone
+   * else's page.
+   */
+  catalogSlug?: string;
 }
 
 const INSTALL_TYPES = new Set<MCPServer["install_type"]>([
@@ -111,6 +121,17 @@ function safeUrl(value?: string | null): string | undefined {
 }
 
 /**
+ * Slug a paid row is written under. A maker-door order for a listing the
+ * catalog already holds keeps that listing's slug, so the order lands on the
+ * page the maker was reading instead of on a fresh duplicate (`slugify(name)`
+ * of "Supabase MCP" is not the catalog's `supabase`).
+ */
+export function resolveListingSlug(input: Pick<PaidListingInput, "name" | "catalogSlug">): string {
+  if (input.catalogSlug && STATIC_SLUGS.has(input.catalogSlug)) return input.catalogSlug;
+  return slugifyListing(input.name);
+}
+
+/**
  * Records a paid listing. Called from the Stripe webhook *before* it stamps
  * `fulfilled`, so the stamp finally means the thing it claims.
  * Returns the slug on success, null on any failure (the caller still emails).
@@ -118,7 +139,7 @@ function safeUrl(value?: string | null): string | undefined {
 export async function recordPaidListing(input: PaidListingInput): Promise<string | null> {
   const p = getPool();
   if (!p) return null;
-  const slug = slugifyListing(input.name);
+  const slug = resolveListingSlug(input);
   if (!slug) return null;
   try {
     await p.query(
@@ -155,19 +176,36 @@ export async function recordPaidListing(input: PaidListingInput): Promise<string
 interface Cached {
   at: number;
   rows: MCPServer[];
+  /** Catalog slugs with an active paid Featured order (maker-door buys). */
+  paidCatalog: Set<string>;
 }
 let cache: Cached | null = null;
 
-const STATIC_SLUGS = new Set(servers.map((s) => s.slug));
 
 /**
  * Paid listings not yet promoted into `src/data/servers.ts`, newest first.
  * Never throws; an unreachable warehouse yields `[]`.
  */
 export async function getPaidListings(): Promise<MCPServer[]> {
-  if (cache && Date.now() - cache.at < CACHE_MS) return cache.rows;
+  return (await loadOverlay()).rows;
+}
+
+/**
+ * Catalog slugs a maker has paid to feature. These rows are NOT rendered as
+ * overlay listings (the catalog already renders the page); instead the
+ * category page lifts them to the top with a Featured badge and the server
+ * page's badge island lights up. Never throws.
+ */
+export async function getPaidCatalogSlugs(): Promise<Set<string>> {
+  return (await loadOverlay()).paidCatalog;
+}
+
+const EMPTY: Cached = { at: 0, rows: [], paidCatalog: new Set() };
+
+async function loadOverlay(): Promise<Cached> {
+  if (cache && Date.now() - cache.at < CACHE_MS) return cache;
   const p = getPool();
-  if (!p) return [];
+  if (!p) return EMPTY;
   try {
     const { rows } = await p.query(
       `SELECT slug, name, description, author, github_url, website_url,
@@ -200,11 +238,14 @@ export async function getPaidListings(): Promise<MCPServer[]> {
         paid_placement: true,
         sponsored: r.sku === "sponsored",
       }));
-    cache = { at: Date.now(), rows: mapped };
-    return mapped;
+    const paidCatalog = new Set<string>(
+      rows.map((r) => r.slug as string).filter((slug) => slug && STATIC_SLUGS.has(slug))
+    );
+    cache = { at: Date.now(), rows: mapped, paidCatalog };
+    return cache;
   } catch (err) {
     console.error("[paid-listings] read failed", err);
-    return [];
+    return EMPTY;
   }
 }
 
