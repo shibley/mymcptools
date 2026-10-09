@@ -2,7 +2,7 @@
 
 import { useState, useEffect, FormEvent } from "react";
 import Link from "next/link";
-import { ackDoorHref, cleanDoorEntry, type MakerDoorEntry, type SubmittedFields } from "@/lib/maker-door";
+import { ackDoorHref, cleanDoorEntry, FEATURED_LIVE, FREE_QUEUE, type MakerDoorEntry, type SubmittedFields } from "@/lib/maker-door";
 
 type ListingTier = "free" | "featured" | "pro";
 
@@ -125,7 +125,7 @@ export default function SubmitPage() {
           <div className="text-5xl mb-4">🎉</div>
           <h1 className="text-2xl font-bold text-white mb-3">Submission Received!</h1>
           <p className="text-gray-400 mb-6">
-            Thanks for submitting your MCP server. We&apos;ll review it within 24-48 hours and notify you by email.
+            Thanks for submitting your MCP server. It&apos;s in the hand-review queue, with no set date; we&apos;ll email you if it&apos;s listed.
           </p>
           {sent && (
             // MAKER DOOR, entry `submit-success` (src/lib/maker-door.ts): the
@@ -134,7 +134,7 @@ export default function SubmitPage() {
             <div data-maker-door="submit-success" className="mb-6 rounded-lg border border-yellow-800/60 bg-yellow-950/20 p-5 text-left">
               <p className="font-semibold text-yellow-300 mb-1">Want {sent.fields.toolName} featured? $9 once.</p>
               <p className="text-sm text-gray-400 mb-4">
-                Priority review within 24 hours, a Featured badge on the listing, and the top of its category. Your details carry over.
+                {FEATURED_LIVE}, with a Featured badge on the listing and the top of its category. Your details carry over.
               </p>
               <a
                 href={ackDoorHref(sent.fields, "submit-success", sent.server)}
@@ -195,7 +195,7 @@ export default function SubmitPage() {
           <div className="text-2xl font-bold text-white mb-2">$0</div>
           <ul className="space-y-1 text-sm text-gray-400">
             <li>✓ Standard directory listing</li>
-            <li>✓ Reviewed within 24–48 hrs</li>
+            <li>✓ {FREE_QUEUE}</li>
             <li>✓ Category + search indexed</li>
           </ul>
         </button>
@@ -219,7 +219,7 @@ export default function SubmitPage() {
           <ul className="space-y-1 text-sm text-gray-400">
             <li>⭐ Featured badge on listing</li>
             <li>✓ Top of category placement</li>
-            <li>✓ Priority review within 24 hrs</li>
+            <li>✓ {FEATURED_LIVE}</li>
             <li>✓ Highlighted in search results</li>
           </ul>
         </button>

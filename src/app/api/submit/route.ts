@@ -165,7 +165,7 @@ function buildConfirmationEmailHtml(fields: SubmittedFields, server?: string): s
   return `
     <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 600px; margin: 0 auto; background: #0f172a; color: #e2e8f0; padding: 32px; border-radius: 12px;">
       <h1 style="color: #22c55e; margin-top: 0;">Thanks for submitting ${toolName}! 🎉</h1>
-      <p style="font-size: 16px; line-height: 1.6;">We received your submission and will review it within 24-48 hours.</p>
+      <p style="font-size: 16px; line-height: 1.6;">We received your submission. Free submissions join a hand-review queue with no set date; we'll email you if it's listed.</p>
       <p style="font-size: 14px; line-height: 1.6; color:#94a3b8;">If approved, your MCP server will appear in the <a href="https://mymcptools.com" style="color:#60a5fa;">MyMCPTools directory</a> and be visible to thousands of AI developers.</p>
       ${ackDoorEmailBlock(fields, SITE_URL, server)}
       <p style="font-size: 14px; line-height: 1.6; color:#94a3b8;">In the meantime, feel free to share the directory with your users.</p>
@@ -184,7 +184,7 @@ export async function POST(req: NextRequest) {
 
     // Honeypot check
     if (body.website_url) {
-      return NextResponse.json({ success: true, message: "Submission received! We'll review your server within 24-48 hours." });
+      return NextResponse.json({ success: true, message: "Submission received! It's in the hand-review queue." });
     }
 
     const { toolName, url, description, email, category, installType, website, github } = body;
@@ -271,7 +271,7 @@ export async function POST(req: NextRequest) {
 
     return NextResponse.json({
       success: true,
-      message: "Submission received! We'll review your MCP server within 24-48 hours.",
+      message: "Submission received! It's in the hand-review queue; we'll email you if it's listed.",
       // Lets the success screen's door deliver onto an existing listing.
       ...(catalogSlug ? { server: catalogSlug } : {}),
     });

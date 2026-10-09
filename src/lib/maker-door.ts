@@ -20,6 +20,21 @@ import type { MCPServer } from "@/data/servers";
 export const MAKER_DOOR_FROM = "server-page";
 
 /**
+ * TIER TRUTH — the one difference between Free and Featured, stated the same
+ * way on every surface (tier cards, success screen, ack mail).
+ *
+ * Measured 2026-10-08 (analytics.events server-submit rows vs servers.ts): 40
+ * free submissions since 2026-09-25, 1 listed. Free review is a hand queue with
+ * no clock. Featured is delivered by the webhook (recordPaidListing) the moment
+ * Stripe confirms, no human in the loop. The copy had both backwards — free
+ * "reviewed within a day or two", Featured sold as a faster review — so a
+ * maker comparing tiers saw a day's difference for $9 instead of "never on a
+ * date" vs "now".
+ */
+export const FREE_QUEUE = "Hand-review queue, no set date";
+export const FEATURED_LIVE = "Live the minute payment clears";
+
+/**
  * Every surface that hands a maker the $9 Featured offer. The value rides the
  * door href as `from` and `utm_medium`, and lands in Stripe metadata.entry.
  *
@@ -139,7 +154,7 @@ export function ackDoorEmailBlock(fields: SubmittedFields, siteUrl: string, serv
   const door = escapeHtml(`${siteUrl}${ackDoorHref(fields, "submit-ack", server)}`);
   return `<div data-maker-door="submit-ack" style="margin: 24px 0; padding: 20px; border: 1px solid #854d0e; border-radius: 10px; background: #1c1917;">
         <p style="margin: 0 0 8px 0; font-size: 16px; font-weight: 700; color: #fde047;">Want ${name} featured? $9 once.</p>
-        <p style="margin: 0 0 16px 0; font-size: 14px; line-height: 1.6; color: #d6d3d1;">Priority review within 24 hours, a Featured badge on the listing, and the top of its category. Your details are already filled in, one step to checkout.</p>
+        <p style="margin: 0 0 16px 0; font-size: 14px; line-height: 1.6; color: #d6d3d1;">Free — ${FREE_QUEUE}. Featured — ${FEATURED_LIVE}, with a Featured badge on the listing and the top of its category. Your details are already filled in, one step to checkout.</p>
         <a href="${door}" style="display: inline-block; padding: 10px 18px; background: #ca8a04; color: #0c0a09; font-weight: 700; text-decoration: none; border-radius: 8px;">Feature it — $9 once</a>
       </div>`;
 }

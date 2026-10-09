@@ -100,7 +100,7 @@ export async function POST(req: NextRequest) {
           unit_amount: plan.cents,
           product_data: {
             name: plan.label,
-            description: `Priority review + Featured badge for: ${toolName}`,
+            description: `Featured badge, live the minute payment clears: ${toolName}`,
             images: ["https://mymcptools.com/og-image.png"],
           },
         },

@@ -219,5 +219,26 @@ await check('getPaidCatalogSlugs degrades to an empty set without a warehouse', 
   ok(set instanceof Set && set.size === 0, 'did not degrade to empty');
 });
 
+// TIER TRUTH (2026-10-08): 40 free submissions since 2026-09-25, 1 listed —
+// free review is a hand queue nobody works on a clock. Featured is delivered by
+// the webhook the moment Stripe confirms (recordPaidListing). The copy said the
+// opposite of both: free "within 24-48 hrs", Featured "priority review within
+// 24 hrs". The one real difference between the tiers was never stated.
+const TIER_SURFACES = ['src/app/submit/page.tsx', 'src/app/submit/success/page.tsx', 'src/app/api/submit/route.ts', 'src/app/api/checkout/route.ts', 'src/lib/maker-door.ts'];
+await check('no surface promises a free submission a 24-48 hour review', () => {
+  for (const f of TIER_SURFACES) ok(!/24\s*[-–]\s*48/.test(read(f)), `${f} still promises free review in 24-48 hrs`);
+});
+await check('Featured is sold as live the minute payment clears, not as a priority review', () => {
+  ok(typeof door?.FEATURED_LIVE === 'string' && /payment clears/.test(door.FEATURED_LIVE), 'no FEATURED_LIVE line');
+  ok(typeof door?.FREE_QUEUE === 'string' && /no set date/.test(door.FREE_QUEUE), 'no FREE_QUEUE line');
+  for (const f of TIER_SURFACES) ok(!/Priority review/i.test(read(f)), `${f} still sells Featured as a priority review`);
+  const html: string = door.ackDoorEmailBlock(SUBMITTED, 'https://mymcptools.com');
+  ok(html.includes(door.FEATURED_LIVE), 'ack mail door does not say Featured is live on payment');
+  ok(html.includes(door.FREE_QUEUE), 'ack mail door does not say where the free submission stands');
+  const page = read('src/app/submit/page.tsx');
+  ok(/\{FEATURED_LIVE\}/.test(page) && /\{FREE_QUEUE\}/.test(page), '/submit tier cards + success door do not use the shared lines');
+  ok(/live the minute payment clears/.test(read(WEBHOOK)) || /live now/.test(read(WEBHOOK)), 'webhook no longer delivers on payment — the claim would be false');
+});
+
 console.log(failures ? `\n${failures} check(s) FAILED` : '\nall checks passed');
 process.exit(failures ? 1 : 0);
