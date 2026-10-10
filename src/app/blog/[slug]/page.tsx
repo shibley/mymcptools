@@ -10,6 +10,9 @@ interface Props {
   params: Promise<{ slug: string }>;
 }
 
+// Every post is prerendered; unknown slugs 404 statically, no function.
+export const dynamicParams = false;
+
 export async function generateStaticParams() {
   return blogPosts.map((post) => ({
     slug: post.slug,
