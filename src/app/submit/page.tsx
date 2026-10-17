@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef, FormEvent } from "react";
 import Link from "next/link";
 import { ackDoorHref, cleanDoorEntry, FEATURED_LIVE, FREE_QUEUE, type MakerDoorEntry, type SubmittedFields } from "@/lib/maker-door";
+import { aiVisibilityCategory, aiVisibilityDoorHref } from "@/lib/ai-visibility-door";
 
 type ListingTier = "free" | "featured" | "pro";
 
@@ -161,6 +162,25 @@ export default function SubmitPage() {
                 className="inline-block px-5 py-2.5 bg-yellow-600 hover:bg-yellow-500 text-gray-950 font-semibold rounded-lg transition"
               >
                 Feature it — $9 once
+              </a>
+            </div>
+          )}
+          {sent && aiVisibilityDoorHref(sent.fields, "submit-success") && (
+            // AI-VISIBILITY DOOR (src/lib/ai-visibility-door.ts): the same three
+            // fields they just typed, handed to aisotools' free scan. Below the
+            // $9 door, never instead of it.
+            <div data-ai-visibility-door="submit-success" className="mb-6 rounded-lg border border-blue-800/60 bg-blue-950/20 p-5 text-left">
+              <p className="font-semibold text-blue-300 mb-1">When someone asks ChatGPT for {aiVisibilityCategory(sent.fields.category)}, is {sent.fields.toolName} named?</p>
+              <p className="text-sm text-gray-400 mb-4">
+                Free check on AISO Tools, our sister site: it asks ChatGPT the questions your users ask and shows who gets named instead. Your details carry over. Weekly tracking is $19/mo after a 7-day trial with no card.
+              </p>
+              <a
+                href={aiVisibilityDoorHref(sent.fields, "submit-success")!}
+                target="_blank"
+                rel="noopener"
+                className="inline-block px-5 py-2.5 bg-blue-600 hover:bg-blue-500 text-white font-semibold rounded-lg transition"
+              >
+                Check my AI visibility (free)
               </a>
             </div>
           )}

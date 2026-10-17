@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { recordSubmissionEvent } from "@/lib/analytics/submission-event";
 import { servers } from "@/data/servers";
 import { ackDoorEmailBlock, normGithub, type SubmittedFields } from "@/lib/maker-door";
+import { aiVisibilityEmailBlock } from "@/lib/ai-visibility-door";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -168,6 +169,7 @@ function buildConfirmationEmailHtml(fields: SubmittedFields, server?: string): s
       <p style="font-size: 16px; line-height: 1.6;">We received your submission. Free submissions join a hand-review queue with no set date; we'll email you if it's listed.</p>
       <p style="font-size: 14px; line-height: 1.6; color:#94a3b8;">If approved, your MCP server will appear in the <a href="https://mymcptools.com" style="color:#60a5fa;">MyMCPTools directory</a> and be visible to thousands of AI developers.</p>
       ${ackDoorEmailBlock(fields, SITE_URL, server)}
+      ${aiVisibilityEmailBlock(fields)}
       <p style="font-size: 14px; line-height: 1.6; color:#94a3b8;">In the meantime, feel free to share the directory with your users.</p>
       <p style="color: #94a3b8; font-size: 14px; margin-top: 24px;">— The MyMCPTools Team</p>
     </div>`;

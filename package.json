@@ -14,7 +14,7 @@
     "probe:hot": "node scripts/mcp-probe.mts --mode hot",
     "drift:selfcheck": "node scripts/drift-selfcheck.mts",
     "identity:selfcheck": "node scripts/session-identity-selfcheck.mts",
-    "verify:predeploy": "npm run -s identity:selfcheck && npm run -s drift:selfcheck && npm run -s probe:selfcheck && npm run -s digest:selfcheck && npm run -s webhooks:selfcheck && npm run -s trust:selfcheck && npm run -s firewall:selfcheck && npm run -s intent:selfcheck && npm run -s fulfil:selfcheck && npm run -s rel:census && npm run -s signals:selfcheck && npm run -s signals:api-selfcheck && npm run -s install:api-selfcheck && npm run -s submit:selfcheck && npm run -s offer:selfcheck && npm run -s tier:selfcheck && npm run -s caller:selfcheck && npm run -s trial:selfcheck && npm run -s door:selfcheck && npm run -s maker:selfcheck && npm run -s queue:selfcheck && npm run -s cache:selfcheck",
+    "verify:predeploy": "npm run -s identity:selfcheck && npm run -s drift:selfcheck && npm run -s probe:selfcheck && npm run -s digest:selfcheck && npm run -s webhooks:selfcheck && npm run -s trust:selfcheck && npm run -s firewall:selfcheck && npm run -s intent:selfcheck && npm run -s fulfil:selfcheck && npm run -s rel:census && npm run -s signals:selfcheck && npm run -s signals:api-selfcheck && npm run -s install:api-selfcheck && npm run -s submit:selfcheck && npm run -s offer:selfcheck && npm run -s tier:selfcheck && npm run -s caller:selfcheck && npm run -s trial:selfcheck && npm run -s door:selfcheck && npm run -s maker:selfcheck && npm run -s queue:selfcheck && npm run -s cache:selfcheck && npm run -s visibility:selfcheck",
     "probe:selfcheck": "node scripts/rolling-window-selfcheck.mts",
     "digest": "node scripts/digest.mts",
     "digest:selfcheck": "node scripts/digest-selfcheck.mts",
@@ -48,7 +48,8 @@
     "cache:selfcheck": "npx tsx scripts/cache-config-selfcheck.mts",
     "pass:e2e": "npx tsx scripts/pass-live-e2e.mts",
     "queue:cohort": "npx tsx scripts/queue-status-cohort.mts",
-    "door:walk": "node scripts/door-landing-walk.mjs"
+    "door:walk": "node scripts/door-landing-walk.mjs",
+    "visibility:selfcheck": "npx tsx scripts/ai-visibility-door-selfcheck.mts"
   },
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.29.0",
