@@ -77,6 +77,12 @@ export const SUBMIT_CATEGORIES = [
   "ai", "communication", "productivity", "finance", "security", "analytics", "media", "memory",
 ] as const;
 
+/**
+ * Description carried into the submit-ack door link (the maker's own copy). Was 300, which cut makers' copy mid-URL
+ * (Arcmira, 2026-10-22: "API docs: https://arcmira." ). The form itself has no cap.
+ */
+const DOOR_DESCRIPTION_MAX = 1000;
+
 /** /submit install values the form offers. */
 const SUBMIT_INSTALLS = new Set(["npm", "pip", "docker", "binary", "source", "remote"]);
 
@@ -124,7 +130,7 @@ export function ackDoorHref(
   if (slug) sp.set("server", slug);
   sp.set("from", entry);
   sp.set("name", fields.toolName.slice(0, 200));
-  if (fields.description) sp.set("description", fields.description.slice(0, 300));
+  if (fields.description) sp.set("description", fields.description.slice(0, DOOR_DESCRIPTION_MAX));
   if (fields.github) sp.set("github", fields.github.slice(0, 300));
   if (fields.website) sp.set("website", fields.website.slice(0, 300));
   if (fields.category && (SUBMIT_CATEGORIES as readonly string[]).includes(fields.category)) sp.set("category", fields.category);
