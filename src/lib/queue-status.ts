@@ -18,6 +18,7 @@
  * the ledger, and the send (dry-run by default).
  */
 import { ackDoorHref, FEATURED_LIVE, FREE_QUEUE, normGithub, type SubmittedFields } from "./maker-door";
+import { FEATURED_PRICE } from "./featured-price";
 
 export const QUEUE_STATUS_ENTRY = "queue-status" as const;
 
@@ -172,9 +173,9 @@ export function queueStatusEmailHtml(sub: QueuedSubmission, siteUrl: string): st
       ${correction}
       <p style="font-size: 14px; line-height: 1.6; color:#94a3b8;">You don't need to do anything. It stays in the queue either way, and we'll email you if it's listed.</p>
       <div data-maker-door="${QUEUE_STATUS_ENTRY}" style="margin: 24px 0; padding: 20px; border: 1px solid #854d0e; border-radius: 10px; background: #1c1917;">
-        <p style="margin: 0 0 8px 0; font-size: 16px; font-weight: 700; color: #fde047;">If you'd rather have it live now: $9 once.</p>
+        <p style="margin: 0 0 8px 0; font-size: 16px; font-weight: 700; color: #fde047;">If you'd rather have it live now: ${FEATURED_PRICE} once.</p>
         <p style="margin: 0 0 16px 0; font-size: 14px; line-height: 1.6; color: #d6d3d1;">Free: ${FREE_QUEUE}. Featured: ${FEATURED_LIVE}, with a Featured badge and a spot at the top of its category. What you submitted is already filled in, so it's one step to checkout.</p>
-        <a href="${door}" style="display: inline-block; padding: 10px 18px; background: #ca8a04; color: #0c0a09; font-weight: 700; text-decoration: none; border-radius: 8px;">Feature ${name} — $9 once</a>
+        <a href="${door}" style="display: inline-block; padding: 10px 18px; background: #ca8a04; color: #0c0a09; font-weight: 700; text-decoration: none; border-radius: 8px;">Feature ${name} — ${FEATURED_PRICE} once</a>
       </div>
       <p style="font-size: 13px; line-height: 1.6; color:#64748b;">This is the only follow-up we'll send about this submission. Reply to this email if anything in it is wrong.</p>
       <p style="color: #94a3b8; font-size: 14px; margin-top: 24px;">— The MyMCPTools Team</p>

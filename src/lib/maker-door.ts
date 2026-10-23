@@ -1,5 +1,5 @@
 /**
- * MAKER DOOR — server page -> prefilled $9 Featured checkout on /submit.
+ * MAKER DOOR — server page -> prefilled Featured checkout on /submit ($49 since 2026-10-22, was $9).
  *
  * WHY (measured 2026-10-07, demand:report, 30d): 798 human sessions read
  * /servers/[slug]; 95 were exposed to the $49/mo Trust API button and the $9
@@ -16,6 +16,7 @@
  * catalog slug (see `resolveListingSlug`), so delivery lands on this page.
  */
 import type { MCPServer } from "@/data/servers";
+import { FEATURED_PRICE } from "./featured-price";
 
 export const MAKER_DOOR_FROM = "server-page";
 
@@ -162,8 +163,8 @@ export function ackDoorEmailBlock(fields: SubmittedFields, siteUrl: string, serv
   const name = escapeHtml(fields.toolName);
   const door = escapeHtml(`${siteUrl}${ackDoorHref(fields, "submit-ack", server)}`);
   return `<div data-maker-door="submit-ack" style="margin: 24px 0; padding: 20px; border: 1px solid #854d0e; border-radius: 10px; background: #1c1917;">
-        <p style="margin: 0 0 8px 0; font-size: 16px; font-weight: 700; color: #fde047;">Want ${name} featured? $9 once.</p>
+        <p style="margin: 0 0 8px 0; font-size: 16px; font-weight: 700; color: #fde047;">Want ${name} featured? ${FEATURED_PRICE} once.</p>
         <p style="margin: 0 0 16px 0; font-size: 14px; line-height: 1.6; color: #d6d3d1;">Free — ${FREE_QUEUE}. Featured — ${FEATURED_LIVE}, with a Featured badge on the listing and the top of its category. Your details are already filled in, one step to checkout.</p>
-        <a href="${door}" style="display: inline-block; padding: 10px 18px; background: #ca8a04; color: #0c0a09; font-weight: 700; text-decoration: none; border-radius: 8px;">Feature it — $9 once</a>
+        <a href="${door}" style="display: inline-block; padding: 10px 18px; background: #ca8a04; color: #0c0a09; font-weight: 700; text-decoration: none; border-radius: 8px;">Feature it — ${FEATURED_PRICE} once</a>
       </div>`;
 }

@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import Stripe from "stripe";
 import { cleanDoorEntry, cleanServerSlug, MAKER_DOOR_FROM } from "@/lib/maker-door";
+import { featuredCharge } from "@/lib/featured-price";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -9,42 +10,29 @@ const STRIPE_SECRET_KEY = process.env.STRIPE_SECRET_KEY;
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://mymcptools.com";
 
 /**
- * Listing tiers offered on /submit (thread #325, 2026-09-27).
+ * The Featured listing checkout (/submit and every maker door).
  *
- * WHY A SECOND PAID TIER EXISTS. Measured 2026-08-30 -> 2026-09-27: 52
- * submission acks (45 distinct servers) and $9.00 of cash = $0.1731 of cash per
- * free submission, against aisotools' measured constant of $0.1877 — 92.2%.
- * This property is NOT converting badly; it is priced at $9 where the
- * comparable SKU is $79, and $0.1877/submission x 53.8 submissions/mo caps it
- * at $10.10/mo no matter how well it converts.
+ * ONE PAID TIER since 2026-10-22: Featured, $49 one-time, on the stored Stripe
+ * Price in lib/featured-price.ts. Thread #325's $9-vs-$49 ladder is closed by
+ * owner decision — lifetime it took one $9 order (Coinrule) and nothing at $49
+ * — and its "Pro" arm was the same deliverable, so `tier=pro` from an old link
+ * now resolves to Featured. The only sub-$49 charge is the dated grandfather in
+ * featuredCharge() (Arcmira, 10ML, until 2026-11-05 PT), charged inline because
+ * the stored Price is $49.
  *
- * The $49 price is not invented here — it is /advertise's existing "Basic"
- * plan, which sells the same deliverable (Featured badge + priority category
- * placement + dofollow link) and has been seen by **0 of 1,148** human web
- * sessions in the beacon's lifetime because it lives in the header nav and the
- * median session is 1.46 pageviews deep. The buyer is on /submit; the price was
- * on /advertise. This moves the price to the buyer.
- *
- * KEEP $9 LIVE. Both tiers ship together on purpose: $9 is the control. Read
- * the elasticity straight off the warehouse, no new column needed —
- *   select amount_cents, count(*) from analytics.mcpt_paid_listings group by 1;
- * The webhook records both as sku 'featured' because the deliverable is
- * identical; `amount_cents` is what separates them.
- *
- * GATE: >= 1.02 $49 sales/month clears the $50/mo additive bar. Verdict date
- * 2026-11-27 (two full inflow cycles, n ~ 108 submissions). Below that, the
- * price lever is falsified and the cap stands at the $0.1877 constant.
+ * The webhook records every order as sku 'featured'; amount_cents separates a
+ * grandfathered $9 from a $49 in analytics.mcpt_paid_listings.
  */
 export const LISTING_TIERS = {
-  featured: { cents: 900, label: "Featured MCP Server Listing" },
-  pro: { cents: 4900, label: "Pro MCP Server Listing" },
+  featured: { label: "Featured MCP Server Listing" },
 } as const;
 
 export type ListingTier = keyof typeof LISTING_TIERS;
 
-/** Anything not in the table is treated as the $9 tier — never trust the body. */
+/** Every value ("pro" from an old link included) is the Featured tier — never trust the body. */
 export function resolveTier(raw: unknown): ListingTier {
-  return raw === "pro" ? "pro" : "featured";
+  void raw;
+  return "featured";
 }
 
 export async function POST(req: NextRequest) {
@@ -88,24 +76,28 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: "Missing required fields" }, { status: 400 });
   }
 
+  const charge = featuredCharge(email);
   const stripe = new Stripe(STRIPE_SECRET_KEY);
 
   const session = await stripe.checkout.sessions.create({
     payment_method_types: ["card"],
     mode: "payment",
     line_items: [
-      {
-        price_data: {
-          currency: "usd",
-          unit_amount: plan.cents,
-          product_data: {
-            name: plan.label,
-            description: `Featured badge, live the minute payment clears: ${toolName}`,
-            images: ["https://mymcptools.com/og-image.png"],
+      charge.priceId
+        ? { price: charge.priceId, quantity: 1 }
+        : {
+            // Grandfathered $9 (featuredCharge): inline, because the stored Price is $49.
+            price_data: {
+              currency: "usd",
+              unit_amount: charge.cents,
+              product_data: {
+                name: plan.label,
+                description: `Featured badge, live the minute payment clears: ${toolName}`,
+                images: ["https://mymcptools.com/og-image.png"],
+              },
+            },
+            quantity: 1,
           },
-        },
-        quantity: 1,
-      },
     ],
     customer_email: email,
     metadata: {
@@ -117,6 +109,7 @@ export async function POST(req: NextRequest) {
       installType: installType.slice(0, 100),
       email: email.slice(0, 255),
       listingType: tier,
+      ...(charge.grandfathered ? { grandfathered: charge.grandfathered } : {}),
       ...(server ? { server } : {}),
       ...(entry ? { entry } : {}),
     },

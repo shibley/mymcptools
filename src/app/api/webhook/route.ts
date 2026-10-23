@@ -151,7 +151,7 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ received: true });
     }
 
-    // Featured Listing checkout (/api/checkout, $9 one-time)
+    // Featured Listing checkout (/api/checkout, $49 one-time since 2026-10-22; was $9)
     const { toolName, email, description, github, website, category, installType } = meta;
 
     if (!toolName) {

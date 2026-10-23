@@ -99,7 +99,7 @@ await check('server page renders the door, nofollow, only where no Featured badg
   ok(src.includes('makerDoorHref(server)'), 'page does not call makerDoorHref');
   ok(/data-maker-door/.test(src), 'no data-maker-door card');
   ok(/!server\.featured && !server\.paid_placement/.test(src), 'door not gated on featured/paid');
-  ok(/rel="nofollow"[\s\S]{0,200}Feature it — \$9/.test(src) || /Feature it — \$9/.test(src), 'no $9 call to action');
+  ok(/Feature it — \{FEATURED_PRICE\} once/.test(src), 'no Featured call to action priced from lib/featured-price');
 });
 
 await check('/submit reads the door params and forwards `server` to checkout', () => {
@@ -157,7 +157,7 @@ await check('ackDoorHref hands a free submitter back to Featured with every fiel
 await check('the ack mail every free submitter receives carries the door, HTML-escaped', () => {
   ok(typeof door?.ackDoorEmailBlock === 'function', 'no ackDoorEmailBlock');
   const html: string = door.ackDoorEmailBlock(SUBMITTED, 'https://mymcptools.com');
-  ok(/data-maker-door="submit-ack"/.test(html) && /Feature it — \$9 once/.test(html), 'block has no $9 call to action');
+  ok(/data-maker-door="submit-ack"/.test(html) && /Feature it — \$49 once/.test(html), 'block has no $49 call to action');
   const href = html.match(/href="([^"]+)"/)?.[1] ?? '';
   ok(href.startsWith('https://mymcptools.com/submit?'), `door href ${href.slice(0, 60)}`);
   ok(!/<b>/.test(html.replace(/<\/?(div|p|a)\b[^>]*>/g, '')), 'tool name not escaped');

@@ -22,6 +22,7 @@ import { AffiliateServerCTA } from "@/components/AffiliateServerCTA";
 import { servers, getServerBySlug, getRelatedServers, categories, integrations, registryLabel } from "@/data/servers";
 import { getPaidListingBySlug } from "@/lib/paid-listings";
 import { makerDoorHref } from "@/lib/maker-door";
+import { FEATURED_PRICE } from "@/lib/featured-price";
 import PaidFeaturedBadge from "@/components/PaidFeaturedBadge";
 import { listingOutboundRel } from "@/lib/outbound-rel";
 import { getServerGuide } from "@/data/server-guides";
@@ -1000,7 +1001,7 @@ export default async function ServerPage({ params }: Props) {
                     rel="nofollow"
                     className="inline-flex items-center rounded-lg bg-yellow-600 px-4 py-2 text-sm font-semibold text-white transition hover:bg-yellow-500"
                   >
-                    Feature it — $9 once
+                    Feature it — {FEATURED_PRICE} once
                   </Link>
                 </div>
               )}

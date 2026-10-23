@@ -33,70 +33,105 @@
  * the measured 53.8 submissions/mo. Verdict date 2026-11-27. Below that, the
  * price lever is falsified and the cap stands at the $0.1877 constant.
  *
+ * 2026-10-22 — LADDER CLOSED BY OWNER DECISION. Shib approved Featured $9 -> $49
+ * one-time (move #1 of memory/research-maker-visibility-pricing-2026-10-22.md:
+ * mcp.so sells $699-1,299/mo rails, Glama $200/mo/category; $9 priced the
+ * property as junk). The elasticity read above ended early with its answer
+ * on the table: lifetime analytics.mcpt_paid_listings = 1 row (Coinrule, 900),
+ * the $49 "Pro" arm 0 sales since 2026-09-27. Pro was the same deliverable at
+ * the same price now, and promised a "dofollow link" that lib/outbound-rel.ts
+ * (rightly) never renders for a paid row — so it is folded into Featured.
+ * Rules 1-3 are rewritten for one tier; Rule 4 stands.
+ *
+ *   1. ONE PAID TIER, $49, ON A STORED STRIPE PRICE (lib/featured-price.ts).
+ *   2. EVERY PRINTED FEATURED PRICE IS $49 — /submit, the server-page door,
+ *      the submit-ack and queue-status mails. A $9 button that charges $49 is
+ *      worse than either price.
+ *   3. TIER INPUT IS WHITELISTED ("pro" and unknown values -> featured), and
+ *      the only sub-$49 charge is the 14-day grandfather for the two makers
+ *      quoted $9 on 2026-10-22 (Arcmira, 10ML — memory/inbound-vendor-desk.md),
+ *      matched server-side on their email domain, expiring 2026-11-05 PT.
+ *
  *   npm run tier:selfcheck
  */
 import { existsSync, readFileSync } from "node:fs";
 
 const CHECKOUT = "src/app/api/checkout/route.ts";
 const SUBMIT = "src/app/submit/page.tsx";
+const PRICE_LIB = "src/lib/featured-price.ts";
+const read = (f: string) => (existsSync(f) ? readFileSync(f, "utf8") : "");
 
-const checkout = readFileSync(CHECKOUT, "utf8");
-const submit = readFileSync(SUBMIT, "utf8");
+const checkout = read(CHECKOUT);
+const submit = read(SUBMIT);
 
 const failures: string[] = [];
 const notes: string[] = [];
 
-// --- Rule 1: both paid tiers exist server-side, at different prices ---------
-const tierBlock = /export const LISTING_TIERS = \{([\s\S]*?)\} as const;/.exec(checkout);
-const prices = new Map<string, number>();
-if (!tierBlock) {
-  failures.push(`Rule 1: ${CHECKOUT} has no LISTING_TIERS table — the price ladder is not readable.`);
+// --- Rule 1: one paid tier, $49, on a stored Stripe Price --------------------
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const lib: any = existsSync(PRICE_LIB) ? await import(`../${PRICE_LIB}`) : {};
+if (lib.FEATURED_CENTS !== 4900 || lib.FEATURED_PRICE !== "$49") {
+  failures.push(`Rule 1: ${PRICE_LIB} must export FEATURED_CENTS=4900 and FEATURED_PRICE="$49" (got ${lib.FEATURED_CENTS}/${lib.FEATURED_PRICE}).`);
+}
+if (!/^price_[A-Za-z0-9]+$/.test(String(lib.FEATURED_STRIPE_PRICE_ID || ""))) {
+  failures.push(`Rule 1: ${PRICE_LIB} has no FEATURED_STRIPE_PRICE_ID — the $49 must be a stored Stripe Price, not inline price_data.`);
+}
+if (!/featuredCharge\(/.test(checkout)) {
+  failures.push(`Rule 1: ${CHECKOUT} does not price through featuredCharge() — the route can drift from the lib.`);
+}
+if (/cents:\s*900\b|unit_amount:\s*900\b/.test(checkout)) {
+  failures.push(`Rule 1: ${CHECKOUT} still carries a literal 900 — the $9 tier is closed.`);
+}
+notes.push(`featured: ${lib.FEATURED_PRICE} (${lib.FEATURED_CENTS}c) ${lib.FEATURED_STRIPE_PRICE_ID}`);
+
+// --- Rule 2: every printed Featured price is $49 -----------------------------
+const SURFACES = [SUBMIT, "src/app/servers/[slug]/page.tsx", "src/lib/maker-door.ts", "src/lib/queue-status.ts"];
+const STALE = [/Continue to Checkout — \$9\b/, /Feature (it|\$\{name\}) — \$9 once/, /featured\? \$9 once/i, /live now: \$9 once/, />\s*\$9 <span/];
+for (const f of SURFACES) {
+  const src = read(f);
+  if (!src) {
+    failures.push(`Rule 2: ${f} is missing.`);
+    continue;
+  }
+  for (const re of STALE) if (re.test(src)) failures.push(`Rule 2: ${f} still prints the $9 Featured price (${re}).`);
+}
+const shown = new Set<string>();
+for (const m of submit.matchAll(/Continue to Checkout — (\$\d+|\$\{FEATURED_PRICE\})/g)) shown.add(m[1]);
+if (shown.size === 0) failures.push(`Rule 2: ${SUBMIT} shows no checkout price at all.`);
+for (const v of shown) if (v !== "$49" && v !== "${FEATURED_PRICE}") failures.push(`Rule 2: /submit offers a ${v} button; the route charges $49.`);
+if (/tier === "pro"|setTier\("pro"\)/.test(submit)) failures.push(`Rule 2: ${SUBMIT} still renders the Pro tier, folded into Featured on 2026-10-22.`);
+if (/[Dd]ofollow/.test(submit)) failures.push(`Rule 2: ${SUBMIT} promises a dofollow link; paid rows render rel="sponsored" (lib/outbound-rel.ts).`);
+notes.push(`buttons: ${[...shown].join(", ") || "none"}`);
+
+// --- Rule 3: whitelisted tier; the only discount is the dated grandfather ----
+if (!/function resolveTier\s*\(/.test(checkout) || !/resolveTier\(body\.tier\)/.test(checkout)) {
+  failures.push(`Rule 3: ${CHECKOUT} must route body.tier through resolveTier().`);
+}
+if (typeof lib.featuredCharge !== "function") {
+  failures.push(`Rule 3: ${PRICE_LIB} has no featuredCharge().`);
 } else {
-  for (const m of tierBlock[1].matchAll(/(\w+):\s*\{\s*cents:\s*(\d+)/g)) {
-    prices.set(m[1], Number(m[2]));
+  const inTerm = new Date("2026-10-23T12:00:00Z");
+  const lastDayPT = new Date("2026-11-06T07:59:00Z"); // 2026-11-05 23:59 PT
+  const after = new Date("2026-11-06T08:00:00Z");
+  const cases: Array<[string, Date, number, boolean]> = [
+    ["zeal@arcmira.com", inTerm, 900, false],
+    ["Contact@10ML.com", inTerm, 900, false],
+    ["team@arcmira.com", lastDayPT, 900, false],
+    ["zeal@arcmira.com", after, 4900, true],
+    ["contact@10ml.com", after, 4900, true],
+    ["maker@example.com", inTerm, 4900, true],
+    ["evil@notarcmira.com", inTerm, 4900, true],
+    ["", inTerm, 4900, true],
+  ];
+  for (const [email, at, cents, stored] of cases) {
+    const c = lib.featuredCharge(email, at);
+    if (c?.cents !== cents || Boolean(c?.priceId) !== stored) {
+      failures.push(`Rule 3: featuredCharge(${JSON.stringify(email)}, ${at.toISOString()}) = ${JSON.stringify(c)}, want ${cents}c${stored ? " on the stored Price" : " inline"}.`);
+    }
   }
-  if (prices.size < 2) {
-    failures.push(
-      `Rule 1: LISTING_TIERS has ${prices.size} paid tier(s). The $9 tier is the CONTROL in the ` +
-        `elasticity test opened by thread #325 — collapsing the ladder destroys the measurement.`
-    );
-  }
-  if (new Set(prices.values()).size !== prices.size) {
-    failures.push(`Rule 1: two tiers share a price — ${JSON.stringify([...prices])}. amount_cents cannot separate them.`);
-  }
-  notes.push(`tiers: ${[...prices].map(([k, v]) => `${k}=$${(v / 100).toFixed(0)}`).join(", ")}`);
-}
-
-// --- Rule 2: every price the page shows is a price the route can charge -----
-const shown = new Set<number>();
-for (const m of submit.matchAll(/Continue to Checkout — \$(\d+)/g)) shown.add(Number(m[1]) * 100);
-if (shown.size === 0) {
-  failures.push(`Rule 2: ${SUBMIT} shows no checkout price at all.`);
-}
-for (const cents of shown) {
-  if (![...prices.values()].includes(cents)) {
-    failures.push(
-      `Rule 2: /submit offers a $${(cents / 100).toFixed(0)} button, but the checkout route charges ` +
-        `${[...prices.values()].map((c) => `$${(c / 100).toFixed(0)}`).join("/")}. ` +
-        `amount_cents is the only thing separating the tiers in the warehouse, so this read is silently wrong.`
-    );
-  }
-}
-for (const cents of prices.values()) {
-  if (!shown.has(cents)) {
-    failures.push(
-      `Rule 2: the route can charge $${(cents / 100).toFixed(0)} but /submit never offers it. ` +
-        `A tier with no button takes $0 — that is exactly what /advertise did for 1,148 sessions.`
-    );
-  }
-}
-notes.push(`buttons: ${[...shown].map((c) => `$${(c / 100).toFixed(0)}`).join(", ") || "none"}`);
-
-// --- Rule 3: unknown tier values fall back, they do not pass through --------
-if (!/function resolveTier\s*\(/.test(checkout)) {
-  failures.push(`Rule 3: ${CHECKOUT} has no resolveTier() whitelist — a browser-supplied tier reaches the price map unchecked.`);
-} else if (!/resolveTier\(body\.tier\)/.test(checkout)) {
-  failures.push(`Rule 3: resolveTier() exists but the request body is not routed through it.`);
+  const gf = (lib.FEATURED_GRANDFATHER || []).map((g: { domain: string }) => g.domain).sort().join(",");
+  if (gf !== "10ml.com,arcmira.com") failures.push(`Rule 3: grandfather list must be exactly arcmira.com + 10ml.com (got ${gf}).`);
+  notes.push(`grandfather: ${gf} until ${(lib.FEATURED_GRANDFATHER || [])[0]?.until}`);
 }
 
 // --- Rule 4: /submit is the ONLY surface that sells a listing (thread #330) -
@@ -119,11 +154,11 @@ if (!/source:\s*"\/advertise",\s*destination:\s*"\/submit",\s*permanent:\s*true/
   failures.push(`Rule 4: next.config.ts has no permanent /advertise -> /submit redirect; old links would 404.`);
 }
 
-console.log("LISTING TIER SELF-CHECK — /submit price ladder (thread #325)");
+console.log("LISTING TIER SELF-CHECK — /submit Featured $49 (thread #325, closed 2026-10-22)");
 for (const n of notes) console.log("  · " + n);
 if (failures.length) {
   console.error("\nFAIL:");
   for (const f of failures) console.error("  ✗ " + f);
   process.exit(1);
 }
-console.log("\nPASS — ladder is intact, buttons match the route, tier input is whitelisted.");
+console.log("\nPASS — one $49 Featured tier on a stored Price, every printed price matches, tier input whitelisted, grandfather dated.");

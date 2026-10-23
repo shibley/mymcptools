@@ -122,7 +122,7 @@ await check('mail carries a prefilled queue-status door the checkout whitelists'
     ok(u.searchParams.get(k) === v, `${k}=${u.searchParams.get(k)}`);
   ok(!u.searchParams.has('server'), 'an unlisted repo must not claim a catalog slug');
   const html: string = q.queueStatusEmailHtml(s, 'https://mymcptools.com');
-  ok(/data-maker-door="queue-status"/.test(html) && /\$9 once/.test(html), 'no $9 door in the mail');
+  ok(/data-maker-door="queue-status"/.test(html) && /\$49 once/.test(html) && !/\$9 once/.test(html), 'no $49 door in the mail');
   ok(html.includes('https://mymcptools.com/submit?') && html.includes('from=queue-status'), 'door link not absolute');
   ok(!html.includes('<b>MCP</b>') && html.includes('Acme &lt;b&gt;MCP&lt;/b&gt;'), 'tool name not escaped');
   ok(/24-48 hours\. That was wrong/.test(html), 'promised maker gets no correction');

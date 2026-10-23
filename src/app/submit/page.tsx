@@ -4,8 +4,9 @@ import { useState, useEffect, useRef, FormEvent } from "react";
 import Link from "next/link";
 import { ackDoorHref, cleanDoorEntry, FEATURED_LIVE, FREE_QUEUE, type MakerDoorEntry, type SubmittedFields } from "@/lib/maker-door";
 import { aiVisibilityCategory, aiVisibilityDoorHref } from "@/lib/ai-visibility-door";
+import { FEATURED_PRICE } from "@/lib/featured-price";
 
-type ListingTier = "free" | "featured" | "pro";
+type ListingTier = "free" | "featured";
 
 export default function SubmitPage() {
   const [tier, setTier] = useState<ListingTier>("free");
@@ -23,7 +24,7 @@ export default function SubmitPage() {
   // Every maker door ends in #form, but the browser's own hash jump fires on
   // the static HTML — before this effect re-keys the form and drops the
   // Featured banner in above it — so a door press landed on the tier picker
-  // with the filled form and its $9 button ~3 mobile screens down (queue-status
+  // with the filled form and its Featured button ~3 mobile screens down (queue-status
   // walk, 2026-10-12, 360px). Jump again once the prefilled form is rendered.
   const formCard = useRef<HTMLDivElement>(null);
   const [jumpToForm, setJumpToForm] = useState(false);
@@ -31,7 +32,8 @@ export default function SubmitPage() {
   useEffect(() => {
     const sp = new URLSearchParams(window.location.search);
     const t = sp.get("tier");
-    if (t === "featured" || t === "pro") setTier(t);
+    // "pro" was folded into Featured on 2026-10-22; old links still land on it.
+    if (t === "featured" || t === "pro") setTier("featured");
     const server = sp.get("server") || "";
     if (/^[A-Za-z0-9][A-Za-z0-9-]{0,79}$/.test(server)) setDoorServer(server);
     setDoorFrom(cleanDoorEntry(sp.get("from")));
@@ -65,7 +67,7 @@ export default function SubmitPage() {
       installType: (form.elements.namedItem("install") as HTMLSelectElement).value,
       email: (form.elements.namedItem("email") as HTMLInputElement).value,
       website_url: (form.elements.namedItem("website_url") as HTMLInputElement)?.value || "",
-      // The checkout route whitelists this; anything unknown falls back to $9.
+      // The checkout route whitelists this; anything unknown is Featured.
       tier,
       // Catalog slug from the maker door; the route re-validates it and the
       // webhook only honours a slug the catalog really holds.
@@ -79,7 +81,7 @@ export default function SubmitPage() {
       return;
     }
 
-    if (tier === "featured" || tier === "pro") {
+    if (tier === "featured") {
       // Stripe checkout flow
       try {
         const res = await fetch("/api/checkout", {
@@ -144,10 +146,10 @@ export default function SubmitPage() {
           </p>
           {sent && (
             // MAKER DOOR, entry `submit-success` (src/lib/maker-door.ts): the
-            // one moment a maker is certainly on the page, with the $9 tier
+            // one moment a maker is certainly on the page, with the Featured tier
             // one press away and every field they just typed carried over.
             <div data-maker-door="submit-success" className="mb-6 rounded-lg border border-yellow-800/60 bg-yellow-950/20 p-5 text-left">
-              <p className="font-semibold text-yellow-300 mb-1">Want {sent.fields.toolName} featured? $9 once.</p>
+              <p className="font-semibold text-yellow-300 mb-1">Want {sent.fields.toolName} featured? {FEATURED_PRICE} once.</p>
               <p className="text-sm text-gray-400 mb-4">
                 {FEATURED_LIVE}, with a Featured badge on the listing and the top of its category. Your details carry over.
               </p>
@@ -161,14 +163,14 @@ export default function SubmitPage() {
                 rel="nofollow"
                 className="inline-block px-5 py-2.5 bg-yellow-600 hover:bg-yellow-500 text-gray-950 font-semibold rounded-lg transition"
               >
-                Feature it — $9 once
+                Feature it — {FEATURED_PRICE} once
               </a>
             </div>
           )}
           {sent && aiVisibilityDoorHref(sent.fields, "submit-success") && (
             // AI-VISIBILITY DOOR (src/lib/ai-visibility-door.ts): the same three
             // fields they just typed, handed to aisotools' free scan. Below the
-            // $9 door, never instead of it.
+            // Featured door, never instead of it.
             <div data-ai-visibility-door="submit-success" className="mb-6 rounded-lg border border-blue-800/60 bg-blue-950/20 p-5 text-left">
               <p className="font-semibold text-blue-300 mb-1">When someone asks ChatGPT for {aiVisibilityCategory(sent.fields.category)}, is {sent.fields.toolName} named?</p>
               <p className="text-sm text-gray-400 mb-4">
@@ -215,7 +217,7 @@ export default function SubmitPage() {
       </div>
 
       {/* Tier Selector */}
-      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
         <button
           type="button"
           onClick={() => setTier("free")}
@@ -248,7 +250,7 @@ export default function SubmitPage() {
           </div>
           <div className="text-lg font-semibold text-white mb-1">Featured</div>
           <div className="text-2xl font-bold text-white mb-2">
-            $9 <span className="text-base font-normal text-gray-400">one-time</span>
+            {FEATURED_PRICE} <span className="text-base font-normal text-gray-400">one-time</span>
           </div>
           <ul className="space-y-1 text-sm text-gray-400">
             <li>⭐ Featured badge on listing</li>
@@ -258,37 +260,11 @@ export default function SubmitPage() {
           </ul>
         </button>
 
-        {/*
-          $49 Pro — thread #325. This is /advertise's existing "Basic" plan at
-          its existing price, moved to the surface the buyer is actually on.
-          /advertise was seen by 0 of 1,148 human web sessions; /submit is where
-          the property's only sale came from. $9 stays live as the control.
-        */}
-        <button
-          type="button"
-          onClick={() => setTier("pro")}
-          className={`rounded-xl border p-5 text-left transition ${
-            tier === "pro"
-              ? "border-emerald-500 bg-emerald-950/30"
-              : "border-gray-700 bg-gray-900 hover:border-emerald-700"
-          }`}
-        >
-          <div className="text-lg font-semibold text-white mb-1">Pro</div>
-          <div className="text-2xl font-bold text-white mb-2">
-            $49 <span className="text-base font-normal text-gray-400">one-time</span>
-          </div>
-          <ul className="space-y-1 text-sm text-gray-400">
-            <li>⭐ Everything in Featured</li>
-            <li>✓ Dofollow link to your repo and site</li>
-            <li>✓ Homepage placement for 30 days</li>
-            <li>✓ Listed within 24 hrs, reviewed by hand</li>
-          </ul>
-        </button>
       </div>
 
       {/* Submission Form */}
       <div ref={formCard} data-form-card className={`scroll-mt-20 rounded-xl border p-8 ${tier !== "free" ? "bg-gray-900 border-yellow-800/50" : "bg-gray-900 border-gray-800"}`}>
-        {(tier === "featured" || tier === "pro") && (
+        {tier === "featured" && (
           <div className="mb-6 flex items-center gap-2 text-sm text-yellow-300 bg-yellow-900/20 border border-yellow-800/50 rounded-lg px-4 py-3">
             ⭐ Featured listing — you&apos;ll be redirected to secure checkout after filling out this form.
           </div>
@@ -308,11 +284,9 @@ export default function SubmitPage() {
               type="submit"
               form="form"
               disabled={status === "submitting"}
-              className={`w-full px-6 py-3 disabled:opacity-60 disabled:cursor-not-allowed text-white font-medium rounded-lg transition ${
-                tier === "pro" ? "bg-emerald-600 hover:bg-emerald-500" : "bg-yellow-600 hover:bg-yellow-500"
-              }`}
+              className="w-full px-6 py-3 disabled:opacity-60 disabled:cursor-not-allowed text-white font-medium rounded-lg transition bg-yellow-600 hover:bg-yellow-500"
             >
-              {status === "submitting" ? "Processing…" : tier === "pro" ? "Continue to Checkout — $49" : "Continue to Checkout — $9"}
+              {status === "submitting" ? "Processing…" : `Continue to Checkout — ${FEATURED_PRICE}`}
             </button>
             {status === "error" && <p className="mt-3 text-sm text-red-300">{errorMsg}</p>}
           </div>
@@ -472,19 +446,13 @@ export default function SubmitPage() {
             type="submit"
             disabled={status === "submitting"}
             className={`w-full px-6 py-3 disabled:opacity-60 disabled:cursor-not-allowed text-white font-medium rounded-lg transition ${
-              tier === "featured"
-                ? "bg-yellow-600 hover:bg-yellow-500"
-                : tier === "pro"
-                ? "bg-emerald-600 hover:bg-emerald-500"
-                : "bg-blue-600 hover:bg-blue-700"
+              tier === "featured" ? "bg-yellow-600 hover:bg-yellow-500" : "bg-blue-600 hover:bg-blue-700"
             }`}
           >
             {status === "submitting"
               ? "Processing…"
               : tier === "featured"
-              ? "Continue to Checkout — $9"
-              : tier === "pro"
-              ? "Continue to Checkout — $49"
+              ? `Continue to Checkout — ${FEATURED_PRICE}`
               : "Submit Server — Free"}
           </button>
         </form>
