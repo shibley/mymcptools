@@ -101,6 +101,12 @@ export type McpUsage = {
   client: string | null;
   http: string;
   status: number;
+  /**
+   * Public path that answered (default '/api/mcp'). '/api/mcp/claude' is the
+   * Claude connector directory URL; its rows' paths start '/api/mcp/claude:',
+   * so every existing '/api/mcp:%' query keeps excluding them.
+   */
+  endpoint?: string;
 };
 
 /**
@@ -119,9 +125,10 @@ export async function recordMcpUsage(u: McpUsage): Promise<void> {
 
     const method = trunc(u.method, 64);
     const target = trunc(u.target, 120);
+    const base = u.endpoint ?? "/api/mcp";
     const path = method
-      ? `/api/mcp:${method}${target ? `:${target}` : ""}`
-      : `/api/mcp:${u.http}`;
+      ? `${base}:${method}${target ? `:${target}` : ""}`
+      : `${base}:${u.http}`;
 
     const { isCrawler, reason } = classifyCaller(ua, method, trunc(u.client, 120));
 

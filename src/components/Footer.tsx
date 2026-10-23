@@ -53,6 +53,8 @@ export function Footer() {
               <li><Link href="/status" className="hover:text-white transition">MCP Server Status</Link></li>
               <li><Link href="/developers" className="hover:text-white transition">Status API</Link></li>
               <li><Link href="/mcp-server" className="hover:text-white transition">Our MCP Server</Link></li>
+              <li><Link href="/support" className="hover:text-white transition">Support</Link></li>
+              <li><Link href="/privacy" className="hover:text-white transition">Privacy</Link></li>
               <li>
                 <a href="https://modelcontextprotocol.io" target="_blank" rel="noopener noreferrer" className="hover:text-white transition">
                   MCP Docs ↗

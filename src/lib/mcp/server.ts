@@ -86,23 +86,73 @@ function projectServer(s: MCPServer) {
   };
 }
 
+/**
+ * Which public endpoint is serving. 'claude-directory' is /api/mcp/claude, the
+ * URL listed in Claude's connector directory (claude.ai/directory). Anthropic's
+ * Software Directory Policy bars paid placement and promotion in tool output
+ * (section 4C) and instructions about other tools in descriptions, so that
+ * surface drops the `featured` placement flag, strips referral/tracking query
+ * params from maker URLs, and does not advertise the featured subset as its
+ * resource list. scripts/claude-directory-selfcheck.mts pins all of it.
+ */
+export type McpSurface = "default" | "claude-directory";
+
+const TRACKING_PARAM = /^(ref|via|aff|affiliate|fpr|partner|utm_[a-z]+)$/i;
+
+/** A maker URL with referral/tracking query params removed. Unparseable input is returned unchanged. */
+export function stripTrackingParams(url: string | null | undefined): string | null {
+  if (!url) return null;
+  try {
+    const u = new URL(url);
+    for (const k of [...u.searchParams.keys()]) if (TRACKING_PARAM.test(k)) u.searchParams.delete(k);
+    return u.toString();
+  } catch {
+    return url;
+  }
+}
+
+/** Projection for the directory surface: no placement flag, no tracking params. */
+function projectServerFor(s: MCPServer, surface: McpSurface) {
+  const row = projectServer(s);
+  if (surface !== "claude-directory") return row;
+  const { featured: _featured, ...rest } = row;
+  void _featured;
+  return { ...rest, website_url: stripTrackingParams(rest.website_url) };
+}
+
+/** Annotations every tool here shares: all read the in-process catalog and probe stores. */
+function readOnly(title: string) {
+  return { title, readOnlyHint: true, destructiveHint: false, idempotentHint: true, openWorldHint: false };
+}
+
 /** Case-insensitive membership test used by the tag/integration filters. */
 function includesCi(haystack: readonly string[], needle: string): boolean {
   const n = needle.toLowerCase();
   return haystack.some((h) => h.toLowerCase() === n);
 }
 
-export function createMcpToolsServer(): McpServer {
+const DEFAULT_INSTRUCTIONS =
+  "MyMCPTools is a live-verified directory of Model Context Protocol servers. " +
+  "Use search_mcp_servers to discover servers by keyword, category or integration, " +
+  "get_mcp_server for full install details on one server, and get_server_status / " +
+  "get_server_history / list_server_incidents to check whether a server is actually " +
+  "reachable before recommending it. Every uptime figure comes from real MCP " +
+  "handshakes against the server's remote endpoint, not from self-reported metadata.";
+
+/** Directory surface: what the server holds, stated as fact, naming no tool. */
+export const CLAUDE_DIRECTORY_INSTRUCTIONS =
+  "MyMCPTools is a directory of Model Context Protocol servers with install details for each, " +
+  "plus live reachability data: every uptime and status figure comes from real MCP handshakes " +
+  "against a server's remote endpoint, not from self-reported metadata. Local (stdio) servers " +
+  "cannot be probed and carry a repository-freshness signal instead.";
+
+export function createMcpToolsServer(opts: { surface?: McpSurface } = {}): McpServer {
+  const surface: McpSurface = opts.surface ?? "default";
+  const project = (s: MCPServer) => projectServerFor(s, surface);
   const server = new McpServer(
     { name: "mymcptools", version: "1.0.0" },
     {
-      instructions:
-        "MyMCPTools is a live-verified directory of Model Context Protocol servers. " +
-        "Use search_mcp_servers to discover servers by keyword, category or integration, " +
-        "get_mcp_server for full install details on one server, and get_server_status / " +
-        "get_server_history / list_server_incidents to check whether a server is actually " +
-        "reachable before recommending it. Every uptime figure comes from real MCP " +
-        "handshakes against the server's remote endpoint, not from self-reported metadata.",
+      instructions: surface === "claude-directory" ? CLAUDE_DIRECTORY_INSTRUCTIONS : DEFAULT_INSTRUCTIONS,
     }
   );
 
@@ -125,7 +175,7 @@ export function createMcpToolsServer(): McpServer {
         category: z
           .string()
           .optional()
-          .describe("Category slug, e.g. 'database'. See list_categories."),
+          .describe("Category slug, e.g. 'database' or 'devops'."),
         integration: z
           .string()
           .optional()
@@ -147,7 +197,7 @@ export function createMcpToolsServer(): McpServer {
           .optional()
           .describe(`Max results (default 10, max ${MAX_SEARCH_LIMIT}).`),
       },
-      annotations: { readOnlyHint: true, openWorldHint: false },
+      annotations: readOnly("Search MCP servers"),
     },
     async (args) => {
       const limit = args.limit ?? 10;
@@ -171,7 +221,7 @@ export function createMcpToolsServer(): McpServer {
         generated_at: generatedAt(),
         total_matches: total,
         returned: Math.min(total, limit),
-        results: rows.slice(0, limit).map(projectServer),
+        results: rows.slice(0, limit).map(project),
       });
     }
   );
@@ -187,16 +237,18 @@ export function createMcpToolsServer(): McpServer {
       inputSchema: {
         slug: z.string().describe("Catalog slug, e.g. 'filesystem' or 'github'."),
       },
-      annotations: { readOnlyHint: true, openWorldHint: false },
+      annotations: readOnly("Get one MCP server"),
     },
     async ({ slug }) => {
       const entry = getServerBySlug(slug);
-      if (!entry) return fail(`No server with slug '${slug}'. Try search_mcp_servers first.`);
+      if (!entry) {
+        return fail(`No server with slug '${slug}'. Slugs are lowercase catalog identifiers such as 'github' or 'postgres'.`);
+      }
 
       return json({
         generated_at: generatedAt(),
         server: {
-          ...projectServer(entry),
+          ...project(entry),
           stars: entry.stars ?? null,
           // Local (stdio) servers cannot be handshake-probed; their health
           // signal is repo freshness instead of a live verdict (PRD P1-3).
@@ -227,7 +279,7 @@ export function createMcpToolsServer(): McpServer {
           .optional()
           .describe("Catalog slug. Omit for the catalog-wide verdict rollup."),
       },
-      annotations: { readOnlyHint: true, openWorldHint: false },
+      annotations: readOnly("Get live MCP server status"),
     },
     async ({ slug }) => {
       if (!slug) {
@@ -268,7 +320,7 @@ export function createMcpToolsServer(): McpServer {
           .optional()
           .describe("Max raw probe points returned (default 30, max 200)."),
       },
-      annotations: { readOnlyHint: true, openWorldHint: false },
+      annotations: readOnly("Get MCP server uptime history"),
     },
     async ({ slug, days, limit }) => {
       // A known-but-never-probed server is a 200 with an empty series; only an
@@ -308,7 +360,7 @@ export function createMcpToolsServer(): McpServer {
           .optional()
           .describe("Max incidents returned (default 20, max 100)."),
       },
-      annotations: { readOnlyHint: true, openWorldHint: false },
+      annotations: readOnly("List MCP server outage incidents"),
     },
     async ({ slug, status, limit }) => {
       const { incidents, summary: incidentSummary } = computeIncidents(getAllEvents(), {
@@ -346,7 +398,7 @@ export function createMcpToolsServer(): McpServer {
           .optional()
           .describe("Max drift events returned (default 20, max 100)."),
       },
-      annotations: { readOnlyHint: true, openWorldHint: false },
+      annotations: readOnly("List MCP tool-schema drift"),
     },
     async ({ slug, limit }) => {
       const rows = getDrifts({ slug });
@@ -364,10 +416,10 @@ export function createMcpToolsServer(): McpServer {
       title: "List catalog categories",
       description:
         "Every category and client integration in the MyMCPTools catalog, with the number of " +
-        "servers in each. The slugs returned here are the valid values for the category and " +
-        "integration filters on search_mcp_servers.",
+        "servers in each. The slugs returned here are the valid category and integration " +
+        "filter values for catalog searches.",
       inputSchema: {},
-      annotations: { readOnlyHint: true, openWorldHint: false },
+      annotations: readOnly("List catalog categories"),
     },
     async () =>
       json({
@@ -386,7 +438,7 @@ export function createMcpToolsServer(): McpServer {
         "servers actually serving, transport mix, handshake latency percentiles, tool counts and " +
         "probe freshness. This is the 'how healthy is MCP right now?' headline number.",
       inputSchema: {},
-      annotations: { readOnlyHint: true, openWorldHint: false },
+      annotations: readOnly("Get catalog-wide health stats"),
     },
     async () => json(computeCatalogStatsFromStore())
   );
@@ -441,8 +493,10 @@ export function createMcpToolsServer(): McpServer {
   server.registerResource(
     "server",
     new ResourceTemplate("mymcptools://server/{slug}", {
+      // The directory surface lists none rather than the featured subset: a
+      // featured flag can be a paid placement (see projectServerFor).
       list: async () => ({
-        resources: servers
+        resources: (surface === "claude-directory" ? [] : servers)
           .filter((s) => s.featured)
           .map((s) => ({
             uri: `mymcptools://server/${s.slug}`,
@@ -485,7 +539,7 @@ export function createMcpToolsServer(): McpServer {
             uri: uri.href,
             mimeType: "application/json",
             text: JSON.stringify(
-              { ...projectServer(entry), status: getStatus(slug) ?? null },
+              { ...project(entry), status: getStatus(slug) ?? null },
               null,
               2
             ),
