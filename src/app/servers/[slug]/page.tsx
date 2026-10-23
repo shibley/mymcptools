@@ -931,6 +931,7 @@ export default async function ServerPage({ params }: Props) {
                 href={server.github_url}
                 target="_blank"
                 rel={listingOutboundRel(server)}
+                data-outbound-slug={server.slug}
                 className="inline-flex items-center px-6 py-3 bg-gray-900 text-white font-medium rounded-lg border border-gray-800 hover:border-gray-700 hover:bg-gray-800 transition"
               >
                 <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
@@ -950,6 +951,7 @@ export default async function ServerPage({ params }: Props) {
                   href={server.website_url}
                   target="_blank"
                   rel={listingOutboundRel(server)}
+                  data-outbound-slug={server.slug}
                   className="inline-flex items-center px-6 py-3 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition"
                 >
                   Visit Website

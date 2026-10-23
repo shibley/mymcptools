@@ -256,11 +256,15 @@ export default function SubmitPage() {
             <li>⭐ Featured badge on listing</li>
             <li>✓ Top of category placement</li>
             <li>✓ {FEATURED_LIVE}</li>
-            <li>✓ Highlighted in search results</li>
+            <li>✓ 30-day click report by email</li>
           </ul>
         </button>
 
       </div>
+      <p className="-mt-4 mb-8 text-sm text-gray-500">
+        How many people that reaches, measured and bots removed:{" "}
+        <Link href="/media-kit" className="text-blue-400 hover:text-blue-300 underline">media kit</Link>.
+      </p>
 
       {/* Submission Form */}
       <div ref={formCard} data-form-card className={`scroll-mt-20 rounded-xl border p-8 ${tier !== "free" ? "bg-gray-900 border-yellow-800/50" : "bg-gray-900 border-gray-800"}`}>

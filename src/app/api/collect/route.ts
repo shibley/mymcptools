@@ -28,6 +28,7 @@ import { sessionHash as beaconSessionHash } from "@/lib/session-identity";
 // Bot rules live in a testable module — a Next.js route.ts may only export
 // route fields, so they cannot sit here. See scripts/test-analytics-classify.ts.
 import { detectBot } from "@/lib/analytics-classify";
+import { outboundClickFields } from "@/lib/featured-report";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -121,7 +122,11 @@ export async function POST(req: Request): Promise<Response> {
       return noContent;
     }
 
-    const path = trunc(b.path, 512);
+    // An outbound click on a listing's own website/repo link (beacon.tsx) is
+    // written as `/_e/out/<slug>`, utm_source 'outbound', so it never reads as
+    // a pageview; the Featured 30-day report counts these.
+    const click = outboundClickFields(b);
+    const path = click ? click.path : trunc(b.path, 512);
     // The site is fixed server-side: an open collector that trusts a client
     // `site` field lets anyone write rows under any property's name.
     if (!path) return noContent;
@@ -143,9 +148,9 @@ export async function POST(req: Request): Promise<Response> {
       path,
       refHost(referrerFull),
       referrerFull,
-      trunc(b.utm_source, 128),
-      trunc(b.utm_medium, 128),
-      trunc(b.utm_campaign, 128),
+      click ? click.utmSource : trunc(b.utm_source, 128),
+      click ? null : trunc(b.utm_medium, 128),
+      click ? click.utmCampaign : trunc(b.utm_campaign, 128),
       sessionHash,
       isBot,
       reason ?? "",

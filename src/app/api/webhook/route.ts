@@ -1,6 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
 import Stripe from "stripe";
 import { recordPaidListing } from "@/lib/paid-listings";
+import { liveEmail, placementUrls } from "@/lib/featured-report";
+import { categories, getServerBySlug } from "@/data/servers";
 import { addApiKey } from "@/lib/api/key-store";
 import { fulfilTrustApiPurchase } from "@/lib/api/trust-api-fulfilment";
 
@@ -212,22 +214,36 @@ export async function POST(req: NextRequest) {
       `
     );
 
-    // Confirm to submitter
+    // Confirm to submitter. When the row landed, the mail names every page it
+    // renders on (src/lib/featured-report.ts) and promises the 30-day report
+    // that /api/cron/featured-report sends.
     if (email) {
-      await sendEmail(
-        email,
-        `Your Featured MCP Listing is confirmed — ${toolName}`,
-        `
-          <h2>Payment received — you're featured! ⭐</h2>
-          <p>Hi,</p>
-          <p>We've received your payment for a <strong>Featured Listing</strong> on MyMCPTools.</p>
-          <p><strong>Server:</strong> ${toolName}<br/>
-          <strong>GitHub:</strong> <a href="${github}">${github}</a></p>
-          <p>${featuredSlug ? `Your listing is <strong>live now</strong> with a Featured badge at the top of its category: <a href="https://mymcptools.com/servers/${featuredSlug}">mymcptools.com/servers/${featuredSlug}</a>` : "Your server will be reviewed within <strong>24 hours</strong> and listed with a Featured badge, appearing at the top of its category."}</p>
-          <p>Questions? Reply to this email.</p>
-          <p>— MyMCPTools Team</p>
-        `
-      );
+      if (featuredSlug) {
+        const mail = liveEmail({
+          name: toolName,
+          urls: placementUrls(
+            featuredSlug,
+            category,
+            getServerBySlug(featuredSlug)?.categories,
+            new Map(categories.map((c) => [c.slug, c.name]))
+          ),
+          // paid_at is the insert's now(); the report keys off that, not this.
+          paidAt: new Date(),
+        });
+        await sendEmail(email, mail.subject, mail.html);
+      } else {
+        await sendEmail(
+          email,
+          `Your Featured MCP Listing is confirmed — ${toolName}`,
+          `
+            <h2>Payment received — you're featured! ⭐</h2>
+            <p>We've received your payment for a <strong>Featured Listing</strong> on MyMCPTools for <strong>${toolName}</strong>.</p>
+            <p>Your server will be reviewed within <strong>24 hours</strong> and listed with a Featured badge, appearing at the top of its category.</p>
+            <p>Questions? Reply to this email.</p>
+            <p>— MyMCPTools Team</p>
+          `
+        );
+      }
     }
 
     await stripe.checkout.sessions.update(session.id, {
