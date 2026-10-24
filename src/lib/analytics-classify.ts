@@ -89,6 +89,60 @@ const BOT_UA = [
   "skypeuripreview", "whatsapp", "telegrambot", "discordbot", "slackbot",
 ];
 
+/**
+ * WIN1920 DIRECT CHROME FARM — ported from replacedbai 2ca5841 on 2026-10-23,
+ * AFTER measuring it on mymcptools' own rows.
+ *
+ * The shape: Windows NT 10.0, a desktop Chrome UA at exactly Chrome/144.0.0.0
+ * or Chrome/151.0.0.0, window.screen.width 1920, no referrer. 2026-10-18..21
+ * (PT) it put 637 sessions on mymcptools that were counted human, 451 of the
+ * one-pageview ones landing on /developers.
+ *
+ * MEASURED HERE (analytics.events, site='mymcptools', 90d to 2026-10-24,
+ * is_bot=false, session level):
+ *
+ *   cohort                                  sessions  >1 pageview  >10s
+ *   rule match, 10-18..10-21                     637         0.3%   0.3%
+ *   rule match, outside that window              934         0.1%   0.0%
+ *   Win/1920 sessions NOT matching               531        24.7%  19.2%
+ *
+ * The 3 multi-row matches were 2 CN sessions with pageviews hours apart and
+ * one 2-second /developers reload. No match ever wrote a /_e/ event, a
+ * /submit/success, or sat near an API-key or paid-listing record. Chrome 151
+ * only counts from WIN1920_FARM_151_FROM: before that it was the current
+ * stable build (on aisotools real makers ran it), so a retro-pass must not
+ * judge August rows by October's rule.
+ *
+ * Guarded by scripts/test-win1920-farm.ts (in verify:predeploy).
+ */
+const FARM_WINDOWS = /^Mozilla\/5\.0 \(Windows NT 10\.0; Win64; x64\) AppleWebKit\/537\.36 \(KHTML, like Gecko\) /;
+const FARM_CHROME = /Chrome\/(144|151)\.0\.0\.0 Safari\/537\.36$/;
+export const WIN1920_FARM_SCREEN_W = 1920;
+export const WIN1920_FARM_REASON = "win1920-direct-chrome-farm";
+/** Chrome 151 was the current stable build before this; real people ran it. */
+export const WIN1920_FARM_151_FROM = "2026-09-22T00:00:00Z";
+
+/**
+ * `referrerFull` must be passed explicitly: `undefined` (a caller that cannot
+ * see the referrer) never matches.
+ */
+export function isWin1920DirectChromeFarm(
+  ua: string | null | undefined,
+  sw: unknown,
+  referrerFull: string | null | undefined,
+  now: Date = new Date(),
+): boolean {
+  if (!ua || referrerFull !== null) return false;
+  if (sw !== WIN1920_FARM_SCREEN_W) return false;
+  const m = ua.match(FARM_CHROME);
+  if (!m || !FARM_WINDOWS.test(ua)) return false;
+  if (m[1] === "151" && now.getTime() < Date.parse(WIN1920_FARM_151_FROM)) return false;
+  return true;
+}
+
+/** SQL twin of isWin1920DirectChromeFarm, judged at each row's own `ts`. */
+export const WIN1920_DIRECT_CHROME_FARM_SQL = `ua ~ '^Mozilla/5\\.0 \\(Windows NT 10\\.0; Win64; x64\\) AppleWebKit/537\\.36 \\(KHTML, like Gecko\\) Chrome/(144|151)\\.0\\.0\\.0 Safari/537\\.36$' and screen_w = ${WIN1920_FARM_SCREEN_W} and referrer_full is null and (ua !~ 'Chrome/151\\.' or ts >= timestamptz '${WIN1920_FARM_151_FROM}')`;
+
 export type Detect = { isBot: boolean; reason: string | null };
 
 export function detectBot(
@@ -98,6 +152,7 @@ export function detectBot(
   wd: unknown,
   hc: unknown,
   now: Date = new Date(),
+  referrerFull?: string | null,
 ): Detect {
   const reasons: string[] = [];
   const lc = (ua || "").toLowerCase();
@@ -160,6 +215,9 @@ export function detectBot(
     ) {
       reasons.push("desktop-ua-mobile-screen");
     }
+
+    // See WIN1920 DIRECT CHROME FARM above.
+    if (isWin1920DirectChromeFarm(ua, sw, referrerFull, now)) reasons.push(WIN1920_FARM_REASON);
   }
 
   return { isBot: reasons.length > 0, reason: reasons.length ? reasons.join(",") : null };

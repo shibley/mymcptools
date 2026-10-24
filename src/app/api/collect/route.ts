@@ -141,7 +141,7 @@ export async function POST(req: Request): Promise<Response> {
     if (!sessionHash) return noContent;
 
     const sw = typeof b.sw === "number" ? Math.trunc(b.sw) : null;
-    const { isBot, reason } = detectBot(ua, h, b.sw, b.wd, b.hc);
+    const { isBot, reason } = detectBot(ua, h, b.sw, b.wd, b.hc, new Date(), referrerFull);
 
     const res = await p.query(INSERT, [
       SITE,
