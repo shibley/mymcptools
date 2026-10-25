@@ -24,5 +24,11 @@
         }
       ]
     }
+  ],
+  "crons": [
+    {
+      "path": "/api/cron/featured-report",
+      "schedule": "0 16 * * *"
+    }
   ]
 }

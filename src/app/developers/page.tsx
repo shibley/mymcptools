@@ -1,6 +1,11 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import TrustApiCheckoutButton from "./TrustApiCheckoutButton";
+import {
+  proPopulation,
+  sellableCapabilities,
+  suppressedCapabilities,
+} from "@/lib/api/pro-offer";
 
 export const metadata: Metadata = {
   title: "MCP Server Status API — Live Uptime & Drift Data | MyMCPTools",
@@ -25,7 +30,7 @@ export const metadata: Metadata = {
   alternates: { canonical: "https://mymcptools.com/developers" },
 };
 
-const CONTACT_EMAIL = "shibley@mymcptools.com";
+const CONTACT_EMAIL = "shibley@apistatuscheck.com";
 
 const accessMailto = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(
   "Trust Data API — request an API key"
@@ -175,8 +180,9 @@ export default function DevelopersPage() {
           The remaining endpoints — <Code>/export</Code>, <Code>/digest</Code>,{" "}
           <Code>/drift</Code>, <Code>/incidents</Code>,{" "}
           <Code>/servers/&#123;slug&#125;/history</Code> and{" "}
-          <Code>/firewall/check</Code> — require a key, and a key also raises the rate
-          limit to 120/min. Pass it on either an{" "}
+          <Code>/firewall/check</Code> — require a key for full, uncapped access (four
+          of them answer a keyless caller with a capped sample first — see the trial
+          below), and a key also raises the rate limit to 120/min. Pass it on either an{" "}
           <Code>Authorization: Bearer &lt;key&gt;</Code> header or an{" "}
           <Code>x-api-key: &lt;key&gt;</Code> header.
         </p>
@@ -215,6 +221,50 @@ x-mcptools-upgrade: https://mymcptools.com/developers#pro
       "key_required": true, "endpoints": "all",
       "checkout_url": "https://mymcptools.com/developers#pro" }
   ]
+}`}
+        />
+        <p className="mb-4 max-w-3xl leading-relaxed text-gray-400">
+          <strong className="text-white">
+            Try the paid endpoints with no key at all.
+          </strong>{" "}
+          <Code>/drift</Code>, <Code>/export</Code>, <Code>/digest</Code> and{" "}
+          <Code>/incidents</Code> answer a keyless caller with{" "}
+          <strong className="text-white">10 real rows</strong> from the same stores a
+          Pro key reads, <strong className="text-white">3 calls per day</strong>, no
+          account, email or browser required. The response carries a{" "}
+          <Code>trial</Code> block with <Code>rows_withheld</Code> — how much of that
+          dataset a key adds, measured against what you just received rather than
+          claimed — plus <Code>X-MCPTools-Trial: 1</Code> and the row cap in headers so
+          a CSV or Markdown response says it too. Aggregates (<Code>summary</Code>,{" "}
+          <Code>install_summary</Code>, <Code>counts</Code>) are{" "}
+          <strong className="text-white">never truncated</strong>: coverage is the
+          thing you are evaluating.{" "}
+          <Code>/firewall/check</Code> and <Code>/servers/&#123;slug&#125;/history</Code>{" "}
+          are excluded — a truncated single-subject answer is a wrong answer, not a
+          sample.
+        </p>
+        <CodeBlock
+          label="Trial — a real sample, no key"
+          code={`$ curl -i https://mymcptools.com/api/v1/drift
+HTTP/2 200
+x-ratelimit-tier: trial
+x-mcptools-trial: 1
+x-mcptools-trial-row-cap: 10
+x-mcptools-trial-calls-remaining: 2
+
+{
+  "drift_events": [ /* 10 real rows */ ],
+  "pagination": { "total": 21, "limit": 10, "next_cursor": null },
+  "trial": {
+    "trial": true,
+    "row_cap": 10,
+    "rows_returned": 10,
+    "rows_withheld": 11,
+    "calls_remaining_today": 2,
+    "full_access": { "price_usd_month": 49,
+                     "checkout_url": "https://mymcptools.com/api/trust-api/checkout?...",
+                     "coverage": { /* row counts per capability */ } }
+  }
 }`}
         />
         <CodeBlock
@@ -288,6 +338,33 @@ curl https://mymcptools.com/api/v1/export \\
           <p className="mb-4 max-w-3xl text-gray-400">
             Paginated list of every server&apos;s current status, plus a verdict summary.
           </p>
+          <p className="mb-4 max-w-3xl text-gray-400">
+            Most of the catalog is local/stdio — installed from npm, PyPI or a container,
+            with no remote endpoint to handshake, so it is recorded{" "}
+            <Code>UNPROBEABLE</Code> and has no live verdict. Those rows instead carry{" "}
+            <Code>static_signal</Code>: the last commit and last release swept from the
+            server&apos;s own repository, plus a coarse <Code>freshness</Code> bucket —{" "}
+            <Code>active</Code> (moved in the last 6 months), <Code>aging</Code> (6–18),{" "}
+            <Code>stale</Code> (older) or <Code>unknown</Code>. It is <Code>null</Code>{" "}
+            when we hold no date at all, so <Code>static_signal !== null</Code> means we
+            know something. <Code>signal_summary</Code> on every response reports how much
+            of the current result set is covered.
+          </p>
+          <p className="mb-4 max-w-3xl text-gray-400">
+            A repository signal can only speak for listings that have one, and 1,424 of
+            the 2,457 entries carry no repo URL at all. Every row therefore also carries{" "}
+            <Code>install_signal</Code>: the registry lookup for the package the install
+            command actually names — <Code>registry</Code>, <Code>package</Code>,{" "}
+            <Code>exists</Code>, and <Code>last_published_at</Code>, which dates the
+            artifact the command fetches rather than the repo behind it. Unlike{" "}
+            <Code>static_signal</Code>, it is served even when the answer is negative:{" "}
+            <Code>exists: false</Code> means the named package is not in its registry and
+            the command cannot run. That is currently true of 810 of the 1,233 rows we
+            have checked, and it is the single most useful thing the dataset can tell an
+            agent before it routes. <Code>install_summary</Code> reports the split, and{" "}
+            <Code>dated_by_either_signal</Code> is the honest coverage number across both
+            sources.
+          </p>
 
           <h4 className="mb-2 mt-6 text-sm font-semibold uppercase tracking-wide text-gray-500">
             Query parameters
@@ -306,6 +383,26 @@ curl https://mymcptools.com/api/v1/export \\
                   <td className="px-4 py-3">
                     Set to <Code>healthy</Code> to return only servers currently serving
                     (verdict <Code>GOOD</Code> or <Code>WARN</Code>).
+                  </td>
+                </tr>
+                <tr>
+                  <td className="px-4 py-3 font-mono text-blue-300">signal</td>
+                  <td className="px-4 py-3">
+                    Filter on repo freshness: <Code>active</Code>, <Code>aging</Code>,{" "}
+                    <Code>stale</Code>, <Code>unknown</Code>, <Code>any</Code> (has a
+                    dated signal) or <Code>none</Code>. Anything else returns{" "}
+                    <Code>400</Code>. Composes with <Code>filter</Code>.
+                  </td>
+                </tr>
+                <tr>
+                  <td className="px-4 py-3 font-mono text-blue-300">installable</td>
+                  <td className="px-4 py-3">
+                    Filter on the registry lookup: <Code>yes</Code> (named package is
+                    published and is the right product), <Code>no</Code> (it is not there,
+                    so the command cannot run) or <Code>unknown</Code> (the command names
+                    no registry package — a git clone, a container, a remote URL).
+                    Anything else returns <Code>400</Code>. Composes with{" "}
+                    <Code>filter</Code> and <Code>signal</Code>.
                   </td>
                 </tr>
                 <tr>
@@ -336,16 +433,27 @@ curl https://mymcptools.com/api/v1/export \\
           <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
             <CodeBlock
               label="Request"
-              code={`curl "https://mymcptools.com/api/v1/status?filter=healthy&limit=2" \\
-  -H "Authorization: Bearer $MCPTOOLS_API_KEY"`}
+              code={`# every server whose repo moved in the last 6 months
+curl "https://mymcptools.com/api/v1/status?signal=active&limit=2"`}
             />
             <CodeBlock
               label="200 Response (truncated)"
               code={`{
   "generated_at": "2026-06-30T11:00:00.000Z",
   "summary": {
-    "GOOD": 142, "WARN": 11, "AUTH_REQUIRED": 7,
-    "DOWN": 9, "UNPROBEABLE": 38
+    "GOOD": 5, "WARN": 0, "AUTH_REQUIRED": 38,
+    "DOWN": 1, "UNPROBEABLE": 2396
+  },
+  "signal_summary": {
+    "covered": 915, "uncovered": 1525,
+    "active": 549, "aging": 332, "stale": 34,
+    "generated_at": "2026-07-25T16:50:25.829Z"
+  },
+  "install_summary": {
+    "covered": 1233, "uncovered": 1207,
+    "installable": 423, "phantom": 810, "dated": 420,
+    "dated_by_either_signal": 1023,
+    "generated_at": "2026-09-25"
   },
   "pagination": {
     "total": 153,
@@ -365,7 +473,34 @@ curl https://mymcptools.com/api/v1/export \\
       "last_seen_good_at": "2026-06-30T11:00:00.000Z",
       "checked_at": "2026-06-30T11:00:00.000Z",
       "status_changed_at": "2026-06-12T08:30:00.000Z",
-      "schema_changed": false
+      "schema_changed": false,
+      "static_signal": null,
+      "install_signal": null
+    },
+    {
+      "slug": "sqlite",
+      "verdict": "UNPROBEABLE",
+      "tool_count": null,
+      "latency_ms": null,
+      "failure_reason": "local stdio install (npm)",
+      "static_signal": {
+        "repo_url": "https://github.com/.../servers",
+        "last_commit_at": "2026-07-18T09:12:04.000Z",
+        "last_release_at": "2026-06-02T00:00:00.000Z",
+        "last_release_tag": "v0.6.2",
+        "freshness": "active",
+        "package_registry": "npm",
+        "package_name": "@modelcontextprotocol/server-sqlite",
+        "checked_at": "2026-07-25T16:45:16.181Z"
+      },
+      "install_signal": {
+        "registry": "npm",
+        "package": "@modelcontextprotocol/server-sqlite",
+        "exists": true,
+        "last_published_at": "2026-06-02T18:44:10.113Z",
+        "collision": null,
+        "checked_at": "2026-09-25"
+      }
     }
   ]
 }`}
@@ -997,6 +1132,43 @@ docker,DOWN,,,,...`}
               and we&apos;ll get you a key by hand. Need the whole dataset on a schedule?
               Join the data-feed waitlist.
             </p>
+
+            {/* WHAT THE $49 BUYS, AS COVERAGE. Generated from the committed
+                stores by @/lib/api/pro-offer — the same source as the Stripe
+                order summary and the 401 upgrade body, so the three cannot
+                disagree. Stating a thin row count is deliberate: most of this
+                catalog is local/stdio and unprobeable, and a buyer who learns
+                that here instead of after paying is the point. A signal with
+                zero rows is listed as not held rather than omitted. */}
+            <div className="mx-auto mb-8 max-w-2xl overflow-hidden rounded-xl border border-white/10 bg-black/30 text-left">
+              <div className="border-b border-white/10 px-5 py-3 text-sm font-semibold text-gray-300">
+                Coverage across {proPopulation().toLocaleString("en-US")} catalogued
+                MCP servers
+              </div>
+              <ul className="divide-y divide-white/5">
+                {sellableCapabilities().map((c) => (
+                  <li
+                    key={c.id}
+                    className="flex items-baseline justify-between gap-4 px-5 py-3 text-sm"
+                  >
+                    <span className="text-gray-400">{c.label}</span>
+                    <span className="shrink-0 font-mono text-gray-200">
+                      {c.rows.toLocaleString("en-US")}
+                    </span>
+                  </li>
+                ))}
+                {suppressedCapabilities().map((c) => (
+                  <li
+                    key={c.id}
+                    className="flex items-baseline justify-between gap-4 px-5 py-3 text-sm"
+                  >
+                    <span className="text-gray-500 line-through">{c.label}</span>
+                    <span className="shrink-0 font-mono text-gray-500">not held</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
             <div className="mx-auto mb-6 flex max-w-md justify-center">
               <TrustApiCheckoutButton />
             </div>

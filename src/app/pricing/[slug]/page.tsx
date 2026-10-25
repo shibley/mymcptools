@@ -18,6 +18,9 @@ function FreshnessBadge() {
   );
 }
 
+// The catalog is fully prerendered; unknown slugs 404 statically, no function.
+export const dynamicParams = false;
+
 export async function generateStaticParams() {
   return servers.map((server) => ({ slug: server.slug }));
 }

@@ -1,7 +1,10 @@
 "use client";
 
-import { useState, FormEvent } from "react";
+import { useState, useEffect, useRef, FormEvent } from "react";
 import Link from "next/link";
+import { ackDoorHref, cleanDoorEntry, FEATURED_LIVE, FREE_QUEUE, type MakerDoorEntry, type SubmittedFields } from "@/lib/maker-door";
+import { aiVisibilityCategory, aiVisibilityDoorHref } from "@/lib/ai-visibility-door";
+import { FEATURED_PRICE } from "@/lib/featured-price";
 
 type ListingTier = "free" | "featured";
 
@@ -9,6 +12,45 @@ export default function SubmitPage() {
   const [tier, setTier] = useState<ListingTier>("free");
   const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
   const [errorMsg, setErrorMsg] = useState("");
+  // Maker door (src/lib/maker-door.ts): a server page links here with the
+  // listing's own fields so its maintainer lands on Featured, form filled.
+  // Read in an effect rather than useSearchParams so the page stays static.
+  const [prefill, setPrefill] = useState<Record<string, string>>({});
+  const [doorServer, setDoorServer] = useState<string>("");
+  // Which maker door opened this page (server page, ack mail, success screen).
+  const [doorFrom, setDoorFrom] = useState<MakerDoorEntry | undefined>(undefined);
+  // A free submission's fields, handed back by the success screen's door.
+  const [sent, setSent] = useState<{ fields: SubmittedFields; server?: string } | null>(null);
+  // Every maker door ends in #form, but the browser's own hash jump fires on
+  // the static HTML — before this effect re-keys the form and drops the
+  // Featured banner in above it — so a door press landed on the tier picker
+  // with the filled form and its Featured button ~3 mobile screens down (queue-status
+  // walk, 2026-10-12, 360px). Jump again once the prefilled form is rendered.
+  const formCard = useRef<HTMLDivElement>(null);
+  const [jumpToForm, setJumpToForm] = useState(false);
+
+  useEffect(() => {
+    const sp = new URLSearchParams(window.location.search);
+    const t = sp.get("tier");
+    // "pro" was folded into Featured on 2026-10-22; old links still land on it.
+    if (t === "featured" || t === "pro") setTier("featured");
+    const server = sp.get("server") || "";
+    if (/^[A-Za-z0-9][A-Za-z0-9-]{0,79}$/.test(server)) setDoorServer(server);
+    setDoorFrom(cleanDoorEntry(sp.get("from")));
+    const next: Record<string, string> = {};
+    for (const k of ["name", "description", "github", "website", "category", "install", "email"]) {
+      const v = sp.get(k);
+      if (v) next[k] = v.slice(0, 500);
+    }
+    setPrefill(next);
+    if (window.location.hash === "#form") setJumpToForm(true);
+  }, []);
+
+  useEffect(() => {
+    if (!jumpToForm) return;
+    setJumpToForm(false);
+    requestAnimationFrame(() => formCard.current?.scrollIntoView({ block: "start" }));
+  }, [jumpToForm]);
 
   async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -25,6 +67,12 @@ export default function SubmitPage() {
       installType: (form.elements.namedItem("install") as HTMLSelectElement).value,
       email: (form.elements.namedItem("email") as HTMLInputElement).value,
       website_url: (form.elements.namedItem("website_url") as HTMLInputElement)?.value || "",
+      // The checkout route whitelists this; anything unknown is Featured.
+      tier,
+      // Catalog slug from the maker door; the route re-validates it and the
+      // webhook only honours a slug the catalog really holds.
+      server: doorServer || undefined,
+      from: doorFrom ?? (doorServer ? "server-page" : undefined),
     };
 
     // Honeypot check
@@ -67,6 +115,18 @@ export default function SubmitPage() {
         setErrorMsg(json.error || "Something went wrong. Please try again.");
         setStatus("error");
       } else {
+        setSent({
+          fields: {
+            toolName: data.toolName,
+            description: data.description,
+            github: data.github,
+            website: data.website,
+            category: data.category,
+            installType: data.installType,
+            email: data.email,
+          },
+          server: typeof json.server === "string" ? json.server : undefined,
+        });
         setStatus("success");
       }
     } catch {
@@ -82,8 +142,50 @@ export default function SubmitPage() {
           <div className="text-5xl mb-4">🎉</div>
           <h1 className="text-2xl font-bold text-white mb-3">Submission Received!</h1>
           <p className="text-gray-400 mb-6">
-            Thanks for submitting your MCP server. We&apos;ll review it within 24-48 hours and notify you by email.
+            Thanks for submitting your MCP server. It&apos;s in the hand-review queue, with no set date; we&apos;ll email you if it&apos;s listed.
           </p>
+          {sent && (
+            // MAKER DOOR, entry `submit-success` (src/lib/maker-door.ts): the
+            // one moment a maker is certainly on the page, with the Featured tier
+            // one press away and every field they just typed carried over.
+            <div data-maker-door="submit-success" className="mb-6 rounded-lg border border-yellow-800/60 bg-yellow-950/20 p-5 text-left">
+              <p className="font-semibold text-yellow-300 mb-1">Want {sent.fields.toolName} featured? {FEATURED_PRICE} once.</p>
+              <p className="text-sm text-gray-400 mb-4">
+                {FEATURED_LIVE}, with a Featured badge on the listing and the top of its category. Your details carry over.
+              </p>
+              <a
+                href={ackDoorHref(sent.fields, "submit-success", sent.server)}
+                onClick={(e) => {
+                  // Same page: a hash-only reload would keep the success state.
+                  e.preventDefault();
+                  window.location.assign(ackDoorHref(sent.fields, "submit-success", sent.server));
+                }}
+                rel="nofollow"
+                className="inline-block px-5 py-2.5 bg-yellow-600 hover:bg-yellow-500 text-gray-950 font-semibold rounded-lg transition"
+              >
+                Feature it — {FEATURED_PRICE} once
+              </a>
+            </div>
+          )}
+          {sent && aiVisibilityDoorHref(sent.fields, "submit-success") && (
+            // AI-VISIBILITY DOOR (src/lib/ai-visibility-door.ts): the same three
+            // fields they just typed, handed to aisotools' free scan. Below the
+            // Featured door, never instead of it.
+            <div data-ai-visibility-door="submit-success" className="mb-6 rounded-lg border border-blue-800/60 bg-blue-950/20 p-5 text-left">
+              <p className="font-semibold text-blue-300 mb-1">When someone asks ChatGPT for {aiVisibilityCategory(sent.fields.category)}, is {sent.fields.toolName} named?</p>
+              <p className="text-sm text-gray-400 mb-4">
+                Free check on AISO Tools, our sister site: it asks ChatGPT the questions your users ask and shows who gets named instead. Your details carry over. Weekly tracking is $19/mo after a 7-day trial with no card.
+              </p>
+              <a
+                href={aiVisibilityDoorHref(sent.fields, "submit-success")!}
+                target="_blank"
+                rel="noopener"
+                className="inline-block px-5 py-2.5 bg-blue-600 hover:bg-blue-500 text-white font-semibold rounded-lg transition"
+              >
+                Check my AI visibility (free)
+              </a>
+            </div>
+          )}
           <Link href="/" className="inline-block px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition">
             Back to Directory
           </Link>
@@ -96,14 +198,26 @@ export default function SubmitPage() {
     <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
       {/* Header */}
       <div className="text-center mb-10">
-        <h1 className="text-3xl font-bold text-white mb-4">Submit Your MCP Server</h1>
+        <h1 className="text-3xl font-bold text-white mb-4">
+          {doorServer || doorFrom ? `Feature ${prefill.name || "your server"} on MyMCPTools` : "Submit Your MCP Server"}
+        </h1>
         <p className="text-gray-400">
-          Get your server listed in the directory and reach thousands of developers.
+          {doorServer ? (
+            <>
+              Already listed at{" "}
+              <Link href={`/servers/${doorServer}`} className="text-blue-400 hover:text-blue-300">
+                /servers/{doorServer}
+              </Link>
+              . Featured adds the badge to that page and moves it to the top of its category the moment payment clears.
+            </>
+          ) : (
+            "Get your server listed in the directory and reach thousands of developers."
+          )}
         </p>
       </div>
 
       {/* Tier Selector */}
-      <div className="grid grid-cols-2 gap-4 mb-8">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
         <button
           type="button"
           onClick={() => setTier("free")}
@@ -117,7 +231,7 @@ export default function SubmitPage() {
           <div className="text-2xl font-bold text-white mb-2">$0</div>
           <ul className="space-y-1 text-sm text-gray-400">
             <li>✓ Standard directory listing</li>
-            <li>✓ Reviewed within 24–48 hrs</li>
+            <li>✓ {FREE_QUEUE}</li>
             <li>✓ Category + search indexed</li>
           </ul>
         </button>
@@ -136,26 +250,53 @@ export default function SubmitPage() {
           </div>
           <div className="text-lg font-semibold text-white mb-1">Featured</div>
           <div className="text-2xl font-bold text-white mb-2">
-            $9 <span className="text-base font-normal text-gray-400">one-time</span>
+            {FEATURED_PRICE} <span className="text-base font-normal text-gray-400">one-time</span>
           </div>
           <ul className="space-y-1 text-sm text-gray-400">
             <li>⭐ Featured badge on listing</li>
             <li>✓ Top of category placement</li>
-            <li>✓ Priority review within 24 hrs</li>
-            <li>✓ Highlighted in search results</li>
+            <li>✓ {FEATURED_LIVE}</li>
+            <li>✓ 30-day click report by email</li>
           </ul>
         </button>
+
       </div>
+      <p className="-mt-4 mb-8 text-sm text-gray-500">
+        How many people that reaches, measured and bots removed:{" "}
+        <Link href="/media-kit" className="text-blue-400 hover:text-blue-300 underline">media kit</Link>.
+      </p>
 
       {/* Submission Form */}
-      <div className={`rounded-xl border p-8 ${tier === "featured" ? "bg-gray-900 border-yellow-800/50" : "bg-gray-900 border-gray-800"}`}>
+      <div ref={formCard} data-form-card className={`scroll-mt-20 rounded-xl border p-8 ${tier !== "free" ? "bg-gray-900 border-yellow-800/50" : "bg-gray-900 border-gray-800"}`}>
         {tier === "featured" && (
           <div className="mb-6 flex items-center gap-2 text-sm text-yellow-300 bg-yellow-900/20 border border-yellow-800/50 rounded-lg px-4 py-3">
             ⭐ Featured listing — you&apos;ll be redirected to secure checkout after filling out this form.
           </div>
         )}
 
-        <form className="space-y-6" onSubmit={handleSubmit}>
+        {/* A door press arrives with every field filled from the maker's own
+            submission, and the mail promised "one step to checkout" — but the
+            form's own button sat ~250px below a 640px phone screen. Same form,
+            same submit handler; this just puts the press where they land. */}
+        {doorFrom && tier !== "free" && prefill.name && prefill.email && (
+          <div data-door-quick className="mb-6 rounded-lg border border-yellow-800/50 bg-gray-950 p-4">
+            <p className="text-sm text-gray-300 mb-3">
+              Everything below is already filled in from your submission of{" "}
+              <span className="font-semibold text-white">{prefill.name}</span>. Check it if you like, or go straight to checkout.
+            </p>
+            <button
+              type="submit"
+              form="form"
+              disabled={status === "submitting"}
+              className="w-full px-6 py-3 disabled:opacity-60 disabled:cursor-not-allowed text-white font-medium rounded-lg transition bg-yellow-600 hover:bg-yellow-500"
+            >
+              {status === "submitting" ? "Processing…" : `Continue to Checkout — ${FEATURED_PRICE}`}
+            </button>
+            {status === "error" && <p className="mt-3 text-sm text-red-300">{errorMsg}</p>}
+          </div>
+        )}
+
+        <form id="form" key={Object.keys(prefill).length ? "prefilled" : "blank"} className="space-y-6" onSubmit={handleSubmit}>
           {/* Honeypot */}
           <input type="text" name="website_url" style={{ display: "none" }} tabIndex={-1} autoComplete="off" />
 
@@ -168,6 +309,7 @@ export default function SubmitPage() {
               type="text"
               id="name"
               name="name"
+              defaultValue={prefill.name}
               required
               placeholder="e.g., My Awesome MCP Server"
               className="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg text-gray-100 placeholder-gray-500 focus:outline-none focus:border-blue-500 transition"
@@ -182,6 +324,7 @@ export default function SubmitPage() {
             <textarea
               id="description"
               name="description"
+              defaultValue={prefill.description}
               required
               rows={3}
               placeholder="What does your server do? Keep it concise but informative."
@@ -198,6 +341,7 @@ export default function SubmitPage() {
               type="url"
               id="github"
               name="github"
+              defaultValue={prefill.github}
               required
               placeholder="https://github.com/username/repo"
               className="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg text-gray-100 placeholder-gray-500 focus:outline-none focus:border-blue-500 transition"
@@ -213,6 +357,7 @@ export default function SubmitPage() {
               type="url"
               id="website"
               name="website"
+              defaultValue={prefill.website}
               placeholder="https://yourwebsite.com"
               className="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg text-gray-100 placeholder-gray-500 focus:outline-none focus:border-blue-500 transition"
             />
@@ -226,6 +371,7 @@ export default function SubmitPage() {
             <select
               id="category"
               name="category"
+              defaultValue={prefill.category ?? ""}
               required
               className="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg text-gray-100 focus:outline-none focus:border-blue-500 transition"
             >
@@ -257,6 +403,7 @@ export default function SubmitPage() {
             <select
               id="install"
               name="install"
+              defaultValue={prefill.install ?? ""}
               required
               className="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg text-gray-100 focus:outline-none focus:border-blue-500 transition"
             >
@@ -266,6 +413,11 @@ export default function SubmitPage() {
               <option value="binary">Binary</option>
               <option value="docker">Docker</option>
               <option value="source">Source</option>
+              {/* 2026-09-25: added after Noveum's founder wrote in saying the
+                  form offered only local install types, so he could not submit
+                  a hosted server without picking an inaccurate one. The
+                  MCPServer type has allowed 'remote' all along. */}
+              <option value="remote">Hosted / remote endpoint (no local install)</option>
             </select>
           </div>
 
@@ -279,6 +431,7 @@ export default function SubmitPage() {
               id="email"
               name="email"
               required
+              defaultValue={prefill.email}
               placeholder="you@example.com"
               className="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg text-gray-100 placeholder-gray-500 focus:outline-none focus:border-blue-500 transition"
             />
@@ -297,15 +450,13 @@ export default function SubmitPage() {
             type="submit"
             disabled={status === "submitting"}
             className={`w-full px-6 py-3 disabled:opacity-60 disabled:cursor-not-allowed text-white font-medium rounded-lg transition ${
-              tier === "featured"
-                ? "bg-yellow-600 hover:bg-yellow-500"
-                : "bg-blue-600 hover:bg-blue-700"
+              tier === "featured" ? "bg-yellow-600 hover:bg-yellow-500" : "bg-blue-600 hover:bg-blue-700"
             }`}
           >
             {status === "submitting"
               ? "Processing…"
               : tier === "featured"
-              ? "Continue to Checkout — $9"
+              ? `Continue to Checkout — ${FEATURED_PRICE}`
               : "Submit Server — Free"}
           </button>
         </form>

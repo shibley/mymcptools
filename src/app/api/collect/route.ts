@@ -25,6 +25,10 @@
  */
 import { Pool } from "pg";
 import { sessionHash as beaconSessionHash } from "@/lib/session-identity";
+// Bot rules live in a testable module — a Next.js route.ts may only export
+// route fields, so they cannot sit here. See scripts/test-analytics-classify.ts.
+import { detectBot } from "@/lib/analytics-classify";
+import { outboundClickFields } from "@/lib/featured-report";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -69,86 +73,6 @@ function refHost(full: string | null): string | null {
   } catch {
     return null;
   }
-}
-
-// Chrome reduced its User-Agent to a MAJOR.0.0.0 form in v110 — every real
-// desktop Chrome reports Chrome/142.0.0.0, never Chrome/142.0.7444.175. A full
-// four-part version on a desktop platform is an automation fleet that pinned an
-// exact build. Shipped on replacedbai by thread #213 and on aisotools since.
-// `x11-direct` is deliberately NOT ported: it needs `referrerFull`, which the
-// other detectBot() signatures in this repo do not carry.
-const DESKTOP_PLATFORM = /Windows NT|Macintosh|X11/;
-const MOBILE_UA = /Mobile|Android/;
-const FULL_CHROME_VERSION = /Chrome\/\d+\./;
-const REDUCED_CHROME_VERSION = /Chrome\/\d+\.0\.0\.0/;
-const STALE_CHROME = /Chrome\/75\.0\.377/;
-
-/**
- * Known non-human user agents. Substring match, lowercased.
- *
- * This is the BROWSER list and is deliberately stricter than
- * `CRAWLER_UA` in src/lib/analytics/mcp-usage.ts: `python-requests`, `axios`
- * and `curl` are how an agent legitimately speaks to /api/mcp, but on the web
- * surface they are never a human reading a page.
- */
-const BOT_UA = [
-  "bot", "crawl", "spider", "slurp", "scrap", "fetcher", "monitor", "preview",
-  "headless", "phantomjs", "puppeteer", "playwright", "selenium", "webdriver",
-  "python-requests", "python-urllib", "aiohttp", "httpx", "axios", "go-http-client",
-  "java/", "okhttp", "curl/", "wget/", "libwww", "lighthouse", "pagespeed",
-  "gptbot", "oai-searchbot", "chatgpt-user", "claudebot", "claude-web", "anthropic-ai",
-  "ccbot", "perplexitybot", "bytespider", "amazonbot", "applebot", "google-extended",
-  "ahrefs", "semrush", "mj12", "dotbot", "dataforseo", "petalbot", "yandex",
-  "baiduspider", "facebookexternalhit", "embedly", "quora link preview",
-  "skypeuripreview", "whatsapp", "telegrambot", "discordbot", "slackbot",
-];
-
-type Detect = { isBot: boolean; reason: string | null };
-
-function detectBot(ua: string | null, h: Headers, sw: unknown, wd: unknown, hc: unknown): Detect {
-  const reasons: string[] = [];
-  const lc = (ua || "").toLowerCase();
-
-  if (!lc) {
-    reasons.push("no-ua");
-  } else {
-    const hit = BOT_UA.find((b) => lc.includes(b));
-    if (hit) reasons.push(`ua:${hit}`);
-  }
-
-  // navigator.webdriver — set by every mainstream automation driver unless
-  // explicitly patched out.
-  if (wd === true) reasons.push("webdriver");
-
-  // Real browsers always report a plausible screen width.
-  if (sw === null || sw === undefined) reasons.push("no-screen");
-  else if (typeof sw !== "number" || !Number.isFinite(sw) || sw < 200 || sw > 10000) {
-    reasons.push("implausible-screen");
-  }
-
-  // Human browsers send Accept-Language; most scripted clients do not.
-  if (!h.get("accept-language")) reasons.push("no-accept-language");
-
-  // Headless Chrome commonly reports 0 or absurd core counts.
-  if (typeof hc === "number" && (hc === 0 || hc > 128)) reasons.push("implausible-cores");
-
-  // Datacenter-ish signal available from the edge without an IP database.
-  if (h.get("x-vercel-ip-country") === "T1") reasons.push("tor-exit");
-
-  if (ua) {
-    if (
-      DESKTOP_PLATFORM.test(ua) &&
-      !MOBILE_UA.test(ua) &&
-      FULL_CHROME_VERSION.test(ua) &&
-      !REDUCED_CHROME_VERSION.test(ua)
-    ) {
-      reasons.push("full-chrome-version");
-    }
-
-    if (STALE_CHROME.test(ua)) reasons.push("stale-chrome-75");
-  }
-
-  return { isBot: reasons.length > 0, reason: reasons.length ? reasons.join(",") : null };
 }
 
 // Single round-trip: the cadence check (too many pageviews per session in a
@@ -198,7 +122,11 @@ export async function POST(req: Request): Promise<Response> {
       return noContent;
     }
 
-    const path = trunc(b.path, 512);
+    // An outbound click on a listing's own website/repo link (beacon.tsx) is
+    // written as `/_e/out/<slug>`, utm_source 'outbound', so it never reads as
+    // a pageview; the Featured 30-day report counts these.
+    const click = outboundClickFields(b);
+    const path = click ? click.path : trunc(b.path, 512);
     // The site is fixed server-side: an open collector that trusts a client
     // `site` field lets anyone write rows under any property's name.
     if (!path) return noContent;
@@ -213,16 +141,16 @@ export async function POST(req: Request): Promise<Response> {
     if (!sessionHash) return noContent;
 
     const sw = typeof b.sw === "number" ? Math.trunc(b.sw) : null;
-    const { isBot, reason } = detectBot(ua, h, b.sw, b.wd, b.hc);
+    const { isBot, reason } = detectBot(ua, h, b.sw, b.wd, b.hc, new Date(), referrerFull);
 
     const res = await p.query(INSERT, [
       SITE,
       path,
       refHost(referrerFull),
       referrerFull,
-      trunc(b.utm_source, 128),
-      trunc(b.utm_medium, 128),
-      trunc(b.utm_campaign, 128),
+      click ? click.utmSource : trunc(b.utm_source, 128),
+      click ? null : trunc(b.utm_medium, 128),
+      click ? click.utmCampaign : trunc(b.utm_campaign, 128),
       sessionHash,
       isBot,
       reason ?? "",

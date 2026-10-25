@@ -16608,7 +16608,7 @@ jupyter mcp install</code></pre>
     category: "Guides",
     readingTime: "8 min read",
     keywords: ["mcp servers for frontend developers", "figma mcp server", "tailwind css mcp", "playwright mcp server", "vercel mcp server 2026"],
-    relatedServerSlugs: ["figma", "github", "playwright", "vercel", "tailwind-css", "storyblok-mcp", "vite", "chromadb", "puppeteer", "netlify"],
+    relatedServerSlugs: ["figma", "github", "playwright", "vercel", "tailwind-css", "storyblok-mcp", "vite", "chromadb", "puppeteer", "netlify", "ratedwithai-accessibility-checker"],
     content: `
 <p>Frontend development in 2026 means managing design-to-code handoffs, component state, cross-browser behavior, and deployment pipelines — all while keeping design systems consistent and performance budgets intact. The cognitive load of switching between Figma, GitHub, your framework docs, and your analytics dashboard is a real productivity tax.</p>
 
@@ -16726,6 +16726,19 @@ jupyter mcp install</code></pre>
 
 <p><strong>Best for:</strong> Diagnosing redirect chain issues. When a URL returns an unexpected response, ask "what redirects are configured for this path in netlify.toml?" and get the exact rules — rather than manually parsing a redirect file that may have grown to hundreds of entries.</p>
 
+<h2>9. RatedWithAI Accessibility Checker — WCAG Audits of the Rendered Page</h2>
+
+<p>Linters such as eslint-plugin-jsx-a11y read your source; they cannot see the contrast of a color that comes from a CSS variable, a button whose label is injected at runtime, or a focus trap in a third-party widget. The RatedWithAI accessibility checker is a hosted remote MCP server that loads a live URL in a real browser, runs axe-core against WCAG 2.1/2.2 AA on that page and up to two more on the same site, and returns a 0-100 score with the failing rules and example elements. There is no package or API key: in Claude Code it is <code>claude mcp add --transport http ratedwithai https://ratedwithai.com/api/mcp?src=mymcptools</code>, and Cursor or VS Code take the same URL in mcp.json.</p>
+
+<p><strong>Key capabilities:</strong></p>
+<ul>
+<li>Scan a public preview or production URL for WCAG 2.1/2.2 AA failures (15-40 seconds per scan)</li>
+<li>Get the failing axe rules with the offending markup, so the fix can be made in the component that renders it</li>
+<li>Ask for any rule by id (<code>color-contrast</code>, <code>image-alt</code>, <code>label</code>) and get fix steps with a code example</li>
+</ul>
+
+<p><strong>Best for:</strong> Checking a Vercel or Netlify preview before merge. Ask "scan this preview URL for accessibility issues and fix the top three in the components that render them". It reads public pages only (no localhost or logged-in pages), and automated checks catch a subset of WCAG, so treat a clean score as a floor. Setup steps for every client are on the <a href="https://ratedwithai.com/mcp?from=mymcptools">RatedWithAI MCP page</a>; see also the <a href="/servers/ratedwithai-accessibility-checker">MyMCPTools listing</a>. Disclosure: RatedWithAI and MyMCPTools are run by the same company.</p>
+
 <h2>Recommended Stacks for Frontend Developers</h2>
 
 <ul>
@@ -16734,6 +16747,7 @@ jupyter mcp install</code></pre>
 <li><strong>Visual QA:</strong> Playwright + Figma + Vercel (browser interaction → design comparison → preview URL access)</li>
 <li><strong>Build and deploy:</strong> Vite + Vercel + GitHub (build config → deployment status → code history)</li>
 <li><strong>Performance:</strong> Puppeteer + GitHub + Vercel (Core Web Vitals → code context → deployment verification)</li>
+<li><strong>Accessibility:</strong> RatedWithAI + Vercel + GitHub (preview URL → WCAG failures → the component that renders them)</li>
 </ul>
 
 <p>Browse all <a href="/category/coding">Coding MCP servers</a> on MyMCPTools. For related guides, see <a href="/blog/best-mcp-servers-for-developers">Best MCP Servers for Developers</a> and <a href="/blog/best-mcp-servers-for-vs-code">Best MCP Servers for VS Code</a>.</p>

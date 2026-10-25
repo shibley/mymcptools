@@ -27,6 +27,7 @@ export const metadata: Metadata = {
 };
 
 const ENDPOINT = "https://mymcptools.com/api/mcp";
+const CLAUDE_ENDPOINT = "https://mymcptools.com/api/mcp/claude";
 
 function CodeBlock({ label, code }: { label?: string; code: string }) {
   return (
@@ -198,6 +199,31 @@ export default function McpServerPage() {
           config:
         </p>
         <CodeBlock label="mcp config" code={clientConfig} />
+      </section>
+
+      <section id="claude" className="mb-12">
+        <h2 className="mb-4 text-2xl font-semibold text-white">Claude connector (claude.ai)</h2>
+        <p className="mb-4 text-gray-400">
+          The connector listed in Claude&rsquo;s directory uses its own URL with the same eight
+          read-only tools and data. No account, API key or sign-in is needed. To add it by hand,
+          open Claude &rarr; Customize &rarr; Connectors &rarr; Add custom connector and paste:
+        </p>
+        <CodeBlock label="connector url" code={CLAUDE_ENDPOINT} />
+        <p className="mt-4 text-sm text-gray-500">
+          Things to try: &ldquo;Find an MCP server for Postgres&rdquo;, &ldquo;Has the GitHub MCP
+          server had incidents recently?&rdquo;, &ldquo;Which remote MCP servers for Slack answered
+          a live handshake today?&rdquo;. Results come from our catalog and our own probes; a server
+          that only runs locally (stdio) cannot be probed and shows a repository-freshness signal
+          instead. We do not store your conversation or your search terms &mdash; see the{" "}
+          <Link href="/privacy" className="text-blue-400 transition hover:text-blue-300">
+            privacy policy
+          </Link>
+          . Questions or problems:{" "}
+          <Link href="/support" className="text-blue-400 transition hover:text-blue-300">
+            support
+          </Link>
+          .
+        </p>
       </section>
 
       <section className="mb-12">

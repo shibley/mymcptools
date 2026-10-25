@@ -8,6 +8,9 @@ interface Props {
   params: Promise<{ slug: string }>;
 }
 
+// Every integration is prerendered; unknown slugs 404 statically, no function.
+export const dynamicParams = false;
+
 export async function generateStaticParams() {
   return integrations.map((integration) => ({
     slug: integration.slug,

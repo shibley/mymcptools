@@ -176,7 +176,23 @@ function extractPy(cmd: string | undefined): string | null {
 
 /* ----------------------------------------------------------------- lookups */
 
-type Lookup = { exists: true } | { missing: true } | { error: string };
+type Lookup =
+  | { exists: true; lastPublishedAt: string | null }
+  | { missing: true }
+  | { error: string };
+
+/**
+ * Only accept a registry timestamp that parses and is not in the future — a
+ * publisher controls this string, and a bogus one would propagate straight into
+ * a paid API field and into freshness bucketing.
+ */
+function asPublishedAt(v: unknown): string | null {
+  if (typeof v !== 'string' || v.length < 10 || v.length > 40) return null;
+  const t = Date.parse(v);
+  if (Number.isNaN(t)) return null;
+  if (t > Date.now() + 86_400_000) return null;
+  return new Date(t).toISOString();
+}
 
 async function npmExists(pkg: string): Promise<Lookup> {
   try {
@@ -188,7 +204,9 @@ async function npmExists(pkg: string): Promise<Lookup> {
     const data = (await res.json()) as any;
     // An unpublished-then-tombstoned package answers 200 with no versions.
     if (!data?.versions || Object.keys(data.versions).length === 0) return { missing: true };
-    return { exists: true };
+    // The ABBREVIATED packument carries `modified` (last publish to any tag),
+    // so the date costs no extra request and no extra bandwidth.
+    return { exists: true, lastPublishedAt: asPublishedAt(data?.modified) };
   } catch (err) {
     return { error: String(err) };
   }
@@ -201,7 +219,16 @@ async function pypiExists(pkg: string): Promise<Lookup> {
     });
     if (res.status === 404) return { missing: true };
     if (!res.ok) return { error: `HTTP ${res.status}` };
-    return { exists: true };
+    const data = (await res.json()) as any;
+    // `urls` is the file list for the CURRENT version; take the newest upload.
+    // A version with no files (yanked-to-empty) leaves the date null rather
+    // than falling back to something older that misdescribes the release.
+    let newest: string | null = null;
+    for (const f of Array.isArray(data?.urls) ? data.urls : []) {
+      const d = asPublishedAt(f?.upload_time_iso_8601 ?? f?.upload_time);
+      if (d && (!newest || d > newest)) newest = d;
+    }
+    return { exists: true, lastPublishedAt: newest };
   } catch (err) {
     return { error: String(err) };
   }
@@ -255,6 +282,13 @@ type Check = {
   exists: boolean;
   checkedAt: string;
   collision?: string;
+  /**
+   * ISO instant of the package's most recent publish, when the registry states
+   * one. This is NOT repo recency: it dates the artifact the install command
+   * actually fetches, which is the thing a machine consumer is about to run.
+   * Absent whenever the package does not exist or the registry states no date.
+   */
+  lastPublishedAt?: string;
 };
 const checks: Record<string, Check> = {};
 const TODAY = new Date().toISOString().slice(0, 10);
@@ -299,12 +333,16 @@ for (const { s, npmPkg, pyPkg } of work) {
   const label = registry === 'npm' ? 'npm' : 'PyPI';
 
   if (!('error' in res)) {
+    const published = 'exists' in res ? res.lastPublishedAt : null;
     checks[s.slug] = {
       registry,
       package: pkg,
       exists: 'exists' in res && !COLLISIONS[s.slug],
       checkedAt: TODAY,
       ...(COLLISIONS[s.slug] ? { collision: COLLISIONS[s.slug] } : {}),
+      // A collision is published, but under a name that is not this product —
+      // dating it would attach a real freshness signal to the wrong software.
+      ...(published && !COLLISIONS[s.slug] ? { lastPublishedAt: published } : {}),
     };
   }
 

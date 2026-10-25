@@ -1,5 +1,10 @@
 import { NextRequest, NextResponse } from "next/server";
 import { withRateLimitHeaders } from "@/lib/api/auth";
+import {
+  trialGrant,
+  trialPayload,
+  withTrialHeaders,
+} from "@/lib/api/trial-response";
 import { authenticateGated } from "@/lib/analytics/trust-api-usage";
 import { getDrifts, latestDriftAt } from "@/lib/trust/drift-store";
 import { generatedAt } from "@/lib/trust/status-store";
@@ -72,20 +77,31 @@ export async function GET(req: NextRequest) {
   if (filter === "protocol") rows = rows.filter((d) => d.protocol_version_changed);
 
   const total = rows.length;
-  const page = rows.slice(offset, offset + limit);
-  const nextOffset = offset + limit;
-  const nextCursor = nextOffset < total ? String(nextOffset) : null;
+  // A trial is capped at the FIRST rowCap rows and cannot page past them —
+  // otherwise three calls a day would walk the whole feed. `next_cursor` is
+  // therefore null on a trial: the cursor a trial caller wants is the key.
+  const grant = trialGrant(auth);
+  const effLimit = grant ? Math.min(limit, grant.rowCap) : limit;
+  const effOffset = grant ? 0 : offset;
+  const page = rows.slice(effOffset, effOffset + effLimit);
+  const nextOffset = effOffset + effLimit;
+  const nextCursor = !grant && nextOffset < total ? String(nextOffset) : null;
 
   const res = NextResponse.json({
     generated_at: generatedAt(),
     latest_drift_at: latestDriftAt(),
     pagination: {
       total,
-      limit,
-      offset,
+      limit: effLimit,
+      offset: effOffset,
       next_cursor: nextCursor,
     },
     drift_events: page,
+    ...(grant
+      ? {
+          trial: trialPayload(grant, page.length, Math.max(0, total - page.length)),
+        }
+      : {}),
   });
-  return withRateLimitHeaders(res, auth.rate);
+  return withTrialHeaders(withRateLimitHeaders(res, auth.rate), auth);
 }

@@ -20,6 +20,7 @@ import { readFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import pg from "pg";
+import { FOSSIL_UA } from "../src/lib/analytics/caller-class.ts";
 
 const HERE = dirname(fileURLToPath(import.meta.url));
 const GATE = 100;
@@ -355,6 +356,14 @@ if (t.calls === 0) {
   console.log(`\nVERDICT: ${verdict}`);
 }
 
+// ---- trust-API rows: one bot definition, applied to history ---------------
+// is_bot is decided at write time, so rows written before FOSSIL_UA existed
+// still say `false` for the frozen iOS 13.2.3 fleet that was 8 of 9 checkout
+// starts and all 5 trial "samplers" (src/lib/analytics/caller-class.ts). Every
+// trust-API count below reads it through this one predicate so the 30-day
+// window is corrected in full, not just from the deploy forward.
+const NOT_BOT = `not (is_bot or coalesce(ua, '') in (${FOSSIL_UA.map((u) => `'${u.replace(/'/g, "''")}'`).join(", ")}))`;
+
 // ---- free-tier REST half -------------------------------------------------
 // Until 2026-08-18 the /api/v1 endpoints were key-gated with zero keys ever
 // issued, so their caller count was structurally zero and told us nothing. The
@@ -365,7 +374,7 @@ const rest = await client.query(
   `select
      count(*)::int                                               as calls,
      count(distinct session_hash)::int                           as callers,
-     count(distinct session_hash) filter (where not is_bot)::int  as consumers,
+     count(distinct session_hash) filter (where ${NOT_BOT})::int  as consumers,
      count(distinct session_hash) filter (where utm_medium = 'anonymous')::int as anon_callers,
      min(ts) as first_seen, max(ts) as last_seen
    from analytics.events where ${REST_WHERE}`,
@@ -401,10 +410,16 @@ const gated = await client.query(
   `select
      count(*)::int                                                          as calls,
      count(distinct session_hash)::int                                      as callers,
-     count(distinct session_hash) filter (where not is_bot)::int            as consumers,
+     count(distinct session_hash) filter (where ${NOT_BOT})::int            as consumers,
      count(*) filter (where utm_campaign = 'GET:401')::int                  as denied,
-     count(distinct session_hash) filter (where utm_campaign = 'GET:401' and not is_bot)::int as denied_consumers,
+     count(distinct session_hash) filter (where utm_campaign = 'GET:401' and ${NOT_BOT})::int as denied_consumers,
      count(distinct session_hash) filter (where utm_medium = 'key')::int    as key_callers,
+     count(*) filter (where utm_medium = 'trial')::int                      as trial_served,
+     count(*) filter (where utm_medium = 'trial' and bot_reason = 'internal-probe')::int as trial_probes,
+     count(distinct session_hash) filter (where utm_medium = 'trial' and ${NOT_BOT})::int as trial_consumers,
+     count(*) filter (where utm_medium = 'trial-exhausted')::int            as trial_spent,
+     count(distinct session_hash) filter (where utm_medium = 'trial-exhausted' and ${NOT_BOT})::int as trial_spent_consumers,
+     count(distinct session_hash) filter (where ${NOT_BOT} and (utm_campaign = 'GET:401' or utm_medium = 'trial'))::int as reached_gate_consumers,
      min(ts) as first_seen, max(ts) as last_seen
    from analytics.events where ${GATED_WHERE}`,
   [String(DAYS)]
@@ -438,10 +453,280 @@ if (g0.calls === 0) {
         `${String(r.denied).padStart(6)} denied  ${r.path}`
     );
   }
+  // Pointer attribution (2026-09-19): free-tier bodies now carry a `pro` block
+  // of gated URLs tagged ?via=<free endpoint>; a gated row that followed one has
+  // referrer_full = 'pointer:<via>'. This is whether the free tier walks its
+  // callers to the paywall — the only road to it an API caller has.
+  const byPointer = await client.query(
+    `select coalesce(referrer_full, 'direct') as via,
+            count(*)::int as calls,
+            count(distinct session_hash) filter (where ${NOT_BOT})::int as consumers
+       from analytics.events
+      where ${GATED_WHERE} and (referrer_full like 'pointer:%' or referrer_full is null)
+      group by 1 order by 2 desc`,
+    [String(DAYS)]
+  );
+  console.log(`\n-- how they reached the paywall (pointer = followed a free-tier 'pro' URL) --`);
+  for (const r of byPointer.rows) {
+    console.log(`${String(r.consumers).padStart(4)} non-crawler  ${String(r.calls).padStart(6)} attempts  ${r.via}`);
+  }
+  // ---- keyless trial (live 2026-09-28) ----------------------------------
+  // The measured loss in the 30d to 2026-09-28 was not the gate and not the
+  // ask: 3 of 7 denied callers followed the buy link and 4 sessions reached
+  // Stripe, and 0 paid — every one of them having never seen a row of the
+  // dataset, because src/data/api-keys.json has never held a key and the free
+  // tier does not overlap the gated endpoints. /v1/drift, /export, /digest and
+  // /incidents now answer a keyless non-crawler with a capped REAL sample
+  // (src/lib/api/trial.ts). `denied` above stays 401-only on purpose: a served
+  // trial is not a refusal, and mixing them would erase the thing being tested.
+  console.log(`\n-- keyless TRIAL (live 2026-09-28; 10 rows/call, 3 calls/caller/day) --`);
+  if (g0.trial_served === 0 && g0.trial_spent === 0) {
+    console.log(
+      `served                    0  — not yet measured. Rows start at the deploy of this build;\n` +
+        `                             an empty block here means "no gated caller has arrived since", NOT zero interest.`
+    );
+  } else {
+    console.log(
+      `served                    ${g0.trial_served} calls to ${g0.trial_consumers} non-crawler caller(s)` +
+        (g0.trial_probes ? `  (${g0.trial_probes} of the calls are our own ?probe=1 walks, excluded from the caller count)` : "")
+    );
+    console.log(`spent their daily cap     ${g0.trial_spent} calls from ${g0.trial_spent_consumers} non-crawler caller(s)  <- saw the data, came back, still capped`);
+    const byTrial = await client.query(
+      `select path,
+              count(*) filter (where utm_medium = 'trial')::int as served,
+              count(distinct session_hash) filter (where utm_medium = 'trial' and ${NOT_BOT})::int as consumers
+         from analytics.events
+        where ${GATED_WHERE} and utm_medium in ('trial', 'trial-exhausted')
+        group by 1 order by 2 desc`,
+      [String(DAYS)]
+    );
+    for (const r of byTrial.rows)
+      console.log(`${String(r.consumers).padStart(4)} non-crawler  ${String(r.served).padStart(6)} served  ${r.path}`);
+  }
   console.log(
-    `\nVERDICT (paid tier): ${g0.denied_consumers} non-crawler caller(s) hit a paywall they could not pass. ` +
-      `Every one of them now receives the checkout URL in the 401 body and the X-MCPTools-Upgrade header.`
+    `\nVERDICT (paid tier): ${g0.denied_consumers} non-crawler caller(s) hit a paywall they could not pass, ` +
+      `and ${g0.trial_consumers} were served a capped sample instead of a 401. ` +
+      `Every one of them receives the checkout URL in the body and the X-MCPTools-Upgrade header.`
   );
 }
+
+// ---- checkout starts: the step between the paywall and the card form -------
+// A gated 401 says someone WANTED the paid data; these rows say someone
+// FOLLOWED the buy link. Until 2026-09-21 nothing recorded that step at all —
+// the only trace of an opened checkout lived in Stripe, which keeps no row for
+// a session that was never completed — so pointer-vs-direct conversion had no
+// denominator. utm_medium carries the entry kind (gate | pointer | page |
+// direct), written by recordCheckoutStart (src/lib/analytics/trust-api-usage.ts).
+const CHECKOUT_WHERE = `site = 'mymcptools' and utm_source = 'trustapi-checkout' and ts > now() - ($1 || ' days')::interval`;
+const checkout = await client.query(
+  `select coalesce(utm_medium, 'direct')                                   as entry,
+          count(*)::int                                                    as starts,
+          count(distinct session_hash) filter (where ${NOT_BOT})::int      as consumers,
+          count(*) filter (where utm_campaign like '%:302' or utm_campaign like '%:200')::int as reached_stripe,
+          count(*) filter (where is_bot and bot_reason = 'internal-probe')::int as probes
+     from analytics.events where ${CHECKOUT_WHERE}
+    group by 1 order by 2 desc`,
+  [String(DAYS)]
+);
+const startsTotal = checkout.rows.reduce((n, r) => n + r.starts, 0);
+const consumerStarts = checkout.rows.reduce((n, r) => n + r.consumers, 0);
+console.log(`\n=== Checkout STARTS, last ${DAYS} days (${"/api/trust-api/checkout"}) ===`);
+if (startsTotal === 0) {
+  console.log(
+    `starts                    0  — not yet measured. Recording began 2026-09-21; ` +
+      `before that a followed buy link left no row, so this is an empty meter, not a measured zero.`
+  );
+} else {
+  console.log(`starts                    ${startsTotal}  (${consumerStarts} non-crawler)`);
+  for (const r of checkout.rows) {
+    console.log(
+      `${String(r.consumers).padStart(4)} non-crawler  ${String(r.starts).padStart(6)} starts  ` +
+        `${String(r.reached_stripe).padStart(4)} reached Stripe  ${r.entry}` +
+        (r.probes ? `  (${r.probes} internal probe)` : "")
+    );
+  }
+}
+// The one rate this whole funnel exists to move: of the callers who hit a
+// paywall, how many followed the buy link that 401 handed them?
+const gateStarts = checkout.rows
+  .filter((r) => r.entry === "gate" || r.entry === "pointer")
+  .reduce((n, r) => n + r.consumers, 0);
+// Denominator is every non-crawler caller who REACHED the gate — denied with a
+// 401 or served a trial. Before the trial shipped those were the same set; now
+// they are not, and leaving it at `denied` would make the rate climb purely
+// because fewer callers get refused.
+console.log(
+  `\ngate -> checkout          ${gateStarts} / ${g0.reached_gate_consumers} non-crawler caller(s) who reached the gate` +
+    `  (${g0.denied_consumers} denied, ${g0.trial_consumers} sampled)` +
+    (g0.reached_gate_consumers === 0 ? "  (nobody at the gate yet to convert)" : "")
+);
+
+// TRIAL -> CHECKOUT -> PAID. The trial exists to answer one question: does
+// seeing the rows sell them? Two independent reads, because neither alone is
+// trustworthy:
+//   (a) TAGGED — checkout rows whose entry tag ends `:trial-sampled|exhausted`
+//       (the buy link inside a trial response; live from this commit). Exact,
+//       but blind to every start before it shipped.
+//   (b) JOINED — trial-served callers whose session_hash also appears on a
+//       checkout row, regardless of which link they followed. Covers history,
+//       but a caller whose identity changes between the two requests is lost.
+// Paid comes from the key store, where fulfilment copies Stripe's
+// `entry_trial` metadata into `raw`. A key with no stage is a sale the trial
+// did not make — or one bought before the tag existed.
+const trialFunnel = await client.query(
+  `with sampled as (
+     select distinct session_hash from analytics.events
+      where ${GATED_WHERE} and utm_medium in ('trial', 'trial-exhausted') and ${NOT_BOT}
+   ), starts as (
+     select session_hash, referrer_full, utm_campaign from analytics.events
+      where ${CHECKOUT_WHERE} and ${NOT_BOT}
+   )
+   select
+     (select count(*) from sampled)::int                                                   as sampled,
+     (select count(distinct s.session_hash) from starts s join sampled t using (session_hash))::int as joined_starts,
+     (select count(distinct session_hash) from starts where referrer_full like '%:trial-sampled')::int   as tagged_sampled,
+     (select count(distinct session_hash) from starts where referrer_full like '%:trial-exhausted')::int as tagged_exhausted,
+     (select count(*) from starts where referrer_full like '%:trial-%'
+        and (utm_campaign like '%:302' or utm_campaign like '%:200'))::int                 as tagged_reached_stripe`,
+  [String(DAYS)]
+);
+const tf = trialFunnel.rows[0];
+let paidByStage: { stage: string; keys: number }[] | null = null;
+try {
+  const paid = await client.query(
+    `select coalesce(nullif(raw->>'entry_trial', ''), 'none') as stage, count(*)::int as keys
+       from analytics.mcpt_api_keys
+      where status = 'active' and stripe_session_id is not null
+      group by 1 order by 2 desc`
+  );
+  paidByStage = paid.rows;
+} catch {
+  paidByStage = null; // table unreadable: say so, never print a 0
+}
+console.log(`\n-- trial -> checkout -> paid (tagged from 2026-10-01; joined covers history) --`);
+console.log(`sampled callers           ${tf.sampled}  (non-crawler, served a trial or capped at it)`);
+console.log(`  -> started checkout     ${tf.joined_starts}  joined on caller identity`);
+console.log(
+  `  -> tagged starts        ${tf.tagged_sampled} from a trial response, ${tf.tagged_exhausted} from trial_exhausted` +
+    `  (${tf.tagged_reached_stripe} reached Stripe)`
+);
+if (paidByStage === null) {
+  console.log(`  -> paid                 UNREADABLE — analytics.mcpt_api_keys query failed; not a zero`);
+} else {
+  const trialPaid = paidByStage.filter((r) => r.stage !== "none").reduce((n, r) => n + r.keys, 0);
+  const otherPaid = paidByStage.filter((r) => r.stage === "none").reduce((n, r) => n + r.keys, 0);
+  console.log(
+    `  -> paid (lifetime keys) ${trialPaid} after a trial` +
+      (trialPaid ? ` (${paidByStage.filter((r) => r.stage !== "none").map((r) => `${r.keys} ${r.stage}`).join(", ")})` : "") +
+      `, ${otherPaid} without one`
+  );
+}
+
+// HUMAN DOOR: /servers/[slug] -> /developers#pro (src/lib/api/server-page-door.ts).
+// Every funnel above is machine-facing and its real cohort is ~1 caller/month;
+// the 694 sessions/30d reading server pages had no link to the price until
+// this door. Arrivals are pageviews tagged utm_source=server-page; starts join
+// on session_hash (same daily identity for /api/collect and the checkout row).
+// The $49 form button went live with a0e99c0; the first server-page checkout
+// row is 2026-10-03T23:06:58Z. A 30-day reader count is NOT the door's
+// denominator — it printed "0 of 727 (0.00%)" when ~35 sessions had seen it.
+const DOOR_LIVE = '2026-10-03T23:06:58Z';
+const door = await client.query(
+  `with server_readers as (
+     select distinct session_hash from analytics.events
+      where site = 'mymcptools' and utm_source is null and path like '/servers/%'
+        and ts > now() - ($1 || ' days')::interval and not is_bot
+   ), arrivals as (
+     select distinct session_hash, utm_campaign from analytics.events
+      where site = 'mymcptools' and utm_source = 'server-page' and path = '/developers'
+        and ts > now() - ($1 || ' days')::interval and ${NOT_BOT}
+   ), starts as (
+     select session_hash, utm_campaign from analytics.events
+      where ${CHECKOUT_WHERE} and ${NOT_BOT}
+   )
+   select
+     (select count(*) from server_readers)::int                                          as readers,
+     (select count(distinct session_hash) from analytics.events
+       where site = 'mymcptools' and utm_source is null and path like '/servers/%'
+         and ts >= $2::timestamptz and not is_bot)::int                                   as exposed,
+     (select count(distinct session_hash) from arrivals)::int                             as arrivals,
+     (select count(distinct a.session_hash) from arrivals a join starts s using (session_hash))::int as starts,
+     (select count(distinct a.session_hash) from arrivals a join starts s using (session_hash)
+        where s.utm_campaign like '%:302' or s.utm_campaign like '%:200')::int            as reached_stripe,
+     (select string_agg(utm_campaign, ', ') from (select utm_campaign from arrivals group by 1
+        order by count(*) desc limit 5) t)                                                 as top_slugs`,
+  [String(DAYS), DOOR_LIVE]
+);
+const d0 = door.rows[0];
+console.log(`\n-- HUMAN door: server page -> /developers#pro (live from the door commit, 2026-10-03) --`);
+console.log(`server-page readers        ${d0.readers}  (human sessions on /servers/*, ${DAYS}d)`);
+const daysLive = (Date.now() - Date.parse(DOOR_LIVE)) / 86_400_000;
+console.log(
+  `  exposed to the $49 button ${d0.exposed}  (since ${DOOR_LIVE.slice(0, 10)}, ${daysLive.toFixed(1)}d live — the denominator for presses below)`
+);
+console.log(
+  `  -> clicked the API door  ${d0.arrivals}` +
+    (d0.readers ? `  (${((100 * d0.arrivals) / d0.readers).toFixed(2)}%)` : "") +
+    (d0.top_slugs ? `  from: ${d0.top_slugs}` : "")
+);
+console.log(`  -> started checkout     ${d0.starts}  joined on session  (${d0.reached_stripe} reached Stripe)`);
+
+// Since the retry of 2026-10-03 the door's button POSTs straight to checkout
+// (entry kind 'server-page'), so a press is a checkout row, not a /developers
+// pageview. Read it directly; the slug rides in the tag as `:server-<slug>`.
+const direct = await client.query(
+  `select count(*)::int                                                          as presses,
+          count(distinct session_hash)::int                                      as sessions,
+          count(*) filter (where utm_campaign like '%:302')::int                 as reached_stripe,
+          count(*) filter (where utm_campaign like '%offer-only')::int           as offer_only,
+          count(*) filter (where referrer_full like '%:plan-pass%')::int         as pass_presses,
+          count(*) filter (where referrer_full like '%:plan-pass%'
+                             and utm_campaign like '%:302')::int                 as pass_reached_stripe,
+          (select string_agg(t, ', ') from (select substring(referrer_full from ':server-([^:]*)$') t
+             from analytics.events where ${CHECKOUT_WHERE} and utm_medium = 'server-page' and ${NOT_BOT}
+             group by 1 order by count(*) desc limit 5) x)                       as top_slugs
+     from analytics.events
+    where ${CHECKOUT_WHERE} and utm_medium = 'server-page' and ${NOT_BOT}`,
+  [String(DAYS)]
+);
+const dd = direct.rows[0];
+console.log(
+  `  -> pressed a buy button  ${dd.presses} (${dd.sessions} of ${d0.exposed} exposed sessions) -> ${dd.reached_stripe} reached Stripe` +
+    (dd.offer_only ? `, ${dd.offer_only} offer-only` : "") +
+    (dd.top_slugs ? `  from: ${dd.top_slugs}` : "")
+);
+// The $9 one-time 30-day key (src/lib/api/pass.ts) went live beside $49/mo on
+// 2026-10-05; its rows carry `:plan-pass` in the entry tag. Read the two
+// against each other — the pass exists because $49/mo drew 0 of 33.
+console.log(
+  `       by plan: $49/mo ${dd.presses - dd.pass_presses} (${dd.reached_stripe - dd.pass_reached_stripe} reached Stripe)` +
+    ` | $9 30-day ${dd.pass_presses} (${dd.pass_reached_stripe} reached Stripe)`
+);
+
+// MAKER DOOR (src/lib/maker-door.ts): every href carries utm_source=maker-door
+// and utm_medium=<entry> (server-page | submit-ack | submit-success) — the
+// beacon stores the path only, so before 2026-10-07 an arrival was invisible.
+// Free submissions are the ack door's exposure: each one is mailed the door.
+// Cash is read in Stripe (metadata.entry), not here.
+const maker = await client.query(
+  `select coalesce(utm_medium, '?') as entry,
+          count(distinct session_hash)::int as sessions,
+          count(distinct session_hash) filter (where not is_bot)::int as human
+     from analytics.events
+    where site = 'mymcptools' and path = '/submit' and utm_source = 'maker-door'
+      and ts > now() - ($1 || ' days')::interval
+    group by 1 order by 2 desc`,
+  [String(DAYS)]
+);
+const acks = await client.query(
+  `select count(*)::int as n from analytics.events
+    where site = 'mymcptools' and path = '/_e/submit/received' and bot_reason = 'server-submit'
+      and ts > now() - ($1 || ' days')::interval`,
+  [String(DAYS)]
+);
+console.log(`\n-- MAKER door: -> /submit on Featured ($9), tagged from 2026-10-07 --`);
+console.log(`free submissions (each mailed the submit-ack door)  ${acks.rows[0].n}  (${DAYS}d, non-probe)`);
+if (!maker.rows.length) console.log(`  door arrivals            0 tagged`);
+for (const r of maker.rows) console.log(`  arrivals via ${String(r.entry).padEnd(15)} ${r.human} human session(s)  (${r.sessions} incl. bots)`);
 
 await client.end();

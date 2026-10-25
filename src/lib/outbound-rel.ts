@@ -14,6 +14,10 @@
  * `paid_placement` is set only from a Stripe line item and `sponsored` only
  * from the sponsored SKU, so money taken is the whole test. Never key this on
  * `featured`: 56 of 57 featured rows are free editorial grants.
+ *
+ * `nofollow` alongside `sponsored` since 2026-10-22: the portfolio rule (Shib,
+ * 2026-10-14) is paid links = rel="sponsored nofollow", and the Featured mail
+ * tells the buyer so.
  */
 type PaidFlags = { paid_placement?: boolean; sponsored?: boolean };
 
@@ -22,5 +26,5 @@ export function isPaidListing(s: PaidFlags): boolean {
 }
 
 export function listingOutboundRel(s: PaidFlags): string {
-  return isPaidListing(s) ? "sponsored noopener noreferrer" : "noopener noreferrer";
+  return isPaidListing(s) ? "sponsored nofollow noopener noreferrer" : "noopener noreferrer";
 }

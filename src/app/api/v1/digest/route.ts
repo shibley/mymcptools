@@ -1,5 +1,11 @@
 import { NextRequest, NextResponse } from "next/server";
 import { withRateLimitHeaders } from "@/lib/api/auth";
+import { capRows } from "@/lib/api/trial";
+import {
+  trialGrant,
+  trialPayload,
+  withTrialHeaders,
+} from "@/lib/api/trial-response";
 import { authenticateGated } from "@/lib/analytics/trust-api-usage";
 import { computeDigest, renderDigestMarkdown } from "@/lib/trust/digest";
 import { getAllEvents, latestEventAt } from "@/lib/trust/events-store";
@@ -64,24 +70,45 @@ export async function GET(req: NextRequest) {
     return withRateLimitHeaders(res, auth.rate);
   }
 
-  const digest = computeDigest([...getAllEvents()], {
+  const full = computeDigest([...getAllEvents()], {
     windowHours,
     nowMs,
     status: statusStore(),
   });
 
+  // Trial: each of the three change buckets is capped independently, so a
+  // sample always shows the SHAPE of all three rather than rowCap rows of
+  // whichever bucket happens to sort first. `counts` stays full-population —
+  // it is the aggregate the caller is evaluating, and a bucket array shorter
+  // than its own count is exactly what `rows_withheld` is there to explain.
+  const grant = trialGrant(auth);
+  const dead = capRows(full.newly_dead, grant);
+  const drifted = capRows(full.drifted, grant);
+  const recovered = capRows(full.recovered, grant);
+  const withheld = dead.withheld + drifted.withheld + recovered.withheld;
+  const returned = dead.rows.length + drifted.rows.length + recovered.rows.length;
+  const digest = grant
+    ? {
+        ...full,
+        newly_dead: [...dead.rows],
+        drifted: [...drifted.rows],
+        recovered: [...recovered.rows],
+      }
+    : full;
+
   if (format === "md") {
-    const res = new NextResponse(renderDigestMarkdown(digest), {
+    const mdRes = new NextResponse(renderDigestMarkdown(digest), {
       status: 200,
       headers: { "Content-Type": "text/markdown; charset=utf-8" },
     });
-    return withRateLimitHeaders(res, auth.rate);
+    return withTrialHeaders(withRateLimitHeaders(mdRes, auth.rate), auth);
   }
 
   const res = NextResponse.json({
     dataset_generated_at: generatedAt(),
     latest_event_at: latestEventAt(),
     ...digest,
+    ...(grant ? { trial: trialPayload(grant, returned, withheld) } : {}),
   });
-  return withRateLimitHeaders(res, auth.rate);
+  return withTrialHeaders(withRateLimitHeaders(res, auth.rate), auth);
 }

@@ -1,5 +1,10 @@
 import { NextRequest, NextResponse } from "next/server";
 import { withRateLimitHeaders } from "@/lib/api/auth";
+import {
+  trialGrant,
+  trialPayload,
+  withTrialHeaders,
+} from "@/lib/api/trial-response";
 import { authenticateGated } from "@/lib/analytics/trust-api-usage";
 import { getAllEvents, latestEventAt } from "@/lib/trust/events-store";
 import { computeIncidents } from "@/lib/trust/incidents";
@@ -99,9 +104,15 @@ export async function GET(req: NextRequest) {
   });
 
   const total = incidents.length;
-  const page = incidents.slice(offset, offset + limit);
-  const nextOffset = offset + limit;
-  const nextCursor = nextOffset < total ? String(nextOffset) : null;
+  // Trial: first rowCap incidents only, no paging past the cap. `summary` is
+  // deliberately NOT truncated — it is an aggregate over the whole set, and a
+  // sample whose own summary contradicts it would read as broken data.
+  const grant = trialGrant(auth);
+  const effLimit = grant ? Math.min(limit, grant.rowCap) : limit;
+  const effOffset = grant ? 0 : offset;
+  const page = incidents.slice(effOffset, effOffset + effLimit);
+  const nextOffset = effOffset + effLimit;
+  const nextCursor = !grant && nextOffset < total ? String(nextOffset) : null;
 
   const res = NextResponse.json({
     generated_at: generatedAt(),
@@ -109,11 +120,16 @@ export async function GET(req: NextRequest) {
     summary,
     pagination: {
       total,
-      limit,
-      offset,
+      limit: effLimit,
+      offset: effOffset,
       next_cursor: nextCursor,
     },
     incidents: page,
+    ...(grant
+      ? {
+          trial: trialPayload(grant, page.length, Math.max(0, total - page.length)),
+        }
+      : {}),
   });
-  return withRateLimitHeaders(res, auth.rate);
+  return withTrialHeaders(withRateLimitHeaders(res, auth.rate), auth);
 }

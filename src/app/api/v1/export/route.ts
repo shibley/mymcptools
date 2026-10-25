@@ -1,14 +1,26 @@
 import { NextRequest, NextResponse } from "next/server";
 import { withRateLimitHeaders } from "@/lib/api/auth";
+import { capRows } from "@/lib/api/trial";
+import {
+  trialGrant,
+  trialPayload,
+  withTrialHeaders,
+} from "@/lib/api/trial-response";
 import { authenticateGated } from "@/lib/analytics/trust-api-usage";
 import { allStatuses, generatedAt, summary } from "@/lib/trust/status-store";
-import type { CurrentStatus } from "@/lib/trust/types";
+import { installSummary, signalSummary, withStaticSignals } from "@/lib/api/status-view";
+import type { ApiStatusRow } from "@/lib/api/status-view";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
-// Flat columns for the CSV export — a stable scalar projection of CurrentStatus.
-const CSV_COLUMNS: ReadonlyArray<keyof CurrentStatus> = [
+/**
+ * Flat columns for the CSV export — a stable scalar projection of a joined row.
+ * The four `static_*` columns are flattened out of `static_signal` so the CSV
+ * carries a freshness date for the ~900 local/stdio servers whose live-probe
+ * columns are necessarily empty (PRD P1-3).
+ */
+const CSV_COLUMNS: ReadonlyArray<keyof ApiStatusRow> = [
   "slug",
   "verdict",
   "tool_count",
@@ -25,6 +37,38 @@ const CSV_COLUMNS: ReadonlyArray<keyof CurrentStatus> = [
   "auth_server_url",
 ];
 
+/**
+ * The `static_signal` and `install_signal` fields flattened into CSV columns.
+ * `install_*` is what a spreadsheet consumer needs for the 1,424 entries with
+ * no repo URL — and `install_exists=false` is a fact in its own right, so the
+ * column is populated even when there is no date to go with it.
+ */
+const CSV_SIGNAL_COLUMNS = [
+  "static_freshness",
+  "static_last_commit_at",
+  "static_last_release_at",
+  "static_repo_url",
+  "install_registry",
+  "install_package",
+  "install_exists",
+  "install_last_published_at",
+] as const;
+
+function signalCells(row: ApiStatusRow): ReadonlyArray<unknown> {
+  const s = row.static_signal;
+  const i = row.install_signal;
+  return [
+    s?.freshness ?? null,
+    s?.last_commit_at ?? null,
+    s?.last_release_at ?? null,
+    s?.repo_url ?? null,
+    i?.registry ?? null,
+    i?.package ?? null,
+    i ? String(i.exists) : null,
+    i?.last_published_at ?? null,
+  ];
+}
+
 /** RFC-4180 field escaping: quote when the value contains "," `"` or newline. */
 function csvCell(value: unknown): string {
   if (value === null || value === undefined) return "";
@@ -33,10 +77,13 @@ function csvCell(value: unknown): string {
   return s;
 }
 
-function toCsv(rows: readonly CurrentStatus[]): string {
-  const header = CSV_COLUMNS.join(",");
+function toCsv(rows: readonly ApiStatusRow[]): string {
+  const header = [...CSV_COLUMNS, ...CSV_SIGNAL_COLUMNS].join(",");
   const lines = rows.map((row) =>
-    CSV_COLUMNS.map((col) => csvCell(row[col])).join(",")
+    [
+      ...CSV_COLUMNS.map((col) => csvCell(row[col])),
+      ...signalCells(row).map(csvCell),
+    ].join(",")
   );
   return [header, ...lines].join("\r\n");
 }
@@ -47,18 +94,29 @@ export async function GET(req: NextRequest) {
   if (!auth.ok) return auth.response;
 
   const format = (req.nextUrl.searchParams.get("format") ?? "json").toLowerCase();
-  const rows = allStatuses();
+  const allRows = withStaticSignals(allStatuses());
   const stamp = generatedAt().slice(0, 10);
 
+  // The bulk export is the widest thing the $49 buys (install_signal 1,233 rows
+  // / static_signal 915 across 2,440 servers) and therefore the one a trial
+  // must cap hardest. `summary`/`signal_summary`/`install_summary` stay
+  // FULL-POPULATION on a trial: they are precisely the coverage numbers a
+  // machine consumer is evaluating, and truncating them would hide the product
+  // rather than sample it. `count` always reports the rows actually serialised.
+  const grant = trialGrant(auth);
+  const { rows, withheld } = capRows(allRows, grant);
+
   if (format === "csv") {
-    const res = new NextResponse(toCsv(rows), {
+    const csvRes = new NextResponse(toCsv(rows), {
       status: 200,
       headers: {
         "Content-Type": "text/csv; charset=utf-8",
-        "Content-Disposition": `attachment; filename="mcptools-status-${stamp}.csv"`,
+        "Content-Disposition": `attachment; filename="mcptools-status-${stamp}${
+          grant ? "-trial" : ""
+        }.csv"`,
       },
     });
-    return withRateLimitHeaders(res, auth.rate);
+    return withTrialHeaders(withRateLimitHeaders(csvRes, auth.rate), auth);
   }
 
   if (format !== "json") {
@@ -73,14 +131,20 @@ export async function GET(req: NextRequest) {
     {
       generated_at: generatedAt(),
       summary: summary(),
+      signal_summary: signalSummary(allRows),
+      install_summary: installSummary(allRows),
       count: rows.length,
+      total_count: allRows.length,
       statuses: rows,
+      ...(grant ? { trial: trialPayload(grant, rows.length, withheld) } : {}),
     },
     {
       headers: {
-        "Content-Disposition": `attachment; filename="mcptools-status-${stamp}.json"`,
+        "Content-Disposition": `attachment; filename="mcptools-status-${stamp}${
+          grant ? "-trial" : ""
+        }.json"`,
       },
     }
   );
-  return withRateLimitHeaders(res, auth.rate);
+  return withTrialHeaders(withRateLimitHeaders(res, auth.rate), auth);
 }

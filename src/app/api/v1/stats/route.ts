@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { authenticateOpen } from "@/lib/api/auth";
 import { finishFreeTier } from "@/lib/analytics/trust-api-usage";
 import { computeCatalogStatsFromStore } from "@/lib/trust/stats";
+import { proPointer } from "@/lib/api/pro-pointer";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -16,6 +17,6 @@ export async function GET(req: NextRequest) {
   if (!auth.ok) return auth.response;
 
   const stats = computeCatalogStatsFromStore();
-  const res = NextResponse.json(stats);
+  const res = NextResponse.json({ ...stats, pro: proPointer("stats") });
   return finishFreeTier(req, "/api/v1/stats", auth, res);
 }

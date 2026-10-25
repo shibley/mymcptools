@@ -15,6 +15,10 @@ function FreshnessBadge() {
   );
 }
 
+// Every valid pair is prerendered; anything else is a 404 served from the CDN
+// instead of a function render (crawlers request thousands of invented pairs).
+export const dynamicParams = false;
+
 export async function generateStaticParams() {
   const comparisons = generateComparisons();
   return comparisons.map((comp) => ({

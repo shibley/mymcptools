@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 import { ServerCard } from "@/components/ServerCard";
 import { AffiliateServerCTA } from "@/components/AffiliateServerCTA";
 import { categories, getServersByCategory } from "@/data/servers";
-import { getPaidListingsByCategory } from "@/lib/paid-listings";
+import { getPaidListingsByCategory, getPaidCatalogSlugs } from "@/lib/paid-listings";
 import { getStatus } from "@/lib/trust/status-store";
 import type { Verdict } from "@/lib/trust/types";
 
@@ -66,7 +66,19 @@ export default async function CategoryPage({ params, searchParams }: Props) {
    * static catalog already holds, so a promoted listing never renders twice.
    */
   const paidListings = await getPaidListingsByCategory(slug);
-  const allCategoryServers = [...paidListings, ...getServersByCategory(slug)];
+  // Maker-door orders (src/lib/maker-door.ts) are for listings the catalog
+  // already renders, so they are not in the overlay; lift them here instead,
+  // badge on, directly under the overlay rows.
+  const paidCatalog = await getPaidCatalogSlugs();
+  const staticServers = getServersByCategory(slug);
+  const liftedStatic = staticServers
+    .filter((s) => paidCatalog.has(s.slug))
+    .map((s) => ({ ...s, featured: true, paid_placement: true }));
+  const allCategoryServers = [
+    ...paidListings,
+    ...liftedStatic,
+    ...staticServers.filter((s) => !paidCatalog.has(s.slug)),
+  ];
   const healthyOnly = filter === "healthy";
   const sortByUptime = sort === "uptime";
 

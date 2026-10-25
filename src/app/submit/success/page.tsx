@@ -22,12 +22,12 @@ export default function SubmitSuccessPage({
         </h1>
         <p className="text-gray-400 mb-6">
           {isFeatured
-            ? "Payment confirmed. Your MCP server will be reviewed within 24 hours and listed with a Featured badge at the top of its category."
-            : "Thanks for submitting your MCP server. We'll review it within 24-48 hours and notify you by email."}
+            ? "Payment confirmed. Your listing goes live as soon as Stripe confirms the payment, usually within a minute, with a Featured badge at the top of its category. We email you the link."
+            : "Thanks for submitting your MCP server. It's in the hand-review queue, with no set date; we'll email you if it's listed."}
         </p>
         {isFeatured && (
           <div className="mb-6 inline-flex items-center gap-2 px-4 py-2 bg-yellow-900/30 border border-yellow-700 rounded-lg text-yellow-300 text-sm">
-            ⭐ Featured Badge · Priority Review · Top of Category
+            ⭐ Featured Badge · Live on Payment · Top of Category
           </div>
         )}
         <div>

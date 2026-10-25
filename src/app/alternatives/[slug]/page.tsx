@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { servers, categories, getRelatedServers } from "@/data/servers";
+import { servers, categories, getRelatedServers, generateComparisons } from "@/data/servers";
 import { getServerPricing, getPricingBadge, hasFreeOption } from "@/data/pricing";
 
 interface Props {
@@ -15,6 +15,17 @@ function FreshnessBadge() {
     </span>
   );
 }
+
+/**
+ * Only link "Compare" for pairs that /compare/[slug] actually prerenders. The
+ * button used to be built for every alternative, so 2,459 pages advertised
+ * thousands of pairs that 404. Crawlers walked them: 413 distinct dead
+ * /compare/x-vs-y URLs in one 52-minute log sample (2026-10-09), ~20% of all
+ * requests, each one a function invocation rendering the 404 page.
+ */
+const comparisonSlugs = new Set(generateComparisons().map((c) => c.slug));
+
+export const dynamicParams = false;
 
 export async function generateStaticParams() {
   return servers.map((server) => ({ slug: server.slug }));
@@ -225,12 +236,14 @@ export default async function AlternativesPage({ params }: Props) {
                       >
                         Pricing
                       </Link>
-                      <Link
-                        href={`/compare/${compareSlug}`}
-                        className="bg-blue-600/10 hover:bg-blue-600/20 text-blue-400 px-4 py-2 rounded-lg text-sm font-medium transition text-center"
-                      >
-                        Compare
-                      </Link>
+                      {comparisonSlugs.has(compareSlug) && (
+                        <Link
+                          href={`/compare/${compareSlug}`}
+                          className="bg-blue-600/10 hover:bg-blue-600/20 text-blue-400 px-4 py-2 rounded-lg text-sm font-medium transition text-center"
+                        >
+                          Compare
+                        </Link>
+                      )}
                     </div>
                   </div>
                 </div>

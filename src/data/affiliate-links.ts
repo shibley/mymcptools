@@ -20,6 +20,20 @@ export interface AffiliateCTA {
 
 export const AFFILIATE_CTAS: AffiliateCTA[] = [
   {
+    slug: "dataimpulse",
+    name: "DataImpulse",
+    tagline: "Residential proxies for scraping agents",
+    description: "Browser and scraping MCP servers get blocked from datacenter IPs. DataImpulse sells pay-as-you-go residential proxies from $1 per GB, with no monthly minimum.",
+    url: "https://dataimpulse.com/?aff=26858494-59b8-4081-9bc5-f59ba83ba117&utm_source=mymcptools&utm_medium=affiliate&utm_campaign=sidebar",
+    program: "DataImpulse affiliate",
+    commission: "15% lifetime (added 2026-09-30, measure by 2026-10-30)",
+    // Browser only, and listed FIRST so it wins on scraping/automation servers;
+    // every other category still falls through to the existing CTAs.
+    categories: ["browser"],
+    cta: "See residential proxy pricing →",
+    badge: "Pay as you go",
+  },
+  {
     slug: "better-stack",
     name: "Better Stack",
     tagline: "Monitor your MCP server endpoints",

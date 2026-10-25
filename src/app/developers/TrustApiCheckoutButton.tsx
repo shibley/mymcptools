@@ -12,7 +12,9 @@ export default function TrustApiCheckoutButton() {
     e.preventDefault();
     setLoading(true);
     try {
-      const res = await fetch("/api/trust-api/checkout", {
+      // ?from=developers so a page-form buyer is distinguishable from the
+      // machine callers who arrive on a gated 401's checkout URL.
+      const res = await fetch("/api/trust-api/checkout?from=developers", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, useCase }),
