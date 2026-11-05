@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "next/link";
+import Link from "@/lib/intent-link";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 

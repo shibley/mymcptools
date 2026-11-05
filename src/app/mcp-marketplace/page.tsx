@@ -1,5 +1,5 @@
 import { Metadata } from "next";
-import Link from "next/link";
+import Link from "@/lib/intent-link";
 import { ServerCard } from "@/components/ServerCard";
 import { servers, getFeaturedServers, getCategoriesWithCounts, getOfficialServers } from "@/data/servers";
 

@@ -1,5 +1,5 @@
 import { Metadata } from "next";
-import Link from "next/link";
+import Link from "@/lib/intent-link";
 
 export const metadata: Metadata = {
   title: "MCP Registry — The Official Registry, GitHub, Docker and Smithery Compared | MyMCPTools",

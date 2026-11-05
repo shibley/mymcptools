@@ -1,5 +1,5 @@
 import { Metadata } from "next";
-import Link from "next/link";
+import Link from "@/lib/intent-link";
 import { notFound } from "next/navigation";
 import { ServerCard } from "@/components/ServerCard";
 import { AffiliateServerCTA } from "@/components/AffiliateServerCTA";

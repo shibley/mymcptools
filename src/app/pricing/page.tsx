@@ -1,5 +1,5 @@
 import { Metadata } from "next";
-import Link from "next/link";
+import Link from "@/lib/intent-link";
 import { servers, categories } from "@/data/servers";
 import { getServerPricing, getPricingBadge, type PricingModel } from "@/data/pricing";
 

@@ -1,5 +1,5 @@
 import { Metadata } from "next";
-import Link from "next/link";
+import Link from "@/lib/intent-link";
 import { notFound } from "next/navigation";
 import { generateComparisons, categories, integrations } from "@/data/servers";
 

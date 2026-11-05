@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "@/lib/intent-link";
 import { MCPServer, categories } from "@/data/servers";
 import { getServerGuide } from "@/data/server-guides";
 import { getStatus } from "@/lib/trust/status-store";

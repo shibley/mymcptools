@@ -1,5 +1,5 @@
 import { Metadata } from "next";
-import Link from "next/link";
+import Link from "@/lib/intent-link";
 import { getIntegrationsWithCounts } from "@/data/servers";
 
 export const metadata: Metadata = {

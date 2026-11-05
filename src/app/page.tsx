@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "@/lib/intent-link";
 import { ServerCard } from "@/components/ServerCard";
 import { AffiliateServerCTA } from "@/components/AffiliateServerCTA";
 import { servers, getCategoriesWithCounts, getIntegrationsWithCounts, getFeaturedServers, getOfficialServers, getSponsoredServers } from "@/data/servers";

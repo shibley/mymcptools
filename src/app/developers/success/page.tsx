@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "@/lib/intent-link";
 
 export default function TrustApiSuccessPage() {
   return (

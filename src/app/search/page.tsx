@@ -1,5 +1,5 @@
 import { Metadata } from "next";
-import Link from "next/link";
+import Link from "@/lib/intent-link";
 import { ServerCard } from "@/components/ServerCard";
 import { searchServers } from "@/data/servers";
 

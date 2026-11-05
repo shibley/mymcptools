@@ -5,7 +5,7 @@
 // link they can send to someone else — the page is statically generated, so the
 // hash is the only place filter state can live without making it dynamic.
 
-import Link from "next/link";
+import Link from "@/lib/intent-link";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { TrustGradePill } from "@/components/TrustGrade";
 import type { TrustTier } from "@/lib/trust/verdict";

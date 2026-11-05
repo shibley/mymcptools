@@ -1,5 +1,5 @@
 import { Metadata } from "next";
-import Link from "next/link";
+import Link from "@/lib/intent-link";
 import { getAllBlogPosts } from "@/data/blog";
 
 export const metadata: Metadata = {

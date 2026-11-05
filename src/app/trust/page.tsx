@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import Link from "@/lib/intent-link";
 import { TrustRegistryTable, type TrustRow } from "@/components/TrustRegistryTable";
 import { getServerBySlug } from "@/data/servers";
 import { getStatus } from "@/lib/trust/status-store";

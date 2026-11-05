@@ -1,5 +1,5 @@
 import { Metadata } from "next";
-import Link from "next/link";
+import Link from "@/lib/intent-link";
 import { serverGuides } from "@/data/server-guides";
 import { getServerBySlug } from "@/data/servers";
 

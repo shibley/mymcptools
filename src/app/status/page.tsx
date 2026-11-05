@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import Link from "@/lib/intent-link";
 import { StatusPill } from "@/components/StatusBadge";
 import { allStatuses, summary, generatedAt } from "@/lib/trust/status-store";
 import { getServerBySlug } from "@/data/servers";

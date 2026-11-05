@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import Link from "@/lib/intent-link";
 import { servers } from "@/data/servers";
 import { allStatuses } from "@/lib/trust/status-store";
 

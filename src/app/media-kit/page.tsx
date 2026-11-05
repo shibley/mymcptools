@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import Link from "@/lib/intent-link";
 import { categories, getServerBySlug } from "@/data/servers";
 import { FEATURED_PRICE } from "@/lib/featured-price";
 import { mediaKitNumbers, type CategoryCount } from "@/lib/media-kit";

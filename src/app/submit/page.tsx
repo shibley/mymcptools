@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef, FormEvent } from "react";
-import Link from "next/link";
+import Link from "@/lib/intent-link";
 import { ackDoorHref, cleanDoorEntry, FEATURED_LIVE, FREE_QUEUE, type MakerDoorEntry, type SubmittedFields } from "@/lib/maker-door";
 import { aiVisibilityCategory, aiVisibilityDoorHref } from "@/lib/ai-visibility-door";
 import { FEATURED_PRICE } from "@/lib/featured-price";
