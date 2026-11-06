@@ -41402,6 +41402,25 @@ const _serversPart32: MCPServer[] = [
     install_checked: '2026-10-10',
     isNew: true,
   },
+  {
+    slug: 'agent-qa',
+    name: 'agent-qa',
+    description: 'MCP server for self-improving natural-language web, Android and iOS QA, with the memidex advanced memory engine. Author tests, run user journeys, and inspect run evidence and reusable knowledge from your coding agent. Requires Node.js 24+ and configured model/browser/device providers. FSL-1.1-ALv2; no software fee for permitted use, while provider charges may apply.',
+    author: 'vostride',
+    github_url: 'https://github.com/vostride/agent-qa',
+    source_verified: true,
+    verification: 'live',
+    website_url: 'https://vostride.com/docs/agent-qa',
+    categories: ['browser', 'coding'],
+    integrations: ['claude-desktop', 'cursor'],
+    install_type: 'npm',
+    install_command: 'npx -y agent-qa mcp',
+    install_verified: true,
+    install_checked: '2026-10-25',
+    official: true,
+    stars: 893,
+    isNew: true,
+  },
 ];
 
 export const servers: MCPServer[] = [..._serversPart1, ..._serversPart2, ..._serversPart3, ..._serversPart4, ..._serversPart5, ..._serversPart6, ..._serversPart7, ..._serversPart8, ..._serversPart9, ..._serversPart10, ..._serversPart11, ..._serversPart12, ..._serversPart13, ..._serversPart14, ..._serversPart15, ..._serversPart16, ..._serversPart17, ..._serversPart18, ..._serversPart19, ..._serversPart20, ..._serversPart21, ..._serversPart22, ..._serversPart23, ..._serversPart24, ..._serversPart25, ..._serversPart26, ..._serversPart27, ..._serversPart28, ..._serversPart29, ..._serversPart30, ..._serversPart31, ..._serversPart32];
