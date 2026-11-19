@@ -42,6 +42,13 @@ export const remoteEndpoints: RemoteEndpoint[] = [
     expected_auth: false,
     source: 'huggingface.co/settings/mcp',
   },
+  {
+    slug: 'dc-hub',
+    url: 'https://dchub.cloud/mcp',
+    transport: 'streamable-http',
+    expected_auth: false,
+    source: 'github.com/azmartone67/dchub-mcp-server README (hosted endpoint, keyless reads)',
+  },
 
   // --- OAuth-gated first-party hosted endpoints (expected AUTH_REQUIRED) ---
   {
