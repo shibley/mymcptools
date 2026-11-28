@@ -41402,6 +41402,23 @@ const _serversPart32: MCPServer[] = [
     install_checked: '2026-10-10',
     isNew: true,
   },
+  {
+    slug: 'dc-hub',
+    name: 'DC Hub',
+    description: 'DC Hub is the live data layer for data-center site selection. Its DCPI is a daily score of where data centers can get grid power, across 300+ markets.',
+    author: 'azmartone67',
+    github_url: 'https://github.com/azmartone67/dchub-mcp-server',
+    source_verified: true,
+    verification: 'live',
+    website_url: 'https://dchub.cloud',
+    categories: ['api', 'analytics', 'data'],
+    integrations: ['claude-desktop', 'cursor', 'vs-code', 'windsurf', 'cline'],
+    install_type: 'remote',
+    install_command: 'claude mcp add --transport http dc-hub https://dchub.cloud/mcp',
+    // Endpoint answered MCP initialize (no auth) on 2026-10-18.
+    install_checked: '2026-10-18',
+    isNew: true,
+  },
 ];
 
 export const servers: MCPServer[] = [..._serversPart1, ..._serversPart2, ..._serversPart3, ..._serversPart4, ..._serversPart5, ..._serversPart6, ..._serversPart7, ..._serversPart8, ..._serversPart9, ..._serversPart10, ..._serversPart11, ..._serversPart12, ..._serversPart13, ..._serversPart14, ..._serversPart15, ..._serversPart16, ..._serversPart17, ..._serversPart18, ..._serversPart19, ..._serversPart20, ..._serversPart21, ..._serversPart22, ..._serversPart23, ..._serversPart24, ..._serversPart25, ..._serversPart26, ..._serversPart27, ..._serversPart28, ..._serversPart29, ..._serversPart30, ..._serversPart31, ..._serversPart32];
